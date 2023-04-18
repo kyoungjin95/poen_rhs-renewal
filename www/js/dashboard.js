@@ -14,7 +14,6 @@ async function 대시보드_시작() {
 }
 
 async function 총합계_조회() {
-	await sleep(DELAY);
 	var tabledata = [
 		{ 세척: 0, 기초검사: 0, 분해조립: 0, 성능검사: 0, EOL: 0, 마도: 0, 구장: 0, 출하: 0 },
 	];
@@ -92,6 +91,7 @@ async function dashboard_조회() {
 	var progress = document.getElementById('progress');
 	distinct(BSA재제조, { 품번 : { $exists : true}}, '품번');
 	await delay();
+	await sleep(100);
 	품번들 = find_array;
 	console.log('품번들 length :', 품번들.length);
 

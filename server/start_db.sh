@@ -1,2 +1,2 @@
 pkill -9 -f mongod
-mongod --dbpath "./db" &
+nohup mongod --dbpath "./db" &
