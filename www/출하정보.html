@@ -1,0 +1,55 @@
+<html>
+	<head>
+		<title>출하 정보</title>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="style/item-detail.css">
+	</head>
+	<body>
+		<div class="출하정보">
+			<div class="input-group">
+				<div>
+					<label for="management_id"><b>관리번호</b></label>
+				</div>
+				<div>
+					<input type="text" id="_management_id" value="조회 버튼을 누르세요" size="30" required>
+					<button onClick="출하정보_managementID();">조 회</button>
+				</div>
+				<div class="input-group">
+					<div>
+						<label for="_출하코드"><b>출하 코드</b></label>
+					</div>
+					<div>
+						<input type="text" id="_출하코드" size="30" required>
+					</div>
+				</div>
+				<div class="input-group">
+					<div>
+						<label for="_납품처"><b>납품처</b></label>
+					</div>
+					<div>
+						<input type="text" id="_납품처" size="30" required>
+					</div>
+				</div>
+				<div class="input-group">
+					<div>
+						<label for="_출하일"><b>출하일</b></label>
+					</div>
+					<div>
+						<input type="date" id="_출하일" size="30" value="0000-00-00" required>
+					</div>
+				</div>
+				<div class="input-group">
+					<center>
+						<button onClick="출하정보_save();">SAVE</button>
+						<button onClick="이전페이지();">이전 Page</button>
+					</center>
+				</div>
+			</div>
+			<script>
+				const _management_id = document.getElementById('_management_id');
+				const _출하코드 = document.getElementById('_출하코드');
+				const _납품처 = document.getElementById('_납품처');
+				const _출하일 = document.getElementById('_출하일');
+			</script>
+	</body>
+</html>

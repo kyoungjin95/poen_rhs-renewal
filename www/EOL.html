@@ -1,0 +1,85 @@
+<html>
+	<head>
+		<title>EOL</title>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="style/item-detail.css">
+	</head>
+	<body>
+		<div class="EOL">
+			<div class="input-group">
+				<div>
+					<label><h2><b>EOL</b></h2></label>
+				</div>
+				</br>
+				<div>
+					<center>
+						<table border="2">
+							<tr>
+								<td>
+									<label for="management_id"><b>관리번호</b></label>
+								</td>
+								<td>
+									<input type="text" id="_management_id" value="조회 버튼을 누르세요" size="30" required>
+									<button onClick="EOL_managementID();">조 회</button>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<label for="_용량평가"><b>용량평가</b></label>
+								</td>
+								<td>
+									<input type="text" id="_용량평가" size="30" required>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<label for="_SOC60Percent"><b>SOC60Percent</b></label>
+								</td>
+								<td>
+									<input type="text" id="_SOC60Percent" size="30" required>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<label for="_DCIR"><b>DCIR</b></label>
+								</td>
+								<td>
+									<input type="text" id="_DCIR" size="30" required>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<label for="_완료일"><b>완료일</b></label>
+								</td>
+								<td>
+									<input type="date" id="_완료일" size="30" value="0000-00-00" required>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<label for="_검사자"><b>검사자</b></label>
+								</td>
+								<td>
+									<input type="text" id="_검사자" size="30" required>
+								</td>
+							</tr>
+						</table>
+					</center>
+				</div>
+				<div class="input-group">
+					<center>
+						<button onClick="EOL_save();">SAVE</button>
+						<button onClick="이전페이지();">이전 Page</button>
+					</center>
+				</div>
+			</div>
+			<script>
+				const _management_id = document.getElementById('_management_id');
+				const _용량평가 = document.getElementById('_용량평가');
+				const _SOC60Percent = document.getElementById('_SOC60Percent');
+				const _DCIR = document.getElementById('_DCIR);
+				const _완료일 = document.getElementById('_완료일');
+				const _검사자 = document.getElementById('_검사자');
+			</script>
+	</body>
+</html>

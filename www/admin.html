@@ -1,0 +1,65 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="style/style.css">
+		<title>POEN Admin System</title>
+	</head>
+	<body>
+		<div>
+			<div>
+				<div>
+					<label for='_id'><b>ID</b></label>
+				</div>
+				<div>
+					<input type=text value='' id='_id' require></input>
+				</div>
+			</div>
+			</br>
+			<div>
+				<div>
+					<label for='_pawsswd'><b>Password</b></label>
+				</div>
+				<div>
+					<input type=password value='' id='_passwd' require></input>
+				</div>
+			</div>
+			</br>
+			<div>
+				<div>
+					<label for='_pawsswd2'><b>Password</b></label>
+				</div>
+				<div>
+					<input type=password value='' id='_passwd2' require></input>
+				</div>
+			</div>
+			</br>
+			</br>
+			<div>
+				<button onClick='add_user();'>Add user</button>
+			</div>
+			</br>
+			</br>
+			<div>
+				<button onClick='delete_user();'>Delete user</button>
+			</div>
+			</br>
+			</br>
+			<div>
+				<input type='file' id='csv' accept='.csv'/>
+			</div>
+		</div>
+		<script>
+			const id = document.getElementById('_id');
+			const passwd = document.getElementById('_passwd');
+			const passwd2 = document.getElementById('_passwd2');
+
+		</script>
+		<script src="js/d3@7"></script>
+		<script src="js/aes.js"></script>
+		<script src="js/script.js"></script>
+		<script src="js/socket.io.min.js"></script>
+		<script src="js/poenRHS.js"></script>
+		<script src='js/admin.js'></script>
+	</body>
+</html>

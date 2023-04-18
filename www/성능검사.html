@@ -1,0 +1,171 @@
+<html>
+	<head>
+		<title>성능 검사</title>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="style/item-detail.css">
+	</head>
+	<body>
+		<div>
+			<center>
+				<label><h2><b>성능 검사</b></h2></label>
+			</center>
+		</div>
+		<div class="성능 검사">
+			<center>
+				<table border="2">
+					<tr>
+						<td>
+							<label for="management_id"><b>관리번호</b></label>
+						</td>
+						<td>
+							<input type="text" id="_management_id" value="조회 버튼을 누르세요" size="30" required>
+							<button onClick="성능검사_managementID();">조 회</button>
+						</td>
+					</tr>
+					<tr>>
+						<td>
+							<label for="_UPR_C조립"><b>UPR/C 조립</b></label>
+						</td>
+						<td>
+							<input type="text" id="_UPR_C조립" size="30" required>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="_기밀검사_케이스"><b>기밀검사 케이스</b></label>
+						</td>
+						<td>
+							<input type="text" id="_기밀검사_케이스" size="30" required>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="_기밀검사_냉각유로"><b>기밀검사 냉각유로</b></label>
+						</td>
+						<td>
+							<input type="text" id="_기밀검사_냉각유로" size="30" required>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="_절연검사P"><b>절연 검사 +(MΩ)</b></label>
+						</td>
+						<td>
+							<input type="text" id="_절연검사P" size="30" required>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="_절연검사M"><b>절연 검사 -(MΩ)</b></label>
+						</td>
+						<td>
+							<input type="text" id="_절연검사M" size="30" required>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="_토크검사_UPR_C"><b>토크검사_UPR/C</b></label>
+						</td>
+						<td>
+							<input type="text" id="_토크검사_UPR_C" size="30" required>
+							<select name="language" onchange="_토크검사_UPR_C_콤보박스(this);">
+								<option value="">---</option>
+								<option value="OK">OK</option>
+								<option value="미실시">미실시</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="_토크검사_버스바"><b>토크검사 버스바</b></label>
+						</td>
+						<td>
+							<input type="text" id="_토크검사_버스바" size="30" required>
+							<select name="language" onchange="_토크검사_버스바_콤보박스(this);">
+								<option value="">---</option>
+								<option value="OK">OK</option>
+								<option value="미실시">미실시</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="_통신검사_DTC코드"><b>통신검사 DTC코드</b></label>
+						</td>
+						<td>
+							<input type="text" id="_통신검사_DTC코드" size="30" required>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="_통신검사_팩전압"><b>통신검사 팩전압(V)</b></label>
+						</td>
+						<td>
+							<input type="text" id="_통신검사_팩전압" size="30" required>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="_통신검사_셀전압편차"><b>통신검사 셀전압 편차(mV)</b></label>
+						</td>
+						<td>
+							<input type="text" id="_통신검사_셀전압편차" size="30" required>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="_통신검사_릴레이구동"><b>통신검사 릴레이 구동</b></label>
+						</td>
+						<td>
+							<input type="text" id="_통신검사_릴레이구동" size="30" required>
+							<select name="language" onchange="_통신검사_릴레이구동_콤보박스(this);">
+								<option value="">---</option>
+								<option value="통신불가">통신불가</option>
+								<option value="OK">OK</option>
+								<option value="NG">NG</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="_완료일"><b>완료일</b></label>
+						</td>
+						<td>
+							<input type="date" id="_완료일" size="30" value="0000-00-00" required>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="_검사자"><b>_검사자</b></label>
+						</td>
+						<td>
+							<input type="text" id="_검사자" size="30" required>
+						</td>
+					</tr>
+				</table>
+			</center>
+		</div>
+		<div class="input-group">
+			<center>
+				<button onClick="성능검사_save();">SAVE</button>
+				<button onClick="이전페이지();">이전 Page</button>
+			</center>
+		</div>
+		</div>
+		<script>
+			const _management_id = document.getElementById('_management_id');
+			const _기밀검사_케이스 = document.getElementById('_기밀검사_케이스');
+			const _기밀검사_냉각유로 = document.getElementById('_기밀검사_냉각유로');
+			const _절연검사P = document.getElementById('_절연검사P');
+			const _절연검사M = document.getElementById('_절연검사M');
+			const _토크검사_UPR_C = document.getElementById('_토크검사_UPR_C');
+			const _토크검사_버스바 = document.getElementById('_통신검사_버스바');
+			const _통신검사_DTC코드 = document.getElementById('_통신검사_DTC코드');
+			const _통신검사_팩전압 = document.getElementById('_통신검사_팩전압');
+			const _통신검사_셀전압편차 = document.getElementById('_통신검사_셀전압편차');
+			const _통신검사_릴레이구동 = document.getElementById('_통신검사_릴레이구동');
+			const _완료일 = document.getElementById('_완료일');
+			const _검사자 = document.getElementById('_검사자');
+		</script>
+	</body>
+</html>

@@ -1,0 +1,54 @@
+<html>
+	<head>
+		<title>월간 현황</title>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="style/item-detail.css">
+		<link rel="stylesheet" href="style/tabulator.css">
+
+	</head>
+	<body>
+		<div class="월간 현황">
+			<div>
+				<center>
+					<label><h2><b>월간 현황</b></h2></label>
+				</center>
+			</div>
+			</br>
+			<div>
+				<input type="date" id="_검색일" size="30" value="0000-00-00" required>
+				<button onClick="월간_조회(true);">조회</button>
+			</div>
+		</div>
+		</br>
+		</br>
+		<div>
+			<label for='chart'><b>Chart</b></label>
+			<canvas id='chart'>
+			</canvas>
+		</div>
+		</br>
+		</br>
+		<div>
+			<label for='chart-detail'><b>Chart detail</b></label>
+			<canvas id='chart-detail'>
+			</canvas>
+		</div>
+		</br>
+		</br>
+		<div>
+			<label for='grid_입고'><b>입고</b></label>
+			<div id='grid_입고'>
+			</div>
+		</div>
+		</br>
+		</br>
+		<div>
+			<label for='grid_출하'><b>출하</b></label>
+			<div id='grid_출하'>
+			</div>
+		</div>
+		<script>
+			const _monthcb = document.getElementById('_monthcb');
+		</script>
+	</body>
+</html>

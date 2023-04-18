@@ -1,0 +1,261 @@
+<html>
+	<head>
+		<title>분해조립</title>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="style/item-detail.css">
+	</head>
+	<body>  
+		<div>
+			<center>
+				<label for='분해조립'><h2><b>분해조립</b></h2></label>
+			</center>
+		</div>
+		<div class="분해조립">
+			<center>
+				<table border="2">
+					<tr>
+						<td>
+							<label for="management_id"><b>관리번호</b></label>
+						</td>
+						<td>
+							<input type="text" id="_management_id" value="조회 버튼을 누르세요" size="30" required>
+							<button onClick="분해조립_managementID();">조 회</button>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="_UPR_C"><b>UPR/C</b></label>
+						</td>
+						<td>
+							<input type="text" id="_UPR_C" size="30" required>
+							<select name="language" onchange="_UPR_C_콤보박스(this);">
+								<option value="">---</option>
+								<option value="신품 교체">신품 교체</option>
+								<option value="고품 교체">고품 교체</option>
+								<option value="N/A">N/A</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="_PBE"><b>PBE</b></label>
+						</td>
+						<td>
+							<input type="text" id="_PBE" size="30" required>
+							<select name="language" onchange="_PBE_콤보박스(this);">
+								<option value="">---</option>
+								<option value="신품 교체">신품 교체</option>
+								<option value="고품 교체">고품 교체</option>
+								<option value="N/A">N/A</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="_Gasket"><b>Gasket</b></label>
+						</td>
+						<td>
+							<input type="text" id="_Gasket" size="30" required>
+							<select name="language" onchange="_Gasket_콤보박스(this);">
+								<option value="">---</option>
+								<option value="신품 교체">신품 교체</option>
+								<option value="고품 교체">고품 교체</option>
+								<option value="N/A">N/A</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="_Busbars"><b>Busbars</b></label>
+						</td>
+						<td>
+							<input type="text" id="_Busbars" size="30" required>
+							<select name="language" onchange="_Busbars_콤보박스(this);">
+								<option value="">---</option>
+								<option value="신품 교체">신품 교체</option>
+								<option value="고품 교체">고품 교체</option>
+								<option value="N/A">N/A</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="_W_H"><b>W_H</b></label>
+						</td>
+						<td>
+							<input type="text" id="_W_H" size="30" required>
+							<select name="language" onchange="_W_H_콤보박스(this);">
+								<option value="">---</option>
+								<option value="신품 교체">신품 교체</option>
+								<option value="고품 교체">고품 교체</option>
+								<option value="N/A">N/A</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="_SPA"><b>SPA</b></label>
+						</td>
+						<td>
+							<input type="text" id="_SPA" size="30" required>
+							<select name="language" onchange="_SPA_콤보박스(this);">
+								<option value="">---</option>
+								<option value="신품 교체">신품 교체</option>
+								<option value="고품 교체">고품 교체</option>
+								<option value="N/A">N/A</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="_PRA"><b>PRA</b></label>
+						</td>
+						<td>
+							<input type="text" id="_PRA" size="30" required>
+							<select name="language" onchange="_PRA_콤보박스(this);">
+								<option value="">---</option>
+								<option value="신품 교체">신품 교체</option>
+								<option value="고품 교체">고품 교체</option>
+								<option value="N/A">N/A</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="_FuseBox"><b>FuseBox</b></label>
+						</td>
+						<td>
+							<input type="text" id="_FuseBox" size="30" required>
+							<select name="language" onchange="_FuseBox_콤보박스(this);">
+								<option value="">---</option>
+								<option value="신품 교체">신품 교체</option>
+								<option value="고품 교체">고품 교체</option>
+								<option value="N/A">N/A</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="_CMU"><b>CMU</b></label>
+						</td>
+						<td>
+							<input type="text" id="_CMU" size="30" required>
+							<select name="language" onchange="_CMU_콤보박스(this);">
+								<option value="">---</option>
+								<option value="신품 교체">신품 교체</option>
+								<option value="고품 교체">고품 교체</option>
+								<option value="N/A">N/A</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="_CMU"><b>Relay</b></label>
+						</td>
+						<td>
+							<input type="text" id="_Relay" size="30" required>
+							<select name="language" onchange="_Relay_콤보박스(this);">
+								<option value="">---</option>
+								<option value="신품 교체">신품 교체</option>
+								<option value="고품 교체">고품 교체</option>
+								<option value="N/A">N/A</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="_BMU"><b>BMU</b></label>
+						</td>
+						<td>
+							<input type="text" id="_BMU" size="30" required>
+							<select name="language" onchange="_BMU_콤보박스(this);">
+								<option value="">---</option>
+								<option value="신품 교체">신품 교체</option>
+								<option value="고품 교체">고품 교체</option>
+								<option value="N/A">N/A</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="_BMA"><b>BMA</b></label>
+						</td>
+						<td>
+							<input type="text" id="_BMA" size="30" required>
+							<select name="language" onchange="_BMA_콤보박스(this);">
+								<option value="">---</option>
+								<option value="신품 교체">신품 교체</option>
+								<option value="고품 교체">고품 교체</option>
+								<option value="N/A">N/A</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="_LWR_C"><b>LWR/C</b></label>
+						</td>
+						<td>
+							<input type="text" id="_LWR_C" size="30" required>
+							<select name="language" onchange="_LWR_C_콤보박스(this);">
+								<option value="">---</option>
+								<option value="신품 교체">신품 교체</option>
+								<option value="고품 교체">고품 교체</option>
+								<option value="N/A">N/A</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="_ETC"><b>ETC</b></label>
+						</td>
+						<td>
+							<input type="text" id="_ETC" size="30" required>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="_완료일"><b>완료일</b></label>
+						</td>
+						<td>
+							<input type="date" id="_완료일" size="30" value="0000-00-00" required>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="_작업자"><b>작업자</b></label>
+						</td>
+						<td>
+							<input type="text" id="_작업자" size="30" required>
+						</td>
+					</tr>
+				</table>
+			</center>
+		</div>
+		<div class="input-group">
+			<center>
+				<button onClick="분해조립_save();">SAVE</button>
+				<button onClick="이전페이지();">이전 Page</button>
+			</center>
+		</div>
+		</div>
+		<script>
+			const _management_id = document.getElementById('_management_id');
+			const _UPR_C = document.getElementById('_UPR_C');
+			const _PBE = document.getElementById('_PBE');
+			const _Gasket = document.getElementById('_Gasket');
+			const _Busbars = document.getElementById('_Busbars');
+			const _W_H = document.getElementById('_W_H');
+			const _SPA = document.getElementById('_SPA');
+			const _PRA = document.getElementById('_PRA');
+			const _FuseBox = document.getElementById('_FuseBox');
+			const _Relay = document.getElementById('_Relay');
+			const _CMU = document.getElementById('_CMU');
+			const _BMU = document.getElementById('_BMU');
+			const _BMA = document.getElementById('_BMA');
+			const _LWR_C = document.getElementById('_LWR_C');
+			const _ETC = document.getElementById('_ETC');
+			const _완료일 = document.getElementById('_완료');
+			const _분해조립 = document.getElementById('_분해조립');
+		</script>                          
+	</body>
+</html>

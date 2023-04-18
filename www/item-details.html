@@ -1,0 +1,205 @@
+<html>
+	<head>
+		<title>품목 상세 입력</title>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="style/item-detail.css">
+	</head>
+	<body>
+		<div class="품목상세">
+			<div>
+				<center>
+					<label><h2><b>품목 상세</b></h2></label>
+				</center>
+			</div>
+			<div class="input-group">
+				<table border='2'>
+				<tr>
+					<td>
+						<label for="_management_id"><b>관리번호</b></label>
+					</td>
+					<td>
+						<input type="text" id="_management_id" size="30" required>
+						<button onClick="상세입력_시작();">조 회</button>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="_차종"><b>차종</b></label>
+					</td>
+					<td>
+						<input type="text" id="_차종" size="30" required>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="_품번"><b>품번</b></label>
+					</td>
+					<td>
+						<input type="text" id="_품번" size="30" required>
+					</td>
+				</td>
+				<tr>
+					<td>
+						<label for="_RO_no"><b>RO_no</b></label>
+					</td>
+					<td>
+						<input type="text" id="_RO_no" size="30" required>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="_공정단계"><b>공정단계</b></label>
+					</td>
+					<td>
+						<input type="text" id="_공정단계" size="30" required>
+						<select name="language" onchange="공정입력_콤보박스(this)">
+							<option value="">---</option>
+							<option value="입고">입고</option>
+							<option value="제조투입">제조투입</option>
+							<option value="세척">세척</option>
+							<option value="기초검사">기초검사</option>
+							<option value="분해조립">분해조립</option>
+							<option value="성능검사">성능검사</option>
+							<option value="EOL">EOL</option>
+							<option value="제조완료">제조완료</option>
+							<option value="출하">출하</option>
+						</select>
+						<button onClick="processStep();">공정 상세 입력</button>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="_적재No"><b>적재No</b></label>
+					</td>
+					<td>
+						<input type="text" id="_적재No" size="30" required>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="_입고"><b>입고</b></label>
+					</td>
+					<td>
+						<input type="date" id="_입고" size="30" value="0000-00-00" required>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="_제조투입"><b>제조투입</b></label>
+					</td>
+					<td>
+						<input type="date" id="_제조투입" size="30" value="0000-00-00" required>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="_세척"><b>세척</b></label>
+					</td>
+					<td>
+						<input type="date" id="_세척" size="30" value="0000-00-00" required>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="_기초검사"><b>기초검사</b></label>
+					</td>
+					<td>
+						<input type="date" id="_기초검사" size="30" value="0000-00-00" required>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="_분해조립"><b>분해조립</b></label>
+					</td>
+					<td>
+						<input type="date" id="_분해조립" size="30" value="0000-00-00" required>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="_성능검사"><b>성능검사</b></label>
+					</td>
+					<td>
+						<input type="date" id="_성능검사" size="30" value="0000-00-00" required>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="_EOL"><b>EOL</b></label>
+					</td>
+					<td>
+						<input type="date" id="_EOL" size="30" value="0000-00-00" required>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="_출하"><b>출하</b></label>
+					</td>
+					<td>
+						<input type="date" id="_출하" size="30" value="0000-00-00" required>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="_소재지"><b>소재지</b></label>
+					</td>
+					<td>
+						<input type="text" id="_소재지" size="30" required>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label><b>교체부품 상세<b></label>
+					</td>
+					<td>
+						<select name="language" onchange="교체부품상세_콤보박스(this)">
+							<option value="">---</option>
+							<option value="교체부품상세1">교체부품상세1</option>
+							<option value="교체부품상세2">교체부품상세2</option>
+							<option value="교체부품상세3">교체부품상세3</option>
+							<option value="교체부품상세4">교체부품상세4</option>
+							<option value="교체부품상세5">교체부품상세5</option>
+							<option value="교체부품상세6">교체부품상세6</option>
+							<option value="교체부품상세7">교체부품상세7</option>
+							<option value="교체부품상세8">교체부품상세8</option>
+							<option value="교체부품상세9">교체부품상세9</option>
+							<option value="교체부품상세10">교체부품상세10</option>
+						</select>
+						<button onClick="func_교체부품상세();">교체부품상세</button>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label><b>특이사항</b></label>
+					</td>
+					<td>
+						<button onClick="func_특이사항();">특이 사항</button>
+					</td>
+				</tr>
+				<tr>
+				</table>
+				<div class="input-group">
+					<center>
+						<button onClick="item_detail_save();">SAVE</button>
+					</center>
+				</div>
+			</div>
+			<script>
+				const _management_id = document.getElementById('_management_id');
+				const _차종 = document.getElementById('_차종');
+				const _품번 = document.getElementById('_품번');
+				const _RO_no = document.getElementById('_RO_no');
+				const _공정단계 = document.getElementById('_공정단계');
+				const _적재No = document.getElementById('_적재No');
+				const _입고 = document.getElementById('_입고');
+				const _제조투입 = document.getElementById('_제조투입');
+				const _세척 = document.getElementById('_세척');
+				const _기초검사 = document.getElementById('_기초검사');
+				const _분해조립 = document.getElementById('_분해조립');
+				const _성능검사 = document.getElementById('_성능검사');
+				const _EOL = document.getElementById('_EOL');
+				const _출하 = document.getElementById('_출하');
+				const _소재지 = document.getElementById('_소재지');
+			</script>
+	</body>
+</html>

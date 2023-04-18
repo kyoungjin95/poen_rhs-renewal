@@ -1,0 +1,42 @@
+<html>
+	<head>
+		<title>목표수량</title>
+		<meta charset="UTF-8">
+	</head>
+	<body>
+		<div class="목표수량">
+			<div>
+				<center>
+					<label><h2><b>목표수량</b></h2></label>
+					<link rel="stylesheet" href="style/item-detail.css">
+				</center>
+			</div>
+			<div class="input-group">
+				<div class="input-group">
+					<div>
+						<label for="_목표수량"><b>목표 수량</b></label>
+					</div>
+					<div>
+						<input type="text" id="_목표수량" size="30" required>
+					</div>
+				</div>
+				<div class="input-group">
+					<div>
+						<label for="_주간목표수량"><b>주간 목표 수량</b></label>
+					</div>
+					<div>
+						<input type="text" id="_주간목표수량" size="30" required>
+					</div>
+				</div>
+				<div class="input-group">
+					<div>
+						<button onClick="목표수량_save();">SAVE</button>
+					</div>
+				</div>
+			</div>
+			<script>
+				const _목표수량 = document.getElementById('_목표수량');
+				const _주간목표수량 = document.getElementById('_주간목표수량');
+			</script>
+	</body>
+</html>

@@ -1,0 +1,42 @@
+<html>
+	<head>
+		<title>특이 사항</title>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="style/item-detail.css">
+	</head>
+	<body>
+		<div class="특이사항">
+			<div class="input-group">
+				<div>
+					<center>
+						<label><h2><b>특이사항</b></h2></label>
+					</center>
+				</div>
+				<div>
+					<label for="management_id"><b>관리번호</b></label>
+				</div>
+				<div>
+					<input type="text" id="_management_id" value="조회 버튼을 누르세요" size="30" required>
+					<button onClick="특이사항_managementID();">조 회</button>
+				</div>
+				<div class="input-group">
+					<div>
+						<label for="_특이사항"><b>특이 사항</b></label>
+					</div>
+					<div>
+						<input type="text" id="_특이사항" size="100" required>
+					</div>
+				</div>
+				<div class="input-group">
+					<center>
+						<button onClick="특이사항_save();">SAVE</button>
+						<button onClick="이전페이지();">이전 Page</button>
+					</center>
+				</div>
+			</div>
+			<script>
+				const _management_id = document.getElementById('_management_id');
+				const _특이사항 = document.getElementById('_특이사항');
+			</script>
+	</body>
+</html>
