@@ -23,6 +23,7 @@ async function 재제조현황_조회(flag_id_search = false) {
 
 	count(BSA재제조, { 관리번호 : { $exists: true } });
 	await delay();
+	
 	console.log('doc_count: ', doc_count);
 	if(doc_count >= 1) {
 		if(flag_id_search == false) {
@@ -36,6 +37,7 @@ async function 재제조현황_조회(flag_id_search = false) {
 			find(BSA재제조, _management_id.value);
 		}
 		await delay();
+		await sleep(100);
 		tabledata_BSA = find_array;
 		row_one_id = find_array[0].관리번호;
 		console.log(find_array);

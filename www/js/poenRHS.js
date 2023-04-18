@@ -1,4 +1,4 @@
-const DELAY = 5;
+const DELAY = 20;
 var flag_arrivedMSG = false;
 const 계정 = '계정';
 const 목표수량 = '목ㅍ표수량';
