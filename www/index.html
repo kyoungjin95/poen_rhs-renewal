@@ -108,6 +108,10 @@
 				var btn = document.getElementById('item_detail_btn').click();
 			}
 
+			history.pushState(null, null, location.href); 
+			window.onpopstate = function(event) { 
+				history.go(1); 
+			};
 		</script>
 	</body>
 </html>
