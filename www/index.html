@@ -9,15 +9,15 @@
 	<body>
 		<div id="main">
 			<img src='img/poen.png' width='10%' height='10%'></img>
-			<h1>Poen RHS</h1> </h5><center>(Remanuafacturing History System) Ver. 0.75</center></h5>
+			<h1>Poen RHS</h1> </h5><center>(Remanuafacturing History System) Ver. 0.80</center></h5>
 	</br>
 	<div class="buttons">
-		<button class="round-btn" id='login_btn' onclick="loadPage('login.html'); change_label();">로그인</button>
-		<button class="round-btn" onclick="loadPage('bsa_info.html'    ); flag_재제조현황 = true;">BSA 재제조 DATA</button>
-		<button class="round-btn" id='item_detail_btn' onclick="loadPage('item-details.html'); flag_상세입력 = true;">품목상세 입력</button>
-		<button class="round-btn" onclick="loadPage('type-status.html' ); flag_생산현황 = true;">생산 현황</button>
-		<button class="round-btn" onclick="loadPage('dashboard.html'   ); flag_대시보드 = true;">대시 보드</button>
-		<button class="round-btn" onclick="times_show();">기간별 현황</button>
+		<button class="round-btn" id='login_btn' onclick="pre_관리번호 = ''; loadPage('login.html'); change_label();">로그인</button>
+		<button class="round-btn" onclick="pre_관리번호 = ''; loadPage('bsa_info.html'    ); flag_재제조현황 = true;">BSA 재제조 DATA</button>
+		<button class="round-btn" id='item_detail_btn' onclick="pre_관리번호 = ''; loadPage('item-details.html'); flag_상세입력 = true;">품목상세 입력</button>
+		<button class="round-btn" onclick="pre_관리번호 = ''; loadPage('type-status.html' ); flag_생산현황 = true;">생산 현황</button>
+		<button class="round-btn" onclick="pre_관리번호 = ''; loadPage('dashboard.html'   ); flag_대시보드 = true;">대시 보드</button>
+		<button class="round-btn" onclick="pre_관리번호 = ''; times_show();">기간별 현황</button>
 		<div id='times'>
 			<button class="round-btn" onclick="loadPage('year-status.html' ); flag_년간현황 = true;">년간 현황</button>
 			<button class="round-btn" onclick="loadPage('month-status.html'); flag_월간현황 = true;">월간 현황</button>
