@@ -1,6 +1,7 @@
 var pre_관리번호 = '';
 async function 상세입력_시작() {
 	await sleep(100);
+
 	flag_상세입력 = false;
 	worker = sessionStorage.getItem('worker');
 	if(worker == '') return;
@@ -175,6 +176,8 @@ async function item_detail_save(flag_result = false) {
 async function processStep() {
 	if(worker == '') return;
 	if(_management_id.value.length == 0) return;
+	pre_관리번호 = '';
+
 	var step = _공정단계.value;
 
 	switch(step) {
