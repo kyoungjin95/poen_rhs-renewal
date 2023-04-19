@@ -62,9 +62,5 @@ async function EOL_save() {
 		alert('저장 되었습니다');
 	}
 
-	loadPage('item-details.html');
-}
-
-function 이전페이지() {
-	loadPage('item-details.html');
+	이전페이지();
 }

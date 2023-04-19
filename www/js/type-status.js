@@ -10,6 +10,7 @@ function rand(min, max) {
 
 async function 생산현황_시작() {
 	flag_생산현황 = false;
+	worker = sessionStorage.getItem('worker');
 	if(worker == '') return;
 	while(document.getElementById('_chart') == undefined) {
 		await sleep(DELAY);

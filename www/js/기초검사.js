@@ -1,4 +1,7 @@
 async function 기초검사_managementID() {
+	worker = sessionStorage.getItem('worker');
+	관리번호 = sessionStorage.getItem('manage_id');
+
 	if(worker == '') return;
 	flag_목표수량 = false;
 	while(_management_id == undefined) {
@@ -86,7 +89,7 @@ async function 기초검사_save() {
 		alert('저장 되었습니다');
 	}
 
-	loadPage('item-details.html');
+	이전페이지();
 }
 
 function _육안검사외부_콤보박스(e) {
@@ -121,6 +124,5 @@ function _통신검사_릴레이구동_콤보박스(e) {
 }
 
 function 이전페이지() {
-	if(worker == '') return;
-	loadPage('item-details.html');
+	document.getElementById('item_detail')[0].click();
 }

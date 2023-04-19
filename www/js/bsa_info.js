@@ -4,6 +4,7 @@ var flag_id_search = false;
 
 async function 재제조현황_시작() {
 	flag_재제조현황 = false;
+	worker = sessionStorage.getItem('worker');
 	if(worker == '') return;
 	while(_management_id == undefined) {
 		await sleep(DELAY);

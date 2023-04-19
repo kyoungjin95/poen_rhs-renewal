@@ -3,6 +3,7 @@ var chart;
 
 async function 일간현황_시작() {
 	flag_일간현황 = false;
+	worker = sessionStorage.getItem('worker');
 	if(worker == '') return;
 	while(_검색일 == undefined) {
 		await sleep(DELAY);

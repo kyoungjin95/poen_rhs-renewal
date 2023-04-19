@@ -1,4 +1,7 @@
 async function 분해조립_managementID() {
+	worker = sessionStorage.getItem('worker');
+	관리번호 = sessionStorage.getItem('manage_id');
+
 	if(worker == '') return;
 	while(_management_id == undefined) {
 		await sleep(DELAY);
@@ -90,8 +93,8 @@ async function 분해조립_save() {
 	if(insert_count > 0) {
 		alert('저장 되었습니다');
 	}
-
-	loadPage('item-details.html');
+	
+	이전페이지();
 }
 
 function _UPR_C_콤보박스(e) {
@@ -171,9 +174,4 @@ function _LWR_C_콤보박스(e) {
 	const value = e.value;
 
   	document.getElementById('_LWR_C').value = value;
-}
-
-function 이전페이지() {
-	if(worker == '') return;
-	loadPage('item-details.html');
 }

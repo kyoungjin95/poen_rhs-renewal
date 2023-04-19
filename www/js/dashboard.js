@@ -2,6 +2,7 @@ var dashboard_chart;
 
 async function 대시보드_시작() {
 	flag_대시보드 = false;
+	worker = sessionStorage.getItem('worker');
 	if(worker == '') return;
 	while(document.getElementById('grid_total') == undefined) {	
 		await sleep(DELAY);
@@ -52,7 +53,7 @@ async function 총합계_조회() {
 	tabledata[0].구장 = doc_count;
 
 	count(BSA재제조, { 출하 : { $exists : true, $ne : 'none', $ne : ''}});
-	await delay();
+	await sleep(100);
 	console.log('출하 count:', doc_count);
 	tabledata[0].출하 = doc_count;
 

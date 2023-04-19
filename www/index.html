@@ -14,12 +14,12 @@
 	<div class="buttons">
 		<button class="round-btn" id='login_btn' onclick="loadPage('login.html'); change_label();">로그인</button>
 		<button class="round-btn" onclick="loadPage('bsa_info.html'    ); flag_재제조현황 = true;">BSA 재제조 DATA</button>
-		<button class="round-btn" onclick="loadPage('item-details.html'); flag_상세입력   = true;">품목상세 입력</button>
-		<button class="round-btn" onclick="loadPage('year-status.html' ); flag_년간현황   = true;">년간 현황</button>
-		<button class="round-btn" onclick="loadPage('month-status.html'); flag_월간현황   = true;">월간 현황</button>
-		<button class="round-btn" onclick="loadPage('day-status.html'  ); flag_일간현황   = true;">일간 현황</button>
-		<button class="round-btn" onclick="loadPage('type-status.html' ); flag_생산현황   = true;">생산 현황</button>
-		<button class="round-btn" onclick="loadPage('dashboard.html'   ); flag_대시보드   = true;">대시 보드</button>
+		<button class="round-btn" id='item_detail_btn' onclick="loadPage('item-details.html'); flag_상세입력 = true;">품목상세 입력</button>
+		<button class="round-btn" onclick="loadPage('year-status.html' ); flag_년간현황 = true;">년간 현황</button>
+		<button class="round-btn" onclick="loadPage('month-status.html'); flag_월간현황 = true;">월간 현황</button>
+		<button class="round-btn" onclick="loadPage('day-status.html'  ); flag_일간현황 = true;">일간 현황</button>
+		<button class="round-btn" onclick="loadPage('type-status.html' ); flag_생산현황 = true;">생산 현황</button>
+		<button class="round-btn" onclick="loadPage('dashboard.html'   ); flag_대시보드 = true;">대시 보드</button>
 	</div>
 	<div id="content">
 	</div>
@@ -32,7 +32,6 @@
 		<script src="js/chart.js"></script>
 		<script src="js/poenRHS.js"></script>
 		<script src="js/item-detail.js"></script>
-		<script src="js/target.js"></script>
 		<script src="js/기초검사.js"></script>
 		<script src="js/성능검사.js"></script>
 		<script src="js/분해조립.js"></script>
@@ -49,8 +48,19 @@
 		<script src="js/login.js"></script>
 		<script src="js/dashboard.js"></script>
 		<script>
-			loadPage('login.html');
-			change_label();
+		 	var _worker = sessionStorage.getItem('worker');
+			if(_worker == '') {
+				loadPage('login.html');
+				change_label();
+			} else {
+				const _login_btn = document.getElementById('login_btn');
+				_login_btn.innerHTML = '로그아웃';
+				setTimeout(function() {
+					loadPage('dashboard.html');
+					start_repeat_대시보드();
+					대시보드_시작();
+				}, 1000);
+			}
 			var flag_재제조현황 = false;
 			var flag_상세입력 = false;
 			var flag_년간현황 = false;
@@ -93,6 +103,11 @@
 				console.log('start dashboard repeat');
 				flag_repeat_대시보드 = true;
 			}
+
+			function 이전페이지() {
+				var btn = document.getElementById('item_detail_btn').click();
+			}
+
 		</script>
 	</body>
 </html>

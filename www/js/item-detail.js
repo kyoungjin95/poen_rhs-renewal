@@ -1,5 +1,8 @@
+var pre_관리번호 = '';
 async function 상세입력_시작() {
+	await sleep(100);
 	flag_상세입력 = false;
+	worker = sessionStorage.getItem('worker');
 	if(worker == '') return;
 	while(_management_id == undefined) {
 		await sleep(DELAY);
@@ -8,6 +11,8 @@ async function 상세입력_시작() {
 	if(_management_id.value.length == 0 && 관리번호 != '' && 관리번호.indexOf('none') == -1) {
 		_management_id.value = 관리번호;
 	}
+
+	if(pre_관리번호 != '' && pre_관리번호 == _management_id.value) return;
 
 	console.log('load: ', _management_id.value);
 	if(_management_id.value.length == 0) return;
@@ -20,6 +25,8 @@ async function 상세입력_시작() {
 	console.log('doc_count: ', doc_count);
 	if(doc_count >= 1) {
 		관리번호 = _management_id.value;
+		pre_관리번호 = 관리번호;
+		sessionStorage.setItem('manage_id', 관리번호);
 		find(BSA재제조, _management_id.value);
 		await delay();
 		console.log(find_array);

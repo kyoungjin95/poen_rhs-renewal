@@ -1,4 +1,6 @@
 async function 교체부품상세_managementID() {
+	worker = sessionStorage.getItem('worker');
+	관리번호 = sessionStorage.getItem('manage_id');
 	if(worker == '') return;
 	while(_management_id == undefined) {
 		await sleep(DELAY);
@@ -73,10 +75,5 @@ async function 교체부품상세_save() {
 		alert('저장 되었습니다');
 	}
 
-	loadPage('item-details.html');
-}
-
-function 이전페이지() {
-	if(worker == '') return;
-	loadPage('item-details.html');
+	이전페이지();
 }

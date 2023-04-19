@@ -4,6 +4,7 @@ var chart_detail;
 
 async function 월간현황_시작() {
 	flag_월간현황 = false;
+	worker = sessionStorage.getItem('worker');
 	if(worker == '') return;
 	while(document.getElementById('_검색일') == undefined) {
 		await sleep(DELAY);
