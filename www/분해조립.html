@@ -24,6 +24,14 @@
 					</tr>
 					<tr>
 						<td>
+							<label for="_공정입고일"><b>공정 입고일</b></label>
+						</td>
+						<td>
+							<input type="datetime-local" id="_공정입고일" value='0000-00-00T00:00' required>
+						</td>
+					</tr>
+					<tr>
+						<td>
 							<label for="_UPR_C"><b>UPR/C</b></label>
 						</td>
 						<td>
@@ -214,10 +222,10 @@
 					</tr>
 					<tr>
 						<td>
-							<label for="_완료일"><b>완료일</b></label>
+							<label for="_공정완료일"><b>완료일</b></label>
 						</td>
 						<td>
-							<input type="date" id="_완료일" size="30" value="0000-00-00" required>
+							<input type="datetime-local" id="_공정완료일" value="0000-00-00T00:00" required>
 						</td>
 					</tr>
 					<tr>
@@ -240,6 +248,7 @@
 		</div>
 		<script>
 			const _management_id = document.getElementById('_management_id');
+			const _공정입고일 = document.getElementById('_공정입고일');
 			const _UPR_C = document.getElementById('_UPR_C');
 			const _PBE = document.getElementById('_PBE');
 			const _Gasket = document.getElementById('_Gasket');
@@ -254,8 +263,8 @@
 			const _BMA = document.getElementById('_BMA');
 			const _LWR_C = document.getElementById('_LWR_C');
 			const _ETC = document.getElementById('_ETC');
-			const _완료일 = document.getElementById('_완료');
-			const _분해조립 = document.getElementById('_분해조립');
+			const _공정완료일 = document.getElementById('_공정완료');
+			const _작업자 = document.getElementById('_작업자');
 		</script>                          
 	</body>
 </html>

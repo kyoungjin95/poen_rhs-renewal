@@ -22108,7 +22108,7 @@
 	// read persistance information from storage
 	var defaultReaders = {
 		local:function(id, type){
-			var data = localStorage.getItem(id + "-" + type);
+			var data = sessionStorage.getItem(id + "-" + type);
 
 			return data ? JSON.parse(data) : false;
 		},
@@ -22138,7 +22138,7 @@
 	//write persistence information to storage
 	var defaultWriters = {
 		local:function(id, type, data){
-			localStorage.setItem(id + "-" + type, JSON.stringify(data));
+			sessionStorage.setItem(id + "-" + type, JSON.stringify(data));
 		},
 		cookie:function(id, type, data){
 			var expireDate = new Date();
@@ -22169,13 +22169,13 @@
 			this.registerTableOption("persistenceWriterFunc", false); //function for handling persistence data writing
 		}
 
-		// Test for whether localStorage is available for use.
-		localStorageTest() {
+		// Test for whether sessionStorage is available for use.
+		sessionStorageTest() {
 			var  testKey =  "_tabulator_test";
 
 			try {
-				window.localStorage.setItem( testKey, testKey);
-				window.localStorage.removeItem( testKey );
+				window.sessionStorage.setItem( testKey, testKey);
+				window.sessionStorage.removeItem( testKey );
 				return true;
 			} catch(e) {
 				return false;
@@ -22190,7 +22190,7 @@
 				id = this.table.options.persistenceID,
 				retrievedData;
 
-				this.mode = mode !== true ?  mode : (this.localStorageTest() ? "local" : "cookie");
+				this.mode = mode !== true ?  mode : (this.sessionStorageTest() ? "local" : "cookie");
 
 				if(this.table.options.persistenceReaderFunc){
 					if(typeof this.table.options.persistenceReaderFunc === "function"){

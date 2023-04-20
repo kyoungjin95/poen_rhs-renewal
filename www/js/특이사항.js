@@ -1,6 +1,4 @@
 async function 특이사항_managementID() {
-	worker = localStorage.getItem('worker');
-	관리번호 = localStorage.getItem('manage_id');
 	if(worker == '') return;
 	while(_management_id == undefined) {
 		await sleep(DELAY);
@@ -15,7 +13,6 @@ async function 특이사항_managementID() {
 	await delay();
 	console.log('doc_count: ', doc_count);
 	if(doc_count >= 1) {
-		관리번호 = _management_id.value;
 		find(특이사항, _management_id.value);
 		await delay();
 		console.log(find_array);

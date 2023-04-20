@@ -2,7 +2,7 @@ var dashboard_chart;
 
 async function 대시보드_시작() {
 	flag_대시보드 = false;
-	worker = localStorage.getItem('worker');
+	worker = sessionStorage.getItem('worker');
 	if(worker == '') return;
 	while(document.getElementById('grid_total') == undefined) {	
 		await sleep(DELAY);

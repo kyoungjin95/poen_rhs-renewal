@@ -3,7 +3,6 @@ var chart;
 
 async function 년간현황_시작() {
 	flag_년간현황 = false;
-	worker = localStorage.getItem('worker');
 	if(worker == '') return;
 	while(document.getElementById('_검색일') == undefined) {
 		await sleep(DELAY);

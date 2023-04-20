@@ -3,19 +3,21 @@
 				history.go(1); 
 			};
 
-			var _worker = localStorage.getItem('worker');
+			var _worker = sessionStorage.getItem('worker');
+			if(_worker == '' || worker == null) worker = '';
+
 			var flag_show = false;
 			
 			times_show();
-			if(_worker == '') {
+			if(worker == '') {
 				loadPage('login.html');
 				change_label();
+				const _login_info = document.getElementById('login_info');
 				_login_info.innerHTML = '';
 			} else {
 				const _login_btn = document.getElementById('login_btn');
 				const _login_info = document.getElementById('login_info');
-				if(_worker != '') _login_info.innerHTML = _worker + ' / 로그인 中  ';
-				else  _login_info.innerHTML = '';
+				_login_info.innerHTML = worker + ' / 로그인 中  ';
 				_login_btn.innerHTML = '로그아웃';
 				setTimeout(function() {
 					loadPage('dashboard.html');
@@ -30,7 +32,6 @@
 			var flag_일간현황 = false;
 			var flag_생산현황 = false;
 			var flag_대시보드 = false;
-			var flag_목표수량 = false;
 			var flag_repeat_생산현황 = false;
 			var flag_repeat_대시보드 = false;
 
@@ -40,7 +41,6 @@
 				if(flag_년간현황 == true) { stop_repeat(); 년간현황_시작(); }
 				if(flag_월간현황 == true) { stop_repeat(); 월간현황_시작(); }
 				if(flag_일간현황 == true) { stop_repeat(); 일간현황_시작(); }
-				if(flag_목표수량 == true) { stop_repeat(); 목표수량_시작(); }
 				if(flag_생산현황 == true) { start_repeat_생산현황(); 생산현황_시작();}
 				if(flag_대시보드 == true) { start_repeat_대시보드(); 대시보드_시작();}
 			}, 500);

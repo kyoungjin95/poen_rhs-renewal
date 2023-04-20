@@ -1,7 +1,4 @@
 async function 분해조립_managementID() {
-	worker = localStorage.getItem('worker');
-	관리번호 = localStorage.getItem('manage_id');
-
 	if(worker == '') return;
 	while(_management_id == undefined) {
 		await sleep(DELAY);
@@ -16,10 +13,10 @@ async function 분해조립_managementID() {
 	await delay();
 	console.log('doc_count: ', doc_count);
 	if(doc_count >= 1) {
-		관리번호 = _management_id.value;
 		find(분해조립, _management_id.value);
 		await delay();
 		console.log(find_array);
+		_공정입고일.value = find_array[0].공정입고일;
 		_UPR_C.value = find_array[0].UPR_C;
 		_PBE.value = find_array[0].PBE;
 		_Gasket.value = find_array[0].Gasket;
@@ -34,9 +31,10 @@ async function 분해조립_managementID() {
 		_BMA.value = find_array[0].BMA;
 		_LWR_C.value = find_array[0].LWR_C;
 		_ETC.value = find_array[0].ETC;
-		_완료일.value = find_array[0].완료일;
+		_공정완료일.value = find_array[0].공정완료일;
 		_작업자.value = find_array[0].작업자;
 	} else {
+		_공정입고일.value = '0000-00-00T00:00';
 		_UPR_C.value = '';
                 _PBE.value = '';
                 _Gasket.value = '';
@@ -51,7 +49,7 @@ async function 분해조립_managementID() {
                 _BMA.value = '';
                 _LWR_C.value = '';
                 _ETC.value = '';
-		_완료일.value = '0000-00-00';
+		_공정완료일.value = '0000-00-00T00:00';
 		_작업자.value = worker;
 	}
 }
@@ -63,6 +61,7 @@ async function 분해조립_save() {
 
 	var doc = 분해조립_doc;
 	doc.관리번호 = _management_id.value;
+	doc.공정입고일 = _공정입고일.value;
 	doc.UPR_C = _UPR_C.value;
 	doc.PBE = _PBE.value;
 	doc.Gasket = _Gasket.value;
@@ -77,7 +76,7 @@ async function 분해조립_save() {
 	doc.BMA = _BMA.value;
 	doc.LWR_C = _LWR_C.value;
 	doc.ETC = _ETC.value;
-	doc.완료일 = _완료일.value;
+	doc.공정완료일 = _공정완료일.value;
 	doc.작업자 = _작업자.value;
 	
 	update(분해조립, doc);

@@ -25,7 +25,15 @@
 						</tr>
 						<tr>
 							<td>
-								<label for="_육안검사외부"><b>육안검사 외부</b></label>
+								<label for="_공정입고일"><b>공정 입고일</b></label>
+							</td>
+							<td>
+								<input type="datetime-local" id="_공정입고일" value='0000-00-00T00:00'required>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="_육안검사_외부"><b>육안검사 외부</b></label>
 							</td>
 							<td>
 								<input type="text" id="_육안검사_외부" size="30" required>
@@ -38,7 +46,22 @@
 						</tr>
 						<tr>
 							<td>
-								<label for="_육안검사내부"><b>육안검사 내부</b></label>
+								<label for="_육안검사_외부_특이사항"><b>육안검사 외부 특이사항</b></label>
+							</td>
+							<td>
+								<input type="text" id="_육안검사_외부_특이사항" size="100" required>
+								<select name="language" onchange="_육안검사외부특이사항_콤보박스(this);">
+									<option value="">---</option>
+									<option value="오염">오염</option>
+									<option value="상처">상처</option>
+									<option value="파손">파손</option>
+									<option value="소손">소손</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="_육안검사_내부"><b>육안검사 내부</b></label>
 							</td>
 							<td>
 								<input type="text" id="_육안검사_내부" size="30" required>
@@ -46,6 +69,21 @@
 									<option value="">---</option>
 									<option value="OK">OK</option>
 									<option value="NG">NG</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="_육안검사_내부_특이사항"><b>육안검사 내부 특이사항</b></label>
+							</td>
+							<td>
+								<input type="text" id="_육안검사_내부_특이사항" size="100" required>
+								<select name="language" onchange="_육안검사내부특이사항_콤보박스(this);">
+									<option value="">---</option>
+									<option value="오염">오염</option>
+									<option value="상처">상처</option>
+									<option value="파손">파손</option>
+									<option value="소손">소손</option>
 								</select>
 							</td>
 						</tr>
@@ -59,10 +97,40 @@
 						</tr>
 						<tr>
 							<td>
+								<label for="_기밀검사_케이스_특이사항"><b>기밀검사 케이스 특이사항</b></label>
+							</td>
+							<td>
+								<input type="text" id="_기밀검사_케이스_특이사항" size="100" required>
+								<select name="language" onchange="_기밀검사케이스특이사항_콤보박스(this);">
+									<option value="">---</option>
+									<option value="오염">오염</option>
+									<option value="상처">상처</option>
+									<option value="파손">파손</option>
+									<option value="소손">소손</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td>
 								<label for="_기밀검사_냉각유로"><b>기밀검사 냉각유로</b></label>
 							</td>
 							<td>
 								<input type="text" id="_기밀검사_냉각유로" size="30" required>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="_기밀검사_냉각유로_특이사항"><b>기밀검사 냉각유로 특이사항</b></label>
+							</td>
+							<td>
+								<input type="text" id="_기밀검사_냉각유로_특이사항" size="100" required>
+								<select name="language" onchange="_기밀검사냉각유로특이사항_콤보박스(this);">
+									<option value="">---</option>
+									<option value="오염">오염</option>
+									<option value="상처">상처</option>
+									<option value="파손">파손</option>
+									<option value="소손">소손</option>
+								</select>
 							</td>
 						</tr>
 						<tr>
@@ -109,10 +177,82 @@
 						</tr>
 						<tr>
 							<td>
-								<label for="_통신검사_DTC코드"><b>통신검사 DTC코드</b></label>
+								<label for="_통신검사_DTC코드1"><b>통신검사 DTC코드 1</b></label>
 							</td>
 							<td>
-								<input type="text" id="_통신검사_DTC코드" size="30" required>
+								<input type="text" id="_통신검사_DTC코드1" size="30" required>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="_통신검사_DTC코드2"><b>통신검사 DTC코드 2</b></label>
+							</td>
+							<td>
+								<input type="text" id="_통신검사_DTC코드2" size="30" required>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="_통신검사_DTC코드3"><b>통신검사 DTC코드 3</b></label>
+							</td>
+							<td>
+								<input type="text" id="_통신검사_DTC코드3" size="30" required>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="_통신검사_DTC코드4"><b>통신검사 DTC코드 4</b></label>
+							</td>
+							<td>
+								<input type="text" id="_통신검사_DTC코드4" size="30" required>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="_통신검사_DTC코드5"><b>통신검사 DTC코드 5</b></label>
+							</td>
+							<td>
+								<input type="text" id="_통신검사_DTC코드5" size="30" required>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="_통신검사_DTC코드6"><b>통신검사 DTC코드 6</b></label>
+							</td>
+							<td>
+								<input type="text" id="_통신검사_DTC코드6" size="30" required>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="_통신검사_DTC코드7"><b>통신검사 DTC코드 7</b></label>
+							</td>
+							<td>
+								<input type="text" id="_통신검사_DTC코드7" size="30" required>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="_통신검사_DTC코드8"><b>통신검사 DTC코드 8</b></label>
+							</td>
+							<td>
+								<input type="text" id="_통신검사_DTC코드8" size="30" required>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="_통신검사_DTC코드9"><b>통신검사 DTC코드 9</b></label>
+							</td>
+							<td>
+								<input type="text" id="_통신검사_DTC코드9" size="30" required>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="_통신검사_DTC코드10"><b>통신검사 DTC코드 10</b></label>
+							</td>
+							<td>
+								<input type="text" id="_통신검사_DTC코드10" size="30" required>
 							</td>
 						</tr>
 						<tr>
@@ -147,10 +287,10 @@
 						</tr>
 						<tr>
 							<td>
-								<label for="_완료일"><b>완료일</b></label>
+								<label for="_공정완료일"><b>공정 완료일</b></label>
 							</td>
 							<td>
-								<input type="date" id="_완료일" size="30" value="0000-00-00" required>
+								<input type="datetime-local" id="_공정완료일" value="0000-00-00T00:00" required>
 							</td>
 						</tr>
 						<tr>
@@ -172,19 +312,33 @@
 			</div>
 			<script>
 				const _management_id = document.getElementById('_management_id');
+				const _공정입고일 = document.getElementById('_공정입고일');
 				const _육안검사_외부 = document.getElementById('_육안검사_외부');
+				const _육안검사_외부_특이사항 = document.getElementById('_육안검사_외부');
 				const _육안검사_내부 = document.getElementById('_육안검사_내부');
+				const _육안검사_내부_특이사항 = document.getElementById('_육안검사_내부');
 				const _기밀검사_케이스 = document.getElementById('_기밀검사_케이스');
+				const _기밀검사_케이스_특이사항 = document.getElementById('_기밀검사_케이스');
 				const _기밀검사_냉각유로 = document.getElementById('_기밀검사_냉각유로');
+				const _기밀검사_냉각유로_특이사항 = document.getElementById('_기밀검사_냉각유로');
 				const _절연검사P = document.getElementById('_절연검사P');
 				const _절연검사N = document.getElementById('_절연검사N');
 				const _토크검사_UPR_C = document.getElementById('_토크검사_UPR_C');
 				const _토크검사_버스바 = document.getElementById('_통신검사_버스바');
-				const _통신검사_DTC코드 = document.getElementById('_통신검사_DTC코드');
+				const _통신검사_DTC코드1 = document.getElementById('_통신검사_DTC코드1');
+				const _통신검사_DTC코드2 = document.getElementById('_통신검사_DTC코드2');
+				const _통신검사_DTC코드3 = document.getElementById('_통신검사_DTC코드3');
+				const _통신검사_DTC코드4 = document.getElementById('_통신검사_DTC코드4');
+				const _통신검사_DTC코드5 = document.getElementById('_통신검사_DTC코드5');
+				const _통신검사_DTC코드6 = document.getElementById('_통신검사_DTC코드6');
+				const _통신검사_DTC코드7 = document.getElementById('_통신검사_DTC코드7');
+				const _통신검사_DTC코드8 = document.getElementById('_통신검사_DTC코드8');
+				const _통신검사_DTC코드9 = document.getElementById('_통신검사_DTC코드9');
+				const _통신검사_DTC코드10 = document.getElementById('_통신검사_DTC코드10');
 				const _통신검사_팩전압 = document.getElementById('_통신검사_팩전압');
 				const _통신검사_셀전압편차 = document.getElementById('_통신검사_셀전압편차');
 				const _통신검사_릴레이구동 = document.getElementById('_통신검사_릴레이구동');
-				const _완료일 = document.getElementById('_완료일');
+				const _공정완료일 = document.getElementById('_공정완료일');
 				const _검사자 = document.getElementById('_검사자');
 			</script>
 	</body>

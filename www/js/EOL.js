@@ -14,20 +14,21 @@ async function EOL_managementID() {
 	await delay();
 	console.log('doc_count: ', doc_count);
 	if(doc_count >= 1) {
-		관리번호 = _management_id.value;
 		find(EOL, _management_id.value);
 		await delay();
 		console.log(find_array);
+		_공정입고일.value = find_array[0].공정입고일;
 		_용량평가.value = find_array[0].용량평가;
 		_SOC60Percent.value = find_array[0].SOC60Percent;
 		_DCIR.value = find_array[0].DCIR;
-		_완료일.value = find_array[0].완료일;
+		_공정완료일.value = find_array[0].공정완료일;
 		_검사자.value = find_array[0].검사자;
 	} else {
+		_공정입고일.value = '0000-00-00T00:00'
 		_용량평가.value = '';
 		_SOC60Percent.value = '';
 		_DCIR.value = '';
-		_완료일.value = '0000-00-00';
+		_공정완료일.value = '0000-00-00T00:00';
 		_검사자.value = worker;
 	}
 }
@@ -42,10 +43,11 @@ async function EOL_save() {
 
 	var doc = EOL_doc;
 	doc.관리번호 = _management_id.value;
+	doc.공정입고일 = _공정입고일.value;
 	doc.용량평가 = _용량평가.value;
 	doc.SOC60Percent = _SOC60Percent.value;
 	doc.DCIR = _DCIR.value;
-	doc.완료일 = _완료일.value;
+	doc.공정완료일 = _공정완료일.value;
 	doc.검사자 = _검사자.value;
 	
 	update(EOL, doc);

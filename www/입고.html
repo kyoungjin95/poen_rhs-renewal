@@ -1,0 +1,102 @@
+<html>
+	<head>
+		<title>입고</title>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="style/item-detail.css">
+	</head>
+	<body>
+		<div class="입고">
+			<div>
+				<center>
+					<label><h2><b>BSA 등록(입고)</b></h2></label>
+				</center>
+			</div>
+			<div>
+				<center>
+					<table border="2">
+						<tr>
+							<td>
+								<label for="management_id"><b>관리번호</b></label>
+							</td>
+							<td>
+								<input type="text" id="_management_id" value="조회 버튼을 누르세요" size="30" required>
+								<button onClick="입고_managementID();">조 회</button>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="_입고일"><b>입고일</b></label>
+							</td>
+							<td>
+								<input type="datetime-local" id="_입고일" size="30" value="0000-00-00T00:00" required>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="_입고처"><b>입고처</b></label>
+							</td>
+							<td>
+								<input type="text" id="_입고처" size="30" required>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="_차종"><b>차종</b></label>
+							</td>
+							<td>
+								<input type="text" id="_차종" size="30" required>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="_품번"><b>품번</b></label>
+							</td>
+							<td>
+								<input type="text" id="_품번" size="30" required>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="_RO_no"><b>Ro No.</b></label>
+							</td>
+							<td>
+								<input type="text" id="_RO_no" size="30" required>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="_VIN"><b>VIN</b></label>
+							</td>
+							<td>
+								<input type="text" id="_VIN" size="30" required>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="_랙번호"><b>랙 번호</b></label>
+							</td>
+							<td>
+								<input type="text" id="_랙번호" size="30" required>
+							</td>
+						</tr>
+					</table>
+				</center>
+			</div>
+			<div class="input-group">
+				<center>
+					<button onClick="입고_save();">SAVE</button>
+					<button onClick="이전페이지();">이전 Page</button>
+				</center>
+			</div>
+			<script>
+				const _management_id = document.getElementById('_management_id');
+				const _입고일 = document.getElementById('_입고일');
+				const _입고처 = document.getElementById('_입고처');
+				const _차종 = document.getElementById('_차종');
+				const _품번 = document.getElementById('_품번');
+				const _RO_no = document.getElementById('_RO_no');
+				const _VIN = document.getElementById('_VIN');
+				const _랙번호 = document.getElementById('_랙번호');
+			</script>
+	</body>
+</html>
