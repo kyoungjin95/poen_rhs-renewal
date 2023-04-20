@@ -1,5 +1,4 @@
 const DELAY = 20;
-var flag_arrivedMSG = false;
 const 계정 = '계정';
 const 목표수량 = '목ㅍ표수량';
 const BSA재제조 = 'BSA재제조';
@@ -271,6 +270,7 @@ var insert_count = 0;
 var delete_count = 0;
 var insert_id = '';
 var find_array = [];
+var flag_arrivedMSG = false;
 
 const socket = io();
 socket.on('connect', function() {

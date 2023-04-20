@@ -1,6 +1,6 @@
 async function 기초검사_managementID() {
-	worker = sessionStorage.getItem('worker');
-	관리번호 = sessionStorage.getItem('manage_id');
+	worker = localStorage.getItem('worker');
+	관리번호 = localStorage.getItem('manage_id');
 
 	if(worker == '') return;
 	flag_목표수량 = false;

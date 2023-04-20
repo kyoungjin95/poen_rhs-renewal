@@ -1,6 +1,6 @@
 async function 분해조립_managementID() {
-	worker = sessionStorage.getItem('worker');
-	관리번호 = sessionStorage.getItem('manage_id');
+	worker = localStorage.getItem('worker');
+	관리번호 = localStorage.getItem('manage_id');
 
 	if(worker == '') return;
 	while(_management_id == undefined) {

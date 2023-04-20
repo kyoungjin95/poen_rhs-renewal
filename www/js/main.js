@@ -1,4 +1,9 @@
-		 	var _worker = sessionStorage.getItem('worker');
+			history.pushState(null, null, location.href); 
+			window.onpopstate = function(event) { 
+				history.go(1); 
+			};
+
+			var _worker = localStorage.getItem('worker');
 			var flag_show = false;
 			
 			times_show();
@@ -70,7 +75,3 @@
 				}
 				flag_show = !flag_show;
 			}
-			history.pushState(null, null, location.href); 
-			window.onpopstate = function(event) { 
-				history.go(1); 
-			};

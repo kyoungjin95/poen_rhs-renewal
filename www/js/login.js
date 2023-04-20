@@ -11,7 +11,7 @@ async function login() {
 	if(doc_count > 0) {
 		if(worker == '') {
 			worker = _id.value;
-			sessionStorage.setItem('worker',  worker);
+			localStorage.setItem('worker',  worker);
 			alert('로그인 성공');
 			setTimeout(function() {
 				loadPage('dashboard.html');
@@ -20,7 +20,7 @@ async function login() {
 			}, 1000);
 		} else {
 			worker = '';
-			sessionStorage.setItem('worker',  worker);
+			localStorage.setItem('worker',  worker);
 			alert('로그아웃 성공');
 		}
 		change_label();
@@ -34,7 +34,7 @@ async function change_label() {
 	while(document.getElementById('login_label') == undefined) {
 		await sleep(DELAY);
 	}
-	worker = sessionStorage.getItem('worker');
+	worker = localStorage.getItem('worker');
 	const _label = document.getElementById('login_label');
 	const _login_btn = document.getElementById('login_btn');
 	if(worker == '') {

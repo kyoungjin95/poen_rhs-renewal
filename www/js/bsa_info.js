@@ -4,7 +4,7 @@ var flag_id_search = false;
 
 async function 재제조현황_시작() {
 	flag_재제조현황 = false;
-	worker = sessionStorage.getItem('worker');
+	worker = localStorage.getItem('worker');
 	if(worker == '') return;
 	while(_management_id == undefined) {
 		await sleep(DELAY);
@@ -32,13 +32,14 @@ async function 재제조현황_조회(flag_id_search = false) {
 			var _s_day = Number(now.toISOString().slice(0, 4)) - 2;
 			var s_day = String(_s_day) + now.toISOString().slice(4, 10) + 'T00:00:00.000Z';
 			console.log(s_day);
-			//find(BSA재제조, { $exists : true });
-			find_query(BSA재제조, { 입고 : { $gte : s_day }});
+			find_query(BSA재제조, { 관리번호: { $exists : true }});
+			//find_query(BSA재제조, { 입고 : { $gte : s_day }});
+			await delay();
 		} else {
 			find(BSA재제조, _management_id.value);
+			await delay();
 		}
-		await delay();
-		await sleep(100);
+		await sleep(200);
 		tabledata_BSA = find_array;
 		row_one_id = find_array[0].관리번호;
 		console.log(find_array);
@@ -73,6 +74,8 @@ async function 재제조현황_조회(flag_id_search = false) {
 	table.on("rowClick", async function(e, row){
 		console.log('selected 관리번호: ',  row.getData().관리번호);
 		m_id = row.getData().관리번호;
+		row_one_id = m_id;
+
 		await grid_기초검사(m_id);
 		progress.value = 1 / 16 * 100;
 
@@ -120,6 +123,8 @@ async function 재제조현황_조회(flag_id_search = false) {
 
 		await grid_교체부품상세10(m_id);
 		progress.value = 16 / 16 * 100;
+
+		return;
 	});
 
 	await grid_기초검사(row_one_id);
@@ -170,6 +175,17 @@ async function 재제조현황_조회(flag_id_search = false) {
 	await grid_교체부품상세10(row_one_id);
 	progress.value = 16 / 16 * 100;
 };
+
+async function delete_bsa() {
+	if(row_one_id == '' || row_one_id == null) return;
+	deleteOne(BSA재제조, row_one_id);
+	await delay();
+
+	if(delete_count > 0) {
+		alert('삭제 되었습니다.');
+		재제조현황_조회(true);
+	}
+}
 
 async function grid_기초검사(m_id) {
 	if(worker == '') return;

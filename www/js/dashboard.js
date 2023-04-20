@@ -2,7 +2,7 @@ var dashboard_chart;
 
 async function 대시보드_시작() {
 	flag_대시보드 = false;
-	worker = sessionStorage.getItem('worker');
+	worker = localStorage.getItem('worker');
 	if(worker == '') return;
 	while(document.getElementById('grid_total') == undefined) {	
 		await sleep(DELAY);
@@ -62,7 +62,7 @@ async function 총합계_조회() {
 			row.getElement().style.backgroundColor = "yellow";
 		},
 		columnHeaderVertAlign:"bottom",
-		height:167,
+		height:130,
 		data:tabledata,
 		autoColumns:true,
 
