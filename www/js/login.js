@@ -37,11 +37,14 @@ async function change_label() {
 	worker = localStorage.getItem('worker');
 	const _label = document.getElementById('login_label');
 	const _login_btn = document.getElementById('login_btn');
+	const _login_info = document.getElementById('login_info');
 	if(worker == '') {
 		_label.innerHTML = 'Login';
 		_login_btn.innerHTML = '로그인';
+		_login_info.innerHTML = '';
 	} else {
 		_label.innerHTML = 'Logout';
 		_login_btn.innerHTML = '로그아웃';
+		_login_info.innerHTML = _worker + ' / 로그인 中  ';
 	}
 }

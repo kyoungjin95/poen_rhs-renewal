@@ -21,7 +21,7 @@ async function 재제조현황_시작() {
 
 async function 재제조현황_조회(flag_id_search = false) {
 	if(worker == '') return;
-
+	find_array = undefined;
 	count(BSA재제조, { 관리번호 : { $exists: true } });
 	await delay();
 	
@@ -41,6 +41,7 @@ async function 재제조현황_조회(flag_id_search = false) {
 		}
 		await sleep(200);
 		tabledata_BSA = find_array;
+		
 		row_one_id = find_array[0].관리번호;
 		console.log(find_array);
 	}
@@ -177,13 +178,14 @@ async function 재제조현황_조회(flag_id_search = false) {
 };
 
 async function delete_bsa() {
+	console.log('delete : ', row_one_id);
 	if(row_one_id == '' || row_one_id == null) return;
 	deleteOne(BSA재제조, row_one_id);
 	await delay();
 
 	if(delete_count > 0) {
 		alert('삭제 되었습니다.');
-		재제조현황_조회(true);
+		재제조현황_조회(false);
 	}
 }
 

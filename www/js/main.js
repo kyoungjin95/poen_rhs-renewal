@@ -10,8 +10,12 @@
 			if(_worker == '') {
 				loadPage('login.html');
 				change_label();
+				_login_info.innerHTML = '';
 			} else {
 				const _login_btn = document.getElementById('login_btn');
+				const _login_info = document.getElementById('login_info');
+				if(_worker != '') _login_info.innerHTML = _worker + ' / 로그인 中  ';
+				else  _login_info.innerHTML = '';
 				_login_btn.innerHTML = '로그아웃';
 				setTimeout(function() {
 					loadPage('dashboard.html');
