@@ -53,7 +53,7 @@ async function 재제조현황_조회(flag_id_search = false) {
 		tabledata_BSA = find_array;
 		
 		row_one_id = find_array[0].관리번호;
-		console.log(find_array);
+		
 	}
 
 	var table = new Tabulator("#grid_BSA", {

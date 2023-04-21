@@ -29,7 +29,7 @@ async function 상세입력_시작() {
 		sessionStorage.setItem('manage_id', 관리번호);
 		find(BSA재제조, _management_id.value);
 		await delay();
-		console.log(find_array);
+		
 		//_차종.value = find_array[0].차종;
 		//_품번.value = find_array[0].품번;
 		//_RO_no.value = find_array[0].RO_no;
@@ -51,7 +51,7 @@ async function 상세입력_시작() {
 		if(doc_count >= 1) {
 			find(입고, _management_id.value);
 			await delay();
-			console.log(find_array);
+			
 			_차종.value = find_array[0].차종;
 			_품번.value = find_array[0].품번;
 			_RO_no.value = find_array[0].RO_no;
@@ -63,7 +63,7 @@ async function 상세입력_시작() {
 		if(doc_count >= 1) {
 			find(입고, _management_id.value);
 			await delay();
-			console.log(find_array);
+			
 			_입고.value = find_array[0].입고일;
 			if(_입고.value != '' && _입고.value != 'none') {
 				_공정단계.value = '입고';
@@ -77,7 +77,7 @@ async function 상세입력_시작() {
 		if(doc_count >= 1) {
 			find(세척, _management_id.value);
 			await delay();
-			console.log(find_array);
+			
 			_세척.value = find_array[0].공정완료일;
 			if(_세척.value != '' && _세척.value != 'none' && _세척.value != '0000-00-00T00:00') {
 				_공정단계.value = '기초검사';
@@ -93,7 +93,7 @@ async function 상세입력_시작() {
 		if(doc_count >= 1) {
 			find(기초검사, _management_id.value);
 			await delay();
-			console.log(find_array);
+			
 			_기초검사.value = find_array[0].완료일;
 			if(_기초검사.value != '' && _기초검사.value != 'none' && _기초검사.value != '0000-00-00T00:00') {
 				_공정단계.value = '분해조립';
@@ -109,7 +109,7 @@ async function 상세입력_시작() {
 		if(doc_count >= 1) {
 			find(분해조립, _management_id.value);
 			await delay();
-			console.log(find_array);
+			
 			_분해조립.value = find_array[0].완료일;
 			if(_분해조립.value != '' && _분해조립.value != 'none' && _분해조립.value != '0000-00-00T00:00') {
 				_공정단계.value = '성능검사';
@@ -125,7 +125,7 @@ async function 상세입력_시작() {
 		if(doc_count >= 1) {
 			find(성능검사, _management_id.value);
 			await delay();
-			console.log(find_array);
+			
 			_성능검사.value = find_array[0].완료일;
 			if(_성능검사.value != '' && _성능검사.value != 'none' && _성능검사.value != '0000-00-00T00:00') {
 				_공정단계.value = 'EOL';
@@ -141,7 +141,7 @@ async function 상세입력_시작() {
 		if(doc_count >= 1) {
 			find(EOL, _management_id.value);
 			await delay();
-			console.log(find_array);
+			
 			_EOL.value = find_array[0].완료일;
 			if(_EOL.value != '' || _EOL.value != 'none' && _EOL.value != '0000-00-00T00:00') {
 				_공정단계.value = '제조완료';
@@ -157,7 +157,7 @@ async function 상세입력_시작() {
 		if(doc_count >= 1) {
 			find(출하정보, _management_id.value);
 			await delay();
-			console.log(find_array);
+			
 			_출하.value = find_array[0].출하일;
 			_공정단계.value = '출하';
 		}

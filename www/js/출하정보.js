@@ -15,7 +15,7 @@ async function 출하정보_managementID() {
 	if(doc_count >= 1) {
 		find(출하정보, _management_id.value);
 		await delay();
-		console.log(find_array);
+		
 		_출하코드.value = find_array[0].출하코드;
 		_납품처.value = find_array[0].납품처;
 		_출하일.value = find_array[0].출하일;

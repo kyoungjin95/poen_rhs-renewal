@@ -15,7 +15,7 @@ async function 분해조립_managementID() {
 	if(doc_count >= 1) {
 		find(분해조립, _management_id.value);
 		await delay();
-		console.log(find_array);
+		
 		_공정입고일.value = find_array[0].공정입고일;
 		_UPR_C.value = find_array[0].UPR_C;
 		_PBE.value = find_array[0].PBE;

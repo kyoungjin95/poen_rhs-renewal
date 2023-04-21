@@ -16,7 +16,7 @@ async function EOL_managementID() {
 	if(doc_count >= 1) {
 		find(EOL, _management_id.value);
 		await delay();
-		console.log(find_array);
+		
 		_공정입고일.value = find_array[0].공정입고일;
 		_용량평가.value = find_array[0].용량평가;
 		_SOC60Percent.value = find_array[0].SOC60Percent;

@@ -38,7 +38,7 @@ async function 품번_조회() {
 
 	find_query(BSA재제조, { 출하 : { $exists : true}, 품번 : { $exists: true}});
 	await delay();
-	console.log(find_array);
+	
 
 	find_array.forEach(function(doc) {
 		if(labels.indexOf(doc.품번) < 0) {
@@ -90,7 +90,7 @@ async function 월_조회() {
 
 	find_query(BSA재제조, { 출하 : { $gte : s_day, $lte : e_day}, 품번 : { $exists: true}});
 	await delay();
-	console.log(find_array);
+	
 
 	find_array.forEach(function(doc) {
 		if(labels.indexOf(doc.품번) < 0) {
@@ -136,7 +136,7 @@ async function 공정단계_조회() {
 
 	find_query(BSA재제조, { 관리번호 : { $exists: true}, 공정단계 : { $ne: '제조완료', $ne: '출하'}, 품번 : { $exists: true}});
 	await delay();
-	console.log(find_array);
+	
 
 	find_array.forEach(function(doc) {
 		if(labels.indexOf(doc.공정단계) < 0) {

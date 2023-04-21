@@ -15,7 +15,7 @@ async function 세척_managementID() {
 	if(doc_count >= 1) {
 		find(세척, _management_id.value);
 		await delay();
-		console.log(find_array);
+		
 		_공정입고일.value = find_array[0].공정입고일;
 		_공정완료일.value = find_array[0].공정완료일;
 		_특이사항.value = find_array[0].특이사항

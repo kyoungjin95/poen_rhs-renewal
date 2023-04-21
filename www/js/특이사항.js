@@ -15,7 +15,7 @@ async function 특이사항_managementID() {
 	if(doc_count >= 1) {
 		find(특이사항, _management_id.value);
 		await delay();
-		console.log(find_array);
+		
 		_특이사항.value = find_array[0].특이사항;
 	} else {
 		_특이사항.value = '';

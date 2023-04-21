@@ -362,25 +362,25 @@ socket.on('connect', function() {
 });
 
 socket.on('distinct_result', function(result) {
-	console.log('distincted result array: ', result);
+	//console.log('distincted result array: ', result);
 	find_array = result;
 	flag_arrivedMSG = true;
 });
 
 socket.on('insert_result', function(id) {
-	console.log('insert id: ', id);
+	//console.log('insert id: ', id);
 	insert_id = id;
 	flag_arrivedMSG = true;
 });
 
 socket.on('count_result', function(count) {
-	console.log('count: ', count);
+	//console.log('count: ', count);
 	doc_count = count;
 	flag_arrivedMSG = true;
 });
 
 socket.on('find_result', function(result) {
-	console.log('finded result array: ', result);
+	//console.log('finded result array: ', result);
 	find_array = result;
 	flag_arrivedMSG = true;
 });
@@ -390,8 +390,8 @@ socket.on('update_result', function(result) {
 	update_count = 0;
 	insert_count = 0;
 	if(result == null) return;
-	console.log('update result count: ', result.modifiedCount);
-	console.log('insert result count: ', result.upsertedCount);
+	//console.log('update result count: ', result.modifiedCount);
+	//console.log('insert result count: ', result.upsertedCount);
 	update_count = result.modifiedCount;
 	insert_count = result.upsertedCount;
 });

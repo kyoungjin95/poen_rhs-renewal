@@ -18,7 +18,7 @@ async function 교체부품상세_managementID() {
 	if(doc_count >= 1) {
 		find(교체부품상세No, _management_id.value);
 		await delay();
-		console.log(find_array);
+		
 		_ORIGIN_관리번호.value = find_array[0].ORIGIN_관리번호;
 		_교체전_품명.value = find_array[0].교체전_품명;
 		_교체전_품번.value = find_array[0].교체전_품번;

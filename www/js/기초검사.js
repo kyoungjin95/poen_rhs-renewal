@@ -15,7 +15,7 @@ async function 기초검사_managementID() {
 	if(doc_count >= 1) {
 		find(기초검사, _management_id.value);
 		await delay();
-		console.log(find_array);
+		
 		_공정입고일.value = find_array[0].공정입고일;
 		_육안검사_외부.value = find_array[0].육안검사_외부;
 		_육안검사_외부_특이사항.value = find_array[0].육안검사_외부_특이사항;

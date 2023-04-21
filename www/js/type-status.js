@@ -32,7 +32,7 @@ async function 품번_조회() {
 
 	find_query(BSA재제조, { 출하 : { $exists : true}, 품번 : { $exists: true}});
 	await delay();
-	console.log(find_array);
+	
 
 	find_array.forEach(function(doc) {
 		if(labels.indexOf(doc.품번) < 0) {

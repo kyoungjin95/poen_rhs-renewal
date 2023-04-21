@@ -15,7 +15,7 @@ async function 성능검사_managementID() {
 	if(doc_count >= 1) {
 		find(성능검사, _management_id.value);
 		await delay();
-		console.log(find_array);
+		
         	_공정입고일.value = find_array[0].공정입고일; 
         	_UPR_C조립.value = find_array[0].UPR_C조립; 
         	_기밀검사_케이스.value = find_array[0].기밀검사_케이스;
