@@ -39,6 +39,17 @@ async function 재제조현황_조회(flag_id_search = false) {
 			await delay();
 		}
 		await sleep(200);
+
+		for(var i = 0; i < find_array.length; i++) {
+			delete find_array[i].적재No;
+			delete find_array[i].입고;
+			delete find_array[i].제조투입;
+			delete find_array[i].세척;
+			delete find_array[i].기초검사;
+			delete find_array[i].분해조립;
+			delete find_array[i].성능검사;
+			delete find_array[i].EOL;
+		}
 		tabledata_BSA = find_array;
 		
 		row_one_id = find_array[0].관리번호;
@@ -51,23 +62,23 @@ async function 재제조현황_조회(flag_id_search = false) {
 		data:tabledata_BSA, 
 		autoColumns:true,
 		
-		columns:[
-			{title:"관리번호", field:"관리번호", sorter:"string", width:130},
-			{title:"차종", field:"차종", sorter:"string", width:130},
-			{title:"품번", field:"품번", sorter:"string", width:130},
-			{title:"RO_no", field:"RO_no", sorter:"string", width:130},
-			{title:"공정단계", field:"공정단계", sorter:"string", width:130},
-			{title:"적재No", field:"적재No", sorter:"string", width:130},
-			{title:"입고", field:"입고", sorter:"string", width:130},
-			{title:"제조투입", field:"제조투입", sorter:"string", width:130},
-			{title:"세척", field:"세척", sorter:"string", width:130},
-			{title:"기초검사", field:"기초검사", sorter:"string", width:130},
-			{title:"분해조립", field:"분해조립", sorter:"string", width:130},
-			{title:"성능검사", field:"성능검사", sorter:"string", width:130},
-			{title:"EOL", field:"EOL", sorter:"string", width:130},
-			{title:"출하", field:"출하", sorter:"string", width:130},
-			{title:"소재지", field:"소재지", sorter:"string", width:130},
-		],
+		//columns:[
+		//	{title:"관리번호", field:"관리번호", sorter:"string", width:130},
+		//	{title:"차종", field:"차종", sorter:"string", width:130},
+		//	{title:"품번", field:"품번", sorter:"string", width:130},
+		//	{title:"RO_no", field:"RO_no", sorter:"string", width:130},
+		//	{title:"공정단계", field:"공정단계", sorter:"string", width:130},
+		//	{title:"적재No", field:"적재No", sorter:"string", width:130},
+		//	{title:"입고", field:"입고", sorter:"string", width:130},
+		//	{title:"제조투입", field:"제조투입", sorter:"string", width:130},
+		//	{title:"세척", field:"세척", sorter:"string", width:130},
+		//	{title:"기초검사", field:"기초검사", sorter:"string", width:130},
+		//	{title:"분해조립", field:"분해조립", sorter:"string", width:130},
+		//	{title:"성능검사", field:"성능검사", sorter:"string", width:130},
+		//	{title:"EOL", field:"EOL", sorter:"string", width:130},
+		//	{title:"출하", field:"출하", sorter:"string", width:130},
+		//	{title:"소재지", field:"소재지", sorter:"string", width:130},
+		//],
 	});
 
 	var progress = document.getElementById('progress');
@@ -126,6 +137,8 @@ async function 재제조현황_조회(flag_id_search = false) {
 
 		return;
 	});
+
+	if(_management_id.value == '') return;
 
 	await grid_기초검사(row_one_id);
 	progress.value = 1 / 16 * 100;

@@ -30,9 +30,9 @@ async function 상세입력_시작() {
 		find(BSA재제조, _management_id.value);
 		await delay();
 		console.log(find_array);
-		_차종.value = find_array[0].차종;
-		_품번.value = find_array[0].품번;
-		_RO_no.value = find_array[0].RO_no;
+		//_차종.value = find_array[0].차종;
+		//_품번.value = find_array[0].품번;
+		//_RO_no.value = find_array[0].RO_no;
 		_공정단계.value = find_array[0].공정단계;
 		_적재No.value = find_array[0].적재No;
 		_입고.value = find_array[0].입고;
@@ -44,6 +44,48 @@ async function 상세입력_시작() {
 		_EOL.value = find_array[0].EOL;
 		_출하.value = find_array[0].출하;
 		_소재지.value = find_array[0].소재지;
+		_마지막충전일.value = find_array[0].마지막충전일;
+
+		count(입고, { 관리번호 : _management_id.value });
+		await delay();
+		if(doc_count >= 1) {
+			find(입고, _management_id.value);
+			await delay();
+			console.log(find_array);
+			_차종.value = find_array[0].차종;
+			_품번.value = find_array[0].품번;
+			_RO_no.value = find_array[0].RO_no;
+		}
+
+		count(입고, { 관리번호 : _management_id.value });
+		await delay();
+		console.log('doc_count: ', doc_count);
+		if(doc_count >= 1) {
+			find(입고, _management_id.value);
+			await delay();
+			console.log(find_array);
+			_입고.value = find_array[0].입고일;
+			if(_입고.value != '' && _입고.value != 'none') {
+				_공정단계.value = '입고';
+			}
+		}
+		await sleep(DELAY);
+
+		count(세척, { 관리번호 : _management_id.value });
+		await delay();
+		console.log('doc_count: ', doc_count);
+		if(doc_count >= 1) {
+			find(세척, _management_id.value);
+			await delay();
+			console.log(find_array);
+			_세척.value = find_array[0].공정완료일;
+			if(_세척.value != '' && _세척.value != 'none' && _세척.value != '0000-00-00T00:00') {
+				_공정단계.value = '기초검사';
+			} else {
+				_공정단계.value = '세척';
+			}
+		}
+		await sleep(DELAY);
 
 		count(기초검사, { 관리번호 : _management_id.value });
 		await delay();
@@ -53,8 +95,10 @@ async function 상세입력_시작() {
 			await delay();
 			console.log(find_array);
 			_기초검사.value = find_array[0].완료일;
-			if(_기초검사.value != '' || _기초검사.value != 'none') {
+			if(_기초검사.value != '' && _기초검사.value != 'none' && _기초검사.value != '0000-00-00T00:00') {
 				_공정단계.value = '분해조립';
+			} else {
+				_공정단계.value = '기초검사';
 			}
 		}
 		await sleep(DELAY);
@@ -67,8 +111,10 @@ async function 상세입력_시작() {
 			await delay();
 			console.log(find_array);
 			_분해조립.value = find_array[0].완료일;
-			if(_분해조립.value != '' || _분해조립.value != 'none') {
+			if(_분해조립.value != '' && _분해조립.value != 'none' && _분해조립.value != '0000-00-00T00:00') {
 				_공정단계.value = '성능검사';
+			} else {
+				_공정단계.value = '분해조립';
 			}
 		}
 		await sleep(DELAY);
@@ -81,8 +127,10 @@ async function 상세입력_시작() {
 			await delay();
 			console.log(find_array);
 			_성능검사.value = find_array[0].완료일;
-			if(_성능검사.value != '' || _성능검사.value != 'none') {
+			if(_성능검사.value != '' && _성능검사.value != 'none' && _성능검사.value != '0000-00-00T00:00') {
 				_공정단계.value = 'EOL';
+			} else {
+				_공정단계.value = '성능검사';
 			}
 		}
 		await sleep(DELAY);
@@ -95,8 +143,10 @@ async function 상세입력_시작() {
 			await delay();
 			console.log(find_array);
 			_EOL.value = find_array[0].완료일;
-			if(_EOL.value != '' || _EOL.value != 'none') {
+			if(_EOL.value != '' || _EOL.value != 'none' && _EOL.value != '0000-00-00T00:00') {
 				_공정단계.value = '제조완료';
+			} else {
+				_공정단계.value = 'EOL';
 			}
 		}
 		await sleep(DELAY);
@@ -119,15 +169,16 @@ async function 상세입력_시작() {
 		_RO_no.value = '';
 		_공정단계.value = '';
 		_적재No.value = '';
-		_입고.value = '';
-		_제조투입.value = '';
-		_세척.value = '';
-		_기초검사.value = '';
-		_분해조립.value = '';
-		_성능검사.value = '';
-		_EOL.value = '';
-		_출하.value = '';
+		_입고.value = '0000-00-00T00:00';
+		_제조투입.value = '0000-00-00T00:00';
+		_세척.value = '0000-00-00T00:00';
+		_기초검사.value = '0000-00-00T00:00';
+		_분해조립.value = '0000-00-00T00:00';
+		_성능검사.value = '0000-00-00T00:00';;
+		_EOL.value = '0000-00-00T00:00';
+		_출하.value = '0000-00-00T00:00';;
 		_소재지.value = '';
+		_마지막충전일.value = '0000-00-00T00:00';
 	}
 }
 

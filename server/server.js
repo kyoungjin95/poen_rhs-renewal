@@ -17,7 +17,7 @@ app.use(morgan('dev'))
 app.use(express.static(path.join(__dirname, '../www')));
 
 app.get('/', (req, res) => {
-	res.sendFile(__dirname + 'index.html');
+	res.sendFile('index.html');
 });
 
 server.listen(80, () => {
