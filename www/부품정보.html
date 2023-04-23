@@ -1,0 +1,101 @@
+<html>
+	<head>
+		<title>부품 정보</title>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="style/item-detail.css">
+		<link rel="stylesheet" href="style/tabulator.css">
+	</head>
+	<body>
+		<div class="부품정보">
+			<div>
+				<center>
+					<label><h2><b>부품 정보 등록</b></h2></label>
+				</center>
+			</div>
+			<div>
+				<center>
+					<table border="2">
+						<tr>
+							<td>
+								<label for="management_id"><b>관리번호</b></label>
+							</td>
+							<td>
+								<input type="text" id="_management_id" value="조회 버튼을 누르세요" size="30" required>
+								<button onClick="부품정보등록_managementID();">조 회</button>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="_품명"><b>품명</b></label>
+							</td>
+							<td>
+								<label for="_번호"><b>번호</b></label>
+							</td>
+							<td>
+								<label for="_QR"><b>QR</b></label>
+							</td>
+							<td>
+								<label for="_폐기여부"><b>폐기여부</b></label>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<input type="text" id="_품명" size="30" required>
+								<select name="language" onchange="_품명_콤보박스(this);">
+									<option value="">---</option>
+									<option value="BMU">BMU</option>
+									<option value="CMU">CMU</option>
+								</select>
+							</td>
+							<td>
+								<input type="text" id="_번호" size="30" required>
+								<select name="language" onchange="_번호_콤보박스(this);">
+									<option value="">---</option>
+									<option value="#1">#1</option>
+									<option value="#2">#2</option>
+									<option value="#3">#3</option>
+									<option value="#4">#4</option>
+									<option value="#5">#5</option>
+									<option value="#6">#6</option>
+									<option value="#7">#7</option>
+									<option value="#8">#8</option>
+									<option value="#9">#9</option>
+									<option value="#10">#10</option>
+								</select>
+							</td>
+							<td>
+								<input type="text" id="_QR" size="30" required>
+							</td>
+							<td>
+								<input type="text" id="_폐기여부" size="30" required>
+								<select name="language" onchange="_폐기여부_콤보박스(this);">
+									<option value="">---</option>
+									<option value="폐기">폐기</option>
+								</select>
+							</td>
+						</tr>
+					</table>
+				</center>
+			</div>
+			<div>
+				<center>
+					<label for='grid_부품정보'><b>부품 정보</b></label>
+					<div id='grid_부품정보'>
+					</div>
+				</center>
+			</div>
+			<div class="input-group">
+				<center>
+					<button onClick="부품정보_save();">SAVE</button>
+					<button onClick="이전페이지();">이전 Page</button>
+				</center>
+			</div>
+			<script>
+				const _management_id = document.getElementById('_management_id');
+				const _품명 = document.getElementById('_품명');
+				const _번호 = document.getElementById('_번호');
+				const _QR = document.getElementById('_QR');
+				const _폐기여부 = document.getElementById('_폐기여부');
+			</script>
+	</body>
+</html>

@@ -9,7 +9,7 @@ async function 특이사항_managementID() {
 	console.log('load: ', _management_id.value);
 	if(_management_id.value == '' | _management_id.value == 'none') return;
 
-	count('특이사항', { 관리번호 : _management_id.value });
+	count(특이사항, { 관리번호 : _management_id.value });
 	await delay();
 	console.log('doc_count: ', doc_count);
 	if(doc_count >= 1) {

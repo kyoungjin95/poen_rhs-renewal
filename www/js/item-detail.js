@@ -29,7 +29,7 @@ async function 상세입력_시작() {
 		sessionStorage.setItem('manage_id', 관리번호);
 		find(BSA재제조, _management_id.value);
 		await delay();
-		
+		_재제조번호.value = find_array[0].재제조번호;
 		//_차종.value = find_array[0].차종;
 		//_품번.value = find_array[0].품번;
 		//_RO_no.value = find_array[0].RO_no;
@@ -55,20 +55,12 @@ async function 상세입력_시작() {
 			_차종.value = find_array[0].차종;
 			_품번.value = find_array[0].품번;
 			_RO_no.value = find_array[0].RO_no;
-		}
-
-		count(입고, { 관리번호 : _management_id.value });
-		await delay();
-		console.log('doc_count: ', doc_count);
-		if(doc_count >= 1) {
-			find(입고, _management_id.value);
-			await delay();
-			
 			_입고.value = find_array[0].입고일;
 			if(_입고.value != '' && _입고.value != 'none') {
 				_공정단계.value = '입고';
 			}
 		}
+
 		await sleep(DELAY);
 
 		count(세척, { 관리번호 : _management_id.value });
@@ -164,6 +156,7 @@ async function 상세입력_시작() {
 		await sleep(DELAY);
 		item_detail_save(true);
 	} else {
+		_제재조번호.value = '';
 		_차종.value = '';
 		_품번.value = '';
 		_RO_no.value = '';
@@ -191,6 +184,7 @@ async function item_detail_save(flag_result = false) {
 	
 	var doc = BSA재제조_doc;
 	doc.관리번호 = _management_id.value;
+	doc.재제조번호 = _재제조번호.value;
 	doc.차종 = _차종.value;
 	doc.품번 = _품번.value;
 	doc.RO_no = _RO_no.value;
@@ -269,6 +263,12 @@ async function processStep() {
 			alert('잘못된 공정명입니다');
 			break;
 	}
+}
+
+function func_부품정보등록() {
+	if(worker == '') return;
+	if(_management_id.value.length == 0) return;
+	loadPage('부품정보.html');
 }
 
 function func_교체부품상세() {

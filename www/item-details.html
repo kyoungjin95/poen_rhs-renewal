@@ -24,6 +24,14 @@
 				</tr>
 				<tr>
 					<td>
+						<label for="_재제조번호"><b>재제조번호</b></label>
+					</td>
+					<td>
+						<input type="text" id="_재제조번호" size="30" required>
+					</td>
+				</tr>
+				<tr>
+					<td>
 						<label for="_차종"><b>차종</b></label>
 					</td>
 					<td>
@@ -157,6 +165,14 @@
 				</tr>
 				<tr>
 					<td>
+						<label><b>부품정보등록</b></label>
+					</td>
+					<td>
+						<button onClick="func_부품정보등록();">부품정보 등록</button>
+					</td>
+				</tr>
+				<tr>
+					<td>
 						<label><b>교체부품 상세<b></label>
 					</td>
 					<td>
@@ -194,6 +210,7 @@
 			</div>
 			<script>
 				const _management_id = document.getElementById('_management_id');
+				const _재제조번호 = document.getElementById('_재제조번호');
 				const _차종 = document.getElementById('_차종');
 				const _품번 = document.getElementById('_품번');
 				const _RO_no = document.getElementById('_RO_no');

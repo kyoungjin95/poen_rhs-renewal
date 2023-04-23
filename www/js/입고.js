@@ -9,7 +9,7 @@ async function 입고_managementID() {
 	if(_management_id.value.length == 0) return;
 	if(_management_id.value == '' | _management_id.value == 'none') return;
 
-	count('입고', { 관리번호 : _management_id.value });
+	count(입고, { 관리번호 : _management_id.value });
 	await delay();
 	console.log('doc_count: ', doc_count);
 	if(doc_count >= 1) {

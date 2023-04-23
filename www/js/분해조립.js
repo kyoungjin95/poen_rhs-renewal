@@ -9,7 +9,7 @@ async function 분해조립_managementID() {
 	console.log('load: ', _management_id.value);
 	if(_management_id.value == '' | _management_id == 'none') return;
 
-	count('분해조립', { 관리번호 : _management_id.value });
+	count(분해조립, { 관리번호 : _management_id.value });
 	await delay();
 	console.log('doc_count: ', doc_count);
 	if(doc_count >= 1) {
@@ -96,81 +96,153 @@ async function 분해조립_save() {
 	이전페이지();
 }
 
-function _UPR_C_콤보박스(e) {
+async function request_QR() {
+	var QR = prompt('QR을 입력하세요');
+	count(부품정보, { QR: QR });
+	await delay();	
+	console.log('부품정보 doc_count: ', doc_count);
+	if(doc_count > 0) {
+		find_query(부품정보, { QR: QR });
+		await delay();
+		console.log(find_array);
 
-	const value = e.value;
+		find(BSA재제조, find_array[0].관리번호);
+		await delay();
+		console.log(find_array);
+		
+		return find_array[0].재제조번호;
+	}
 
+	return 'none';
+}
+
+async function _UPR_C_콤보박스(e) {
+
+	var value = e.value;
+
+	if(value == '고품 교체') {
+		var 재제조번호 = await request_QR();
+		value = value + '(' + 재제조번호 + ')';
+	}
   	document.getElementById('_UPR_C').value = value;
 }
 
 function _PBE_콤보박스(e) {
-	const value = e.value;
+	var value = e.value;
 
+	if(value == '고품 교체') {
+		var 재제조번호 = request_QR();
+		value = value + '(' + 재제조번호 + ')';
+	}
   	document.getElementById('_PBE').value = value;
 }
 
 function _Gasket_콤보박스(e) {
-	const value = e.value;
+	var value = e.value;
 
+	if(value == '고품 교체') {
+		var 재제조번호 = request_QR();
+		value = value + '(' + 재제조번호 + ')';
+	}
   	document.getElementById('_Gasket').value = value;
 }
 
 function _Busbars_콤보박스(e) {
-	const value = e.value;
+	var value = e.value;
 
+	if(value == '고품 교체') {
+		var 재제조번호 = request_QR();
+		value = value + '(' + 재제조번호 + ')';
+	}
   	document.getElementById('_Busbars').value = value;
 }
 
 function _W_H_콤보박스(e) {
-	const value = e.value;
+	var value = e.value;
 
+	if(value == '고품 교체') {
+		var 재제조번호 = request_QR();
+		value = value + '(' + 재제조번호 + ')';
+	}
   	document.getElementById('_W_H').value = value;
 }
 
 function _SPA_콤보박스(e) {
-	const value = e.value;
+	var value = e.value;
 
+	if(value == '고품 교체') {
+		var 재제조번호 = request_QR();
+		value = value + '(' + 재제조번호 + ')';
+	}
   	document.getElementById('_SPA').value = value;
 }
 
 function _PRA_콤보박스(e) {
-	const value = e.value;
+	var value = e.value;
 
+	if(value == '고품 교체') {
+		var 재제조번호 = request_QR();
+		value = value + '(' + 재제조번호 + ')';
+	}
   	document.getElementById('_PRA').value = value;
 }
 
 function _FuseBox_콤보박스(e) {
-	const value = e.value;
+	var value = e.value;
 
+	if(value == '고품 교체') {
+		var 재제조번호 = request_QR();
+		value = value + '(' + 재제조번호 + ')';
+	}
   	document.getElementById('_FuseBox').value = value;
 }
 
 function _Relay_콤보박스(e) {
-	const value = e.value;
+	var value = e.value;
 
+	if(value == '고품 교체') {
+		var 재제조번호 = request_QR();
+		value = value + '(' + 재제조번호 + ')';
+	}
   	document.getElementById('_Relay').value = value;
 }
 
 function _CMU_콤보박스(e) {
-	const value = e.value;
+	var value = e.value;
 
+	if(value == '고품 교체') {
+		var 재제조번호 = request_QR();
+		value = value + '(' + 재제조번호 + ')';
+	}
   	document.getElementById('_CMU').value = value;
 }
 
 function _BMU_콤보박스(e) {
-	const value = e.value;
+	var value = e.value;
 
+	if(value == '고품 교체') {
+		var 재제조번호 = request_QR();
+		value = value + '(' + 재제조번호 + ')';
+	}
   	document.getElementById('_BMU').value = value;
 }
 
 function _BMA_콤보박스(e) {
-	const value = e.value;
+	var value = e.value;
 
+	if(value == '고품 교체') {
+		var 재제조번호 = request_QR();
+		value = value + '(' + 재제조번호 + ')';
+	}
   	document.getElementById('_BMA').value = value;
 }
 
 function _LWR_C_콤보박스(e) {
-	const value = e.value;
+	var value = e.value;
 
+	if(value == '고품 교체') {
+		var 재제조번호 = request_QR();
+		value = value + '(' + 재제조번호 + ')';
+	}
   	document.getElementById('_LWR_C').value = value;
 }

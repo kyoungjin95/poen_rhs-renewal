@@ -8,6 +8,7 @@ const 성능검사 = '성능검사';
 const EOL = 'EOL';
 const 출하정보 = '출하정보';
 const 분해조립 = '분해조립';
+const 부품정보 = '부품정보';
 const 특이사항 = '특이사항';
 const 교체부품상세1 = '교체부품상세1';
 const 교체부품상세2 = '교체부품상세2';
@@ -146,6 +147,14 @@ const EOL_doc = {
 	공정완료일: '',
 	검사자: ''
 };
+
+const 부품정보_doc = {
+	관리번호: '',
+	품명: '',
+	번호: '',
+	QR: '',
+	폐기여부: '',
+}
 
 const 출하정보_doc = {
 	관리번호: '',
@@ -317,6 +326,15 @@ const EOL_ = {
 	검사자: 1
 };
 
+const 부품정보_ = {
+	_id : 0,
+	관리번호: 1,
+	품명: 1,
+	번호: 1,
+	QR: 1,
+	폐기여부: 1,
+}
+
 const 출하정보_ = {
 	_id : 0,
 	관리번호: 1,
@@ -456,6 +474,15 @@ async function update(col, doc) {
 	}
 }
 
+async function update_부품정보(col, doc) {
+	if(socket == undefined) return;
+	flag_arrivedMSG = false;
+	while(flag_arrivedMSG == false) {
+		socket.emit('update', col, { QR: doc.QR }, {$set: doc});
+		await sleep(DELAY);
+	}
+}
+
 async function deleteOne(col, management_id) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
@@ -540,6 +567,13 @@ async function find(col, management_id) {
 		case '분해조립' :
 			while(flag_arrivedMSG == false) {
 				socket.emit('find', col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 분해조립_});
+				await sleep(DELAY);
+			}
+			break;
+
+		case '부품정보' :
+			while(flag_arrivedMSG == false) {
+				socket.emit('find', col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 부품정보_});
 				await sleep(DELAY);
 			}
 			break;
