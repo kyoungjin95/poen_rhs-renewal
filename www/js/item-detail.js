@@ -199,6 +199,7 @@ async function item_detail_save(flag_result = false) {
 	doc.EOL = _EOL.value;
 	doc.출하 = _출하.value;
 	doc.소재지 = _소재지.value;
+	doc.마지막충전일 = _마지막충전일.value;
 	
 	update(BSA재제조, doc);
 	await sleep(DELAY);

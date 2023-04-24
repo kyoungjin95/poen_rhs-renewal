@@ -13,10 +13,21 @@ async function login() {
 			worker = _id.value;
 			sessionStorage.setItem('worker',  worker);
 			alert('로그인 성공');
-			setTimeout(function() {
+			setTimeout(async function() {
 				loadPage('dashboard.html');
 				start_repeat_대시보드();
 				대시보드_시작();
+
+				var now = new Date();
+				var 기준일 = new Date(now.setMonth(now.getMonth() - 3));
+
+				count(BSA재제조, { 마지막충전일 : { $lte : 기준일 }});
+				await delay();
+
+				console.log('doc_count: ', doc_count);
+				if(doc_count >= 1) {
+					alert('재충전이 필요한 BSA가 있습니다.');
+				}
 			}, 1000);
 		} else {
 			worker = '';

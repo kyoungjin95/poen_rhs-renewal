@@ -13,7 +13,7 @@
 			</div>
 			<div>
 				<h1>Poen RHS</h1>
-				<span style=" font: italic bold 0.3em/1em Georgia, serif;"><p><center>(Remanuafacturing History System) Ver. 0.90</center></p></span>
+				<span style=" font: italic bold 0.3em/1em Georgia, serif;"><p><center>(Remanuafacturing History System) Ver. 0.91</center></p></span>
 				<span style=" font: italic bold 0.6em/1em Georgia, serif; color: green;"><p style="float: right;" id=login_info></p></span>
 			</div>
 			</br>
@@ -23,6 +23,7 @@
 				<button class="round-btn" id='item_detail_btn' onclick="pre_관리번호 = ''; loadPage('item-details.html'); flag_상세입력 = true;">품목상세 입력</button>
 				<button class="round-btn" onclick="pre_관리번호 = ''; loadPage('type-status.html' ); flag_생산현황 = true;">품번 현황</button>
 				<button class="round-btn" onclick="pre_관리번호 = ''; loadPage('dashboard.html'   ); flag_대시보드 = true;">대시 보드</button>
+				<button class="round-btn" onclick="pre_관리번호 = ''; loadPage('재충전정보.html'  ); flag_재충전정보 = true;">재충전정보</button>
 				<button class="round-btn" onclick="pre_관리번호 = ''; times_show();">기간별 현황</button>
 				<div id='times'>
 					<button class="round-btn" onclick="loadPage('year-status.html' ); flag_년간현황 = true;">년간 현황</button>
@@ -41,6 +42,7 @@
 		<script src="js/chart.js"></script>
 		<script src="js/poenRHS.js"></script>
 		<script src="js/item-detail.js"></script>
+		<script src="js/재충전정보.js"></script>
 		<script src="js/입고.js"></script>
 		<script src="js/세척.js"></script>
 		<script src="js/기초검사.js"></script>

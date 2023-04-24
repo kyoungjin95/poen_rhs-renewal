@@ -28,11 +28,10 @@ async function 재제조현황_조회(flag_id_search = false) {
 	if(doc_count >= 1) {
 		if(flag_id_search == false) {
 			var now = new Date();
-			var _s_day = Number(now.toISOString().slice(0, 4)) - 2;
-			var s_day = String(_s_day) + now.toISOString().slice(4, 10) + 'T00:00:00.000Z';
-			console.log(s_day);
+			var 기준일 = new Date(now.setMonth(now.getYear() - 2));
+
 			find_query(BSA재제조, { 관리번호: { $exists : true }});
-			//find_query(BSA재제조, { 입고 : { $gte : s_day }});
+			//find_query(BSA재제조, { 입고 : { $gte : 기준일 }});
 			await delay();
 		} else {
 			find(BSA재제조, _management_id.value);
