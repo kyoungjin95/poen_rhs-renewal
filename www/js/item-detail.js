@@ -1,4 +1,6 @@
 var pre_관리번호 = '';
+var 차종 = '';
+
 async function 상세입력_시작() {
 	await sleep(100);
 
@@ -60,6 +62,7 @@ async function 상세입력_시작() {
 				_공정단계.value = '입고';
 			}
 		}
+		차종 = _차종.value;
 
 		await sleep(DELAY);
 
@@ -216,6 +219,8 @@ async function item_detail_save(flag_result = false) {
 			alert('저장 되었습니다');
 		}
 	}
+
+	차종 = _차종.value;
 }
 
 async function processStep() {
@@ -256,8 +261,11 @@ async function processStep() {
 		case '제조완료' :
 			break;
 
-		case '출하' :
+		case '출하검사' :
 			loadPage('출하정보.html');
+			break;
+
+		case '출하' :
 			break;
 
 		default:

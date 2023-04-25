@@ -9,6 +9,10 @@ async function 출하정보_managementID() {
 	console.log('load: ', _management_id.value);
 	if(_management_id.value == '' | _management_id.value == 'none') return;
 
+	if(차종 != '') {
+
+	}
+
 	count(출하정보, { 관리번호 : _management_id.value });
 	await delay();
 	console.log('doc_count: ', doc_count);
