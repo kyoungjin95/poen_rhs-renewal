@@ -20,10 +20,6 @@ app.get('/', (req, res) => {
 	res.sendFile(path.join(__dirname, '../www/index.html'));
 });
 
-app.get('/admin', (req, res) => {
-	res.sendFile(path.join(__dirname, '../www/admin.html'));
-});
-
 server.listen(80, () => {
 	console.log('listening on *:80');
 	client = new MongoClient(uri);
