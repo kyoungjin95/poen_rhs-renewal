@@ -3,14 +3,16 @@
 				history.go(1); 
 			};
 
+			admin_btn.style.display = 'none';
 			var _worker = sessionStorage.getItem('worker');
+			var _level = sessionStorage.getItem('level');
 			if(_worker == '' || worker == null) worker = '';
-
+			
 			var flag_show = false;
 			
 			times_show();
 			if(worker == '') {
-				loadPage('login.html');
+				loadPage('base/login.html');
 				change_label();
 				const _login_info = document.getElementById('login_info');
 				_login_info.innerHTML = '';
@@ -20,7 +22,7 @@
 				_login_info.innerHTML = worker + ' / 로그인 中  ';
 				_login_btn.innerHTML = '로그아웃';
 				setTimeout(function() {
-					loadPage('dashboard.html');
+					loadPage('base/dashboard.html');
 					start_repeat_대시보드();
 					대시보드_시작();
 				}, 1000);
@@ -33,6 +35,7 @@
 			var flag_생산현황 = false;
 			var flag_대시보드 = false;
 			var flag_재충전정보 = false;
+			var flag_관리자 = false;
 			var flag_repeat_생산현황 = false;
 			var flag_repeat_대시보드 = false;
 
@@ -45,6 +48,7 @@
 				if(flag_재충전정보 == true) { stop_repeat(); 재충전정보_시작(); }
 				if(flag_생산현황 == true) { start_repeat_생산현황(); 생산현황_시작();}
 				if(flag_대시보드 == true) { start_repeat_대시보드(); 대시보드_시작();}
+				if(flag_관리자 == true) { start_repeat_대시보드(); 관리자_시작();}
 			}, 500);
 
 			var intervalRepeat = setInterval(function() {

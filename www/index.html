@@ -3,13 +3,13 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" href="style/style.css">
+		<link rel="stylesheet" href="base/style/style.css">
 		<title>Poen RHS</title>
 	</head>
 	<body>
 		<div id="main">
 			<div>
-				<img src='img/poen.png' width='10%' height='10%'></img>
+				<img src='base/img/poen.png' width='10%' height='10%'></img>
 			</div>
 			<div>
 				<h1>Poen RHS</h1>
@@ -18,51 +18,56 @@
 			</div>
 			</br>
 			<div class="buttons">
-				<button class="round-btn" id='login_btn' onclick="pre_관리번호 = ''; loadPage('login.html'); change_label();">로그인</button>
-				<button class="round-btn" onclick="pre_관리번호 = ''; loadPage('bsa_info.html'    ); flag_재제조현황 = true;">BSA 재제조 DATA</button>
-				<button class="round-btn" id='item_detail_btn' onclick="pre_관리번호 = ''; loadPage('item-details.html'); flag_상세입력 = true;">품목상세 입력</button>
-				<button class="round-btn" onclick="pre_관리번호 = ''; loadPage('type-status.html' ); flag_생산현황 = true;">품번 현황</button>
-				<button class="round-btn" onclick="pre_관리번호 = ''; loadPage('dashboard.html'   ); flag_대시보드 = true;">대시 보드</button>
-				<button class="round-btn" onclick="pre_관리번호 = ''; loadPage('재충전정보.html'  ); flag_재충전정보 = true;">재충전정보</button>
+				<button class="round-btn" id='login_btn' onclick="pre_관리번호 = ''; loadPage('base/login.html'); change_label();">로그인</button>
+				<button class="round-btn" onclick="pre_관리번호 = ''; loadPage('base/bsa_info.html'    ); flag_재제조현황 = true;">BSA 재제조 DATA</button>
+				<button class="round-btn" id='item_detail_btn' onclick="pre_관리번호 = ''; loadPage('base/item-details.html'); flag_상세입력 = true;">품목상세 입력</button>
+				<button class="round-btn" onclick="pre_관리번호 = ''; loadPage('base/type-status.html' ); flag_생산현황 = true;">품번 현황</button>
+				<button class="round-btn" onclick="pre_관리번호 = ''; loadPage('base/dashboard.html'   ); flag_대시보드 = true;">대시 보드</button>
+				<button class="round-btn" onclick="pre_관리번호 = ''; loadPage('base/재충전정보.html'  ); flag_재충전정보 = true;">재충전정보</button>
 				<button class="round-btn" onclick="pre_관리번호 = ''; times_show();">기간별 현황</button>
+				<div id='admin_btn'>
+					<button class="round-btn" onclick="pre_관리번호 = ''; loadPage('/admin'); flag_관리자 = true; ">관리자</button>
+				</div>
 				<div id='times'>
-					<button class="round-btn" onclick="loadPage('year-status.html' ); flag_년간현황 = true;">년간 현황</button>
-					<button class="round-btn" onclick="loadPage('month-status.html'); flag_월간현황 = true;">월간 현황</button>
-					<button class="round-btn" onclick="loadPage('day-status.html'  ); flag_일간현황 = true;">일간 현황</button>
+					<button class="round-btn" onclick="loadPage('base/year-status.html' ); flag_년간현황 = true;">년간 현황</button>
+					<button class="round-btn" onclick="loadPage('base/month-status.html'); flag_월간현황 = true;">월간 현황</button>
+					<button class="round-btn" onclick="loadPage('base/day-status.html'  ); flag_일간현황 = true;">일간 현황</button>
 				</div>
 			</div>
 			<div id="content">
 			</div>
 		</div>
-		<script src="js/aes.js"></script>
-		<script src="js/script.js"></script>
-		<script src="js/socket.io.min.js"></script>
-		<script src="js/jquery-3.6.4.js"></script>
-		<script src="js/tabulator.js"></script>
-		<script src="js/chart.js"></script>
-		<script src="js/poenRHS.js"></script>
-		<script src="js/item-detail.js"></script>
-		<script src="js/재충전정보.js"></script>
-		<script src="js/입고.js"></script>
-		<script src="js/세척.js"></script>
-		<script src="js/기초검사.js"></script>
-		<script src="js/성능검사.js"></script>
-		<script src="js/분해조립.js"></script>
-		<script src="js/출하정보.js"></script>
-		<script src="js/EOL.js"></script>
-		<script src="js/부품정보.js"></script>
-		<script src="js/교체부품상세.js"></script>
-		<script src="js/특이사항.js"></script>
-		<script src="js/bsa_info.js"></script>
-		<script src="js/day-status.js"></script>
-		<script src="js/month-status.js"></script>
-		<script src="js/year-status.js"></script>
-		<script src="js/type-status.js"></script>
-		<script src="js/dashboard.js"></script>
-		
+		<script src="base/js/aes.js"></script>
+		<script src="base/js/script.js"></script>
+		<script src="base/js/socket.io.min.js"></script>
+		<script src="base/js/jquery-3.6.4.js"></script>
+		<script src="base/js/tabulator.js"></script>
+		<script src="base/js/chart.js"></script>
+		<script src="base/js/poenRHS.js"></script>
+		<script src="base/js/item-detail.js"></script>
+		<script src="base/js/재충전정보.js"></script>
+		<script src="base/js/입고.js"></script>
+		<script src="base/js/세척.js"></script>
+		<script src="base/js/기초검사.js"></script>
+		<script src="base/js/성능검사.js"></script>
+		<script src="base/js/분해조립.js"></script>
+		<script src="base/js/출하정보.js"></script>
+		<script src="base/js/EOL.js"></script>
+		<script src="base/js/부품정보.js"></script>
+		<script src="base/js/교체부품상세.js"></script>
+		<script src="base/js/특이사항.js"></script>
+		<script src="base/js/bsa_info.js"></script>
+		<script src="base/js/day-status.js"></script>
+		<script src="base/js/month-status.js"></script>
+		<script src="base/js/year-status.js"></script>
+		<script src="base/js/type-status.js"></script>
+		<script src="base/js/dashboard.js"></script>
+		<script src="base/js/d3@7"></script>
+		<script src="base/js/aes.js"></script>
+		<script src='base/js/admin.js'></script>
 
-		<script src="js/login.js"></script>
-		<script src="js/main.js"></script>
+		<script src="base/js/login.js"></script>
+		<script src="base/js/main.js"></script>
 	</body>
 </html>
 

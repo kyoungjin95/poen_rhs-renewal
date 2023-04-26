@@ -23,10 +23,12 @@ const 교체부품상세10 = '교체부품상세10';
 var 관리번호 = '';
 var 교체부품상세No = '교체부품상세1';
 var worker = '';
+var level = '';
 
 const 계정_doc = {
 	id: '', 
 	passwd: '', 
+	level: ''
 };
 
 const BSA재제조_doc = {
@@ -288,6 +290,7 @@ const 계정_ = {
 	_id : 0,
 	id: 1, 
 	passwd: 1, 
+	level: 1
 };
 
 const BSA재제조_ = {

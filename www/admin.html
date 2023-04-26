@@ -2,7 +2,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" href="style/style.css">
+		<link rel="stylesheet" href="base/style/style.css">
 		<title>POEN Admin System</title>
 	</head>
 	<body>
@@ -33,6 +33,14 @@
 					<input type=password value='' id='_passwd2' require></input>
 				</div>
 			</div>
+			<div>
+				<div>
+					<label for='_level'><b>Level</b></label>
+				</div>
+				<div>
+					<input type=text value='' id='_level' require></input>
+				</div>
+			</div>
 			</br>
 			</br>
 			<div>
@@ -46,20 +54,8 @@
 			</br>
 			</br>
 			<div>
-				<input type='file' id='csv' accept='.csv'/>
+				<input type='file' id='_csv' accept='.csv'/>
 			</div>
 		</div>
-		<script>
-			const id = document.getElementById('_id');
-			const passwd = document.getElementById('_passwd');
-			const passwd2 = document.getElementById('_passwd2');
-
-		</script>
-		<script src="js/d3@7"></script>
-		<script src="js/aes.js"></script>
-		<script src="js/script.js"></script>
-		<script src="js/socket.io.min.js"></script>
-		<script src="js/poenRHS.js"></script>
-		<script src='js/admin.js'></script>
 	</body>
 </html>

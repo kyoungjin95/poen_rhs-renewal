@@ -6,18 +6,24 @@ async function login() {
 	const hash = CryptoJS.MD5(_passwd.value); 	
 	console.log('hash:', hash.toString());
 
-	count(계정, {id: _id.value, passwd: hash.toString()});
+	count(계정, { id: _id.value, passwd: hash.toString() });
 	await delay();
 	if(doc_count > 0) {
 		if(worker == '') {
 			worker = _id.value;
+			find_query(계정, { id: _id.value })
+			await delay()
+			level = find_array[0].level;
 			sessionStorage.setItem('worker',  worker);
+			sessionStorage.setItem('level',  level);
+
 			alert('로그인 성공');
 			setTimeout(async function() {
-				loadPage('dashboard.html');
+				loadPage('base/dashboard.html');
 				start_repeat_대시보드();
 				대시보드_시작();
-
+				if(level == 'admin') admin_btn.style.display = 'block';
+				
 				var now = new Date();
 				var 기준일 = new Date(now.setMonth(now.getMonth() - 3));
 
@@ -32,6 +38,7 @@ async function login() {
 		} else {
 			worker = '';
 			sessionStorage.clear();
+			admin_btn.style.display = 'none';
 			const _login_info = document.getElementById('login_info');
 			alert('로그아웃 성공');
 		}
@@ -47,6 +54,7 @@ async function change_label() {
 		await sleep(DELAY);
 	}
 	var _worker = sessionStorage.getItem('worker');
+	level = sessionStorage.getItem('level');
 	if(_worker != '' && _worker != null) worker = _worker;
 	console.log('worker in change label :', worker);
 	const _label = document.getElementById('login_label');
@@ -54,10 +62,17 @@ async function change_label() {
 	const _login_info = document.getElementById('login_info');
 	if(worker == '' || worker == 'null')  {
 		worker = '';
+		level = '';
+		admin_btn.style.display = 'none';
 		_label.innerHTML = 'Login';
 		_login_btn.innerHTML = '로그인';
 		_login_info.innerHTML = '';
 	} else {
+		count(계정, { id: 'admin' });
+		await delay();
+		if(doc_count == 0 || level == 'admin') {
+			admin_btn.style.display = 'block';
+		}
 		_label.innerHTML = 'Logout';
 		_login_btn.innerHTML = '로그아웃';
 		_login_info.innerHTML = worker + ' / 로그인 中  ';

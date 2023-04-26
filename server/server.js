@@ -14,10 +14,14 @@ var 관리번호 = '';
 var client;
 
 app.use(morgan('dev'))
-app.use(express.static(path.join(__dirname, '../www')));
+app.use('/base', express.static(path.join(__dirname, '../www')));
 
 app.get('/', (req, res) => {
-	res.sendFile('index.html');
+	res.sendFile(path.join(__dirname, '../www/index.html'));
+});
+
+app.get('/admin', (req, res) => {
+	res.sendFile(path.join(__dirname, '../www/admin.html'));
 });
 
 server.listen(80, () => {

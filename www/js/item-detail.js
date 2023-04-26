@@ -232,37 +232,37 @@ async function processStep() {
 
 	switch(step) {
 		case '입고' :
-			loadPage('입고.html');
+			loadPage('base/입고.html');
 			break;
 
 		case '제조투입' :
 			break;
 
 		case '세척' :
-			loadPage('세척.html');
+			loadPage('base/세척.html');
 			break;
 
 		case '기초검사' :
-			loadPage('기초검사.html');
+			loadPage('base/기초검사.html');
 			break;
 
 		case '분해조립' :
-			loadPage('분해조립.html');
+			loadPage('base/분해조립.html');
 			break;
 
 		case '성능검사' :
-			loadPage('성능검사.html');
+			loadPage('base/성능검사.html');
 			break;
 
 		case 'EOL' :
-			loadPage('EOL.html');
+			loadPage('base/EOL.html');
 			break;
 
 		case '제조완료' :
 			break;
 
 		case '출하검사' :
-			loadPage('출하정보.html');
+			loadPage('base/출하정보.html');
 			break;
 
 		case '출하' :
@@ -277,20 +277,20 @@ async function processStep() {
 function func_부품정보등록() {
 	if(worker == '') return;
 	if(_management_id.value.length == 0) return;
-	loadPage('부품정보.html');
+	loadPage('base/부품정보.html');
 }
 
 function func_교체부품상세() {
 	if(worker == '') return;
 	if(_management_id.value.length == 0) return;
 
-	loadPage('교체부품상세.html');
+	loadPage('base/교체부품상세.html');
 }
 
 function func_특이사항() {
 	if(worker == '') return;
 	if(_management_id.value.length == 0) return;
-	loadPage('특이사항.html');
+	loadPage('base/특이사항.html');
 }
 
 function 공정입력_콤보박스(e) {
