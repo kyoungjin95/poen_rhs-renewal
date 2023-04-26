@@ -17,7 +17,7 @@
 								<label for="management_id"><b>관리번호</b></label>
 							</td>
 							<td>
-								<input type="text" id="_management_id" value="조회 버튼을 누르세요" size="30" required>
+								<input type="text" id="_management_id" value="조회 버튼을 누르세요" size="20" required>
 								<button onClick="출하정보_managementID();">조 회</button>
 							</td>
 						</tr>
@@ -26,7 +26,7 @@
 								<label for="_출하코드"><b>출하 코드</b></label>
 							</td>
 							<td>
-								<input type="text" id="_출하코드" size="30" required>
+								<input type="text" id="_출하코드" size="20" required>
 							</td>
 						</tr>
 						<tr>
@@ -34,7 +34,7 @@
 								<label for="_납품처"><b>납품처</b></label>
 							</td>
 							<td>
-								<input type="text" id="_납품처" size="30" required>
+								<input type="text" id="_납품처" size="20" required>
 							</td>
 						</tr>
 						<tr>
@@ -42,7 +42,7 @@
 								<label for="_출하일"><b>출하일</b></label>
 							</td>
 							<td>
-								<input type="date" id="_출하일" size="30" value="0000-00-00" required>
+								<input type="date" id="_출하일" size="20" value="0000-00-00" required>
 							</td>
 						</tr>
 						<tr>
@@ -50,7 +50,7 @@
 								<label for="_검사일"><b>검사일</b></label>
 							</td>
 							<td>
-								<input type="date" id="_검사일" size="30" value="0000-00-00" required>
+								<input type="date" id="_검사일" size="20" value="0000-00-00" required>
 							</td>
 						</tr>
 						<tr>
@@ -58,7 +58,7 @@
 								<label for="_검사자"><b>검사자</b></label>
 							</td>
 							<td>
-								<input type="text" id="_검사자" size="30" required>
+								<input type="text" id="_검사자" size="20" required>
 							</td>
 						</tr>
 						<tr>
@@ -66,7 +66,7 @@
 								<label for="_검토"><b>검토</b></label>
 							</td>
 							<td>
-								<input type="text" id="_검토" size="30" required>
+								<input type="text" id="_검토" size="20" required>
 							</td>
 						</tr>
 						<tr>
@@ -74,12 +74,14 @@
 								<label for="_승인"><b>승인</b></label>
 							</td>
 							<td>
-								<input type="text" id="_승인" size="30" required>
+								<input type="text" id="_승인" size="20" required>
 							</td>
 						</tr>
 						<tr>
 							<td colspan='2'>
-								<label>관리문서 및 보고서 작성</label>
+								<center>
+									<label>관리문서 및 보고서 작성</label>
+								</center>
 							</td>
 						</tr>
 						<tr>
@@ -87,7 +89,7 @@
 								<label for="_입고정보_작성확인"><b>입고정보 작성확인 (R/O, 출입고처, VIN, 부품 QR)</b></label>
 							</td>
 							<td>
-								<input type="text" id="_입고정보_작성확인" size="30" required>
+								<input type="text" id="_입고정보_작성확인" size="20" required>
 								<select name="language" onchange="_입고정보_작성확인_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -100,7 +102,7 @@
 								<label for="_재제조_이력문서_작성확인"><b>재제조 이력문서 작성확인 (교체부품, 출하코드)</b></label>
 							</td>
 							<td>
-								<input type="text" id="_재제조_이력문서_작성확인" size="30" required>
+								<input type="text" id="_재제조_이력문서_작성확인" size="20" required>
 								<select name="language" onchange="_재제조_이력문서_작성확인_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -113,7 +115,7 @@
 								<label for="_기초보고서_작성확인"><b>기초보고서 작성확인 (필드현상, 자체검사결과)</b></label>
 							</td>
 							<td>
-								<input type="text" id="_기초보고서_작성확인" size="30" required>
+								<input type="text" id="_기초보고서_작성확인" size="20" required>
 								<select name="language" onchange="_기초보고서_작성확인_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -126,7 +128,7 @@
 								<label for="_완료보고서_작성확인"><b>완료보고서 작성확인 (충방전, 교체부품이력)</b></label>
 							</td>
 							<td>
-								<input type="text" id="_완료보고서_작성확인" size="30" required>
+								<input type="text" id="_완료보고서_작성확인" size="20" required>
 								<select name="language" onchange="_완료보고서_작성확인_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -136,7 +138,9 @@
 						</tr>
 						<tr>
 							<td colspan='2'>
-								<label>육안 검사</label>
+								<center>
+									<label>육안 검사</label>
+								</center>
 							</td>
 						</tr>
 						<tr>
@@ -144,7 +148,7 @@
 								<label for="_클린상태"><b>클린 상태</b></label>
 							</td>
 							<td>
-								<input type="text" id="_클린상태" size="30" required>
+								<input type="text" id="_클린상태" size="20" required>
 								<select name="language" onchange="_클린상태_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -157,8 +161,8 @@
 								<label for="_팔레트_적정위치"><b>팔레트 적정위치</b></label>
 							</td>
 							<td>
-								<input type="text" id="_팔레트_적정위치" size="30" required>
-								<select name="language" onchange="_팔레트_적정위치__콤보박스(this);">
+								<input type="text" id="_팔레트_적정위치" size="20" required>
+								<select name="language" onchange="_팔레트_적정위치_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
 									<option value="NG">NG</option>
@@ -170,7 +174,7 @@
 								<label for="_포장랩상태"><b>포장랩 상태</b></label>
 							</td>
 							<td>
-								<input type="text" id="_포장랩상태" size="30" required>
+								<input type="text" id="_포장랩상태" size="20" required>
 								<select name="language" onchange="_포장랩상태_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -183,7 +187,7 @@
 								<label for="_UPR_QR"><b>UPR QR</b></label>
 							</td>
 							<td>
-								<input type="text" id="_UPR_QR" size="30" required>
+								<input type="text" id="_UPR_QR" size="20" required>
 								<select name="language" onchange="_UPR_QR_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -196,7 +200,7 @@
 								<label for="_LWR_QR"><b>UPR QR</b></label>
 							</td>
 							<td>
-								<input type="text" id="_LWR_QR" size="30" required>
+								<input type="text" id="_LWR_QR" size="20" required>
 								<select name="language" onchange="_LWR_QR_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -206,10 +210,10 @@
 						</tr>
 						<tr>
 							<td>
-								<label for="_HKMC스티커_URP"><b>HKMC 스티커 URP</b></label>
+								<label for="_HKMC_스티커_URP"><b>HKMC 스티커 URP</b></label>
 							</td>
 							<td>
-								<input type="text" id="_HKMC_스티커_URP" size="30" required>
+								<input type="text" id="_HKMC_스티커_URP" size="20" required>
 								<select name="language" onchange="_HKMC_스티커_URP_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -222,8 +226,8 @@
 								<label for="_냉각유로_커버1"><b>냉각유로커버 #1</b></label>
 							</td>
 							<td>
-								<input type="text" id="_냉각유로_커버1" size="30" required>
-								<select name="language" onchange="_냉각유로커버1_콤보박스(this);">
+								<input type="text" id="_냉각유로_커버1" size="20" required>
+								<select name="language" onchange="_냉각유로_커버1_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
 									<option value="NG">NG</option>
@@ -235,8 +239,8 @@
 								<label for="_냉각유로_커버2"><b>냉각유로커버 #2</b></label>
 							</td>
 							<td>
-								<input type="text" id="_냉각유로_커버2" size="30" required>
-								<select name="language" onchange="_냉각유로커버2_콤보박스(this);">
+								<input type="text" id="_냉각유로_커버2" size="20" required>
+								<select name="language" onchange="_냉각유로_커버2_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
 									<option value="NG">NG</option>
@@ -246,12 +250,14 @@
 					</table>
 				</center>
 			</div>
-			<div id='A'> <!-- HV, LV, H/T, SPA -->
+			<div id='_A'> <!-- HV, LV, H/T, SPA -->
 				<center>
 					<table border="2">
 						<tr>
 							<td colspan='2'>
-								<label>COVER</label>
+								<center>
+									<label>COVER</label>
+								</center>
 							</td>
 						</tr>
 						<tr>
@@ -259,7 +265,7 @@
 								<label for="_A_HV"><b>HV</b></label>
 							</td>
 							<td>
-								<input type="text" id="_A_HV" size="30" required>
+								<input type="text" id="_A_HV" size="20" required>
 								<select name="language" onchange="_A_HV_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -272,7 +278,7 @@
 								<label for="_A_LV"><b>LV</b></label>
 							</td>
 							<td>
-								<input type="text" id="_A_LV" size="30" required>
+								<input type="text" id="_A_LV" size="20" required>
 								<select name="language" onchange="_A_LV_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -285,7 +291,7 @@
 								<label for="_A_H_T"><b>H/T</b></label>
 							</td>
 							<td>
-								<input type="text" id="_A_H_T" size="30" required>
+								<input type="text" id="_A_H_T" size="20" required>
 								<select name="language" onchange="_A_H_T_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -298,7 +304,7 @@
 								<label for="_A_SPA"><b>SPA</b></label>
 							</td>
 							<td>
-								<input type="text" id="_A_SPA" size="30" required>
+								<input type="text" id="_A_SPA" size="20" required>
 								<select name="language" onchange="_A_SPA_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -316,7 +322,7 @@
 								<label for="_A_S_PLUG"><b>S/PLUG</b></label>
 							</td>
 							<td>
-								<input type="text" id="_A_S_PLUG" size="30" required>
+								<input type="text" id="_A_S_PLUG" size="20" required>
 								<select name="language" onchange="_A_S_PLUG_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -329,7 +335,7 @@
 								<label for="_A_브라켓1"><b>브라켓 #1</b></label>
 							</td>
 							<td>
-								<input type="text" id="_A_브라켓1" size="30" required>
+								<input type="text" id="_A_브라켓1" size="20" required>
 								<select name="language" onchange="_A_브라켓1_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -342,7 +348,7 @@
 								<label for="_A_브라켓2"><b>브라켓 #2</b></label>
 							</td>
 							<td>
-								<input type="text" id="_A_브라켓2" size="30" required>
+								<input type="text" id="_A_브라켓2" size="20" required>
 								<select name="language" onchange="_A_브라켓2_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -355,7 +361,7 @@
 								<label for="_A_브라켓3"><b>브라켓 #3</b></label>
 							</td>
 							<td>
-								<input type="text" id="_A_브라켓3" size="30" required>
+								<input type="text" id="_A_브라켓3" size="20" required>
 								<select name="language" onchange="_A_브라켓3_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -368,7 +374,7 @@
 								<label for="_A_브라켓4"><b>브라켓 #4</b></label>
 							</td>
 							<td>
-								<input type="text" id="_A_브라켓4" size="30" required>
+								<input type="text" id="_A_브라켓4" size="20" required>
 								<select name="language" onchange="_A_브라켓4_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -381,7 +387,7 @@
 								<label for="_A_접지"><b>접지</b></label>
 							</td>
 							<td>
-								<input type="text" id="_A_접지" size="30" required>
+								<input type="text" id="_A_접지" size="20" required>
 								<select name="language" onchange="_A_접지_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -392,12 +398,14 @@
 					</table>
 				</center>
 			</div>
-			<div id='B'> //PU, HR
+			<div id='_B'> <!-- PU, HR -->
 				<center>
 					<table border="2">
 						<tr>
 							<td colspan='2'>
-								<label>COVER</label>
+								<center>
+									<label>COVER</label>
+								</center>
 							</td>
 						</tr>
 						<tr>
@@ -405,7 +413,7 @@
 								<label for="_B_HV"><b>HV</b></label>
 							</td>
 							<td>
-								<input type="text" id="_B_HV" size="30" required>
+								<input type="text" id="_B_HV" size="20" required>
 								<select name="language" onchange="_B_HV_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -418,7 +426,7 @@
 								<label for="_B_LV"><b>LV</b></label>
 							</td>
 							<td>
-								<input type="text" id="_B_LV" size="30" required>
+								<input type="text" id="_B_LV" size="20" required>
 								<select name="language" onchange="_B_LV_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -431,7 +439,7 @@
 								<label for="_B_H_T"><b>H/T</b></label>
 							</td>
 							<td>
-								<input type="text" id="_B_H_T" size="30" required>
+								<input type="text" id="_B_H_T" size="20" required>
 								<select name="language" onchange="_B_H_T_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -441,7 +449,9 @@
 						</tr>
 						<tr>
 							<td colspan='2'>
-								<label>부속품</label>
+								<center>
+									<label>부속품</label>
+								</center>
 							</td>
 						</tr>
 						<tr>
@@ -449,7 +459,7 @@
 								<label for="_B_브라켓1"><b>브라켓 #1</b></label>
 							</td>
 							<td>
-								<input type="text" id="_B_브라켓1" size="30" required>
+								<input type="text" id="_B_브라켓1" size="20" required>
 								<select name="language" onchange="_B_브라켓1_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -462,7 +472,7 @@
 								<label for="_B_브라켓2"><b>브라켓 #2</b></label>
 							</td>
 							<td>
-								<input type="text" id="_B_브라켓2" size="30" required>
+								<input type="text" id="_B_브라켓2" size="20" required>
 								<select name="language" onchange="_B_브라켓2_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -475,7 +485,7 @@
 								<label for="_B_브라켓3"><b>브라켓 #3</b></label>
 							</td>
 							<td>
-								<input type="text" id="_B_브라켓3" size="30" required>
+								<input type="text" id="_B_브라켓3" size="20" required>
 								<select name="language" onchange="_B_브라켓3_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -488,7 +498,7 @@
 								<label for="_B_접지"><b>접지</b></label>
 							</td>
 							<td>
-								<input type="text" id="_B_접지" size="30" required>
+								<input type="text" id="_B_접지" size="20" required>
 								<select name="language" onchange="_B_접지_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -499,20 +509,22 @@
 					</table>
 				</center>
 			</div>
-			<div id='C'> //CV, NE
+			<div id='_C'> <!-- CV, NE -->
 				<center>
 					<table border="2">
 						<tr>
 							<td colspan='2'>
-								<label>COVER</label>
+								<center>
+									<label>COVER</label>
+								</center>
 							</td>
 						</tr>
 						<tr>
 							<td>
-								<label for="_C_HV1"><b>HV</b></label>
+								<label for="_C_HV1"><b>HV1</b></label>
 							</td>
 							<td>
-								<input type="text" id="_C_HV1" size="30" required>
+								<input type="text" id="_C_HV1" size="20" required>
 								<select name="language" onchange="_C_HV1_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -522,10 +534,10 @@
 						</tr>
 						<tr>
 							<td>
-								<label for="_C_HV2"><b>HV</b></label>
+								<label for="_C_HV2"><b>HV2</b></label>
 							</td>
 							<td>
-								<input type="text" id="_C_HV2" size="30" required>
+								<input type="text" id="_C_HV2" size="20" required>
 								<select name="language" onchange="_C_HV2_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -538,7 +550,7 @@
 								<label for="_C_LV"><b>LV</b></label>
 							</td>
 							<td>
-								<input type="text" id="_C_LV" size="30" required>
+								<input type="text" id="_C_LV" size="20" required>
 								<select name="language" onchange="_C_LV_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -551,7 +563,7 @@
 								<label for="_C_H_T"><b>H/T</b></label>
 							</td>
 							<td>
-								<input type="text" id="_C_H_T" size="30" required>
+								<input type="text" id="_C_H_T" size="20" required>
 								<select name="language" onchange="_C_H_T_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -561,7 +573,9 @@
 						</tr>
 						<tr>
 							<td colspan='2'>
-								<label>부속품</label>
+								<center>
+									<label>부속품</label>
+								</center>
 							</td>
 						</tr>
 						<tr>
@@ -569,7 +583,7 @@
 								<label for="_C_브라켓55mm"><b>브라켓(55mm)</b></label>
 							</td>
 							<td>
-								<input type="text" id="_C_브라켓55mm" size="30" required>
+								<input type="text" id="_C_브라켓55mm" size="20" required>
 								<select name="language" onchange="_C_브라켓55mm_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -582,7 +596,7 @@
 								<label for="_C_브라켓35mm_1"><b>브라켓(35mm) #1</b></label>
 							</td>
 							<td>
-								<input type="text" id="_C_브라켓35mm_1" size="30" required>
+								<input type="text" id="_C_브라켓35mm_1" size="20" required>
 								<select name="language" onchange="_C_브라켓35mm_1_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -595,7 +609,7 @@
 								<label for="_C_브라켓35mm_2"><b>브라켓(35mm) #2</b></label>
 							</td>
 							<td>
-								<input type="text" id="_C_브라켓35mm_2" size="30" required>
+								<input type="text" id="_C_브라켓35mm_2" size="20" required>
 								<select name="language" onchange="_C_브라켓35mm_2_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -608,7 +622,7 @@
 								<label for="_C_브라켓35mm_3"><b>브라켓(35mm) #3</b></label>
 							</td>
 							<td>
-								<input type="text" id="_C_브라켓35mm_3" size="30" required>
+								<input type="text" id="_C_브라켓35mm_3" size="20" required>
 								<select name="language" onchange="_C_브라켓35mm_3_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -621,7 +635,7 @@
 								<label for="_C_브라켓35mm_4"><b>브라켓(35mm) #4</b></label>
 							</td>
 							<td>
-								<input type="text" id="_C_브라켓35mm_4" size="30" required>
+								<input type="text" id="_C_브라켓35mm_4" size="20" required>
 								<select name="language" onchange="_C_브라켓35mm_4_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -634,7 +648,7 @@
 								<label for="_C_브라켓35mm_5"><b>브라켓(35mm) #5</b></label>
 							</td>
 							<td>
-								<input type="text" id="_C_브라켓35mm_5" size="30" required>
+								<input type="text" id="_C_브라켓35mm_5" size="20" required>
 								<select name="language" onchange="_C_브라켓35mm_5_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -647,7 +661,7 @@
 								<label for="_C_브라켓35mm_6"><b>브라켓(35mm) #6</b></label>
 							</td>
 							<td>
-								<input type="text" id="_C_브라켓35mm_6" size="30" required>
+								<input type="text" id="_C_브라켓35mm_6" size="20" required>
 								<select name="language" onchange="_C_브라켓35mm_6_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -660,7 +674,7 @@
 								<label for="_C_브라켓35mm_7"><b>브라켓(35mm) #7</b></label>
 							</td>
 							<td>
-								<input type="text" id="_C_브라켓35mm_7" size="30" required>
+								<input type="text" id="_C_브라켓35mm_7" size="20" required>
 								<select name="language" onchange="_C_브라켓35mm_7_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -673,7 +687,7 @@
 								<label for="_C_브라켓35mm_8"><b>브라켓(35mm) #8</b></label>
 							</td>
 							<td>
-								<input type="text" id="_C_브라켓35mm_8" size="30" required>
+								<input type="text" id="_C_브라켓35mm_8" size="20" required>
 								<select name="language" onchange="_C_브라켓35mm_8_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -686,7 +700,7 @@
 								<label for="_C_접지"><b>접지</b></label>
 							</td>
 							<td>
-								<input type="text" id="_C_접지" size="30" required>
+								<input type="text" id="_C_접지" size="20" required>
 								<select name="language" onchange="_C_접지_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -697,12 +711,14 @@
 					</table>
 				</center>
 			</div>
-			<div id='D'> //LK
+			<div id='_D'> <!-- LK -->
 				<center>
 					<table border="2">
 						<tr>
 							<td colspan='2'>
-								<label>COVER</label>
+								<center>
+									<label>COVER</label>
+								</center>
 							</td>
 						</tr>
 						<tr>
@@ -710,7 +726,7 @@
 								<label for="_D_HV"><b>HV</b></label>
 							</td>
 							<td>
-								<input type="text" id="_D_HV" size="30" required>
+								<input type="text" id="_D_HV" size="20" required>
 								<select name="language" onchange="_D_HV_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -723,7 +739,7 @@
 								<label for="_D_LV"><b>LV</b></label>
 							</td>
 							<td>
-								<input type="text" id="_D_LV" size="30" required>
+								<input type="text" id="_D_LV" size="20" required>
 								<select name="language" onchange="_D_LV_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -736,7 +752,7 @@
 								<label for="_D_H_T"><b>H/T</b></label>
 							</td>
 							<td>
-								<input type="text" id="_D_H_T" size="30" required>
+								<input type="text" id="_D_H_T" size="20" required>
 								<select name="language" onchange="_D_H_T_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -746,7 +762,9 @@
 						</tr>
 						<tr>
 							<td colspan='2'>
-								<label>부속품</label>
+								<center>
+									<label>부속품</label>
+								</center>
 							</td>
 						</tr>
 						<tr>
@@ -754,7 +772,7 @@
 								<label for="_D_S_PLUG"><b>S/PLUG</b></label>
 							</td>
 							<td>
-								<input type="text" id="_D_S_PLUG" size="30" required>
+								<input type="text" id="_D_S_PLUG" size="20" required>
 								<select name="language" onchange="_D_S_PLUG_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -767,7 +785,7 @@
 								<label for="_D_아이볼트1"><b>아이볼트 #1</b></label>
 							</td>
 							<td>
-								<input type="text" id="_D_아이볼트1" size="30" required>
+								<input type="text" id="_D_아이볼트1" size="20" required>
 								<select name="language" onchange="_D_아이볼트1_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -780,7 +798,7 @@
 								<label for="_D_아이볼트2"><b>아이볼트 #2</b></label>
 							</td>
 							<td>
-								<input type="text" id="_D_아이볼트2" size="30" required>
+								<input type="text" id="_D_아이볼트2" size="20" required>
 								<select name="language" onchange="_D_아이볼트2_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -793,7 +811,7 @@
 								<label for="_D_아이볼트3"><b>아이볼트 #3</b></label>
 							</td>
 							<td>
-								<input type="text" id="_D_아이볼트3" size="30" required>
+								<input type="text" id="_D_아이볼트3" size="20" required>
 								<select name="language" onchange="_D_아이볼트3_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -806,7 +824,7 @@
 								<label for="_D_아이볼트4"><b>아이볼트 #4</b></label>
 							</td>
 							<td>
-								<input type="text" id="_D_아이볼트4" size="30" required>
+								<input type="text" id="_D_아이볼트4" size="20" required>
 								<select name="language" onchange="_D_아이볼트4_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -819,7 +837,7 @@
 								<label for="_D_접지1"><b>접지 #1</b></label>
 							</td>
 							<td>
-								<input type="text" id="_D_접지1" size="30" required>
+								<input type="text" id="_D_접지1" size="20" required>
 								<select name="language" onchange="_D_접지1_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -832,7 +850,7 @@
 								<label for="_D_접지2"><b>접지 #2</b></label>
 							</td>
 							<td>
-								<input type="text" id="_D_접지2" size="30" required>
+								<input type="text" id="_D_접지2" size="20" required>
 								<select name="language" onchange="_D_접지2_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -843,12 +861,14 @@
 					</table>
 				</center>
 			</div>
-			<div id='E'> //LK
+			<div id='_E'> <!-- LM -->
 				<center>
 					<table border="2">
 						<tr>
 							<td colspan='2'>
-								<label>COVER</label>
+								<center>
+									<label>COVER</label>
+								</center>
 							</td>
 						</tr>
 						<tr>
@@ -856,7 +876,7 @@
 								<label for="_E_HV"><b>HV</b></label>
 							</td>
 							<td>
-								<input type="text" id="_E_HV" size="30" required>
+								<input type="text" id="_E_HV" size="20" required>
 								<select name="language" onchange="_E_HV_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -869,7 +889,7 @@
 								<label for="_E_LV"><b>LV</b></label>
 							</td>
 							<td>
-								<input type="text" id="_E_LV" size="30" required>
+								<input type="text" id="_E_LV" size="20" required>
 								<select name="language" onchange="_E_LV_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -879,7 +899,9 @@
 						</tr>
 						<tr>
 							<td colspan='3'>
-								<label>부속품</label>
+								<center>
+									<label>부속품</label>
+								</center>
 							</td>
 						</tr>
 						<tr>
@@ -887,7 +909,7 @@
 								<label for="_E_아이볼트1"><b>아이볼트 #1</b></label>
 							</td>
 							<td>
-								<input type="text" id="_E_아이볼트1" size="30" required>
+								<input type="text" id="_E_아이볼트1" size="20" required>
 								<select name="language" onchange="_E_아이볼트1_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -900,7 +922,7 @@
 								<label for="_E_아이볼트2"><b>아이볼트 #2</b></label>
 							</td>
 							<td>
-								<input type="text" id="_E_아이볼트2" size="30" required>
+								<input type="text" id="_E_아이볼트2" size="20" required>
 								<select name="language" onchange="_E_아이볼트2_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -913,7 +935,7 @@
 								<label for="_E_아이볼트3"><b>아이볼트 #3</b></label>
 							</td>
 							<td>
-								<input type="text" id="_E_아이볼트3" size="30" required>
+								<input type="text" id="_E_아이볼트3" size="20" required>
 								<select name="language" onchange="_E_아이볼트3_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -926,7 +948,7 @@
 								<label for="_E_아이볼트4"><b>아이볼트 #4</b></label>
 							</td>
 							<td>
-								<input type="text" id="_E_아이볼트4" size="30" required>
+								<input type="text" id="_E_아이볼트4" size="20" required>
 								<select name="language" onchange="_E_아이볼트4_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -939,7 +961,7 @@
 								<label for="_E_접지"><b>접지</b></label>
 							</td>
 							<td>
-								<input type="text" id="_E_접지" size="30" required>
+								<input type="text" id="_E_접지" size="20" required>
 								<select name="language" onchange="_E_접지_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -954,8 +976,10 @@
 				<center>
 					<table border="2">
 						<tr>
-							<td colspan='4'>
-								 <label>EOL 검사</label>
+							<td colspan='6'>
+								<center>
+								 	<label>EOL 검사</label>
+								</center>
 							</td>
 						</tr>
 						<tr>
@@ -963,15 +987,18 @@
 								<label for="_용량평가">용량평가(Ah, kWh)</label>
 							</td>
 							<td>
-								<input type="text" id="_용량평가" size="30" require>
-								<select name="language" onchange="_E_접지_콤보박스(this);">
+								<input type="text" id="_용량평가" size="20" require>
+								<select name="language" onchange="_용량평가_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
 									<option value="NG">NG</option>
 								</select>
 							</td>
 							<td>
-								<input type="text" id="_용량평가_측정값" value="측정값을 적으세요." size="30" require>
+								<label for="_용량평가_측정값">측정값</label>
+							</td>
+							<td>
+								<input type="text" id="_용량평가_측정값" size="20" require>
 							</td>
 						</tr>
 						<tr>
@@ -979,7 +1006,7 @@
 								<label for="_SOC60">SOC 60% 전압 및 편차(V) - PDS</label>
 							</td>
 							<td>
-								<input type="text" id="_SOC60" size="30" require>
+								<input type="text" id="_SOC60" size="20" require>
 								<select name="language" onchange="_SOC60_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -987,10 +1014,16 @@
 								</select>
 							</td>
 							<td>
-								<input type="text" id="_SOC60_팩전압" value="팩전압값을 적으세요." size="30" require>
+								<label for="_SOC60_펙전압">팩전압</label>
 							</td>
 							<td>
-								<input type="text" id="_SOC60_편차" value="편차값을 적으세요." size="30" require>
+								<input type="text" id="_SOC60_팩전압"  size="20" require>
+							</td>
+							<td>
+								<label for="_SOC60_편차">편차</label>
+							</td>
+							<td>
+								<input type="text" id="_SOC60_편차"  size="20" require>
 							</td>
 						</tr>
 						<tr>
@@ -998,7 +1031,7 @@
 								<label for="_DCIR">DCIR(mΩ)</label>
 							</td>
 							<td>
-								<input type="text" id="_DCIR" size="30" require>
+								<input type="text" id="_DCIR" size="20" require>
 								<select name="language" onchange="_DCIR_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -1006,7 +1039,10 @@
 								</select>
 							</td>
 							<td>
-								<input type="text" id="_DCIR_측정값" value="측정값을 적으세요." size="30" require>
+								<label for="_DCIR_측정값">측정값</label>
+							</td>
+							<td>
+								<input type="text" id="_DCIR_측정값" size="20" require>
 							</td>
 						</tr>
 						<tr>
@@ -1014,7 +1050,7 @@
 								<label for="_릴레이동시구동">릴레이 동시구동 - PDS</label>
 							</td>
 							<td>
-								<input type="text" id="_릴레이동시구동" size="30" require>
+								<input type="text" id="_릴레이동시구동" size="20" require>
 								<select name="language" onchange="_릴레이동시구동_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -1027,7 +1063,7 @@
 								<label for="_케이스">케이스(mbar)</label>
 							</td>
 							<td>
-								<input type="text" id="_케이스" size="30" require>
+								<input type="text" id="_케이스" size="20" require>
 								<select name="language" onchange="_케이스_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -1035,7 +1071,10 @@
 								</select>
 							</td>
 							<td>
-								<input type="text" id="_케이스_측정값" value="측정값을 적으세요." size="30" require>
+								<label for="_케이스_측정값">측정값</label>
+							</td>
+							<td>
+								<input type="text" id="_케이스_측정값" size="20" require>
 							</td>
 						</tr>
 						<tr>
@@ -1043,7 +1082,7 @@
 								<label for="_냉각유로">냉각유로(mbar)</label>
 							</td>
 							<td>
-								<input type="text" id="_냉각유로" size="30" require>
+								<input type="text" id="_냉각유로" size="20" require>
 								<select name="language" onchange="_냉각유로_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -1051,7 +1090,10 @@
 								</select>
 							</td>
 							<td>
-								<input type="text" id="_냉각유로_측정값" value="측정값을 적으세요." size="30" require>
+								<label for="_냉각유로_측정값">측정값</label>
+							</td>
+							<td>
+								<input type="text" id="_냉각유로_측정값" size="20" require>
 							</td>
 						</tr>
 						<tr>
@@ -1059,7 +1101,7 @@
 								<label for="_접지Plus">접지:(+)(MΩ)</label>
 							</td>
 							<td>
-								<input type="text" id="_접지Plus" size="30" require>
+								<input type="text" id="_접지Plus" size="20" require>
 								<select name="language" onchange="_접지Plus_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -1067,7 +1109,10 @@
 								</select>
 							</td>
 							<td>
-								<input type="text" id="_접지Plus_측정값" value="측정값을 적으세요." size="30" require>
+								<label for="_접지Plus_측정값">측정값</label>
+							</td>
+							<td>
+								<input type="text" id="_접지Plus_측정값" size="20" require>
 							</td>
 						</tr>
 						<tr>
@@ -1075,7 +1120,7 @@
 								<label for="_접지Minus">접지:(-)(MΩ)</label>
 							</td>
 							<td>
-								<input type="text" id="_접지Minus" size="30" require>
+								<input type="text" id="_접지Minus" size="20" require>
 								<select name="language" onchange="_접지Minus_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -1083,12 +1128,17 @@
 								</select>
 							</td>
 							<td>
-								<input type="text" id="_접지Minus_측정값" value="측정값을 적으세요." size="30" require>
+								<label for="_접지Minus_측정값">측정값</label>
+							</td>
+							<td>
+								<input type="text" id="_접지Minus_측정값" size="20" require>
 							</td>
 						</tr>
 						<tr>
-							<td colspan='4'>
-								<Label>출하 검사</label>
+							<td colspan='6'>
+								<center>
+									<Label>출하 검사</label>
+								</center>
 							</td>
 						</tr>
 						<tr>
@@ -1096,7 +1146,7 @@
 								<label for="_DTC">DTC</label>
 							</td>
 							<td>
-								<input type="text" id="_DTC" size="30" require>
+								<input type="text" id="_DTC" size="20" require>
 								<select name="language" onchange="_DTC_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -1104,10 +1154,16 @@
 								</select>
 							</td>
 							<td>
-								<input type="text" id="_DTC_현재" value="팩전압값을 적으세요." size="30" require>
+								<label for="_DTC_현재">현재</label>
 							</td>
 							<td>
-								<input type="text" id="_DTC_과거" value="편차값을 적으세요." size="30" require>
+								<input type="text" id="_DTC_현재"  size="20" require>
+							</td>
+							<td>
+								<label for="_DTC_과거">과거</label>
+							</td>
+							<td>
+								<input type="text" id="_DTC_과거"  size="20" require>
 							</td>
 						</tr>
 						<tr>
@@ -1115,7 +1171,7 @@
 								<label for="_BSA전압">BSA 전압(V) - GDS</label>
 							</td>
 							<td>
-								<input type="text" id="_BSA전압" size="30" require>
+								<input type="text" id="_BSA전압" size="20" require>
 								<select name="language" onchange="_BSA전압_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -1123,7 +1179,10 @@
 								</select>
 							</td>
 							<td>
-								<input type="text" id="_BSA전압" value="측정값을 적으세요." size="30" require>
+								<label for="_BSA전압_측정값">측정값</label>
+							</td>
+							<td>
+								<input type="text" id="_BSA전압_측정값" size="20" require>
 							</td>
 						</tr>
 						<tr>
@@ -1131,7 +1190,7 @@
 								<label for="_셀전압편차">셀 전압 편차(mV)</label>
 							</td>
 							<td>
-								<input type="text" id="_셀전압편차" size="30" require>
+								<input type="text" id="_셀전압편차" size="20" require>
 								<select name="language" onchange="_셀전압편차_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -1139,7 +1198,10 @@
 								</select>
 							</td>
 							<td>
-								<input type="text" id="_셀전압편차_측정값" value="측정값을 적으세요." size="30" require>
+								<label for="_셀전압편차_측정값">측정값</label>
+							</td>
+							<td>
+								<input type="text" id="_셀전압편차_측정값" size="20" require>
 							</td>
 						</tr>
 						<tr>
@@ -1147,7 +1209,7 @@
 								<label for="_BMS고장NO">BMS 고장 NO</label>
 							</td>
 							<td>
-								<input type="text" id="_BMS고장NO" size="30" require>
+								<input type="text" id="_BMS고장NO" size="20" require>
 								<select name="language" onchange="_BMS고장NO_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -1160,7 +1222,7 @@
 								<label for="_BMS융착NO">BMS융착NO</label>
 							</td>
 							<td>
-								<input type="text" id="_BMS융착NO" size="30" require>
+								<input type="text" id="_BMS융착NO" size="20" require>
 								<select name="language" onchange="_BMS융착NO_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -1173,7 +1235,7 @@
 								<label for="_절연저항">절연저항(kΩ) - GDS</label>
 							</td>
 							<td>
-								<input type="text" id="_절연저항" size="30" require>
+								<input type="text" id="_절연저항" size="20" require>
 								<select name="language" onchange="_절연저항_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -1181,7 +1243,10 @@
 								</select>
 							</td>
 							<td>
-								<input type="text" id="_절연저항_측정값" value="측정값을 적으세요." size="30" require>
+								<label for="_절연저항_측정값">측정값</label>
+							</td>
+							<td>
+								<input type="text" id="_절연저항_측정값" size="20" require>
 							</td>
 						</tr>
 						<tr>
@@ -1189,7 +1254,7 @@
 								<label for="_배터리온도">배터리 온도(℃ ) - GDS</label>
 							</td>
 							<td>
-								<input type="text" id="_배터리온도" size="30" require>
+								<input type="text" id="_배터리온도" size="20" require>
 								<select name="language" onchange="_배터리온도_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -1197,18 +1262,24 @@
 								</select>
 							</td>
 							<td>
-								<input type="text" id="_배터리온도_최대" value="최대 측정값을 적으세요." size="30" require>
+								<label for="_배터리온도_최대">최대</label>
 							</td>
 							<td>
-								<input type="text" id="_배터리온도_최소" value="최소 측정값을 적으세요." size="30" require>
+								<input type="text" id="_배터리온도_최대" size="20" require>
+							</td>
+							<td>
+								<label for="_배터리온도_최소">최소</label>
+							</td>
+							<td>
+								<input type="text" id="_배터리온도_최소" size="20" require>
 							</td>
 						</tr>
 						<tr>
-							<td colspan='2'>
+							<td>
 								<label for="_SOH">SOH 100%</label>
 							</td>
 							<td>
-								<input type="text" id="_SOH" size="30" require>
+								<input type="text" id="_SOH" size="20" require>
 								<select name="language" onchange="_SOH_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -1221,7 +1292,7 @@
 								<label for="_릴레이_강제구동">릴레이 강제구동 - GDS</label>
 							</td>
 							<td>
-								<input type="text" id="_릴레이_강제구동" size="30" require>
+								<input type="text" id="_릴레이_강제구동" size="20" require>
 								<select name="language" onchange="_릴레이_강제구동_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -1234,7 +1305,7 @@
 								<label for="_커넥터_체결검사">커넥터 체결검사 [DE, OS, SK3 - 진단프로그램 / CV - GDS ]</label>
 							</td>
 							<td>
-								<input type="text" id="_커넥터_체결검사 " size="30" require>
+								<input type="text" id="_커넥터_체결검사" size="20" require>
 								<select name="language" onchange="_커넥터_체결검사_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
@@ -1244,11 +1315,11 @@
 						</tr>
 						<tr>
 							<td>
-								<label for="_통신화면_캡쳐">통신화면 캡쳐(DTC, 센서, 사양정보)</label>>
+								<label for="_통신화면_캡쳐">통신화면 캡쳐(DTC, 센서, 사양정보)</label>
 							</td>
 							<td>
-								<input type="text" id="_통신화면_캡쳐" size="30" require>
-								<select name="language" onchange="_통신화면_캡쳐__콤보박스(this);">
+								<input type="text" id="_통신화면_캡쳐" size="20" require>
+								<select name="language" onchange="_통신화면_캡쳐_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
 									<option value="NG">NG</option>
@@ -1274,11 +1345,16 @@
 			</div>
 		</div>
 		<script>
+			const _A = document.getElementById('_A');
+			const _B = document.getElementById('_B');
+			const _C = document.getElementById('_C');
+			const _D = document.getElementById('_D');
 			const _management_id = document.getElementById('_management_id');
 			const _출하코드 = document.getElementById('_출하코드');
 			const _납품처 = document.getElementById('_납품처');
 			const _출하일 = document.getElementById('_출하일');
 			const _검사일 = document.getElementById('_검사일');
+			const _검사자 = document.getElementById('_검사자');
 			const _검토 = document.getElementById('_검토');
 			const _승인 = document.getElementById('_승인');
 			const _입고정보_작성확인 = document.getElementById('_입고정보_작성확인');
@@ -1286,11 +1362,11 @@
 			const _기초보고서_작성확인 = document.getElementById('_기초보고서_작성확인');
 			const _완료보고서_작성확인 = document.getElementById('_환료보고서_작성확인');
 			const _클린상태 = document.getElementById('_클린상태');
-			const _팔레트_적정위치 = document.getElementById('_팔레트_적정위치);
+			const _팔레트_적정위치 = document.getElementById('_팔레트_적정위치');
 			const _포장랩상태 = document.getElementById('_포장랩상태');
 			const _UPR_QR = document.getElementById('_UPR_QR');
 			const _LWR_QR = document.getElementById('_LWR_QR');
-			const _HKMC스티커_URP = document.getElementById('_HKMC스티커_URP');
+			const _HKMC_스티커_URP = document.getElementById('_HKMC_스티커_URP');
 			const _냉각유로_커버1 = document.getElementById('_냉각유로_커버1');
 			const _냉각유로_커버2 = document.getElementById('_냉각유로_커버2');
 			const _A_HV = document.getElementById('_A_HV');
@@ -1327,7 +1403,7 @@
 			const _D_HV = document.getElementById('_D_HV');
 			const _D_LV = document.getElementById('_D_LV');
 			const _D_H_T = document.getElementById('_D_H_T');
-			const _D_5_PLUG = document.getElementById('_D_5_PLUG');
+			const _D_S_PLUG = document.getElementById('_D_S_PLUG');
 			const _D_아이볼트1 = document.getElementById('_D_아이볼트1');
 			const _D_아이볼트2 = document.getElementById('_D_아이볼트2');
 			const _D_아이볼트3 = document.getElementById('_D_아이볼트3');
@@ -1347,15 +1423,21 @@
 			const _SOC60_팩전압 = document.getElementById('_SOC60_팩전압');
 			const _SOC60_편차 = document.getElementById('_SOC60_편차');
 			const _DCIR = document.getElementById('_DCIR');
+			const _DCIR_측정값 = document.getElementById('_DCIR_측정값');
 			const _릴레이동시구동 = document.getElementById('_릴레이동시구동');
 			const _케이스 = document.getElementById('_케이스');
+			const _케이스_측정값 = document.getElementById('_케이스_측정값');
 			const _냉각유로 = document.getElementById('_냉각유로');
+			const _냉각유로_측정값 = document.getElementById('_냉각유로_측정값');
 			const _접지Plus = document.getElementById('_접지Plus');
+			const _접지Plus_측정값 = document.getElementById('_접지Plus_측정값');
 			const _접지Minus = document.getElementById('_접지Minus');
+			const _접지Minus_측정값 = document.getElementById('_접지Minus_측정값');
 			const _DTC = document.getElementById('_DTC');
 			const _DTC_현재 = document.getElementById('_DTC_현재');
 			const _DTC_과거 = document.getElementById('_DTC_과거');
 			const _BSA전압 = document.getElementById('_BSA전압');
+			const _BSA전압_측정값 = document.getElementById('_BSA전압_측정값');
 			const _셀전압편차 = document.getElementById('_셀전압편차');
 			const _셀전압편차_측정값 = document.getElementById('_셀전압편차_측정값');
 			const _BMS고장NO = document.getElementById('_BMS고장NO');
