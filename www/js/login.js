@@ -36,8 +36,9 @@ async function login() {
 					alert('재충전이 필요한 BSA가 있습니다.');
 				}
 			}, 1000);
-		} else {
+		} else if(worker == _id.value) {
 			worker = '';
+			level = '';
 			sessionStorage.clear();
 			admin_btn.style.display = 'none';
 			const _login_info = document.getElementById('login_info');
