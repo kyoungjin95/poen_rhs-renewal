@@ -3,59 +3,65 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" href="base/style/style.css">
-		<title>POEN Admin System</title>
+		<title>Poen Admin System</title>
 	</head>
 	<body>
-		<div>
-			<div>
+		<div> 
+			<center>
 				<div>
-					<label for='_id'><b>ID</b></label>
+					<label>계정 관리</label>
 				</div>
 				<div>
-					<input type=text value='' id='_id' require></input>
+					<table border="2">
+						<tr>
+							<td>
+								<label for='_id'><b>ID</b></label>
+							</td>
+							<td>
+								<input type=text value='' id='_id' require></input>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for='_pawsswd'><b>Password</b></label>
+							</td>
+							<td>
+								<input type=password value='' id='_passwd' require></input>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for='_pawsswd2'><b>Password</b></label>
+							</td>
+							<td>
+								<input type=password value='' id='_passwd2' require></input>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for='_level'><b>Level</b></label>
+							</td>
+							<td>
+								<input type=text value='' id='_level' require></input>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<button onClick='add_user();'>Add user</button>
+							</td>
+							<td>
+								<button onClick='delete_user();'>Delete user</button>
+							</td>
+						</tr>
+					</table>
 				</div>
-			</div>
-			</br>
-			<div>
+				</br>
+				</br>
 				<div>
-					<label for='_pawsswd'><b>Password</b></label>
+					<label>구엑셀문서 data 입력</label></br>
+					<input type='file' id='_csv' accept='.csv'/>
 				</div>
-				<div>
-					<input type=password value='' id='_passwd' require></input>
-				</div>
-			</div>
-			</br>
-			<div>
-				<div>
-					<label for='_pawsswd2'><b>Password</b></label>
-				</div>
-				<div>
-					<input type=password value='' id='_passwd2' require></input>
-				</div>
-			</div>
-			<div>
-				<div>
-					<label for='_level'><b>Level</b></label>
-				</div>
-				<div>
-					<input type=text value='' id='_level' require></input>
-				</div>
-			</div>
-			</br>
-			</br>
-			<div>
-				<button onClick='add_user();'>Add user</button>
-			</div>
-			</br>
-			</br>
-			<div>
-				<button onClick='delete_user();'>Delete user</button>
-			</div>
-			</br>
-			</br>
-			<div>
-				<input type='file' id='_csv' accept='.csv'/>
-			</div>
+			</center>
 		</div>
 	</body>
 </html>

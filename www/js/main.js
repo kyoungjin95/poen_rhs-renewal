@@ -11,12 +11,17 @@
 			var flag_show = false;
 			
 			times_show();
+
+			console.log('level:', _level);
 			if(worker == '') {
 				loadPage('base/login.html');
 				change_label();
 				const _login_info = document.getElementById('login_info');
 				_login_info.innerHTML = '';
 			} else {
+				if(_level == 'admin') {
+					admin_btn.style.display = 'none';
+				}
 				const _login_btn = document.getElementById('login_btn');
 				const _login_info = document.getElementById('login_info');
 				_login_info.innerHTML = worker + ' / 로그인 中  ';

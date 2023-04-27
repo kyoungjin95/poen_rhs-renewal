@@ -11,8 +11,9 @@ async function login() {
 	if(doc_count > 0) {
 		if(worker == '') {
 			worker = _id.value;
-			find_query(계정, { id: _id.value })
+			find_계정(계정, { id: _id.value })
 			await delay()
+			console.log('test:', find_array);
 			level = find_array[0].level;
 			sessionStorage.setItem('worker',  worker);
 			sessionStorage.setItem('level',  level);

@@ -338,6 +338,7 @@ function func_csv() {
 				update(교체부품상세10, doc);
 				await sleep(DELAY);
 			});
+			alert('완료');
 		});
 		reader.readAsText(file);
 	});
