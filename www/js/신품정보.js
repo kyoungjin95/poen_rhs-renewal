@@ -1,3 +1,4 @@
+var m_id = '';
 var tabledata = [];
 async function 신품정보등록_조회() {
 	if(worker == '') return;
@@ -32,6 +33,7 @@ async function 신품정보등록_조회() {
 		data:tabledata, 
 		autoColumns:true,
 	});
+
 }
 
 async function 신품정보_save() {

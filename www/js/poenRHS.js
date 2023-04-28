@@ -728,6 +728,15 @@ async function deleteOne(col, management_id) {
 	}
 }
 
+async function deleteOne(col, 바코드) {
+	if(socket == undefined) return;
+	flag_arrivedMSG = false;
+	while(flag_arrivedMSG == false) {
+		socket.emit('delete', col, { 바코드: 바코드});
+		await sleep(DELAY);
+	}
+}
+
 async function delete_계정(_id) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;

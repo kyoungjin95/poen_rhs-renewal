@@ -1,2 +1,2 @@
-nohup sudo ./start_db.sh &
 sudo ./start_server.sh 
+nohup sudo ./start_db.sh &

@@ -26,6 +26,11 @@ async function 부품재고_시작() {
 		autoColumns:true,
 	});
 
+	table_신품재고.on("rowClick", async function(e, row){
+		console.log('selected 바코드: ', row.getData().바코드);
+		m_id = row.getData().바코드;
+	});
+
 	count(고품정보, { 관리번호 : { $exists : true }});
 	await delay();
 
@@ -43,3 +48,14 @@ async function 부품재고_시작() {
 		autoColumns:true,
 	});
 }
+
+async function 정보_삭제() {
+	deleteOne(신품정보, m_id);
+	await delay();
+
+	if(delete_count > 0) {
+		alert('삭제 되었습니다.');
+		부품재고_시작();
+	}
+}
+
