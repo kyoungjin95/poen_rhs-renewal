@@ -130,7 +130,7 @@ async function request_신품QR() {
 		await delay();
 		console.log(find_array);
 		
-		var doc = JSON.parse(JSON.stringify(신품정보_doc);
+		var doc = JSON.parse(JSON.stringify(신품정보_doc));
 		doc.바코드 = find_array[0].바코드;
 		doc.품명 = find_array[0].품명;
 		doc.QR = find_array[0].QR;
