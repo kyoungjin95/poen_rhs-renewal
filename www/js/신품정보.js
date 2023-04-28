@@ -1,51 +1,54 @@
 var tabledata = [];
-async function 부품정보등록_managementID() {
+async function 신품정보등록_조회() {
 	if(worker == '') return;
-	while(_management_id == undefined) {
+	while(_바코드 == undefined) {
 		await sleep(DELAY);
 	}
-	_management_id.value =  관리번호;
 
-	if(_management_id.value.length == 0) return;
-	console.log('load: ', _management_id.value);
-	if(_management_id.value == '' | _management_id.value == 'none') return;
+	if(_바코드.value.length == 0) return;
+	console.log('load: ', _바코드.value);
+	if(_바코드.value == '' | _바코드.value == 'none') return;
 
-	count(부품정보, { 관리번호 : _management_id.value });
+	count(신품정보, { 바코드 : _바코드.value });
 	await delay();
 	console.log('doc_count: ', doc_count);
 	if(doc_count >= 1) {
-		find(부품정보, _management_id.value);
+		find_신품정보(신품정보, { 바코드 : _바코드.value});
 		await delay();
 		tabledata = find_array;
-		console.log('부품정보 : ', find_array);
+		console.log('신품정보 : ', find_array);
 	} else {
 		_품명.value = '';
-                _번호.value = '';
                 _QR.value = '';
-                _폐기여부.value = '';
+                _구입처.value = '';
+		_금액.value = '';
+                _사용여부.value = '';
+                _사용_관리번호.value = '';
 	}
 
-	var table_부품정보 = new Tabulator("#grid_부품정보", {
+	var table_신품정보 = new Tabulator("#grid_신품정보", {
 		layout: "resizableColumnFit",
-		height:1500,
+		height:200,
 		data:tabledata, 
 		autoColumns:true,
 	});
 }
 
-async function 부품정보_save() {
+async function 신품정보_save() {
 	if(worker == '') return;
-	if(_management_id.value.length == 0) return;
-	console.log('save: ', _management_id.value);
+	if(_바코드.value.length == 0) return;
+	console.log('save: ', _바코드.value);
 
-	var doc = 부품정보_doc;
-	doc.관리번호 = _management_id.value;
+	var doc = 신품정보_doc;
+	doc.바코드 = _바코드.value;
 	doc.품명 = _품명.value;
-	doc.번호 = _번호.value;
 	doc.QR = _QR.value;
-	doc.폐기여부 = _폐기여부.value;
+	doc.구입처 = _구입처.value;
+	doc.금액 = _금액.value;
+	doc.사용여부 = _사용여부.value;
+	doc.사용_관리번호 = _사용_관리번호.value;
 
-	update_부품정보(부품정보, doc);
+	update_신품정보(신품정보, doc);
 	await sleep(DELAY);
 	
 	console.log(update_count);
@@ -58,8 +61,6 @@ async function 부품정보_save() {
 	if(insert_count > 0) {
 		alert('저장 되었습니다');
 	}
-
-	이전페이지();
 }
 
 function _품명_콤보박스(e) {
@@ -68,15 +69,9 @@ function _품명_콤보박스(e) {
   	document.getElementById('_품명').value = value;
 }
 
-function _번호_콤보박스(e) {
+function _사용여부_콤보박스(e) {
 	const value = e.value;
 
-  	document.getElementById('_번호').value = value;
-}
-
-function _폐기여부_콤보박스(e) {
-	const value = e.value;
-
-  	document.getElementById('_폐기여부').value = value;
+  	document.getElementById('_사용여부').value = value;
 }
 

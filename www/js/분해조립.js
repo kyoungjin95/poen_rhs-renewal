@@ -1,3 +1,4 @@
+var docs = [];
 async function 분해조립_managementID() {
 	if(worker == '') return;
 	while(_management_id == undefined) {
@@ -104,17 +105,50 @@ async function 분해조립_save() {
 	if(insert_count > 0) {
 		alert('저장 되었습니다');
 	}
+
+	docs.forEach(function(doc) {
+		update_신품정보(신품정보, doc);
+	});
 	
 	이전페이지();
 }
 
-async function request_QR() {
+async function request_신품QR() {
 	var QR = prompt('QR을 입력하세요');
-	count(부품정보, { QR: QR });
+	count(신품정보, { QR: QR });
 	await delay();	
-	console.log('부품정보 doc_count: ', doc_count);
+	console.log('신품정보 doc_count: ', doc_count);
 	if(doc_count > 0) {
-		find_query(부품정보, { QR: QR });
+		find_신품정보(신품정보, { QR: QR });
+		await delay();
+		console.log(find_array);
+		
+		var doc = 신품정보_doc;
+		doc.바코드 = find_array[0].바코드;
+		doc.품명 = find_array[0].품명;
+		doc.QR = find_array[0].QR;
+		doc.구입처 = find_array[0].구입처;
+		doc.금액 = find_array[0].금액;
+		doc.사용여부 = '사용';
+		doc.사용_관리번호 = _management_id.value;
+		docs.push(doc);
+		console.log(find_array);
+		
+		var str = 'QR:' + QR + ', 바코드:' + find_array[0].바코드;
+		console.log(str);
+		return str;
+	}
+
+	return 'none';
+}
+
+async function request_고품QR() {
+	var QR = prompt('QR을 입력하세요');
+	count(고품정보, { QR: QR });
+	await delay();	
+	console.log('고품정보 doc_count: ', doc_count);
+	if(doc_count > 0) {
+		find_query(고품정보, { QR: QR });
 		await delay();
 		console.log(find_array);
 
@@ -133,18 +167,29 @@ async function request_QR() {
 async function _BMU_콤보박스(e) {
 	var value = e.value;
 
-	if(value == '고품 교체') {
-		var 관련번호 = await request_QR();
+	if(value == '신품 교체') {
+		var 관련번호 = await request_신품QR();
 		value = value + '(' + 관련번호 + ')';
 	}
+
+	if(value == '고품 교체') {
+		var 관련번호 = await request_고품QR();
+		value = value + '(' + 관련번호 + ')';
+	}
+
   	document.getElementById('_BMU').value = value;
 }
 
 async function _CMU_콤보박스(e) {
 	var value = e.value;
 
+	if(value == '신품 교체') {
+		var 관련번호 = await request_신품QR();
+		value = value + '(' + 관련번호 + ')';
+	}
+
 	if(value == '고품 교체') {
-		var 관련번호 = await request_QR();
+		var 관련번호 = await request_고품QR();
 		value = value + '(' + 관련번호 + ')';
 	}
   	document.getElementById('_CMU').value = value;
@@ -153,8 +198,13 @@ async function _CMU_콤보박스(e) {
 async function _PRA_콤보박스(e) {
 	var value = e.value;
 
+	if(value == '신품 교체') {
+		var 관련번호 = await request_신품QR();
+		value = value + '(' + 관련번호 + ')';
+	}
+
 	if(value == '고품 교체') {
-		var 관련번호 = await request_QR();
+		var 관련번호 = await request_고품QR();
 		value = value + '(' + 관련번호 + ')';
 	}
   	document.getElementById('_PRA').value = value;
@@ -163,19 +213,28 @@ async function _PRA_콤보박스(e) {
 async function _SPA_콤보박스(e) {
 	var value = e.value;
 
+	if(value == '신품 교체') {
+		var 관련번호 = await request_신품QR();
+		value = value + '(' + 관련번호 + ')';
+	}
+
 	if(value == '고품 교체') {
-		var 관련번호 = await request_QR();
+		var 관련번호 = await request_고품QR();
 		value = value + '(' + 관련번호 + ')';
 	}
   	document.getElementById('_SPA').value = value;
 }
 
 async function _UPR_C_콤보박스(e) {
-
 	var value = e.value;
 
+	if(value == '신품 교체') {
+		var 관련번호 = await request_신품QR();
+		value = value + '(' + 관련번호 + ')';
+	}
+
 	if(value == '고품 교체') {
-		var 관련번호들 = await request_QR();
+		var 관련번호들 = await request_고품QR();
 		value = value + '(' + 관련번호들 + ')';
 	}
   	document.getElementById('_UPR_C').value = value;
@@ -184,8 +243,13 @@ async function _UPR_C_콤보박스(e) {
 async function _LWR_C_콤보박스(e) {
 	var value = e.value;
 
+	if(value == '신품 교체') {
+		var 관련번호 = await request_신품QR();
+		value = value + '(' + 관련번호 + ')';
+	}
+
 	if(value == '고품 교체') {
-		var 관련번호 = await request_QR();
+		var 관련번호 = await request_고품QR();
 		value = value + '(' + 관련번호 + ')';
 	}
   	document.getElementById('_LWR_C').value = value;
@@ -194,8 +258,13 @@ async function _LWR_C_콤보박스(e) {
 async function _HV_CNTR_콤보박스(e) {
 	var value = e.value;
 
+	if(value == '신품 교체') {
+		var 관련번호 = await request_신품QR();
+		value = value + '(' + 관련번호 + ')';
+	}
+
 	if(value == '고품 교체') {
-		var 관련번호 = await request_QR();
+		var 관련번호 = await request_고품QR();
 		value = value + '(' + 관련번호 + ')';
 	}
   	document.getElementById('_HV_CNTR').value = value;
@@ -204,8 +273,13 @@ async function _HV_CNTR_콤보박스(e) {
 async function _Heating_CNTR_콤보박스(e) {
 	var value = e.value;
 
+	if(value == '신품 교체') {
+		var 관련번호 = await request_신품QR();
+		value = value + '(' + 관련번호 + ')';
+	}
+
 	if(value == '고품 교체') {
-		var 관련번호 = await request_QR();
+		var 관련번호 = await request_고품QR();
 		value = value + '(' + 관련번호 + ')';
 	}
   	document.getElementById('_Heating_CNTR').value = value;
@@ -214,8 +288,13 @@ async function _Heating_CNTR_콤보박스(e) {
 async function _FuseBox_콤보박스(e) {
 	var value = e.value;
 
+	if(value == '신품 교체') {
+		var 관련번호 = await request_신품QR();
+		value = value + '(' + 관련번호 + ')';
+	}
+
 	if(value == '고품 교체') {
-		var 관련번호 = await request_QR();
+		var 관련번호 = await request_고품QR();
 		value = value + '(' + 관련번호 + ')';
 	}
   	document.getElementById('_FuseBox').value = value;
@@ -224,8 +303,13 @@ async function _FuseBox_콤보박스(e) {
 async function _LV_W_H_콤보박스(e) {
 	var value = e.value;
 
+	if(value == '신품 교체') {
+		var 관련번호 = await request_신품QR();
+		value = value + '(' + 관련번호 + ')';
+	}
+
 	if(value == '고품 교체') {
-		var 관련번호 = await request_QR();
+		var 관련번호 = await request_고품QR();
 		value = value + '(' + 관련번호 + ')';
 	}
   	document.getElementById('_LV_W_H').value = value;
@@ -234,8 +318,13 @@ async function _LV_W_H_콤보박스(e) {
 async function _HV_W_H_콤보박스(e) {
 	var value = e.value;
 
+	if(value == '신품 교체') {
+		var 관련번호 = await request_신품QR();
+		value = value + '(' + 관련번호 + ')';
+	}
+
 	if(value == '고품 교체') {
-		var 관련번호 = await request_QR();
+		var 관련번호 = await request_고품QR();
 		value = value + '(' + 관련번호 + ')';
 	}
   	document.getElementById('_HV_W_H').value = value;
@@ -244,8 +333,13 @@ async function _HV_W_H_콤보박스(e) {
 async function _온도센서_콤보박스(e) {
 	var value = e.value;
 
+	if(value == '신품 교체') {
+		var 관련번호 = await request_신품QR();
+		value = value + '(' + 관련번호 + ')';
+	}
+
 	if(value == '고품 교체') {
-		var 관련번호 = await request_QR();
+		var 관련번호 = await request_고품QR();
 		value = value + '(' + 관련번호 + ')';
 	}
   	document.getElementById('_온도센서').value = value;
@@ -254,8 +348,13 @@ async function _온도센서_콤보박스(e) {
 async function _PBE_콤보박스(e) {
 	var value = e.value;
 
+	if(value == '신품 교체') {
+		var 관련번호 = await request_신품QR();
+		value = value + '(' + 관련번호 + ')';
+	}
+
 	if(value == '고품 교체') {
-		var 관련번호 = await request_QR();
+		var 관련번호 = await request_고품QR();
 		value = value + '(' + 관련번호 + ')';
 	}
   	document.getElementById('_PBE').value = value;
@@ -264,8 +363,13 @@ async function _PBE_콤보박스(e) {
 async function _Gasket_콤보박스(e) {
 	var value = e.value;
 
+	if(value == '신품 교체') {
+		var 관련번호 = await request_신품QR();
+		value = value + '(' + 관련번호 + ')';
+	}
+
 	if(value == '고품 교체') {
-		var 관련번호 = await request_QR();
+		var 관련번호 = await request_고품QR();
 		value = value + '(' + 관련번호 + ')';
 	}
   	document.getElementById('_Gasket').value = value;
@@ -274,8 +378,13 @@ async function _Gasket_콤보박스(e) {
 async function _Busbars_콤보박스(e) {
 	var value = e.value;
 
+	if(value == '신품 교체') {
+		var 관련번호 = await request_신품QR();
+		value = value + '(' + 관련번호 + ')';
+	}
+
 	if(value == '고품 교체') {
-		var 관련번호 = await request_QR();
+		var 관련번호 = await request_고품QR();
 		value = value + '(' + 관련번호 + ')';
 	}
   	document.getElementById('_Busbars').value = value;
@@ -284,8 +393,13 @@ async function _Busbars_콤보박스(e) {
 async function _Relay_콤보박스(e) {
 	var value = e.value;
 
+	if(value == '신품 교체') {
+		var 관련번호 = await request_신품QR();
+		value = value + '(' + 관련번호 + ')';
+	}
+
 	if(value == '고품 교체') {
-		var 관련번호 = await request_QR();
+		var 관련번호 = await request_고품QR();
 		value = value + '(' + 관련번호 + ')';
 	}
   	document.getElementById('_Relay').value = value;
@@ -294,8 +408,13 @@ async function _Relay_콤보박스(e) {
 async function _BMA_콤보박스(e) {
 	var value = e.value;
 
+	if(value == '신품 교체') {
+		var 관련번호 = await request_신품QR();
+		value = value + '(' + 관련번호 + ')';
+	}
+
 	if(value == '고품 교체') {
-		var 관련번호 = await request_QR();
+		var 관련번호 = await request_고품QR();
 		value = value + '(' + 관련번호 + ')';
 	}
   	document.getElementById('_BMA').value = value;

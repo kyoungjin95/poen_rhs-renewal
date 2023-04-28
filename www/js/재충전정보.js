@@ -29,7 +29,7 @@ async function 재충전정보_시작() {
 		});
 	}
 
-	var table_부품정보 = new Tabulator("#grid_재충전정보", {
+	var table_고품정보 = new Tabulator("#grid_재충전정보", {
 		layout: "resizableColumnFit",
 		height:1500,
 		data:tabledata, 

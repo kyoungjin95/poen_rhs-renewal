@@ -8,7 +8,8 @@ const 성능검사 = '성능검사';
 const EOL = 'EOL';
 const 출하정보 = '출하정보';
 const 분해조립 = '분해조립';
-const 부품정보 = '부품정보';
+const 신품정보 = '신품정보';
+const 고품정보 = '고품정보';
 const 특이사항 = '특이사항';
 const 교체부품상세1 = '교체부품상세1';
 const 교체부품상세2 = '교체부품상세2';
@@ -154,12 +155,22 @@ const EOL_doc = {
 	검사자: ''
 };
 
-const 부품정보_doc = {
+const 고품정보_doc = {
 	관리번호: '',
 	품명: '',
 	번호: '',
 	QR: '',
 	폐기여부: '',
+}
+
+const 신품정보_doc = {
+	바코드: '',
+	품명: '',
+	QR: '',
+	구입처: '',
+	금액: '',
+	사용여부: '',
+	사용_관리번호: '',
 }
 
 const 출하정보_doc = {
@@ -434,13 +445,24 @@ const EOL_ = {
 	검사자: 1
 };
 
-const 부품정보_ = {
+const 고품정보_ = {
 	_id : 0,
 	관리번호: 1,
 	품명: 1,
 	번호: 1,
 	QR: 1,
 	폐기여부: 1,
+}
+
+const 신품정보_ = {
+	_id: 0,
+	바코드: 1,
+	품명: 1,
+	QR: 1,
+	구입처: 1,
+	금액: 1,
+	사용여부: 1,
+	사용_관리번호: 1,
 }
 
 const 출하정보_ = {
@@ -679,7 +701,16 @@ async function update(col, doc) {
 	}
 }
 
-async function update_부품정보(col, doc) {
+async function update_신품정보(col, doc) {
+	if(socket == undefined) return;
+	flag_arrivedMSG = false;
+	while(flag_arrivedMSG == false) {
+		socket.emit('update', col, { 바코드: doc.바코드 }, {$set: doc});
+		await sleep(DELAY);
+	}
+}
+
+async function update_고품정보(col, doc) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
 	while(flag_arrivedMSG == false) {
@@ -776,9 +807,16 @@ async function find(col, management_id) {
 			}
 			break;
 
-		case '부품정보' :
+		case '고품정보' :
 			while(flag_arrivedMSG == false) {
-				socket.emit('find', col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 부품정보_});
+				socket.emit('find', col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 고품정보_});
+				await sleep(DELAY);
+			}
+			break;
+
+		case '신품정보' :
+			while(flag_arrivedMSG == false) {
+				socket.emit('find', col, { 바코드: management_id}, { sort: { kind: 1}, projection: 신품정보_});
 				await sleep(DELAY);
 			}
 			break;
@@ -871,6 +909,20 @@ function find_계정(col, query) {
 	flag_arrivedMSG = false;
 
 	socket.emit('find', col, query, { sort: { kind: 1}, projection: 계정_ });
+}
+
+function find_신품정보(col, query) {
+	if(socket == undefined) return;
+	flag_arrivedMSG = false;
+
+	socket.emit('find', col, query, { sort: { kind: 1}, projection: 신품정보_ });
+}
+
+function find_고품정보(col, query) {
+	if(socket == undefined) return;
+	flag_arrivedMSG = false;
+
+	socket.emit('find', col, query, { sort: { kind: 1}, projection: 고품정보_ });
 }
 
 function find_query(col, query) {

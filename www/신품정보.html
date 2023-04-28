@@ -20,31 +20,16 @@
 								<label for="바코드"><b>바코드</b></label>
 							</td>
 							<td>
-								<input type="text" id="_바코드" value="조회 버튼을 누르세요" size="30" required>
+								<input type="text" id="_바코드" value="" size="30" required>
 								<button onClick="신품정보등록_조회();">조 회</button>
 							</td>
+						</tr>
+						<tr>
 						</tr>
 						<tr>
 							<td>
 								<label for="_품명"><b>품명</b></label>
 							</td>
-							<td>
-								<label for="_QR"><b>QR</b></label>
-							</td>
-							<td>
-								<label for="_구입처"><b>구입처</b></label>
-							</td>
-							<td>
-								<label for="_금액"><b>금액</b></label>
-							</td>
-							<td>
-								<label for="_사용여부"><b>사용여부</b></label>
-							</td>
-							<td>
-								<label for="_관리번호"><b>사용 관리번호</b></label>
-							</td>
-						</tr>
-						<tr>
 							<td>
 								<input type="text" id="_품명" size="30" required>
 								<select name="language" onchange="_품명_콤보박스(this);">
@@ -69,14 +54,34 @@
 									<option value="BMA">BMA</option>
 								</select>
 							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="_QR"><b>QR</b></label>
+							</td>
 							<td>
 								<input type="text" id="_QR" size="30" required>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="_구입처"><b>구입처</b></label>
 							</td>
 							<td>
 								<input type="text" id="_구입처" size="30" required>
 							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="_금액"><b>금액</b></label>
+							</td>
 							<td>
 								<input type="text" id="_금액" size="30" required>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="_사용여부"><b>사용여부</b></label>
 							</td>
 							<td>
 								<input type="text" id="_사용여부" size="30" required>
@@ -84,6 +89,11 @@
 									<option value="">---</option>
 									<option value="사용">사용</option>
 								</select>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="_사용_관리번호"><b>사용 관리번호</b></label>
 							</td>
 							<td>
 								<input type="text" id="_사용_관리번호" size="30" required>
@@ -95,7 +105,6 @@
 			<div class="input-group">
 				<center>
 					<button onClick="신품정보_save();">SAVE</button>
-					<button onClick="이전페이지();">이전 Page</button>
 				</center>
 			</div>
 			<div>

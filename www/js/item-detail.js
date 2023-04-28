@@ -274,10 +274,10 @@ async function processStep() {
 	}
 }
 
-function func_부품정보등록() {
+function func_고품정보등록() {
 	if(worker == '') return;
 	if(_management_id.value.length == 0) return;
-	loadPage('base/부품정보.html');
+	loadPage('base/고품정보.html');
 }
 
 function func_교체부품상세() {
