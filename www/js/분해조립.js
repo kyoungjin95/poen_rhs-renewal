@@ -92,9 +92,19 @@ async function 분해조립_save() {
 	doc.공정완료일 = _공정완료일.value;
 	doc.작업자 = _작업자.value;
 	
+	console.log(docs);
+	docs.forEach(async function(doc) {
+		update_신품정보(신품정보, doc);
+		await sleep(DELAY);
+
+		console.log(update_count);
+		console.log(insert_count);
+	});
+
 	update(분해조립, doc);
 	await sleep(DELAY);
 	
+
 	console.log(update_count);
 	console.log(insert_count);
 
@@ -106,9 +116,6 @@ async function 분해조립_save() {
 		alert('저장 되었습니다');
 	}
 
-	docs.forEach(function(doc) {
-		update_신품정보(신품정보, doc);
-	});
 	
 	이전페이지();
 }
@@ -123,7 +130,7 @@ async function request_신품QR() {
 		await delay();
 		console.log(find_array);
 		
-		var doc = 신품정보_doc;
+		var doc = JSON.parse(JSON.stringify(신품정보_doc);
 		doc.바코드 = find_array[0].바코드;
 		doc.품명 = find_array[0].품명;
 		doc.QR = find_array[0].QR;
@@ -132,7 +139,7 @@ async function request_신품QR() {
 		doc.사용여부 = '사용';
 		doc.사용_관리번호 = _management_id.value;
 		docs.push(doc);
-		console.log(find_array);
+		console.log(docs);
 		
 		var str = 'QR:' + QR + ', 바코드:' + find_array[0].바코드;
 		console.log(str);
