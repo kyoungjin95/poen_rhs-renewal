@@ -4,6 +4,7 @@
 			};
 
 			admin_btn.style.display = 'none';
+			부품재고_btn.style.display = 'none';
 			var _worker = sessionStorage.getItem('worker');
 			var _level = sessionStorage.getItem('level');
 			if(_worker == '' || worker == null) worker = '';
@@ -21,6 +22,9 @@
 			} else {
 				if(_level == 'admin') {
 					admin_btn.style.display = 'none';
+				}
+				if(_level == '부품관리자') {
+					부품재고_btn.style.display = 'none';
 				}
 				const _login_btn = document.getElementById('login_btn');
 				const _login_info = document.getElementById('login_info');
