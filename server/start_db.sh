@@ -1,1 +1,1 @@
-mongod --dbpath "./db" 
+nohup mongod --dbpath "./db" &

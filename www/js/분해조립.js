@@ -1,4 +1,5 @@
-var docs = [];
+var 신품_docs = [];
+var 고품_docs = [];
 async function 분해조립_managementID() {
 	if(worker == '') return;
 	while(_management_id == undefined) {
@@ -92,9 +93,18 @@ async function 분해조립_save() {
 	doc.공정완료일 = _공정완료일.value;
 	doc.작업자 = _작업자.value;
 	
-	console.log(docs);
-	docs.forEach(async function(doc) {
+	console.log(신품_docs);
+	신품_docs.forEach(async function(doc) {
 		update_신품정보(신품정보, doc);
+		await sleep(DELAY);
+
+		console.log(update_count);
+		console.log(insert_count);
+	});
+
+	console.log(고품_docs);
+	고품_docs.forEach(async function(doc) {
+		update_고품정보(고품정보, doc);
 		await sleep(DELAY);
 
 		console.log(update_count);
@@ -138,8 +148,8 @@ async function request_신품QR() {
 		doc.금액 = find_array[0].금액;
 		doc.사용여부 = '사용';
 		doc.사용_관리번호 = _management_id.value;
-		docs.push(doc);
-		console.log(docs);
+		신품_docs.push(doc);
+		console.log(신품_docs);
 		
 		var str = 'QR:' + QR + ', 바코드:' + find_array[0].바코드;
 		console.log(str);
@@ -155,14 +165,25 @@ async function request_고품QR() {
 	await delay();	
 	console.log('고품정보 doc_count: ', doc_count);
 	if(doc_count > 0) {
-		find_query(고품정보, { QR: QR });
+		find_고품정보(고품정보, { QR: QR });
 		await delay();
-		console.log(find_array);
+		console.log('고품정보:', find_array);
+
+		var doc = JSON.parse(JSON.stringify(고품정보_doc));
+		doc.관리번호 = find_array[0].관리번호;
+		doc.품명 = find_array[0].품명;
+		doc.번호 = find_array[0].번호;
+		doc.QR = find_array[0].QR;
+		doc.폐기여부 = find_array[0].폐기여부;
+		doc.사용여부 = '사용';
+		doc.사용_관리번호 = _management_id.value;
+		고품_docs.push(doc);
+		console.log(고품_docs);
 
 		find(BSA재제조, find_array[0].관리번호);
 		await delay();
 		console.log(find_array);
-		
+
 		var str = '관리번호:' + find_array[0].관리번호 + ', 재제조번호:' + find_array[0].재제조번호;
 		console.log(str);
 		return str;

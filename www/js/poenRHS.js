@@ -161,6 +161,8 @@ const 고품정보_doc = {
 	번호: '',
 	QR: '',
 	폐기여부: '',
+	사용여부: '',
+	사용_관리번호: ''
 }
 
 const 신품정보_doc = {
@@ -170,7 +172,7 @@ const 신품정보_doc = {
 	구입처: '',
 	금액: '',
 	사용여부: '',
-	사용_관리번호: '',
+	사용_관리번호: ''
 }
 
 const 출하정보_doc = {
@@ -452,6 +454,8 @@ const 고품정보_ = {
 	번호: 1,
 	QR: 1,
 	폐기여부: 1,
+	사용여부: 1,
+	사용_관리번호: 1
 }
 
 const 신품정보_ = {
@@ -728,11 +732,20 @@ async function deleteOne(col, management_id) {
 	}
 }
 
-async function deleteOne(col, 바코드) {
+async function deleteOne_신품정보(col, 바코드) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
 	while(flag_arrivedMSG == false) {
 		socket.emit('delete', col, { 바코드: 바코드});
+		await sleep(DELAY);
+	}
+}
+
+async function deleteOne_고품정보(col, QR) {
+	if(socket == undefined) return;
+	flag_arrivedMSG = false;
+	while(flag_arrivedMSG == false) {
+		socket.emit('delete', col, { QR: QR});
 		await sleep(DELAY);
 	}
 }

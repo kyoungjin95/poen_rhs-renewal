@@ -1,3 +1,6 @@
+var 신품_바코드 = '';
+var 고품_QR = '';
+
 async function 부품재고_시작() {
 	flag_부품재고 = false;
 	if(worker == '') return;
@@ -28,7 +31,7 @@ async function 부품재고_시작() {
 
 	table_신품재고.on("rowClick", async function(e, row){
 		console.log('selected 바코드: ', row.getData().바코드);
-		m_id = row.getData().바코드;
+		신품_바코드 = row.getData().바코드;
 	});
 
 	count(고품정보, { 관리번호 : { $exists : true }});
@@ -47,10 +50,25 @@ async function 부품재고_시작() {
 		data:tabledata_고품재고, 
 		autoColumns:true,
 	});
+
+	table_고품재고.on("rowClick", async function(e, row){
+		console.log('selected QR: ', row.getData().QR);
+		고품_QR = row.getData().QR;
+	});
 }
 
-async function 정보_삭제() {
-	deleteOne(신품정보, m_id);
+async function 신품정보_삭제() {
+	deleteOne_신품정보(신품정보, 신품_바코드);
+	await delay();
+
+	if(delete_count > 0) {
+		alert('삭제 되었습니다.');
+		부품재고_시작();
+	}
+}
+
+async function 고품정보_삭제() {
+	deleteOne_고품정보(고품정보, 고품_QR);
 	await delay();
 
 	if(delete_count > 0) {

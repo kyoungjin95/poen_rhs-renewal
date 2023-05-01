@@ -13,21 +13,26 @@
 						<div>
 							<label for='grid_신품재고'><b>신품 재고</b></label>
 						</div>
-						<div>
-							<button onClick="loadPage('base/신품정보.html');">신품정보 등록</button>
-						</div>
 						<div id='grid_신품재고'>
 						</div>
 						<div>
-							<button onClick='정보_삭제();'>삭제</button>
+							<div style='float:left; margin: 0 1vw'>
+								<button onClick="loadPage('base/신품정보.html');">신품정보 등록 및 수정</button>
+							</div>
+							<div style='float:left'>
+								<button onClick='신품정보_삭제();'>삭제</button>
+							</div>
 						</div>
 					</div>
-					</br>
+					</br></br></br>
 					<div>
 						<div>
 							<label for='grid_고품재고'><b>고품 재고</b></label>
 						</div>
 						<div id='grid_고품재고'>
+						</div>
+						<div style='float:left; margin: 0 1vw'>
+							<button onClick='고품정보_삭제();'>삭제</button>
 						</div>
 					</div>
 				</center>

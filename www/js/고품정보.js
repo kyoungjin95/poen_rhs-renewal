@@ -59,7 +59,7 @@ async function 고품정보_save() {
 		alert('저장 되었습니다');
 	}
 
-	이전페이지();
+	고품정보등록_managementID();
 }
 
 function _품명_콤보박스(e) {
