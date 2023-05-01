@@ -57,13 +57,25 @@ async function change_label() {
 	while(document.getElementById('login_label') == undefined) {
 		await sleep(DELAY);
 	}
+	const _label = document.getElementById('login_label');
+	const _login_btn = document.getElementById('login_btn');
+	const _login_info = document.getElementById('login_info');
+
+	if(_login_btn.innerHTML == '로그아웃') {
+		sessionStorage.clear();
+		worker = '';
+		level = '';
+		admin_btn.style.display = 'none';
+		_label.innerHTML = 'Login';
+		_login_btn.innerHTML = '로그인';
+		_login_info.innerHTML = '';
+
+	}
+
 	var _worker = sessionStorage.getItem('worker');
 	level = sessionStorage.getItem('level');
 	if(_worker != '' && _worker != null) worker = _worker;
 	console.log('worker in change label :', worker);
-	const _label = document.getElementById('login_label');
-	const _login_btn = document.getElementById('login_btn');
-	const _login_info = document.getElementById('login_info');
 	if(worker == '' || worker == 'null')  {
 		worker = '';
 		level = '';
