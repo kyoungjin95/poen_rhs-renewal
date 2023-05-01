@@ -3,24 +3,25 @@ window.onpopstate = function(event) {
 	history.go(1); 
 };
 // F12키 금지
-$(document).ready(function(){
-    $(document).on('keydown',function(e){
-        if ( e.keyCode == 123) {  /* F12키 */
-            e.preventDefault();
-            e.returnValue = false;
-        }
-    });
-});
 
-// 마우스오른쪽 클릭방지
-document.onmousedown=disableclick;
-status="마우스오른쪽 클릭금지.";
-function disableclick(event){
-    if (event.button==2) {
-        alert(status);
-        return false;
-    }
-}
+//$(document).ready(function(){
+//    $(document).on('keydown',function(e){
+//        if ( e.keyCode == 123) {  /* F12키 */
+//            e.preventDefault();
+//            e.returnValue = false;
+//        }
+//    });
+//});
+//
+//// 마우스오른쪽 클릭방지
+//document.onmousedown=disableclick;
+//status="마우스오른쪽 클릭금지.";
+//function disableclick(event){
+//    if (event.button==2) {
+//        alert(status);
+//        return false;
+//    }
+//}
 
 admin_btn.style.display = 'none';
 부품재고_btn.style.display = 'none';
@@ -34,7 +35,7 @@ times_show();
 
 console.log('worker:', worker);
 console.log('level:', _level);
-if(worker == '') {
+if(worker == '' || worker == null) {
 	loadPage('base/login.html');
 	change_label();
 	const _login_info = document.getElementById('login_info');

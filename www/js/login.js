@@ -76,7 +76,7 @@ async function change_label() {
 	level = sessionStorage.getItem('level');
 	if(_worker != '' && _worker != null) worker = _worker;
 	console.log('worker in change label :', worker);
-	if(worker == '' || worker == 'null')  {
+	if(worker == '' || worker == 'null' || worker == null)  {
 		worker = '';
 		level = '';
 		admin_btn.style.display = 'none';
