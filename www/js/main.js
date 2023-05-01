@@ -12,7 +12,10 @@ window.onpopstate = function(event) {
 //        }
 //    });
 //});
-//
+
+function blockRightClick(){
+    return false;
+}
 
 admin_btn.style.display = 'none';
 부품재고_btn.style.display = 'none';
