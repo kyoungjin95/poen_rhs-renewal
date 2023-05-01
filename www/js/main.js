@@ -13,15 +13,6 @@ window.onpopstate = function(event) {
 //    });
 //});
 //
-//// 마우스오른쪽 클릭방지
-//document.onmousedown=disableclick;
-//status="마우스오른쪽 클릭금지.";
-//function disableclick(event){
-//    if (event.button==2) {
-//        alert(status);
-//        return false;
-//    }
-//}
 
 admin_btn.style.display = 'none';
 부품재고_btn.style.display = 'none';
@@ -40,6 +31,10 @@ if(worker == '' || worker == null) {
 	change_label();
 	const _login_info = document.getElementById('login_info');
 	_login_info.innerHTML = '';
+	const _admin_btn = document.getElementById('부품재고_btn');
+	_admin_btn.style.display = 'none';
+	const _부품재고_btn = document.getElementById('부품재고_btn');
+	_부품재고_btn.style.display = 'none';
 } else {
 	const _login_btn = document.getElementById('login_btn');
 	const _login_info = document.getElementById('login_info');

@@ -69,7 +69,10 @@ async function change_label() {
 		_label.innerHTML = 'Login';
 		_login_btn.innerHTML = '로그인';
 		_login_info.innerHTML = '';
-
+		const _admin_btn = document.getElementById('부품재고_btn');
+		_admin_btn.style.display = 'none';
+		const _부품재고_btn = document.getElementById('부품재고_btn');
+		_부품재고_btn.style.display = 'none';
 	}
 
 	var _worker = sessionStorage.getItem('worker');
