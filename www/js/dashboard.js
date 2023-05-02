@@ -4,6 +4,7 @@ async function 대시보드_시작() {
 	flag_대시보드 = false;
 	worker = sessionStorage.getItem('worker');
 	if(worker == '') return;
+	await sleep(200);
 	총합계_조회();
 }
 
