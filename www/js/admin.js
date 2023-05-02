@@ -87,7 +87,6 @@ function func_csv() {
 				doc.EOL = val.EOL_완료일.trim();
 				doc.출하 = val.출하일.trim();
 				doc.소재지 = '마도';
-				doc.제작요청일 = '2023-04-01';
 
 				console.log('BSA재제조:', doc);
 				update(BSA재제조, doc);
