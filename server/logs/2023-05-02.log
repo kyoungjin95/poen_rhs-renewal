@@ -1,0 +1,340 @@
+2023-05-02 16:55:47 info: worker: count col:계정query:[object Object]
+2023-05-02 16:55:47 info: worker:admin find col:계정query:[object Object]
+2023-05-02 16:55:50 info: worker:admin count col:계정query:[object Object]
+2023-05-02 16:55:51 info: worker:admin count col:BSA재제조query:[object Object]
+2023-05-02 16:55:56 info: worker:admin count col:BSA재제조query:[object Object]
+2023-05-02 16:55:56 info: worker:admin count col:BSA재제조query:[object Object]
+2023-05-02 16:55:56 info: worker:admin count col:BSA재제조query:[object Object]
+2023-05-02 16:55:56 info: worker:admin count col:BSA재제조query:[object Object]
+2023-05-02 16:55:56 info: worker:admin count col:BSA재제조query:[object Object]
+2023-05-02 16:55:56 info: worker:admin count col:BSA재제조query:[object Object]
+2023-05-02 16:55:56 info: worker:admin count col:BSA재제조query:[object Object]
+2023-05-02 16:55:56 info: worker:admin count col:BSA재제조query:[object Object]
+2023-05-02 16:56:12 info: worker:admin count col:BSA재제조query:[object Object]
+2023-05-02 16:56:12 info: worker:admin find col:BSA재제조query:[object Object]
+2023-05-02 16:56:20 info: worker:admin count col:BSA재제조query:[object Object]
+2023-05-02 16:56:20 info: worker:admin find col:BSA재제조query:[object Object]
+2023-05-02 16:56:20 info: worker:admin count col:입고query:[object Object]
+2023-05-02 16:56:20 info: worker:admin find col:입고query:[object Object]
+2023-05-02 16:56:20 info: worker:admin count col:세척query:[object Object]
+2023-05-02 16:56:20 info: worker:admin find col:세척query:[object Object]
+2023-05-02 16:56:20 info: worker:admin count col:기초검사query:[object Object]
+2023-05-02 16:56:20 info: worker:admin count col:분해조립query:[object Object]
+2023-05-02 16:56:20 info: worker:admin find col:분해조립query:[object Object]
+2023-05-02 16:56:21 info: worker:admin count col:성능검사query:[object Object]
+2023-05-02 16:56:21 info: worker:admin count col:EOLquery:[object Object]
+2023-05-02 16:56:21 info: worker:admin count col:출하정보query:[object Object]
+2023-05-02 16:56:21 info: worker:admin find col:출하정보query:[object Object]
+2023-05-02 16:56:21 info: worker:admin update col:BSA재제조doc:[object Object]
+2023-05-02 16:56:27 info: worker:admin count col:입고query:[object Object]
+2023-05-02 16:56:27 info: worker:admin find col:입고query:[object Object]
+2023-05-02 16:56:37 info: worker:admin update col:입고doc:[object Object]
+2023-05-02 16:56:41 info: worker:admin count col:BSA재제조query:[object Object]
+2023-05-02 16:56:41 info: worker:admin find col:BSA재제조query:[object Object]
+2023-05-02 16:56:41 info: worker:admin count col:입고query:[object Object]
+2023-05-02 16:56:41 info: worker:admin find col:입고query:[object Object]
+2023-05-02 16:56:41 info: worker:admin count col:세척query:[object Object]
+2023-05-02 16:56:41 info: worker:admin find col:세척query:[object Object]
+2023-05-02 16:56:41 info: worker:admin count col:기초검사query:[object Object]
+2023-05-02 16:56:41 info: worker:admin count col:분해조립query:[object Object]
+2023-05-02 16:56:41 info: worker:admin find col:분해조립query:[object Object]
+2023-05-02 16:56:41 info: worker:admin count col:성능검사query:[object Object]
+2023-05-02 16:56:42 info: worker:admin count col:EOLquery:[object Object]
+2023-05-02 16:56:42 info: worker:admin count col:출하정보query:[object Object]
+2023-05-02 16:56:42 info: worker:admin find col:출하정보query:[object Object]
+2023-05-02 16:56:42 info: worker:admin update col:BSA재제조doc:[object Object]
+2023-05-02 16:56:53 info: worker:admin count col:BSA재제조query:[object Object]
+2023-05-02 16:56:54 info: worker:admin count col:BSA재제조query:[object Object]
+2023-05-02 16:57:07 info: worker:admin count col:입고query:[object Object]
+2023-05-02 16:57:18 info: worker:admin update col:입고doc:[object Object]
+2023-05-02 16:57:19 info: worker:admin count col:BSA재제조query:[object Object]
+2023-05-02 16:57:19 info: worker:admin count col:BSA재제조query:[object Object]
+2023-05-02 16:57:21 info: worker:admin count col:BSA재제조query:[object Object]
+2023-05-02 16:57:22 info: worker:admin count col:BSA재제조query:[object Object]
+2023-05-02 16:57:24 info: worker:admin count col:BSA재제조query:[object Object]
+2023-05-02 16:57:26 info: worker:admin count col:BSA재제조query:[object Object]
+2023-05-02 16:57:32 info: worker:admin count col:입고query:[object Object]
+2023-05-02 16:57:32 info: worker:admin find col:입고query:[object Object]
+2023-05-02 16:57:38 info: worker:admin update col:입고doc:[object Object]
+2023-05-02 16:57:38 info: worker:admin count col:BSA재제조query:[object Object]
+2023-05-02 16:57:49 info: worker:admin update col:BSA재제조doc:[object Object]
+2023-05-02 16:57:54 info: worker:admin count col:BSA재제조query:[object Object]
+2023-05-02 16:57:54 info: worker:admin find col:BSA재제조query:[object Object]
+2023-05-02 16:57:54 info: worker:admin count col:입고query:[object Object]
+2023-05-02 16:57:54 info: worker:admin find col:입고query:[object Object]
+2023-05-02 16:57:54 info: worker:admin count col:세척query:[object Object]
+2023-05-02 16:57:54 info: worker:admin count col:기초검사query:[object Object]
+2023-05-02 16:57:54 info: worker:admin count col:분해조립query:[object Object]
+2023-05-02 16:57:54 info: worker:admin count col:성능검사query:[object Object]
+2023-05-02 16:57:54 info: worker:admin count col:EOLquery:[object Object]
+2023-05-02 16:57:54 info: worker:admin count col:출하정보query:[object Object]
+2023-05-02 16:57:54 info: worker:admin update col:BSA재제조doc:[object Object]
+2023-05-02 16:58:00 info: worker:admin count col:BSA재제조query:[object Object]
+2023-05-02 16:58:00 info: worker:admin find col:BSA재제조query:[object Object]
+2023-05-02 16:58:00 info: worker:admin count col:입고query:[object Object]
+2023-05-02 16:58:00 info: worker:admin find col:입고query:[object Object]
+2023-05-02 16:58:00 info: worker:admin count col:세척query:[object Object]
+2023-05-02 16:58:00 info: worker:admin count col:기초검사query:[object Object]
+2023-05-02 16:58:00 info: worker:admin count col:분해조립query:[object Object]
+2023-05-02 16:58:01 info: worker:admin count col:성능검사query:[object Object]
+2023-05-02 16:58:01 info: worker:admin count col:EOLquery:[object Object]
+2023-05-02 16:58:01 info: worker:admin count col:출하정보query:[object Object]
+2023-05-02 16:58:01 info: worker:admin update col:BSA재제조doc:[object Object]
+2023-05-02 16:58:10 info: worker:admin count col:입고query:[object Object]
+2023-05-02 16:58:10 info: worker:admin find col:입고query:[object Object]
+2023-05-02 16:58:14 info: worker:admin update col:입고doc:[object Object]
+2023-05-02 16:58:16 info: worker:admin count col:BSA재제조query:[object Object]
+2023-05-02 16:58:16 info: worker:admin find col:BSA재제조query:[object Object]
+2023-05-02 16:58:16 info: worker:admin count col:입고query:[object Object]
+2023-05-02 16:58:16 info: worker:admin find col:입고query:[object Object]
+2023-05-02 16:58:16 info: worker:admin count col:세척query:[object Object]
+2023-05-02 16:58:16 info: worker:admin count col:기초검사query:[object Object]
+2023-05-02 16:58:16 info: worker:admin count col:분해조립query:[object Object]
+2023-05-02 16:58:16 info: worker:admin count col:성능검사query:[object Object]
+2023-05-02 16:58:16 info: worker:admin count col:EOLquery:[object Object]
+2023-05-02 16:58:16 info: worker:admin count col:출하정보query:[object Object]
+2023-05-02 16:58:16 info: worker:admin update col:BSA재제조doc:[object Object]
+2023-05-02 16:58:24 info: worker:admin count col:BSA재제조query:[object Object]
+2023-05-02 16:58:24 info: worker:admin find col:BSA재제조query:[object Object]
+2023-05-02 16:58:27 info: worker:admin count col:BSA재제조query:[object Object]
+2023-05-02 16:58:27 info: worker:admin count col:BSA재제조query:[object Object]
+2023-05-02 16:58:27 info: worker:admin count col:BSA재제조query:[object Object]
+2023-05-02 16:58:27 info: worker:admin count col:BSA재제조query:[object Object]
+2023-05-02 16:58:27 info: worker:admin count col:BSA재제조query:[object Object]
+2023-05-02 16:58:27 info: worker:admin count col:BSA재제조query:[object Object]
+2023-05-02 16:58:27 info: worker:admin count col:BSA재제조query:[object Object]
+2023-05-02 16:58:27 info: worker:admin count col:BSA재제조query:[object Object]
+2023-05-02 16:58:30 info: worker:admin count col:BSA재제조query:[object Object]
+2023-05-02 16:58:30 info: worker:admin find col:BSA재제조query:[object Object]
+2023-05-02 16:58:52 info: worker: count col:계정query:[object Object]
+2023-05-02 16:59:03 info: worker: count col:계정query:[object Object]
+2023-05-02 16:59:11 info: worker: count col:계정query:[object Object]
+2023-05-02 16:59:11 info: worker:admin find col:계정query:[object Object]
+2023-05-02 16:59:13 info: worker:admin count col:계정query:[object Object]
+2023-05-02 16:59:13 info: worker:admin count col:BSA재제조query:[object Object]
+2023-05-02 16:59:16 info: worker:admin count col:BSA재제조query:[object Object]
+2023-05-02 16:59:16 info: worker:admin count col:BSA재제조query:[object Object]
+2023-05-02 16:59:16 info: worker:admin count col:BSA재제조query:[object Object]
+2023-05-02 16:59:16 info: worker:admin count col:BSA재제조query:[object Object]
+2023-05-02 16:59:16 info: worker:admin count col:BSA재제조query:[object Object]
+2023-05-02 16:59:16 info: worker:admin count col:BSA재제조query:[object Object]
+2023-05-02 16:59:16 info: worker:admin count col:BSA재제조query:[object Object]
+2023-05-02 16:59:16 info: worker:admin count col:BSA재제조query:[object Object]
+2023-05-02 16:59:33 info: worker:admin update col:계정doc:[object Object]
+2023-05-02 16:59:45 info: worker:null count col:BSA재제조query:[object Object]
+2023-05-02 16:59:45 info: worker:null count col:계정query:[object Object]
+2023-05-02 16:59:46 info: worker: count col:계정query:[object Object]
+2023-05-02 16:59:46 info: worker:itemadmin find col:계정query:[object Object]
+2023-05-02 16:59:49 info: worker:itemadmin count col:계정query:[object Object]
+2023-05-02 16:59:49 info: worker:itemadmin count col:BSA재제조query:[object Object]
+2023-05-02 16:59:51 info: worker:itemadmin count col:BSA재제조query:[object Object]
+2023-05-02 16:59:51 info: worker:itemadmin count col:BSA재제조query:[object Object]
+2023-05-02 16:59:51 info: worker:itemadmin count col:BSA재제조query:[object Object]
+2023-05-02 16:59:51 info: worker:itemadmin count col:BSA재제조query:[object Object]
+2023-05-02 16:59:51 info: worker:itemadmin count col:BSA재제조query:[object Object]
+2023-05-02 16:59:51 info: worker:itemadmin count col:BSA재제조query:[object Object]
+2023-05-02 16:59:51 info: worker:itemadmin count col:BSA재제조query:[object Object]
+2023-05-02 16:59:51 info: worker:itemadmin count col:BSA재제조query:[object Object]
+2023-05-02 16:59:54 info: worker:itemadmin count col:신품정보query:[object Object]
+2023-05-02 16:59:54 info: worker:itemadmin count col:고품정보query:[object Object]
+2023-05-02 17:00:00 info: worker:itemadmin count col:신품정보query:[object Object]
+2023-05-02 17:00:00 info: worker:itemadmin find col:신품정보query:[object Object]
+2023-05-02 17:00:10 info: worker:itemadmin update col:신품정보doc:[object Object]
+2023-05-02 17:00:10 info: worker:itemadmin update col:신품정보doc:[object Object]
+2023-05-02 17:00:11 info: worker:itemadmin count col:신품정보query:[object Object]
+2023-05-02 17:00:11 info: worker:itemadmin find col:신품정보query:[object Object]
+2023-05-02 17:00:11 info: worker:itemadmin find col:신품정보query:[object Object]
+2023-05-02 17:00:15 info: worker:itemadmin count col:BSA재제조query:[object Object]
+2023-05-02 17:00:15 info: worker:itemadmin find col:BSA재제조query:[object Object]
+2023-05-02 17:00:15 info: worker:itemadmin count col:입고query:[object Object]
+2023-05-02 17:00:15 info: worker:itemadmin find col:입고query:[object Object]
+2023-05-02 17:00:15 info: worker:itemadmin count col:세척query:[object Object]
+2023-05-02 17:00:15 info: worker:itemadmin count col:기초검사query:[object Object]
+2023-05-02 17:00:15 info: worker:itemadmin count col:분해조립query:[object Object]
+2023-05-02 17:00:15 info: worker:itemadmin count col:성능검사query:[object Object]
+2023-05-02 17:00:15 info: worker:itemadmin count col:EOLquery:[object Object]
+2023-05-02 17:00:15 info: worker:itemadmin count col:출하정보query:[object Object]
+2023-05-02 17:00:15 info: worker:itemadmin update col:BSA재제조doc:[object Object]
+2023-05-02 17:00:26 info: worker:itemadmin count col:BSA재제조query:[object Object]
+2023-05-02 17:00:26 info: worker:itemadmin find col:BSA재제조query:[object Object]
+2023-05-02 17:00:26 info: worker:itemadmin count col:입고query:[object Object]
+2023-05-02 17:00:26 info: worker:itemadmin find col:입고query:[object Object]
+2023-05-02 17:00:26 info: worker:itemadmin count col:세척query:[object Object]
+2023-05-02 17:00:26 info: worker:itemadmin count col:기초검사query:[object Object]
+2023-05-02 17:00:26 info: worker:itemadmin count col:분해조립query:[object Object]
+2023-05-02 17:00:26 info: worker:itemadmin count col:성능검사query:[object Object]
+2023-05-02 17:00:27 info: worker:itemadmin count col:EOLquery:[object Object]
+2023-05-02 17:00:27 info: worker:itemadmin count col:출하정보query:[object Object]
+2023-05-02 17:00:27 info: worker:itemadmin update col:BSA재제조doc:[object Object]
+2023-05-02 17:00:30 info: worker:itemadmin count col:고품정보query:[object Object]
+2023-05-02 17:00:41 info: worker:itemadmin count col:고품정보query:[object Object]
+2023-05-02 17:00:41 info: worker:itemadmin update col:고품정보doc:[object Object]
+2023-05-02 17:00:41 info: worker:itemadmin update col:고품정보doc:[object Object]
+2023-05-02 17:00:46 info: worker:itemadmin update col:고품정보doc:[object Object]
+2023-05-02 17:00:48 info: worker:itemadmin count col:고품정보query:[object Object]
+2023-05-02 17:00:48 info: worker:itemadmin find col:고품정보query:[object Object]
+2023-05-02 17:01:07 info: worker:itemadmin update col:고품정보doc:[object Object]
+2023-05-02 17:01:09 info: worker:itemadmin count col:고품정보query:[object Object]
+2023-05-02 17:01:09 info: worker:itemadmin find col:고품정보query:[object Object]
+2023-05-02 17:01:35 info: worker:itemadmin count col:신품정보query:[object Object]
+2023-05-02 17:01:35 info: worker:itemadmin find col:신품정보query:[object Object]
+2023-05-02 17:01:35 info: worker:itemadmin count col:고품정보query:[object Object]
+2023-05-02 17:01:35 info: worker:itemadmin find col:고품정보query:[object Object]
+2023-05-02 17:01:41 info: worker:itemadmin update col:고품정보query:[object Object]
+2023-05-02 17:01:42 info: worker:itemadmin count col:신품정보query:[object Object]
+2023-05-02 17:01:42 info: worker:itemadmin find col:신품정보query:[object Object]
+2023-05-02 17:01:42 info: worker:itemadmin count col:고품정보query:[object Object]
+2023-05-02 17:01:42 info: worker:itemadmin find col:고품정보query:[object Object]
+2023-05-02 17:01:50 info: worker:itemadmin count col:BSA재제조query:[object Object]
+2023-05-02 17:01:50 info: worker:itemadmin find col:BSA재제조query:[object Object]
+2023-05-02 17:01:50 info: worker:itemadmin count col:입고query:[object Object]
+2023-05-02 17:01:50 info: worker:itemadmin find col:입고query:[object Object]
+2023-05-02 17:01:50 info: worker:itemadmin count col:세척query:[object Object]
+2023-05-02 17:01:50 info: worker:itemadmin count col:기초검사query:[object Object]
+2023-05-02 17:01:50 info: worker:itemadmin count col:분해조립query:[object Object]
+2023-05-02 17:01:50 info: worker:itemadmin count col:성능검사query:[object Object]
+2023-05-02 17:01:50 info: worker:itemadmin count col:EOLquery:[object Object]
+2023-05-02 17:01:50 info: worker:itemadmin count col:출하정보query:[object Object]
+2023-05-02 17:01:50 info: worker:itemadmin update col:BSA재제조doc:[object Object]
+2023-05-02 17:01:58 info: worker:itemadmin count col:분해조립query:[object Object]
+2023-05-02 17:02:05 info: worker:itemadmin count col:신품정보query:[object Object]
+2023-05-02 17:02:05 info: worker:itemadmin find col:신품정보query:[object Object]
+2023-05-02 17:02:09 info: worker:itemadmin count col:고품정보query:[object Object]
+2023-05-02 17:02:16 info: worker:itemadmin count col:신품정보query:[object Object]
+2023-05-02 17:02:27 info: worker:itemadmin count col:고품정보query:[object Object]
+2023-05-02 17:02:27 info: worker:itemadmin find col:고품정보query:[object Object]
+2023-05-02 17:02:27 info: worker:itemadmin find col:BSA재제조query:[object Object]
+2023-05-02 17:02:31 info: worker:itemadmin update col:신품정보doc:[object Object]
+2023-05-02 17:02:31 info: worker:itemadmin update col:고품정보doc:[object Object]
+2023-05-02 17:02:31 info: worker:itemadmin update col:분해조립doc:[object Object]
+2023-05-02 17:02:32 info: worker:itemadmin count col:BSA재제조query:[object Object]
+2023-05-02 17:02:32 info: worker:itemadmin find col:BSA재제조query:[object Object]
+2023-05-02 17:02:32 info: worker:itemadmin count col:입고query:[object Object]
+2023-05-02 17:02:32 info: worker:itemadmin find col:입고query:[object Object]
+2023-05-02 17:02:32 info: worker:itemadmin count col:세척query:[object Object]
+2023-05-02 17:02:32 info: worker:itemadmin count col:기초검사query:[object Object]
+2023-05-02 17:02:32 info: worker:itemadmin count col:분해조립query:[object Object]
+2023-05-02 17:02:32 info: worker:itemadmin find col:분해조립query:[object Object]
+2023-05-02 17:02:32 info: worker:itemadmin count col:성능검사query:[object Object]
+2023-05-02 17:02:32 info: worker:itemadmin count col:EOLquery:[object Object]
+2023-05-02 17:02:32 info: worker:itemadmin count col:출하정보query:[object Object]
+2023-05-02 17:02:32 info: worker:itemadmin update col:BSA재제조doc:[object Object]
+2023-05-02 17:02:35 info: worker:itemadmin count col:신품정보query:[object Object]
+2023-05-02 17:02:35 info: worker:itemadmin find col:신품정보query:[object Object]
+2023-05-02 17:02:35 info: worker:itemadmin count col:고품정보query:[object Object]
+2023-05-02 17:02:35 info: worker:itemadmin find col:고품정보query:[object Object]
+2023-05-02 17:06:40 info: worker: count col:계정query:{"id":"itemadmin","passwd":"2a173853b70eb269e40a3341341a4743"}
+2023-05-02 17:06:40 info: worker:itemadmin find col:계정query:{"id":"itemadmin"}
+2023-05-02 17:06:43 info: worker:itemadmin count col:계정query:{"id":"admin"}
+2023-05-02 17:06:43 info: worker:itemadmin count col:BSA재제조query:{"마지막충전일":{"$lte":"2023-02-02T08:06:43.692Z"}}
+2023-05-02 17:06:45 info: worker:itemadmin count col:BSA재제조query:{"세척":{"$exists":true,"$ne":""}}
+2023-05-02 17:06:45 info: worker:itemadmin count col:BSA재제조query:{"기초검사":{"$exists":true,"$ne":""}}
+2023-05-02 17:06:45 info: worker:itemadmin count col:BSA재제조query:{"분해조립":{"$exists":true,"$ne":""}}
+2023-05-02 17:06:45 info: worker:itemadmin count col:BSA재제조query:{"성능검사":{"$exists":true,"$ne":""}}
+2023-05-02 17:06:45 info: worker:itemadmin count col:BSA재제조query:{"EOL":{"$exists":true,"$ne":""}}
+2023-05-02 17:06:45 info: worker:itemadmin count col:BSA재제조query:{"소재지":"마도"}
+2023-05-02 17:06:45 info: worker:itemadmin count col:BSA재제조query:{"소재지":"구장"}
+2023-05-02 17:06:45 info: worker:itemadmin count col:BSA재제조query:{"출하":{"$exists":true,"$ne":""}}
+2023-05-02 17:06:46 info: worker:itemadmin count col:신품정보query:{"바코드":{"$exists":true}}
+2023-05-02 17:06:46 info: worker:itemadmin find col:신품정보query:{"바코드":{"$exists":true}}
+2023-05-02 17:06:46 info: worker:itemadmin count col:고품정보query:{"관리번호":{"$exists":true}}
+2023-05-02 17:06:46 info: worker:itemadmin find col:고품정보query:{"관리번호":{"$exists":true}}
+2023-05-02 17:06:51 info: worker:itemadmin update col:고품정보query:{"QR":"112"}
+2023-05-02 17:06:52 info: worker:itemadmin count col:신품정보query:{"바코드":{"$exists":true}}
+2023-05-02 17:06:52 info: worker:itemadmin find col:신품정보query:{"바코드":{"$exists":true}}
+2023-05-02 17:06:52 info: worker:itemadmin count col:고품정보query:{"관리번호":{"$exists":true}}
+2023-05-02 17:06:52 info: worker:itemadmin find col:고품정보query:{"관리번호":{"$exists":true}}
+2023-05-02 17:07:02 info: worker:itemadmin count col:BSA재제조query:{"관리번호":"test"}
+2023-05-02 17:07:02 info: worker:itemadmin find col:BSA재제조query:{"관리번호":"test"}
+2023-05-02 17:07:02 info: worker:itemadmin count col:입고query:{"관리번호":"test"}
+2023-05-02 17:07:02 info: worker:itemadmin find col:입고query:{"관리번호":"test"}
+2023-05-02 17:07:02 info: worker:itemadmin count col:세척query:{"관리번호":"test"}
+2023-05-02 17:07:02 info: worker:itemadmin find col:세척query:{"관리번호":"test"}
+2023-05-02 17:07:02 info: worker:itemadmin count col:기초검사query:{"관리번호":"test"}
+2023-05-02 17:07:02 info: worker:itemadmin count col:분해조립query:{"관리번호":"test"}
+2023-05-02 17:07:03 info: worker:itemadmin find col:분해조립query:{"관리번호":"test"}
+2023-05-02 17:07:03 info: worker:itemadmin count col:성능검사query:{"관리번호":"test"}
+2023-05-02 17:07:03 info: worker:itemadmin count col:EOLquery:{"관리번호":"test"}
+2023-05-02 17:07:03 info: worker:itemadmin count col:출하정보query:{"관리번호":"test"}
+2023-05-02 17:07:03 info: worker:itemadmin find col:출하정보query:{"관리번호":"test"}
+2023-05-02 17:07:03 info: worker:itemadmin update col:BSA재제조doc:{"$set":{"관리번호":"test","재제조번호":"1234-5678","차종":"LK","품번":"20230421011","RO_no":"123456789","공정단계":"출하","적재No":"1","입고":"2023-04-20T08:15","제조투입":"","세척":"2023-04-21T08:16","기초검사":"","분해조립":"","성능검사":"","EOL":"","출하":"","소재지":"마고","마지막충전일":"2023-01-16T09:22"}}
+2023-05-02 17:07:09 info: worker:itemadmin count col:입고query:{"관리번호":"test"}
+2023-05-02 17:07:09 info: worker:itemadmin find col:입고query:{"관리번호":"test"}
+2023-05-02 17:07:09 info: worker:itemadmin count col:입고query:{"관리번호":"test"}
+2023-05-02 17:07:09 info: worker:itemadmin find col:입고query:{"관리번호":"test"}
+2023-05-02 17:07:10 info: worker:itemadmin count col:입고query:{"관리번호":"test"}
+2023-05-02 17:07:10 info: worker:itemadmin find col:입고query:{"관리번호":"test"}
+2023-05-02 17:07:10 info: worker:itemadmin count col:입고query:{"관리번호":"test"}
+2023-05-02 17:07:10 info: worker:itemadmin find col:입고query:{"관리번호":"test"}
+2023-05-02 17:07:10 info: worker:itemadmin count col:입고query:{"관리번호":"test"}
+2023-05-02 17:07:10 info: worker:itemadmin find col:입고query:{"관리번호":"test"}
+2023-05-02 17:07:10 info: worker:itemadmin count col:입고query:{"관리번호":"test"}
+2023-05-02 17:07:10 info: worker:itemadmin find col:입고query:{"관리번호":"test"}
+2023-05-02 17:07:10 info: worker:itemadmin count col:입고query:{"관리번호":"test"}
+2023-05-02 17:07:10 info: worker:itemadmin find col:입고query:{"관리번호":"test"}
+2023-05-02 17:07:10 info: worker:itemadmin count col:입고query:{"관리번호":"test"}
+2023-05-02 17:07:10 info: worker:itemadmin find col:입고query:{"관리번호":"test"}
+2023-05-02 17:07:11 info: worker:itemadmin count col:입고query:{"관리번호":"test"}
+2023-05-02 17:07:11 info: worker:itemadmin find col:입고query:{"관리번호":"test"}
+2023-05-02 17:07:11 info: worker:itemadmin count col:입고query:{"관리번호":"test"}
+2023-05-02 17:07:11 info: worker:itemadmin find col:입고query:{"관리번호":"test"}
+2023-05-02 17:07:11 info: worker:itemadmin count col:입고query:{"관리번호":"test"}
+2023-05-02 17:07:11 info: worker:itemadmin find col:입고query:{"관리번호":"test"}
+2023-05-02 17:07:11 info: worker:itemadmin count col:입고query:{"관리번호":"test"}
+2023-05-02 17:07:11 info: worker:itemadmin find col:입고query:{"관리번호":"test"}
+2023-05-02 17:07:11 info: worker:itemadmin count col:입고query:{"관리번호":"test"}
+2023-05-02 17:07:11 info: worker:itemadmin find col:입고query:{"관리번호":"test"}
+2023-05-02 17:07:13 info: worker:itemadmin count col:입고query:{"관리번호":"test"}
+2023-05-02 17:07:13 info: worker:itemadmin find col:입고query:{"관리번호":"test"}
+2023-05-02 17:07:13 info: worker:itemadmin count col:입고query:{"관리번호":"test"}
+2023-05-02 17:07:13 info: worker:itemadmin find col:입고query:{"관리번호":"test"}
+2023-05-02 17:07:13 info: worker:itemadmin count col:입고query:{"관리번호":"test"}
+2023-05-02 17:07:13 info: worker:itemadmin find col:입고query:{"관리번호":"test"}
+2023-05-02 17:07:13 info: worker:itemadmin count col:입고query:{"관리번호":"test"}
+2023-05-02 17:07:13 info: worker:itemadmin find col:입고query:{"관리번호":"test"}
+2023-05-02 17:07:15 info: worker:itemadmin update col:입고doc:{"$set":{"관리번호":"test","입고일":"2023-04-20T08:15","입고처":"마고","차종":"LK","품번":"20230421011","RO_no":"123456789","VIN":"1234","랙번호":"1"}}
+2023-05-02 17:07:15 info: worker:itemadmin count col:BSA재제조query:{"관리번호":"test"}
+2023-05-02 17:07:15 info: worker:itemadmin find col:BSA재제조query:{"관리번호":"test"}
+2023-05-02 17:07:16 info: worker:itemadmin count col:입고query:{"관리번호":"test"}
+2023-05-02 17:07:16 info: worker:itemadmin find col:입고query:{"관리번호":"test"}
+2023-05-02 17:07:16 info: worker:itemadmin count col:세척query:{"관리번호":"test"}
+2023-05-02 17:07:16 info: worker:itemadmin find col:세척query:{"관리번호":"test"}
+2023-05-02 17:07:16 info: worker:itemadmin count col:기초검사query:{"관리번호":"test"}
+2023-05-02 17:07:16 info: worker:itemadmin count col:분해조립query:{"관리번호":"test"}
+2023-05-02 17:07:16 info: worker:itemadmin find col:분해조립query:{"관리번호":"test"}
+2023-05-02 17:07:16 info: worker:itemadmin count col:성능검사query:{"관리번호":"test"}
+2023-05-02 17:07:16 info: worker:itemadmin count col:EOLquery:{"관리번호":"test"}
+2023-05-02 17:07:16 info: worker:itemadmin count col:출하정보query:{"관리번호":"test"}
+2023-05-02 17:07:16 info: worker:itemadmin find col:출하정보query:{"관리번호":"test"}
+2023-05-02 17:07:16 info: worker:itemadmin update col:BSA재제조doc:{"$set":{"관리번호":"test","재제조번호":"1234-5678","차종":"LK","품번":"20230421011","RO_no":"123456789","공정단계":"출하","적재No":"1","입고":"2023-04-20T08:15","제조투입":"","세척":"2023-04-21T08:16","기초검사":"","분해조립":"","성능검사":"","EOL":"","출하":"","소재지":"마고","마지막충전일":"2023-01-16T09:22"}}
+2023-05-02 17:08:07 info: worker:itemadmin count col:BSA재제조query:{"관리번호":"12345"}
+2023-05-02 17:08:26 info: worker:itemadmin count col:BSA재제조query:{"관리번호":"12345"}
+2023-05-02 17:08:32 info: worker:itemadmin count col:입고query:{"관리번호":"12345"}
+2023-05-02 17:08:49 info: worker:itemadmin update col:입고doc:{"$set":{"관리번호":"12345","입고일":"2023-05-02T17:08","입고처":"1","차종":"PU","품번":"1234567890","RO_no":"1","VIN":"1","랙번호":"1"}}
+2023-05-02 17:08:50 info: worker:itemadmin count col:BSA재제조query:{"관리번호":"12345"}
+2023-05-02 17:08:54 info: worker:itemadmin count col:BSA재제조query:{"관리번호":"12345"}
+2023-05-02 17:08:57 info: worker:itemadmin count col:BSA재제조query:{"관리번호":"12345"}
+2023-05-02 17:09:01 info: worker:itemadmin update col:BSA재제조doc:{"$set":{"관리번호":"12345","재제조번호":"","차종":"","품번":"","RO_no":"","공정단계":"","적재No":"","입고":"","제조투입":"","세척":"","기초검사":"","분해조립":"","성능검사":"","EOL":"","출하":"","소재지":"","마지막충전일":""}}
+2023-05-02 17:09:05 info: worker:itemadmin count col:BSA재제조query:{"관리번호":"12345"}
+2023-05-02 17:09:05 info: worker:itemadmin find col:BSA재제조query:{"관리번호":"12345"}
+2023-05-02 17:09:05 info: worker:itemadmin count col:입고query:{"관리번호":"12345"}
+2023-05-02 17:09:05 info: worker:itemadmin find col:입고query:{"관리번호":"12345"}
+2023-05-02 17:09:05 info: worker:itemadmin count col:세척query:{"관리번호":"12345"}
+2023-05-02 17:09:05 info: worker:itemadmin count col:기초검사query:{"관리번호":"12345"}
+2023-05-02 17:09:05 info: worker:itemadmin count col:분해조립query:{"관리번호":"12345"}
+2023-05-02 17:09:05 info: worker:itemadmin count col:성능검사query:{"관리번호":"12345"}
+2023-05-02 17:09:05 info: worker:itemadmin count col:EOLquery:{"관리번호":"12345"}
+2023-05-02 17:09:05 info: worker:itemadmin count col:출하정보query:{"관리번호":"12345"}
+2023-05-02 17:09:05 info: worker:itemadmin update col:BSA재제조doc:{"$set":{"관리번호":"12345","재제조번호":"","차종":"PU","품번":"1234567890","RO_no":"1","공정단계":"입고","적재No":"","입고":"2023-05-02T17:08","제조투입":"","세척":"","기초검사":"","분해조립":"","성능검사":"","EOL":"","출하":"","소재지":"","마지막충전일":""}}
+2023-05-02 17:09:23 info: worker:itemadmin count col:BSA재제조query:{"관리번호":"12345"}
+2023-05-02 17:09:23 info: worker:itemadmin find col:BSA재제조query:{"관리번호":"12345"}
+2023-05-02 17:09:23 info: worker:itemadmin count col:입고query:{"관리번호":"12345"}
+2023-05-02 17:09:23 info: worker:itemadmin find col:입고query:{"관리번호":"12345"}
+2023-05-02 17:09:23 info: worker:itemadmin count col:세척query:{"관리번호":"12345"}
+2023-05-02 17:09:23 info: worker:itemadmin count col:기초검사query:{"관리번호":"12345"}
+2023-05-02 17:09:23 info: worker:itemadmin count col:분해조립query:{"관리번호":"12345"}
+2023-05-02 17:09:23 info: worker:itemadmin count col:성능검사query:{"관리번호":"12345"}
+2023-05-02 17:09:23 info: worker:itemadmin count col:EOLquery:{"관리번호":"12345"}
+2023-05-02 17:09:23 info: worker:itemadmin count col:출하정보query:{"관리번호":"12345"}
+2023-05-02 17:09:23 info: worker:itemadmin update col:BSA재제조doc:{"$set":{"관리번호":"12345","재제조번호":"","차종":"PU","품번":"1234567890","RO_no":"1","공정단계":"입고","적재No":"","입고":"2023-05-02T17:08","제조투입":"","세척":"","기초검사":"","분해조립":"","성능검사":"","EOL":"","출하":"","소재지":"","마지막충전일":""}}
+2023-05-02 17:09:29 info: worker:itemadmin update col:BSA재제조doc:{"$set":{"관리번호":"12345","재제조번호":"12334","차종":"PU","품번":"1234567890","RO_no":"1","공정단계":"입고","적재No":"1","입고":"2023-05-02T17:08","제조투입":"","세척":"","기초검사":"","분해조립":"","성능검사":"","EOL":"","출하":"","소재지":"","마지막충전일":""}}

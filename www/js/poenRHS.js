@@ -664,7 +664,7 @@ async function distinct(col, query, field_name) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
 	while(flag_arrivedMSG == false) {
-		socket.emit('distinct', col, query, field_name);
+		socket.emit('distinct', worker, col, query, field_name);
 		await sleep(DELAY);
 	}
 }
@@ -673,7 +673,7 @@ async function count(col, query) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
 	while(flag_arrivedMSG == false) {
-		socket.emit('count', col, query);
+		socket.emit('count', worker, col, query);
 		await sleep(DELAY);
 	}
 }
@@ -682,7 +682,7 @@ async function insert(col, doc) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
 	while(flag_arrivedMSG == false) {
-		socket.emit('insert', col, doc);
+		socket.emit('insert', worker, col, doc);
 		await sleep(DELAY);
 	}
 }
@@ -691,7 +691,7 @@ async function update_계정(col, doc) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
 	while(flag_arrivedMSG == false) {
-		socket.emit('update', col, { id: doc.id }, {$set: doc});
+		socket.emit('update', worker, col, { id: doc.id }, {$set: doc});
 		await sleep(DELAY);
 	}
 }
@@ -700,7 +700,7 @@ async function update(col, doc) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
 	while(flag_arrivedMSG == false) {
-		socket.emit('update', col, { 관리번호: doc.관리번호 }, {$set: doc});
+		socket.emit('update', worker, col, { 관리번호: doc.관리번호 }, {$set: doc});
 		await sleep(DELAY);
 	}
 }
@@ -709,7 +709,7 @@ async function update_신품정보(col, doc) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
 	while(flag_arrivedMSG == false) {
-		socket.emit('update', col, { 바코드: doc.바코드 }, {$set: doc});
+		socket.emit('update', worker, col, { 바코드: doc.바코드 }, {$set: doc});
 		await sleep(DELAY);
 	}
 }
@@ -718,7 +718,7 @@ async function update_고품정보(col, doc) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
 	while(flag_arrivedMSG == false) {
-		socket.emit('update', col, { QR: doc.QR }, {$set: doc});
+		socket.emit('update', worker, col, { QR: doc.QR }, {$set: doc});
 		await sleep(DELAY);
 	}
 }
@@ -727,7 +727,7 @@ async function deleteOne(col, management_id) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
 	while(flag_arrivedMSG == false) {
-		socket.emit('delete', col, { 관리번호: management_id});
+		socket.emit('delete', worker, col, { 관리번호: management_id});
 		await sleep(DELAY);
 	}
 }
@@ -736,7 +736,7 @@ async function deleteOne_신품정보(col, 바코드) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
 	while(flag_arrivedMSG == false) {
-		socket.emit('delete', col, { 바코드: 바코드});
+		socket.emit('delete', worker, col, { 바코드: 바코드});
 		await sleep(DELAY);
 	}
 }
@@ -745,7 +745,7 @@ async function deleteOne_고품정보(col, QR) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
 	while(flag_arrivedMSG == false) {
-		socket.emit('delete', col, { QR: QR});
+		socket.emit('delete', worker, col, { QR: QR});
 		await sleep(DELAY);
 	}
 }
@@ -754,18 +754,9 @@ async function delete_계정(_id) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
 	while(flag_arrivedMSG == false) {
-		socket.emit('delete', 계정, { id: _id});
+		socket.emit('delete', worker, 계정, { id: _id});
 		await sleep(DELAY);
 	}
-}
-
-async function set_management_id(mid) {
-	socket.emit('set_management_id', mid);
-}
-
-async function get_management_id(mid) {
-	flag_arrivedMSG = true;
-	socket.emit('get_management_id');
 }
 
 async function find(col, management_id) {
@@ -775,147 +766,147 @@ async function find(col, management_id) {
 	switch(col) {
 		case 'BSA재제조' :
 			while(flag_arrivedMSG == false) {
-				socket.emit('find', col, { 관리번호: management_id}, { sort: { kind: 1}, projection: BSA재제조_});
+				socket.emit('find', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: BSA재제조_});
 				await sleep(DELAY);
 			}
 			break;
 
 		case '입고' :
 			while(flag_arrivedMSG == false) {
-				socket.emit('find', col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 입고_});
+				socket.emit('find', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 입고_});
 				await sleep(DELAY);
 			}
 			break;
 
 		case '세척' :
 			while(flag_arrivedMSG == false) {
-				socket.emit('find', col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 세척_});
+				socket.emit('find', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 세척_});
 				await sleep(DELAY);
 			}
 			break;
 
 		case '기초검사' :
 			while(flag_arrivedMSG == false) {
-				socket.emit('find', col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 기초검사_});
+				socket.emit('find', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 기초검사_});
 				await sleep(DELAY);
 			}
 			break;
 
 		case '성능검사' :
 			while(flag_arrivedMSG == false) {
-				socket.emit('find', col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 성능검사_});
+				socket.emit('find', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 성능검사_});
 				await sleep(DELAY);
 			}
 			break;
 
 		case 'EOL' :
 			while(flag_arrivedMSG == false) {
-				socket.emit('find', col, { 관리번호: management_id}, { sort: { kind: 1}, projection: EOL_});
+				socket.emit('find', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: EOL_});
 				await sleep(DELAY);
 			}
 			break;
 
 		case '출하정보' :
 			while(flag_arrivedMSG == false) {
-				socket.emit('find', col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 출하정보_});
+				socket.emit('find', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 출하정보_});
 				await sleep(DELAY);
 			}
 			break;
 
 		case '분해조립' :
 			while(flag_arrivedMSG == false) {
-				socket.emit('find', col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 분해조립_});
+				socket.emit('find', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 분해조립_});
 				await sleep(DELAY);
 			}
 			break;
 
 		case '고품정보' :
 			while(flag_arrivedMSG == false) {
-				socket.emit('find', col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 고품정보_});
+				socket.emit('find', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 고품정보_});
 				await sleep(DELAY);
 			}
 			break;
 
 		case '신품정보' :
 			while(flag_arrivedMSG == false) {
-				socket.emit('find', col, { 바코드: management_id}, { sort: { kind: 1}, projection: 신품정보_});
+				socket.emit('find', worker, col, { 바코드: management_id}, { sort: { kind: 1}, projection: 신품정보_});
 				await sleep(DELAY);
 			}
 			break;
 
 		case '특이사항' :
 			while(flag_arrivedMSG == false) {
-				socket.emit('find', col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 특이사항_});
+				socket.emit('find', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 특이사항_});
 				await sleep(DELAY);
 			}
 			break;
 		
 		case '교체부품상세1' :
 			while(flag_arrivedMSG == false) {
-				socket.emit('find', col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 교체부품상세_});
+				socket.emit('find', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 교체부품상세_});
 				await sleep(DELAY);
 			}
 			break;
 
 		case '교체부품상세2' :
 			while(flag_arrivedMSG == false) {
-				socket.emit('find', col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 교체부품상세_});
+				socket.emit('find', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 교체부품상세_});
 				await sleep(DELAY);
 			}
 			break;
 
 		case '교체부품상세3' :
 			while(flag_arrivedMSG == false) {
-				socket.emit('find', col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 교체부품상세_});
+				socket.emit('find', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 교체부품상세_});
 				await sleep(DELAY);
 			}
 			break;
 
 		case '교체부품상세4' :
 			while(flag_arrivedMSG == false) {
-				socket.emit('find', col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 교체부품상세_});
+				socket.emit('find', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 교체부품상세_});
 				await sleep(DELAY);
 			}
 			break;
 
 		case '교체부품상세5' :
 			while(flag_arrivedMSG == false) {
-				socket.emit('find', col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 교체부품상세_});
+				socket.emit('find', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 교체부품상세_});
 				await sleep(DELAY);
 			}
 			break;
 
 		case '교체부품상세6' :
 			while(flag_arrivedMSG == false) {
-				socket.emit('find', col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 교체부품상세_});
+				socket.emit('find', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 교체부품상세_});
 				await sleep(DELAY);
 			}
 			break;
 
 		case '교체부품상세7' :
 			while(flag_arrivedMSG == false) {
-				socket.emit('find', col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 교체부품상세_});
+				socket.emit('find', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 교체부품상세_});
 				await sleep(DELAY);
 			}
 			break;
 
 		case '교체부품상세8' :
 			while(flag_arrivedMSG == false) {
-				socket.emit('find', col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 교체부품상세_});
+				socket.emit('find', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 교체부품상세_});
 				await sleep(DELAY);
 			}
 			break;
 
 		case '교체부품상세9' :
 			while(flag_arrivedMSG == false) {
-				socket.emit('find', col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 교체부품상세_});
+				socket.emit('find', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 교체부품상세_});
 				await sleep(DELAY);
 			}
 			break;
 
 		case '교체부품상세10' :
 			while(flag_arrivedMSG == false) {
-				socket.emit('find', col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 교체부품상세_});
+				socket.emit('find', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 교체부품상세_});
 				await sleep(DELAY);
 			}
 			break;
@@ -930,28 +921,28 @@ function find_계정(col, query) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
 
-	socket.emit('find', col, query, { sort: { kind: 1}, projection: 계정_ });
+	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: 계정_ });
 }
 
 function find_신품정보(col, query) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
 
-	socket.emit('find', col, query, { sort: { kind: 1}, projection: 신품정보_ });
+	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: 신품정보_ });
 }
 
 function find_고품정보(col, query) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
 
-	socket.emit('find', col, query, { sort: { kind: 1}, projection: 고품정보_ });
+	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: 고품정보_ });
 }
 
 function find_query(col, query) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
 
-	socket.emit('find', col, query, { sort: { kind: 1}, projection: BSA재제조_ });
+	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: BSA재제조_ });
 }
 
 function sleep(ms) {

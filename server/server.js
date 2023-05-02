@@ -6,7 +6,7 @@ const server = http.createServer(app);
 const io = require('socket.io')(server);
 const { MongoClient } = require('mongodb')
 const morgan = require('morgan') //debug msg
-
+const logger = require('./winston');
 const uri = 'mongodb://poen:poen4upoen4u@localhost:27017/poenDB';
 const db_name = 'poenDB';
 var db;
@@ -28,43 +28,39 @@ server.listen(80, () => {
 io.on('connection', async function(socket) {
 	console.log('a user connected');
 
-	socket.on('distinct', async function(col, query, field_name) {
+	socket.on('distinct', async function(worker, col, query, field_name) {
 		const result_array = await distinct(col, query, field_name);
 		socket.emit('distinct_result', result_array);
 	});
 
-	socket.on('insert', async function(col, doc) {
+	socket.on('insert', async function(worker, col, doc) {
 		const result = await insert(col, doc);
 		socket.emit('insert_result', result);
+		logger.info('worker:'+ worker + ' insert col:' + col +'doc:'+ JSON.stringify(doc));
 	});
 
-	socket.on('count', async function(col, query) {
+	socket.on('count', async function(worker, col, query) {
 		const cnt = await count(col, query);
 		socket.emit('count_result', cnt);
+		logger.info('worker:'+ worker + ' count col:' + col +'query:'+ JSON.stringify(query));
 	});
 
-	socket.on('find', async function(col, query, options) {
+	socket.on('find', async function(worker, col, query, options) {
 		const result_array = await find(col, query, options);
 		socket.emit('find_result', result_array);
+		logger.info('worker:'+ worker + ' find col:' + col +'query:'+ JSON.stringify(query));
 	});
 
-	socket.on('update', async function(col, filter, doc) {
+	socket.on('update', async function(worker, col, filter, doc) {
 		const result = await update(col, filter, doc);
 		socket.emit('update_result', result);
+		logger.info('worker:'+ worker + ' update col:' + col + 'doc:' + JSON.stringify(doc));
 	});
 
-	socket.on('delete', async function(col, query) {
+	socket.on('delete', async function(worker, col, query) {
 		const result_count = await deleteOne(col, query);
 		socket.emit('delete_result', result_count);
-	});
-
-	socket.on('get_management_id', async function() {
-		socket.emit('management_id', 관리번호);
-	});
-
-	socket.on('set_management_id', async function(data) {
-		관리번호 = data;
-		console.log('set 관리번호: ', data); 
+		logger.info('worker:'+ worker + ' update col:' + col + 'query:'+ JSON.stringify(query));
 	});
 });
 
