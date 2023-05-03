@@ -65,57 +65,57 @@ async function 재제조현황_조회(flag_id_search = false) {
 	});
 
 	var progress = document.getElementById('progress');
-	table.on("rowClick", function(e, row){
+	table.on("rowClick", async function(e, row){
 		console.log('selected 관리번호: ',  row.getData().관리번호);
 		m_id = row.getData().관리번호;
 		row_one_id = m_id;
 
-		grid_기초검사(m_id);
+		await grid_기초검사(m_id);
 		progress.value = 1 / 16 * 100;
 
-		grid_분해조립(m_id);
+		await grid_분해조립(m_id);
 		progress.value = 2 / 16 * 100;
 
-		grid_성능검사(m_id);
+		await grid_성능검사(m_id);
 		progress.value = 3 / 16 * 100;
 
-		grid_EOL(m_id);
+		await grid_EOL(m_id);
 		progress.value = 4 / 16 * 100;
 
-		grid_출하정보(m_id);
+		await grid_출하정보(m_id);
 		progress.value = 5 / 16 * 100;
 
-		grid_특이사항(m_id);
+		await grid_특이사항(m_id);
 		progress.value = 6 / 16 * 100;
 
-		grid_교체부품상세1(m_id);
+		await grid_교체부품상세1(m_id);
 		progress.value = 7 / 16 * 100;
 
-		grid_교체부품상세2(m_id);
+		await grid_교체부품상세2(m_id);
 		progress.value = 8 / 16 * 100;
 
-		grid_교체부품상세3(m_id);
+		await grid_교체부품상세3(m_id);
 		progress.value = 9 / 16 * 100;
 
-		grid_교체부품상세4(m_id);
+		await grid_교체부품상세4(m_id);
 		progress.value = 10 / 16 * 100;
 
-		grid_교체부품상세5(m_id);
+		await grid_교체부품상세5(m_id);
 		progress.value = 11 / 16 * 100;
 
-		grid_교체부품상세6(m_id);
+		await grid_교체부품상세6(m_id);
 		progress.value = 12 / 16 * 100;
 
-		grid_교체부품상세7(m_id);
+		await grid_교체부품상세7(m_id);
 		progress.value = 13 / 16 * 100;
 
-		grid_교체부품상세8(m_id);
+		await grid_교체부품상세8(m_id);
 		progress.value = 14 / 16 * 100;
 
-		grid_교체부품상세9(m_id);
+		await grid_교체부품상세9(m_id);
 		progress.value = 15 / 16 * 100;
 
-		grid_교체부품상세10(m_id);
+		await grid_교체부품상세10(m_id);
 		progress.value = 16 / 16 * 100;
 
 		return;
@@ -257,6 +257,7 @@ async function grid_기초검사(m_id) {
 	if(doc_count >= 1) {
 		find(기초검사, m_id);
 		await delay();
+		await sleep(100);
 		tabledata_기초검사 = find_array;
 		console.log('기초검사 : ', find_array);;
 	}
@@ -297,6 +298,7 @@ async function grid_분해조립(m_id) {
 	if(doc_count >= 1) {
 		find(분해조립, m_id);
 		await delay();
+		await sleep(100);
 		tabledata_분해조립 = find_array;
 		console.log('분해조립 : ', find_array);;
 	}
@@ -410,6 +412,7 @@ async function grid_출하정보(m_id) {
 	if(doc_count >= 1) {
 		find(출하정보, m_id);
 		await delay();
+		await sleep(100);
 		tabledata_출하정보 = find_array;
 		console.log('출하정보 : ', find_array);;
 	}
