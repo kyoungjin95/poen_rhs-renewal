@@ -24,6 +24,10 @@ app.get('/apk', (req, res) => {
 	res.sendFile(path.join(__dirname, '../app/poen_rhs.apk'));
 });
 
+app.get('/manual', (req, res) => {
+	res.sendFile(path.join(__dirname, '../doc/Poen_RHS_Manual.xlsx'));
+});
+
 server.listen(80, () => {
 	console.log('listening on *:80');
 	client = new MongoClient(uri);

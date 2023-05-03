@@ -194,10 +194,73 @@ async function delete_bsa() {
 	deleteOne(BSA재제조, row_one_id);
 	await delay();
 
+	deleteOne(기초검사, row_one_id);
+	await delay();
+	progress.value = 1 / 16 * 100;
+
+	deleteOne(분해조립, row_one_id);
+	await delay();
+	progress.value = 2 / 16 * 100;
+
+	deleteOne(성능검사, row_one_id);
+	await delay();
+	progress.value = 3 / 16 * 100;
+
+	deleteOne(EOL, row_one_id);
+	await delay();
+	progress.value = 4 / 16 * 100;
+
+	deleteOne(출하정보, row_one_id);
+	await delay();
+	progress.value = 5 / 16 * 100;
+
+	deleteOne(특이사항, row_one_id);
+	await delay();
+	progress.value = 6 / 16 * 100;
+
+	deleteOne(교체부품상세1 , row_one_id);
+	await delay();
+	progress.value = 7 / 16 * 100;
+
+	deleteOne(교체부품상세2 , row_one_id);
+	await delay();
+	progress.value = 8 / 16 * 100;
+
+	deleteOne(교체부품상세3 , row_one_id);
+	await delay();
+	progress.value = 9 / 16 * 100;
+
+	deleteOne(교체부품상세4 , row_one_id);
+	await delay();
+	progress.value = 10 / 16 * 100;
+
+	deleteOne(교체부품상세5 , row_one_id);
+	await delay();
+	progress.value = 11 / 16 * 100;
+
+	deleteOne(교체부품상세6 , row_one_id);
+	await delay();
+	progress.value = 12 / 16 * 100;
+
+	deleteOne(교체부품상세7 , row_one_id);
+	await delay();
+	progress.value = 13 / 16 * 100;
+
+	deleteOne(교체부품상세8 , row_one_id);
+	await delay();
+	progress.value = 14 / 16 * 100;
+
+	deleteOne(교체부품상세9 , row_one_id);
+	await delay();
+	progress.value = 15 / 16 * 100;
+
+	deleteOne(교체부품상세10 , row_one_id);
+	await delay();
+	progress.value = 16 / 16 * 100;
 	if(delete_count > 0) {
 		alert('삭제 되었습니다.');
-		재제조현황_조회(false);
 	}
+	재제조현황_조회(false);
 }
 
 async function grid_기초검사(m_id) {

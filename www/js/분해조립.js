@@ -184,7 +184,7 @@ async function request_고품QR() {
 		await delay();
 		console.log(find_array);
 
-		var str = '관리번호:' + find_array[0].관리번호 + ', 재제조번호:' + find_array[0].재제조번호;
+		var str = 'QR:' + QR + ', 관리번호:' + find_array[0].관리번호 + ', 재제조번호:' + find_array[0].재제조번호;
 		console.log(str);
 		return str;
 	}
