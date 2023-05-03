@@ -1,6 +1,4 @@
-var _chart_;
-var _month_chart;
-var _공정단계_chart;
+var _chart;
 
 function rand(min, max) {
   min = Math.ceil(min);
@@ -15,7 +13,6 @@ async function 생산현황_시작() {
 		await sleep(DELAY);
 	}
 	품번_조회();
-	await sleep(100);
 }
 
 async function 품번_조회() {
@@ -27,13 +24,13 @@ async function 품번_조회() {
 
 	count(BSA재제조, { 출하 : { $exists : true}, 품번 : { $exists: true}});
 	await delay();
+	await sleep(100);
 	console.log('doc_count: ', doc_count);
 	if(doc_count < 1) return;
 
 	find_query(BSA재제조, { 출하 : { $exists : true}, 품번 : { $exists: true}});
 	await delay();
 	
-
 	find_array.forEach(function(doc) {
 		if(labels.indexOf(doc.품번) < 0) {
 			labels.push(doc.품번);
@@ -59,6 +56,7 @@ async function 품번_조회() {
 	console.log(count);
 	console.log(background_color);
 	console.log(border_color);
+
 	품번차트(labels, counts, background_color, border_color);
 }
 
@@ -66,11 +64,11 @@ async function 품번차트(labels, counts, background_color, border_color) {
 	if(worker == '') return;
 	const canvas = document.getElementById('_chart');
 
-	if(chart != undefined) {
-		chart.destroy();
+	if(_chart != undefined) {
+		_chart.destroy();
 	}
 
-	chart = new Chart(canvas, {
+	_chart = new Chart(canvas, {
 		type: 'bar',
 		data: {
 			labels: labels,

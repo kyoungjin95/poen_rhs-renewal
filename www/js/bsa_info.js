@@ -33,6 +33,7 @@ async function 재제조현황_조회(flag_id_search = false) {
 			find_query(BSA재제조, { 관리번호: { $exists : true }});
 			//find_query(BSA재제조, { 입고 : { $gte : 기준일 }});
 			await delay();
+			await sleep(100);
 		} else {
 			find(BSA재제조, _management_id.value);
 			await delay();
@@ -61,77 +62,60 @@ async function 재제조현황_조회(flag_id_search = false) {
 		data:tabledata_BSA, 
 		autoColumns:true,
 		
-		//columns:[
-		//	{title:"관리번호", field:"관리번호", sorter:"string", width:130},
-		//	{title:"차종", field:"차종", sorter:"string", width:130},
-		//	{title:"품번", field:"품번", sorter:"string", width:130},
-		//	{title:"RO_no", field:"RO_no", sorter:"string", width:130},
-		//	{title:"공정단계", field:"공정단계", sorter:"string", width:130},
-		//	{title:"적재No", field:"적재No", sorter:"string", width:130},
-		//	{title:"입고", field:"입고", sorter:"string", width:130},
-		//	{title:"제조투입", field:"제조투입", sorter:"string", width:130},
-		//	{title:"세척", field:"세척", sorter:"string", width:130},
-		//	{title:"기초검사", field:"기초검사", sorter:"string", width:130},
-		//	{title:"분해조립", field:"분해조립", sorter:"string", width:130},
-		//	{title:"성능검사", field:"성능검사", sorter:"string", width:130},
-		//	{title:"EOL", field:"EOL", sorter:"string", width:130},
-		//	{title:"출하", field:"출하", sorter:"string", width:130},
-		//	{title:"소재지", field:"소재지", sorter:"string", width:130},
-		//],
 	});
 
 	var progress = document.getElementById('progress');
-	table.on("rowClick", async function(e, row){
+	table.on("rowClick", function(e, row){
 		console.log('selected 관리번호: ',  row.getData().관리번호);
 		m_id = row.getData().관리번호;
 		row_one_id = m_id;
 
-		await grid_기초검사(m_id);
+		grid_기초검사(m_id);
 		progress.value = 1 / 16 * 100;
 
-		await grid_분해조립(m_id);
+		grid_분해조립(m_id);
 		progress.value = 2 / 16 * 100;
 
-		await grid_성능검사(m_id);
+		grid_성능검사(m_id);
 		progress.value = 3 / 16 * 100;
 
-		await grid_EOL(m_id);
+		grid_EOL(m_id);
 		progress.value = 4 / 16 * 100;
 
-		await grid_출하정보(m_id);
+		grid_출하정보(m_id);
 		progress.value = 5 / 16 * 100;
 
-		await grid_특이사항(m_id);
+		grid_특이사항(m_id);
 		progress.value = 6 / 16 * 100;
 
-		await grid_교체부품상세1(m_id);
+		grid_교체부품상세1(m_id);
 		progress.value = 7 / 16 * 100;
 
-		await grid_교체부품상세2(m_id);
+		grid_교체부품상세2(m_id);
 		progress.value = 8 / 16 * 100;
 
-		await grid_교체부품상세3(m_id);
+		grid_교체부품상세3(m_id);
 		progress.value = 9 / 16 * 100;
 
-		await grid_교체부품상세4(m_id);
+		grid_교체부품상세4(m_id);
 		progress.value = 10 / 16 * 100;
 
-		await grid_교체부품상세5(m_id);
+		grid_교체부품상세5(m_id);
 		progress.value = 11 / 16 * 100;
 
-		await grid_교체부품상세6(m_id);
+		grid_교체부품상세6(m_id);
 		progress.value = 12 / 16 * 100;
 
-		await grid_교체부품상세7(m_id);
+		grid_교체부품상세7(m_id);
 		progress.value = 13 / 16 * 100;
 
-		await grid_교체부품상세8(m_id);
+		grid_교체부품상세8(m_id);
 		progress.value = 14 / 16 * 100;
 
-		await grid_교체부품상세9(m_id);
+		grid_교체부품상세9(m_id);
 		progress.value = 15 / 16 * 100;
 
-		await grid_교체부품상세10(m_id);
+		grid_교체부품상세10(m_id);
 		progress.value = 16 / 16 * 100;
 
 		return;

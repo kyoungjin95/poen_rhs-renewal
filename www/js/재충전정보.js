@@ -12,6 +12,7 @@ async function 재충전정보_시작() {
 
 	count(BSA재제조, { 마지막충전일 : { $lte : 기준일, $ne : '' }});
 	await delay();
+	await sleep(100);
 
 	console.log('doc_count: ', doc_count);
 	if(doc_count >= 1) {

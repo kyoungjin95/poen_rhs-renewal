@@ -8,6 +8,7 @@ async function login() {
 
 	count(계정, { id: _id.value, passwd: hash.toString() });
 	await delay();
+	await sleep(100);
 	if(doc_count > 0) {
 		if(worker == '') {
 			worker = _id.value;
