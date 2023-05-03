@@ -86,7 +86,7 @@ function func_csv() {
 				doc.성능검사 = val.성능검사_완료일.trim();
 				doc.EOL = val.EOL_완료일.trim();
 				doc.출하 = val.출하일.trim();
-				doc.소재지 = '마도';
+				doc.소재지 = '';
 
 				console.log('BSA재제조:', doc);
 				update(BSA재제조, doc);
