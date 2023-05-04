@@ -123,7 +123,8 @@ async function 재제조현황_조회(flag_id_search = false) {
 		return;
 	});
 
-	if(_management_id.value == '') return;
+	if(_management_id.value == '' && row_one_id == '') return;
+	document.getElementById('m_id').innerHTML = '관리번호: ' + row_one_id;
 
 	await grid_기초검사(row_one_id);
 	progress.value = 1 / 16 * 100;
