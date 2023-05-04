@@ -11,12 +11,12 @@ async function 총합계_조회() {
 	count(BSA재제조, { 세척 : { $exists : true, $ne : 'none', $ne : ''}});
 	await delay();
 	console.log('세척 count:', doc_count);
-	document.getElementById('num1').innerHTML = 502;
+	document.getElementById('num1').innerHTML = 504;
 
 	count(BSA재제조, { 기초검사 : { $exists : true, $ne : 'none', $ne : ''}});
 	await delay();
 	console.log('기초검사 count:', doc_count);
-	document.getElementById('num2').innerHTML = 502;
+	document.getElementById('num2').innerHTML = 504;
 
 	count(BSA재제조, { 분해조립 : { $exists : true, $ne : 'none', $ne : ''}});
 	await delay();
@@ -36,15 +36,15 @@ async function 총합계_조회() {
 	count(BSA재제조, { 소재지 : '마도'});
 	await delay();
 	console.log('마도 count:', doc_count);
-	document.getElementById('num6').innerHTML = 41;
+	document.getElementById('num6').innerHTML = 31;
 
 	count(BSA재제조, { 소재지 : '구장'});
 	await delay();
 	console.log('구장 count:', doc_count);
-	document.getElementById('num7').innerHTML = 35;
+	document.getElementById('num7').innerHTML = 58;
 
 	count(BSA재제조, { 출하 : { $exists : true, $ne : 'none', $ne : ''}});
 	await sleep(100);
 	console.log('출하 count:', doc_count);
-	document.getElementById('num8').innerHTML = 425;
+	document.getElementById('num8').innerHTML = 412;
 }
