@@ -174,6 +174,7 @@ async function 상세입력_시작() {
 		_출하.value = '0000-00-00T00:00';;
 		_소재지.value = '';
 		_마지막충전일.value = '0000-00-00T00:00';
+		item_detail_save();
 	}
 }
 
@@ -215,7 +216,7 @@ async function item_detail_save(flag_result = false) {
 		}
 
 		if(insert_count > 0) {
-			alert('저장 되었습니다');
+			alert('신규 항목이 저장 되었습니다');
 		}
 	}
 
