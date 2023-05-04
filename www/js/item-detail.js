@@ -21,7 +21,7 @@ async function 상세입력_시작() {
 	if(_management_id.value == '' | _management_id == 'none') return;
 	
 	관리번호 = _management_id.value;
-
+	console.log('관리번호:', 관리번호);
 	count(BSA재제조, { 관리번호 : _management_id.value });
 	await delay();
 	console.log('doc_count: ', doc_count);
@@ -158,7 +158,7 @@ async function 상세입력_시작() {
 		await sleep(DELAY);
 		item_detail_save(true);
 	} else {
-		_제재조번호.value = '';
+		_재제조번호.value = '';
 		_차종.value = '';
 		_품번.value = '';
 		_RO_no.value = '';
