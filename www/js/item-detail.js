@@ -89,7 +89,7 @@ async function 상세입력_시작() {
 			find(기초검사, _management_id.value);
 			await delay();
 			
-			_기초검사.value = find_array[0].완료일;
+			_기초검사.value = find_array[0].공정완료일;
 			if(_기초검사.value != '' && _기초검사.value != 'none' && _기초검사.value != '0000-00-00T00:00') {
 				_공정단계.value = '분해조립';
 			} else {
@@ -105,7 +105,7 @@ async function 상세입력_시작() {
 			find(분해조립, _management_id.value);
 			await delay();
 			
-			_분해조립.value = find_array[0].완료일;
+			_분해조립.value = find_array[0].공정완료일;
 			if(_분해조립.value != '' && _분해조립.value != 'none' && _분해조립.value != '0000-00-00T00:00') {
 				_공정단계.value = '성능검사';
 			} else {
@@ -121,7 +121,7 @@ async function 상세입력_시작() {
 			find(성능검사, _management_id.value);
 			await delay();
 			
-			_성능검사.value = find_array[0].완료일;
+			_성능검사.value = find_array[0].공정완료일;
 			if(_성능검사.value != '' && _성능검사.value != 'none' && _성능검사.value != '0000-00-00T00:00') {
 				_공정단계.value = 'EOL';
 			} else {
@@ -137,7 +137,7 @@ async function 상세입력_시작() {
 			find(EOL, _management_id.value);
 			await delay();
 			
-			_EOL.value = find_array[0].완료일;
+			_EOL.value = find_array[0].공정완료일;
 			if(_EOL.value != '' || _EOL.value != 'none' && _EOL.value != '0000-00-00T00:00') {
 				_공정단계.value = '제조완료';
 			} else {
@@ -152,7 +152,6 @@ async function 상세입력_시작() {
 		if(doc_count >= 1) {
 			find(출하정보, _management_id.value);
 			await delay();
-			
 			_출하.value = find_array[0].출하일;
 			_공정단계.value = '출하';
 		}
