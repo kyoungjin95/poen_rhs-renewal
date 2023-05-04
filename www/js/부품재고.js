@@ -32,6 +32,8 @@ async function 부품재고_시작() {
 	table_신품재고.on("rowClick", async function(e, row){
 		console.log('selected 바코드: ', row.getData().바코드);
 		신품_바코드 = row.getData().바코드;
+
+		document.getElementById('신품_바코드').innerHTML = '바코드: ' + 신품_바코드;
 	});
 
 	count(고품정보, { 관리번호 : { $exists : true }});
@@ -54,6 +56,8 @@ async function 부품재고_시작() {
 	table_고품재고.on("rowClick", async function(e, row){
 		console.log('selected QR: ', row.getData().QR);
 		고품_QR = row.getData().QR;
+
+		document.getElementById('고품_QR').innerHTML = 'QR: ' + 고품_QR;
 	});
 }
 
@@ -65,6 +69,8 @@ async function 신품정보_삭제() {
 		alert('삭제 되었습니다.');
 		부품재고_시작();
 	}
+
+	document.getElementById('신품_바코드').innerHTML = '';
 }
 
 async function 고품정보_삭제() {
@@ -75,5 +81,7 @@ async function 고품정보_삭제() {
 		alert('삭제 되었습니다.');
 		부품재고_시작();
 	}
+
+	document.getElementById('고품_QR').innerHTML = '';
 }
 

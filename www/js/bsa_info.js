@@ -69,6 +69,8 @@ async function 재제조현황_조회(flag_id_search = false) {
 		console.log('selected 관리번호: ',  row.getData().관리번호);
 		m_id = row.getData().관리번호;
 		row_one_id = m_id;
+		
+		document.getElementById('m_id').innerHTML = '관리번호: ' + m_id;
 
 		await grid_기초검사(m_id);
 		progress.value = 1 / 16 * 100;
