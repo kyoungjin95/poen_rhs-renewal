@@ -30,7 +30,7 @@ async function login() {
 				var now = new Date();
 				var 기준일 = new Date(now.setMonth(now.getMonth() - 3));
 
-				count(BSA재제조, { 마지막충전일 : { $lte : 기준일 }});
+				count(BSA재제조, { 마지막충전일 : { $lte : 기준일, $ne : '' }});
 				await delay();
 
 				console.log('doc_count: ', doc_count);

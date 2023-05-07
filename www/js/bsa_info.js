@@ -72,53 +72,59 @@ async function 재제조현황_조회(flag_id_search = false) {
 		
 		document.getElementById('m_id').innerHTML = '관리번호: ' + m_id;
 
+		await grid_입고(m_id);
+		progress.value = 1 / 18 * 100;
+
+		await grid_세척(m_id);
+		progress.value = 2 / 18 * 100;
+
 		await grid_기초검사(m_id);
-		progress.value = 1 / 16 * 100;
+		progress.value = 3 / 18 * 100;
 
 		await grid_분해조립(m_id);
-		progress.value = 2 / 16 * 100;
+		progress.value = 4 / 18 * 100;
 
 		await grid_성능검사(m_id);
-		progress.value = 3 / 16 * 100;
+		progress.value = 5 / 18 * 100;
 
 		await grid_EOL(m_id);
-		progress.value = 4 / 16 * 100;
+		progress.value = 6 / 18 * 100;
 
 		await grid_출하정보(m_id);
-		progress.value = 5 / 16 * 100;
+		progress.value = 7 / 18 * 100;
 
 		await grid_특이사항(m_id);
-		progress.value = 6 / 16 * 100;
+		progress.value = 8 / 18 * 100;
 
 		await grid_교체부품상세1(m_id);
-		progress.value = 7 / 16 * 100;
+		progress.value = 9 / 18 * 100;
 
 		await grid_교체부품상세2(m_id);
-		progress.value = 8 / 16 * 100;
+		progress.value = 10 / 18 * 100;
 
 		await grid_교체부품상세3(m_id);
-		progress.value = 9 / 16 * 100;
+		progress.value = 11 / 18 * 100;
 
 		await grid_교체부품상세4(m_id);
-		progress.value = 10 / 16 * 100;
+		progress.value = 12 / 18 * 100;
 
 		await grid_교체부품상세5(m_id);
-		progress.value = 11 / 16 * 100;
+		progress.value = 13 / 18 * 100;
 
 		await grid_교체부품상세6(m_id);
-		progress.value = 12 / 16 * 100;
+		progress.value = 14 / 18 * 100;
 
 		await grid_교체부품상세7(m_id);
-		progress.value = 13 / 16 * 100;
+		progress.value = 15 / 18 * 100;
 
 		await grid_교체부품상세8(m_id);
-		progress.value = 14 / 16 * 100;
+		progress.value = 16 / 18 * 100;
 
 		await grid_교체부품상세9(m_id);
-		progress.value = 15 / 16 * 100;
+		progress.value = 17 / 18 * 100;
 
 		await grid_교체부품상세10(m_id);
-		progress.value = 16 / 16 * 100;
+		progress.value = 18 / 18 * 100;
 
 		return;
 	});
@@ -126,53 +132,59 @@ async function 재제조현황_조회(flag_id_search = false) {
 	if(_management_id.value == '' && row_one_id == '') return;
 	document.getElementById('m_id').innerHTML = '관리번호: ' + row_one_id;
 
+	await grid_입고(row_one_id);
+	progress.value = 1 / 18 * 100;
+
+	await grid_세척(row_one_id);
+	progress.value = 2 / 18 * 100;
+
 	await grid_기초검사(row_one_id);
-	progress.value = 1 / 16 * 100;
+	progress.value = 3 / 18 * 100;
 
 	await grid_분해조립(row_one_id);
-	progress.value = 2 / 16 * 100;
+	progress.value = 4 / 18 * 100;
 
 	await grid_성능검사(row_one_id);
-	progress.value = 3 / 16 * 100;
+	progress.value = 5 / 18 * 100;
 
 	await grid_EOL(row_one_id);
-	progress.value = 4 / 16 * 100;
+	progress.value = 6 / 18 * 100;
 
 	await grid_출하정보(row_one_id);
-	progress.value = 5 / 16 * 100;
+	progress.value = 7 / 18 * 100;
 
 	await grid_특이사항(row_one_id);
-	progress.value = 6 / 16 * 100;
+	progress.value = 8 / 18 * 100;
 
 	await grid_교체부품상세1(row_one_id);
-	progress.value = 7 / 16 * 100;
+	progress.value = 9 / 18 * 100;
 
 	await grid_교체부품상세2(row_one_id);
-	progress.value = 8 / 16 * 100;
+	progress.value = 10 / 18 * 100;
 
 	await grid_교체부품상세3(row_one_id);
-	progress.value = 9 / 16 * 100;
+	progress.value = 11 / 18 * 100;
 
 	await grid_교체부품상세4(row_one_id);
-	progress.value = 10 / 16 * 100;
+	progress.value = 12 / 18 * 100;
 
 	await grid_교체부품상세5(row_one_id);
-	progress.value = 11 / 16 * 100;
+	progress.value = 13 / 18 * 100;
 
 	await grid_교체부품상세6(row_one_id);
-	progress.value = 12 / 16 * 100;
+	progress.value = 14 / 18 * 100;
 
 	await grid_교체부품상세7(row_one_id);
-	progress.value = 13 / 16 * 100;
+	progress.value = 15 / 18 * 100;
 
 	await grid_교체부품상세8(row_one_id);
-	progress.value = 14 / 16 * 100;
+	progress.value = 16 / 18 * 100;
 
 	await grid_교체부품상세9(row_one_id);
-	progress.value = 15 / 16 * 100;
+	progress.value = 17 / 18 * 100;
 
 	await grid_교체부품상세10(row_one_id);
-	progress.value = 16 / 16 * 100;
+	progress.value = 18 / 18 * 100;
 };
 
 async function delete_bsa() {
@@ -181,89 +193,126 @@ async function delete_bsa() {
 	deleteOne(BSA재제조, row_one_id);
 	await delay();
 
+	deleteOne(입고, row_one_id);
+	await delay();
+	progress.value = 1 / 18 * 100;
+
+	deleteOne(세척, row_one_id);
+	await delay();
+	progress.value = 2 / 18 * 100;
+
 	deleteOne(기초검사, row_one_id);
 	await delay();
-	progress.value = 1 / 16 * 100;
+	progress.value = 3 / 18 * 100;
 
 	deleteOne(분해조립, row_one_id);
 	await delay();
-	progress.value = 2 / 16 * 100;
+	progress.value = 4 / 18 * 100;
 
 	deleteOne(성능검사, row_one_id);
 	await delay();
-	progress.value = 3 / 16 * 100;
+	progress.value = 5 / 18 * 100;
 
 	deleteOne(EOL, row_one_id);
 	await delay();
-	progress.value = 4 / 16 * 100;
+	progress.value = 6 / 18 * 100;
 
 	deleteOne(출하정보, row_one_id);
 	await delay();
-	progress.value = 5 / 16 * 100;
+	progress.value = 7 / 18 * 100;
 
 	deleteOne(특이사항, row_one_id);
 	await delay();
-	progress.value = 6 / 16 * 100;
+	progress.value = 8 / 18 * 100;
 
 	deleteOne(교체부품상세1 , row_one_id);
 	await delay();
-	progress.value = 7 / 16 * 100;
+	progress.value = 9 / 18 * 100;
 
 	deleteOne(교체부품상세2 , row_one_id);
 	await delay();
-	progress.value = 8 / 16 * 100;
+	progress.value = 10 / 18 * 100;
 
 	deleteOne(교체부품상세3 , row_one_id);
 	await delay();
-	progress.value = 9 / 16 * 100;
+	progress.value = 11 / 18 * 100;
 
 	deleteOne(교체부품상세4 , row_one_id);
 	await delay();
-	progress.value = 10 / 16 * 100;
+	progress.value = 12 / 18 * 100;
 
 	deleteOne(교체부품상세5 , row_one_id);
 	await delay();
-	progress.value = 11 / 16 * 100;
+	progress.value = 13 / 18 * 100;
 
 	deleteOne(교체부품상세6 , row_one_id);
 	await delay();
-	progress.value = 12 / 16 * 100;
+	progress.value = 14 / 18 * 100;
 
 	deleteOne(교체부품상세7 , row_one_id);
 	await delay();
-	progress.value = 13 / 16 * 100;
+	progress.value = 15 / 18 * 100;
 
 	deleteOne(교체부품상세8 , row_one_id);
 	await delay();
-	progress.value = 14 / 16 * 100;
+	progress.value = 16 / 18 * 100;
 
 	deleteOne(교체부품상세9 , row_one_id);
 	await delay();
-	progress.value = 15 / 16 * 100;
+	progress.value = 17 / 18 * 100;
 
 	deleteOne(교체부품상세10 , row_one_id);
 	await delay();
-	progress.value = 16 / 16 * 100;
+	progress.value = 18 / 18 * 100;
 	if(delete_count > 0) {
 		alert('삭제 되었습니다.');
 	}
 	재제조현황_조회(false);
 }
 
+async function grid_입고(m_id) {
+	if(worker == '') return;
+	var tabledata_입고 = [];
+
+		find(입고, m_id);
+		await delay();
+		tabledata_입고 = find_array;
+		console.log('입고 : ', find_array);;
+
+	var table_입고 = new Tabulator("#grid_입고정보", {
+		layout: "resizableColumnFit",
+		height:130,
+		data:tabledata_입고, 
+		autoColumns:true
+	});
+}
+
+async function grid_세척(m_id) {
+	if(worker == '') return;
+	var tabledata_세척 = [];
+
+		find(세척, m_id);
+		await delay();
+		tabledata_세척 = find_array;
+		console.log('세척 : ', find_array);;
+
+	var table_세척 = new Tabulator("#grid_세척정보", {
+		layout: "resizableColumnFit",
+		height:130,
+		data:tabledata_세척, 
+		autoColumns:true
+	});
+}
+
 async function grid_기초검사(m_id) {
 	if(worker == '') return;
 	var tabledata_기초검사 = [];
 
-	count(기초검사, { 관리번호 : m_id });
-	await delay();
-	console.log('doc_count: ', doc_count);
-	if(doc_count >= 1) {
 		find(기초검사, m_id);
 		await delay();
 		await sleep(100);
 		tabledata_기초검사 = find_array;
 		console.log('기초검사 : ', find_array);;
-	}
 
 	var table_기초검사 = new Tabulator("#grid_기초검사", {
 		layout: "resizableColumnFit",
@@ -295,16 +344,11 @@ async function grid_분해조립(m_id) {
 	if(worker == '') return;
 	var tabledata_분해조립 = [];
 
-	count(분해조립, { 관리번호 : m_id });
-	await delay();
-	console.log('doc_count: ', doc_count);
-	if(doc_count >= 1) {
 		find(분해조립, m_id);
 		await delay();
 		await sleep(100);
 		tabledata_분해조립 = find_array;
 		console.log('분해조립 : ', find_array);;
-	}
 
 	var table_분해조립 = new Tabulator("#grid_분해조립", {
 		layout: "resizableColumnFit",
@@ -338,15 +382,10 @@ async function grid_성능검사(m_id) {
 	if(worker == '') return;
 	var tabledata_성능검사 = [];
 
-	count(성능검사, { 관리번호 : m_id });
-	await delay();
-	console.log('doc_count: ', doc_count);
-	if(doc_count >= 1) {
 		find(성능검사, m_id);
 		await delay();
 		tabledata_성능검사 = find_array;
 		console.log('성능검사 : ', find_array);;
-	}
 
 	var table_성능검사 = new Tabulator("#grid_성능검사", {
 		layout: "resizableColumnFit",
@@ -378,15 +417,10 @@ async function grid_EOL(m_id) {
 	if(worker == '') return;
 	var tabledata_EOL = [];
 
-	count(EOL, { 관리번호 : m_id });
-	await delay();
-	console.log('doc_count: ', doc_count);
-	if(doc_count >= 1) {
 		find(EOL, m_id);
 		await delay();
 		tabledata_EOL = find_array;
 		console.log('EOL : ', find_array);;
-	}
 
 	var table_EOL = new Tabulator("#grid_EOL", {
 		layout: "resizableColumnFit",
@@ -409,16 +443,11 @@ async function grid_출하정보(m_id) {
 	if(worker == '') return;
 	var tabledata_출하정보 = [];
 
-	count(출하정보, { 관리번호 : m_id });
-	await delay();
-	console.log('doc_count: ', doc_count);
-	if(doc_count >= 1) {
 		find(출하정보, m_id);
 		await delay();
 		await sleep(100);
 		tabledata_출하정보 = find_array;
 		console.log('출하정보 : ', find_array);;
-	}
 
 	var table_출하정보 = new Tabulator("#grid_출하정보", {
 		layout: "resizableColumnFit",
@@ -439,15 +468,10 @@ async function grid_특이사항(m_id) {
 	if(worker == '') return;
 	var tabledata_특이사항 = [];
 
-	count(특이사항, { 관리번호 : m_id });
-	await delay();
-	console.log('doc_count: ', doc_count);
-	if(doc_count >= 1) {
 		find(특이사항, m_id);
 		await delay();
 		tabledata_특이사항 = find_array;
 		console.log('특이사항 : ', find_array);;
-	}
 
 	var table_특이사항 = new Tabulator("#grid_특이사항", {
 		layout: "resizableColumnFit",
@@ -466,15 +490,10 @@ async function grid_교체부품상세1(m_id) {
 	if(worker == '') return;
 	var tabledata_교체부품상세1 = [];
 
-	count(교체부품상세1, { 관리번호 : m_id });
-	await delay();
-	console.log('doc_count: ', doc_count);
-	if(doc_count >= 1) {
 		find(교체부품상세1, m_id);
 		await delay();
 		tabledata_교체부품상세1 = find_array;
 		console.log('교체부품상세1 : ', find_array);;
-	}
 
 	var table_교체부품상세1 = new Tabulator("#grid_교체부품상세1", {
 		layout: "resizableColumnFit",
@@ -501,15 +520,10 @@ async function grid_교체부품상세2(m_id) {
 	if(worker == '') return;
 	var tabledata_교체부품상세2 = [];
 
-	count(교체부품상세2, { 관리번호 : m_id });
-	await delay();
-	console.log('doc_count: ', doc_count);
-	if(doc_count >= 1) {
 		find(교체부품상세2, m_id);
 		await delay();
 		tabledata_교체부품상세2 = find_array;
 		console.log('교체부품상세2 : ', find_array);;
-	}
 
 	var table_교체부품상세2 = new Tabulator("#grid_교체부품상세2", {
 		layout: "resizableColumnFit",
@@ -536,15 +550,10 @@ async function grid_교체부품상세3(m_id) {
 	if(worker == '') return;
 	var tabledata_교체부품상세3 = [];
 
-	count(교체부품상세3, { 관리번호 : m_id });
-	await delay();
-	console.log('doc_count: ', doc_count);
-	if(doc_count >= 1) {
 		find(교체부품상세3, m_id);
 		await delay();
 		tabledata_교체부품상세3 = find_array;
 		console.log('교체부품상세3 : ', find_array);;
-	}
 
 	var table_교체부품상세3 = new Tabulator("#grid_교체부품상세3", {
 		layout: "resizableColumnFit",
@@ -571,15 +580,10 @@ async function grid_교체부품상세4(m_id) {
 	if(worker == '') return;
 	var tabledata_교체부품상세4 = [];
 
-	count(교체부품상세4, { 관리번호 : m_id });
-	await delay();
-	console.log('doc_count: ', doc_count);
-	if(doc_count >= 1) {
 		find(교체부품상세4, m_id);
 		await delay();
 		tabledata_교체부품상세4 = find_array;
 		console.log('교체부품상세4 : ', find_array);;
-	}
 
 	var table_교체부품상세4 = new Tabulator("#grid_교체부품상세4", {
 		layout: "resizableColumnFit",
@@ -606,15 +610,10 @@ async function grid_교체부품상세5(m_id) {
 	if(worker == '') return;
 	var tabledata_교체부품상세5 = [];
 
-	count(교체부품상세5, { 관리번호 : m_id });
-	await delay();
-	console.log('doc_count: ', doc_count);
-	if(doc_count >= 1) {
 		find(교체부품상세5, m_id);
 		await delay();
 		tabledata_교체부품상세5 = find_array;
 		console.log('교체부품상세5 : ', find_array);;
-	}
 
 	var table_교체부품상세5 = new Tabulator("#grid_교체부품상세5", {
 		layout: "resizableColumnFit",
@@ -641,15 +640,10 @@ async function grid_교체부품상세6(m_id) {
 	if(worker == '') return;
 	var tabledata_교체부품상세6 = [];
 
-	count(교체부품상세6, { 관리번호 : m_id });
-	await delay();
-	console.log('doc_count: ', doc_count);
-	if(doc_count >= 1) {
 		find(교체부품상세6, m_id);
 		await delay();
 		tabledata_교체부품상세6 = find_array;
 		console.log('교체부품상세6 : ', find_array);;
-	}
 
 	var table_교체부품상세6 = new Tabulator("#grid_교체부품상세6", {
 		layout: "resizableColumnFit",
@@ -676,15 +670,10 @@ async function grid_교체부품상세7(m_id) {
 	if(worker == '') return;
 	var tabledata_교체부품상세7 = [];
 
-	count(교체부품상세7, { 관리번호 : m_id });
-	await delay();
-	console.log('doc_count: ', doc_count);
-	if(doc_count >= 1) {
 		find(교체부품상세7, m_id);
 		await delay();
 		tabledata_교체부품상세7 = find_array;
 		console.log('교체부품상세7 : ', find_array);;
-	}
 
 	var table_교체부품상세7 = new Tabulator("#grid_교체부품상세7", {
 		layout: "resizableColumnFit",
@@ -711,15 +700,10 @@ async function grid_교체부품상세8(m_id) {
 	if(worker == '') return;
 	var tabledata_교체부품상세8 = [];
 
-	count(교체부품상세8, { 관리번호 : m_id });
-	await delay();
-	console.log('doc_count: ', doc_count);
-	if(doc_count >= 1) {
 		find(교체부품상세8, m_id);
 		await delay();
 		tabledata_교체부품상세8 = find_array;
 		console.log('교체부품상세8 : ', find_array);;
-	}
 
 	var table_교체부품상세8 = new Tabulator("#grid_교체부품상세8", {
 		layout: "resizableColumnFit",
@@ -746,15 +730,10 @@ async function grid_교체부품상세9(m_id) {
 	if(worker == '') return;
 	var tabledata_교체부품상세9 = [];
 
-	count(교체부품상세9, { 관리번호 : m_id });
-	await delay();
-	console.log('doc_count: ', doc_count);
-	if(doc_count >= 1) {
 		find(교체부품상세9, m_id);
 		await delay();
 		tabledata_교체부품상세9 = find_array;
 		console.log('교체부품상세9 : ', find_array);;
-	}
 
 	var table_교체부품상세9 = new Tabulator("#grid_교체부품상세9", {
 		layout: "resizableColumnFit",
@@ -781,15 +760,10 @@ async function grid_교체부품상세10(m_id) {
 	if(worker == '') return;
 	var tabledata_교체부품상세10 = [];
 
-	count(교체부품상세10, { 관리번호 : m_id });
-	await delay();
-	console.log('doc_count: ', doc_count);
-	if(doc_count >= 1) {
 		find(교체부품상세10, m_id);
 		await delay();
 		tabledata_교체부품상세10 = find_array;
 		console.log('교체부품상세10 : ', find_array);;
-	}
 
 	var table_교체부품상세10 = new Tabulator("#grid_교체부품상세10", {
 		layout: "resizableColumnFit",
