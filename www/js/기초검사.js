@@ -72,7 +72,7 @@ async function 기초검사_managementID() {
 		_통신검사_셀전압편차.value = '';
 		_통신검사_릴레이구동.value = '';
 		_공정완료일.value = '0000-00-00T00:00';
-		_검사자.value = '';
+		_검사자.value = worker;
 	}
 }
 
