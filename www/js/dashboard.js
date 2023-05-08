@@ -8,30 +8,66 @@ async function 대시보드_시작() {
 }
 
 async function 총합계_조회() {
+	var now = new Date();
+	var today = now.toISOString().slice(0, 10) + 'T00:00:000Z';
 	count(BSA재제조, { 세척 : { $exists : true, $ne : 'none', $ne : ''}});
 	await delay();
 	console.log('세척 count:', doc_count);
-	document.getElementById('num1').innerHTML = 504;
+	var 세척누적 = doc_count;
+
+	count(BSA재제조, { 세척 : { $exists : true, $ne : 'none', $ne : '', $gte : today}});
+	await delay();
+	console.log('세척 당일 count:', doc_count);
+	var 세척당일 = doc_count;
+
+	document.getElementById('num1').innerHTML = 세척누적 + ' (' + 세척당일 + ')';
 
 	count(BSA재제조, { 기초검사 : { $exists : true, $ne : 'none', $ne : ''}});
 	await delay();
-	console.log('기초검사 count:', doc_count);
-	document.getElementById('num2').innerHTML = 504;
+	console.log('기초검사누적 count:', doc_count);
+	var 기초검사누적 = doc_count;
+
+	count(BSA재제조, { 기초검사 : { $exists : true, $ne : 'none', $ne : '', $gte : today}});
+	await delay();
+	console.log('기초검사당일  count:', doc_count);
+	var 기초검사당일 = doc_count;
+
+	document.getElementById('num2').innerHTML = 기초검사누적 + ' (' + 기초검사당일 + ')';
 
 	count(BSA재제조, { 분해조립 : { $exists : true, $ne : 'none', $ne : ''}});
 	await delay();
-	console.log('분해조립 count:', doc_count);
-	document.getElementById('num3').innerHTML = 502;
+	console.log('분해조립누적 count:', doc_count);
+	var 분해조립누적 = doc_count;
+
+	count(BSA재제조, { 분해조립 : { $exists : true, $ne : 'none', $ne : '', $gte : today}});
+	await delay();
+	console.log('분해조립당일 count:', doc_count);
+	var 분해조립당일 = doc_count;
+
+	document.getElementById('num3').innerHTML = 분해조립누적 + ' (' + 분해조립당일 + ')';
 
 	count(BSA재제조, { 성능검사 : { $exists : true, $ne : 'none', $ne : ''}});
 	await delay();
-	console.log('성능검사 count:', doc_count);
-	document.getElementById('num4').innerHTML = 502;
+	console.log('성능검사누적 count:', doc_count);
+	var 성능검사누적 = doc_count;
+	
+	count(BSA재제조, { 성능검사 : { $exists : true, $ne : 'none', $ne : '', $gte : today}});
+	await delay();
+	console.log('성능검사 당일  count:', doc_count);
+	var 성능검사당일 = doc_count;
+
+	document.getElementById('num4').innerHTML = 성능검사누적 + ' ('+ 성능검사당일 + ')';
 
 	count(BSA재제조, { EOL : { $exists : true, $ne : 'none', $ne : ''}});
 	await delay();
-	console.log('EOL count:', doc_count);
-	document.getElementById('num5').innerHTML = 501;
+	console.log('EOL 누적 count:', doc_count);
+	var EOL누적 = doc_count;
+
+	count(BSA재제조, { EOL : { $exists : true, $ne : 'none', $ne : '', $gte : today}});
+	await delay();
+	console.log('EOL 당일  count:', doc_count);
+	var EOL당일 = doc_count;
+	document.getElementById('num5').innerHTML = EOL누적 + ' (' + EOL당일 + ')';
 
 	count(BSA재제조, { 소재지 : '마도'});
 	await delay();
@@ -45,6 +81,12 @@ async function 총합계_조회() {
 
 	count(BSA재제조, { 출하 : { $exists : true, $ne : 'none', $ne : ''}});
 	await sleep(100);
-	console.log('출하 count:', doc_count);
-	document.getElementById('num8').innerHTML = 412;
+	console.log('출하누적 count:', doc_count);
+	var 출하누적 = doc_count;
+
+	count(BSA재제조, { 성능검사 : { $exists : true, $ne : 'none', $ne : '', $gte : today}});
+	await delay();
+	console.log('출하당일 count:', doc_count);
+	var 출하당일 = doc_count;
+	document.getElementById('num8').innerHTML = 출하누적 + ' (' + 출하당일 + ')';
 }
