@@ -44,7 +44,7 @@ if(worker == '' || worker == null) {
 	_login_info.innerHTML = worker + ' / 로그인 中  ';
 	_login_btn.innerHTML = '로그아웃';
 	setTimeout(function() {
-		if(_level == 'admin') {
+		if(_level == '관리자') {
 			const _admin_btn = document.getElementById('부품재고_btn');
 			_admin_btn.style.display = 'block';
 		}
