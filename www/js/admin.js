@@ -92,6 +92,15 @@ function func_csv() {
 				update(BSA재제조, doc);
 				await sleep(DELAY);
 
+				doc = 입고_doc;
+				doc.차종 = val.차종.trim();
+				doc.품번 = val.품번.trim(); 
+				doc.RO_no = val.RO_no.trim(); 
+
+				console.log('입고:', doc);
+				update(입고, doc);
+				await sleep(DELAY);
+
 				doc = 기초검사_doc;
 				doc.관리번호 = val.관리번호.trim();
 				doc.육안검사_외부 = val.외부.trim();

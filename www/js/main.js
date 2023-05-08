@@ -83,7 +83,7 @@ var interval = setInterval(function() {
 }, 500);
 
 var intervalRepeat = setInterval(function() {
-	if(flag_repeat_생산현황 == true) 생산현황_시작();
+	//if(flag_repeat_생산현황 == true) 생산현황_시작();
 	if(flag_repeat_대시보드 == true) 대시보드_시작();
 }, 1000 * 60);
 
