@@ -24,7 +24,7 @@ async function login() {
 				loadPage('base/dashboard.html');
 				start_repeat_대시보드();
 				대시보드_시작();
-				if(level == 'admin') admin_btn.style.display = 'block';
+				if(level == '관리자') admin_btn.style.display = 'block';
 				if(level == '부품관리자') 부품재고_btn.style.display = 'block';
 				
 				var now = new Date();
