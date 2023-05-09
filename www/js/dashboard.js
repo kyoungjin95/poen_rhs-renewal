@@ -84,9 +84,14 @@ async function 총합계_조회() {
 	console.log('출하누적 count:', doc_count);
 	var 출하누적 = doc_count;
 
-	count(BSA재제조, { 성능검사 : { $exists : true, $ne : 'none', $ne : '', $gte : today}});
+	count(BSA재제조, { 출하 : { $exists : true, $ne : 'none', $ne : '', $gte : today}});
 	await delay();
 	console.log('출하당일 count:', doc_count);
 	var 출하당일 = doc_count;
 	document.getElementById('num8').innerHTML = 출하누적 + ' (' + 출하당일 + ')';
+
+	count(BSA재제조, { 소재지 : '폐기'});
+	await delay();
+	console.log('폐기 count:', doc_count);
+	document.getElementById('num9').innerHTML = doc_count;
 }
