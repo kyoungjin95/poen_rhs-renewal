@@ -72,12 +72,12 @@ async function 총합계_조회() {
 	count(BSA재제조, { 소재지 : '마도'});
 	await delay();
 	console.log('마도 count:', doc_count);
-	document.getElementById('num6').innerHTML = 31;
+	document.getElementById('num6').innerHTML = doc_count;
 
 	count(BSA재제조, { 소재지 : '구장'});
 	await delay();
 	console.log('구장 count:', doc_count);
-	document.getElementById('num7').innerHTML = 58;
+	document.getElementById('num7').innerHTML = doc_count;
 
 	count(BSA재제조, { 출하 : { $exists : true, $ne : 'none', $ne : ''}});
 	await sleep(100);
