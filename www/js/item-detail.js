@@ -299,6 +299,12 @@ function 공정입력_콤보박스(e) {
   	document.getElementById('_공정단계').value = value;
 }
 
+function 소재지_콤보박스(e) {
+	const value = e.value;
+
+  	document.getElementById('_소재지').value = value;
+}
+
 function 교체부품상세_콤보박스(e) {
 	const value = e.value;
 
