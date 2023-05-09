@@ -88,13 +88,14 @@ async function change_label() {
 		_login_btn.innerHTML = '로그인';
 		_login_info.innerHTML = '';
 	} else {
-		count(계정, { id: 'admin' });
-		await delay();
-		if(doc_count == 0 || level == 'admin') {
-			admin_btn.style.display = 'block';
-		}
 		_label.innerHTML = 'Logout';
 		_login_btn.innerHTML = '로그아웃';
 		_login_info.innerHTML = worker + ' / 로그인 中  ';
+	}
+
+	count(계정, { id: 'admin' });
+	await delay();
+	if(doc_count == 0 || level == 'admin') {
+		admin_btn.style.display = 'block';
 	}
 }
