@@ -61,31 +61,32 @@ function func_csv() {
 		const target = event.target;
 		const files = target.files;
 		const file = files[0];
-
+		
 		const reader = new FileReader();
 		reader.addEventListener('load', function() {
 			const res = d3.csvParse(reader.result);
 			console.log(res);
 
 			res.forEach(async function(val) {
-				if(val.관리번호 == undefined || val.관리번호.trim() == '') return;
+				if(val.관리번호 == undefined || val.관리번호 == '') return;
 
 				console.log(val);
 				var doc = BSA재제조_doc;
-				doc.관리번호 = val.관리번호.trim();
-				doc.차종 = val.차종.trim();
-				doc.품번 = val.품번.trim(); 
-				doc.RO_no = val.RO_no.trim(); 
+				doc.재제조번호 = val.재제조번호;
+				doc.관리번호 = val.관리번호;
+				doc.차종 = val.차종;
+				doc.품번 = val.품번; 
+				doc.RO_no = val.RO_no; 
 				doc.공정단계 = '출하'; 
 				doc.적재No = ''; 
-				doc.입고 = val.기초검사_완료일.trim();
-				doc.제조투입 = val.기초검사_완료일.trim();
-				doc.세척 = val.기초검사_완료일.trim();
-				doc.기초검사 = val.기초검사_완료일.trim();
-				doc.분해조립 = val.분해조립_완료일.trim();
-				doc.성능검사 = val.성능검사_완료일.trim();
-				doc.EOL = val.EOL_완료일.trim();
-				doc.출하 = val.출하일.trim();
+				doc.입고 = val.기초검사_완료일;
+				doc.제조투입 = val.기초검사_완료일;
+				doc.세척 = val.기초검사_완료일;
+				doc.기초검사 = val.기초검사_완료일;
+				doc.분해조립 = val.분해조립_완료일;
+				doc.성능검사 = val.성능검사_완료일;
+				doc.EOL = val.EOL_완료일;
+				doc.출하 = val.출하일;
 				doc.소재지 = '';
 
 				console.log('BSA재제조:', doc);
@@ -93,62 +94,62 @@ function func_csv() {
 				await sleep(DELAY);
 
 				doc = 입고_doc;
-				doc.차종 = val.차종.trim();
-				doc.품번 = val.품번.trim(); 
-				doc.RO_no = val.RO_no.trim(); 
+				doc.차종 = val.차종;
+				doc.품번 = val.품번; 
+				doc.RO_no = val.RO_no; 
 
 				console.log('입고:', doc);
 				update(입고, doc);
 				await sleep(DELAY);
 
 				doc = 기초검사_doc;
-				doc.관리번호 = val.관리번호.trim();
-				doc.육안검사_외부 = val.외부.trim();
-				doc.육안검사_내부 = val.내부.trim();
-				doc.기밀검사_케이스 = val.케이스.trim();
-				doc.기밀검사_냉각유로 = val.냉각유로.trim();
-				doc.절연검사_Plus = val.plus.trim();
-				doc.절연검사_Minus = val.minus.trim();
-				doc.토크검사_UPR_C = val.UPR_C.trim();
-				doc.토크검사_버스바 = val.버스바.trim(); 
-				doc.통신검사_DTC코드 = val.DTC코드.trim();
-				doc.통신검사_팩전압 = val.팩전압.trim();
-				doc.통신검사_셀전압편차 = val.셀전압편차.trim();
-				doc.통신검사_릴레이구동 = val.릴레이구동.trim(); 
-				doc.완료일 = val.기초검사_완료일.trim(); 
-				doc.검사자 = val.기초검사_검사자.trim();
+				doc.관리번호 = val.관리번호;
+				doc.육안검사_외부 = val.외부;
+				doc.육안검사_내부 = val.내부;
+				doc.기밀검사_케이스 = val.케이스;
+				doc.기밀검사_냉각유로 = val.냉각유로;
+				doc.절연검사_Plus = val.plus;
+				doc.절연검사_Minus = val.minus;
+				doc.토크검사_UPR_C = val.UPR_C;
+				doc.토크검사_버스바 = val.버스바; 
+				doc.통신검사_DTC코드 = val.DTC코드;
+				doc.통신검사_팩전압 = val.팩전압;
+				doc.통신검사_셀전압편차 = val.셀전압편차;
+				doc.통신검사_릴레이구동 = val.릴레이구동; 
+				doc.완료일 = val.기초검사_완료일; 
+				doc.검사자 = val.기초검사_검사자;
 
 				console.log('기초검사:', doc);
 				update(기초검사, doc);
 				await sleep(DELAY);
 
 				doc = 성능검사_doc;
-				doc.관리번호 = val.관리번호.trim();
-				doc.UPR_C조립 = val.UPR_C조립.trim();
-				doc.기밀검사_케이스 = val.성능검사_케이스.trim();
-				doc.기밀검사_냉각유로 = val.성능검사_냉각유로.trim();
-				doc.절연검사_Plus = val.성능검사_plus.trim();
-				doc.절연검사_Minus = val.성능검사_minus.trim();
-				doc.토크검사_UPR_C = val.UPR_C조립.trim();
+				doc.관리번호 = val.관리번호;
+				doc.UPR_C조립 = val.UPR_C조립;
+				doc.기밀검사_케이스 = val.성능검사_케이스;
+				doc.기밀검사_냉각유로 = val.성능검사_냉각유로;
+				doc.절연검사_Plus = val.성능검사_plus;
+				doc.절연검사_Minus = val.성능검사_minus;
+				doc.토크검사_UPR_C = val.UPR_C조립;
 				doc.토크검사_버스바 = 'none';
-				doc.통신검사_DTC코드 = val.성능검사_DTC코드.trim();
-				doc.통신검사_팩전압 = val.성능검사_팩전압.trim();
-				doc.통신검사_셀전압편차 = val.성능검사_셀전압편차.trim();
-				doc.통신검사_릴레이구동 = val.성능검사_릴레이구동.trim();
-				doc.완료일 = val.성능검사_완료일.trim();
-				doc.검사자 = val.성능검사_검사자.trim();
+				doc.통신검사_DTC코드 = val.성능검사_DTC코드;
+				doc.통신검사_팩전압 = val.성능검사_팩전압;
+				doc.통신검사_셀전압편차 = val.성능검사_셀전압편차;
+				doc.통신검사_릴레이구동 = val.성능검사_릴레이구동;
+				doc.완료일 = val.성능검사_완료일;
+				doc.검사자 = val.성능검사_검사자;
 
 				console.log('성능검사:', doc);
 				update(성능검사, doc);
 				await sleep(DELAY);
 
 				doc = EOL_doc;
-				doc.관리번호 = val.관리번호.trim();
-				doc.용량평가 = val.용량평가.trim();
-				doc.SOC60Percent = val.SOC60.trim();
-				doc.DCIR = val.DCIR.trim();
-				doc.완료일 = val.EOL_완료일.trim();
-				doc.검사자 = val.EOL_검사자.trim();
+				doc.관리번호 = val.관리번호;
+				doc.용량평가 = val.용량평가;
+				doc.SOC60Percent = val.SOC60;
+				doc.DCIR = val.DCIR;
+				doc.완료일 = val.EOL_완료일;
+				doc.검사자 = val.EOL_검사자;
 
 				console.log('EOL:', doc);
 				update(EOL, doc);
@@ -156,191 +157,191 @@ function func_csv() {
 
 
 				doc = 출하정보_doc;
-				doc.관리번호 = val.관리번호.trim();
-				doc.출하일 = val.출하일.trim();
-				doc.출하코드 = val.출하코드.trim();
-				doc.납품처 = val.납품처.trim();
+				doc.관리번호 = val.관리번호;
+				doc.출하일 = val.출하일;
+				doc.출하코드 = val.출하코드;
+				doc.납품처 = val.납품처;
 
 				console.log('출하코드:', doc);
 				update(출하정보, doc);
 				await sleep(DELAY);
 
 				doc = 분해조립_doc;
-				doc.관리번호 = val.관리번호.trim();
-				doc.UPR_C = val.분해조립_UPR_C.trim();
-				doc.PBE = val.PBE.trim();
-				doc.Gasket = val.Gasket.trim();
-				doc.Busbars = val.Busbars.trim();
-				doc.W_H = val.W_H.trim();
-				doc.SPA = val.SPA.trim();
-				doc.PRA = val.PRA.trim();
-				doc.FuseBox = val.FuseBox.trim();
-				doc.Relay = val.Relay.trim();
-				doc.CMU = val.CMU.trim();
-				doc.BMU = val.BMU.trim();
-				doc.BMA = val.BMA.trim();
-				doc.LWR_C = val.LWR_C.trim();
-				doc.ETC = val.기타.trim();
-				doc.완료일 = val.분해조립_완료일.trim();
-				doc.작업자 = val.분해조립_작업자.trim();
+				doc.관리번호 = val.관리번호;
+				doc.UPR_C = val.분해조립_UPR_C;
+				doc.PBE = val.PBE;
+				doc.Gasket = val.Gasket;
+				doc.Busbars = val.Busbars;
+				doc.W_H = val.W_H;
+				doc.SPA = val.SPA;
+				doc.PRA = val.PRA;
+				doc.FuseBox = val.FuseBox;
+				doc.Relay = val.Relay;
+				doc.CMU = val.CMU;
+				doc.BMU = val.BMU;
+				doc.BMA = val.BMA;
+				doc.LWR_C = val.LWR_C;
+				doc.ETC = val.기타;
+				doc.완료일 = val.분해조립_완료일;
+				doc.작업자 = val.분해조립_작업자;
 
 				console.log('분해조립:', doc);
 				update(분해조립, doc);
 				await sleep(DELAY);
 
 				doc = 특이사항_doc;
-				doc.관리번호 = val.관리번호.trim();
-				doc.특이사항 = val.특이사항.trim();
+				doc.관리번호 = val.관리번호;
+				doc.특이사항 = val.특이사항;
 
 				console.log('특이사항:', doc);
 				update(특이사항, doc);
 				await sleep(DELAY);
 
 				doc = 교체부품상세_doc;
-				doc.관리번호 = val.관리번호.trim();
-				doc.교체전_품명 = val.교체전_품명_1.trim();
-				doc.교체전_품번 = val.교체전_품번_1.trim();
-				doc.교체전_QR = val.교체전_QR_1.trim();
-				doc.교체후_신품_고품 = val.신품고품_1.trim();
-				doc.교체후_고품식별 = val.고품식별_1.trim();
-				doc.교체후_품번 = val.품번_1.trim(),
-					doc.교체후_QR = val.QR_1.trim();
-				doc.교체사유 = val.교체사유_1.trim();
+				doc.관리번호 = val.관리번호;
+				doc.교체전_품명 = val.교체전_품명_1;
+				doc.교체전_품번 = val.교체전_품번_1;
+				doc.교체전_QR = val.교체전_QR_1;
+				doc.교체후_신품_고품 = val.신품고품_1;
+				doc.교체후_고품식별 = val.고품식별_1;
+				doc.교체후_품번 = val.품번_1;
+				doc.교체후_QR = val.QR_1;
+				doc.교체사유 = val.교체사유_1;
 
 				console.log('교체부품상세1:', doc);
 				update(교체부품상세1, doc);
 				await sleep(DELAY);
 
 				doc = 교체부품상세_doc;
-				doc.관리번호 = val.관리번호.trim();
-				doc.교체전_품명 = val.교체전_품명_2.trim();
-				doc.교체전_품번 = val.교체전_품번_2.trim();
-				doc.교체전_QR = val.교체전_QR_2.trim();
-				doc.교체후_신품_고품 = val.신품고품_2.trim();
-				doc.교체후_고품식별 = val.고품식별_2.trim();
-				doc.교체후_품번 = val.품번_2.trim();
-				doc.교체후_QR = val.QR_2.trim();
-				doc.교체사유 = val.교체사유_2.trim();
+				doc.관리번호 = val.관리번호;
+				doc.교체전_품명 = val.교체전_품명_2;
+				doc.교체전_품번 = val.교체전_품번_2;
+				doc.교체전_QR = val.교체전_QR_2;
+				doc.교체후_신품_고품 = val.신품고품_2;
+				doc.교체후_고품식별 = val.고품식별_2;
+				doc.교체후_품번 = val.품번_2;
+				doc.교체후_QR = val.QR_2;
+				doc.교체사유 = val.교체사유_2;
 
 				console.log('교체부품상세2:', doc);
 				update(교체부품상세2, doc);
 				await sleep(DELAY);
 
 				doc = 교체부품상세_doc;
-				doc.관리번호 = val.관리번호.trim();
-				doc.교체전_품명 = val.교체전_품명_3.trim();
-				doc.교체전_품번 = val.교체전_품번_3.trim();
-				doc.교체전_QR = val.교체전_QR_3.trim();
-				doc.교체후_신품_고품 = val.신품고품_3.trim();
-				doc.교체후_고품식별 = val.고품식별_3.trim();
-				doc.교체후_품번 = val.품번_3.trim(),
-					doc.교체후_QR = val.QR_3.trim();
-				doc.교체사유 = val.교체사유_3.trim();
+				doc.관리번호 = val.관리번호;
+				doc.교체전_품명 = val.교체전_품명_3;
+				doc.교체전_품번 = val.교체전_품번_3;
+				doc.교체전_QR = val.교체전_QR_3;
+				doc.교체후_신품_고품 = val.신품고품_3;
+				doc.교체후_고품식별 = val.고품식별_3;
+				doc.교체후_품번 = val.품번_3;
+				doc.교체후_QR = val.QR_3;
+				doc.교체사유 = val.교체사유_3;
 
 				console.log('교체부품상세3:', doc);
 				update(교체부품상세3, doc);
 				await sleep(DELAY);
 
 				doc = 교체부품상세_doc;
-				doc.관리번호 = val.관리번호.trim();
-				doc.교체전_품명 = val.교체전_품명_4.trim();
-				doc.교체전_품번 = val.교체전_품번_4.trim();
-				doc.교체전_QR = val.교체전_QR_4.trim();
-				doc.교체후_신품_고품 = val.신품고품_4.trim();
-				doc.교체후_고품식별 = val.고품식별_4.trim();
-				doc.교체후_품번 = val.품번_4.trim(),
-					doc.교체후_QR = val.QR_4.trim();
-				doc.교체사유 = val.교체사유_4.trim();
+				doc.관리번호 = val.관리번호;
+				doc.교체전_품명 = val.교체전_품명_4;
+				doc.교체전_품번 = val.교체전_품번_4;
+				doc.교체전_QR = val.교체전_QR_4;
+				doc.교체후_신품_고품 = val.신품고품_4;
+				doc.교체후_고품식별 = val.고품식별_4;
+				doc.교체후_품번 = val.품번_4;
+				doc.교체후_QR = val.QR_4;
+				doc.교체사유 = val.교체사유_4;
 
 				console.log('교체부품상세4:', doc);
 				update(교체부품상세4, doc);
 				await sleep(DELAY);
 
 				doc = 교체부품상세_doc;
-				doc.관리번호 = val.관리번호.trim();
-				doc.교체전_품명 = val.교체전_품명_5.trim();
-				doc.교체전_품번 = val.교체전_품번_5.trim();
-				doc.교체전_QR = val.교체전_QR_5.trim();
-				doc.교체후_신품_고품 = val.신품고품_5.trim();
-				doc.교체후_고품식별 = val.고품식별_5.trim();
-				doc.교체후_품번 = val.품번_5.trim(),
-					doc.교체후_QR = val.QR_5.trim();
-				doc.교체사유 = val.교체사유_5.trim();
+				doc.관리번호 = val.관리번호;
+				doc.교체전_품명 = val.교체전_품명_5;
+				doc.교체전_품번 = val.교체전_품번_5;
+				doc.교체전_QR = val.교체전_QR_5;
+				doc.교체후_신품_고품 = val.신품고품_5;
+				doc.교체후_고품식별 = val.고품식별_5;
+				doc.교체후_품번 = val.품번_5;
+				doc.교체후_QR = val.QR_5;
+				doc.교체사유 = val.교체사유_5;
 
 				console.log('교체부품상세5:', doc);
 				update(교체부품상세5, doc);
 				await sleep(DELAY);
 
 				doc = 교체부품상세_doc;
-				doc.관리번호 = val.관리번호.trim();
-				doc.교체전_품명 = val.교체전_품명_6.trim();
-				doc.교체전_품번 = val.교체전_품번_6.trim();
-				doc.교체전_QR = val.교체전_QR_6.trim();
-				doc.교체후_신품_고품 = val.신품고품_6.trim();
-				doc.교체후_고품식별 = val.고품식별_6.trim();
-				doc.교체후_품번 = val.품번_6.trim(),
-					doc.교체후_QR = val.QR_6.trim();
-				doc.교체사유 = val.교체사유_6.trim();
+				doc.관리번호 = val.관리번호;
+				doc.교체전_품명 = val.교체전_품명_6;
+				doc.교체전_품번 = val.교체전_품번_6;
+				doc.교체전_QR = val.교체전_QR_6;
+				doc.교체후_신품_고품 = val.신품고품_6;
+				doc.교체후_고품식별 = val.고품식별_6;
+				doc.교체후_품번 = val.품번_6;
+				doc.교체후_QR = val.QR_6;
+				doc.교체사유 = val.교체사유_6;
 
 				console.log('교체부품상세6:', doc);
 				update(교체부품상세6, doc);
 				await sleep(DELAY);
 
 				doc = 교체부품상세_doc;
-				doc.관리번호 = val.관리번호.trim();
-				doc.교체전_품명 = val.교체전_품명_7.trim();
-				doc.교체전_품번 = val.교체전_품번_7.trim();
-				doc.교체전_QR = val.교체전_QR_7.trim();
-				doc.교체후_신품_고품 = val.신품고품_7.trim();
-				doc.교체후_고품식별 = val.고품식별_7.trim();
-				doc.교체후_품번 = val.품번_7.trim(),
-					doc.교체후_QR = val.QR_7.trim();
-				doc.교체사유 = val.교체사유_7.trim();
+				doc.관리번호 = val.관리번호;
+				doc.교체전_품명 = val.교체전_품명_7;
+				doc.교체전_품번 = val.교체전_품번_7;
+				doc.교체전_QR = val.교체전_QR_7;
+				doc.교체후_신품_고품 = val.신품고품_7;
+				doc.교체후_고품식별 = val.고품식별_7;
+				doc.교체후_품번 = val.품번_7;
+				doc.교체후_QR = val.QR_7;
+				doc.교체사유 = val.교체사유_7;
 
 				console.log('교체부품상세7:', doc);
 				update(교체부품상세7, doc);
 				await sleep(DELAY);
 
 				doc = 교체부품상세_doc;
-				doc.관리번호 = val.관리번호.trim();
-				doc.교체전_품명 = val.교체전_품명_8.trim();
-				doc.교체전_품번 = val.교체전_품번_8.trim();
-				doc.교체전_QR = val.교체전_QR_8.trim();
-				doc.교체후_신품_고품 = val.신품고품_8.trim();
-				doc.교체후_고품식별 = val.고품식별_8.trim();
-				doc.교체후_품번 = val.품번_8.trim(),
-					doc.교체후_QR = val.QR_8.trim();
-				doc.교체사유 = val.교체사유_8.trim();
+				doc.관리번호 = val.관리번호;
+				doc.교체전_품명 = val.교체전_품명_8;
+				doc.교체전_품번 = val.교체전_품번_8;
+				doc.교체전_QR = val.교체전_QR_8;
+				doc.교체후_신품_고품 = val.신품고품_8;
+				doc.교체후_고품식별 = val.고품식별_8;
+				doc.교체후_품번 = val.품번_8;
+				doc.교체후_QR = val.QR_8;
+				doc.교체사유 = val.교체사유_8;
 
 				console.log('교체부품상세8:', doc);
 				update(교체부품상세8, doc);
 				await sleep(DELAY);
 
 				doc = 교체부품상세_doc;
-				doc.관리번호 = val.관리번호.trim();
-				doc.교체전_품명 = val.교체전_품명_9.trim();
-				doc.교체전_품번 = val.교체전_품번_9.trim();
-				doc.교체전_QR = val.교체전_QR_9.trim();
-				doc.교체후_신품_고품 = val.신품고품_9.trim();
-				doc.교체후_고품식별 = val.고품식별_9.trim();
-				doc.교체후_품번 = val.품번_9.trim(),
-					doc.교체후_QR = val.QR_9.trim();
-				doc.교체사유 = val.교체사유_9.trim();
+				doc.관리번호 = val.관리번호;
+				doc.교체전_품명 = val.교체전_품명_9;
+				doc.교체전_품번 = val.교체전_품번_9;
+				doc.교체전_QR = val.교체전_QR_9;
+				doc.교체후_신품_고품 = val.신품고품_9;
+				doc.교체후_고품식별 = val.고품식별_9;
+				doc.교체후_품번 = val.품번_9;
+				doc.교체후_QR = val.QR_9;
+				doc.교체사유 = val.교체사유_9;
 
 				console.log('교체부품상세9:', doc);
 				update(교체부품상세9, doc);
 				await sleep(DELAY);
 
 				doc = 교체부품상세_doc;
-				doc.관리번호 = val.관리번호.trim();
-				doc.교체전_품명 = val.교체전_품명_10.trim();
-				doc.교체전_품번 = val.교체전_품번_10.trim();
-				doc.교체전_QR = val.교체전_QR_10.trim();
-				doc.교체후_신품_고품 = val.신품고품_10.trim();
-				doc.교체후_고품식별 = val.고품식별_10.trim();
-				doc.교체후_품번 = val.품번_10.trim();
-				doc.교체후_QR = val.QR_10.trim();
-				doc.교체사유 = val.교체사유_10.trim();
+				doc.관리번호 = val.관리번호;
+				doc.교체전_품명 = val.교체전_품명_10;
+				doc.교체전_품번 = val.교체전_품번_10;
+				doc.교체전_QR = val.교체전_QR_10;
+				doc.교체후_신품_고품 = val.신품고품_10;
+				doc.교체후_고품식별 = val.고품식별_10;
+				doc.교체후_품번 = val.품번_10;
+				doc.교체후_QR = val.QR_10;
+				doc.교체사유 = val.교체사유_10;
 
 				console.log('교체부품상세10:', doc);
 				update(교체부품상세10, doc);
