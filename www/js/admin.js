@@ -114,7 +114,7 @@ function func_csv() {
 				doc.통신검사_팩전압 = val.팩전압;
 				doc.통신검사_셀전압편차 = val.셀전압편차;
 				doc.통신검사_릴레이구동 = val.릴레이구동; 
-				doc.완료일 = val.기초검사_완료일 + 'T00:00:00'; 
+				doc.공정완료일 = val.기초검사_완료일 + 'T00:00:00'; 
 				doc.검사자 = val.기초검사_검사자;
 
 				console.log('기초검사:', doc);
@@ -134,7 +134,7 @@ function func_csv() {
 				doc.통신검사_팩전압 = val.성능검사_팩전압;
 				doc.통신검사_셀전압편차 = val.성능검사_셀전압편차;
 				doc.통신검사_릴레이구동 = val.성능검사_릴레이구동;
-				doc.완료일 = val.성능검사_완료일 + 'T00:00:00';
+				doc.공정완료일 = val.성능검사_완료일 + 'T00:00:00';
 				doc.검사자 = val.성능검사_검사자;
 
 				console.log('성능검사:', doc);
@@ -146,7 +146,7 @@ function func_csv() {
 				doc.용량평가 = val.용량평가;
 				doc.SOC60Percent = val.SOC60;
 				doc.DCIR = val.DCIR;
-				doc.완료일 = val.EOL_완료일 + 'T00:00:00';
+				doc.공정완료일 = val.EOL_완료일 + 'T00:00:00';
 				doc.검사자 = val.EOL_검사자;
 
 				console.log('EOL:', doc);
