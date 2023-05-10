@@ -20,7 +20,7 @@ async function 총합계_조회() {
 	//console.log('세척 당일 count:', doc_count);
 	//var 세척당일 = doc_count;
 
-	document.getElementById('num1').innerHTML = '512(3)';
+	document.getElementById('num1').innerHTML = '512(2)';
 	//document.getElementById('num1').innerHTML = 세척누적 + ' (' + 세척당일 + ')';
 
 	count(BSA재제조, { 기초검사 : { $exists : true, $ne : 'none', $ne : ''}});
