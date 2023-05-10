@@ -79,12 +79,30 @@ function func_csv() {
 				doc.RO_no = val.RO_no; 
 				doc.공정단계 = '출하'; 
 				doc.적재No = ''; 
-				doc.입고 = val.등록일;
-				doc.기초검사 = val.기초검사_완료일;
-				doc.분해조립 = val.분해조립_완료일;
-				doc.성능검사 = val.성능검사_완료일;
-				doc.EOL = val.EOL_완료일;
-				doc.출하 = val.출하일;
+				if(val.등록일 != '') {
+					doc.입고 = val.등록일 + 'T12:00:00';
+				}
+
+				if(val.기초검사_완료일 != '') {
+					doc.기초검사 = val.기초검사_완료일 + 'T12:00:00';
+				}
+
+				if(val.분해조립_완료일 != '') {
+					doc.분해조립 = val.분해조립_완료일 + 'T12:00:00';
+				}
+
+				if(val.성능검사_완료일 != '') {
+					doc.성능검사 = val.성능검사_완료일 + 'T12:00:00';
+				}
+
+				if(val.EOL_완료일 != '') {
+					doc.EOL = val.EOL_완료일 + 'T12:00:00';
+				}
+
+				if(val.출하일 != '') {
+					doc.출하 = val.출하일 + 'T12:00:00';
+				}
+
 				doc.소재지 = '';
 
 				console.log('BSA재제조:', doc);
@@ -114,7 +132,9 @@ function func_csv() {
 				doc.통신검사_팩전압 = val.팩전압;
 				doc.통신검사_셀전압편차 = val.셀전압편차;
 				doc.통신검사_릴레이구동 = val.릴레이구동; 
-				doc.공정완료일 = val.기초검사_완료일; 
+				if(val.기초검사_완료일 = '') {
+					doc.공정완료일 = val.기초검사_완료일 + 'T12:00:00'; 
+				}
 				doc.검사자 = val.기초검사_검사자;
 
 				console.log('기초검사:', doc);
@@ -134,7 +154,9 @@ function func_csv() {
 				doc.통신검사_팩전압 = val.성능검사_팩전압;
 				doc.통신검사_셀전압편차 = val.성능검사_셀전압편차;
 				doc.통신검사_릴레이구동 = val.성능검사_릴레이구동;
-				doc.공정완료일 = val.성능검사_완료일;
+				if(val.성능검사_완료일 = '') {
+					doc.공정완료일 = val.성능검사_완료일 + 'T12:00:00';
+				}
 				doc.검사자 = val.성능검사_검사자;
 
 				console.log('성능검사:', doc);
@@ -146,7 +168,9 @@ function func_csv() {
 				doc.용량평가 = val.용량평가;
 				doc.SOC60Percent = val.SOC60;
 				doc.DCIR = val.DCIR;
-				doc.공정완료일 = val.EOL_완료일;
+				if(val.공정완료일 != '') {
+					doc.공정완료일 = val.EOL_완료일 + 'T12:00:00';
+				}
 				doc.검사자 = val.EOL_검사자;
 
 				console.log('EOL:', doc);
@@ -156,7 +180,9 @@ function func_csv() {
 
 				doc = 출하정보_doc;
 				doc.관리번호 = val.관리번호;
-				doc.출하일 = val.출하일;
+				if(val.출하일 != '') {
+					doc.출하일 = val.출하일 + 'T12:00:00';
+				}
 				doc.출하코드 = val.출하코드;
 				doc.납품처 = val.납품처;
 
@@ -180,7 +206,9 @@ function func_csv() {
 				doc.BMA = val.BMA;
 				doc.LWR_C = val.LWR_C;
 				doc.ETC = val.기타;
-				doc.완료일 = val.분해조립_완료일;
+				if(val.분해조립_완료일 != '') {
+					doc.완료일 = val.분해조립_완료일 + 'T12:00:00';
+				}
 				doc.작업자 = val.분해조립_작업자;
 
 				console.log('분해조립:', doc);
