@@ -56,6 +56,10 @@ async function delete_user() {
 	}
 }
 
+function getType(target) {
+  return Object.prototype.toString.call(target).slice(8, -1);
+}
+
 function func_csv() {
 	_csv.addEventListener('input', async function(event) {
 		const target = event.target;
@@ -87,7 +91,7 @@ function func_csv() {
 					doc.기초검사 = val.기초검사_완료일 + 'T12:00:00';
 				}
 
-				if(val.분해조립_완료일 != '') {
+				if(val.분해조립_완료일 != '' ) {
 					doc.분해조립 = val.분해조립_완료일 + 'T12:00:00';
 				}
 
@@ -168,7 +172,7 @@ function func_csv() {
 				doc.용량평가 = val.용량평가;
 				doc.SOC60Percent = val.SOC60;
 				doc.DCIR = val.DCIR;
-				if(val.공정완료일 != '') {
+				if(val.EOL_완료일 != '') {
 					doc.공정완료일 = val.EOL_완료일 + 'T12:00:00';
 				}
 				doc.검사자 = val.EOL_검사자;
