@@ -8,7 +8,8 @@ async function 재제조현황_시작() {
 	while(_management_id == undefined) {
 		await sleep(DELAY);
 	}
-
+	
+	관리번호 = '';
 	if(_management_id.value == '') {
 		flag_id_search = false;
 	} else {
@@ -40,16 +41,17 @@ async function 재제조현황_조회(flag_id_search = false) {
 		}
 		await sleep(200);
 
-		for(var i = 0; i < find_array.length; i++) {
-			delete find_array[i].적재No;
-			delete find_array[i].입고;
-			delete find_array[i].제조투입;
-			delete find_array[i].세척;
-			delete find_array[i].기초검사;
-			delete find_array[i].분해조립;
-			delete find_array[i].성능검사;
-			delete find_array[i].EOL;
-		}
+		//for(var i = 0; i < find_array.length; i++) {
+		//	delete find_array[i].적재No;
+		//	delete find_array[i].입고;
+		//	delete find_array[i].제조투입;
+		//	delete find_array[i].세척;
+		//	delete find_array[i].기초검사;
+		//	delete find_array[i].분해조립;
+		//	delete find_array[i].성능검사;
+		//	delete find_array[i].EOL;
+		//	delete find_array[i].마지막충전일;
+		//}
 		tabledata_BSA = find_array;
 		
 		row_one_id = find_array[0].관리번호;
@@ -60,8 +62,25 @@ async function 재제조현황_조회(flag_id_search = false) {
 		layout: "resizableColumnFit",
 		height:500,
 		data:tabledata_BSA, 
-		autoColumns:true,
+		//autoColumns:true,
 		
+		columns:[
+			{title:"관리번호", field:"관리번호", sorter:"string"},
+			{title:"차종", field:"차종", sorter:"string"},
+			{title:"품번", field:"품번", sorter:"string"},
+			{title:"RO_no", field:"RO_no", sorter:"string"},
+			{title:"공정단계", field:"공정단계", sorter:"string"},
+			//{title:"적재No", field:"적재No", sorter:"string"},
+			//{title:"입고", field:"입고", sorter:"string"},
+			//{title:"제조투입", field:"제조투입", sorter:"string"},
+			//{title:"세척", field:"세척", sorter:"string"},
+			//{title:"기초검사", field:"기초검사", sorter:"string"},
+			//{title:"분해조립", field:"분해조립", sorter:"string"},
+			//{title:"성능검사", field:"성능검사", sorter:"string"},
+			//{title:"EOL", field:"EOL", sorter:"string"},
+			{title:"출하", field:"출하", sorter:"string"},
+			{title:"소재지", field:"소재지", sorter:"string"},
+		],
 	});
 
 	var progress = document.getElementById('progress');
@@ -283,7 +302,7 @@ async function grid_입고(m_id) {
 		layout: "resizableColumnFit",
 		height:130,
 		data:tabledata_입고, 
-		autoColumns:true
+		//autoColumns:true
 	});
 }
 
@@ -300,7 +319,7 @@ async function grid_세척(m_id) {
 		layout: "resizableColumnFit",
 		height:130,
 		data:tabledata_세척, 
-		autoColumns:true
+		//autoColumns:true
 	});
 }
 
@@ -318,24 +337,24 @@ async function grid_기초검사(m_id) {
 		layout: "resizableColumnFit",
 		height:130,
 		data:tabledata_기초검사, 
-		autoColumns:true,
+		//autoColumns:true,
 		
 		columns:[
-			{title:"관리번호", field:"관리번호", sorter:"string", width:130},
-			{title:"육안검사 외부", field:"육안검사_외부", sorter:"string", width:130},
-			{title:"육안검사 내부", field:"육안검사_내부", sorter:"string", width:130},
-			{title:"기밀검사 케이스", field:"기밀검사_케이스", sorter:"string", width:130},
-			{title:"기밀검사 냉각유로", field:"기밀검사_냉각유로", sorter:"string", width:130},
-			{title:"절연검사 Plus", field:"절연검사_Plus", sorter:"string", width:130},
-			{title:"절연검사 Minus", field:"절연검사_Minus", sorter:"string", width:130},
-			{title:"토크검사 UPR/C", field:"토크검사_UPR_C", sorter:"string", width:130},
-			{title:"토크검사 버스바", field:"토크검사_버스바", sorter:"string", width:130},
-			{title:"통신검사 DTC코드", field:"통신검사_DTC코드", sorter:"string", width:130},
-			{title:"통신검사 팩전압", field:"통신검사_팩전압", sorter:"string", width:130},
-			{title:"통신검사 셀전압편차", field:"통신검사_셀전압편차", sorter:"string", width:130},
-			{title:"통신검사 릴레이구동", field:"통신검사_릴레이구동", sorter:"string", width:130},
-			{title:"완료일", field:"완료일", sorter:"string", width:130},
-			{title:"검사자", field:"검사자", sorter:"string", width:130},
+			{title:"관리번호", field:"관리번호", sorter:"string"},
+			{title:"육안검사 외부", field:"육안검사_외부", sorter:"string"},
+			{title:"육안검사 내부", field:"육안검사_내부", sorter:"string"},
+			{title:"기밀검사 케이스", field:"기밀검사_케이스", sorter:"string"},
+			{title:"기밀검사 냉각유로", field:"기밀검사_냉각유로", sorter:"string"},
+			{title:"절연검사 Plus", field:"절연검사_Plus", sorter:"string"},
+			{title:"절연검사 Minus", field:"절연검사_Minus", sorter:"string"},
+			{title:"토크검사 UPR/C", field:"토크검사_UPR_C", sorter:"string"},
+			{title:"토크검사 버스바", field:"토크검사_버스바", sorter:"string"},
+			{title:"통신검사 DTC코드", field:"통신검사_DTC코드", sorter:"string"},
+			{title:"통신검사 팩전압", field:"통신검사_팩전압", sorter:"string"},
+			{title:"통신검사 셀전압편차", field:"통신검사_셀전압편차", sorter:"string"},
+			{title:"통신검사 릴레이구동", field:"통신검사_릴레이구동", sorter:"string"},
+			{title:"완료일", field:"완료일", sorter:"string"},
+			{title:"검사자", field:"검사자", sorter:"string"},
 		],
 	});
 }
@@ -354,26 +373,26 @@ async function grid_분해조립(m_id) {
 		layout: "resizableColumnFit",
 		height:130,
 		data:tabledata_분해조립, 
-		autoColumns:true,
+		//autoColumns:true,
 		
 		columns:[
-			{title:"관리번호", field:"관리번호", sorter:"string", width:130},
-			{title:"UPR/C", field:"UPR_C", sorter:"string", width:130},
-			{title:"PBE", field:"PBE", sorter:"string", width:130},
-			{title:"Gasket", field:"Gasket", sorter:"string", width:130},
-			{title:"Busbars", field:"Busbars", sorter:"string", width:130},
-			{title:"W_H", field:"W_H", sorter:"string", width:130},
-			{title:"SPA", field:"SPA", sorter:"string", width:130},
-			{title:"PRA", field:"PRA", sorter:"string", width:130},
-			{title:"FuseBox", field:"FuseBox", sorter:"string", width:130},
-			{title:"Relay", field:"Relay", sorter:"string", width:130},
-			{title:"CMU", field:"CMU", sorter:"string", width:130},
-			{title:"BMU", field:"BMU", sorter:"string", width:130},
-			{title:"BMA", field:"BMA", sorter:"string", width:130},
-			{title:"LWR/C", field:"LWR_C", sorter:"string", width:130},
-			{title:"ETC", field:"ETC", sorter:"string", width:130},
-			{title:"완료일", field:"완료일", sorter:"string", width:130},
-			{title:"작업자", field:"작업자", sorter:"string", width:130},
+			{title:"관리번호", field:"관리번호", sorter:"string"},
+			{title:"UPR/C", field:"UPR_C", sorter:"string"},
+			{title:"PBE", field:"PBE", sorter:"string"},
+			{title:"Gasket", field:"Gasket", sorter:"string"},
+			{title:"Busbars", field:"Busbars", sorter:"string"},
+			{title:"W_H", field:"W_H", sorter:"string"},
+			{title:"SPA", field:"SPA", sorter:"string"},
+			{title:"PRA", field:"PRA", sorter:"string"},
+			{title:"FuseBox", field:"FuseBox", sorter:"string"},
+			{title:"Relay", field:"Relay", sorter:"string"},
+			{title:"CMU", field:"CMU", sorter:"string"},
+			{title:"BMU", field:"BMU", sorter:"string"},
+			{title:"BMA", field:"BMA", sorter:"string"},
+			{title:"LWR/C", field:"LWR_C", sorter:"string"},
+			{title:"ETC", field:"ETC", sorter:"string"},
+			{title:"완료일", field:"완료일", sorter:"string"},
+			{title:"작업자", field:"작업자", sorter:"string"},
 		],
 	});
 }
@@ -391,24 +410,24 @@ async function grid_성능검사(m_id) {
 		layout: "resizableColumnFit",
 		height:130,
 		data:tabledata_성능검사, 
-		autoColumns:true,
+		//autoColumns:true,
 		
 		columns:[
-			{title:"관리번호", field:"관리번호", sorter:"string", width:130},
-			{title:"UPR/C 조립", field:"UPR_C조립", sorter:"string", width:130},
-			{title:"기밀검사 케이스", field:"기밀검사_케이스", sorter:"string", width:130},
-			{title:"기밀검사 냉각유로", field:"기밀검사_냉각유로", sorter:"string", width:130},
-			{title:"절연검사 Plus", field:"절연검사_Plus", sorter:"string", width:130},
-			{title:"절연검사 Minus", field:"절연검사_Minus", sorter:"string", width:130},
-			{title:"토크검사 UPR/C", field:"토크검사_UPR_C", sorter:"string", width:130},
-			{title:"토크검사 버스바", field:"토크검사_버스바", sorter:"string", width:130},
-			{title:"통신검사 DTC코드", field:"통신검사_DTC코드", sorter:"string", width:130},
-			{title:"통신검사 팩전압", field:"통신검사_팩전압", sorter:"string", width:130},
-			{title:"통신검사 셀전압편차", field:"통신검사_셀전압편차", sorter:"string", width:130},
-			{title:"통신검사 셀전압편차", field:"통신검사_셀전압편차", sorter:"string", width:130},
-			{title:"통신검사 릴레이구동", field:"통신검사_릴레이구동", sorter:"string", width:130},
-			{title:"완료일", field:"완료일", sorter:"string", width:130},
-			{title:"검사자", field:"검사자", sorter:"string", width:130},
+			{title:"관리번호", field:"관리번호", sorter:"string"},
+			{title:"UPR/C 조립", field:"UPR_C조립", sorter:"string"},
+			{title:"기밀검사 케이스", field:"기밀검사_케이스", sorter:"string"},
+			{title:"기밀검사 냉각유로", field:"기밀검사_냉각유로", sorter:"string"},
+			{title:"절연검사 Plus", field:"절연검사_Plus", sorter:"string"},
+			{title:"절연검사 Minus", field:"절연검사_Minus", sorter:"string"},
+			{title:"토크검사 UPR/C", field:"토크검사_UPR_C", sorter:"string"},
+			{title:"토크검사 버스바", field:"토크검사_버스바", sorter:"string"},
+			{title:"통신검사 DTC코드", field:"통신검사_DTC코드", sorter:"string"},
+			{title:"통신검사 팩전압", field:"통신검사_팩전압", sorter:"string"},
+			{title:"통신검사 셀전압편차", field:"통신검사_셀전압편차", sorter:"string"},
+			{title:"통신검사 셀전압편차", field:"통신검사_셀전압편차", sorter:"string"},
+			{title:"통신검사 릴레이구동", field:"통신검사_릴레이구동", sorter:"string"},
+			{title:"완료일", field:"완료일", sorter:"string"},
+			{title:"검사자", field:"검사자", sorter:"string"},
 		],
 	});
 }
@@ -426,15 +445,15 @@ async function grid_EOL(m_id) {
 		layout: "resizableColumnFit",
 		height:130,
 		data:tabledata_EOL, 
-		autoColumns:true,
+		//autoColumns:true,
 		
 		columns:[
-			{title:"관리번호", field:"관리번호", sorter:"string", width:130},
-			{title:"용량평가", field:"용량평가", sorter:"string", width:130},
-			{title:"SOC60Percent", field:"SOC60Percent", sorter:"string", width:130},
-			{title:"DCIR", field:"DCIR", sorter:"string", width:130},
-			{title:"완료일", field:"완료일", sorter:"string", width:130},
-			{title:"검사자", field:"검사자", sorter:"string", width:130},
+			{title:"관리번호", field:"관리번호", sorter:"string"},
+			{title:"용량평가", field:"용량평가", sorter:"string"},
+			{title:"SOC60Percent", field:"SOC60Percent", sorter:"string"},
+			{title:"DCIR", field:"DCIR", sorter:"string"},
+			{title:"완료일", field:"완료일", sorter:"string"},
+			{title:"검사자", field:"검사자", sorter:"string"},
 		],
 	});
 }
@@ -453,13 +472,13 @@ async function grid_출하정보(m_id) {
 		layout: "resizableColumnFit",
 		height:130,
 		data:tabledata_출하정보, 
-		autoColumns:true,
+		//autoColumns:true,
 		
 		columns:[
-			{title:"관리번호", field:"관리번호", sorter:"string", width:130},
-			{title:"출하일", field:"출하일", sorter:"string", width:130},
-			{title:"출하코드", field:"출하코드", sorter:"string", width:130},
-			{title:"납품처", field:"납품처", sorter:"string", width:130},
+			{title:"관리번호", field:"관리번호", sorter:"string"},
+			{title:"출하일", field:"출하일", sorter:"string"},
+			{title:"출하코드", field:"출하코드", sorter:"string"},
+			{title:"납품처", field:"납품처", sorter:"string"},
 		],
 	});
 }
@@ -477,11 +496,11 @@ async function grid_특이사항(m_id) {
 		layout: "resizableColumnFit",
 		height:130,
 		data:tabledata_특이사항, 
-		autoColumns:true,
+		//autoColumns:true,
 		
 		columns:[
-			{title:"관리번호", field:"관리번호", sorter:"string", width:130},
-			{title:"특이사항", field:"특이사항", sorter:"string", width:1300},
+			{title:"관리번호", field:"관리번호", sorter:"string"},
+			{title:"특이사항", field:"특이사항", sorter:"string"},
 		],
 	});
 }
@@ -499,19 +518,19 @@ async function grid_교체부품상세1(m_id) {
 		layout: "resizableColumnFit",
 		height:130,
 		data:tabledata_교체부품상세1, 
-		autoColumns:true,
+		//autoColumns:true,
 		
 		columns:[
-			{title:"관리번호", field:"관리번호", sorter:"string", width:130},
-			{title:"ORIGIN 관리번호", field:"ORIGIN_관리번호", sorter:"string", width:130},
-			{title:"교체전 품명", field:"교체전_품명", sorter:"string", width:130},
-			{title:"교체전 품번", field:"교체전_품번", sorter:"string", width:130},
-			{title:"교체전 QR", field:"교체전_QR", sorter:"string", width:130},
-			{title:"교체후 신품_고품", field:"교체후_신품_고품", sorter:"string", width:130},
-			{title:"교체후 고품식별", field:"교체후_고품식별", sorter:"string", width:130},
-			{title:"교체후 품번", field:"교체후_품번", sorter:"string", width:130},
-			{title:"교체후 QR", field:"교체후_QR", sorter:"string", width:130},
-			{title:"교체사유", field:"교체사유", sorter:"string", width:130},
+			{title:"관리번호", field:"관리번호", sorter:"string"},
+			{title:"ORIGIN 관리번호", field:"ORIGIN_관리번호", sorter:"string"},
+			{title:"교체전 품명", field:"교체전_품명", sorter:"string"},
+			{title:"교체전 품번", field:"교체전_품번", sorter:"string"},
+			{title:"교체전 QR", field:"교체전_QR", sorter:"string"},
+			{title:"교체후 신품_고품", field:"교체후_신품_고품", sorter:"string"},
+			{title:"교체후 고품식별", field:"교체후_고품식별", sorter:"string"},
+			{title:"교체후 품번", field:"교체후_품번", sorter:"string"},
+			{title:"교체후 QR", field:"교체후_QR", sorter:"string"},
+			{title:"교체사유", field:"교체사유", sorter:"string"},
 		],
 	});
 }
@@ -529,19 +548,19 @@ async function grid_교체부품상세2(m_id) {
 		layout: "resizableColumnFit",
 		height:130,
 		data:tabledata_교체부품상세2, 
-		autoColumns:true,
+		//autoColumns:true,
 		
 		columns:[
-			{title:"관리번호", field:"관리번호", sorter:"string", width:130},
-			{title:"ORIGIN 관리번호", field:"ORIGIN_관리번호", sorter:"string", width:130},
-			{title:"교체전 품명", field:"교체전_품명", sorter:"string", width:130},
-			{title:"교체전 품번", field:"교체전_품번", sorter:"string", width:130},
-			{title:"교체전 QR", field:"교체전_QR", sorter:"string", width:130},
-			{title:"교체후 신품_고품", field:"교체후_신품_고품", sorter:"string", width:130},
-			{title:"교체후 고품식별", field:"교체후_고품식별", sorter:"string", width:130},
-			{title:"교체후 품번", field:"교체후_품번", sorter:"string", width:130},
-			{title:"교체후 QR", field:"교체후_QR", sorter:"string", width:130},
-			{title:"교체사유", field:"교체사유", sorter:"string", width:130},
+			{title:"관리번호", field:"관리번호", sorter:"string"},
+			{title:"ORIGIN 관리번호", field:"ORIGIN_관리번호", sorter:"string"},
+			{title:"교체전 품명", field:"교체전_품명", sorter:"string"},
+			{title:"교체전 품번", field:"교체전_품번", sorter:"string"},
+			{title:"교체전 QR", field:"교체전_QR", sorter:"string"},
+			{title:"교체후 신품_고품", field:"교체후_신품_고품", sorter:"string"},
+			{title:"교체후 고품식별", field:"교체후_고품식별", sorter:"string"},
+			{title:"교체후 품번", field:"교체후_품번", sorter:"string"},
+			{title:"교체후 QR", field:"교체후_QR", sorter:"string"},
+			{title:"교체사유", field:"교체사유", sorter:"string"},
 		],
 	});
 }
@@ -559,19 +578,19 @@ async function grid_교체부품상세3(m_id) {
 		layout: "resizableColumnFit",
 		height:130,
 		data:tabledata_교체부품상세3, 
-		autoColumns:true,
+		//autoColumns:true,
 		
 		columns:[
-			{title:"관리번호", field:"관리번호", sorter:"string", width:130},
-			{title:"ORIGIN 관리번호", field:"ORIGIN_관리번호", sorter:"string", width:130},
-			{title:"교체전 품명", field:"교체전_품명", sorter:"string", width:130},
-			{title:"교체전 품번", field:"교체전_품번", sorter:"string", width:130},
-			{title:"교체전 QR", field:"교체전_QR", sorter:"string", width:130},
-			{title:"교체후 신품_고품", field:"교체후_신품_고품", sorter:"string", width:130},
-			{title:"교체후 고품식별", field:"교체후_고품식별", sorter:"string", width:130},
-			{title:"교체후 품번", field:"교체후_품번", sorter:"string", width:130},
-			{title:"교체후 QR", field:"교체후_QR", sorter:"string", width:130},
-			{title:"교체사유", field:"교체사유", sorter:"string", width:130},
+			{title:"관리번호", field:"관리번호", sorter:"string"},
+			{title:"ORIGIN 관리번호", field:"ORIGIN_관리번호", sorter:"string"},
+			{title:"교체전 품명", field:"교체전_품명", sorter:"string"},
+			{title:"교체전 품번", field:"교체전_품번", sorter:"string"},
+			{title:"교체전 QR", field:"교체전_QR", sorter:"string"},
+			{title:"교체후 신품_고품", field:"교체후_신품_고품", sorter:"string"},
+			{title:"교체후 고품식별", field:"교체후_고품식별", sorter:"string"},
+			{title:"교체후 품번", field:"교체후_품번", sorter:"string"},
+			{title:"교체후 QR", field:"교체후_QR", sorter:"string"},
+			{title:"교체사유", field:"교체사유", sorter:"string"},
 		],
 	});
 }
@@ -589,19 +608,19 @@ async function grid_교체부품상세4(m_id) {
 		layout: "resizableColumnFit",
 		height:130,
 		data:tabledata_교체부품상세4, 
-		autoColumns:true,
+		//autoColumns:true,
 		
 		columns:[
-			{title:"관리번호", field:"관리번호", sorter:"string", width:130},
-			{title:"ORIGIN 관리번호", field:"ORIGIN_관리번호", sorter:"string", width:130},
-			{title:"교체전 품명", field:"교체전_품명", sorter:"string", width:130},
-			{title:"교체전 품번", field:"교체전_품번", sorter:"string", width:130},
-			{title:"교체전 QR", field:"교체전_QR", sorter:"string", width:130},
-			{title:"교체후 신품_고품", field:"교체후_신품_고품", sorter:"string", width:130},
-			{title:"교체후 고품식별", field:"교체후_고품식별", sorter:"string", width:130},
-			{title:"교체후 품번", field:"교체후_품번", sorter:"string", width:130},
-			{title:"교체후 QR", field:"교체후_QR", sorter:"string", width:130},
-			{title:"교체사유", field:"교체사유", sorter:"string", width:130},
+			{title:"관리번호", field:"관리번호", sorter:"string"},
+			{title:"ORIGIN 관리번호", field:"ORIGIN_관리번호", sorter:"string"},
+			{title:"교체전 품명", field:"교체전_품명", sorter:"string"},
+			{title:"교체전 품번", field:"교체전_품번", sorter:"string"},
+			{title:"교체전 QR", field:"교체전_QR", sorter:"string"},
+			{title:"교체후 신품_고품", field:"교체후_신품_고품", sorter:"string"},
+			{title:"교체후 고품식별", field:"교체후_고품식별", sorter:"string"},
+			{title:"교체후 품번", field:"교체후_품번", sorter:"string"},
+			{title:"교체후 QR", field:"교체후_QR", sorter:"string"},
+			{title:"교체사유", field:"교체사유", sorter:"string"},
 		],
 	});
 }
@@ -619,19 +638,19 @@ async function grid_교체부품상세5(m_id) {
 		layout: "resizableColumnFit",
 		height:130,
 		data:tabledata_교체부품상세5, 
-		autoColumns:true,
+		//autoColumns:true,
 		
 		columns:[
-			{title:"관리번호", field:"관리번호", sorter:"string", width:130},
-			{title:"ORIGIN 관리번호", field:"ORIGIN_관리번호", sorter:"string", width:130},
-			{title:"교체전 품명", field:"교체전_품명", sorter:"string", width:130},
-			{title:"교체전 품번", field:"교체전_품번", sorter:"string", width:130},
-			{title:"교체전 QR", field:"교체전_QR", sorter:"string", width:130},
-			{title:"교체후 신품_고품", field:"교체후_신품_고품", sorter:"string", width:130},
-			{title:"교체후 고품식별", field:"교체후_고품식별", sorter:"string", width:130},
-			{title:"교체후 품번", field:"교체후_품번", sorter:"string", width:130},
-			{title:"교체후 QR", field:"교체후_QR", sorter:"string", width:130},
-			{title:"교체사유", field:"교체사유", sorter:"string", width:130},
+			{title:"관리번호", field:"관리번호", sorter:"string"},
+			{title:"ORIGIN 관리번호", field:"ORIGIN_관리번호", sorter:"string"},
+			{title:"교체전 품명", field:"교체전_품명", sorter:"string"},
+			{title:"교체전 품번", field:"교체전_품번", sorter:"string"},
+			{title:"교체전 QR", field:"교체전_QR", sorter:"string"},
+			{title:"교체후 신품_고품", field:"교체후_신품_고품", sorter:"string"},
+			{title:"교체후 고품식별", field:"교체후_고품식별", sorter:"string"},
+			{title:"교체후 품번", field:"교체후_품번", sorter:"string"},
+			{title:"교체후 QR", field:"교체후_QR", sorter:"string"},
+			{title:"교체사유", field:"교체사유", sorter:"string"},
 		],
 	});
 }
@@ -649,19 +668,19 @@ async function grid_교체부품상세6(m_id) {
 		layout: "resizableColumnFit",
 		height:130,
 		data:tabledata_교체부품상세6, 
-		autoColumns:true,
+		//autoColumns:true,
 		
 		columns:[
-			{title:"관리번호", field:"관리번호", sorter:"string", width:130},
-			{title:"ORIGIN 관리번호", field:"ORIGIN_관리번호", sorter:"string", width:130},
-			{title:"교체전 품명", field:"교체전_품명", sorter:"string", width:130},
-			{title:"교체전 품번", field:"교체전_품번", sorter:"string", width:130},
-			{title:"교체전 QR", field:"교체전_QR", sorter:"string", width:130},
-			{title:"교체후 신품_고품", field:"교체후_신품_고품", sorter:"string", width:130},
-			{title:"교체후 고품식별", field:"교체후_고품식별", sorter:"string", width:130},
-			{title:"교체후 품번", field:"교체후_품번", sorter:"string", width:130},
-			{title:"교체후 QR", field:"교체후_QR", sorter:"string", width:130},
-			{title:"교체사유", field:"교체사유", sorter:"string", width:130},
+			{title:"관리번호", field:"관리번호", sorter:"string"},
+			{title:"ORIGIN 관리번호", field:"ORIGIN_관리번호", sorter:"string"},
+			{title:"교체전 품명", field:"교체전_품명", sorter:"string"},
+			{title:"교체전 품번", field:"교체전_품번", sorter:"string"},
+			{title:"교체전 QR", field:"교체전_QR", sorter:"string"},
+			{title:"교체후 신품_고품", field:"교체후_신품_고품", sorter:"string"},
+			{title:"교체후 고품식별", field:"교체후_고품식별", sorter:"string"},
+			{title:"교체후 품번", field:"교체후_품번", sorter:"string"},
+			{title:"교체후 QR", field:"교체후_QR", sorter:"string"},
+			{title:"교체사유", field:"교체사유", sorter:"string"},
 		],
 	});
 }
@@ -679,19 +698,19 @@ async function grid_교체부품상세7(m_id) {
 		layout: "resizableColumnFit",
 		height:130,
 		data:tabledata_교체부품상세7, 
-		autoColumns:true,
+		//autoColumns:true,
 		
 		columns:[
-			{title:"관리번호", field:"관리번호", sorter:"string", width:130},
-			{title:"ORIGIN 관리번호", field:"ORIGIN_관리번호", sorter:"string", width:130},
-			{title:"교체전 품명", field:"교체전_품명", sorter:"string", width:130},
-			{title:"교체전 품번", field:"교체전_품번", sorter:"string", width:130},
-			{title:"교체전 QR", field:"교체전_QR", sorter:"string", width:130},
-			{title:"교체후 신품_고품", field:"교체후_신품_고품", sorter:"string", width:130},
-			{title:"교체후 고품식별", field:"교체후_고품식별", sorter:"string", width:130},
-			{title:"교체후 품번", field:"교체후_품번", sorter:"string", width:130},
-			{title:"교체후 QR", field:"교체후_QR", sorter:"string", width:130},
-			{title:"교체사유", field:"교체사유", sorter:"string", width:130},
+			{title:"관리번호", field:"관리번호", sorter:"string"},
+			{title:"ORIGIN 관리번호", field:"ORIGIN_관리번호", sorter:"string"},
+			{title:"교체전 품명", field:"교체전_품명", sorter:"string"},
+			{title:"교체전 품번", field:"교체전_품번", sorter:"string"},
+			{title:"교체전 QR", field:"교체전_QR", sorter:"string"},
+			{title:"교체후 신품_고품", field:"교체후_신품_고품", sorter:"string"},
+			{title:"교체후 고품식별", field:"교체후_고품식별", sorter:"string"},
+			{title:"교체후 품번", field:"교체후_품번", sorter:"string"},
+			{title:"교체후 QR", field:"교체후_QR", sorter:"string"},
+			{title:"교체사유", field:"교체사유", sorter:"string"},
 		],
 	});
 }
@@ -709,19 +728,19 @@ async function grid_교체부품상세8(m_id) {
 		layout: "resizableColumnFit",
 		height:130,
 		data:tabledata_교체부품상세8, 
-		autoColumns:true,
+		//autoColumns:true,
 		
 		columns:[
-			{title:"관리번호", field:"관리번호", sorter:"string", width:130},
-			{title:"ORIGIN 관리번호", field:"orogin_관리번호", sorter:"string", width:130},
-			{title:"교체전 품명", field:"교체전_품명", sorter:"string", width:130},
-			{title:"교체전 품번", field:"교체전_품번", sorter:"string", width:130},
-			{title:"교체전 QR", field:"교체전_QR", sorter:"string", width:130},
-			{title:"교체후 신품_고품", field:"교체후_신품_고품", sorter:"string", width:130},
-			{title:"교체후 고품식별", field:"교체후_고품식별", sorter:"string", width:130},
-			{title:"교체후 품번", field:"교체후_품번", sorter:"string", width:130},
-			{title:"교체후 QR", field:"교체후_QR", sorter:"string", width:130},
-			{title:"교체사유", field:"교체사유", sorter:"string", width:130},
+			{title:"관리번호", field:"관리번호", sorter:"string"},
+			{title:"ORIGIN 관리번호", field:"orogin_관리번호", sorter:"string"},
+			{title:"교체전 품명", field:"교체전_품명", sorter:"string"},
+			{title:"교체전 품번", field:"교체전_품번", sorter:"string"},
+			{title:"교체전 QR", field:"교체전_QR", sorter:"string"},
+			{title:"교체후 신품_고품", field:"교체후_신품_고품", sorter:"string"},
+			{title:"교체후 고품식별", field:"교체후_고품식별", sorter:"string"},
+			{title:"교체후 품번", field:"교체후_품번", sorter:"string"},
+			{title:"교체후 QR", field:"교체후_QR", sorter:"string"},
+			{title:"교체사유", field:"교체사유", sorter:"string"},
 		],
 	});
 }
@@ -739,19 +758,19 @@ async function grid_교체부품상세9(m_id) {
 		layout: "resizableColumnFit",
 		height:130,
 		data:tabledata_교체부품상세9, 
-		autoColumns:true,
+		//autoColumns:true,
 		
 		columns:[
-			{title:"관리번호", field:"관리번호", sorter:"string", width:130},
-			{title:"OROGIN 관리번호", field:"ORIGIN_관리번호", sorter:"string", width:130},
-			{title:"교체전 품명", field:"교체전_품명", sorter:"string", width:130},
-			{title:"교체전 품번", field:"교체전_품번", sorter:"string", width:130},
-			{title:"교체전 QR", field:"교체전_QR", sorter:"string", width:130},
-			{title:"교체후 신품_고품", field:"교체후_신품_고품", sorter:"string", width:130},
-			{title:"교체후 고품식별", field:"교체후_고품식별", sorter:"string", width:130},
-			{title:"교체후 품번", field:"교체후_품번", sorter:"string", width:130},
-			{title:"교체후 QR", field:"교체후_QR", sorter:"string", width:130},
-			{title:"교체사유", field:"교체사유", sorter:"string", width:130},
+			{title:"관리번호", field:"관리번호", sorter:"string"},
+			{title:"OROGIN 관리번호", field:"ORIGIN_관리번호", sorter:"string"},
+			{title:"교체전 품명", field:"교체전_품명", sorter:"string"},
+			{title:"교체전 품번", field:"교체전_품번", sorter:"string"},
+			{title:"교체전 QR", field:"교체전_QR", sorter:"string"},
+			{title:"교체후 신품_고품", field:"교체후_신품_고품", sorter:"string"},
+			{title:"교체후 고품식별", field:"교체후_고품식별", sorter:"string"},
+			{title:"교체후 품번", field:"교체후_품번", sorter:"string"},
+			{title:"교체후 QR", field:"교체후_QR", sorter:"string"},
+			{title:"교체사유", field:"교체사유", sorter:"string"},
 		],
 	});
 }
@@ -769,19 +788,19 @@ async function grid_교체부품상세10(m_id) {
 		layout: "resizableColumnFit",
 		height:130,
 		data:tabledata_교체부품상세10, 
-		autoColumns:true,
+		//autoColumns:true,
 		
 		columns:[
-			{title:"관리번호", field:"관리번호", sorter:"string", width:130},
-			{title:"ORIGIN 관리번호", field:"ORIGIN_관리번호", sorter:"string", width:130},
-			{title:"교체전 품명", field:"교체전_품명", sorter:"string", width:130},
-			{title:"교체전 품번", field:"교체전_품번", sorter:"string", width:130},
-			{title:"교체전 QR", field:"교체전_QR", sorter:"string", width:130},
-			{title:"교체후 신품_고품", field:"교체후_신품_고품", sorter:"string", width:130},
-			{title:"교체후 고품식별", field:"교체후_고품식별", sorter:"string", width:130},
-			{title:"교체후 품번", field:"교체후_품번", sorter:"string", width:130},
-			{title:"교체후 QR", field:"교체후_QR", sorter:"string", width:130},
-			{title:"교체사유", field:"교체사유", sorter:"string", width:130},
+			{title:"관리번호", field:"관리번호", sorter:"string"},
+			{title:"ORIGIN 관리번호", field:"ORIGIN_관리번호", sorter:"string"},
+			{title:"교체전 품명", field:"교체전_품명", sorter:"string"},
+			{title:"교체전 품번", field:"교체전_품번", sorter:"string"},
+			{title:"교체전 QR", field:"교체전_QR", sorter:"string"},
+			{title:"교체후 신품_고품", field:"교체후_신품_고품", sorter:"string"},
+			{title:"교체후 고품식별", field:"교체후_고품식별", sorter:"string"},
+			{title:"교체후 품번", field:"교체후_품번", sorter:"string"},
+			{title:"교체후 QR", field:"교체후_QR", sorter:"string"},
+			{title:"교체사유", field:"교체사유", sorter:"string"},
 		],
 	});
 }

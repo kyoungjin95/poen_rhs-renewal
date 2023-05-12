@@ -215,6 +215,18 @@ async function 년간입고_table(s_day, e_day, flag_id_search = false, search_m
 	if(doc_count >= 1) {
 		find_query(BSA재제조, { 입고 : { $gte: s_day, $lte: e_day }});
 		await delay();
+
+		for(var i = 0; i < find_array.length; i++) {
+			delete find_array[i].적재No;
+			delete find_array[i].입고;
+			delete find_array[i].제조투입;
+			delete find_array[i].세척;
+			delete find_array[i].기초검사;
+			delete find_array[i].분해조립;
+			delete find_array[i].성능검사;
+			delete find_array[i].EOL;
+			delete find_array[i].마지막충전일;
+		}
 		tabledata_BSA_입고 = find_array;
 	}
 
@@ -222,7 +234,7 @@ async function 년간입고_table(s_day, e_day, flag_id_search = false, search_m
 		layout: "resizableColumnFit",
 		height:500,
 		data:tabledata_BSA_입고, 
-		autoColumns:true,
+		//autoColumns:true,
 		
 		columns:[
 			{title:"관리번호", field:"관리번호", sorter:"string", width:200},
@@ -255,6 +267,18 @@ async function 년간출하_table(s_day, e_day, flag_id_search = false, search_m
 	if(doc_count >= 1) {
 		find_query(BSA재제조, { 출하 : { $gte: s_day, $lte: e_day }});
 		await delay();
+
+		for(var i = 0; i < find_array.length; i++) {
+			delete find_array[i].적재No;
+			delete find_array[i].입고;
+			delete find_array[i].제조투입;
+			delete find_array[i].세척;
+			delete find_array[i].기초검사;
+			delete find_array[i].분해조립;
+			delete find_array[i].성능검사;
+			delete find_array[i].EOL;
+			delete find_array[i].마지막충전일;
+		}
 		tabledata_BSA_출하 = find_array;
 	}
 
@@ -262,7 +286,7 @@ async function 년간출하_table(s_day, e_day, flag_id_search = false, search_m
 		layout: "resizableColumnFit",
 		height:500,
 		data:tabledata_BSA_출하, 
-		autoColumns:true,
+		//autoColumns:true,
 		
 		columns:[
 			{title:"관리번호", field:"관리번호", sorter:"string", width:200},

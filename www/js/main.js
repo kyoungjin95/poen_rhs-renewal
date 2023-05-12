@@ -60,7 +60,7 @@ var flag_재제조현황 = false;
 var flag_상세입력 = false;
 var flag_년간현황 = false;
 var flag_월간현황 = false;
-var flag_일간현황 = false;
+var flag_주간현황 = false;
 var flag_생산현황 = false;
 var flag_대시보드 = false;
 var flag_부품재고 = false;
@@ -74,7 +74,7 @@ var interval = setInterval(function() {
 	if(flag_상세입력 == true) { stop_repeat(); 상세입력_시작(); }
 	if(flag_년간현황 == true) { stop_repeat(); 년간현황_시작(); }
 	if(flag_월간현황 == true) { stop_repeat(); 월간현황_시작(); }
-	if(flag_일간현황 == true) { stop_repeat(); 일간현황_시작(); }
+	if(flag_주간현황 == true) { stop_repeat(); 주간현황_시작(); }
 	if(flag_재충전정보 == true) { stop_repeat(); 재충전정보_시작(); }
 	if(flag_부품재고 == true) { stop_repeat(); 부품재고_시작(); }
 	if(flag_생산현황 == true) { stop_repeat(); 생산현황_시작();}

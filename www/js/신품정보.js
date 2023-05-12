@@ -41,7 +41,7 @@ async function 신품정보등록_조회() {
 		layout: "resizableColumnFit",
 		height:200,
 		data:tabledata, 
-		autoColumns:true,
+		//autoColumns:true,
 	});
 
 }

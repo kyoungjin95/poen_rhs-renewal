@@ -35,6 +35,12 @@ async function 재충전정보_시작() {
 		layout: "resizableColumnFit",
 		height:1500,
 		data:tabledata, 
-		autoColumns:true,
+		//autoColumns:true,
+		
+		columns:[
+			{title:"관리번호", field:"관리번호", sorter:"string"},
+			{title:"재제조번호", field:"재제조번호", sorter:"string"},
+			{title:"마지막충전일", field:"마지막충전일", sorter:"string"},
+		]
 	});
 }

@@ -35,6 +35,7 @@ async function 총합계_조회() {
 	var 기초검사당일 = doc_count;
 
 	//document.getElementById('num2').innerHTML = '512(2)';
+	document.getElementById('num1').innerHTML = (기초검사누적 + 1) + ' (' + 기초검사당일 + ')';
 	document.getElementById('num2').innerHTML = 기초검사누적 + ' (' + 기초검사당일 + ')';
 
 	count(BSA재제조, { 분해조립 : { $exists : true, $ne : 'none', $ne : ''}});
