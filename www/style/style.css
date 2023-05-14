@@ -31,7 +31,7 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  margin-bottom: 20px;
+  margin-bottom: 2vw;
   flex: 0;
 }
 
@@ -66,4 +66,14 @@ h1 {
 table td {
   padding: 1vw;
   font-size: 1.2vw;
+}
+
+.종합평가_img {
+    width: 50vw;
+    height: 10vw;
+    background-image: url('../img/jp.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border:1px solid black;
 }
