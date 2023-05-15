@@ -50,13 +50,13 @@ io.on('connection', async function(socket) {
 	socket.on('count', async function(worker, col, query) {
 		const cnt = await count(col, query);
 		socket.emit('count_result', cnt);
-		logger.info('worker:'+ worker + ' count col:' + col +'query:'+ JSON.stringify(query));
+		//logger.info('worker:'+ worker + ' count col:' + col +'query:'+ JSON.stringify(query));
 	});
 
 	socket.on('find', async function(worker, col, query, options) {
 		const result_array = await find(col, query, options);
 		socket.emit('find_result', result_array);
-		logger.info('worker:'+ worker + ' find col:' + col +'query:'+ JSON.stringify(query));
+		//logger.info('worker:'+ worker + ' find col:' + col +'query:'+ JSON.stringify(query));
 	});
 
 	socket.on('update', async function(worker, col, filter, doc) {
