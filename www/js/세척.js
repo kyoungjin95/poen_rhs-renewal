@@ -18,10 +18,14 @@ async function 세척_managementID() {
 		
 		_공정입고일.value = find_array[0].공정입고일;
 		_공정완료일.value = find_array[0].공정완료일;
+		_기밀검사_케이스.value = find_array[0].기밀검사_케이스;
+		_기밀검사_케이스_특이사항.value = find_array[0].기밀검사_케이스_특이사항;
 		_특이사항.value = find_array[0].특이사항
 	} else {
 		_공정입고일.value = '0000-00-00T00:00';
 		_공정완료일.value = '0000-00-00T00:00';
+		_기밀검사_케이스.value = '';
+		_기밀검사_케이스_특이사항.value = '';
 		_특이사항.value = '';
 	}
 }
@@ -35,6 +39,8 @@ async function 세척_save() {
 	doc.관리번호 = _management_id.value;
 	doc.공정입고일 = _공정입고일.value;
 	doc.공정완료일 = _공정완료일.value;
+	doc.기밀검사_케이스 = _기밀검사_케이스.value;
+	doc.기밀검사_케이스_특이사항 = _기밀검사_케이스_특이사항.value;
 	doc.특이사항 = _특이사항.value;
 	
 	update(세척, doc);
