@@ -19,6 +19,10 @@ form {
   margin-bottom: 1vw;
 }
 
+input {
+	font-size: 1.0vw;
+}
+
 label {
   margin-bottom: 5px;
 }
@@ -27,7 +31,7 @@ button {
   background-color: #007bff;
   color: white;
   font-size: 1.4vw;
-  padding: 1vw 1vw;
+  padding: 0.8vw 0.8vw;
   border: none;
   border-radius: 1vw;
   cursor: pointer;
