@@ -12,7 +12,7 @@
 		</div>
 		<div class="분해조립">
 			<center>
-				<table border="2">
+				<table border="2" id='tb'>
 					<tr>
 						<td>
 							<label for="management_id"><b>관리번호</b></label>
@@ -32,21 +32,26 @@
 					</tr>
 					<tr>
 						<td>
-							<label for="_BMU"><b>BMU</b></label>
+							<label for="_BMU1"><b>BMU 1</b></label>
 						</td>
 						<td>
-							<input type="text" id="_BMU" size="100" required>
-							<select name="language" onchange="_BMU_콤보박스(this);">
+							<input type="text" id="_BMU1" size="100" required>
+							<select name="language" onchange="_BMU1_콤보박스(this);">
 								<option value="">---</option>
 								<option value="신품 교체">신품 교체</option>
 								<option value="고품 교체">고품 교체</option>
 								<option value="N/A">N/A</option>
 							</select>
 						</td>
+						<td>
+							<center>
+								<button onClick='_BMU_add();'>+</button>
+							</center>
+						</td>
 					</tr>
 					<tr>
 						<td>
-							<label for="_CMU"><b>CMU</b></label>
+							<label for="_CMU"><b>CMU 1</b></label>
 						</td>
 						<td>
 							<input type="text" id="_CMU" size="100" required>
@@ -57,10 +62,15 @@
 								<option value="N/A">N/A</option>
 							</select>
 						</td>
+						<td>
+							<center>
+								<button onClick='_CMU_add();'>+</button>
+							</center>
+						</td>
 					</tr>
 					<tr>
 						<td>
-							<label for="_PRA"><b>PRA</b></label>
+							<label for="_PRA"><b>PRA 1</b></label>
 						</td>
 						<td>
 							<input type="text" id="_PRA" size="100" required>
@@ -71,10 +81,15 @@
 								<option value="N/A">N/A</option>
 							</select>
 						</td>
+						<td>
+							<center>
+								<button onClick='_PRA_add();'>+</button>
+							</center>
+						</td>
 					</tr>
 					<tr>
 						<td>
-							<label for="_SPA"><b>SPA</b></label>
+							<label for="_SPA"><b>SPA 1</b></label>
 						</td>
 						<td>
 							<input type="text" id="_SPA" size="100" required>
@@ -85,10 +100,15 @@
 								<option value="N/A">N/A</option>
 							</select>
 						</td>
+						<td>
+							<center>
+								<button onClick='_SPA_add();'>+</button>
+							</center>
+						</td>
 					</tr>
 					<tr>
 						<td>
-							<label for="_LWR_C"><b>LWR Case</b></label>
+							<label for="_LWR_C"><b>LWR Case 1</b></label>
 						</td>
 						<td>
 							<input type="text" id="_LWR_C" size="100" required>
@@ -99,10 +119,15 @@
 								<option value="N/A">N/A</option>
 							</select>
 						</td>
+						<td>
+							<center>
+								<button onClick='_LWR_C_add();'>+</button>
+							</center>
+						</td>
 					</tr>
 					<tr>
 						<td>
-							<label for="_UPR_C"><b>UPR Case</b></label>
+							<label for="_UPR_C"><b>UPR Case 1</b></label>
 						</td>
 						<td>
 							<input type="text" id="_UPR_C" size="100" required>
@@ -112,6 +137,11 @@
 								<option value="고품 교체">고품 교체</option>
 								<option value="N/A">N/A</option>
 							</select>
+						</td>
+						<td>
+							<center>
+								<button onClick='_UPR_C_add();'>+</button>
+							</center>
 						</td>
 					</tr>
 					<tr>
@@ -132,7 +162,7 @@
 					</tr>
 					<tr>
 						<td>
-							<label for="_Relay"><b>Relay</b></label>
+							<label for="_Relay"><b>Relay 1</b></label>
 						</td>
 						<td>
 							<input type="text" id="_Relay" size="100" required>
@@ -143,10 +173,15 @@
 								<option value="N/A">N/A</option>
 							</select>
 						</td>
+						<td>
+							<center>
+								<button onClick='_Relay_add();'>+</button>
+							</center>
+						</td>
 					</tr>
 					<tr>
 						<td>
-							<label for="_HV_CNTR"><b>HV CNTR</b></label>
+							<label for="_HV_CNTR"><b>HV CNTR 1</b></label>
 						</td>
 						<td>
 							<input type="text" id="_HV_CNTR" size="100" required>
@@ -157,10 +192,15 @@
 								<option value="N/A">N/A</option>
 							</select>
 						</td>
+						<td>
+							<center>
+								<button onClick='_HV_CNTR_add();'>+</button>
+							</center>
+						</td>
 					</tr>
 					<tr>
 						<td>
-							<label for="_Heating_CNTR"><b>Heating CNTR</b></label>
+							<label for="_Heating_CNTR"><b>Heating CNTR 1</b></label>
 						</td>
 						<td>
 							<input type="text" id="_Heating_CNTR" size="100" required>
@@ -171,10 +211,15 @@
 								<option value="N/A">N/A</option>
 							</select>
 						</td>
+						<td>
+							<center>
+								<button onClick='_Heating_CNTR_add();'>+</button>
+							</center>
+						</td>
 					</tr>
 					<tr>
 						<td>
-							<label for="_FuseBox"><b>FuseBox</b></label>
+							<label for="_FuseBox"><b>FuseBox 1</b></label>
 						</td>
 						<td>
 							<input type="text" id="_FuseBox" size="100" required>
@@ -185,10 +230,15 @@
 								<option value="N/A">N/A</option>
 							</select>
 						</td>
+						<td>
+							<center>
+								<button onClick='_FuseBox_add();'>+</button>
+							</center>
+						</td>
 					</tr>
 					<tr>
 						<td>
-							<label for="_LV_W_H"><b>LV W/H</b></label>
+							<label for="_LV_W_H"><b>LV W/H 1</b></label>
 						</td>
 						<td>
 							<input type="text" id="_LV_W_H" size="100" required>
@@ -199,10 +249,15 @@
 								<option value="N/A">N/A</option>
 							</select>
 						</td>
+						<td>
+							<center>
+								<button onClick='_LV_W_H_add();'>+</button>
+							</center>
+						</td>
 					</tr>
 					<tr>
 						<td>
-							<label for="_HV_W_H"><b>HV W/H</b></label>
+							<label for="_HV_W_H"><b>HV W/H 1</b></label>
 						</td>
 						<td>
 							<input type="text" id="_HV_W_H" size="100" required>
@@ -213,10 +268,15 @@
 								<option value="N/A">N/A</option>
 							</select>
 						</td>
+						<td>
+							<center>
+								<button onClick='_HV_W_H_add();'>+</button>
+							</center>
+						</td>
 					</tr>
 					<tr>
 						<td>
-							<label for="_온도센서"><b>온도센서</b></label>
+							<label for="_온도센서"><b>온도센서 1</b></label>
 						</td>
 						<td>
 							<input type="text" id="_온도센서" size="100" required>
@@ -226,6 +286,11 @@
 								<option value="고품 교체">고품 교체</option>
 								<option value="N/A">N/A</option>
 							</select>
+						</td>
+						<td>
+							<center>
+								<button onClick='_온도센서_add();'>+</button>
+							</center>
 						</td>
 					</tr>
 					<tr>
@@ -238,7 +303,7 @@
 					</tr>
 					<tr>
 						<td>
-							<label for="_BMA"><b>BMA</b></label>
+							<label for="_BMA"><b>BMA 1</b></label>
 						</td>
 						<td>
 							<input type="text" id="_BMA" size="100" required>
@@ -248,6 +313,11 @@
 								<option value="고품 교체">고품 교체</option>
 								<option value="N/A">N/A</option>
 							</select>
+						</td>
+						<td>
+							<center>
+								<button onClick='_BMA_add();'>+</button>
+							</center>
 						</td>
 					</tr>
 					<tr>
@@ -285,9 +355,19 @@
 		</div>
 		</div>
 		<script>
+			const _tb = document.getElementById('tb');
 			const _management_id = document.getElementById('_management_id');
 			const _공정입고일 = document.getElementById('_공정입고일');
-			const _BMU = document.getElementById('_BMU');
+			const _BMU1 = document.getElementById('_BMU1');
+			const _BMU2 = document.getElementById('_BMU2');
+			const _BMU3 = document.getElementById('_BMU3');
+			const _BMU4 = document.getElementById('_BMU4');
+			const _BMU5 = document.getElementById('_BMU5');
+			const _BMU6 = document.getElementById('_BMU6');
+			const _BMU7 = document.getElementById('_BMU7');
+			const _BMU8 = document.getElementById('_BMU8');
+			const _BMU9 = document.getElementById('_BMU9');
+			const _BMU10 = document.getElementById('_BMU10');
 			const _CMU = document.getElementById('_CMU');
 			const _PRA = document.getElementById('_PRA');
 			const _SPA = document.getElementById('_SPA');
@@ -307,6 +387,15 @@
 			const _BMA = document.getElementById('_BMA');
 			const _공정완료일 = document.getElementById('_공정완료');
 			const _작업자 = document.getElementById('_작업자');
+			const _bmu2 = document.getElementById('bmu2');
+			const _bmu3 = document.getElementById('bmu3');
+			const _bmu4 = document.getElementById('bmu4');
+			const _bmu5 = document.getElementById('bmu5');
+			const _bmu6 = document.getElementById('bmu6');
+			const _bmu7 = document.getElementById('bmu7');
+			const _bmu8 = document.getElementById('bmu8');
+			const _bmu9 = document.getElementById('bmu9');
+			const _bmu10 = document.getElementById('bmu10');
 		</script>                          
 	</body>
 </html>

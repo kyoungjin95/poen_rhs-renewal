@@ -10,6 +10,7 @@ async function 상세입력_시작() {
 		await sleep(DELAY);
 	}
 
+	_management_id.value = _management_id.value.trim();
 	if(_management_id.value.length == 0 && 관리번호 != '' && 관리번호.indexOf('none') == -1) {
 		_management_id.value = 관리번호;
 	}
@@ -26,7 +27,7 @@ async function 상세입력_시작() {
 	await delay();
 	console.log('doc_count: ', doc_count);
 	if(doc_count >= 1) {
-		관리번호 = _management_id.value;
+		관리번호 = _management_id.value.trim();
 		pre_관리번호 = 관리번호;
 		sessionStorage.setItem('manage_id', 관리번호);
 		find(BSA재제조, _management_id.value);

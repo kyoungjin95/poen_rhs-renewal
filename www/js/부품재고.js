@@ -26,7 +26,7 @@ async function 부품재고_시작() {
 		layout: "resizableColumnFit",
 		height:500,
 		data:tabledata_신품재고, 
-		//autoColumns:true,
+		autoColumns:true,
 	});
 
 	table_신품재고.on("rowClick", async function(e, row){
@@ -50,7 +50,7 @@ async function 부품재고_시작() {
 		layout: "resizableColumnFit",
 		height:500,
 		data:tabledata_고품재고, 
-		//autoColumns:true,
+		autoColumns:true,
 	});
 
 	table_고품재고.on("rowClick", async function(e, row){

@@ -117,7 +117,16 @@ const 분해조립_doc = {
 	FuseBox: '',
 	Relay: '',
 	CMU: '',
-	BMU: '',
+	BMU1: '',
+	BMU2: '',
+	BMU3: '',
+	BMU4: '',
+	BMU5: '',
+	BMU6: '',
+	BMU7: '',
+	BMU8: '',
+	BMU9: '',
+	BMU10: '',
 	BMA: '',
 	LWR_C: '',
 	온도센서: '',
@@ -360,7 +369,16 @@ const 분해조립_ = {
 	FuseBox: 1,
 	Relay: 1,
 	CMU: 1,
-	BMU: 1,
+	BMU1: 1,
+	BMU2: 1,
+	BMU3: 1,
+	BMU4: 1,
+	BMU5: 1,
+	BMU6: 1,
+	BMU7: 1,
+	BMU8: 1,
+	BMU9: 1,
+	BMU10: 1,
 	BMA: 1,
 	LWR_C: 1,
 	온도센서 : 1,
@@ -626,6 +644,15 @@ async function update(col, doc) {
 	}
 }
 
+async function update_분해조립_부품정보(col, doc) {
+	if(socket == undefined) return;
+	flag_arrivedMSG = false;
+	while(flag_arrivedMSG == false) {
+		socket.emit('update', worker, col, { 교체전_QR: doc.교체전_QR }, {$set: doc});
+		await sleep(DELAY);
+	}
+}
+
 async function update_신품정보(col, doc) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
@@ -741,6 +768,13 @@ async function find(col, management_id) {
 			}
 			break;
 
+		case '분해조립_부품정보' :
+			while(flag_arrivedMSG == false) {
+				socket.emit('find', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 분해조립_부품정보_});
+				await sleep(DELAY);
+			}
+			break;
+
 		case '고품정보' :
 			while(flag_arrivedMSG == false) {
 				socket.emit('find', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 고품정보_});
@@ -843,6 +877,13 @@ function find_계정(col, query) {
 	flag_arrivedMSG = false;
 
 	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: 계정_ });
+}
+
+function find_분해조립_부품정보(col, query) {
+	if(socket == undefined) return;
+	flag_arrivedMSG = false;
+
+	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: 분해조립_부품정보_ });
 }
 
 function find_신품정보(col, query) {

@@ -17,7 +17,7 @@ async function 고품정보등록_managementID() {
 		find(고품정보, _management_id.value);
 		await delay();
 		tabledata = find_array;
-		console.log('고품정보 : ', find_array);
+		//console.log('고품정보 : ', find_array);
 	} else {
 		_품명.value = '';
                 _번호.value = '';
