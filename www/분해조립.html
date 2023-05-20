@@ -7,12 +7,12 @@
 	<body>  
 		<div>
 			<center>
-				<label for='분해조립'><h2><b>분해조립</b></h2></label>
+				<label for='_분해조립'><h2><b>분해조립</b></h2></label>
 			</center>
 		</div>
 		<div class="분해조립">
 			<center>
-				<table border="2" id='tb'>
+				<table border="2" id='_tb'>
 					<tr>
 						<td>
 							<label for="management_id"><b>관리번호</b></label>
@@ -27,7 +27,7 @@
 							<label for="_공정입고일"><b>공정 입고일</b></label>
 						</td>
 						<td>
-							<input type="datetime-local" id="_공정입고일" value='0000-00-00T00:00' required>
+							<input type="datetime-local" id="_공정입고일" value='_0000-00-00T00:00'_ required>
 						</td>
 					</tr>
 					<tr>
@@ -36,7 +36,7 @@
 						</td>
 						<td>
 							<input type="text" id="_BMU1" size="100" required>
-							<select name="language" onchange="_BMU1_콤보박스(this);">
+							<select name="language" onchange="_콤보박스('_BMU1', this);">
 								<option value="">---</option>
 								<option value="신품 교체">신품 교체</option>
 								<option value="고품 교체">고품 교체</option>
@@ -45,17 +45,17 @@
 						</td>
 						<td>
 							<center>
-								<button onClick='_BMU_add();'>+</button>
+								<button>+</button>
 							</center>
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<label for="_CMU"><b>CMU 1</b></label>
+							<label for="_CMU1"><b>CMU 1</b></label>
 						</td>
 						<td>
-							<input type="text" id="_CMU" size="100" required>
-							<select name="language" onchange="_CMU_콤보박스(this);">
+							<input type="text" id="_CMU1" size="100" required>
+							<select name="language" onchange="_콤보박스('_CMU1', this);">
 								<option value="">---</option>
 								<option value="신품 교체">신품 교체</option>
 								<option value="고품 교체">고품 교체</option>
@@ -64,17 +64,17 @@
 						</td>
 						<td>
 							<center>
-								<button onClick='_CMU_add();'>+</button>
+								<button>+</button>
 							</center>
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<label for="_PRA"><b>PRA 1</b></label>
+							<label for="_PRA1"><b>PRA 1</b></label>
 						</td>
 						<td>
-							<input type="text" id="_PRA" size="100" required>
-							<select name="language" onchange="_PRA_콤보박스(this);">
+							<input type="text" id="_PRA1" size="100" required>
+							<select name="language" onchange="_콤보박스('_PRA1', this);">
 								<option value="">---</option>
 								<option value="신품 교체">신품 교체</option>
 								<option value="고품 교체">고품 교체</option>
@@ -83,17 +83,17 @@
 						</td>
 						<td>
 							<center>
-								<button onClick='_PRA_add();'>+</button>
+								<button>+</button>
 							</center>
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<label for="_SPA"><b>SPA 1</b></label>
+							<label for="_SPA1"><b>SPA 1</b></label>
 						</td>
 						<td>
-							<input type="text" id="_SPA" size="100" required>
-							<select name="language" onchange="_SPA_콤보박스(this);">
+							<input type="text" id="_SPA1" size="100" required>
+							<select name="language" onchange="_콤보박스('_SPA1', this);">
 								<option value="">---</option>
 								<option value="신품 교체">신품 교체</option>
 								<option value="고품 교체">고품 교체</option>
@@ -102,17 +102,17 @@
 						</td>
 						<td>
 							<center>
-								<button onClick='_SPA_add();'>+</button>
+								<button>+</button>
 							</center>
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<label for="_LWR_C"><b>LWR Case 1</b></label>
+							<label for="_LWR_C1"><b>LWR Case 1</b></label>
 						</td>
 						<td>
-							<input type="text" id="_LWR_C" size="100" required>
-							<select name="language" onchange="_LWR_C_콤보박스(this);">
+							<input type="text" id="_LWR_C1" size="100" required>
+							<select name="language" onchange="_콤보박스('_LWR_C1', this);">
 								<option value="">---</option>
 								<option value="신품 교체">신품 교체</option>
 								<option value="고품 교체">고품 교체</option>
@@ -121,17 +121,17 @@
 						</td>
 						<td>
 							<center>
-								<button onClick='_LWR_C_add();'>+</button>
+								<button>+</button>
 							</center>
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<label for="_UPR_C"><b>UPR Case 1</b></label>
+							<label for="_UPR_C1"><b>UPR Case 1</b></label>
 						</td>
 						<td>
-							<input type="text" id="_UPR_C" size="100" required>
-							<select name="language" onchange="_UPR_C_콤보박스(this);">
+							<input type="text" id="_UPR_C1" size="100" required>
+							<select name="language" onchange="_콤보박스('_UPR_C1', this);">
 								<option value="">---</option>
 								<option value="신품 교체">신품 교체</option>
 								<option value="고품 교체">고품 교체</option>
@@ -140,7 +140,7 @@
 						</td>
 						<td>
 							<center>
-								<button onClick='_UPR_C_add();'>+</button>
+								<button>+</button>
 							</center>
 						</td>
 					</tr>
@@ -162,11 +162,11 @@
 					</tr>
 					<tr>
 						<td>
-							<label for="_Relay"><b>Relay 1</b></label>
+							<label for="_Relay1"><b>Relay 1</b></label>
 						</td>
 						<td>
-							<input type="text" id="_Relay" size="100" required>
-							<select name="language" onchange="_Relay_콤보박스(this);">
+							<input type="text" id="_Relay1" size="100" required>
+							<select name="language" onchange="_콤보박스('_Relay1', this);">
 								<option value="">---</option>
 								<option value="신품 교체">신품 교체</option>
 								<option value="고품 교체">고품 교체</option>
@@ -175,17 +175,17 @@
 						</td>
 						<td>
 							<center>
-								<button onClick='_Relay_add();'>+</button>
+								<button>+</button>
 							</center>
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<label for="_HV_CNTR"><b>HV CNTR 1</b></label>
+							<label for="_HV_CNTR1"><b>HV CNTR 1</b></label>
 						</td>
 						<td>
-							<input type="text" id="_HV_CNTR" size="100" required>
-							<select name="language" onchange="_HV_CNTR_콤보박스(this);">
+							<input type="text" id="_HV_CNTR1" size="100" required>
+							<select name="language" onchange="_콤보박스('_HV_CNTR1', this);">
 								<option value="">---</option>
 								<option value="신품 교체">신품 교체</option>
 								<option value="고품 교체">고품 교체</option>
@@ -194,17 +194,17 @@
 						</td>
 						<td>
 							<center>
-								<button onClick='_HV_CNTR_add();'>+</button>
+								<button>+</button>
 							</center>
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<label for="_Heating_CNTR"><b>Heating CNTR 1</b></label>
+							<label for="_Heating_CNTR1"><b>Heating CNTR 1</b></label>
 						</td>
 						<td>
-							<input type="text" id="_Heating_CNTR" size="100" required>
-							<select name="language" onchange="_Heating_CNTR_콤보박스(this);">
+							<input type="text" id="_Heating_CNTR1" size="100" required>
+							<select name="language" onchange="_콤보박스('_Heating_CNTR1', this);">
 								<option value="">---</option>
 								<option value="신품 교체">신품 교체</option>
 								<option value="고품 교체">고품 교체</option>
@@ -213,17 +213,17 @@
 						</td>
 						<td>
 							<center>
-								<button onClick='_Heating_CNTR_add();'>+</button>
+								<button>+</button>
 							</center>
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<label for="_FuseBox"><b>FuseBox 1</b></label>
+							<label for="_FuseBox1"><b>FuseBox 1</b></label>
 						</td>
 						<td>
-							<input type="text" id="_FuseBox" size="100" required>
-							<select name="language" onchange="_FuseBox_콤보박스(this);">
+							<input type="text" id="_FuseBox1" size="100" required>
+							<select name="language" onchange="_콤보박스('_FuseBox1', this);">
 								<option value="">---</option>
 								<option value="신품 교체">신품 교체</option>
 								<option value="고품 교체">고품 교체</option>
@@ -232,17 +232,17 @@
 						</td>
 						<td>
 							<center>
-								<button onClick='_FuseBox_add();'>+</button>
+								<button>+</button>
 							</center>
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<label for="_LV_W_H"><b>LV W/H 1</b></label>
+							<label for="_LV_W_H1"><b>LV W/H 1</b></label>
 						</td>
 						<td>
-							<input type="text" id="_LV_W_H" size="100" required>
-							<select name="language" onchange="_LV_W_H_콤보박스(this);">
+							<input type="text" id="_LV_W_H1" size="100" required>
+							<select name="language" onchange="_콤보박스('_LV_W_H1', this);">
 								<option value="">---</option>
 								<option value="신품 교체">신품 교체</option>
 								<option value="고품 교체">고품 교체</option>
@@ -251,17 +251,17 @@
 						</td>
 						<td>
 							<center>
-								<button onClick='_LV_W_H_add();'>+</button>
+								<button>+</button>
 							</center>
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<label for="_HV_W_H"><b>HV W/H 1</b></label>
+							<label for="_HV_W_H1"><b>HV W/H 1</b></label>
 						</td>
 						<td>
-							<input type="text" id="_HV_W_H" size="100" required>
-							<select name="language" onchange="_HV_W_H_콤보박스(this);">
+							<input type="text" id="_HV_W_H1" size="100" required>
+							<select name="language" onchange="_콤보박스('_HV_W_H1', this);">
 								<option value="">---</option>
 								<option value="신품 교체">신품 교체</option>
 								<option value="고품 교체">고품 교체</option>
@@ -270,17 +270,17 @@
 						</td>
 						<td>
 							<center>
-								<button onClick='_HV_W_H_add();'>+</button>
+								<button>+</button>
 							</center>
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<label for="_온도센서"><b>온도센서 1</b></label>
+							<label for="_온도센서1"><b>온도센서 1</b></label>
 						</td>
 						<td>
-							<input type="text" id="_온도센서" size="100" required>
-							<select name="language" onchange="_온도센서_콤보박스(this);">
+							<input type="text" id="_온도센서1" size="100" required>
+							<select name="language" onchange="_콤보박스('_온도센서1', this);">
 								<option value="">---</option>
 								<option value="신품 교체">신품 교체</option>
 								<option value="고품 교체">고품 교체</option>
@@ -289,7 +289,7 @@
 						</td>
 						<td>
 							<center>
-								<button onClick='_온도센서_add();'>+</button>
+								<button>+</button>
 							</center>
 						</td>
 					</tr>
@@ -306,8 +306,8 @@
 							<label for="_BMA"><b>BMA 1</b></label>
 						</td>
 						<td>
-							<input type="text" id="_BMA" size="100" required>
-							<select name="language" onchange="_BMA_콤보박스(this);">
+							<input type="text" id="_BMA1" size="100" required>
+							<select name="language" onchange="_콤보박스('_BMA1', this);">
 								<option value="">---</option>
 								<option value="신품 교체">신품 교체</option>
 								<option value="고품 교체">고품 교체</option>
@@ -316,7 +316,7 @@
 						</td>
 						<td>
 							<center>
-								<button onClick='_BMA_add();'>+</button>
+								<button>+</button>
 							</center>
 						</td>
 					</tr>
@@ -355,47 +355,29 @@
 		</div>
 		</div>
 		<script>
-			const _tb = document.getElementById('tb');
+			const _tb = document.getElementById('_tb');
 			const _management_id = document.getElementById('_management_id');
 			const _공정입고일 = document.getElementById('_공정입고일');
 			const _BMU1 = document.getElementById('_BMU1');
-			const _BMU2 = document.getElementById('_BMU2');
-			const _BMU3 = document.getElementById('_BMU3');
-			const _BMU4 = document.getElementById('_BMU4');
-			const _BMU5 = document.getElementById('_BMU5');
-			const _BMU6 = document.getElementById('_BMU6');
-			const _BMU7 = document.getElementById('_BMU7');
-			const _BMU8 = document.getElementById('_BMU8');
-			const _BMU9 = document.getElementById('_BMU9');
-			const _BMU10 = document.getElementById('_BMU10');
-			const _CMU = document.getElementById('_CMU');
-			const _PRA = document.getElementById('_PRA');
-			const _SPA = document.getElementById('_SPA');
-			const _LWR_C = document.getElementById('_LWR_C');
-			const _UPR_C = document.getElementById('_UPR_C');
+			const _CMU1 = document.getElementById('_CMU1');
+			const _PRA1 = document.getElementById('_PRA1');
+			const _SPA1 = document.getElementById('_SPA1');
+			const _LWR_C1 = document.getElementById('_LWR_C1');
+			const _UPR_C1 = document.getElementById('_UPR_C1');
 			const _PBE = document.getElementById('_PBE');
 			const _Gasket = document.getElementById('_Gasket');
-			const _FuseBox = document.getElementById('_FuseBox');
-			const _LV_W_H = document.getElementById('_LV_W_H');
-			const _HV_W_H = document.getElementById('_HV_W_H');
-			const _HV_CNTR = document.getElementById('_HV_CNTR');
-			const _Heating_CNTR = document.getElementById('_Heating_CNTR');
-			const _Relay = document.getElementById('_Relay');
+			const _FuseBox1 = document.getElementById('_FuseBox1');
+			const _LV_W_H1 = document.getElementById('_LV_W_H1');
+			const _HV_W_H1 = document.getElementById('_HV_W_H1');
+			const _HV_CNTR1 = document.getElementById('_HV_CNTR1');
+			const _Heating_CNTR1 = document.getElementById('_Heating_CNTR1');
+			const _Relay1 = document.getElementById('_Relay1');
 			const _ETC = document.getElementById('_ETC');
-			const _온도센서 = document.getElementById('_온도센서');
+			const _온도센서1 = document.getElementById('_온도센서1');
 			const _Busbars = document.getElementById('_Busbars');
-			const _BMA = document.getElementById('_BMA');
+			const _BMA1 = document.getElementById('_BMA1');
 			const _공정완료일 = document.getElementById('_공정완료');
 			const _작업자 = document.getElementById('_작업자');
-			const _bmu2 = document.getElementById('bmu2');
-			const _bmu3 = document.getElementById('bmu3');
-			const _bmu4 = document.getElementById('bmu4');
-			const _bmu5 = document.getElementById('bmu5');
-			const _bmu6 = document.getElementById('bmu6');
-			const _bmu7 = document.getElementById('bmu7');
-			const _bmu8 = document.getElementById('bmu8');
-			const _bmu9 = document.getElementById('bmu9');
-			const _bmu10 = document.getElementById('bmu10');
 		</script>                          
 	</body>
 </html>
