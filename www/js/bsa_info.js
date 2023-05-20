@@ -366,30 +366,245 @@ async function grid_분해조립(m_id) {
 		find(분해조립, m_id);
 		await delay();
 		await sleep(100);
-		tabledata_분해조립 = find_array;
-		console.log('분해조립 : ', find_array);;
+	
+		for(var i = 1; i <= 10; i++) {
+			var str = 'if(find_array[0].BMU' + i + ' == \'\') delete find_array[0].BMU' + i +';';
+			console.log(str);
+			eval(str);
+		}
 
+		for(var i = 1; i <= 10; i++) {
+			var str = 'if(find_array[0].CMU' + i + ' == \'\') delete find_array[0].CMU' + i +';';
+			console.log(str);
+			eval(str);
+		}
+
+		for(var i = 1; i <= 10; i++) {
+			var str = 'if(find_array[0].PRA' + i + ' == \'\') delete find_array[0].PRA' + i +';';
+			console.log(str);
+			eval(str);
+		}
+
+		for(var i = 1; i <= 10; i++) {
+			var str = 'if(find_array[0].SPA' + i + ' == \'\') delete find_array[0].SPA' + i +';';
+			console.log(str);
+			eval(str);
+		}
+
+		for(var i = 1; i <= 10; i++) {
+			var str = 'if(find_array[0].LWR_C' + i + ' == \'\') delete find_array[0].LWR_C' + i +';';
+			console.log(str);
+			eval(str);
+		}
+
+		for(var i = 1; i <= 10; i++) {
+			var str = 'if(find_array[0].UPR_C' + i + ' == \'\') delete find_array[0].UPR_C' + i +';';
+			console.log(str);
+			eval(str);
+		}
+
+		for(var i = 1; i <= 10; i++) {
+			var str = 'if(find_array[0].Relay' + i + ' == \'\') delete find_array[0].Relay' + i +';';
+			console.log(str);
+			eval(str);
+		}
+
+		for(var i = 1; i <= 10; i++) {
+			var str = 'if(find_array[0].HV_CNTR' + i + ' == \'\') delete find_array[0].HV_CNTR' + i +';';
+			console.log(str);
+			eval(str);
+		}
+
+		for(var i = 1; i <= 10; i++) {
+			var str = 'if(find_array[0].Heating_CNTR' + i + ' == \'\') delete find_array[0].Heating_CNTR' + i +';';
+			console.log(str);
+			eval(str);
+		}
+
+		for(var i = 1; i <= 10; i++) {
+			var str = 'if(find_array[0].FuseBox' + i + ' == \'\') delete find_array[0].FuseBox' + i +';';
+			console.log(str);
+			eval(str);
+		}
+
+		for(var i = 1; i <= 10; i++) {
+			var str = 'if(find_array[0].LV_W_H' + i + ' == \'\') delete find_array[0].LV_W_H' + i +';';
+			console.log(str);
+			eval(str);
+		}
+
+		for(var i = 1; i <= 10; i++) {
+			var str = 'if(find_array[0].HV_W_H' + i + ' == \'\') delete find_array[0].HV_W_H' + i +';';
+			console.log(str);
+			eval(str);
+		}
+
+		for(var i = 1; i <= 10; i++) {
+			var str = 'if(find_array[0].온도센서' + i + ' == \'\') delete find_array[0].온도센서' + i +';';
+			console.log(str);
+			eval(str);
+		}
+
+		for(var i = 1; i <= 10; i++) {
+			var str = 'if(find_array[0].BMA' + i + ' == \'\') delete find_array[0].BMA' + i +';';
+			console.log(str);
+			eval(str);
+		}
+
+		tabledata_분해조립 = find_array;
+		console.log('분해조립 : ', find_array);
+		
 	var table_분해조립 = new Tabulator("#grid_분해조립", {
 		layout: "resizableColumnFit",
 		height:130,
 		data:tabledata_분해조립, 
-		//autoColumns:true,
+		autoColumns:true,
 		
 		columns:[
 			{title:"관리번호", field:"관리번호", sorter:"string"},
-			{title:"UPR/C", field:"UPR_C", sorter:"string"},
+			{title:"BMU 1", field:"BMU1", sorter:"string"},
+			{title:"BMU 2", field:"BMU1", sorter:"string"},
+			{title:"BMU 3", field:"BMU1", sorter:"string"},
+			{title:"BMU 4", field:"BMU1", sorter:"string"},
+			{title:"BMU 5", field:"BMU1", sorter:"string"},
+			{title:"BMU 6", field:"BMU1", sorter:"string"},
+			{title:"BMU 7", field:"BMU1", sorter:"string"},
+			{title:"BMU 8", field:"BMU1", sorter:"string"},
+			{title:"BMU 9", field:"BMU1", sorter:"string"},
+			{title:"BMU 10", field:"BMU10", sorter:"string"},
+			{title:"CMU 1", field:"CMU1", sorter:"string"},
+			{title:"CMU 2", field:"CMU2", sorter:"string"},
+			{title:"CMU 3", field:"CMU3", sorter:"string"},
+			{title:"CMU 4", field:"CMU4", sorter:"string"},
+			{title:"CMU 5", field:"CMU5", sorter:"string"},
+			{title:"CMU 6", field:"CMU6", sorter:"string"},
+			{title:"CMU 7", field:"CMU7", sorter:"string"},
+			{title:"CMU 8", field:"CMU8", sorter:"string"},
+			{title:"CMU 9", field:"CMU9", sorter:"string"},
+			{title:"CMU 10", field:"CMU10", sorter:"string"},
+			{title:"PRA 1", field:"PRA1", sorter:"string"},
+			{title:"PRA 2", field:"PRA2", sorter:"string"},
+			{title:"PRA 3", field:"PRA3", sorter:"string"},
+			{title:"PRA 4", field:"PRA4", sorter:"string"},
+			{title:"PRA 5", field:"PRA5", sorter:"string"},
+			{title:"PRA 6", field:"PRA6", sorter:"string"},
+			{title:"PRA 7", field:"PRA7", sorter:"string"},
+			{title:"PRA 8", field:"PRA8", sorter:"string"},
+			{title:"PRA 9", field:"PRA9", sorter:"string"},
+			{title:"PRA 10", field:"PRA10", sorter:"string"},
+			{title:"SPA 1", field:"SPA1", sorter:"string"},
+			{title:"SPA 2", field:"SPA1", sorter:"string"},
+			{title:"SPA 3", field:"SPA1", sorter:"string"},
+			{title:"SPA 4", field:"SPA1", sorter:"string"},
+			{title:"SPA 5", field:"SPA1", sorter:"string"},
+			{title:"SPA 6", field:"SPA1", sorter:"string"},
+			{title:"SPA 7", field:"SPA1", sorter:"string"},
+			{title:"SPA 8", field:"SPA1", sorter:"string"},
+			{title:"SPA 9", field:"SPA1", sorter:"string"},
+			{title:"SPA 10", field:"SPA1", sorter:"string"},
+			{title:"LWR Case 1", field:"LWR_C1", sorter:"string"},
+			{title:"LWR Case 2", field:"LWR_C2", sorter:"string"},
+			{title:"LWR Case 3", field:"LWR_C3", sorter:"string"},
+			{title:"LWR Case 4", field:"LWR_C4", sorter:"string"},
+			{title:"LWR Case 5", field:"LWR_C5", sorter:"string"},
+			{title:"LWR Case 6", field:"LWR_C6", sorter:"string"},
+			{title:"LWR Case 7", field:"LWR_C7", sorter:"string"},
+			{title:"LWR Case 8", field:"LWR_C8", sorter:"string"},
+			{title:"LWR Case 9", field:"LWR_C9", sorter:"string"},
+			{title:"LWR Case 10", field:"LWR_C10", sorter:"string"},
+			{title:"UPR Case 1", field:"UPR_C1", sorter:"string"},
+			{title:"UPR Case 2", field:"UPR_C2", sorter:"string"},
+			{title:"UPR Case 3", field:"UPR_C3", sorter:"string"},
+			{title:"UPR Case 4", field:"UPR_C4", sorter:"string"},
+			{title:"UPR Case 5", field:"UPR_C5", sorter:"string"},
+			{title:"UPR Case 6", field:"UPR_C6", sorter:"string"},
+			{title:"UPR Case 7", field:"UPR_C7", sorter:"string"},
+			{title:"UPR Case 8", field:"UPR_C8", sorter:"string"},
+			{title:"UPR Case 9", field:"UPR_C9", sorter:"string"},
+			{title:"UPR Case 10", field:"UPR_C10", sorter:"string"},
 			{title:"PBE", field:"PBE", sorter:"string"},
 			{title:"Gasket", field:"Gasket", sorter:"string"},
+			{title:"Relay 1", field:"Relay1", sorter:"string"},
+			{title:"Relay 2", field:"Relay2", sorter:"string"},
+			{title:"Relay 3", field:"Relay3", sorter:"string"},
+			{title:"Relay 4", field:"Relay4", sorter:"string"},
+			{title:"Relay 5", field:"Relay5", sorter:"string"},
+			{title:"Relay 6", field:"Relay6", sorter:"string"},
+			{title:"Relay 7", field:"Relay7", sorter:"string"},
+			{title:"Relay 8", field:"Relay8", sorter:"string"},
+			{title:"Relay 9", field:"Relay9", sorter:"string"},
+			{title:"Relay 10", field:"Relay10", sorter:"string"},
+			{title:"HV CNTR 1", field:"HV_CNTR1", sorter:"string"},
+			{title:"HV CNTR 2", field:"HV_CNTR2", sorter:"string"},
+			{title:"HV CNTR 3", field:"HV_CNTR3", sorter:"string"},
+			{title:"HV CNTR 4", field:"HV_CNTR4", sorter:"string"},
+			{title:"HV CNTR 5", field:"HV_CNTR5", sorter:"string"},
+			{title:"HV CNTR 6", field:"HV_CNTR6", sorter:"string"},
+			{title:"HV CNTR 7", field:"HV_CNTR7", sorter:"string"},
+			{title:"HV CNTR 8", field:"HV_CNTR8", sorter:"string"},
+			{title:"HV CNTR 9", field:"HV_CNTR9", sorter:"string"},
+			{title:"HV CNTR 10", field:"HV_CNTR10", sorter:"string"},
+			{title:"Heating CNTR 1", field:"Heating_CNTR1", sorter:"string"},
+			{title:"Heating CNTR 2", field:"Heating_CNTR2", sorter:"string"},
+			{title:"Heating CNTR 3", field:"Heating_CNTR3", sorter:"string"},
+			{title:"Heating CNTR 4", field:"Heating_CNTR4", sorter:"string"},
+			{title:"Heating CNTR 5", field:"Heating_CNTR5", sorter:"string"},
+			{title:"Heating CNTR 6", field:"Heating_CNTR6", sorter:"string"},
+			{title:"Heating CNTR 7", field:"Heating_CNTR7", sorter:"string"},
+			{title:"Heating CNTR 8", field:"Heating_CNTR8", sorter:"string"},
+			{title:"Heating CNTR 9", field:"Heating_CNTR9", sorter:"string"},
+			{title:"Heating CNTR 10", field:"Heating_CNTR10", sorter:"string"},
+			{title:"FuseBox 1", field:"FuseBox1", sorter:"string"},
+			{title:"FuseBox 2", field:"FuseBox2", sorter:"string"},
+			{title:"FuseBox 3", field:"FuseBox3", sorter:"string"},
+			{title:"FuseBox 4", field:"FuseBox4", sorter:"string"},
+			{title:"FuseBox 5", field:"FuseBox5", sorter:"string"},
+			{title:"FuseBox 6", field:"FuseBox6", sorter:"string"},
+			{title:"FuseBox 7", field:"FuseBox7", sorter:"string"},
+			{title:"FuseBox 8", field:"FuseBox8", sorter:"string"},
+			{title:"FuseBox 9", field:"FuseBox9", sorter:"string"},
+			{title:"FuseBox 10", field:"FuseBox10", sorter:"string"},
+			{title:"LV W/H 1", field:"LV_W_H1", sorter:"string"},
+			{title:"LV W/H 2", field:"LV_W_H2", sorter:"string"},
+			{title:"LV W/H 3", field:"LV_W_H3", sorter:"string"},
+			{title:"LV W/H 4", field:"LV_W_H4", sorter:"string"},
+			{title:"LV W/H 5", field:"LV_W_H5", sorter:"string"},
+			{title:"LV W/H 6", field:"LV_W_H6", sorter:"string"},
+			{title:"LV W/H 7", field:"LV_W_H7", sorter:"string"},
+			{title:"LV W/H 8", field:"LV_W_H8", sorter:"string"},
+			{title:"LV W/H 9", field:"LV_W_H9", sorter:"string"},
+			{title:"LV W/H 10", field:"LV_W_H10", sorter:"string"},
+			{title:"HV W/H 1", field:"HV_W_H1", sorter:"string"},
+			{title:"HV W/H 2", field:"HV_W_H2", sorter:"string"},
+			{title:"HV W/H 3", field:"HV_W_H3", sorter:"string"},
+			{title:"HV W/H 4", field:"HV_W_H4", sorter:"string"},
+			{title:"HV W/H 5", field:"HV_W_H5", sorter:"string"},
+			{title:"HV W/H 6", field:"HV_W_H6", sorter:"string"},
+			{title:"HV W/H 7", field:"HV_W_H7", sorter:"string"},
+			{title:"HV W/H 8", field:"HV_W_H8", sorter:"string"},
+			{title:"HV W/H 9", field:"HV_W_H9", sorter:"string"},
+			{title:"HV W/H 10", field:"HV_W_H10", sorter:"string"},
+			{title:"온도센서 1", field:"온도센서1", sorter:"string"},
+			{title:"온도센서 2", field:"온도센서2", sorter:"string"},
+			{title:"온도센서 3", field:"온도센서3", sorter:"string"},
+			{title:"온도센서 4", field:"온도센서4", sorter:"string"},
+			{title:"온도센서 5", field:"온도센서5", sorter:"string"},
+			{title:"온도센서 6", field:"온도센서6", sorter:"string"},
+			{title:"온도센서 7", field:"온도센서7", sorter:"string"},
+			{title:"온도센서 8", field:"온도센서8", sorter:"string"},
+			{title:"온도센서 9", field:"온도센서9", sorter:"string"},
+			{title:"온도센서 10", field:"온도센서10", sorter:"string"},
 			{title:"Busbars", field:"Busbars", sorter:"string"},
-			{title:"W_H", field:"W_H", sorter:"string"},
-			{title:"SPA", field:"SPA", sorter:"string"},
-			{title:"PRA", field:"PRA", sorter:"string"},
-			{title:"FuseBox", field:"FuseBox", sorter:"string"},
-			{title:"Relay", field:"Relay", sorter:"string"},
-			{title:"CMU", field:"CMU", sorter:"string"},
-			{title:"BMU", field:"BMU", sorter:"string"},
-			{title:"BMA", field:"BMA", sorter:"string"},
-			{title:"LWR/C", field:"LWR_C", sorter:"string"},
+			{title:"BMA 1", field:"BMA1", sorter:"string"},
+			{title:"BMA 2", field:"BMA2", sorter:"string"},
+			{title:"BMA 3", field:"BMA3", sorter:"string"},
+			{title:"BMA 4", field:"BMA4", sorter:"string"},
+			{title:"BMA 5", field:"BMA5", sorter:"string"},
+			{title:"BMA 6", field:"BMA6", sorter:"string"},
+			{title:"BMA 7", field:"BMA7", sorter:"string"},
+			{title:"BMA 8", field:"BMA8", sorter:"string"},
+			{title:"BMA 9", field:"BMA9", sorter:"string"},
+			{title:"BMA 10", field:"BMA10", sorter:"string"},
 			{title:"ETC", field:"ETC", sorter:"string"},
 			{title:"완료일", field:"완료일", sorter:"string"},
 			{title:"작업자", field:"작업자", sorter:"string"},

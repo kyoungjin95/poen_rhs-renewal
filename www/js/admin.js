@@ -197,7 +197,7 @@ function func_csv() {
 				doc = 분해조립_doc;
 				doc.관리번호 = val.관리번호;
 				doc.UPR_C = val.분해조립_UPR_C;
-				doc.PBE = val.PBE;
+				doc.PBE1 = val.PBE;
 				doc.Gasket = val.Gasket;
 				doc.Busbars = val.Busbars;
 				doc.W_H = val.W_H;
