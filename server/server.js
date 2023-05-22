@@ -47,15 +47,15 @@ io.on('connection', async function(socket) {
 		logger.info('worker:'+ worker + ' insert col:' + col +'doc:'+ JSON.stringify(doc));
 	});
 
-	socket.on('count', async function(worker, col, query) {
+	socket.on('count', async function(worker, col, query, check) {
 		const cnt = await count(col, query);
-		socket.emit('count_result', cnt);
+		socket.emit('count_result', cnt, check);
 		//logger.info('worker:'+ worker + ' count col:' + col +'query:'+ JSON.stringify(query));
 	});
 
-	socket.on('find', async function(worker, col, query, options) {
+	socket.on('find', async function(worker, col, query, options, check) {
 		const result_array = await find(col, query, options);
-		socket.emit('find_result', result_array);
+		socket.emit('find_result', result_array, check);
 		//logger.info('worker:'+ worker + ' find col:' + col +'query:'+ JSON.stringify(query));
 	});
 
