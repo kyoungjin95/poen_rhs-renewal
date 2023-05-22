@@ -68,7 +68,7 @@ io.on('connection', async function(socket) {
 	socket.on('delete', async function(worker, col, query) {
 		const result_count = await deleteOne(col, query);
 		socket.emit('delete_result', result_count);
-		logger.info('worker:'+ worker + ' update col:' + col + 'query:'+ JSON.stringify(query));
+		logger.info('worker:'+ worker + ' delete col:' + col + 'query:'+ JSON.stringify(query));
 	});
 });
 

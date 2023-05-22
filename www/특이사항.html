@@ -12,21 +12,25 @@
 						<label><h2><b>특이사항</b></h2></label>
 					</center>
 				</div>
-				<div>
-					<label for="management_id"><b>관리번호</b></label>
-				</div>
-				<div>
-					<input type="text" id="_management_id" value="조회 버튼을 누르세요" size="40" required>
-					<button onClick="특이사항_managementID();">조 회</button>
-				</div>
-				<div class="input-group">
-					<div>
-						<label for="_특이사항"><b>특이 사항</b></label>
-					</div>
-					<div>
-						<input type="text" id="_특이사항" size="100" required>
-					</div>
-				</div>
+				<table border="2">
+					<tr>
+						<td>
+							<label for="management_id"><b>관리번호</b></label>
+						</td>
+						<td>
+							<input type="text" id="_management_id" value="조회 버튼을 누르세요" size="25" required>
+							<button onClick="특이사항_managementID();">조 회</button>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="_특이사항"><b>특이 사항</b></label>
+						</td>
+						<td>
+							<input type="text" id="_특이사항" size="100" required>
+						</td>
+					</tr>
+				</table>
 				<div class="input-group">
 					<center>
 						<button onClick="특이사항_save();">SAVE</button>

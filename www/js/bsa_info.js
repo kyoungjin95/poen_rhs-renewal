@@ -367,89 +367,89 @@ async function grid_분해조립(m_id) {
 		await delay();
 		await sleep(100);
 	
-		for(var i = 1; i <= 10; i++) {
-			var str = 'if(find_array[0].BMU' + i + ' == \'\') delete find_array[0].BMU' + i +';';
-			console.log(str);
-			eval(str);
-		}
+		//for(var i = 1; i <= 10; i++) {
+		//	var str = 'if(find_array[0].BMU' + i + ' == \'\') delete find_array[0].BMU' + i +';';
+		//	console.log(str);
+		//	eval(str);
+		//}
 
-		for(var i = 1; i <= 10; i++) {
-			var str = 'if(find_array[0].CMU' + i + ' == \'\') delete find_array[0].CMU' + i +';';
-			console.log(str);
-			eval(str);
-		}
+		//for(var i = 1; i <= 10; i++) {
+		//	var str = 'if(find_array[0].CMU' + i + ' == \'\') delete find_array[0].CMU' + i +';';
+		//	console.log(str);
+		//	eval(str);
+		//}
 
-		for(var i = 1; i <= 10; i++) {
-			var str = 'if(find_array[0].PRA' + i + ' == \'\') delete find_array[0].PRA' + i +';';
-			console.log(str);
-			eval(str);
-		}
+		//for(var i = 1; i <= 10; i++) {
+		//	var str = 'if(find_array[0].PRA' + i + ' == \'\') delete find_array[0].PRA' + i +';';
+		//	console.log(str);
+		//	eval(str);
+		//}
 
-		for(var i = 1; i <= 10; i++) {
-			var str = 'if(find_array[0].SPA' + i + ' == \'\') delete find_array[0].SPA' + i +';';
-			console.log(str);
-			eval(str);
-		}
+		//for(var i = 1; i <= 10; i++) {
+		//	var str = 'if(find_array[0].SPA' + i + ' == \'\') delete find_array[0].SPA' + i +';';
+		//	console.log(str);
+		//	eval(str);
+		//}
 
-		for(var i = 1; i <= 10; i++) {
-			var str = 'if(find_array[0].LWR_C' + i + ' == \'\') delete find_array[0].LWR_C' + i +';';
-			console.log(str);
-			eval(str);
-		}
+		//for(var i = 1; i <= 10; i++) {
+		//	var str = 'if(find_array[0].LWR_C' + i + ' == \'\') delete find_array[0].LWR_C' + i +';';
+		//	console.log(str);
+		//	eval(str);
+		//}
 
-		for(var i = 1; i <= 10; i++) {
-			var str = 'if(find_array[0].UPR_C' + i + ' == \'\') delete find_array[0].UPR_C' + i +';';
-			console.log(str);
-			eval(str);
-		}
+		//for(var i = 1; i <= 10; i++) {
+		//	var str = 'if(find_array[0].UPR_C' + i + ' == \'\') delete find_array[0].UPR_C' + i +';';
+		//	console.log(str);
+		//	eval(str);
+		//}
 
-		for(var i = 1; i <= 10; i++) {
-			var str = 'if(find_array[0].Relay' + i + ' == \'\') delete find_array[0].Relay' + i +';';
-			console.log(str);
-			eval(str);
-		}
+		//for(var i = 1; i <= 10; i++) {
+		//	var str = 'if(find_array[0].Relay' + i + ' == \'\') delete find_array[0].Relay' + i +';';
+		//	console.log(str);
+		//	eval(str);
+		//}
 
-		for(var i = 1; i <= 10; i++) {
-			var str = 'if(find_array[0].HV_CNTR' + i + ' == \'\') delete find_array[0].HV_CNTR' + i +';';
-			console.log(str);
-			eval(str);
-		}
+		//for(var i = 1; i <= 10; i++) {
+		//	var str = 'if(find_array[0].HV_CNTR' + i + ' == \'\') delete find_array[0].HV_CNTR' + i +';';
+		//	console.log(str);
+		//	eval(str);
+		//}
 
-		for(var i = 1; i <= 10; i++) {
-			var str = 'if(find_array[0].Heating_CNTR' + i + ' == \'\') delete find_array[0].Heating_CNTR' + i +';';
-			console.log(str);
-			eval(str);
-		}
+		//for(var i = 1; i <= 10; i++) {
+		//	var str = 'if(find_array[0].Heating_CNTR' + i + ' == \'\') delete find_array[0].Heating_CNTR' + i +';';
+		//	console.log(str);
+		//	eval(str);
+		//}
 
-		for(var i = 1; i <= 10; i++) {
-			var str = 'if(find_array[0].FuseBox' + i + ' == \'\') delete find_array[0].FuseBox' + i +';';
-			console.log(str);
-			eval(str);
-		}
+		//for(var i = 1; i <= 10; i++) {
+		//	var str = 'if(find_array[0].FuseBox' + i + ' == \'\') delete find_array[0].FuseBox' + i +';';
+		//	console.log(str);
+		//	eval(str);
+		//}
 
-		for(var i = 1; i <= 10; i++) {
-			var str = 'if(find_array[0].LV_W_H' + i + ' == \'\') delete find_array[0].LV_W_H' + i +';';
-			console.log(str);
-			eval(str);
-		}
+		//for(var i = 1; i <= 10; i++) {
+		//	var str = 'if(find_array[0].LV_W_H' + i + ' == \'\') delete find_array[0].LV_W_H' + i +';';
+		//	console.log(str);
+		//	eval(str);
+		//}
 
-		for(var i = 1; i <= 10; i++) {
-			var str = 'if(find_array[0].HV_W_H' + i + ' == \'\') delete find_array[0].HV_W_H' + i +';';
-			console.log(str);
-			eval(str);
-		}
+		//for(var i = 1; i <= 10; i++) {
+		//	var str = 'if(find_array[0].HV_W_H' + i + ' == \'\') delete find_array[0].HV_W_H' + i +';';
+		//	console.log(str);
+		//	eval(str);
+		//}
 
-		for(var i = 1; i <= 10; i++) {
-			var str = 'if(find_array[0].온도센서' + i + ' == \'\') delete find_array[0].온도센서' + i +';';
-			console.log(str);
-			eval(str);
-		}
+		//for(var i = 1; i <= 10; i++) {
+		//	var str = 'if(find_array[0].온도센서' + i + ' == \'\') delete find_array[0].온도센서' + i +';';
+		//	console.log(str);
+		//	eval(str);
+		//}
 
-		for(var i = 1; i <= 10; i++) {
-			var str = 'if(find_array[0].BMA' + i + ' == \'\') delete find_array[0].BMA' + i +';';
-			console.log(str);
-			eval(str);
-		}
+		//for(var i = 1; i <= 10; i++) {
+		//	var str = 'if(find_array[0].BMA' + i + ' == \'\') delete find_array[0].BMA' + i +';';
+		//	console.log(str);
+		//	eval(str);
+		//}
 
 		tabledata_분해조립 = find_array;
 		console.log('분해조립 : ', find_array);
@@ -458,7 +458,7 @@ async function grid_분해조립(m_id) {
 		layout: "resizableColumnFit",
 		height:130,
 		data:tabledata_분해조립, 
-		autoColumns:true,
+		//autoColumns:true,
 		
 		columns:[
 			{title:"관리번호", field:"관리번호", sorter:"string"},

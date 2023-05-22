@@ -17,7 +17,7 @@ async function 고품정보등록_managementID() {
 		find(고품정보, _management_id.value);
 		await delay();
 		tabledata = find_array;
-		//console.log('고품정보 : ', find_array);
+		console.log('고품정보 : ', find_array);
 	} else {
 		_품명.value = '';
                 _번호.value = '';
@@ -30,6 +30,13 @@ async function 고품정보등록_managementID() {
 		height:1500,
 		data:tabledata, 
 		//autoColumns:true,
+
+		columns:[
+			{title:"품명", field:"품명", sorter:"string"},
+			{title:"번호", field:"번호", sorter:"string"},
+			{title:"QR", field:"QR", sorter:"string"},
+			{title:"폐기여부", field:"폐기여부", sorter:"string"},
+		]
 	});
 }
 
