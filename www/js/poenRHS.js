@@ -853,6 +853,7 @@ async function count(col, query) {
 	flag_arrivedMSG = false;
 	while(flag_arrivedMSG == false) {
 		check++;
+		if(check > 10000) check = 0;
 		socket.emit('count', worker, col, query, check);
 		await sleep(DELAY);
 	}
@@ -952,6 +953,7 @@ async function find(col, management_id) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
+	if(check > 10000) check = 0;
 	console.log('send check:', check);
 
 	switch(col) {
@@ -1119,6 +1121,7 @@ function find_계정(col, query) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
+	if(check > 10000) check = 0;
 
 	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: 계정_ }, check);
 }
@@ -1127,6 +1130,7 @@ function find_분해조립_부품정보(col, query) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
+	if(check > 10000) check = 0;
 
 	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: 분해조립_부품정보_ }, check);
 }
@@ -1135,6 +1139,7 @@ function find_신품정보(col, query) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
+	if(check > 10000) check = 0;
 
 	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: 신품정보_ }, check);
 }
@@ -1143,6 +1148,7 @@ function find_고품정보(col, query) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
+	if(check > 10000) check = 0;
 
 	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: 고품정보_ }, check);
 }
@@ -1151,6 +1157,7 @@ function find_query(col, query) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
+	if(check > 10000) check = 0;
 
 	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: BSA재제조_ }, check);
 }
