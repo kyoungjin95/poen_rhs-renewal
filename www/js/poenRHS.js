@@ -25,6 +25,7 @@ var 관리번호 = '';
 var 교체부품상세No = '교체부품상세1';
 var worker = '';
 var level = '';
+var flag_loaded = false;
 
 const 계정_doc = {
 	id: '', 

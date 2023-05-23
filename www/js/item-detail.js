@@ -248,6 +248,7 @@ async function processStep() {
 			break;
 
 		case '분해조립' :
+			flag_loaded = false;
 			loadPage('base/분해조립.html');
 			break;
 

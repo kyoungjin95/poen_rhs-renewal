@@ -19,11 +19,13 @@ var Busbars_count = 1;
 var BMA_count = 1;
 
 async function 분해조립_managementID() {
+	if(flag_loaded == true) return;
 	if(worker == '') return;
 	while(_management_id == undefined) {
 		await sleep(DELAY);
 	}
-
+	
+	flag_loaded = true;
 	_management_id.value =  관리번호;
 
 	BMU_count = 1;
