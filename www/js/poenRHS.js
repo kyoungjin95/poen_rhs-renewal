@@ -808,7 +808,7 @@ socket.on('count_result', function(count, rcv_check) {
 
 socket.on('find_result', function(result, rcv_check) {
 	//console.log('finded result array: ', result);
-	console.log('recv count:', rcv_check, 'check:', check);
+	//console.log('recv count:', rcv_check, 'check:', check);
 	if(rcv_check != check) return;
 	find_array = result;
 	flag_arrivedMSG = true;
@@ -955,7 +955,7 @@ async function find(col, management_id) {
 	flag_arrivedMSG = false;
 	check++;
 	if(check > 10000) check = 0;
-	console.log('send check:', check);
+	//console.log('send check:', check);
 
 	switch(col) {
 		case 'BSA재제조' :

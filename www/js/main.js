@@ -79,7 +79,7 @@ var interval = setInterval(function() {
 	if(flag_부품재고 == true) { stop_repeat(); 부품재고_시작(); }
 	if(flag_생산현황 == true) { stop_repeat(); 생산현황_시작();}
 	if(flag_대시보드 == true) { start_repeat_대시보드(); 대시보드_시작();}
-	if(flag_관리자 == true) { start_repeat_대시보드(); 관리자_시작();}
+	if(flag_관리자 == true) { stop_repeat(); 관리자_시작();}
 }, 500);
 
 var intervalRepeat = setInterval(function() {
