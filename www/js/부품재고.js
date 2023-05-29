@@ -6,7 +6,7 @@ async function 부품재고_시작() {
 	if(worker == '') return;
 	var _loaded = document.getElementById('grid_고품재고');
 	while(_loaded == undefined) {
-		//await sleep(DELAY);
+		await sleep(DELAY);
 	}
 
 	var tabledata_신품재고 = [];

@@ -22,7 +22,7 @@ async function 분해조립_managementID() {
 	if(flag_loaded == true) return;
 	if(worker == '') return;
 	while(_management_id == undefined) {
-		//await sleep(DELAY);
+		await sleep(DELAY);
 	}
 	
 	flag_loaded = true;
@@ -274,7 +274,7 @@ async function 분해조립_save() {
 	console.log(신품_docs);
 	신품_docs.forEach(async function(doc) {
 		update_신품정보(신품정보, doc);
-		//await sleep(DELAY);
+		await sleep(DELAY);
 
 		console.log(update_count);
 		console.log(insert_count);
@@ -283,14 +283,14 @@ async function 분해조립_save() {
 	console.log(고품_docs);
 	고품_docs.forEach(async function(doc) {
 		update_고품정보(고품정보, doc);
-		//await sleep(DELAY);
+		await sleep(DELAY);
 
 		console.log(update_count);
 		console.log(insert_count);
 	});
 
 	update(분해조립, doc);
-	//await sleep(DELAY);
+	await sleep(DELAY);
 	
 
 	console.log(update_count);
@@ -405,7 +405,7 @@ async function type_add(name, type, row_index, no) {
 	var insert_string = "<td><label for=\"_" + type + no + "\"><b>" + name + " " + no + "</b></label></td><td><input type=\"text\" id=\"_" + type + no + "\" size=\"100\" required><select name=\"language\" onchange=\"_콤보박스(\'_" + type + no + "\', this);\"><option value=\"\">---</option><option value=\"신품 교체\">신품 교체</option><option value=\"고품 교체\">고품 교체</option><option value=\"N/A\">N/A</option></select></td><td><center><button>-</button></center></td>";
 	console.log(insert_string);
 	current_row.innerHTML = insert_string;
-	//await sleep(20);
+	await sleep(20);
 }
 
 function _delete_row(index, no, type) {

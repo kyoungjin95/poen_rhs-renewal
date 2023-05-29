@@ -1,7 +1,7 @@
 async function 세척_managementID() {
 	if(worker == '') return;
 	while(_management_id == undefined) {
-		//await sleep(DELAY);
+		await sleep(DELAY);
 	}
 	_management_id.value =  관리번호;
 
@@ -44,7 +44,7 @@ async function 세척_save() {
 	doc.특이사항 = _특이사항.value;
 	
 	update(세척, doc);
-	//await sleep(DELAY);
+	await sleep(DELAY);
 	
 	console.log(update_count);
 	console.log(insert_count);

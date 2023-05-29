@@ -5,7 +5,7 @@ async function 주간현황_시작() {
 	flag_주간현황 = false;
 	if(worker == '') return;
 	while(_검색일 == undefined) {
-		//await sleep(DELAY);
+		await sleep(DELAY);
 	}
 	주간_조회();
 }

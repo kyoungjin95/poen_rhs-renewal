@@ -2,7 +2,7 @@ var tabledata = [];
 async function 고품정보등록_managementID() {
 	if(worker == '') return;
 	while(_management_id == undefined) {
-		//await sleep(DELAY);
+		await sleep(DELAY);
 	}
 	_management_id.value =  관리번호;
 
@@ -53,7 +53,7 @@ async function 고품정보_save() {
 	doc.폐기여부 = _폐기여부.value;
 
 	update_고품정보(고품정보, doc);
-	//await sleep(DELAY);
+	await sleep(DELAY);
 	
 	console.log(update_count);
 	console.log(insert_count);

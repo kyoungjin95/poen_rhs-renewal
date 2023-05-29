@@ -1,7 +1,7 @@
 async function 성능검사_managementID() {
 	if(worker == '') return;
 	while(_management_id == undefined) {
-		//await sleep(DELAY);
+		await sleep(DELAY);
 	}
 	_management_id.value =  관리번호;
 	_검사자.value = worker;
@@ -36,7 +36,7 @@ async function 성능검사_managementID() {
 async function 성능검사_save() {
 	if(worker == '') return;
 	while(_management_id == undefined) {
-		//await sleep(DELAY);
+		await sleep(DELAY);
 	}
 	if(_management_id.value.length == 0) return;
 	console.log('save: ', _management_id.value);
@@ -51,7 +51,7 @@ async function 성능검사_save() {
 	doc.검사자 = _검사자.value;
 	
 	update(성능검사, doc);
-	//await sleep(DELAY);
+	await sleep(DELAY);
 	
 	console.log(update_count);
 	console.log(insert_count);

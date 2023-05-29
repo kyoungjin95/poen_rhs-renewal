@@ -31,7 +31,7 @@ async function add_user() {
 	console.log('hash:', hash.toString());
 
 	update_계정(계정, doc);
-	//await sleep(200);
+	await sleep(200);
 
 	console.log(update_count);
 	console.log(insert_count);
@@ -49,7 +49,7 @@ async function delete_user() {
 	if(_id.value == '') return;
 
 	delete_계정(_id.value);
-	//await sleep(200);
+	await sleep(200);
 
 	if(delete_count > 0) {
 		alert('DELETE COMPLETE');
@@ -77,7 +77,7 @@ function func_csv() {
 			console.log(res);
 			for(var i = 0; i < res.length; i++) {
 				insert(res[i]);
-				//await sleep(1000);
+				await sleep(1000);
 			};
 			console.log('insert count :', total_insert_count);
 			console.log('update count :', total_update_count);
@@ -130,7 +130,7 @@ async function insert(val) {
 
 	//console.log('BSA재제조:', doc);
 	update(BSA재제조, doc);
-	//await sleep(200);
+	await sleep(200);
 	total_insert_count += insert_count;
 	total_update_count += update_count;
 
@@ -145,7 +145,7 @@ async function insert(val) {
 
 	//console.log('입고:', doc);
 	update(입고, doc);
-	//await sleep(200);
+	await sleep(200);
 
 	doc = 기초검사_doc;
 	doc.관리번호 = val.관리번호;
@@ -168,7 +168,7 @@ async function insert(val) {
 
 	//console.log('기초검사:', doc);
 	update(기초검사, doc);
-	//await sleep(200);
+	await sleep(200);
 
 	doc = 성능검사_doc;
 	doc.관리번호 = val.관리번호;
@@ -181,7 +181,7 @@ async function insert(val) {
 
 	//console.log('성능검사:', doc);
 	update(성능검사, doc);
-	//await sleep(200);
+	await sleep(200);
 
 	doc = EOL_doc;
 	doc.검사자 = val.EOL_검사자;
@@ -204,7 +204,7 @@ async function insert(val) {
 
 	//console.log('EOL:', doc);
 	update(EOL, doc);
-	//await sleep(200);
+	await sleep(200);
 
 	doc = 출하정보_doc;
 	doc.관리번호 = val.관리번호;
@@ -216,7 +216,7 @@ async function insert(val) {
 
 	//console.log('출하정보:', doc);
 	update(출하정보, doc);
-	//await sleep(200);
+	await sleep(200);
 
 	doc = 분해조립_doc;
 	doc.관리번호 = val.관리번호;
@@ -241,7 +241,7 @@ async function insert(val) {
 
 	//console.log('분해조립:', doc);
 	update(분해조립, doc);
-	//await sleep(200);
+	await sleep(200);
 
 	doc = 특이사항_doc;
 	doc.관리번호 = val.관리번호;
@@ -249,7 +249,7 @@ async function insert(val) {
 
 	//console.log('특이사항:', doc);
 	update(특이사항, doc);
-	//await sleep(200);
+	await sleep(200);
 
 	doc = 교체부품상세_doc;
 	doc.관리번호 = val.관리번호;
@@ -264,7 +264,7 @@ async function insert(val) {
 
 	//console.log('교체부품상세1:', doc);
 	update(교체부품상세1, doc);
-	//await sleep(200);
+	await sleep(200);
 
 	doc = 교체부품상세_doc;
 	doc.관리번호 = val.관리번호;
@@ -279,7 +279,7 @@ async function insert(val) {
 
 	//console.log('교체부품상세2:', doc);
 	update(교체부품상세2, doc);
-	//await sleep(200);
+	await sleep(200);
 
 	doc = 교체부품상세_doc;
 	doc.관리번호 = val.관리번호;
@@ -294,7 +294,7 @@ async function insert(val) {
 
 	//console.log('교체부품상세3:', doc);
 	update(교체부품상세3, doc);
-	//await sleep(200);
+	await sleep(200);
 
 	doc = 교체부품상세_doc;
 	doc.관리번호 = val.관리번호;
@@ -309,7 +309,7 @@ async function insert(val) {
 
 	//console.log('교체부품상세4:', doc);
 	update(교체부품상세4, doc);
-	//await sleep(200);
+	await sleep(200);
 
 	doc = 교체부품상세_doc;
 	doc.관리번호 = val.관리번호;
@@ -324,7 +324,7 @@ async function insert(val) {
 
 	//console.log('교체부품상세5:', doc);
 	update(교체부품상세5, doc);
-	//await sleep(200);
+	await sleep(200);
 
 	doc = 교체부품상세_doc;
 	doc.관리번호 = val.관리번호;
@@ -339,7 +339,7 @@ async function insert(val) {
 
 	//console.log('교체부품상세6:', doc);
 	update(교체부품상세6, doc);
-	//await sleep(200);
+	await sleep(200);
 
 	doc = 교체부품상세_doc;
 	doc.관리번호 = val.관리번호;
@@ -354,7 +354,7 @@ async function insert(val) {
 
 	//console.log('교체부품상세7:', doc);
 	update(교체부품상세7, doc);
-	//await sleep(200);
+	await sleep(200);
 
 	doc = 교체부품상세_doc;
 	doc.관리번호 = val.관리번호;
@@ -369,7 +369,7 @@ async function insert(val) {
 
 	//console.log('교체부품상세8:', doc);
 	update(교체부품상세8, doc);
-	//await sleep(200);
+	await sleep(200);
 
 	doc = 교체부품상세_doc;
 	doc.관리번호 = val.관리번호;
@@ -384,7 +384,7 @@ async function insert(val) {
 
 	//console.log('교체부품상세9:', doc);
 	update(교체부품상세9, doc);
-	//await sleep(200);
+	await sleep(200);
 
 	doc = 교체부품상세_doc;
 	doc.관리번호 = val.관리번호;
@@ -399,7 +399,7 @@ async function insert(val) {
 
 	//console.log('교체부품상세10:', doc);
 	update(교체부품상세10, doc);
-	//await sleep(200);
+	await sleep(200);
 	check_count++;
 	console.log(check_count);
 }

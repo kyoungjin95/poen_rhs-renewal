@@ -3,7 +3,7 @@ var tabledata = [];
 async function 신품정보등록_조회() {
 	if(worker == '') return;
 	while(_바코드 == undefined) {
-		//await sleep(DELAY);
+		await sleep(DELAY);
 	}
 
 	if(_바코드.value.length == 0) return;
@@ -74,7 +74,7 @@ async function 신품정보_save() {
 	doc.사용_관리번호 = _사용_관리번호.value;
 
 	update_신품정보(신품정보, doc);
-	//await sleep(DELAY);
+	await sleep(DELAY);
 	
 	console.log(update_count);
 	console.log(insert_count);
