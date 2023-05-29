@@ -10,7 +10,7 @@ async function 생산현황_시작() {
 	flag_생산현황 = false;
 	if(worker == '') return;
 	while(document.getElementById('_chart') == undefined) {
-		await sleep(DELAY);
+		//await sleep(DELAY);
 	}
 	품번_조회();
 }
@@ -24,7 +24,7 @@ async function 품번_조회() {
 
 	count(BSA재제조, { 출하 : { $exists : true}, 품번 : { $exists: true}});
 	await delay();
-	await sleep(100);
+	//await sleep(100);
 	console.log('doc_count: ', doc_count);
 	if(doc_count < 1) return;
 

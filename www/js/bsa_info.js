@@ -6,7 +6,7 @@ async function 재제조현황_시작() {
 	flag_재제조현황 = false;
 	if(worker == '') return;
 	while(_management_id == undefined) {
-		await sleep(DELAY);
+		//await sleep(DELAY);
 	}
 	
 	관리번호 = '';
@@ -34,12 +34,12 @@ async function 재제조현황_조회(flag_id_search = false) {
 			find_query(BSA재제조, { 관리번호: { $exists : true }});
 			//find_query(BSA재제조, { 입고 : { $gte : 기준일 }});
 			await delay();
-			await sleep(100);
+			//await sleep(100);
 		} else {
 			find(BSA재제조, _management_id.value);
 			await delay();
 		}
-		await sleep(200);
+		//await sleep(200);
 
 		//for(var i = 0; i < find_array.length; i++) {
 		//	delete find_array[i].적재No;
@@ -329,7 +329,7 @@ async function grid_기초검사(m_id) {
 
 		find(기초검사, m_id);
 		await delay();
-		await sleep(100);
+		//await sleep(100);
 		tabledata_기초검사 = find_array;
 		console.log('기초검사 : ', find_array);;
 
@@ -365,7 +365,7 @@ async function grid_분해조립(m_id) {
 
 		find(분해조립, m_id);
 		await delay();
-		await sleep(100);
+		//await sleep(100);
 	
 		//for(var i = 1; i <= 10; i++) {
 		//	var str = 'if(find_array[0].BMU' + i + ' == \'\') delete find_array[0].BMU' + i +';';
@@ -679,7 +679,7 @@ async function grid_출하정보(m_id) {
 
 		find(출하정보, m_id);
 		await delay();
-		await sleep(100);
+		//await sleep(100);
 		tabledata_출하정보 = find_array;
 		console.log('출하정보 : ', find_array);;
 

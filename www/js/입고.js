@@ -1,7 +1,7 @@
 async function 입고_managementID() {
 	if(worker == '') return;
 	while(_management_id == undefined) {
-		await sleep(DELAY);
+		//await sleep(DELAY);
 	}
 	_management_id.value =  관리번호;
 
@@ -51,7 +51,7 @@ async function 입고_save() {
 	doc.랙번호  = _랙번호.value;
 	
 	update(입고, doc);
-	await sleep(DELAY);
+	//await sleep(DELAY);
 	
 	console.log(update_count);
 	console.log(insert_count);

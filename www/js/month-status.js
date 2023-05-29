@@ -6,7 +6,7 @@ async function 월간현황_시작() {
 	flag_월간현황 = false;
 	if(worker == '') return;
 	while(document.getElementById('_검색일') == undefined) {
-		await sleep(DELAY);
+		//await sleep(DELAY);
 	}
 	월간_조회();
 }
@@ -17,7 +17,7 @@ async function 월간_조회(flag_id_search = false) {
 		var now = new Date();
 		var today = now.toISOString().slice(0, 10);
 		var month = now.getMonth();
-		await sleep(DELAY);
+		//await sleep(DELAY);
 		_검색일.value =  today;
 
 		var s_day = now.toISOString().slice(0, 8) + '01' + 'T00:00:00.000Z';

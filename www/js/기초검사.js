@@ -1,7 +1,7 @@
 async function 기초검사_managementID() {
 	if(worker == '') return;
 	while(_management_id == undefined) {
-		await sleep(DELAY);
+		//await sleep(DELAY);
 	}
 	_management_id.value =  관리번호;
 
@@ -30,43 +30,43 @@ async function 기초검사_managementID() {
 		_통신검사_DTC코드3.value = find_array[0].통신검사_DTC코드3;
 		if(find_array[0].통신검사_DTC코드4 != '') {
 			_기초검사_add_DTC_Code();
-			await sleep(10);
+			//await sleep(10);
 			_통신검사_DTC코드4.value = find_array[0].통신검사_DTC코드4;
 		}
                
                 if(find_array[0].통신검사_DTC코드5 != '') {
 			_기초검사_add_DTC_Code();
-			await sleep(10);
+			//await sleep(10);
 			_통신검사_DTC코드5.value = find_array[0].통신검사_DTC코드5;
 		}
 
                 if(find_array[0].통신검사_DTC코드6 != '') {
 			_기초검사_add_DTC_Code();
-			await sleep(10);
+			//await sleep(10);
 			_통신검사_DTC코드6.value = find_array[0].통신검사_DTC코드6;
 		}
 
                 if(find_array[0].통신검사_DTC코드7 != '') {
 			_기초검사_add_DTC_Code();
-			await sleep(10);
+			//await sleep(10);
 			_통신검사_DTC코드7.value = find_array[0].통신검사_DTC코드7;
 		}
 
                 if(find_array[0].통신검사_DTC코드8 != '') {
 			_기초검사_add_DTC_Code();
-			await sleep(10);
+			//await sleep(10);
 			_통신검사_DTC코드8.value = find_array[0].통신검사_DTC코드8;
 		}
 
                 if(find_array[0].통신검사_DTC코드9 != '') {
 			_기초검사_add_DTC_Code();
-			await sleep(10);
+			//await sleep(10);
 			_통신검사_DTC코드9.value = find_array[0].통신검사_DTC코드9;
 		}
 
                 if(find_array[0].통신검사_DTC코드10 != '') {
 			_기초검사_add_DTC_Code();
-			await sleep(10);
+			//await sleep(10);
 			_통신검사_DTC코드10.value = find_array[0].통신검사_DTC코드10;
 		}
 
@@ -193,7 +193,7 @@ async function 기초검사_save() {
 	doc.검사자 = _검사자.value;
 	
 	update(기초검사, doc);
-	await sleep(DELAY);
+	//await sleep(DELAY);
 	
 	console.log(update_count);
 	console.log(insert_count);

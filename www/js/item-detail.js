@@ -2,12 +2,12 @@ var pre_관리번호 = '';
 var 차종 = '';
 
 async function 상세입력_시작() {
-	await sleep(100);
+	//await sleep(100);
 
 	flag_상세입력 = false;
 	if(worker == '') return;
 	while(_management_id == undefined) {
-		await sleep(DELAY);
+		//await sleep(DELAY);
 	}
 
 	_management_id.value = _management_id.value.trim();
@@ -65,7 +65,7 @@ async function 상세입력_시작() {
 		}
 		차종 = _차종.value;
 
-		await sleep(DELAY);
+		//await sleep(DELAY);
 
 		count(세척, { 관리번호 : _management_id.value });
 		await delay();
@@ -81,7 +81,7 @@ async function 상세입력_시작() {
 				_공정단계.value = '세척';
 			}
 		}
-		await sleep(DELAY);
+		//await sleep(DELAY);
 
 		count(기초검사, { 관리번호 : _management_id.value });
 		await delay();
@@ -97,7 +97,7 @@ async function 상세입력_시작() {
 				_공정단계.value = '기초검사';
 			}
 		}
-		await sleep(DELAY);
+		//await sleep(DELAY);
 
 		count(분해조립, { 관리번호 : _management_id.value });
 		await delay();
@@ -113,7 +113,7 @@ async function 상세입력_시작() {
 				_공정단계.value = '분해조립';
 			}
 		}
-		await sleep(DELAY);
+		//await sleep(DELAY);
 
 		count(성능검사, { 관리번호 : _management_id.value });
 		await delay();
@@ -129,7 +129,7 @@ async function 상세입력_시작() {
 				_공정단계.value = '성능검사';
 			}
 		}
-		await sleep(DELAY);
+		//await sleep(DELAY);
 
 		count(EOL, { 관리번호 : _management_id.value });
 		await delay();
@@ -145,7 +145,7 @@ async function 상세입력_시작() {
 				_공정단계.value = 'EOL';
 			}
 		}
-		await sleep(DELAY);
+		//await sleep(DELAY);
 
 		count(출하정보, { 관리번호 : _management_id.value });
 		await delay();
@@ -156,7 +156,7 @@ async function 상세입력_시작() {
 			_출하.value = find_array[0].출하일;
 			_공정단계.value = '출하';
 		}
-		await sleep(DELAY);
+		//await sleep(DELAY);
 		item_detail_save(true);
 	} else {
 		_재제조번호.value = '';
@@ -206,7 +206,7 @@ async function item_detail_save(flag_result = false) {
 	doc.마지막충전일 = _마지막충전일.value;
 	
 	update(BSA재제조, doc);
-	await sleep(DELAY);
+	//await sleep(DELAY);
 	
 	console.log(update_count);
 	console.log(insert_count);
