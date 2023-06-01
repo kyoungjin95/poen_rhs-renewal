@@ -10,6 +10,10 @@
 			<label for='_management_id'>관리 번호</label>
 			<input type="text" id="_management_id" size="40" required>
                         <button onClick="재제조현황_시작();">조 회</button>
+			&nbsp;&nbsp;&nbsp;&nbsp;
+			<label for='_재제조번호'>재제조 번호</label>
+			<input type="text" id="_재제조번호" size="40" required>
+                        <button onClick="재제조현황_조회(2);">조 회</button>
 		</div>
 		</br>
 		<progress id="progress" value="0" max="100"></progress>
@@ -113,6 +117,7 @@
 		</div>
 		<script>
 			var _management_id = document.getElementById('_management_id');
+			var _재제조번호 = document.getElementById('_재제조번호');
 		</script>
 	</body>
 </html>

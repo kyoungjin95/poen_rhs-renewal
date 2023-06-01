@@ -11,44 +11,6 @@ async function 출하정보_managementID() {
 
 	_검사자.value = worker;
 
-	if(차종 != '') {
-		_A.style.display = 'none';
-		_B.style.display = 'none';
-		_C.style.display = 'none';
-		_D.style.display = 'none';
-		_E.style.display = 'none';
-
-		switch(차종) {
-			case 'DE':
-			case 'OS':
-			case 'SK3':
-				_A.style.display = 'block';
-				break;
-
-			case 'PU':
-			case 'HR':
-				_B.style.display = 'block';
-				break;
-
-			case 'CV':
-			case 'NE':
-				_C.style.display = 'block';
-				break;
-
-			case 'LK':
-				_D.style.display = 'block';
-				break;
-
-			case 'LM':
-				_E.style.display = 'block';
-				break;
-
-			default:
-				alert('차종 정보를 확인해주세요');
-				break;
-		}
-	}
-
 	count(출하정보, { 관리번호 : _management_id.value });
 	await delay();
 	console.log('doc_count: ', doc_count);
