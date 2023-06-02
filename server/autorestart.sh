@@ -7,7 +7,7 @@ while [ 1 ]; do
 	    current_date_time=$(date)
 	    echo "Current date and time: $current_date_time"
             echo "restart server start"
-            /home/poen/poen/poen_rhs/server/start_server.sh
+            /home/xmessiahfool/job/poen/poen_rhs/server/start_server.sh
     fi
 
     sleep 2
