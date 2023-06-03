@@ -8,7 +8,8 @@ async function 재제조현황_시작() {
 	while(_management_id == undefined) {
 		await sleep(DELAY);
 	}
-	
+	await sleep(10);
+
 	관리번호 = '';
 	if(_management_id.value == '') {
 		flag_id_search = 0;
@@ -341,7 +342,6 @@ async function grid_기초검사(m_id) {
 
 		find(기초검사, m_id);
 		await delay();
-		await sleep(100);
 		tabledata_기초검사 = find_array;
 		console.log('기초검사 : ', find_array);;
 
@@ -377,7 +377,6 @@ async function grid_분해조립(m_id) {
 
 		find(분해조립, m_id);
 		await delay();
-		await sleep(100);
 	
 		//for(var i = 1; i <= 10; i++) {
 		//	var str = 'if(find_array[0].BMU' + i + ' == \'\') delete find_array[0].BMU' + i +';';
@@ -691,7 +690,6 @@ async function grid_출하정보(m_id) {
 
 		find(출하정보, m_id);
 		await delay();
-		await sleep(100);
 		tabledata_출하정보 = find_array;
 		console.log('출하정보 : ', find_array);;
 

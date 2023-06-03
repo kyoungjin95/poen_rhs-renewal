@@ -8,7 +8,6 @@ async function login() {
 
 	count(계정, { id: _id.value, passwd: hash.toString() });
 	await delay();
-	await sleep(100);
 	if(doc_count > 0) {
 		if(worker == '') {
 			worker = _id.value;
@@ -54,10 +53,10 @@ async function login() {
 }
 
 async function change_label() {
-	await sleep(500);
 	while(document.getElementById('login_label') == undefined) {
 		await sleep(DELAY);
 	}
+	await sleep(10);
 	const _label = document.getElementById('login_label');
 	const _login_btn = document.getElementById('login_btn');
 	const _login_info = document.getElementById('login_info');
