@@ -7,6 +7,7 @@ const io = require('socket.io')(server);
 const { MongoClient } = require('mongodb')
 const morgan = require('morgan') //debug msg
 const logger = require('./winston');
+const ps = require('ps-node');
 const uri = 'mongodb://poen:poen4upoen4u@localhost:27017/poenDB';
 const db_name = 'poenDB';
 var db;
@@ -70,14 +71,40 @@ io.on('connection', async function(socket) {
 		socket.emit('delete_result', result_count);
 		logger.info('worker:'+ worker + ' delete col:' + col + 'query:'+ JSON.stringify(query));
 	});
+
+	process.on('exit', function(code) {
+		cconsole.log('Exit : ', code);
+		client.close();
+	});
 });
 
-process.on('exit', function(code) {
-	cconsole.log('Exit : ', code);
-	client.close();
-});
 
-/**dd
+setInterval(function() {
+	var flag_autobackup_db = false;
+	ps.lookup({ command: 'bash' }, (err, resultList) => {
+		if (err) {
+			console.log('Error getting list:', err);
+		} else {
+			resultList.forEach((process) => {
+				console.log('PID: %s, COMMAND: %s, ARGUMENTS: %s', process.pid, process.command, process.arguments);
+				if(process.arguments == './auto_backup_db.sh') {
+					console.log('auto backup db is running');
+					flag_autobackup_db = true;
+					return;
+				} else {
+					io.sockets.emit('auto_backup_db_status', false);
+				}
+			});
+			if(flag_autobackup_db == true) {
+				io.sockets.emit('auto_backup_db_status', true);
+			} else {
+				io.sockets.emit('auto_backup_db_status', false);
+			}
+		}
+	});
+}, 1000);
+
+/**
  * update를 사용할것 for 중복방지
  */
 async function distinct(col, query, field_name) {
@@ -146,10 +173,10 @@ async function find(col, query, options) {
  *  filter = { title: "Random Harvest" };
  *  const updateDoc = {
       $set: {
-        plot: `A harvest of random numbers, such as: ${Math.random()}`
+	plot: `A harvest of random numbers, such as: ${Math.random()}`
       },
     };
-  */
+    */
 async function update(col, filter, updateDoc) {
 	try {
 		const options = { upsert: true };

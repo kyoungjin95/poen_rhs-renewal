@@ -787,6 +787,13 @@ socket.on('connect', function() {
 	console.log('connected');
 });
 
+socket.on('auto_backup_db_status', function(running) {
+	console.log('auto backup status:', running);
+	if(running == true) str = '자동 백업 시스템 작동중(30일 보관)';
+	else str = '자동 백업 시스템 정지!!';
+	document.getElementById('auto_backup_db_status').innerHTML = str;
+});
+
 socket.on('distinct_result', function(result) {
 	//console.log('distincted result array: ', result);
 	find_array = result;
