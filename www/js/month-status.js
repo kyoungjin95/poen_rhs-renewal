@@ -18,7 +18,6 @@ async function 월간_조회(flag_id_search = false) {
 		var seoul = DateTime.local().setZone("Asia/Seoul");
 		var now = seoul.toString();
 		var today = now.slice(0, 10);
-		var month = now.getMonth();
 		await sleep(DELAY);
 		_검색일.value =  today;
 
