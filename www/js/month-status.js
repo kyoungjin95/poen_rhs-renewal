@@ -14,14 +14,16 @@ async function 월간현황_시작() {
 async function 월간_조회(flag_id_search = false) {
 	if(worker == '') return;
 	if(flag_id_search == false) {
-		var now = new Date();
-		var today = now.toISOString().slice(0, 10);
+		var DateTime = luxon.DateTime;
+		var seoul = DateTime.local().setZone("Asia/Seoul");
+		var now = seoul.toString();
+		var today = now.slice(0, 10);
 		var month = now.getMonth();
 		await sleep(DELAY);
 		_검색일.value =  today;
 
-		var s_day = now.toISOString().slice(0, 8) + '01' + 'T00:00:00.000Z';
-		var e_day = now.toISOString().slice(0, 8) + '31' + 'T00:00:00.000Z';
+		var s_day = now.slice(0, 8) + '01' + 'T00:00:00.000Z';
+		var e_day = now.slice(0, 8) + '31' + 'T00:00:00.000Z';
 
 		const count_입고 = await 월간입고_table(s_day, e_day, flag_id_search);
 		const count_출하 = await 월간출하_table(s_day, e_day, flag_id_search);
@@ -30,14 +32,14 @@ async function 월간_조회(flag_id_search = false) {
 
 		var all_counts = [];
 		for(i = 1; i <= 31; i++) {
-			var day = now.toISOString().slice(0, 8) + i.toString().padStart(2, '0');
+			var day = now.slice(0, 8) + i.toString().padStart(2, '0');
 			count(BSA재제조, { 입고 : day});
         		await delay();
         		all_counts.push(doc_count);
 		}
 
 		for(i = 1; i <= 31; i++) {
-			var day = now.toISOString().slice(0, 8) + i.toString().padStart(2, '0');
+			var day = now.slice(0, 8) + i.toString().padStart(2, '0');
 			count(BSA재제조, { 출하 : day});
         		await delay();
         		all_counts.push(doc_count);
