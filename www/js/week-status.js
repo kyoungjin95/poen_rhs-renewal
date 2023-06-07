@@ -19,14 +19,16 @@ function 날짜_조회() {
 
 async function 주간_조회(search_day = '') {
 	if(worker == '') return;
-	var now = new Date();
-	var now2 = new Date();
-	var today = now.toISOString().slice(0, 10);
-	var week = now.getDay();
-	var start = week - 1; 
-	var end = 7 - week;
-	var week_start = new Date(now.setDate(now.getDate() - start));
-	var week_end = new Date(now2.setDate(now2.getDate() + end));
+	var DateTime = luxon.DateTime;
+	var seoul = DateTime.local().setZone("Asia/Seoul");
+	var now = seoul.toString();
+	var now2 = seoul.toString();
+	var today = now.slice(0, 10);
+	var week = seoul.weekday; 
+	var start = parseInt(today.split('-')[2], 10)  - (week - 1); 
+	var end = parseInt(today.split('-')[2], 10) + (7 - week); 
+	var week_start = today.slice(0, 8) + start + "T00:00:00";
+	var week_end = today.slice(0, 8) + end + "T23:59:59";
 
 	if(search_day == '') {
 		_검색일.value = today;
@@ -41,12 +43,10 @@ async function 주간_조회(search_day = '') {
 		end = 7 - week;
 		week_start = new Date(now.setDate(now.getDate() - start));
 		week_end = new Date(now2.setDate(now2.getDate() + end));
-
+		week_start = week_start.toISOString();
+		week_end = week_end.toISOString();
 		chart.destroy();
 	}
-
-	week_start = week_start.toISOString().slice(0, 19);
-	week_end = week_end.toISOString().slice(0, 19);
 
 	console.log('today:', today, 'week:', week, 'week start:', week_start, 'week end:', week_end);
 
