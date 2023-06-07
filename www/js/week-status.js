@@ -109,7 +109,7 @@ async function 주간입고_table(week_start = '', week_end = '') {
 
 		for(var i = 0; i < find_array.length; i++) {
 			delete find_array[i].적재No;
-			delete find_array[i].입고;
+			//delete find_array[i].입고;
 			delete find_array[i].제조투입;
 			delete find_array[i].세척;
 			delete find_array[i].기초검사;
