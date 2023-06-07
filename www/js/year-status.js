@@ -1,5 +1,10 @@
 var row_one_id = '';
 var chart;
+var year = '2023';
+
+function yearOnChange(e) {
+	year = e.options[e.selectedIndex].text;
+}
 
 async function 년간현황_시작() {
 	flag_년간현황 = false;
@@ -7,6 +12,24 @@ async function 년간현황_시작() {
 	while(document.getElementById('_검색일') == undefined) {
 		await sleep(DELAY);
 	}
+
+	var DateTime = luxon.DateTime;
+	var seoul = DateTime.local().setZone("Asia/Seoul");
+	var now = seoul.toString();
+	var year = now.slice(0, 4);
+	var addYear;
+	if(parseInt(year, 10) > 2020) {
+		for(var i = 2021; i <= parseInt(year, 10); i++) {
+			console.log("YEAR:", year);
+			addYear = document.createElement('option');
+			addYear.innerText = String(i);
+			addYear.value = String(i);
+
+			document.getElementById('_검색일').appendChild(addYear);
+			console.log(i);
+		}
+	}
+
 	년간_조회();
 }
 
@@ -47,7 +70,7 @@ async function 년간_조회(flag_id_search = false) {
 
 		년간차트_detail(all_counts);
 	} else {
-		var search_day = _검색일.value;
+		var search_day = year + '-';
 		var s_day = search_day.slice(0, 5) + '01-01' + 'T00:00:00.000Z';
 		var e_day = search_day.slice(0, 5) + '12-31' + 'T00:00:00.000Z';
 		

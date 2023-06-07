@@ -1,12 +1,52 @@
 var row_one_id = '';
 var chart;
+var year = '2023';
+var month = '1';
+
+function yearOnChange(e) {
+	year = e.options[e.selectedIndex].text;
+}
+
+function monthOnChange(e) {
+	month = e.options[e.selectedIndex].text;
+}
 
 async function 월간현황_시작() {
 	flag_월간현황 = false;
 	if(worker == '') return;
-	while(document.getElementById('_검색일') == undefined) {
+	while(document.getElementById('_검색일_year') == undefined) {
 		await sleep(DELAY);
 	}
+
+	var DateTime = luxon.DateTime;
+	var seoul = DateTime.local().setZone("Asia/Seoul");
+	var now = seoul.toString();
+	var year = now.slice(0, 4);
+	var addYear;
+	var addMonth;
+
+	if(parseInt(year, 10) > 2020) {
+		for(var i = 2021; i <= parseInt(year, 10); i++) {
+			console.log("YEAR:", year);
+			addYear = document.createElement('option');
+			addYear.innerText = String(i);
+			addYear.value = String(i);
+
+			document.getElementById('_검색일_year').appendChild(addYear);
+			console.log(i);
+		}
+	}
+
+	for(var i = 1; i <= 12; i++) {
+		var str = i.toString().padStart(2, '0')
+		addMonth = document.createElement('option');
+		addMonth.innerText = String(str);
+		addMonth.value = String(str);
+
+		document.getElementById('_검색일_month').appendChild(addMonth);
+		console.log(str);
+	}
+
 	월간_조회();
 }
 
@@ -28,7 +68,7 @@ async function 월간_조회(flag_id_search = false) {
 
 		월간차트(count_입고, count_출하);
 	} else {
-		var search_day = _검색일.value;
+		var search_day = year + '-' + month + '-';
 		var s_day = search_day.slice(0, 8) + '01' + 'T00:00:00.000Z';
 		var e_day = search_day.slice(0, 8) + '31' + 'T00:00:00.000Z';
 		
