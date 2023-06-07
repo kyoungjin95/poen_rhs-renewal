@@ -217,6 +217,7 @@ async function 년간입고_table(s_day, e_day, flag_id_search = false, search_m
 	if(doc_count >= 1) {
 		find_query(BSA재제조, { 입고 : { $gte: s_day, $lte: e_day }});
 		await delay();
+		await sleep(100);
 
 		for(var i = 0; i < find_array.length; i++) {
 			delete find_array[i].적재No;
@@ -269,6 +270,7 @@ async function 년간출하_table(s_day, e_day, flag_id_search = false, search_m
 	if(doc_count >= 1) {
 		find_query(BSA재제조, { 출하 : { $gte: s_day, $lte: e_day }});
 		await delay();
+		await sleep(100);
 
 		for(var i = 0; i < find_array.length; i++) {
 			delete find_array[i].적재No;

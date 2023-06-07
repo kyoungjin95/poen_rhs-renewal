@@ -105,6 +105,7 @@ async function 주간입고_table(week_start = '', week_end = '') {
 	if(doc_count >= 1) {
 		find_query(BSA재제조, { 입고 : {$gte : week_start, $lte : week_end }} );
 		await delay();
+		await sleep(100);
 
 		for(var i = 0; i < find_array.length; i++) {
 			delete find_array[i].적재No;
@@ -118,6 +119,7 @@ async function 주간입고_table(week_start = '', week_end = '') {
 			delete find_array[i].마지막충전일;
 		}
 		tabledata_BSA_입고 = find_array;
+		await sleep(100);
 	}
 	var table = new Tabulator("#grid_입고", {
 		layout: "resizableColumnFit",
@@ -156,6 +158,7 @@ async function 주간출하_table(week_start, week_end) {
 	if(doc_count >= 1) {
 		find_query(BSA재제조, { 출하 : {$gte : week_start, $lte : week_end }});
 		await delay();
+		await sleep(100);
 
 		for(var i = 0; i < find_array.length; i++) {
 			delete find_array[i].적재No;
@@ -169,6 +172,7 @@ async function 주간출하_table(week_start, week_end) {
 			delete find_array[i].마지막충전일;
 		}
 		tabledata_BSA_출하 = find_array;
+		await sleep(100);
 	}
 	var table = new Tabulator("#grid_출하", {
 		layout: "resizableColumnFit",

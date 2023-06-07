@@ -1,6 +1,5 @@
 var row_one_id = '';
 var chart;
-var chart_detail;
 
 async function 월간현황_시작() {
 	flag_월간현황 = false;
@@ -28,23 +27,6 @@ async function 월간_조회(flag_id_search = false) {
 		const count_출하 = await 월간출하_table(s_day, e_day, flag_id_search);
 
 		월간차트(count_입고, count_출하);
-
-		var all_counts = [];
-		for(i = 1; i <= 31; i++) {
-			var day = now.slice(0, 8) + i.toString().padStart(2, '0');
-			count(BSA재제조, { 입고 : day});
-        		await delay();
-        		all_counts.push(doc_count);
-		}
-
-		for(i = 1; i <= 31; i++) {
-			var day = now.slice(0, 8) + i.toString().padStart(2, '0');
-			count(BSA재제조, { 출하 : day});
-        		await delay();
-        		all_counts.push(doc_count);
-		}
-
-		월간차트_detail(all_counts);
 	} else {
 		var search_day = _검색일.value;
 		var s_day = search_day.slice(0, 8) + '01' + 'T00:00:00.000Z';
@@ -55,27 +37,9 @@ async function 월간_조회(flag_id_search = false) {
 		const count_입고 = await 월간입고_table(s_day, e_day, flag_id_search);
 		const count_출하 = await 월간출하_table(s_day, e_day, flag_id_search);
 
-		chart.destroy();
-
+		if(chart != undefined) chart.destroy();
+	
 		월간차트(count_입고, count_출하);
-
-		var all_counts = [];
-		for(i = 1; i <= 31; i++) {
-			var day = search_day.slice(0, 8) + i.toString().padStart(2, '0');
-			count(BSA재제조, { 입고 : day});
-        		await delay();
-        		all_counts.push(doc_count);
-		}
-
-		for(i = 1; i <= 31; i++) {
-			var day = search_day.slice(0, 8) + i.toString().padStart(2, '0');
-			count(BSA재제조, { 출하 : day});
-        		await delay();
-        		all_counts.push(doc_count);
-		}
-
-		chart_detail.destroy();
-		월간차트_detail(all_counts);
 	}
 }
 
@@ -120,165 +84,6 @@ async function 월간차트(count_입고 = 0, count_출하 = 0) {
 	});
 }
 
-async function 월간차트_detail(counts) {
-	if(worker == '') return;
-	const canvas = document.getElementById('chart-detail');
-
-	chart_detail = new Chart(canvas, {
-		type: 'bar',
-		data: {
-			labels: ['1','2','3','4','5','6','7','8','9','10','11','12','13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '1','2','3','4','5','6','7','8','9','10','11','12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31'],
-			datasets: [{
-				label: '입고 vs 출하',
-				data: counts,
-				backgroundColor: [
-					'rgba(255, 205, 86, 0.2)',
-					'rgba(255, 205, 86, 0.2)',
-					'rgba(255, 205, 86, 0.2)',
-					'rgba(255, 205, 86, 0.2)',
-					'rgba(255, 205, 86, 0.2)',
-					'rgba(255, 205, 86, 0.2)',
-					'rgba(255, 205, 86, 0.2)',
-					'rgba(255, 205, 86, 0.2)',
-					'rgba(255, 205, 86, 0.2)',
-					'rgba(255, 205, 86, 0.2)',
-					'rgba(255, 205, 86, 0.2)',
-					'rgba(255, 205, 86, 0.2)',
-					'rgba(255, 205, 86, 0.2)',
-					'rgba(255, 205, 86, 0.2)',
-					'rgba(255, 205, 86, 0.2)',
-					'rgba(255, 205, 86, 0.2)',
-					'rgba(255, 205, 86, 0.2)',
-					'rgba(255, 205, 86, 0.2)',
-					'rgba(255, 205, 86, 0.2)',
-					'rgba(255, 205, 86, 0.2)',
-					'rgba(255, 205, 86, 0.2)',
-					'rgba(255, 205, 86, 0.2)',
-					'rgba(255, 205, 86, 0.2)',
-					'rgba(255, 205, 86, 0.2)',
-					'rgba(255, 205, 86, 0.2)',
-					'rgba(255, 205, 86, 0.2)',
-					'rgba(255, 205, 86, 0.2)',
-					'rgba(255, 205, 86, 0.2)',
-					'rgba(255, 205, 86, 0.2)',
-					'rgba(255, 205, 86, 0.2)',
-					'rgba(75, 192, 192, 0.2)',
-					'rgba(75, 192, 192, 0.2)',
-					'rgba(75, 192, 192, 0.2)',
-					'rgba(75, 192, 192, 0.2)',
-					'rgba(75, 192, 192, 0.2)',
-					'rgba(75, 192, 192, 0.2)',
-					'rgba(75, 192, 192, 0.2)',
-					'rgba(75, 192, 192, 0.2)',
-					'rgba(75, 192, 192, 0.2)',
-					'rgba(75, 192, 192, 0.2)',
-					'rgba(75, 192, 192, 0.2)',
-					'rgba(75, 192, 192, 0.2)',
-					'rgba(75, 192, 192, 0.2)',
-					'rgba(75, 192, 192, 0.2)',
-					'rgba(75, 192, 192, 0.2)',
-					'rgba(75, 192, 192, 0.2)',
-					'rgba(75, 192, 192, 0.2)',
-					'rgba(75, 192, 192, 0.2)',
-					'rgba(75, 192, 192, 0.2)',
-					'rgba(75, 192, 192, 0.2)',
-					'rgba(75, 192, 192, 0.2)',
-					'rgba(75, 192, 192, 0.2)',
-					'rgba(75, 192, 192, 0.2)',
-					'rgba(75, 192, 192, 0.2)',
-					'rgba(75, 192, 192, 0.2)',
-					'rgba(75, 192, 192, 0.2)',
-					'rgba(75, 192, 192, 0.2)',
-					'rgba(75, 192, 192, 0.2)',
-					'rgba(75, 192, 192, 0.2)',
-					'rgba(75, 192, 192, 0.2)',
-					'rgba(75, 192, 192, 0.2)',
-				],
-				borderColor: [
-					'rgb(255, 205, 86)',
-					'rgb(255, 205, 86)',
-					'rgb(255, 205, 86)',
-					'rgb(255, 205, 86)',
-					'rgb(255, 205, 86)',
-					'rgb(255, 205, 86)',
-					'rgb(255, 205, 86)',
-					'rgb(255, 205, 86)',
-					'rgb(255, 205, 86)',
-					'rgb(255, 205, 86)',
-					'rgb(255, 205, 86)',
-					'rgb(255, 205, 86)',
-					'rgb(255, 205, 86)',
-					'rgb(255, 205, 86)',
-					'rgb(255, 205, 86)',
-					'rgb(255, 205, 86)',
-					'rgb(255, 205, 86)',
-					'rgb(255, 205, 86)',
-					'rgb(255, 205, 86)',
-					'rgb(255, 205, 86)',
-					'rgb(255, 205, 86)',
-					'rgb(255, 205, 86)',
-					'rgb(255, 205, 86)',
-					'rgb(255, 205, 86)',
-					'rgb(255, 205, 86)',
-					'rgb(255, 205, 86)',
-					'rgb(255, 205, 86)',
-					'rgb(255, 205, 86)',
-					'rgb(255, 205, 86)',
-					'rgb(255, 205, 86)',
-					'rgb(255, 205, 86)',
-					'rgb(75, 192, 192)',
-					'rgb(75, 192, 192)',
-					'rgb(75, 192, 192)',
-					'rgb(75, 192, 192)',
-					'rgb(75, 192, 192)',
-					'rgb(75, 192, 192)',
-					'rgb(75, 192, 192)',
-					'rgb(75, 192, 192)',
-					'rgb(75, 192, 192)',
-					'rgb(75, 192, 192)',
-					'rgb(75, 192, 192)',
-					'rgb(75, 192, 192)',
-					'rgb(75, 192, 192)',
-					'rgb(75, 192, 192)',
-					'rgb(75, 192, 192)',
-					'rgb(75, 192, 192)',
-					'rgb(75, 192, 192)',
-					'rgb(75, 192, 192)',
-					'rgb(75, 192, 192)',
-					'rgb(75, 192, 192)',
-					'rgb(75, 192, 192)',
-					'rgb(75, 192, 192)',
-					'rgb(75, 192, 192)',
-					'rgb(75, 192, 192)',
-					'rgb(75, 192, 192)',
-					'rgb(75, 192, 192)',
-					'rgb(75, 192, 192)',
-					'rgb(75, 192, 192)',
-					'rgb(75, 192, 192)',
-					'rgb(75, 192, 192)',
-					'rgb(75, 192, 192)',
-				],
-				borderWidth: 2
-			}]
-		},
-		options: {
-			scales: {
-				y: {
-					title: {
-						display: true,
-						text: '갯수'
-					},
-					min: 0,
-					ticks: {
-						// forces step size to be 50 units
-						stepSize: 1
-					},
-					beginAtZero: true
-				}
-			}
-		}
-	});
-}
 async function 월간입고_table(s_day, e_day, flag_id_search = false, search_month = '') {
 	if(worker == '') return;
 	var tabledata_BSA_입고 = [];
@@ -288,6 +93,7 @@ async function 월간입고_table(s_day, e_day, flag_id_search = false, search_m
 	if(doc_count >= 1) {
 		find_query(BSA재제조, { 입고 : { $gte: s_day, $lte: e_day }});
 		await delay();
+		await sleep(100);
 
 		for(var i = 0; i < find_array.length; i++) {
 			delete find_array[i].적재No;
@@ -337,9 +143,11 @@ async function 월간출하_table(s_day, e_day, flag_id_search = false, search_m
 	count(BSA재제조, { 출하 : { $gte: s_day, $lte: e_day }});
 	await delay();
 	console.log('doc_count: ', doc_count);
+
 	if(doc_count >= 1) {
 		find_query(BSA재제조, { 출하 : { $gte: s_day, $lte: e_day }});
 		await delay();
+		await sleep(100);
 
 		for(var i = 0; i < find_array.length; i++) {
 			delete find_array[i].적재No;
