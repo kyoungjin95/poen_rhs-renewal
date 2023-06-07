@@ -17,13 +17,11 @@ async function 총합계_조회() {
 
 	count(BSA재제조, { 세척 : { $exists : true, $ne : 'none', $ne : ''}});
 	await delay();
-	await sleep(20);
 	console.log('세척 count:', doc_count);
 	var 세척누적 = doc_count;
 
 	count(BSA재제조, { 세척 : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }});
 	await delay();
-	await sleep(20);
 	console.log('세척 당일 count:', doc_count);
 	var 세척당일 = doc_count;
 
@@ -85,13 +83,11 @@ async function 총합계_조회() {
 
 	//count(BSA재제조, { 소재지 : '마도'});
 	//await delay();
-	//await sleep(20);
 	//console.log('마도 count:', doc_count);
 	//var 마도누적 = doc_count;
 
 	//count(BSA재제조, { 소재지 : '마도' , EOL : { $gte : today_begin, $lt : today_end }});
 	//await delay();
-	//await sleep(20);
 	//console.log('마도 당일  count:', doc_count);
 	//var 마도당일 = doc_count;
 	//
@@ -100,13 +96,11 @@ async function 총합계_조회() {
 
 	//count(BSA재제조, { 소재지 : '구장'});
 	//await delay();
-	//await sleep(20);
 	//console.log('구장 count:', doc_count);
 	//var 구장누적 = doc_count;
 
 	//count(BSA재제조, { 소재지 : '구장' , EOL : { $gte : today_begin, $lt : today_end}});
 	//await delay();
-	//await sleep(20);
 	//console.log('구장 당일  count:', doc_count);
 	//var 구장당일 = doc_count;
 	//
