@@ -102,7 +102,7 @@ setInterval(function() {
 			}
 		}
 	});
-}, 1000);
+}, 10000);
 
 /**
  * update를 사용할것 for 중복방지
