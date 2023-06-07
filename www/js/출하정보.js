@@ -195,7 +195,7 @@ async function 출하정보_save() {
 	
 	console.log(doc);
 	update(출하정보, doc);
-	await sleep(DELAY);
+	await delay();
 
 	console.log(update_count);
 	console.log(insert_count);

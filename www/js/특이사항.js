@@ -11,6 +11,7 @@ async function 특이사항_managementID() {
 
 	count(특이사항, { 관리번호 : _management_id.value });
 	await delay();
+
 	console.log('doc_count: ', doc_count);
 	if(doc_count >= 1) {
 		find(특이사항, _management_id.value);
@@ -32,7 +33,7 @@ async function 특이사항_save() {
 	doc.특이사항 = _특이사항.value;
 	
 	update(특이사항, doc);
-	await sleep(DELAY);
+	await delay();
 	
 	console.log(update_count);
 	console.log(insert_count);

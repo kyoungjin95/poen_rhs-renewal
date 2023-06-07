@@ -274,7 +274,7 @@ async function 분해조립_save() {
 	console.log(신품_docs);
 	신품_docs.forEach(async function(doc) {
 		update_신품정보(신품정보, doc);
-		await sleep(DELAY);
+		await delay();
 
 		console.log(update_count);
 		console.log(insert_count);
@@ -283,14 +283,14 @@ async function 분해조립_save() {
 	console.log(고품_docs);
 	고품_docs.forEach(async function(doc) {
 		update_고품정보(고품정보, doc);
-		await sleep(DELAY);
+		await delay();
 
 		console.log(update_count);
 		console.log(insert_count);
 	});
 
 	update(분해조립, doc);
-	await sleep(DELAY);
+	await delay();
 	
 
 	console.log(update_count);

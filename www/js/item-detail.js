@@ -206,7 +206,7 @@ async function item_detail_save(flag_result = false) {
 	doc.마지막충전일 = _마지막충전일.value;
 	
 	update(BSA재제조, doc);
-	await sleep(DELAY);
+	await delay();
 	
 	console.log(update_count);
 	console.log(insert_count);

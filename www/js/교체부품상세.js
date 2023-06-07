@@ -59,7 +59,7 @@ async function 교체부품상세_save() {
 	doc.교체사유= _교체사유.value;
 	
 	update(교체부품상세No, doc);
-	await sleep(DELAY);
+	await delay();
 	
 	console.log(update_count);
 	console.log(insert_count);

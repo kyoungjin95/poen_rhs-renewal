@@ -193,7 +193,7 @@ async function 기초검사_save() {
 	doc.검사자 = _검사자.value;
 	
 	update(기초검사, doc);
-	await sleep(DELAY);
+	await delay();
 	
 	console.log(update_count);
 	console.log(insert_count);

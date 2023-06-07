@@ -44,7 +44,7 @@ async function 세척_save() {
 	doc.특이사항 = _특이사항.value;
 	
 	update(세척, doc);
-	await sleep(DELAY);
+	await delay();
 	
 	console.log(update_count);
 	console.log(insert_count);

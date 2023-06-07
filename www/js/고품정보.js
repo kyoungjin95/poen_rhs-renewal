@@ -53,7 +53,7 @@ async function 고품정보_save() {
 	doc.폐기여부 = _폐기여부.value;
 
 	update_고품정보(고품정보, doc);
-	await sleep(DELAY);
+	await delay();
 	
 	console.log(update_count);
 	console.log(insert_count);

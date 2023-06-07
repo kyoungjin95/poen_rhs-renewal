@@ -188,7 +188,7 @@ async function EOL_save() {
 	console.log(doc);
 
 	update(EOL, doc);
-	await sleep(DELAY);
+	await delay();
 	
 	console.log(update_count);
 	console.log(insert_count);

@@ -51,7 +51,7 @@ async function 입고_save() {
 	doc.랙번호  = _랙번호.value;
 	
 	update(입고, doc);
-	await sleep(DELAY);
+	await delay();
 	
 	console.log(update_count);
 	console.log(insert_count);
