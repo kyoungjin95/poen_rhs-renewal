@@ -6,7 +6,7 @@ async function 상세입력_시작() {
 
 	flag_상세입력 = false;
 	if(worker == '') return;
-	while(_management_id == undefined) {
+	while(_폐기 == undefined) {
 		await sleep(DELAY);
 	}
 
@@ -32,6 +32,7 @@ async function 상세입력_시작() {
 		sessionStorage.setItem('manage_id', 관리번호);
 		find(BSA재제조, _management_id.value);
 		await delay();
+
 		_재제조번호.value = find_array[0].재제조번호;
 		//_차종.value = find_array[0].차종;
 		//_품번.value = find_array[0].품번;
@@ -40,14 +41,23 @@ async function 상세입력_시작() {
 		_적재No.value = find_array[0].적재No;
 		_입고.value = find_array[0].입고;
 		_제조투입.value = find_array[0].제조투입;
+		_세척투입일.value = find_array[0].세척투입일;
 		_세척.value = find_array[0].세척;
+		_기초검사투입일.value = find_array[0].기초검사투입일;
 		_기초검사.value = find_array[0].기초검사;
+		_분해조립투입일.value = find_array[0].분해조립투입일;
 		_분해조립.value = find_array[0].분해조립;
+		_성능검사투입일.value = find_array[0].성능검사투입일;
 		_성능검사.value = find_array[0].성능검사;
+		_EOL투입일.value = find_array[0].EOL투입일;
 		_EOL.value = find_array[0].EOL;
 		_출하.value = find_array[0].출하;
 		_소재지.value = find_array[0].소재지;
 		_마지막충전일.value = find_array[0].마지막충전일;
+		_반품입고.value = find_array[0].반품입고;
+		_재출하.value = find_array[0].재출하;
+		_완전분해.value = find_array[0].완전분해;
+		_폐기.value = find_array[0].폐기;
 
 		count(입고, { 관리번호 : _management_id.value });
 		await delay();
@@ -74,6 +84,7 @@ async function 상세입력_시작() {
 			find(세척, _management_id.value);
 			await delay();
 			
+			_세척투입일.value = find_array[0].공정입고일;
 			_세척.value = find_array[0].공정완료일;
 			if(_세척.value != '' && _세척.value != 'none' && _세척.value != '0000-00-00T00:00') {
 				_공정단계.value = '기초검사';
@@ -90,6 +101,7 @@ async function 상세입력_시작() {
 			find(기초검사, _management_id.value);
 			await delay();
 			
+			_기초검사투입일.value = find_array[0].공정입고일;
 			_기초검사.value = find_array[0].공정완료일;
 			if(_기초검사.value != '' && _기초검사.value != 'none' && _기초검사.value != '0000-00-00T00:00') {
 				_공정단계.value = '분해조립';
@@ -106,6 +118,7 @@ async function 상세입력_시작() {
 			find(분해조립, _management_id.value);
 			await delay();
 			
+			_분해조립투입일.value = find_array[0].공정입고일;
 			_분해조립.value = find_array[0].공정완료일;
 			if(_분해조립.value != '' && _분해조립.value != 'none' && _분해조립.value != '0000-00-00T00:00') {
 				_공정단계.value = '성능검사';
@@ -122,6 +135,7 @@ async function 상세입력_시작() {
 			find(성능검사, _management_id.value);
 			await delay();
 			
+			_성능검사투입일.value = find_array[0].공정입고일;
 			_성능검사.value = find_array[0].공정완료일;
 			if(_성능검사.value != '' && _성능검사.value != 'none' && _성능검사.value != '0000-00-00T00:00') {
 				_공정단계.value = 'EOL';
@@ -138,6 +152,7 @@ async function 상세입력_시작() {
 			find(EOL, _management_id.value);
 			await delay();
 			
+			_EOL투입일.value = find_array[0].공정입고일;
 			_EOL.value = find_array[0].공정완료일;
 			if(_EOL.value != '' || _EOL.value != 'none' && _EOL.value != '0000-00-00T00:00') {
 				_공정단계.value = '제조완료';
@@ -167,14 +182,23 @@ async function 상세입력_시작() {
 		_적재No.value = '';
 		_입고.value = '0000-00-00T00:00';
 		_제조투입.value = '0000-00-00T00:00';
+		_세척투입일.value = '0000-00-00T00:00';
 		_세척.value = '0000-00-00T00:00';
+		_기초검사투입일.value = '0000-00-00T00:00';
 		_기초검사.value = '0000-00-00T00:00';
+		_분해조립투입일.value = '0000-00-00T00:00';
 		_분해조립.value = '0000-00-00T00:00';
+		_성능검사투입일.value = '0000-00-00T00:00';;
 		_성능검사.value = '0000-00-00T00:00';;
+		_EOL투입일.value = '0000-00-00T00:00';
 		_EOL.value = '0000-00-00T00:00';
 		_출하.value = '0000-00-00T00:00';
 		_소재지.value = '';
 		_마지막충전일.value = '0000-00-00T00:00';
+		_반품입고.value = '0000-00-00T00:00';
+		_재출하.value = '0000-00-00T00:00';
+		_완전분해.value = '0000-00-00T00:00';
+		_폐기.value = '0000-00-00T00:00';
 		item_detail_save();
 	}
 }
@@ -182,6 +206,7 @@ async function 상세입력_시작() {
 async function item_detail_save(flag_result = false) {
 	if(worker == '') return;
 	if(_management_id.value.length == 0) return;
+	if(_management_id.value.slice(0, 2) == '조회') return;
 	console.log('save: ', _management_id.value);
 
 	관리번호 = _management_id.value;
@@ -196,14 +221,23 @@ async function item_detail_save(flag_result = false) {
 	doc.적재No = _적재No.value;
 	doc.입고 = _입고.value;
 	doc.제조투입 = _제조투입.value;
+	doc.세척투입일 = _세척투입일.value;
 	doc.세척 = _세척.value;
+	doc.기초검사투입일 = _기초검사투입일.value;
 	doc.기초검사 = _기초검사.value;
+	doc.분해조립투입일 = _분해조립투입일.value;
 	doc.분해조립 = _분해조립.value;
+	doc.성능검사투입일 = _성능검사투입일.value;
 	doc.성능검사 = _성능검사.value;
+	doc.EOL투입일 = _EOL투입일.value;
 	doc.EOL = _EOL.value;
 	doc.출하 = _출하.value;
 	doc.소재지 = _소재지.value;
 	doc.마지막충전일 = _마지막충전일.value;
+	doc.반품입고 = _반품입고.value;
+	doc.재출하 = _재출하.value;
+	doc.완전분해 = _완전분해.value;
+	doc.폐기 = _폐기.value;
 	
 	update(BSA재제조, doc);
 	await delay();

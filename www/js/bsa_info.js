@@ -1,6 +1,7 @@
 var row_one_id = '';
 var tabledata_BSA = [];
 var flag_id_search = 0;
+var table;
 
 async function 재제조현황_시작() {
 	flag_재제조현황 = false;
@@ -45,12 +46,10 @@ async function 재제조현황_조회(flag_id_search = false) {
 		} 
 
 		tabledata_BSA = find_array;
-		
 		row_one_id = find_array[0].관리번호;
-		
 	}
 
-	var table = new Tabulator("#grid_BSA", {
+	table = new Tabulator("#grid_BSA", {
 		layout: "resizableColumnFit",
 		height:500,
 		data:tabledata_BSA, 
@@ -66,13 +65,22 @@ async function 재제조현황_조회(flag_id_search = false) {
 			//{title:"적재No", field:"적재No", sorter:"string"},
 			//{title:"입고", field:"입고", sorter:"string"},
 			//{title:"제조투입", field:"제조투입", sorter:"string"},
+			{title:"세척투입일", field:"세척투입일", sorter:"string"},
 			//{title:"세척", field:"세척", sorter:"string"},
+			{title:"기초검사투입일", field:"기초검사투입일", sorter:"string"},
 			//{title:"기초검사", field:"기초검사", sorter:"string"},
+			{title:"분해조립투입일", field:"분해조립투입일", sorter:"string"},
 			//{title:"분해조립", field:"분해조립", sorter:"string"},
+			{title:"성능검사투입일", field:"성능검사투입일", sorter:"string"},
 			//{title:"성능검사", field:"성능검사", sorter:"string"},
+			{title:"EOL투입일", field:"EOL투입일", sorter:"string"},
 			//{title:"EOL", field:"EOL", sorter:"string"},
 			{title:"출하", field:"출하", sorter:"string"},
 			{title:"소재지", field:"소재지", sorter:"string"},
+			{title:"반품입고", field:"반품입고", sorter:"string"},
+			{title:"재출하", field:"재출하", sorter:"string"},
+			{title:"완전분해", field:"완전분해", sorter:"string"},
+			{title:"폐기", field:"폐기", sorter:"string"},
 		],
 	});
 
@@ -1080,3 +1088,6 @@ async function grid_교체부품상세10(m_id) {
 	});
 }
 
+function export_excel() {
+	table.download("xlsx", "재제조_bsa_data.xlsx", {sheetName:"재제조_bsa_data"});
+}

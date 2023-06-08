@@ -4,7 +4,6 @@ async function login() {
 	if(_id.value == '' || _passwd.value == '') return;
 
 	const hash = CryptoJS.MD5(_passwd.value); 	
-	console.log('hash:', hash.toString());
 
 	count(계정, { id: _id.value, passwd: hash.toString() });
 	await delay();
