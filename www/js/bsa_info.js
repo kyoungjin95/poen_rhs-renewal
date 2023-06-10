@@ -53,6 +53,8 @@ async function 재제조현황_조회(flag_id_search = false) {
 		layout: "resizableColumnFit",
 		height:500,
 		data:tabledata_BSA, 
+		pagination: 'local',
+                responsiveLayout: true,
 		//autoColumns:true,
 		
 		columns:[
