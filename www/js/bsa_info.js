@@ -51,10 +51,11 @@ async function 재제조현황_조회(flag_id_search = false) {
 
 	table = new Tabulator("#grid_BSA", {
 		layout: "resizableColumnFit",
-		height:500,
-		data:tabledata_BSA, 
-		pagination: 'local',
+                height:500,
+                data:tabledata_BSA,
+                pagination: 'local',
                 responsiveLayout: true,
+                renderHorizontal:"virtual",
 		//autoColumns:true,
 		
 		columns:[
