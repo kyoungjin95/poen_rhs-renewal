@@ -22,12 +22,15 @@ async function 월간현황_시작() {
 	var seoul = DateTime.local().setZone("Asia/Seoul");
 	var now = seoul.toString();
 	var year = now.slice(0, 4);
+	var month = seoul.toString().slice(6, 7);
+	console.log('=>', month);
 	var addYear;
 	var addMonth;
 
 	if(parseInt(year, 10) > 2020) {
-		for(var i = 2021; i <= parseInt(year, 10); i++) {
+		for(var i = parseInt(year, 10); i > 2020; i--) {
 			console.log("YEAR:", year);
+			
 			addYear = document.createElement('option');
 			addYear.innerText = String(i);
 			addYear.value = String(i);
@@ -35,6 +38,7 @@ async function 월간현황_시작() {
 			document.getElementById('_검색일_year').appendChild(addYear);
 			console.log(i);
 		}
+		document.getElementById('_검색일_year').options[0].selected = true;
 	}
 
 	for(var i = 1; i <= 12; i++) {
@@ -47,6 +51,10 @@ async function 월간현황_시작() {
 		console.log(str);
 	}
 
+	var cnt = parseInt(month, 10) - 1; 
+	console.log('=>',month, cnt);
+	document.getElementById('_검색일_month').options[cnt].selected = true;
+
 	월간_조회();
 }
 
@@ -58,7 +66,6 @@ async function 월간_조회(flag_id_search = false) {
 		var now = seoul.toString();
 		var today = now.slice(0, 10);
 		await sleep(DELAY);
-		_검색일.value =  today;
 
 		var s_day = now.slice(0, 8) + '01' + 'T00:00:00.000Z';
 		var e_day = now.slice(0, 8) + '31' + 'T00:00:00.000Z';
@@ -68,6 +75,8 @@ async function 월간_조회(flag_id_search = false) {
 
 		월간차트(count_입고, count_출하);
 	} else {
+		year = document.getElementById('_검색일_year').value;
+		month = document.getElementById('_검색일_month').value;
 		var search_day = year + '-' + month + '-';
 		var s_day = search_day.slice(0, 8) + '01' + 'T00:00:00.000Z';
 		var e_day = search_day.slice(0, 8) + '31' + 'T00:00:00.000Z';

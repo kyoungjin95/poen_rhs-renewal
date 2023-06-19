@@ -19,17 +19,16 @@ async function 년간현황_시작() {
 	var year = now.slice(0, 4);
 	var addYear;
 	if(parseInt(year, 10) > 2020) {
-		for(var i = 2021; i <= parseInt(year, 10); i++) {
+		for(var i = parseInt(year, 10); i > 2020; i--) {
 			console.log("YEAR:", year);
 			addYear = document.createElement('option');
 			addYear.innerText = String(i);
 			addYear.value = String(i);
 
 			document.getElementById('_검색일').appendChild(addYear);
-			console.log(i);
 		}
 	}
-
+	
 	년간_조회();
 }
 
