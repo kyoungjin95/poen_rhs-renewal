@@ -15,6 +15,7 @@ var 관리번호 = '';
 var client;
 
 app.use(morgan('dev'))
+app.use('/', express.static(path.join(__dirname, '../')));
 app.use('/base', express.static(path.join(__dirname, '../www')));
 
 app.get('/', (req, res) => {
