@@ -10,6 +10,6 @@ while [ 1 ]; do
             /home/poen/poen/poen_rhs/server/start_server.sh
     fi
 
-    sleep 2
+    sleep 60
 done
 
