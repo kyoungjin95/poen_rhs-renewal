@@ -812,6 +812,17 @@ socket.on('auto_backup_db_status', function(running) {
 	document.getElementById('auto_backup_db_status').innerHTML = str;
 });
 
+socket.on('aggregate_result', function(result) {
+	alert(result);
+	if(result == 'complete') {
+		var a = document.createElement('a');
+		a.href = "/all_data";
+		a.download = 'Poen_RHS_all_data';
+
+		a.click();
+	}
+});
+
 socket.on('distinct_result', function(result) {
 	//console.log('distincted result array: ', result);
 	find_array = result;

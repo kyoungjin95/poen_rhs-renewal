@@ -1094,3 +1094,8 @@ async function grid_교체부품상세10(m_id) {
 function export_excel() {
 	table.download("xlsx", "재제조_bsa_data.xlsx", {sheetName:"재제조_bsa_data"});
 }
+
+async function export_all_data_excel() {
+	aggregate();
+	await delay();	
+}
