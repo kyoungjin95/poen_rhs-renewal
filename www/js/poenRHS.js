@@ -876,6 +876,12 @@ socket.on('disconnect', function() {
 	console.log('disconnect');
 });
 
+async function aggregate() {
+        if(socket == undefined) return;
+        flag_arrivedMSG = false;
+        socket.emit('aggregate');
+}
+
 async function distinct(col, query, field_name) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
