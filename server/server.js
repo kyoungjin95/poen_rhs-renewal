@@ -1,21 +1,11 @@
-const https = require('https');
+const http = require('http');
 const express = require('express');
 const path = require('path');
 const app = express();
 const fs = require('fs');
 const process = require('process');
-var privateKey = fs.readFileSync("/etc/letsencrypt/live/www.xmessiahfool.co.kr/privkey.pem")
-var certificate = fs.readFileSync("/etc/letsencrypt/live/www.xmessiahfool.co.kr/cert.pem")
-var ca = fs.readFileSync("/etc/letsencrypt/live/www.xmessiahfool.co.kr/chain.pem")
-const credentials = { key: privateKey, cert: certificate, ca: ca }
-
-const options = {
-	key: fs.readFileSync(path.join(__dirname, './ssl/server.key')),
-	cert: fs.readFileSync(path.join(__dirname, './ssl/server.crt')),
-	ca: fs.readFileSync(path.join(__dirname, './ssl/server.csr')),
-};
-const server_ssl = https.createServer(credentials, app);
-const io = require('socket.io')(server_ssl);
+const server = http.createServer(app);
+const io = require('socket.io')(server);
 const { MongoClient } = require('mongodb')
 const morgan = require('morgan') //debug msg
 const logger = require('./winston');
@@ -45,8 +35,8 @@ app.get('/manual', (req, res) => {
 app.get('/all_data', (req, res) => {
 	res.sendFile(path.join(__dirname, '../doc/all_data.csv'));
 });
-server_ssl.listen(443, () => {
-	console.log('listening on *:446');
+server.listen(80, () => {
+	console.log('listening on *:80');
 	client = new MongoClient(uri);
 });
 
