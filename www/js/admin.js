@@ -3,6 +3,7 @@ var _passwd;
 var _passwd2;
 var _set_level;
 var _csv;
+var _신품정보_csv;
 
 function 관리자_시작() {
 	flag_관리자 = false;
@@ -11,7 +12,9 @@ function 관리자_시작() {
 	_passwd2 = document.getElementById('_passwd2');
 	_set_level = document.getElementById('_level');
 	_csv = document.getElementById('_csv');
+	_신품정보_csv = document.getElementById('_신품정보_csv');
 	func_csv();
+	func_신품정보_csv();
 }
 
 async function add_user() {
@@ -402,4 +405,41 @@ async function insert(val) {
 	await delay();
 	check_count++;
 	console.log(check_count);
+}
+
+function func_신품정보_csv() {
+	_신품정보_csv.addEventListener('input', async function(event) {
+		const target = event.target;
+		const files = target.files;
+		const file = files[0];
+
+		const reader = new FileReader();
+		reader.addEventListener('load', async function() {
+			const res = d3.csvParse(reader.result);
+			console.log(res);
+			for(var i = 0; i < res.length; i++) {
+				신품정보_insert(res[i]);
+				await sleep(1000);
+			};
+			console.log('insert count :', total_insert_count);
+			console.log('update count :', total_update_count);
+			console.log('fail count :', fail_count);
+		});
+		reader.readAsText(file);
+	});
+}
+
+async function 신품정보_insert(val) {
+	var doc = 신품정보_doc;
+	doc.바코드= val.바코드;
+	doc.품명= val.품명;
+	doc.QR = val.QR;
+	doc.구입처= val.구입처; 
+	doc.금액= val.금액; 
+	doc.수량= val.수량;
+	doc.남은수량= val.남은수량; 
+
+	console.log('신품정보', doc);
+	update(신품정보, doc);
+	await delay();
 }

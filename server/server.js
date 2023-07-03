@@ -1072,47 +1072,103 @@ async function write_data(file) {
 		line += ',';
 		line += doc.적재No;
 		line += ',';
-		line += doc.입고;
-		line += await (new Date(doc.입고)).toString();
+		try {
+			line += await (new Date(doc.입고)).toISOString();
+		} catch (e){
+		}
 		line += ',';
-		line += await (new Date(doc.제조투입)).toString();
+		try {
+			line += await (new Date(doc.제조투입)).toISOString();
+		} catch (e){
+		}
 		line += ',';
-		line += await (new Date(doc.세척투입일)).toString();
+		try {
+			line += await (new Date(doc.세척투입일)).toISOString();
+		} catch (e){
+		}
 		line += ',';
-		line += await (new Date(doc.세척)).toString();
+		try {
+			line += await (new Date(doc.세척)).toISOString();
+		} catch (e){
+		}
 		line += ',';
-		line += await (new Date(doc.기초검사투입일)).toString();
+		try {
+			line += await (new Date(doc.기초검사투입일)).toISOString();
+		} catch (e){
+		}
 		line += ',';
-		line += await (new Date(doc.기초검사)).toString();
+		try {
+			line += await (new Date(doc.기초검사)).toISOString();
+		} catch (e){
+		}
 		line += ',';
-		line += await (new Date(doc.분해조립투입일)).toString();
+		try {
+			line += await (new Date(doc.분해조립투입일)).toISOString();
+		} catch (e){
+		}
 		line += ',';
-		line += await (new Date(doc.분해조립)).toString();
+		try {
+			line += await (new Date(doc.분해조립)).toISOString();
+		} catch (e){
+		}
 		line += ',';
-		line += await (new Date(doc.성능검사투입일)).toString();
+		try {
+			line += await (new Date(doc.성능검사투입일)).toISOString();
+		} catch (e){
+		}
 		line += ',';
-		line += await (new Date(doc.성능검사)).toString();
+		try {
+			line += await (new Date(doc.성능검사)).toISOString();
+		} catch (e){
+		}
 		line += ',';
-		line += await (new Date(doc.EOL투입일)).toString();
+		try {
+			line += await (new Date(doc.EOL투입일)).toISOString();
+		} catch (e){
+		}
 		line += ',';
-		line += await (new Date(doc.EOL)).toString();
+		try {
+			line += await (new Date(doc.EOL)).toISOString();
+		} catch (e){
+		}
 		line += ',';
-		line += await (new Date(doc.출하)).toString();
+		try {
+			line += await (new Date(doc.출하)).toISOString();
+		} catch (e){
+		}
 		line += ',';
 		line += doc.소재지;
 		line += ',';
-		line += await (new Date(doc.마지막충전일)).toString();
+		try {
+			line += await (new Date(doc.마지막충전일)).toISOString();
+		} catch (e){
+		}
 		line += ',';
-		line += await (new Date(doc.반품입고)).toString();
+		try {
+			line += await (new Date(doc.반품입고)).toISOString();
+		} catch (e){
+		}
 		line += ',';
-		line += await (new Date(doc.재출하)).toString();
+		try {
+			line += await (new Date(doc.재출하)).toISOString();
+		} catch (e){
+		}
 		line += ',';
-		line += await (new Date(doc.완전분해)).toString();
+		try {
+			line += await (new Date(doc.완전분해)).toISOString();
+		} catch (e){
+		}
 		line += ',';
-		line += await (new Date(doc.폐기)).toString();
+		try {
+			line += await (new Date(doc.폐기)).toISOString();
+		} catch (e){
+		}
 		line += ',';
 		if(doc.입고.length != 0) {
-			line += await (new Date(doc.입고[0]['입고일'])).toString();
+			try {
+				line += await (new Date(doc.입고[0]['입고일'])).toISOString();
+			} catch (e){
+			}
 			line += ',';
 			line += doc.입고[0]['입고처'];
 			line += ',';
@@ -1135,9 +1191,15 @@ async function write_data(file) {
 		}
 		line += ',';
 		if(doc.세척.length != 0) {
-			line += await (new Date(doc.세척[0]['공정입고일'])).toString();
+			try {
+				line += await (new Date(doc.세척[0]['공정입고일'])).toISOString();
+			} catch (e){
+			}
 			line += ',';
-			line += await (new Date(doc.세척[0]['공정완료일'])).toString();
+			try {
+				line += await (new Date(doc.세척[0]['공정완료일'])).toISOString();
+			} catch (e){
+			}
 			line += ',';
 			line += doc.세척[0]['기밀검사_케이스'];
 			line += ',';
@@ -1153,7 +1215,10 @@ async function write_data(file) {
 		}
 		line += ',';
 		if(doc.기초검사.length != 0) {
-			line += await (new Date(doc.기초검사[0]['공정입고일'])).toString();
+			try {
+				line += await (new Date(doc.기초검사[0]['공정입고일'])).toISOString();
+			} catch (e){
+			}
 			line += ',';
 			line += doc.기초검사[0]['육안검사_외부'];
 			line += ',';
@@ -1230,7 +1295,10 @@ async function write_data(file) {
 		}
 		line += ',';
 		if(doc.분해조립.length != 0) {
-			line += await (new Date(doc.분해조립[0]['공정입고일'])).toString();
+			try {
+				line += await (new Date(doc.분해조립[0]['공정입고일'])).toISOString();
+			} catch (e){
+			}
 			line += ',';
 			line += doc.분해조립[0]['BMU1'];
 			line += ',';
@@ -1520,7 +1588,10 @@ async function write_data(file) {
 			line += ',';
 			line += doc.분해조립[0]['ETC'];
 			line += ',';
-			line += await (new Date(doc.분해조립[0]['공정완료일'])).toString();
+			try {
+				line += await (new Date(doc.분해조립[0]['공정완료일'])).toISOString();
+			} catch (e){
+			}
 			line += ',';
 			line += doc.분해조립[0]['작업자'];
 		} else {
@@ -1673,7 +1744,10 @@ async function write_data(file) {
 		}
 		line += ',';
 		if(doc.성능검사.length != 0) {
-			line += await (new Date(doc.성능검사[0]['공정입고일'])).toString();
+			try {
+				line += await (new Date(doc.성능검사[0]['공정입고일'])).toISOString();
+			} catch (e){
+			}
 			line += ',';
 			line += doc.성능검사[0]['용량평가'];
 			line += ',';
@@ -1681,7 +1755,10 @@ async function write_data(file) {
 			line += ',';
 			line += doc.성능검사[0]['DCIR'];
 			line += ',';
-			line += await (new Date(doc.성능검사[0]['공정완료일'])).toString();
+			try {
+				line += await (new Date(doc.성능검사[0]['공정완료일'])).toISOString();
+			} catch (e){
+			}
 			line += ',';
 			line += doc.성능검사[0]['비고'];
 			line += ',';
@@ -1696,7 +1773,10 @@ async function write_data(file) {
 		}
 		line += ',';
 		if(doc.EOL.length != 0) {
-			line += await (new Date(doc.EOL[0]['공정입고일'])).toString();
+			try {
+				line += await (new Date(doc.EOL[0]['공정입고일'])).toISOString();
+			} catch (e){
+			}
 			line += ',';
 			line += doc.EOL[0]['UPR_C조립'];
 			line += ',';
@@ -1735,7 +1815,10 @@ async function write_data(file) {
 			line += doc.EOL[0]['통신검사_릴레이구동'];
 			line += ',';
 			line += doc.EOL[0]['공정완료일'];
-			line += await (new Date(doc.EOL[0]['공정완료일'])).toString();
+			try {
+				line += await (new Date(doc.EOL[0]['공정완료일'])).toISOString();
+			} catch (e){
+			}
 			line += ',';
 			line += doc.EOL[0]['비고'];
 			line += ',';
@@ -1768,13 +1851,19 @@ async function write_data(file) {
 		}
 		line += ',';
 		if(doc.출하정보.length != 0) {
-			line += await (new Date(doc.출하정보[0]['출하일'])).toString();
+			try {
+				line += await (new Date(doc.출하정보[0]['출하일'])).toISOString();
+			} catch (e){
+			}
 			line += ',';
 			line += doc.출하정보[0]['출하코드'];
 			line += ',';
 			line += doc.출하정보[0]['납품처'];;
 			line += ',';
-			line += await (new Date(doc.출하정보[0]['검사일'])).toString();
+			try {
+				line += await (new Date(doc.출하정보[0]['검사일'])).toISOString();
+			} catch (e){
+			}
 			line += ',';
 			line += doc.출하정보[0]['검토'];
 			line += ',';
@@ -1934,7 +2023,10 @@ async function write_data(file) {
 		}
 		line += ',';
 		if(doc.교체부품상세1.length != 0) {
-			line += await (new Date(doc.교체부품상세1[0]['공정입고일'])).toString();
+			try {
+				line += await (new Date(doc.교체부품상세1[0]['공정입고일'])).toISOString();
+			} catch (e){
+			}
 			line += ',';
 			line += doc.교체부품상세1[0]['ORIGIN_관리번호'];
 			line += ',';
@@ -1966,7 +2058,10 @@ async function write_data(file) {
 		}
 		line += ',';
 		if(doc.교체부품상세2.length != 0) {
-			line += await (new Date(doc.교체부품상세2[0]['공정입고일'])).toString();
+			try {
+				line += await (new Date(doc.교체부품상세2[0]['공정입고일'])).toISOString();
+			} catch (e){
+			}
 			line += ',';
 			line += doc.교체부품상세2[0]['ORIGIN_관리번호'];
 			line += ',';
@@ -1998,7 +2093,10 @@ async function write_data(file) {
 		}
 		line += ',';
 		if(doc.교체부품상세3.length != 0) {
-			line += await (new Date(doc.교체부품상세3[0]['공정입고일'])).toString();
+			try {
+				line += await (new Date(doc.교체부품상세3[0]['공정입고일'])).toISOString();
+			} catch (e){
+			}
 			line += ',';
 			line += doc.교체부품상세3[0]['ORIGIN_관리번호'];
 			line += ',';
@@ -2030,7 +2128,10 @@ async function write_data(file) {
 		}
 		line += ',';
 		if(doc.교체부품상세4.length != 0) {
-			line += await (new Date(doc.교체부품상세4[0]['공정입고일'])).toString();
+			try {
+				line += await (new Date(doc.교체부품상세4[0]['공정입고일'])).toISOString();
+			} catch (e){
+			}
 			line += ',';
 			line += doc.교체부품상세4[0]['ORIGIN_관리번호'];
 			line += ',';
@@ -2062,7 +2163,10 @@ async function write_data(file) {
 		}
 		line += ',';
 		if(doc.교체부품상세5.length != 0) {
-			line += await (new Date(doc.교체부품상세5[0]['공정입고일'])).toString();
+			try {
+				line += await (new Date(doc.교체부품상세5[0]['공정입고일'])).toISOString();
+			} catch (e){
+			}
 			line += ',';
 			line += doc.교체부품상세5[0]['ORIGIN_관리번호'];
 			line += ',';
@@ -2094,7 +2198,10 @@ async function write_data(file) {
 		}
 		line += ',';
 		if(doc.교체부품상세6.length != 0) {
-			line += await (new Date(doc.교체부품상세6[0]['공정입고일'])).toString();
+			try {
+				line += await (new Date(doc.교체부품상세6[0]['공정입고일'])).toISOString();
+			} catch (e){
+			}
 			line += ',';
 			line += doc.교체부품상세6[0]['ORIGIN_관리번호'];
 			line += ',';
@@ -2126,7 +2233,10 @@ async function write_data(file) {
 		}
 		line += ',';
 		if(doc.교체부품상세7.length != 0) {
-			line += await (new Date(doc.교체부품상세7[0]['공정입고일'])).toString();
+			try {
+				line += await (new Date(doc.교체부품상세7[0]['공정입고일'])).toISOString();
+			} catch (e){
+			}
 			line += ',';
 			line += doc.교체부품상세7[0]['ORIGIN_관리번호'];
 			line += ',';
@@ -2158,7 +2268,10 @@ async function write_data(file) {
 		}
 		line += ',';
 		if(doc.교체부품상세8.length != 0) {
-			line += await (new Date(doc.교체부품상세8[0]['공정입고일'])).toString();
+			try {
+				line += await (new Date(doc.교체부품상세8[0]['공정입고일'])).toISOString();
+			} catch (e){
+			}
 			line += ',';
 			line += doc.교체부품상세8[0]['ORIGIN_관리번호'];
 			line += ',';
@@ -2190,7 +2303,11 @@ async function write_data(file) {
 		}
 		line += ',';
 		if(doc.교체부품상세9.length != 0) {
-			line += await (new Date(doc.교체부품상세9[0]['공정입고일'])).toString();
+			try {
+				line += await (new Date(doc.교체부품상세9[0]['공정입고일'])).toISOString();
+			} catch (e){
+			
+			}
 			line += ',';
 			line += doc.교체부품상세9[0]['ORIGIN_관리번호'];
 			line += ',';
@@ -2222,7 +2339,12 @@ async function write_data(file) {
 		}
 		line += ',';
 		if(doc.교체부품상세10.length != 0) {
-			line += await (new Date(doc.교체부품상세10[0]['공정입고일'])).toString();
+			try {
+				line += await (new Date(doc.교체부품상세10[0]['공정입고일'])).toISOString();
+			} catch (e){
+			
+			}
+
 			line += ',';
 			line += doc.교체부품상세10[0]['ORIGIN_관리번호'];
 			line += ',';
