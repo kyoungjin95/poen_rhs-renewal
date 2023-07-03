@@ -440,6 +440,6 @@ async function 신품정보_insert(val) {
 	doc.남은수량= val.남은수량; 
 
 	console.log('신품정보', doc);
-	update(신품정보, doc);
+	update_신품정보(신품정보, doc);
 	await delay();
 }
