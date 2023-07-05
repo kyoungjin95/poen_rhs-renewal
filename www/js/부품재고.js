@@ -34,6 +34,8 @@ async function 부품재고_시작() {
 			{title:"QR", field:"QR", sorter:"string"},
 			{title:"구입처", field:"구입처", sorter:"string"},
 			{title:"금액", field:"금액", sorter:"string"},
+			{title:"수량", field:"수량", sorter:"string"},
+			{title:"남은수량", field:"남은수량", sorter:"string"},
 			{title:"사용여부", field:"사용여부", sorter:"string"},
 			{title:"사용 관리번호", field:"사용_관리번호", sorter:"string"},
 		],
