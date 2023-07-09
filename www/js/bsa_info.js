@@ -208,6 +208,11 @@ async function 재제조현황_조회(flag_id_search = false) {
 
 	await grid_교체부품상세10(row_one_id);
 	progress.value = 18 / 18 * 100;
+
+	await 반품입고_pic();
+	await 재출하_pic();
+	await 완전분해_pic();
+	await 폐기_pic();
 };
 
 async function delete_bsa() {
@@ -297,10 +302,10 @@ async function grid_입고(m_id) {
 	if(worker == '') return;
 	var tabledata_입고 = [];
 
-		find(입고, m_id);
-		await delay();
-		tabledata_입고 = find_array;
-		console.log('입고 : ', find_array);;
+	find(입고, m_id);
+	await delay();
+	tabledata_입고 = find_array;
+	console.log('입고 : ', find_array);;
 
 	var table_입고 = new Tabulator("#grid_입고정보", {
 		layout: "resizableColumnFit",
@@ -319,6 +324,19 @@ async function grid_입고(m_id) {
 			{title:"랙번호", field:"랙번호", sorter:"string"},
 		]
 	});
+
+	var pic1 = document.getElementById('입고정보_pic1');
+	var pic2 = document.getElementById('입고정보_pic2');
+	var pic3 = document.getElementById('입고정보_pic3');
+	var pic4 = document.getElementById('입고정보_pic4');
+
+	find(입고_pic, m_id);
+	await delay();
+	console.log(find_array);
+	pic1.src='data:image/;base64,' + find_array[0].pic1;
+	pic2.src='data:image/;base64,' + find_array[0].pic2;
+	pic3.src='data:image/;base64,' + find_array[0].pic3;
+	pic4.src='data:image/;base64,' + find_array[0].pic4;
 }
 
 async function grid_세척(m_id) {
@@ -345,6 +363,19 @@ async function grid_세척(m_id) {
 			{title:"특이사항", field:"특이사항", sorter:"string"},
 		]
 	});
+
+	var pic1 = document.getElementById('세척_pic1');
+	var pic2 = document.getElementById('세척세척_pic2');
+	var pic3 = document.getElementById('세척세척_pic3');
+	var pic4 = document.getElementById('세척세척_pic4');
+
+	find(세척_pic, m_id);
+	await delay();
+	console.log(find_array);
+	pic1.src='data:image/;base64,' + find_array[0].pic1;
+	pic2.src='data:image/;base64,' + find_array[0].pic2;
+	pic3.src='data:image/;base64,' + find_array[0].pic3;
+	pic4.src='data:image/;base64,' + find_array[0].pic4;
 }
 
 async function grid_기초검사(m_id) {
@@ -380,6 +411,19 @@ async function grid_기초검사(m_id) {
 			{title:"검사자", field:"검사자", sorter:"string"},
 		],
 	});
+
+	var pic1 = document.getElementById('기초검사_pic1');
+	var pic2 = document.getElementById('기초검사_pic2');
+	var pic3 = document.getElementById('기초검사_pic3');
+	var pic4 = document.getElementById('기초검사_pic4');
+
+	find(기초검사_pic, m_id);
+	await delay();
+	console.log(find_array);
+	pic1.src='data:image/;base64,' + find_array[0].pic1;
+	pic2.src='data:image/;base64,' + find_array[0].pic2;
+	pic3.src='data:image/;base64,' + find_array[0].pic3;
+	pic4.src='data:image/;base64,' + find_array[0].pic4;
 }
 
 async function grid_분해조립(m_id) {
@@ -632,6 +676,19 @@ async function grid_분해조립(m_id) {
 			{title:"작업자", field:"작업자", sorter:"string"},
 		],
 	});
+
+	var pic1 = document.getElementById('분해조립_pic1');
+	var pic2 = document.getElementById('분해조립_pic2');
+	var pic3 = document.getElementById('분해조립_pic3');
+	var pic4 = document.getElementById('분해조립_pic4');
+
+	find(분해조립_pic, m_id);
+	await delay();
+	console.log(find_array);
+	pic1.src='data:image/;base64,' + find_array[0].pic1;
+	pic2.src='data:image/;base64,' + find_array[0].pic2;
+	pic3.src='data:image/;base64,' + find_array[0].pic3;
+	pic4.src='data:image/;base64,' + find_array[0].pic4;
 }
 
 async function grid_성능검사(m_id) {
@@ -667,6 +724,19 @@ async function grid_성능검사(m_id) {
 			{title:"검사자", field:"검사자", sorter:"string"},
 		],
 	});
+
+	var pic1 = document.getElementById('성능검사_pic1');
+	var pic2 = document.getElementById('성능검사_pic2');
+	var pic3 = document.getElementById('성능검사_pic3');
+	var pic4 = document.getElementById('성능검사_pic4');
+
+	find(성능검사_pic, m_id);
+	await delay();
+	console.log(find_array);
+	pic1.src='data:image/;base64,' + find_array[0].pic1;
+	pic2.src='data:image/;base64,' + find_array[0].pic2;
+	pic3.src='data:image/;base64,' + find_array[0].pic3;
+	pic4.src='data:image/;base64,' + find_array[0].pic4;
 }
 
 async function grid_EOL(m_id) {
@@ -693,6 +763,19 @@ async function grid_EOL(m_id) {
 			{title:"검사자", field:"검사자", sorter:"string"},
 		],
 	});
+
+	var pic1 = document.getElementById('EOL_pic1');
+	var pic2 = document.getElementById('EOL_pic2');
+	var pic3 = document.getElementById('EOL_pic3');
+	var pic4 = document.getElementById('EOL_pic4');
+
+	find(EOL_pic, m_id);
+	await delay();
+	console.log(find_array);
+	pic1.src='data:image/;base64,' + find_array[0].pic1;
+	pic2.src='data:image/;base64,' + find_array[0].pic2;
+	pic3.src='data:image/;base64,' + find_array[0].pic3;
+	pic4.src='data:image/;base64,' + find_array[0].pic4;
 }
 
 async function grid_출하정보(m_id) {
@@ -767,6 +850,19 @@ async function grid_출하정보(m_id) {
 			{title:"통신화면_캡쳐", field:"통신화면_캡쳐", sorter:"string"},
 		],
 	});
+
+	var pic1 = document.getElementById('출하정보_pic1');
+	var pic2 = document.getElementById('출하정보_pic2');
+	var pic3 = document.getElementById('출하정보_pic3');
+	var pic4 = document.getElementById('출하정보_pic4');
+
+	find(출하_pic, m_id);
+	await delay();
+	console.log(find_array);
+	pic1.src='data:image/;base64,' + find_array[0].pic1;
+	pic2.src='data:image/;base64,' + find_array[0].pic2;
+	pic3.src='data:image/;base64,' + find_array[0].pic3;
+	pic4.src='data:image/;base64,' + find_array[0].pic4;
 }
 
 async function grid_특이사항(m_id) {
@@ -789,6 +885,19 @@ async function grid_특이사항(m_id) {
 			{title:"특이사항", field:"특이사항", sorter:"string"},
 		],
 	});
+
+	var pic1 = document.getElementById('특이사항_pic1');
+	var pic2 = document.getElementById('특이사항_pic2');
+	var pic3 = document.getElementById('특이사항_pic3');
+	var pic4 = document.getElementById('특이사항_pic4');
+
+	find(특이사항_pic, m_id);
+	await delay();
+	console.log(find_array);
+	pic1.src='data:image/;base64,' + find_array[0].pic1;
+	pic2.src='data:image/;base64,' + find_array[0].pic2;
+	pic3.src='data:image/;base64,' + find_array[0].pic3;
+	pic4.src='data:image/;base64,' + find_array[0].pic4;
 }
 
 async function grid_교체부품상세1(m_id) {
@@ -819,6 +928,19 @@ async function grid_교체부품상세1(m_id) {
 			{title:"교체사유", field:"교체사유", sorter:"string"},
 		],
 	});
+
+	var pic1 = document.getElementById('특이사항_pic1');
+	var pic2 = document.getElementById('특이사항_pic2');
+	var pic3 = document.getElementById('특이사항_pic3');
+	var pic4 = document.getElementById('특이사항_pic4');
+
+	find(특이사항_pic, m_id);
+	await delay();
+	console.log(find_array);
+	pic1.src='data:image/;base64,' + find_array[0].pic1;
+	pic2.src='data:image/;base64,' + find_array[0].pic2;
+	pic3.src='data:image/;base64,' + find_array[0].pic3;
+	pic4.src='data:image/;base64,' + find_array[0].pic4;
 }
 
 async function grid_교체부품상세2(m_id) {
@@ -1089,6 +1211,66 @@ async function grid_교체부품상세10(m_id) {
 			{title:"교체사유", field:"교체사유", sorter:"string"},
 		],
 	});
+}
+
+async function 반품입고_pic() {
+	var pic1 = document.getElementById('반품입고_pic1');
+	var pic2 = document.getElementById('반품입고_pic2');
+	var pic3 = document.getElementById('반품입고_pic3');
+	var pic4 = document.getElementById('반품입고_pic4');
+
+	find(반품입고_pic, m_id);
+	await delay();
+	console.log(find_array);
+	pic1.src='data:image/;base64,' + find_array[0].pic1;
+	pic2.src='data:image/;base64,' + find_array[0].pic2;
+	pic3.src='data:image/;base64,' + find_array[0].pic3;
+	pic4.src='data:image/;base64,' + find_array[0].pic4;
+}
+
+async function 재출하_pic() {
+	var pic1 = document.getElementById('재출하_pic1');
+	var pic2 = document.getElementById('재출하_pic2');
+	var pic3 = document.getElementById('재출하_pic3');
+	var pic4 = document.getElementById('재출하_pic4');
+
+	find(재출하_pic, m_id);
+	await delay();
+	console.log(find_array);
+	pic1.src='data:image/;base64,' + find_array[0].pic1;
+	pic2.src='data:image/;base64,' + find_array[0].pic2;
+	pic3.src='data:image/;base64,' + find_array[0].pic3;
+	pic4.src='data:image/;base64,' + find_array[0].pic4;
+}
+
+async function 완전분해_pic() {
+	var pic1 = document.getElementById('완전분해_pic1');
+	var pic2 = document.getElementById('완전분해_pic2');
+	var pic3 = document.getElementById('완전분해_pic3');
+	var pic4 = document.getElementById('완전분해_pic4');
+
+	find(완전분해_pic, m_id);
+	await delay();
+	console.log(find_array);
+	pic1.src='data:image/;base64,' + find_array[0].pic1;
+	pic2.src='data:image/;base64,' + find_array[0].pic2;
+	pic3.src='data:image/;base64,' + find_array[0].pic3;
+	pic4.src='data:image/;base64,' + find_array[0].pic4;
+}
+
+async function 폐기_pic() {
+	var pic1 = document.getElementById('폐기_pic1');
+	var pic2 = document.getElementById('폐기_pic2');
+	var pic3 = document.getElementById('폐기_pic3');
+	var pic4 = document.getElementById('폐기_pic4');
+
+	find(완전분해_pic, m_id);
+	await delay();
+	console.log(find_array);
+	pic1.src='data:image/;base64,' + find_array[0].pic1;
+	pic2.src='data:image/;base64,' + find_array[0].pic2;
+	pic3.src='data:image/;base64,' + find_array[0].pic3;
+	pic4.src='data:image/;base64,' + find_array[0].pic4;
 }
 
 function export_excel() {

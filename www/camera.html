@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+	<meta name="viewport" content="width=320; user-scalable=no" />
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<link rel="stylesheet" href="base/style/camera.css">
+	<script src='base/js/camera.js'></script>
+	<title>Camera</title>
+</head>
+
+<body>
+	<label for="camera" class="camera"><center><b>Camera</b></center></label>
+	<input type="file" id="camera"  capture="camera" accept="image/*" style="display:none;" onChange="pic_load(this.files);"/></br>
+	<label for="_management_id"><b>관리번호</b></label>
+    	<input type="text" id="_pic_management_id" size="20" required></br>
+	<label><b>공정단계</b></label>
+	<select name="language" onchange="공정입력_콤보박스(this)">
+	    <option value="">---</option>
+	    <option value="입고">입고</option>
+	    <option value="세척">세척</option>
+	    <option value="기초검사">기초검사</option>
+	    <option value="분해조립">분해조립</option>
+	    <option value="성능검사">성능검사</option>
+	    <option value="EOL">EOL</option>
+	    <option value="출하검사">출하검사</option>
+	    <option value="반품입고">반품입고</option>
+	    <option value="재출하">재출하</option>
+	    <option value="완전분해">완전분해</option>
+	    <option value="폐기">폐기</option>
+	</select>
+	<label><b>Slot Number</b></label>
+	<select name="language" onchange="Slot_콤보박스(this)">
+	    <option value="">---</option>
+	    <option value="1">Slot 1</option>
+	    <option value="2">Slot 2</option>
+	    <option value="3">Slot 3</option>
+	    <option value="4">Slot 4</option>
+	</select>
+	<button onClick="pic_save();">저장</button></br>
+
+    <img id="frame"/>
+    <script>
+	var camera = document.getElementById('camera');
+	var mid = document.getElementById('_pic_management_id');
+	var camera_img = document.getElementById('frame');
+    </script>
+</body>
+</html>

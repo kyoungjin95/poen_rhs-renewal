@@ -4,6 +4,8 @@
 		<meta charset="UTF-8">
 		<link rel="stylesheet" href="base/style/item-detail.css">
 		<link rel="stylesheet" href="base/style/tabulator.css">
+		<link rel="stylesheet" href="base/style/camera.css">
+
 	</head>
 	<body>
 		<div>
@@ -32,6 +34,10 @@
 			<div>
 				<label for='grid_입고정보'>입고 정보</label>
 				<div id='grid_입고정보'></div>
+				<img id='입고정보_pic1' width='10px' height='10px'></img>
+				<img id='입고정보_pic2' width='10px' height='10px'></img>
+				<img id='입고정보_pic3' width='10px' height='10px'></img>
+				<img id='입고정보_pic4' width='10px' height='10px'></img>
 			</div>
 			<div>
 				<label for='grid_세척정보'>세척 정보</label>
@@ -40,31 +46,55 @@
 			<div>
 				<label for='grid_기초검사'>기초 검사</label>
 				<div id='grid_기초검사'></div>
+				<img id='기초검사_pic1' width='10px' height='10px'></img>
+				<img id='기초검사_pic2' width='10px' height='10px'></img>
+				<img id='기초검사_pic3' width='10px' height='10px'></img>
+				<img id='기초검사_pic4' width='10px' height='10px'></img>
 			</div>
 			</br>
 			<div>
 				<label for='grid_분해조립'>분해 조립</label>
 				<div id='grid_분해조립'></div>
+				<img id='분해조립_pic1' width='10px' height='10px'></img>
+				<img id='분해조립_pic2' width='10px' height='10px'></img>
+				<img id='분해조립_pic3' width='10px' height='10px'></img>
+				<img id='분해조립_pic4' width='10px' height='10px'></img>
 			</div>
 			</br>
 			<div>
 				<label for='grid_성능검사'>성능 검사</label>
 				<div id='grid_성능검사'></div>
+				<img id='성능검사_pic1' width='10px' height='10px'></img>
+				<img id='성능검사_pic2' width='10px' height='10px'></img>
+				<img id='성능검사_pic3' width='10px' height='10px'></img>
+				<img id='성능검사_pic4' width='10px' height='10px'></img>
 			</div>
 			</br>
 			<div>
 				<label for='grid_EOL'>EOL</label>
 				<div id='grid_EOL'></div>
+				<img id='EOL_pic1' width='10px' height='10px'></img>
+				<img id='EOL_pic2' width='10px' height='10px'></img>
+				<img id='EOL_pic3' width='10px' height='10px'></img>
+				<img id='EOL_pic4' width='10px' height='10px'></img>
 			</div>
 			</br>
 			<div>
 				<label for='grid_출하정보'>출하 정보</label>
 				<div id='grid_출하정보'></div>
+				<img id='출하정보_pic1' width='10px' height='10px'></img>
+				<img id='출하정보_pic2' width='10px' height='10px'></img>
+				<img id='출하정보_pic3' width='10px' height='10px'></img>
+				<img id='출하정보_pic4' width='10px' height='10px'></img>
 			</div>
 			</br>
 			<div>
 				<label for='grid_특이사항'>특이사항</label>
 				<div id='grid_특이사항'></div>
+				<img id='특이사항_pic1' width='10px' height='10px'></img>
+				<img id='특이사항_pic2' width='10px' height='10px'></img>
+				<img id='특이사항_pic3' width='10px' height='10px'></img>
+				<img id='특이사항_pic4' width='10px' height='10px'></img>
 			</div>
 			</br>
 			<div>
@@ -116,6 +146,41 @@
 				<label for='grid_교체부품상세10'>교체부품상세10</label>
 				<div id='grid_교체부품상세10'></div>
 			</div>
+			<div>
+				<label for='grid_교체부품상세10'>교체부품상세10</label>
+				<div id='grid_교체부품상세10'></div>
+			</div>
+			<div>
+				<label>반품입고 사진</label>
+				<img id='반품입고_pic1' width='10px' height='10px'></img>
+				<img id='반품입고_pic2' width='10px' height='10px'></img>
+				<img id='반품입고_pic3' width='10px' height='10px'></img>
+				<img id='반품입고_pic4' width='10px' height='10px'></img>
+			</div>
+			<div>
+				<label>재출하 사진</label>
+				<img id='재출하_pic1' width='10px' height='10px'></img>
+				<img id='재출하_pic2' width='10px' height='10px'></img>
+				<img id='재출하_pic3' width='10px' height='10px'></img>
+				<img id='재출하_pic4' width='10px' height='10px'></img>
+			</div>
+			<div>
+				<label>완전분해 사진</label>
+				<img id='완전분해_pic1' width='10px' height='10px'></img>
+				<img id='완전분해_pic2' width='10px' height='10px'></img>
+				<img id='완전분해_pic3' width='10px' height='10px'></img>
+				<img id='완전분해_pic4' width='10px' height='10px'></img>
+			</div>
+			<div>
+				<label>폐기 사진</label>
+				<img id='폐기_pic1' width='10px' height='10px'></img>
+				<img id='폐기_pic2' width='10px' height='10px'></img>
+				<img id='폐기_pic3' width='10px' height='10px'></img>
+				<img id='폐기_pic4' width='10px' height='10px'></img>
+			</div>
+
+
+
 		</div>
 		<script>
 			var _management_id = document.getElementById('_management_id');

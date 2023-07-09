@@ -21,6 +21,19 @@ const 교체부품상세7 = '교체부품상세7';
 const 교체부품상세8 = '교체부품상세8';
 const 교체부품상세9 = '교체부품상세9';
 const 교체부품상세10 = '교체부품상세10';
+const 입고_pic         = '입고_pic';
+const 세척_pic         = '세척_pic';
+const 기초검사_pic     = '기초검사_pic';
+const 분해조립_pic     = '분해조립_pic';
+const 성능검사_pic     = '성능검사_pic';
+const EOL_pic          = 'EOL_pic';
+const 특이사항_pic     = '특이사항_pic';
+const 출하_pic         = '출하_pic';
+const 반품입고_pic     = '반품입고_pic';
+const 재출하_pic       = '재출하_pic';
+const 완전분해_pic     = '완전분해_pic';
+const 폐기_pic         = '폐기_pic';
+
 var 관리번호 = '';
 var 교체부품상세No = '교체부품상세1';
 var worker = '';
@@ -400,6 +413,103 @@ const 교체부품상세_doc = {
 	교체후_품번: '',
 	교체후_QR: '',
 	교체사유: ''
+};
+
+
+const 입고_pic_doc = {
+	관리번호 : '',
+	pic1 : '',
+	pic2 : '',
+	pic3 : '',
+	pic4 : '',
+};
+
+const 세척_pic_doc = {
+	관리번호 : '',
+	pic1 : '',
+	pic2 : '',
+	pic3 : '',
+	pic4 : '',
+};
+
+const 기초검사_pic_doc = {
+	관리번호 : '',
+	pic1 : '',
+	pic2 : '',
+	pic3 : '',
+	pic4 : '',
+};
+
+const 분해조립_pic_doc = {
+	관리번호 : '',
+	pic1 : '',
+	pic2 : '',
+	pic3 : '',
+	pic4 : '',
+};
+
+const 성능검사_pic_doc = {
+	관리번호 : '',
+	pic1 : '',
+	pic2 : '',
+	pic3 : '',
+	pic4 : '',
+};
+
+const EOL_pic_doc = {
+	관리번호 : '',
+	pic1 : '',
+	pic2 : '',
+	pic3 : '',
+	pic4 : '',
+};
+
+const 특이사항_pic_doc = {
+	관리번호 : '',
+	pic1 : '',
+	pic2 : '',
+	pic3 : '',
+	pic4 : '',
+};
+
+const 출하_pic_doc = {
+	관리번호 : '',
+	pic1 : '',
+	pic2 : '',
+	pic3 : '',
+	pic4 : '',
+};
+
+const 반품입고_pic_doc = {
+	관리번호 : '',
+	pic1 : '',
+	pic2 : '',
+	pic3 : '',
+	pic4 : '',
+};
+
+const 재출하_pic_doc = {
+	관리번호 : '',
+	pic1 : '',
+	pic2 : '',
+	pic3 : '',
+	pic4 : '',
+};
+
+const 완전분해_pic_doc = {
+	관리번호 : '',
+	pic1 : '',
+	pic2 : '',
+	pic3 : '',
+	pic4 : '',
+};
+
+const 폐기_pic_doc = {
+	관리번호 : '',
+	pic1 : '',
+	pic2 : '',
+	pic3 : '',
+	pic4 : '',
 };
 
 const 계정_ = {
@@ -795,6 +905,114 @@ const 교체부품상세_ = {
 	공정완료일: 1
 };
 
+const 입고_pic_ = {
+	_id : 0,
+	관리번호 : 1,
+	pic1 : 1,
+	pic2 : 1,
+	pic3 : 1,
+	pic4 : 1,
+};
+
+const 세척_pic_ = {
+	_id : 0,
+	관리번호 : 1,
+	pic1 : 1,
+	pic2 : 1,
+	pic3 : 1,
+	pic4 : 1,
+};
+
+const 기초검사_pic_ = {
+	_id : 0,
+	관리번호 : 1,
+	pic1 : 1,
+	pic2 : 1,
+	pic3 : 1,
+	pic4 : 1,
+};
+
+const 분해조립_pic_ = {
+	_id : 0,
+	관리번호 : 1,
+	pic1 : 1,
+	pic2 : 1,
+	pic3 : 1,
+	pic4 : 1,
+};
+
+const 성능검사_pic_ = {
+	_id : 0,
+	관리번호 : 1,
+	pic1 : 1,
+	pic2 : 1,
+	pic3 : 1,
+	pic4 : 1,
+};
+
+const EOL_pic_ = {
+	_id : 0,
+	관리번호 : 1,
+	pic1 : 1,
+	pic2 : 1,
+	pic3 : 1,
+	pic4 : 1,
+};
+
+const 특이사항_pic_ = {
+	_id : 0,
+	관리번호 : 1,
+	pic1 : 1,
+	pic2 : 1,
+	pic3 : 1,
+	pic4 : 1,
+};
+
+const 출하_pic_ = {
+	_id : 0,
+	관리번호 : 1,
+	pic1 : 1,
+	pic2 : 1,
+	pic3 : 1,
+	pic4 : 1,
+};
+
+const 반품입고_pic_ = {
+	_id : 0,
+	관리번호 : 1,
+	pic1 : 1,
+	pic2 : 1,
+	pic3 : 1,
+	pic4 : 1,
+};
+
+const 재출하_pic_ = {
+	_id : 0,
+	관리번호 : 1,
+	pic1 : 1,
+	pic2 : 1,
+	pic3 : 1,
+	pic4 : 1,
+};
+
+const 완전분해_pic_ = {
+	_id : 0,
+	관리번호 : 1,
+	pic1 : 1,
+	pic2 : 1,
+	pic3 : 1,
+	pic4 : 1,
+};
+
+const 폐기_pic_ = {
+	_id : 0,
+	관리번호 : 1,
+	pic1 : 1,
+	pic2 : 1,
+	pic3 : 1,
+	pic4 : 1,
+};
+
 var doc_count = 0;
 var update_count = 0;
 var insert_count = 0;
@@ -915,20 +1133,20 @@ async function insert(col, doc) {
 	}
 }
 
-async function update_계정(col, doc) {
-	if(socket == undefined) return;
-	flag_arrivedMSG = false;
-	while(flag_arrivedMSG == false) {
-		socket.emit('update', worker, col, { id: doc.id }, {$set: doc});
-		await sleep(DELAY);
-	}
-}
-
 async function update(col, doc) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
 	while(flag_arrivedMSG == false) {
 		socket.emit('update', worker, col, { 관리번호: doc.관리번호 }, {$set: doc});
+		await sleep(DELAY);
+	}
+}
+
+async function update_계정(col, doc) {
+	if(socket == undefined) return;
+	flag_arrivedMSG = false;
+	while(flag_arrivedMSG == false) {
+		socket.emit('update', worker, col, { id: doc.id }, {$set: doc});
 		await sleep(DELAY);
 	}
 }
@@ -1157,6 +1375,92 @@ async function find(col, management_id) {
 				await sleep(DELAY);
 			}
 			break;
+
+		case '입고_pic' :
+			while(flag_arrivedMSG == false) {
+				socket.emit('find', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 입고_pic_}, check);
+				await sleep(DELAY);
+			}
+			break;
+
+		case '세척_pic' :
+			while(flag_arrivedMSG == false) {
+				socket.emit('find', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 세척_pic_}, check);
+				await sleep(DELAY);
+			}
+			break;
+
+		case '기초검사_pic' :
+			while(flag_arrivedMSG == false) {
+				socket.emit('find', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 기초검사_pic_}, check);
+				await sleep(DELAY);
+			}
+			break;
+
+		case '분해조립_pic' :
+			while(flag_arrivedMSG == false) {
+				socket.emit('find', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 분해조립_pic_}, check);
+				await sleep(DELAY);
+			}
+			break;
+
+		case '성능검사_pic' :
+			while(flag_arrivedMSG == false) {
+				socket.emit('find', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 성능검사_pic_}, check);
+				await sleep(DELAY);
+			}
+			break;
+
+		case  'EOL_pic' :
+			while(flag_arrivedMSG == false) {
+				socket.emit('find', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: EOL_pic_}, check);
+				await sleep(DELAY);
+			}
+			break;
+
+		case '특이사항_pic' :
+			while(flag_arrivedMSG == false) {
+				socket.emit('find', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 특이사항_pic_}, check);
+				await sleep(DELAY);
+			}
+			break;
+
+		case '출하_pic' :
+			while(flag_arrivedMSG == false) {
+				socket.emit('find', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 출하_pic_}, check);
+				await sleep(DELAY);
+			}
+			break;
+
+		case '반품입고_pic' :
+			while(flag_arrivedMSG == false) {
+				socket.emit('find', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 반품입고_pic_}, check);
+				await sleep(DELAY);
+			}
+			break;
+
+		case '재출하_pic' :
+			while(flag_arrivedMSG == false) {
+				socket.emit('find', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 재출하_pic_}, check);
+				await sleep(DELAY);
+			}
+			break;
+
+		case '완전분해_pic' :
+			while(flag_arrivedMSG == false) {
+				socket.emit('find', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 완전분해_pic_}, check);
+				await sleep(DELAY);
+			}
+			break;
+
+		case '폐기_pic' :
+			while(flag_arrivedMSG == false) {
+				socket.emit('find', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 폐기_pic_}, check);
+				await sleep(DELAY);
+			}
+			break;
+
+
 
 		default: 
 			console.log('collection name is not match');
