@@ -324,6 +324,8 @@ async function request_신품QR() {
 		doc.QR = find_array[0].QR;
 		doc.구입처 = find_array[0].구입처;
 		doc.금액 = find_array[0].금액;
+		doc.수량 = find_array[0].수량;
+		doc.남은수량 = Number(find_array[0].남은수량) - 1;
 		doc.사용여부 = '사용';
 		doc.사용_관리번호 = _management_id.value;
 		신품_docs.push(doc);
