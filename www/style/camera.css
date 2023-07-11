@@ -1,7 +1,14 @@
-img {
-	width: 50px;
-	height:50px;
-	object-fit: scale-down;
+img.camera {
+	width: 20vw;
+	height: 20vw;
+	border: 10px;
+	object-fit: contain;
+}
+
+img.camera_capture {
+	width: 25vw;
+	height: 25vw;
+	border: 10px;
 }
 
 label.camera {

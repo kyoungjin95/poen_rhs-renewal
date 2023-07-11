@@ -149,6 +149,11 @@ async function 재제조현황_조회(flag_id_search = false) {
 		await grid_교체부품상세10(m_id);
 		progress.value = 18 / 18 * 100;
 
+		await 반품입고_load_pic(m_id);
+		await 재출하_load_pic(m_id);
+		await 완전분해_load_pic(m_id);
+		await 폐기_load_pic(m_id);
+
 		return;
 	});
 
@@ -209,10 +214,10 @@ async function 재제조현황_조회(flag_id_search = false) {
 	await grid_교체부품상세10(row_one_id);
 	progress.value = 18 / 18 * 100;
 
-	await 반품입고_pic();
-	await 재출하_pic();
-	await 완전분해_pic();
-	await 폐기_pic();
+	await 반품입고_load_pic(row_one_id);
+	await 재출하_load_pic(row_one_id);
+	await 완전분해_load_pic(row_one_id);
+	await 폐기_load_pic(row_one_id);
 };
 
 async function delete_bsa() {
@@ -223,34 +228,66 @@ async function delete_bsa() {
 
 	deleteOne(입고, row_one_id);
 	await delay();
+
+	deleteOne(입고_pic, row_one_id);
+	await delay();
+
 	progress.value = 1 / 18 * 100;
 
 	deleteOne(세척, row_one_id);
 	await delay();
+
+	deleteOne(세척_pic, row_one_id);
+	await delay();
+
 	progress.value = 2 / 18 * 100;
 
 	deleteOne(기초검사, row_one_id);
 	await delay();
+
+	deleteOne(기초검사_pic, row_one_id);
+	await delay();
+
 	progress.value = 3 / 18 * 100;
 
 	deleteOne(분해조립, row_one_id);
 	await delay();
+
+	deleteOne(분해조립_pic, row_one_id);
+	await delay();
+
 	progress.value = 4 / 18 * 100;
 
 	deleteOne(성능검사, row_one_id);
 	await delay();
+
+	deleteOne(성능검사_pic, row_one_id);
+	await delay();
+
 	progress.value = 5 / 18 * 100;
 
 	deleteOne(EOL, row_one_id);
 	await delay();
+
+	deleteOne(EOL_pic, row_one_id);
+	await delay();
+
 	progress.value = 6 / 18 * 100;
 
 	deleteOne(출하정보, row_one_id);
 	await delay();
+
+	deleteOne(출하정보_pic, row_one_id);
+	await delay();
+
 	progress.value = 7 / 18 * 100;
 
 	deleteOne(특이사항, row_one_id);
 	await delay();
+
+	deleteOne(특이사항_pic, row_one_id);
+	await delay();
+
 	progress.value = 8 / 18 * 100;
 
 	deleteOne(교체부품상세1 , row_one_id);
@@ -292,6 +329,19 @@ async function delete_bsa() {
 	deleteOne(교체부품상세10 , row_one_id);
 	await delay();
 	progress.value = 18 / 18 * 100;
+	
+	deleteOne(반품입고_pic, row_one_id);
+	await delay();
+
+	deleteOne(재출하_pic, row_one_id);
+	await delay();
+
+	deleteOne(완전분해_pic, row_one_id);
+	await delay();
+
+	deleteOne(폐기_pic, row_one_id);
+	await delay();
+
 	if(delete_count > 0) {
 		alert('삭제 되었습니다.');
 	}
@@ -333,10 +383,10 @@ async function grid_입고(m_id) {
 	find(입고_pic, m_id);
 	await delay();
 	console.log(find_array);
-	pic1.src='data:image/;base64,' + find_array[0].pic1;
-	pic2.src='data:image/;base64,' + find_array[0].pic2;
-	pic3.src='data:image/;base64,' + find_array[0].pic3;
-	pic4.src='data:image/;base64,' + find_array[0].pic4;
+	pic1.src = 'data:image/;base64,' + find_array[0].pic1;
+	pic2.src = 'data:image/;base64,' + find_array[0].pic2;
+	pic3.src = 'data:image/;base64,' + find_array[0].pic3;
+	pic4.src = 'data:image/;base64,' + find_array[0].pic4;
 }
 
 async function grid_세척(m_id) {
@@ -365,9 +415,9 @@ async function grid_세척(m_id) {
 	});
 
 	var pic1 = document.getElementById('세척_pic1');
-	var pic2 = document.getElementById('세척세척_pic2');
-	var pic3 = document.getElementById('세척세척_pic3');
-	var pic4 = document.getElementById('세척세척_pic4');
+	var pic2 = document.getElementById('세척_pic2');
+	var pic3 = document.getElementById('세척_pic3');
+	var pic4 = document.getElementById('세척_pic4');
 
 	find(세척_pic, m_id);
 	await delay();
@@ -928,19 +978,6 @@ async function grid_교체부품상세1(m_id) {
 			{title:"교체사유", field:"교체사유", sorter:"string"},
 		],
 	});
-
-	var pic1 = document.getElementById('특이사항_pic1');
-	var pic2 = document.getElementById('특이사항_pic2');
-	var pic3 = document.getElementById('특이사항_pic3');
-	var pic4 = document.getElementById('특이사항_pic4');
-
-	find(특이사항_pic, m_id);
-	await delay();
-	console.log(find_array);
-	pic1.src='data:image/;base64,' + find_array[0].pic1;
-	pic2.src='data:image/;base64,' + find_array[0].pic2;
-	pic3.src='data:image/;base64,' + find_array[0].pic3;
-	pic4.src='data:image/;base64,' + find_array[0].pic4;
 }
 
 async function grid_교체부품상세2(m_id) {
@@ -1213,7 +1250,7 @@ async function grid_교체부품상세10(m_id) {
 	});
 }
 
-async function 반품입고_pic() {
+async function 반품입고_load_pic(m_id) {
 	var pic1 = document.getElementById('반품입고_pic1');
 	var pic2 = document.getElementById('반품입고_pic2');
 	var pic3 = document.getElementById('반품입고_pic3');
@@ -1228,7 +1265,7 @@ async function 반품입고_pic() {
 	pic4.src='data:image/;base64,' + find_array[0].pic4;
 }
 
-async function 재출하_pic() {
+async function 재출하_load_pic(m_id) {
 	var pic1 = document.getElementById('재출하_pic1');
 	var pic2 = document.getElementById('재출하_pic2');
 	var pic3 = document.getElementById('재출하_pic3');
@@ -1243,7 +1280,7 @@ async function 재출하_pic() {
 	pic4.src='data:image/;base64,' + find_array[0].pic4;
 }
 
-async function 완전분해_pic() {
+async function 완전분해_load_pic(m_id) {
 	var pic1 = document.getElementById('완전분해_pic1');
 	var pic2 = document.getElementById('완전분해_pic2');
 	var pic3 = document.getElementById('완전분해_pic3');
@@ -1258,13 +1295,13 @@ async function 완전분해_pic() {
 	pic4.src='data:image/;base64,' + find_array[0].pic4;
 }
 
-async function 폐기_pic() {
+async function 폐기_load_pic(m_id) {
 	var pic1 = document.getElementById('폐기_pic1');
 	var pic2 = document.getElementById('폐기_pic2');
 	var pic3 = document.getElementById('폐기_pic3');
 	var pic4 = document.getElementById('폐기_pic4');
 
-	find(완전분해_pic, m_id);
+	find(폐기_pic, m_id);
 	await delay();
 	console.log(find_array);
 	pic1.src='data:image/;base64,' + find_array[0].pic1;

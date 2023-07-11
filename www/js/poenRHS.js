@@ -1459,9 +1459,6 @@ async function find(col, management_id) {
 				await sleep(DELAY);
 			}
 			break;
-
-
-
 		default: 
 			console.log('collection name is not match');
 	}
@@ -1521,6 +1518,6 @@ async function delay() {
 	while(flag_arrivedMSG == false) {
 		await sleep(DELAY);
 	}
-	await sleep(10);
+	await sleep(100);
 	return true;
 }

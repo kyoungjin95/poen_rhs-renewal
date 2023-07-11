@@ -10,6 +10,7 @@ function pic_load(e) {
 }
 
 async function pic_save() {
+	if(worker == '') return;
 	getDataUrl();
 	var col;
 	var doc;
@@ -50,13 +51,18 @@ async function pic_save() {
 			doc = 출하_pic_doc;
 			break;
 
+		case '특이사항' :
+			col = 특이사항_pic;
+			doc = 특이사항_pic_doc;
+			break;
+
 		case '반품입고' :
 			col = 반품입고_pic;
 			doc = 반품입고_pic_doc;
 			break;
 
 		case '재출하' :
-			col = 제출하_pic;
+			col = 재출하_pic;
 			doc = 재출하_pic_doc;
 			break;
 
@@ -69,12 +75,12 @@ async function pic_save() {
 			col = 폐기_pic;
 			doc = 폐기_pic_doc;
 			break;
+
 		default :
 			return;
 	}
         
 	var mid = document.getElementById('_pic_management_id');
-	var pic = document.getElementById('frame2');
 	doc.관리번호 = mid.value;
 	console.log(doc);
 	count(col, { 관리번호: doc.관리번호});
@@ -112,8 +118,10 @@ async function pic_save() {
 	update(col, doc);
 	await delay();
 	
-	console.log('update :', update_count;
-	console.log('insert :', insert_count;
+	console.log('update :', update_count);
+	console.log('insert :', insert_count);
+
+	alert('Saved');
 }
 
 
@@ -124,11 +132,9 @@ function getDataUrl() {
 	
 	camera_img = document.getElementById('frame');
 	
-	// Set width and height
-	canvas.width = camera_img.width;
-	canvas.height = camera_img.height;
 	// Draw the image
-	ctx.drawImage(camera_img, 0, 0);
+	//ctx.scale(0.5, 0.5);
+	ctx.drawImage(camera_img, 0, 0, 200, 200);
 
 	var base64 = canvas.toDataURL('image/*');
 	imgBase64Str = base64.replace(/^data:image\/[a-z]+;base64,/, "");
