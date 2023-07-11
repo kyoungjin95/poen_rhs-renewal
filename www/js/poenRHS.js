@@ -1518,6 +1518,6 @@ async function delay() {
 	while(flag_arrivedMSG == false) {
 		await sleep(DELAY);
 	}
-	await sleep(100);
+	await sleep(10);
 	return true;
 }

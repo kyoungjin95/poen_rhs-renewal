@@ -9,6 +9,9 @@ async function 재제조현황_시작() {
 	while(_management_id == undefined) {
 		await sleep(DELAY);
 	}
+	while(document.getElementById('폐기_pic4') == undefined) {
+		await sleep(DELAY);
+	}
 	await sleep(10);
 
 	관리번호 = '';
@@ -350,6 +353,11 @@ async function delete_bsa() {
 
 async function grid_입고(m_id) {
 	if(worker == '') return;
+	var pic1 = document.getElementById('입고정보_pic1');
+	var pic2 = document.getElementById('입고정보_pic2');
+	var pic3 = document.getElementById('입고정보_pic3');
+	var pic4 = document.getElementById('입고정보_pic4');
+
 	var tabledata_입고 = [];
 
 	find(입고, m_id);
@@ -375,22 +383,26 @@ async function grid_입고(m_id) {
 		]
 	});
 
-	var pic1 = document.getElementById('입고정보_pic1');
-	var pic2 = document.getElementById('입고정보_pic2');
-	var pic3 = document.getElementById('입고정보_pic3');
-	var pic4 = document.getElementById('입고정보_pic4');
-
-	find(입고_pic, m_id);
+	count(입고_pic, { 관리번호 : m_id });
 	await delay();
-	console.log(find_array);
-	pic1.src = 'data:image/;base64,' + find_array[0].pic1;
-	pic2.src = 'data:image/;base64,' + find_array[0].pic2;
-	pic3.src = 'data:image/;base64,' + find_array[0].pic3;
-	pic4.src = 'data:image/;base64,' + find_array[0].pic4;
+	if(doc_count >= 1) {
+		find(입고_pic, m_id);
+		await delay();
+		console.log(find_array);
+		pic1.src = 'data:image/;base64,' + find_array[0].pic1;
+		pic2.src = 'data:image/;base64,' + find_array[0].pic2;
+		pic3.src = 'data:image/;base64,' + find_array[0].pic3;
+		pic4.src = 'data:image/;base64,' + find_array[0].pic4;
+	}
 }
 
 async function grid_세척(m_id) {
 	if(worker == '') return;
+	var pic1 = document.getElementById('세척_pic1');
+	var pic2 = document.getElementById('세척_pic2');
+	var pic3 = document.getElementById('세척_pic3');
+	var pic4 = document.getElementById('세척_pic4');
+
 	var tabledata_세척 = [];
 
 		find(세척, m_id);
@@ -414,22 +426,26 @@ async function grid_세척(m_id) {
 		]
 	});
 
-	var pic1 = document.getElementById('세척_pic1');
-	var pic2 = document.getElementById('세척_pic2');
-	var pic3 = document.getElementById('세척_pic3');
-	var pic4 = document.getElementById('세척_pic4');
-
-	find(세척_pic, m_id);
+	count(세척_pic, { 관리번호 : m_id });
 	await delay();
-	console.log(find_array);
-	pic1.src='data:image/;base64,' + find_array[0].pic1;
-	pic2.src='data:image/;base64,' + find_array[0].pic2;
-	pic3.src='data:image/;base64,' + find_array[0].pic3;
-	pic4.src='data:image/;base64,' + find_array[0].pic4;
+	if(doc_count >= 1) {
+		find(세척_pic, m_id);
+		await delay();
+		console.log(find_array);
+		pic1.src='data:image/;base64,' + find_array[0].pic1;
+		pic2.src='data:image/;base64,' + find_array[0].pic2;
+		pic3.src='data:image/;base64,' + find_array[0].pic3;
+		pic4.src='data:image/;base64,' + find_array[0].pic4;
+	}
 }
 
 async function grid_기초검사(m_id) {
 	if(worker == '') return;
+	var pic1 = document.getElementById('기초검사_pic1');
+	var pic2 = document.getElementById('기초검사_pic2');
+	var pic3 = document.getElementById('기초검사_pic3');
+	var pic4 = document.getElementById('기초검사_pic4');
+
 	var tabledata_기초검사 = [];
 
 		find(기초검사, m_id);
@@ -462,26 +478,30 @@ async function grid_기초검사(m_id) {
 		],
 	});
 
-	var pic1 = document.getElementById('기초검사_pic1');
-	var pic2 = document.getElementById('기초검사_pic2');
-	var pic3 = document.getElementById('기초검사_pic3');
-	var pic4 = document.getElementById('기초검사_pic4');
-
-	find(기초검사_pic, m_id);
+	count(기초검사_pic, { 관리번호 : m_id });
 	await delay();
-	console.log(find_array);
-	pic1.src='data:image/;base64,' + find_array[0].pic1;
-	pic2.src='data:image/;base64,' + find_array[0].pic2;
-	pic3.src='data:image/;base64,' + find_array[0].pic3;
-	pic4.src='data:image/;base64,' + find_array[0].pic4;
+	if(doc_count >= 1) {
+		find(기초검사_pic, m_id);
+		await delay();
+		console.log(find_array);
+		pic1.src='data:image/;base64,' + find_array[0].pic1;
+		pic2.src='data:image/;base64,' + find_array[0].pic2;
+		pic3.src='data:image/;base64,' + find_array[0].pic3;
+		pic4.src='data:image/;base64,' + find_array[0].pic4;
+	}
 }
 
 async function grid_분해조립(m_id) {
 	if(worker == '') return;
+	var pic1 = document.getElementById('분해조립_pic1');
+	var pic2 = document.getElementById('분해조립_pic2');
+	var pic3 = document.getElementById('분해조립_pic3');
+	var pic4 = document.getElementById('분해조립_pic4');
+
 	var tabledata_분해조립 = [];
 
-		find(분해조립, m_id);
-		await delay();
+	find(분해조립, m_id);
+	await delay();
 	
 		//for(var i = 1; i <= 10; i++) {
 		//	var str = 'if(find_array[0].BMU' + i + ' == \'\') delete find_array[0].BMU' + i +';';
@@ -567,8 +587,8 @@ async function grid_분해조립(m_id) {
 		//	eval(str);
 		//}
 
-		tabledata_분해조립 = find_array;
-		console.log('분해조립 : ', find_array);
+	tabledata_분해조립 = find_array;
+	console.log('분해조립 : ', find_array);
 		
 	var table_분해조립 = new Tabulator("#grid_분해조립", {
 		layout: "resizableColumnFit",
@@ -727,28 +747,32 @@ async function grid_분해조립(m_id) {
 		],
 	});
 
-	var pic1 = document.getElementById('분해조립_pic1');
-	var pic2 = document.getElementById('분해조립_pic2');
-	var pic3 = document.getElementById('분해조립_pic3');
-	var pic4 = document.getElementById('분해조립_pic4');
-
-	find(분해조립_pic, m_id);
+	count(분해조립_pic, { 관리번호 : m_id });
 	await delay();
-	console.log(find_array);
-	pic1.src='data:image/;base64,' + find_array[0].pic1;
-	pic2.src='data:image/;base64,' + find_array[0].pic2;
-	pic3.src='data:image/;base64,' + find_array[0].pic3;
-	pic4.src='data:image/;base64,' + find_array[0].pic4;
+	if(doc_count >= 1) {
+		find(분해조립_pic, m_id);
+		await delay();
+		console.log(find_array);
+		pic1.src='data:image/;base64,' + find_array[0].pic1;
+		pic2.src='data:image/;base64,' + find_array[0].pic2;
+		pic3.src='data:image/;base64,' + find_array[0].pic3;
+		pic4.src='data:image/;base64,' + find_array[0].pic4;
+	}
 }
 
 async function grid_성능검사(m_id) {
 	if(worker == '') return;
+	var pic1 = document.getElementById('성능검사_pic1');
+	var pic2 = document.getElementById('성능검사_pic2');
+	var pic3 = document.getElementById('성능검사_pic3');
+	var pic4 = document.getElementById('성능검사_pic4');
+
 	var tabledata_성능검사 = [];
 
-		find(성능검사, m_id);
-		await delay();
-		tabledata_성능검사 = find_array;
-		console.log('성능검사 : ', find_array);;
+	find(성능검사, m_id);
+	await delay();
+	tabledata_성능검사 = find_array;
+	console.log('성능검사 : ', find_array);;
 
 	var table_성능검사 = new Tabulator("#grid_성능검사", {
 		layout: "resizableColumnFit",
@@ -775,22 +799,26 @@ async function grid_성능검사(m_id) {
 		],
 	});
 
-	var pic1 = document.getElementById('성능검사_pic1');
-	var pic2 = document.getElementById('성능검사_pic2');
-	var pic3 = document.getElementById('성능검사_pic3');
-	var pic4 = document.getElementById('성능검사_pic4');
-
-	find(성능검사_pic, m_id);
+	count(성능검사_pic, { 관리번호 : m_id });
 	await delay();
-	console.log(find_array);
-	pic1.src='data:image/;base64,' + find_array[0].pic1;
-	pic2.src='data:image/;base64,' + find_array[0].pic2;
-	pic3.src='data:image/;base64,' + find_array[0].pic3;
-	pic4.src='data:image/;base64,' + find_array[0].pic4;
+	if(doc_count >= 1) {
+		find(성능검사_pic, m_id);
+		await delay();
+		console.log(find_array);
+		pic1.src='data:image/;base64,' + find_array[0].pic1;
+		pic2.src='data:image/;base64,' + find_array[0].pic2;
+		pic3.src='data:image/;base64,' + find_array[0].pic3;
+		pic4.src='data:image/;base64,' + find_array[0].pic4;
+	}
 }
 
 async function grid_EOL(m_id) {
 	if(worker == '') return;
+	var pic1 = document.getElementById('EOL_pic1');
+	var pic2 = document.getElementById('EOL_pic2');
+	var pic3 = document.getElementById('EOL_pic3');
+	var pic4 = document.getElementById('EOL_pic4');
+
 	var tabledata_EOL = [];
 
 		find(EOL, m_id);
@@ -814,28 +842,31 @@ async function grid_EOL(m_id) {
 		],
 	});
 
-	var pic1 = document.getElementById('EOL_pic1');
-	var pic2 = document.getElementById('EOL_pic2');
-	var pic3 = document.getElementById('EOL_pic3');
-	var pic4 = document.getElementById('EOL_pic4');
-
-	find(EOL_pic, m_id);
+	count(EOL_pic, { 관리번호 : m_id });
 	await delay();
-	console.log(find_array);
-	pic1.src='data:image/;base64,' + find_array[0].pic1;
-	pic2.src='data:image/;base64,' + find_array[0].pic2;
-	pic3.src='data:image/;base64,' + find_array[0].pic3;
-	pic4.src='data:image/;base64,' + find_array[0].pic4;
+	if(doc_count >= 1) {
+		find(EOL_pic, m_id);
+		await delay();
+		console.log(find_array);
+		pic1.src='data:image/;base64,' + find_array[0].pic1;
+		pic2.src='data:image/;base64,' + find_array[0].pic2;
+		pic3.src='data:image/;base64,' + find_array[0].pic3;
+		pic4.src='data:image/;base64,' + find_array[0].pic4;
+	}
 }
 
 async function grid_출하정보(m_id) {
 	if(worker == '') return;
 	var tabledata_출하정보 = [];
+	var pic1 = document.getElementById('출하정보_pic1');
+	var pic2 = document.getElementById('출하정보_pic2');
+	var pic3 = document.getElementById('출하정보_pic3');
+	var pic4 = document.getElementById('출하정보_pic4');
 
-		find(출하정보, m_id);
-		await delay();
-		tabledata_출하정보 = find_array;
-		console.log('출하정보 : ', find_array);;
+	find(출하정보, m_id);
+	await delay();
+	tabledata_출하정보 = find_array;
+	console.log('출하정보 : ', find_array);;
 
 	var table_출하정보 = new Tabulator("#grid_출하정보", {
 		layout: "resizableColumnFit",
@@ -901,22 +932,26 @@ async function grid_출하정보(m_id) {
 		],
 	});
 
-	var pic1 = document.getElementById('출하정보_pic1');
-	var pic2 = document.getElementById('출하정보_pic2');
-	var pic3 = document.getElementById('출하정보_pic3');
-	var pic4 = document.getElementById('출하정보_pic4');
-
-	find(출하_pic, m_id);
+	count(출하_pic, { 관리번호 : m_id });
 	await delay();
-	console.log(find_array);
-	pic1.src='data:image/;base64,' + find_array[0].pic1;
-	pic2.src='data:image/;base64,' + find_array[0].pic2;
-	pic3.src='data:image/;base64,' + find_array[0].pic3;
-	pic4.src='data:image/;base64,' + find_array[0].pic4;
+	if(doc_count >= 1) {
+		find(출하_pic, m_id);
+		await delay();
+		console.log(find_array);
+		pic1.src='data:image/;base64,' + find_array[0].pic1;
+		pic2.src='data:image/;base64,' + find_array[0].pic2;
+		pic3.src='data:image/;base64,' + find_array[0].pic3;
+		pic4.src='data:image/;base64,' + find_array[0].pic4;
+	}
 }
 
 async function grid_특이사항(m_id) {
 	if(worker == '') return;
+	var pic1 = document.getElementById('특이사항_pic1');
+	var pic2 = document.getElementById('특이사항_pic2');
+	var pic3 = document.getElementById('특이사항_pic3');
+	var pic4 = document.getElementById('특이사항_pic4');
+
 	var tabledata_특이사항 = [];
 
 		find(특이사항, m_id);
@@ -936,18 +971,17 @@ async function grid_특이사항(m_id) {
 		],
 	});
 
-	var pic1 = document.getElementById('특이사항_pic1');
-	var pic2 = document.getElementById('특이사항_pic2');
-	var pic3 = document.getElementById('특이사항_pic3');
-	var pic4 = document.getElementById('특이사항_pic4');
-
-	find(특이사항_pic, m_id);
+	count(특이사항_pic, { 관리번호 : m_id });
 	await delay();
-	console.log(find_array);
-	pic1.src='data:image/;base64,' + find_array[0].pic1;
-	pic2.src='data:image/;base64,' + find_array[0].pic2;
-	pic3.src='data:image/;base64,' + find_array[0].pic3;
-	pic4.src='data:image/;base64,' + find_array[0].pic4;
+	if(doc_count >= 1) {
+		find(특이사항_pic, m_id);
+		await delay();
+		console.log(find_array);
+		pic1.src='data:image/;base64,' + find_array[0].pic1;
+		pic2.src='data:image/;base64,' + find_array[0].pic2;
+		pic3.src='data:image/;base64,' + find_array[0].pic3;
+		pic4.src='data:image/;base64,' + find_array[0].pic4;
+	}
 }
 
 async function grid_교체부품상세1(m_id) {
@@ -1256,13 +1290,17 @@ async function 반품입고_load_pic(m_id) {
 	var pic3 = document.getElementById('반품입고_pic3');
 	var pic4 = document.getElementById('반품입고_pic4');
 
-	find(반품입고_pic, m_id);
+	count(반품입고_pic, { 관리번호 : m_id });
 	await delay();
-	console.log(find_array);
-	pic1.src='data:image/;base64,' + find_array[0].pic1;
-	pic2.src='data:image/;base64,' + find_array[0].pic2;
-	pic3.src='data:image/;base64,' + find_array[0].pic3;
-	pic4.src='data:image/;base64,' + find_array[0].pic4;
+	if(doc_count >= 1) {
+		find(반품입고_pic, m_id);
+		await delay();
+		console.log(find_array);
+		pic1.src='data:image/;base64,' + find_array[0].pic1;
+		pic2.src='data:image/;base64,' + find_array[0].pic2;
+		pic3.src='data:image/;base64,' + find_array[0].pic3;
+		pic4.src='data:image/;base64,' + find_array[0].pic4;
+	}
 }
 
 async function 재출하_load_pic(m_id) {
@@ -1271,13 +1309,17 @@ async function 재출하_load_pic(m_id) {
 	var pic3 = document.getElementById('재출하_pic3');
 	var pic4 = document.getElementById('재출하_pic4');
 
-	find(재출하_pic, m_id);
+	count(재출하_pic, { 관리번호 : m_id });
 	await delay();
-	console.log(find_array);
-	pic1.src='data:image/;base64,' + find_array[0].pic1;
-	pic2.src='data:image/;base64,' + find_array[0].pic2;
-	pic3.src='data:image/;base64,' + find_array[0].pic3;
-	pic4.src='data:image/;base64,' + find_array[0].pic4;
+	if(doc_count >= 1) {
+		find(재출하_pic, m_id);
+		await delay();
+		console.log(find_array);
+		pic1.src='data:image/;base64,' + find_array[0].pic1;
+		pic2.src='data:image/;base64,' + find_array[0].pic2;
+		pic3.src='data:image/;base64,' + find_array[0].pic3;
+		pic4.src='data:image/;base64,' + find_array[0].pic4;
+	}
 }
 
 async function 완전분해_load_pic(m_id) {
@@ -1286,13 +1328,17 @@ async function 완전분해_load_pic(m_id) {
 	var pic3 = document.getElementById('완전분해_pic3');
 	var pic4 = document.getElementById('완전분해_pic4');
 
-	find(완전분해_pic, m_id);
+	count(완전분해_pic, { 관리번호 : m_id });
 	await delay();
-	console.log(find_array);
-	pic1.src='data:image/;base64,' + find_array[0].pic1;
-	pic2.src='data:image/;base64,' + find_array[0].pic2;
-	pic3.src='data:image/;base64,' + find_array[0].pic3;
-	pic4.src='data:image/;base64,' + find_array[0].pic4;
+	if(doc_count >= 1) {
+		find(완전분해_pic, m_id);
+		await delay();
+		console.log(find_array);
+		pic1.src='data:image/;base64,' + find_array[0].pic1;
+		pic2.src='data:image/;base64,' + find_array[0].pic2;
+		pic3.src='data:image/;base64,' + find_array[0].pic3;
+		pic4.src='data:image/;base64,' + find_array[0].pic4;
+	}
 }
 
 async function 폐기_load_pic(m_id) {
@@ -1301,13 +1347,17 @@ async function 폐기_load_pic(m_id) {
 	var pic3 = document.getElementById('폐기_pic3');
 	var pic4 = document.getElementById('폐기_pic4');
 
-	find(폐기_pic, m_id);
+	count(폐기_pic, { 관리번호 : m_id });
 	await delay();
-	console.log(find_array);
-	pic1.src='data:image/;base64,' + find_array[0].pic1;
-	pic2.src='data:image/;base64,' + find_array[0].pic2;
-	pic3.src='data:image/;base64,' + find_array[0].pic3;
-	pic4.src='data:image/;base64,' + find_array[0].pic4;
+	if(doc_count >= 1) {
+		find(폐기_pic, m_id);
+		await delay();
+		console.log(find_array);
+		pic1.src='data:image/;base64,' + find_array[0].pic1;
+		pic2.src='data:image/;base64,' + find_array[0].pic2;
+		pic3.src='data:image/;base64,' + find_array[0].pic3;
+		pic4.src='data:image/;base64,' + find_array[0].pic4;
+	}
 }
 
 function export_excel() {
