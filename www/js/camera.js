@@ -140,7 +140,7 @@ function getDataUrl() {
 	imgBase64Str = base64.replace(/^data:image\/[a-z]+;base64,/, "");
 }
 
-function 공정입력_콤보박스(e) {
+function camera_공정입력_콤보박스(e) {
 	pic_step = e.value;
 }
 
