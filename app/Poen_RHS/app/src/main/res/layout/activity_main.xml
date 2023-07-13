@@ -4,9 +4,10 @@
     tools:context=".MainActivity">
 
     <WebView
-        android:id="@+id/webview"
+        android:id="@+id/webView"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
+
 </RelativeLayout>
