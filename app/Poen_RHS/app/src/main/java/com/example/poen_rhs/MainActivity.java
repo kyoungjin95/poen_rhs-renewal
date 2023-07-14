@@ -60,8 +60,13 @@ public class MainActivity extends AppCompatActivity {
         webSettings.setAllowFileAccess(true);
         webSettings.setSupportZoom(true);
         checkVerify();
-        webView.setWebChromeClient(new WebChromeClient() {          //For Android 5.0+
-           public boolean onJsAlert(WebView view, String url, String message,
+        webView.setWebChromeClient(new WebChromeClient() {
+            @Override
+            public void onCloseWindow(WebView w) {
+                super.onCloseWindow(w);
+                finish();
+            }//For Android 5.0+
+            public boolean onJsAlert(WebView view, String url, String message,
                                      final android.webkit.JsResult result) {
                 new AlertDialog.Builder(MainActivity.this)
                         .setTitle("")
@@ -123,10 +128,12 @@ public class MainActivity extends AppCompatActivity {
 
                 return true;
             }
+
         });
 
         webView.loadUrl("http://211.34.105.77");
     }
+
 
     // 카메라 기능 구현
     private void runCamera(boolean _isCapture)
@@ -139,8 +146,8 @@ public class MainActivity extends AppCompatActivity {
         // File 객체의 URI 를 얻는다.
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
         {
-            String strpa = getApplicationContext().getPackageName();
-            cameraImageUri = FileProvider.getUriForFile(this, strpa + ".fileprovider", file);
+            String strap = getApplicationContext().getPackageName();
+            cameraImageUri = FileProvider.getUriForFile(this, strap + ".fileprovider", file);
         }
         else
         {
@@ -166,8 +173,6 @@ public class MainActivity extends AppCompatActivity {
             startActivityForResult(intentCamera, FILECHOOSER_LOLLIPOP_REQ_CODE);
         }
     }
-
-
 
     // 액티비티가 종료될 때 결과를 받고 파일을 전송할 때 사용
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
