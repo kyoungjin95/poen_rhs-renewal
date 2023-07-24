@@ -122,7 +122,7 @@ async function read_신품정보_func_csv() {
 			//console.log(res);
 			for(var i = 0; i < res.length; i++) {
 				신품정보_insert(res[i]);
-				await sleep(1);
+				await sleep(10);
 			};
 			console.log('insert count :', total_insert_count);
 			console.log('update count :', total_update_count);
@@ -143,7 +143,6 @@ async function 신품정보_insert(val) {
 	doc.수량 = val.수량;
 	doc.LotNo = val.LotNo; 
 	doc.비고 = val.비고; 
-
 	update_신품정보(자재입출고, doc);
 	await delay();
 }
