@@ -1,5 +1,10 @@
 var m_id = '';
 var tabledata = [];
+
+async function 신품정보_시작() {
+	read_신품정보_func_csv();
+}
+
 async function 신품정보등록_조회() {
 	if(worker == '') return;
 	while(_바코드 == undefined) {
@@ -14,28 +19,32 @@ async function 신품정보등록_조회() {
 	await delay();
 	console.log('doc_count: ', doc_count);
 	if(doc_count >= 1) {
-		find_신품정보(신품정보, { 바코드 : _바코드.value });
+		find_신품정보(자재입출고, { 바코드 : _바코드.value });
 		await delay();
 		console.log('신품정보 : ', find_array);
-
-		_품명.value = find_array[0].품명;
+		
 		_바코드.value = find_array[0].바코드;
-                _QR.value = find_array[0].QR;
-                _구입처.value = find_array[0].구입처;
-		_금액.value = find_array[0].금액;
-                _사용여부.value = find_array[0].사용여부;
-                _사용_관리번호.value = find_array[0].사용_관리번호;
+		_날짜.value = find_array[0].날짜;
+		_구분.value = find_array[0].구분;
+		_차종.value = find_array[0].차종;
+		_품명.value = find_array[0].품명;
+		_품번.value = find_array[0].품번;
+		_수량.value = find_array[0].수량;
+                _LotNo.value = find_array[0].LotNo;
+                _비고.value = find_array[0].비고;
 	} else {
+		_바코드.value = '';
+		_날짜.value = '';
+		_구분.value = '';
+		_차종.value = '';
 		_품명.value = '';
-                _바코드.value = '';
-                _QR.value = '';
-                _구입처.value = '';
-		_금액.value = '';
-                _사용여부.value = '';
-                _사용_관리번호.value = '';
+		_품번.value = '';
+		_수량.value = '';
+                _LotNo.value = '';
+                _비고.value = '';
 	}
 
-	find_신품정보(신품정보, { 바코드 : { $exists: true }});
+	find_신품정보(자재입출고, { 바코드 : { $exists: true }});
 	await delay();
 	tabledata = find_array;
 
@@ -46,34 +55,33 @@ async function 신품정보등록_조회() {
 		//autoColumns:true,
 		
 		columns:[
+			{title:"차종", field:"차종", sorter:"string"},
 			{title:"품명", field:"품명", sorter:"string"},
-			{title:"바코드", field:"바코드", sorter:"string"},
-			{title:"QR", field:"QR", sorter:"string"},
-			{title:"구입처", field:"구입처", sorter:"string"},
-			{title:"금액", field:"금액", sorter:"string"},
-			{title:"사용여부", field:"사용여부", sorter:"string"},
-			{title:"사용_관리번호", field:"사용_관리번호", sorter:"string"},
+			{title:"품번", field:"품번", sorter:"string"},
+			{title:"입고수량", field:"입고수량", sorter:"string"},
+			{title:"출고수량", field:"출고수량", sorter:"string"},
+			{title:"남은수량", field:"남은수량", sorter:"string"},
 		]
 	});
-
 }
 
 async function 신품정보_save() {
-	if(worker == '') return;
+	if(worker == '') 
 	if(_바코드.value.length == 0) return;
 	console.log('save: ', _바코드.value);
 
-	var doc = 신품정보_doc;
+	var doc = 자재입출고_doc;
 	doc.바코드 = _바코드.value;
+	doc.날짜 = _날짜.value;
+	doc.구분 = _구분.value;
+	doc.차종 = _차종.value;
 	doc.품명 = _품명.value;
-	doc.QR = _QR.value;
-	doc.바코드 = _바코드.value;
-	doc.구입처 = _구입처.value;
-	doc.금액 = _금액.value;
-	doc.사용여부 = _사용여부.value;
-	doc.사용_관리번호 = _사용_관리번호.value;
+	doc.품번 = _품번.value;
+	doc.수량 = _수량.value;
+	doc.LotNo = _LotNo.value;
+	doc.비고 = _비고.value;
 
-	update_신품정보(신품정보, doc);
+	update_신품정보(자재입출고, doc);
 	await delay();
 	
 	console.log(update_count);
@@ -102,3 +110,40 @@ function _사용여부_콤보박스(e) {
   	document.getElementById('_사용여부').value = value;
 }
 
+async function read_신품정보_func_csv() {
+	_재고관리_csv.addEventListener('input', async function(event) {
+		const target = event.target;
+		const files = target.files;
+		const file = files[0];
+
+		const reader = new FileReader();
+		reader.addEventListener('load', async function() {
+			const res = d3.csvParse(reader.result);
+			//console.log(res);
+			for(var i = 0; i < res.length; i++) {
+				신품정보_insert(res[i]);
+				await sleep(1);
+			};
+			console.log('insert count :', total_insert_count);
+			console.log('update count :', total_update_count);
+			console.log('fail count :', fail_count);
+		});
+		reader.readAsText(file);
+	});
+}
+
+async function 신품정보_insert(val) {
+	var doc = 자재입출고_doc;
+	doc.바코드= val.바코드;
+	doc.날짜 = val.날짜;
+	doc.구분 = val.구분;
+	doc.차종 = val.차종;
+	doc.품명 = val.품명;
+	doc.품번 = val.품번;
+	doc.수량 = val.수량;
+	doc.LotNo = val.LotNo; 
+	doc.비고 = val.비고; 
+
+	update_신품정보(자재입출고, doc);
+	await delay();
+}

@@ -77,3 +77,9 @@ table td {
     background-position: center;
     border:1px solid black;
 }
+
+.pic {
+    height: 25vw;
+    width: 100%;
+    overflow:scroll;	
+}

@@ -25,6 +25,20 @@
 							</td>
 						</tr>
 						<tr>
+							<td>
+								<label for="_날짜"><b>날짜</b></label>
+							</td>
+							<td>
+								<input type="datetime" id="_날짜" value="0000-00-00" required>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="차종"><b>차종</b></label>
+							</td>
+							<td>
+								<input type="text" id="_차종" value="" size="40" required>
+							</td>
 						</tr>
 						<tr>
 							<td>
@@ -57,15 +71,7 @@
 						</tr>
 						<tr>
 							<td>
-								<label for="_QR"><b>QR</b></label>
-							</td>
-							<td>
-								<input type="text" id="_QR" size="40" required>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<label for="_품번"><b>QR</b></label>
+								<label for="_품번"><b>품번</b></label>
 							</td>
 							<td>
 								<input type="text" id="_품번" size="40" required>
@@ -73,38 +79,26 @@
 						</tr>
 						<tr>
 							<td>
-								<label for="_구입처"><b>구입처</b></label>
+								<label for="_수량"><b>수량</b></label>
 							</td>
 							<td>
-								<input type="text" id="_구입처" size="40" required>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<label for="_금액"><b>금액</b></label>
-							</td>
-							<td>
-								<input type="text" id="_금액" size="40" required>
+								<input type="text" id="_수량" size="40" required>
 							</td>
 						</tr>
 						<tr>
 							<td>
-								<label for="_사용여부"><b>사용여부</b></label>
+								<label for="_LotNo"><b>Lot No.</b></label>
 							</td>
 							<td>
-								<input type="text" id="_사용여부" size="40" required>
-								<select name="language" onchange="_사용여부_콤보박스(this);">
-									<option value="">---</option>
-									<option value="사용">사용</option>
-								</select>
+								<input type="text" id="_LotNo" size="40" required>
 							</td>
 						</tr>
 						<tr>
 							<td>
-								<label for="_사용_관리번호"><b>사용 관리번호</b></label>
+								<label for="_비고"><b>비고</b></label>
 							</td>
 							<td>
-								<input type="text" id="_사용_관리번호" size="40" required>
+								<input type="text" id="_비고" size="40" required>
 							</td>
 						</tr>
 					</table>
@@ -122,15 +116,22 @@
                                         </div>
                                 </center>
                         </div>
+			<div>
+				<label>excel 문서 data 자동 입력 </label></br>
+				<input type='file' id='_재고관리_csv' accept='.csv'/>
+			</div>
 			<script>
 				const _바코드 = document.getElementById('_바코드');
 				const _품명 = document.getElementById('_품명');
 				const _품번 = document.getElementById('_품번');
-				const _QR = document.getElementById('_QR');
-				const _구입처 = document.getElementById('_구입처');
+				const _날짜 = document.getElementById('_날짜');
+				const _구분 = document.getElementById('_구분');
 				const _금액 = document.getElementById('_금액');
-				const _사용여부 = document.getElementById('_사용여부');
-				const _사용_관리번호 = document.getElementById('_사용_관리번호');
+				const _수량 = document.getElementById('_수량');
+				const _LotNo = document.getElementById('_LotNo');
+				const _비고 = document.getElementById('_비고');
+				const _grid_신품정보 = document.getElementById('_grid_신품정보');
+				const _재고관리_csv = document.getElementById('_재고관리_csv');
 			</script>
 	</body>
 </html>

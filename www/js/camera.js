@@ -1,17 +1,57 @@
-var imgBase64Str;
+const MAX_SLOT = 15;
+var imgBase64Str = [];
 var pic_step;
 var slot;
+var image_count = 0;
+var camera_img1;
+var camera_img2; 
+var camera_img3; 
+var camera_img4; 
+var camera_img5; 
+var camera_img6; 
+var camera_img7; 
+var camera_img8; 
+var camera_img9; 
+var camera_img10;
+var camera_img11;
+var camera_img12;
+var camera_img13;
+var camera_img14;
+var camera_img15;
 
 function pic_load(e) {
-		console.log(e);
-		var file = e[0];
-		camera_img = document.getElementById('frame');
-		camera_img.src = URL.createObjectURL(file);
+	image_count = e.length;
+	if(image_count > 15) {
+		image_count = 15;
+	}
+
+	var file = e;
+
+	camera_img1 = document.getElementById('frame1');
+	camera_img2 = document.getElementById('frame2');
+	camera_img3 = document.getElementById('frame3');
+	camera_img4 = document.getElementById('frame4');
+	camera_img5 = document.getElementById('frame5');
+	camera_img6 = document.getElementById('frame6');
+	camera_img7 = document.getElementById('frame7');
+	camera_img8 = document.getElementById('frame8');
+	camera_img9 = document.getElementById('frame9');
+	camera_img10 = document.getElementById('frame10');
+	camera_img11 = document.getElementById('frame11');
+	camera_img12 = document.getElementById('frame12');
+	camera_img13 = document.getElementById('frame13');
+	camera_img14 = document.getElementById('frame14');
+	camera_img15 = document.getElementById('frame15');
+
+	for(var i = 1; i <= image_count; i++) {
+		eval('camera_img' + i +'.src = URL.createObjectURL(file[' + (i - 1) + ']);');
+		getDataUrl(file[i -1], (i - 1));
+	}
 }
 
 async function pic_save() {
 	if(worker == '') return;
-	getDataUrl();
+
 	var col;
 	var doc;
 
@@ -79,7 +119,7 @@ async function pic_save() {
 		default :
 			return;
 	}
-        
+
 	var mid = document.getElementById('_pic_management_id');
 	doc.관리번호 = mid.value;
 	console.log(doc);
@@ -94,50 +134,110 @@ async function pic_save() {
 		doc.pic2 = find_array[0].pic2;
 		doc.pic3 = find_array[0].pic3;
 		doc.pic4 = find_array[0].pic4;
+		doc.pic5 = find_array[0].pic5;
+		doc.pic6 = find_array[0].pic6;
+		doc.pic7 = find_array[0].pic7;
+		doc.pic8 = find_array[0].pic8;
+		doc.pic9 = find_array[0].pic9;
+		doc.pic10 = find_array[0].pic10;
+		doc.pic11 = find_array[0].pic12;
+		doc.pic12 = find_array[0].pic13;
+		doc.pic13 = find_array[0].pic14;
+		doc.pic14 = find_array[0].pic15;
 	}
 
-	switch(slot) {
-		case '1' : 
-			doc.pic1 = imgBase64Str;
-			break;
+	await sleep(10);
+	if(image_count == 1) {
+		switch(slot) {
+			case '1' : 
+				doc.pic1 = imgBase64Str[0];
+				break;
 
-		case '2' :
-			doc.pic2 = imgBase64Str;
-			break;
+			case '2' :
+				doc.pic2 = imgBase64Str[0];
+				break;
 
-		case '3' :
-			doc.pic3 = imgBase64Str;
-			break;
+			case '3' :
+				doc.pic3 = imgBase64Str[0];
+				break;
 
-		case '4' :
-			doc.pic4 = imgBase64Str;
-			break;
+			case '4' :
+				doc.pic4 = imgBase64Str[0];
+				break;
+
+			case '5' : 
+				doc.pic5 = imgBase64Str[0];
+				break;
+
+			case '6' :
+				doc.pic6 = imgBase64Str[0];
+				break;
+
+			case '7' :
+				doc.pic7 = imgBase64Str[0];
+				break;
+
+			case '8' :
+				doc.pic8 = imgBase64Str[0];
+				break;
+
+			case '9' : 
+				doc.pic9 = imgBase64Str[0];
+				break;
+
+			case '10' :
+				doc.pic10 = imgBase64Str[0];
+				break;
+
+			case '11' :
+				doc.pic11 = imgBase64Str[0];
+				break;
+
+			case '12' :
+				doc.pic12 = imgBase64Str[0];
+				break;
+
+			case '13' : 
+				doc.pic13 = imgBase64Str[0];
+				break;
+
+			case '14' :
+				doc.pic14 = imgBase64Str[0];
+				break;
+
+			case '15' :
+				doc.pic15 = imgBase64Str[0];
+				break;
+		}
+	} else if(image_count != 0) {
+		console.log('image count:', image_count);
+		for(var i = 1; i <= image_count; i++) {
+			eval('doc.pic' + i + ' = imgBase64Str[' + (i - 1) + '];');
+			await sleep(10);
+			console.log('No. ', i);
+			eval('console.log(\'doc.pic' + i + '\', doc.pic' + i + ');'); 
+			console.log('imgBAse64Str:', imgBase64Str[i -1]);
+		}
 	}
 
 	console.log(col, doc)
 	update(col, doc);
 	await delay();
-	
+
 	console.log('update :', update_count);
 	console.log('insert :', insert_count);
-
 	alert('Saved');
 }
 
-
-function getDataUrl() {
-	// Create canvas
-	const canvas = document.createElement('canvas');
-	const ctx = canvas.getContext('2d');
-	
-	camera_img = document.getElementById('frame');
-	
-	// Draw the image
-	//ctx.scale(0.5, 0.5);
-	ctx.drawImage(camera_img, 0, 0, 200, 200);
-
-	var base64 = canvas.toDataURL('image/*');
-	imgBase64Str = base64.replace(/^data:image\/[a-z]+;base64,/, "");
+function getDataUrl(file, no) {
+   var reader = new FileReader();
+   reader.readAsDataURL(file);
+   reader.onload = function () {
+	imgBase64Str[no] = reader.result.replace(/^data:image\/[a-z]+;base64,/, "");
+   };
+   reader.onerror = function (error) {
+     console.log('Error: ', error);
+   };
 }
 
 function camera_공정입력_콤보박스(e) {

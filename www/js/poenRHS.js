@@ -21,6 +21,7 @@ const 교체부품상세7 = '교체부품상세7';
 const 교체부품상세8 = '교체부품상세8';
 const 교체부품상세9 = '교체부품상세9';
 const 교체부품상세10 = '교체부품상세10';
+const 자재입출고 = '자재입출고';
 const 입고_pic         = '입고_pic';
 const 세척_pic         = '세척_pic';
 const 기초검사_pic     = '기초검사_pic';
@@ -345,10 +346,6 @@ const 출하정보_doc = {
 	납품처: '',
 	//재제조QR : '',
 	검사일: '',
-        검토: '',
-        승인: '',
-        입고정보_작성확인: '',
-        재제조_이력문서_작성확인: '',
         기초보고서_작성확인: '',
         완료보고서_작성확인: '',
         클린상태: '', 
@@ -393,7 +390,10 @@ const 출하정보_doc = {
         SOH: '',
         릴레이_강제구동: '',
         커넥터_체결검사: '',
-        통신화면_캡쳐: ''
+        통신화면_캡쳐: '',
+	RO : '',
+	차종 : '',
+	품번 : ''
 };
 
 const 특이사항_doc = {
@@ -422,6 +422,17 @@ const 입고_pic_doc = {
 	pic2 : '',
 	pic3 : '',
 	pic4 : '',
+	pic5 : '',
+	pic6 : '',
+	pic7 : '',
+	pic8 : '',
+	pic9 : '',
+	pic10 : '',
+	pic11 : '',
+	pic12 : '',
+	pic13 : '',
+	pic14 : '',
+	pic15 : '',
 };
 
 const 세척_pic_doc = {
@@ -430,6 +441,17 @@ const 세척_pic_doc = {
 	pic2 : '',
 	pic3 : '',
 	pic4 : '',
+	pic5 : '',
+	pic6 : '',
+	pic7 : '',
+	pic8 : '',
+	pic9 : '',
+	pic10 : '',
+	pic11 : '',
+	pic12 : '',
+	pic13 : '',
+	pic14 : '',
+	pic15 : '',
 };
 
 const 기초검사_pic_doc = {
@@ -438,6 +460,17 @@ const 기초검사_pic_doc = {
 	pic2 : '',
 	pic3 : '',
 	pic4 : '',
+	pic5 : '',
+	pic6 : '',
+	pic7 : '',
+	pic8 : '',
+	pic9 : '',
+	pic10 : '',
+	pic11 : '',
+	pic12 : '',
+	pic13 : '',
+	pic14 : '',
+	pic15 : '',
 };
 
 const 분해조립_pic_doc = {
@@ -446,6 +479,17 @@ const 분해조립_pic_doc = {
 	pic2 : '',
 	pic3 : '',
 	pic4 : '',
+	pic5 : '',
+	pic6 : '',
+	pic7 : '',
+	pic8 : '',
+	pic9 : '',
+	pic10 : '',
+	pic11 : '',
+	pic12 : '',
+	pic13 : '',
+	pic14 : '',
+	pic15 : '',
 };
 
 const 성능검사_pic_doc = {
@@ -454,6 +498,17 @@ const 성능검사_pic_doc = {
 	pic2 : '',
 	pic3 : '',
 	pic4 : '',
+	pic5 : '',
+	pic6 : '',
+	pic7 : '',
+	pic8 : '',
+	pic9 : '',
+	pic10 : '',
+	pic11 : '',
+	pic12 : '',
+	pic13 : '',
+	pic14 : '',
+	pic15 : '',
 };
 
 const EOL_pic_doc = {
@@ -462,6 +517,17 @@ const EOL_pic_doc = {
 	pic2 : '',
 	pic3 : '',
 	pic4 : '',
+	pic5 : '',
+	pic6 : '',
+	pic7 : '',
+	pic8 : '',
+	pic9 : '',
+	pic10 : '',
+	pic11 : '',
+	pic12 : '',
+	pic13 : '',
+	pic14 : '',
+	pic15 : '',
 };
 
 const 특이사항_pic_doc = {
@@ -470,6 +536,17 @@ const 특이사항_pic_doc = {
 	pic2 : '',
 	pic3 : '',
 	pic4 : '',
+	pic5 : '',
+	pic6 : '',
+	pic7 : '',
+	pic8 : '',
+	pic9 : '',
+	pic10 : '',
+	pic11 : '',
+	pic12 : '',
+	pic13 : '',
+	pic14 : '',
+	pic15 : '',
 };
 
 const 출하_pic_doc = {
@@ -478,6 +555,17 @@ const 출하_pic_doc = {
 	pic2 : '',
 	pic3 : '',
 	pic4 : '',
+	pic5 : '',
+	pic6 : '',
+	pic7 : '',
+	pic8 : '',
+	pic9 : '',
+	pic10 : '',
+	pic11 : '',
+	pic12 : '',
+	pic13 : '',
+	pic14 : '',
+	pic15 : '',
 };
 
 const 반품입고_pic_doc = {
@@ -486,6 +574,17 @@ const 반품입고_pic_doc = {
 	pic2 : '',
 	pic3 : '',
 	pic4 : '',
+	pic5 : '',
+	pic6 : '',
+	pic7 : '',
+	pic8 : '',
+	pic9 : '',
+	pic10 : '',
+	pic11 : '',
+	pic12 : '',
+	pic13 : '',
+	pic14 : '',
+	pic15 : '',
 };
 
 const 재출하_pic_doc = {
@@ -494,6 +593,17 @@ const 재출하_pic_doc = {
 	pic2 : '',
 	pic3 : '',
 	pic4 : '',
+	pic5 : '',
+	pic6 : '',
+	pic7 : '',
+	pic8 : '',
+	pic9 : '',
+	pic10 : '',
+	pic11 : '',
+	pic12 : '',
+	pic13 : '',
+	pic14 : '',
+	pic15 : '',
 };
 
 const 완전분해_pic_doc = {
@@ -502,6 +612,17 @@ const 완전분해_pic_doc = {
 	pic2 : '',
 	pic3 : '',
 	pic4 : '',
+	pic5 : '',
+	pic6 : '',
+	pic7 : '',
+	pic8 : '',
+	pic9 : '',
+	pic10 : '',
+	pic11 : '',
+	pic12 : '',
+	pic13 : '',
+	pic14 : '',
+	pic15 : '',
 };
 
 const 폐기_pic_doc = {
@@ -510,6 +631,29 @@ const 폐기_pic_doc = {
 	pic2 : '',
 	pic3 : '',
 	pic4 : '',
+	pic5 : '',
+	pic6 : '',
+	pic7 : '',
+	pic8 : '',
+	pic9 : '',
+	pic10 : '',
+	pic11 : '',
+	pic12 : '',
+	pic13 : '',
+	pic14 : '',
+	pic15 : '',
+};
+
+const 자재입출고_doc = {
+	바코드 : '',
+	날짜 : '',
+	구분 : '',
+	차종 : '',
+	품명 : '',
+	품번 : '',
+	수량 : '',
+	LotNo : '',
+	비고 : '',
 };
 
 const 계정_ = {
@@ -638,8 +782,6 @@ const 분해조립_ = {
 	PRA9: 1,
 	PRA10: 1,
 	SPA1: 1,
-	SPA2: 1,
-	SPA3: 1,
 	SPA4: 1,
 	SPA5: 1,
 	SPA6: 1,
@@ -832,10 +974,6 @@ const 출하정보_ = {
 	납품처: 1,
 	//재제조QR : 1,
 	검사일: 1,
-        검토: 1,
-        승인: 1,
-        입고정보_작성확인: 1,
-        재제조_이력문서_작성확인: 1,
         기초보고서_작성확인: 1,
         완료보고서_작성확인: 1,
         클린상태: 1, 
@@ -880,7 +1018,10 @@ const 출하정보_ = {
         SOH: 1,
         릴레이_강제구동: 1,
         커넥터_체결검사: 1,
-        통신화면_캡쳐: 1
+        통신화면_캡쳐: 1,
+	RO : 1,
+	차종 : 1,
+	품번 : 1
 };
 
 const 특이사항_ = {
@@ -912,6 +1053,17 @@ const 입고_pic_ = {
 	pic2 : 1,
 	pic3 : 1,
 	pic4 : 1,
+	pic5 : 1,
+	pic6 : 1,
+	pic7 : 1,
+	pic8 : 1,
+	pic9 : 1,
+	pic10 : 1,
+	pic11 : 1,
+	pic12 : 1,
+	pic13 : 1,
+	pic14 : 1,
+	pic15 : 1,
 };
 
 const 세척_pic_ = {
@@ -921,6 +1073,17 @@ const 세척_pic_ = {
 	pic2 : 1,
 	pic3 : 1,
 	pic4 : 1,
+	pic5 : 1,
+	pic6 : 1,
+	pic7 : 1,
+	pic8 : 1,
+	pic9 : 1,
+	pic10 : 1,
+	pic11 : 1,
+	pic12 : 1,
+	pic13 : 1,
+	pic14 : 1,
+	pic15 : 1,
 };
 
 const 기초검사_pic_ = {
@@ -930,6 +1093,17 @@ const 기초검사_pic_ = {
 	pic2 : 1,
 	pic3 : 1,
 	pic4 : 1,
+	pic5 : 1,
+	pic6 : 1,
+	pic7 : 1,
+	pic8 : 1,
+	pic9 : 1,
+	pic10 : 1,
+	pic11 : 1,
+	pic12 : 1,
+	pic13 : 1,
+	pic14 : 1,
+	pic15 : 1,
 };
 
 const 분해조립_pic_ = {
@@ -939,6 +1113,17 @@ const 분해조립_pic_ = {
 	pic2 : 1,
 	pic3 : 1,
 	pic4 : 1,
+	pic5 : 1,
+	pic6 : 1,
+	pic7 : 1,
+	pic8 : 1,
+	pic9 : 1,
+	pic10 : 1,
+	pic11 : 1,
+	pic12 : 1,
+	pic13 : 1,
+	pic14 : 1,
+	pic15 : 1,
 };
 
 const 성능검사_pic_ = {
@@ -948,6 +1133,17 @@ const 성능검사_pic_ = {
 	pic2 : 1,
 	pic3 : 1,
 	pic4 : 1,
+	pic5 : 1,
+	pic6 : 1,
+	pic7 : 1,
+	pic8 : 1,
+	pic9 : 1,
+	pic10 : 1,
+	pic11 : 1,
+	pic12 : 1,
+	pic13 : 1,
+	pic14 : 1,
+	pic15 : 1,
 };
 
 const EOL_pic_ = {
@@ -957,6 +1153,17 @@ const EOL_pic_ = {
 	pic2 : 1,
 	pic3 : 1,
 	pic4 : 1,
+	pic5 : 1,
+	pic6 : 1,
+	pic7 : 1,
+	pic8 : 1,
+	pic9 : 1,
+	pic10 : 1,
+	pic11 : 1,
+	pic12 : 1,
+	pic13 : 1,
+	pic14 : 1,
+	pic15 : 1,
 };
 
 const 특이사항_pic_ = {
@@ -966,6 +1173,17 @@ const 특이사항_pic_ = {
 	pic2 : 1,
 	pic3 : 1,
 	pic4 : 1,
+	pic5 : 1,
+	pic6 : 1,
+	pic7 : 1,
+	pic8 : 1,
+	pic9 : 1,
+	pic10 : 1,
+	pic11 : 1,
+	pic12 : 1,
+	pic13 : 1,
+	pic14 : 1,
+	pic15 : 1,
 };
 
 const 출하_pic_ = {
@@ -975,6 +1193,17 @@ const 출하_pic_ = {
 	pic2 : 1,
 	pic3 : 1,
 	pic4 : 1,
+	pic5 : 1,
+	pic6 : 1,
+	pic7 : 1,
+	pic8 : 1,
+	pic9 : 1,
+	pic10 : 1,
+	pic11 : 1,
+	pic12 : 1,
+	pic13 : 1,
+	pic14 : 1,
+	pic15 : 1,
 };
 
 const 반품입고_pic_ = {
@@ -984,6 +1213,17 @@ const 반품입고_pic_ = {
 	pic2 : 1,
 	pic3 : 1,
 	pic4 : 1,
+	pic5 : 1,
+	pic6 : 1,
+	pic7 : 1,
+	pic8 : 1,
+	pic9 : 1,
+	pic10 : 1,
+	pic11 : 1,
+	pic12 : 1,
+	pic13 : 1,
+	pic14 : 1,
+	pic15 : 1,
 };
 
 const 재출하_pic_ = {
@@ -993,6 +1233,17 @@ const 재출하_pic_ = {
 	pic2 : 1,
 	pic3 : 1,
 	pic4 : 1,
+	pic5 : 1,
+	pic6 : 1,
+	pic7 : 1,
+	pic8 : 1,
+	pic9 : 1,
+	pic10 : 1,
+	pic11 : 1,
+	pic12 : 1,
+	pic13 : 1,
+	pic14 : 1,
+	pic15 : 1,
 };
 
 const 완전분해_pic_ = {
@@ -1002,6 +1253,17 @@ const 완전분해_pic_ = {
 	pic2 : 1,
 	pic3 : 1,
 	pic4 : 1,
+	pic5 : 1,
+	pic6 : 1,
+	pic7 : 1,
+	pic8 : 1,
+	pic9 : 1,
+	pic10 : 1,
+	pic11 : 1,
+	pic12 : 1,
+	pic13 : 1,
+	pic14 : 1,
+	pic15 : 1,
 };
 
 const 폐기_pic_ = {
@@ -1011,6 +1273,30 @@ const 폐기_pic_ = {
 	pic2 : 1,
 	pic3 : 1,
 	pic4 : 1,
+	pic5 : 1,
+	pic6 : 1,
+	pic7 : 1,
+	pic8 : 1,
+	pic9 : 1,
+	pic10 : 1,
+	pic11 : 1,
+	pic12 : 1,
+	pic13 : 1,
+	pic14 : 1,
+	pic15 : 1,
+};
+
+const 자재입출고_ = {
+	_id : 0,
+	바코드 : 1,
+	날짜 : 1,
+	구분 : 1,
+	차종 : 1,
+	품명 : 1,
+	품번 : 1,
+	수량 : 1,
+	LotNo : 1,
+	비고 : 1,
 };
 
 var doc_count = 0;
@@ -1162,6 +1448,7 @@ async function update_분해조립_부품정보(col, doc) {
 
 async function update_신품정보(col, doc) {
 	if(socket == undefined) return;
+	if(doc.바코드 == '') return;
 	flag_arrivedMSG = false;
 	while(flag_arrivedMSG == false) {
 		socket.emit('update', worker, col, { 바코드: doc.바코드 }, {$set: doc});
@@ -1489,7 +1776,7 @@ function find_신품정보(col, query) {
 	check++;
 	if(check > 10000) check = 0;
 
-	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: 신품정보_ }, check);
+	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: 자재입출고_ }, check);
 }
 
 function find_고품정보(col, query) {

@@ -1,2 +1,3 @@
-nohup npm start &
+nohup node server.js &
+
 

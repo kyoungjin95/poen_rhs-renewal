@@ -18,8 +18,12 @@ var 온도센서_count = 1;
 var Busbars_count = 1;
 var BMA_count = 1;
 
-async function 분해조립_managementID() {
-	if(flag_loaded == true) return;
+async function 분해조립_재제조번호() {
+	분해조립_managementID(true);
+}
+
+async function 분해조립_managementID(is재제조번호 = false) {
+	//if(flag_loaded == true) return;
 	if(worker == '') return;
 	while(_management_id == undefined) {
 		await sleep(DELAY);
@@ -46,17 +50,54 @@ async function 분해조립_managementID() {
 	Busbars_count = 1;
 	BMA_count = 1;
 
+	if(is재제조번호 == true) {
+		if(_재제조번호.value.length == 0) return;
+		console.log('load: ', _재제조번호.value);
+		if(_재제조번호.value == '' | _재제조번호.value == 'none') return;
+		
+		count(BSA재제조, { 재제조번호 : _재제조번호.value });
+		await delay();
+		console.log('재제조번호 찾기');
+		if(doc_count >= 1) {
+			find_query(BSA재제조, { 재제조번호: _재제조번호.value.trim() });
+			await delay();
+			
+			console.log(find_array);
+			_management_id.value = find_array[0].관리번호;
+		}
+	}
+
 	if(_management_id.value.length == 0) return;
 	console.log('load: ', _management_id.value);
 	if(_management_id.value == '' | _management_id == 'none') return;
 
+	count(BSA재제조, { 관리번호 : _management_id.value.trim() });
+	await delay();
+	console.log('재제조번호 찾기');
+	if(doc_count >= 1) {
+		find_query(BSA재제조, { 관리번호: _management_id.value.trim() });
+		await delay();
+		_재제조번호.value = find_array[0].재제조번호;
+	}
+
 	count(분해조립, { 관리번호 : _management_id.value });
 	await delay();
 	console.log('doc_count: ', doc_count);
+
 	if(doc_count >= 1) {
+		count(BSA재제조, { 관리번호 : _management_id.value });
+		await delay();
+		if(doc_count >= 1) {
+			find_query(BSA재제조, { 관리번호: _management_id.value.trim() });
+			await delay();
+			
+			console.log(find_array);
+			_재제조번호.value = find_array[0].재제조번호;
+		}
 		find(분해조립, _management_id.value);
 		await delay();
-		var no_count = 2;
+
+		var no_count = 3;
 		_공정입고일.value = find_array[0].공정입고일;
 		_BMU1.value = find_array[0].BMU1;
 		if(find_array[0].BMU2 != '') { BMU_count += 1; type_add('BMU', 'BMU', no_count, BMU_count); document.getElementById('_BMU2').value = find_array[0].BMU2;}
@@ -76,7 +117,7 @@ async function 분해조립_managementID() {
 		for(var i = 2; i <= 10; i++) eval('if(find_array[0].PRA' + i + ' != \'\') ' + '{ PRA_count += 1; type_add(\'PRA\', \'PRA\', no_count, PRA_count); document.getElementById(\'_PRA' + i + '\').value = ' + 'find_array[0].PRA' + i + ';}');
 		_SPA1.value = find_array[0].SPA1;
 		no_count += PRA_count;
-		for(var i = 2; i <= 10; i++) eval('if(find_array[0].SPA' + i + ' != \'\') ' + '{ SPA_count += 1; type_add(\'SPA\', \'SPA\', no_count, SPA_count); document.getElementById(\'_SPA' + i + '\').value = ' + 'find_array[0].SPA' + i + ';}');
+		for(var i = 2; i <= 10; i++) eval('if(find_array[0].SPA' + i + ' != \'\' && find_array[0].SPA' + i + ' != undefined) ' + '{ SPA_count += 1; type_add(\'SPA\', \'SPA\', no_count, SPA_count); document.getElementById(\'_SPA' + i + '\').value = ' + 'find_array[0].SPA' + i + ';}');
 		_LWR_C1.value = find_array[0].LWR_C1;
 		no_count += SPA_count;
 		for(var i = 2; i <= 10; i++) eval('if(find_array[0].LWR_C' + i + ' != \'\') ' + '{ LWR_C_count += 1; type_add(\'LWR Cace\', \'LWR_C\', no_count, LWR_C_count); document.getElementById(\'_LWR_C' + i + '\').value = ' + 'find_array[0].LWR_C' + i + ';}');

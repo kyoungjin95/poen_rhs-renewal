@@ -59,3 +59,9 @@ async function 세척_save() {
 
 	이전페이지();
 }
+
+function _기밀검사_케이스_콤보박스(e) {
+	const value = e.value;
+
+  	document.getElementById('_기밀검사_케이스').value = value;
+}

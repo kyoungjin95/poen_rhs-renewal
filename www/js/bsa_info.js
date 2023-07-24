@@ -280,7 +280,7 @@ async function delete_bsa() {
 	deleteOne(출하정보, row_one_id);
 	await delay();
 
-	deleteOne(출하정보_pic, row_one_id);
+	deleteOne(출하_pic, row_one_id);
 	await delay();
 
 	progress.value = 7 / 18 * 100;
@@ -357,6 +357,17 @@ async function grid_입고(m_id) {
 	var pic2 = document.getElementById('입고정보_pic2');
 	var pic3 = document.getElementById('입고정보_pic3');
 	var pic4 = document.getElementById('입고정보_pic4');
+	var pic5 = document.getElementById('입고정보_pic5');
+	var pic6 = document.getElementById('입고정보_pic6');
+	var pic7 = document.getElementById('입고정보_pic7');
+	var pic8 = document.getElementById('입고정보_pic8');
+	var pic9 = document.getElementById('입고정보_pic9');
+	var pic10 = document.getElementById('입고정보_pic10');
+	var pic11 = document.getElementById('입고정보_pic11');
+	var pic12 = document.getElementById('입고정보_pic12');
+	var pic13 = document.getElementById('입고정보_pic13');
+	var pic14 = document.getElementById('입고정보_pic14');
+	var pic15 = document.getElementById('입고정보_pic15');
 
 	var tabledata_입고 = [];
 
@@ -393,6 +404,17 @@ async function grid_입고(m_id) {
 		pic2.src = 'data:image/;base64,' + find_array[0].pic2;
 		pic3.src = 'data:image/;base64,' + find_array[0].pic3;
 		pic4.src = 'data:image/;base64,' + find_array[0].pic4;
+		pic5.src = 'data:image/;base64,' + find_array[0].pic5;
+		pic6.src = 'data:image/;base64,' + find_array[0].pic6;
+		pic7.src = 'data:image/;base64,' + find_array[0].pic7;
+		pic8.src = 'data:image/;base64,' + find_array[0].pic8;
+		pic9.src = 'data:image/;base64,' + find_array[0].pic9;
+		pic10.src = 'data:image/;base64,' + find_array[0].pic10;
+		pic11.src = 'data:image/;base64,' + find_array[0].pic11;
+		pic12.src = 'data:image/;base64,' + find_array[0].pic12;
+		pic13.src = 'data:image/;base64,' + find_array[0].pic13;
+		pic14.src = 'data:image/;base64,' + find_array[0].pic14;
+		pic15.src = 'data:image/;base64,' + find_array[0].pic15;
 	}
 }
 
@@ -402,6 +424,17 @@ async function grid_세척(m_id) {
 	var pic2 = document.getElementById('세척_pic2');
 	var pic3 = document.getElementById('세척_pic3');
 	var pic4 = document.getElementById('세척_pic4');
+	var pic5 = document.getElementById('세척_pic5');
+	var pic6 = document.getElementById('세척_pic6');
+	var pic7 = document.getElementById('세척_pic7');
+	var pic8 = document.getElementById('세척_pic8');
+	var pic9 = document.getElementById('세척_pic9');
+	var pic10 = document.getElementById('세척_pic10');
+	var pic11 = document.getElementById('세척_pic11');
+	var pic12 = document.getElementById('세척_pic12');
+	var pic13 = document.getElementById('세척_pic13');
+	var pic14 = document.getElementById('세척_pic14');
+	var pic15 = document.getElementById('세척_pic15');
 
 	var tabledata_세척 = [];
 
@@ -436,6 +469,17 @@ async function grid_세척(m_id) {
 		pic2.src='data:image/;base64,' + find_array[0].pic2;
 		pic3.src='data:image/;base64,' + find_array[0].pic3;
 		pic4.src='data:image/;base64,' + find_array[0].pic4;
+		pic5.src='data:image/;base64,' + find_array[0].pic5;
+		pic6.src='data:image/;base64,' + find_array[0].pic6;
+		pic7.src='data:image/;base64,' + find_array[0].pic7;
+		pic8.src='data:image/;base64,' + find_array[0].pic8;
+		pic9.src='data:image/;base64,' + find_array[0].pic9;
+		pic10.src='data:image/;base64,' + find_array[0].pic10;
+		pic11.src='data:image/;base64,' + find_array[0].pic11;
+		pic12.src='data:image/;base64,' + find_array[0].pic12;
+		pic13.src='data:image/;base64,' + find_array[0].pic13;
+		pic14.src='data:image/;base64,' + find_array[0].pic14;
+		pic15.src='data:image/;base64,' + find_array[0].pic15;
 	}
 }
 
@@ -445,6 +489,17 @@ async function grid_기초검사(m_id) {
 	var pic2 = document.getElementById('기초검사_pic2');
 	var pic3 = document.getElementById('기초검사_pic3');
 	var pic4 = document.getElementById('기초검사_pic4');
+	var pic5 = document.getElementById('기초검사_pic5');
+	var pic6 = document.getElementById('기초검사_pic6');
+	var pic7 = document.getElementById('기초검사_pic7');
+	var pic8 = document.getElementById('기초검사_pic8');
+	var pic9 = document.getElementById('기초검사_pic9');
+	var pic10 = document.getElementById('기초검사_pic10');
+	var pic11 = document.getElementById('기초검사_pic11');
+	var pic12 = document.getElementById('기초검사_pic12');
+	var pic13 = document.getElementById('기초검사_pic13');
+	var pic14 = document.getElementById('기초검사_pic14');
+	var pic15 = document.getElementById('기초검사_pic15');
 
 	var tabledata_기초검사 = [];
 
@@ -488,6 +543,17 @@ async function grid_기초검사(m_id) {
 		pic2.src='data:image/;base64,' + find_array[0].pic2;
 		pic3.src='data:image/;base64,' + find_array[0].pic3;
 		pic4.src='data:image/;base64,' + find_array[0].pic4;
+		pic5.src='data:image/;base64,' + find_array[0].pic5;
+		pic6.src='data:image/;base64,' + find_array[0].pic6;
+		pic7.src='data:image/;base64,' + find_array[0].pic7;
+		pic8.src='data:image/;base64,' + find_array[0].pic8;
+		pic9.src='data:image/;base64,' + find_array[0].pic9;
+		pic10.src='data:image/;base64,' + find_array[0].pic10;
+		pic11.src='data:image/;base64,' + find_array[0].pic11;
+		pic12.src='data:image/;base64,' + find_array[0].pic12;
+		pic13.src='data:image/;base64,' + find_array[0].pic13;
+		pic14.src='data:image/;base64,' + find_array[0].pic14;
+		pic15.src='data:image/;base64,' + find_array[0].pic15;
 	}
 }
 
@@ -497,6 +563,17 @@ async function grid_분해조립(m_id) {
 	var pic2 = document.getElementById('분해조립_pic2');
 	var pic3 = document.getElementById('분해조립_pic3');
 	var pic4 = document.getElementById('분해조립_pic4');
+	var pic5 = document.getElementById('분해조립_pic5');
+	var pic6 = document.getElementById('분해조립_pic6');
+	var pic7 = document.getElementById('분해조립_pic7');
+	var pic8 = document.getElementById('분해조립_pic8');
+	var pic9 = document.getElementById('분해조립_pic9');
+	var pic10 = document.getElementById('분해조립_pic10');
+	var pic11 = document.getElementById('분해조립_pic11');
+	var pic12 = document.getElementById('분해조립_pic12');
+	var pic13 = document.getElementById('분해조립_pic13');
+	var pic14 = document.getElementById('분해조립_pic14');
+	var pic15 = document.getElementById('분해조립_pic15');
 
 	var tabledata_분해조립 = [];
 
@@ -757,6 +834,17 @@ async function grid_분해조립(m_id) {
 		pic2.src='data:image/;base64,' + find_array[0].pic2;
 		pic3.src='data:image/;base64,' + find_array[0].pic3;
 		pic4.src='data:image/;base64,' + find_array[0].pic4;
+		pic5.src='data:image/;base64,' + find_array[0].pic5;
+		pic6.src='data:image/;base64,' + find_array[0].pic6;
+		pic7.src='data:image/;base64,' + find_array[0].pic7;
+		pic8.src='data:image/;base64,' + find_array[0].pic8;
+		pic9.src='data:image/;base64,' + find_array[0].pic9;
+		pic10.src='data:image/;base64,' + find_array[0].pic10;
+		pic11.src='data:image/;base64,' + find_array[0].pic11;
+		pic12.src='data:image/;base64,' + find_array[0].pic12;
+		pic13.src='data:image/;base64,' + find_array[0].pic13;
+		pic14.src='data:image/;base64,' + find_array[0].pic14;
+		pic15.src='data:image/;base64,' + find_array[0].pic15;
 	}
 }
 
@@ -766,6 +854,17 @@ async function grid_성능검사(m_id) {
 	var pic2 = document.getElementById('성능검사_pic2');
 	var pic3 = document.getElementById('성능검사_pic3');
 	var pic4 = document.getElementById('성능검사_pic4');
+	var pic5 = document.getElementById('성능검사_pic5');
+	var pic6 = document.getElementById('성능검사_pic6');
+	var pic7 = document.getElementById('성능검사_pic7');
+	var pic8 = document.getElementById('성능검사_pic8');
+	var pic9 = document.getElementById('성능검사_pic9');
+	var pic10 = document.getElementById('성능검사_pic10');
+	var pic11 = document.getElementById('성능검사_pic11');
+	var pic12 = document.getElementById('성능검사_pic12');
+	var pic13 = document.getElementById('성능검사_pic13');
+	var pic14 = document.getElementById('성능검사_pic14');
+	var pic15 = document.getElementById('성능검사_pic15');
 
 	var tabledata_성능검사 = [];
 
@@ -809,6 +908,17 @@ async function grid_성능검사(m_id) {
 		pic2.src='data:image/;base64,' + find_array[0].pic2;
 		pic3.src='data:image/;base64,' + find_array[0].pic3;
 		pic4.src='data:image/;base64,' + find_array[0].pic4;
+		pic5.src='data:image/;base64,' + find_array[0].pic5;
+		pic6.src='data:image/;base64,' + find_array[0].pic6;
+		pic7.src='data:image/;base64,' + find_array[0].pic7;
+		pic8.src='data:image/;base64,' + find_array[0].pic8;
+		pic9.src='data:image/;base64,' + find_array[0].pic9;
+		pic10.src='data:image/;base64,' + find_array[0].pic10;
+		pic11.src='data:image/;base64,' + find_array[0].pic11;
+		pic12.src='data:image/;base64,' + find_array[0].pic12;
+		pic13.src='data:image/;base64,' + find_array[0].pic13;
+		pic14.src='data:image/;base64,' + find_array[0].pic14;
+		pic15.src='data:image/;base64,' + find_array[0].pic15;
 	}
 }
 
@@ -818,6 +928,17 @@ async function grid_EOL(m_id) {
 	var pic2 = document.getElementById('EOL_pic2');
 	var pic3 = document.getElementById('EOL_pic3');
 	var pic4 = document.getElementById('EOL_pic4');
+	var pic5 = document.getElementById('EOL_pic5');
+	var pic6 = document.getElementById('EOL_pic6');
+	var pic7 = document.getElementById('EOL_pic7');
+	var pic8 = document.getElementById('EOL_pic8');
+	var pic9 = document.getElementById('EOL_pic9');
+	var pic10 = document.getElementById('EOL_pic10');
+	var pic11 = document.getElementById('EOL_pic11');
+	var pic12 = document.getElementById('EOL_pic12');
+	var pic13 = document.getElementById('EOL_pic13');
+	var pic14 = document.getElementById('EOL_pic14');
+	var pic15 = document.getElementById('EOL_pic15');
 
 	var tabledata_EOL = [];
 
@@ -852,6 +973,17 @@ async function grid_EOL(m_id) {
 		pic2.src='data:image/;base64,' + find_array[0].pic2;
 		pic3.src='data:image/;base64,' + find_array[0].pic3;
 		pic4.src='data:image/;base64,' + find_array[0].pic4;
+		pic5.src='data:image/;base64,' + find_array[0].pic5;
+		pic6.src='data:image/;base64,' + find_array[0].pic6;
+		pic7.src='data:image/;base64,' + find_array[0].pic7;
+		pic8.src='data:image/;base64,' + find_array[0].pic8;
+		pic9.src='data:image/;base64,' + find_array[0].pic9;
+		pic10.src='data:image/;base64,' + find_array[0].pic10;
+		pic11.src='data:image/;base64,' + find_array[0].pic11;
+		pic12.src='data:image/;base64,' + find_array[0].pic12;
+		pic13.src='data:image/;base64,' + find_array[0].pic13;
+		pic14.src='data:image/;base64,' + find_array[0].pic14;
+		pic15.src='data:image/;base64,' + find_array[0].pic15;
 	}
 }
 
@@ -862,6 +994,17 @@ async function grid_출하정보(m_id) {
 	var pic2 = document.getElementById('출하정보_pic2');
 	var pic3 = document.getElementById('출하정보_pic3');
 	var pic4 = document.getElementById('출하정보_pic4');
+	var pic5 = document.getElementById('출하정보_pic5');
+	var pic6 = document.getElementById('출하정보_pic6');
+	var pic7 = document.getElementById('출하정보_pic7');
+	var pic8 = document.getElementById('출하정보_pic8');
+	var pic9 = document.getElementById('출하정보_pic9');
+	var pic10 = document.getElementById('출하정보_pic10');
+	var pic11 = document.getElementById('출하정보_pic11');
+	var pic12 = document.getElementById('출하정보_pic12');
+	var pic13 = document.getElementById('출하정보_pic13');
+	var pic14 = document.getElementById('출하정보_pic14');
+	var pic15 = document.getElementById('출하정보_pic15');
 
 	find(출하정보, m_id);
 	await delay();
@@ -942,6 +1085,17 @@ async function grid_출하정보(m_id) {
 		pic2.src='data:image/;base64,' + find_array[0].pic2;
 		pic3.src='data:image/;base64,' + find_array[0].pic3;
 		pic4.src='data:image/;base64,' + find_array[0].pic4;
+		pic5.src='data:image/;base64,' + find_array[0].pic5;
+		pic6.src='data:image/;base64,' + find_array[0].pic6;
+		pic7.src='data:image/;base64,' + find_array[0].pic7;
+		pic8.src='data:image/;base64,' + find_array[0].pic8;
+		pic9.src='data:image/;base64,' + find_array[0].pic9;
+		pic10.src='data:image/;base64,' + find_array[0].pic10;
+		pic11.src='data:image/;base64,' + find_array[0].pic11;
+		pic12.src='data:image/;base64,' + find_array[0].pic12;
+		pic13.src='data:image/;base64,' + find_array[0].pic13;
+		pic14.src='data:image/;base64,' + find_array[0].pic14;
+		pic15.src='data:image/;base64,' + find_array[0].pic15;
 	}
 }
 
@@ -951,6 +1105,17 @@ async function grid_특이사항(m_id) {
 	var pic2 = document.getElementById('특이사항_pic2');
 	var pic3 = document.getElementById('특이사항_pic3');
 	var pic4 = document.getElementById('특이사항_pic4');
+	var pic5 = document.getElementById('특이사항_pic5');
+	var pic6 = document.getElementById('특이사항_pic6');
+	var pic7 = document.getElementById('특이사항_pic7');
+	var pic8 = document.getElementById('특이사항_pic8');
+	var pic9 = document.getElementById('특이사항_pic9');
+	var pic10 = document.getElementById('특이사항_pic10');
+	var pic11 = document.getElementById('특이사항_pic11');
+	var pic12 = document.getElementById('특이사항_pic12');
+	var pic13 = document.getElementById('특이사항_pic13');
+	var pic14 = document.getElementById('특이사항_pic14');
+	var pic15 = document.getElementById('특이사항_pic15');
 
 	var tabledata_특이사항 = [];
 
@@ -981,6 +1146,17 @@ async function grid_특이사항(m_id) {
 		pic2.src='data:image/;base64,' + find_array[0].pic2;
 		pic3.src='data:image/;base64,' + find_array[0].pic3;
 		pic4.src='data:image/;base64,' + find_array[0].pic4;
+		pic5.src='data:image/;base64,' + find_array[0].pic5;
+		pic6.src='data:image/;base64,' + find_array[0].pic6;
+		pic7.src='data:image/;base64,' + find_array[0].pic7;
+		pic8.src='data:image/;base64,' + find_array[0].pic8;
+		pic9.src='data:image/;base64,' + find_array[0].pic9;
+		pic10.src='data:image/;base64,' + find_array[0].pic10;
+		pic11.src='data:image/;base64,' + find_array[0].pic11;
+		pic12.src='data:image/;base64,' + find_array[0].pic12;
+		pic13.src='data:image/;base64,' + find_array[0].pic13;
+		pic14.src='data:image/;base64,' + find_array[0].pic14;
+		pic15.src='data:image/;base64,' + find_array[0].pic15;
 	}
 }
 
@@ -1289,6 +1465,17 @@ async function 반품입고_load_pic(m_id) {
 	var pic2 = document.getElementById('반품입고_pic2');
 	var pic3 = document.getElementById('반품입고_pic3');
 	var pic4 = document.getElementById('반품입고_pic4');
+	var pic5 = document.getElementById('반품입고_pic5');
+	var pic6 = document.getElementById('반품입고_pic6');
+	var pic7 = document.getElementById('반품입고_pic7');
+	var pic8 = document.getElementById('반품입고_pic8');
+	var pic9 = document.getElementById('반품입고_pic9');
+	var pic10 = document.getElementById('반품입고_pic10');
+	var pic11 = document.getElementById('반품입고_pic11');
+	var pic12 = document.getElementById('반품입고_pic12');
+	var pic13 = document.getElementById('반품입고_pic13');
+	var pic14 = document.getElementById('반품입고_pic14');
+	var pic15 = document.getElementById('반품입고_pic15');
 
 	count(반품입고_pic, { 관리번호 : m_id });
 	await delay();
@@ -1300,6 +1487,17 @@ async function 반품입고_load_pic(m_id) {
 		pic2.src='data:image/;base64,' + find_array[0].pic2;
 		pic3.src='data:image/;base64,' + find_array[0].pic3;
 		pic4.src='data:image/;base64,' + find_array[0].pic4;
+		pic5.src='data:image/;base64,' + find_array[0].pic5;
+		pic6.src='data:image/;base64,' + find_array[0].pic6;
+		pic7.src='data:image/;base64,' + find_array[0].pic7;
+		pic8.src='data:image/;base64,' + find_array[0].pic8;
+		pic9.src='data:image/;base64,' + find_array[0].pic9;
+		pic10.src='data:image/;base64,' + find_array[0].pic10;
+		pic11.src='data:image/;base64,' + find_array[0].pic11;
+		pic12.src='data:image/;base64,' + find_array[0].pic12;
+		pic13.src='data:image/;base64,' + find_array[0].pic13;
+		pic14.src='data:image/;base64,' + find_array[0].pic14;
+		pic15.src='data:image/;base64,' + find_array[0].pic15;
 	}
 }
 
@@ -1308,6 +1506,17 @@ async function 재출하_load_pic(m_id) {
 	var pic2 = document.getElementById('재출하_pic2');
 	var pic3 = document.getElementById('재출하_pic3');
 	var pic4 = document.getElementById('재출하_pic4');
+	var pic5 = document.getElementById('재출하_pic5');
+	var pic6 = document.getElementById('재출하_pic6');
+	var pic7 = document.getElementById('재출하_pic7');
+	var pic8 = document.getElementById('재출하_pic8');
+	var pic9 = document.getElementById('재출하_pic9');
+	var pic10 = document.getElementById('재출하_pic10');
+	var pic11 = document.getElementById('재출하_pic11');
+	var pic12 = document.getElementById('재출하_pic12');
+	var pic13 = document.getElementById('재출하_pic13');
+	var pic14 = document.getElementById('재출하_pic14');
+	var pic15 = document.getElementById('재출하_pic15');
 
 	count(재출하_pic, { 관리번호 : m_id });
 	await delay();
@@ -1319,6 +1528,17 @@ async function 재출하_load_pic(m_id) {
 		pic2.src='data:image/;base64,' + find_array[0].pic2;
 		pic3.src='data:image/;base64,' + find_array[0].pic3;
 		pic4.src='data:image/;base64,' + find_array[0].pic4;
+		pic5.src='data:image/;base64,' + find_array[0].pic5;
+		pic6.src='data:image/;base64,' + find_array[0].pic6;
+		pic7.src='data:image/;base64,' + find_array[0].pic7;
+		pic8.src='data:image/;base64,' + find_array[0].pic8;
+		pic9.src='data:image/;base64,' + find_array[0].pic9;
+		pic10.src='data:image/;base64,' + find_array[0].pic10;
+		pic11.src='data:image/;base64,' + find_array[0].pic11;
+		pic12.src='data:image/;base64,' + find_array[0].pic12;
+		pic13.src='data:image/;base64,' + find_array[0].pic13;
+		pic14.src='data:image/;base64,' + find_array[0].pic14;
+		pic15.src='data:image/;base64,' + find_array[0].pic15;
 	}
 }
 
@@ -1327,6 +1547,17 @@ async function 완전분해_load_pic(m_id) {
 	var pic2 = document.getElementById('완전분해_pic2');
 	var pic3 = document.getElementById('완전분해_pic3');
 	var pic4 = document.getElementById('완전분해_pic4');
+	var pic5 = document.getElementById('완전분해_pic5');
+	var pic6 = document.getElementById('완전분해_pic6');
+	var pic7 = document.getElementById('완전분해_pic7');
+	var pic8 = document.getElementById('완전분해_pic8');
+	var pic9 = document.getElementById('완전분해_pic9');
+	var pic10 = document.getElementById('완전분해_pic10');
+	var pic11 = document.getElementById('완전분해_pic11');
+	var pic12 = document.getElementById('완전분해_pic12');
+	var pic13 = document.getElementById('완전분해_pic13');
+	var pic14 = document.getElementById('완전분해_pic14');
+	var pic15 = document.getElementById('완전분해_pic15');
 
 	count(완전분해_pic, { 관리번호 : m_id });
 	await delay();
@@ -1338,6 +1569,17 @@ async function 완전분해_load_pic(m_id) {
 		pic2.src='data:image/;base64,' + find_array[0].pic2;
 		pic3.src='data:image/;base64,' + find_array[0].pic3;
 		pic4.src='data:image/;base64,' + find_array[0].pic4;
+		pic5.src='data:image/;base64,' + find_array[0].pic5;
+		pic6.src='data:image/;base64,' + find_array[0].pic6;
+		pic7.src='data:image/;base64,' + find_array[0].pic7;
+		pic8.src='data:image/;base64,' + find_array[0].pic8;
+		pic9.src='data:image/;base64,' + find_array[0].pic9;
+		pic10.src='data:image/;base64,' + find_array[0].pic10;
+		pic11.src='data:image/;base64,' + find_array[0].pic11;
+		pic12.src='data:image/;base64,' + find_array[0].pic12;
+		pic13.src='data:image/;base64,' + find_array[0].pic13;
+		pic14.src='data:image/;base64,' + find_array[0].pic14;
+		pic15.src='data:image/;base64,' + find_array[0].pic15;
 	}
 }
 
@@ -1346,6 +1588,17 @@ async function 폐기_load_pic(m_id) {
 	var pic2 = document.getElementById('폐기_pic2');
 	var pic3 = document.getElementById('폐기_pic3');
 	var pic4 = document.getElementById('폐기_pic4');
+	var pic5 = document.getElementById('폐기_pic5');
+	var pic6 = document.getElementById('폐기_pic6');
+	var pic7 = document.getElementById('폐기_pic7');
+	var pic8 = document.getElementById('폐기_pic8');
+	var pic9 = document.getElementById('폐기_pic9');
+	var pic10 = document.getElementById('폐기_pic10');
+	var pic11 = document.getElementById('폐기_pic11');
+	var pic12 = document.getElementById('폐기_pic12');
+	var pic13 = document.getElementById('폐기_pic13');
+	var pic14 = document.getElementById('폐기_pic14');
+	var pic15 = document.getElementById('폐기_pic15');
 
 	count(폐기_pic, { 관리번호 : m_id });
 	await delay();
@@ -1357,6 +1610,17 @@ async function 폐기_load_pic(m_id) {
 		pic2.src='data:image/;base64,' + find_array[0].pic2;
 		pic3.src='data:image/;base64,' + find_array[0].pic3;
 		pic4.src='data:image/;base64,' + find_array[0].pic4;
+		pic5.src='data:image/;base64,' + find_array[0].pic5;
+		pic6.src='data:image/;base64,' + find_array[0].pic6;
+		pic7.src='data:image/;base64,' + find_array[0].pic7;
+		pic8.src='data:image/;base64,' + find_array[0].pic8;
+		pic9.src='data:image/;base64,' + find_array[0].pic9;
+		pic10.src='data:image/;base64,' + find_array[0].pic10;
+		pic11.src='data:image/;base64,' + find_array[0].pic11;
+		pic12.src='data:image/;base64,' + find_array[0].pic12;
+		pic13.src='data:image/;base64,' + find_array[0].pic13;
+		pic14.src='data:image/;base64,' + find_array[0].pic14;
+		pic15.src='data:image/;base64,' + find_array[0].pic15;
 	}
 }
 
@@ -1367,4 +1631,16 @@ function export_excel() {
 async function export_all_data_excel() {
 	aggregate();
 	await delay();	
+}
+
+function zoomIn(event) {
+	event.target.style.transform = "scale(1.5)";
+	event.target.style.zIndex = 1;
+	event.target.style.transition = "all 0.5s";
+}
+
+function zoomOut(event) {
+	event.target.style.transform = "scale(1)";
+	event.target.style.zIndex = 0;
+	event.target.style.transition = "all 0.5s";
 }

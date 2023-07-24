@@ -1,7 +1,7 @@
 var pre_관리번호 = '';
 var 차종 = '';
 
-async function 상세입력_시작() {
+async function 상세입력_시작(is재제조번호 = false) {
 	await sleep(100);
 
 	flag_상세입력 = false;
@@ -18,21 +18,33 @@ async function 상세입력_시작() {
 	if(pre_관리번호 != '' && pre_관리번호 == _management_id.value) return;
 
 	console.log('load: ', _management_id.value);
-	if(_management_id.value.length == 0) return;
-	if(_management_id.value == '' | _management_id == 'none') return;
+	if(_management_id.value.length == 0 && _재제조번호.value .length == 0) return;
+	if((_management_id.value == '' && _재제조번호.value == '') || (_management_id == 'none' && _재제조번호.value == 'none')) return;
 	
-	관리번호 = _management_id.value;
-	console.log('관리번호:', 관리번호);
-	count(BSA재제조, { 관리번호 : _management_id.value });
-	await delay();
+	if(is재제조번호 == false) {
+		관리번호 = _management_id.value;
+		console.log('관리번호:', 관리번호);
+		count(BSA재제조, { 관리번호 : _management_id.value });
+		await delay();
+	} else {
+		console.log('재제조번호:', _재제조번호.value);
+		count(BSA재제조, { 재제조번호 : _재제조번호.value });
+		await delay();
+	}
 	console.log('doc_count: ', doc_count);
 	if(doc_count >= 1) {
-		관리번호 = _management_id.value.trim();
-		pre_관리번호 = 관리번호;
-		sessionStorage.setItem('manage_id', 관리번호);
-		find(BSA재제조, _management_id.value);
-		await delay();
-
+		if(is재제조번호 == false) {
+			관리번호 = _management_id.value.trim();
+			pre_관리번호 = 관리번호;
+			sessionStorage.setItem('manage_id', 관리번호);
+			find(BSA재제조, _management_id.value);
+			await delay();
+		} else {
+		 	var 재제조번호_search = _재제조번호.value.trim();
+			find_query(BSA재제조, { 재제조번호: _재제조번호.value.trim() });
+			await delay();
+		}
+		_management_id.value = '';
 		_재제조번호.value = '';
 		_차종.value = '';
 		_품번.value = '';
@@ -59,6 +71,7 @@ async function 상세입력_시작() {
 		_완전분해.value = '0000-00-00T00:00';
 		_폐기.value = '0000-00-00T00:00';
 
+		_management_id.value = find_array[0].관리번호;
 		_재제조번호.value = find_array[0].재제조번호;
 		//_차종.value = find_array[0].차종;
 		//_품번.value = find_array[0].품번;
@@ -225,7 +238,7 @@ async function 상세입력_시작() {
 		_재출하.value = '0000-00-00T00:00';
 		_완전분해.value = '0000-00-00T00:00';
 		_폐기.value = '0000-00-00T00:00';
-		item_detail_save();
+		item_detail_save(true);
 	}
 }
 
@@ -271,14 +284,15 @@ async function item_detail_save(flag_result = false) {
 	console.log(update_count);
 	console.log(insert_count);
 
-	if(update_count > 0) {
-		alert('업데이트 되었습니다');
-	}
+	if(flag_result == false) {
+		if(update_count > 0) {
+			alert('업데이트 되었습니다');
+		}
 
-	if(insert_count > 0) {
-		alert('신규 항목이 저장 되었습니다');
-	}
-
+		if(insert_count > 0) {
+			alert('신규 항목이 저장 되었습니다');
+		}
+	}	
 	차종 = _차종.value;
 }
 

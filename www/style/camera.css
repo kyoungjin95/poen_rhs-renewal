@@ -2,13 +2,14 @@ img.camera {
 	width: 20vw;
 	height: 25vw;
 	border: 10px;
-	object-fit: contain;
+	object-fit: contain
 }
 
 img.camera_capture {
-	width: 30vw;
-	height: 40vw;
+	width: 20vw;
+	height: 25vw;
 	border: 10px;
+	object-fit: contain
 }
 
 label.camera {
