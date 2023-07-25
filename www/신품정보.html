@@ -29,7 +29,20 @@
 								<label for="_날짜"><b>날짜</b></label>
 							</td>
 							<td>
-								<input type="datetime" id="_날짜" value="0000-00-00" required>
+								<input type="date" id="_날짜" value="0000-00-00" required>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="구분"><b>구분</b></label>
+							</td>
+							<td>
+								<input type="text" id="_구분" value="" size="40" required>
+								<select name="language" onchange="_구분_콤보박스(this);">
+									<option value="">---</option>
+									<option value="입고">입고</option>
+									<option value="출고">출고</option>
+								</select>
 							</td>
 						</tr>
 						<tr>

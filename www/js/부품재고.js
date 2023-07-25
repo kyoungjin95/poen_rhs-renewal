@@ -92,7 +92,7 @@ async function 부품재고_시작() {
 }
 
 async function 신품정보_삭제() {
-	deleteOne_신품정보(신품정보, 신품_바코드);
+	deleteOne_신품정보(자재입출고, 신품_바코드);
 	await delay();
 
 	if(delete_count > 0) {
@@ -114,4 +114,3 @@ async function 고품정보_삭제() {
 
 	document.getElementById('고품_QR').innerHTML = '';
 }
-

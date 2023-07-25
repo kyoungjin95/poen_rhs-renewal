@@ -98,6 +98,12 @@ async function 신품정보_save() {
 	신품정보등록_조회();
 }
 
+function _구분_콤보박스(e) {
+	const value = e.value;
+
+  	document.getElementById('_구분').value = value;
+}
+
 function _품명_콤보박스(e) {
 	const value = e.value;
 
