@@ -314,7 +314,7 @@ async function 분해조립_save() {
 	
 	console.log(신품_docs);
 	신품_docs.forEach(async function(doc) {
-		update_신품정보(신품정보, doc);
+		update_신품정보(자재입출고, doc);
 		await delay();
 
 		console.log(update_count);
@@ -350,28 +350,28 @@ async function 분해조립_save() {
 }
 
 async function request_신품QR() {
-	var QR = prompt('QR을 입력하세요');
-	count(신품정보, { QR: QR });
+	var 바코드 = prompt('바코드를 입력하세요');
+	count(자재입출고, { 바코드: 바코드 });
 	await delay();	
-	console.log('신품정보 doc_count: ', doc_count);
+	console.log('자재입출고 doc_count: ', doc_count);
 	if(doc_count > 0) {
-		find_신품정보(신품정보, { QR: QR });
+		find_신품정보(자재입출고, { 바코드: 바코드 });
 		await delay();
 		console.log(find_array);
 		
-		var doc = JSON.parse(JSON.stringify(신품정보_doc));
+		var doc = JSON.parse(JSON.stringify(자재입출고_doc));
 		doc.바코드 = find_array[0].바코드;
+		doc.날짜 = find_array[0].날짜;
+		doc.구분 = find_array[0].구분;
+		doc.차종 = find_array[0].차종;
 		doc.품명 = find_array[0].품명;
-		doc.QR = find_array[0].QR;
-		doc.구입처 = find_array[0].구입처;
-		doc.금액 = find_array[0].금액;
+		doc.품번 = find_array[0].품번;
 		doc.수량 = find_array[0].수량;
-		doc.남은수량 = Number(find_array[0].남은수량) - 1;
-		doc.사용여부 = '사용';
-		doc.사용_관리번호 = _management_id.value;
+		doc.사용관리번호 = _management_id.value;
 		신품_docs.push(doc);
 		console.log(신품_docs);
 		
+		var QR = prompt('QR을 입력하세요');
 		var str = 'QR:' + QR + ', 바코드:' + find_array[0].바코드;
 		console.log(str);
 		var 교체전_QR = prompt('교체전 QR을 입력하세요');

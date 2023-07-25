@@ -143,6 +143,7 @@ async function 신품정보_insert(val) {
 	doc.수량 = val.수량;
 	doc.LotNo = val.LotNo; 
 	doc.비고 = val.비고; 
+	doc.사용관리번호 = ''; 
 	update_신품정보(자재입출고, doc);
 	await delay();
 }

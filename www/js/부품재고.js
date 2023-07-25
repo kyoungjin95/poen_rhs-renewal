@@ -42,6 +42,7 @@ async function 부품재고_시작() {
 			{title:"수량", field:"수량", sorter:"string"},
 			{title:"LotNo", field:"LotNo", sorter:"string"},
 			{title:"비고", field:"비고", sorter:"string"},
+			{title:"사용관리번호", field:"사용관리번호", sorter:"string"},
 		],
 	});
 
