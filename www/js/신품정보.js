@@ -128,11 +128,8 @@ async function read_신품정보_func_csv() {
 			//console.log(res);
 			for(var i = 0; i < res.length; i++) {
 				신품정보_insert(res[i]);
-				await sleep(10);
+				await sleep(1);
 			};
-			console.log('insert count :', total_insert_count);
-			console.log('update count :', total_update_count);
-			console.log('fail count :', fail_count);
 		});
 		reader.readAsText(file);
 	});
@@ -145,7 +142,6 @@ async function 신품정보_insert(val) {
 	} else {
 		doc.바코드 = val.바코드.trim();
 	}
-	await sleep(DELAY);
 
 	doc.날짜 = val.날짜;
 	doc.구분 = val.구분;
@@ -158,4 +154,6 @@ async function 신품정보_insert(val) {
 	doc.사용관리번호 = ''; 
 	update_신품정보(자재입출고, doc);
 	await delay();
+
+	console.log('+');
 }
