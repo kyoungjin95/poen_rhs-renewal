@@ -351,11 +351,12 @@ async function 분해조립_save() {
 
 async function request_신품QR() {
 	var 바코드 = prompt('바코드를 입력하세요');
-	count(자재입출고, { 바코드: 바코드 });
+	var 바코드_출고 = 바코드 +  '.출고';
+	count(자재입출고, { 바코드: 바코드_출고});
 	await delay();	
 	console.log('자재입출고 doc_count: ', doc_count);
 	if(doc_count > 0) {
-		find_신품정보(자재입출고, { 바코드: 바코드 });
+		find_신품정보(자재입출고, { 바코드: 바코드_출고 });
 		await delay();
 		console.log(find_array);
 		
@@ -372,7 +373,7 @@ async function request_신품QR() {
 		console.log(신품_docs);
 		
 		var QR = prompt('QR을 입력하세요');
-		var str = 'QR:' + QR + ', 바코드:' + find_array[0].바코드;
+		var str = 'QR:' + QR + ', 바코드:' + 바코드;
 		console.log(str);
 		var 교체전_QR = prompt('교체전 QR을 입력하세요');
 		var 교체전_품번 = prompt('교체전 품번을 입력하세요');

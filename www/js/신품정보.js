@@ -140,7 +140,13 @@ async function read_신품정보_func_csv() {
 
 async function 신품정보_insert(val) {
 	var doc = 자재입출고_doc;
-	doc.바코드= val.바코드;
+	if(val.구분.trim() == '출고') {
+		doc.바코드 = val.바코드.trim() + '.출고';
+	} else {
+		doc.바코드 = val.바코드.trim();
+	}
+	await sleep(DELAY);
+
 	doc.날짜 = val.날짜;
 	doc.구분 = val.구분;
 	doc.차종 = val.차종;
