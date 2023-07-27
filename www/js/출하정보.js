@@ -49,10 +49,21 @@ async function 출하정보_managementID() {
 		}
 	}
 
+	find(BSA재제조, _management_id.value );
+	await delay();
+
+	console.log('=>>', find_array);
+	_차종.value = find_array[0].차종;
+	_품번.value = find_array[0].품번;
+	_RO_no.value = find_array[0].RO_no;
+
 	count(출하정보, { 관리번호 : _management_id.value });
 	await delay();
 	console.log('doc_count: ', doc_count);
 	if(doc_count >= 1) {
+		console.log('관리번호:', 관리번호);
+
+		
 		find(출하정보, _management_id.value);
 		await delay();
 		console.log(find_array);
@@ -69,7 +80,7 @@ async function 출하정보_managementID() {
 		_완료보고서_작성확인.value = find_array[0].완료보고서_작성확인;
 		_클린상태.value = find_array[0].클린상태;
 		_팔레트_적정위치.value = find_array[0].팔레트_적정위치;
-		_포장랩상태.value = find_array[0].포장랩상태;
+		포장랩상태.value = find_array[0].포장랩상태;
 		_UPR_QR.value = find_array[0].UPR_QR;
 		_LWR_QR.value = find_array[0].LWR_QR;
 		_HKMC_스티커_URP.value = find_array[0].HKMC_스티커_URP;
@@ -189,6 +200,7 @@ async function 출하정보_managementID() {
 		_납품처.value = '';
 		_출하일.value = '0000-00-00T00:00';
 		_출하코드.value = '';
+		_납품처.value = '';
 		_납품처.value = '';
 		_출하일.value = '0000-00-00T00:00';
 		_검사일.value = '0000-00-00T00:00';
