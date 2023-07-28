@@ -59,13 +59,14 @@ async function change_label() {
 	const _label = document.getElementById('login_label');
 	const _login_btn = document.getElementById('login_btn');
 	const _login_info = document.getElementById('login_info');
+	_label.innerHTML = 'Login';
 
 	if(_login_btn.innerHTML == '로그아웃') {
 		sessionStorage.clear();
 		worker = '';
 		level = '';
 		admin_btn.style.display = 'none';
-		_label.innerHTML = 'Login';
+		//_label.innerHTML = 'Login';
 		_login_btn.innerHTML = '로그인';
 		_login_info.innerHTML = '';
 		const _admin_btn = document.getElementById('부품재고_btn');
@@ -82,11 +83,11 @@ async function change_label() {
 		worker = '';
 		level = '';
 		admin_btn.style.display = 'none';
-		_label.innerHTML = 'Login';
+		//_label.innerHTML = 'Login';
 		_login_btn.innerHTML = '로그인';
 		_login_info.innerHTML = '';
 	} else {
-		_label.innerHTML = 'Logout';
+		//_label.innerHTML = 'Logout';
 		_login_btn.innerHTML = '로그아웃';
 		_login_info.innerHTML = worker + ' / 로그인 中  ';
 	}

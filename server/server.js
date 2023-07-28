@@ -41,9 +41,13 @@ server.listen(80, () => {
 });
 
 io.on('connection', async function(socket) {
-	console.log('a user connected');
+	var login = false;
 
+	console.log('a user connected');
+	
 	socket.on('aggregate', async function() {
+		if(login == false) return;
+
 		await socket.emit('aggregate_result', 'start');
 
 		var file = path.join(__dirname, '../doc/all_data.csv');
@@ -848,42 +852,58 @@ io.on('connection', async function(socket) {
 
 
 	socket.on('distinct', async function(worker, col, query, field_name) {
+		if(login == false) return;
+
 		const result_array = await distinct(col, query, field_name);
 		socket.emit('distinct_result', result_array);
 	});
 
 	socket.on('insert', async function(worker, col, doc) {
+		if(login == false) return;
+
 		const result = await insert(col, doc);
 		socket.emit('insert_result', result);
 		logger.info('worker:'+ worker + ' insert col:' + col +'doc:'+ JSON.stringify(doc));
 	});
 
 	socket.on('count', async function(worker, col, query, check) {
+		if(login == false && col != '계정') return;
 		const cnt = await count(col, query);
 		socket.emit('count_result', cnt, check);
 		//logger.info('worker:'+ worker + ' count col:' + col +'query:'+ JSON.stringify(query));
+		if(login == false && col == '계정' && cnt > 0) {
+			login = true;
+		} else if(login == true && col == '계정' && cnt < 1){
+			login = false;
+		}
 	});
 
 	socket.on('find', async function(worker, col, query, options, check) {
+		if(login == false) return;
+
 		const result_array = await find(col, query, options);
 		socket.emit('find_result', result_array, check);
 		//logger.info('worker:'+ worker + ' find col:' + col +'query:'+ JSON.stringify(query));
 	});
 
 	socket.on('update', async function(worker, col, filter, doc) {
+		if(login == false) return;
+
 		const result = await update(col, filter, doc);
 		socket.emit('update_result', result);
 		logger.info('worker:'+ worker + ' update col:' + col + 'doc:' + JSON.stringify(doc));
 	});
 
 	socket.on('delete', async function(worker, col, query) {
+		if(login == false) return;
+
 		const result_count = await deleteOne(col, query);
 		socket.emit('delete_result', result_count);
 		logger.info('worker:'+ worker + ' delete col:' + col + 'query:'+ JSON.stringify(query));
 	});
 
 	process.on('exit', function(code) {
-		cconsole.log('Exit : ', code);
+		console.log('Exit : ', code);
 		client.close();
 	});
 });
