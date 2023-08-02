@@ -1,8 +1,11 @@
-async function 성능검사_managementID() {
+async function 성능검사_시작() {
 	if(worker == '') return;
 	while(_management_id == undefined) {
 		await sleep(DELAY);
 	}
+
+	flag_성능검사 = false;
+
 	_management_id.value =  관리번호;
 	_검사자.value = worker;
 

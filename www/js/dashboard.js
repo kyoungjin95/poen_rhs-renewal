@@ -81,7 +81,6 @@ async function dash_분해조립() {
 	console.log('분해조립당일 count:', doc_count);
 	var 분해조립당일 = doc_count;
 
-	//document.getElementById('num3').innerHTML = '527(1)';
 	document.getElementById('num3').innerHTML = 분해조립누적 + ' (' + 분해조립당일 + ')';
 }
 
@@ -102,7 +101,6 @@ async function dash_성능검사() {
 	console.log('성능검사 당일  count:', doc_count);
 	var 성능검사당일 = doc_count;
 
-	//document.getElementById('num4').innerHTML = '511(1)';
 	document.getElementById('num4').innerHTML = 성능검사누적 + ' ('+ 성능검사당일 + ')';
 }
 
@@ -123,7 +121,6 @@ async function dash_EOL() {
 	console.log('EOL 당일  count:', doc_count);
 	var EOL당일 = doc_count;
 	
-	//document.getElementById('num5').innerHTML = '511(1)';
 	document.getElementById('num5').innerHTML = EOL누적 + ' (' + EOL당일 + ')';
 }
 
@@ -144,6 +141,5 @@ async function dash_출하() {
 	console.log('출하당일 count:', doc_count);
 	var 출하당일 = doc_count;
 	
-	//document.getElementById('num8').innerHTML = '428(0)';
 	document.getElementById('num8').innerHTML = 출하누적 + ' (' + 출하당일 + ')';
 }

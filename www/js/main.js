@@ -19,8 +19,8 @@ function blockRightClick(){
 
 admin_btn.style.display = 'none';
 부품재고_btn.style.display = 'none';
-var _worker = sessionStorage.getItem('worker');
-var _level = sessionStorage.getItem('level');
+//var _worker = sessionStorage.getItem('worker');
+//var _level = sessionStorage.getItem('level');
 if(_worker == '' || worker == null) worker = '';
 else worker = _worker;
 var flag_show = false;
@@ -70,6 +70,13 @@ var flag_camera = false;
 var flag_관리자 = false;
 var flag_repeat_생산현황 = false;
 var flag_repeat_대시보드 = false;
+var flag_입고 = false;
+var flag_세척 = false;
+var flag_기초검사 = false;
+var flag_분해조립 = false;
+var flag_성능검사 = false;
+var flag_EOL = false;
+var flag_출하 = false;
 
 var interval = setInterval(function() {
 	if(flag_재제조현황 == true) { stop_repeat(); 재제조현황_시작();}
@@ -84,6 +91,13 @@ var interval = setInterval(function() {
 	if(flag_생산현황 == true) { stop_repeat(); 생산현황_시작();}
 	if(flag_대시보드 == true) { start_repeat_대시보드(); 대시보드_시작();}
 	if(flag_관리자 == true) { stop_repeat(); 관리자_시작();}
+	if(flag_입고 == true) { stop_repeat(); 입고_시작();}
+	if(flag_세척 == true) { stop_repeat(); 세척_시작();}
+	if(flag_기초검사 == true) { stop_repeat(); 기초검사_시작();}
+	if(flag_분해조립 == true) { stop_repeat(); 분해조립_시작();}
+	if(flag_성능검사 == true) { stop_repeat(); 성능검사_시작();}
+	if(flag_EOL == true) { stop_repeat(); EOL_시작();}
+	if(flag_출하 == true) { stop_repeat(); 출하정보_시작();}
 }, 500);
 
 var intervalRepeat = setInterval(function() {

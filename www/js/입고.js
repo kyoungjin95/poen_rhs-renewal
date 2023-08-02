@@ -1,8 +1,11 @@
-async function 입고_managementID() {
+async function 입고_시작() {
 	if(worker == '') return;
 	while(_management_id == undefined) {
 		await sleep(DELAY);
 	}
+
+	flag_입고 = false;
+
 	_management_id.value =  관리번호;
 
 	console.log('load: ', _management_id.value);

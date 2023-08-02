@@ -1,8 +1,9 @@
-async function 세척_managementID() {
+async function 세척_시작() {
 	if(worker == '') return;
 	while(_management_id == undefined) {
 		await sleep(DELAY);
 	}
+	flag_세척 = false;
 	_management_id.value =  관리번호;
 
 	if(_management_id.value.length == 0) return;

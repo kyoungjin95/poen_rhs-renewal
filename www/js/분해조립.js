@@ -19,16 +19,18 @@ var Busbars_count = 1;
 var BMA_count = 1;
 
 async function 분해조립_재제조번호() {
-	분해조립_managementID(true);
+	분해조립_시작(true);
 }
 
-async function 분해조립_managementID(is재제조번호 = false) {
+async function 분해조립_시작(is재제조번호 = false) {
 	//if(flag_loaded == true) return;
 	if(worker == '') return;
 	while(_management_id == undefined) {
 		await sleep(DELAY);
 	}
 	
+	flag_분해조립 = false;
+
 	flag_loaded = true;
 	_management_id.value =  관리번호;
 

@@ -1,4 +1,4 @@
-async function 특이사항_managementID() {
+async function 특이사항_시작() {
 	if(worker == '') return;
 	while(_management_id == undefined) {
 		await sleep(DELAY);

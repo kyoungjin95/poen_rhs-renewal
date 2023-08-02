@@ -305,6 +305,7 @@ async function processStep() {
 
 	switch(step) {
 		case '입고' :
+			flag_입고 = true;
 			loadPage('base/입고.html');
 			break;
 
@@ -312,23 +313,28 @@ async function processStep() {
 			break;
 
 		case '세척' :
+			flag_세척 = true;
 			loadPage('base/세척.html');
 			break;
 
 		case '기초검사' :
+			flag_기초검사 = true;
 			loadPage('base/기초검사.html');
 			break;
 
 		case '분해조립' :
+			flag_분해조립 = true;
 			flag_loaded = false;
 			loadPage('base/분해조립.html');
 			break;
 
 		case '성능검사' :
+			flag_성능검사 = true;
 			loadPage('base/성능검사.html');
 			break;
 
 		case 'EOL' :
+			flag_EOL = true;
 			loadPage('base/EOL.html');
 			break;
 
@@ -336,6 +342,7 @@ async function processStep() {
 			break;
 
 		case '출하검사' :
+			flag_출하 = true;
 			loadPage('base/출하정보.html');
 			break;
 

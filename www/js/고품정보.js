@@ -1,5 +1,5 @@
 var tabledata = [];
-async function 고품정보등록_managementID() {
+async function 고품정보등록_시작() {
 	if(worker == '') return;
 	while(_management_id == undefined) {
 		await sleep(DELAY);
@@ -66,7 +66,7 @@ async function 고품정보_save() {
 		alert('저장 되었습니다');
 	}
 
-	고품정보등록_managementID();
+	고품정보등록_시작();
 }
 
 function _품명_콤보박스(e) {

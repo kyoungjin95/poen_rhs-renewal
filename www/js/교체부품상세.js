@@ -1,4 +1,4 @@
-async function 교체부품상세_managementID() {
+async function 교체부품상세_시작() {
 	if(worker == '') return;
 	while(_management_id == undefined) {
 		await sleep(DELAY);

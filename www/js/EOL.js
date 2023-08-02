@@ -1,8 +1,11 @@
-async function EOL_managementID() {
+async function EOL_시작() {
 	if(worker == '') return;
 	while(_management_id == undefined) {
 		await sleep(DELAY);
 	}
+
+	flag_EOL = false;
+
 	_management_id.value =  관리번호;
 
 	if(_management_id.value.length == 0) return;
