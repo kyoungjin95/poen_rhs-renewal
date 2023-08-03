@@ -10,7 +10,7 @@ async function 재충전정보_시작() {
 	var now = new Date();
 	var 기준일 = new Date(now.setMonth(now.getMonth() - 3));
 
-	count(BSA재제조, { 마지막충전일 : { $lte : 기준일, $ne : '' }});
+	count(BSA재제조, { 마지막충전일 : { $lte : 기준일, $ne : '' }, 공정단계 : { $ne : '출하' }});
 	await delay();
 	await sleep(100);
 

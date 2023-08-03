@@ -28,10 +28,10 @@ async function login() {
 				var now = new Date();
 				var 기준일 = new Date(now.setMonth(now.getMonth() - 3));
 
-				count(BSA재제조, { 마지막충전일 : { $lte : 기준일, $ne : '' }});
+				count(BSA재제조, { 마지막충전일 : { $lte : 기준일, $ne : '' }, 공정단계 : { $ne : '출하'}});
 				await delay();
 
-				console.log('doc_count: ', doc_count);
+				console.log('recharge_count: ', doc_count);
 				if(doc_count >= 1) {
 					alert('재충전이 필요한 BSA가 있습니다.');
 				}
