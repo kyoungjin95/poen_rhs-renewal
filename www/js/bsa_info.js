@@ -48,6 +48,7 @@ async function 재제조현황_조회(flag_id_search = false) {
 			await delay();
 		} 
 
+		await sleep(200);
 		tabledata_BSA = find_array;
 		row_one_id = find_array[0].관리번호;
 	}

@@ -21,14 +21,13 @@ admin_btn.style.display = 'none';
 부품재고_btn.style.display = 'none';
 //var _worker = sessionStorage.getItem('worker');
 //var _level = sessionStorage.getItem('level');
-if(_worker == '' || worker == null) worker = '';
-else worker = _worker;
+if(worker == null) worker = '';
+
 var flag_show = false;
 
 times_show();
 
 console.log('worker:', worker);
-console.log('level:', _level);
 if(worker == '' || worker == null) {
 	loadPage('base/login.html');
 	change_label();

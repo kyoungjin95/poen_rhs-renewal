@@ -14,7 +14,15 @@ async function 출하정보_시작() {
 
 	_검사자.value = worker;
 
-	if(차종 != '') {
+
+	find(BSA재제조, _management_id.value );
+	await delay();
+
+	_차종.value = find_array[0].차종;
+	_품번.value = find_array[0].품번;
+	_RO_no.value = find_array[0].RO_no;
+
+	if(_차종.value != '') {
 		_A.style.display = 'none';
 		_B.style.display = 'none';
 		_C.style.display = 'none';
@@ -52,14 +60,6 @@ async function 출하정보_시작() {
 		}
 	}
 
-	find(BSA재제조, _management_id.value );
-	await delay();
-
-	console.log('=>>', find_array);
-	_차종.value = find_array[0].차종;
-	_품번.value = find_array[0].품번;
-	_RO_no.value = find_array[0].RO_no;
-
 	count(출하정보, { 관리번호 : _management_id.value });
 	await delay();
 	console.log('doc_count: ', doc_count);
@@ -83,7 +83,7 @@ async function 출하정보_시작() {
 		_완료보고서_작성확인.value = find_array[0].완료보고서_작성확인;
 		_클린상태.value = find_array[0].클린상태;
 		_팔레트_적정위치.value = find_array[0].팔레트_적정위치;
-		포장랩상태.value = find_array[0].포장랩상태;
+		_포장랩상태.value = find_array[0].포장랩상태;
 		_UPR_QR.value = find_array[0].UPR_QR;
 		_LWR_QR.value = find_array[0].LWR_QR;
 		_HKMC_스티커_URP.value = find_array[0].HKMC_스티커_URP;
