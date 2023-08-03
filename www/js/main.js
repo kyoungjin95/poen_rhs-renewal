@@ -20,8 +20,11 @@ function blockRightClick(){
 admin_btn.style.display = 'none';
 부품재고_btn.style.display = 'none';
 //var _worker = sessionStorage.getItem('worker');
-//var _level = sessionStorage.getItem('level');
-if(worker == null) worker = '';
+var _level = sessionStorage.getItem('level');
+if(worker == null) {
+	worker = '';
+	_level = '';
+}
 
 var flag_show = false;
 

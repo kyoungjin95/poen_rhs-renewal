@@ -15,7 +15,7 @@ async function login() {
 			console.log('test:', find_array);
 			level = find_array[0].level;
 			//sessionStorage.setItem('worker',  worker);
-			//sessionStorage.setItem('level',  level);
+			sessionStorage.setItem('level',  level);
 
 			alert('로그인 성공');
 			setTimeout(async function() {
