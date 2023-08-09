@@ -43,10 +43,11 @@
 			</div>
 			</br>
 			<div>
-				<label for='grid_입고정보'>입고 정보</label>
+				<label for='grid_입고정보'>입고 정보</label><br/>
+				<button onClick='toggle1();'>image</button>
 				<div id='grid_입고정보'></div>
 			</div>
-			<div class='pic'>
+			<div id='pic_1' class='pic'>
 				<center>
 				<img id='입고정보_pic1' class='camera' width='10px' height='10px' onmouseenter='zoomIn(event)' onmouseleave='zoomOut(event)'></img>
 				<img id='입고정보_pic2' class='camera' width='10px' height='10px' onmouseenter='zoomIn(event)' onmouseleave='zoomOut(event)'></img>
@@ -66,10 +67,11 @@
 				</center>
 			</div>
 			<div>
-				<label for='grid_세척정보'>세척 정보</label>
+				<label for='grid_세척정보'>세척 정보</label><br/>
+				<button onClick='toggle2();'>image</button>
 				<div id='grid_세척정보'></div>
 			</div>
-			<div class='pic'>
+			<div id='pic_2' class='pic'>
 				<center>
 				<img id='세척_pic1' class='camera' width='10px' height='10px' onmouseenter='zoomIn(event)' onmouseleave='zoomOut(event)'></img>
 				<img id='세척_pic2' class='camera' width='10px' height='10px' onmouseenter='zoomIn(event)' onmouseleave='zoomOut(event)'></img>
@@ -89,10 +91,11 @@
 				</center>
 			</div>
 			<div>
-				<label for='grid_기초검사'>기초 검사</label>
+				<label for='grid_기초검사'>기초 검사</label><br/>
+				<button onClick='toggle3();'>image</button>
 				<div id='grid_기초검사'></div>
 			</div>
-			<div class='pic'>
+			<div id='pic_3' class='pic'>
 				<center>
 				<img id='기초검사_pic1' class='camera' width='10px' height='10px' onmouseenter='zoomIn(event)' onmouseleave='zoomOut(event)'></img>
 				<img id='기초검사_pic2' class='camera' width='10px' height='10px' onmouseenter='zoomIn(event)' onmouseleave='zoomOut(event)'></img>
@@ -113,10 +116,11 @@
 			</div>
 			</br>
 			<div>
-				<label for='grid_분해조립'>분해 조립</label>
+				<label for='grid_분해조립'>분해 조립</label><br/>
+				<button onClick='toggle4();'>image</button>
 				<div id='grid_분해조립'></div>
 			</div>
-			<div class='pic'>
+			<div id='pic_4' class='pic'>
 				<center>
 				<img id='분해조립_pic1' class='camera' width='10px' height='10px' onmouseenter='zoomIn(event)' onmouseleave='zoomOut(event)'></img>
 				<img id='분해조립_pic2' class='camera' width='10px' height='10px' onmouseenter='zoomIn(event)' onmouseleave='zoomOut(event)'></img>
@@ -137,10 +141,11 @@
 			</div>
 			</br>
 			<div>
-				<label for='grid_성능검사'>성능 검사</label>
+				<label for='grid_성능검사'>성능 검사</label></br>
+				<button onClick='toggle5();'>image</button>
 				<div id='grid_성능검사'></div>
 			</div>
-			<div class='pic'>
+			<div id='pic_5' class='pic'>
 				<center>
 				<img id='성능검사_pic1' class='camera' width='10px' height='10px' onmouseenter='zoomIn(event)' onmouseleave='zoomOut(event)'></img>
 				<img id='성능검사_pic2' class='camera' width='10px' height='10px' onmouseenter='zoomIn(event)' onmouseleave='zoomOut(event)'></img>
@@ -161,10 +166,11 @@
 			</div>
 			</br>
 			<div>
-				<label for='grid_EOL'>EOL</label>
+				<label for='grid_EOL'>EOL</label></br>
+				<button onClick='toggle6();'>image</button>
 				<div id='grid_EOL'></div>
 			</div>
-			<div class='pic'>
+			<div id='pic_6' class='pic'>
 				<center>
 				<img id='EOL_pic1' class='camera' width='10px' height='10px' onmouseenter='zoomIn(event)' onmouseleave='zoomOut(event)'></img>
 				<img id='EOL_pic2' class='camera' width='10px' height='10px' onmouseenter='zoomIn(event)' onmouseleave='zoomOut(event)'></img>
@@ -185,10 +191,11 @@
 			</div>
 			</br>
 			<div>
-				<label for='grid_출하정보'>출하 정보</label>
+				<label for='grid_출하정보'>출하 정보</label><br/>
+				<button onClick='toggle7();'>image</button>
 				<div id='grid_출하정보'></div>
 			</div>
-			<div class='pic'>
+			<div id='pic_7' class='pic'>
 				<center>
 				<img id='출하정보_pic1' class='camera' width='10px' height='10px' onmouseenter='zoomIn(event)' onmouseleave='zoomOut(event)'></img>
 				<img id='출하정보_pic2' class='camera' width='10px' height='10px' onmouseenter='zoomIn(event)' onmouseleave='zoomOut(event)'></img>
@@ -209,10 +216,11 @@
 			</div>
 			</br>
 			<div>
-				<label for='grid_특이사항'>특이사항</label>
+				<label for='grid_특이사항'>특이사항</label><br/>
+				<button onClick='toggle8();'>image</button>
 				<div id='grid_특이사항'></div>
 			</div>
-			<div class='pic'>
+			<div id='pic_8' class='pic'>
 				<center>
 				<img id='특이사항_pic1' class='camera' width='10px' height='10px' onmouseenter='zoomIn(event)' onmouseleave='zoomOut(event)'></img>
 				<img id='특이사항_pic2' class='camera' width='10px' height='10px' onmouseenter='zoomIn(event)' onmouseleave='zoomOut(event)'></img>
@@ -281,10 +289,12 @@
 				<label for='grid_교체부품상세10'>교체부품상세10</label>
 				<div id='grid_교체부품상세10'></div>
 			</div>
+			<br/>
 			<div>
 				<label>반품입고 사진</label><br/>
+				<button onClick='toggle9();'>image</button>
 			</div>
-			<div class='pic'>
+			<div id='pic_9' class='pic'>
 				<center>
 				<img id='반품입고_pic1' class='camera' width='10px' height='10px' onmouseenter='zoomIn(event)' onmouseleave='zoomOut(event)'></img>
 				<img id='반품입고_pic2' class='camera' width='10px' height='10px' onmouseenter='zoomIn(event)' onmouseleave='zoomOut(event)'></img>
@@ -303,10 +313,12 @@
 				<img id='반품입고_pic15' class='camera' width='10px' height='10px' onmouseenter='zoomIn(event)' onmouseleave='zoomOut(event)'></img>
 				</center>
 			</div>
+			<br/>
 			<div>
 				<label>재출하 사진</label><br/>
+				<button onClick='toggle10();'>image</button>
 			</div>
-			<div class='pic'>
+			<div id='pic_10' class='pic'>
 				<center>
 				<img id='재출하_pic1' class='camera' width='10px' height='10px' onmouseenter='zoomIn(event)' onmouseleave='zoomOut(event)'></img>
 				<img id='재출하_pic2' class='camera' width='10px' height='10px' onmouseenter='zoomIn(event)' onmouseleave='zoomOut(event)'></img>
@@ -325,10 +337,12 @@
 				<img id='재출하_pic15' class='camera' width='10px' height='10px' onmouseenter='zoomIn(event)' onmouseleave='zoomOut(event)'></img>
 				</center>
 			</div>
+			<br/>
 			<div>
 				<label>완전분해 사진</label><br/>
+				<button onClick='toggle11();'>image</button>
 			</div>
-			<div class='pic'>
+			<div id='pic_11' class='pic'>
 				<center>
 				<img id='완전분해_pic1' class='camera' width='10px' height='10px' onmouseenter='zoomIn(event)' onmouseleave='zoomOut(event)'></img>
 				<img id='완전분해_pic2' class='camera' width='10px' height='10px' onmouseenter='zoomIn(event)' onmouseleave='zoomOut(event)'></img>
@@ -347,10 +361,12 @@
 				<img id='완전분해_pic15' class='camera' width='10px' height='10px' onmouseenter='zoomIn(event)' onmouseleave='zoomOut(event)'></img>
 				</center>
 			</div>
+			<br/>
 			<div>
 				<label>폐기 사진</label><br/>
+				<button onClick='toggle12();'>image</button>
 			</div>
-			<div class='pic'>
+			<div id='pic_12' class='pic'>
 				<center>
 				<img id='폐기_pic1' class='camera' width='10px' height='10px' onmouseenter='zoomIn(event)' onmouseleave='zoomOut(event)'></img>
 				<img id='폐기_pic2' class='camera' width='10px' height='10px' onmouseenter='zoomIn(event)' onmouseleave='zoomOut(event)'></img>

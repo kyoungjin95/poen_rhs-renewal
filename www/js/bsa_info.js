@@ -14,6 +14,19 @@ async function 재제조현황_시작() {
 	}
 	await sleep(10);
 
+	toggle1();
+	toggle2();
+	toggle3();
+	toggle4();
+	toggle5();
+	toggle6();
+	toggle7();
+	toggle8();
+	toggle9();
+	toggle10();
+	toggle11();
+	toggle12();
+
 	관리번호 = '';
 	if(_management_id.value == '') {
 		flag_id_search = 0;
@@ -1644,4 +1657,112 @@ function zoomOut(event) {
 	event.target.style.transform = "scale(1)";
 	event.target.style.zIndex = 0;
 	event.target.style.transition = "all 0.5s";
+}
+
+function toggle1() {
+	var con = document.getElementById("pic_1");
+	if(con.style.display=='none'){
+		con.style.display = 'block';
+	}else{
+		con.style.display = 'none';
+	}
+}
+
+function toggle2() {
+	var con = document.getElementById("pic_2");
+	if(con.style.display=='none'){
+		con.style.display = 'block';
+	}else{
+		con.style.display = 'none';
+	}
+}
+
+function toggle3() {
+	var con = document.getElementById("pic_3");
+	if(con.style.display=='none'){
+		con.style.display = 'block';
+	}else{
+		con.style.display = 'none';
+	}
+}
+
+function toggle4() {
+	var con = document.getElementById("pic_4");
+	if(con.style.display=='none'){
+		con.style.display = 'block';
+	}else{
+		con.style.display = 'none';
+	}
+}
+
+function toggle5() {
+	var con = document.getElementById("pic_5");
+	if(con.style.display=='none'){
+		con.style.display = 'block';
+	}else{
+		con.style.display = 'none';
+	}
+}
+
+function toggle6() {
+	var con = document.getElementById("pic_6");
+	if(con.style.display=='none'){
+		con.style.display = 'block';
+	}else{
+		con.style.display = 'none';
+	}
+}
+
+function toggle7() {
+	var con = document.getElementById("pic_7");
+	if(con.style.display=='none'){
+		con.style.display = 'block';
+	}else{
+		con.style.display = 'none';
+	}
+}
+
+function toggle8() {
+	var con = document.getElementById("pic_8");
+	if(con.style.display=='none'){
+		con.style.display = 'block';
+	}else{
+		con.style.display = 'none';
+	}
+}
+
+function toggle9() {
+	var con = document.getElementById("pic_9");
+	if(con.style.display=='none'){
+		con.style.display = 'block';
+	}else{
+		con.style.display = 'none';
+	}
+}
+
+function toggle10() {
+	var con = document.getElementById("pic_10");
+	if(con.style.display=='none'){
+		con.style.display = 'block';
+	}else{
+		con.style.display = 'none';
+	}
+}
+
+function toggle11() {
+	var con = document.getElementById("pic_11");
+	if(con.style.display=='none'){
+		con.style.display = 'block';
+	}else{
+		con.style.display = 'none';
+	}
+}
+
+function toggle12() {
+	var con = document.getElementById("pic_12");
+	if(con.style.display=='none'){
+		con.style.display = 'block';
+	}else{
+		con.style.display = 'none';
+	}
 }
