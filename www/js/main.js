@@ -36,7 +36,7 @@ if(worker == '' || worker == null) {
 	change_label();
 	const _login_info = document.getElementById('login_info');
 	_login_info.innerHTML = '';
-	const _admin_btn = document.getElementById('부품재고_btn');
+	const _admin_btn = document.getElementById('admin_btn');
 	_admin_btn.style.display = 'none';
 	const _부품재고_btn = document.getElementById('부품재고_btn');
 	_부품재고_btn.style.display = 'none';
@@ -47,7 +47,7 @@ if(worker == '' || worker == null) {
 	_login_btn.innerHTML = '로그아웃';
 	setTimeout(function() {
 		if(_level == '관리자') {
-			const _admin_btn = document.getElementById('부품재고_btn');
+			const _admin_btn = document.getElementById('admin_btn');
 			_admin_btn.style.display = 'block';
 		}
 		if(_level == '부품관리자') {
@@ -58,6 +58,9 @@ if(worker == '' || worker == null) {
 		flag_대시보드 = true;
 	}, 1000);
 }
+
+alert('사원번호로 로그인 해주세요!!\n ID : 사원번호 , Password: 사원번호*');
+
 var flag_재제조현황 = false;
 var flag_상세입력 = false;
 var flag_년간현황 = false;
