@@ -14,11 +14,11 @@ img.camera_capture {
 
 label.camera {
 	display: inline-block;
-	width: 100px;
-	height:20px;
-	background-color: blue;
-	color: white;
-	font-size: 16px;
+	width: 10wv;
+	height: 2.5vw;
+	background-color: gray;
+	color: green;
+	font-size: 2vw;
 	cursor: pointer;
 	box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
 	vertical-align: middle;

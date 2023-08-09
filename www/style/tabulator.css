@@ -1,10 +1,11 @@
 .tabulator {
   position: relative;
-  border: 1px solid #999;
-  background-color: #888;
+  border: 2px solid #2F4F4F;
+  background-color: #F8F8FF;
   font-size: 1vw;
   text-align: left;
   overflow: hidden;
+  border-radius: 10px;
   -webkit-transform: translateZ(0);
   -moz-transform: translateZ(0);
   -ms-transform: translateZ(0);
@@ -33,9 +34,9 @@
   position: relative;
   box-sizing: border-box;
   width: 100%;
-  border-bottom: 1px solid #999;
-  background-color: #e6e6e6;
-  color: #555;
+  border-bottom: 1px solid #2F4F4F;
+  background-color: #2F4F4F;
+  color: #228B22;
   font-weight: bold;
   white-space: nowrap;
   overflow: hidden;
@@ -65,7 +66,7 @@
   flex-direction: column;
   justify-content: flex-start;
   border-right: 1px solid #aaa;
-  background: #e6e6e6;
+  background: #E6E6FA;
   text-align: left;
   vertical-align: bottom;
   overflow: hidden;
