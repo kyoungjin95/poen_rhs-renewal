@@ -16,7 +16,7 @@ label.camera {
 	display: inline-block;
 	width: 10wv;
 	height: 2.5vw;
-	background-color: gray;
+	background-color: yellow;
 	color: green;
 	font-size: 2vw;
 	cursor: pointer;
