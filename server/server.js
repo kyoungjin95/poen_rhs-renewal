@@ -887,7 +887,7 @@ io.on('connection', async function(socket) {
 	});
 
 	socket.on('update', async function(worker, col, filter, doc) {
-		if(login == false) return;
+		if(login == false && col != '계정') return;
 
 		const result = await update(col, filter, doc);
 		socket.emit('update_result', result);
