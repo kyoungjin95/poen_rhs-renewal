@@ -370,7 +370,12 @@ async function request_신품QR() {
 		doc.품명 = find_array[0].품명;
 		doc.품번 = find_array[0].품번;
 		doc.수량 = find_array[0].수량;
-		doc.사용관리번호 = _management_id.value;
+		if(find_array[0].사용관리번호!= '') {
+			doc.사용관리번호 = find_array[0].사용관리번호+ ',' + _management_id.value;
+		} else {
+			doc.사용관리번호 = _management_id.value;
+		}
+
 		신품_docs.push(doc);
 		console.log(신품_docs);
 		
