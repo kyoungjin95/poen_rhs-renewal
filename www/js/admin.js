@@ -23,10 +23,10 @@ async function add_user() {
 		return;
 	}
 
-	const hash = CryptoJS.MD5(_passwd.value); 	
+	const hash = CryptoJS.MD5(_passwd.value.trim()); 	
 
 	var doc = 계정_doc;
-	doc.id = _id.value;
+	doc.id = _id.value.trim();
 	doc.passwd = hash.toString();
 	doc.level = _set_level.value;
 
