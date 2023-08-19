@@ -1389,7 +1389,7 @@ socket.on('disconnect', function() {
 async function aggregate() {
         if(socket == undefined) return;
         flag_arrivedMSG = false;
-        socket.emit('aggregate');
+        socket.emit('aggregate', level);
 }
 
 async function distinct(col, query, field_name) {
@@ -1407,7 +1407,7 @@ async function count(col, query) {
 	while(flag_arrivedMSG == false) {
 		check++;
 		if(check > 10000) check = 0;
-		socket.emit('count', worker, col, query, check);
+		socket.emit('count', level, col, query, check);
 		await sleep(DELAY);
 	}
 }

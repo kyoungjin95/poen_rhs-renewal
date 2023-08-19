@@ -55,9 +55,10 @@ io.on('connection', async function(socket) {
 
 	console.log('a user connected');
 	
-	socket.on('aggregate', async function() {
+	socket.on('aggregate', async function(level) {
 		if(account.login == false) return;
-
+		account.level = level;
+		console.log('level:', account.level);
 		await socket.emit('aggregate_result', 'start');
 
 		var file = path.join(__dirname, '../doc/all_data.csv');
@@ -87,17 +88,13 @@ io.on('connection', async function(socket) {
 		logger.info('worker:'+ worker + ' insert col:' + col +'doc:'+ JSON.stringify(doc));
 	});
 
-	socket.on('count', async function(worker, col, query, check) {
+	socket.on('count', async function(level, col, query, check) {
 		if(account.login == false && col != '계정') return;
 		const cnt = await count(col, query);
 		socket.emit('count_result', cnt, check);
 		//logger.info('worker:'+ worker + ' count col:' + col +'query:'+ JSON.stringify(query));
 		if(account.login == false && col == '계정' && cnt > 0) {
 			account.login = true;
-
-			var result = await find('계정', query, { sort: { kind: 1}, projection: 계정_ });
-			account.level = result[0].level;
-			
 		} else if(account.login == true && col == '계정' && cnt < 1){
 			account.login = false;
 		}
@@ -298,12 +295,73 @@ function sleep(ms) {
 }
 
 async function write_data(file, level) { 
+	console.log('level:', level);
 	const result_array = await aggregate();
 
 	for await (const doc of result_array) {
-		if(level == 'kia' && doc.차종 in ['DE', 'DE_EV', 'DEPBV', 'CV', 'CV_EV', 'MV', 'MV_EV', 'PU', 'PU_EV', 'SG2', 'TAM', 'PS', 'PS_EV', 'SK3']) continue;
-		if(level == 'hyundai' && doc.차종 in ['OS', 'OS_EV', 'NE', 'NE_EV', 'HR', 'HR_EV', 'LK', 'LK_EV', 'LM', 'LM_EV', 'LKFC', 'CS', 'CS-EV', 'CS_EV', 'SX2', 'AE', 'AE_EV', 'CE', 'CE_EV', 'ME', 'ME_EV', 'FE', 'FE_EV', 'RG3', 'JW', 'JW_EV', 'JK', 'JK_EV', 'JX', 'JX_EV']) continue;
-		if((level == 'kia' || level == 'hyundai') && doc.차종 == '') continue;
+		if(level == 'hyundai') {
+			switch(doc.차종) {
+				case 'DE' :
+				case 'DE_EV' :
+				case 'DEPBV' :
+				case 'DEPBV-EV' :
+				case 'CV' :
+				case 'CV_EV' :
+				case 'MV' :
+				case 'MV_EV' :
+				case 'PU':
+				case 'PU_EV' :
+				case 'SG2' :
+				case 'SG2-EV' :
+				case 'TAM' :
+				case 'TAM_EV' :
+				case 'PS' :
+				case 'PS_EV' :
+				case 'SK3' :
+				case 'SK3_EV' :
+					continue;
+			}
+		}
+
+		if(level == 'kia') {
+			switch(doc.차종) {
+				case 'OS' :
+				case 'OS_EV' :
+				case 'NE' :
+				case 'NE_EV' :
+				case 'HR' :
+				case 'HR_EV' :
+				case 'LK' : 
+				case 'LK_EV' : 
+				case 'LM' :
+				case 'LM_EV' :
+				case 'LKFC' :
+				case 'LKFC_EV' :
+				case 'CS' :
+				case 'CS-EV' :
+				case 'CS_EV' :
+				case 'SX2' :
+				case 'SX2_EV' :
+				case 'AE' :
+				case 'AE_EV' :
+				case 'CE' :
+				case 'CE_EV' :
+				case 'ME' :
+				case 'ME_EV' :
+				case 'FE' :
+				case 'FE_EV' :
+				case 'RG3' :
+				case 'RG3-EV' :
+				case 'JW' :
+				case 'JW_EV' :
+				case 'JK' :
+				case 'JK_EV' :
+				case 'JX' :
+				case 'JX_EV' :
+					continue;
+			}
+		}
+		if((level == 'kia' || level == 'hyundai') && String(doc.차종).trim() == '' || doc.차종 == undefined) continue;
 		var line = "\uFEFF";
 		line += doc.관리번호;
 		line += ',';

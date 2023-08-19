@@ -23,10 +23,10 @@ async function 품번_조회() {
 	var border_color = [];
 
 	if(level == 'kia') {
-		count(BSA재제조, { 차종 : { $in : ['DE', 'DE_EV', 'DEPBV', 'CV', 'CV_EV', 'MV', 'MV_EV', 'PU', 'PU_EV', 'SG2', 'TAM', 'PS', 'PS_EV', 'SK3']}, 출하 : { $exists : true}, 품번 : { $exists: true}});
+		count(BSA재제조, { 차종 : { $in : ['DE', 'DE_EV', 'DEPBV', 'DEPBV-EV', 'CV', 'CV_EV', 'MV', 'MV_EV', 'PU', 'PU_EV', 'SG2', 'SG2-EV', 'TAM', 'TAM-EV', 'PS', 'PS_EV', 'SK3']}, 출하 : { $exists : true}, 품번 : { $exists: true}});
 		await delay();
 	} else if(level == 'hyundai') {
-		count(BSA재제조, { 차종 : { $in : ['OS', 'OS_EV', 'NE', 'NE_EV', 'HR', 'HR_EV', 'LK', 'LK_EV', 'LM', 'LM_EV', 'LKFC', 'CS', 'CS-EV', 'CS_EV', 'SX2', 'AE', 'AE_EV', 'CE', 'CE_EV', 'ME', 'ME_EV', 'FE', 'FE_EV', 'RG3', 'JW', 'JW_EV', 'JK', 'JK_EV', 'JX', 'JX_EV']}, 출하 : { $exists : true}, 품번 : { $exists: true}});
+		count(BSA재제조, { 차종 : { $in : ['OS', 'OS_EV', 'NE', 'NE_EV', 'HR', 'HR_EV', 'LK', 'LK_EV', 'LM', 'LM_EV', 'LKFC', 'LKFC-EV', 'CS', 'CS-EV', 'CS_EV', 'SX2', 'SX2-EV', 'AE', 'AE_EV', 'CE', 'CE_EV', 'ME', 'ME_EV', 'FE', 'FE_EV', 'RG3', 'RG3-EV', 'JW', 'JW_EV', 'JK', 'JK_EV', 'JX', 'JX_EV']}, 출하 : { $exists : true}, 품번 : { $exists: true}});
 		await delay();
 	} else {
 		count(BSA재제조, { 출하 : { $exists : true}, 품번 : { $exists: true}});
@@ -37,10 +37,10 @@ async function 품번_조회() {
 	if(doc_count < 1) return;
 
 	if(level == 'kia') {
-		find_query(BSA재제조, { 차종 : { $in : ['DE', 'DE_EV', 'DEPBV', 'CV', 'CV_EV', 'MV', 'MV_EV', 'PU', 'PU_EV', 'SG2', 'TAM', 'PS', 'PS_EV', 'SK3']}, 출하 : { $exists : true}, 품번 : { $exists: true}});
+		find_query(BSA재제조, { 차종 : { $in : ['DE', 'DE_EV', 'DEPBV', 'DEPBV-EV', 'CV', 'CV_EV', 'MV', 'MV_EV', 'PU', 'PU_EV', 'SG2', 'SG2-EV', 'TAM', 'TAM-EV', 'PS', 'PS_EV', 'SK3']}, 출하 : { $exists : true}, 품번 : { $exists: true}});
 		await delay();
 	} else if(level == 'hyundai') {
-		find_query(BSA재제조, { 차종 : { $in : ['OS', 'OS_EV', 'NE', 'NE_EV', 'HR', 'HR_EV', 'LK', 'LK_EV', 'LM', 'LM_EV', 'LKFC', 'CS', 'CS-EV', 'CS_EV', 'SX2', 'AE', 'AE_EV', 'CE', 'CE_EV', 'ME', 'ME_EV', 'FE', 'FE_EV', 'RG3', 'JW', 'JW_EV', 'JK', 'JK_EV', 'JX', 'JX_EV']}, 출하 : { $exists : true}, 품번 : { $exists: true}});
+		find_query(BSA재제조, { 차종 : { $in : ['OS', 'OS_EV', 'NE', 'NE_EV', 'HR', 'HR_EV', 'LK', 'LK_EV', 'LM', 'LM_EV', 'LKFC', 'LKFC-EV', 'CS', 'CS-EV', 'CS_EV', 'SX2', 'SX2-EV', 'AE', 'AE_EV', 'CE', 'CE_EV', 'ME', 'ME_EV', 'FE', 'FE_EV', 'RG3', 'RG3-EV', 'JW', 'JW_EV', 'JK', 'JK_EV', 'JX', 'JX_EV']}, 출하 : { $exists : true}, 품번 : { $exists: true}});
 		await delay();
 	} else {
 		find_query(BSA재제조, { 출하 : { $exists : true}, 품번 : { $exists: true}});
