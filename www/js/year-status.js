@@ -54,16 +54,32 @@ async function 년간_조회(flag_id_search = false) {
 		for(i = 1; i <= 12; i++) {
 			var s_day = now.slice(0, 5) + i.toString().padStart(2, '0') + '-01' + 'T00:00:00.000Z';
 			var e_day = now.slice(0, 5) + i.toString().padStart(2, '0') + '-31' + 'T00:00:00.000Z';
-			count(BSA재제조, { 입고 : { $gte: s_day, $lte: e_day }});
-        		await delay();
+			if(level == 'kia') {
+				find_query(BSA재제조, { 차종 : { $in : ['DE', 'DE_EV', 'DEPBV', 'CV', 'CV_EV', 'MV', 'MV_EV', 'PU', 'PU_EV', 'SG2', 'TAM', 'PS', 'PS_EV', 'SK3']}, 입고 : { $gte: s_day, $lte: e_day } });
+				await delay();
+			} else if(level == 'hyundai') {
+				find_query(BSA재제조, { 차종 : { $in : ['OS', 'OS_EV', 'NE', 'NE_EV', 'HR', 'HR_EV', 'LK', 'LK_EV', 'LM', 'LM_EV', 'LKFC', 'CS', 'CS-EV', 'CS_EV', 'SX2', 'AE', 'AE_EV', 'CE', 'CE_EV', 'ME', 'ME_EV', 'FE', 'FE_EV', 'RG3', 'JW', 'JW_EV', 'JK', 'JK_EV', 'JX', 'JX_EV']}, 입고 : { $gte: s_day, $lte: e_day } });
+				await delay();
+			} else {
+				count(BSA재제조, { 입고 : { $gte: s_day, $lte: e_day }});
+        			await delay();
+			}
         		all_counts.push(doc_count);
 		}
 
 		for(i = 1; i <= 12; i++) {
 			var s_day = now.slice(0, 5) + i.toString().padStart(2, '0') + '-01' + 'T00:00:00.000Z';
 			var e_day = now.slice(0, 5) + i.toString().padStart(2, '0') + '-31' + 'T00:00:00.000Z';
-			count(BSA재제조, { 출하 : { $gte: s_day, $lte: e_day }});
-        		await delay();
+			if(level == 'kia') {
+				find_query(BSA재제조, { 차종 : { $in : ['DE', 'DE_EV', 'DEPBV', 'CV', 'CV_EV', 'MV', 'MV_EV', 'PU', 'PU_EV', 'SG2', 'TAM', 'PS', 'PS_EV', 'SK3']}, 출하 : { $gte: s_day, $lte: e_day } });
+				await delay();
+			} else if(level == 'hyundai') {
+				find_query(BSA재제조, { 차종 : { $in : ['OS', 'OS_EV', 'NE', 'NE_EV', 'HR', 'HR_EV', 'LK', 'LK_EV', 'LM', 'LM_EV', 'LKFC', 'CS', 'CS-EV', 'CS_EV', 'SX2', 'AE', 'AE_EV', 'CE', 'CE_EV', 'ME', 'ME_EV', 'FE', 'FE_EV', 'RG3', 'JW', 'JW_EV', 'JK', 'JK_EV', 'JX', 'JX_EV']}, 출하 : { $gte: s_day, $lte: e_day } });
+				await delay();
+			} else {
+				count(BSA재제조, { 출하 : { $gte: s_day, $lte: e_day }});
+        			await delay();
+			}
         		all_counts.push(doc_count);
 		}
 
@@ -86,16 +102,32 @@ async function 년간_조회(flag_id_search = false) {
 		for(i = 1; i <= 12; i++) {
 			var s_day = search_day.slice(0, 5) + i.toString().padStart(2, '0') + '-01' + 'T00:00:00.000Z';
 			var e_day = search_day.slice(0, 5) + i.toString().padStart(2, '0') + '-31' + 'T00:00:00.000Z';
-			count(BSA재제조, { 입고 : { $gte: s_day, $lte: e_day }});
-        		await delay();
+			if(level == 'kia') {
+				find_query(BSA재제조, { 차종 : { $in : ['DE', 'DE_EV', 'DEPBV', 'CV', 'CV_EV', 'MV', 'MV_EV', 'PU', 'PU_EV', 'SG2', 'TAM', 'PS', 'PS_EV', 'SK3']}, 입고 : { $gte: s_day, $lte: e_day } });
+				await delay();
+			} else if(level == 'hyundai') {
+				find_query(BSA재제조, { 차종 : { $in : ['OS', 'OS_EV', 'NE', 'NE_EV', 'HR', 'HR_EV', 'LK', 'LK_EV', 'LM', 'LM_EV', 'LKFC', 'CS', 'CS-EV', 'CS_EV', 'SX2', 'AE', 'AE_EV', 'CE', 'CE_EV', 'ME', 'ME_EV', 'FE', 'FE_EV', 'RG3', 'JW', 'JW_EV', 'JK', 'JK_EV', 'JX', 'JX_EV']}, 입고 : { $gte: s_day, $lte: e_day } });
+				await delay();
+			} else {
+				count(BSA재제조, { 입고 : { $gte: s_day, $lte: e_day }});
+        			await delay();
+			}
         		all_counts.push(doc_count);
 		}
 
 		for(i = 1; i <= 12; i++) {
 			var s_day = search_day.slice(0, 5) + i.toString().padStart(2, '0') + '-01' + 'T00:00:00.000Z';
 			var e_day = search_day.slice(0, 5) + i.toString().padStart(2, '0') + '-31' + 'T00:00:00.000Z';
-			count(BSA재제조, { 출하 : { $gte: s_day, $lte: e_day }});
-        		await delay();
+			if(level == 'kia') {
+				find_query(BSA재제조, { 차종 : { $in : ['DE', 'DE_EV', 'DEPBV', 'CV', 'CV_EV', 'MV', 'MV_EV', 'PU', 'PU_EV', 'SG2', 'TAM', 'PS', 'PS_EV', 'SK3']}, 출하 : { $gte: s_day, $lte: e_day } });
+				await delay();
+			} else if(level == 'hyundai') {
+				find_query(BSA재제조, { 차종 : { $in : ['OS', 'OS_EV', 'NE', 'NE_EV', 'HR', 'HR_EV', 'LK', 'LK_EV', 'LM', 'LM_EV', 'LKFC', 'CS', 'CS-EV', 'CS_EV', 'SX2', 'AE', 'AE_EV', 'CE', 'CE_EV', 'ME', 'ME_EV', 'FE', 'FE_EV', 'RG3', 'JW', 'JW_EV', 'JK', 'JK_EV', 'JX', 'JX_EV']}, 출하 : { $gte: s_day, $lte: e_day } });
+				await delay();
+			} else {
+				count(BSA재제조, { 출하 : { $gte: s_day, $lte: e_day }});
+        			await delay();
+			}
         		all_counts.push(doc_count);
 		}
 
@@ -233,8 +265,16 @@ async function 년간차트_detail(counts) {
 async function 년간입고_table(s_day, e_day, flag_id_search = false, search_month = '') {
 	if(worker == '') return;
 	var tabledata_BSA_입고 = [];
-	count(BSA재제조, { 입고 : { $gte: s_day, $lte: e_day }});
-	await delay();
+	if(level == 'kia') {
+		count(BSA재제조, { 차종 : { $in : ['DE', 'DE_EV', 'DEPBV', 'CV', 'CV_EV', 'MV', 'MV_EV', 'PU', 'PU_EV', 'SG2', 'TAM', 'PS', 'PS_EV', 'SK3']}, 입고 : { $gte: s_day, $lte: e_day } });
+		await delay();
+	} else if(level == 'hyundai') {
+		count(BSA재제조, { 차종 : { $in : ['OS', 'OS_EV', 'NE', 'NE_EV', 'HR', 'HR_EV', 'LK', 'LK_EV', 'LM', 'LM_EV', 'LKFC', 'CS', 'CS-EV', 'CS_EV', 'SX2', 'AE', 'AE_EV', 'CE', 'CE_EV', 'ME', 'ME_EV', 'FE', 'FE_EV', 'RG3', 'JW', 'JW_EV', 'JK', 'JK_EV', 'JX', 'JX_EV']}, 입고 : { $gte: s_day, $lte: e_day } });
+		await delay();
+	} else {
+		count(BSA재제조, { 입고 : { $gte: s_day, $lte: e_day }});
+		await delay();
+	}
 	console.log('doc_count: ', doc_count);
 	if(doc_count >= 1) {
 		find_query(BSA재제조, { 입고 : { $gte: s_day, $lte: e_day }});
@@ -287,12 +327,28 @@ async function 년간입고_table(s_day, e_day, flag_id_search = false, search_m
 async function 년간출하_table(s_day, e_day, flag_id_search = false, search_month = '') {
 	if(worker == '') return;
 	var tabledata_BSA_출하 = [];
-	count(BSA재제조, { 출하 : { $gte: s_day, $lte: e_day }});
-	await delay();
+	if(level == 'kia') {
+		count(BSA재제조, { 차종 : { $in : ['DE', 'DE_EV', 'DEPBV', 'CV', 'CV_EV', 'MV', 'MV_EV', 'PU', 'PU_EV', 'SG2', 'TAM', 'PS', 'PS_EV', 'SK3']}, 출하 : { $gte: s_day, $lte: e_day } });
+		await delay();
+	} else if(level == 'hyundai') {
+		count(BSA재제조, { 차종 : { $in : ['OS', 'OS_EV', 'NE', 'NE_EV', 'HR', 'HR_EV', 'LK', 'LK_EV', 'LM', 'LM_EV', 'LKFC', 'CS', 'CS-EV', 'CS_EV', 'SX2', 'AE', 'AE_EV', 'CE', 'CE_EV', 'ME', 'ME_EV', 'FE', 'FE_EV', 'RG3', 'JW', 'JW_EV', 'JK', 'JK_EV', 'JX', 'JX_EV']}, 출하 : { $gte: s_day, $lte: e_day } });
+		await delay();
+	} else {
+		count(BSA재제조, { 출하 : { $gte: s_day, $lte: e_day }});
+		await delay();
+	}
 	console.log('doc_count: ', doc_count);
 	if(doc_count >= 1) {
-		find_query(BSA재제조, { 출하 : { $gte: s_day, $lte: e_day }});
-		await delay();
+		if(level == 'kia') {
+			find_query(BSA재제조, { 차종 : { $in : ['DE', 'DE_EV', 'DEPBV', 'CV', 'CV_EV', 'MV', 'MV_EV', 'PU', 'PU_EV', 'SG2', 'TAM', 'PS', 'PS_EV', 'SK3']}, 출하 : { $gte: s_day, $lte: e_day } });
+			await delay();
+		} else if(level == 'hyundai') {
+			find_query(BSA재제조, { 차종 : { $in : ['OS', 'OS_EV', 'NE', 'NE_EV', 'HR', 'HR_EV', 'LK', 'LK_EV', 'LM', 'LM_EV', 'LKFC', 'CS', 'CS-EV', 'CS_EV', 'SX2', 'AE', 'AE_EV', 'CE', 'CE_EV', 'ME', 'ME_EV', 'FE', 'FE_EV', 'RG3', 'JW', 'JW_EV', 'JK', 'JK_EV', 'JX', 'JX_EV']}, 출하 : { $gte: s_day, $lte: e_day } });
+			await delay();
+		} else {
+			find_query(BSA재제조, { 출하 : { $gte: s_day, $lte: e_day }});
+			await delay();
+		}
 		await sleep(100);
 
 		for(var i = 0; i < find_array.length; i++) {

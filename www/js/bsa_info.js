@@ -40,24 +40,62 @@ async function 재제조현황_시작() {
 async function 재제조현황_조회(flag_id_search = false) {
 	if(worker == '') return;
 	find_array = undefined;
-	count(BSA재제조, { 관리번호 : { $exists: true } });
-	await delay();
+	if(level == 'kia') {
+		count(BSA재제조, { 차종 : { $in : ['DE', 'DE_EV', 'DEPBV', 'CV', 'CV_EV', 'MV', 'MV_EV', 'PU', 'PU_EV', 'SG2', 'TAM', 'PS', 'PS_EV', 'SK3']}});
+		await delay();
+	} else if(level == 'hyundai') {
+		count(BSA재제조, { 차종 : { $in : ['OS', 'OS_EV', 'NE', 'NE_EV', 'HR', 'HR_EV', 'LK', 'LK_EV', 'LM', 'LM_EV', 'LKFC', 'CS', 'CS-EV', 'CS_EV', 'SX2', 'AE', 'AE_EV', 'CE', 'CE_EV', 'ME', 'ME_EV', 'FE', 'FE_EV', 'RG3', 'JW', 'JW_EV', 'JK', 'JK_EV', 'JX', 'JX_EV']}});
+		await delay();
+	} else {
+		count(BSA재제조, { 관리번호 : { $exists: true } });
+		await delay();
+	}
 	
 	console.log('doc_count: ', doc_count);
 	if(doc_count >= 1) {
 		if(flag_id_search == 0) {
 			var now = new Date();
 			var 기준일 = new Date(now.setMonth(now.getYear() - 2));
-
-			find_query(BSA재제조, { 관리번호: { $exists : true }});
+			
+			if(level == 'kia') {
+				find_query(BSA재제조, { 차종 : { $in : ['DE', 'DE_EV', 'DEPBV', 'CV', 'CV_EV', 'MV', 'MV_EV', 'PU', 'PU_EV', 'SG2', 'TAM', 'PS', 'PS_EV', 'SK3']}});
+				await delay();
+			} else if(level == 'hyundai') {
+				find_query(BSA재제조, { 차종 : { $in : ['OS', 'OS_EV', 'NE', 'NE_EV', 'HR', 'HR_EV', 'LK', 'LK_EV', 'LM', 'LM_EV', 'LKFC', 'CS', 'CS-EV', 'CS_EV', 'SX2', 'AE', 'AE_EV', 'CE', 'CE_EV', 'ME', 'ME_EV', 'FE', 'FE_EV', 'RG3', 'JW', 'JW_EV', 'JK', 'JK_EV', 'JX', 'JX_EV']}});
+				await delay();
+			} else {
+				find_query(BSA재제조, { 관리번호 : { $exists: true } });
+				await delay();
+			}
+			//find_query(BSA재제조, { 관리번호: { $exists : true }});
 			//find_query(BSA재제조, { 입고 : { $gte : 기준일 }});
 			await delay();
 		} else if(flag_id_search == 1) {
-			find(BSA재제조, _management_id.value);
+			if(level == 'kia') {
+				find_query(BSA재제조, { 차종 : { $in : ['DE', 'DE_EV', 'DEPBV', 'CV', 'CV_EV', 'MV', 'MV_EV', 'PU', 'PU_EV', 'SG2', 'TAM', 'PS', 'PS_EV', 'SK3']}, 관리번호 : _management_id.value });
+				await delay();
+			} else if(level == 'hyundai') {
+				find_query(BSA재제조, { 차종 : { $in : ['OS', 'OS_EV', 'NE', 'NE_EV', 'HR', 'HR_EV', 'LK', 'LK_EV', 'LM', 'LM_EV', 'LKFC', 'CS', 'CS-EV', 'CS_EV', 'SX2', 'AE', 'AE_EV', 'CE', 'CE_EV', 'ME', 'ME_EV', 'FE', 'FE_EV', 'RG3', 'JW', 'JW_EV', 'JK', 'JK_EV', 'JX', 'JX_EV']}, 관리번호 : _management_id.value });
+				await delay();
+			} else {
+				find(BSA재제조, _management_id.value);
+				//find_query(BSA재제조, { 관리번호 : { $exists: true } });
+				await delay();
+			}
 			await delay();
 		} else if(flag_id_search == 2) {
 			var _재제조번호_id = _재제조번호.value;
-			find_query(BSA재제조, { 재제조번호: _재제조번호_id });
+			if(level == 'kia') {
+				find_query(BSA재제조, { 차종 : { $in : ['DE', 'DE_EV', 'DEPBV', 'CV', 'CV_EV', 'MV', 'MV_EV', 'PU', 'PU_EV', 'SG2', 'TAM', 'PS', 'PS_EV', 'SK3']}, 재제조번호 : _재제조번호_id.value });
+				await delay();
+			} else if(level == 'hyundai') {
+				find_query(BSA재제조, { 차종 : { $in : ['OS', 'OS_EV', 'NE', 'NE_EV', 'HR', 'HR_EV', 'LK', 'LK_EV', 'LM', 'LM_EV', 'LKFC', 'CS', 'CS-EV', 'CS_EV', 'SX2', 'AE', 'AE_EV', 'CE', 'CE_EV', 'ME', 'ME_EV', 'FE', 'FE_EV', 'RG3', 'JW', 'JW_EV', 'JK', 'JK_EV', 'JX', 'JX_EV']}, 재제조번호 : _재제조번호_id.value });
+				await delay();
+			} else {
+				find_query(BSA재제조, { 재제조번호: _재제조번호_id });
+				//find_query(BSA재제조, { 관리번호 : { $exists: true } });
+				await delay();
+			}
 			await delay();
 		} 
 

@@ -73,7 +73,7 @@ const BSA재제조_doc = {
 	반품입고: '',
 	재출하: '',
 	완전분해: '',
-	폐기: ''
+	폐기: '',
 };
 
 const 입고_doc = {
@@ -691,7 +691,7 @@ const BSA재제조_ = {
 	반품입고: 1,
 	재출하: 1,
 	완전분해: 1,
-	폐기: 1
+	폐기: 1,
 };
 
 const 입고_ = {
@@ -1809,4 +1809,47 @@ async function delay() {
 	}
 	await sleep(10);
 	return true;
+}
+
+function 업체(code) {
+	let result = 'kia';
+
+	switch(code) {
+		case 'DE' :
+		case 'DEPBV' :
+		case 'CV' :
+		case 'MV' :
+		case 'PU' :
+		case 'SG2' :
+		case 'TAM' :
+		case 'PS' :
+		case 'SK3' :
+			result = 'kia';
+			break;
+
+		case 'OS' :
+		case 'NE' :
+		case 'HR' :
+		case 'LK' :
+		case 'LM' :
+		case 'LKFC' :
+		case 'CS' :
+		case 'SX2' :
+		case 'AE' :
+		case 'CE' :
+		case 'ME' :
+		case 'FE' :
+		case 'RG3' :
+		case 'JW' :
+		case 'JK' :
+		case 'JX', 'JX_EV' :
+			result = 'hyundai';
+			break;
+
+		default :
+			result = 'none';
+			break;
+	}
+
+	return result;
 }

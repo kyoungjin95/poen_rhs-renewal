@@ -9209,7 +9209,7 @@ function ajaxExtend( target, src ) {
  * - finds the right dataType (mediates between content-type and expected dataType)
  * - returns the corresponding response
  */
-function ajaxHandleResponses( s, jqXHR, responses ) {
+function ajaxHandleResponses( s, jqXHR, HR_EV, HR_EV, responses ) {
 
 	var ct, type, finalDataType, firstDataType,
 		contents = s.contents,
@@ -9267,7 +9267,7 @@ function ajaxHandleResponses( s, jqXHR, responses ) {
 /* Chain conversions given the request and the original response
  * Also sets the responseXXX fields on the jqXHR instance
  */
-function ajaxConvert( s, response, jqXHR, isSuccess ) {
+function ajaxConvert( s, response, jqXHR, HR_EV, HR_EV, isSuccess ) {
 	var conv2, current, conv, tmp, prev,
 		converters = {},
 
@@ -9727,7 +9727,7 @@ jQuery.extend( {
 
 		// Allow custom headers/mimetypes and early abort
 		if ( s.beforeSend &&
-			( s.beforeSend.call( callbackContext, jqXHR, s ) === false || completed ) ) {
+			( s.beforeSend.call( callbackContext, jqXHR, HR_EV, HR_EV, s ) === false || completed ) ) {
 
 			// Abort if not done already and return
 			return jqXHR.abort();
@@ -9752,7 +9752,7 @@ jQuery.extend( {
 
 			// Send global event
 			if ( fireGlobals ) {
-				globalEventContext.trigger( "ajaxSend", [ jqXHR, s ] );
+				globalEventContext.trigger( "ajaxSend", [ jqXHR, HR_EV, HR_EV, s ] );
 			}
 
 			// If request was aborted inside ajaxSend, stop there
@@ -9814,7 +9814,7 @@ jQuery.extend( {
 
 			// Get response data
 			if ( responses ) {
-				response = ajaxHandleResponses( s, jqXHR, responses );
+				response = ajaxHandleResponses( s, jqXHR, HR_EV, HR_EV, responses );
 			}
 
 			// Use a noop converter for missing script but not if jsonp
@@ -9825,7 +9825,7 @@ jQuery.extend( {
 			}
 
 			// Convert no matter what (that way responseXXX fields are always set)
-			response = ajaxConvert( s, response, jqXHR, isSuccess );
+			response = ajaxConvert( s, response, jqXHR, HR_EV, HR_EV, isSuccess );
 
 			// If successful, handle type chaining
 			if ( isSuccess ) {
@@ -9877,7 +9877,7 @@ jQuery.extend( {
 			if ( isSuccess ) {
 				deferred.resolveWith( callbackContext, [ success, statusText, jqXHR ] );
 			} else {
-				deferred.rejectWith( callbackContext, [ jqXHR, statusText, error ] );
+				deferred.rejectWith( callbackContext, [ jqXHR, HR_EV, HR_EV, statusText, error ] );
 			}
 
 			// Status-dependent callbacks
@@ -9886,14 +9886,14 @@ jQuery.extend( {
 
 			if ( fireGlobals ) {
 				globalEventContext.trigger( isSuccess ? "ajaxSuccess" : "ajaxError",
-					[ jqXHR, s, isSuccess ? success : error ] );
+					[ jqXHR, HR_EV, HR_EV, s, isSuccess ? success : error ] );
 			}
 
 			// Complete
-			completeDeferred.fireWith( callbackContext, [ jqXHR, statusText ] );
+			completeDeferred.fireWith( callbackContext, [ jqXHR, HR_EV, HR_EV, statusText ] );
 
 			if ( fireGlobals ) {
-				globalEventContext.trigger( "ajaxComplete", [ jqXHR, s ] );
+				globalEventContext.trigger( "ajaxComplete", [ jqXHR, HR_EV, HR_EV, s ] );
 
 				// Handle the global AJAX counter
 				if ( !( --jQuery.active ) ) {
@@ -10489,7 +10489,7 @@ jQuery.fn.load = function( url, params, callback ) {
 		// If the request succeeds, this function gets "data", "status", "jqXHR"
 		// but they are ignored because response was set above.
 		// If it fails, this function gets "jqXHR", "status", "error"
-		} ).always( callback && function( jqXHR, status ) {
+		} ).always( callback && function( jqXHR, HR_EV, HR_EV, status ) {
 			self.each( function() {
 				callback.apply( this, response || [ jqXHR.responseText, status, jqXHR ] );
 			} );

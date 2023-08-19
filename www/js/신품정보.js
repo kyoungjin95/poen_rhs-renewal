@@ -117,19 +117,19 @@ function _사용여부_콤보박스(e) {
 }
 
 async function read_신품정보_func_csv() {
-	_재고관리_csv.addEventListener('input', async function(event) {
+	_재고관리_csv.addEventListener('input', function(event) {
 		const target = event.target;
 		const files = target.files;
 		const file = files[0];
 
 		const reader = new FileReader();
-		reader.addEventListener('load', async function() {
+		reader.addEventListener('load', function() {
 			const res = d3.csvParse(reader.result);
 			//console.log(res);
 			for(var i = 0; i < res.length; i++) {
 				신품정보_insert(res[i]);
-				await sleep(1);
 			};
+			alert('complete');
 		});
 		reader.readAsText(file);
 	});

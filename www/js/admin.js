@@ -17,6 +17,10 @@ function 관리자_시작() {
 }
 
 async function add_user() {
+	_id = document.getElementById('_id');
+	_passwd = document.getElementById('_passwd');
+	_passwd2 = document.getElementById('_passwd2');
+	_set_level = document.getElementById('_level');
 	if(_id.value == '' || _passwd.value == '') return;
 	if(_passwd.value != _passwd2.value) {
 		alert('패스워드가 서로 다름니다.');
@@ -68,18 +72,17 @@ var total_update_count = 0;
 var fail_count = 0;
 
 function func_csv() {
-	_csv.addEventListener('input', async function(event) {
+	_csv.addEventListener('input', function(event) {
 		const target = event.target;
 		const files = target.files;
 		const file = files[0];
 
 		const reader = new FileReader();
-		reader.addEventListener('load', async function() {
+		reader.addEventListener('load', function() {
 			const res = d3.csvParse(reader.result);
 			console.log(res);
 			for(var i = 0; i < res.length; i++) {
 				insert(res[i]);
-				await sleep(1000);
 			};
 			console.log('insert count :', total_insert_count);
 			console.log('update count :', total_update_count);
@@ -95,40 +98,45 @@ async function insert(val) {
 		return;
 	}
 
+	let doc = {
+		관리번호 : val.관리번호,
+		용도 : val.용도
+	}
 	//console.log(val);
-	var doc = BSA재제조_doc;
-	doc.재제조번호 = val.재제조번호;
-	doc.관리번호 = val.관리번호;
-	doc.차종 = val.차종;
-	doc.품번 = val.품번; 
-	doc.RO_no = val.RO_no; 
-	doc.공정단계 = '출하'; 
-	doc.적재No = ''; 
-	if(val.등록일 != '') {
-		doc.입고 = val.등록일 + 'T12:00:00';
-	}
+	//var doc = BSA재제조_doc;
+	//doc.재제조번호 = val.재제조번호;
+	//doc.관리번호 = val.관리번호;
+	//doc.용도 = val.용도;
+	//doc.차종 = val.차종;
+	//doc.품번 = val.품번; 
+	//doc.RO_no = val.RO_no; 
+	//doc.공정단계 = '출하'; 
+	//doc.적재No = ''; 
+	//if(val.등록일 != '') {
+	//	doc.입고 = val.등록일 + 'T12:00:00';
+	//}
 
-	if(val.기초검사_완료일 != '') {
-		doc.기초검사 = val.기초검사_완료일 + 'T12:00:00';
-	}
+	//if(val.기초검사_완료일 != '') {
+	//	doc.기초검사 = val.기초검사_완료일 + 'T12:00:00';
+	//}
 
-	if(val.분해조립_완료일 != '' ) {
-		doc.분해조립 = val.분해조립_완료일 + 'T12:00:00';
-	}
+	//if(val.분해조립_완료일 != '' ) {
+	//	doc.분해조립 = val.분해조립_완료일 + 'T12:00:00';
+	//}
 
-	if(val.성능검사_완료일 != '') {
-		doc.성능검사 = val.성능검사_완료일 + 'T12:00:00';
-	}
+	//if(val.성능검사_완료일 != '') {
+	//	doc.성능검사 = val.성능검사_완료일 + 'T12:00:00';
+	//}
 
-	if(val.EOL_완료일 != '') {
-		doc.EOL = val.EOL_완료일 + 'T12:00:00';
-	}
+	//if(val.EOL_완료일 != '') {
+	//	doc.EOL = val.EOL_완료일 + 'T12:00:00';
+	//}
 
-	if(val.출하일 != '') {
-		doc.출하 = val.출하일 + 'T12:00:00';
-	}
+	//if(val.출하일 != '') {
+	//	doc.출하 = val.출하일 + 'T12:00:00';
+	//}
 
-	doc.소재지 = '';
+	//doc.소재지 = '';
 
 	//console.log('BSA재제조:', doc);
 	update(BSA재제조, doc);
@@ -140,6 +148,7 @@ async function insert(val) {
 	console.log('update count :', update_count);
 	if(insert_count == 0 && update_count == 0) fail_count++;
 
+	/*
 	doc = 입고_doc;
 	doc.관리번호 = val.관리번호;
 	doc.차종 = val.차종;
@@ -403,6 +412,7 @@ async function insert(val) {
 	//console.log('교체부품상세10:', doc);
 	update(교체부품상세10, doc);
 	await delay();
+	*/
 	check_count++;
 	console.log(check_count);
 }
