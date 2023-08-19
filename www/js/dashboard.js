@@ -62,7 +62,7 @@ async function dash_세척(today_begin, today_end) {
 	var 세척당일 = doc_count;
 	await sleep(DELAY);
 
-	document.getElementById('num1').innerHTML = 세척누적 + ' (' + 세척당일 + ')';
+	//document.getElementById('num1').innerHTML = 세척누적 + ' (' + 세척당일 + ')';
 }
 
 async function dash_기초검사(today_begin, today_end) {
@@ -76,6 +76,7 @@ async function dash_기초검사(today_begin, today_end) {
 		await delay();
 	}
 	console.log('기초검사누적 count:', doc_count);
+	await sleep(DELAY);
 	var 기초검사누적 = doc_count;
 	await sleep(DELAY);
 
@@ -88,7 +89,6 @@ async function dash_기초검사(today_begin, today_end) {
 		count(BSA재제조, { 기초검사 : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }});
 		await delay();
 	}
-	await delay();
 	console.log('기초검사당일 count:', doc_count);
 	var 기초검사당일 = doc_count;
 	await sleep(DELAY);
@@ -107,7 +107,6 @@ async function dash_분해조립(today_begin, today_end) {
 		count(BSA재제조, { 분해조립 : { $exists : true, $ne : 'none', $ne : ''}});
 		await delay();
 	}
-	await delay();
 	console.log('분해조립누적 count:', doc_count);
 	var 분해조립누적 = doc_count;
 	await sleep(DELAY);
@@ -121,7 +120,6 @@ async function dash_분해조립(today_begin, today_end) {
 		count(BSA재제조, { 분해조립 : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }});
 		await delay();
 	}
-	await delay();
 	console.log('분해조립당일 count:', doc_count);
 	var 분해조립당일 = doc_count;
 	await sleep(DELAY);
@@ -139,7 +137,6 @@ async function dash_성능검사(today_begin, today_end) {
 		count(BSA재제조, { 성능검사 : { $exists : true, $ne : 'none', $ne : ''}});
 		await delay();
 	}
-	await delay();
 	console.log('성능검사누적 count:', doc_count);
 	var 성능검사누적 = doc_count;
 	await sleep(DELAY);
@@ -153,7 +150,6 @@ async function dash_성능검사(today_begin, today_end) {
 		count(BSA재제조, { 성능검사 : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }});
 		await delay();
 	}
-	await delay();
 	console.log('성능검사 당일  count:', doc_count);
 	var 성능검사당일 = doc_count;
 	await sleep(DELAY);
@@ -171,7 +167,6 @@ async function dash_EOL(today_begin, today_end) {
 		count(BSA재제조, { EOL : { $exists : true, $ne : 'none', $ne : ''}});
 		await delay();
 	}
-	await delay();
 	console.log('EOL 누적 count:', doc_count);
 	var EOL누적 = doc_count;
 	await sleep(DELAY);
@@ -185,7 +180,6 @@ async function dash_EOL(today_begin, today_end) {
 		count(BSA재제조, { EOL : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }});
 		await delay();
 	}
-	await delay();
 	console.log('EOL 당일  count:', doc_count);
 	var EOL당일 = doc_count;
 	await sleep(DELAY);
@@ -203,7 +197,6 @@ async function dash_출하(today_begin, today_end) {
 		count(BSA재제조, { 출하 : { $exists : true, $ne : 'none', $ne : ''}});
 		await delay();
 	}
-	await delay();
 	console.log('출하누적 count:', doc_count);
 	var 출하누적 = doc_count;
 	await sleep(DELAY);
@@ -217,7 +210,6 @@ async function dash_출하(today_begin, today_end) {
 		count(BSA재제조, { 출하 : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }});
 		await delay();
 	}
-	await delay();
 	console.log('출하당일 count:', doc_count);
 	var 출하당일 = doc_count;
 	await sleep(DELAY);
