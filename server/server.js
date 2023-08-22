@@ -567,7 +567,15 @@ async function write_data(file, level) {
 			line += ',';
 			line += doc.기초검사[0]['통신검사_릴레이구동'];
 			line += ',';
-			line += doc.기초검사[0]['비고'];
+			line += doc.기초검사[0]['고장현상코드'];
+			line += ',';
+			line += doc.기초검사[0]['고장현상명'];
+			line += ',';
+			line += doc.기초검사[0]['문제Cell_No'];
+			line += ',';
+			line += doc.기초검사[0]['문제BMA_No'];
+			line += ',';
+			line += doc.기초검사[0]['문제BMA_cnt'];
 			line += ',';
 			line += doc.기초검사[0]['센터진단내용'];
 			line += ',';
@@ -1059,6 +1067,14 @@ async function write_data(file, level) {
 			line += doc.성능검사[0]['SOC60Percent'];
 			line += ',';
 			line += doc.성능검사[0]['DCIR'];
+			line += ',';
+			line += doc.성능검사[0]['DCIR_Charge'];
+			line += ',';
+			line += doc.성능검사[0]['DCIR_Discharge'];
+			line += ',';
+			line += doc.성능검사[0]['절연저항_HVP'];
+			line += ',';
+			line += doc.성능검사[0]['절연저항_HVN'];
 			line += ',';
 			try {
 				line += await (new Date(doc.성능검사[0]['공정완료일'])).toISOString();

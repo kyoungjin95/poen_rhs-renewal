@@ -120,6 +120,11 @@ const 기초검사_doc = {
 	통신검사_팩전압: '',
 	통신검사_셀전압편차: '',
 	통신검사_릴레이구동: '',
+	고장현상코드: '',
+	고장현상명: '',
+	문제Cell_No: '',
+	제BMA_No: '',
+	제BMA_cnt: '',
 	공정완료일: '',
 	요청사항: '',
 	비고: '',
@@ -285,6 +290,10 @@ const 성능검사_doc = {
 	용량평가: '',
 	SOC60Percent: '',
 	DCIR: '',
+	DCIR_Charge: '',
+	DCIR_Discharge: '',
+	절연저항_HVP: '',
+	절연저항_HVN: '',
 	공정완료일: '',
 	비고: '',
 	검사자: ''
@@ -741,6 +750,11 @@ const 기초검사_ = {
 	통신검사_팩전압: 1,
 	통신검사_셀전압편차: 1,
 	통신검사_릴레이구동: 1,
+	고장현상코드: 1,
+	고장현상명: 1,
+	문제Cell_No: 1,
+	문제BMA_No: 1,
+	문제BMA_cnt: 1,
 	공정완료일: 1,
 	요청사항: 1,
 	비고: 1,
@@ -938,6 +952,10 @@ const 성능검사_ = {
 	용량평가: 1,
 	SOC60Percent: 1,
 	DCIR: 1,
+	DCIR_Charge: 1,
+	DCIR_Discharge: 1,
+	절연저항_HVP: 1,
+	절연저항_HVN: 1,
 	공정완료일: 1,
 	비고: 1,
 	검사자: 1
@@ -1323,7 +1341,7 @@ socket.on('auto_backup_db_status', function(running) {
 });
 
 socket.on('aggregate_result', function(result) {
-	alert(result);
+	//alert(result);
 	if(result == 'complete') {
 		var a = document.createElement('a');
 		a.href = "/all_data";
@@ -1824,6 +1842,15 @@ function 업체(code) {
 		case 'TAM' :
 		case 'PS' :
 		case 'SK3' :
+		case 'DE_EV' :
+		case 'DEPBV_EV' :
+		case 'CV_EV' :
+		case 'MV_EV' :
+		case 'PU_EV' :
+		case 'SG2_EV' :
+		case 'TAM_EV' :
+		case 'PS_EV' :
+		case 'SK3_EV' :
 			result = 'kia';
 			break;
 
@@ -1842,7 +1869,21 @@ function 업체(code) {
 		case 'RG3' :
 		case 'JW' :
 		case 'JK' :
-		case 'JX', 'JX_EV' :
+		case 'OS_EV' :
+		case 'NE_EV' :
+		case 'HR_EV' :
+		case 'LK_EV' :
+		case 'LM_EV' :
+		case 'LKFC_EV' :
+		case 'CS_EV' :
+		case 'SX2_EV' :
+		case 'AE_EV' :
+		case 'CE_EV' :
+		case 'ME_EV' :
+		case 'FE_EV' :
+		case 'RG3_EV' :
+		case 'JW_EV' :
+		case 'JX_EV' :
 			result = 'hyundai';
 			break;
 

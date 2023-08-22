@@ -76,6 +76,11 @@ async function 기초검사_시작() {
 		_통신검사_팩전압.value = find_array[0].통신검사_팩전압;
 		_통신검사_셀전압편차.value = find_array[0].통신검사_셀전압편차;
 		_통신검사_릴레이구동.value = find_array[0].통신검사_릴레이구동;
+		_고장현상코드.value = find_array[0].고장현상코드;
+		_고장현상명.value = find_array[0].고장현상명;
+		_문제Cell_No.value = find_array[0].문제Cell_No;
+		_문제BMA_No.value = find_array[0].문제BMA_No;
+		_문제BMA_cnt.value = find_array[0].문제BMA_cnt;
 		_공정완료일.value = find_array[0].공정완료일;
 		_요청사항.value = find_array[0].요청사항;
 		_비고.value = find_array[0].비고;
@@ -97,6 +102,11 @@ async function 기초검사_시작() {
 		_통신검사_팩전압.value = '';
 		_통신검사_셀전압편차.value = '';
 		_통신검사_릴레이구동.value = '';
+		_고장현상코드.value = '';
+		_고장현상명.value = '';
+		_문제Cell_No.value = '';
+		_문제BMA_No.value = '';
+		_문제BMA_cnt.value = '';
 		_공정완료일.value = '0000-00-00T00:00';
 		_요청사항.value = '';
 		_비고.value = '';
@@ -126,8 +136,8 @@ async function 기초검사_save() {
 	doc.통신검사_DTC코드3 = _통신검사_DTC코드3.value;
 	var oCurrentRow;
 	var tb = document.getElementById('tb');
-	var rowIcnt = tb.rows.length - 9;
-	var code_no = rowIcnt - 10;
+	var rowIcnt = tb.rows.length - 9  - 4;
+	var code_no = rowIcnt - 10 - 4;
 	if(code_no == 10) {
 		doc.통신검사_DTC코드4 = _통신검사_DTC코드4.value;
 		doc.통신검사_DTC코드5 = _통신검사_DTC코드5.value;
@@ -189,6 +199,11 @@ async function 기초검사_save() {
 	doc.통신검사_팩전압 = _통신검사_팩전압.value;
 	doc.통신검사_셀전압편차 = _통신검사_셀전압편차.value;
 	doc.통신검사_릴레이구동 = _통신검사_릴레이구동.value;
+	doc.고장현상코드 = _고장현상코드.value;
+	doc.고장현상명 = _고장현상명.value;
+	doc.문제Cell_No = _문제Cell_No.value;
+	doc.문제BMA_No = _문제BMA_No.value;
+	doc.문제BMA_cnt = _문제BMA_cnt.value; 
 	doc.공정완료일 = _공정완료일.value;
 	doc.요청사항 = _요청사항.value;
 	doc.비고 = _비고.value;

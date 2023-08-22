@@ -460,12 +460,18 @@ async function request_고품QR() {
 		find(BSA재제조, find_array[0].관리번호);
 		await delay();
 		console.log(find_array);
-
-		var str = 'QR:' + QR + ', 관리번호:' + find_array[0].관리번호 + ', 재제조번호:' + find_array[0].재제조번호 + ', 품번:' + find_array[0].품번;
-		console.log(str);
-		var 교체전_QR = prompt('교체전 QR을 입력하세요');
-		var 교체전_품번 = prompt('교체전 품번을 입력하세요');
-		str += ', 교체전 QR:' + 교체전_QR + ', 교체전 품번:' + 교체전_품번;
+	
+		var str = '';
+		try {
+			str = 'QR:' + QR + ', 관리번호:' + find_array[0].관리번호 + ', 재제조번호:' + find_array[0].재제조번호 + ', 품번:' + find_array[0].품번;
+			console.log(str);
+		} catch(e) {
+			console.log('고품 : no data');
+		} finally {
+			var 교체전_QR = prompt('교체전 QR을 입력하세요');
+			var 교체전_품번 = prompt('교체전 품번을 입력하세요');
+			str += ', 교체전 QR:' + 교체전_QR + ', 교체전 품번:' + 교체전_품번;
+		}
 
 		return str;
 	}
