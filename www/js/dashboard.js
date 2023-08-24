@@ -62,7 +62,7 @@ async function dash_세척(today_begin, today_end) {
 	var 세척당일 = doc_count;
 	await sleep(DELAY);
 
-	//document.getElementById('num1').innerHTML = 세척누적 + ' (' + 세척당일 + ')';
+	document.getElementById('num1').innerHTML = 세척누적 + ' (' + 세척당일 + ')';
 }
 
 async function dash_기초검사(today_begin, today_end) {
@@ -93,7 +93,6 @@ async function dash_기초검사(today_begin, today_end) {
 	var 기초검사당일 = doc_count;
 	await sleep(DELAY);
 
-	document.getElementById('num1').innerHTML = (기초검사누적 + 1) + ' (' + 기초검사당일 + ')';
 	document.getElementById('num2').innerHTML = 기초검사누적 + ' (' + 기초검사당일 + ')';
 }
 
