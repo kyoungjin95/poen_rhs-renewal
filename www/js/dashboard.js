@@ -27,7 +27,7 @@ function 총합계_조회() {
 async function 조회_list(today_begin, today_end) {
 	console.log(today_begin, today_end);
 
-	//await dash_세척();
+	await dash_세척(today_begin, today_end);
 	await dash_기초검사(today_begin, today_end);
 	await dash_분해조립(today_begin, today_end);
 	await dash_성능검사(today_begin, today_end);
