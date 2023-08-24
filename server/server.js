@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 const app = express();
 const fs = require('fs');
+const HTMLtoDOCX = require('./node_modules/html-to-docx/dist/html-to-docx.umd');
 const process = require('process');
 const server = http.createServer(app);
 const io = require('socket.io')(server, { maxHttpBufferSize : 1e+9 });
@@ -42,6 +43,11 @@ app.get('/manual', (req, res) => {
 app.get('/all_data', (req, res) => {
 	res.sendFile(path.join(__dirname, '../doc/all_data.csv'));
 });
+
+app.get('/qr_label', (req, res) => {
+	res.sendFile(path.join(__dirname, '../doc/qr_label.docx'));
+});
+
 server.listen(80, () => {
 	console.log('listening on *:80');
 	client = new MongoClient(uri);
@@ -54,7 +60,25 @@ io.on('connection', async function(socket) {
 	}
 
 	console.log('a user connected');
-	
+
+	socket.on('qr_label', async function(html_string) {
+		const fileBuffer = await HTMLtoDOCX(html_string, null, {
+			table: { row: { cantSplit: true } },
+			footer: false,
+			pageNumber: false,
+		});
+
+		var file = path.join(__dirname, '../doc/qr_label.docx');
+		fs.writeFile(file, fileBuffer, (error) => {
+			if (error) {
+				console.log('Docx file creation failed');
+				return;
+			}
+			console.log('Docx file created successfully');
+		});
+		socket.emit('qr_lebel_result', 'complete');
+	});
+
 	socket.on('aggregate', async function(level) {
 		if(account.login == false) return;
 		account.level = level;

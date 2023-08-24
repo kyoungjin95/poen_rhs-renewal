@@ -1340,6 +1340,17 @@ socket.on('auto_backup_db_status', function(running) {
 	document.getElementById('auto_backup_db_status').innerHTML = str;
 });
 
+socket.on('qr_lebel_result', function(result) {
+	//alert(result);
+	if(result == 'complete') {
+		var a = document.createElement('a');
+		a.href = "/qr_label";
+		a.download = 'EOL_QR_LABEL';
+
+		a.click();
+	}
+});
+
 socket.on('aggregate_result', function(result) {
 	//alert(result);
 	if(result == 'complete') {
@@ -1403,6 +1414,12 @@ socket.on('management_id', function(mid) {
 socket.on('disconnect', function() {
 	console.log('disconnect');
 });
+
+async function make_qr_label(html_string) {
+        if(socket == undefined) return;
+        flag_arrivedMSG = false;
+        socket.emit('qr_label', html_string);
+}
 
 async function aggregate() {
         if(socket == undefined) return;

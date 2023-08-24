@@ -245,3 +245,12 @@ function _eol_delete_row(index) {
 	if(index == rowIcnt) tb.deleteRow(index);
 }
 
+function EOL_QR_Label() {
+	let pumbeon1 = '';
+	let pumbeon2 = ''; 
+	let image = '';
+	let sn = '';
+	let html_string = '<html><head></head><body><h3>배터리 시스템 어셈블리</h3><h5>(Battery System Assembly)</h5><h1>' + 'R37501' + '</h1><br/><h1>' + 'CN250' + '</h1><br/><center><img=\'' + image + '\'><br/></center><br/><br/>' + 'PN2023020701HRCFA-BIA-010' + '</body></html>';
+
+	make_qr_label(html_string);
+}
