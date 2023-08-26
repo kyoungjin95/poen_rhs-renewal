@@ -245,12 +245,44 @@ function _eol_delete_row(index) {
 	if(index == rowIcnt) tb.deleteRow(index);
 }
 
-function EOL_QR_Label() {
-	let pumbeon1 = '';
-	let pumbeon2 = ''; 
-	let image = '';
-	let sn = '';
-	let html_string = '<html><head></head><body><h3>배터리 시스템 어셈블리</h3><h5>(Battery System Assembly)</h5><h1>' + 'R37501' + '</h1><br/><h1>' + 'CN250' + '</h1><br/><center><img=\'' + image + '\'><br/></center><br/><br/>' + 'PN2023020701HRCFA-BIA-010' + '</body></html>';
+async function EOL_QR_Label() {
+	convertImageToBase64('base/img/hyundai.jpg', async function(hyundai_logo) {
+		let qrcode;
+		let pumbeon1 = '';
+		let pumbeon2 = ''; 
+		let sn = '';
+		let html_string = '';
 
-	make_qr_label(html_string);
+		find(BSA재제조, 관리번호);
+		await delay();
+
+		sn = find_array[0].재제조번호;
+
+		qrcode = new QRCode(document.getElementById('_QR_Code'), {
+			width: 128,
+			height: 128,
+		});
+
+		qrcode.makeCode('');
+		let qrcode_base64 = qrcode._oDrawing._elCanvas.toDataURL("image/png")
+		console.log(qrcode_base64);
+		html_string = '<html><head></head><body><div><h4>배터리 시스템 어셈블리</h4></div><div><span style=\'font-variant:small-caps;\'>(Battery System Assembly)</span></div><div><span style=\'line-height: 1; font-weight: bold;\'>' + 'R37501<br/>' + 'CN250' + '</span></div><div><img src=\'' + qrcode_base64 + '\' align=\'center\'></div><br/>' + '<h6>PN2023020701HRCFA-BIA-010</h6>' + '<img src=\'' + hyundai_logo  + '\'></body></html>';
+
+		make_qr_label(html_string);
+	});
+}
+
+function convertImageToBase64(imgUrl, callback) {
+  const image = new Image();
+  image.crossOrigin='anonymous';
+  image.onload = () => {
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.height = image.naturalHeight;
+    canvas.width = image.naturalWidth;
+    ctx.drawImage(image, 0, 0);
+    const dataUrl = canvas.toDataURL();
+    callback && callback(dataUrl)
+  }
+  image.src = imgUrl;
 }

@@ -98,47 +98,43 @@ async function insert(val) {
 		return;
 	}
 
-	let doc = {
-		관리번호 : val.관리번호,
-		용도 : val.용도
+	console.log(val);
+	var doc = BSA재제조_doc;
+	doc.재제조번호 = val.재제조번호;
+	doc.관리번호 = val.관리번호;
+	doc.용도 = val.용도;
+	doc.차종 = val.차종;
+	doc.품번 = val.품번; 
+	doc.RO_no = val.RO_no; 
+	doc.공정단계 = '출하'; 
+	doc.적재No = ''; 
+	if(val.등록일 != '') {
+		doc.입고 = val.등록일 + 'T12:00:00';
 	}
-	//console.log(val);
-	//var doc = BSA재제조_doc;
-	//doc.재제조번호 = val.재제조번호;
-	//doc.관리번호 = val.관리번호;
-	//doc.용도 = val.용도;
-	//doc.차종 = val.차종;
-	//doc.품번 = val.품번; 
-	//doc.RO_no = val.RO_no; 
-	//doc.공정단계 = '출하'; 
-	//doc.적재No = ''; 
-	//if(val.등록일 != '') {
-	//	doc.입고 = val.등록일 + 'T12:00:00';
-	//}
 
-	//if(val.기초검사_완료일 != '') {
-	//	doc.기초검사 = val.기초검사_완료일 + 'T12:00:00';
-	//}
+	if(val.기초검사_완료일 != '') {
+		doc.기초검사 = val.기초검사_완료일 + 'T12:00:00';
+	}
 
-	//if(val.분해조립_완료일 != '' ) {
-	//	doc.분해조립 = val.분해조립_완료일 + 'T12:00:00';
-	//}
+	if(val.분해조립_완료일 != '' ) {
+		doc.분해조립 = val.분해조립_완료일 + 'T12:00:00';
+	}
 
-	//if(val.성능검사_완료일 != '') {
-	//	doc.성능검사 = val.성능검사_완료일 + 'T12:00:00';
-	//}
+	if(val.성능검사_완료일 != '') {
+		doc.성능검사 = val.성능검사_완료일 + 'T12:00:00';
+	}
 
-	//if(val.EOL_완료일 != '') {
-	//	doc.EOL = val.EOL_완료일 + 'T12:00:00';
-	//}
+	if(val.EOL_완료일 != '') {
+		doc.EOL = val.EOL_완료일 + 'T12:00:00';
+	}
 
-	//if(val.출하일 != '') {
-	//	doc.출하 = val.출하일 + 'T12:00:00';
-	//}
+	if(val.출하일 != '') {
+		doc.출하 = val.출하일 + 'T12:00:00';
+	}
 
-	//doc.소재지 = '';
+	doc.소재지 = '';
 
-	//console.log('BSA재제조:', doc);
+	console.log('BSA재제조:', doc);
 	update(BSA재제조, doc);
 	await delay();
 	total_insert_count += insert_count;
@@ -148,7 +144,6 @@ async function insert(val) {
 	console.log('update count :', update_count);
 	if(insert_count == 0 && update_count == 0) fail_count++;
 
-	/*
 	doc = 입고_doc;
 	doc.관리번호 = val.관리번호;
 	doc.차종 = val.차종;
@@ -412,7 +407,25 @@ async function insert(val) {
 	//console.log('교체부품상세10:', doc);
 	update(교체부품상세10, doc);
 	await delay();
-	*/
+	
 	check_count++;
 	console.log(check_count);
+}
+
+async function 입고수량보완() {
+	find_query(BSA재제조, { 세척 : ''});
+	await delay();
+
+	find_array.forEach(async function(info) {
+		console.log(info);
+		let doc = {
+			관리번호 : info.관리번호,
+			세척 : info.기초검사
+		}
+
+		update(BSA재제조, doc);
+		await delay();
+	});
+
+	console.log('complete');
 }
