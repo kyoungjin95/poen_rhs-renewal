@@ -3,12 +3,6 @@ var tabledata_BSA = [];
 var flag_id_search = 0;
 var table;
 
-//Custom filter example
-function customFilter(data){
-    return data.car && data.rating < 3;
-}
-
-//Trigger setFilter function with correct parameters
 function updateFilter(){
   var fieldEl = document.getElementById("filter-field");
   var typeEl = document.getElementById("filter-type");
@@ -154,7 +148,7 @@ async function 재제조현황_조회(flag_id_search = false) {
 		layout: "resizableColumnFit",
                 data:tabledata_BSA,
 		height: '700px',
-                //pagination: 'local',
+                pagination: 'local',
                 responsiveLayout: true,
                 renderHorizontal:"virtual",
 		//autoColumns:true,

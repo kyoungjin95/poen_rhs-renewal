@@ -1,5 +1,52 @@
 var 신품_바코드 = '';
 var 고품_QR = '';
+var table_신품재고;
+var table_고품재고;
+function 신품_updateFilter(){
+  var fieldEl = document.getElementById("new_filter-field");
+  var typeEl = document.getElementById("new_filter-type");
+  var valueEl = document.getElementById("new_filter-value");
+
+  var filterVal = fieldEl.options[fieldEl.selectedIndex].value;
+  var typeVal = typeEl.options[typeEl.selectedIndex].value;
+
+  var filter = filterVal == "function" ? customFilter : filterVal;
+
+  if(filterVal == "function" ){
+    typeEl.disabled = true;
+    valueEl.disabled = true;
+  }else{
+    typeEl.disabled = false;
+    valueEl.disabled = false;
+  }
+
+  if(filterVal){
+    table_신품재고.setFilter(filter,typeVal, valueEl.value);
+  }
+}
+
+function 고품_updateFilter(){
+  var fieldEl = document.getElementById("old_filter-field");
+  var typeEl = document.getElementById("old_filter-type");
+  var valueEl = document.getElementById("old_filter-value");
+
+  var filterVal = fieldEl.options[fieldEl.selectedIndex].value;
+  var typeVal = typeEl.options[typeEl.selectedIndex].value;
+
+  var filter = filterVal == "function" ? customFilter : filterVal;
+
+  if(filterVal == "function" ){
+    typeEl.disabled = true;
+    valueEl.disabled = true;
+  }else{
+    typeEl.disabled = false;
+    valueEl.disabled = false;
+  }
+
+  if(filterVal){
+    table_고품재고.setFilter(filter,typeVal, valueEl.value);
+  }
+}
 
 async function 부품재고_시작() {
 	flag_부품재고 = false;
@@ -8,6 +55,40 @@ async function 부품재고_시작() {
 	while(_loaded == undefined) {
 		await sleep(DELAY);
 	}
+
+	//Update filters on value change
+	document.getElementById("new_filter-field").addEventListener("change", 신품_updateFilter);
+	document.getElementById("new_filter-type").addEventListener("change", 신품_updateFilter);
+	document.getElementById("new_filter-value").addEventListener("keyup", 신품_updateFilter);
+
+	//Clear filters on "Clear Filters" button click
+	document.getElementById("new_filter-clear").addEventListener("click", function(){
+		var fieldEl = document.getElementById("new_filter-field");
+		var typeEl = document.getElementById("new_filter-type");
+		var valueEl = document.getElementById("new_filter-value");
+		fieldEl.value = "";
+		typeEl.value = "=";
+		valueEl.value = "";
+
+		table_신품재고.clearFilter();
+	});
+
+	//Update filters on value change
+	document.getElementById("old_filter-field").addEventListener("change", 고품_updateFilter);
+	document.getElementById("old_filter-type").addEventListener("change", 고품_updateFilter);
+	document.getElementById("old_filter-value").addEventListener("keyup", 고품_updateFilter);
+
+	//Clear filters on "Clear Filters" button click
+	document.getElementById("old_filter-clear").addEventListener("click", function(){
+		var fieldEl = document.getElementById("old_filter-field");
+		var typeEl = document.getElementById("old_filter-type");
+		var valueEl = document.getElementById("old_filter-value");
+		fieldEl.value = "";
+		typeEl.value = "=";
+		valueEl.value = "";
+
+		table_고품재고.clearFilter();
+	});
 
 	var tabledata_신품재고 = [];
 	var tabledata_고품재고 = [];
@@ -23,9 +104,9 @@ async function 부품재고_시작() {
 		//console.log(find_array);
 	}
 
-	var table_신품재고 = new Tabulator("#grid_신품재고", {
+	table_신품재고 = new Tabulator("#grid_신품재고", {
 		layout: "resizableColumnFit",
-		height:500,
+		height:700,
 		data:tabledata_신품재고, 
                 pagination: 'local',
                 responsiveLayout: true,
@@ -65,10 +146,11 @@ async function 부품재고_시작() {
 		tabledata_고품재고 = find_array;
 	}
 
-	var table_고품재고 = new Tabulator("#grid_고품재고", {
+	table_고품재고 = new Tabulator("#grid_고품재고", {
 		layout: "resizableColumnFit",
-		height:500,
+		height:700,
 		data:tabledata_고품재고, 
+                pagination: 'local',
 		//autoColumns:true,
 		
 		columns: [
