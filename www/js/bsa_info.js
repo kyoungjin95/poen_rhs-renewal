@@ -160,8 +160,8 @@ async function 재제조현황_조회(flag_id_search = false) {
 		//autoColumns:true,
 		
 		columns:[
-			{title:"관리번호", field:"관리번호", sorter:"string", width:'200'},
-			{title:"재제조번호", field:"재제조번호", sorter:"string"},
+			{title:"관리번호", field:"관리번호", sorter:"string", width:'180'},
+			{title:"재제조번호", field:"재제조번호", sorter:"string", width:'180'},
 			{title:"차종", field:"차종", sorter:"string"},
 			{title:"품번", field:"품번", sorter:"string"},
 			{title:"RO_no", field:"RO_no", sorter:"string"},
