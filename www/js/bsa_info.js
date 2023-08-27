@@ -3,16 +3,62 @@ var tabledata_BSA = [];
 var flag_id_search = 0;
 var table;
 
+//Custom filter example
+function customFilter(data){
+    return data.car && data.rating < 3;
+}
+
+//Trigger setFilter function with correct parameters
+function updateFilter(){
+  var fieldEl = document.getElementById("filter-field");
+  var typeEl = document.getElementById("filter-type");
+  var valueEl = document.getElementById("filter-value");
+
+  var filterVal = fieldEl.options[fieldEl.selectedIndex].value;
+  var typeVal = typeEl.options[typeEl.selectedIndex].value;
+
+  var filter = filterVal == "function" ? customFilter : filterVal;
+
+  if(filterVal == "function" ){
+    typeEl.disabled = true;
+    valueEl.disabled = true;
+  }else{
+    typeEl.disabled = false;
+    valueEl.disabled = false;
+  }
+
+  if(filterVal){
+    table.setFilter(filter,typeVal, valueEl.value);
+  }
+}
+
 async function 재제조현황_시작() {
 	flag_재제조현황 = false;
 	if(worker == '') return;
-	while(_management_id == undefined) {
-		await sleep(DELAY);
-	}
+	//while(_management_id == undefined) {
+	//	await sleep(DELAY);
+	//}
 	while(document.getElementById('폐기_pic4') == undefined) {
 		await sleep(DELAY);
 	}
 	await sleep(10);
+
+	//Update filters on value change
+	document.getElementById("filter-field").addEventListener("change", updateFilter);
+	document.getElementById("filter-type").addEventListener("change", updateFilter);
+	document.getElementById("filter-value").addEventListener("keyup", updateFilter);
+
+	//Clear filters on "Clear Filters" button click
+	document.getElementById("filter-clear").addEventListener("click", function(){
+		var fieldEl = document.getElementById("filter-field");
+		var typeEl = document.getElementById("filter-type");
+		var valueEl = document.getElementById("filter-value");
+		fieldEl.value = "";
+		typeEl.value = "=";
+		valueEl.value = "";
+
+		table.clearFilter();
+	});
 
 	toggle1();
 	toggle2();
@@ -28,11 +74,11 @@ async function 재제조현황_시작() {
 	toggle12();
 
 	관리번호 = '';
-	if(_management_id.value == '') {
-		flag_id_search = 0;
-	} else {
-		flag_id_search = 1;
-	}
+	//if(_management_id.value == '') {
+	//	flag_id_search = 0;
+	//} else {
+	//	flag_id_search = 1;
+	//}
 
 	재제조현황_조회(flag_id_search);
 }
@@ -106,33 +152,33 @@ async function 재제조현황_조회(flag_id_search = false) {
 
 	table = new Tabulator("#grid_BSA", {
 		layout: "resizableColumnFit",
-                height:500,
                 data:tabledata_BSA,
-                pagination: 'local',
+		height: '700px',
+                //pagination: 'local',
                 responsiveLayout: true,
                 renderHorizontal:"virtual",
 		//autoColumns:true,
 		
 		columns:[
-			{title:"관리번호", field:"관리번호", sorter:"string"},
+			{title:"관리번호", field:"관리번호", sorter:"string", width:'200'},
 			{title:"재제조번호", field:"재제조번호", sorter:"string"},
 			{title:"차종", field:"차종", sorter:"string"},
 			{title:"품번", field:"품번", sorter:"string"},
 			{title:"RO_no", field:"RO_no", sorter:"string"},
 			{title:"공정단계", field:"공정단계", sorter:"string"},
-			//{title:"적재No", field:"적재No", sorter:"string"},
-			//{title:"입고", field:"입고", sorter:"string"},
-			//{title:"제조투입", field:"제조투입", sorter:"string"},
+			{title:"적재No", field:"적재No", sorter:"string", visible: false},
+			{title:"입고", field:"입고", sorter:"string", visible: false},
+			{title:"제조투입", field:"제조투입", sorter:"string", visible: false},
 			{title:"세척투입일", field:"세척투입일", sorter:"string"},
-			//{title:"세척", field:"세척", sorter:"string"},
+			{title:"세척", field:"세척", sorter:"string", visible: false},
 			{title:"기초검사투입일", field:"기초검사투입일", sorter:"string"},
-			//{title:"기초검사", field:"기초검사", sorter:"string"},
+			{title:"기초검사", field:"기초검사", sorter:"string", visible: false},
 			{title:"분해조립투입일", field:"분해조립투입일", sorter:"string"},
-			//{title:"분해조립", field:"분해조립", sorter:"string"},
+			{title:"분해조립", field:"분해조립", sorter:"string", visible: false},
 			{title:"성능검사투입일", field:"성능검사투입일", sorter:"string"},
-			//{title:"성능검사", field:"성능검사", sorter:"string"},
+			{title:"성능검사", field:"성능검사", sorter:"string", visible: false},
 			{title:"EOL투입일", field:"EOL투입일", sorter:"string"},
-			//{title:"EOL", field:"EOL", sorter:"string"},
+			{title:"EOL", field:"EOL", sorter:"string", visible: false},
 			{title:"출하", field:"출하", sorter:"string"},
 			{title:"소재지", field:"소재지", sorter:"string"},
 			{title:"반품입고", field:"반품입고", sorter:"string"},
@@ -212,7 +258,8 @@ async function 재제조현황_조회(flag_id_search = false) {
 		return;
 	});
 
-	if(_management_id.value == '' && row_one_id == '') return;
+	if(row_one_id == '') return;
+	//if(_management_id.value == '' && row_one_id == '') return;
 	document.getElementById('m_id').innerHTML = '관리번호: ' + row_one_id;
 
 	await grid_입고(row_one_id);
