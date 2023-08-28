@@ -1,5 +1,6 @@
 var pre_관리번호 = '';
 var 차종 = '';
+var flag_입고_complete = false;
 
 async function 상세입력_시작(is재제조번호 = false) {
 	await sleep(100);
@@ -79,6 +80,7 @@ async function 상세입력_시작(is재제조번호 = false) {
 		}
 		_management_id.value = '';
 		_재제조번호.value = '';
+		_구분.value = '';
 		_차종.value = '';
 		_품번.value = '';
 		_RO_no.value = '';
@@ -106,6 +108,7 @@ async function 상세입력_시작(is재제조번호 = false) {
 
 		_management_id.value = find_array[0].관리번호;
 		_재제조번호.value = find_array[0].재제조번호;
+		//_구분.value = find_array[0].구분;
 		//_차종.value = find_array[0].차종;
 		//_품번.value = find_array[0].품번;
 		//_RO_no.value = find_array[0].RO_no;
@@ -137,6 +140,7 @@ async function 상세입력_시작(is재제조번호 = false) {
 			find(입고, _management_id.value);
 			await delay();
 			
+			_구분.value = find_array[0].구분;
 			_차종.value = find_array[0].차종;
 			_품번.value = find_array[0].품번;
 			_RO_no.value = find_array[0].RO_no;
@@ -144,7 +148,11 @@ async function 상세입력_시작(is재제조번호 = false) {
 			if(_입고.value != '' && _입고.value != 'none') {
 				_공정단계.value = '입고';
 			}
+			flag_입고_complete = true;
+		} else {
+			flag_입고_complete = true;
 		}
+
 		차종 = _차종.value;
 
 		await sleep(DELAY);
@@ -247,6 +255,7 @@ async function 상세입력_시작(is재제조번호 = false) {
 		item_detail_save(true);
 	} else {
 		_재제조번호.value = '';
+		_구분.value = '';
 		_차종.value = '';
 		_품번.value = '';
 		_RO_no.value = '';
@@ -286,6 +295,7 @@ async function item_detail_save(flag_result = false) {
 	var doc = BSA재제조_doc;
 	doc.관리번호 = _management_id.value;
 	doc.재제조번호 = _재제조번호.value;
+	doc.구분 = _구분.value;
 	doc.차종 = _차종.value;
 	doc.품번 = _품번.value;
 	doc.RO_no = _RO_no.value;
@@ -335,6 +345,11 @@ async function processStep() {
 	pre_관리번호 = '';
 
 	var step = _공정단계.value;
+
+	if(flag_입고_complete == false && step != '입고') {
+		alert('입고 정보를 입력해 주세요!');
+		step = '입고';
+	};
 
 	switch(step) {
 		case '입고' :

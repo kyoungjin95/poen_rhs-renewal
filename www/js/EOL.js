@@ -259,14 +259,14 @@ async function EOL_QR_Label() {
 		sn = find_array[0].재제조번호;
 
 		qrcode = new QRCode(document.getElementById('_QR_Code'), {
-			width: 128,
-			height: 128,
+			width: 90,
+			height: 90,
 		});
 
-		qrcode.makeCode('');
+		qrcode.makeCode(find_array[0].관리번호 + '\n' + find_array[0].재제조번호);
 		let qrcode_base64 = qrcode._oDrawing._elCanvas.toDataURL("image/png")
 		console.log(qrcode_base64);
-		html_string = '<html><head></head><body><div><h4>배터리 시스템 어셈블리</h4></div><div><span style=\'font-variant:small-caps;\'>(Battery System Assembly)</span></div><div><span style=\'line-height: 1; font-weight: bold;\'>' + 'R37501<br/>' + 'CN250' + '</span></div><div><img src=\'' + qrcode_base64 + '\' align=\'center\'></div><br/>' + '<h6>PN2023020701HRCFA-BIA-010</h6>' + '<img src=\'' + hyundai_logo  + '\'></body></html>';
+		html_string = '<html><head></head><body><table style=\'border:solid 1px #FFF\'><tr><td><h4>배터리 시스템 어셈블리</h4></td></tr><tr><td><span style=\'font-variant:small-caps;\'>(Battery System Assembly)</span></td></tr><tr><td><span style=\'line-height: 1; font-weight: bold;\'>' + find_array[0].품번 + '</span></td></tr><tr><td></td><td><img src=\'' + qrcode_base64 + '\'></td><td></td></tr><tr><td><h6>' + find_array[0].재제조번호  + '</h6></td></tr><tr><td></td><td></td><td><img src=\'' + hyundai_logo  + '\'></td></tr></body></html>';
 
 		make_qr_label(html_string);
 	});

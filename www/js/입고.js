@@ -22,6 +22,7 @@ async function 입고_시작() {
 
 		_입고일.value = find_array[0].입고일;
 		_입고처.value = find_array[0].입고처;
+		_구분.value = find_array[0].구분;
 		_차종.value = find_array[0].차종;
 		_품번.value = find_array[0].품번;
 		_RO_no.value = find_array[0].RO_no;
@@ -30,6 +31,7 @@ async function 입고_시작() {
 	} else {
 		_입고일.value = "0000-00-00T00:00";
 		_입고처.value = '';
+		_구분.value = '';
 		_차종.value = '';
 		_품번.value = '';
 		_RO_no.value = '';
@@ -47,6 +49,7 @@ async function 입고_save() {
 	doc.관리번호 = 관리번호;
 	doc.입고일 = _입고일.value;
 	doc.입고처 = _입고처.value;
+	doc.구분 = _구분.value;
 	doc.차종 = _차종.value;
 	doc.품번 = _품번.value;
 	doc.RO_no = _RO_no.value;
@@ -68,4 +71,11 @@ async function 입고_save() {
 	}
 
 	이전페이지();
+}
+
+function _구분_콤보박스(e) {
+
+	const value = e.value;
+
+  	document.getElementById('_구분').value = value;
 }

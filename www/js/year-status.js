@@ -102,6 +102,7 @@ async function 년간_조회(flag_id_search = false) {
 		for(i = 1; i <= 12; i++) {
 			var s_day = search_day.slice(0, 5) + i.toString().padStart(2, '0') + '-01' + 'T00:00:00.000Z';
 			var e_day = search_day.slice(0, 5) + i.toString().padStart(2, '0') + '-31' + 'T00:00:00.000Z';
+			
 			if(level == 'kia') {
 				find_query(BSA재제조, { 차종 : { $in : ['DE', 'DE_EV', 'DEPBV', 'DEPBV-EV', 'CV', 'CV_EV', 'MV', 'MV_EV', 'PU', 'PU_EV', 'SG2', 'SG2-EV', 'TAM', 'TAM-EV', 'PS', 'PS_EV', 'SK3']}, 입고 : { $gte: s_day, $lte: e_day } });
 				await delay();
@@ -113,6 +114,8 @@ async function 년간_조회(flag_id_search = false) {
         			await delay();
 			}
         		all_counts.push(doc_count);
+			console.log('입고 counts by month:', i, doc_count);
+			console.log('입고 search days by month:', i, s_day, e_day);
 		}
 
 		for(i = 1; i <= 12; i++) {
@@ -129,6 +132,8 @@ async function 년간_조회(flag_id_search = false) {
         			await delay();
 			}
         		all_counts.push(doc_count);
+			console.log('출고 counts by month:', i, doc_count);
+			console.log('출고 search days by month:', i, s_day, e_day);
 		}
 
 		chart_detail.destroy();

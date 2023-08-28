@@ -41,6 +41,21 @@
 						</tr>
 						<tr>
 							<td>
+								<label for="_구분"><b>구분</b></label>
+							</td>
+							<td>
+								<input type="text" id="_구분" size="40" required>
+							</td>
+							<td>
+								<select name="language" onchange="_구분_콤보박스(this);">
+									<option value="">---</option>
+									<option value="일반">일반</option>
+									<option value="보증">보증</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td>
 								<label for="_차종"><b>차종</b></label>
 							</td>
 							<td>
@@ -92,6 +107,7 @@
 				const _management_id = document.getElementById('_management_id');
 				const _입고일 = document.getElementById('_입고일');
 				const _입고처 = document.getElementById('_입고처');
+				const _구분 = document.getElementById('_구분');
 				const _차종 = document.getElementById('_차종');
 				const _품번 = document.getElementById('_품번');
 				const _RO_no = document.getElementById('_RO_no');
