@@ -150,7 +150,7 @@ async function 상세입력_시작(is재제조번호 = false) {
 			}
 			flag_입고_complete = true;
 		} else {
-			flag_입고_complete = true;
+			flag_입고_complete = false;
 		}
 
 		차종 = _차종.value;

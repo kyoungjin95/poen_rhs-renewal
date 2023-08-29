@@ -352,97 +352,24 @@ async function 분해조립_save() {
 }
 
 async function request_신품QR() {
-	var 바코드 = prompt('바코드를 입력하세요');
-	var 바코드_출고 = 바코드 +  '.출고';
-	count(자재입출고, { 바코드: 바코드_출고});
-	await delay();
-	let cnt_1 = doc_count;
+	var 교체후_QR = prompt('교체후 QR을 입력하세요');
+	var 교체후_품번 = prompt('교체후 품번을 입력하세요');
+	var str = '교체후 QR:' + 교체후_QR + ', 교체후 품번:' + 교체후_품번;
+	var 교체전_QR = prompt('교체전 QR을 입력하세요');
+	var 교체전_품번 = prompt('교체전 품번을 입력하세요');
+	str += ', 교체전 QR:' + 교체전_QR + ', 교체전 품번:' + 교체전_품번;
+	console.log(str);
 
-	count(자재입출고, { 바코드: 바코드});
-	await delay();
-	let cnt_2 = doc_count;
-
-	console.log('자재입출고 doc_count: ', doc_count);
-	if(cnt_1 > 0) {
-		find_신품정보(자재입출고, { 바코드: 바코드_출고 });
-		await delay();
-		console.log(find_array);
-		
-		var doc = JSON.parse(JSON.stringify(자재입출고_doc));
-		doc.바코드 = find_array[0].바코드_출고;
-		doc.날짜 = find_array[0].날짜;
-		doc.구분 = find_array[0].구분;
-		doc.차종 = find_array[0].차종;
-		doc.품명 = find_array[0].품명;
-		doc.품번 = find_array[0].품번;
-		doc.수량 = find_array[0].수량;
-		if(find_array[0].사용관리번호!= '') {
-			doc.사용관리번호 = find_array[0].사용관리번호+ ',' + _management_id.value;
-		} else {
-			doc.사용관리번호 = _management_id.value;
-		}
-
-		신품_docs.push(doc);
-		console.log(신품_docs);
-		
-		var QR = prompt('QR을 입력하세요');
-		var str = 'QR:' + QR + ', 바코드:' + 바코드;
-		console.log(str);
-		var 교체전_QR = prompt('교체전 QR을 입력하세요');
-		var 교체전_품번 = prompt('교체전 품번을 입력하세요');
-		str += ', 교체전 QR:' + 교체전_QR + ', 교체전 품번:' + 교체전_품번;
-
-		return str;
-	} else if(cnt_1 > 0) {
-		find_신품정보(자재입출고, { 바코드: 바코드 });
-		await delay();
-		console.log(find_array);
-		
-		var doc = JSON.parse(JSON.stringify(자재입출고_doc));
-		doc.바코드 = find_array[0].바코드_출고;
-		doc.날짜 = find_array[0].날짜;
-		doc.구분 = find_array[0].구분;
-		doc.차종 = find_array[0].차종;
-		doc.품명 = find_array[0].품명;
-		doc.품번 = find_array[0].품번;
-		doc.수량 = find_array[0].수량;
-		if(find_array[0].사용관리번호!= '') {
-			doc.사용관리번호 = find_array[0].사용관리번호+ ',' + _management_id.value;
-		} else {
-			doc.사용관리번호 = _management_id.value;
-		}
-
-		신품_docs.push(doc);
-		console.log(신품_docs);
-		
-		var QR = prompt('QR을 입력하세요');
-		var str = 'QR:' + QR + ', 바코드:' + 바코드;
-		console.log(str);
-		var 교체전_QR = prompt('교체전 QR을 입력하세요');
-		var 교체전_품번 = prompt('교체전 품번을 입력하세요');
-		str += ', 교체전 QR:' + 교체전_QR + ', 교체전 품번:' + 교체전_품번;
-
-		return str;
-	} else {
-		var QR = prompt('QR을 입력하세요');
-		var str = 'QR:' + QR + ', 바코드:' + 바코드;
-		console.log(str);
-		var 교체전_QR = prompt('교체전 QR을 입력하세요');
-		var 교체전_품번 = prompt('교체전 품번을 입력하세요');
-		str += ', 교체전 QR:' + 교체전_QR + ', 교체전 품번:' + 교체전_품번;
-
-		return str;
-	}
-	return 'none';
+	return str;
 }
 
 async function request_고품QR() {
-	var QR = prompt('QR을 입력하세요');
-	count(고품정보, { QR: QR });
+	var 교체후_QR = prompt('교체후 QR을 입력하세요');
+	count(고품정보, { QR: 교체후_QR });
 	await delay();	
 	console.log('고품정보 doc_count: ', doc_count);
 	if(doc_count > 0) {
-		find_고품정보(고품정보, { QR: QR });
+		find_고품정보(고품정보, { QR: 교체후_QR });
 		await delay();
 		console.log('고품정보:', find_array);
 
@@ -456,27 +383,16 @@ async function request_고품QR() {
 		doc.사용_관리번호 = _management_id.value;
 		고품_docs.push(doc);
 		console.log(고품_docs);
-
-		find(BSA재제조, find_array[0].관리번호);
-		await delay();
-		console.log(find_array);
-	
-		var str = '';
-		try {
-			str = 'QR:' + QR + ', 관리번호:' + find_array[0].관리번호 + ', 재제조번호:' + find_array[0].재제조번호 + ', 품번:' + find_array[0].품번;
-			console.log(str);
-		} catch(e) {
-			console.log('고품 : no data');
-		} finally {
-			var 교체전_QR = prompt('교체전 QR을 입력하세요');
-			var 교체전_품번 = prompt('교체전 품번을 입력하세요');
-			str += ', 교체전 QR:' + 교체전_QR + ', 교체전 품번:' + 교체전_품번;
-		}
-
-		return str;
 	}
 
-	return 'none';
+	var 교체후_품번 = prompt('교체후 품번을 입력하세요');
+	var str = '교체후 QR:' + 교체후_QR + ', 교체후 품번:' + 교체후_품번;
+	var 교체전_QR = prompt('교체전 QR을 입력하세요');
+	var 교체전_품번 = prompt('교체전 품번을 입력하세요');
+	str += ', 교체전 QR:' + 교체전_QR + ', 교체전 품번:' + 교체전_품번;
+	console.log(str);
+
+	return str;
 }
 
 async function _콤보박스(type, e) {

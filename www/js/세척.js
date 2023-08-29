@@ -16,13 +16,59 @@ async function 세척_시작() {
 	if(doc_count >= 1) {
 		find(세척, _management_id.value);
 		await delay();
+		_공정입고일.value = find_array[0].공정입고일;
+		_공정완료일.value = find_array[0].공정완료일;
+		_기밀검사_케이스.value = find_array[0].기밀검사_케이스;
+		_기밀검사_케이스_특이사항.value = find_array[0].기밀검사_케이스_특이사항;
+		_특이사항.value = find_array[0].특이사항
+
+		find(BSA재제조, _management_id.value);
+		await delay();
+		_재제조번호.value = find_array[0].재제조번호;
+	} else {
+		_재제조번호.value = '';
+		_공정입고일.value = '0000-00-00T00:00';
+		_공정완료일.value = '0000-00-00T00:00';
+		_기밀검사_케이스.value = '';
+		_기밀검사_케이스_특이사항.value = '';
+		_특이사항.value = '';
+	}
+}
+
+async function 세척_재제조번호_시작() {
+	if(worker == '') return;
+	while(_재제조번호 == undefined) {
+		await sleep(DELAY);
+	}
+
+	if(_재제조번호.value.length == 0) return;
+	console.log('load: ', _재제조번호.value);
+	if(_재제조번호.value == '' | _재제조번호.value == 'none') return;
+
+	count(BSA재제조, { 재제조번호 : _재제조번호.value.trim() });
+	await delay();
+	if(doc_count == 0) {
+		return;
+	}
+
+	find_query(BSA재제조, { 재제조번호 : _재제조번호.value.trim() });
+	await delay();
+
+	count(세척, { 관리번호 : find_array[0].관리번호 });
+	await delay();
+	console.log('doc_count: ', doc_count);
+	if(doc_count > 0) {
+		find(세척, find_array[0].관리번호);
+		await delay();
 		
+		_management_id.value = find_array[0].관리번호;
 		_공정입고일.value = find_array[0].공정입고일;
 		_공정완료일.value = find_array[0].공정완료일;
 		_기밀검사_케이스.value = find_array[0].기밀검사_케이스;
 		_기밀검사_케이스_특이사항.value = find_array[0].기밀검사_케이스_특이사항;
 		_특이사항.value = find_array[0].특이사항
 	} else {
+		_management_id.value = '';
 		_공정입고일.value = '0000-00-00T00:00';
 		_공정완료일.value = '0000-00-00T00:00';
 		_기밀검사_케이스.value = '';

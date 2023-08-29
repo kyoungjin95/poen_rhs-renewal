@@ -16,11 +16,20 @@
 					<table border="2">
 						<tr>
 							<td>
-								<label for="management_id"><b>관리번호</b></label>
+								<label for="_management_id"><b>관리번호</b></label>
 							</td>
 							<td>
 								<input type="text" id="_management_id" value="조회 버튼을 누르세요" size="40" required>
 								<button onClick="세척_시작();">조 회</button>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="_재제조번호"><b>재제조번호</b></label>
+							</td>
+							<td>
+								<input type="text" id="_재제조번호" value="조회 버튼을 누르세요" size="40" required>
+								<button onClick="세척_재제조번호_시작();">조 회</button>
 							</td>
 						</tr>
 						<tr>
@@ -80,6 +89,7 @@
 			</div>
 			<script>
 				const _management_id = document.getElementById('_management_id');
+				const _재제조번호 = document.getElementById('_재제조번호');
 				const _공정입고일 = document.getElementById('_공정입고일');
 				const _공정완료일 = document.getElementById('_공정완료일');
 				const _특이사항 = document.getElementById('_특이사항');

@@ -116,8 +116,8 @@ function _사용여부_콤보박스(e) {
   	document.getElementById('_사용여부').value = value;
 }
 
-async function read_신품정보_func_csv() {
-	_재고관리_csv.addEventListener('input', async function(event) {
+function read_신품정보_func_csv() {
+	_재고관리_csv.addEventListener('input', function(event) {
 		const target = event.target;
 		const files = target.files;
 		const file = files[0];
@@ -127,7 +127,7 @@ async function read_신품정보_func_csv() {
 			const res = d3.csvParse(reader.result);
 			//console.log(res);
 			for(var i = 0; i < res.length; i++) {
-				신품정보_insert(res[i]);
+				await 신품정보_insert(res[i]);
 				await sleep(10);
 			};
 		});
