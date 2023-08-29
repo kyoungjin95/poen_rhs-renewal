@@ -45,6 +45,22 @@ async function 입고_save() {
 	if(_management_id.value.length == 0) return;
 	console.log('save: ', _management_id.value);
 
+	if(_RO_no.value.length != 17) {
+		var cnt = (_RO_no.value.match(/-/g) || []).length;
+		if((_RO_no.value.length - cnt) != 17) {
+			alert('Ro 번호 자릴수가 다릅니다.(17)');
+			return;
+		}
+	}
+
+	if(_VIN.value.length != 17) {
+		var cnt = (_VIN.value.match(/-/g) || []).length;
+		if((_VIN.value.length - cnt) != 17) {
+			alert('VIN이 자릿수가 다릅니다.(17)');
+			return;
+		}
+	}
+
 	var doc = 입고_doc;
 	doc.관리번호 = 관리번호;
 	doc.입고일 = _입고일.value;
@@ -58,7 +74,7 @@ async function 입고_save() {
 	
 	update(입고, doc);
 	await delay();
-	
+
 	console.log(update_count);
 	console.log(insert_count);
 
@@ -69,7 +85,7 @@ async function 입고_save() {
 	if(insert_count > 0) {
 		alert('저장 되었습니다');
 	}
-
+	
 	이전페이지();
 }
 

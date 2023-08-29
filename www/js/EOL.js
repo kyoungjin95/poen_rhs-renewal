@@ -101,7 +101,7 @@ async function EOL_시작() {
 	}
 }
 
-async function EOL_save() {
+async function EOL_SAVE() {
 	if(worker == '') return;
 	if(_management_id.value.length == 0) return;
 	console.log('save: ', _management_id.value);
@@ -120,8 +120,8 @@ async function EOL_save() {
 	doc.통신검사_DTC코드2 =  _통신검사_DTC코드2.value;
 	doc.통신검사_DTC코드3 =  _통신검사_DTC코드3.value;
 	var tb = document.getElementById('tb');
-	var rowIcnt = tb.rows.length - 8;
-	var code_no = rowIcnt - 9;
+	var rowIcnt = tb.rows.length - 9;
+	var code_no = rowIcnt - 10;
 	if(code_no == 10) {
 		doc.통신검사_DTC코드4 = _통신검사_DTC코드4.value;
 		doc.통신검사_DTC코드5 = _통신검사_DTC코드5.value;
@@ -203,6 +203,10 @@ async function EOL_save() {
 	if(insert_count > 0) {
 		alert('저장 되었습니다');
 	}
+}
+
+function EOL_save() {
+	EOL_SAVE();
 
 	이전페이지();
 }
@@ -246,30 +250,34 @@ function _eol_delete_row(index) {
 }
 
 async function EOL_QR_Label() {
-	convertImageToBase64('base/img/hyundai.jpg', async function(hyundai_logo) {
-		let qrcode;
-		let pumbeon1 = '';
-		let pumbeon2 = ''; 
-		let sn = '';
-		let html_string = '';
-
-		find(BSA재제조, 관리번호);
-		await delay();
-
-		sn = find_array[0].재제조번호;
-
-		qrcode = new QRCode(document.getElementById('_QR_Code'), {
-			width: 90,
-			height: 90,
-		});
-
-		qrcode.makeCode(find_array[0].관리번호 + '\n' + find_array[0].재제조번호);
-		let qrcode_base64 = qrcode._oDrawing._elCanvas.toDataURL("image/png")
-		console.log(qrcode_base64);
-		html_string = '<html><head></head><body><table style=\'border:solid 1px #FFF\'><tr><td><h4>배터리 시스템 어셈블리</h4></td></tr><tr><td><span style=\'font-variant:small-caps;\'>(Battery System Assembly)</span></td></tr><tr><td><span style=\'line-height: 1; font-weight: bold;\'>' + find_array[0].품번 + '</span></td></tr><tr><td></td><td><img src=\'' + qrcode_base64 + '\'></td><td></td></tr><tr><td><h6>' + find_array[0].재제조번호  + '</h6></td></tr><tr><td></td><td></td><td><img src=\'' + hyundai_logo  + '\'></td></tr></body></html>';
-
-		make_qr_label(html_string);
+	let hyundai_logo;
+		convertImageToBase64('base/img/hyundai.jpg', async function(logo) {
+		hyundai_logo = logo;
 	});
+
+	let qrcode;
+	let pumbeon1 = '';
+	let pumbeon2 = ''; 
+	let sn = '';
+	let html_string = '';
+
+	find(BSA재제조, 관리번호);
+	await delay();
+
+	sn = find_array[0].재제조번호;
+
+	qrcode = new QRCode(document.getElementById('_QR_Code'), {
+		width: 128,
+		height: 128,
+	});
+
+	qrcode.makeCode(find_array[0].관리번호 + '\n' + find_array[0].재제조번호);
+	let qrcode_base64 = qrcode._oDrawing._elCanvas.toDataURL("image/png")
+	console.log(qrcode_base64);
+	
+	html_string = '<html><head></head><body><h4>배터리 시스템 어셈블리</h4><dl><dt>(Battery System Assembly)</dt><dt>' + find_array[0].품번 + '</dt><dd><img src=\'' + qrcode_base64 + '\'></dd><dt><h6>' + find_array[0].재제조번호  + '</h6></dt><dd><img src=\'' + hyundai_logo  + '\'></dd></body></html>';
+
+	make_qr_label(html_string);
 }
 
 function convertImageToBase64(imgUrl, callback) {
@@ -285,4 +293,10 @@ function convertImageToBase64(imgUrl, callback) {
     callback && callback(dataUrl)
   }
   image.src = imgUrl;
+}
+
+function EOL_카메라시작() {
+	EOL_SAVE();
+
+	EOL_사진촬영(_management_id.value);
 }
