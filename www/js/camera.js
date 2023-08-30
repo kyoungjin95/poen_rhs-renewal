@@ -22,6 +22,7 @@ var col;
 var doc;
 
 function pic_load(e) {
+	if(worker == '') return;
 	load_element();
 	image_count = e.length;
 	if(image_count > 15) {
@@ -46,6 +47,7 @@ function pic_load(e) {
 }
 
 async function 세척_사진촬영(m_id) {
+	if(worker == '') return;
 	loadPage('base/camera.html'); 
 	await sleep(DELAY);
 
@@ -63,6 +65,7 @@ async function 세척_사진촬영(m_id) {
 }
 
 async function 기초검사_사진촬영(m_id) {
+	if(worker == '') return;
 	loadPage('base/camera.html'); 
 	await sleep(DELAY);
 
@@ -80,6 +83,7 @@ async function 기초검사_사진촬영(m_id) {
 }
 
 async function EOL_사진촬영(m_id) {
+	if(worker == '') return;
 	loadPage('base/camera.html'); 
 	await sleep(DELAY);
 
@@ -139,6 +143,7 @@ function getDataUrl(file, no) {
 }
 
 function camera_공정입력_콤보박스(e) {
+	if(worker == '') return;
 	pic_step = e.value;
 
 	switch(pic_step) {
