@@ -1,4 +1,8 @@
-async function EOL_시작() {
+function EOL_재제조번호_시작() {
+	EOL_시작(true);
+}
+
+async function EOL_시작(EOL_is재제조번호 = false) {
 	if(worker == '') return;
 	while(_management_id == undefined) {
 		await sleep(DELAY);
@@ -6,18 +10,32 @@ async function EOL_시작() {
 
 	flag_EOL = false;
 
-	_management_id.value =  관리번호;
+	if(EOL_is재제조번호 == false) {
+		_management_id.value =  관리번호;
 
-	if(_management_id.value.length == 0) return;
-	console.log('load: ', _management_id.value);
-	if(_management_id.value == '' | _management_id.value == 'none') return;
+		if(_management_id.value.length == 0) return;
+		console.log('load: ', _management_id.value);
+		if(_management_id.value == '' | _management_id.value == 'none') return;
 
-	count(EOL, { 관리번호 : _management_id.value });
+		count(EOL, { 관리번호 : _management_id.value });
+	} else {
+		if(_재제조번호.value.length == 0) return;
+		console.log('load: ', _재제조번호.value);
+		if(_재제조번호.value == '' | _재제조번호.value == 'none') return;
+
+		find_query(BSA재제조, { 재재조번호 : _재제조번호.value });
+		count(EOL, { 관리번호 : find_array[0].관리번호 });
+	}
 	await delay();
 	console.log('doc_count: ', doc_count);
-	if(doc_count >= 1) {
-		find(EOL, _management_id.value);
-		await delay();
+	if(doc_count > 0) {
+		if(EOL_is재제조번호 == false) {
+			find(EOL, _management_id.value);
+			await delay();
+		} else {
+			find(EOL, find_array[0].관리번호);
+			await delay();
+		}
 		
         	_공정입고일.value = find_array[0].공정입고일; 
         	_UPR_C조립.value = find_array[0].UPR_C조립; 
@@ -79,7 +97,22 @@ async function EOL_시작() {
         	_비고.value = find_array[0].비고;
         	_QR.value = find_array[0].QR;
         	_검사자.value = find_array[0].검사자;
+
+		if(EOL_is재제조번호 == false) {
+			find(BSA재제조, _management_id.value);
+			await delay();
+
+			_재제조번호.value = find_array[0].재제조번호;
+		} else {
+			_management_id.value = find_array[0].관리번호;
+		}
 	} else {
+		if(EOL_is재제조번호 == false) {
+			_재제조번호.value = '';
+		} else {
+			_management_id.value = '';
+		}
+		
 		_공정입고일.value = '';
 		_UPR_C조립.value = '';
 		_기밀검사_케이스.value = '';
@@ -121,7 +154,9 @@ async function EOL_SAVE() {
 	doc.통신검사_DTC코드3 =  _통신검사_DTC코드3.value;
 	var tb = document.getElementById('tb');
 	var rowIcnt = tb.rows.length - 9;
-	var code_no = rowIcnt - 9;
+	var code_no = rowIcnt - 10;
+	console.log('rowIcnt:', rowIcnt, 'code_no:', code_no);
+
 	if(code_no == 10) {
 		doc.통신검사_DTC코드4 = _통신검사_DTC코드4.value;
 		doc.통신검사_DTC코드5 = _통신검사_DTC코드5.value;
@@ -233,9 +268,9 @@ function _EOL_add_DTC_Code() {
 	var oCurrentRow;
 	var tb = document.getElementById('tb');
 	var rowIcnt = tb.rows.length - 9;
-	var code_no = rowIcnt - 8;
+	var code_no = rowIcnt - 9;
 	console.log('rosw count:', rowIcnt);
-	if(rowIcnt > 18) return false;
+	if(rowIcnt > 19) return false;
 	oCurrentRow = tb.insertRow(rowIcnt);
 	var insert_string = "<td><label for=\"_통신검사_DTC코드\"" + code_no + "><b>통신검사 DTC코드 " + code_no + "</b></label></td><td><input type=\"text\" id=\"_통신검사_DTC코드" + code_no + "\" size=\"40\" required></td><td><button onClick=\"_eol_delete_row(" + rowIcnt + ");\">삭제</button></td>";
 	console.log(insert_string);
