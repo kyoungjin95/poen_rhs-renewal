@@ -18,7 +18,7 @@ var 온도센서_count = 1;
 var Busbars_count = 1;
 var BMA_count = 1;
 
-async function 분해조립_재제조번호() {
+async function 분해조립_재제조번호_시작() {
 	분해조립_시작(true);
 }
 
