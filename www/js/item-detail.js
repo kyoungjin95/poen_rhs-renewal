@@ -11,18 +11,19 @@ async function 상세입력_시작(is재제조번호 = false) {
 		await sleep(DELAY);
 	}
 
-	_management_id.value = _management_id.value.trim();
-	if(_management_id.value.length == 0 && 관리번호 != '' && 관리번호.indexOf('none') == -1) {
-		_management_id.value = 관리번호;
-	}
-
-	if(pre_관리번호 != '' && pre_관리번호 == _management_id.value) return;
-
-	console.log('load: ', _management_id.value);
-	if(_management_id.value.length == 0 && _재제조번호.value .length == 0) return;
-	if((_management_id.value == '' && _재제조번호.value == '') || (_management_id == 'none' && _재제조번호.value == 'none')) return;
-	
 	if(is재제조번호 == false) {
+		_management_id.value = _management_id.value.trim();
+
+		if(_management_id.value.length == 0 && 관리번호 != '' && 관리번호.indexOf('none') == -1) {
+			_management_id.value = 관리번호;
+		}
+
+		//if(pre_관리번호 != '' && pre_관리번호 == _management_id.value) return;
+		
+		console.log('load: ', _management_id.value);
+		if(_management_id.value.length == 0 && _재제조번호.value .length == 0) return;
+		if((_management_id.value == '' && _재제조번호.value == '') || (_management_id == 'none' && _재제조번호.value == 'none')) return;
+
 		관리번호 = _management_id.value;
 		console.log('관리번호:', 관리번호);
 		if(level == 'kia') {
@@ -66,7 +67,12 @@ async function 상세입력_시작(is재제조번호 = false) {
 				await delay();
 			}
 		} else {
-			var 재제조번호_search = _재제조번호.value.trim();
+			_재제조번호.value = _재제조번호.value.trim();
+
+			console.log('load: ', _재제조번호.value);
+			if(_management_id.value.length == 0 && _재제조번호.value .length == 0) return;
+			if((_management_id.value == '' && _재제조번호.value == '') || (_management_id == 'none' && _재제조번호.value == 'none')) return;
+
 			if(level == 'kia') {
 				count(BSA재제조, { 차종 : { $in : ['DE', 'DE_EV', 'DEPBV', 'DEPBV-EV', 'CV', 'CV_EV', 'MV', 'MV_EV', 'PU', 'PU_EV', 'SG2', 'SG2-EV', 'TAM', 'TAM-EV', 'PS', 'PS_EV', 'SK3']}, 재제조번호 : _재제조번호.value});
 				await delay();
@@ -74,7 +80,7 @@ async function 상세입력_시작(is재제조번호 = false) {
 				count(BSA재제조, { 차종 : { $in : ['OS', 'OS_EV', 'NE', 'NE_EV', 'HR', 'HR_EV', 'LK', 'LK_EV', 'LM', 'LM_EV', 'LKFC', 'LKFC-EV', 'CS', 'CS-EV', 'CS_EV', 'SX2', 'SX2-EV', 'AE', 'AE_EV', 'CE', 'CE_EV', 'ME', 'ME_EV', 'FE', 'FE_EV', 'RG3', 'RG3-EV', 'JW', 'JW_EV', 'JK', 'JK_EV', 'JX', 'JX_EV']}, 재제조번호 : _재제조번호.value});
 				await delay();
 			} else {
-				find_query(BSA재제조, { 재제조번호 : _재제조번호.value.trim() });
+				find_query(BSA재제조, { 재제조번호 : _재제조번호.value });
 				await delay();
 			}
 		}
@@ -254,7 +260,12 @@ async function 상세입력_시작(is재제조번호 = false) {
 		await sleep(DELAY);
 		item_detail_save(true);
 	} else {
-		_재제조번호.value = '';
+		if(is재제조번호 == false) {
+			_재제조번호.value = '';
+		} else {
+			_management_id.value = '';
+		}
+
 		_구분.value = '';
 		_차종.value = '';
 		_품번.value = '';
