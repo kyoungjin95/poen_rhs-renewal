@@ -45,7 +45,7 @@ async function 입고_save() {
 	if(_management_id.value.length == 0) return;
 	console.log('save: ', _management_id.value);
 
-	if(_RO_no.value.length != 17) {
+	if(_RO_no.value.length != 17 && _RO_no.value.length != 0) {
 		var cnt = (_RO_no.value.match(/-/g) || []).length;
 		if((_RO_no.value.length - cnt) != 17) {
 			alert('Ro 번호 자릴수가 다릅니다.(17)');
@@ -53,7 +53,7 @@ async function 입고_save() {
 		}
 	}
 
-	if(_VIN.value.length != 17) {
+	if(_VIN.value.length != 17 && _VIN.value.length != 0) {
 		var cnt = (_VIN.value.match(/-/g) || []).length;
 		if((_VIN.value.length - cnt) != 17) {
 			alert('VIN이 자릿수가 다릅니다.(17)');
