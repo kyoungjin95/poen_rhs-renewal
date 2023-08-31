@@ -84,20 +84,35 @@ function func_csv() {
 			for(var i = 0; i < res.length; i++) {
 				insert(res[i]);
 			};
-			console.log('insert count :', total_insert_count);
-			console.log('update count :', total_update_count);
-			console.log('fail count :', fail_count);
+			//console.log('insert count :', total_insert_count);
+			//console.log('update count :', total_update_count);
+			//console.log('fail count :', fail_count);
 		});
 		reader.readAsText(file);
 	});
 }
 
 async function insert(val) {
+	count(BSA재제조, { 관리번호 : val.관리번호 });
+	await delay();
+	await sleep(10);
+
+	if(doc_count == 0) {
+		console.log('빠진 항목:', val.관리번호);
+	}
+
+
+
+	check_count++;
+	console.log(check_count);
+}
+
+async function insert_(val) {
 	if(val.관리번호 == undefined || val.관리번호 == '') {
 		console.log('관리번호 없음');
 		return;
 	}
-
+       
 	console.log(val);
 	var doc = BSA재제조_doc;
 	doc.재제조번호 = val.재제조번호;

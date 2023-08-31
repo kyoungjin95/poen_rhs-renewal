@@ -310,7 +310,7 @@ async function EOL_QR_Label() {
 	let qrcode_base64 = qrcode._oDrawing._elCanvas.toDataURL("image/png")
 	console.log(qrcode_base64);
 	
-	html_string = '<html><head></head><body><h4>배터리 시스템 어셈블리</h4><dl><dt>(Battery System Assembly)</dt><dt>' + find_array[0].품번 + '</dt><dd><img src=\'' + qrcode_base64 + '\'></dd><dt><h6>' + find_array[0].재제조번호  + '</h6></dt><dd><img src=\'' + hyundai_logo  + '\'></dd></body></html>';
+	html_string = '<html><head></head><body><h4>배터리 시스템 어셈블리</h4><dl><dt>(Battery System Assembly)</dt><dt>R' + find_array[0].품번 + '</dt><dd><img src=\'' + qrcode_base64 + '\'></dd><dt><h6>' + find_array[0].재제조번호  + '</h6></dt><dd><img src=\'' + hyundai_logo  + '\'></dd></body></html>';
 
 	make_qr_label(html_string);
 }
