@@ -45,6 +45,8 @@ async function EOL_시작(EOL_is재제조번호 = false) {
         	_기밀검사_냉각유로_특이사항.value = find_array[0].기밀검사_냉각유로_특이사항;
         	_절연검사P.value = find_array[0].절연검사_Plus;
         	_절연검사M.value = find_array[0].절연검사_Minus;
+		_절연검사HVP.value = find_array[0].절연검사_HVPlus;
+		_절연검사HVN.value = find_array[0].절연검사_HVMinus;
         	_통신검사_DTC코드1.value = find_array[0].통신검사_DTC코드1;
         	_통신검사_DTC코드2.value = find_array[0].통신검사_DTC코드2;
         	_통신검사_DTC코드3.value = find_array[0].통신검사_DTC코드3;
@@ -149,12 +151,14 @@ async function EOL_SAVE() {
 	doc.기밀검사_냉각유로_특이사항 = _기밀검사_냉각유로_특이사항.value;
 	doc.절연검사_Plus = _절연검사P.value;
 	doc.절연검사_Minus = _절연검사M.value;
+	doc.절연검사_HVPlus = _절연검사HVP.value
+	doc.절연검사_HVMinus = _절연검사HVN.value;
 	doc.통신검사_DTC코드1 =  _통신검사_DTC코드1.value;
 	doc.통신검사_DTC코드2 =  _통신검사_DTC코드2.value;
 	doc.통신검사_DTC코드3 =  _통신검사_DTC코드3.value;
 	var tb = document.getElementById('tb');
 	var rowIcnt = tb.rows.length - 9;
-	var code_no = rowIcnt - 10;
+	var code_no = rowIcnt - 12;
 	console.log('rowIcnt:', rowIcnt, 'code_no:', code_no);
 
 	if(code_no == 10) {
@@ -268,9 +272,9 @@ function _EOL_add_DTC_Code() {
 	var oCurrentRow;
 	var tb = document.getElementById('tb');
 	var rowIcnt = tb.rows.length - 9;
-	var code_no = rowIcnt - 9;
+	var code_no = rowIcnt - 11;
 	console.log('rosw count:', rowIcnt);
-	if(rowIcnt > 19) return false;
+	if(rowIcnt > 21) return false;
 	oCurrentRow = tb.insertRow(rowIcnt);
 	var insert_string = "<td><label for=\"_통신검사_DTC코드\"" + code_no + "><b>통신검사 DTC코드 " + code_no + "</b></label></td><td><input type=\"text\" id=\"_통신검사_DTC코드" + code_no + "\" size=\"40\" required></td><td><button onClick=\"_eol_delete_row(" + rowIcnt + ");\">삭제</button></td>";
 	console.log(insert_string);
