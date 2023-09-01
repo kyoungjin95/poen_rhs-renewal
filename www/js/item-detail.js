@@ -154,7 +154,11 @@ async function 상세입력_시작(is재제조번호 = false) {
 			if(_입고.value != '' && _입고.value != 'none') {
 				_공정단계.value = '입고';
 			}
-			flag_입고_complete = true;
+			if(_입고.value != '' && _입고.value != undefined) {
+				flag_입고_complete = true;
+			} else {
+				flag_입고_complete = false;
+			}
 		} else {
 			flag_입고_complete = false;
 		}

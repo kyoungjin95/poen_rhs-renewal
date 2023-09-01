@@ -2,6 +2,24 @@ var row_one_id = '';
 var tabledata_BSA = [];
 var flag_id_search = 0;
 var table;
+var table_입고;
+var table_세척;
+var table_기초검사;
+var table_분해조립;
+var table_성능검사;
+var table_EOL;
+var table_출하정보;
+var table_특이사항;
+var table_교체부품상세1;
+var table_교체부품상세2;
+var table_교체부품상세3;
+var table_교체부품상세4;
+var table_교체부품상세5;
+var table_교체부품상세6;
+var table_교체부품상세7;
+var table_교체부품상세8;
+var table_교체부품상세9;
+var table_교체부품상세10;
 
 function updateFilter(){
   var fieldEl = document.getElementById("filter-field");
@@ -95,7 +113,7 @@ async function 재제조현황_조회(flag_id_search = false) {
 	if(doc_count >= 1) {
 		if(flag_id_search == 0) {
 			var now = new Date();
-			var 기준일 = new Date(now.setMonth(now.getYear() - 2));
+			//var 기준일 = new Date(now.setMonth(now.getYear() - 2));
 			
 			if(level == 'kia') {
 				find_query(BSA재제조, { 차종 : { $in : ['DE', 'DE_EV', 'DEPBV', 'DEPBV-EV', 'CV', 'CV_EV', 'MV', 'MV_EV', 'PU', 'PU_EV', 'SG2', 'SG2-EV', 'TAM', 'TAM-EV', 'PS', 'PS_EV', 'SK3']}});
@@ -141,16 +159,17 @@ async function 재제조현황_조회(flag_id_search = false) {
 
 
 		tabledata_BSA = find_array;
-		row_one_id = find_array[0].관리번호;
+		row_one_id = ''; //find_array[0].관리번호;
 	}
 
 	table = new Tabulator("#grid_BSA", {
 		layout: "resizableColumnFit",
                 data:tabledata_BSA,
 		height: '700px',
-                pagination: 'local',
-                responsiveLayout: true,
-                renderHorizontal:"virtual",
+		//width: '2000px',
+                //pagination: 'local',
+                //responsiveLayout: true,
+                //renderHorizontal:"virtual",
 		//autoColumns:true,
 		
 		columns:[
@@ -160,19 +179,19 @@ async function 재제조현황_조회(flag_id_search = false) {
 			{title:"품번", field:"품번", sorter:"string"},
 			{title:"RO_no", field:"RO_no", sorter:"string"},
 			{title:"공정단계", field:"공정단계", sorter:"string"},
-			{title:"적재No", field:"적재No", sorter:"string", visible: false},
-			{title:"입고", field:"입고", sorter:"string", visible: false},
-			{title:"제조투입", field:"제조투입", sorter:"string", visible: false},
+			{title:"적재No", field:"적재No", sorter:"string", visible: true}, //
+			{title:"입고", field:"입고", sorter:"string", visible: true},//
+			{title:"제조투입", field:"제조투입", sorter:"string", visible: true},//
 			{title:"세척투입일", field:"세척투입일", sorter:"string"},
-			{title:"세척", field:"세척", sorter:"string", visible: false},
+			{title:"세척", field:"세척", sorter:"string", visible: true},//
 			{title:"기초검사투입일", field:"기초검사투입일", sorter:"string"},
-			{title:"기초검사", field:"기초검사", sorter:"string", visible: false},
+			{title:"기초검사", field:"기초검사", sorter:"string", visible: true},//
 			{title:"분해조립투입일", field:"분해조립투입일", sorter:"string"},
-			{title:"분해조립", field:"분해조립", sorter:"string", visible: false},
+			{title:"분해조립", field:"분해조립", sorter:"string", visible: true},//
 			{title:"성능검사투입일", field:"성능검사투입일", sorter:"string"},
-			{title:"성능검사", field:"성능검사", sorter:"string", visible: false},
+			{title:"성능검사", field:"성능검사", sorter:"string", visible: true},//
 			{title:"EOL투입일", field:"EOL투입일", sorter:"string"},
-			{title:"EOL", field:"EOL", sorter:"string", visible: false},
+			{title:"EOL", field:"EOL", sorter:"string", visible: true},//
 			{title:"출하", field:"출하", sorter:"string"},
 			{title:"소재지", field:"소재지", sorter:"string"},
 			{title:"반품입고", field:"반품입고", sorter:"string"},
@@ -187,7 +206,7 @@ async function 재제조현황_조회(flag_id_search = false) {
 		console.log('selected 관리번호: ',  row.getData().관리번호);
 		m_id = row.getData().관리번호;
 		row_one_id = m_id;
-		
+
 		document.getElementById('m_id').innerHTML = '관리번호: ' + m_id;
 
 		await grid_입고(m_id);
@@ -252,7 +271,7 @@ async function 재제조현황_조회(flag_id_search = false) {
 		return;
 	});
 
-	if(row_one_id == '') return;
+	//if(row_one_id == '') return;
 	//if(_management_id.value == '' && row_one_id == '') return;
 	document.getElementById('m_id').innerHTML = '관리번호: ' + row_one_id;
 
@@ -463,13 +482,17 @@ async function grid_입고(m_id) {
 	var pic15 = document.getElementById('입고정보_pic15');
 
 	var tabledata_입고 = [];
-
-	find(입고, m_id);
+	
+	if(m_id == '') {
+		find(입고, { $exists : true });
+	} else {
+		find(입고, m_id);
+	}
 	await delay();
 	tabledata_입고 = find_array;
 	console.log('입고 : ', find_array);;
 
-	var table_입고 = new Tabulator("#grid_입고정보", {
+	table_입고 = new Tabulator("#grid_입고정보", {
 		layout: "resizableColumnFit",
 		height:130,
 		data:tabledata_입고, 
@@ -531,12 +554,16 @@ async function grid_세척(m_id) {
 
 	var tabledata_세척 = [];
 
+	if(m_id == '') {
+		find(세척, { $exists : true });
+	} else {
 		find(세척, m_id);
-		await delay();
-		tabledata_세척 = find_array;
-		console.log('세척 : ', find_array);;
+	}
+	await delay();
+	tabledata_세척 = find_array;
+	console.log('세척 : ', find_array);;
 
-	var table_세척 = new Tabulator("#grid_세척정보", {
+	table_세척 = new Tabulator("#grid_세척정보", {
 		layout: "resizableColumnFit",
 		height:130,
 		data:tabledata_세척, 
@@ -596,12 +623,16 @@ async function grid_기초검사(m_id) {
 
 	var tabledata_기초검사 = [];
 
+	if(m_id == '') {
+		find(기초검사, { $exists : true });
+	} else {
 		find(기초검사, m_id);
-		await delay();
-		tabledata_기초검사 = find_array;
-		console.log('기초검사 : ', find_array);;
+	}
+	await delay();
+	tabledata_기초검사 = find_array;
+	console.log('기초검사 : ', find_array);;
 
-	var table_기초검사 = new Tabulator("#grid_기초검사", {
+	table_기초검사 = new Tabulator("#grid_기초검사", {
 		layout: "resizableColumnFit",
 		height:130,
 		data:tabledata_기초검사, 
@@ -613,8 +644,10 @@ async function grid_기초검사(m_id) {
 			{title:"육안검사 내부", field:"육안검사_내부", sorter:"string"},
 			{title:"기밀검사 케이스", field:"기밀검사_케이스", sorter:"string"},
 			{title:"기밀검사 냉각유로", field:"기밀검사_냉각유로", sorter:"string"},
-			{title:"절연검사 Plus", field:"절연검사_Plus", sorter:"string"},
-			{title:"절연검사 Minus", field:"절연검사_Minus", sorter:"string"},
+			{title:"절연검사 B+", field:"절연검사_Plus", sorter:"string"},
+			{title:"절연검사 B-", field:"절연검사_Minus", sorter:"string"},
+			{title:"절연검사 HV+", field:"절연검사_Plus", sorter:"string"},
+			{title:"절연검사 HV-", field:"절연검사_Minus", sorter:"string"},
 			{title:"토크검사 UPR/C", field:"토크검사_UPR_C", sorter:"string"},
 			{title:"토크검사 버스바", field:"토크검사_버스바", sorter:"string"},
 			{title:"통신검사 DTC코드", field:"통신검사_DTC코드", sorter:"string"},
@@ -623,10 +656,13 @@ async function grid_기초검사(m_id) {
 			{title:"통신검사 릴레이구동", field:"통신검사_릴레이구동", sorter:"string"},
 			{title:"고장현상코드", field:"고장현상코드", sorter:"string"},
 			{title:"고장현상명", field:"고장현상명", sorter:"string"},
-			{title:"문제Cell_No", field:"문제Cell_No", sorter:"string"},
-			{title:"문제BMA_No", field:"문제BMA_No", sorter:"string"},
-			{title:"문제BMA_cnt", field:"문제BMA_cnt", sorter:"string"},
+			{title:"문제Cell No", field:"문제Cell_No", sorter:"string"},
+			{title:"문제BMA No", field:"문제BMA_No", sorter:"string"},
+			{title:"문제BMA 수량", field:"문제BMA_cnt", sorter:"string"},
 			{title:"완료일", field:"완료일", sorter:"string"},
+			{title:"요청사항", field:"요청사항", sorter:"string"},
+			{title:"비고", field:"비고", sorter:"string"},
+			{title:"센터 진단내용", field:"센터진단내용", sorter:"string"},
 			{title:"검사자", field:"검사자", sorter:"string"},
 		],
 	});
@@ -675,97 +711,17 @@ async function grid_분해조립(m_id) {
 
 	var tabledata_분해조립 = [];
 
-	find(분해조립, m_id);
+	if(m_id == '') {
+		find(분해조립, { $exists : true });
+	} else {
+		find(분해조립, m_id);
+	}
 	await delay();
-	
-		//for(var i = 1; i <= 10; i++) {
-		//	var str = 'if(find_array[0].BMU' + i + ' == \'\') delete find_array[0].BMU' + i +';';
-		//	console.log(str);
-		//	eval(str);
-		//}
-
-		//for(var i = 1; i <= 10; i++) {
-		//	var str = 'if(find_array[0].CMU' + i + ' == \'\') delete find_array[0].CMU' + i +';';
-		//	console.log(str);
-		//	eval(str);
-		//}
-
-		//for(var i = 1; i <= 10; i++) {
-		//	var str = 'if(find_array[0].PRA' + i + ' == \'\') delete find_array[0].PRA' + i +';';
-		//	console.log(str);
-		//	eval(str);
-		//}
-
-		//for(var i = 1; i <= 10; i++) {
-		//	var str = 'if(find_array[0].SPA' + i + ' == \'\') delete find_array[0].SPA' + i +';';
-		//	console.log(str);
-		//	eval(str);
-		//}
-
-		//for(var i = 1; i <= 10; i++) {
-		//	var str = 'if(find_array[0].LWR_C' + i + ' == \'\') delete find_array[0].LWR_C' + i +';';
-		//	console.log(str);
-		//	eval(str);
-		//}
-
-		//for(var i = 1; i <= 10; i++) {
-		//	var str = 'if(find_array[0].UPR_C' + i + ' == \'\') delete find_array[0].UPR_C' + i +';';
-		//	console.log(str);
-		//	eval(str);
-		//}
-
-		//for(var i = 1; i <= 10; i++) {
-		//	var str = 'if(find_array[0].Relay' + i + ' == \'\') delete find_array[0].Relay' + i +';';
-		//	console.log(str);
-		//	eval(str);
-		//}
-
-		//for(var i = 1; i <= 10; i++) {
-		//	var str = 'if(find_array[0].HV_CNTR' + i + ' == \'\') delete find_array[0].HV_CNTR' + i +';';
-		//	console.log(str);
-		//	eval(str);
-		//}
-
-		//for(var i = 1; i <= 10; i++) {
-		//	var str = 'if(find_array[0].Heating_CNTR' + i + ' == \'\') delete find_array[0].Heating_CNTR' + i +';';
-		//	console.log(str);
-		//	eval(str);
-		//}
-
-		//for(var i = 1; i <= 10; i++) {
-		//	var str = 'if(find_array[0].FuseBox' + i + ' == \'\') delete find_array[0].FuseBox' + i +';';
-		//	console.log(str);
-		//	eval(str);
-		//}
-
-		//for(var i = 1; i <= 10; i++) {
-		//	var str = 'if(find_array[0].LV_W_H' + i + ' == \'\') delete find_array[0].LV_W_H' + i +';';
-		//	console.log(str);
-		//	eval(str);
-		//}
-
-		//for(var i = 1; i <= 10; i++) {
-		//	var str = 'if(find_array[0].HV_W_H' + i + ' == \'\') delete find_array[0].HV_W_H' + i +';';
-		//	console.log(str);
-		//	eval(str);
-		//}
-
-		//for(var i = 1; i <= 10; i++) {
-		//	var str = 'if(find_array[0].온도센서' + i + ' == \'\') delete find_array[0].온도센서' + i +';';
-		//	console.log(str);
-		//	eval(str);
-		//}
-
-		//for(var i = 1; i <= 10; i++) {
-		//	var str = 'if(find_array[0].BMA' + i + ' == \'\') delete find_array[0].BMA' + i +';';
-		//	console.log(str);
-		//	eval(str);
-		//}
 
 	tabledata_분해조립 = find_array;
 	console.log('분해조립 : ', find_array);
 		
-	var table_분해조립 = new Tabulator("#grid_분해조립", {
+	table_분해조립 = new Tabulator("#grid_분해조립", {
 		layout: "resizableColumnFit",
 		height:130,
 		data:tabledata_분해조립, 
@@ -966,12 +922,16 @@ async function grid_성능검사(m_id) {
 
 	var tabledata_성능검사 = [];
 
-	find(성능검사, m_id);
+	if(m_id == '') {
+		find(성능검사, { $exists : true });
+	} else {
+		find(성능검사, m_id);
+	}
 	await delay();
 	tabledata_성능검사 = find_array;
 	console.log('성능검사 : ', find_array);;
 
-	var table_성능검사 = new Tabulator("#grid_성능검사", {
+	table_성능검사 = new Tabulator("#grid_성능검사", {
 		layout: "resizableColumnFit",
 		height:130,
 		data:tabledata_성능검사, 
@@ -1034,13 +994,16 @@ async function grid_EOL(m_id) {
 	var pic15 = document.getElementById('EOL_pic15');
 
 	var tabledata_EOL = [];
-
+	if(m_id == '') {
+		find(EOL, { $exists : true });
+	} else {
 		find(EOL, m_id);
-		await delay();
-		tabledata_EOL = find_array;
-		console.log('EOL : ', find_array);;
+	}
+	await delay();
+	tabledata_EOL = find_array;
+	console.log('EOL : ', find_array);;
 
-	var table_EOL = new Tabulator("#grid_EOL", {
+	table_EOL = new Tabulator("#grid_EOL", {
 		layout: "resizableColumnFit",
 		height:130,
 		data:tabledata_EOL, 
@@ -1050,11 +1013,11 @@ async function grid_EOL(m_id) {
 			{title:"관리번호", field:"관리번호", sorter:"string"},
 			{title:"UPR/C 조립", field:"UPR_C조립", sorter:"string"},
 			{title:"기밀검사 케이스", field:"기밀검사_케이스", sorter:"string"},
+			{title:"기밀검사 케이스 특이사항", field:"기밀검사_케이스_특이사항", sorter:"string"},
 			{title:"기밀검사 냉각유로", field:"기밀검사_냉각유로", sorter:"string"},
+			{title:"기밀검사 냉각유로 특이사항", field:"기밀검사_냉각유로_특이사항", sorter:"string"},
 			{title:"절연검사 Plus", field:"절연검사_Plus", sorter:"string"},
 			{title:"절연검사 Minus", field:"절연검사_Minus", sorter:"string"},
-			{title:"토크검사 UPR/C", field:"토크검사_UPR_C", sorter:"string"},
-			{title:"토크검사 버스바", field:"토크검사_버스바", sorter:"string"},
 			{title:"통신검사 DTC코드1", field:"통신검사_DTC코드1", sorter:"string"},
 			{title:"통신검사 DTC코드2", field:"통신검사_DTC코드2", sorter:"string"},
 			{title:"통신검사 DTC코드3", field:"통신검사_DTC코드3", sorter:"string"},
@@ -1070,6 +1033,8 @@ async function grid_EOL(m_id) {
 			{title:"통신검사 셀전압편차", field:"통신검사_셀전압편차", sorter:"string"},
 			{title:"통신검사 릴레이구동", field:"통신검사_릴레이구동", sorter:"string"},
 			{title:"완료일", field:"완료일", sorter:"string"},
+			{title:"비고", field:"비고", sorter:"string"},
+			{title:"QR", field:"QR", sorter:"string"},
 			{title:"검사자", field:"검사자", sorter:"string"},
 		],
 	});
@@ -1117,12 +1082,16 @@ async function grid_출하정보(m_id) {
 	var pic14 = document.getElementById('출하정보_pic14');
 	var pic15 = document.getElementById('출하정보_pic15');
 
-	find(출하정보, m_id);
+	if(m_id == '') {
+		find(출하정보, { $exists : true });
+	} else {
+		find(출하정보, m_id);
+	}
 	await delay();
 	tabledata_출하정보 = find_array;
 	console.log('출하정보 : ', find_array);;
 
-	var table_출하정보 = new Tabulator("#grid_출하정보", {
+	table_출하정보 = new Tabulator("#grid_출하정보", {
 		layout: "resizableColumnFit",
 		height:130,
 		data:tabledata_출하정보, 
@@ -1230,12 +1199,16 @@ async function grid_특이사항(m_id) {
 
 	var tabledata_특이사항 = [];
 
+	if(m_id == '') {
+		find(특이사항, { $exists : true });
+	} else {
 		find(특이사항, m_id);
-		await delay();
-		tabledata_특이사항 = find_array;
-		console.log('특이사항 : ', find_array);;
+	}
+	await delay();
+	tabledata_특이사항 = find_array;
+	console.log('특이사항 : ', find_array);;
 
-	var table_특이사항 = new Tabulator("#grid_특이사항", {
+	table_특이사항 = new Tabulator("#grid_특이사항", {
 		layout: "resizableColumnFit",
 		height:130,
 		data:tabledata_특이사항, 
@@ -1275,12 +1248,16 @@ async function grid_교체부품상세1(m_id) {
 	if(worker == '') return;
 	var tabledata_교체부품상세1 = [];
 
+	if(m_id == '') {
+		find(교체부품상세1, { $exists : true });
+	} else {
 		find(교체부품상세1, m_id);
-		await delay();
-		tabledata_교체부품상세1 = find_array;
-		console.log('교체부품상세1 : ', find_array);;
+	}
+	await delay();
+	tabledata_교체부품상세1 = find_array;
+	console.log('교체부품상세1 : ', find_array);;
 
-	var table_교체부품상세1 = new Tabulator("#grid_교체부품상세1", {
+	table_교체부품상세1 = new Tabulator("#grid_교체부품상세1", {
 		layout: "resizableColumnFit",
 		height:130,
 		data:tabledata_교체부품상세1, 
@@ -1305,12 +1282,16 @@ async function grid_교체부품상세2(m_id) {
 	if(worker == '') return;
 	var tabledata_교체부품상세2 = [];
 
+	if(m_id == '') {
+		find(교체부품상세2, { $exists : true });
+	} else {
 		find(교체부품상세2, m_id);
-		await delay();
-		tabledata_교체부품상세2 = find_array;
-		console.log('교체부품상세2 : ', find_array);;
+	}
+	await delay();
+	tabledata_교체부품상세2 = find_array;
+	console.log('교체부품상세2 : ', find_array);;
 
-	var table_교체부품상세2 = new Tabulator("#grid_교체부품상세2", {
+	table_교체부품상세2 = new Tabulator("#grid_교체부품상세2", {
 		layout: "resizableColumnFit",
 		height:130,
 		data:tabledata_교체부품상세2, 
@@ -1335,12 +1316,16 @@ async function grid_교체부품상세3(m_id) {
 	if(worker == '') return;
 	var tabledata_교체부품상세3 = [];
 
+	if(m_id == '') {
+		find(교체부품상세3, { $exists : true });
+	} else {
 		find(교체부품상세3, m_id);
-		await delay();
-		tabledata_교체부품상세3 = find_array;
-		console.log('교체부품상세3 : ', find_array);;
+	}
+	await delay();
+	tabledata_교체부품상세3 = find_array;
+	console.log('교체부품상세3 : ', find_array);;
 
-	var table_교체부품상세3 = new Tabulator("#grid_교체부품상세3", {
+	table_교체부품상세3 = new Tabulator("#grid_교체부품상세3", {
 		layout: "resizableColumnFit",
 		height:130,
 		data:tabledata_교체부품상세3, 
@@ -1365,12 +1350,16 @@ async function grid_교체부품상세4(m_id) {
 	if(worker == '') return;
 	var tabledata_교체부품상세4 = [];
 
+	if(m_id == '') {
+		find(교체부품상세4, { $exists : true });
+	} else {
 		find(교체부품상세4, m_id);
-		await delay();
-		tabledata_교체부품상세4 = find_array;
-		console.log('교체부품상세4 : ', find_array);;
+	}
+	await delay();
+	tabledata_교체부품상세4 = find_array;
+	console.log('교체부품상세4 : ', find_array);;
 
-	var table_교체부품상세4 = new Tabulator("#grid_교체부품상세4", {
+	table_교체부품상세4 = new Tabulator("#grid_교체부품상세4", {
 		layout: "resizableColumnFit",
 		height:130,
 		data:tabledata_교체부품상세4, 
@@ -1395,12 +1384,16 @@ async function grid_교체부품상세5(m_id) {
 	if(worker == '') return;
 	var tabledata_교체부품상세5 = [];
 
+	if(m_id == '') {
+		find(교체부품상세5, { $exists : true });
+	} else {
 		find(교체부품상세5, m_id);
-		await delay();
-		tabledata_교체부품상세5 = find_array;
-		console.log('교체부품상세5 : ', find_array);;
+	}
+	await delay();
+	tabledata_교체부품상세5 = find_array;
+	console.log('교체부품상세5 : ', find_array);;
 
-	var table_교체부품상세5 = new Tabulator("#grid_교체부품상세5", {
+	table_교체부품상세5 = new Tabulator("#grid_교체부품상세5", {
 		layout: "resizableColumnFit",
 		height:130,
 		data:tabledata_교체부품상세5, 
@@ -1425,12 +1418,16 @@ async function grid_교체부품상세6(m_id) {
 	if(worker == '') return;
 	var tabledata_교체부품상세6 = [];
 
+	if(m_id == '') {
+		find(교체부품상세6, { $exists : true });
+	} else {
 		find(교체부품상세6, m_id);
-		await delay();
-		tabledata_교체부품상세6 = find_array;
-		console.log('교체부품상세6 : ', find_array);;
+	}
+	await delay();
+	tabledata_교체부품상세6 = find_array;
+	console.log('교체부품상세6 : ', find_array);;
 
-	var table_교체부품상세6 = new Tabulator("#grid_교체부품상세6", {
+	table_교체부품상세6 = new Tabulator("#grid_교체부품상세6", {
 		layout: "resizableColumnFit",
 		height:130,
 		data:tabledata_교체부품상세6, 
@@ -1455,12 +1452,16 @@ async function grid_교체부품상세7(m_id) {
 	if(worker == '') return;
 	var tabledata_교체부품상세7 = [];
 
+	if(m_id == '') {
+		find(교체부품상세7, { $exists : true });
+	} else {
 		find(교체부품상세7, m_id);
-		await delay();
-		tabledata_교체부품상세7 = find_array;
-		console.log('교체부품상세7 : ', find_array);;
+	}
+	await delay();
+	tabledata_교체부품상세7 = find_array;
+	console.log('교체부품상세7 : ', find_array);;
 
-	var table_교체부품상세7 = new Tabulator("#grid_교체부품상세7", {
+	table_교체부품상세7 = new Tabulator("#grid_교체부품상세7", {
 		layout: "resizableColumnFit",
 		height:130,
 		data:tabledata_교체부품상세7, 
@@ -1485,12 +1486,16 @@ async function grid_교체부품상세8(m_id) {
 	if(worker == '') return;
 	var tabledata_교체부품상세8 = [];
 
+	if(m_id == '') {
+		find(교체부품상세6, { $exists : true });
+	} else {
 		find(교체부품상세8, m_id);
-		await delay();
-		tabledata_교체부품상세8 = find_array;
-		console.log('교체부품상세8 : ', find_array);;
+	}
+	await delay();
+	tabledata_교체부품상세8 = find_array;
+	console.log('교체부품상세8 : ', find_array);;
 
-	var table_교체부품상세8 = new Tabulator("#grid_교체부품상세8", {
+	table_교체부품상세8 = new Tabulator("#grid_교체부품상세8", {
 		layout: "resizableColumnFit",
 		height:130,
 		data:tabledata_교체부품상세8, 
@@ -1515,12 +1520,16 @@ async function grid_교체부품상세9(m_id) {
 	if(worker == '') return;
 	var tabledata_교체부품상세9 = [];
 
+	if(m_id == '') {
+		find(교체부품상세9, { $exists : true });
+	} else {
 		find(교체부품상세9, m_id);
-		await delay();
-		tabledata_교체부품상세9 = find_array;
-		console.log('교체부품상세9 : ', find_array);;
+	}
+	await delay();
+	tabledata_교체부품상세9 = find_array;
+	console.log('교체부품상세9 : ', find_array);;
 
-	var table_교체부품상세9 = new Tabulator("#grid_교체부품상세9", {
+	table_교체부품상세9 = new Tabulator("#grid_교체부품상세9", {
 		layout: "resizableColumnFit",
 		height:130,
 		data:tabledata_교체부품상세9, 
@@ -1545,12 +1554,16 @@ async function grid_교체부품상세10(m_id) {
 	if(worker == '') return;
 	var tabledata_교체부품상세10 = [];
 
+	if(m_id == '') {
+		find(교체부품상세10, { $exists : true });
+	} else {
 		find(교체부품상세10, m_id);
-		await delay();
-		tabledata_교체부품상세10 = find_array;
-		console.log('교체부품상세10 : ', find_array);;
+	}
+	await delay();
+	tabledata_교체부품상세10 = find_array;
+	console.log('교체부품상세10 : ', find_array);;
 
-	var table_교체부품상세10 = new Tabulator("#grid_교체부품상세10", {
+	table_교체부품상세10 = new Tabulator("#grid_교체부품상세10", {
 		layout: "resizableColumnFit",
 		height:130,
 		data:tabledata_교체부품상세10, 
@@ -1736,7 +1749,28 @@ async function 폐기_load_pic(m_id) {
 }
 
 function export_excel() {
-	table.download("xlsx", "재제조_bsa_data.xlsx", {sheetName:"재제조_bsa_data"});
+	var sheets = {
+		'BSA기본정보' : true,
+		'입고' : table_입고,
+		'세척' : table_세척,
+		'기초검사' : table_기초검사,
+		'분해조립' : table_분해조립,
+		'성능검사' : table_성능검사,
+		'EOL' : table_EOL,
+		'출하정보' : table_출하정보,
+		'특이사항' : table_특이사항,
+		'교체부품상세1' : table_교체부품상세1,
+		'교체부품상세2' : table_교체부품상세2,
+		'교체부품상세3' : table_교체부품상세3,
+		'교체부품상세4' : table_교체부품상세4,
+		'교체부품상세5' : table_교체부품상세5,
+		'교체부품상세6' : table_교체부품상세6,
+		'교체부품상세7' : table_교체부품상세7,
+		'교체부품상세8' : table_교체부품상세8,
+		'교체부품상세9' : table_교체부품상세9,
+		'교체부품상세10' : table_교체부품상세10,
+	};
+	table.download("xlsx", "재제조_bsa_data.xlsx", {sheets:sheets});
 }
 
 async function export_all_data_excel() {
