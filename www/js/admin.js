@@ -92,22 +92,71 @@ function func_csv() {
 	});
 }
 
-async function insert(val) {
+async function insert2(val) {
 	count(BSA재제조, { 관리번호 : val.관리번호 });
 	await delay();
 	await sleep(10);
 
+	doc = 입고_doc;
+	doc.관리번호 = val.관리번호;
+	doc.재제조번호 = val.재제조번호;
+	doc.차종 = val.차종;
+	doc.품번 = val.품번; 
+	doc.QRcode = val.QR코드;
+	doc.RO_no = val.RO_no; 
+	doc.VIN = val.VIN;
+	doc.구분 = val.구분;
+	doc.주행거리 = val.주행거리;
+	doc.차량번호 = val.차량번호;
 	if(doc_count == 0) {
 		console.log('빠진 항목:', val.관리번호);
+		var doc = {
+			관리번호 : val.관리번호,
+			차종 : val.차종,
+			품번 : val.품번,
+			Ro_no : val.Ro_no,
+			VIN : val.VIN,
+			구분 : val.구분,
+		};
+
+		update(입고, doc);
+		await delay();
+
+		var doc2 = {
+			관리번호 : val.관리번호,
+			재제조번호 : val.재제조번호,
+			차종 : val.차종,
+			품번 : val.품번,
+			구분 : val.구분,
+			Ro_no : val.Ro_no,
+			기초검사 : val.기초검사_완료일,	
+			분해조립 : val.분해조립_완료일,
+			성능검사 : val.성능검사_완료일,	
+			EOL : val.EOL_완료일,
+			출하 : val.출하_완료일,
+			반품입고 : val.반품입고,
+			재추하 : val.재출하,
+			완전분해 : val.완전분해,
+			폐기 : val.폐기,
+		};
+
+		update(BSA재제조, doc2);
+		await delay();
+		
+		doc3 = {
+			관리번호 : val.관리번호,
+			특이사항 : val.특이사항
+		}
+
+		update(특이사항, doc3);
+		await delay();
 	}
-
-
 
 	check_count++;
 	console.log(check_count);
 }
 
-async function insert_(val) {
+async function insert(val) {
 	if(val.관리번호 == undefined || val.관리번호 == '') {
 		console.log('관리번호 없음');
 		return;
@@ -117,9 +166,10 @@ async function insert_(val) {
 	var doc = BSA재제조_doc;
 	doc.재제조번호 = val.재제조번호;
 	doc.관리번호 = val.관리번호;
-	doc.용도 = val.용도;
+	doc.구분 = val.구분;
 	doc.차종 = val.차종;
-	doc.품번 = val.품번; 
+	doc.품번 = val.품번;
+	doc.QR코드 = val.QR코드;
 	doc.RO_no = val.RO_no; 
 	doc.공정단계 = '출하'; 
 	doc.적재No = ''; 
@@ -155,16 +205,22 @@ async function insert_(val) {
 	total_insert_count += insert_count;
 	total_update_count += update_count;
 
-	console.log('insert count :', insert_count);
-	console.log('update count :', update_count);
+	console.log('insert count :', total_insert_count);
+	console.log('update count :', total_update_count);
 	if(insert_count == 0 && update_count == 0) fail_count++;
+	console.log('fail count :', fail_count);
 
 	doc = 입고_doc;
 	doc.관리번호 = val.관리번호;
+	doc.재제조번호 = val.재제조번호;
 	doc.차종 = val.차종;
 	doc.품번 = val.품번; 
+	doc.QRcode = val.QR코드;
 	doc.RO_no = val.RO_no; 
-
+	doc.VIN = val.VIN;
+	doc.구분 = val.구분;
+	doc.주행거리 = val.주행거리;
+	doc.차량번호 = val.차량번호;
 	//console.log('입고:', doc);
 	update(입고, doc);
 	await delay();

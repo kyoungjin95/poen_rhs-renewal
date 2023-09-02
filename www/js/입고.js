@@ -28,6 +28,9 @@ async function 입고_시작() {
 		_RO_no.value = find_array[0].RO_no;
 		_VIN.value = find_array[0].VIN;
 		_랙번호.value = find_array[0].랙번호;
+		_QRcode.value = find_array[0].랙번호;
+		_주행거리.value = find_array[0].VIN;
+		_차량번호.value = find_array[0].랙번호;
 	} else {
 		_입고일.value = "0000-00-00T00:00";
 		_입고처.value = '';
@@ -37,6 +40,9 @@ async function 입고_시작() {
 		_RO_no.value = '';
 		_VIN.value = '';
 		_랙번호.value = '';
+		_QRcode.value = '';
+		_주행거리.value = '';
+		_차량번호.value = '';
 	}
 }
 
@@ -70,7 +76,10 @@ async function 입고_save() {
 	doc.품번 = _품번.value;
 	doc.RO_no = _RO_no.value;
 	doc.VIN  = _VIN.value;
-	doc.랙번호  = _랙번호.value;
+	doc.랙번호 = _랙번호.value;
+	doc.QRcode = _QRcode.value;
+	doc.주행거리 = _주행거리.value;
+	doc.차량번호  = _차량번호.value;
 	
 	update(입고, doc);
 	await delay();

@@ -502,11 +502,15 @@ async function grid_입고(m_id) {
 			{title:"관리번호", field:"관리번호", sorter:"string"},
 			{title:"입고일", field:"입고일", sorter:"string"},
 			{title:"입고처", field:"입고처", sorter:"string"},
+			{title:"구분", field:"구분", sorter:"string"},
 			{title:"차종", field:"차종", sorter:"string"},
 			{title:"품번", field:"품번", sorter:"string"},
 			{title:"RO_no", field:"RO_no", sorter:"string"},
 			{title:"VIN", field:"VIN", sorter:"string"},
 			{title:"랙번호", field:"랙번호", sorter:"string"},
+			{title:"QR", field:"QRcode", sorter:"string"},
+			{title:"주행거리", field:"주행거리", sorter:"string"},
+			{title:"차량번호", field:"차량번호", sorter:"string"},
 		]
 	});
 

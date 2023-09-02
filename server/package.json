@@ -3,7 +3,6 @@
     "docx": "^8.2.2",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
-    "html-docx-js": "^0.3.1",
     "html-to-docx": "^1.8.0",
     "html2pdf.js": "^0.10.1",
     "m": "^1.8.4",
