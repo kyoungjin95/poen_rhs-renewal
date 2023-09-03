@@ -21,6 +21,23 @@ const 교체부품상세7 = '교체부품상세7';
 const 교체부품상세8 = '교체부품상세8';
 const 교체부품상세9 = '교체부품상세9';
 const 교체부품상세10 = '교체부품상세10';
+const 세척참조 = '세척참조';
+const 기초참조 = '기초참조';
+const 성능참조 = '성능참조';
+const EOL참조 = 'EOL참조';
+const 출하참조 = '출하참조';
+const 분해참조 = '분해참조';
+const 특이참조 = '특이참조';
+const 교체참조1 = '교체참조1';
+const 교체참조2 = '교체참조2';
+const 교체참조3 = '교체참조3';
+const 교체참조4 = '교체참조4';
+const 교체참조5 = '교체참조5';
+const 교체참조6 = '교체참조6';
+const 교체참조7 = '교체참조7';
+const 교체참조8 = '교체참조8';
+const 교체참조9 = '교체참조9';
+const 교체참조10 = '교체참조10';
 const 자재입출고 = '자재입출고';
 const 입고_pic = '입고_pic';
 const 세척_pic = '세척_pic';
@@ -1375,6 +1392,7 @@ var insert_count = 0;
 var delete_count = 0;
 var insert_id = '';
 var find_array = [];
+var arregation_array = [];
 var flag_arrivedMSG = false;
 var check = 0;
 
@@ -1448,6 +1466,11 @@ socket.on('update_result', function(result) {
 	//console.log('insert result count: ', result.upsertedCount);
 	update_count = result.modifiedCount;
 	insert_count = result.upsertedCount;
+});
+
+socket.on('aggregation_result', function(result) {
+	aggregation_array = result;
+	flag_arrivedMSG = true;
 });
 
 socket.on('delete_result', function(count) {
@@ -1882,6 +1905,13 @@ function find_query(col, query) {
 	if(check > 10000) check = 0;
 
 	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: BSA재제조_ }, check);
+}
+
+function aggregation(col1, col2, col_name) {
+	if(socket == undefined) return;
+	flag_arrivedMSG = false;
+
+	socket.emit('aggregation', col1, col2, col_name);
 }
 
 function sleep(ms) {

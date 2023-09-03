@@ -127,6 +127,13 @@ io.on('connection', async function(socket) {
 		logger.info('worker:'+ worker + ' delete col:' + col + 'query:'+ JSON.stringify(query));
 	});
 
+	socket.on('aggregation', async function(col1, col2, col_name) {
+		if(account.login == false) return;
+
+		const result = await aggregation(col1, col2, col_name);
+		socket.emit('aggregation_result', result);
+	});
+
 	process.on('exit', function(code) {
 		console.log('Exit : ', code);
 		client.close();
@@ -168,6 +175,7 @@ async function distinct(col, query, field_name) {
 		return result_array;
 	} catch(err) {
 		console.error(err);
+		return null;
 	} finally {
 	}
 }
@@ -183,6 +191,7 @@ async function insert(col, doc) {
 		return result.insertedId;
 	} catch(err) {
 		console.error(err);
+		return null;
 	} finally {
 	}
 }
@@ -196,6 +205,7 @@ async function count(col, query) {
 		return cnt;
 	} catch(err) {
 		console.error(err);
+		return 0;
 	} finally {
 	}
 }
@@ -216,6 +226,7 @@ async function find(col, query, options) {
 		return result_array;
 	} catch(err) {
 		console.error(err);
+		return null;
 	} finally {
 	}
 }
@@ -239,6 +250,7 @@ async function update(col, filter, updateDoc) {
 		return result;
 	} catch(err) {
 		console.error(err);
+		return null;
 	} finally {
 	}
 }
@@ -251,7 +263,29 @@ async function deleteOne(col, query) {
 		console.log(`Delete ${result.deletedCount} documents`);
 		return result.deletedCount;
 	} catch(err) {
-		console.log.error(err);
+		console.error(err);
+		return 0;
+	} finally {
+	}
+}
+
+async function aggregation(col1, col2, new_col_name) {
+	try {
+		const database = client.db(db_name);
+		const result = database.getCollection(col1).aggregate([{
+			$lookup: {
+				from: col2,
+				localField: '관리번호',      // tgm_fvrt_mgmt join key
+				foreignField: '관리번호',    // tgb_user_mgmt join key
+				as: new_col_name
+			}
+		},
+			{   $unwind: new_col_name },       // $unwind used for getting data in object or for one record only
+		]);
+		return result;
+	} catch(err) {
+		console.error(err);
+		return null;
 	} finally {
 	}
 }
