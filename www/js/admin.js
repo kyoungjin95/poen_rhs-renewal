@@ -98,8 +98,18 @@ async function insert(val) {
 		소재지 : val.소재지
 	}
 
-	update(BSA재제조, doc);
-	await delay();
+	var doc2 = {
+		관리번호 : val.관리번호,
+		공정단계 : '출하'
+	}
+
+	if(val.소재지 != '' && val.소재지 != '출하') {
+		update(BSA재제조, doc);
+		await delay();
+	} else if(val.소재지 == '출하') {
+		update(BSA재제조, doc2);
+		await delay();
+	}
 
 	check_count++;
 	console.log(check_count);
