@@ -92,12 +92,30 @@ function func_csv() {
 	});
 }
 
+async function insert(val) {
+	find(BSA재제조, val.관리번호);
+	await delay();
+	await sleep(10);
+	
+	if(find_array[0].소재지.length != 0) return;
+	var doc = {
+		관리번호 : val.관리번호,
+		소재지 : val.소재지
+	}
+
+	update(BSA재제조, val.관리번호);
+	await delay();
+
+	check_count++;
+	console.log(check_count);
+}
+
 async function insert2(val) {
 	count(BSA재제조, { 관리번호 : val.관리번호 });
 	await delay();
 	await sleep(10);
 
-	doc = 입고_doc;
+	var doc = 입고_doc;
 	doc.관리번호 = val.관리번호;
 	doc.재제조번호 = val.재제조번호;
 	doc.차종 = val.차종;
@@ -156,7 +174,7 @@ async function insert2(val) {
 	console.log(check_count);
 }
 
-async function insert(val) {
+async function insert3(val) {
 	if(val.관리번호 == undefined || val.관리번호 == '') {
 		console.log('관리번호 없음');
 		return;
