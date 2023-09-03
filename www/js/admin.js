@@ -93,17 +93,12 @@ function func_csv() {
 }
 
 async function insert(val) {
-	find(BSA재제조, val.관리번호);
-	await delay();
-	await sleep(10);
-	
-	if(find_array[0].소재지.length != 0) return;
 	var doc = {
 		관리번호 : val.관리번호,
 		소재지 : val.소재지
 	}
 
-	update(BSA재제조, val.관리번호);
+	update(BSA재제조, doc);
 	await delay();
 
 	check_count++;
