@@ -77,7 +77,7 @@ async function 입고_save() {
 	doc.RO_no = _RO_no.value;
 	doc.VIN  = _VIN.value;
 	doc.랙번호 = _랙번호.value;
-	doc.QRcode = _QRcode.value;
+	doc.QRcode = _QRCode.value;
 	doc.주행거리 = _주행거리.value;
 	doc.차량번호  = _차량번호.value;
 	
