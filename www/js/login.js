@@ -23,7 +23,8 @@ async function login() {
 				start_repeat_대시보드();
 				대시보드_시작();
 				if(level == '관리자') admin_btn.style.display = 'block';
-				if(level == '부품관리자') 부품재고_btn.style.display = 'block';
+				부품재고_btn.style.display = 'block';
+				//if(level == '부품관리자') 부품재고_btn.style.display = 'block';
 				
 				var now = new Date();
 				var 기준일 = new Date(now.setMonth(now.getMonth() - 3));

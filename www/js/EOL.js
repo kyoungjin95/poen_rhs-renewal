@@ -305,8 +305,9 @@ async function EOL_QR_Label() {
 		width: 128,
 		height: 128,
 	});
-
-	qrcode.makeCode(find_array[0].관리번호 + '\n' + find_array[0].재제조번호);
+	
+	console.log(find_array[0].관리번호 + ' '+ find_array[0].재제조번호);
+	qrcode.makeCode(find_array[0].관리번호 + ' '+ find_array[0].재제조번호);
 	let qrcode_base64 = qrcode._oDrawing._elCanvas.toDataURL("image/png")
 	console.log(qrcode_base64);
 	
