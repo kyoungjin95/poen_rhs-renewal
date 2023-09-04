@@ -103,6 +103,10 @@ async function EOL_사진촬영(m_id) {
 async function pic_save() {
 	if(worker == '') return;
 	var mid = document.getElementById('_pic_management_id');
+	if(mid.value.length == 0) {
+		alert('관리번호를 입력하세요.');
+		return;
+	}
 
 	doc.관리번호 = mid.value.trim();
 	doc.pic1 = imgBase64Str[0];
