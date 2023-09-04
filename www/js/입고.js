@@ -28,7 +28,7 @@ async function 입고_시작() {
 		_RO_no.value = find_array[0].RO_no;
 		_VIN.value = find_array[0].VIN;
 		_랙번호.value = find_array[0].랙번호;
-		_QRcode.value = find_array[0].랙번호;
+		_QRCode.value = find_array[0].랙번호;
 		_주행거리.value = find_array[0].VIN;
 		_차량번호.value = find_array[0].랙번호;
 	} else {
@@ -40,7 +40,7 @@ async function 입고_시작() {
 		_RO_no.value = '';
 		_VIN.value = '';
 		_랙번호.value = '';
-		_QRcode.value = '';
+		_QRCode.value = '';
 		_주행거리.value = '';
 		_차량번호.value = '';
 	}
