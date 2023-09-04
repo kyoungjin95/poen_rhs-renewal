@@ -22,6 +22,17 @@ var table_교체부품상세8;
 var table_교체부품상세9;
 var table_교체부품상세10;
 
+function 관리번호_변경() {
+	var new_관리번호 = document.getElementById('new_관리번호').value;
+	if(new_관리번호 == '') {
+		return;
+	}
+
+
+	var doc = BSA재제조_doc;
+
+}
+
 function updateFilter(){
   var fieldEl = document.getElementById("filter-field");
   var typeEl = document.getElementById("filter-type");
@@ -550,6 +561,22 @@ async function grid_입고(m_id) {
 		pic13.src = 'data:image/;base64,' + find_array[0].pic13;
 		pic14.src = 'data:image/;base64,' + find_array[0].pic14;
 		pic15.src = 'data:image/;base64,' + find_array[0].pic15;
+	} else {
+		pic1.src = '';
+		pic2.src = '';
+		pic3.src = '';
+		pic4.src = '';
+		pic5.src = '';
+		pic6.src = '';
+		pic7.src = '';
+		pic8.src = '';
+		pic9.src = '';
+		pic10.src = '';
+		pic11.src = '';
+		pic12.src = '';
+		pic13.src = '';
+		pic14.src = '';
+		pic15.src = '';
 	}
 }
 
@@ -626,6 +653,22 @@ async function grid_세척(m_id) {
 		pic13.src='data:image/;base64,' + find_array[0].pic13;
 		pic14.src='data:image/;base64,' + find_array[0].pic14;
 		pic15.src='data:image/;base64,' + find_array[0].pic15;
+	} else {
+		pic1.src = '';
+		pic2.src = '';
+		pic3.src = '';
+		pic4.src = '';
+		pic5.src = '';
+		pic6.src = '';
+		pic7.src = '';
+		pic8.src = '';
+		pic9.src = '';
+		pic10.src = '';
+		pic11.src = '';
+		pic12.src = '';
+		pic13.src = '';
+		pic14.src = '';
+		pic15.src = '';
 	}
 }
 
@@ -719,6 +762,22 @@ async function grid_기초검사(m_id) {
 		pic13.src='data:image/;base64,' + find_array[0].pic13;
 		pic14.src='data:image/;base64,' + find_array[0].pic14;
 		pic15.src='data:image/;base64,' + find_array[0].pic15;
+	} else {
+		pic1.src = '';
+		pic2.src = '';
+		pic3.src = '';
+		pic4.src = '';
+		pic5.src = '';
+		pic6.src = '';
+		pic7.src = '';
+		pic8.src = '';
+		pic9.src = '';
+		pic10.src = '';
+		pic11.src = '';
+		pic12.src = '';
+		pic13.src = '';
+		pic14.src = '';
+		pic15.src = '';
 	}
 }
 
@@ -936,6 +995,22 @@ async function grid_분해조립(m_id) {
 		pic13.src='data:image/;base64,' + find_array[0].pic13;
 		pic14.src='data:image/;base64,' + find_array[0].pic14;
 		pic15.src='data:image/;base64,' + find_array[0].pic15;
+	} else {
+		pic1.src = '';
+		pic2.src = '';
+		pic3.src = '';
+		pic4.src = '';
+		pic5.src = '';
+		pic6.src = '';
+		pic7.src = '';
+		pic8.src = '';
+		pic9.src = '';
+		pic10.src = '';
+		pic11.src = '';
+		pic12.src = '';
+		pic13.src = '';
+		pic14.src = '';
+		pic15.src = '';
 	}
 }
 
@@ -1015,6 +1090,22 @@ async function grid_성능검사(m_id) {
 		pic13.src='data:image/;base64,' + find_array[0].pic13;
 		pic14.src='data:image/;base64,' + find_array[0].pic14;
 		pic15.src='data:image/;base64,' + find_array[0].pic15;
+	} else {
+		pic1.src = '';
+		pic2.src = '';
+		pic3.src = '';
+		pic4.src = '';
+		pic5.src = '';
+		pic6.src = '';
+		pic7.src = '';
+		pic8.src = '';
+		pic9.src = '';
+		pic10.src = '';
+		pic11.src = '';
+		pic12.src = '';
+		pic13.src = '';
+		pic14.src = '';
+		pic15.src = '';
 	}
 }
 
@@ -1105,6 +1196,22 @@ async function grid_EOL(m_id) {
 		pic13.src='data:image/;base64,' + find_array[0].pic13;
 		pic14.src='data:image/;base64,' + find_array[0].pic14;
 		pic15.src='data:image/;base64,' + find_array[0].pic15;
+	} else {
+		pic1.src = '';
+		pic2.src = '';
+		pic3.src = '';
+		pic4.src = '';
+		pic5.src = '';
+		pic6.src = '';
+		pic7.src = '';
+		pic8.src = '';
+		pic9.src = '';
+		pic10.src = '';
+		pic11.src = '';
+		pic12.src = '';
+		pic13.src = '';
+		pic14.src = '';
+		pic15.src = '';
 	}
 }
 
@@ -1228,6 +1335,22 @@ async function grid_출하정보(m_id) {
 		pic13.src='data:image/;base64,' + find_array[0].pic13;
 		pic14.src='data:image/;base64,' + find_array[0].pic14;
 		pic15.src='data:image/;base64,' + find_array[0].pic15;
+	} else {
+		pic1.src = '';
+		pic2.src = '';
+		pic3.src = '';
+		pic4.src = '';
+		pic5.src = '';
+		pic6.src = '';
+		pic7.src = '';
+		pic8.src = '';
+		pic9.src = '';
+		pic10.src = '';
+		pic11.src = '';
+		pic12.src = '';
+		pic13.src = '';
+		pic14.src = '';
+		pic15.src = '';
 	}
 }
 
@@ -1300,6 +1423,22 @@ async function grid_특이사항(m_id) {
 		pic13.src='data:image/;base64,' + find_array[0].pic13;
 		pic14.src='data:image/;base64,' + find_array[0].pic14;
 		pic15.src='data:image/;base64,' + find_array[0].pic15;
+	} else {
+		pic1.src = '';
+		pic2.src = '';
+		pic3.src = '';
+		pic4.src = '';
+		pic5.src = '';
+		pic6.src = '';
+		pic7.src = '';
+		pic8.src = '';
+		pic9.src = '';
+		pic10.src = '';
+		pic11.src = '';
+		pic12.src = '';
+		pic13.src = '';
+		pic14.src = '';
+		pic15.src = '';
 	}
 }
 
@@ -1751,6 +1890,22 @@ async function 반품입고_load_pic(m_id) {
 		pic13.src='data:image/;base64,' + find_array[0].pic13;
 		pic14.src='data:image/;base64,' + find_array[0].pic14;
 		pic15.src='data:image/;base64,' + find_array[0].pic15;
+	} else {
+		pic1.src = '';
+		pic2.src = '';
+		pic3.src = '';
+		pic4.src = '';
+		pic5.src = '';
+		pic6.src = '';
+		pic7.src = '';
+		pic8.src = '';
+		pic9.src = '';
+		pic10.src = '';
+		pic11.src = '';
+		pic12.src = '';
+		pic13.src = '';
+		pic14.src = '';
+		pic15.src = '';
 	}
 }
 
@@ -1792,6 +1947,22 @@ async function 재출하_load_pic(m_id) {
 		pic13.src='data:image/;base64,' + find_array[0].pic13;
 		pic14.src='data:image/;base64,' + find_array[0].pic14;
 		pic15.src='data:image/;base64,' + find_array[0].pic15;
+	} else {
+		pic1.src = '';
+		pic2.src = '';
+		pic3.src = '';
+		pic4.src = '';
+		pic5.src = '';
+		pic6.src = '';
+		pic7.src = '';
+		pic8.src = '';
+		pic9.src = '';
+		pic10.src = '';
+		pic11.src = '';
+		pic12.src = '';
+		pic13.src = '';
+		pic14.src = '';
+		pic15.src = '';
 	}
 }
 
@@ -1833,6 +2004,22 @@ async function 완전분해_load_pic(m_id) {
 		pic13.src='data:image/;base64,' + find_array[0].pic13;
 		pic14.src='data:image/;base64,' + find_array[0].pic14;
 		pic15.src='data:image/;base64,' + find_array[0].pic15;
+	} else {
+		pic1.src = '';
+		pic2.src = '';
+		pic3.src = '';
+		pic4.src = '';
+		pic5.src = '';
+		pic6.src = '';
+		pic7.src = '';
+		pic8.src = '';
+		pic9.src = '';
+		pic10.src = '';
+		pic11.src = '';
+		pic12.src = '';
+		pic13.src = '';
+		pic14.src = '';
+		pic15.src = '';
 	}
 }
 
@@ -1874,6 +2061,22 @@ async function 폐기_load_pic(m_id) {
 		pic13.src='data:image/;base64,' + find_array[0].pic13;
 		pic14.src='data:image/;base64,' + find_array[0].pic14;
 		pic15.src='data:image/;base64,' + find_array[0].pic15;
+	} else {
+		pic1.src = '';
+		pic2.src = '';
+		pic3.src = '';
+		pic4.src = '';
+		pic5.src = '';
+		pic6.src = '';
+		pic7.src = '';
+		pic8.src = '';
+		pic9.src = '';
+		pic10.src = '';
+		pic11.src = '';
+		pic12.src = '';
+		pic13.src = '';
+		pic14.src = '';
+		pic15.src = '';
 	}
 }
 
