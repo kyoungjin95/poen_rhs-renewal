@@ -306,8 +306,9 @@ async function EOL_QR_Label() {
 		height: 128,
 	});
 	
-	console.log(find_array[0].관리번호 + ' '+ find_array[0].재제조번호);
-	qrcode.makeCode(find_array[0].관리번호 + ' '+ find_array[0].재제조번호);
+	var 배터리팩_제조번호 = prompt('배터리팩 제조번호를 입력하세요');
+	console.log(배터리팩_제조번호 + ' '+ find_array[0].재제조번호);
+	qrcode.makeCode(배터리팩_제조번호 + ' '+ find_array[0].재제조번호);
 	let qrcode_base64 = qrcode._oDrawing._elCanvas.toDataURL("image/png")
 	console.log(qrcode_base64);
 	

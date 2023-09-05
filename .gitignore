@@ -3,3 +3,4 @@ server/node_modules/
 server/logs/
 server/nohup.out
 doc/all_data.csv
+doc/qr_label.docx
