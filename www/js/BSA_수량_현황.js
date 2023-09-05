@@ -1,3 +1,4 @@
+var BSA세척대기수량_table;
 var BSA대기수량_table;
 var 출하대기_BSA_관리번호 = '';
 
@@ -48,6 +49,8 @@ async function 세척대기() {
 	 await delay();
 
 	 document.getElementById('check_num2').innerHTML = doc_count;
+
+	 세척대기목록();
 }
 
 async function 기초검사대기() {
@@ -85,6 +88,56 @@ async function 출하대기() {
 	 document.getElementById('check_num7').innerHTML = doc_count;
 
 	 출하대기목록();
+}
+
+async function 세척대기목록() {
+	var tabledata_BSA = [];
+
+	count(BSA재제조, { 공정단계 : '세척' });
+	await delay();
+
+	if(doc_count == 0) return;
+
+	find_query(BSA재제조, { 공정단계 : '세척' });
+	await delay();
+
+	tabledata_BSA = find_array;
+
+	BSA세척대기수량_table = new Tabulator("#grid_세척대기", {
+		layout: "resizableColumnFit",
+                data:tabledata_BSA,
+		height: '300px',
+		
+		columns:[
+			{title:"출하예약", field:"출하예약", sorter:"string", width:'180'},
+			{title:"관리번호", field:"관리번호", sorter:"string", width:'180'},
+			{title:"재제조번호", field:"재제조번호", sorter:"string", width:'180'},
+			{title:"구분", field:"구분", sorter:"string", width:'180'},
+			{title:"차종", field:"차종", sorter:"string", width:'180'},
+			{title:"품번", field:"품번", sorter:"string", width:'180'},
+			{title:"RO_no", field:"RO_no", sorter:"string", width:'180'},
+			{title:"공정단계", field:"공정단계", sorter:"string", width:'180'},
+			{title:"소재지", field:"소재지", sorter:"string", width:'180'},
+			{title:"적재No", field:"적재No", sorter:"string", visible: true, width:'180'}, //
+			{title:"입고", field:"입고", sorter:"string", visible: true, width:'180'},//
+			{title:"제조투입", field:"제조투입", sorter:"string", visible: true, width:'180'},//
+			{title:"세척투입일", field:"세척투입일", sorter:"string", width:'180'},
+			{title:"세척", field:"세척", sorter:"string", visible: true, width:'180'},//
+			{title:"기초검사투입일", field:"기초검사투입일", sorter:"string", width:'180'},
+			{title:"기초검사", field:"기초검사", sorter:"string", visible: true, width:'180'},//
+			{title:"분해조립투입일", field:"분해조립투입일", sorter:"string", width:'180'},
+			{title:"분해조립", field:"분해조립", sorter:"string", visible: true, width:'180'},//
+			{title:"성능검사투입일", field:"성능검사투입일", sorter:"string", width:'180'},
+			{title:"성능검사", field:"성능검사", sorter:"string", visible: true, width:'180'},//
+			{title:"EOL투입일", field:"EOL투입일", sorter:"string", width:'180'},
+			{title:"EOL", field:"EOL", sorter:"string", visible: true, width:'180'},//
+			{title:"출하", field:"출하", sorter:"string", width:'180'},
+			{title:"반품입고", field:"반품입고", sorter:"string", width:'180'},
+			{title:"재출하", field:"재출하", sorter:"string", width:'180'},
+			{title:"완전분해", field:"완전분해", sorter:"string", width:'180'},
+			{title:"폐기", field:"폐기", sorter:"string", width:'180'},
+		],
+	});
 }
 
 async function 출하대기목록() {
