@@ -13,6 +13,8 @@ async function BSA_수량_현황_조회() {
 	await 성능검사대기();
 	await EOL대기();
 	await 출하대기();
+
+	console.log('update');
 }
 
 async function 작업대기() {
