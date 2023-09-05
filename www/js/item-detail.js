@@ -176,7 +176,7 @@ async function 상세입력_시작(is재제조번호 = false) {
 			_RO_no.value = find_array[0].RO_no;
 			_입고.value = find_array[0].입고일;
 			if(_입고.value != '' && _입고.value != 'none') {
-				_공정단계.value = '입고';
+				_공정단계.value = '세척';
 			}
 			if(_입고.value != '' && _입고.value != undefined) {
 				flag_입고_complete = true;

@@ -1419,17 +1419,6 @@ socket.on('qr_lebel_result', function(result) {
 	}
 });
 
-socket.on('aggregate_result', function(result) {
-	//alert(result);
-	if(result == 'complete') {
-		var a = document.createElement('a');
-		a.href = "/all_data";
-		a.download = 'Poen_RHS_all_data';
-
-		a.click();
-	}
-});
-
 socket.on('distinct_result', function(result) {
 	//console.log('distincted result array: ', result);
 	find_array = result;
@@ -1466,11 +1455,6 @@ socket.on('update_result', function(result) {
 	//console.log('insert result count: ', result.upsertedCount);
 	update_count = result.modifiedCount;
 	insert_count = result.upsertedCount;
-});
-
-socket.on('aggregation_result', function(result) {
-	aggregation_array = result;
-	flag_arrivedMSG = true;
 });
 
 socket.on('delete_result', function(count) {
@@ -1905,13 +1889,6 @@ function find_query(col, query) {
 	if(check > 10000) check = 0;
 
 	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: BSA재제조_ }, check);
-}
-
-function aggregation(col1, col2, col_name) {
-	if(socket == undefined) return;
-	flag_arrivedMSG = false;
-
-	socket.emit('aggregation', col1, col2, col_name);
 }
 
 function sleep(ms) {

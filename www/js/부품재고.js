@@ -108,7 +108,7 @@ async function 부품재고_시작() {
 		layout: "resizableColumnFit",
 		height:700,
 		data:tabledata_신품재고, 
-                pagination: 'local',
+                //pagination: 'local',
                 responsiveLayout: true,
                 renderHorizontal:"virtual",
 		//autoColumns:true,
@@ -150,7 +150,7 @@ async function 부품재고_시작() {
 		layout: "resizableColumnFit",
 		height:700,
 		data:tabledata_고품재고, 
-                pagination: 'local',
+                //pagination: 'local',
 		//autoColumns:true,
 		
 		columns: [
