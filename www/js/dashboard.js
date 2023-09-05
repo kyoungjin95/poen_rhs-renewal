@@ -58,6 +58,7 @@ async function dash_세척(today_begin, today_end) {
 		count(BSA재제조, { 세척 : { $exists : true, $ne : 'none', $ne : ''}});
 		await delay();
 	}
+	await sleep(DELAY);
 	console.log('세척 count:', doc_count);
 	var 세척누적 = doc_count;
 

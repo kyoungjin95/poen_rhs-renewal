@@ -96,8 +96,8 @@ var interval = setInterval(function() {
 	if(flag_부품재고 == true) { stop_repeat(); 부품재고_시작(); }
 	if(flag_신품정보 == true) { 신품정보_시작(); }
 	if(flag_생산현황 == true) { stop_repeat(); 생산현황_시작();}
-	if(flag_대시보드 == true) { start_repeat_대시보드(); 대시보드_시작();}
-	if(flag_BSA_수량_현황 == true) { start_repeat_BSA_수량_현황(); BSA_수량_현황_시작();}
+	if(flag_대시보드 == true) { stop_repeat(); start_repeat_대시보드(); 대시보드_시작();}
+	if(flag_BSA_수량_현황 == true) { stop_repeat(); start_repeat_BSA_수량_현황(); BSA_수량_현황_시작();}
 	if(flag_관리자 == true) { stop_repeat(); 관리자_시작();}
 	if(flag_입고 == true) { stop_repeat(); 입고_시작();}
 	if(flag_세척 == true) { stop_repeat(); 세척_시작();}
@@ -123,16 +123,20 @@ function stop_repeat() {
 
 function start_repeat_생산현황() {
 	console.log('start 생산현황 repeat');
+	flag_repeat_대시보드 = false;		
 	flag_repeat_생산현황 = true;
 }
 
 function start_repeat_대시보드() {
 	console.log('start dashboard repeat');
+	flag_repeat_BSA_수량_현황 = false;
 	flag_repeat_대시보드 = true;
 }
 
 function start_repeat_BSA_수량_현황() {
 	console.log('start BSA 수량 현황 repeat');
+	flag_repeat_생산현황 = false;		
+	flag_repeat_대시보드 = false;		
 	flag_repeat_BSA_수량_현황 = true;
 }
 
