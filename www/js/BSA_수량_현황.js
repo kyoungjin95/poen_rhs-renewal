@@ -1,4 +1,6 @@
 var BSA대기수량_table;
+var 출하대기_BSA_관리번호 = '';
+
 async function BSA_수량_현황_시작() {
 	flag_BSA_수량_현황 = false;
 	if(worker == '') return;
@@ -104,6 +106,7 @@ async function 출하대기목록() {
 		height: '700px',
 		
 		columns:[
+			{title:"출하예약", field:"출하예약", sorter:"string", width:'180'},
 			{title:"관리번호", field:"관리번호", sorter:"string", width:'180'},
 			{title:"재제조번호", field:"재제조번호", sorter:"string", width:'180'},
 			{title:"구분", field:"구분", sorter:"string", width:'180'},
@@ -132,28 +135,90 @@ async function 출하대기목록() {
 			{title:"폐기", field:"폐기", sorter:"string", width:'180'},
 		],
 	});
+
+	BSA대기수량_table.on("rowClick", async function(e, row){
+		console.log('selected 관리번호: ', row.getData().관리번호);
+		출하대기_BSA_관리번호 = row.getData().관리번호;
+		
+		document.getElementById('출하예약_관리번호').innerHTML = '출하 예약 관리번호: ' +  출하대기_BSA_관리번호;
+	});
 }
 
 function BSA대기수량_updateFilter(){
-  var fieldEl = document.getElementById("filter-field");
-  var typeEl = document.getElementById("filter-type");
-  var valueEl = document.getElementById("filter-value");
+	var fieldEl = document.getElementById("filter-field");
+	var typeEl = document.getElementById("filter-type");
+	var valueEl = document.getElementById("filter-value");
 
-  var filterVal = fieldEl.options[fieldEl.selectedIndex].value;
-  var typeVal = typeEl.options[typeEl.selectedIndex].value;
+	var filterVal = fieldEl.options[fieldEl.selectedIndex].value;
+	var typeVal = typeEl.options[typeEl.selectedIndex].value;
 
-  var filter = filterVal == "function" ? customFilter : filterVal;
+	var filter = filterVal == "function" ? customFilter : filterVal;
 
-  if(filterVal == "function" ){
-    typeEl.disabled = true;
-    valueEl.disabled = true;
-  }else{
-    typeEl.disabled = false;
-    valueEl.disabled = false;
-  }
+	if(filterVal == "function" ){
+		typeEl.disabled = true;
+		valueEl.disabled = true;
+	}else{
+		typeEl.disabled = false;
+		valueEl.disabled = false;
+	}
 
-  if(filterVal){
-    BSA대기수량_table.setFilter(filter,typeVal, valueEl.value.trim());
-  }
+	if(filterVal){
+		BSA대기수량_table.setFilter(filter,typeVal, valueEl.value.trim());
+	}
 }
 
+async function 출하예약() {
+	if(출하대기_BSA_관리번호 == '') {
+		alert('출하 예약할 BSA를 선택하세요');
+		return;
+	}
+
+	var doc = {
+		관리번호 : 출하대기_BSA_관리번호,
+		출하예약 : '예약'
+	}
+
+	update(BSA재제조, doc);
+	await delay();
+
+	console.log(update_count);
+	console.log(insert_count);
+
+	if(update_count > 0) {
+		alert('업데이트 되었습니다');
+	}
+
+	if(insert_count > 0) {
+		alert('저장 되었습니다');
+	}
+
+	BSA_수량_현황_조회();
+}
+
+async function 출하예약취소() {
+	if(출하대기_BSA_관리번호 == '') {
+		alert('출하 예약 취소할 BSA를 선택하세요');
+		return;
+	}
+
+	var doc = {
+		관리번호 : 출하대기_BSA_관리번호,
+		출하예약 : '예약 취소'
+	}
+
+	update(BSA재제조, doc);
+	await delay();
+
+	console.log(update_count);
+	console.log(insert_count);
+
+	if(update_count > 0) {
+		alert('업데이트 되었습니다');
+	}
+
+	if(insert_count > 0) {
+		alert('저장 되었습니다');
+	}
+
+	BSA_수량_현황_조회();
+}

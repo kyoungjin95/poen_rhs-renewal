@@ -135,6 +135,7 @@ async function 상세입력_시작(is재제조번호 = false) {
 		_재출하.value = '0000-00-00T00:00';
 		_완전분해.value = '0000-00-00T00:00';
 		_폐기.value = '0000-00-00T00:00';
+		_출하예약.value = '';
 
 		_management_id.value = find_array[0].관리번호;
 		_재제조번호.value = find_array[0].재제조번호;
@@ -163,6 +164,7 @@ async function 상세입력_시작(is재제조번호 = false) {
 		_재출하.value = find_array[0].재출하;
 		_완전분해.value = find_array[0].완전분해;
 		_폐기.value = find_array[0].폐기;
+		_출하예약.value = find_array[0].출하예약;
 
 		count(입고, { 관리번호 : _management_id.value });
 		await delay();
@@ -319,6 +321,8 @@ async function 상세입력_시작(is재제조번호 = false) {
 		_재출하.value = '0000-00-00T00:00';
 		_완전분해.value = '0000-00-00T00:00';
 		_폐기.value = '0000-00-00T00:00';
+		_출하예약.value = '';
+
 		item_detail_save(true);
 	}
 }
@@ -359,6 +363,7 @@ async function item_detail_save(flag_result = false) {
 	doc.재출하 = _재출하.value;
 	doc.완전분해 = _완전분해.value;
 	doc.폐기 = _폐기.value;
+	doc.출하예약 = _출하예약.value;
 	
 	update(BSA재제조, doc);
 	await delay();
@@ -471,6 +476,12 @@ function 소재지_콤보박스(e) {
 	const value = e.value;
 
   	document.getElementById('_소재지').value = value;
+}
+
+function 출하예약_콤보박스(e) {
+	const value = e.value;
+
+  	document.getElementById('_출하예약').value = value;
 }
 
 function 교체부품상세_콤보박스(e) {
