@@ -113,18 +113,18 @@ io.on('connection', async function(socket) {
 
 	socket.on('update', async function(worker, col, filter, doc) {
 		if(account.login == false && col != '계정') return;
+		logger.info('worker:'+ worker + ' update col:' + col + 'doc:' + JSON.stringify(doc));
 
 		const result = await update(col, filter, doc);
 		socket.emit('update_result', result);
-		logger.info('worker:'+ worker + ' update col:' + col + 'doc:' + JSON.stringify(doc));
 	});
 
 	socket.on('delete', async function(worker, col, query) {
 		if(account.login == false) return;
+		logger.info('worker:'+ worker + ' delete col:' + col + 'query:'+ JSON.stringify(query));
 
 		const result_count = await deleteOne(col, query);
 		socket.emit('delete_result', result_count);
-		logger.info('worker:'+ worker + ' delete col:' + col + 'query:'+ JSON.stringify(query));
 	});
 
 	process.on('exit', function(code) {
