@@ -12,6 +12,8 @@ async function 년간현황_시작() {
 	while(document.getElementById('_검색일') == undefined) {
 		await sleep(DELAY);
 	}
+	
+	alert_allow = false;
 
 	var DateTime = luxon.DateTime;
 	var seoul = DateTime.local().setZone("Asia/Seoul");

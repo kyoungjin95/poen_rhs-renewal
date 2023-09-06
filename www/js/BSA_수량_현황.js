@@ -1,4 +1,3 @@
-var BSA세척대기수량_table;
 var BSA대기수량_table;
 var 출하대기_BSA_관리번호 = '';
 
@@ -22,6 +21,32 @@ async function BSA_수량_현황_시작() {
 		valueEl.value = "";
 
 		BSA대기수량_table.clearFilter();
+	});
+
+	document.getElementById('대기라벨').innerHTML = '선택 대기 목록';
+	document.getElementById('입고').addEventListener("click", function(){
+		document.getElementById('대기라벨').innerHTML = '입고 대기 목록';
+		대기목록('입고');
+	});
+	document.getElementById('세척').addEventListener("click", function(){
+		document.getElementById('대기라벨').innerHTML = '세척 대기 목록';
+		대기목록('세척');
+	});
+	document.getElementById('기초').addEventListener("click", function(){
+		document.getElementById('대기라벨').innerHTML = '기초검사 대기 목록';
+		대기목록('기초검사');
+	});
+	document.getElementById('분해').addEventListener("click", function(){
+		document.getElementById('대기라벨').innerHTML = '분해조립 대기 목록';
+		대기목록('분해조립');
+	});
+	document.getElementById('성능').addEventListener("click", function(){
+		document.getElementById('대기라벨').innerHTML = '성능검사 대기 목록';
+		대기목록('성능검사');
+	});
+	document.getElementById('EOL').addEventListener("click", function(){
+		document.getElementById('대기라벨').innerHTML = 'EOL 대기 목록';
+		대기목록('EOL');
 	});
 }
 
@@ -85,30 +110,30 @@ async function 출하대기() {
 
 	 document.getElementById('check_num7').innerHTML = doc_count;
 
-	 await 세척대기목록();
 	 await 출하대기목록();
 }
 
-async function 세척대기목록() {
-	var 세척대기_tabledata_BSA = [];
+async function 대기목록(공정) {
+	var 대기_tabledata_BSA = [];
 
-	count(BSA재제조, { 공정단계 : '세척' });
+	count(BSA재제조, { 공정단계 : 공정 });
 	await delay();
 
-	if(doc_count == 0) return;
+	if(doc_count == 0) {
+		대기_tabledata_BSA = []
+	} else {
+		find_query(BSA재제조, { 공정단계 : 공정 });
+		await delay();
 
-	find_query(BSA재제조, { 공정단계 : '세척' });
-	await delay();
+		대기_tabledata_BSA = find_array;
+	}
 
-	세척대기_tabledata_BSA = find_array;
-
-	BSA세척대기수량_table = new Tabulator("#grid_세척대기", {
+	BSA대기수량_table = new Tabulator("#grid_대기", {
 		layout: "resizableColumnFit",
-                data:세척대기_tabledata_BSA,
+                data: 대기_tabledata_BSA,
 		height: '300px',
 		
 		columns:[
-			{title:"출하예약", field:"출하예약", sorter:"string", width:'180'},
 			{title:"관리번호", field:"관리번호", sorter:"string", width:'180'},
 			{title:"재제조번호", field:"재제조번호", sorter:"string", width:'180'},
 			{title:"구분", field:"구분", sorter:"string", width:'180'},

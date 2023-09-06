@@ -57,6 +57,9 @@ var 교체부품상세No = '교체부품상세1';
 var worker = '';
 var level = '';
 var flag_loaded = false;
+var alert_allow = false;
+var alert_occured = false;
+var old_alert_occured = false;
 
 const 계정_doc = {
 	id: '', 
@@ -1398,6 +1401,18 @@ var arregation_array = [];
 var flag_arrivedMSG = false;
 var check = 0;
 
+var alert_warnning = setInterval(function() {
+	if(alert_allow == true && old_alert_occured == false && alert_occured == true) {
+		alert('백업중입니다. 작업을 멈추어 주세요!!!');
+		old_alert_occured = true;
+
+		setTimeout(function() {
+			alert('백업작업이 끝났습니다');
+			old_alert_occured = false;
+		}, 10000);
+	}
+}, 500);
+
 const socket = io();
 socket.on('connect', function() {
 	console.log('connected');
@@ -1408,6 +1423,14 @@ socket.on('auto_backup_db_status', function(running) {
 	if(running == true) str = '자동 백업 시스템 작동중(30일 보관)';
 	else str = '자동 백업 시스템 정지!!';
 	document.getElementById('auto_backup_db_status').innerHTML = str;
+});
+
+socket.on('backup_db_status', function(running) {
+	if(running == true) {
+		alert_occured = true;
+	} else {
+		alert_occured = false;
+	}
 });
 
 socket.on('qr_lebel_result', function(result) {

@@ -15,6 +15,8 @@ async function 출하정보_시작() {
 
 	flag_출하 =  false;
 
+	alert_allow = true;
+
 	_management_id.value =  관리번호;
 
 	if(_management_id.value.length == 0) return;

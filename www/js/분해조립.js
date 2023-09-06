@@ -32,6 +32,9 @@ async function 분해조립_시작(is재제조번호 = false) {
 	flag_분해조립 = false;
 
 	flag_loaded = true;
+
+	alert_allow = true;
+
 	_management_id.value =  관리번호;
 
 	BMU_count = 1;

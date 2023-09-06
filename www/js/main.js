@@ -28,6 +28,8 @@ if(worker == null) {
 
 var flag_show = false;
 
+alert_allow = false;
+
 times_show();
 
 console.log('worker:', worker);
@@ -60,7 +62,6 @@ if(worker == '' || worker == null) {
 }
 
 //alert('#공지사항#\n사원번호로 로그인 해주세요!!\n ID : 사원번호 , Password: 사원번호*\n\n사진입력시 버퍼크기로 제한으로 \n업로드 못하던 문제 해결을 위해 버퍼크기를 10배로 늘렸습니다');
-
 var flag_재제조현황 = false;
 var flag_상세입력 = false;
 var flag_년간현황 = false;

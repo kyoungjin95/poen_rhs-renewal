@@ -24,6 +24,9 @@ var doc;
 function pic_load(e) {
 	if(worker == '') return;
 	load_element();
+	
+	alert_allow = true;
+
 	image_count = e.length;
 	if(image_count > 15) {
 		image_count = 15;

@@ -10,6 +10,8 @@ async function 고품정보등록_시작() {
 	console.log('load: ', _management_id.value);
 	if(_management_id.value == '' | _management_id.value == 'none') return;
 
+	alert_allow = true;
+
 	count(고품정보, { 관리번호 : _management_id.value });
 	await delay();
 	console.log('doc_count: ', doc_count);

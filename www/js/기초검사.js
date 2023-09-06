@@ -12,6 +12,8 @@ async function 기초검사_시작() {
 	console.log('load: ', _management_id.value);
 	if(_management_id.value == '' | _management_id.value == 'none') return;
 
+	alert_allow = false;
+
 	count(기초검사, { 관리번호 : _management_id.value });
 	await delay();
 	console.log('doc_count_1: ', doc_count);

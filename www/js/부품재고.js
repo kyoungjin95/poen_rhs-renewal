@@ -56,6 +56,8 @@ async function 부품재고_시작() {
 		await sleep(DELAY);
 	}
 
+	alert_allow = false;
+
 	//Update filters on value change
 	document.getElementById("new_filter-field").addEventListener("change", 신품_updateFilter);
 	document.getElementById("new_filter-type").addEventListener("change", 신품_updateFilter);

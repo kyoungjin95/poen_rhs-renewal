@@ -14,6 +14,8 @@ function 관리자_시작() {
 	_csv = document.getElementById('_csv');
 	_신품정보_csv = document.getElementById('_신품정보_csv');
 	func_csv();
+
+	alert_allow = true;
 }
 
 async function add_user() {

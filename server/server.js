@@ -133,25 +133,44 @@ io.on('connection', async function(socket) {
 	});
 });
 
+var flag_autobackup_db = false;
+var flag_backup_db = false;
+var flag_old_backup_db = false;
+
 setInterval(function() {
-	var flag_autobackup_db = false;
+
 	ps.lookup({ command: 'bash' }, (err, resultList) => {
 		if (err) {
 			console.log('Error getting list:', err);
 		} else {
 			resultList.forEach((process) => {
 				console.log('PID: %s, COMMAND: %s, ARGUMENTS: %s', process.pid, process.command, process.arguments);
-				if(process.arguments == './auto_backup_db.sh') {
-					console.log('auto backup db is running');
-					flag_autobackup_db = true;
+				if(process.arguments == './backup_db.sh') {
+					if(flag_old_backup_db == false) flag_backup_db = true;
 					return;
 				} else {
-					io.sockets.emit('auto_backup_db_status', false);
+					if(flag_old_backup_db == true) flag_backup_db = false;
+				}
+				
+				
+				if(process.arguments == './auto_backup_db.sh') {
+					flag_autobackup_db = true;
+				} else {
+					flag_autobackup_db = false;
 				}
 			});
+
+			if(flag_backup_db == true && flag_old_backup_db == false) {
+				io.sockets.emit('backup_db_status', true);
+				flag_old_backup_db = true;
+			} else if(flag_backup_db == false && flag_old_backup_db == true) {
+				io.sockets.emit('backup_db_status', false);
+				flag_old_backup_db = false;
+			}
+
 			if(flag_autobackup_db == true) {
 				io.sockets.emit('auto_backup_db_status', true);
-			} else {
+			} else if(flag_autobackup_db == false) {
 				io.sockets.emit('auto_backup_db_status', false);
 			}
 		}

@@ -12,6 +12,9 @@ async function 생산현황_시작() {
 	while(document.getElementById('_chart') == undefined) {
 		await sleep(DELAY);
 	}
+
+	alert_allow = false;
+
 	품번_조회();
 }
 

@@ -4,8 +4,10 @@ async function 입고_시작() {
 		await sleep(DELAY);
 	}
 
-	flag_입고 = false;
+	alert_allow = true;
 
+	flag_입고 = false;
+	
 	_management_id.value =  관리번호;
 
 	console.log('load: ', _management_id.value);

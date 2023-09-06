@@ -5,6 +5,8 @@ async function 재충전정보_시작() {
 	while(_loaded == undefined) {
 		await sleep(DELAY);
 	}
+	
+	alert_allow = false;
 
 	var tabledata = [];
 	var now = new Date();

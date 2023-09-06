@@ -2,6 +2,8 @@ async function login() {
 	const _id = document.getElementById('_id');
 	const _passwd = document.getElementById('_passwd');
 	if(_id.value == '' || _passwd.value == '') return;
+	
+	alert_allow = false;
 
 	const hash = CryptoJS.MD5(_passwd.value); 	
 

@@ -8,6 +8,7 @@ async function EOL_시작(EOL_is재제조번호 = false) {
 		await sleep(DELAY);
 	}
 
+	alert_allow = true;
 	flag_EOL = false;
 
 	if(EOL_is재제조번호 == false) {

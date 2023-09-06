@@ -3,6 +3,8 @@ var tabledata = [];
 
 async function 신품정보_시작() {
 	read_신품정보_func_csv();
+
+	alert_allow = true;
 }
 
 async function 신품정보등록_조회() {

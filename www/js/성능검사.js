@@ -4,6 +4,8 @@ async function 성능검사_시작() {
 		await sleep(DELAY);
 	}
 
+	alert_allow = false;
+
 	flag_성능검사 = false;
 
 	_management_id.value =  관리번호;

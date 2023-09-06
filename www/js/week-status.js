@@ -7,6 +7,9 @@ async function 주간현황_시작() {
 	while(_검색일 == undefined) {
 		await sleep(DELAY);
 	}
+	
+	alert_allow = false;
+
 	주간_조회();
 }
 
