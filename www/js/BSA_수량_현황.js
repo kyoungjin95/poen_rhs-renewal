@@ -49,8 +49,6 @@ async function 세척대기() {
 	 await delay();
 
 	 document.getElementById('check_num2').innerHTML = doc_count;
-
-	 세척대기목록();
 }
 
 async function 기초검사대기() {
@@ -87,11 +85,12 @@ async function 출하대기() {
 
 	 document.getElementById('check_num7').innerHTML = doc_count;
 
-	 출하대기목록();
+	 await 세척대기목록();
+	 await 출하대기목록();
 }
 
 async function 세척대기목록() {
-	var tabledata_BSA = [];
+	var 세척대기_tabledata_BSA = [];
 
 	count(BSA재제조, { 공정단계 : '세척' });
 	await delay();
@@ -101,11 +100,11 @@ async function 세척대기목록() {
 	find_query(BSA재제조, { 공정단계 : '세척' });
 	await delay();
 
-	tabledata_BSA = find_array;
+	세척대기_tabledata_BSA = find_array;
 
 	BSA세척대기수량_table = new Tabulator("#grid_세척대기", {
 		layout: "resizableColumnFit",
-                data:tabledata_BSA,
+                data:세척대기_tabledata_BSA,
 		height: '300px',
 		
 		columns:[
@@ -141,7 +140,7 @@ async function 세척대기목록() {
 }
 
 async function 출하대기목록() {
-	var tabledata_BSA = [];
+	var 출하대기_tabledata_BSA = [];
 
 	count(BSA재제조, { 공정단계 : '제조완료' });
 	await delay();
@@ -151,11 +150,11 @@ async function 출하대기목록() {
 	find_query(BSA재제조, { 공정단계 : '제조완료' });
 	await delay();
 
-	tabledata_BSA = find_array;
+	출하대기_tabledata_BSA = find_array;
 
 	BSA대기수량_table = new Tabulator("#grid_출하대기", {
 		layout: "resizableColumnFit",
-                data:tabledata_BSA,
+                data: 출하대기_tabledata_BSA,
 		height: '700px',
 		
 		columns:[
