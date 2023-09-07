@@ -1403,11 +1403,11 @@ var check = 0;
 
 var alert_warnning = setInterval(function() {
 	if(alert_allow == true && old_alert_occured == false && alert_occured == true) {
-		alert('백업중입니다. 작업을 멈추어 주세요!!!');
+		//alert('백업중입니다. 작업을 멈추어 주세요!!!');
 		old_alert_occured = true;
 
 		setTimeout(function() {
-			alert('백업작업이 끝났습니다');
+			//alert('백업작업이 끝났습니다');
 			old_alert_occured = false;
 		}, 10000);
 	}
@@ -1427,9 +1427,9 @@ socket.on('auto_backup_db_status', function(running) {
 
 socket.on('backup_db_status', function(running) {
 	if(running == true) {
-		alert_occured = true;
+		//alert_occured = true;
 	} else {
-		alert_occured = false;
+		//alert_occured = false;
 	}
 });
 
