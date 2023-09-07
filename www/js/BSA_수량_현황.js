@@ -1,5 +1,6 @@
 var BSA대기수량_table;
 var 출하대기_BSA_관리번호 = '';
+var 선택대기공정 = '세척';
 
 async function BSA_수량_현황_시작() {
 	flag_BSA_수량_현황 = false;
@@ -22,30 +23,23 @@ async function BSA_수량_현황_시작() {
 
 		BSA대기수량_table.clearFilter();
 	});
-
-	document.getElementById('대기라벨').innerHTML = '선택 대기 목록';
+	
 	document.getElementById('입고').addEventListener("click", function(){
-		document.getElementById('대기라벨').innerHTML = '입고 대기 목록';
 		대기목록('입고');
 	});
 	document.getElementById('세척').addEventListener("click", function(){
-		document.getElementById('대기라벨').innerHTML = '세척 대기 목록';
 		대기목록('세척');
 	});
 	document.getElementById('기초').addEventListener("click", function(){
-		document.getElementById('대기라벨').innerHTML = '기초검사 대기 목록';
 		대기목록('기초검사');
 	});
 	document.getElementById('분해').addEventListener("click", function(){
-		document.getElementById('대기라벨').innerHTML = '분해조립 대기 목록';
 		대기목록('분해조립');
 	});
 	document.getElementById('성능').addEventListener("click", function(){
-		document.getElementById('대기라벨').innerHTML = '성능검사 대기 목록';
 		대기목록('성능검사');
 	});
 	document.getElementById('EOL').addEventListener("click", function(){
-		document.getElementById('대기라벨').innerHTML = 'EOL 대기 목록';
 		대기목록('EOL');
 	});
 }
@@ -111,16 +105,20 @@ async function 출하대기() {
 	 document.getElementById('check_num7').innerHTML = doc_count;
 
 	 await 출하대기목록();
+	 await 대기목록(선택대기공정);
 }
 
 async function 대기목록(공정) {
 	var 대기_tabledata_BSA = [];
+	선택대기공정 = 공정;
+
+	document.getElementById('대기라벨').innerHTML = 선택대기공정 + ' 대기 목록';
 
 	count(BSA재제조, { 공정단계 : 공정 });
 	await delay();
 
 	if(doc_count == 0) {
-		대기_tabledata_BSA = []
+		대기_tabledata_BSA = [];
 	} else {
 		find_query(BSA재제조, { 공정단계 : 공정 });
 		await delay();

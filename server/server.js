@@ -44,9 +44,10 @@ app.get('/qr_label', (req, res) => {
 	res.sendFile(path.join(__dirname, '../doc/qr_label.docx'));
 });
 
+client = new MongoClient(uri);
+
 server.listen(80, () => {
 	console.log('listening on *:80');
-	client = new MongoClient(uri);
 });
 
 io.on('connection', async function(socket) {
@@ -194,7 +195,6 @@ async function distinct(col, query, field_name) {
 
 async function insert(col, doc) {
 	try {
-		const client = new MongoClient(uri);
 		const database = client.db(db_name);
 		const collection = database.collection(col);
 		const result = await collection.insertOne(doc);

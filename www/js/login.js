@@ -28,8 +28,13 @@ async function login() {
 				부품재고_btn.style.display = 'block';
 				//if(level == '부품관리자') 부품재고_btn.style.display = 'block';
 				
-				var now = new Date();
-				var 기준일 = new Date(now.setMonth(now.getMonth() - 3));
+				var DateTime = luxon.DateTime;
+				var seoul = DateTime.local().setZone("Asia/Seoul");
+				var now = seoul.toString();
+				var year = now.substr(0, 4);
+				var month = String(Number(now.substr(5, 2)) - 3).padStart(2, '0');
+				var day = now.substr(8, 2);
+				var 기준일 = year + '-' + month + '-' + day + 'T00:00:00Z'
 
 				count(BSA재제조, { 마지막충전일 : { $lte : 기준일, $ne : '' }, 공정단계 : { $ne : '출하'}});
 				await delay();

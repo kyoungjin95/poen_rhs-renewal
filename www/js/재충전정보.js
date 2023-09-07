@@ -9,16 +9,22 @@ async function 재충전정보_시작() {
 	alert_allow = false;
 
 	var tabledata = [];
-	var now = new Date();
-	var 기준일 = new Date(now.setMonth(now.getMonth() - 3));
+	var DateTime = luxon.DateTime;
+	var seoul = DateTime.local().setZone("Asia/Seoul");
+	var now = seoul.toString();
+	var year = now.substr(0, 4);
+	var month = String(Number(now.substr(5, 2)) - 3).padStart(2, '0');
+	var day = now.substr(8, 2);
+	var 기준일 = year + '-' + month + '-' + day + 'T00:00:00Z'
 
+	console.log('검색 기준일:', 기준일, now);
 	count(BSA재제조, { 마지막충전일 : { $lte : 기준일, $ne : '' }, 공정단계 : { $ne : '출하' }});
 	await delay();
 	await sleep(100);
 
 	console.log('doc_count: ', doc_count);
 	if(doc_count >= 1) {
-		find_query(BSA재제조, { 마지막충전일 : { $lte : 기준일, $ne : '' }});
+		find_query(BSA재제조, { 마지막충전일 : { $lte : 기준일, $ne : '' }, 공정단계 : { $ne : '출하' }});
 		await delay();
 		await sleep(100);
 		//tabledata = find_array;
