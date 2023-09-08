@@ -1345,21 +1345,6 @@ var arregation_array = [];
 var flag_arrivedMSG = false;
 var check = 0;
 
-<<<<<<< HEAD
-=======
-var alert_warnning = setInterval(function() {
-	if(alert_allow == true && old_alert_occured == false && alert_occured == true) {
-		//alert('백업중입니다. 작업을 멈추어 주세요!!!');
-		old_alert_occured = true;
-
-		setTimeout(function() {
-			//alert('백업작업이 끝났습니다');
-			old_alert_occured = false;
-		}, 10000);
-	}
-}, 500);
-
->>>>>>> 1ca65b85c49508811b5cd565b161e0c44fa55638
 const socket = io();
 socket.on('connect', function() {
 	console.log('connected');
@@ -1372,17 +1357,6 @@ socket.on('auto_backup_db_status', function(running) {
 	document.getElementById('auto_backup_db_status').innerHTML = str;
 });
 
-<<<<<<< HEAD
-=======
-socket.on('backup_db_status', function(running) {
-	if(running == true) {
-		//alert_occured = true;
-	} else {
-		//alert_occured = false;
-	}
-});
-
->>>>>>> 1ca65b85c49508811b5cd565b161e0c44fa55638
 socket.on('qr_lebel_result', function(result) {
 	//alert(result);
 	if(result == 'complete') {
