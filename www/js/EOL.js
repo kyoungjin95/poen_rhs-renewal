@@ -11,9 +11,8 @@ async function EOL_시작(EOL_is재제조번호 = false) {
 	alert_allow = true;
 	flag_EOL = false;
 
+	_management_id.value =  관리번호;
 	if(EOL_is재제조번호 == false) {
-		_management_id.value =  관리번호;
-
 		if(_management_id.value.length == 0) return;
 		console.log('load: ', _management_id.value);
 		if(_management_id.value == '' | _management_id.value == 'none') return;

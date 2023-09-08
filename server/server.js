@@ -135,8 +135,6 @@ io.on('connection', async function(socket) {
 });
 
 var flag_autobackup_db = false;
-var flag_backup_db = false;
-var flag_old_backup_db = false;
 
 setInterval(function() {
 
@@ -146,13 +144,6 @@ setInterval(function() {
 		} else {
 			resultList.forEach((process) => {
 				console.log('PID: %s, COMMAND: %s, ARGUMENTS: %s', process.pid, process.command, process.arguments);
-				if(process.arguments == './backup_db.sh') {
-					if(flag_old_backup_db == false) flag_backup_db = true;
-					return;
-				} else {
-					if(flag_old_backup_db == true) flag_backup_db = false;
-				}
-				
 				
 				if(process.arguments == './auto_backup_db.sh') {
 					flag_autobackup_db = true;
@@ -160,14 +151,6 @@ setInterval(function() {
 					flag_autobackup_db = false;
 				}
 			});
-
-			if(flag_backup_db == true && flag_old_backup_db == false) {
-				io.sockets.emit('backup_db_status', true);
-				flag_old_backup_db = true;
-			} else if(flag_backup_db == false && flag_old_backup_db == true) {
-				io.sockets.emit('backup_db_status', false);
-				flag_old_backup_db = false;
-			}
 
 			if(flag_autobackup_db == true) {
 				io.sockets.emit('auto_backup_db_status', true);

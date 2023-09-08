@@ -14,16 +14,33 @@
 					<table border="2">
 						<tr>
 							<td>
-								<label for="management_id"><b>관리번호</b></label>
+								<label for="_management_id"><b>관리번호</b></label>
 							</td>
 							<td>
 								<input type="text" id="_management_id" value="조회 버튼을 누르세요" size="20" required>
-								<button onClick="출하정보_시작();">조 회</button>
+								<button onClick="출하정보_시작(false);">조 회</button>
 							</td>
 						</tr>
 						<tr>
 							<td>
-								<label for="_출하코드"><b>출하 코드</b></label>
+								<label for="_재제조번호"><b>재제조번호</b></label>
+							</td>
+							<td>
+								<input type="text" id="_재제조번호" value="조회 버튼을 누르세요" size="20" required>
+								<button onClick="출하정보_시작(true);">조 회</button>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="_출하일"><b>출하일</b></label>
+							</td>
+							<td>
+								<input type="datetime-local" id="_출하일" size="20" value="0000-00-00T00:00" required>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="_출하코드"><b>출하코드</b></label>
 							</td>
 							<td>
 								<input type="text" id="_출하코드" size="20" required>
@@ -35,38 +52,6 @@
 							</td>
 							<td>
 								<input type="text" id="_납품처" size="20" required>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<label for="_RO_no"><b>RO</b></label>
-							</td>
-							<td>
-								<input type="text" id="_RO_no" size="20" required>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<label for="_차종"><b>차종</b></label>
-							</td>
-							<td>
-								<input type="text" id="_차종" size="20" required>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<label for="_품번"><b>품번</b></label>
-							</td>
-							<td>
-								<input type="text" id="_품번" size="20" required>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<label for="_출하일"><b>출하일</b></label>
-							</td>
-							<td>
-								<input type="datetime-local" id="_출하일" size="20" value="0000-00-00T00:00" required>
 							</td>
 						</tr>
 						<tr>
@@ -86,13 +71,37 @@
 							</td>
 						</tr>
 						<tr>
+							<td>
+								<label for="_RO_no"><b>RO</b></label>
+							</td>
+							<td>
+								<input type="text" id="_RO_no" size="20" readonly>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="_차종"><b>차종</b></label>
+							</td>
+							<td>
+								<input type="text" id="_차종" size="20" readonly>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="_품번"><b>품번</b></label>
+							</td>
+							<td>
+								<input type="text" id="_품번" size="20" readonly>
+							</td>
+						</tr>
+						<tr>
 							<td colspan='2'>
 								<center>
 									<label>관리문서 및 보고서 작성</label>
 								</center>
 							</td>
 						</tr>
-						<tr><!-- 이름 수정 -->
+						<tr>
 							<td>
 								<label for="_기초보고서_작성확인"><b>기초보고서 작성확인(입고증상/진단결과)</b></label>
 							</td>
@@ -105,7 +114,7 @@
 								</select>
 							</td>
 						</tr>
-						<tr><!-- 이름 수정 -->
+						<tr>
 							<td>
 								<label for="_완료보고서_작성확인"><b>완료보고서_작성확인(교체부품)</b></label>
 							</td>
@@ -205,24 +214,11 @@
 						</tr>
 						<tr>
 							<td>
-								<label for="_냉각유로_커버1"><b>냉각유로커버 및 커넥터 커버 #1</b></label>
+								<label for="_냉각유로_커버"><b>냉각유로 커버 2개소</b></label>
 							</td>
 							<td>
-								<input type="text" id="_냉각유로_커버1" size="20" required>
-								<select name="language" onchange="_냉각유로_커버1_콤보박스(this);">
-									<option value="">---</option>
-									<option value="OK">OK</option>
-									<option value="NG">NG</option>
-								</select>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<label for="_냉각유로_커버2"><b>냉각유로커버 및 커넥터 커버 #2</b></label>
-							</td>
-							<td>
-								<input type="text" id="_냉각유로_커버2" size="20" required>
-								<select name="language" onchange="_냉각유로_커버2_콤보박스(this);">
+								<input type="text" id="_냉각유로_커버" size="20" required>
+								<select name="language" onchange="_냉각유로_커버_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
 									<option value="NG">NG</option>
@@ -234,117 +230,6 @@
 			</div>
 			<div>
 				<center>
-					<table border="2">
-						<tr>
-							<td>
-								<center>
-									공통항목(외관)
-								</center>
-							</td>
-							<td>
-								<center>
-									기준
-								</center>
-							</td>
-							<td>
-							</td>
-							<td>
-								<center>
-									비고
-								</center>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								청결상태
-							</td>
-							<td>
-								오염물 없을것
-							</td>
-							<td>
-								<select id='_청결상태' name="language" onchange="_청결상태_콤보박스(this);">
-									<option value="">---</option>
-									<option value="OK">OK</option>
-									<option value="NG">NG</option>
-								</select>
-							</td>
-							<td>
-								<input type="text" id="_청결상태_비고" size="20" required>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								포장랩
-							</td>
-							<td>
-								포장되어 있을 것
-							</td>
-							<td>
-								<select id='_포장랩' name="language" onchange="_포장랩_콤보박스(this);">
-									<option value="">---</option>
-									<option value="OK">OK</option>
-									<option value="NG">NG</option>
-								</select>
-							</td>
-							<td>
-								<input type="text" id="_포장랩_비고" size="20" required>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								출하QR
-							</td>
-							<td>
-								부착되어 있을것
-							</td>
-							<td>
-								<select id='_출하QR' name="language" onchange="_출하QR_콤보박스(this);">
-									<option value="">---</option>
-									<option value="OK">OK</option>
-									<option value="NG">NG</option>
-								</select>
-							</td>
-							<td>
-								<input type="text" id="_출하QR_비고" size="20" required>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								HKMC 스티커
-							</td>
-							<td>
-								부착되어 있을것
-							</td>
-							<td>
-								<select id='_HKMC_스티커' name="language" onchange="_HKMC_스티커_콤보박스(this);">
-									<option value="">---</option>
-									<option value="OK">OK</option>
-									<option value="NG">NG</option>
-								</select>
-							</td>
-							<td>
-								<input type="text" id="_HKMC_스티커_비고" size="20" required>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								커넥터 커버
-							</td>
-							<td>
-								부착되어 있을것
-							</td>
-							<td>
-								<select id='_커넥터커버' name="language" onchange="_커넥터커버_콤보박스(this);">
-									<option value="">---</option>
-									<option value="OK">OK</option>
-									<option value="NG">NG</option>
-								</select>
-							</td>
-							<td>
-								<input type="text" id="_커넥터커버_비고" size="20" required>
-							</td>
-						</tr>
-					</table>
 					<table border="2">
 						<tr>
 							<td colspan='4'>
@@ -361,7 +246,7 @@
 								브라켓 4개
 							</td>
 							<td>
-								<select id='_브라켓' name="language" onchange="_브라켓_콤보박스(this);">
+								<select id='_bracket' name="language" onchange="_브라켓_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
 									<option value="NG">NG</option>
@@ -447,48 +332,21 @@
 						</tr>
 						<tr>
 							<td>
-								<label for="_BSA전압">BSA 전압(V) - GDS</label>
+								<label for="_배터리충전상태">배터리 충전 상태(%)</label>
 							</td>
 							<td>
-								<input type="text" id="_BSA전압" size="20" require>
-								<select name="language" onchange="_BSA전압_콤보박스(this);">
+								<input type="text" id="_배터리충전상태" size="20" require>
+								<select name="language" onchange="_배터리충전상태_콤보박스(this);">
 									<option value="">---</option>
 									<option value="OK">OK</option>
 									<option value="NG">NG</option>
 								</select>
 							</td>
 							<td>
-								<label for="_BSA전압_측정값">측정값</label>
+								<label for="_배터리충전상태_측정값">측정값</label>
 							</td>
 							<td>
-								<input type="text" id="_BSA전압_측정값" size="20" require>
-							</td>
-							<td>
-							</td>
-							<td>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<label for="_셀전압편차">셀 전압 편차(mV)</label>
-							</td>
-							<td>
-								<input type="text" id="_셀전압편차" size="20" require>
-								<select name="language" onchange="_셀전압편차_콤보박스(this);">
-									<option value="">---</option>
-									<option value="OK">OK</option>
-									<option value="NG">NG</option>
-								</select>
-							</td>
-							<td>
-								<label for="_셀전압편차_측정값">측정값</label>
-							</td>
-							<td>
-								<input type="text" id="_셀전압편차_측정값" size="20" require>
-							</td>
-							<td>
-							</td>
-							<td>
+								<input type="text" id="_배터리충전상태_측정값"  size="20" require>
 							</td>
 						</tr>
 						<tr>
@@ -535,6 +393,102 @@
 						</tr>
 						<tr>
 							<td>
+								<label for="_배터리팩전압">배터리 팩 전압(V)</label>
+							</td>
+							<td>
+								<input type="text" id="_배터리팩전압" size="20" require>
+								<select name="language" onchange="_배터리팩전압_콤보박스(this);">
+									<option value="">---</option>
+									<option value="OK">OK</option>
+									<option value="NG">NG</option>
+								</select>
+							</td>
+							<td>
+								<label for="_배터리팩_측정값">측정값</label>
+							</td>
+							<td>
+								<input type="text" id="_배터리팩_측정값" size="20" require>
+							</td>
+							<td>
+							</td>
+							<td>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="_배터리모듈온도">배터리 모듈 온도(℃ )</label>
+							</td>
+							<td>
+								<input type="text" id="_배터리모듈온도" size="20" require>
+								<select name="language" onchange="_배터리모듈온도_콤보박스(this);">
+									<option value="">---</option>
+									<option value="OK">OK</option>
+									<option value="NG">NG</option>
+								</select>
+							</td>
+							<td>
+								<label for="_배터리모듈온도_최대">최대</label>
+							</td>
+							<td>
+								<input type="text" id="_배터리모듈온도_최대" size="20" require>
+							</td>
+							<td>
+								<label for="_배터리모듈온도_최소">최소</label>
+							</td>
+							<td>
+								<input type="text" id="_배터리모듈온도_최소" size="20" require>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="_배터리셀전압">배터리 셀 전압(V) </label>
+							</td>
+							<td>
+								<input type="text" id="_배터리셀전압" size="20" require>
+								<select name="language" onchange="_배터리셀전압_콤보박스(this);">
+									<option value="">---</option>
+									<option value="OK">OK</option>
+									<option value="NG">NG</option>
+								</select>
+							</td>
+							<td>
+								<label for="_배터리셀전압_최대">최대</label>
+							</td>
+							<td>
+								<input type="text" id="_배터리셀전압_최대" size="20" require>
+							</td>
+							<td>
+								<label for="_배터리셀전압_최소">최소</label>
+							</td>
+							<td>
+								<input type="text" id="_배터리셀전압_최소" size="20" require>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="_셀전압편차">셀 전압 편차(mV)</label>
+							</td>
+							<td>
+								<input type="text" id="_셀전압편차" size="20" require>
+								<select name="language" onchange="_셀전압편차_콤보박스(this);">
+									<option value="">---</option>
+									<option value="OK">OK</option>
+									<option value="NG">NG</option>
+								</select>
+							</td>
+							<td>
+								<label for="_셀전압편차_측정값">측정값</label>
+							</td>
+							<td>
+								<input type="text" id="_셀전압편차_측정값" size="20" require>
+							</td>
+							<td>
+							</td>
+							<td>
+							</td>
+						</tr>
+						<tr>
+							<td>
 								<label for="_절연저항">절연저항(kΩ) - GDS</label>
 							</td>
 							<td>
@@ -554,31 +508,6 @@
 							<td>
 							</td>
 							<td>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<label for="_배터리온도">배터리 온도(℃ ) - GDS</label>
-							</td>
-							<td>
-								<input type="text" id="_배터리온도" size="20" require>
-								<select name="language" onchange="_배터리온도_콤보박스(this);">
-									<option value="">---</option>
-									<option value="OK">OK</option>
-									<option value="NG">NG</option>
-								</select>
-							</td>
-							<td>
-								<label for="_배터리온도_최대">최대</label>
-							</td>
-							<td>
-								<input type="text" id="_배터리온도_최대" size="20" require>
-							</td>
-							<td>
-								<label for="_배터리온도_최소">최소</label>
-							</td>
-							<td>
-								<input type="text" id="_배터리온도_최소" size="20" require>
 							</td>
 						</tr>
 						<tr>
@@ -618,9 +547,8 @@
 							</td>
 							<td>
 							</td>
-							<td>
-							</td>
-							<td>
+							<td colspan='2'>
+								<label>승용 모델에 한함</label>
 							</td>
 						</tr>
 						<tr>
@@ -639,30 +567,8 @@
 							</td>
 							<td>
 							</td>
-							<td>
-							</td>
-							<td>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<label for="_통신화면_캡쳐">통신화면 캡쳐(DTC, 센서, 사양정보)</label>
-							</td>
-							<td>
-								<input type="text" id="_통신화면_캡쳐" size="20" require>
-								<select name="language" onchange="_통신화면_캡쳐_콤보박스(this);">
-									<option value="">---</option>
-									<option value="OK">OK</option>
-									<option value="NG">NG</option>
-								</select>
-							</td>
-							<td>
-							</td>
-							<td>
-							</td>
-							<td>
-							</td>
-							<td>
+							<td colspan='2'>
+								<label>CV : GDS / ETC : PDS</label>
 							</td>
 						</tr>
 						<tr>
@@ -684,128 +590,54 @@
 			</div>
 		</div>
 		<script>
-			const _A = document.getElementById('_A');
-			const _B = document.getElementById('_B');
-			const _C = document.getElementById('_C');
-			const _D = document.getElementById('_D');
-			const _management_id = document.getElementById('_management_id');
-			const _출하코드 = document.getElementById('_출하코드');
-			const _납품처 = document.getElementById('_납품처');
-			const _출하일 = document.getElementById('_출하일');
-			const _검사일 = document.getElementById('_검사일');
-			const _검사자 = document.getElementById('_검사자');
-			//const _검토 = document.getElementById('_검토');
-			//const _승인 = document.getElementById('_승인');
-			//const _입고정보_작성확인 = document.getElementById('_입고정보_작성확인');
-			//const _재제조_이력문서_작성확인 = document.getElementById('_재제조_이력문서_작성확인');
-			const _기초보고서_작성확인 = document.getElementById('_기초보고서_작성확인');
-			const _완료보고서_작성확인 = document.getElementById('_환료보고서_작성확인');
-			const _클린상태 = document.getElementById('_클린상태');
-			const _팔레트_적정위치 = document.getElementById('_팔레트_적정위치');
-			const _포장랩상태 = document.getElementById('_포장랩상태');
-			const _UPR_QR = document.getElementById('_UPR_QR');
-			const _LWR_QR = document.getElementById('_LWR_QR');
-			const _HKMC_스티커_URP = document.getElementById('_HKMC_스티커_URP');
-			const _냉각유로_커버1 = document.getElementById('_냉각유로_커버1');
-			const _냉각유로_커버2 = document.getElementById('_냉각유로_커버2');
-			const _A_HV = document.getElementById('_A_HV');
-			const _A_LV = document.getElementById('_A_LV');
-			const _A_H_T = document.getElementById('_A_H_T');
-			const _A_SPA = document.getElementById('_출하일');
-			const _A_S_PLUG = document.getElementById('_A_S_PLUG');
-			const _A_브라켓1 = document.getElementById('_A_브라켓1');
-			const _A_브라켓2 = document.getElementById('_A_브라켓2');
-			const _A_브라켓3 = document.getElementById('_A_브라켓3');
-			const _A_브라켓4 = document.getElementById('_A_브라켓4');
-			const _A_접지 = document.getElementById('_A_접지');
-			const _B_HV = document.getElementById('_B_HV');
-			const _B_LV = document.getElementById('_B_LV');
-			const _B_H_T = document.getElementById('_B_H_T');
-			const _B_브라켓1 = document.getElementById('_B_브라켓1');
-			const _B_브라켓2 = document.getElementById('_B_브라켓2');
-			const _B_브라켓3 = document.getElementById('_B_브라켓3');
-			const _B_접지 = document.getElementById('_B_접지');
-			const _C_HV1 = document.getElementById('_C_HV1');
-			const _C_HV2 = document.getElementById('_C_HV2');
-			const _C_LV = document.getElementById('_C_LV');
-			const _C_H_T = document.getElementById('_C_H_T');
-			const _C_브라켓55mm = document.getElementById('_C_브라켓55mm');
-			const _C_브라켓35mm_1 = document.getElementById('_C_브라켓35mm_1');
-			const _C_브라켓35mm_2 = document.getElementById('_C_브라켓35mm_2');
-			const _C_브라켓35mm_3 = document.getElementById('_C_브라켓35mm_3');
-			const _C_브라켓35mm_4 = document.getElementById('_C_브라켓35mm_4');
-			const _C_브라켓35mm_5 = document.getElementById('_C_브라켓35mm_5');
-			const _C_브라켓35mm_6 = document.getElementById('_C_브라켓35mm_6');
-			const _C_브라켓35mm_7 = document.getElementById('_C_브라켓35mm_7');
-			const _C_브라켓35mm_8 = document.getElementById('_C_브라켓35mm_8');
-			const _C_접지 = document.getElementById('_C_접지');
-			const _D_HV = document.getElementById('_D_HV');
-			const _D_LV = document.getElementById('_D_LV');
-			const _D_H_T = document.getElementById('_D_H_T');
-			const _D_S_PLUG = document.getElementById('_D_S_PLUG');
-			const _D_아이볼트1 = document.getElementById('_D_아이볼트1');
-			const _D_아이볼트2 = document.getElementById('_D_아이볼트2');
-			const _D_아이볼트3 = document.getElementById('_D_아이볼트3');
-			const _D_아이볼트4 = document.getElementById('_D_아이볼트4');
-			const _D_접지1 = document.getElementById('_D_접지1');
-			const _D_접지2 = document.getElementById('_D_접지2');
-			const _E_HV = document.getElementById('_E_HV');
-			const _E_LV = document.getElementById('_E_LV');
-			const _E_아이볼트1 = document.getElementById('_E_아이볼트1');
-			const _E_아이볼트2 = document.getElementById('_E_아이볼트2');
-			const _E_아이볼트3 = document.getElementById('_E_아이볼트3');
-			const _E_아이볼트4 = document.getElementById('_E_아이볼트4');
-			const _E_접지 = document.getElementById('_E_접지');
-			//const _용량평가 = document.getElementById('_용량평가');
-			//const _용량평가_측정값 = document.getElementById('_용량평가_측정값');
-			//const _SOC40 = document.getElementById('_SOC40');
-			//const _SOC40_팩전압 = document.getElementById('_SOC40_팩전압');
-			//const _SOC40_편차 = document.getElementById('_SOC40_편차');
-			//const _DCIR = document.getElementById('_DCIR');
-			//const _DCIR_측정값 = document.getElementById('_DCIR_측정값');
-			//const _릴레이동시구동 = document.getElementById('_릴레이동시구동');
-			//const _케이스 = document.getElementById('_케이스');
-			//const _케이스_측정값 = document.getElementById('_케이스_측정값');
-			//const _냉각유로 = document.getElementById('_냉각유로');
-			//const _냉각유로_측정값 = document.getElementById('_냉각유로_측정값');
-			//const _접지Plus = document.getElementById('_접지Plus');
-			//const _접지Plus_측정값 = document.getElementById('_접지Plus_측정값');
-			//const _접지Minus = document.getElementById('_접지Minus');
-			//const _접지Minus_측정값 = document.getElementById('_접지Minus_측정값');
-			const _DTC = document.getElementById('_DTC');
-			const _DTC_현재 = document.getElementById('_DTC_현재');
-			const _DTC_과거 = document.getElementById('_DTC_과거');
-			const _BSA전압 = document.getElementById('_BSA전압');
-			const _BSA전압_측정값 = document.getElementById('_BSA전압_측정값');
-			const _셀전압편차 = document.getElementById('_셀전압편차');
-			const _셀전압편차_측정값 = document.getElementById('_셀전압편차_측정값');
-			const _BMS고장NO = document.getElementById('_BMS고장NO');
-			const _BMS융착NO = document.getElementById('_BMS융착NO');
-			const _절연저항 = document.getElementById('_절연저항');
-			const _절연저항_측정값 = document.getElementById('_절연저항_측정값');
-			const _배터리온도 = document.getElementById('_배터리온도');
-			const _배터리온도_최대 = document.getElementById('_배터리온도_최대');
-			const _배터리온도_최소 = document.getElementById('_배터리온도_최소');
-			const _SOH = document.getElementById('_SOH');
-			const _릴레이_강제구동 = document.getElementById('_릴레이_강제구동');
-			const _커넥터_체결검사 = document.getElementById('_커넥터_체결검사');
-			const _통신화면_캡쳐 = document.getElementById('_통신화면_캡쳐');
-			const _청결상태 = document.getElementById('_청결상태');
-			const _포장랩 = document.getElementById('_포장랩');
-			const _출하QR = document.getElementById('_출하QR');
-			const _HKMC_스티커 = document.getElementById('_HKMC_스티커');
-			const _커넥터커버 = document.getElementById('_커넥터커버');
-			const _브라켓 = document.getElementById('_브라켓');
-			const _S_PLUG = document.getElementById('_S_PLUG');
-			const _접지 = document.getElementById('_접지');
-			const _청결상태_비고 = document.getElementById('_청결상태비고');
-			const _포장랩_비고 = document.getElementById('_포장랩_비고');
-			const _출하QR_비고 = document.getElementById('_출하QR_비고');
-			const _HKMC_스티커_비고 = document.getElementById('_HKMC_스티커_비고');
-			const _커넥터커버_비고 = document.getElementById('_커넥터커버_비고');
-			const _브라켓_비고 = document.getElementById('_브라켓_비고');
-			const _S_PLUG_비고 = document.getElementById('_S_PLUG_비고');
-			const _접지_비고 = document.getElementById('_접지_비고');
+			var _management_id = document.ElementById('_management_id');
+			var _재제조번호 = document.ElementById('_재제조번호');
+			var _출하일 = document.ElementById('_출하일');
+			var _출하코드 = document.ElementById('_출하코드');
+			var _납품처 = document.ElementById('_납품처');
+			var _검사일 = document.ElementById('_검사일');
+			var _검사자 = document.ElementById('_검사자');
+			var _RO_no = document.ElementById('_RO_no');
+			var _차종 = document.ElementById('_차종');
+			var _품번 = document.ElementById('_품번');
+			var _기초보고서_작성확인 = document.ElementById('_기초보고서_작성확인');
+			var _완료보고서_작성확인 = document.ElementById('_완료보고서_작성확인');
+			var _클린상태 = document.ElementById('_클린상태');
+			var _팔레트_적정위치 = document.ElementById('_팔레트_적정위치');
+			var _포장랩상태 = document.ElementById('_포장랩상태');
+			var _UPR_QR = document.ElementById('_UPR_QR');
+			var _LWR_QR = document.ElementById('_LWR_QR');
+			var _HKMC_스티커_URP = document.ElementById('_HKMC_스티커_URP');
+			var _냉각유로_커버 = document.ElementById('_냉각유로_커버');
+			var _bracket = document.ElementById('_bracket');
+			var _브라켓_비고 = document.ElementById('_브라켓_비고');
+			var _S_PLUG = document.ElementById('_S_PLUG');
+			var _S_PLUG_비고 = document.ElementById('_S_PLUG_비고');
+			var _접지 = document.ElementById('_접지');
+			var _접지_비고 = document.ElementById('_접지_비고');
+			var _DTC = document.ElementById('_DTC');
+			var _DTC_현재 = document.ElementById('_DTC_현재');
+			var _DTC_과거 = document.ElementById('_DTC_과거');
+			var _배터리충전상태 = document.ElementById('_배터리충전상태');
+			var _배터리충전상태_측정값 = document.ElementById('_배터리충전상태_측정값');
+			var _BMS고장NO = document.ElementById('_BMS고장NO');
+			var _BMS융착NO = document.ElementById('_BMS융착NO');
+			var _배터리팩전압 = document.ElementById('_배터리팩전압');
+			var _배터리팩_측정값 = document.ElementById('_배터리팩_측정값');
+			var _배터리온도 = document.ElementById('_배터리온도');
+			var _배터리온도_최대 = document.ElementById('_배터리온도_최대');
+			var _배터리온도_최소 = document.ElementById('_배터리온도_최소');
+			var _배터리온도_최소 = document.ElementById('_배터리온도_최소');
+			var _배터리셀전압 = document.ElementById('_배터리셀전압');
+			var _배터리셀전압_최대 = document.ElementById('_배터리셀전압_최대');
+			var _배터리셀전압_최소 = document.ElementById('_배터리셀전압_최소');
+			var _셀전압편차 = document.ElementById('_셀전압편차');
+			var _셀전압편차_측정값 = document.ElementById('_셀전압편차_측정값');
+			var _절연저항 = document.ElementById('_절연저항');
+			var _절연저항_측정값 = document.ElementById('_절연저항_측정값');
+			var _SOH = document.ElementById('_SOH');
+			var _릴레이_강제구동 = document.ElementById('_릴레이_강제구동');
+			var _커넥터_체결검사 = document.ElementById('_커넥터_체결검사');
 		</script>
 	</body>
 </html>
