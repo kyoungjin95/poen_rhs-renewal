@@ -37,6 +37,19 @@ async function 분해조립_시작(is재제조번호 = false) {
 
 	_management_id.value =  관리번호;
 
+	count(입고, { 관리번호 : _management_id.value });
+	await delay();
+	console.log('doc_count: ', doc_count);
+	if(doc_count >= 1) {
+		find(입고, _management_id.value);
+		await delay();
+		console.log('입고 data:', find_array);
+
+		_구분.value = find_array[0].구분;
+		_차종.value = find_array[0].차종;
+		_품번.value = find_array[0].품번;
+	}
+
 	BMU_count = 1;
 	CMU_count = 1;
 	PRA_count = 1;
@@ -102,7 +115,7 @@ async function 분해조립_시작(is재제조번호 = false) {
 		find(분해조립, _management_id.value);
 		await delay();
 
-		var no_count = 3;
+		var no_count = 6;
 		_공정입고일.value = find_array[0].공정입고일;
 		_BMU1.value = find_array[0].BMU1;
 		if(find_array[0].BMU2 != '') { BMU_count += 1; type_add('BMU', 'BMU', no_count, BMU_count); document.getElementById('_BMU2').value = find_array[0].BMU2;}

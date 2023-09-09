@@ -1,4 +1,4 @@
-async function 성능검사_시작() {
+async function 성능검사_시작(is재제조 = false) {
 	if(worker == '') return;
 	while(_management_id == undefined) {
 		await sleep(DELAY);
@@ -15,6 +15,26 @@ async function 성능검사_시작() {
 	console.log('load: ', _management_id.value);
 	if(_management_id.value == '' | _management_id.value == 'none') return;
 
+	count(입고, { 관리번호 : _management_id.value });
+	await delay();
+	console.log('doc_count: ', doc_count);
+	if(doc_count >= 1) {
+		find(입고, _management_id.value);
+		await delay();
+		console.log('입고 data:', find_array);
+
+		_구분.value = find_array[0].구분;
+		_차종.value = find_array[0].차종;
+		_품번.value = find_array[0].품번;
+	}
+
+	if(is재제조 == true) {
+		find_query(BSA재제조, { 재제조번호 : _재제조번호.value });
+		await delay();
+
+		_management_id.value = find_array[0].관리번호;
+	}
+
 	count(성능검사, { 관리번호 : _management_id.value });
 	await delay();
 	console.log('doc_count: ', doc_count);
@@ -30,6 +50,10 @@ async function 성능검사_시작() {
 		_DCIR_Discharge.value =	find_array[0].DCIR_Discharge;
 		_공정완료일.value = find_array[0].공정완료일;
 		_검사자.value = find_array[0].검사자;
+
+		find(BSA재제조, _management_id.value);
+		await delay();
+		_재제조번호.value = find_array[0].재제조번호;
 	} else {
 		_공정입고일.value = '0000-00-00T00:00'
 		_용량평가.value = '';

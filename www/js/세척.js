@@ -12,6 +12,23 @@ async function 세척_시작() {
 
 	alert_allow = true;
 
+	count(입고, { 관리번호 : _management_id.value });
+	await delay();
+	console.log('doc_count: ', doc_count);
+	if(doc_count >= 1) {
+		find(입고, _management_id.value);
+		await delay();
+		console.log('입고 data:', find_array);
+
+		_구분.value = find_array[0].구분;
+		_차종.value = find_array[0].차종;
+		_품번.value = find_array[0].품번;
+	}
+
+	find(BSA재제조, _management_id.value);
+	await delay();
+	_재제조번호.value = find_array[0].재제조번호;
+
 	count(세척, { 관리번호 : _management_id.value });
 	await delay();
 	console.log('doc_count: ', doc_count);
@@ -23,10 +40,6 @@ async function 세척_시작() {
 		_기밀검사_케이스.value = find_array[0].기밀검사_케이스;
 		_기밀검사_케이스_특이사항.value = find_array[0].기밀검사_케이스_특이사항;
 		_특이사항.value = find_array[0].특이사항
-
-		find(BSA재제조, _management_id.value);
-		await delay();
-		_재제조번호.value = find_array[0].재제조번호;
 	} else {
 		_재제조번호.value = '';
 		_공정입고일.value = '0000-00-00T00:00';

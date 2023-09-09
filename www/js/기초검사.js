@@ -14,6 +14,24 @@ async function 기초검사_시작() {
 
 	alert_allow = false;
 
+	count(입고, { 관리번호 : _management_id.value });
+	await delay();
+	console.log('doc_count: ', doc_count);
+	if(doc_count >= 1) {
+		find(입고, _management_id.value);
+		await delay();
+		console.log('입고 data:', find_array);
+
+		_구분.value = find_array[0].구분;
+		_차종.value = find_array[0].차종;
+		_품번.value = find_array[0].품번;
+		_RO_no.value = find_array[0].RO_no;
+		_VIN.value = find_array[0].VIN;
+		_QRCode.value = find_array[0].랙번호;
+		_주행거리.value = find_array[0].VIN;
+		_차량번호.value = find_array[0].랙번호;
+	}
+
 	count(기초검사, { 관리번호 : _management_id.value });
 	await delay();
 	console.log('doc_count_1: ', doc_count);
@@ -279,7 +297,7 @@ async function 기초검사_SAVE() {
 	var oCurrentRow;
 	var tb = document.getElementById('tb');
 	var rowIcnt = tb.rows.length - 14;
-	var code_no = rowIcnt - 13;
+	var code_no = rowIcnt - 16;
 	console.log('save rowIcnt:', rowIcnt);
 	console.log('save code_no:', code_no);
 
@@ -399,10 +417,10 @@ function _기초검사_add_DTC_Code() {
 	var oCurrentRow;
 	var tb = document.getElementById('tb');
 	var rowIcnt = tb.rows.length - 14;
-	var code_no = rowIcnt - 12;
+	var code_no = rowIcnt - 15;
 	console.log('row count:', rowIcnt);
 	console.log('code No:', code_no);
-	if(rowIcnt > 22) return false;
+	if(rowIcnt > 25) return false;
 	if(code_no > 10) return false;
 
 	oCurrentRow = tb.insertRow(rowIcnt);
