@@ -297,7 +297,7 @@ async function 기초검사_SAVE() {
 	var oCurrentRow;
 	var tb = document.getElementById('tb');
 	var rowIcnt = tb.rows.length - 14;
-	var code_no = rowIcnt - 16;
+	var code_no = rowIcnt - 21;
 	console.log('save rowIcnt:', rowIcnt);
 	console.log('save code_no:', code_no);
 
@@ -417,10 +417,10 @@ function _기초검사_add_DTC_Code() {
 	var oCurrentRow;
 	var tb = document.getElementById('tb');
 	var rowIcnt = tb.rows.length - 14;
-	var code_no = rowIcnt - 15;
+	var code_no = rowIcnt - 20;
 	console.log('row count:', rowIcnt);
 	console.log('code No:', code_no);
-	if(rowIcnt > 25) return false;
+	if(rowIcnt > 30) return false;
 	if(code_no > 10) return false;
 
 	oCurrentRow = tb.insertRow(rowIcnt);
