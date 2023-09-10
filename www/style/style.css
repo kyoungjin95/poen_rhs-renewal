@@ -78,6 +78,32 @@ table td {
 	border-radius: 10px;
 }
 
+#_QR_Label {
+	padding: 1vw;
+	font-size: 1.2vw;
+	background-color: white;
+	color: black;
+	border-radius: 10px;
+}
+
+@font-face {
+	font-family : 'HHB'
+	src : url(HHB.ttf);
+}
+
+@font-face {
+	font-family : 'HHM'
+	src : url(HHM.ttf);
+}
+
+.HHB {
+	font-family : 'HHB'
+}
+
+.HHM {
+	font-family : 'HHM'
+}
+
 .종합평가_img {
 	width: 50vw;
 	height: 10vw;

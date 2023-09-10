@@ -290,7 +290,7 @@ function _통신검사_릴레이구동_콤보박스(e) {
 function _EOL_add_DTC_Code() {
 	var oCurrentRow;
 	var tb = document.getElementById('tb');
-	var rowIcnt = tb.rows.length - 9;
+	var rowIcnt = tb.rows.length - 10;
 	var code_no = rowIcnt - 12;
 	console.log('rosw count:', rowIcnt);
 	if(rowIcnt > 22) return false;
@@ -302,7 +302,7 @@ function _EOL_add_DTC_Code() {
 
 function _eol_delete_row(index) {
 	var tb = document.getElementById('tb');
-	var rowIcnt = tb.rows.length - 10;
+	var rowIcnt = tb.rows.length - 11;
 	console.log('index:', index, 'rowIcnt:', rowIcnt);
 	if(index == rowIcnt) tb.deleteRow(index);
 }
@@ -319,26 +319,52 @@ async function EOL_QR_Label() {
 	let sn = '';
 	let html_string = '';
 
+	let QR1 = document.getElementById('QR1');
+	let QR2 = document.getElementById('QR2');
+
+	QR1.style.display = 'block'
+	QR2.style.display = 'block'
+
 	find(BSA재제조, 관리번호);
 	await delay();
 
 	sn = find_array[0].재제조번호;
 
 	qrcode = new QRCode(document.getElementById('_QR_Code'), {
-		width: 128,
-		height: 128,
+		width: 100,
+		height: 100,
 	});
 	
 	var 배터리팩_제조번호 = prompt('배터리팩 제조번호를 입력하세요');
 	console.log(배터리팩_제조번호 + ' '+ find_array[0].재제조번호);
 	qrcode.makeCode(배터리팩_제조번호 + ' '+ find_array[0].재제조번호);
-	let qrcode_base64 = qrcode._oDrawing._elCanvas.toDataURL("image/png")
+	let qrcode_base64 = qrcode._oDrawing._elCanvas.toDataURL("image/png");
 	console.log(qrcode_base64);
 	
-	html_string = '<html><head></head><body><h4>배터리 시스템 어셈블리</h4><dl><dt>(Battery System Assembly)</dt><dt>R' + find_array[0].품번 + '</dt><dd><img src=\'' + qrcode_base64 + '\'></dd><dt><h6>' + find_array[0].재제조번호  + '</h6></dt><dd><img src=\'' + hyundai_logo  + '\'></dd></body></html>';
+	document.getElementById('_QR_Label').innerHTML = '<html><head></head><body style="color:black"><div class=\'HHB\' align=\'left\' width=\'264\'><h5>배터리 시스템 어셈블리</h5></div><div class=\'HHB\'><h6>(Battery System Assembly)</h6></div><div><br/></div><div class=\'HHB\' align=\'left\'><h5>R' + find_array[0].품번 + '</h5></div><div></div><div align=\'center\'><img src=\'' + qrcode_base64 + '\'></center></div><div><br/></div><div class=\'HHM\' align=\'center\'><h5>' + find_array[0].재제조번호  + '</h5></div><div align=\'right\'><img src=\'' + hyundai_logo  + '\'></div></body></html>';
 
-	make_qr_label(html_string);
+      	html2canvas(document.getElementById('_QR_Label'), { width : 264, height : 302 }).then(canvas => {
+		html_string = '<html><head></head><body><img src=' + canvas.toDataURL('image/png') + '\'></body></html>';
+
+		make_qr_label(html_string);
+	});	
+
+	QR1.style.display = 'none'
+	QR2.style.display = 'none'
 }
+
+function saveAs(uri, filename) { 
+	var link = document.createElement('a'); 
+	if (typeof link.download === 'string') { 
+		link.href = uri; 
+		link.download = filename; 
+		document.body.appendChild(link); 
+		link.click(); 
+		document.body.removeChild(link); 
+	} else { 
+		window.open(uri); 
+	} 
+};
 
 function convertImageToBase64(imgUrl, callback) {
   const image = new Image();
