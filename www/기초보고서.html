@@ -1,0 +1,464 @@
+<html>
+	<head>
+		<title>기초 보고서</title>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="base/style/공정.css">
+	</head>
+	<body>
+		<div>
+			<table border="2" id="tb">
+				<tr>
+					<td class='base'>
+						<label for="management_id"><b>관리번호</b></label>
+					</td>
+					<td class='base'>
+						<input type="text" id="_management_id" value="조회 버튼을 누르세요" size="40" required>
+						<button onClick="기초검사_시작();">조 회</button>
+					</td>
+				</tr>
+				<tr>
+					<td class='base'>
+						<label for="_재제조번호"><b>재제조번호</b></label>
+					</td>
+					<td class='base'>
+						<input type="text" id="_재제조번호" value="조회 버튼을 누르세요" size="40" required>
+						<button onClick="기초검사_재제조번호_시작();">조 회</button>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div id='기초보고서'>
+			<div align='left'>
+				▣ 기초보고서 [<span id='차종'>HR_EV</span>] <span id='재제조번호'>#RS23-MD000</span>
+			</div>
+			<div id='line'>
+			</div>
+			<div>
+				<table class='base'>
+					<tr>
+						<td class='base'>
+							<table class='base' height='100%'>
+								<tr>
+									<td class='base_header' colspan='4'>
+										차량 정보
+									</td>
+								</tr>
+								<tr>
+									<td class='base_header'>
+										VIN NO.
+									</td>
+									<td class='base_header'>
+										R/O NO.
+									</td>
+									<td class='base_header'>
+										주행거리
+									</td>
+									<td class='base_header'>
+										차량번호
+									</td>
+								</tr>
+								<tr>
+									<td class='base' id='VINNo'>
+									</td>
+									<td class='base' id='RONo'>
+									</td>
+									<td class='base' id='주행거리'>
+									</td>
+									<td class='base' id='차량번호'>
+									</td>
+								</tr>
+								<tr>
+									<td class='base_header' colspan='4'>
+										BSA 정보
+									</td>
+								</tr>
+								<tr>
+									<td class='base_header'>
+										생산일
+									</td>
+									<td class='base_header'>
+										판매일
+									</td>
+									<td class='base_header'>
+										수리일
+									</td>
+									<td class='base_header'>
+										입고일
+									</td>
+								</tr>
+								<tr>
+									<td class='base' id='생산일'>
+									</td>
+									<td class='base' id='판매일'>
+									</td>
+									<td class='base' id='수리일'>
+									</td>
+									<td class='base' id='입고일'>
+									</td>
+								</tr>
+								<tr>
+									<td class='base' colspan='2'>
+										입고사진
+									</td>
+									<td class='base' colspan='2'>
+										BSA QR 코드 사진
+									</td>
+								</tr>
+								<tr>
+									<td id='입고사진' class='base' colspan='2'>
+									</td>
+									<td id='BSA_QR' class='base' colspan='2'>
+										BSA QR 코드 사진<br/>
+										(반드시 정면에서 찍을 것)
+									</td>
+								</tr>
+								<tr>
+									<td class='base_left' colspan='4'>
+										1. 관리번호:<p id='관리번호'></p>
+										2. 필드현상:<p id='필드현상'></p>
+										3. A/S 센터 진단:<p id='센터진단'></p>
+										4. A/S 센터 조치:<p id='센터조치'></p>
+									</td>
+								</tr>
+								<tr>
+									<td class='base_header' colspan='2' width='50%'>
+										작성자
+									</td>
+									<td class='base_header' colspan='2' width='50%'>
+										작성일
+									</td>
+								</tr>
+								<tr>
+									<td class='base' colspan='2' id='작성자'>
+									</td>
+									<td class='base' colspan='2' id='작성일'>
+									</td>
+								</tr>
+							</table>
+						</td>
+						<td class='base'>
+							<table class='base'>
+								<tr>
+									<td class='base_header2'>
+										No
+									</td>
+									<td class='base_header2' colspan='2'>
+										점검 항목
+									</td>
+									<td class='base_header2'>
+										점검 기준
+									</td>
+									<td class='base_header2'>
+										판정
+									</td>
+									<td class='base_header2'>
+										결과 값 / 특이사항 / 미실시 사유
+									</td>
+									<td class='base_header2'>
+										첨부
+									</td>
+								</tr>
+								<tr>
+									<td class='base' rowspan='3'>
+										1
+									</td>
+									<td class='base' rowspan='3'>
+										육안검사
+									</td>
+									<td class='base'>
+										외부 점검
+									</td>
+									<td class='base'>
+										BSA 상,하부 이물질 및 손상 확인
+									</td>
+									<td class='base'>
+										OK/NG
+									</td>
+									<td class='base'>
+										NG 사유 및 특이사항 입력
+									</td>
+									<td class='base' rowspan='3'>
+
+									</td>
+								</tr>
+								<tr>
+									<td class='base'>
+										내부 점검
+									</td>
+									<td class='base'>
+										BSA 내부 이물질 및 손상 확인
+									</td>
+									<td class='base'>
+										OK/NG
+									</td>
+									<td class='base'>
+										NG 사유 및 특이사항 입력
+									</td>
+								</tr>
+								<tr>
+									<td class='base'>
+										셀 제조사 확인
+									</td>
+									<td class='base'>
+										-
+									</td>
+									<td class='base'>
+										-
+									</td>
+									<td class='base'>
+										NG 사유 및 특이사항 입력
+									</td>
+								</tr>
+								<tr>
+									<td class='base' rowspan='2'>
+										2
+									</td>
+									<td class='base' rowspan='2'>
+										기밀 검사
+									</td>
+									<td class='base'>
+										케이스
+									</td>
+									<td class='base'>
+										2분간 감압량 2mbar 이내
+									</td>
+									<td class='base'>
+										OK/NG
+									</td>
+									<td class='base'>
+										감압 량(mbar):
+									</td>
+									<td class='base' rowspan='2'>
+
+									</td>
+								</tr>
+								<tr>
+									<td class='base'>
+										냉각 유로
+									</td>
+									<td class='base'>
+										2분간 감압량 2mbar 이내
+									</td>
+									<td class='base'>
+										OK/NG
+									</td>
+									<td class='base'>
+										감압 량(mbar):
+									</td>
+								</tr>
+								<tr>
+									<td class='base' rowspan='4'>
+										3
+									</td>
+									<td class='base' rowspan='4'>
+										절연 검사
+									</td>
+									<td class='base'>
+										PRA(+) ~ 샤시
+									</td>
+									<td class='base'>
+										100 MΩ 이상
+									</td>
+									<td class='base'>
+										OK/NG
+									</td>
+									<td class='base'>
+										0000 MΩ
+									</td>
+									<td class='base' rowspan='4'>
+									</td>
+								</tr>
+								<tr>
+									<td class='base'>
+										PRA(-) ~  샤시
+									</td>
+									<td class='base'>
+										50 MΩ 이상
+									</td>
+									<td class='base'>
+										OK/NG
+									</td>
+									<td class='base'>
+										0000 MΩ
+									</td>
+								</tr>
+								<tr>
+									<td class='base'>
+										HV커넥터(+)~샤시
+									</td>
+									<td class='base'>
+										100 MΩ 이상
+									</td>
+									<td class='base'>
+										OK/NG
+									</td>
+									<td class='base'>
+										0000 MΩ
+									</td>
+								</tr>
+								<tr>
+									<td class='base'>
+										HV커넥터(-)~샤시
+									</td>
+									<td class='base'>
+										100 MΩ 이상
+									</td>
+									<td class='base'>
+										OK/NG
+									</td>
+									<td class='base'>
+										0000 MΩ
+									</td>
+								</tr>
+								<tr>
+									<td class='base' rowspan='5'>
+										4
+									</td>
+									<td class='base' rowspan='5'>
+										통신 검사
+									</td>
+									<td class='base'>
+										팩 전압
+									</td>
+									<td class='base'>
+										OCV 기준 277.9~377.2V
+									</td>
+									<td class='base'>
+										OK/NG
+									</td>
+									<td class='base'>
+										팩 전압(V):
+									</td>
+									<td class='base' rowspan='5'>
+									</td>
+								</tr>
+								<tr>
+									<td class='base'>
+										셀 전압 편차
+									</td>
+									<td class='base'>
+										40mV 이하
+									</td>
+									<td class='base'>
+										OK/NG
+									</td>
+									<td class='base'>
+										셀 전압편차(mV):
+									</td>
+								</tr>
+								<tr>
+									<td class='base'>
+										릴레이 제어
+									</td>
+									<td class='base'>
+										릴레이 제어 가능할 것
+									</td>
+									<td class='base'>
+										OK/NG
+									</td>
+									<td class='base'>
+										릴레이 제어 가능 / 불가능 사유
+									</td>
+								</tr>
+								<tr>
+									<td class='base'>
+										고장코드
+									</td>
+									<td class='base'>
+										고장코드없을 것
+									</td>
+									<td class='base'>
+										OK/NG
+									</td>
+									<td class='base'>
+										고장코드 없음 / (현재),(과거)구분
+									</td>
+								</tr>
+								<tr>
+									<td class='base'>
+										ROM ID
+									</td>
+									<td class='base'>
+										-
+									</td>
+									<td class='base'>
+										-
+									</td>
+									<td class='base'>
+										-
+									</td>
+								</tr>
+								<tr>
+									<td class='base' rowspan='2'>
+										5
+									</td>
+									<td class='base' rowspan='2'>
+										이력 확인
+									</td>
+									<td class='base'>
+										입고 정보
+									</td>
+									<td class='base'>
+										데이터 누락 없을 것
+									</td>
+									<td class='base'>
+										OK/NG
+									</td>
+									<td class='base'>
+										데이터 누락 없음
+									</td>
+									<td class='base'>
+									</td>
+								</tr>
+								<tr>
+									<td class='base'>
+										재제조 이력
+									</td>
+									<td class='base'>
+										데이터 누락 없을 것
+									</td>
+									<td class='base'>
+										OK/NG
+									</td>
+									<td class='base'>
+										데이터 누락 없음
+									</td>
+									<td class='base'>
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<table>
+							<tr style='width: 100%;'>
+								<td style='background-color: lime'>
+									결 과
+								</td>
+								<td>
+									<textarea>1. 기초검사를 통해 찾아낸 현상과 필드현상 또는 A/S센터 진단의 원인과 분석 내용을 기재&#10;2. 기초검사 결과에 의한 "필요교체부품 & 교체사유" 적을것 . 원인파악 불가 할 경우 입고 서비스센터 증상을 근거로 부품교체 진행&#10;(ex. POAA600(절연파괴) DTC로 입고되었으나 기초검사결과 이상없음. 모듈 절연저항 정상. 고장예상원인 부품에 따라 BMU 교체)</textarea>
+								</td>
+							</tr>
+						</table>
+					</tr>
+				</table>
+			</div>
+			<div>
+				<table class='bottom' width='100%'>
+					<tr>
+						<td class='bottom' align='left'>
+							FQ850-05
+						</td>
+						<td class='bottom' align=center>
+							A4(297x210mm)
+						</td>
+						<td class='bottom' align='right'>
+							Positive <font color='skyblue'>En</font>ergy
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</body>
+</html>
+

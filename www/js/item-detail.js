@@ -491,3 +491,7 @@ function 교체부품상세_콤보박스(e) {
 
   	교체부품상세No = value;
 }
+
+function 기초보고서() {
+	loadPage('base/기초보고서.html');
+}
