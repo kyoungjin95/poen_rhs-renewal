@@ -13,7 +13,7 @@ async function 생산현황_시작() {
 		await sleep(DELAY);
 	}
 
-	alert_allow = false;
+	;
 
 	품번_조회();
 }

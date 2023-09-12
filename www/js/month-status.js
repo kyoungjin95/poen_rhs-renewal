@@ -18,7 +18,7 @@ async function 월간현황_시작() {
 		await sleep(DELAY);
 	}
 
-	alert_allow = false;
+	;
 
 	var DateTime = luxon.DateTime;
 	var seoul = DateTime.local().setZone("Asia/Seoul");

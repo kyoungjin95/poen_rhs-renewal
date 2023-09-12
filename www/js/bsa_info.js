@@ -374,7 +374,7 @@ async function 재제조현황_시작() {
 	}
 	await sleep(10);
 
-	alert_allow = false;
+	;
 
 	//Update filters on value change
 	document.getElementById("filter-field").addEventListener("change", updateFilter);

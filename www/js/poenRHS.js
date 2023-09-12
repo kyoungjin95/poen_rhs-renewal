@@ -57,9 +57,6 @@ var 교체부품상세No = '교체부품상세1';
 var worker = '';
 var level = '';
 var flag_loaded = false;
-var alert_allow = false;
-var alert_occured = false;
-var old_alert_occured = false;
 
 const 계정_doc = {
 	id: '', 

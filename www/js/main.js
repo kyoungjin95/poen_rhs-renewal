@@ -28,7 +28,7 @@ if(worker == null) {
 
 var flag_show = false;
 
-alert_allow = false;
+;
 
 times_show();
 

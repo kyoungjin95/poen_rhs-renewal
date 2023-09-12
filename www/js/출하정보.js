@@ -10,32 +10,38 @@ async function 출하정보_시작(is재제조 = false) {
 
 	flag_출하 =  false;
 
-	alert_allow = true;
-
-	_management_id.value =  관리번호;
+	if(_management_id.value == '조회 버튼을 누르세요') _management_id.value =  관리번호;
 
 	if(_management_id.value.length == 0 && _재제조번호.value.length == 0) return;
 
 	_검사자.value = worker;
 
 	if(is재제조 == false) {
-		find(BSA재제조, _management_id.value );
+		count(BSA재제조, {관리번호 : _management_id.value });
 		await delay();
-
-		_재제조번호.value = find_array[0].재제조번호;
+		if(doc_count >= 1) {
+			find(BSA재제조, _management_id.value );
+			await delay();
+		
+			_재제조번호.value = find_array[0].재제조번호;
+			console.log('-----------------');
+		}
 	} else {
-		find_query(BSA재제조, { 재제조번호: _재제조번호.value });
+		count(BSA재제조, { 재제조번호 : _재제조번호.value });
 		await delay();
 
-		_management_id.value =  find_array[0].관리번호;
+		if(doc_count >= 1) {
+			find_query(BSA재제조, { 재제조번호: _재제조번호.value });
+			await delay();
+
+			_management_id.value = find_array[0].관리번호;
+		} else {
+			_management_id.value = '찾지 못하였습니다';
+		}
 	}
 
-	_차종.value = find_array[0].차종;
-	_품번.value = find_array[0].품번;
-	_RO_no.value = find_array[0].RO_no;
-
 	if(_차종.value != '') {
-		let 브라켓_text = document.getElementById('_bracket');
+		let 브라켓_text = document.getElementById('_브라켓');
 		let s_plug_show = document.getElementById('_S_PLUG');
 		let s_plug_show_비고 = document.getElementById('_S_PLUG_비고');
 		s_plug_show.disabled = false;
@@ -109,7 +115,7 @@ async function 출하정보_시작(is재제조 = false) {
 		_출하코드.value = find_array[0].출하코드;
 		_납품처.value = find_array[0].납품처;
 		_검사일.value = find_array[0].검사일;
-		_검사자.value = find_array[0].검사자;
+		if(_검사자.value == '') _검사자.value = find_array[0].검사자;
 		_기초보고서_작성확인.value = find_array[0].기초보고서_작성확인;
 		_완료보고서_작성확인.value = find_array[0].완료보고서_작성확인;
 		_클린상태.value =  find_array[0].클린상태;
@@ -176,6 +182,10 @@ async function 출하정보_시작(is재제조 = false) {
 				_차종.value = find_array[0].차종;
 				_품번.value = find_array[0].품번;
 				_RO_no.value = find_array[0].RO_no;
+			} else {
+				_차종.value = '';
+				_품번.value = '';
+				_RO_no.value = '';
 			}
 		}
 
@@ -212,10 +222,7 @@ async function 출하정보_시작(is재제조 = false) {
 		_출하일.value = '0000-00-00T00:00:00';
 		_납품처.value = '';
 		_검사일.value = '0000-00-00T00:00:00';
-		_검사자.value = '';
-		_RO_no.value = '';
-		_차종.value = '';
-		_품번.value = '';
+		//_검사자.value = '';
 		_기초보고서_작성확인.value = '';
 		_완료보고서_작성확인.value = '';
 		_클린상태.value = '';
@@ -254,6 +261,10 @@ async function 출하정보_시작(is재제조 = false) {
 		_bracket.options[0].selected = true;
 		_S_PLUG.options[0].selected = true;
 		_접지.options[0].selected = true;
+
+		_차종.value = '';
+		_품번.value = '';
+		_RO_no.value = '';
 	}
 }
 

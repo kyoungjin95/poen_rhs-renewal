@@ -5,7 +5,7 @@ async function 교체부품상세_시작() {
 	}
 	_management_id.value =  관리번호;
 	
-	alert_allow = true;
+	;
 
 	 const _label = document.getElementById('_title_no');
 	_label.innerHTML = '<h2><b>' + 교체부품상세No + '</b></h2>';

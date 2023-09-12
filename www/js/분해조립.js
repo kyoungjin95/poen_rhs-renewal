@@ -33,9 +33,9 @@ async function 분해조립_시작(is재제조번호 = false) {
 
 	flag_loaded = true;
 
-	alert_allow = true;
+	;
 
-	_management_id.value =  관리번호;
+	if(_management_id.value == '조회 버튼을 누르세요') _management_id.value =  관리번호;
 
 	count(입고, { 관리번호 : _management_id.value });
 	await delay();
@@ -48,6 +48,10 @@ async function 분해조립_시작(is재제조번호 = false) {
 		_구분.value = find_array[0].구분;
 		_차종.value = find_array[0].차종;
 		_품번.value = find_array[0].품번;
+	} else {
+		_구분.value = '';
+		_차종.value = '';
+		_품번.value = '';
 	}
 
 	BMU_count = 1;
@@ -96,6 +100,7 @@ async function 분해조립_시작(is재제조번호 = false) {
 		find_query(BSA재제조, { 관리번호: _management_id.value.trim() });
 		await delay();
 		_재제조번호.value = find_array[0].재제조번호;
+		console.log(find_array);
 	}
 
 	count(분해조립, { 관리번호 : _management_id.value });
@@ -173,6 +178,7 @@ async function 분해조립_시작(is재제조번호 = false) {
 		_공정완료일.value = find_array[0].공정완료일;
 		_작업자.value = find_array[0].작업자;
 	} else {
+		loadPage('base/분해조립.html');
 		_공정입고일.value = '0000-00-00T00:00';
                 _BMU1.value = '';
                 _CMU1.value = '';
@@ -505,7 +511,7 @@ async function type_add(name, type, row_index, no) {
 	console.log('type:', '_' + type + no);
 	var current_row;
 	current_row = _tb.insertRow(row_index + (no - 1));
-	var insert_string = "<td><label for=\"_" + type + no + "\"><b>" + name + " " + no + "</b></label></td><td><input type=\"text\" id=\"_" + type + no + "\" size=\"100\" required><select name=\"language\" onchange=\"_콤보박스(\'_" + type + no + "\', this);\"><option value=\"\">---</option><option value=\"신품 교체\">신품 교체</option><option value=\"고품 교체\">고품 교체</option><option value=\"N/A\">N/A</option></select></td><td><center><button>-</button></center></td>";
+	var insert_string = "<td><label for=\"_" + type + no + "\"><b>" + name + " " + no + "</b></label></td><td><input type=\"text\" id=\"_" + type + no + "\" size=\"100\" value=\' \' required><select name=\"language\" onchange=\"_콤보박스(\'_" + type + no + "\', this);\"><option value=\"\">---</option><option value=\"신품 교체\">신품 교체</option><option value=\"고품 교체\">고품 교체</option><option value=\"N/A\">N/A</option></select></td><td><center><button>-</button></center></td>";
 	console.log(insert_string);
 	current_row.innerHTML = insert_string;
 	await sleep(20);

@@ -1,4 +1,4 @@
-async function 기초검사_시작() {
+async function 기초검사_시작(is재제조 = false) {
 	if(worker == '') return;
 	while(_management_id == undefined) {
 		await sleep(DELAY);
@@ -6,13 +6,45 @@ async function 기초검사_시작() {
 	
 	flag_기초검사 = false;
 
-	_management_id.value =  관리번호;
+	if(_management_id.value == '조회 버튼을 누르세요') _management_id.value =  관리번호;
 
-	if(_management_id.value.length == 0) return;
-	console.log('load: ', _management_id.value);
-	if(_management_id.value == '' | _management_id.value == 'none') return;
+	if(is재제조 == false) {
+		if(_management_id.value.length == 0) return;
+		console.log('load: ', _management_id.value);
+		if(_management_id.value == '' | _management_id.value == 'none') return;
+	} else {
+		if(_재제조번호.value.length == 0) return;
+	}
+	
+	
+	if(is재제조 == false) {
+		count(BSA재제조, {관리번호 : _management_id.value});
+		await delay();
+		if(doc_count >= 1) {
+			find(BSA재제조, _management_id.value);
+			await delay();
+			_재제조번호.value = find_array[0].재제조번호;
+		}
+	} else {
+		count(BSA재제조, { 재제조번호 : _재제조번호.value});
+		await delay();
+		if(doc_count >= 1) {
+			find_query(BSA재제조, { 재제조번호 : _재제조번호.value });
+			await delay();
 
-	alert_allow = false;
+			_management_id.value = find_array[0].관리번호;
+		} else {
+			_management_id.value = '';
+			_구분.value = '';
+			_차종.value = '';
+			_품번.value = '';
+			_RO_no.value = '';
+			_VIN.value = '';
+			_QRCode.value = '';
+			_주행거리.value = '';
+			_차량번호.value = '';
+		}
+	}
 
 	count(입고, { 관리번호 : _management_id.value });
 	await delay();
@@ -28,13 +60,22 @@ async function 기초검사_시작() {
 		_RO_no.value = find_array[0].RO_no;
 		_VIN.value = find_array[0].VIN;
 		_QRCode.value = find_array[0].랙번호;
-		_주행거리.value = find_array[0].VIN;
-		_차량번호.value = find_array[0].랙번호;
+		_주행거리.value = find_array[0].주행거리;
+		_차량번호.value = find_array[0].차량번호;
+	} else {
+		_구분.value = '';
+		_차종.value = '';
+		_품번.value = '';
+		_RO_no.value = '';
+		_VIN.value = '';
+		_QRCode.value = '';
+		_주행거리.value = '';
+		_차량번호.value = '';
 	}
 
 	count(기초검사, { 관리번호 : _management_id.value });
 	await delay();
-	console.log('doc_count_1: ', doc_count);
+	console.log('doc_count: ', doc_count);
 	if(doc_count >= 1) {
 		find(기초검사, _management_id.value);
 		await delay();
@@ -108,12 +149,7 @@ async function 기초검사_시작() {
 		_비고.value = find_array[0].비고;
 		_센터진단내용.value = find_array[0].센터진단내용;
 		_검사자.value = find_array[0].검사자;
-
-		find(BSA재제조, _management_id.value);
-		await delay();
-		_재제조번호.value = find_array[0].재제조번호;
 	} else {
-		_재제조번호.value = '';
 		_공정입고일.value = '0000-00-00T00:00';
 		_육안검사_외부.value = '';
 		_육안검사_외부_특이사항.value = '';
@@ -139,134 +175,21 @@ async function 기초검사_시작() {
 		_비고.value = '';
 		_센터진단내용.value = '';
 		_검사자.value = worker;
+		_구분.value = '';
+		_차종.value = '';
+		_품번.value = '';
+		_RO_no.value = '';
+		_VIN.value = '';
+		_QRCode.value = '';
+		_주행거리.value = '';
+		_차량번호.value = '';
 	}
 }
 
 async function 기초검사_재제조번호_시작() {
-	if(worker == '') return;
-	while(_재제조번호 == undefined) {
-		await sleep(DELAY);
-	}
-
-	if(_재제조번호.value.length == 0) return;
-	console.log('load: ', _재제조번호.value);
-	if(_재제조번호.value == '' | _재제조번호.value == 'none') return;
-
-	count(BSA재제조, { 재제조번호 : _재제조번호.value.trim() });
-	await delay();
-	if(doc_count == 0) {
-		return;
-	}
-
-	find_query(BSA재제조, { 재제조번호 : _재제조번호.value.trim() });
-	await delay();
-
-	count(기초검사, { 관리번호 : find_array[0].관리번호 });
-	await delay();
-	console.log('doc_count: ', doc_count);
-	if(doc_count > 0) {
-		find(기초검사, find_array[0].관리번호);
-		await delay();
-		
-		_management_id.value = find_array[0].관리번호;
-		_공정입고일.value = find_array[0].공정입고일;
-		_육안검사_외부.value = find_array[0].육안검사_외부;
-		_육안검사_외부_특이사항.value = find_array[0].육안검사_외부_특이사항;
-		_육안검사_내부.value = find_array[0].육안검사_내부;
-		_육안검사_내부_특이사항.value = find_array[0].육안검사_내부_특이사항;
-		_기밀검사_냉각유로.value = find_array[0].기밀검사_냉각유로;
-		_기밀검사_냉각유로_특이사항.value = find_array[0].기밀검사_냉각유로_특이사항;
-		_절연검사P.value = find_array[0].절연검사_Plus;
-		_절연검사N.value = find_array[0].절연검사_Minus;
-		_절연검사HVP.value = find_array[0].절연검사_HVPlus;
-		_절연검사HVN.value = find_array[0].절연검사_HVMinus;
-		_통신검사_DTC코드1.value = find_array[0].통신검사_DTC코드1;
-		_통신검사_DTC코드2.value = find_array[0].통신검사_DTC코드2;
-		_통신검사_DTC코드3.value = find_array[0].통신검사_DTC코드3;
-		if(find_array[0].통신검사_DTC코드4 != '') {
-			_기초검사_add_DTC_Code();
-			await sleep(10);
-			_통신검사_DTC코드4.value = find_array[0].통신검사_DTC코드4;
-		}
-               
-                if(find_array[0].통신검사_DTC코드5 != '') {
-			_기초검사_add_DTC_Code();
-			await sleep(10);
-			_통신검사_DTC코드5.value = find_array[0].통신검사_DTC코드5;
-		}
-
-                if(find_array[0].통신검사_DTC코드6 != '') {
-			_기초검사_add_DTC_Code();
-			await sleep(10);
-			_통신검사_DTC코드6.value = find_array[0].통신검사_DTC코드6;
-		}
-
-                if(find_array[0].통신검사_DTC코드7 != '') {
-			_기초검사_add_DTC_Code();
-			await sleep(10);
-			_통신검사_DTC코드7.value = find_array[0].통신검사_DTC코드7;
-		}
-
-                if(find_array[0].통신검사_DTC코드8 != '') {
-			_기초검사_add_DTC_Code();
-			await sleep(10);
-			_통신검사_DTC코드8.value = find_array[0].통신검사_DTC코드8;
-		}
-
-                if(find_array[0].통신검사_DTC코드9 != '') {
-			_기초검사_add_DTC_Code();
-			await sleep(10);
-			_통신검사_DTC코드9.value = find_array[0].통신검사_DTC코드9;
-		}
-
-                if(find_array[0].통신검사_DTC코드10 != '') {
-			_기초검사_add_DTC_Code();
-			await sleep(10);
-			_통신검사_DTC코드10.value = find_array[0].통신검사_DTC코드10;
-		}
-
-		_통신검사_팩전압.value = find_array[0].통신검사_팩전압;
-		_통신검사_셀전압편차.value = find_array[0].통신검사_셀전압편차;
-		_통신검사_릴레이구동.value = find_array[0].통신검사_릴레이구동;
-		_고장현상코드.value = find_array[0].고장현상코드;
-		_고장현상명.value = find_array[0].고장현상명;
-		_문제Cell_No.value = find_array[0].문제Cell_No;
-		_문제BMA_No.value = find_array[0].문제BMA_No;
-		_문제BMA_cnt.value = find_array[0].문제BMA_cnt;
-		_공정완료일.value = find_array[0].공정완료일;
-		_요청사항.value = find_array[0].요청사항;
-		_비고.value = find_array[0].비고;
-		_센터진단내용.value = find_array[0].센터진단내용;
-		_검사자.value = find_array[0].검사자;
-	} else {
-		_management_id.value = '';
-		_공정입고일.value = '0000-00-00T00:00';
-		_육안검사_외부.value = '';
-		_육안검사_외부_특이사항.value = '';
-		_육안검사_내부.value = '';
-		_육안검사_내부_특이사항.value = '';
-		_기밀검사_냉각유로.value = '';
-		_기밀검사_냉각유로_특이사항.value = '';
-		_절연검사P.value = '';
-		_절연검사N.value = '';
-		_통신검사_DTC코드1.value = '';
-		_통신검사_DTC코드2.value = '';
-		_통신검사_DTC코드3.value = '';
-		_통신검사_팩전압.value = '';
-		_통신검사_셀전압편차.value = '';
-		_통신검사_릴레이구동.value = '';
-		_고장현상코드.value = '';
-		_고장현상명.value = '';
-		_문제Cell_No.value = '';
-		_문제BMA_No.value = '';
-		_문제BMA_cnt.value = '';
-		_공정완료일.value = '0000-00-00T00:00';
-		_요청사항.value = '';
-		_비고.value = '';
-		_센터진단내용.value = '';
-		_검사자.value = worker;
-	}
+	기초검사_시작(true);
 }
+
 function 기초검사_save() {
 	기초검사_SAVE();
 

@@ -8,23 +8,9 @@ async function EOL_시작(EOL_is재제조번호 = false) {
 		await sleep(DELAY);
 	}
 
-	alert_allow = true;
 	flag_EOL = false;
 
-	_management_id.value =  관리번호;
-
-	count(입고, { 관리번호 : _management_id.value });
-	await delay();
-	console.log('doc_count: ', doc_count);
-	if(doc_count >= 1) {
-		find(입고, _management_id.value);
-		await delay();
-		console.log('입고 data:', find_array);
-
-		_구분.value = find_array[0].구분;
-		_차종.value = find_array[0].차종;
-		_품번.value = find_array[0].품번;
-	}
+	if(_management_id.value == '조회 버튼을 누르세요') _management_id.value =  관리번호;
 
 	if(EOL_is재제조번호 == false) {
 		if(_management_id.value.length == 0) return;
@@ -35,21 +21,25 @@ async function EOL_시작(EOL_is재제조번호 = false) {
 	} else {
 		if(_재제조번호.value.length == 0) return;
 		console.log('load: ', _재제조번호.value);
-		if(_재제조번호.value == '' | _재제조번호.value == 'none') return;
+		
+		count(BSA재제조, { 재제조번호 : _재제조번호.value });
+		await delay();
 
-		find_query(BSA재제조, { 재재조번호 : _재제조번호.value });
-		count(EOL, { 관리번호 : find_array[0].관리번호 });
+		if(doc_count >= 1) {
+			find_query(BSA재제조, { 재제조번호 : _재제조번호.value });
+			await delay();
+			
+			_management_id.value = find_array[0].관리번호;
+			count(EOL, { 관리번호 : find_array[0].관리번호 });
+		} else {
+			_management_id.value = '찾지 못하였습니다';;
+			count(EOL, { 관리번호 : _management_id.value });
+		}
 	}
 	await delay();
 	console.log('doc_count: ', doc_count);
 	if(doc_count > 0) {
-		if(EOL_is재제조번호 == false) {
-			find(EOL, _management_id.value);
-			await delay();
-		} else {
-			find(EOL, find_array[0].관리번호);
-			await delay();
-		}
+		find(EOL, _management_id.value);
 		
         	_공정입고일.value = find_array[0].공정입고일; 
         	_UPR_C조립.value = find_array[0].UPR_C조립; 
@@ -120,13 +110,27 @@ async function EOL_시작(EOL_is재제조번호 = false) {
 		} else {
 			_management_id.value = find_array[0].관리번호;
 		}
+
+		count(입고, { 관리번호 : _management_id.value });
+		await delay();
+		console.log('::doc_count: ', doc_count);
+		if(doc_count >= 1) {
+			find(입고, _management_id.value);
+			await delay();
+			console.log('입고 data:', find_array);
+
+			_구분.value = find_array[0].구분;
+			_차종.value = find_array[0].차종;
+			_품번.value = find_array[0].품번;
+		}
+
 	} else {
 		if(EOL_is재제조번호 == false) {
 			_재제조번호.value = '';
 		} else {
 			_management_id.value = '';
 		}
-		
+
 		_공정입고일.value = '';
 		_UPR_C조립.value = '';
 		_기밀검사_케이스.value = '';
@@ -145,6 +149,9 @@ async function EOL_시작(EOL_is재제조번호 = false) {
 		_비고.value = '';
 		_QR.value = '';
 		_검사자.value = worker;
+		_구분.value = '';
+		_차종.value = '';
+		_품번.value = '';
 	}
 }
 

@@ -6,7 +6,7 @@ async function 재충전정보_시작() {
 		await sleep(DELAY);
 	}
 	
-	alert_allow = false;
+	;
 
 	var tabledata = [];
 	var DateTime = luxon.DateTime;

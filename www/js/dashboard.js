@@ -5,7 +5,7 @@ async function 대시보드_시작() {
 	if(worker == '') return;
 	await sleep(200);
 
-	alert_allow = false;
+	;
 
 	총합계_조회();
 }
