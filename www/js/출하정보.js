@@ -17,14 +17,15 @@ async function 출하정보_시작(is재제조 = false) {
 	_검사자.value = worker;
 
 	if(is재제조 == false) {
-		count(BSA재제조, {관리번호 : _management_id.value });
+		count(BSA재제조, { 관리번호 : _management_id.value });
 		await delay();
+		console.log('::::', doc_count);
+
 		if(doc_count >= 1) {
 			find(BSA재제조, _management_id.value );
 			await delay();
 		
 			_재제조번호.value = find_array[0].재제조번호;
-			console.log('-----------------');
 		}
 	} else {
 		count(BSA재제조, { 재제조번호 : _재제조번호.value });
@@ -38,6 +39,23 @@ async function 출하정보_시작(is재제조 = false) {
 		} else {
 			_management_id.value = '찾지 못하였습니다';
 		}
+	}
+
+	count(입고, { 관리번호 : _management_id.value });
+	await delay();
+	console.log('doc_count: ', doc_count);
+	if(doc_count >= 1) {
+		find(입고, _management_id.value);
+		await delay();
+		console.log('입고 data:', find_array);
+
+		_차종.value = find_array[0].차종;
+		_품번.value = find_array[0].품번;
+		_RO_no.value = find_array[0].RO_no;
+	} else {
+		_차종.value = '';
+		_품번.value = '';
+		_RO_no.value = '';
 	}
 
 	if(_차종.value != '') {
@@ -170,25 +188,6 @@ async function 출하정보_시작(is재제조 = false) {
 			}
 		}
 
-		if(_차종.value == '' || _품번.value == '' || _RO_no.value == '') {
-			count(입고, { 관리번호 : _management_id.value });
-			await delay();
-			console.log('doc_count: ', doc_count);
-			if(doc_count >= 1) {
-				find(입고, _management_id.value);
-				await delay();
-				console.log('입고 data:', find_array);
-
-				_차종.value = find_array[0].차종;
-				_품번.value = find_array[0].품번;
-				_RO_no.value = find_array[0].RO_no;
-			} else {
-				_차종.value = '';
-				_품번.value = '';
-				_RO_no.value = '';
-			}
-		}
-
 		if(브라켓 == 'OK') {
 			_bracket.options[1].selected = true;
 		} else if(브라켓 == 'NG') {
@@ -261,10 +260,6 @@ async function 출하정보_시작(is재제조 = false) {
 		_bracket.options[0].selected = true;
 		_S_PLUG.options[0].selected = true;
 		_접지.options[0].selected = true;
-
-		_차종.value = '';
-		_품번.value = '';
-		_RO_no.value = '';
 	}
 }
 

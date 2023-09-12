@@ -46,6 +46,8 @@ async function 기초검사_시작(is재제조 = false) {
 		}
 	}
 
+	if(_management_id.value == '' | _management_id.value == 'none') return;
+
 	count(입고, { 관리번호 : _management_id.value });
 	await delay();
 	console.log('doc_count: ', doc_count);
@@ -175,14 +177,6 @@ async function 기초검사_시작(is재제조 = false) {
 		_비고.value = '';
 		_센터진단내용.value = '';
 		_검사자.value = worker;
-		_구분.value = '';
-		_차종.value = '';
-		_품번.value = '';
-		_RO_no.value = '';
-		_VIN.value = '';
-		_QRCode.value = '';
-		_주행거리.value = '';
-		_차량번호.value = '';
 	}
 }
 

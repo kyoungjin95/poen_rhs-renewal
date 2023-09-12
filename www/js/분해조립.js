@@ -33,8 +33,6 @@ async function 분해조립_시작(is재제조번호 = false) {
 
 	flag_loaded = true;
 
-	;
-
 	if(_management_id.value == '조회 버튼을 누르세요') _management_id.value =  관리번호;
 
 	count(입고, { 관리번호 : _management_id.value });
@@ -178,7 +176,6 @@ async function 분해조립_시작(is재제조번호 = false) {
 		_공정완료일.value = find_array[0].공정완료일;
 		_작업자.value = find_array[0].작업자;
 	} else {
-		loadPage('base/분해조립.html');
 		_공정입고일.value = '0000-00-00T00:00';
                 _BMU1.value = '';
                 _CMU1.value = '';

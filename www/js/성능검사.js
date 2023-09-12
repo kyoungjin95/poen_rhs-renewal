@@ -26,6 +26,16 @@ async function 성능검사_시작(is재제조 = false) {
 	if(is재제조 == false) {
 		if(_management_id.value.length == 0) return;
 		console.log('load: ', _management_id.value);
+		
+		count(BSA재제조, { 관리번호 : _management_id.value });
+		await delay();
+		
+		if(doc_count >= 1) {
+			find(BSA재제조, _management_id.value);
+			await delay();
+
+			_재제조번호.value = find_array[0].재제조번호;
+		}
 	} else {
 		if(_재제조번호.value.length == 0) return;
 	}
@@ -62,10 +72,6 @@ async function 성능검사_시작(is재제조 = false) {
 		_DCIR_Discharge.value =	find_array[0].DCIR_Discharge;
 		_공정완료일.value = find_array[0].공정완료일;
 		_검사자.value = find_array[0].검사자;
-
-		find(BSA재제조, _management_id.value);
-		await delay();
-		_재제조번호.value = find_array[0].재제조번호;
 	} else {
 		_공정입고일.value = '0000-00-00T00:00'
 		_용량평가.value = '';
