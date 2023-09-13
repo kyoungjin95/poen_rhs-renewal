@@ -1,28 +1,53 @@
 var dashboard_chart;
+var 날짜지정조회 = false;
+var today_begin;
+var today_end;
 
 async function 대시보드_시작() {
 	flag_대시보드 = false;
 	if(worker == '') return;
 	await sleep(200);
 
-	;
+	document.getElementById('세척').addEventListener("click", function(){
+		dash_세척_당일_get(today_begin, today_end);
+	});
+	document.getElementById('기초').addEventListener("click", function(){
+		dash_기초검사_당일_get(today_begin, today_end);
+	});
+	document.getElementById('분해').addEventListener("click", function(){
+		dash_분해조립_당일_get(today_begin, today_end);
+	});
+	document.getElementById('성능').addEventListener("click", function(){
+		dash_성능검사_당일_get(today_begin, today_end);
+	});
+	document.getElementById('EOL').addEventListener("click", function(){
+		dash_EOL_당일_get(today_begin, today_end);
+	});
+	document.getElementById('출하').addEventListener("click", function(){
+		dash_출하검사_당일_get(today_begin, today_end);
+	});
 
 	총합계_조회();
 }
 
 function dashboard_조회() {
-	var today_begin = document.getElementById('_검색일_from').value + 'T00:00:000Z';;
-	var today_end = document.getElementById('_검색일_to').value + 'T24:00:000Z';;
+	today_begin = document.getElementById('_검색일_from').value + 'T00:00:000Z';;
+	today_end = document.getElementById('_검색일_to').value + 'T24:00:000Z';;
 	조회_list(today_begin, today_end);
+	날짜지정조회 = true;
 }
 
 function 총합계_조회() {
 	var DateTime = luxon.DateTime;
 	var seoul = DateTime.local().setZone("Asia/Seoul");
 	var now = seoul.toString();
-	var today_begin = now.slice(0, 10) + 'T00:00:000Z';
-	var today_end = now.slice(0, 10) + 'T24:00:000Z';
+	today_begin = now.slice(0, 10) + 'T00:00:000Z';
+	today_end = now.slice(0, 10) + 'T24:00:000Z';
 	
+	if(날짜지정조회 == true) {
+		today_begin = document.getElementById('_검색일_from').value + 'T00:00:000Z';;
+		today_end = document.getElementById('_검색일_to').value + 'T24:00:000Z';;
+	}
 	조회_list(today_begin, today_end);
 }
 
@@ -67,6 +92,8 @@ async function dash_세척(today_begin, today_end) {
 	document.getElementById('num1').innerHTML = 세척누적;
 }
 
+var 세척당일 = 0;
+
 async function dash_세척_당일(today_begin, today_end) {
 	if(level == 'kia_일반') {
 		count(BSA재제조, { 차종 : { $in : ['DE', 'DE_EV', 'DEPBV', 'DEPBV-EV', 'CV', 'CV_EV', 'MV', 'MV_EV', 'PU', 'PU_EV', 'SG2', 'SG2-EV', 'TAM', 'TAM-EV', 'PS', 'PS_EV', 'SK3']}, 세척 : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }, 구분 : '일반'});
@@ -84,10 +111,21 @@ async function dash_세척_당일(today_begin, today_end) {
 		await delay();
 	}
 	console.log('세척 당일 count:', doc_count);
-	var 세척당일 = doc_count;
+	세척당일 = doc_count;
 
 	document.getElementById('num1').innerHTML += ' (' + 세척당일 + ')';
 }
+
+async function dash_세척_당일_get(today_begin, today_end) {
+        if(세척당일 == 0) return;
+	find_query(BSA재제조, { 세척 : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }});
+	await delay();
+
+	당일목록('세척', find_array);
+}
+
+var 기초검사당일 = 0;
+
 async function dash_기초검사(today_begin, today_end) {
 	if(level == 'kia_일반') {
 		count(BSA재제조, { 차종 : { $in : ['DE', 'DE_EV', 'DEPBV', 'DEPBV-EV', 'CV', 'CV_EV', 'MV', 'MV_EV', 'PU', 'PU_EV', 'SG2', 'SG2-EV', 'TAM', 'TAM-EV', 'PS', 'PS_EV', 'SK3']}, 기초검사 : { $exists : true, $ne : 'none', $ne : ''}, 구분 : '일반'});
@@ -129,10 +167,20 @@ async function dash_기초검사_당일(today_begin, today_end) {
 		await delay();
 	}
 	console.log('기초검사당일 count:', doc_count);
-	var 기초검사당일 = doc_count;
+	기초검사당일 = doc_count;
 
 	document.getElementById('num2').innerHTML += ' (' + 기초검사당일 + ')';
 }
+
+async function dash_기초검사_당일_get(today_begin, today_end) {
+        if(기초검사당일 == 0) return;
+	find_query(BSA재제조, { 기초검사 : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }});
+	await delay();
+
+	당일목록('기초검사', find_array);
+}
+
+var 분해조립당일 = 0;
 
 async function dash_분해조립(today_begin, today_end) {
 	if(level == 'kia_일반') {
@@ -175,10 +223,20 @@ async function dash_분해조립_당일(today_begin, today_end) {
 		await delay();
 	}
 	console.log('분해조립당일 count:', doc_count);
-	var 분해조립당일 = doc_count;
+	분해조립당일 = doc_count;
 
 	document.getElementById('num3').innerHTML += ' (' + 분해조립당일 + ')';
 }
+
+async function dash_분해조립_당일_get(today_begin, today_end) {
+        if(분해조립당일 == 0) return;
+	find_query(BSA재제조, { 분해조립 : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }});
+	await delay();
+
+	당일목록('분해조립', find_array);
+}
+
+var 성능검사당일 = 0;
 
 async function dash_성능검사(today_begin, today_end) {
 	if(level == 'kia_일반') {
@@ -221,10 +279,21 @@ async function dash_성능검사_당일(today_begin, today_end) {
 		await delay();
 	}
 	console.log('성능검사 당일  count:', doc_count);
-	var 성능검사당일 = doc_count;
+	
+	성능검사당일 = doc_count;
 
 	document.getElementById('num4').innerHTML += ' ('+ 성능검사당일 + ')';
 }
+
+async function dash_성능검사_당일_get(today_begin, today_end) {
+        if(성능검사당일 == 0) return;
+	find_query(BSA재제조, { 성능검사 : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }});
+	await delay();
+
+	당일목록('성능검사', find_array);
+}
+
+var EOL당일 = 0;
 
 async function dash_EOL(today_begin, today_end) {
 	if(level == 'kia_일반') {
@@ -267,10 +336,21 @@ async function dash_EOL_당일(today_begin, today_end) {
 		await delay();
 	}
 	console.log('EOL 당일  count:', doc_count);
-	var EOL당일 = doc_count;
+	
+	EOL당일 = doc_count;
 	
 	document.getElementById('num5').innerHTML += ' (' + EOL당일 + ')';
 }
+
+async function dash_EOL_당일_get(today_begin, today_end) {
+        if(EOL당일 == 0) return;
+	find_query(BSA재제조, { EOL : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }});
+	await delay();
+
+	당일목록('EOL', find_array);
+}
+
+var 출하당일 = 0;
 
 async function dash_출하(today_begin, today_end) {
 	if(level == 'kia_일반') {
@@ -313,7 +393,57 @@ async function dash_출하_당일(today_begin, today_end) {
 		await delay();
 	}
 	console.log('출하당일 count:', doc_count);
-	var 출하당일 = doc_count;
+	출하당일 = doc_count;
 	
 	document.getElementById('num8').innerHTML += ' (' + 출하당일 + ')';
+}
+
+async function dash_출하검사_당일_get(today_begin, today_end) {
+        if(출하당일 == 0) return;
+	find_query(BSA재제조, { 출하 : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }});
+	await delay();
+
+	당일목록('출하', find_array);
+}
+
+async function 당일목록(공정, data) {
+	var 공정_tabledata_BSA = data;
+	선택공정 = 공정;
+
+	document.getElementById('공정라벨').innerHTML = 선택공정 + ' 당일 목록';
+
+	BSA대기수량_table = new Tabulator("#grid_공정", {
+		layout: "resizableColumnFit",
+                data: 공정_tabledata_BSA,
+		height: '300px',
+		
+		columns:[
+			{title:"관리번호", field:"관리번호", sorter:"string", width:'180'},
+			{title:"재제조번호", field:"재제조번호", sorter:"string", width:'180'},
+			{title:"구분", field:"구분", sorter:"string", width:'180'},
+			{title:"차종", field:"차종", sorter:"string", width:'180'},
+			{title:"품번", field:"품번", sorter:"string", width:'180'},
+			{title:"RO_no", field:"RO_no", sorter:"string", width:'180'},
+			{title:"공정단계", field:"공정단계", sorter:"string", width:'180'},
+			{title:"소재지", field:"소재지", sorter:"string", width:'180'},
+			{title:"적재No", field:"적재No", sorter:"string", visible: true, width:'180'}, //
+			{title:"입고", field:"입고", sorter:"string", visible: true, width:'180'},//
+			{title:"제조투입", field:"제조투입", sorter:"string", visible: true, width:'180'},//
+			{title:"세척투입일", field:"세척투입일", sorter:"string", width:'180'},
+			{title:"세척", field:"세척", sorter:"string", visible: true, width:'180'},//
+			{title:"기초검사투입일", field:"기초검사투입일", sorter:"string", width:'180'},
+			{title:"기초검사", field:"기초검사", sorter:"string", visible: true, width:'180'},//
+			{title:"분해조립투입일", field:"분해조립투입일", sorter:"string", width:'180'},
+			{title:"분해조립", field:"분해조립", sorter:"string", visible: true, width:'180'},//
+			{title:"성능검사투입일", field:"성능검사투입일", sorter:"string", width:'180'},
+			{title:"성능검사", field:"성능검사", sorter:"string", visible: true, width:'180'},//
+			{title:"EOL투입일", field:"EOL투입일", sorter:"string", width:'180'},
+			{title:"EOL", field:"EOL", sorter:"string", visible: true, width:'180'},//
+			{title:"출하", field:"출하", sorter:"string", width:'180'},
+			{title:"반품입고", field:"반품입고", sorter:"string", width:'180'},
+			{title:"재출하", field:"재출하", sorter:"string", width:'180'},
+			{title:"완전분해", field:"완전분해", sorter:"string", width:'180'},
+			{title:"폐기", field:"폐기", sorter:"string", width:'180'},
+		],
+	});
 }
