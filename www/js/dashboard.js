@@ -11,9 +11,8 @@ async function 대시보드_시작() {
 }
 
 function dashboard_조회() {
-	var today_begin = document.getElementById('_검색일_from').value;
-	var today_end = document.getElementById('_검색일_to').value;
-	
+	var today_begin = document.getElementById('_검색일_from').value + 'T00:00:000Z';;
+	var today_end = document.getElementById('_검색일_to').value + 'T24:00:000Z';;
 	조회_list(today_begin, today_end);
 }
 
