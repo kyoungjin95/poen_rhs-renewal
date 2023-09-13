@@ -45,16 +45,10 @@ async function 기초검사_시작(is재제조 = false) {
 			_구분.value = '';
 			_차종.value = '';
 			_품번.value = '';
-			_RO_no.value = '';
-			_VIN.value = '';
-			_QRCode.value = '';
-			_주행거리.value = '';
-			_차량번호.value = '';
 		}
 	}
 
-	if(_management_id.value == '' | _management_id.value == 'none') return;
-
+	if(_management_id.value == '' | _management_id.value == 'none') return
 	count(입고, { 관리번호 : _management_id.value });
 	await delay();
 	console.log('doc_count: ', doc_count);
@@ -66,20 +60,10 @@ async function 기초검사_시작(is재제조 = false) {
 		_구분.value = find_array[0].구분;
 		_차종.value = find_array[0].차종;
 		_품번.value = find_array[0].품번;
-		_RO_no.value = find_array[0].RO_no;
-		_VIN.value = find_array[0].VIN;
-		_QRCode.value = find_array[0].랙번호;
-		_주행거리.value = find_array[0].주행거리;
-		_차량번호.value = find_array[0].차량번호;
 	} else {
 		_구분.value = '';
 		_차종.value = '';
 		_품번.value = '';
-		_RO_no.value = '';
-		_VIN.value = '';
-		_QRCode.value = '';
-		_주행거리.value = '';
-		_차량번호.value = '';
 	}
 
 	count(기초검사, { 관리번호 : _management_id.value });
@@ -90,6 +74,12 @@ async function 기초검사_시작(is재제조 = false) {
 		await delay();
 		
 		_공정입고일.value = find_array[0].공정입고일;
+		_RO_no.value = find_array[0].RO_no;
+		_VIN.value = find_array[0].VIN;
+		_랙번호.value = find_array[0].랙번호;
+		_QRCode.value = find_array[0].QRcode;
+		_주행거리.value = find_array[0].주행거리;
+		_차량번호.value = find_array[0].차량번호;
 		_육안검사_외부.value = find_array[0].육안검사_외부;
 		_육안검사_외부_특이사항.value = find_array[0].육안검사_외부_특이사항;
 		_육안검사_내부.value = find_array[0].육안검사_내부;
@@ -160,6 +150,12 @@ async function 기초검사_시작(is재제조 = false) {
 		_검사자.value = find_array[0].검사자;
 	} else {
 		_공정입고일.value = '0000-00-00T00:00';
+		_RO_no.value = '';
+		_VIN.value = '';
+		_랙번호.value = '';
+		_QRCode.value = '';
+		_주행거리.value = '';
+		_차량번호.value = '';
 		_육안검사_외부.value = '';
 		_육안검사_외부_특이사항.value = '';
 		_육안검사_내부.value = '';
@@ -202,9 +198,31 @@ async function 기초검사_SAVE() {
 	if(_management_id.value.length == 0) return;
 	console.log('save: ', _management_id.value);
 
+	if(_RO_no.value.length != 17 && _RO_no.value.length != 0) {
+		var cnt = (_RO_no.value.match(/-/g) || []).length;
+		if((_RO_no.value.length - cnt) != 17) {
+			alert('Ro 번호 자릴수가 다릅니다.(17)');
+			return;
+		}
+	}
+
+	if(_VIN.value.length != 17 && _VIN.value.length != 0) {
+		var cnt = (_VIN.value.match(/-/g) || []).length;
+		if((_VIN.value.length - cnt) != 17) {
+			alert('VIN이 자릿수가 다릅니다.(17)');
+			return;
+		}
+	}
+
 	var doc = 기초검사_doc;
         doc.관리번호 = _management_id.value;
 	doc.공정입고일 = _공정입고일.value;
+	doc.RO_no = _RO_no.value;
+	doc.VIN = _VIN.value;
+	doc.랙번호 = _랙번호.value;
+	doc.QRcode = _QRCode.value;
+	doc.주행거리 = _주행거리.value;
+	doc.차량번호 = _차량번호.value; 
 	doc.육안검사_외부 = _육안검사_외부.value;
 	doc.육안검사_외부_특이사항 = _육안검사_외부_특이사항.value;
 	doc.육안검사_내부 = _육안검사_내부.value;
@@ -221,7 +239,7 @@ async function 기초검사_SAVE() {
 	var oCurrentRow;
 	var tb = document.getElementById('tb');
 	var rowIcnt = tb.rows.length - 14;
-	var code_no = rowIcnt - 21;
+	var code_no = rowIcnt - 22;
 	console.log('save rowIcnt:', rowIcnt);
 	console.log('save code_no:', code_no);
 
@@ -341,10 +359,10 @@ function _기초검사_add_DTC_Code() {
 	var oCurrentRow;
 	var tb = document.getElementById('tb');
 	var rowIcnt = tb.rows.length - 14;
-	var code_no = rowIcnt - 20;
+	var code_no = rowIcnt - 21;
 	console.log('row count:', rowIcnt);
 	console.log('code No:', code_no);
-	if(rowIcnt > 30) return false;
+	if(rowIcnt > 31) return false;
 	if(code_no > 10) return false;
 
 	oCurrentRow = tb.insertRow(rowIcnt);
