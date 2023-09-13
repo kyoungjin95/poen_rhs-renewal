@@ -42,6 +42,10 @@ async function BSA_수량_현황_시작() {
 	document.getElementById('EOL').addEventListener("click", function(){
 		대기목록('EOL');
 	});
+
+	document.getElementById('공정대기').addEventListener("click", function(){
+		대기목록('공정대기');
+	});
 }
 
 async function BSA_수량_현황_조회() {
@@ -52,54 +56,55 @@ async function BSA_수량_현황_조회() {
 	await 성능검사대기();
 	await EOL대기();
 	await 출하대기();
+	await 공정대기();
 
 	console.log('update');
 }
 
 async function 작업대기() {
-	 count(BSA재제조, { 공정단계 : '입고' });
+	 count(BSA재제조, { 공정단계 : '입고', 소재지 : { $ne : '공정대기' } });
 	 await delay();
 
 	 document.getElementById('check_num1').innerHTML = doc_count;
 }
 
 async function 세척대기() {
-	 count(BSA재제조, { 공정단계 : '세척' });
+	 count(BSA재제조, { 공정단계 : '세척' , 소재지 : { $ne : '공정대기' } });
 	 await delay();
 
 	 document.getElementById('check_num2').innerHTML = doc_count;
 }
 
 async function 기초검사대기() {
-	 count(BSA재제조, { 공정단계 : '기초검사' });
+	 count(BSA재제조, { 공정단계 : '기초검사' , 소재지 : { $ne : '공정대기' } });
 	 await delay();
 
 	 document.getElementById('check_num3').innerHTML = doc_count;
 }
 
 async function 분해조립대기() {
-	 count(BSA재제조, { 공정단계 : '분해조립' });
+	 count(BSA재제조, { 공정단계 : '분해조립' , 소재지 : { $ne : '공정대기' } });
 	 await delay();
 
 	 document.getElementById('check_num4').innerHTML = doc_count;
 }
 
 async function 성능검사대기() {
-	 count(BSA재제조, { 공정단계 : '성능검사' });
+	 count(BSA재제조, { 공정단계 : '성능검사' , 소재지 : { $ne : '공정대기' } });
 	 await delay();
 
 	 document.getElementById('check_num5').innerHTML = doc_count;
 }
 
 async function EOL대기() {
-	 count(BSA재제조, { 공정단계 : 'EOL' });
+	 count(BSA재제조, { 공정단계 : 'EOL' , 소재지 : { $ne : '공정대기' } });
 	 await delay();
 
 	 document.getElementById('check_num6').innerHTML = doc_count;
 }
 
 async function 출하대기() {
-	 count(BSA재제조, { 공정단계 : '제조완료' });
+	 count(BSA재제조, { 공정단계 : '제조완료' , 소재지 : { $ne : '공정대기' } });
 	 await delay();
 
 	 document.getElementById('check_num7').innerHTML = doc_count;
@@ -108,22 +113,43 @@ async function 출하대기() {
 	 await 대기목록(선택대기공정);
 }
 
+async function 공정대기() {
+	 count(BSA재제조, { 소재지 : '공정대기' });
+	 await delay();
+
+	 document.getElementById('check_num8').innerHTML = doc_count;
+}
+
 async function 대기목록(공정) {
 	var 대기_tabledata_BSA = [];
 	선택대기공정 = 공정;
 
 	document.getElementById('대기라벨').innerHTML = 선택대기공정 + ' 대기 목록';
 
-	count(BSA재제조, { 공정단계 : 공정 });
-	await delay();
-
-	if(doc_count == 0) {
-		대기_tabledata_BSA = [];
-	} else {
-		find_query(BSA재제조, { 공정단계 : 공정 });
+	if(공정 != '공정대기') {
+		count(BSA재제조, { 공정단계 : 공정 });
 		await delay();
 
-		대기_tabledata_BSA = find_array;
+		if(doc_count == 0) {
+			대기_tabledata_BSA = [];
+		} else {
+			find_query(BSA재제조, { 공정단계 : 공정 });
+			await delay();
+
+			대기_tabledata_BSA = find_array;
+		}
+	} else {
+		count(BSA재제조, { 소재지 : '공정대기' });
+		await delay();
+
+		if(doc_count == 0) {
+			대기_tabledata_BSA = [];
+		} else {
+			find_query(BSA재제조, { 소재지 : '공정대기' });
+			await delay();
+
+			대기_tabledata_BSA = find_array;
+		}
 	}
 
 	BSA대기수량_table = new Tabulator("#grid_대기", {
