@@ -179,6 +179,25 @@ async function 분해조립_시작(is재제조번호 = false) {
 		_공정완료일.value = find_array[0].공정완료일;
 		_작업자.value = find_array[0].작업자;
 	} else {
+		if(BMU_count > 0) alert('공정상세 입력에서 관리자번호를 변경후 시작해 주세요');
+		if(CMU_count > 0) alert('공정상세 입력에서 관리자번호를 변경후 시작해 주세요');
+		if(PRA_count > 0) alert('공정상세 입력에서 관리자번호를 변경후 시작해 주세요');
+		if(SPA_count > 0) alert('공정상세 입력에서 관리자번호를 변경후 시작해 주세요');
+		if(LWR_C_count > 0) alert('공정상세 입력에서 관리자번호를 변경후 시작해 주세요');
+		if(UPR_C_count > 0) alert('공정상세 입력에서 관리자번호를 변경후 시작해 주세요');
+		if(PBE_count > 0) alert('공정상세 입력에서 관리자번호를 변경후 시작해 주세요');
+		if(Gasket_count > 0) alert('공정상세 입력에서 관리자번호를 변경후 시작해 주세요');
+		if(Relay_count > 0) alert('공정상세 입력에서 관리자번호를 변경후 시작해 주세요');
+		if(HV_CNTR_count > 0) alert('공정상세 입력에서 관리자번호를 변경후 시작해 주세요');
+		if(Heating_CNTR_count > 0) alert('공정상세 입력에서 관리자번호를 변경후 시작해 주세요');
+		if(FuseBox_count > 0) alert('공정상세 입력에서 관리자번호를 변경후 시작해 주세요');
+		if(LV_W_H_count > 0) alert('공정상세 입력에서 관리자번호를 변경후 시작해 주세요');
+		if(HV_W_H_count > 0) alert('공정상세 입력에서 관리자번호를 변경후 시작해 주세요');
+		if(온도센서_count > 0) alert('공정상세 입력에서 관리자번호를 변경후 시작해 주세요');
+		if(Busbars_count > 0) alert('공정상세 입력에서 관리자번호를 변경후 시작해 주세요');
+		if(BMA_count > 0) alert('공정상세 입력에서 관리자번호를 변경후 시작해 주세요');
+
+
 		if(BMU_count > 0) loadPage('base/분해조립.html');
 		if(CMU_count > 0) loadPage('base/분해조립.html');
 		if(PRA_count > 0) loadPage('base/분해조립.html');
