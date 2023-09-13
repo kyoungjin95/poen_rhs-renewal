@@ -866,12 +866,6 @@ async function grid_입고(m_id) {
 			{title:"구분", field:"구분", sorter:"string", width:'180'},
 			{title:"차종", field:"차종", sorter:"string", width:'180'},
 			{title:"품번", field:"품번", sorter:"string", width:'180'},
-			{title:"RO_no", field:"RO_no", sorter:"string", width:'180'},
-			{title:"VIN", field:"VIN", sorter:"string", width:'180'},
-			{title:"랙번호", field:"랙번호", sorter:"string", width:'180'},
-			{title:"QR", field:"QRcode", sorter:"string", width:'180'},
-			{title:"주행거리", field:"주행거리", sorter:"string", width:'180'},
-			{title:"차량번호", field:"차량번호", sorter:"string", width:'180'},
 		]
 	});
 
@@ -1051,6 +1045,12 @@ async function grid_기초검사(m_id) {
 		
 		columns:[
 			{title:"관리번호", field:"관리번호", sorter:"string", width:'180'},
+			{title:"RO_no", field:"RO_no", sorter:"string", width:'180'},
+			{title:"VIN", field:"VIN", sorter:"string", width:'180'},
+			{title:"랙번호", field:"랙번호", sorter:"string", width:'180'},
+			{title:"QR", field:"QRcode", sorter:"string", width:'180'},
+			{title:"주행거리", field:"주행거리", sorter:"string", width:'180'},
+			{title:"차량번호", field:"차량번호", sorter:"string", width:'180'},
 			{title:"육안검사 외부", field:"육안검사_외부", sorter:"string", width:'180'},
 			{title:"육안검사 내부", field:"육안검사_내부", sorter:"string", width:'180'},
 			{title:"기밀검사 케이스", field:"기밀검사_케이스", sorter:"string", width:'180'},
