@@ -34,7 +34,7 @@ async function 기초검사_시작(is재제조 = false) {
 
 			_management_id.value = find_array[0].관리번호;
 		} else {
-			_management_id.value = '';
+			_management_id.value = '찾지 못하였습니다';
 			_구분.value = '';
 			_차종.value = '';
 			_품번.value = '';

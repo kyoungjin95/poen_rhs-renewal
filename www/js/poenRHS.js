@@ -1424,12 +1424,6 @@ async function make_qr_label(html_string) {
         socket.emit('qr_label', html_string);
 }
 
-async function make_기초보고서(html_string) {
-        if(socket == undefined) return;
-        flag_arrivedMSG = false;
-        socket.emit('기초보고서', html_string);
-}
-
 async function aggregate() {
         if(socket == undefined) return;
         flag_arrivedMSG = false;

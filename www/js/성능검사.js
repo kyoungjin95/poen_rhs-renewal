@@ -6,20 +6,6 @@ async function 성능검사_시작(is재제조 = false) {
 
 	flag_성능검사 = false;
 
-	if(is재제조 == true) {
-		count(BSA재제조, { 재제조번호 : _재제조번호.value });
-		await delay();
-
-		if(doc_count >= 1) {
-			find_query(BSA재제조, { 재제조번호 : _재제조번호.value });
-			await delay();
-
-			_management_id.value = find_array[0].관리번호;
-		} else {
-			_management_id.value = '찾지 못하였습니다';
-		}
-	}
-
 	if(_management_id.value == '조회 버튼을 누르세요') _management_id.value =  관리번호;
 	_검사자.value = worker;
 
@@ -38,6 +24,18 @@ async function 성능검사_시작(is재제조 = false) {
 		}
 	} else {
 		if(_재제조번호.value.length == 0) return;
+
+		count(BSA재제조, { 재제조번호 : _재제조번호.value });
+		await delay();
+
+		if(doc_count >= 1) {
+			find_query(BSA재제조, { 재제조번호 : _재제조번호.value });
+			await delay();
+
+			_management_id.value = find_array[0].관리번호;
+		} else {
+			_management_id.value = '찾지 못하였습니다';
+		}
 	}
 
 	count(입고, { 관리번호 : _management_id.value });

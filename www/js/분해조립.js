@@ -84,7 +84,10 @@ async function 분해조립_시작(is재제조번호 = false) {
 			
 			console.log(find_array);
 			_management_id.value = find_array[0].관리번호;
+		} else {
+			_management_id.value = '찾지 못하였습니다';
 		}
+
 	}
 
 	if(_management_id.value.length == 0) return;
@@ -176,6 +179,24 @@ async function 분해조립_시작(is재제조번호 = false) {
 		_공정완료일.value = find_array[0].공정완료일;
 		_작업자.value = find_array[0].작업자;
 	} else {
+		if(BMU_count > 0) loadPage('base/분해조립.html');
+		if(CMU_count > 0) loadPage('base/분해조립.html');
+		if(PRA_count > 0) loadPage('base/분해조립.html');
+		if(SPA_count > 0) loadPage('base/분해조립.html');
+		if(LWR_C_count > 0) loadPage('base/분해조립.html');
+		if(UPR_C_count > 0) loadPage('base/분해조립.html');
+		if(PBE_count > 0) loadPage('base/분해조립.html');
+		if(Gasket_count > 0) loadPage('base/분해조립.html');
+		if(Relay_count > 0) loadPage('base/분해조립.html');
+		if(HV_CNTR_count > 0) loadPage('base/분해조립.html');
+		if(Heating_CNTR_count > 0) loadPage('base/분해조립.html');
+		if(FuseBox_count > 0) loadPage('base/분해조립.html');
+		if(LV_W_H_count > 0) loadPage('base/분해조립.html');
+		if(HV_W_H_count > 0) loadPage('base/분해조립.html');
+		if(온도센서_count > 0) loadPage('base/분해조립.html');
+		if(Busbars_count > 0) loadPage('base/분해조립.html');
+		if(BMA_count > 0) loadPage('base/분해조립.html');
+
 		_공정입고일.value = '0000-00-00T00:00';
                 _BMU1.value = '';
                 _CMU1.value = '';
