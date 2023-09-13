@@ -531,7 +531,6 @@ async function 입고to기초() {
 	await delay();
 
 	find_array.forEach(async function(info) {
-		console.log(info);
 		let doc = {
 			관리번호 : info.관리번호,
 			RO_no: info.RO_no, 
@@ -542,7 +541,7 @@ async function 입고to기초() {
 			차량번호: info.차량번호
 		}
 
-		update(BSA재제조, doc);
+		update(기초검사, doc);
 		await delay();
 	});
 
