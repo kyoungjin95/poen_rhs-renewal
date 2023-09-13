@@ -64,6 +64,7 @@ h1 {
 	border-radius: 5px;
 	font-size: 2vw;
 }
+
 table {
 	border: 1px solid #e0e0e0;
 	border-radius: 10px;
@@ -75,6 +76,13 @@ table td {
 	background-color: #F0F8FF;
 	color: #00008B;
 	border-radius: 10px;
+}
+
+table.all {
+	width: 75%;
+ 	border : 1px solid black;
+	border-radius: 1px;
+	font-family : 'HHB';
 }
 
 table.base {
@@ -94,7 +102,7 @@ table td.base {
  	border-bottom: 1px solid black;
 	font-family: 'HHB';
 	text-align: center;
-	height: 2.0vw;
+	height: 2.4vw;
 }
 
 table td.base2 {
@@ -195,7 +203,7 @@ table td.result {
  	border: 1px solid black;
 	font-family: 'HHB';
 	text-align: left;
-	width: 85vw;
+	width: 60vw;
 }
 
 table.bottom {
@@ -204,7 +212,7 @@ table.bottom {
 	background-color: white;
 	color: black;
  	border: none;
-	width: 100%;
+	width: 85%;
 }
 
 table td.bottom {
@@ -213,16 +221,6 @@ table td.bottom {
 	background-color: white;
 	color: black;
  	border: none;
-}
-
-textarea {
-	padding: 0vw;
-	font-size: 0.8vw;
-	background-color: white;
-	color: black;
- 	border: none;
-	height: 3vw;
-	width: 100%;
 }
 
 #_QR_Label {
