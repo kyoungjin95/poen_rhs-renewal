@@ -1,5 +1,4 @@
 async function 세척_시작(is재제조 = false) {
-	if(worker == '') return;
 	while(_management_id == undefined) {
 		await sleep(DELAY);
 	}
@@ -21,6 +20,8 @@ async function 세척_시작(is재제조 = false) {
 			await delay();
 
 			_재제조번호.value = find_array[0].재제조번호;
+		} else {
+			_재제조번호.value = '';
 		}
 	} else {
 		count(BSA재제조, { 재제조번호 : _재제조번호.value });
@@ -74,7 +75,6 @@ async function 세척_시작(is재제조 = false) {
 }
 
 async function 세척_save() {
-	if(worker == '') return;
 	if(_management_id.value.length == 0) return;
 	console.log('save: ', _management_id.value);
 
@@ -100,7 +100,7 @@ async function 세척_save() {
 		alert('저장 되었습니다');
 	}
 
-	이전페이지();
+	//이전페이지();
 }
 
 function _기밀검사_케이스_콤보박스(e) {

@@ -2,6 +2,8 @@ function EOL_재제조번호_시작() {
 	EOL_시작(true);
 }
 
+var EOL_DTC_count = 0;
+
 async function EOL_시작(EOL_is재제조번호 = false) {
 	if(worker == '') return;
 	while(_management_id == undefined) {
@@ -9,6 +11,9 @@ async function EOL_시작(EOL_is재제조번호 = false) {
 	}
 
 	flag_EOL = false;
+
+	_eol_delete_all();
+	EOL_DTC_count = 0;
 
 	if(_management_id.value == '조회 버튼을 누르세요') _management_id.value =  관리번호;
 
@@ -47,7 +52,8 @@ async function EOL_시작(EOL_is재제조번호 = false) {
 	console.log('doc_count: ', doc_count);
 	if(doc_count > 0) {
 		find(EOL, _management_id.value);
-		
+		await delay();
+
         	_공정입고일.value = find_array[0].공정입고일; 
         	_UPR_C조립.value = find_array[0].UPR_C조립; 
         	_기밀검사_케이스.value = find_array[0].기밀검사_케이스;
@@ -207,7 +213,7 @@ async function EOL_SAVE() {
 		doc.통신검사_DTC코드8 = '';
 		doc.통신검사_DTC코드9 = '';
 		doc.통신검사_DTC코드10 = '';
-	} else if(code_no == 5) {
+	} else if(code_no == 2) {
 		doc.통신검사_DTC코드4 = _통신검사_DTC코드4.value;
 		doc.통신검사_DTC코드5 = _통신검사_DTC코드5.value;
 		doc.통신검사_DTC코드6 = '';
@@ -215,7 +221,7 @@ async function EOL_SAVE() {
 		doc.통신검사_DTC코드8 = '';
 		doc.통신검사_DTC코드9 = '';
 		doc.통신검사_DTC코드10 = '';
-	} else if(code_no == 4) {
+	} else if(code_no == 1) {
 		doc.통신검사_DTC코드4 = _통신검사_DTC코드4.value;
 		doc.통신검사_DTC코드5 = '';
 		doc.통신검사_DTC코드6 = '';
@@ -256,13 +262,12 @@ async function EOL_SAVE() {
 
 	console.log(doc_);
 	update(BSA재제조, doc_);
-
 }
 
 function EOL_save() {
 	EOL_SAVE();
 
-	이전페이지();
+	//이전페이지();
 }
 
 function _기밀검사_케이스_콤보박스(e) {
@@ -294,6 +299,7 @@ function _EOL_add_DTC_Code() {
 	var insert_string = "<td><label for=\"_통신검사_DTC코드\"" + code_no + "><b>통신검사 DTC코드 " + code_no + "</b></label></td><td><input type=\"text\" id=\"_통신검사_DTC코드" + code_no + "\" size=\"40\" required></td><td><button onClick=\"_eol_delete_row(" + rowIcnt + ");\">삭제</button></td>";
 	console.log(insert_string);
 	oCurrentRow.innerHTML = insert_string;
+	EOL_DTC_count++;
 } 
 
 function _eol_delete_row(index) {
@@ -301,6 +307,17 @@ function _eol_delete_row(index) {
 	var rowIcnt = tb.rows.length - 11;
 	console.log('index:', index, 'rowIcnt:', rowIcnt);
 	if(index == rowIcnt) tb.deleteRow(index);
+	EOL_DTC_count--;
+}
+
+function _eol_delete_all() {
+	var tb = document.getElementById('tb');
+	
+	while(EOL_DTC_count > 0) {
+		var rowIcnt = tb.rows.length - 11;
+		tb.deleteRow(rowIcnt);
+		EOL_DTC_count--;
+	}
 }
 
 async function EOL_QR_Label() {
@@ -344,9 +361,6 @@ async function EOL_QR_Label() {
 
 		make_qr_label(html_string);
 	});	
-
-	QR1.style.display = 'none'
-	QR2.style.display = 'none'
 }
 
 function saveAs(uri, filename) { 

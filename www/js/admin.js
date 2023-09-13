@@ -525,3 +525,26 @@ async function 입고수량보완() {
 
 	console.log('complete');
 }
+
+async function 입고to기초() {
+	find_query(입고, { 관리번호 : { $exists : true }});
+	await delay();
+
+	find_array.forEach(async function(info) {
+		console.log(info);
+		let doc = {
+			관리번호 : info.관리번호,
+			RO_no: info.RO_no, 
+			VIN: info.VIN,
+			랙번호: info.랙번호,
+			QRcode: info.QRcode,
+			주행거리: info.주행거리,
+			차량번호: info.차량번호
+		}
+
+		update(BSA재제조, doc);
+		await delay();
+	});
+
+	console.log('complete');
+}

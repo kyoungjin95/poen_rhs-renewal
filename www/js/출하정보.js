@@ -58,65 +58,67 @@ async function 출하정보_시작(is재제조 = false) {
 		_RO_no.value = '';
 	}
 
-	if(_차종.value != '') {
-		let 브라켓_text = document.getElementById('_브라켓');
-		let s_plug_show = document.getElementById('_S_PLUG');
-		let s_plug_show_비고 = document.getElementById('_S_PLUG_비고');
-		s_plug_show.disabled = false;
-		s_plug_show_비고.disabled = false;
-
-		switch(_차종.value) {
-			case 'DE':
-			case 'DE_EV':
-			case 'OS':
-			case 'OS_EV':
-			case 'SK3':
-			case 'SK3_EV':
-				브라켓_text.innerHTML = '브라켓 4개';
-				break;
-
-			case 'PU':
-			case 'PU_EV':
-			case 'HR':
-			case 'HR_EV':
-				브라켓_text.innerHTML = '브라켓 3개';
-				s_plug_show.disabled = true;
-				s_plug_show_비고.disabled = true;
-				break;
-
-			case 'CV':
-			case 'CV_EV':
-			case 'NE':
-			case 'NE_EV':
-				브라켓_text.innerHTML = '브라켓 9개( 55mm : 1개, 35mm : 8개 )';
-				s_plug_show.disabled = true;
-				s_plug_show_비고.disabled = true;
-				break;
-
-			case 'LK':
-			case 'LK_EV':
-				브라켓_text.innerHTML = '아이볼트 4개';
-				break;
-
-			case 'LM':
-			case 'LM_EV':
-				브라켓_text.innerHTML = '아이볼트 4개';
-				s_plug_show.disabled = true;
-				s_plug_show_비고.disabled = true;
-				break;
-			
-			case 'CS':
-			case 'CS_EV':
-				브라켓_text.innerHTML = 'M1,S2/브라켓 4개/S1/브라켓 1개';
-				s_plug_show.disabled = true;
-				s_plug_show_비고.disabled = true;
-
-				break;
-			default:
-				alert('차종 정보를 확인해주세요');
-				break;
-		}
+	if(_차종.value == '') {
+		_차종.value = prompt('차종을 입력하세요.(예: LK_EV)');
 	}
+
+	let 브라켓_text = document.getElementById('_브라켓');
+	let s_plug_show = document.getElementById('_S_PLUG');
+	let s_plug_show_비고 = document.getElementById('_S_PLUG_비고');
+	s_plug_show.disabled = false;
+	s_plug_show_비고.disabled = false;
+
+	switch(_차종.value) {
+		case 'DE':
+		case 'DE_EV':
+		case 'OS':
+		case 'OS_EV':
+		case 'SK3':
+		case 'SK3_EV':
+			브라켓_text.innerHTML = '브라켓 4개';
+			break;
+
+		case 'PU':
+		case 'PU_EV':
+		case 'HR':
+		case 'HR_EV':
+			브라켓_text.innerHTML = '브라켓 3개';
+			s_plug_show.disabled = true;
+			s_plug_show_비고.disabled = true;
+			break;
+
+		case 'CV':
+		case 'CV_EV':
+		case 'NE':
+		case 'NE_EV':
+			브라켓_text.innerHTML = '브라켓 9개( 55mm : 1개, 35mm : 8개 )';
+			s_plug_show.disabled = true;
+			s_plug_show_비고.disabled = true;
+			break;
+
+		case 'LK':
+		case 'LK_EV':
+			브라켓_text.innerHTML = '아이볼트 4개';
+			break;
+
+		case 'LM':
+		case 'LM_EV':
+			브라켓_text.innerHTML = '아이볼트 4개';
+			s_plug_show.disabled = true;
+			s_plug_show_비고.disabled = true;
+			break;
+
+		case 'CS':
+		case 'CS_EV':
+			브라켓_text.innerHTML = 'M1,S2/브라켓 4개/S1/브라켓 1개';
+			s_plug_show.disabled = true;
+			s_plug_show_비고.disabled = true;
+
+			break;
+		default:
+			alert('차종 정보를 확인해주세요');
+			break;
+	} 
 
 	count(출하정보, { 관리번호 : _management_id.value });
 	await delay();
@@ -329,7 +331,7 @@ async function 출하정보_save() {
 		alert('저장 되었습니다');
 	}
 
-	이전페이지();
+	//이전페이지();
 }
 
 function _기초보고서_작성확인_콤보박스(e) {

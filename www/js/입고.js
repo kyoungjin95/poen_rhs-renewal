@@ -1,5 +1,4 @@
 async function 입고_시작() {
-	if(worker == '') return;
 	while(_management_id == undefined) {
 		await sleep(DELAY);
 	}
@@ -48,7 +47,6 @@ async function 입고_시작() {
 }
 
 async function 입고_save() {
-	if(worker == '') return;
 	if(_management_id.value.length == 0) return;
 	console.log('save: ', _management_id.value);
 
@@ -69,7 +67,7 @@ async function 입고_save() {
 	}
 
 	var doc = 입고_doc;
-	doc.관리번호 = 관리번호;
+	doc.관리번호 = _management_id.value;
 	doc.입고일 = _입고일.value;
 	doc.입고처 = _입고처.value;
 	doc.구분 = _구분.value;
@@ -96,7 +94,7 @@ async function 입고_save() {
 		alert('저장 되었습니다');
 	}
 	
-	이전페이지();
+	//이전페이지();
 }
 
 function _구분_콤보박스(e) {

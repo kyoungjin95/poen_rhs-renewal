@@ -33,6 +33,8 @@ async function 분해조립_시작(is재제조번호 = false) {
 
 	flag_loaded = true;
 
+	_delete_all();
+
 	if(_management_id.value == '조회 버튼을 누르세요') _management_id.value =  관리번호;
 
 	count(입고, { 관리번호 : _management_id.value });
@@ -179,43 +181,6 @@ async function 분해조립_시작(is재제조번호 = false) {
 		_공정완료일.value = find_array[0].공정완료일;
 		_작업자.value = find_array[0].작업자;
 	} else {
-		if(BMU_count > 0) alert('공정상세 입력에서 관리자번호를 변경후 시작해 주세요');
-		if(CMU_count > 0) alert('공정상세 입력에서 관리자번호를 변경후 시작해 주세요');
-		if(PRA_count > 0) alert('공정상세 입력에서 관리자번호를 변경후 시작해 주세요');
-		if(SPA_count > 0) alert('공정상세 입력에서 관리자번호를 변경후 시작해 주세요');
-		if(LWR_C_count > 0) alert('공정상세 입력에서 관리자번호를 변경후 시작해 주세요');
-		if(UPR_C_count > 0) alert('공정상세 입력에서 관리자번호를 변경후 시작해 주세요');
-		if(PBE_count > 0) alert('공정상세 입력에서 관리자번호를 변경후 시작해 주세요');
-		if(Gasket_count > 0) alert('공정상세 입력에서 관리자번호를 변경후 시작해 주세요');
-		if(Relay_count > 0) alert('공정상세 입력에서 관리자번호를 변경후 시작해 주세요');
-		if(HV_CNTR_count > 0) alert('공정상세 입력에서 관리자번호를 변경후 시작해 주세요');
-		if(Heating_CNTR_count > 0) alert('공정상세 입력에서 관리자번호를 변경후 시작해 주세요');
-		if(FuseBox_count > 0) alert('공정상세 입력에서 관리자번호를 변경후 시작해 주세요');
-		if(LV_W_H_count > 0) alert('공정상세 입력에서 관리자번호를 변경후 시작해 주세요');
-		if(HV_W_H_count > 0) alert('공정상세 입력에서 관리자번호를 변경후 시작해 주세요');
-		if(온도센서_count > 0) alert('공정상세 입력에서 관리자번호를 변경후 시작해 주세요');
-		if(Busbars_count > 0) alert('공정상세 입력에서 관리자번호를 변경후 시작해 주세요');
-		if(BMA_count > 0) alert('공정상세 입력에서 관리자번호를 변경후 시작해 주세요');
-
-
-		if(BMU_count > 0) loadPage('base/분해조립.html');
-		if(CMU_count > 0) loadPage('base/분해조립.html');
-		if(PRA_count > 0) loadPage('base/분해조립.html');
-		if(SPA_count > 0) loadPage('base/분해조립.html');
-		if(LWR_C_count > 0) loadPage('base/분해조립.html');
-		if(UPR_C_count > 0) loadPage('base/분해조립.html');
-		if(PBE_count > 0) loadPage('base/분해조립.html');
-		if(Gasket_count > 0) loadPage('base/분해조립.html');
-		if(Relay_count > 0) loadPage('base/분해조립.html');
-		if(HV_CNTR_count > 0) loadPage('base/분해조립.html');
-		if(Heating_CNTR_count > 0) loadPage('base/분해조립.html');
-		if(FuseBox_count > 0) loadPage('base/분해조립.html');
-		if(LV_W_H_count > 0) loadPage('base/분해조립.html');
-		if(HV_W_H_count > 0) loadPage('base/분해조립.html');
-		if(온도센서_count > 0) loadPage('base/분해조립.html');
-		if(Busbars_count > 0) loadPage('base/분해조립.html');
-		if(BMA_count > 0) loadPage('base/분해조립.html');
-
 		_공정입고일.value = '0000-00-00T00:00';
                 _BMU1.value = '';
                 _CMU1.value = '';
@@ -241,6 +206,108 @@ async function 분해조립_시작(is재제조번호 = false) {
 
 	const tbody = document.querySelector('#_tb tbody');
 	tbody.addEventListener('click', function(e) {
+		const cell = e.target.closest('td');
+		if(!cell) return;
+		const row = cell.parentElement;
+		const row_index = row.rowIndex;
+		const cell_index = cell.cellIndex;
+		console.log('row:', row_index);
+		console.log('col:', cell_index);
+		if(row_index < 2 || cell_index != 2) return;
+		var str = row.children[0].innerText;
+		var type = str.slice(0, -2);
+		var no = str.slice(-2);
+		console.log('type:', type, 'no:', no);
+		if(no != 1) {
+			_delete_row(row_index, no, type);
+		}
+
+		if(str == 'BMU 1') {
+			if(BMU_count != 10) {
+					BMU_count++;
+					type_add('BMU', 'BMU', row_index, BMU_count);
+			}
+		}
+		if(str == 'CMU 1') {
+			if(CMU_count != 10) {
+					CMU_count++;
+					type_add('CMU', 'CMU', row_index, CMU_count);
+			}
+		}
+		if(str == 'PRA 1') {
+			if(PRA_count != 10) {
+					PRA_count++;
+					type_add('PRA', 'PRA', row_index, PRA_count);
+			}
+		}
+		if(str == 'SPA 1') {
+			if(SPA_count != 10) {
+					SPA_count++;
+					type_add('SPA', 'SPA', row_index, SPA_count);
+			}
+		}
+		if(str == 'LWR Case 1') {
+			if(LWR_C_count != 10) {
+					LWR_C_count++;
+					type_add('LWR Case', 'LWR_C', row_index, LWR_C_count);
+			}
+		}
+		if(str == 'UPR Case 1') {
+			if(UPR_C_count != 10) {
+					UPR_C_count++;
+					type_add('UPR Case', 'UPR_C', row_index, UPR_C_count);
+			}
+		}
+		if(str == 'Relay 1') {
+			if(Relay_count != 10) {
+					Relay_count++;
+					type_add('Relay', 'Relay', row_index, Relay_count);
+			}
+		}
+		if(str == 'HV CNTR 1') {
+			if(HV_CNTR_count != 10) {
+					HV_CNTR_count++;
+					type_add('HV CNTR', 'HV_CNTR', row_index, HV_CNTR_count);
+			}
+		}
+		if(str == 'Heating CNTR 1') {
+			if(Heating_CNTR_count != 10) {
+					Heating_CNTR_count++;
+					type_add('Heating CNTR', 'Heating_CNTR', row_index, Heating_CNTR_count);
+			}
+		}
+		if(str == 'FuseBox 1') {
+			if(FuseBox_count != 10) {
+					FuseBox_count++;
+					type_add('FuseBox', 'FuseBox', row_index, FuseBox_count);
+			}
+		}
+		if(str == 'LV W/H 1') {
+			if(LV_W_H_count != 10) {
+					LV_W_H_count++;
+					type_add('LV W/H', 'LV_W_H', row_index, LV_W_H_count);
+			}
+		}
+		if(str == 'HV W/H 1') {
+			if(HV_W_H_count != 10) {
+					HV_W_H_count++;
+					type_add('HV W/H', 'HV_W_H', row_index, HV_W_H_count);
+			}
+		}
+		if(str == '온도센서 1') {
+			if(온도센서_count != 10) {
+					온도센서_count++;
+					type_add('온도센서', '온도센서', row_index, 온도센서_count);
+			}
+		}
+		if(str == 'BMA 1') {
+			if(BMA_count != 10) {
+					BMA_count++;
+					type_add('BMA', 'BMA', row_index, BMA_count);
+			}
+		}
+	});
+	tbody.addEventListener('dblclick', function(e) {
 		const cell = e.target.closest('td');
 		if(!cell) return;
 		const row = cell.parentElement;
@@ -422,27 +489,27 @@ async function 분해조립_save() {
 	var doc = 분해조립_doc;
 	doc.관리번호 = _management_id.value;
 	doc.공정입고일 = _공정입고일.value;
-        for(var i = 1; i <= BMU_count; i++) eval('doc.BMU' + i + ' = document.getElementById(\'_BMU' + i + '\').value;');
-        for(var i = 1; i <= CMU_count; i++) eval('doc.CMU' + i + ' = document.getElementById(\'_CMU' + i + '\').value;');
-        for(var i = 1; i <= PRA_count; i++) eval('doc.PRA' + i + ' = document.getElementById(\'_PRA' + i + '\').value;');
-        for(var i = 1; i <= SPA_count; i++) eval('doc.SPA' + i + ' = document.getElementById(\'_SPA' + i + '\').value;');
-        for(var i = 1; i <= LWR_C_count; i++) eval('doc.LWR_C' + i + ' = document.getElementById(\'_LWR_C' + i + '\').value;');
-        for(var i = 1; i <= UPR_C_count; i++) eval('doc.UPR_C' + i + ' = document.getElementById(\'_UPR_C' + i + '\').value;');
-        for(var i = 1; i <= Relay_count; i++) eval('doc.Relay' + i + ' = document.getElementById(\'_Relay' + i + '\').value;');
-        for(var i = 1; i <= HV_CNTR_count; i++) eval('doc.HV_CNTR' + i + ' = document.getElementById(\'_HV_CNTR' + i + '\').value;');
-        for(var i = 1; i <= Heating_CNTR_count; i++) eval('doc.Heating_CNTR' + i + ' = document.getElementById(\'_Heating_CNTR' + i + '\').value;');
-        for(var i = 1; i <= FuseBox_count; i++) eval('doc.FuseBox' + i + ' = document.getElementById(\'_FuseBox' + i + '\').value;');
-        for(var i = 1; i <= LV_W_H_count; i++) eval('doc.LV_W_H' + i + ' = document.getElementById(\'_LV_W_H' + i + '\').value;');
-        for(var i = 1; i <= HV_W_H_count; i++) eval('doc.HV_W_H' + i + ' = document.getElementById(\'_HV_W_H' + i + '\').value;');
-        for(var i = 1; i <= 온도센서_count; i++) eval('doc.온도센서' + i + ' = document.getElementById(\'_온도센서' + i + '\').value;');
-        for(var i = 1; i <= BMA_count; i++) eval('doc.BMA' + i + ' = document.getElementById(\'_BMA' + i + '\').value;');
+	for(var i = 1; i <= BMU_count; i++) eval('doc.BMU' + i + ' = document.getElementById(\'_BMU' + i + '\').value;');
+	for(var i = 1; i <= CMU_count; i++) eval('doc.CMU' + i + ' = document.getElementById(\'_CMU' + i + '\').value;');
+	for(var i = 1; i <= PRA_count; i++) eval('doc.PRA' + i + ' = document.getElementById(\'_PRA' + i + '\').value;');
+	for(var i = 1; i <= SPA_count; i++) eval('doc.SPA' + i + ' = document.getElementById(\'_SPA' + i + '\').value;');
+	for(var i = 1; i <= LWR_C_count; i++) eval('doc.LWR_C' + i + ' = document.getElementById(\'_LWR_C' + i + '\').value;');
+	for(var i = 1; i <= UPR_C_count; i++) eval('doc.UPR_C' + i + ' = document.getElementById(\'_UPR_C' + i + '\').value;');
+	for(var i = 1; i <= Relay_count; i++) eval('doc.Relay' + i + ' = document.getElementById(\'_Relay' + i + '\').value;');
+	for(var i = 1; i <= HV_CNTR_count; i++) eval('doc.HV_CNTR' + i + ' = document.getElementById(\'_HV_CNTR' + i + '\').value;');
+	for(var i = 1; i <= Heating_CNTR_count; i++) eval('doc.Heating_CNTR' + i + ' = document.getElementById(\'_Heating_CNTR' + i + '\').value;');
+	for(var i = 1; i <= FuseBox_count; i++) eval('doc.FuseBox' + i + ' = document.getElementById(\'_FuseBox' + i + '\').value;');
+	for(var i = 1; i <= LV_W_H_count; i++) eval('doc.LV_W_H' + i + ' = document.getElementById(\'_LV_W_H' + i + '\').value;');
+	for(var i = 1; i <= HV_W_H_count; i++) eval('doc.HV_W_H' + i + ' = document.getElementById(\'_HV_W_H' + i + '\').value;');
+	for(var i = 1; i <= 온도센서_count; i++) eval('doc.온도센서' + i + ' = document.getElementById(\'_온도센서' + i + '\').value;');
+	for(var i = 1; i <= BMA_count; i++) eval('doc.BMA' + i + ' = document.getElementById(\'_BMA' + i + '\').value;');
 	doc.PBE = _PBE.value;
 	doc.Gasket = _Gasket.value;
 	doc.Busbars = _Busbars.value;
 	doc.ETC = _ETC.value;
 	doc.공정완료일 = _공정완료일.value;
 	doc.작업자 = _작업자.value;
-	
+
 	console.log(신품_docs);
 	신품_docs.forEach(async function(doc) {
 		update_신품정보(자재입출고, doc);
@@ -463,7 +530,7 @@ async function 분해조립_save() {
 
 	update(분해조립, doc);
 	await delay();
-	
+
 
 	console.log(update_count);
 	console.log(insert_count);
@@ -476,8 +543,8 @@ async function 분해조립_save() {
 		alert('저장 되었습니다');
 	}
 
-	
-	이전페이지();
+
+	//이전페이지();
 }
 
 async function request_신품QR() {
@@ -536,14 +603,14 @@ async function _콤보박스(type, e) {
 		var 관련번호 = await request_고품QR();
 		value = value + '(' + 관련번호 + ')';
 	}
-	
+
 	console.log('test:', type);
-  	document.getElementById(type).value = value;
+	document.getElementById(type).value = value;
 }
 
 async function type_add(name, type, row_index, no) {
 	if(no > 10) return;
-	
+
 	const _tb = document.getElementById('_tb');
 	console.log('type:', '_' + type + no);
 	var current_row;
@@ -636,5 +703,93 @@ function _delete_row(index, no, type) {
 	if(type == 'BMA' && no == BMA_count) {
 		_tb.deleteRow(index);
 		BMA_count = no - 1;
+	}
+}
+
+function _delete_all() {
+	const _tb = document.getElementById('_tb');
+
+	while(BMA_count > 1) {
+		var index = _tb.rows.length - 4;
+		_tb.deleteRow(index);
+		BMA_count--;
+	}
+
+	while(온도센서_count > 1) {
+		var index = _tb.rows.length - 6;
+		_tb.deleteRow(index);
+		온도센서_count--;
+	}
+
+	while(HV_W_H_count > 1) {
+		var index = _tb.rows.length - 7;
+		_tb.deleteRow(index);
+		HV_W_H_count--;
+	}
+
+	while(LV_W_H_count > 1) {
+		var index = _tb.rows.length - 8;
+		_tb.deleteRow(index);
+		LV_W_H_count--;
+	}
+
+	while(FuseBox_count > 1) {
+		var index = _tb.rows.length - 9;
+		_tb.deleteRow(index);
+		FuseBox_count--;
+	}
+
+	while(Heating_CNTR_count > 1) {
+		var index = _tb.rows.length - 10;
+		_tb.deleteRow(index);
+		Heating_CNTR_count--;
+	}
+
+	while(HV_CNTR_count > 1) {
+		var index = _tb.rows.length - 11;
+		_tb.deleteRow(index);
+		HV_CNTR_count--;
+	}
+
+	while(Relay_count > 1) {
+		var index = _tb.rows.length - 12;
+		_tb.deleteRow(index);
+		Relay_count--;
+	}
+
+	while(UPR_C_count > 1) {
+		var index = _tb.rows.length - 15;
+		_tb.deleteRow(index);
+		UPR_C_count--;
+	}
+
+	while(LWR_C_count > 1) {
+		var index = _tb.rows.length - 16;
+		_tb.deleteRow(index);
+		LWR_C_count--;
+	}
+
+	while(SPA_count > 1) {
+		var index = _tb.rows.length - 17;
+		_tb.deleteRow(index);
+		SPA_count--;
+	}
+
+	while(PRA_count > 1) {
+		var index = _tb.rows.length - 18;
+		_tb.deleteRow(index);
+		PRA_count--;
+	}
+
+	while(CMU_count > 1) {
+		var index = _tb.rows.length - 19;
+		_tb.deleteRow(index);
+		CMU_count--;
+	}
+
+	while(BMU_count > 1) {
+		var index = _tb.rows.length - 20;
+		_tb.deleteRow(index);
+		BMU_count--;
 	}
 }

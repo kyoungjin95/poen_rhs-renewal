@@ -1,10 +1,15 @@
+var 기초검사_DTC_count = 0;
+
 async function 기초검사_시작(is재제조 = false) {
-	if(worker == '') return;
 	while(_management_id == undefined) {
 		await sleep(DELAY);
 	}
 	
 	flag_기초검사 = false;
+	console.log('DTC count:', 기초검사_DTC_count);
+
+	_기초검사_delete_all();
+	기초검사_DTC_count = 0;
 
 	if(_management_id.value == '조회 버튼을 누르세요') _management_id.value =  관리번호;
 
@@ -24,6 +29,8 @@ async function 기초검사_시작(is재제조 = false) {
 			find(BSA재제조, _management_id.value);
 			await delay();
 			_재제조번호.value = find_array[0].재제조번호;
+		} else {
+			_재제조번호.value = '';
 		}
 	} else {
 		count(BSA재제조, { 재제조번호 : _재제조번호.value});
@@ -187,7 +194,7 @@ async function 기초검사_재제조번호_시작() {
 function 기초검사_save() {
 	기초검사_SAVE();
 
-	이전페이지();
+	//이전페이지();
 }
 
 async function 기초검사_SAVE() {
@@ -344,6 +351,7 @@ function _기초검사_add_DTC_Code() {
 	var insert_string = "<td><label for=\"_통신검사_DTC코드\"" + code_no + "><b>통신검사 DTC코드 " + code_no + "</b></label></td><td><input type=\"text\" id=\"_통신검사_DTC코드" + code_no + "\" size=\"40\" required></td><td><button onClick=\"_기초검사_delete_row(" + rowIcnt + ");\">삭제</button></td>";
 	console.log(insert_string);
 	oCurrentRow.innerHTML = insert_string;
+	기초검사_DTC_count++;
 }
 
 function _기초검사_delete_row(index) {
@@ -352,6 +360,16 @@ function _기초검사_delete_row(index) {
 
 	console.log('index:', index, 'rowIcnt:', rowIcnt);
 	if(index == rowIcnt) tb.deleteRow(index);
+}
+
+function _기초검사_delete_all() {
+	while(기초검사_DTC_count > 0) {
+		var tb = document.getElementById('tb');
+		var rowIcnt = tb.rows.length - 15;
+
+		tb.deleteRow(rowIcnt);
+		기초검사_DTC_count--;
+	}
 }
 
 async function 기초검사_카메라시작() {
