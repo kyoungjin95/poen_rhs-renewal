@@ -194,7 +194,6 @@ function 기초검사_save() {
 }
 
 async function 기초검사_SAVE() {
-	if(worker == '') return;
 	if(_management_id.value.length == 0) return;
 	console.log('save: ', _management_id.value);
 
@@ -315,6 +314,7 @@ async function 기초검사_SAVE() {
 	doc.센터진단내용 = _센터진단내용.value;
 	doc.검사자 = _검사자.value;
 	
+	console.log('save data:', doc);
 	update(기초검사, doc);
 	await delay();
 	

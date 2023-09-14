@@ -35,6 +35,24 @@ async function 분해조립_시작(is재제조번호 = false) {
 
 	_delete_all();
 
+	BMU_count = 1;
+	CMU_count = 1;
+	PRA_count = 1;
+	SPA_count = 1;
+	LWR_C_count = 1;
+	UPR_C_count = 1;
+	PBE_count = 1;
+	Gasket_count = 1;
+	Relay_count = 1;
+	HV_CNTR_count = 1;
+	Heating_CNTR_count = 1;
+	FuseBox_count = 1;
+	LV_W_H_count = 1;
+	HV_W_H_count = 1;
+	온도센서_count = 1;
+	Busbars_count = 1;
+	BMA_count = 1;
+
 	if(_management_id.value == '조회 버튼을 누르세요') _management_id.value =  관리번호;
 
 	count(입고, { 관리번호 : _management_id.value });
