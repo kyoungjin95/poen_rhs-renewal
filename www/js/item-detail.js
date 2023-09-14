@@ -3,7 +3,8 @@ var 차종 = '';
 var flag_입고_complete = false;
 
 async function 상세입력_시작(is재제조번호 = false) {
-	while(_폐기.value == undefined) {
+	await  sleep(100);
+	while(_폐기 == undefined) {
 		await sleep(DELAY);
 	}
 
@@ -28,8 +29,11 @@ async function 상세입력_시작(is재제조번호 = false) {
 	온도센서_count = 1;
 	Busbars_count = 1;
 	BMA_count = 1;
+
+	await sleep(100);
 	if(is재제조번호 == false) {
 		_management_id.value = _management_id.value.trim();
+		if(_management_id.value == '') _management_id.value = 관리번호;
 
 		//if(pre_관리번호 != '' && pre_관리번호 == _management_id.value) return;
 		
