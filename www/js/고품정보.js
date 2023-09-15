@@ -10,7 +10,7 @@ async function 고품정보등록_시작() {
 	console.log('load: ', _management_id.value);
 	if(_management_id.value == '' | _management_id.value == 'none') return;
 
-	;
+	_작업자.value = worker;
 
 	count(고품정보, { 관리번호 : _management_id.value });
 	await delay();
@@ -25,6 +25,7 @@ async function 고품정보등록_시작() {
                 _번호.value = '';
                 _QR.value = '';
                 _폐기여부.value = '';
+                _작업자.value = '';
 	}
 
 	var table_고품정보 = new Tabulator("#grid_고품정보", {
@@ -38,6 +39,9 @@ async function 고품정보등록_시작() {
 			{title:"번호", field:"번호", sorter:"string"},
 			{title:"QR", field:"QR", sorter:"string"},
 			{title:"폐기여부", field:"폐기여부", sorter:"string"},
+			{title:"작업자", field:"등록_작업자", sorter:"string"},
+			{title:"등록일", field:"등록일", sorter:"string"},
+			{title:"사용일", field:"사용일", sorter:"string"},
 		]
 	});
 }
@@ -47,12 +51,18 @@ async function 고품정보_save() {
 	if(_management_id.value.length == 0) return;
 	console.log('save: ', _management_id.value);
 
+	var DateTime = luxon.DateTime;
+	var seoul = DateTime.local().setZone("Asia/Seoul");
+	var now = seoul.toString().substr(0, 19);
 	var doc = 고품정보_doc;
+
 	doc.관리번호 = _management_id.value;
 	doc.품명 = _품명.value;
 	doc.번호 = _번호.value;
 	doc.QR = _QR.value;
 	doc.폐기여부 = _폐기여부.value;
+	doc.등록일 = now;
+	doc.등록_작업자 = _작업자.value;
 
 	update_고품정보(고품정보, doc);
 	await delay();

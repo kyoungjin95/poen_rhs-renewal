@@ -163,6 +163,10 @@ async function 부품재고_시작() {
 			{title:"폐기여부", field:"폐기여부", sorter:"string"},
 			{title:"사용여부", field:"사용여부", sorter:"string"},
 			{title:"사용 관리번호", field:"사용_관리번호", sorter:"string"},
+			{title:"등록 작업자", field:"등록_작업자", sorter:"string"},
+			{title:"사용 작업자", field:"사용_작업자", sorter:"string"},
+			{title:"등록일", field:"등록일", sorter:"string"},
+			{title:"사용일", field:"사용일", sorter:"string"},
 		],
 		
 	});

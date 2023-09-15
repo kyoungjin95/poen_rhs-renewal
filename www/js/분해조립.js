@@ -579,7 +579,11 @@ async function request_신품QR() {
 }
 
 async function request_고품QR() {
+	var DateTime = luxon.DateTime;
+	var seoul = DateTime.local().setZone("Asia/Seoul");
+	var now = seoul.toString().substr(0, 19);
 	var 교체후_QR = prompt('교체후 QR을 입력하세요');
+	
 	count(고품정보, { QR: 교체후_QR });
 	await delay();	
 	console.log('고품정보 doc_count: ', doc_count);
@@ -595,9 +599,13 @@ async function request_고품QR() {
 		doc.QR = find_array[0].QR;
 		doc.폐기여부 = find_array[0].폐기여부;
 		doc.사용여부 = '사용';
+		doc.사용일 = now;
+		doc.사용_작업자 = _작업자.value;
 		doc.사용_관리번호 = _management_id.value;
 		고품_docs.push(doc);
 		console.log(고품_docs);
+	} else {
+		alert('해당 QR을 부품재고에서 찾을 수 없습니다.');
 	}
 
 	var 교체후_품번 = prompt('교체후 품번을 입력하세요');
