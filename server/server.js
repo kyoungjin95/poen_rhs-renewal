@@ -9,7 +9,7 @@ const server = http.createServer(app);
 const io = require('socket.io')(server, { maxHttpBufferSize : 1e+7 });
 const { MongoClient } = require('mongodb')
 const morgan = require('morgan') //debug msg
-const logger = require('./winston');
+//const logger = require('./winston');
 const ps = require('ps-node');
 const uri = 'mongodb://poen:poen4upoen4u@localhost:27017/poenDB';
 const db_name = 'poenDB';
@@ -89,14 +89,14 @@ io.on('connection', async function(socket) {
 
 		const result = await insert(col, doc);
 		socket.emit('insert_result', result);
-		logger.info('worker:'+ worker + ' insert col:' + col +'doc:'+ JSON.stringify(doc));
+		//logger.info('worker:'+ worker + ' insert col:' + col +'doc:'+ JSON.stringify(doc));
 	});
 
 	socket.on('count', async function(level, col, query, check) {
 		if(account.login == false && col != '계정') return;
 		const cnt = await count(col, query);
 		socket.emit('count_result', cnt, check);
-		//logger.info('worker:'+ worker + ' count col:' + col +'query:'+ JSON.stringify(query));
+		////logger.info('worker:'+ worker + ' count col:' + col +'query:'+ JSON.stringify(query));
 		if(account.login == false && col == '계정' && cnt > 0) {
 			account.login = true;
 		} else if(account.login == true && col == '계정' && cnt < 1){
@@ -109,12 +109,12 @@ io.on('connection', async function(socket) {
 
 		const result_array = await find(col, query, options);
 		socket.emit('find_result', result_array, check);
-		//logger.info('worker:'+ worker + ' find col:' + col +'query:'+ JSON.stringify(query));
+		////logger.info('worker:'+ worker + ' find col:' + col +'query:'+ JSON.stringify(query));
 	});
 
 	socket.on('update', async function(worker, col, filter, doc) {
 		if(account.login == false && col != '계정') return;
-		logger.info('worker:'+ worker + ' update col:' + col + 'doc:' + JSON.stringify(doc));
+		//logger.info('worker:'+ worker + ' update col:' + col + 'doc:' + JSON.stringify(doc));
 
 		const result = await update(col, filter, doc);
 		socket.emit('update_result', result);
@@ -122,7 +122,7 @@ io.on('connection', async function(socket) {
 
 	socket.on('delete', async function(worker, col, query) {
 		if(account.login == false) return;
-		logger.info('worker:'+ worker + ' delete col:' + col + 'query:'+ JSON.stringify(query));
+		//logger.info('worker:'+ worker + ' delete col:' + col + 'query:'+ JSON.stringify(query));
 
 		const result_count = await deleteOne(col, query);
 		socket.emit('delete_result', result_count);
