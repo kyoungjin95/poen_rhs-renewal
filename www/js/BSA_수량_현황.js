@@ -62,49 +62,49 @@ async function BSA_수량_현황_조회() {
 }
 
 async function 작업대기() {
-	 count(BSA재제조, { 공정단계 : '입고', 소재지 : { $ne : '공정대기' }, 완전분해 : { $exist : false }, 폐기 : { $exists : false } });
+	 count(BSA재제조, { 공정단계 : '입고', 소재지 : { $ne : '공정대기' }, 완전분해 : { $eq : ''} , 폐기 : { $eq : ''}, 구분 : {$ne : '일반기타', $ne : '보증기타'} });
 	 await delay();
 
 	 document.getElementById('check_num1').innerHTML = doc_count;
 }
 
 async function 세척대기() {
-	 count(BSA재제조, { 공정단계 : '세척' , 소재지 : { $ne : '공정대기' }, 완전분해 : { $exist : false }, 폐기 : { $exists : false } });
+	 count(BSA재제조, { 공정단계 : '세척' , 소재지 : { $ne : '공정대기' }, 완전분해 : { $eq : ''}, 폐기 : { $eq : '' }, 구분 : {$ne : '일반기타', $ne : '보증기타'} });
 	 await delay();
 
 	 document.getElementById('check_num2').innerHTML = doc_count;
 }
 
 async function 기초검사대기() {
-	 count(BSA재제조, { 공정단계 : '기초검사' , 소재지 : { $ne : '공정대기' }, 완전분해 : { $exist : false }, 폐기 : { $exists : false }  });
+	 count(BSA재제조, { 공정단계 : '기초검사' , 소재지 : { $ne : '공정대기' }, 완전분해 : { $eq : '' }, 폐기 : { $eq : '' }, 구분 : {$ne : '일반기타', $ne : '보증기타'}  });
 	 await delay();
 
 	 document.getElementById('check_num3').innerHTML = doc_count;
 }
 
 async function 분해조립대기() {
-	 count(BSA재제조, { 공정단계 : '분해조립' , 소재지 : { $ne : '공정대기' }, 완전분해 : { $exist : false }, 폐기 : { $exists : false }  });
+	 count(BSA재제조, { 공정단계 : '분해조립' , 소재지 : { $ne : '공정대기' }, 완전분해 : { $eq : '' }, 폐기 : { $eq : '' }, 구분 : {$ne : '일반기타', $ne : '보증기타'} });
 	 await delay();
 
 	 document.getElementById('check_num4').innerHTML = doc_count;
 }
 
 async function 성능검사대기() {
-	 count(BSA재제조, { 공정단계 : '성능검사' , 소재지 : { $ne : '공정대기' }, 완전분해 : { $exist : false }, 폐기 : { $exists : false }  });
+	 count(BSA재제조, { 공정단계 : '성능검사' , 소재지 : { $ne : '공정대기' }, 완전분해 : { $eq : '' }, 폐기 : { $eq : '' }, 구분 : {$ne : '일반기타', $ne : '보증기타'} });
 	 await delay();
 
 	 document.getElementById('check_num5').innerHTML = doc_count;
 }
 
 async function EOL대기() {
-	 count(BSA재제조, { 공정단계 : 'EOL' , 소재지 : { $ne : '공정대기' }, 완전분해 : { $exist : false }, 폐기 : { $exists : false }  });
+	 count(BSA재제조, { 공정단계 : 'EOL' , 소재지 : { $ne : '공정대기' }, 완전분해 : { $eq : '' }, 폐기 : { $eq : '' }, 구분 : {$ne : '일반기타', $ne : '보증기타'} });
 	 await delay();
 
 	 document.getElementById('check_num6').innerHTML = doc_count;
 }
 
 async function 출하대기() {
-	 count(BSA재제조, { 공정단계 : '제조완료' , 소재지 : { $ne : '공정대기' }, 완전분해 : { $exist : false }, 폐기 : { $exists : false }  });
+	 count(BSA재제조, { 공정단계 : '제조완료' , 소재지 : { $ne : '공정대기' }, 완전분해 : { $eq : '' }, 폐기 : { $eq : '' }, 구분 : {$ne : '일반기타', $ne : '보증기타'} });
 	 await delay();
 
 	 document.getElementById('check_num7').innerHTML = doc_count;
@@ -114,7 +114,7 @@ async function 출하대기() {
 }
 
 async function 공정대기() {
-	 count(BSA재제조, { 소재지 : '공정대기' , 완전분해 : { $exist : false }, 폐기 : { $exists : false }} );
+	 count(BSA재제조, { 소재지 : '공정대기' , 완전분해 : { $eq : '' }, 폐기 : { $eq : '' }, 구분 : {$ne : '일반기타', $ne : '보증기타'} } );
 	 await delay();
 
 	 document.getElementById('check_num8').innerHTML = doc_count;
@@ -133,7 +133,7 @@ async function 대기목록(공정) {
 		if(doc_count == 0) {
 			대기_tabledata_BSA = [];
 		} else {
-			find_query(BSA재제조, { 공정단계 : 공정 });
+			find_query(BSA재제조, { 공정단계 : 공정, 완전분해 : { $eq : '' }, 폐기 : { $eq : ''}, 구분: {$ne : '일반기타', $ne : '보증기타'}});
 			await delay();
 
 			대기_tabledata_BSA = find_array;
@@ -145,7 +145,7 @@ async function 대기목록(공정) {
 		if(doc_count == 0) {
 			대기_tabledata_BSA = [];
 		} else {
-			find_query(BSA재제조, { 소재지 : '공정대기' });
+			find_query(BSA재제조, { 소재지 : '공정대기', 완전분해 : { $eq : '' }, 폐기 : { $eq : ''}, 구분: {$ne : '일반기타', $ne : '보증기타'}});
 			await delay();
 
 			대기_tabledata_BSA = find_array;

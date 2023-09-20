@@ -78,6 +78,7 @@ var flag_관리자 = false;
 var flag_repeat_생산현황 = false;
 var flag_repeat_대시보드 = false;
 var flag_repeat_BSA_수량_현황 = false;
+var flag_BSA_제외분류 = false;
 var flag_입고 = false;
 var flag_세척 = false;
 var flag_기초검사 = false;
@@ -99,6 +100,7 @@ var interval = setInterval(function() {
 	if(flag_생산현황 == true) { stop_repeat(); 생산현황_시작();}
 	if(flag_대시보드 == true) { 날짜지정조회 = false; stop_repeat(); start_repeat_대시보드(); 대시보드_시작();}
 	if(flag_BSA_수량_현황 == true) { stop_repeat(); start_repeat_BSA_수량_현황(); BSA_수량_현황_시작();}
+	if(flag_BSA_제외분류 == true) { stop_repeat(); stop_repeat(); BSA_제외분류_시작();}
 	if(flag_관리자 == true) { stop_repeat(); 관리자_시작();}
 	if(flag_입고 == true) { stop_repeat(); 입고_시작();}
 	if(flag_세척 == true) { stop_repeat(); 세척_시작();}

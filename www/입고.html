@@ -46,7 +46,16 @@
 							<td>
 								<input type="text" id="_구분" size="40" required>
 							</td>
-							<td>
+							<td id='_입고_기타'>
+								<select name="language" onchange="_구분_콤보박스(this);">
+									<option value="">---</option>
+									<option value="일반">일반</option>
+									<option value="보증">보증</option>
+									<option value="일반기타">일반기타</option>
+									<option value="보증기타">보증기타</option>
+								</select>
+							</td>
+							<td id='_입고_일반'>
 								<select name="language" onchange="_구분_콤보박스(this);">
 									<option value="">---</option>
 									<option value="일반">일반</option>

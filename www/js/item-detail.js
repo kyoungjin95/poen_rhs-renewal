@@ -34,7 +34,7 @@ async function 상세입력_시작(is재제조번호 = false) {
 	await sleep(100);
 	if(is재제조번호 == false) {
 		_management_id.value = _management_id.value.trim();
-		if(_management_id.value == '') _management_id.value = 관리번호;
+		if(_management_id.value == '조회를 누르세요') _management_id.value = 관리번호;
 
 		//if(pre_관리번호 != '' && pre_관리번호 == _management_id.value) return;
 		
@@ -201,9 +201,9 @@ async function 상세입력_시작(is재제조번호 = false) {
 			_세척투입일.value = find_array[0].공정입고일;
 			_세척.value = find_array[0].공정완료일;
 			if(_세척.value != '' && _세척.value != 'none' && _세척.value != '0000-00-00T00:00') {
-				_공정단계.value = '기초검사';
+				if(_공정단계.value != '출하') _공정단계.value = '기초검사';
 			} else {
-				_공정단계.value = '세척';
+				if(_공정단계.value != '출하') _공정단계.value = '세척';
 			}
 		}
 
@@ -217,9 +217,9 @@ async function 상세입력_시작(is재제조번호 = false) {
 			_기초검사투입일.value = find_array[0].공정입고일;
 			_기초검사.value = find_array[0].공정완료일;
 			if(_기초검사.value != '' && _기초검사.value != 'none' && _기초검사.value != '0000-00-00T00:00') {
-				_공정단계.value = '분해조립';
+				if(_공정단계.value != '출하') _공정단계.value = '분해조립';
 			} else {
-				_공정단계.value = '기초검사';
+				if(_공정단계.value != '출하') _공정단계.value = '기초검사';
 			}
 		}
 
@@ -233,9 +233,9 @@ async function 상세입력_시작(is재제조번호 = false) {
 			_분해조립투입일.value = find_array[0].공정입고일;
 			_분해조립.value = find_array[0].공정완료일;
 			if(_분해조립.value != '' && _분해조립.value != 'none' && _분해조립.value != '0000-00-00T00:00') {
-				_공정단계.value = '성능검사';
+				if(_공정단계.value != '출하') _공정단계.value = '성능검사';
 			} else {
-				_공정단계.value = '분해조립';
+				if(_공정단계.value != '출하') _공정단계.value = '분해조립';
 			}
 		}
 
@@ -249,9 +249,9 @@ async function 상세입력_시작(is재제조번호 = false) {
 			_성능검사투입일.value = find_array[0].공정입고일;
 			_성능검사.value = find_array[0].공정완료일;
 			if(_성능검사.value != '' && _성능검사.value != 'none' && _성능검사.value != '0000-00-00T00:00') {
-				_공정단계.value = 'EOL';
+				if(_공정단계.value != '출하') _공정단계.value = 'EOL';
 			} else {
-				_공정단계.value = '성능검사';
+				if(_공정단계.value != '출하') _공정단계.value = '성능검사';
 			}
 		}
 
@@ -265,9 +265,9 @@ async function 상세입력_시작(is재제조번호 = false) {
 			_EOL투입일.value = find_array[0].공정입고일;
 			_EOL.value = find_array[0].공정완료일;
 			if(_EOL.value != '' || _EOL.value != 'none' && _EOL.value != '0000-00-00T00:00') {
-				_공정단계.value = '제조완료';
+				if(_공정단계.value != '출하') _공정단계.value = '제조완료';
 			} else {
-				_공정단계.value = 'EOL';
+				if(_공정단계.value != '출하') _공정단계.value = 'EOL';
 			}
 		}
 

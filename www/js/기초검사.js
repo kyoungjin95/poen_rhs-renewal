@@ -205,12 +205,20 @@ async function 기초검사_SAVE() {
 		}
 	}
 
+	if(_RO_no.value.length == 0) {
+		alert('RO 번호가 입력되지 않았습니다.');
+	}
+
 	if(_VIN.value.length != 17 && _VIN.value.length != 0) {
 		var cnt = (_VIN.value.match(/-/g) || []).length;
 		if((_VIN.value.length - cnt) != 17) {
 			alert('VIN이 자릿수가 다릅니다.(17)');
 			return;
 		}
+	}
+
+	if(_VIN.value.length == 0) {
+		alert('VIN 번호가 입력되지 않았습니다.');
 	}
 
 	var doc = 기초검사_doc;

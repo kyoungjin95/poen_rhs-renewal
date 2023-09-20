@@ -3,7 +3,16 @@ async function 입고_시작() {
 		await sleep(DELAY);
 	}
 
-	;
+	const _입고기타 = document.getElementById('_입고_기타');
+	const _입고일반 = document.getElementById('_입고_일반');
+
+	if(level != '관리자') {
+		_입고일반.style.display = 'block';
+		_입고기타.style.display = 'none';
+	} else {
+		_입고일반.style.display = 'none';
+		_입고기타.style.display = 'block';
+	}
 
 	flag_입고 = false;
 	

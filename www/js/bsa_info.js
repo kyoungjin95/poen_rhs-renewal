@@ -359,7 +359,7 @@ function updateFilter(){
   }
 
   if(filterVal){
-    table.setFilter(filter,typeVal, valueEl.value.trim());
+    table.setFilter(filter,typeVal, valueEl.value);
   }
 }
 

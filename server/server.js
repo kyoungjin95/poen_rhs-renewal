@@ -9,7 +9,7 @@ const server = http.createServer(app);
 const io = require('socket.io')(server, { maxHttpBufferSize : 1e+7 });
 const { MongoClient } = require('mongodb')
 const morgan = require('morgan') //debug msg
-//const logger = require('./winston');
+const logger = require('./winston');
 const ps = require('ps-node');
 const uri = 'mongodb://poen:poen4upoen4u@localhost:27017/poenDB';
 const db_name = 'poenDB';
@@ -171,6 +171,7 @@ async function distinct(col, query, field_name) {
 		return result_array;
 	} catch(err) {
 		console.error(err);
+		logger.info(err);
 		return null;
 	} finally {
 	}
@@ -186,6 +187,7 @@ async function insert(col, doc) {
 		return result.insertedId;
 	} catch(err) {
 		console.error(err);
+		logger.info(err);
 		return null;
 	} finally {
 	}
@@ -200,6 +202,7 @@ async function count(col, query) {
 		return cnt;
 	} catch(err) {
 		console.error(err);
+		logger.info(err);
 		return 0;
 	} finally {
 	}
@@ -221,6 +224,7 @@ async function find(col, query, options) {
 		return result_array;
 	} catch(err) {
 		console.error(err);
+		logger.info(err);
 		return null;
 	} finally {
 	}
@@ -245,6 +249,7 @@ async function update(col, filter, updateDoc) {
 		return result;
 	} catch(err) {
 		console.error(err);
+		logger.info(err);
 		return null;
 	} finally {
 	}
@@ -259,6 +264,7 @@ async function deleteOne(col, query) {
 		return result.deletedCount;
 	} catch(err) {
 		console.error(err);
+		logger.info(err);
 		return 0;
 	} finally {
 	}
