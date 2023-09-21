@@ -549,10 +549,11 @@ async function 입고to기초() {
 }
 
 async function 출하to출하검사copy() {
-	find_BSA재제조(출하정보, { 관리번호 : { $exists : true }, 검사일 : { $exists : true }});
+	find_BSA재제조(BSA재제조, { 관리번호 : { $exists : true }, 출하: { $exists : true }});
 	await delay();
 	
 	find_array.forEach(async function(info) {
+		console.log(info.출하);
 		let doc = {
 			관리번호 : info.관리번호,
 			출하검사 : info.출하
