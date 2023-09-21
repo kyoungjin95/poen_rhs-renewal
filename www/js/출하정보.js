@@ -131,9 +131,9 @@ async function 출하정보_시작(is재제조 = false) {
 		await delay();
 
 		_management_id.value = find_array[0].관리번호;
-		_출하일.value = find_array[0].출하일;
+		//_출하일.value = find_array[0].출하일;
 		_출하코드.value = find_array[0].출하코드;
-		_납품처.value = find_array[0].납품처;
+		//_납품처.value = find_array[0].납품처;
 		_검사일.value = find_array[0].검사일;
 		if(_검사자.value == '') _검사자.value = find_array[0].검사자;
 		_기초보고서_작성확인.value = find_array[0].기초보고서_작성확인;
@@ -220,8 +220,8 @@ async function 출하정보_시작(is재제조 = false) {
 			_재제조번호 = document.getElementById('_재제조번호');
 		}
 		_출하코드.value = '';
-		_출하일.value = '0000-00-00T00:00:00';
-		_납품처.value = '';
+		//_출하일.value = '0000-00-00T00:00:00';
+		//_납품처.value = '';
 		_검사일.value = '0000-00-00T00:00:00';
 		//_검사자.value = '';
 		_기초보고서_작성확인.value = '';
@@ -273,9 +273,9 @@ async function 출하정보_save() {
 	var doc = 출하정보_doc;
 	
 	doc.관리번호 = _management_id.value;
-	doc.출하일 = _출하일.value;
+	//doc.출하일 = _출하일.value;
 	doc.출하코드 = _출하코드.value;
-	doc.납품처 = _납품처.value;
+	//doc.납품처 = _납품처.value;
 	doc.검사일 = _검사일.value;
 	doc.검사자 = _검사자.value;
 	doc.기초보고서_작성확인 = _기초보고서_작성확인.value;

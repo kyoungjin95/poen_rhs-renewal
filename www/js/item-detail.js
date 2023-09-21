@@ -277,7 +277,7 @@ async function 상세입력_시작(is재제조번호 = false) {
 		if(doc_count >= 1) {
 			find(출하정보, _management_id.value);
 			await delay();
-			_출하검사.value = find_array[0].검사일.substr(0, 16);
+			_출하검사.value = find_array[0].검사일.substr(0, 10) + 'T12:00';
 			_공정단계.value = '출하';
 		}
 		item_detail_save(true);
