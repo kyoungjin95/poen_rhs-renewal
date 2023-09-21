@@ -87,19 +87,19 @@ async function 상세입력_시작(is재제조번호 = false) {
 			sessionStorage.setItem('manage_id', 관리번호);
 
 			if(level == 'kia_일반') {
-				find_query(BSA재제조, { 차종 : { $in : ['DE', 'DE_EV', 'DEPBV', 'DEPBV-EV', 'CV', 'CV_EV', 'MV', 'MV_EV', 'PU', 'PU_EV', 'SG2', 'SG2-EV', 'TAM', 'TAM-EV', 'PS', 'PS_EV', 'SK3']}, 관리번호 : _management_id.value, 구분 : '일반' });
+				find_BSA재제조(BSA재제조, { 차종 : { $in : ['DE', 'DE_EV', 'DEPBV', 'DEPBV-EV', 'CV', 'CV_EV', 'MV', 'MV_EV', 'PU', 'PU_EV', 'SG2', 'SG2-EV', 'TAM', 'TAM-EV', 'PS', 'PS_EV', 'SK3']}, 관리번호 : _management_id.value, 구분 : '일반' });
 				await delay();
 			} else if(level == 'hyundai_일반') {
-				find_query(BSA재제조, { 차종 : { $in : ['OS', 'OS_EV', 'NE', 'NE_EV', 'HR', 'HR_EV', 'LK', 'LK_EV', 'LM', 'LM_EV', 'LKFC', 'LKFC-EV', 'CS', 'CS-EV', 'CS_EV', 'SX2', 'SX2-EV', 'AE', 'AE_EV', 'CE', 'CE_EV', 'ME', 'ME_EV', 'FE', 'FE_EV', 'RG3', 'RG3-EV', 'JW', 'JW_EV', 'JK', 'JK_EV', 'JX', 'JX_EV']}, 관리번호 : _management_id.value, 구분 : '일반' });
+				find_BSA재제조(BSA재제조, { 차종 : { $in : ['OS', 'OS_EV', 'NE', 'NE_EV', 'HR', 'HR_EV', 'LK', 'LK_EV', 'LM', 'LM_EV', 'LKFC', 'LKFC-EV', 'CS', 'CS-EV', 'CS_EV', 'SX2', 'SX2-EV', 'AE', 'AE_EV', 'CE', 'CE_EV', 'ME', 'ME_EV', 'FE', 'FE_EV', 'RG3', 'RG3-EV', 'JW', 'JW_EV', 'JK', 'JK_EV', 'JX', 'JX_EV']}, 관리번호 : _management_id.value, 구분 : '일반' });
 				await delay();
 			} else if(level == 'kia_보증') {
-				find_query(BSA재제조, { 차종 : { $in : ['DE', 'DE_EV', 'DEPBV', 'DEPBV-EV', 'CV', 'CV_EV', 'MV', 'MV_EV', 'PU', 'PU_EV', 'SG2', 'SG2-EV', 'TAM', 'TAM-EV', 'PS', 'PS_EV', 'SK3']}, 관리번호 : _management_id.value, 구분 : '보증'});
+				find_BSA재제조(BSA재제조, { 차종 : { $in : ['DE', 'DE_EV', 'DEPBV', 'DEPBV-EV', 'CV', 'CV_EV', 'MV', 'MV_EV', 'PU', 'PU_EV', 'SG2', 'SG2-EV', 'TAM', 'TAM-EV', 'PS', 'PS_EV', 'SK3']}, 관리번호 : _management_id.value, 구분 : '보증'});
 				await delay();
 			} else if(level == 'hyundai_보증') {
-				find_query(BSA재제조, { 차종 : { $in : ['OS', 'OS_EV', 'NE', 'NE_EV', 'HR', 'HR_EV', 'LK', 'LK_EV', 'LM', 'LM_EV', 'LKFC', 'LKFC-EV', 'CS', 'CS-EV', 'CS_EV', 'SX2', 'SX2-EV', 'AE', 'AE_EV', 'CE', 'CE_EV', 'ME', 'ME_EV', 'FE', 'FE_EV', 'RG3', 'RG3-EV', 'JW', 'JW_EV', 'JK', 'JK_EV', 'JX', 'JX_EV']}, 관리번호 : _management_id.value, 구분 : '보증'});
+				find_BSA재제조(BSA재제조, { 차종 : { $in : ['OS', 'OS_EV', 'NE', 'NE_EV', 'HR', 'HR_EV', 'LK', 'LK_EV', 'LM', 'LM_EV', 'LKFC', 'LKFC-EV', 'CS', 'CS-EV', 'CS_EV', 'SX2', 'SX2-EV', 'AE', 'AE_EV', 'CE', 'CE_EV', 'ME', 'ME_EV', 'FE', 'FE_EV', 'RG3', 'RG3-EV', 'JW', 'JW_EV', 'JK', 'JK_EV', 'JX', 'JX_EV']}, 관리번호 : _management_id.value, 구분 : '보증'});
 				await delay();
 			} else {
-				find_query(BSA재제조, { 관리번호 : _management_id.value });
+				find_BSA재제조(BSA재제조, { 관리번호 : _management_id.value });
 				await delay();
 			}
 		} else {
@@ -121,7 +121,7 @@ async function 상세입력_시작(is재제조번호 = false) {
 				count(BSA재제조, { 차종 : { $in : ['OS', 'OS_EV', 'NE', 'NE_EV', 'HR', 'HR_EV', 'LK', 'LK_EV', 'LM', 'LM_EV', 'LKFC', 'LKFC-EV', 'CS', 'CS-EV', 'CS_EV', 'SX2', 'SX2-EV', 'AE', 'AE_EV', 'CE', 'CE_EV', 'ME', 'ME_EV', 'FE', 'FE_EV', 'RG3', 'RG3-EV', 'JW', 'JW_EV', 'JK', 'JK_EV', 'JX', 'JX_EV']}, 재제조번호 : _재제조번호.value, 구분 : '보증'});
 				await delay();
 			} else {
-				find_query(BSA재제조, { 재제조번호 : _재제조번호.value });
+				find_BSA재제조(BSA재제조, { 재제조번호 : _재제조번호.value });
 				await delay();
 			}
 		}
@@ -138,26 +138,26 @@ async function 상세입력_시작(is재제조번호 = false) {
 		//
 		_공정단계.value = find_array[0].공정단계;
 		_적재No.value = find_array[0].적재No;
-		_입고.value = find_array[0].입고;
-		_제조투입.value = find_array[0].제조투입;
-		_세척투입일.value = find_array[0].세척투입일;
-		_세척.value = find_array[0].세척;
-		_기초검사투입일.value = find_array[0].기초검사투입일;
-		_기초검사.value = find_array[0].기초검사;
-		_분해조립투입일.value = find_array[0].분해조립투입일;
-		_분해조립.value = find_array[0].분해조립;
-		_성능검사투입일.value = find_array[0].성능검사투입일;
-		_성능검사.value = find_array[0].성능검사;
-		_EOL투입일.value = find_array[0].EOL투입일;
-		_EOL.value = find_array[0].EOL;
-		_출하.value = find_array[0].출하;
-		_소재지.value = find_array[0].소재지;
-		_마지막충전일.value = find_array[0].마지막충전일;
-		_반품입고.value = find_array[0].반품입고;
-		_재출하.value = find_array[0].재출하;
-		_완전분해.value = find_array[0].완전분해;
-		_폐기.value = find_array[0].폐기;
-		_출하예약.value = find_array[0].출하예약;
+		_입고.value = find_array[0].입고.substr(0, 16);
+		_제조투입.value = find_array[0].제조투입.substr(0, 16);
+		_세척투입일.value = find_array[0].세척투입일.substr(0, 16);
+		_세척.value = find_array[0].세척.substr(0, 16);
+		_기초검사투입일.value = find_array[0].기초검사투입일.substr(0, 16);
+		_기초검사.value = find_array[0].기초검사.substr(0, 16);
+		_분해조립투입일.value = find_array[0].분해조립투입일.substr(0, 16);
+		_분해조립.value = find_array[0].분해조립.substr(0, 16);
+		_성능검사투입일.value = find_array[0].성능검사투입일.substr(0, 16);
+		_성능검사.value = find_array[0].성능검사.substr(0, 16);
+		_EOL투입일.value = find_array[0].EOL투입일.substr(0, 16);
+		_EOL.value = find_array[0].EOL.substr(0, 16);
+		_출하.value = find_array[0].출하.substr(0, 16);
+		_소재지.value = find_array[0].소재지.substr(0, 16);
+		_마지막충전일.value = find_array[0].마지막충전일.substr(0, 16);
+		_반품입고.value = find_array[0].반품입고.substr(0, 16);
+		_재출하.value = find_array[0].재출하.substr(0, 16);
+		_완전분해.value = find_array[0].완전분해.substr(0, 16);
+		_폐기.value = find_array[0].폐기.substr(0, 16);
+		_출하예약.value = find_array[0].출하예약.substr(0, 16);
 
 		count(입고, { 관리번호 : _management_id.value });
 		await delay();
@@ -169,7 +169,7 @@ async function 상세입력_시작(is재제조번호 = false) {
 			_차종.value = find_array[0].차종;
 			_품번.value = find_array[0].품번;
 			//_RO_no.value = find_array[0].RO_no;
-			_입고.value = find_array[0].입고일;
+			_입고.value = find_array[0].입고일.substr(0, 16);
 			if(_입고.value != '' && _입고.value != 'none') {
 				_공정단계.value = '세척';
 			}
@@ -198,8 +198,8 @@ async function 상세입력_시작(is재제조번호 = false) {
 			find(세척, _management_id.value);
 			await delay();
 			
-			_세척투입일.value = find_array[0].공정입고일;
-			_세척.value = find_array[0].공정완료일;
+			_세척투입일.value = find_array[0].공정입고일.substr(0, 16);
+			_세척.value = find_array[0].공정완료일.substr(0, 16);
 			if(_세척.value != '' && _세척.value != 'none' && _세척.value != '0000-00-00T00:00') {
 				if(_공정단계.value != '출하') _공정단계.value = '기초검사';
 			} else {
@@ -214,8 +214,8 @@ async function 상세입력_시작(is재제조번호 = false) {
 			find(기초검사, _management_id.value);
 			await delay();
 			
-			_기초검사투입일.value = find_array[0].공정입고일;
-			_기초검사.value = find_array[0].공정완료일;
+			_기초검사투입일.value = find_array[0].공정입고일.substr(0, 16);
+			_기초검사.value = find_array[0].공정완료일.substr(0, 16);
 			if(_기초검사.value != '' && _기초검사.value != 'none' && _기초검사.value != '0000-00-00T00:00') {
 				if(_공정단계.value != '출하') _공정단계.value = '분해조립';
 			} else {
@@ -230,8 +230,8 @@ async function 상세입력_시작(is재제조번호 = false) {
 			find(분해조립, _management_id.value);
 			await delay();
 			
-			_분해조립투입일.value = find_array[0].공정입고일;
-			_분해조립.value = find_array[0].공정완료일;
+			_분해조립투입일.value = find_array[0].공정입고일.substr(0, 16);
+			_분해조립.value = find_array[0].공정완료일.substr(0, 16);
 			if(_분해조립.value != '' && _분해조립.value != 'none' && _분해조립.value != '0000-00-00T00:00') {
 				if(_공정단계.value != '출하') _공정단계.value = '성능검사';
 			} else {
@@ -246,8 +246,8 @@ async function 상세입력_시작(is재제조번호 = false) {
 			find(성능검사, _management_id.value);
 			await delay();
 			
-			_성능검사투입일.value = find_array[0].공정입고일;
-			_성능검사.value = find_array[0].공정완료일;
+			_성능검사투입일.value = find_array[0].공정입고일.substr(0, 16);
+			_성능검사.value = find_array[0].공정완료일.substr(0, 16);
 			if(_성능검사.value != '' && _성능검사.value != 'none' && _성능검사.value != '0000-00-00T00:00') {
 				if(_공정단계.value != '출하') _공정단계.value = 'EOL';
 			} else {
@@ -262,8 +262,8 @@ async function 상세입력_시작(is재제조번호 = false) {
 			find(EOL, _management_id.value);
 			await delay();
 			
-			_EOL투입일.value = find_array[0].공정입고일;
-			_EOL.value = find_array[0].공정완료일;
+			_EOL투입일.value = find_array[0].공정입고일.substr(0, 16);
+			_EOL.value = find_array[0].공정완료일.substr(0, 16);
 			if(_EOL.value != '' || _EOL.value != 'none' && _EOL.value != '0000-00-00T00:00') {
 				if(_공정단계.value != '출하') _공정단계.value = '제조완료';
 			} else {
@@ -277,7 +277,7 @@ async function 상세입력_시작(is재제조번호 = false) {
 		if(doc_count >= 1) {
 			find(출하정보, _management_id.value);
 			await delay();
-			_출하.value = find_array[0].출하일;
+			_출하검사.value = find_array[0].검사일.substr(0, 16);
 			_공정단계.value = '출하';
 		}
 		item_detail_save(true);
@@ -306,7 +306,9 @@ async function 상세입력_시작(is재제조번호 = false) {
 		_성능검사.value = '0000-00-00T00:00';;
 		_EOL투입일.value = '0000-00-00T00:00';
 		_EOL.value = '0000-00-00T00:00';
+		_출하검사.value = '0000-00-00T00:00';
 		_출하.value = '0000-00-00T00:00';
+		_납품처.value = '';
 		_소재지.value = '';
 		_마지막충전일.value = '0000-00-00T00:00';
 		_반품입고.value = '0000-00-00T00:00';
@@ -348,7 +350,9 @@ async function item_detail_save(flag_result = false) {
 	doc.성능검사 = _성능검사.value;
 	doc.EOL투입일 = _EOL투입일.value;
 	doc.EOL = _EOL.value;
+	doc.출하검사 = _출하검사.value;
 	doc.출하 = _출하.value;
+	doc.납품처 = _납품처.value;
 	doc.소재지 = _소재지.value;
 	doc.마지막충전일 = _마지막충전일.value;
 	doc.반품입고 = _반품입고.value;

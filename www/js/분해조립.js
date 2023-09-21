@@ -82,7 +82,7 @@ async function 분해조립_시작(is재제조번호 = false) {
 		await delay();
 		console.log('재제조번호 찾기');
 		if(doc_count >= 1) {
-			find_query(BSA재제조, { 재제조번호: _재제조번호.value.trim() });
+			find_BSA재제조(BSA재제조, { 재제조번호: _재제조번호.value.trim() });
 			await delay();
 			
 			console.log(find_array);
@@ -101,7 +101,7 @@ async function 분해조립_시작(is재제조번호 = false) {
 	await delay();
 	console.log('재제조번호 찾기');
 	if(doc_count >= 1) {
-		find_query(BSA재제조, { 관리번호: _management_id.value.trim() });
+		find_BSA재제조(BSA재제조, { 관리번호: _management_id.value.trim() });
 		await delay();
 		_재제조번호.value = find_array[0].재제조번호;
 		console.log(find_array);
@@ -115,7 +115,7 @@ async function 분해조립_시작(is재제조번호 = false) {
 		count(BSA재제조, { 관리번호 : _management_id.value });
 		await delay();
 		if(doc_count >= 1) {
-			find_query(BSA재제조, { 관리번호: _management_id.value.trim() });
+			find_BSA재제조(BSA재제조, { 관리번호: _management_id.value.trim() });
 			await delay();
 			
 			console.log(find_array);

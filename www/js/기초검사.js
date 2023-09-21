@@ -36,7 +36,7 @@ async function 기초검사_시작(is재제조 = false) {
 		count(BSA재제조, { 재제조번호 : _재제조번호.value});
 		await delay();
 		if(doc_count >= 1) {
-			find_query(BSA재제조, { 재제조번호 : _재제조번호.value });
+			find_BSA재제조(BSA재제조, { 재제조번호 : _재제조번호.value });
 			await delay();
 
 			_management_id.value = find_array[0].관리번호;

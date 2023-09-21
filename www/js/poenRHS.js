@@ -1,4 +1,4 @@
-const DELAY = 70;
+const DELAY = 100;
 const 계정 = '계정';
 const BSA재제조 = 'BSA재제조';
 const 입고 = '입고';
@@ -86,7 +86,8 @@ const BSA재제조_doc = {
 	EOL투입일: '',
 	EOL: '',
 	QR_Label: '',
-	출하: '', 
+	출하검사: '', 
+	출하: '',
 	소재지: '',
 	마지막충전일: '',
 	반품입고: '',
@@ -103,12 +104,6 @@ const 입고_doc = {
 	구분 : '',
 	차종: '', 
 	품번: '', 
-	RO_no: '', 
-	VIN: '',
-	QRCode: '',
-	주행거리: '',
-	차량번호: '',
-	랙번호: ''
 };
 
 const 세척_doc = {
@@ -386,9 +381,7 @@ const 신품정보_doc = {
 
 const 출하정보_doc = {
 	관리번호: '',
-	출하일: '',
 	출하코드: '',
-	납품처: '',
 	검사일: '',
 	검사자: '',
 	기초보고서_작성확인: '',
@@ -720,7 +713,8 @@ const BSA재제조_ = {
 	성능검사: 1, 
 	EOL투입일: 1,
 	EOL: 1, 
-	QR_Label:1,
+	QR_Label: 1,
+	출하검사: 1, 
 	출하: 1, 
 	소재지: 1,
 	마지막충전일: 1,
@@ -739,12 +733,6 @@ const 입고_ = {
 	구분 : 1,
 	차종: 1, 
 	품번: 1, 
-	RO_no: 1, 
-	VIN: 1,
-	랙번호: 1,
-	QRcode: 1,
-	주행거리: 1,
-	차량번호: 1
 };
 
 const 세척_ = {
@@ -1032,9 +1020,7 @@ const 신품정보_ = {
 const 출하정보_ = {
 	_id : 0,
 	관리번호: 1,
-	출하일: 1,
 	출하코드: 1,
-	납품처: 1,
 	검사일: 1,
 	검사자: 1,
 	기초보고서_작성확인: 1,
@@ -1479,6 +1465,15 @@ async function insert(col, doc) {
 	}
 }
 
+async function insertMany(col, doc) {
+	if(socket == undefined) return;
+	flag_arrivedMSG = false;
+	while(flag_arrivedMSG == false) {
+		socket.emit('insertMany', worker, col, doc);
+		await sleep(DELAY);
+	}
+}
+
 async function update(col, doc) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
@@ -1493,15 +1488,6 @@ async function update_계정(col, doc) {
 	flag_arrivedMSG = false;
 	while(flag_arrivedMSG == false) {
 		socket.emit('update', worker, col, { id: doc.id }, {$set: doc});
-		await sleep(DELAY);
-	}
-}
-
-async function update_분해조립_부품정보(col, doc) {
-	if(socket == undefined) return;
-	flag_arrivedMSG = false;
-	while(flag_arrivedMSG == false) {
-		socket.emit('update', worker, col, { 교체전_QR: doc.교체전_QR }, {$set: doc});
 		await sleep(DELAY);
 	}
 }
@@ -1821,15 +1807,6 @@ function find_계정(col, query) {
 	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: 계정_ }, check);
 }
 
-function find_분해조립_부품정보(col, query) {
-	if(socket == undefined) return;
-	flag_arrivedMSG = false;
-	check++;
-	if(check > 10000) check = 0;
-
-	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: 분해조립_부품정보_ }, check);
-}
-
 function find_신품정보(col, query) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
@@ -1848,13 +1825,94 @@ function find_고품정보(col, query) {
 	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: 고품정보_ }, check);
 }
 
-function find_query(col, query) {
+function find_BSA재제조(col, query) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
 	if(check > 10000) check = 0;
 
 	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: BSA재제조_ }, check);
+}
+
+function find_입고(col, query) {
+	if(socket == undefined) return;
+	flag_arrivedMSG = false;
+	check++;
+	if(check > 10000) check = 0;
+
+	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: 입고_ }, check);
+}
+
+function find_세척(col, query) {
+	if(socket == undefined) return;
+	flag_arrivedMSG = false;
+	check++;
+	if(check > 10000) check = 0;
+
+	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: 세척_ }, check);
+}
+
+function find_기초검사(col, query) {
+	if(socket == undefined) return;
+	flag_arrivedMSG = false;
+	check++;
+	if(check > 10000) check = 0;
+
+	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: 기초검사_ }, check);
+}
+
+function find_분해조립(col, query) {
+	if(socket == undefined) return;
+	flag_arrivedMSG = false;
+	check++;
+	if(check > 10000) check = 0;
+
+	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: 분해조립_ }, check);
+}
+
+function find_성능검사(col, query) {
+	if(socket == undefined) return;
+	flag_arrivedMSG = false;
+	check++;
+	if(check > 10000) check = 0;
+
+	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: 성능검사_ }, check);
+}
+
+function find_EOL(col, query) {
+	if(socket == undefined) return;
+	flag_arrivedMSG = false;
+	check++;
+	if(check > 10000) check = 0;
+
+	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: EOL_ }, check);
+}
+
+function find_출하정보(col, query) {
+	if(socket == undefined) return;
+	flag_arrivedMSG = false;
+	check++;
+	if(check > 10000) check = 0;
+
+	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: 출하정보_ }, check);
+}
+
+function find_특이사항(col, query) {
+	if(socket == undefined) return;
+	flag_arrivedMSG = false;
+	check++;
+	if(check > 10000) check = 0;
+
+	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: 특이사항_ }, check);
+}
+
+function find_교체부품상세(col, query) {
+	if(socket == undefined) return;
+	flag_arrivedMSG = false;
+	check++;
+	if(check > 10000) check = 0;
+
+	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: 교체부품상세_ }, check);
 }
 
 function sleep(ms) {
@@ -1865,7 +1923,7 @@ async function delay() {
 	while(flag_arrivedMSG == false) {
 		await sleep(DELAY);
 	}
-	await sleep(30);
+	await sleep(100);
 	return true;
 }
 

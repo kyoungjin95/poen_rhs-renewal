@@ -509,7 +509,7 @@ async function insert3(val) {
 }
 
 async function 입고수량보완() {
-	find_query(BSA재제조, { 세척 : ''});
+	find_BSA재제조(BSA재제조, { 세척 : ''});
 	await delay();
 
 	find_array.forEach(async function(info) {
@@ -527,7 +527,7 @@ async function 입고수량보완() {
 }
 
 async function 입고to기초() {
-	find_query(입고, { 관리번호 : { $exists : true }});
+	find_입고(입고, { 관리번호 : { $exists : true }});
 	await delay();
 
 	find_array.forEach(async function(info) {
@@ -545,5 +545,39 @@ async function 입고to기초() {
 		await delay();
 	});
 
+	console.log('complete');
+}
+
+async function 출하to출하검사copy() {
+	find_BSA재제조(출하정보, { 관리번호 : { $exists : true }, 검사일 : { $exists : true }});
+	await delay();
+	
+	find_array.forEach(async function(info) {
+		let doc = {
+			관리번호 : info.관리번호,
+			출하검사 : info.출하
+		}
+		update(BSA재제조, doc);
+		await delay();
+	});
+
+	await delay();
+	console.log('complete');
+}
+
+async function 기본to입고copy() {
+	find_BSA재제조(BSA재제조, { 관리번호 : { $exists : true }, 입고 : { $exists : true }});
+	await delay();
+	
+	find_array.forEach(async function(info) {
+		let doc = {
+			관리번호 : info.관리번호,
+			입고일 : info.입고
+		}
+		update(입고, doc);
+		await delay();
+	});
+
+	await delay();
 	console.log('complete');
 }

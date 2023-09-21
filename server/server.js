@@ -92,6 +92,14 @@ io.on('connection', async function(socket) {
 		//logger.info('worker:'+ worker + ' insert col:' + col +'doc:'+ JSON.stringify(doc));
 	});
 
+	socket.on('insertMany', async function(worker, col, doc) {
+		if(account.login == false) return;
+
+		const result = await insertMany(col, doc);
+		socket.emit('insert_result', result);
+		//logger.info('worker:'+ worker + ' insert col:' + col +'doc:'+ JSON.stringify(doc));
+	});
+
 	socket.on('count', async function(level, col, query, check) {
 		if(account.login == false && col != '계정') return;
 		const cnt = await count(col, query);
@@ -182,6 +190,22 @@ async function insert(col, doc) {
 		const database = client.db(db_name);
 		const collection = database.collection(col);
 		const result = await collection.insertOne(doc);
+		console.log(`A document was inserted with the _id: ${result.insertedId}`);
+
+		return result.insertedId;
+	} catch(err) {
+		console.error(err);
+		logger.info(err);
+		return null;
+	} finally {
+	}
+}
+
+async function insertMany(col, doc) {
+	try {
+		const database = client.db(db_name);
+		const collection = database.collection(col);
+		const result = await collection.insertMany(doc);
 		console.log(`A document was inserted with the _id: ${result.insertedId}`);
 
 		return result.insertedId;

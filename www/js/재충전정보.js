@@ -24,7 +24,7 @@ async function 재충전정보_시작() {
 
 	console.log('doc_count: ', doc_count);
 	if(doc_count >= 1) {
-		find_query(BSA재제조, { 마지막충전일 : { $lte : 기준일, $ne : '' }, 공정단계 : { $ne : '출하' }});
+		find_BSA재제조(BSA재제조, { 마지막충전일 : { $lte : 기준일, $ne : '' }, 공정단계 : { $ne : '출하' }});
 		await delay();
 
 		console.log('result:', find_array);

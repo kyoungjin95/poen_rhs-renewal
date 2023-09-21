@@ -108,24 +108,20 @@ async function 부품재고_시작() {
 
 	table_신품재고 = new Tabulator("#grid_신품재고", {
 		layout: "resizableColumnFit",
-		height:700,
+		height:'700px',
 		data:tabledata_신품재고, 
-                //pagination: 'local',
-                responsiveLayout: true,
-                renderHorizontal:"virtual",
-		//autoColumns:true,
 
 		columns: [
-			{title:"바코드", field:"바코드", sorter:"string"},
-			{title:"날짜", field:"날짜", sorter:"string"},
-			{title:"구분", field:"구분", sorter:"string"},
-			{title:"차종", field:"차종", sorter:"string"},
-			{title:"품명", field:"품명", sorter:"string"},
-			{title:"품번", field:"품번", sorter:"string"},
-			{title:"수량", field:"수량", sorter:"string"},
-			{title:"LotNo", field:"LotNo", sorter:"string"},
-			{title:"비고", field:"비고", sorter:"string"},
-			{title:"사용관리번호", field:"사용관리번호", sorter:"string"},
+			{title:"바코드", field:"바코드", sorter:"string", width:'180'},
+			{title:"날짜", field:"날짜", sorter:"string", width:'180'},
+			{title:"구분", field:"구분", sorter:"string", width:'180'},
+			{title:"차종", field:"차종", sorter:"string", width:'180'},
+			{title:"품명", field:"품명", sorter:"string", width:'180'},
+			{title:"품번", field:"품번", sorter:"string", width:'180'},
+			{title:"수량", field:"수량", sorter:"string", width:'180'},
+			{title:"LotNo", field:"LotNo", sorter:"string", width:'180'},
+			{title:"비고", field:"비고", sorter:"string", width:'180'},
+			{title:"사용관리번호", field:"사용관리번호", sorter:"string", width:'180'},
 		],
 	});
 
@@ -150,23 +146,21 @@ async function 부품재고_시작() {
 
 	table_고품재고 = new Tabulator("#grid_고품재고", {
 		layout: "resizableColumnFit",
-		height:700,
+		height: '700px',
 		data:tabledata_고품재고, 
-                //pagination: 'local',
-		//autoColumns:true,
 		
 		columns: [
-			{title:"QR", field:"QR", sorter:"string"},
-			{title:"관리번호", field:"관리번호", sorter:"string"},
-			{title:"품명", field:"품명", sorter:"string"},
-			{title:"번호", field:"번호", sorter:"string"},
-			{title:"폐기여부", field:"폐기여부", sorter:"string"},
-			{title:"사용여부", field:"사용여부", sorter:"string"},
-			{title:"사용 관리번호", field:"사용_관리번호", sorter:"string"},
-			{title:"등록 작업자", field:"등록_작업자", sorter:"string"},
-			{title:"사용 작업자", field:"사용_작업자", sorter:"string"},
-			{title:"등록일", field:"등록일", sorter:"string"},
-			{title:"사용일", field:"사용일", sorter:"string"},
+			{title:"QR", field:"QR", sorter:"string", width:'180'},
+			{title:"관리번호", field:"관리번호", sorter:"string", width:'180'},
+			{title:"품명", field:"품명", sorter:"string", width:'180'},
+			{title:"번호", field:"번호", sorter:"string", width:'180'},
+			{title:"폐기여부", field:"폐기여부", sorter:"string", width:'180'},
+			{title:"사용여부", field:"사용여부", sorter:"string", width:'180'},
+			{title:"사용 관리번호", field:"사용_관리번호", sorter:"string", width:'180'},
+			{title:"등록 작업자", field:"등록_작업자", sorter:"string", width:'180'},
+			{title:"사용 작업자", field:"사용_작업자", sorter:"string", width:'180'},
+			{title:"등록일", field:"등록일", sorter:"string", width:'180'},
+			{title:"사용일", field:"사용일", sorter:"string", width:'180'},
 		],
 		
 	});

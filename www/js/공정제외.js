@@ -72,7 +72,7 @@ async function 제외목록(제외) {
 			if(doc_count == 0) {
 				제외_tabledata_BSA = [];
 			} else {
-				find_query(BSA재제조, { 구분 : '일반기타' });
+				find_BSA재제조(BSA재제조, { 구분 : '일반기타' });
 				await delay();
 
 				제외_tabledata_BSA = find_array;
@@ -87,7 +87,7 @@ async function 제외목록(제외) {
 			if(doc_count == 0) {
 				제외_tabledata_BSA = [];
 			} else {
-				find_query(BSA재제조, { 구분 : '보증기타' });
+				find_BSA재제조(BSA재제조, { 구분 : '보증기타' });
 				await delay();
 
 				제외_tabledata_BSA = find_array;
@@ -102,7 +102,7 @@ async function 제외목록(제외) {
 			if(doc_count == 0) {
 				제외_tabledata_BSA = [];
 			} else {
-				find_query(BSA재제조, { 완전분해 : {$ne : '', $exists : true} });
+				find_BSA재제조(BSA재제조, { 완전분해 : {$ne : '', $exists : true} });
 				await delay();
 
 				제외_tabledata_BSA = find_array;
@@ -117,7 +117,7 @@ async function 제외목록(제외) {
 			if(doc_count == 0) {
 				제외_tabledata_BSA = [];
 			} else {
-				find_query(BSA재제조, { 폐기 : {$ne : '', $exists : true} });
+				find_BSA재제조(BSA재제조, { 폐기 : {$ne : '', $exists : true} });
 				await delay();
 
 				제외_tabledata_BSA = find_array;
