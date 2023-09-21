@@ -374,8 +374,6 @@ async function 재제조현황_시작() {
 	}
 	await sleep(10);
 
-	;
-
 	//Update filters on value change
 	document.getElementById("filter-field").addEventListener("change", updateFilter);
 	document.getElementById("filter-type").addEventListener("change", updateFilter);
@@ -613,7 +611,6 @@ async function 재제조현황_조회(flag_id_search = false) {
 		return;
 	});
 
-	await sleep(DELAY);
 	await grid_입고();
 	progress.value = 1 / 18 * 100;
 
