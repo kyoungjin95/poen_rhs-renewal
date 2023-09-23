@@ -1,0 +1,32 @@
+
+<html>
+	<head>
+		<title>품번별 수량 현황</title>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="base/style/공정.css">
+	</head>
+	<body>
+		<div>
+			<h1 style="text-align: center;">품번별 수량 현황</h1>
+			<center>
+				<div>
+					<input type="date" id="_검색일_from" size="40" value="0000-00-00" max="240-12-4" required>&nbsp; ~ &nbsp;
+					<input type="date" id="_검색일_to" size="40" value="0000-00-00" max="240-12-4" required>&nbsp;
+					<button onClick="수량집계_기간조회();">조회</button>
+				</div>
+				<div>
+					일반 / 보증
+				</div>
+				<div>
+					<label for='grid_BSA집계'>품번별 BSA 집계</label>
+					<div id='grid_BSA집계'></div>
+				</div>
+				<div>
+					<label for='grid_BMA집계'>품번별 BMA 집계</label>
+					<div id='grid_BMA집계'></div>
+				</div>
+				<div>
+					<label for='grid_부재료집계'>품번별 부재료 집계</label>
+					<div id='grid_부재료집계'></div>
+				</div>
+				

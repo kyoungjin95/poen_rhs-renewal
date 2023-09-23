@@ -7,29 +7,6 @@
 
 	</head>
 	<body>
-		<!--
-		<div>
-			<tr>
-				<td>
-					<label for='_management_id'>관리 번호</label>
-					<input type="text" id="_management_id" size="40" required>
-				</td>
-				<td>
-                        		<button onClick="재제조현황_시작();">조 회</button>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<label for='_재제조번호'>재제조 번호</label>
-					<input type="text" id="_재제조번호" size="40" required>
-				</td>
-				<td>
-		                        <button onClick="재제조현황_조회(2);">조 회</button>
-				</td>
-			</tr>
-		</div>
-		</br>
-		-->
 		<progress id="progress" value="0" max="100"></progress>
 		<div class="BSA 재제조 현황">
 			<div>
@@ -55,6 +32,8 @@
 					<option value="성능검사">성능검사</option>
 					<option value="EOL투입일">EOL투입일</option>
 					<option value="EOL">EOL</option>
+					<option value="출하검사">출하검사</option>
+					<option value="납품처">납품처</option>
 					<option value="출하">출하</option>
 					<option value="소재지">소재지</option>
 					<option value="반품입고">반품입고</option>
@@ -85,7 +64,9 @@
 			<div>  
 				<p id='m_id'></p></br>
 				<input id="new_관리번호" type="text" placeholder="변경후 관리번호">
-				<button onClick="관리번호_변경();">관리번호 변경</button>
+				<button onClick="관리번호_변경();">변경</button><br/>
+				<input id="copy_관리번호" type="text" placeholder="To 관리번호">
+				<button onClick="copy();">복사</button><br/>
 				<button onClick="delete_bsa();">삭제</button>
 				<button onClick="export_excel();">BSA 정보 Data Excel</button>
 			</div>

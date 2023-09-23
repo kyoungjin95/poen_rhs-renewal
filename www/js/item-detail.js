@@ -150,6 +150,8 @@ async function 상세입력_시작(is재제조번호 = false) {
 		_성능검사.value = find_array[0].성능검사.substr(0, 16);
 		_EOL투입일.value = find_array[0].EOL투입일.substr(0, 16);
 		_EOL.value = find_array[0].EOL.substr(0, 16);
+		if(find_array[0].출하검사 != undefined) _출하검사.value = find_array[0].출하검사.substr(0, 16);
+		if(find_array[0].납품처 != undefined) _납품처.value = find_array[0].납품처.substr(0, 16);
 		_출하.value = find_array[0].출하.substr(0, 16);
 		_소재지.value = find_array[0].소재지.substr(0, 16);
 		_마지막충전일.value = find_array[0].마지막충전일.substr(0, 16);
@@ -157,7 +159,7 @@ async function 상세입력_시작(is재제조번호 = false) {
 		_재출하.value = find_array[0].재출하.substr(0, 16);
 		_완전분해.value = find_array[0].완전분해.substr(0, 16);
 		_폐기.value = find_array[0].폐기.substr(0, 16);
-		_출하예약.value = find_array[0].출하예약.substr(0, 16);
+		if(find_array[0].출하예약 != undefined) _출하예약.value = find_array[0].출하예약.substr(0, 16);
 
 		count(입고, { 관리번호 : _management_id.value });
 		await delay();

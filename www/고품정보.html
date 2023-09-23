@@ -28,6 +28,9 @@
 								<label for="_품명"><b>품명</b></label>
 							</td>
 							<td>
+								<label for="_품번"><b>품번</b></label>
+							</td>
+							<td>
 								<label for="_번호"><b>번호</b></label>
 							</td>
 							<td>
@@ -64,6 +67,9 @@
 									<option value="Busbars">Busbars</option>
 									<option value="BMA">BMA</option>
 								</select>
+							</td>
+							<td>
+								<input type="text" id="_품번" size="25" required>
 							</td>
 							<td>
 								<input type="text" id="_번호" size="25" required>
@@ -155,6 +161,7 @@
 			<script>
 				const _management_id = document.getElementById('_management_id');
 				const _품명 = document.getElementById('_품명');
+				const _품번 = document.getElementById('_품번');
 				const _번호 = document.getElementById('_번호');
 				const _QR = document.getElementById('_QR');
 				const _폐기여부 = document.getElementById('_폐기여부');

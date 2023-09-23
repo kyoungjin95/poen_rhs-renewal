@@ -356,6 +356,7 @@ const EOL_doc = {
 const 고품정보_doc = {
 	관리번호: '',
 	품명: '',
+	품번: '',
 	번호: '',
 	QR: '',
 	폐기여부: '',
@@ -365,18 +366,6 @@ const 고품정보_doc = {
 	사용일 : '',
 	등록_작업자 : '',
 	사용_작업자 : ''
-}
-
-const 신품정보_doc = {
-	바코드: '',
-	품명: '',
-	QR: '',
-	구입처: '',
-	금액: '',
-	수량: '',
-	남은수량: '',
-	사용여부: '',
-	사용_관리번호: ''
 }
 
 const 출하정보_doc = {
@@ -672,7 +661,7 @@ const 폐기_pic_doc = {
 };
 
 const 자재입출고_doc = {
-	바코드 : '',
+	QR : '',
 	날짜 : '',
 	구분 : '',
 	차종 : '',
@@ -993,6 +982,7 @@ const 고품정보_ = {
 	_id : 0,
 	관리번호: 1,
 	품명: 1,
+	품번: 1,
 	번호: 1,
 	QR: 1,
 	폐기여부: 1,
@@ -1002,19 +992,6 @@ const 고품정보_ = {
 	사용일 : 1,
 	등록_작업자 : 1,
 	사용_작업자 : 1
-}
-
-const 신품정보_ = {
-	_id: 0,
-	바코드: 1,
-	품명: 1,
-	QR: 1,
-	구입처: 1,
-	금액: 1,
-	수량: 1,
-	남은수량: 1,
-	사용여부: 1,
-	사용_관리번호: 1,
 }
 
 const 출하정보_ = {
@@ -1326,7 +1303,7 @@ const 폐기_pic_ = {
 
 const 자재입출고_ = {
 	_id : 0,
-	바코드 : 1,
+	QR : 1,
 	날짜 : 1,
 	구분 : 1,
 	차종 : 1,
@@ -1494,10 +1471,10 @@ async function update_계정(col, doc) {
 
 async function update_신품정보(col, doc) {
 	if(socket == undefined) return;
-	if(doc.바코드 == '') return;
+	if(doc.QR == '') return;
 	flag_arrivedMSG = false;
 	while(flag_arrivedMSG == false) {
-		socket.emit('update', worker, col, { 바코드: doc.바코드 }, {$set: doc});
+		socket.emit('update', worker, col, { QR: doc.QR }, {$set: doc});
 		await sleep(DELAY);
 	}
 }
@@ -1520,11 +1497,11 @@ async function deleteOne(col, management_id) {
 	}
 }
 
-async function deleteOne_신품정보(col, 바코드) {
+async function deleteOne_신품정보(col, QR) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
 	while(flag_arrivedMSG == false) {
-		socket.emit('delete', worker, col, { 바코드: 바코드});
+		socket.emit('delete', worker, col, { QR: QR});
 		await sleep(DELAY);
 	}
 }
@@ -1627,7 +1604,7 @@ async function find(col, management_id) {
 
 		case '신품정보' :
 			while(flag_arrivedMSG == false) {
-				socket.emit('find', worker, col, { 바코드: management_id}, { sort: { kind: 1}, projection: 신품정보_}, check);
+				socket.emit('find', worker, col, { QR: management_id}, { sort: { kind: 1}, projection: 신품정보_}, check);
 				await sleep(DELAY);
 			}
 			break;

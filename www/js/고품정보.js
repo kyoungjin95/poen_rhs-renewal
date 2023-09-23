@@ -22,6 +22,7 @@ async function 고품정보등록_시작() {
 		console.log('고품정보 : ', find_array);
 	} else {
 		_품명.value = '';
+		_품번.value = '';
                 _번호.value = '';
                 _QR.value = '';
                 _폐기여부.value = '';
@@ -36,6 +37,7 @@ async function 고품정보등록_시작() {
 
 		columns:[
 			{title:"품명", field:"품명", sorter:"string"},
+			{title:"품번", field:"품번", sorter:"string"},
 			{title:"번호", field:"번호", sorter:"string"},
 			{title:"QR", field:"QR", sorter:"string"},
 			{title:"폐기여부", field:"폐기여부", sorter:"string"},
@@ -58,6 +60,7 @@ async function 고품정보_save() {
 
 	doc.관리번호 = _management_id.value;
 	doc.품명 = _품명.value;
+	doc.품번 = _품번.value;
 	doc.번호 = _번호.value;
 	doc.QR = _QR.value;
 	doc.폐기여부 = _폐기여부.value;
