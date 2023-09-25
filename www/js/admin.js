@@ -131,3 +131,20 @@ async function 기본to입고copy() {
 	await delay();
 	console.log('complete');
 }
+
+async function EOLto성능검사() {
+	find_BSA재제조(BSA재제조, { 관리번호 : { $exists : true }, EOL투입일 : { $ne : '' }, 성능검사 : ''});
+	await delay();
+	
+	find_array.forEach(async function(info) {
+		let doc = {
+			관리번호 : info.관리번호,
+			성능검사 : info.EOL투입일
+		}
+		update(입고, doc);
+		await delay();
+	});
+
+	await delay();
+	console.log('complete');
+}
