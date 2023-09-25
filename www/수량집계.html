@@ -15,7 +15,14 @@
 					<button onClick="수량집계_기간조회();">조회</button>
 				</div>
 				<div>
-					일반 / 보증
+					<div>
+						<input type="radio" id="_all" name="구분" value="all" checked/>
+						<label for="huey">All</label>
+						<input type="radio" id="_일반" name="구분" value="일반"/>
+						<label for="huey">일반</label>
+						<input type="radio" id="_보증" name="구분" value="보증"/>
+						<label for="huey">보증</label>
+					</div>
 				</div>
 				<div>
 					<label for='grid_BSA집계'>품번별 BSA 집계</label>
@@ -26,7 +33,7 @@
 					<div id='grid_BMA집계'></div>
 				</div>
 				<div>
-					<label for='grid_부재료집계'>품번별 부재료 집계</label>
-					<div id='grid_부재료집계'></div>
+					<label for='grid_부품집계'>품번별 부재료 집계</label>
+					<div id='grid_부품집계'></div>
 				</div>
 				

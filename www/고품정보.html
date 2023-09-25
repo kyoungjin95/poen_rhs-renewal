@@ -23,9 +23,14 @@
 								<button onClick="고품정보등록_시작();">조 회</button>
 							</td>
 						</tr>
+					</table>
+					<table border="2">
 						<tr>
 							<td>
 								<label for="_품명"><b>품명</b></label>
+							</td>
+							<td>
+								<label for="_구분"><b>구분</b></label>
 							</td>
 							<td>
 								<label for="_품번"><b>품번</b></label>
@@ -45,7 +50,7 @@
 						</tr>
 						<tr>
 							<td>
-								<input type="text" id="_품명" size="25" required>
+								<input type="text" id="_품명" size="17" required>
 								<select name="language" onchange="_품명_콤보박스(this);">
 									<option value="">---</option>
 									<option value="BMU">BMU</option>
@@ -69,10 +74,18 @@
 								</select>
 							</td>
 							<td>
+								<input type="text" id="_구분" size="7" required>
+								<select name="language" onchange="_구분_콤보박스(this);">
+									<option value="">--</option>
+									<option value="일반">일반</option>
+									<option value="보증">보증</option>
+								</select>
+							</td>
+							<td>
 								<input type="text" id="_품번" size="25" required>
 							</td>
 							<td>
-								<input type="text" id="_번호" size="25" required>
+								<input type="text" id="_번호" size="5" required>
 								<select name="language" onchange="_번호_콤보박스(this);">
 									<option value="">---</option>
 									<option value="#1">#1</option>
@@ -131,7 +144,7 @@
 								<input type="text" id="_QR" size="25" required>
 							</td>
 							<td>
-								<input type="text" id="_폐기여부" size="25" required>
+								<input type="text" id="_폐기여부" size="5" required>
 								<select name="language" onchange="_폐기여부_콤보박스(this);">
 									<option value="">---</option>
 									<option value="자재">자재</option>
@@ -139,7 +152,7 @@
 								</select>
 							</td>
 							<td>
-								<input type="text" id="_작업자" size="25" required>
+								<input type="text" id="_작업자" size="10" required>
 							</td>
 						</tr>
 					</table>

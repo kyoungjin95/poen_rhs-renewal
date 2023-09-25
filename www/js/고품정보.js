@@ -22,6 +22,7 @@ async function 고품정보등록_시작() {
 		console.log('고품정보 : ', find_array);
 	} else {
 		_품명.value = '';
+		_구분.value = '';
 		_품번.value = '';
                 _번호.value = '';
                 _QR.value = '';
@@ -37,6 +38,7 @@ async function 고품정보등록_시작() {
 
 		columns:[
 			{title:"품명", field:"품명", sorter:"string"},
+			{title:"구분", field:"구분", sorter:"string"},
 			{title:"품번", field:"품번", sorter:"string"},
 			{title:"번호", field:"번호", sorter:"string"},
 			{title:"QR", field:"QR", sorter:"string"},
@@ -59,6 +61,7 @@ async function 고품정보_save() {
 	var doc = 고품정보_doc;
 
 	doc.관리번호 = _management_id.value;
+	doc.구분 = _구분.value;
 	doc.품명 = _품명.value;
 	doc.품번 = _품번.value;
 	doc.번호 = _번호.value;
@@ -88,6 +91,12 @@ function _품명_콤보박스(e) {
 	const value = e.value;
 
   	document.getElementById('_품명').value = value;
+}
+
+function _구분_콤보박스(e) {
+	const value = e.value;
+
+  	document.getElementById('_구분').value = value;
 }
 
 function _번호_콤보박스(e) {

@@ -153,6 +153,7 @@ async function 부품재고_시작() {
 			{title:"QR", field:"QR", sorter:"string", width:'180'},
 			{title:"관리번호", field:"관리번호", sorter:"string", width:'180'},
 			{title:"품명", field:"품명", sorter:"string", width:'180'},
+			{title:"구분", field:"구", sorter:"string", width:'180'},
 			{title:"번호", field:"번호", sorter:"string", width:'180'},
 			{title:"폐기여부", field:"폐기여부", sorter:"string", width:'180'},
 			{title:"사용여부", field:"사용여부", sorter:"string", width:'180'},
