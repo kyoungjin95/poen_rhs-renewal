@@ -55,6 +55,7 @@ async function 분해조립_시작(is재제조번호 = false) {
 	BMA_count = 1;
 
 	if(_management_id.value == '조회 버튼을 누르세요') _management_id.value =  관리번호;
+	console.log(_management_id.vaue);
 
 	count(입고, { 관리번호 : _management_id.value });
 	await delay();
@@ -218,6 +219,13 @@ async function 분해조립_시작(is재제조번호 = false) {
 		_ETC.value = '';
 		_공정완료일.value = '0000-00-00T00:00';
 		_작업자.value = worker;
+
+		var doc = BSA재제조_doc;
+		doc.관리번호 = _management_id.value
+		관리번호 = doc.관리번호;
+
+		update(BSA재제조, doc);
+		await delay();
 	}
 
 	const tbody = document.querySelector('#_tb tbody');
@@ -563,6 +571,15 @@ async function 분해조립_save() {
 	if(insert_count > 0) {
 		alert('저장 되었습니다');
 	}
+
+	var _doc = {
+		관리번호 : _management_id.value,
+		분해조립투입일 : _공정입고일.value,
+		분해조립 : _공정완료일.value
+	}
+
+	update(BSA재제조, _doc);
+	await delay();
 	//이전페이지();
 }
 

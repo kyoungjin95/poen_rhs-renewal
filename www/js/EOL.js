@@ -135,6 +135,10 @@ async function EOL_시작(EOL_is재제조번호 = false) {
 			}
 		}
 	} else {
+		_재제조번호.value = '';
+		_구분.value = '';
+		_차종.value = '';
+		_품번.value = '';
 		_공정입고일.value = '';
 		_UPR_C조립.value = '';
 		_기밀검사_케이스.value = '';
@@ -153,6 +157,13 @@ async function EOL_시작(EOL_is재제조번호 = false) {
 		_비고.value = '';
 		_QR.value = '';
 		_검사자.value = worker;
+
+		var doc = BSA재제조_doc;
+		doc.관리번호 = _management_id.value
+		관리번호 = doc.관리번호;
+
+		update(BSA재제조, doc);
+		await delay();
 	}
 }
 
@@ -261,13 +272,15 @@ async function EOL_SAVE() {
 		alert('저장 되었습니다');
 	}
 
-	var doc_ = {
-		관리번호 : doc.관리번호,
-		마지막충전일 : doc.공정완료일
+	var _doc = {
+		관리번호 : _management_id.value,
+		EOL투입일 : _공정입고일.value,
+		EOL : _공정완료일.value,
+		마지막충전일 : _공정완료일.value
 	}
 
-	console.log(doc_);
-	update(BSA재제조, doc_);
+	update(BSA재제조, _doc);
+	await delay();
 }
 
 function EOL_save() {

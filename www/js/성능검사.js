@@ -79,6 +79,13 @@ async function 성능검사_시작(is재제조 = false) {
 		_DCIR_Discharge.value =	'';
 		_공정완료일.value = '0000-00-00T00:00';
 		_검사자.value = worker;
+
+		var doc = BSA재제조_doc;
+		doc.관리번호 = _management_id.value
+		관리번호 = doc.관리번호;
+
+		update(BSA재제조, doc);
+		await delay();
 	}
 }
 
@@ -115,5 +122,13 @@ async function 성능검사_save() {
 		alert('저장 되었습니다');
 	}
 
+	var _doc = {
+		관리번호 : _management_id.value,
+		성능검사투입일 : _공정입고일.value,
+		성능검사 : _공정완료일.value
+	}
+
+	update(BSA재제조, _doc);
+	await delay();
 	//이전페이지();
 }

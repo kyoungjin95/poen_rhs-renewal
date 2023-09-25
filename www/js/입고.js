@@ -40,6 +40,13 @@ async function 입고_시작() {
 		_구분.value = '';
 		_차종.value = '';
 		_품번.value = '';
+
+		var doc = BSA재제조_doc;
+		doc.관리번호 = _management_id.value
+		관리번호 = doc.관리번호;
+
+		update(BSA재제조, doc);
+		await delay();
 	}
 }
 
@@ -68,6 +75,14 @@ async function 입고_save() {
 	if(insert_count > 0) {
 		alert('저장 되었습니다');
 	}
+
+	var _doc = {
+		관리번호 : _management_id.value,
+		입고 : _입고일.value
+	}
+
+	update(BSA재제조, _doc);
+	await delay();
 	
 	//이전페이지();
 }

@@ -262,6 +262,13 @@ async function 출하정보_시작(is재제조 = false) {
 		_bracket.options[0].selected = true;
 		_S_PLUG.options[0].selected = true;
 		_접지.options[0].selected = true;
+
+		var doc = BSA재제조_doc;
+		doc.관리번호 = _management_id.value
+		관리번호 = doc.관리번호;
+
+		update(BSA재제조, doc);
+		await delay();
 	}
 }
 
@@ -331,6 +338,13 @@ async function 출하정보_save() {
 		alert('저장 되었습니다');
 	}
 
+	var _doc = {
+		관리번호 : _management_id.value,
+		출하검사 : _검사일.value
+	}
+
+	update(BSA재제조, _doc);
+	await delay();
 	//이전페이지();
 }
 

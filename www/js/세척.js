@@ -71,6 +71,13 @@ async function 세척_시작(is재제조 = false) {
 		_기밀검사_케이스.value = '';
 		_기밀검사_케이스_특이사항.value = '';
 		_특이사항.value = '';
+
+		var doc = BSA재제조_doc;
+		doc.관리번호 = _management_id.value
+		관리번호 = doc.관리번호;
+
+		update(BSA재제조, doc);
+		await delay();
 	}
 }
 
@@ -100,6 +107,14 @@ async function 세척_save() {
 		alert('저장 되었습니다');
 	}
 
+	var _doc = {
+		관리번호 : _management_id.value,
+		세척투입일 : _공정입고일.value,
+		세척 : _공정완료일.value
+	}
+
+	update(BSA재제조, _doc);
+	await delay();
 	//이전페이지();
 }
 

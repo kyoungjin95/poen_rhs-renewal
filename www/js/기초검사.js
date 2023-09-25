@@ -180,6 +180,13 @@ async function 기초검사_시작(is재제조 = false) {
 		_비고.value = '';
 		_센터진단내용.value = '';
 		_검사자.value = worker;
+
+		var doc = BSA재제조_doc;
+		doc.관리번호 = _management_id.value
+		관리번호 = doc.관리번호;
+
+		update(BSA재제조, doc);
+		await delay();
 	}
 }
 
@@ -336,6 +343,15 @@ async function 기초검사_SAVE() {
 	if(insert_count > 0) {
 		alert('저장 되었습니다');
 	}
+
+	var _doc = {
+		관리번호 : _management_id.value,
+		기초검사투입일 : _공정입고일.value,
+		기초검사 : _공정완료일.value
+	}
+
+	update(BSA재제조, _doc);
+	await delay();
 }
 
 function _육안검사외부_콤보박스(e) {

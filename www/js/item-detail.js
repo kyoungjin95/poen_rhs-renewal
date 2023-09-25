@@ -284,6 +284,7 @@ async function 상세입력_시작(is재제조번호 = false) {
 			_management_id.value = '';
 		}
 
+		_재제조번호.value = '';
 		_구분.value = '';
 		_차종.value = '';
 		_품번.value = '';
@@ -378,6 +379,7 @@ async function processStep() {
 	if(worker == '') return;
 	if(_management_id.value.length == 0) return;
 	pre_관리번호 = '';
+	관리번호 = _management_id.value;
 
 	var step = _공정단계.value;
 
