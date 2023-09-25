@@ -1,4 +1,4 @@
-const DELAY = 50;
+const DELAY = 100;
 const 계정 = '계정';
 const BSA재제조 = 'BSA재제조';
 const 입고 = '입고';
@@ -1418,7 +1418,7 @@ async function distinct(col, query, field_name) {
 	flag_arrivedMSG = false;
 	while(flag_arrivedMSG == false) {
 		socket.emit('distinct', worker, col, query, field_name);
-		await sleep(DELAY);
+		await sleep(DELAY * 20);
 	}
 }
 
@@ -1429,26 +1429,20 @@ async function count(col, query) {
 		check++;
 		if(check > 10000) check = 0;
 		socket.emit('count', level, col, query, check);
-		await sleep(DELAY);
+		await sleep(DELAY * 20);
 	}
 }
 
 async function insert(col, doc) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
-	while(flag_arrivedMSG == false) {
-		socket.emit('insert', worker, col, doc);
-		await sleep(DELAY);
-	}
+	socket.emit('insert', worker, col, doc);
 }
 
 async function insertMany(col, doc) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
-	while(flag_arrivedMSG == false) {
-		socket.emit('insertMany', worker, col, doc);
-		await sleep(DELAY);
-	}
+	socket.emit('insertMany', worker, col, doc);
 }
 
 async function update(col, doc) {
@@ -1456,7 +1450,7 @@ async function update(col, doc) {
 	flag_arrivedMSG = false;
 	while(flag_arrivedMSG == false) {
 		socket.emit('update', worker, col, { 관리번호: doc.관리번호 }, {$set: doc});
-		await sleep(DELAY);
+		await sleep(DELAY * 20);
 	}
 }
 
@@ -1465,7 +1459,7 @@ async function update_계정(col, doc) {
 	flag_arrivedMSG = false;
 	while(flag_arrivedMSG == false) {
 		socket.emit('update', worker, col, { id: doc.id }, {$set: doc});
-		await sleep(DELAY);
+		await sleep(DELAY * 20);
 	}
 }
 
@@ -1475,7 +1469,7 @@ async function update_신품정보(col, doc) {
 	flag_arrivedMSG = false;
 	while(flag_arrivedMSG == false) {
 		socket.emit('update', worker, col, { QR: doc.QR }, {$set: doc});
-		await sleep(DELAY);
+		await sleep(DELAY * 20);
 	}
 }
 
@@ -1484,7 +1478,7 @@ async function update_고품정보(col, doc) {
 	flag_arrivedMSG = false;
 	while(flag_arrivedMSG == false) {
 		socket.emit('update', worker, col, { QR: doc.QR }, {$set: doc});
-		await sleep(DELAY);
+		await sleep(DELAY * 20);
 	}
 }
 
@@ -1493,7 +1487,7 @@ async function deleteOne(col, management_id) {
 	flag_arrivedMSG = false;
 	while(flag_arrivedMSG == false) {
 		socket.emit('delete', worker, col, { 관리번호: management_id});
-		await sleep(DELAY);
+		await sleep(DELAY * 20);
 	}
 }
 
@@ -1502,7 +1496,7 @@ async function deleteOne_신품정보(col, QR) {
 	flag_arrivedMSG = false;
 	while(flag_arrivedMSG == false) {
 		socket.emit('delete', worker, col, { QR: QR});
-		await sleep(DELAY);
+		await sleep(DELAY * 20);
 	}
 }
 
@@ -1511,7 +1505,7 @@ async function deleteOne_고품정보(col, QR) {
 	flag_arrivedMSG = false;
 	while(flag_arrivedMSG == false) {
 		socket.emit('delete', worker, col, { QR: QR});
-		await sleep(DELAY);
+		await sleep(DELAY * 20);
 	}
 }
 
@@ -1520,7 +1514,7 @@ async function delete_계정(_id) {
 	flag_arrivedMSG = false;
 	while(flag_arrivedMSG == false) {
 		socket.emit('delete', worker, 계정, { id: _id});
-		await sleep(DELAY);
+		await sleep(DELAY * 20);
 	}
 }
 
@@ -1898,9 +1892,9 @@ function sleep(ms) {
 
 async function delay() {
 	while(flag_arrivedMSG == false) {
-		await sleep(DELAY);
+		await sleep(1);
 	}
-	await sleep(15);
+	await sleep(1);
 	return true;
 }
 

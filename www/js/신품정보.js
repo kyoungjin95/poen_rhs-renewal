@@ -129,24 +129,29 @@ function read_신품정보_func_csv() {
 		reader.addEventListener('load', async function() {
 			if(flag_신품정보_엑셀 == true) return;
 			flag_신품정보_엑셀 = true;
-
+			alert('진입');
 			const res = d3.csvParse(reader.result);
 			var docs = [];
-			//console.log(res);
+			console.log(res.length);
 			for(var i = 0; i < res.length; i++) {
 				docs.push(res[i]);
+				console.log('docs count: ', docs.length);
 				if((i > 0 && (i % 2000) == 0) || i == (res.length - 1)) {
 					insertMany(자재입출고, docs);
 					await delay();
 
-					docs = [];
-					console.log('processing');
-				} 
+					console.log('processing:', i, docs.length);
+					
+					count(자재입출고, { QR : { $exists : true} });
+					await delay();
 
-				await sleep(1);
+					console.log(doc_count);
+					docs = [];
+
+					await sleep(1000);
+				} 
 			};
-			flag_신품정보_엑셀 = false;
-			console.log('complete');
+			console.log('complete:', res.length);
 		});
 		reader.readAsText(file);
 	});

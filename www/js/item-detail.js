@@ -36,8 +36,6 @@ async function 상세입력_시작(is재제조번호 = false) {
 		_management_id.value = _management_id.value.trim();
 		if(_management_id.value == '조회를 누르세요') _management_id.value = 관리번호;
 
-		//if(pre_관리번호 != '' && pre_관리번호 == _management_id.value) return;
-		
 		console.log('load: ', _management_id.value);
 		if(_management_id.value.length == 0 && _재제조번호.value .length == 0) return;
 
@@ -131,11 +129,6 @@ async function 상세입력_시작(is재제조번호 = false) {
 		_management_id.value = find_array[0].관리번호;
 		_재제조번호.value = find_array[0].재제조번호;
 
-		//_구분.value = find_array[0].구분;
-		//_차종.value = find_array[0].차종;
-		//_품번.value = find_array[0].품번;
-		//_RO_no.value = find_array[0].RO_no;
-		//
 		_공정단계.value = find_array[0].공정단계;
 		_적재No.value = find_array[0].적재No;
 		_입고.value = find_array[0].입고.substr(0, 16);
@@ -200,8 +193,8 @@ async function 상세입력_시작(is재제조번호 = false) {
 			find(세척, _management_id.value);
 			await delay();
 			
-			_세척투입일.value = find_array[0].공정입고일.substr(0, 16);
-			_세척.value = find_array[0].공정완료일.substr(0, 16);
+			if(_세척투입일.value == '') _세척투입일.value = find_array[0].공정입고일.substr(0, 16);
+			if(_세척.value == '') find__세척.value = find_array[0].공정완료일.substr(0, 16);
 			if(_세척.value != '' && _세척.value != 'none' && _세척.value != '0000-00-00T00:00') {
 				if(_공정단계.value != '출하') _공정단계.value = '기초검사';
 			} else {
@@ -216,8 +209,8 @@ async function 상세입력_시작(is재제조번호 = false) {
 			find(기초검사, _management_id.value);
 			await delay();
 			
-			_기초검사투입일.value = find_array[0].공정입고일.substr(0, 16);
-			_기초검사.value = find_array[0].공정완료일.substr(0, 16);
+			if(_기초검사투입일.value == '') _기초검사투입일.value = find_array[0].공정입고일.substr(0, 16);
+			if(_기초검사.value == '') find_기초검사.value = find_array[0].공정완료일.substr(0, 16);
 			if(_기초검사.value != '' && _기초검사.value != 'none' && _기초검사.value != '0000-00-00T00:00') {
 				if(_공정단계.value != '출하') _공정단계.value = '분해조립';
 			} else {
@@ -232,8 +225,8 @@ async function 상세입력_시작(is재제조번호 = false) {
 			find(분해조립, _management_id.value);
 			await delay();
 			
-			_분해조립투입일.value = find_array[0].공정입고일.substr(0, 16);
-			_분해조립.value = find_array[0].공정완료일.substr(0, 16);
+			if(_분해조립투입일.value == '') _분해조립투입일.value = find_array[0].공정입고일.substr(0, 16);
+			if(_분해조립.value == '') _분해조립.value = find_array[0].공정완료일.substr(0, 16);
 			if(_분해조립.value != '' && _분해조립.value != 'none' && _분해조립.value != '0000-00-00T00:00') {
 				if(_공정단계.value != '출하') _공정단계.value = '성능검사';
 			} else {
@@ -248,8 +241,8 @@ async function 상세입력_시작(is재제조번호 = false) {
 			find(성능검사, _management_id.value);
 			await delay();
 			
-			_성능검사투입일.value = find_array[0].공정입고일.substr(0, 16);
-			_성능검사.value = find_array[0].공정완료일.substr(0, 16);
+			if(_성능검사투입일.value == '') _성능검사투입일.value = find_array[0].공정입고일.substr(0, 16);
+			if(_성능검사.value == '') _성능검사.value = find_array[0].공정완료일.substr(0, 16);
 			if(_성능검사.value != '' && _성능검사.value != 'none' && _성능검사.value != '0000-00-00T00:00') {
 				if(_공정단계.value != '출하') _공정단계.value = 'EOL';
 			} else {
@@ -264,8 +257,8 @@ async function 상세입력_시작(is재제조번호 = false) {
 			find(EOL, _management_id.value);
 			await delay();
 			
-			_EOL투입일.value = find_array[0].공정입고일.substr(0, 16);
-			_EOL.value = find_array[0].공정완료일.substr(0, 16);
+			if(_EOL투입일.value == '') _EOL투입일.value = find_array[0].공정입고일.substr(0, 16);
+			if(_EOL.value == '') _EOL.value = find_array[0].공정완료일.substr(0, 16);
 			if(_EOL.value != '' || _EOL.value != 'none' && _EOL.value != '0000-00-00T00:00') {
 				if(_공정단계.value != '출하') _공정단계.value = '제조완료';
 			} else {
@@ -279,7 +272,8 @@ async function 상세입력_시작(is재제조번호 = false) {
 		if(doc_count >= 1) {
 			find(출하정보, _management_id.value);
 			await delay();
-			_출하검사.value = find_array[0].검사일.substr(0, 10) + 'T12:00';
+
+			if(_출하검사.value == '') _출하검사.value = find_array[0].검사일.substr(0, 10) + 'T12:00';
 			_공정단계.value = '출하';
 		}
 		item_detail_save(true);

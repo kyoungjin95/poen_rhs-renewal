@@ -1,0 +1,271 @@
+body {
+	font-family: Arial, sans-serif;
+	background-color: #f0f0f0;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	font-size: 3vw;
+	background-image:url('../img/leaf.jpg');
+}
+
+#main {
+	width: 90%;
+	background-color: white;
+	padding: 20px;
+	border-radius: 5px;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+	display: flex;
+	flex-direction: column;
+	min-height: 90vh;
+	opacity: 0.87;
+}
+
+h1 {
+	text-align: center;
+	margin-bottom: 50px;
+	flex: 0;
+}
+
+.buttons {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	margin-bottom: 2vw;
+	flex: 0;
+}
+
+
+.round-btn {
+	display: inline-block;
+	background-color: #007bff;
+	color: white;
+	border-radius: 20px;
+	padding: 15px 30px;
+	font-size: 2vw;
+	font-weight: bold; /* 글자 두께를 굵게 설정 */
+	text-align: center;
+	line-height: 1.5;
+	margin: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s;
+}
+
+.round-btn:hover {
+	background-color: #0056b3;
+}
+
+#content {
+	flex: 1;
+	padding: 0.7vw;
+	border: 1px solid #e0e0e0;
+	border-radius: 5px;
+	font-size: 2vw;
+}
+
+table {
+	border: 1px solid #e0e0e0;
+	border-radius: 10px;
+}
+
+table td {
+	padding: 1vw;
+	font-size: 1.2vw;
+	background-color: #F0F8FF;
+	color: #00008B;
+	border-radius: 10px;
+}
+
+table.all {
+	width: 75%;
+ 	border : 1px solid black;
+	border-radius: 1px;
+	font-family : 'HHB';
+}
+
+table.base {
+	width: 100%;
+ 	border : 1px solid black;
+	border-radius: 1px;
+	font-family : 'HHB';
+}
+
+table td.base {
+	padding: 0.1vw;
+	font-size: 0.8vw;
+	background-color: white;
+	color: black;
+	border-radius: 1px;
+ 	border-left: 1px solid black;
+ 	border-bottom: 1px solid black;
+	font-family: 'HHB';
+	text-align: center;
+	height: 2.4vw;
+}
+
+table td.base2 {
+	padding: 0.1vw;
+	font-size: 0.8vw;
+	background-color: white;
+	color: black;
+	border-radius: 1px;
+ 	border-left: 1px solid black;
+ 	border-bottom: 1px solid black;
+	font-family: 'HHB';
+	text-align: center;
+	height: 3.0vw;
+}
+
+table td.base3 {
+	padding: 0.1vw;
+	font-size: 0.8vw;
+	background-color: white;
+	color: black;
+	border-radius: 1px;
+ 	border-left: 1px solid black;
+ 	border-bottom: 1px solid black;
+	font-family: 'HHB';
+	text-align: center;
+	height: 4.0vw;
+}
+
+table td.base_left {
+	padding: 0.03vw;
+	font-size: 0.8vw;
+	background-color: white;
+	color: black;
+	border-radius: 1px;
+ 	border-left: 1px solid black;
+ 	border-bottom: 1px solid black;
+	font-family: 'HHB';
+	text-align: left;
+	height: 1.0vw;
+}
+
+table td.base_header {
+	padding: 0.03vw;
+	font-size: 0.8vw;
+	background-color: yellowgreen;
+	color: black;
+	border-radius: 1px;
+ 	border-left: 1px solid black;
+ 	border-bottom: 1px solid black;
+	font-family: 'HHB';
+	text-align: center;
+	font-weight: bold;
+	height: 1.0vw;
+}
+
+table td.base_header2 {
+	padding: 0.03vw;
+	font-size: 0.8vw;
+	background-color: lime;
+	color: black;
+	border-radius: 1px;
+ 	border-left: 1px solid black;
+ 	border-bottom: 1px solid black;
+	font-family: 'HHB';
+	text-align: center;
+	font-weight: bold;
+	height: 1.0vw;
+}
+
+table td.base_header3 {
+	padding: 0.03vw;
+	font-size: 0.8vw;
+	background-color: white;
+	color: black;
+	border-radius: 1px;
+ 	border-left: 1px solid black;
+ 	border-bottom: 1px solid black;
+	font-family: 'HHB';
+	text-align: center;
+	font-weight: bold;
+	height: 1.0vw;
+}
+
+table td.result_header {
+	background-color: lime;
+	color: black;
+ 	border: 1px solid black;
+	font-family: 'HHB';
+	width: 3vw;
+}
+
+table td.result {
+	padding: 0vw;
+	font-size: 0.8vw;
+	background-color: white;
+	color: black;
+	border-radius: 1px;
+ 	border: 1px solid black;
+	font-family: 'HHB';
+	text-align: left;
+	width: 60vw;
+}
+
+table.bottom {
+	padding: 0.05vw;
+	font-size: 0.8vw;
+	background-color: white;
+	color: black;
+ 	border: none;
+	width: 85%;
+}
+
+table td.bottom {
+	padding: 0.05vw;
+	font-size: 0.8vw;
+	background-color: white;
+	color: black;
+ 	border: none;
+}
+
+#_QR_Label {
+	padding: 1vw;
+	font-size: 1.2vw;
+	background-color: white;
+	color: black;
+	border-radius: 10px;
+}
+
+@font-face {
+	font-family : 'HHB'
+	src : url(HHB.ttf);
+}
+
+@font-face {
+	font-family : 'HHM'
+	src : url(HHM.ttf);
+}
+
+.HHB {
+	font-family : 'HHB'
+}
+
+.HHM {
+	font-family : 'HHM'
+}
+
+.종합평가_img {
+	width: 50vw;
+	height: 10vw;
+	background-image: url('../img/jp.png');
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	border:1px solid black;
+}
+
+.pic {
+	height: 25vw;
+	width: 100%;
+	overflow:scroll;	
+}
+
+input {
+	color: #00008B;
+	border-radius: 10px;
+}
