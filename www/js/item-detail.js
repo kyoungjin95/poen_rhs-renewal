@@ -144,7 +144,7 @@ async function 상세입력_시작(is재제조번호 = false) {
 		_EOL투입일.value = find_array[0].EOL투입일.substr(0, 16);
 		_EOL.value = find_array[0].EOL.substr(0, 16);
 		if(find_array[0].출하검사 != undefined) _출하검사.value = find_array[0].출하검사.substr(0, 16);
-		if(find_array[0].납품처 != undefined) _납품처.value = find_array[0].납품처;
+		_납품처.value = find_array[0].납품처;
 		_출하.value = find_array[0].출하.substr(0, 16);
 		_소재지.value = find_array[0].소재지.substr(0, 16);
 		_마지막충전일.value = find_array[0].마지막충전일.substr(0, 16);
@@ -194,7 +194,7 @@ async function 상세입력_시작(is재제조번호 = false) {
 			await delay();
 			
 			if(_세척투입일.value == '') _세척투입일.value = find_array[0].공정입고일.substr(0, 16);
-			if(_세척.value == '') find__세척.value = find_array[0].공정완료일.substr(0, 16);
+			if(_세척.value == '') _세척.value = find_array[0].공정완료일.substr(0, 16);
 			if(_세척.value != '' && _세척.value != 'none' && _세척.value != '0000-00-00T00:00') {
 				if(_공정단계.value != '출하') _공정단계.value = '기초검사';
 			} else {
@@ -210,7 +210,7 @@ async function 상세입력_시작(is재제조번호 = false) {
 			await delay();
 			
 			if(_기초검사투입일.value == '') _기초검사투입일.value = find_array[0].공정입고일.substr(0, 16);
-			if(_기초검사.value == '') find_기초검사.value = find_array[0].공정완료일.substr(0, 16);
+			if(_기초검사.value == '') _기초검사.value = find_array[0].공정완료일.substr(0, 16);
 			if(_기초검사.value != '' && _기초검사.value != 'none' && _기초검사.value != '0000-00-00T00:00') {
 				if(_공정단계.value != '출하') _공정단계.value = '분해조립';
 			} else {
@@ -257,7 +257,7 @@ async function 상세입력_시작(is재제조번호 = false) {
 			find(EOL, _management_id.value);
 			await delay();
 			
-			if(_EOL투입일.value == '') _EOL투입일.value = find_array[0].공정입고일.substr(0, 16);
+			if(_EOL투입일.value == '' && find_array[0].공정입고일 != undefined) _EOL투입일.value = find_array[0].공정입고일.substr(0, 16);
 			if(_EOL.value == '') _EOL.value = find_array[0].공정완료일.substr(0, 16);
 			if(_EOL.value != '' || _EOL.value != 'none' && _EOL.value != '0000-00-00T00:00') {
 				if(_공정단계.value != '출하') _공정단계.value = '제조완료';
