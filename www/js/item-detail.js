@@ -144,7 +144,7 @@ async function 상세입력_시작(is재제조번호 = false) {
 		_EOL투입일.value = find_array[0].EOL투입일.substr(0, 16);
 		_EOL.value = find_array[0].EOL.substr(0, 16);
 		if(find_array[0].출하검사 != undefined) _출하검사.value = find_array[0].출하검사.substr(0, 16);
-		if(find_array[0].납품처 != undefined) _납품처.value = find_array[0].납품처.substr(0, 16);
+		if(find_array[0].납품처 != undefined) _납품처.value = find_array[0].납품처;
 		_출하.value = find_array[0].출하.substr(0, 16);
 		_소재지.value = find_array[0].소재지.substr(0, 16);
 		_마지막충전일.value = find_array[0].마지막충전일.substr(0, 16);
