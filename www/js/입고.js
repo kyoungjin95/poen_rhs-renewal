@@ -41,8 +41,9 @@ async function 입고_시작() {
 		_차종.value = '';
 		_품번.value = '';
 
-		var doc = BSA재제조_doc;
-		doc.관리번호 = _management_id.value
+		var doc = {
+			관리번호 : _management_id.value
+		}
 		관리번호 = doc.관리번호;
 
 		update(BSA재제조, doc);

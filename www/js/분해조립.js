@@ -220,8 +220,9 @@ async function 분해조립_시작(is재제조번호 = false) {
 		_공정완료일.value = '0000-00-00T00:00';
 		_작업자.value = worker;
 
-		var doc = BSA재제조_doc;
-		doc.관리번호 = _management_id.value
+		var doc = {
+			관리번호 : _management_id.value
+		}
 		관리번호 = doc.관리번호;
 
 		update(BSA재제조, doc);

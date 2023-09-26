@@ -158,8 +158,9 @@ async function EOL_시작(EOL_is재제조번호 = false) {
 		_QR.value = '';
 		_검사자.value = worker;
 
-		var doc = BSA재제조_doc;
-		doc.관리번호 = _management_id.value
+		var doc = {
+			관리번호 : _management_id.value
+		}
 		관리번호 = doc.관리번호;
 
 		update(BSA재제조, doc);

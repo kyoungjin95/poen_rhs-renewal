@@ -72,8 +72,9 @@ async function 세척_시작(is재제조 = false) {
 		_기밀검사_케이스_특이사항.value = '';
 		_특이사항.value = '';
 
-		var doc = BSA재제조_doc;
-		doc.관리번호 = _management_id.value
+		var doc = {
+			관리번호 : _management_id.value
+		}
 		관리번호 = doc.관리번호;
 
 		update(BSA재제조, doc);

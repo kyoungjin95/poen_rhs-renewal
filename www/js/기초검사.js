@@ -181,8 +181,9 @@ async function 기초검사_시작(is재제조 = false) {
 		_센터진단내용.value = '';
 		_검사자.value = worker;
 
-		var doc = BSA재제조_doc;
-		doc.관리번호 = _management_id.value
+		var doc = {
+			관리번호 : _management_id.value
+		}
 		관리번호 = doc.관리번호;
 
 		update(BSA재제조, doc);
