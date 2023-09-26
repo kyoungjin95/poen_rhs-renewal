@@ -3,9 +3,9 @@ var 구장창고_table;
 async function 구장재고조회_시작() {
 	flag_구장재고조회 = false;
 
-	document.getElementById("filter-field").addEventListener("change", updateFilter);
-	document.getElementById("filter-type").addEventListener("change", updateFilter);
-	document.getElementById("filter-value").addEventListener("keyup", updateFilter);
+	document.getElementById("filter-field").addEventListener("change", 구장재고updateFilter);
+	document.getElementById("filter-type").addEventListener("change", 구장재고updateFilter);
+	document.getElementById("filter-value").addEventListener("keyup", 구장재고updateFilter);
 
 	//Clear filters on "Clear Filters" button click
 	document.getElementById("filter-clear").addEventListener("click", function(){
@@ -52,7 +52,7 @@ function 구장창고조회(data) {
 	});
 }
 
-function updateFilter(){
+function 구장재고updateFilter(){
   var fieldEl = document.getElementById("filter-field");
   var typeEl = document.getElementById("filter-type");
   var valueEl = document.getElementById("filter-value");
