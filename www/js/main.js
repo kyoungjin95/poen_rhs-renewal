@@ -35,18 +35,23 @@ times_show();
 console.log('worker:', worker);
 if(worker == '' || worker == null) {
 	loadPage('base/login.html');
+
 	change_label();
+
 	const _login_info = document.getElementById('login_info');
-	_login_info.innerHTML = '';
 	const _admin_btn = document.getElementById('admin_btn');
-	_admin_btn.style.display = 'none';
 	const _부품재고_btn = document.getElementById('부품재고_btn');
+
+	_login_info.innerHTML = '';
+	_admin_btn.style.display = 'none';
 	_부품재고_btn.style.display = 'none';
 } else {
 	const _login_btn = document.getElementById('login_btn');
 	const _login_info = document.getElementById('login_info');
+
 	_login_info.innerHTML = worker + ' / 로그인 中  ';
 	_login_btn.innerHTML = '로그아웃';
+
 	setTimeout(function() {
 		if(_level == '관리자') {
 			const _admin_btn = document.getElementById('admin_btn');
@@ -87,6 +92,8 @@ var flag_분해조립 = false;
 var flag_성능검사 = false;
 var flag_EOL = false;
 var flag_출하 = false;
+var flag_구장재고 = false;
+var flag_구장재고조회 = false;
 
 var interval = setInterval(function() {
 	if(flag_재제조현황 == true) { stop_repeat(); 재제조현황_시작();}
@@ -100,6 +107,8 @@ var interval = setInterval(function() {
 	if(flag_수량집계 == true) { stop_repeat(); 수량집계_시작(); }
 	if(flag_신품정보 == true) { 신품정보_시작(); }
 
+	if(flag_구장재고 == true) { stop_repeat(); 구장재고_시작(); }
+	if(flag_구장재고조회 == true) { stop_repeat(); 구장재고조회_시작(); }
 	if(flag_생산현황 == true) { stop_repeat(); 생산현황_시작();}
 	if(flag_대시보드 == true) { 날짜지정조회 = false; stop_repeat(); start_repeat_대시보드(); 대시보드_시작();}
 	if(flag_BSA_수량_현황 == true) { stop_repeat(); start_repeat_BSA_수량_현황(); BSA_수량_현황_시작();}

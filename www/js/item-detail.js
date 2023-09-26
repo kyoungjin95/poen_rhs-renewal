@@ -37,7 +37,7 @@ async function 상세입력_시작(is재제조번호 = false) {
 		if(_management_id.value == '조회를 누르세요') _management_id.value = 관리번호;
 
 		console.log('load: ', _management_id.value);
-		if(_management_id.value.length == 0 && _재제조번호.value .length == 0) return;
+		if(_management_id.value.length == 0 && _재제조번호.value.length == 0) return;
 
 		관리번호 = _management_id.value;
 		console.log('관리번호:', 관리번호);

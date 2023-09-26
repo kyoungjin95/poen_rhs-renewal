@@ -10,6 +10,10 @@
 			<h1 style="text-align: center;">품번별 수량 현황</h1>
 			<center>
 				<div>
+					<button onClick='수량집계_year();'>Year</button>
+					<button onClick='수량집계_month();'>Month</button>
+				</div>
+				<div>
 					<input type="date" id="_검색일_from" size="40" value="0000-00-00" max="240-12-4" required>&nbsp; ~ &nbsp;
 					<input type="date" id="_검색일_to" size="40" value="0000-00-00" max="240-12-4" required>&nbsp;
 					<button onClick="수량집계_기간조회();">조회</button>
@@ -24,16 +28,28 @@
 						<label for="huey">보증</label>
 					</div>
 				</div>
+				<br/>
+				<br/>
 				<div>
-					<label for='grid_BSA집계'>품번별 BSA 집계</label>
+					<label for='grid_BSA집계'><b><h2>품번별 BSA 집계</h2></b></label>
 					<div id='grid_BSA집계'></div>
 				</div>
+				<br/>
+				<br/>
 				<div>
-					<label for='grid_BMA집계'>품번별 BMA 집계</label>
+					<label for='grid_BMA집계'><b><h2>품번별 폐기 BMA 집계</h2></b></label>
 					<div id='grid_BMA집계'></div>
 				</div>
+				<br/>
+				<br/>
 				<div>
-					<label for='grid_부품집계'>품번별 부재료 집계</label>
+					<label for='grid_자재집계'><b><h2>품번별 고품 자재 집계</h2></b></label>
+					<div id='grid_자재집계'></div>
+				</div>
+				<br/>
+				<br/>
+				<div>
+					<label for='grid_부품집계'><b><h2>품번별 부재료 집계</h2></b></label>
 					<div id='grid_부품집계'></div>
 				</div>
 				

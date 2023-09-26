@@ -5,6 +5,31 @@ function 수량집계_시작() {
 	수량집계_조회();
 }
 
+function 수량집계_year() {
+		var DateTime = luxon.DateTime;
+		var seoul = DateTime.local().setZone("Asia/Seoul");
+		var now = seoul.toString();
+		var s_day = now.slice(0, 5) + '01-01';
+		var e_day = now.slice(0, 5) + '12-31';
+
+		document.getElementById('_검색일_from').value = s_day;
+		document.getElementById('_검색일_to').value = e_day;
+}
+
+function 수량집계_month() {
+		var DateTime = luxon.DateTime;
+		var seoul = DateTime.local().setZone("Asia/Seoul");
+		var now = seoul.toString();
+		var s_day = now.slice(0, 8) + '01';
+		var e_day;
+		if(now.slice(5, 2) in ['01', '03', '05', '07', '08', '10', '12']) e_day = now.slice(0, 8) + '31';
+		else if(now.slice(5, 2) == '02') e_day = now.slice(0, 8) + '28';
+		else e_day = now.slice(0, 8) + '30';
+
+		document.getElementById('_검색일_from').value = s_day;
+		document.getElementById('_검색일_to').value = e_day;
+}
+
 function 수량집계_기간조회() {
 	var 집계_today_begin = document.getElementById('_검색일_from').value + 'T00:00:000Z';;
 	var 집계_today_end = document.getElementById('_검색일_to').value + 'T23:59:000Z';;
@@ -28,6 +53,7 @@ async function 수량집계_조회(집계_today_begin = '', 집계_today_end = '
 
 	await BSA_info(begin, end, 구분);
 	await BMA_info(begin, end, 구분);
+	await 자재재료_info(begin, end, 구분);
 	await 부품_info(begin, end, 구분);
 }
 
@@ -132,19 +158,19 @@ async function BMA_info(begin = '', end = '', 구분 = '') {
 	var types_list = [];
 
 	if (begin == '' || end == '' || 구분 == '') {
-		count(고품정보, { 품명: 'BMA' });
+		count(고품정보, { 품명: 'BMA', 폐기여부 : '폐기' });
 		await delay();
 	} else {
-		count(고품정보, { 품명: 'BMA', 등록일: { $gte: begin, $lte: end }, 구분 : 구분 });
+		count(고품정보, { 품명: 'BMA', 폐기여부 : '폐기' , 등록일: { $gte: begin, $lte: end }, 구분 : 구분 });
 		await delay();
 	}
 
 	if (doc_count > 0) {
 		if (begin == '' || end == '' || 구분 == '') {
-			find_고품정보(고품정보, { 품명: 'BMA' });
+			find_고품정보(고품정보, { 품명: 'BMA', 폐기여부 : '폐기'  });
 			await delay();
 		} else {
-			find_고품정보(고품정보, { 품명: 'BMA', 등록일: { $gte: begin, $lte: end }, 구분 : 구분 });
+			find_고품정보(고품정보, { 품명: 'BMA', 폐기여부 : '폐기' , 등록일: { $gte: begin, $lte: end }, 구분 : 구분 });
 			await delay();
 		}
 
@@ -158,11 +184,11 @@ async function BMA_info(begin = '', end = '', 구분 = '') {
 				}
 
 				if (info.등록일 != '' && info.등록일 != undefined) {
-					count++;
+					count.입고++;
 				}
 
 				if (info.사용일 != '' && info.사용일 != undefined) {
-					count++;
+					count.출고++;
 				}
 
 				counts.push(count);
@@ -170,17 +196,75 @@ async function BMA_info(begin = '', end = '', 구분 = '') {
 				var no = types_list.indexOf(info.품번);
 
 				if (info.등록일 != '' && info.등록일 != undefined) {
-					counts[no]++;
+					counts[no].입고++;
 				}
 
 				if (info.사용일 != '' && info.사용일 != undefined) {
-					count[no]++;
+					count[no].출고++;
 				}
 			}
 		});
 	}
 
 	BMA재고(types_list, counts);
+}
+
+async function 자재재료_info(begin = '', end = '', 구분 = '') {
+	var counts = [];
+	var types_list = [];
+	var 품명_list = [];
+
+	if (begin == '' || end == '' || 구분 == '') {
+		count(고품정보, { 폐기여부: '자재' });
+		await delay();
+	} else {
+		count(고품정보, { 폐기여부 : '자재', 등록일: { $gte: begin, $lte: end }, 구분 : 구분 });
+		await delay();
+	}
+
+	if (doc_count > 0) {
+		if (begin == '' || end == '' || 구분 == '') {
+			find_고품정보(고품정보, { 폐기여부: '자재' });
+			await delay();
+		} else {
+			find_고품정보(고품정보, { 폐기여부 : '자재', 등록일: { $gte: begin, $lte: end }, 구분 : 구분 });
+			await delay();
+		}
+
+		find_array.forEach(function (info) {
+			if (types_list.indexOf(info.품번) < 0) {
+				types_list.push(info.품번);
+				품명_list.push(info.품명);
+
+				var count = {
+					입고: 0,
+					출고: 0
+				}
+
+				if (info.등록일 != '' && info.등록일 != undefined) {
+					count.입고++;
+				}
+
+				if (info.사용일 != '' && info.사용일 != undefined) {
+					count.출고++;
+				}
+
+				counts.push(count);
+			} else {
+				var no = types_list.indexOf(info.품번);
+
+				if (info.등록일 != '' && info.등록일 != undefined) {
+					counts[no].입고++;
+				}
+
+				if (info.사용일 != '' && info.사용일 != undefined) {
+					count[no].출고++;
+				}
+			}
+		});
+	}
+
+	자재재고(품명_list, types_list, counts);
 }
 
 async function 부품_info(begin = '', end = '', 구분 ='') {
@@ -282,7 +366,6 @@ function BSA재고(품번_list, datas) {
 		BSA집계_datas.push(_datas);
 	}
 	
-	console.log('=========>', BSA집계_datas);
 	var table_BSA = new Tabulator("#grid_BSA집계", {
 		layout: "resizableColumnFit",
 		data: BSA집계_datas,
@@ -306,6 +389,7 @@ function BMA재고(품번_list, datas) {
 			품번: 품번_list[i],
 			입고수: datas[i].입고,
 			출고수: datas[i].출고,
+			재고수: (datas[i].입고 - datas[i].출고)
 		}
 		BMA집계_datas.push(_datas);
 	}
@@ -318,12 +402,47 @@ function BMA재고(품번_list, datas) {
 	var table_BMA = new Tabulator("#grid_BMA집계", {
 		layout: "resizableColumnFit",
 		data: BMA집계_datas,
-		height: '700px',
+		height: '400px',
 
 		columns: [
 			{ title: "품번", field: "품번", sorter: "string", width: '180' },
 			{ title: "입고수", field: "입고수", sorter: "string", width: '180' },
 			{ title: "출고수", field: "출고수", sorter: "string", width: '180' },
+			{ title: "재고수", field: "재고수", sorter: "string", width: '180' },
+		],
+	});
+}
+
+function 자재재고(품명_list, 품번_list, datas) {
+	var 자재집계_datas = [];
+
+	for (var i = 0; i < 품번_list.length; i++) {
+		var _datas = {
+			품명: 품명_list[i],
+			품번: 품번_list[i],
+			입고수: datas[i].입고,
+			출고수: datas[i].출고,
+			재고수: (datas[i].입고 - datas[i].출고)
+		}
+		자재집계_datas.push(_datas);
+	}
+
+	if (자재집계_datas.length == 0) {
+		console.log('자재재고 EMPTY');
+		return;
+	}
+
+	var table_자재재고 = new Tabulator("#grid_자재집계", {
+		layout: "resizableColumnFit",
+		data: 자재집계_datas,
+		height: '400px',
+
+		columns: [
+			{ title: "품명", field: "품명", sorter: "string", width: '180' },
+			{ title: "품번", field: "품번", sorter: "string", width: '180' },
+			{ title: "입고수", field: "입고수", sorter: "string", width: '180' },
+			{ title: "출고수", field: "출고수", sorter: "string", width: '180' },
+			{ title: "재고수", field: "재고수", sorter: "string", width: '180' },
 		],
 	});
 }

@@ -619,7 +619,7 @@ function updateFilter(){
   }
 
   if(filterVal){
-    table.setFilter(filter,typeVal, valueEl.value);
+    table.setFilter(filter, typeVal, valueEl.value);
   }
 }
 

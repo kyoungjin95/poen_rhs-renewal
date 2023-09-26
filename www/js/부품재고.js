@@ -162,6 +162,7 @@ async function 부품재고_시작() {
 			{title:"사용 작업자", field:"사용_작업자", sorter:"string", width:'180'},
 			{title:"등록일", field:"등록일", sorter:"string", width:'180'},
 			{title:"사용일", field:"사용일", sorter:"string", width:'180'},
+			{title:"폐기품출고", field:"폐기품출고", sorter:"string", width:'180'},
 		],
 		
 	});
@@ -196,4 +197,36 @@ async function 고품정보_삭제() {
 	}
 
 	document.getElementById('고품_QR').innerHTML = '';
+}
+
+async function 폐기품출고() {
+	var DateTime = luxon.DateTime;
+	var seoul = DateTime.local().setZone("Asia/Seoul");
+	var now = seoul.toString();
+
+	var doc = {
+		QR : 고품_QR,
+		폐기품출고 : now.substr(0, 19)
+	}
+
+	update_고품정보(고품정보, doc);
+	await delay();
+
+	if(update_count > 0) {
+		부품재고_시작();
+	}
+}
+
+async function 폐기품출고취소() {
+	var doc = {
+		QR : 고품_QR,
+		폐기품출고 : ''
+	}
+
+	update_고품정보(고품정보, doc);
+	await delay();
+
+	if(update_count > 0) {
+		부품재고_시작();
+	}
 }

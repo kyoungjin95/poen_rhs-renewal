@@ -1,0 +1,46 @@
+
+<html>
+	<head>
+		<title>BAS 재제조 현황</title>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="base/style/공정.css">
+		<link rel="stylesheet" href="base/style/camera.css">
+	</head>
+	<body>
+		<div class="BSA 재제조 현황">
+			<div>
+				<label for='grid_BSA'>구장 창고 BSA 재고 현황</label>
+			</div>
+			<div>
+				<select id="filter-field">
+					<option></option>
+					<option value="관리번호">관리번호</option>
+					<option value="재제조번호">재제조번호</option>
+					<option value="입고일">입고일</option>
+					<option value="입고처">입고처</option>
+					<option value="RO번호">RO번호</option>
+					<option value="부품번호">부품번호</option>
+					<option value="생산연도">생산연도</option>
+					<option value="ROM_ID">ROM ID</option>
+					<option value="출고일">출고일</option>
+					<option value="출고처">출고처</option>
+					<option value="비고">비고</option>
+				</select>
+
+				<select id="filter-type">
+					<option value="=">=</option>
+					<option value="<"><</option>
+					<option value="<="><=</option>
+					<option value=">">></option>
+					<option value=">=">>=</option>
+					<option value="!=">!=</option>
+					<option value="like">like</option>
+				</select>
+
+				<input id="filter-value" type="text" placeholder="value to filter">
+
+				<button id="filter-clear">Clear Filter</button>
+			</div>
+			<div>
+				<div id='grid_BSA'></div>
+			</div>

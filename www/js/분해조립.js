@@ -622,14 +622,15 @@ async function request_고품QR() {
 		고품_docs.push(doc);
 		console.log(고품_docs);
 	} else {
-		alert('해당 QR을 부품재고에서 찾을 수 없습니다.');
+		//alert('해당 QR을 부품재고에서 찾을 수 없습니다.');
 	}
 
-	var 교체후_품번 = prompt('교체후 품번을 입력하세요');
-	var str = '교체후 QR:' + 교체후_QR + ', 교체후 품번:' + 교체후_품번;
-	var 교체전_QR = prompt('교체전 QR을 입력하세요');
-	var 교체전_품번 = prompt('교체전 품번을 입력하세요');
-	str += ', 교체전 QR:' + 교체전_QR + ', 교체전 품번:' + 교체전_품번;
+	//var 교체후_품번 = prompt('교체후 품번을 입력하세요');
+	//var str = '교체후 QR:' + 교체후_QR + ', 교체후 품번:' + 교체후_품번;
+	//var 교체전_QR = prompt('교체전 QR을 입력하세요');
+	//var 교체전_품번 = prompt('교체전 품번을 입력하세요');
+	//str += ', 교체전 QR:' + 교체전_QR + ', 교체전 품번:' + 교체전_품번;
+	var str = '교체후 QR:' + 교체후_QR;
 	console.log(str);
 
 	return str;
@@ -639,8 +640,8 @@ async function _콤보박스(type, e) {
 	var value = e.value;
 
 	if(value == '신품 교체') {
-		var 관련번호 = await request_신품QR();
-		value = value + '(' + 관련번호 + ')';
+		//var 관련번호 = await request_신품QR();
+		//value = value + '(' + 관련번호 + ')';
 	}
 
 	if(value == '고품 교체') {

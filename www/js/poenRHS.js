@@ -21,24 +21,8 @@ const 교체부품상세7 = '교체부품상세7';
 const 교체부품상세8 = '교체부품상세8';
 const 교체부품상세9 = '교체부품상세9';
 const 교체부품상세10 = '교체부품상세10';
-const 세척참조 = '세척참조';
-const 기초참조 = '기초참조';
-const 성능참조 = '성능참조';
-const EOL참조 = 'EOL참조';
-const 출하참조 = '출하참조';
-const 분해참조 = '분해참조';
-const 특이참조 = '특이참조';
-const 교체참조1 = '교체참조1';
-const 교체참조2 = '교체참조2';
-const 교체참조3 = '교체참조3';
-const 교체참조4 = '교체참조4';
-const 교체참조5 = '교체참조5';
-const 교체참조6 = '교체참조6';
-const 교체참조7 = '교체참조7';
-const 교체참조8 = '교체참조8';
-const 교체참조9 = '교체참조9';
-const 교체참조10 = '교체참조10';
 const 자재입출고 = '자재입출고';
+const 구장재고 = '구장재고';
 const 입고_pic = '입고_pic';
 const 세척_pic = '세척_pic';
 const 기초검사_pic = '기초검사_pic';
@@ -367,7 +351,8 @@ const 고품정보_doc = {
 	등록일 : '',
 	사용일 : '',
 	등록_작업자 : '',
-	사용_작업자 : ''
+	사용_작업자 : '',
+	폐기품출고 : ''
 }
 
 const 출하정보_doc = {
@@ -433,6 +418,20 @@ const 교체부품상세_doc = {
 	교체사유: ''
 };
 
+
+const 구장재고_doc = {
+	입고일 : '',
+	입고처 : '',
+	관리번호 : '',
+	재제조번호 : '',
+	RO번호 : '',
+	부품번호 : '',
+	생산연도 : '',
+	ROM_ID : '',
+	출고일 : '',
+	출고처 : '',
+	비고 : ''
+}
 
 const 입고_pic_doc = {
 	관리번호 : '',
@@ -995,7 +994,8 @@ const 고품정보_ = {
 	등록일 : 1,
 	사용일 : 1,
 	등록_작업자 : 1,
-	사용_작업자 : 1
+	사용_작업자 : 1,
+	폐기품출고 : 1
 }
 
 const 출하정보_ = {
@@ -1064,6 +1064,21 @@ const 교체부품상세_ = {
 	교체사유: 1,
 	공정완료일: 1
 };
+
+const 구장재고_ = {
+	_id : 0,
+	입고일 : 1,
+	입고처 : 1,
+	관리번호 : 1,
+	재제조번호 : 1,
+	RO번호 : 1,
+	부품번호 : 1,
+	생산연도 : 1,
+	ROM_ID : 1,
+	출고일 : 1,
+	출고처 : 1,
+	비고 : 1
+}
 
 const 입고_pic_ = {
 	_id : 0,
@@ -1458,6 +1473,15 @@ async function update(col, doc) {
 	}
 }
 
+async function update_재제조번호(col, doc) {
+	if(socket == undefined) return;
+	flag_arrivedMSG = false;
+	while(flag_arrivedMSG == false) {
+		socket.emit('update', worker, col, { 재제조번호: doc.재제조번호 }, {$set: doc});
+		await sleep(DELAY * 20);
+	}
+}
+
 async function update_계정(col, doc) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
@@ -1491,6 +1515,15 @@ async function deleteOne(col, management_id) {
 	flag_arrivedMSG = false;
 	while(flag_arrivedMSG == false) {
 		socket.emit('delete', worker, col, { 관리번호: management_id});
+		await sleep(DELAY * 20);
+	}
+}
+
+async function deleteOne재제조번호(col, 재제조번호) {
+	if(socket == undefined) return;
+	flag_arrivedMSG = false;
+	while(flag_arrivedMSG == false) {
+		socket.emit('delete', worker, col, { 재제조번호: 재제조번호 });
 		await sleep(DELAY * 20);
 	}
 }
@@ -1780,6 +1813,15 @@ function find_계정(col, query) {
 	if(check > 10000) check = 0;
 
 	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: 계정_ }, check);
+}
+
+function find_구장재고(col, query) {
+	if(socket == undefined) return;
+	flag_arrivedMSG = false;
+	check++;
+	if(check > 10000) check = 0;
+
+	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: 구장재고_ }, check);
 }
 
 function find_신품정보(col, query) {
