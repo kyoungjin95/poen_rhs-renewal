@@ -258,7 +258,7 @@ async function 자재재료_info(begin = '', end = '', 구분 = '') {
 				}
 
 				if (info.사용일 != '' && info.사용일 != undefined) {
-					counts[no].출고++;
+					count[no].출고++;
 				}
 			}
 		});
