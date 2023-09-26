@@ -200,7 +200,7 @@ async function BMA_info(begin = '', end = '', 구분 = '') {
 				}
 
 				if (info.사용일 != '' && info.사용일 != undefined) {
-					count[no].출고++;
+					counts[no].출고++;
 				}
 			}
 		});
