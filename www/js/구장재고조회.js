@@ -50,6 +50,11 @@ function 구장창고조회(data) {
 			{title:"비고", field:"비고", sorter:"string", width:'180'},
 		],
 	});
+
+	구장창고_table.on("rowClick", async function(e, row) {
+		console.log('selected 관리번호: ',  row.getData().관리번호);
+		document.getElementById('select_bsa').innerHTML = row.getData().관리번호;
+	});
 }
 
 function 구장재고updateFilter(){
@@ -73,4 +78,16 @@ function 구장재고updateFilter(){
   if(filterVal){
     구장창고_table.setFilter(filter, typeVal, valueEl.value);
   }
+}
+
+async function delete_구장재고_bsa() {
+	var select_관리번호 = document.getElementById('select_bsa').value;
+
+	deleteOne_구장재고(구장재고, select_관리번호);
+	await delay();
+
+	find_구장재고(구장재고, { 관리번호 : { $exists : true } });
+	await delay();
+
+	구장창고조회(find_array);
 }

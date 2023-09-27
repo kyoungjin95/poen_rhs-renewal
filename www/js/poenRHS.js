@@ -1546,6 +1546,15 @@ async function deleteOne_고품정보(col, QR) {
 	}
 }
 
+async function deleteOne_구장재고(col, 관리번호) {
+	if(socket == undefined) return;
+	flag_arrivedMSG = false;
+	while(flag_arrivedMSG == false) {
+		socket.emit('delete', worker, col, { 관리번호: 관리번호});
+		await sleep(DELAY * 20);
+	}
+}
+
 async function delete_계정(_id) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;

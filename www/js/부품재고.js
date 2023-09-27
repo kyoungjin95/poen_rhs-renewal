@@ -21,7 +21,7 @@ function 신품_updateFilter(){
   }
 
   if(filterVal){
-    table_신품재고.setFilter(filter,typeVal, valueEl.value);
+    table_신품재고.setFilter(filter, typeVal, valueEl.value);
   }
 }
 
