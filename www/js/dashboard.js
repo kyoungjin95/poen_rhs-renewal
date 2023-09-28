@@ -61,21 +61,37 @@ async function 조회_list(today_begin, today_end) {
 	console.log(today_begin, today_end);
 
 	await dash_입고(today_begin, today_end);
+	await sleep(DELAY);
 	await dash_입고_당일(today_begin, today_end);
+	await sleep(DELAY);
 	await dash_세척(today_begin, today_end);
+	await sleep(DELAY);
 	await dash_세척_당일(today_begin, today_end);
+	await sleep(DELAY);
 	await dash_기초검사(today_begin, today_end);
+	await sleep(DELAY);
 	await dash_기초검사_당일(today_begin, today_end);
+	await sleep(DELAY);
 	await dash_분해조립(today_begin, today_end);
+	await sleep(DELAY);
 	await dash_분해조립_당일(today_begin, today_end);
+	await sleep(DELAY);
 	await dash_성능검사(today_begin, today_end);
+	await sleep(DELAY);
 	await dash_성능검사_당일(today_begin, today_end);
+	await sleep(DELAY);
 	await dash_EOL(today_begin, today_end);
+	await sleep(DELAY);
 	await dash_EOL_당일(today_begin, today_end);
+	await sleep(DELAY);
 	await dash_출하검사(today_begin, today_end);
+	await sleep(DELAY);
 	await dash_출하검사_당일(today_begin, today_end);
+	await sleep(DELAY);
 	await dash_출하(today_begin, today_end);
+	await sleep(DELAY);
 	await dash_출하_당일(today_begin, today_end);
+	await sleep(DELAY);
 }
 
 async function dash_입고(today_begin, today_end) {

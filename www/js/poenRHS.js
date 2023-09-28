@@ -1379,7 +1379,7 @@ socket.on('insert_result', function(id) {
 	flag_arrivedMSG = true;
 });
 
-socket.on('count_result', function(count, rcv_check) {
+socket.on('count_result', async function(count, rcv_check) {
 	//console.log('count: ', count);
 	if(rcv_check != check) return;
 	doc_count = count;
