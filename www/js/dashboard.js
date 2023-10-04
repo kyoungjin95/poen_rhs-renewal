@@ -61,37 +61,37 @@ async function 조회_list(today_begin, today_end) {
 	console.log(today_begin, today_end);
 
 	await dash_입고(today_begin, today_end);
-	await sleep(DELAY);
+	await sleep(1);
 	await dash_입고_당일(today_begin, today_end);
-	await sleep(DELAY);
+	await sleep(1);
 	await dash_세척(today_begin, today_end);
-	await sleep(DELAY);
+	await sleep(1);
 	await dash_세척_당일(today_begin, today_end);
-	await sleep(DELAY);
+	await sleep(1);
 	await dash_기초검사(today_begin, today_end);
-	await sleep(DELAY);
+	await sleep(1);
 	await dash_기초검사_당일(today_begin, today_end);
-	await sleep(DELAY);
+	await sleep(1);
 	await dash_분해조립(today_begin, today_end);
-	await sleep(DELAY);
+	await sleep(1);
 	await dash_분해조립_당일(today_begin, today_end);
-	await sleep(DELAY);
+	await sleep(1);
 	await dash_성능검사(today_begin, today_end);
-	await sleep(DELAY);
+	await sleep(1);
 	await dash_성능검사_당일(today_begin, today_end);
-	await sleep(DELAY);
+	await sleep(1);
 	await dash_EOL(today_begin, today_end);
-	await sleep(DELAY);
+	await sleep(1);
 	await dash_EOL_당일(today_begin, today_end);
-	await sleep(DELAY);
+	await sleep(1);
 	await dash_출하검사(today_begin, today_end);
-	await sleep(DELAY);
+	await sleep(1);
 	await dash_출하검사_당일(today_begin, today_end);
-	await sleep(DELAY);
+	await sleep(1);
 	await dash_출하(today_begin, today_end);
-	await sleep(DELAY);
+	await sleep(1);
 	await dash_출하_당일(today_begin, today_end);
-	await sleep(DELAY);
+	await sleep(1);
 }
 
 async function dash_입고(today_begin, today_end) {
@@ -111,7 +111,7 @@ async function dash_입고(today_begin, today_end) {
 		count(BSA재제조, { 입고 : { $exists : true, $ne : 'none', $ne : ''}, 구분 : { $nin : ['일반기타', '보증기타']}, 완전분해 : '', 폐기 : ''});
 		await delay();
 	}
-	await sleep(DELAY);
+	await sleep(1);
 	console.log('입고 count:', doc_count);
 	var 입고누적 = doc_count;
 
@@ -178,7 +178,7 @@ async function dash_세척(today_begin, today_end) {
 		count(BSA재제조, { 세척 : { $exists : true, $ne : 'none', $ne : ''}, 구분 : { $nin : ['일반기타', '보증기타']}, 완전분해 : '', 폐기 : ''});
 		await delay();
 	}
-	await sleep(DELAY);
+	await sleep(1);
 	console.log('세척 count:', doc_count);
 	var 세척누적 = doc_count;
 
