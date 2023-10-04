@@ -288,7 +288,7 @@ ul li{
 }
 a {
 	text-decoration: none;
-	color:white;
+	color: white;
 }
 #menu {
 	font:bold 1.5vw "malgun gothic";
@@ -311,8 +311,9 @@ a {
 	width:15vw;
 	display:none;
 	position: absolute;
-	font-size:1.2vw;
-	background: gray;
+	font-size: 1.2vw;
+	background: green;
+	opacity: 0.90;
 }
 
 #menu > ul > li:hover > ul {

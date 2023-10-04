@@ -1343,6 +1343,7 @@ var find_array = [];
 var arregation_array = [];
 var flag_arrivedMSG = false;
 var check = 0;
+var str = '';
 
 const socket = io();
 socket.on('connect', function() {
@@ -1351,8 +1352,8 @@ socket.on('connect', function() {
 
 socket.on('auto_backup_db_status', function(running) {
 	//console.log('auto backup status:', running);
-	if(running == true) str = '자동 백업 시스템 작동중(7일 보관)';
-	else str = '자동 백업 시스템 정지!!';
+	if(running == true) str = '백업(O)';
+	else str = '백업(X)';
 	document.getElementById('auto_backup_db_status').innerHTML = str;
 });
 
