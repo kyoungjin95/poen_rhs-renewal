@@ -110,7 +110,7 @@ async function 성능검사_save() {
 	doc.검사자 = _검사자.value;
 	
 	update(성능검사, doc);
-	await sleep(DELAY);
+	await delay();
 	
 	console.log(update_count);
 	console.log(insert_count);
