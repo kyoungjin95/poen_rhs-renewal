@@ -389,7 +389,7 @@ function BMA재고(품번_list, datas) {
 			품번: 품번_list[i],
 			입고수: datas[i].입고,
 			출고수: datas[i].출고,
-			재고수: (datas[i].입고 - datas[i].출고)
+			합계: (datas[i].입고 - datas[i].출고)
 		}
 		BMA집계_datas.push(_datas);
 	}
@@ -408,7 +408,7 @@ function BMA재고(품번_list, datas) {
 			{ title: "품번", field: "품번", sorter: "string", width: '180' },
 			{ title: "입고수", field: "입고수", sorter: "string", width: '180' },
 			{ title: "출고수", field: "출고수", sorter: "string", width: '180' },
-			{ title: "재고수", field: "재고수", sorter: "string", width: '180' },
+			{ title: "합계", field: "합계", sorter: "string", width: '180' },
 		],
 	});
 }
@@ -422,7 +422,7 @@ function 자재재고(품명_list, 품번_list, datas) {
 			품번: 품번_list[i],
 			입고수: datas[i].입고,
 			출고수: datas[i].출고,
-			재고수: (datas[i].입고 - datas[i].출고)
+			합계: (datas[i].입고 - datas[i].출고)
 		}
 		자재집계_datas.push(_datas);
 	}
@@ -442,7 +442,7 @@ function 자재재고(품명_list, 품번_list, datas) {
 			{ title: "품번", field: "품번", sorter: "string", width: '180' },
 			{ title: "입고수", field: "입고수", sorter: "string", width: '180' },
 			{ title: "출고수", field: "출고수", sorter: "string", width: '180' },
-			{ title: "재고수", field: "재고수", sorter: "string", width: '180' },
+			{ title: "합계", field: "합계", sorter: "string", width: '180' },
 		],
 	});
 }
@@ -457,7 +457,7 @@ function 부품재고(부품정보) {
 				품번: 부품정보[i].types_list[j],
 				입고수: 부품정보[i].counts[j].입고,
 				출고수: 부품정보[i].counts[j].출고,
-				재고수: 부품정보[i].counts[j].입고 + 부품정보[i].counts[j].출고
+				합계: 부품정보[i].counts[j].입고 + 부품정보[i].counts[j].출고
 			}
 
 			부품집계_datas.push(_datas);
@@ -479,7 +479,7 @@ function 부품재고(부품정보) {
 			{ title: "품번", field: "품번", sorter: "string", width: '180' },
 			{ title: "입고수", field: "입고수", sorter: "string", width: '180' },
 			{ title: "출고수", field: "출고수", sorter: "string", width: '180' },
-			{ title: "재고수", field: "재고수", sorter: "string", width: '180' },
+			{ title: "합계", field: "합계", sorter: "string", width: '180' },
 		],
 	});
 }

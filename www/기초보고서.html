@@ -464,6 +464,11 @@
 		<div>
 			<button onClick="기초보고서_save();">SAVE</button>
 		</div>
+		<script>
+			var body = document.getElementsByTagName('body')[0];
+			if (window.innerWidth > 1920) { alert('해상도가 1920 x 1080일때만 사용이 가능합니다.');}
+			console.log(' window width:', window.innerWidth);
+		</script>
 	</body>
 </html>
 

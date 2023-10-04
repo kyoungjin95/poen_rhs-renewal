@@ -13,40 +13,47 @@
 				<img src='base/img/poen.png' width='10%' height='10%'></img>
 			</div>
 			<div>
-				<h1>Poen RHMS</h1>
+				<h1>RHMS</h1>
 				<span style=" font: italic bold 0.3em/1em Georgia, serif;"><p><center>(Remanufacturing History Management System) Ver.<font color="skyblue"> Code sky 0.07</font></center></p></span>
 				<span style=" font: italic bold 0.3em/1em Georgia, serif;"><p><center><font id='auto_backup_db_status' color="gray"></font></center></p></span>
 				<span style=" font: italic bold 0.6em/1em Georgia, serif; color: green;"><p style="float: right;" id=login_info></p></span>
 			</div>
 			</br>
-			<div class="buttons">
-				<button class="round-btn" id='login_btn' onclick="pre_관리번호 = ''; loadPage('base/login.html'); change_label();">로그인</button>
-				<button class="round-btn" onclick="pre_관리번호 = ''; loadPage('base/bsa_info.html'); flag_재제조현황 = true;">재제조 DATA</button>
-				<button class="round-btn" id='item_detail_btn' onclick="pre_관리번호 = ''; loadPage('base/item-details.html'); flag_상세입력 = true;">품목상세 입력</button>
-				<!--<button class="round-btn" onclick="pre_관리번호 = ''; loadPage('base/type-status.html'); flag_생산현황 = true;">품번 현황</button>-->
-				<button class="round-btn" onclick="pre_관리번호 = ''; loadPage('base/dashboard.html'); flag_대시보드 = true;">대시 보드</button>
-				<button class="round-btn" onclick="pre_관리번호 = ''; loadPage('base/재충전정보.html'); flag_재충전정보 = true;">재충전정보</button>
-				<button class="round-btn" onclick="pre_관리번호 = ''; loadPage('base/camera.html'); flag_camera = true;">사진 촬영</button>
-				<button class="round-btn" onclick="pre_관리번호 = ''; loadPage('base/BSA_수량_현황.html'); flag_BSA_수량_현황 = true;">BSA 대기수량</button>
-				<button class="round-btn" onclick="pre_관리번호 = ''; loadPage('base/공정제외.html'); flag_BSA_제외분류 = true;">BSA 제외분류</button>
-				<button class="round-btn" onclick="pre_관리번호 = ''; loadPage('base/ETC.html');">ETC</button>
-				<div id='구장재고_btn'>
-					<button class="round-btn" onclick="pre_관리번호 = ''; loadPage('base/구장재고.html'); flag_구장재고 = true;">구장재고 입력</button>
-					<button class="round-btn" onclick="pre_관리번호 = ''; loadPage('base/구장재고조회.html'); flag_구장재고조회 = true;">구장재고 조회</button>
-				</div>
-				<div id='부품재고_btn'>
-					<button class="round-btn" onclick="pre_관리번호 = ''; loadPage('base/부품재고.html'); flag_부품재고 = true;">부품재고</button>
-					<button class="round-btn" onclick="pre_관리번호 = ''; loadPage('base/수량집계.html'); flag_수량집계 = true;">수량집계</button>
-				</div>
-				<button class="round-btn" onclick="pre_관리번호 = ''; times_show();">기간별 현황</button>
-				<div id='admin_btn'>
-					<button class="round-btn" onclick="pre_관리번호 = ''; loadPage('base/admin.html'); flag_관리자 = true; ">관리자</button>
-				</div>
-				<div id='times'>
-					<button class="round-btn" onclick="loadPage('base/year-status.html' ); flag_년간현황 = true;">년간 현황</button>
-					<button class="round-btn" onclick="loadPage('base/month-status.html'); flag_월간현황 = true;">월간 현황</button>
-					<button class="round-btn" onclick="loadPage('base/week-status.html'  ); flag_주간현황 = true;">주간 현황</button>
-				</div>
+			<div id="menu">
+				<ul>
+					<li><a href="#"><button class="menu-btn" id='login_btn' onclick="pre_관리번호 = ''; loadPage('base/login.html'); change_label();">로그인</button></a>
+					</li>
+					<li><a href="#">조회</buttona></a>
+						<ul>
+							<li><button class="menu-btn" onclick="pre_관리번호 = ''; loadPage('base/bsa_info.html'); flag_재제조현황 = true;">재제조 DATA</button></li>
+							<li><a href="#"><button class="menu-btn" onclick="pre_관리번호 = ''; loadPage('base/dashboard.html'); flag_대시보드 = true;">대시보드</button></a></li>
+							<li><a href="#"><button class="menu-btn" onclick="pre_관리번호 = ''; loadPage('base/BSA_수량_현황.html'); flag_BSA_수량_현황 = true;">BSA 대기수량</button></a></li>
+							<li><a href="#"><button class="menu-btn" onclick="pre_관리번호 = ''; loadPage('base/공정제외.html'); flag_BSA_제외분류 = true;">BSA 제외분류</button></a></li>
+							<li><a href="#"><button class="menu-btn" onclick="pre_관리번호 = ''; loadPage('base/재충전정보.html'); flag_재충전정보 = true;">재충전정보</button></a></li>
+							<li><a href="#"><button class="menu-btn" onclick="pre_관리번호 = ''; loadPage('base/구장재고조회.html'); flag_구장재고조회 = true;">창고재고 조회</button></a></li>
+						</ul>
+					</li>
+					<li><a href="#">DATA 입력</a>
+						<ul>
+							<li><a href="#"><button class="menu-btn" id='item_detail_btn' onclick="pre_관리번호 = ''; loadPage('base/item-details.html'); flag_상세입력 = true;">BSA 정보 상세 입력</button></a></li>
+							<li><a href="#"><button class="menu-btn" onclick="pre_관리번호 = ''; loadPage('base/camera.html'); flag_camera = true;">사진 입력</button></a></li>
+							<li><a href="#"><button class="menu-btn" onclick="pre_관리번호 = ''; loadPage('base/구장재고.html'); flag_구장재고 = true;">창고재고 입력</button></a></li>
+						</ul>
+					</li>
+					<li id='부품재고_btn'><a href="#"><button class="menu-btn" onclick="pre_관리번호 = ''; loadPage('base/부품재고.html'); flag_부품재고 = true;">부품재고</button></a>
+					</li>
+					<li><a href="#"><button class="menu-btn" onclick="pre_관리번호 = ''; loadPage('base/수량집계.html'); flag_수량집계 = true;">수량집계</button></a>
+					</li>
+					<li><a href="#">현황 조회</a>
+						<ul>
+							<li><a href="#"><button class="menu-btn" onclick="loadPage('base/year-status.html' ); flag_년간현황 = true;">년간 현황</button></a></li>
+							<li><a href="#"><button class="menu-btn" onclick="loadPage('base/month-status.html'); flag_월간현황 = true;">월간 현황</button></a></li>
+							<li><a href="#"><button class="menu-btn" onclick="loadPage('base/week-status.html'  ); flag_주간현황 = true;">주간 현황</button></a></li>
+						</ul>
+					</li>
+					<li id='admin_btn'><a href="#"><button class="menu-btn" onclick="pre_관리번호 = ''; loadPage('base/admin.html'); flag_관리자 = true; ">관리자</button></a>
+					</li>
+				</ul>
 			</div>
 			<div id="content">
 			</div>

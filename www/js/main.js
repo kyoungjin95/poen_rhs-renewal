@@ -28,10 +28,6 @@ if(worker == null) {
 
 var flag_show = false;
 
-;
-
-times_show();
-
 console.log('worker:', worker);
 if(worker == '' || worker == null) {
 	loadPage('base/login.html');
@@ -157,14 +153,4 @@ function start_repeat_BSA_수량_현황() {
 
 function 이전페이지() {
 	var btn = document.getElementById('item_detail_btn').click();
-}
-
-function times_show() {
-	var btns = document.getElementById('times');
-	if(flag_show == false) {
-		btns.style.display = "none";
-	} else {
-		btns.style.display = "block";
-	}
-	flag_show = !flag_show;
 }
