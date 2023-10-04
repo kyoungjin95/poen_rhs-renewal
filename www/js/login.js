@@ -97,7 +97,7 @@ async function change_label() {
 	} else {
 		_label.innerHTML = 'Login';
 		_login_btn.innerHTML = '로그아웃';
-		_login_info.innerHTML = worker + ' / 로그인 中  ';
+		_login_info.innerHTML = worker;
 	}
 
 	count(계정, { id: 'admin' });

@@ -45,7 +45,7 @@ if(worker == '' || worker == null) {
 	const _login_btn = document.getElementById('login_btn');
 	const _login_info = document.getElementById('login_info');
 
-	_login_info.innerHTML = worker + ' / 로그인 中  ';
+	_login_info.innerHTML = worker;
 	_login_btn.innerHTML = '로그아웃';
 
 	setTimeout(function() {
