@@ -632,7 +632,7 @@ async function 재제조현황_시작() {
 	while(document.getElementById('폐기_pic4') == undefined) {
 		await sleep(DELAY);
 	}
-	await sleep(10);
+	//await sleep(10);
 
 	//Update filters on value change
 	document.getElementById("filter-field").addEventListener("change", updateFilter);
