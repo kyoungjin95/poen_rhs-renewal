@@ -1383,14 +1383,17 @@ socket.on('count_result', async function(count, rcv_check) {
 	//console.log('count: ', count);
 	if(rcv_check != check) return;
 	doc_count = count;
+	await sleep(1);
+
 	flag_arrivedMSG = true;
 });
 
-socket.on('find_result', function(result, rcv_check) {
+socket.on('find_result', async function(result, rcv_check) {
 	//console.log('finded result array: ', result);
 	//console.log('recv count:', rcv_check, 'check:', check);
 	if(rcv_check != check) return;
 	find_array = result;
+	await sleep(1);
 	flag_arrivedMSG = true;
 });
 

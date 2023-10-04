@@ -5,17 +5,33 @@ var _set_level;
 var _csv;
 var _신품정보_csv;
 
-function 관리자_시작() {
+async function 관리자_시작() {
 	flag_관리자 = false;
 	_id = document.getElementById('_id');
 	_passwd = document.getElementById('_passwd');
 	_passwd2 = document.getElementById('_passwd2');
 	_set_level = document.getElementById('_level');
-	_csv = document.getElementById('_csv');
-	_신품정보_csv = document.getElementById('_신품정보_csv');
-	func_csv();
 
-	;
+	count(계정, { id : {$exists : true }});
+	await delay();
+
+	if(doc_count > 0) {
+		find_계정(계정, { id : { $exists : true }})
+		await delay();
+
+		var table = new Tabulator("#grid_user_info", {
+			layout: "resizableColumnFit",
+			data: find_array,
+			height: '700px',
+
+			columns:[
+				{title:"ID", field:"id", sorter:"string", width:'180'},
+				{title:"LEVEL", field:"level", sorter:"string", width:'180'},
+			],
+		});
+	}
+	//_csv = document.getElementById('_csv');
+	//func_csv();
 }
 
 async function add_user() {
@@ -51,6 +67,8 @@ async function add_user() {
 	if(insert_count > 0) {
 		alert('저장 되었습니다');
 	}
+
+	관리자_시작();
 }
 
 async function delete_user() {
@@ -62,6 +80,8 @@ async function delete_user() {
 	if(delete_count > 0) {
 		alert('DELETE COMPLETE');
 	}
+
+	관리자_시작();
 }
 
 function getType(target) {
