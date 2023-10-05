@@ -1,4 +1,4 @@
-const DELAY = 1; //100 -> 1
+const DELAY = 100; 
 const 계정 = '계정';
 const BSA재제조 = 'BSA재제조';
 const 입고 = '입고';
@@ -1441,7 +1441,7 @@ async function distinct(col, query, field_name) {
 	flag_arrivedMSG = false;
 	while(flag_arrivedMSG == false) {
 		socket.emit('distinct', worker, col, query, field_name);
-		await sleep(DELAY * 2000);
+		await sleep(DELAY * 20);
 	}
 }
 
@@ -1452,7 +1452,7 @@ async function count(col, query) {
 		check++;
 		if(check > 10000) check = 0;
 		socket.emit('count', level, col, query, check);
-		await sleep(DELAY * 2000);
+		await sleep(DELAY * 20);
 	}
 }
 

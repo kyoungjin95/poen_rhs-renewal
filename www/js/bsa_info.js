@@ -336,7 +336,7 @@ async function 관리번호_변경() {
 		await delay();
 	}
 	console.log('관리번호 변경 완료');
-	재제조현황_조회(false);
+	재제조현황_조회();
 	alert('관리번호 변경이 완료되었습니다');
 }
 
@@ -596,7 +596,7 @@ async function copy() {
 		await delay();
 	}
 	console.log('Copy 완료');
-	재제조현황_조회(false);
+	재제조현황_조회();
 	alert('복사가 완료되었습니다');
 }
 
@@ -632,7 +632,7 @@ async function 재제조현황_시작() {
 	while(document.getElementById('폐기_pic4') == undefined) {
 		await sleep(DELAY);
 	}
-	//await sleep(10);
+	await sleep(10);
 
 	//Update filters on value change
 	document.getElementById("filter-field").addEventListener("change", updateFilter);
@@ -665,16 +665,11 @@ async function 재제조현황_시작() {
 	toggle12();
 
 	관리번호 = '';
-	//if(_management_id.value == '') {
-	//	flag_id_search = 0;
-	//} else {
-	//	flag_id_search = 1;
-	//}
 
-	재제조현황_조회(flag_id_search);
+	재제조현황_조회();
 }
 
-async function 재제조현황_조회(flag_id_search = false) {
+async function 재제조현황_조회() {
 	if(worker == '') return;
 	find_array = undefined;
 	if(level == 'kia_일반') {
@@ -696,73 +691,25 @@ async function 재제조현황_조회(flag_id_search = false) {
 
 	console.log('doc_count: ', doc_count);
 	if(doc_count >= 1) {
-		if(flag_id_search == 0) {
-			var now = new Date();
-			//var 기준일 = new Date(now.setMonth(now.getYear() - 2));
-			
-			if(level == 'kia_일반') {
-				find_BSA재제조(BSA재제조, { 차종 : { $in : ['DE', 'DE_EV', 'DEPBV', 'DEPBV-EV', 'CV', 'CV_EV', 'MV', 'MV_EV', 'PU', 'PU_EV', 'SG2', 'SG2-EV', 'TAM', 'TAM-EV', 'PS', 'PS_EV', 'SK3']}, 구분 : '일반'});
-				await delay();
-			} else if(level == 'hyundai_일반') {
-				find_BSA재제조(BSA재제조, { 차종 : { $in : ['OS', 'OS_EV', 'NE', 'NE_EV', 'HR', 'HR_EV', 'LK', 'LK_EV', 'LM', 'LM_EV', 'LKFC', 'LKFC-EV', 'CS', 'CS-EV', 'CS_EV', 'SX2', 'SX2-EV', 'AE', 'AE_EV', 'CE', 'CE_EV', 'ME', 'ME_EV', 'FE', 'FE_EV', 'RG3', 'RG3-EV', 'JW', 'JW_EV', 'JK', 'JK_EV', 'JX', 'JX_EV']}, 구분 : '일반'});
-				await delay();
-			} else if(level == 'kia_보증') {
-				find_BSA재제조(BSA재제조, { 차종 : { $in : ['DE', 'DE_EV', 'DEPBV', 'DEPBV-EV', 'CV', 'CV_EV', 'MV', 'MV_EV', 'PU', 'PU_EV', 'SG2', 'SG2-EV', 'TAM', 'TAM-EV', 'PS', 'PS_EV', 'SK3']}, 구분 : '보증'});
-				await delay();
-			} else if(level == 'hyundai_보증') {
-				find_BSA재제조(BSA재제조, { 차종 : { $in : ['OS', 'OS_EV', 'NE', 'NE_EV', 'HR', 'HR_EV', 'LK', 'LK_EV', 'LM', 'LM_EV', 'LKFC', 'LKFC-EV', 'CS', 'CS-EV', 'CS_EV', 'SX2', 'SX2-EV', 'AE', 'AE_EV', 'CE', 'CE_EV', 'ME', 'ME_EV', 'FE', 'FE_EV', 'RG3', 'RG3-EV', 'JW', 'JW_EV', 'JK', 'JK_EV', 'JX', 'JX_EV']}, 구분 : '보증'});
-				await delay();
-			} else {
-				find_BSA재제조(BSA재제조, { 관리번호 : { $exists: true } });
-				await delay();
-			}
-			//find_BSA재제조(BSA재제조, { 관리번호: { $exists : true }});
-			//find_BSA재제조(BSA재제조, { 입고 : { $gte : 기준일 }});
+		if(level == 'kia_일반') {
+			find_BSA재제조(BSA재제조, { 차종 : { $in : ['DE', 'DE_EV', 'DEPBV', 'DEPBV-EV', 'CV', 'CV_EV', 'MV', 'MV_EV', 'PU', 'PU_EV', 'SG2', 'SG2-EV', 'TAM', 'TAM-EV', 'PS', 'PS_EV', 'SK3']}, 구분 : '일반'});
 			await delay();
-		} else if(flag_id_search == 1) {
-			if(level == 'kia_일반') {
-				find_BSA재제조(BSA재제조, { 차종 : { $in : ['DE', 'DE_EV', 'DEPBV', 'DEPBV-EV', 'CV', 'CV_EV', 'MV', 'MV_EV', 'PU', 'PU_EV', 'SG2', 'SG2-EV', 'TAM', 'TAM-EV', 'PS', 'PS_EV', 'SK3']}, 관리번호 : _management_id.value, 구분 : '일반' });
-				await delay();
-			} else if(level == 'hyundai_일반') {
-				find_BSA재제조(BSA재제조, { 차종 : { $in : ['OS', 'OS_EV', 'NE', 'NE_EV', 'HR', 'HR_EV', 'LK', 'LK_EV', 'LM', 'LM_EV', 'LKFC', 'LKFC-EV', 'CS', 'CS-EV', 'CS_EV', 'SX2', 'SX2-EV', 'AE', 'AE_EV', 'CE', 'CE_EV', 'ME', 'ME_EV', 'FE', 'FE_EV', 'RG3', 'RG3-EV', 'JW', 'JW_EV', 'JK', 'JK_EV', 'JX', 'JX_EV']}, 관리번호 : _management_id.value, 구분 : '일반' });
-				await delay();
-			} else if(level == 'kia_보증') {
-				find_BSA재제조(BSA재제조, { 차종 : { $in : ['DE', 'DE_EV', 'DEPBV', 'DEPBV-EV', 'CV', 'CV_EV', 'MV', 'MV_EV', 'PU', 'PU_EV', 'SG2', 'SG2-EV', 'TAM', 'TAM-EV', 'PS', 'PS_EV', 'SK3']}, 관리번호 : _management_id.value, 구분 : '보증'});
-				await delay();
-			} else if(level == 'hyundai_보증') {
-				find_BSA재제조(BSA재제조, { 차종 : { $in : ['OS', 'OS_EV', 'NE', 'NE_EV', 'HR', 'HR_EV', 'LK', 'LK_EV', 'LM', 'LM_EV', 'LKFC', 'LKFC-EV', 'CS', 'CS-EV', 'CS_EV', 'SX2', 'SX2-EV', 'AE', 'AE_EV', 'CE', 'CE_EV', 'ME', 'ME_EV', 'FE', 'FE_EV', 'RG3', 'RG3-EV', 'JW', 'JW_EV', 'JK', 'JK_EV', 'JX', 'JX_EV']}, 관리번호 : _management_id.value, 구분 : '보증'});
-				await delay();
-			} else {
-				find(BSA재제조, _management_id.value);
-				//find_BSA재제조(BSA재제조, { 관리번호 : { 관리번호 : { $exists: true } });
-				await delay();
-			}
+		} else if(level == 'hyundai_일반') {
+			find_BSA재제조(BSA재제조, { 차종 : { $in : ['OS', 'OS_EV', 'NE', 'NE_EV', 'HR', 'HR_EV', 'LK', 'LK_EV', 'LM', 'LM_EV', 'LKFC', 'LKFC-EV', 'CS', 'CS-EV', 'CS_EV', 'SX2', 'SX2-EV', 'AE', 'AE_EV', 'CE', 'CE_EV', 'ME', 'ME_EV', 'FE', 'FE_EV', 'RG3', 'RG3-EV', 'JW', 'JW_EV', 'JK', 'JK_EV', 'JX', 'JX_EV']}, 구분 : '일반'});
 			await delay();
-		} else if(flag_id_search == 2) {
-			var _재제조번호_id = _재제조번호.value;
-			if(level == 'kia_일반') {
-				find_BSA재제조(BSA재제조, { 차종 : { $in : ['DE', 'DE_EV', 'DEPBV', 'DEPBV-EV', 'CV', 'CV_EV', 'MV', 'MV_EV', 'PU', 'PU_EV', 'SG2', 'SG2-EV', 'TAM', 'TAM-EV', 'PS', 'PS_EV', 'SK3']}, 재제조번호 : _재제조번호_id.value, 구분 : '일반' });
-				await delay();
-			} else if(level == 'hyundai_일반') {
-				find_BSA재제조(BSA재제조, { 차종 : { $in : ['OS', 'OS_EV', 'NE', 'NE_EV', 'HR', 'HR_EV', 'LK', 'LK_EV', 'LM', 'LM_EV', 'LKFC', 'LKFC-EV', 'CS', 'CS-EV', 'CS_EV', 'SX2', 'SX2-EV', 'AE', 'AE_EV', 'CE', 'CE_EV', 'ME', 'ME_EV', 'FE', 'FE_EV', 'RG3', 'RG3-EV', 'JW', 'JW_EV', 'JK', 'JK_EV', 'JX', 'JX_EV']}, 재제조번호 : _재제조번호_id.value, 구분 : '일반' });
-				await delay();
-			} else if(level == 'kia_보증') {
-				find_BSA재제조(BSA재제조, { 차종 : { $in : ['DE', 'DE_EV', 'DEPBV', 'DEPBV-EV', 'CV', 'CV_EV', 'MV', 'MV_EV', 'PU', 'PU_EV', 'SG2', 'SG2-EV', 'TAM', 'TAM-EV', 'PS', 'PS_EV', 'SK3']}, 재제조번호 : _재제조번호_id.value, 구분 : '보증'});
-				await delay();
-			} else if(level == 'hyundai_보증') {
-				find_BSA재제조(BSA재제조, { 차종 : { $in : ['OS', 'OS_EV', 'NE', 'NE_EV', 'HR', 'HR_EV', 'LK', 'LK_EV', 'LM', 'LM_EV', 'LKFC', 'LKFC-EV', 'CS', 'CS-EV', 'CS_EV', 'SX2', 'SX2-EV', 'AE', 'AE_EV', 'CE', 'CE_EV', 'ME', 'ME_EV', 'FE', 'FE_EV', 'RG3', 'RG3-EV', 'JW', 'JW_EV', 'JK', 'JK_EV', 'JX', 'JX_EV']}, 재제조번호 : _재제조번호_id.value, 구분 : '보증'});
-				await delay();
-			} else {
-				find_BSA재제조(BSA재제조, { 재제조번호: _재제조번호_id });
-				//find_BSA재제조(BSA재제조, { 관리번호 : { 관리번호 : { $exists: true } });
-				await delay();
-			}
+		} else if(level == 'kia_보증') {
+			find_BSA재제조(BSA재제조, { 차종 : { $in : ['DE', 'DE_EV', 'DEPBV', 'DEPBV-EV', 'CV', 'CV_EV', 'MV', 'MV_EV', 'PU', 'PU_EV', 'SG2', 'SG2-EV', 'TAM', 'TAM-EV', 'PS', 'PS_EV', 'SK3']}, 구분 : '보증'});
 			await delay();
-		} 
+		} else if(level == 'hyundai_보증') {
+			find_BSA재제조(BSA재제조, { 차종 : { $in : ['OS', 'OS_EV', 'NE', 'NE_EV', 'HR', 'HR_EV', 'LK', 'LK_EV', 'LM', 'LM_EV', 'LKFC', 'LKFC-EV', 'CS', 'CS-EV', 'CS_EV', 'SX2', 'SX2-EV', 'AE', 'AE_EV', 'CE', 'CE_EV', 'ME', 'ME_EV', 'FE', 'FE_EV', 'RG3', 'RG3-EV', 'JW', 'JW_EV', 'JK', 'JK_EV', 'JX', 'JX_EV']}, 구분 : '보증'});
+			await delay();
+		} else {
+			find_BSA재제조(BSA재제조, { 관리번호 : { $exists: true } });
+			await delay();
+		}
+	} 
 
-		tabledata_BSA = find_array;
-	}
-
+	tabledata_BSA = find_array;
 	table = new Tabulator("#grid_BSA", {
 		layout: "resizableColumnFit",
                 data:tabledata_BSA,
@@ -1053,10 +1000,20 @@ async function delete_bsa() {
 	deleteOne(폐기_pic, row_one_id);
 	await delay();
 
+	var fieldEl = document.getElementById("filter-field");
+	var typeEl = document.getElementById("filter-type");
+	var valueEl = document.getElementById("filter-value");
+	fieldEl.value = "";
+	typeEl.value = "=";
+	valueEl.value = "";
+
+	table.clearFilter();
+
 	if(delete_count > 0) {
+
 		alert('삭제 되었습니다.');
 	}
-	재제조현황_조회(false);
+	재제조현황_조회();
 }
 
 async function grid_입고(m_id = '') {

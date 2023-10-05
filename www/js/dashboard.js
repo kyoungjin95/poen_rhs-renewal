@@ -61,37 +61,37 @@ async function 조회_list(today_begin, today_end) {
 	console.log(today_begin, today_end);
 
 	await dash_입고(today_begin, today_end);
-	await sleep(1);
+	await sleep(DELAY);
 	await dash_입고_당일(today_begin, today_end);
-	await sleep(1);
+	await sleep(DELAY);
 	await dash_세척(today_begin, today_end);
-	await sleep(1);
+	await sleep(DELAY);
 	await dash_세척_당일(today_begin, today_end);
-	await sleep(1);
+	await sleep(DELAY);
 	await dash_기초검사(today_begin, today_end);
-	await sleep(1);
+	await sleep(DELAY);
 	await dash_기초검사_당일(today_begin, today_end);
-	await sleep(1);
+	await sleep(DELAY);
 	await dash_분해조립(today_begin, today_end);
-	await sleep(1);
+	await sleep(DELAY);
 	await dash_분해조립_당일(today_begin, today_end);
-	await sleep(1);
+	await sleep(DELAY);
 	await dash_성능검사(today_begin, today_end);
-	await sleep(1);
+	await sleep(DELAY);
 	await dash_성능검사_당일(today_begin, today_end);
-	await sleep(1);
+	await sleep(DELAY);
 	await dash_EOL(today_begin, today_end);
-	await sleep(1);
+	await sleep(DELAY);
 	await dash_EOL_당일(today_begin, today_end);
-	await sleep(1);
+	await sleep(DELAY);
 	await dash_출하검사(today_begin, today_end);
-	await sleep(1);
+	await sleep(DELAY);
 	await dash_출하검사_당일(today_begin, today_end);
-	await sleep(1);
+	await sleep(DELAY);
 	await dash_출하(today_begin, today_end);
-	await sleep(1);
+	await sleep(DELAY);
 	await dash_출하_당일(today_begin, today_end);
-	await sleep(1);
+	await sleep(DELAY);
 }
 
 async function dash_입고(today_begin, today_end) {
@@ -108,10 +108,11 @@ async function dash_입고(today_begin, today_end) {
 		count(BSA재제조, { 차종 : { $in : ['OS', 'OS_EV', 'NE', 'NE_EV', 'HR', 'HR_EV', 'LK', 'LK_EV', 'LM', 'LM_EV', 'LKFC', 'LKFC-EV', 'CS', 'CS-EV', 'CS_EV', 'SX2', 'SX2-EV', 'AE', 'AE_EV', 'CE', 'CE_EV', 'ME', 'ME_EV', 'FE', 'FE_EV', 'RG3', 'RG3-EV', 'JW', 'JW_EV', 'JK', 'JK_EV', 'JX', 'JX_EV']}, 입고 : { $exists : true, $ne : 'none', $ne : ''}, 구분 : '보증', 완전분해 : '', 폐기 : ''});
 		await delay();
 	} else {
-		count(BSA재제조, { 입고 : { $exists : true, $ne : 'none', $ne : ''}, 구분 : { $nin : ['일반기타', '보증기타']}, 완전분해 : '', 폐기 : ''});
+		//count(BSA재제조, { 입고 : { $exists : true, $ne : 'none', $ne : ''}, 구분 : { $nin : ['일반기타', '보증기타']}, 완전분해 : '', 폐기 : ''});
+		count(BSA재제조, { 입고 : { $exists : true, $ne : 'none', $ne : ''}});
 		await delay();
 	}
-	await sleep(1);
+	await sleep(DELAY);
 	console.log('입고 count:', doc_count);
 	var 입고누적 = doc_count;
 
@@ -131,7 +132,8 @@ async function dash_입고_당일(today_begin, today_end) {
 		count(BSA재제조, { 차종 : { $in : ['OS', 'OS_EV', 'NE', 'NE_EV', 'HR', 'HR_EV', 'LK', 'LK_EV', 'LM', 'LM_EV', 'LKFC', 'LKFC-EV', 'CS', 'CS-EV', 'CS_EV', 'SX2', 'SX2-EV', 'AE', 'AE_EV', 'CE', 'CE_EV', 'ME', 'ME_EV', 'FE', 'FE_EV', 'RG3', 'RG3-EV', 'JW', 'JW_EV', 'JK', 'JK_EV', 'JX', 'JX_EV']}, 입고 : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }, 구분 : '보증', 완전분해 : '', 폐기 : ''});
 		await delay();
 	} else {
-		count(BSA재제조, { 입고 : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }, 구분 : { $nin : ['일반기타', '보증기타']}, 완전분해 : '', 폐기 : ''});
+		//count(BSA재제조, { 입고 : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }, 구분 : { $nin : ['일반기타', '보증기타']}, 완전분해 : '', 폐기 : ''});
+		count(BSA재제조, { 입고 : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }});
 		await delay();
 	}
 	console.log('입고 당일 count:', doc_count);
@@ -154,7 +156,8 @@ async function dash_입고_당일_get(today_begin, today_end) {
 		find_BSA재제조(BSA재제조, { 차종 : { $in : ['OS', 'OS_EV', 'NE', 'NE_EV', 'HR', 'HR_EV', 'LK', 'LK_EV', 'LM', 'LM_EV', 'LKFC', 'LKFC-EV', 'CS', 'CS-EV', 'CS_EV', 'SX2', 'SX2-EV', 'AE', 'AE_EV', 'CE', 'CE_EV', 'ME', 'ME_EV', 'FE', 'FE_EV', 'RG3', 'RG3-EV', 'JW', 'JW_EV', 'JK', 'JK_EV', 'JX', 'JX_EV']}, 입고 : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }, 구분 : '보증', 완전분해 : '', 폐기 : ''});
 		await delay();
 	} else {
-		find_BSA재제조(BSA재제조, { 입고 : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }, 구분 : { $nin : ['일반기타', '보증기타']}, 완전분해 : '', 폐기 : ''});
+		//find_BSA재제조(BSA재제조, { 입고 : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }, 구분 : { $nin : ['일반기타', '보증기타']}, 완전분해 : '', 폐기 : ''});
+		find_BSA재제조(BSA재제조, { 입고 : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }});
 		await delay();
 	}
 
@@ -175,10 +178,11 @@ async function dash_세척(today_begin, today_end) {
 		count(BSA재제조, { 차종 : { $in : ['OS', 'OS_EV', 'NE', 'NE_EV', 'HR', 'HR_EV', 'LK', 'LK_EV', 'LM', 'LM_EV', 'LKFC', 'LKFC-EV', 'CS', 'CS-EV', 'CS_EV', 'SX2', 'SX2-EV', 'AE', 'AE_EV', 'CE', 'CE_EV', 'ME', 'ME_EV', 'FE', 'FE_EV', 'RG3', 'RG3-EV', 'JW', 'JW_EV', 'JK', 'JK_EV', 'JX', 'JX_EV']}, 세척 : { $exists : true, $ne : 'none', $ne : ''}, 구분 : '보증', 완전분해 : '', 폐기 : ''});
 		await delay();
 	} else {
-		count(BSA재제조, { 세척 : { $exists : true, $ne : 'none', $ne : ''}, 구분 : { $nin : ['일반기타', '보증기타']}, 완전분해 : '', 폐기 : ''});
+		//count(BSA재제조, { 세척 : { $exists : true, $ne : 'none', $ne : ''}, 구분 : { $nin : ['일반기타', '보증기타']}, 완전분해 : '', 폐기 : ''});
+		count(BSA재제조, { 세척 : { $exists : true, $ne : 'none', $ne : ''}});
 		await delay();
 	}
-	await sleep(1);
+	await sleep(DELAY);
 	console.log('세척 count:', doc_count);
 	var 세척누적 = doc_count;
 
@@ -200,7 +204,8 @@ async function dash_세척_당일(today_begin, today_end) {
 		count(BSA재제조, { 차종 : { $in : ['OS', 'OS_EV', 'NE', 'NE_EV', 'HR', 'HR_EV', 'LK', 'LK_EV', 'LM', 'LM_EV', 'LKFC', 'LKFC-EV', 'CS', 'CS-EV', 'CS_EV', 'SX2', 'SX2-EV', 'AE', 'AE_EV', 'CE', 'CE_EV', 'ME', 'ME_EV', 'FE', 'FE_EV', 'RG3', 'RG3-EV', 'JW', 'JW_EV', 'JK', 'JK_EV', 'JX', 'JX_EV']}, 세척 : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }, 구분 : '보증', 완전분해 : '', 폐기 : ''});
 		await delay();
 	} else {
-		count(BSA재제조, { 세척 : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }, 구분 : { $nin : ['일반기타', '보증기타']}, 완전분해 : '', 폐기 : ''});
+		//count(BSA재제조, { 세척 : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }, 구분 : { $nin : ['일반기타', '보증기타']}, 완전분해 : '', 폐기 : ''});
+		count(BSA재제조, { 세척 : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }});
 		await delay();
 	}
 	console.log('세척 당일 count:', doc_count);
@@ -223,7 +228,8 @@ async function dash_세척_당일_get(today_begin, today_end) {
 		find_BSA재제조(BSA재제조, { 차종 : { $in : ['OS', 'OS_EV', 'NE', 'NE_EV', 'HR', 'HR_EV', 'LK', 'LK_EV', 'LM', 'LM_EV', 'LKFC', 'LKFC-EV', 'CS', 'CS-EV', 'CS_EV', 'SX2', 'SX2-EV', 'AE', 'AE_EV', 'CE', 'CE_EV', 'ME', 'ME_EV', 'FE', 'FE_EV', 'RG3', 'RG3-EV', 'JW', 'JW_EV', 'JK', 'JK_EV', 'JX', 'JX_EV']}, 세척 : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }, 구분 : '보증', 완전분해 : '', 폐기 : ''});
 		await delay();
 	} else {
-		find_BSA재제조(BSA재제조, { 세척 : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }, 구분 : { $nin : ['일반기타', '보증기타']}, 완전분해 : '', 폐기 : ''});
+		//find_BSA재제조(BSA재제조, { 세척 : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }, 구분 : { $nin : ['일반기타', '보증기타']}, 완전분해 : '', 폐기 : ''});
+		find_BSA재제조(BSA재제조, { 세척 : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }});
 		await delay();
 	}
 
@@ -246,7 +252,8 @@ async function dash_기초검사(today_begin, today_end) {
 		count(BSA재제조, { 차종 : { $in : ['OS', 'OS_EV', 'NE', 'NE_EV', 'HR', 'HR_EV', 'LK', 'LK_EV', 'LM', 'LM_EV', 'LKFC', 'LKFC-EV', 'CS', 'CS-EV', 'CS_EV', 'SX2', 'SX2-EV', 'AE', 'AE_EV', 'CE', 'CE_EV', 'ME', 'ME_EV', 'FE', 'FE_EV', 'RG3', 'RG3-EV', 'JW', 'JW_EV', 'JK', 'JK_EV', 'JX', 'JX_EV']}, 기초검사 : { $exists : true, $ne : 'none', $ne : ''}, 구분 : '보증', 완전분해 : '', 폐기 : ''});
 		await delay();
 	} else {
-		count(BSA재제조, { 기초검사 : { $exists : true, $ne : 'none', $ne : ''}, 구분 : { $nin : ['일반기타', '보증기타']}, 완전분해 : '', 폐기 : ''});
+		//count(BSA재제조, { 기초검사 : { $exists : true, $ne : 'none', $ne : ''}, 구분 : { $nin : ['일반기타', '보증기타']}, 완전분해 : '', 폐기 : ''});
+		count(BSA재제조, { 기초검사 : { $exists : true, $ne : 'none', $ne : ''}});
 		await delay();
 	}
 	console.log('기초검사누적 count:', doc_count);
@@ -269,7 +276,8 @@ async function dash_기초검사_당일(today_begin, today_end) {
 		count(BSA재제조, { 차종 : { $in : ['OS', 'OS_EV', 'NE', 'NE_EV', 'HR', 'HR_EV', 'LK', 'LK_EV', 'LM', 'LM_EV', 'LKFC', 'LKFC-EV', 'CS', 'CS-EV', 'CS_EV', 'SX2', 'SX2-EV', 'AE', 'AE_EV', 'CE', 'CE_EV', 'ME', 'ME_EV', 'FE', 'FE_EV', 'RG3', 'RG3-EV', 'JW', 'JW_EV', 'JK', 'JK_EV', 'JX', 'JX_EV']}, 기초검사 : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }, 구분 : '보증', 완전분해 : '', 폐기 : ''});
 		await delay();
 	} else {
-		count(BSA재제조, { 기초검사 : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }, 구분 : { $nin : ['일반기타', '보증기타']}, 완전분해 : '', 폐기 : ''});
+		//count(BSA재제조, { 기초검사 : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }, 구분 : { $nin : ['일반기타', '보증기타']}, 완전분해 : '', 폐기 : ''});
+		count(BSA재제조, { 기초검사 : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }});
 		await delay();
 	}
 	console.log('기초검사당일 count:', doc_count);
@@ -293,7 +301,8 @@ async function dash_기초검사_당일_get(today_begin, today_end) {
 		find_BSA재제조(BSA재제조, { 차종 : { $in : ['OS', 'OS_EV', 'NE', 'NE_EV', 'HR', 'HR_EV', 'LK', 'LK_EV', 'LM', 'LM_EV', 'LKFC', 'LKFC-EV', 'CS', 'CS-EV', 'CS_EV', 'SX2', 'SX2-EV', 'AE', 'AE_EV', 'CE', 'CE_EV', 'ME', 'ME_EV', 'FE', 'FE_EV', 'RG3', 'RG3-EV', 'JW', 'JW_EV', 'JK', 'JK_EV', 'JX', 'JX_EV']}, 기초검사 : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }, 구분 : '보증', 완전분해 : '', 폐기 : ''});
 		await delay();
 	} else {
-		find_BSA재제조(BSA재제조, { 기초검사 : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }, 구분 : { $nin : ['일반기타', '보증기타']}, 완전분해 : '', 폐기 : ''});
+		//find_BSA재제조(BSA재제조, { 기초검사 : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }, 구분 : { $nin : ['일반기타', '보증기타']}, 완전분해 : '', 폐기 : ''});
+		find_BSA재제조(BSA재제조, { 기초검사 : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }});
 		await delay();
 	}
 
@@ -316,7 +325,8 @@ async function dash_분해조립(today_begin, today_end) {
 		count(BSA재제조, { 차종 : { $in : ['OS', 'OS_EV', 'NE', 'NE_EV', 'HR', 'HR_EV', 'LK', 'LK_EV', 'LM', 'LM_EV', 'LKFC', 'LKFC-EV', 'CS', 'CS-EV', 'CS_EV', 'SX2', 'SX2-EV', 'AE', 'AE_EV', 'CE', 'CE_EV', 'ME', 'ME_EV', 'FE', 'FE_EV', 'RG3', 'RG3-EV', 'JW', 'JW_EV', 'JK', 'JK_EV', 'JX', 'JX_EV']}, 분해조립 : { $exists : true, $ne : 'none', $ne : ''}, 구분 : '보증', 완전분해 : '', 폐기 : ''});
 		await delay();
 	} else {
-		count(BSA재제조, { 분해조립 : { $exists : true, $ne : 'none', $ne : ''}, 구분 : { $nin : ['일반기타', '보증기타']}, 완전분해 : '', 폐기 : ''});
+		//count(BSA재제조, { 분해조립 : { $exists : true, $ne : 'none', $ne : ''}, 구분 : { $nin : ['일반기타', '보증기타']}, 완전분해 : '', 폐기 : ''});
+		count(BSA재제조, { 분해조립 : { $exists : true, $ne : 'none', $ne : ''}});
 		await delay();
 	}
 	console.log('분해조립누적 count:', doc_count);
@@ -339,7 +349,8 @@ async function dash_분해조립_당일(today_begin, today_end) {
 		count(BSA재제조, { 차종 : { $in : ['OS', 'OS_EV', 'NE', 'NE_EV', 'HR', 'HR_EV', 'LK', 'LK_EV', 'LM', 'LM_EV', 'LKFC', 'LKFC-EV', 'CS', 'CS-EV', 'CS_EV', 'SX2', 'SX2-EV', 'AE', 'AE_EV', 'CE', 'CE_EV', 'ME', 'ME_EV', 'FE', 'FE_EV', 'RG3', 'RG3-EV', 'JW', 'JW_EV', 'JK', 'JK_EV', 'JX', 'JX_EV']}, 분해조립 : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }, 구분 : '보증', 완전분해 : '', 폐기 : ''});
 		await delay();
 	} else {
-		count(BSA재제조, { 분해조립 : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }, 구분 : { $nin : ['일반기타', '보증기타']}, 완전분해 : '', 폐기 : ''});
+		//count(BSA재제조, { 분해조립 : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }, 구분 : { $nin : ['일반기타', '보증기타']}, 완전분해 : '', 폐기 : ''});
+		count(BSA재제조, { 분해조립 : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }});
 		await delay();
 	}
 	console.log('분해조립당일 count:', doc_count);
@@ -363,7 +374,8 @@ async function dash_분해조립_당일_get(today_begin, today_end) {
 		find_BSA재제조(BSA재제조, { 차종 : { $in : ['OS', 'OS_EV', 'NE', 'NE_EV', 'HR', 'HR_EV', 'LK', 'LK_EV', 'LM', 'LM_EV', 'LKFC', 'LKFC-EV', 'CS', 'CS-EV', 'CS_EV', 'SX2', 'SX2-EV', 'AE', 'AE_EV', 'CE', 'CE_EV', 'ME', 'ME_EV', 'FE', 'FE_EV', 'RG3', 'RG3-EV', 'JW', 'JW_EV', 'JK', 'JK_EV', 'JX', 'JX_EV']}, 분해조립 : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }, 구분 : '보증', 완전분해 : '', 폐기 : ''});
 		await delay();
 	} else {
-		find_BSA재제조(BSA재제조, { 분해조립 : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }, 구분 : { $nin : ['일반기타', '보증기타']}, 완전분해 : '', 폐기 : ''});
+		//find_BSA재제조(BSA재제조, { 분해조립 : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }, 구분 : { $nin : ['일반기타', '보증기타']}, 완전분해 : '', 폐기 : ''});
+		find_BSA재제조(BSA재제조, { 분해조립 : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }});
 		await delay();
 	}
 	await delay();
@@ -387,7 +399,8 @@ async function dash_성능검사(today_begin, today_end) {
 		count(BSA재제조, { 차종 : { $in : ['OS', 'OS_EV', 'NE', 'NE_EV', 'HR', 'HR_EV', 'LK', 'LK_EV', 'LM', 'LM_EV', 'LKFC', 'LKFC-EV', 'CS', 'CS-EV', 'CS_EV', 'SX2', 'SX2-EV', 'AE', 'AE_EV', 'CE', 'CE_EV', 'ME', 'ME_EV', 'FE', 'FE_EV', 'RG3', 'RG3-EV', 'JW', 'JW_EV', 'JK', 'JK_EV', 'JX', 'JX_EV']}, 성능검사 : { $exists : true, $ne : 'none', $ne : ''}, 구분 : '일반', 구분 : '보증', 완전분해 : '', 폐기 : ''});
 		await delay();
 	} else {
-		count(BSA재제조, { 성능검사 : { $exists : true, $ne : 'none', $ne : ''}, 구분 : { $nin : ['일반기타', '보증기타']}, 완전분해 : '', 폐기 : ''});
+		//count(BSA재제조, { 성능검사 : { $exists : true, $ne : 'none', $ne : ''}, 구분 : { $nin : ['일반기타', '보증기타']}, 완전분해 : '', 폐기 : ''});
+		count(BSA재제조, { 성능검사 : { $exists : true, $ne : 'none', $ne : ''}});
 		await delay();
 	}
 	console.log('성능검사누적 count:', doc_count);
@@ -410,7 +423,8 @@ async function dash_성능검사_당일(today_begin, today_end) {
 		count(BSA재제조, { 차종 : { $in : ['OS', 'OS_EV', 'NE', 'NE_EV', 'HR', 'HR_EV', 'LK', 'LK_EV', 'LM', 'LM_EV', 'LKFC', 'LKFC-EV', 'CS', 'CS-EV', 'CS_EV', 'SX2', 'SX2-EV', 'AE', 'AE_EV', 'CE', 'CE_EV', 'ME', 'ME_EV', 'FE', 'FE_EV', 'RG3', 'RG3-EV', 'JW', 'JW_EV', 'JK', 'JK_EV', 'JX', 'JX_EV']}, 성능검사 : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }, 구분 : '보증', 완전분해 : '', 폐기 : '' });
 		await delay();
 	} else {
-		count(BSA재제조, { 성능검사 : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }, 구분 : { $nin : ['일반기타', '보증기타']}, 완전분해 : '', 폐기 : '' });
+		//count(BSA재제조, { 성능검사 : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }, 구분 : { $nin : ['일반기타', '보증기타']}, 완전분해 : '', 폐기 : '' });
+		count(BSA재제조, { 성능검사 : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }});
 		await delay();
 	}
 	console.log('성능검사 당일  count:', doc_count);
@@ -435,7 +449,8 @@ async function dash_성능검사_당일_get(today_begin, today_end) {
 		find_BSA재제조(BSA재제조, { 차종 : { $in : ['OS', 'OS_EV', 'NE', 'NE_EV', 'HR', 'HR_EV', 'LK', 'LK_EV', 'LM', 'LM_EV', 'LKFC', 'LKFC-EV', 'CS', 'CS-EV', 'CS_EV', 'SX2', 'SX2-EV', 'AE', 'AE_EV', 'CE', 'CE_EV', 'ME', 'ME_EV', 'FE', 'FE_EV', 'RG3', 'RG3-EV', 'JW', 'JW_EV', 'JK', 'JK_EV', 'JX', 'JX_EV']}, 성능검사 : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }, 구분 : '보증', 완전분해 : '', 폐기 : ''});
 		await delay();
 	} else {
-		find_BSA재제조(BSA재제조, { 성능검사 : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end}, 구분 : { $nin : ['일반기타', '보증기타']}, 완전분해 : '', 폐기 : ''});
+		//find_BSA재제조(BSA재제조, { 성능검사 : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end}, 구분 : { $nin : ['일반기타', '보증기타']}, 완전분해 : '', 폐기 : ''});
+		find_BSA재제조(BSA재제조, { 성능검사 : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end}});
 		await delay();
 	}
 	await delay();
@@ -459,7 +474,8 @@ async function dash_EOL(today_begin, today_end) {
 		count(BSA재제조, { 차종 : { $in : ['OS', 'OS_EV', 'NE', 'NE_EV', 'HR', 'HR_EV', 'LK', 'LK_EV', 'LM', 'LM_EV', 'LKFC', 'LKFC-EV', 'CS', 'CS-EV', 'CS_EV', 'SX2', 'SX2-EV', 'AE', 'AE_EV', 'CE', 'CE_EV', 'ME', 'ME_EV', 'FE', 'FE_EV', 'RG3', 'RG3-EV', 'JW', 'JW_EV', 'JK', 'JK_EV', 'JX', 'JX_EV']}, EOL : { $exists : true, $ne : 'none', $ne : ''}, 구분 : '일반', 구분 : '보증', 완전분해 : '', 폐기 : ''});
 		await delay();
 	} else {
-		count(BSA재제조, { EOL : { $exists : true, $ne : 'none', $ne : ''}, 구분 : { $nin : ['일반기타', '보증기타']}, 완전분해 : '', 폐기 : ''});
+		//count(BSA재제조, { EOL : { $exists : true, $ne : 'none', $ne : ''}, 구분 : { $nin : ['일반기타', '보증기타']}, 완전분해 : '', 폐기 : ''});
+		count(BSA재제조, { EOL : { $exists : true, $ne : 'none', $ne : ''}});
 		await delay();
 	}
 	console.log('EOL 누적 count:', doc_count);
@@ -482,7 +498,8 @@ async function dash_EOL_당일(today_begin, today_end) {
 		count(BSA재제조, { 차종 : { $in : ['OS', 'OS_EV', 'NE', 'NE_EV', 'HR', 'HR_EV', 'LK', 'LK_EV', 'LM', 'LM_EV', 'LKFC', 'LKFC-EV', 'CS', 'CS-EV', 'CS_EV', 'SX2', 'SX2-EV', 'AE', 'AE_EV', 'CE', 'CE_EV', 'ME', 'ME_EV', 'FE', 'FE_EV', 'RG3', 'RG3-EV', 'JW', 'JW_EV', 'JK', 'JK_EV', 'JX', 'JX_EV']}, EOL : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }, 구분 : '보증', 완전분해 : '', 폐기 : ''});
 		await delay();
 	} else {
-		count(BSA재제조, { EOL : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }, 구분 : { $nin : ['일반기타', '보증기타']}, 완전분해 : '', 폐기 : ''});
+		//count(BSA재제조, { EOL : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }, 구분 : { $nin : ['일반기타', '보증기타']}, 완전분해 : '', 폐기 : ''});
+		count(BSA재제조, { EOL : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }});
 		await delay();
 	}
 	console.log('EOL 당일  count:', doc_count);
@@ -507,7 +524,8 @@ async function dash_EOL_당일_get(today_begin, today_end) {
 		find_BSA재제조(BSA재제조, { 차종 : { $in : ['OS', 'OS_EV', 'NE', 'NE_EV', 'HR', 'HR_EV', 'LK', 'LK_EV', 'LM', 'LM_EV', 'LKFC', 'LKFC-EV', 'CS', 'CS-EV', 'CS_EV', 'SX2', 'SX2-EV', 'AE', 'AE_EV', 'CE', 'CE_EV', 'ME', 'ME_EV', 'FE', 'FE_EV', 'RG3', 'RG3-EV', 'JW', 'JW_EV', 'JK', 'JK_EV', 'JX', 'JX_EV']}, EOL : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }, 구분 : '보증', 완전분해 : '', 폐기 : ''});
 		await delay();
 	} else {
-		find_BSA재제조(BSA재제조, { EOL : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }, 구분 : { $nin : ['일반기타', '보증기타']}, 완전분해 : '', 폐기 : ''});
+		//find_BSA재제조(BSA재제조, { EOL : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }, 구분 : { $nin : ['일반기타', '보증기타']}, 완전분해 : '', 폐기 : ''});
+		find_BSA재제조(BSA재제조, { EOL : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }});
 		await delay();
 	}
 
@@ -530,7 +548,8 @@ async function dash_출하검사(today_begin, today_end) {
 		count(BSA재제조, { 차종 : { $in : ['OS', 'OS_EV', 'NE', 'NE_EV', 'HR', 'HR_EV', 'LK', 'LK_EV', 'LM', 'LM_EV', 'LKFC', 'LKFC-EV', 'CS', 'CS-EV', 'CS_EV', 'SX2', 'SX2-EV', 'AE', 'AE_EV', 'CE', 'CE_EV', 'ME', 'ME_EV', 'FE', 'FE_EV', 'RG3', 'RG3-EV', 'JW', 'JW_EV', 'JK', 'JK_EV', 'JX', 'JX_EV']}, 출하검사 : { $exists : true, $ne : 'none', $ne : ''}, 구분 : '보증', 완전분해 : '', 폐기 : ''});
 		await delay();
 	} else {
-		count(BSA재제조, { 출하검사 : { $exists : true, $ne : 'none', $ne : ''}, 구분 : { $nin : ['일반기타', '보증기타']}, 완전분해 : '', 폐기 : ''});
+		//count(BSA재제조, { 출하검사 : { $exists : true, $ne : 'none', $ne : ''}, 구분 : { $nin : ['일반기타', '보증기타']}, 완전분해 : '', 폐기 : ''});
+		count(BSA재제조, { 출하검사 : { $exists : true, $ne : 'none', $ne : ''}});
 		await delay();
 	}
 	console.log('출하검사누적 count:', doc_count);
@@ -553,7 +572,8 @@ async function dash_출하검사_당일(today_begin, today_end) {
 		count(BSA재제조, { 차종 : { $in : ['OS', 'OS_EV', 'NE', 'NE_EV', 'HR', 'HR_EV', 'LK', 'LK_EV', 'LM', 'LM_EV', 'LKFC', 'LKFC-EV', 'CS', 'CS-EV', 'CS_EV', 'SX2', 'SX2-EV', 'AE', 'AE_EV', 'CE', 'CE_EV', 'ME', 'ME_EV', 'FE', 'FE_EV', 'RG3', 'RG3-EV', 'JW', 'JW_EV', 'JK', 'JK_EV', 'JX', 'JX_EV']}, 출하검사 : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }, 구분 : '보증', 완전분해 : '', 폐기 : ''});
 		await delay();
 	} else {
-		count(BSA재제조, { 출하검사 : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }, 구분 : { $nin : ['일반기타', '보증기타']}, 완전분해 : '', 폐기 : ''});
+		//count(BSA재제조, { 출하검사 : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }, 구분 : { $nin : ['일반기타', '보증기타']}, 완전분해 : '', 폐기 : ''});
+		count(BSA재제조, { 출하검사 : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }});
 		await delay();
 	}
 	console.log('출하검사당일 count:', doc_count);
@@ -577,7 +597,8 @@ async function dash_출하검사_당일_get(today_begin, today_end) {
 		find_BSA재제조(BSA재제조, { 차종 : { $in : ['OS', 'OS_EV', 'NE', 'NE_EV', 'HR', 'HR_EV', 'LK', 'LK_EV', 'LM', 'LM_EV', 'LKFC', 'LKFC-EV', 'CS', 'CS-EV', 'CS_EV', 'SX2', 'SX2-EV', 'AE', 'AE_EV', 'CE', 'CE_EV', 'ME', 'ME_EV', 'FE', 'FE_EV', 'RG3', 'RG3-EV', 'JW', 'JW_EV', 'JK', 'JK_EV', 'JX', 'JX_EV']}, 출하검사 : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }, 구분 : '보증', 완전분해 : '', 폐기 : ''});
 		await delay();
 	} else {
-		find_BSA재제조(BSA재제조, { 출하검사 : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }, 구분 : { $nin : ['일반기타', '보증기타']}, 완전분해 : '', 폐기 : ''});
+		//find_BSA재제조(BSA재제조, { 출하검사 : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }, 구분 : { $nin : ['일반기타', '보증기타']}, 완전분해 : '', 폐기 : ''});
+		find_BSA재제조(BSA재제조, { 출하검사 : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }});
 		await delay();
 	}
 
@@ -600,7 +621,8 @@ async function dash_출하(today_begin, today_end) {
 		count(BSA재제조, { 차종 : { $in : ['OS', 'OS_EV', 'NE', 'NE_EV', 'HR', 'HR_EV', 'LK', 'LK_EV', 'LM', 'LM_EV', 'LKFC', 'LKFC-EV', 'CS', 'CS-EV', 'CS_EV', 'SX2', 'SX2-EV', 'AE', 'AE_EV', 'CE', 'CE_EV', 'ME', 'ME_EV', 'FE', 'FE_EV', 'RG3', 'RG3-EV', 'JW', 'JW_EV', 'JK', 'JK_EV', 'JX', 'JX_EV']}, 출하 : { $exists : true, $ne : 'none', $ne : ''}, 구분 : '보증', 완전분해 : '', 폐기 : ''});
 		await delay();
 	} else {
-		count(BSA재제조, { 출하 : { $exists : true, $ne : 'none', $ne : ''}, 구분 : { $nin : ['일반기타', '보증기타']}, 완전분해 : '', 폐기 : ''});
+		//count(BSA재제조, { 출하 : { $exists : true, $ne : 'none', $ne : ''}, 구분 : { $nin : ['일반기타', '보증기타']}, 완전분해 : '', 폐기 : ''});
+		count(BSA재제조, { 출하 : { $exists : true, $ne : 'none', $ne : ''}});
 		await delay();
 	}
 	console.log('출하누적 count:', doc_count);
@@ -623,7 +645,8 @@ async function dash_출하_당일(today_begin, today_end) {
 		count(BSA재제조, { 차종 : { $in : ['OS', 'OS_EV', 'NE', 'NE_EV', 'HR', 'HR_EV', 'LK', 'LK_EV', 'LM', 'LM_EV', 'LKFC', 'LKFC-EV', 'CS', 'CS-EV', 'CS_EV', 'SX2', 'SX2-EV', 'AE', 'AE_EV', 'CE', 'CE_EV', 'ME', 'ME_EV', 'FE', 'FE_EV', 'RG3', 'RG3-EV', 'JW', 'JW_EV', 'JK', 'JK_EV', 'JX', 'JX_EV']}, 출하 : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }, 구분 : '보증', 완전분해 : '', 폐기 : ''});
 		await delay();
 	} else {
-		count(BSA재제조, { 출하 : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }, 구분 : { $nin : ['일반기타', '보증기타']}, 완전분해 : '', 폐기 : ''});
+		//count(BSA재제조, { 출하 : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }, 구분 : { $nin : ['일반기타', '보증기타']}, 완전분해 : '', 폐기 : ''});
+		count(BSA재제조, { 출하 : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }});
 		await delay();
 	}
 	console.log('출하당일 count:', doc_count);
@@ -647,7 +670,8 @@ async function dash_출하_당일_get(today_begin, today_end) {
 		find_BSA재제조(BSA재제조, { 차종 : { $in : ['OS', 'OS_EV', 'NE', 'NE_EV', 'HR', 'HR_EV', 'LK', 'LK_EV', 'LM', 'LM_EV', 'LKFC', 'LKFC-EV', 'CS', 'CS-EV', 'CS_EV', 'SX2', 'SX2-EV', 'AE', 'AE_EV', 'CE', 'CE_EV', 'ME', 'ME_EV', 'FE', 'FE_EV', 'RG3', 'RG3-EV', 'JW', 'JW_EV', 'JK', 'JK_EV', 'JX', 'JX_EV']}, 출하 : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }, 구분 : '보증', 완전분해 : '', 폐기 : ''});
 		await delay();
 	} else {
-		find_BSA재제조(BSA재제조, { 출하 : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }, 구분 : { $ne : '일반기타', $ne : '보증기타'}, 완전분해 : '', 폐기 : ''});
+		//find_BSA재제조(BSA재제조, { 출하 : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }, 구분 : { $ne : '일반기타', $ne : '보증기타'}, 완전분해 : '', 폐기 : ''});
+		find_BSA재제조(BSA재제조, { 출하 : { $exists : true, $ne : 'none', $ne : '', $gte : today_begin, $lt : today_end }});
 		await delay();
 	}
 
