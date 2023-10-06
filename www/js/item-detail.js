@@ -132,7 +132,7 @@ async function 상세입력_시작(is재제조번호 = false) {
 		_공정단계.value = find_array[0].공정단계;
 		_적재No.value = find_array[0].적재No;
 		_입고.value = find_array[0].입고.substr(0, 16);
-		_제조투입.value = find_array[0].제조투입.substr(0, 16);
+		if(find_array[0].제조투입 != undefined) _제조투입.value = find_array[0].제조투입.substr(0, 16);
 		_세척투입일.value = find_array[0].세척투입일.substr(0, 16);
 		_세척.value = find_array[0].세척.substr(0, 16);
 		_기초검사투입일.value = find_array[0].기초검사투입일.substr(0, 16);

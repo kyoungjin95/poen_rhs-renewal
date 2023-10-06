@@ -181,13 +181,19 @@ async function 기초검사_시작(is재제조 = false) {
 		_센터진단내용.value = '';
 		_검사자.value = worker;
 
-		var doc = {
-			관리번호 : _management_id.value
-		}
-		관리번호 = doc.관리번호;
-
-		update(BSA재제조, doc);
+		count(BSA재제조, { 관리번호 : _management_id.value });
 		await delay();
+
+		if(doc_count == 0) {
+			var doc = {
+				관리번호 : _management_id.value
+			}
+
+			update(BSA재제조, doc);
+			await delay();
+
+			관리번호 = doc.관리번호;
+		}
 	}
 }
 
@@ -345,14 +351,27 @@ async function 기초검사_SAVE() {
 		alert('저장 되었습니다');
 	}
 
-	var _doc = {
-		관리번호 : _management_id.value,
-		기초검사투입일 : _공정입고일.value,
-		기초검사 : _공정완료일.value
-	}
-
-	update(BSA재제조, _doc);
+	count(BSA재제조, { 관리번호 : _management_id.value });
 	await delay();
+
+	if(doc_count == 0) {
+		var _doc = BSA재제조_doc;
+		_doc.관리번호 = _management_id.value;
+		_doc.기초검사투입일 = _공정입고일.value;
+		_doc.기초검사 = _공정완료일.value;
+
+		update(BSA재제조, _doc);
+		await delay();
+	} else {
+		var _doc = {
+			관리번호 : _management_id.value,
+			기초검사투입일 : _공정입고일.value,
+			기초검사 : _공정완료일.value
+		}
+
+		update(BSA재제조, _doc);
+		await delay();
+	}
 }
 
 function _육안검사외부_콤보박스(e) {

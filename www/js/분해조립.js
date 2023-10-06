@@ -220,13 +220,19 @@ async function 분해조립_시작(is재제조번호 = false) {
 		_공정완료일.value = '0000-00-00T00:00';
 		_작업자.value = worker;
 
-		var doc = {
-			관리번호 : _management_id.value
-		}
-		관리번호 = doc.관리번호;
-
-		update(BSA재제조, doc);
+		count(BSA재제조, { 관리번호 : _management_id.value });
 		await delay();
+
+		if(doc_count == 0) {
+			var doc = {
+				관리번호 : _management_id.value
+			}
+
+			update(BSA재제조, doc);
+			await delay();
+
+			관리번호 = doc.관리번호;
+		}
 	}
 
 	const tbody = document.querySelector('#_tb tbody');
@@ -573,14 +579,27 @@ async function 분해조립_save() {
 		alert('저장 되었습니다');
 	}
 
-	var _doc = {
-		관리번호 : _management_id.value,
-		분해조립투입일 : _공정입고일.value,
-		분해조립 : _공정완료일.value
-	}
-
-	update(BSA재제조, _doc);
+	count(BSA재제조, { 관리번호 : _management_id.value });
 	await delay();
+
+	if(doc_count == 0) {
+		var _doc = BSA재제조_doc;
+		_doc.관리번호 = _management_id.value;
+		_doc.분해조립투입일 = _공정입고일.value;
+		_doc.분해조립 = _공정완료일.value;
+
+		update(BSA재제조, _doc);
+		await delay();
+	} else {
+		var _doc = {
+			관리번호 : _management_id.value,
+			분해조립투입일 : _공정입고일.value,
+			분해조립 : _공정완료일.value
+		}
+
+		update(BSA재제조, _doc);
+		await delay();
+	}
 	//이전페이지();
 }
 

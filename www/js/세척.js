@@ -72,13 +72,19 @@ async function 세척_시작(is재제조 = false) {
 		_기밀검사_케이스_특이사항.value = '';
 		_특이사항.value = '';
 
-		var doc = {
-			관리번호 : _management_id.value
-		}
-		관리번호 = doc.관리번호;
-
-		update(BSA재제조, doc);
+		count(BSA재제조, { 관리번호 : _management_id.value });
 		await delay();
+
+		if(doc_count == 0) {
+			var doc = {
+				관리번호 : _management_id.value
+			}
+
+			update(BSA재제조, doc);
+
+			await delay();
+			관리번호 = doc.관리번호;
+		}
 	}
 }
 
@@ -108,14 +114,27 @@ async function 세척_save() {
 		alert('저장 되었습니다');
 	}
 
-	var _doc = {
-		관리번호 : _management_id.value,
-		세척투입일 : _공정입고일.value,
-		세척 : _공정완료일.value
-	}
-
-	update(BSA재제조, _doc);
+	count(BSA재제조, { 관리번호 : _management_id.value });
 	await delay();
+
+	if(doc_count == 0) {
+		var _doc = BSA재제조_doc;
+		_doc.관리번호 = _management_id.value;
+		_doc.세척투입일 = _공정입고일.value;
+		_doc.세척 = _공정완료일.value;
+
+		update(BSA재제조, _doc);
+		await delay();
+	} else {
+		var _doc = {
+			관리번호 : _management_id.value,
+			세척투입일 : _공정입고일.value,
+			세척 : _공정완료일.value
+		}
+
+		update(BSA재제조, _doc);
+		await delay();
+	}
 	//이전페이지();
 }
 

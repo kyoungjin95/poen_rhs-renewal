@@ -41,13 +41,19 @@ async function 입고_시작() {
 		_차종.value = '';
 		_품번.value = '';
 
-		var doc = {
-			관리번호 : _management_id.value
-		}
-		관리번호 = doc.관리번호;
-
-		update(BSA재제조, doc);
+		count(BSA재제조, { 관리번호 : _management_id.value });
 		await delay();
+
+		if(doc_count == 0) {
+			var doc = {
+				관리번호 : _management_id.value
+			}
+
+			update(BSA재제조, doc);
+			await delay();
+
+			관리번호 = doc.관리번호;
+		}
 	}
 }
 
@@ -77,13 +83,25 @@ async function 입고_save() {
 		alert('저장 되었습니다');
 	}
 
-	var _doc = {
-		관리번호 : _management_id.value,
-		입고 : _입고일.value
-	}
-
-	update(BSA재제조, _doc);
+	count(BSA재제조, { 관리번호 : _management_id.value });
 	await delay();
+
+	if(doc_count == 0) {
+		var _doc = BSA재제조_doc;
+		_doc.관리번호 = _management_id.value;
+		_doc.입고 = _입고일.value;
+
+		update(BSA재제조, _doc);
+		await delay();
+	} else {
+		var _doc = {
+			관리번호 : _management_id.value,
+			입고 : _입고일.value
+		}
+
+		update(BSA재제조, _doc);
+		await delay();
+	}
 	
 	//이전페이지();
 }

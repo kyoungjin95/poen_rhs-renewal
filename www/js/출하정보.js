@@ -263,14 +263,19 @@ async function 출하정보_시작(is재제조 = false) {
 		_S_PLUG.options[0].selected = true;
 		_접지.options[0].selected = true;
 
-		var doc = {
-			관리번호 : _management_id.value
-		}
-		관리번호 = doc.관리번호;
-
-		update(BSA재제조, doc);
+		count(BSA재제조, { 관리번호 : _management_id.value });
 		await delay();
-	}
+
+		if(doc_count == 0) {
+			var doc = {
+				관리번호 : _management_id.value
+			}
+
+			update(BSA재제조, doc);
+			await delay();
+
+			관리번호 = doc.관리번호;
+		}
 }
 
 async function 출하정보_save() {
@@ -278,14 +283,25 @@ async function 출하정보_save() {
 	if(_management_id.value.length == 0) return;
 	console.log('save: ', _management_id.value);
 
-	var _doc = {
-		관리번호 : _management_id.value,
-		출하검사 : _검사일.value.substr(0, 16)
+	count(BSA재제조, { 관리번호 : _management_id.value });
+	await delay();
+
+	if(doc_count == 0) {
+		var _doc = BSA재제조_doc;
+		_doc.관리번호 = _management_id.value;
+		_doc.출하검사 = _검사일.value.substr(0, 16);
+
+		update(BSA재제조, _doc);
+		await delay();
+	} else {
+		var _doc = {
+			관리번호 : _management_id.value,
+			출하검사 : _검사일.value.substr(0, 16)
+		}
+		update(BSA재제조, _doc);
+		await delay();
 	}
 
-	console.log(_doc);
-	update(BSA재제조, _doc);
-	await delay();
 
 	console.log(update_count);
 	console.log(insert_count);
