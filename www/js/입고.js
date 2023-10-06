@@ -2,7 +2,8 @@ async function 입고_시작() {
 	while(_management_id == undefined) {
 		await sleep(DELAY);
 	}
-
+	await sleep(100);
+	
 	const _입고기타 = document.getElementById('_입고_기타');
 	const _입고일반 = document.getElementById('_입고_일반');
 
@@ -67,18 +68,6 @@ async function 입고_save() {
 
 	if(insert_count > 0) {
 		alert('저장 되었습니다');
-	}
-
-	count(성능검사, { 관리번호 : _관리번호 });
-	await delay();
-
-	if(doc_count > 0) {
-		find(성능검사, _관리번호);
-		await delay();
-
-		if(find_array[0].공정완료일 != '') {
-			공정단계 = 'EOL';
-		}
 	}
 
 	count(BSA재제조, { 관리번호 : _management_id.value });

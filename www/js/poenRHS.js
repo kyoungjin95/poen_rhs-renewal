@@ -2140,7 +2140,8 @@ async function 공정단계찾기(_관리번호) {
 }
 
 async function 공정단계자동입력(_관리번호) {
-	var _공정단계 = 공정단계찾기(_관리번호);
+	var _공정단계 = await 공정단계찾기(_관리번호);
+	console.log('공정단계:', _공정단계);
 
 	var doc = {
 		관리번호 : _관리번호,

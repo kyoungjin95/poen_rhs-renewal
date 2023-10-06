@@ -625,10 +625,8 @@ function updateFilter(){
 
 async function 재제조현황_시작() {
 	flag_재제조현황 = false;
+
 	if(worker == '') return;
-	//while(_management_id == undefined) {
-	//	await sleep(DELAY);
-	//}
 	while(document.getElementById('폐기_pic4') == undefined) {
 		await sleep(100);
 	}
