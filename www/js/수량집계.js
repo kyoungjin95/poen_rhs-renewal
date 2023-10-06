@@ -1,6 +1,11 @@
-function 수량집계_시작() {
+async function 수량집계_시작() {
 	flag_수량집계 = false;
 	if (worker == '') return;
+
+	const grid_부품집계 = document.getElementById('grid_부품집계');
+	while( grid_부품집계 == undefined) {
+		await sleep(DELAY);
+	}
 
 	수량집계_조회();
 }

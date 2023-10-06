@@ -1,5 +1,5 @@
 const DELAY = 1; 
-const DELAY_SYS = 100; 
+const DELAY_SYS = 1000; 
 const 계정 = '계정';
 const BSA재제조 = 'BSA재제조';
 const 입고 = '입고';
