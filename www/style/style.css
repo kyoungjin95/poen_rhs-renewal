@@ -326,8 +326,13 @@ table td.bottom {
   line-height: 8vh;
   position: relative;
   color: #000;
+  font-size: 1.7vw;
 }
-
+#menu > ul > li > .menu-btn {
+  width: 100%;
+  height: 100%;
+  font-size: 1.7vw;
+}
 #menu > ul > li:hover {
   background: #0a723f;
   /* background-color: rgb(0, 110, 220); */
@@ -356,7 +361,13 @@ table td.bottom {
 }
 
 #menu > ul > li > ul > li {
+  width: 100%;
   transition: all 600ms ease;
+}
+#menu > ul > li > ul > li > .menu-btn {
+  width: 100%;
+  padding: 10px 0;
+  box-sizing: border-box;
 }
 
 #menu > ul > li:hover > ul {
@@ -376,6 +387,15 @@ table td.bottom {
 }
 
 /* media query  */
+@media (min-width: 768px) and (max-width: 1200px) {
+  #menu {
+    height: 6vh;
+  }
+  #menu > ul > li {
+    height: 6vh;
+    line-height: 6vh;
+  }
+}
 @media (max-width: 767px) {
   #menu {
     padding: 0 5px;
