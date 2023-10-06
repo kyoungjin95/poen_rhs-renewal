@@ -25,6 +25,14 @@
 						<button onClick="기초검사_재제조번호_시작();">조 회</button>
 					</td>
 				</tr>
+				<tr>
+					<input type="text" id="_통신검사_릴레이구동" size="40" required>
+					<select name="language" onchange="_통신검사_릴레이구동_콤보박스(this);">
+						<option value="">---</option>
+						<option value="OK">OK</option>
+						<option value="NG">NG</option>
+					</select>
+				</tr>
 			</table>
 		</div>
 		<div id='_기초보고서'>
@@ -171,10 +179,10 @@
 									<td class='base'>
 										BSA 상,하부 이물질 및 손상 확인
 									</td>
-									<td class='base'>
+									<td class='base' id='외부점검'>
 										OK/NG
 									</td>
-									<td class='base'>
+									<td class='base' id='외부점검사유'>
 										NG 사유 및 특이사항 입력
 									</td>
 									<td class='base' rowspan='3'>
@@ -188,10 +196,10 @@
 									<td class='base'>
 										BSA 내부 이물질 및 손상 확인
 									</td>
-									<td class='base'>
+									<td class='base' id='내부점검'>
 										OK/NG
 									</td>
-									<td class='base'>
+									<td class='base' id='내부점검사유'>
 										NG 사유 및 특이사항 입력
 									</td>
 								</tr>
@@ -205,7 +213,7 @@
 									<td class='base'>
 										-
 									</td>
-									<td class='base'>
+									<td class='base' id='셀제조사사유'>
 										NG 사유 및 특이사항 입력
 									</td>
 								</tr>
@@ -222,10 +230,10 @@
 									<td class='base'>
 										2분간 감압량 2mbar 이내
 									</td>
-									<td class='base'>
+									<td class='base' id='케이스'>
 										OK/NG
 									</td>
-									<td class='base'>
+									<td class='base' id='케이스감압량'>
 										감압 량(mbar):
 									</td>
 									<td class='base' rowspan='2'>
@@ -239,10 +247,10 @@
 									<td class='base'>
 										2분간 감압량 2mbar 이내
 									</td>
-									<td class='base'>
+									<td class='base' id='냉각유로'>
 										OK/NG
 									</td>
-									<td class='base'>
+									<td class='base' id='냉각유로감압량'>
 										감압 량(mbar):
 									</td>
 								</tr>
@@ -259,10 +267,10 @@
 									<td class='base'>
 										100 MΩ 이상
 									</td>
-									<td class='base'>
+									<td class='base' id='PRA_P'>
 										OK/NG
 									</td>
-									<td class='base'>
+									<td class='base' id='PRA_P값'>
 										0000 MΩ
 									</td>
 									<td class='base' rowspan='4'>
@@ -275,10 +283,10 @@
 									<td class='base'>
 										50 MΩ 이상
 									</td>
-									<td class='base'>
+									<td class='base' id='PRA_N'>
 										OK/NG
 									</td>
-									<td class='base'>
+									<td class='base' id='PRA_N값'>
 										0000 MΩ
 									</td>
 								</tr>
@@ -289,10 +297,10 @@
 									<td class='base'>
 										100 MΩ 이상
 									</td>
-									<td class='base'>
+									<td class='base' id='HV커넥터_P'>
 										OK/NG
 									</td>
-									<td class='base'>
+									<td class='base' id'HV커넥터_P값'>
 										0000 MΩ
 									</td>
 								</tr>
@@ -303,10 +311,10 @@
 									<td class='base'>
 										100 MΩ 이상
 									</td>
-									<td class='base'>
+									<td class='base' id='HV커넥터_N'>
 										OK/NG
 									</td>
-									<td class='base'>
+									<td class='base' id='HV커넥터_N값'>
 										0000 MΩ
 									</td>
 								</tr>
@@ -323,10 +331,10 @@
 									<td class='base'>
 										OCV 기준 277.9~377.2V
 									</td>
-									<td class='base'>
+									<td class='base' id='팩전압'>
 										OK/NG
 									</td>
-									<td class='base'>
+									<td class='base' id='팩전압값'>
 										팩 전압(V):
 									</td>
 									<td class='base' rowspan='5'>
@@ -339,10 +347,10 @@
 									<td class='base'>
 										40mV 이하
 									</td>
-									<td class='base'>
+									<td class='base' id='셀전압편차'>
 										OK/NG
 									</td>
-									<td class='base'>
+									<td class='base' id='셀전압편차값'>
 										셀 전압편차(mV):
 									</td>
 								</tr>
@@ -353,10 +361,10 @@
 									<td class='base'>
 										릴레이 제어 가능할 것
 									</td>
-									<td class='base'>
+									<td class='base' id='릴레이제어'>
 										OK/NG
 									</td>
-									<td class='base'>
+									<td class='base' id='릴레이제어사유'>
 										릴레이 제어 가능 / 불가능 사유
 									</td>
 								</tr>
@@ -367,10 +375,10 @@
 									<td class='base'>
 										고장코드없을 것
 									</td>
-									<td class='base'>
+									<td class='base' id='고장코드'>
 										OK/NG
 									</td>
-									<td class='base'>
+									<td class='base' id='고장코드사유'>
 										고장코드 없음 / (현재),(과거)구분
 									</td>
 								</tr>
@@ -401,10 +409,10 @@
 									<td class='base'>
 										데이터 누락 없을 것
 									</td>
-									<td class='base'>
+									<td class='base' id='입고정보'>
 										OK/NG
 									</td>
-									<td class='base'>
+									<td class='base' id='입고정보사유'>
 										데이터 누락 없음
 									</td>
 									<td class='base'>
@@ -417,10 +425,10 @@
 									<td class='base'>
 										데이터 누락 없을 것
 									</td>
-									<td class='base'>
+									<td class='base' id='재제조이력'>
 										OK/NG
 									</td>
-									<td class='base'>
+									<td class='base' id='재제조이력사유'>
 										데이터 누락 없음
 									</td>
 									<td class='base'>
@@ -436,6 +444,7 @@
 									결 과
 								</td>
 								<td class='result'>
+									<textarea id='결과'></textarea>
 								</td>
 							</tr>
 						</table>
@@ -465,9 +474,54 @@
 			<button onClick="기초보고서_save();">SAVE</button>
 		</div>
 		<script>
-			var body = document.getElementsByTagName('body')[0];
-			if (window.innerWidth > 1920) { alert('해상도가 1920 x 1080일때만 사용이 가능합니다.');}
-			console.log(' window width:', window.innerWidth);
+			var _management_id = document.getElementById('_management_id');
+			var _재제조번호 = document.getElementById('재제조번호');
+			var _VIN = document.getElementById('VINNo');
+			var _RO = document.getElementById('RONo');
+			var _주행거리 = document.getElementById('주행거리');
+			var _차량번호 = document.getElementById('차량번호');
+			var _생산일 = document.getElementById('생산일');
+			var _판매일 = document.getElementById('판매일');
+			var _수리일 = document.getElementById('수리일');
+			var _입고일 = document.getElementById('입고일');
+			var _입고사진 = document.getElementById('입고사진');
+			var _BSA_QR = document.getElementById('BSA_QR');
+			var _관리번호 = document.getElementById('관리번호');
+			var _필드현상 = document.getElementById('필드현상');
+			var _센터진단 = document.getElementById('센터진단');
+			var _센터조치 = document.getElementById('센터조치');
+			var _작성자 = document.getElementById('작성자');
+			var _작성일 = document.getElementById('작성일');
+			var _외부점검 = document.getElementById('외부점검');
+			var _외부점검사유 = document.getElementById('외부점검사유');
+			var _내부점검 = document.getElementById('내부점검');
+			var _내부점검사유 = document.getElementById('내부점검사유');
+			var _셀제조사사유 = document.getElementById('셀제조사사유');
+			var _케이스 = document.getElementById('케이스');
+			var _케이스감압량 = document.getElementById('케이스감압량');
+			var _냉각유로 = document.getElementById('냉각유로');
+			var _냉각유로감압량 = document.getElementById('냉각유로감압량');
+			var _PRA_P = document.getElementById('PRA_P');
+			var _PRA_P값 = document.getElementById('PRA_P값');
+			var _PRA_N = document.getElementById('PRA_N');
+			var _PRA_N값 = document.getElementById('PRA_N값');
+			var _HV커넥터_P = document.getElementById('HV커넥터_P');
+			var _HV커넥터_P값 = document.getElementById('HV커넥터_P값');
+			var _HV커넥터_N = document.getElementById('HV커넥터_N');
+			var _HV커넥터_N값 = document.getElementById('HV커넥터_N값');
+			var _팩전압 = document.getElementById('팩전압');
+			var _팩전압값 = document.getElementById('팩전압값');
+			var _셀전압편차 = document.getElementById('셀전압편차');
+			var _셀전압편차값 = document.getElementById('셀전압편차값');
+			var _릴레이제어 = document.getElementById('릴레이제어');
+			var _릴레이제어사유 = document.getElementById('릴레이제어사유');
+			var _고장코드 = document.getElementById('고장코드');
+			var _고장코드사유 = document.getElementById('고장코드사유');
+			var _입고정보 = document.getElementById('입고정보');
+			var _입고정보사유 = document.getElementById('입고정보사유');
+			var _재제조이력 = document.getElementById('재제조이력');
+			var _재제조이력사유 = document.getElementById('재제조이력사유');
+			var _결과 = document.getElementById('결과');
 		</script>
 	</body>
 </html>

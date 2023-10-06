@@ -630,7 +630,7 @@ async function 재제조현황_시작() {
 	//	await sleep(DELAY);
 	//}
 	while(document.getElementById('폐기_pic4') == undefined) {
-		await sleep(DELAY);
+		await sleep(100);
 	}
 	await sleep(10);
 
@@ -1010,7 +1010,6 @@ async function delete_bsa() {
 	table.clearFilter();
 
 	if(delete_count > 0) {
-
 		alert('삭제 되었습니다.');
 	}
 	재제조현황_조회();
