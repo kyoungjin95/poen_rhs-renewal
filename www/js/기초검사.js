@@ -25,7 +25,7 @@ async function 기초검사_시작(is재제조 = false) {
 	if(is재제조 == false) {
 		count(BSA재제조, {관리번호 : _management_id.value});
 		await delay();
-		if(doc_count >= 1) {
+		if(doc_count > 0) {
 			find(BSA재제조, _management_id.value);
 			await delay();
 			_재제조번호.value = find_array[0].재제조번호;
@@ -35,7 +35,7 @@ async function 기초검사_시작(is재제조 = false) {
 	} else {
 		count(BSA재제조, { 재제조번호 : _재제조번호.value});
 		await delay();
-		if(doc_count >= 1) {
+		if(doc_count > 0) {
 			find_BSA재제조(BSA재제조, { 재제조번호 : _재제조번호.value });
 			await delay();
 
@@ -52,7 +52,7 @@ async function 기초검사_시작(is재제조 = false) {
 	count(입고, { 관리번호 : _management_id.value });
 	await delay();
 	console.log('doc_count: ', doc_count);
-	if(doc_count >= 1) {
+	if(doc_count > 0) {
 		find(입고, _management_id.value);
 		await delay();
 		console.log('입고 data:', find_array);
@@ -69,7 +69,7 @@ async function 기초검사_시작(is재제조 = false) {
 	count(기초검사, { 관리번호 : _management_id.value });
 	await delay();
 	console.log('doc_count: ', doc_count);
-	if(doc_count >= 1) {
+	if(doc_count > 0) {
 		find(기초검사, _management_id.value);
 		await delay();
 		
@@ -180,20 +180,6 @@ async function 기초검사_시작(is재제조 = false) {
 		_비고.value = '';
 		_센터진단내용.value = '';
 		_검사자.value = worker;
-
-		count(BSA재제조, { 관리번호 : _management_id.value });
-		await delay();
-
-		if(doc_count == 0) {
-			var doc = {
-				관리번호 : _management_id.value
-			}
-
-			update(BSA재제조, doc);
-			await delay();
-
-			관리번호 = doc.관리번호;
-		}
 	}
 }
 
@@ -372,6 +358,8 @@ async function 기초검사_SAVE() {
 		update(BSA재제조, _doc);
 		await delay();
 	}
+
+	공정단계자동입력(_management_id.value);
 }
 
 function _육안검사외부_콤보박스(e) {

@@ -690,7 +690,7 @@ async function 재제조현황_조회() {
 	}
 
 	console.log('doc_count: ', doc_count);
-	if(doc_count >= 1) {
+	if(doc_count > 0) {
 		if(level == 'kia_일반') {
 			find_BSA재제조(BSA재제조, { 차종 : { $in : ['DE', 'DE_EV', 'DEPBV', 'DEPBV-EV', 'CV', 'CV_EV', 'MV', 'MV_EV', 'PU', 'PU_EV', 'SG2', 'SG2-EV', 'TAM', 'TAM-EV', 'PS', 'PS_EV', 'SK3']}, 구분 : '일반'});
 			await delay();
@@ -1062,7 +1062,7 @@ async function grid_입고(m_id = '') {
 
 	count(입고_pic, { 관리번호 : m_id });
 	await delay();
-	if(doc_count >= 1) {
+	if(doc_count > 0) {
 		find(입고_pic, m_id);
 		await delay();
 		console.log(find_array);
@@ -1148,7 +1148,7 @@ async function grid_세척(m_id = '') {
 
 	count(세척_pic, { 관리번호 : m_id });
 	await delay();
-	if(doc_count >= 1) {
+	if(doc_count > 0) {
 		find(세척_pic, m_id);
 		await delay();
 		console.log(find_array);
@@ -1257,7 +1257,7 @@ async function grid_기초검사(m_id = '') {
 
 	count(기초검사_pic, { 관리번호 : m_id });
 	await delay();
-	if(doc_count >= 1) {
+	if(doc_count > 0) {
 		find(기초검사_pic, m_id);
 		await delay();
 		console.log(find_array);
@@ -1484,7 +1484,7 @@ async function grid_분해조립(m_id = '') {
 
 	count(분해조립_pic, { 관리번호 : m_id });
 	await delay();
-	if(doc_count >= 1) {
+	if(doc_count > 0) {
 		find(분해조립_pic, m_id);
 		await delay();
 		console.log(find_array);
@@ -1573,7 +1573,7 @@ async function grid_성능검사(m_id = '') {
 
 	count(성능검사_pic, { 관리번호 : m_id });
 	await delay();
-	if(doc_count >= 1) {
+	if(doc_count > 0) {
 		find(성능검사_pic, m_id);
 		await delay();
 		console.log(find_array);
@@ -1679,7 +1679,7 @@ async function grid_EOL(m_id = '') {
 
 	count(EOL_pic, { 관리번호 : m_id });
 	await delay();
-	if(doc_count >= 1) {
+	if(doc_count > 0) {
 		find(EOL_pic, m_id);
 		await delay();
 		console.log(find_array);
@@ -1812,7 +1812,7 @@ async function grid_출하정보(m_id = '') {
 
 	count(출하_pic, { 관리번호 : m_id });
 	await delay();
-	if(doc_count >= 1) {
+	if(doc_count > 0) {
 		find(출하_pic, m_id);
 		await delay();
 		console.log(find_array);
@@ -1894,7 +1894,7 @@ async function grid_특이사항(m_id = '') {
 
 	count(특이사항_pic, { 관리번호 : m_id });
 	await delay();
-	if(doc_count >= 1) {
+	if(doc_count > 0) {
 		find(특이사항_pic, m_id);
 		await delay();
 		console.log(find_array);
@@ -2301,7 +2301,7 @@ async function 반품입고_load_pic(m_id = '') {
 
 	count(반품입고_pic, { 관리번호 : m_id });
 	await delay();
-	if(doc_count >= 1) {
+	if(doc_count > 0) {
 		find(반품입고_pic, m_id);
 		await delay();
 		console.log(find_array);
@@ -2358,7 +2358,7 @@ async function 재출하_load_pic(m_id = '') {
 
 	count(재출하_pic, { 관리번호 : m_id });
 	await delay();
-	if(doc_count >= 1) {
+	if(doc_count > 0) {
 		find(재출하_pic, m_id);
 		await delay();
 		console.log(find_array);
@@ -2415,7 +2415,7 @@ async function 완전분해_load_pic(m_id = '') {
 
 	count(완전분해_pic, { 관리번호 : m_id });
 	await delay();
-	if(doc_count >= 1) {
+	if(doc_count > 0) {
 		find(완전분해_pic, m_id);
 		await delay();
 		console.log(find_array);
@@ -2472,7 +2472,7 @@ async function 폐기_load_pic(m_id = '') {
 
 	count(폐기_pic, { 관리번호 : m_id });
 	await delay();
-	if(doc_count >= 1) {
+	if(doc_count > 0) {
 		find(폐기_pic, m_id);
 		await delay();
 		console.log(find_array);

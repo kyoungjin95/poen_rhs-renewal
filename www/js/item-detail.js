@@ -78,7 +78,7 @@ async function 상세입력_시작(is재제조번호 = false) {
 		}
 	}
 	console.log('초기 doc_count: ', doc_count);
-	if(doc_count >= 1) {
+	if(doc_count > 0) {
 		if(is재제조번호 == false) {
 			관리번호 = _management_id.value.trim();
 			pre_관리번호 = 관리번호;
@@ -156,7 +156,7 @@ async function 상세입력_시작(is재제조번호 = false) {
 
 		count(입고, { 관리번호 : _management_id.value });
 		await delay();
-		if(doc_count >= 1) {
+		if(doc_count > 0) {
 			find(입고, _management_id.value);
 			await delay();
 			
@@ -165,7 +165,7 @@ async function 상세입력_시작(is재제조번호 = false) {
 			_품번.value = find_array[0].품번;
 			//_RO_no.value = find_array[0].RO_no;
 			_입고.value = find_array[0].입고일.substr(0, 16);
-			if(_입고.value != '' && _입고.value != 'none') {
+			if(_입고.value != '') {
 				_공정단계.value = '세척';
 			}
 			if(_입고.value != '' && _입고.value != undefined) {
@@ -179,7 +179,7 @@ async function 상세입력_시작(is재제조번호 = false) {
 
 		count(기초검사, { 관리번호 : _management_id.value });
 		await delay();
-		if(doc_count >= 1) {
+		if(doc_count > 0) {
 			find(기초검사, _management_id.value);
 			await delay();
 			
@@ -189,7 +189,7 @@ async function 상세입력_시작(is재제조번호 = false) {
 		count(세척, { 관리번호 : _management_id.value });
 		await delay();
 		console.log('doc_count: ', doc_count);
-		if(doc_count >= 1) {
+		if(doc_count > 0) {
 			find(세척, _management_id.value);
 			await delay();
 			
@@ -205,7 +205,7 @@ async function 상세입력_시작(is재제조번호 = false) {
 		count(기초검사, { 관리번호 : _management_id.value });
 		await delay();
 		console.log('doc_count: ', doc_count);
-		if(doc_count >= 1) {
+		if(doc_count > 0) {
 			find(기초검사, _management_id.value);
 			await delay();
 			
@@ -221,7 +221,7 @@ async function 상세입력_시작(is재제조번호 = false) {
 		count(분해조립, { 관리번호 : _management_id.value });
 		await delay();
 		console.log('doc_count: ', doc_count);
-		if(doc_count >= 1) {
+		if(doc_count > 0) {
 			find(분해조립, _management_id.value);
 			await delay();
 			
@@ -237,7 +237,7 @@ async function 상세입력_시작(is재제조번호 = false) {
 		count(성능검사, { 관리번호 : _management_id.value });
 		await delay();
 		console.log('doc_count: ', doc_count);
-		if(doc_count >= 1) {
+		if(doc_count > 0) {
 			find(성능검사, _management_id.value);
 			await delay();
 			
@@ -253,7 +253,7 @@ async function 상세입력_시작(is재제조번호 = false) {
 		count(EOL, { 관리번호 : _management_id.value });
 		await delay();
 		console.log('doc_count: ', doc_count);
-		if(doc_count >= 1) {
+		if(doc_count > 0) {
 			find(EOL, _management_id.value);
 			await delay();
 			
@@ -269,7 +269,7 @@ async function 상세입력_시작(is재제조번호 = false) {
 		count(출하정보, { 관리번호 : _management_id.value });
 		await delay();
 		console.log('doc_count: ', doc_count);
-		if(doc_count >= 1) {
+		if(doc_count > 0) {
 			find(출하정보, _management_id.value);
 			await delay();
 

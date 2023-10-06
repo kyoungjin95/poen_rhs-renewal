@@ -15,7 +15,7 @@ async function 특이사항_시작() {
 	await delay();
 
 	console.log('doc_count: ', doc_count);
-	if(doc_count >= 1) {
+	if(doc_count > 0) {
 		find(특이사항, _management_id.value);
 		await delay();
 		

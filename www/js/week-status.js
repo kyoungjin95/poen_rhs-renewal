@@ -123,7 +123,7 @@ async function 주간입고_table(week_start = '', week_end = '') {
 		await delay();
 	}
 	console.log('doc_count: ', doc_count);
-	if(doc_count >= 1) {
+	if(doc_count > 0) {
 		if(level == 'kia_일반') {
 			find_BSA재제조(BSA재제조, { 차종 : { $in : ['DE', 'DE_EV', 'DEPBV', 'DEPBV-EV', 'CV', 'CV_EV', 'MV', 'MV_EV', 'PU', 'PU_EV', 'SG2', 'SG2-EV', 'TAM', 'TAM-EV', 'PS', 'PS_EV', 'SK3']}, 입고 : { $gte: week_start, $lte: week_end } , 구분 : '일반' });
 			await delay();
@@ -207,7 +207,7 @@ async function 주간제조완료_table(week_start = '', week_end = '') {
 	}
 
 	console.log('doc_count: ', doc_count);
-	if(doc_count >= 1) {
+	if(doc_count > 0) {
 		if(level == 'kia_일반') {
 			find_BSA재제조(BSA재제조, { 차종 : { $in : ['DE', 'DE_EV', 'DEPBV', 'DEPBV-EV', 'CV', 'CV_EV', 'MV', 'MV_EV', 'PU', 'PU_EV', 'SG2', 'SG2-EV', 'TAM', 'TAM-EV', 'PS', 'PS_EV', 'SK3']}, EOL : { $gte: week_start, $lte: week_end } , 구분 : '일반' });
 			await delay();
@@ -291,7 +291,7 @@ async function 주간출하_table(week_start, week_end) {
 	}
 
 	console.log('doc_count: ', doc_count);
-	if(doc_count >= 1) {
+	if(doc_count > 0) {
 		if(level == 'kia_일반') {
 			find_BSA재제조(BSA재제조, { 차종 : { $in : ['DE', 'DE_EV', 'DEPBV', 'DEPBV-EV', 'CV', 'CV_EV', 'MV', 'MV_EV', 'PU', 'PU_EV', 'SG2', 'SG2-EV', 'TAM', 'TAM-EV', 'PS', 'PS_EV', 'SK3']}, 출하 : { $gte: week_start, $lte: week_end } , 구분 : '일반' });
 			await delay();

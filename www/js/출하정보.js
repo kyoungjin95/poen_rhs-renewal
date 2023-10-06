@@ -19,9 +19,8 @@ async function 출하정보_시작(is재제조 = false) {
 	if(is재제조 == false) {
 		count(BSA재제조, { 관리번호 : _management_id.value });
 		await delay();
-		console.log('::::', doc_count);
 
-		if(doc_count >= 1) {
+		if(doc_count > 0) {
 			find(BSA재제조, _management_id.value );
 			await delay();
 		
@@ -31,7 +30,7 @@ async function 출하정보_시작(is재제조 = false) {
 		count(BSA재제조, { 재제조번호 : _재제조번호.value });
 		await delay();
 
-		if(doc_count >= 1) {
+		if(doc_count > 0) {
 			find_BSA재제조(BSA재제조, { 재제조번호: _재제조번호.value });
 			await delay();
 
@@ -44,7 +43,7 @@ async function 출하정보_시작(is재제조 = false) {
 	count(입고, { 관리번호 : _management_id.value });
 	await delay();
 	console.log('doc_count: ', doc_count);
-	if(doc_count >= 1) {
+	if(doc_count > 0) {
 		find(입고, _management_id.value);
 		await delay();
 		console.log('입고 data:', find_array);
@@ -123,7 +122,7 @@ async function 출하정보_시작(is재제조 = false) {
 	count(출하정보, { 관리번호 : _management_id.value });
 	await delay();
 	console.log('doc_count: ', doc_count);
-	if(doc_count >= 1) {
+	if(doc_count > 0) {
 		console.log('관리번호:', 관리번호);
 
 		
@@ -182,7 +181,7 @@ async function 출하정보_시작(is재제조 = false) {
 		if(String(_출하코드.value).trim() == '') {
 			count(EOL, { 관리번호 : _management_id.value });
 			await delay();
-			if(doc_count >= 1) {
+			if(doc_count > 0) {
 				find(EOL, _management_id.value);
 				await delay();
 
@@ -262,20 +261,6 @@ async function 출하정보_시작(is재제조 = false) {
 		_bracket.options[0].selected = true;
 		_S_PLUG.options[0].selected = true;
 		_접지.options[0].selected = true;
-
-		count(BSA재제조, { 관리번호 : _management_id.value });
-		await delay();
-
-		if(doc_count == 0) {
-			var doc = {
-				관리번호 : _management_id.value
-			}
-
-			update(BSA재제조, doc);
-			await delay();
-
-			관리번호 = doc.관리번호;
-		}
 }
 
 async function 출하정보_save() {
@@ -302,6 +287,7 @@ async function 출하정보_save() {
 		await delay();
 	}
 
+	공정단계자동입력(_management_id.value);
 
 	console.log(update_count);
 	console.log(insert_count);

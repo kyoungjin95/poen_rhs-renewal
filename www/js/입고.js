@@ -24,7 +24,7 @@ async function 입고_시작() {
 	count(입고, { 관리번호 : _management_id.value });
 	await delay();
 	console.log('doc_count: ', doc_count);
-	if(doc_count >= 1) {
+	if(doc_count > 0) {
 		find(입고, _management_id.value);
 		await delay();
 		console.log('입고 data:', find_array);
@@ -40,20 +40,6 @@ async function 입고_시작() {
 		_구분.value = '';
 		_차종.value = '';
 		_품번.value = '';
-
-		count(BSA재제조, { 관리번호 : _management_id.value });
-		await delay();
-
-		if(doc_count == 0) {
-			var doc = {
-				관리번호 : _management_id.value
-			}
-
-			update(BSA재제조, doc);
-			await delay();
-
-			관리번호 = doc.관리번호;
-		}
 	}
 }
 
@@ -83,6 +69,18 @@ async function 입고_save() {
 		alert('저장 되었습니다');
 	}
 
+	count(성능검사, { 관리번호 : _관리번호 });
+	await delay();
+
+	if(doc_count > 0) {
+		find(성능검사, _관리번호);
+		await delay();
+
+		if(find_array[0].공정완료일 != '') {
+			공정단계 = 'EOL';
+		}
+	}
+
 	count(BSA재제조, { 관리번호 : _management_id.value });
 	await delay();
 
@@ -96,13 +94,14 @@ async function 입고_save() {
 	} else {
 		var _doc = {
 			관리번호 : _management_id.value,
-			입고 : _입고일.value
+			입고 : _입고일.value,
 		}
 
 		update(BSA재제조, _doc);
 		await delay();
 	}
 	
+	공정단계자동입력(_management_id.value);
 	//이전페이지();
 }
 

@@ -40,7 +40,7 @@ async function login() {
 				await delay();
 
 				console.log('recharge_count: ', doc_count);
-				if(doc_count >= 1) {
+				if(doc_count > 0) {
 					alert('재충전이 필요한 BSA가 있습니다.');
 				}
 			}, 1000);

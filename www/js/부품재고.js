@@ -99,7 +99,7 @@ async function 부품재고_시작() {
 	await delay();
 
 	console.log('doc_count: ', doc_count);
-	if(doc_count >= 1) {
+	if(doc_count > 0) {
 		find_신품정보(자재입출고, { QR : { $exists : true }});
 		await delay();
 		tabledata_신품재고 = find_array;
@@ -138,7 +138,7 @@ async function 부품재고_시작() {
 	await delay();
 
 	console.log('doc_count: ', doc_count);
-	if(doc_count >= 1) {
+	if(doc_count > 0) {
 		find_고품정보(고품정보, { 관리번호 : { $exists : true }});
 		await delay();
 		tabledata_고품재고 = find_array;

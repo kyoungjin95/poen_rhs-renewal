@@ -17,7 +17,7 @@ async function 교체부품상세_시작() {
 	count(교체부품상세No, { 관리번호 : _management_id.value });
 	await delay();
 	console.log('doc_count: ', doc_count);
-	if(doc_count >= 1) {
+	if(doc_count > 0) {
 		find(교체부품상세No, _management_id.value);
 		await delay();
 		

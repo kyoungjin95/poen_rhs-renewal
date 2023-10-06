@@ -20,7 +20,7 @@ async function 신품정보등록_조회() {
 	count(신품정보, { QR : _QR.value });
 	await delay();
 	console.log('doc_count: ', doc_count);
-	if(doc_count >= 1) {
+	if(doc_count > 0) {
 		find_신품정보(자재입출고, { QR : _QR.value });
 		await delay();
 		console.log('신품정보 : ', find_array);
