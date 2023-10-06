@@ -261,6 +261,7 @@ async function 출하정보_시작(is재제조 = false) {
 		_bracket.options[0].selected = true;
 		_S_PLUG.options[0].selected = true;
 		_접지.options[0].selected = true;
+	}
 }
 
 async function 출하정보_save() {
