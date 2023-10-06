@@ -2,6 +2,14 @@ var dashboard_chart;
 var 날짜지정조회 = false;
 var today_begin;
 var today_end;
+var 입고cnt = 0;
+var 세척cnt = 0;
+var 기초검사cnt = 0;
+var 분해조립cnt = 0;
+var 성능검사cnt = 0;
+var EOLcnt = 0;
+var 출하검사cnt = 0;
+var 출하cnt = 0;
 
 async function 대시보드_시작() {
 	flag_대시보드 = false;
@@ -114,9 +122,7 @@ async function dash_입고(today_begin, today_end) {
 	}
 	await sleep(DELAY);
 	console.log('입고 count:', doc_count);
-	var 입고누적 = doc_count;
-
-	document.getElementById('num1').innerHTML = 입고누적;
+	입고cnt = doc_count;
 }
 
 async function dash_입고_당일(today_begin, today_end) {
@@ -139,7 +145,7 @@ async function dash_입고_당일(today_begin, today_end) {
 	console.log('입고 당일 count:', doc_count);
 	입고당일 = doc_count;
 
-	document.getElementById('num1').innerHTML += ' (' + 입고당일 + ')';
+	document.getElementById('num1').innerHTML = 입고cnt + ' (' + 입고당일 + ')';
 }
 
 async function dash_입고_당일_get(today_begin, today_end) {
@@ -184,9 +190,7 @@ async function dash_세척(today_begin, today_end) {
 	}
 	await sleep(DELAY);
 	console.log('세척 count:', doc_count);
-	var 세척누적 = doc_count;
-
-	document.getElementById('num2').innerHTML = 세척누적;
+	세척cnt = doc_count;
 }
 
 var 세척당일 = 0;
@@ -211,7 +215,7 @@ async function dash_세척_당일(today_begin, today_end) {
 	console.log('세척 당일 count:', doc_count);
 	세척당일 = doc_count;
 
-	document.getElementById('num2').innerHTML += ' (' + 세척당일 + ')';
+	document.getElementById('num2').innerHTML = 세척cnt + ' (' + 세척당일 + ')';
 }
 
 async function dash_세척_당일_get(today_begin, today_end) {
@@ -257,9 +261,7 @@ async function dash_기초검사(today_begin, today_end) {
 		await delay();
 	}
 	console.log('기초검사누적 count:', doc_count);
-	var 기초검사누적 = doc_count;
-
-	document.getElementById('num3').innerHTML = 기초검사누적;;
+	기초검사cnt = doc_count;
 }
 
 async function dash_기초검사_당일(today_begin, today_end) {
@@ -283,7 +285,7 @@ async function dash_기초검사_당일(today_begin, today_end) {
 	console.log('기초검사당일 count:', doc_count);
 	기초검사당일 = doc_count;
 
-	document.getElementById('num3').innerHTML += ' (' + 기초검사당일 + ')';
+	document.getElementById('num3').innerHTML = 기초검사cnt + ' (' + 기초검사당일 + ')';
 }
 
 async function dash_기초검사_당일_get(today_begin, today_end) {
@@ -330,9 +332,7 @@ async function dash_분해조립(today_begin, today_end) {
 		await delay();
 	}
 	console.log('분해조립누적 count:', doc_count);
-	var 분해조립누적 = doc_count;
-
-	document.getElementById('num4').innerHTML = 분해조립누적;
+	분해조립cnt = doc_count;
 }
 
 async function dash_분해조립_당일(today_begin, today_end) {
@@ -356,7 +356,7 @@ async function dash_분해조립_당일(today_begin, today_end) {
 	console.log('분해조립당일 count:', doc_count);
 	분해조립당일 = doc_count;
 
-	document.getElementById('num4').innerHTML += ' (' + 분해조립당일 + ')';
+	document.getElementById('num4').innerHTML = 분해조립cnt + ' (' + 분해조립당일 + ')';
 }
 
 async function dash_분해조립_당일_get(today_begin, today_end) {
@@ -404,9 +404,7 @@ async function dash_성능검사(today_begin, today_end) {
 		await delay();
 	}
 	console.log('성능검사누적 count:', doc_count);
-	var 성능검사누적 = doc_count;
-
-	document.getElementById('num5').innerHTML = 성능검사누적;
+	성능검사cnt = doc_count;
 }
 
 async function dash_성능검사_당일(today_begin, today_end) {
@@ -431,7 +429,7 @@ async function dash_성능검사_당일(today_begin, today_end) {
 	
 	성능검사당일 = doc_count;
 
-	document.getElementById('num5').innerHTML += ' ('+ 성능검사당일 + ')';
+	document.getElementById('num5').innerHTML = 성능검사cnt + ' ('+ 성능검사당일 + ')';
 }
 
 async function dash_성능검사_당일_get(today_begin, today_end) {
@@ -479,9 +477,7 @@ async function dash_EOL(today_begin, today_end) {
 		await delay();
 	}
 	console.log('EOL 누적 count:', doc_count);
-	var EOL누적 = doc_count;
-
-	document.getElementById('num6').innerHTML = EOL누적;
+	EOLcnt = doc_count;
 }
 
 async function dash_EOL_당일(today_begin, today_end) {
@@ -506,7 +502,7 @@ async function dash_EOL_당일(today_begin, today_end) {
 	
 	EOL당일 = doc_count;
 	
-	document.getElementById('num6').innerHTML += ' (' + EOL당일 + ')';
+	document.getElementById('num6').innerHTML = EOLcnt + ' (' + EOL당일 + ')';
 }
 
 async function dash_EOL_당일_get(today_begin, today_end) {
@@ -553,9 +549,7 @@ async function dash_출하검사(today_begin, today_end) {
 		await delay();
 	}
 	console.log('출하검사누적 count:', doc_count);
-	var 출하검사누적 = doc_count;
-
-	document.getElementById('num7').innerHTML = 출하검사누적;
+	출하검사cnt = doc_count;
 }
 
 async function dash_출하검사_당일(today_begin, today_end) {
@@ -579,7 +573,7 @@ async function dash_출하검사_당일(today_begin, today_end) {
 	console.log('출하검사당일 count:', doc_count);
 	출하검사당일 = doc_count;
 	
-	document.getElementById('num7').innerHTML += ' (' + 출하검사당일 + ')';
+	document.getElementById('num7').innerHTML = 출하검사cnt + ' (' + 출하검사당일 + ')';
 }
 
 async function dash_출하검사_당일_get(today_begin, today_end) {
@@ -626,9 +620,7 @@ async function dash_출하(today_begin, today_end) {
 		await delay();
 	}
 	console.log('출하누적 count:', doc_count);
-	var 출하누적 = doc_count;
-
-	document.getElementById('num8').innerHTML = 출하누적;
+	출하cnt = doc_count;
 }
 
 async function dash_출하_당일(today_begin, today_end) {
@@ -652,7 +644,7 @@ async function dash_출하_당일(today_begin, today_end) {
 	console.log('출하당일 count:', doc_count);
 	출하당일 = doc_count;
 	
-	document.getElementById('num8').innerHTML += ' (' + 출하당일 + ')';
+	document.getElementById('num8').innerHTML = 출하cnt + ' (' + 출하당일 + ')';
 }
 
 async function dash_출하_당일_get(today_begin, today_end) {
