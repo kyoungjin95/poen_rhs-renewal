@@ -1,328 +1,394 @@
+* {
+  margin: 0;
+  padding: 0;
+}
 body {
-	font-family: Arial, sans-serif;
-	background-color: #f0f0f0;
-	margin: 0;
-	padding: 0;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	min-height: 100vh;
-	font-size: 3vw;
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-size: 3vw;
+  overflow-y: scroll;
+}
+input {
+  color: #00008b;
+  border-radius: 10px;
+}
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: white;
 }
 
 #main {
-	width: 90%;
-	background-color: white;
-	padding: 20px;
-	border-radius: 5px;
-	box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-	display: flex;
-	flex-direction: column;
-	min-height: 90vh;
-	opacity: 0.87;
+  width: 90%;
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  min-height: 90vh;
+  opacity: 0.87;
 }
 
 h1 {
-	text-align: center;
-	margin-bottom: 50px;
-	flex: 0;
+  text-align: center;
+  margin-bottom: 50px;
+  flex: 0;
 }
 
 .buttons {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-around;
-	margin-bottom: 2vw;
-	flex: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-bottom: 2vw;
+  flex: 0;
 }
 
-
 .menu-btn {
-	display: inline-block;
-	background-color: transparent;
-	color: white;
-	font-size: 1.5vw;
-	font-weight: bold; /* 글자 두께를 굵게 설정 */
-	text-align: center;
-	line-height: 0;
-	cursor: pointer;
+  display: inline-block;
+  background-color: transparent !important;
+  color: #000;
+  border: none;
+  font-size: 1.5vw;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  padding: 0;
 }
 
 .round-btn {
-	display: inline-block;
-	background-color: #007bff;
-	color: white;
-	border-radius: 20px;
-	padding: 15px 30px;
-	font-size: 2vw;
-	font-weight: bold; /* 글자 두께를 굵게 설정 */
-	text-align: center;
-	line-height: 1.5;
-	margin: 5px;
-	cursor: pointer;
-	transition: background-color 0.3s;
+  display: inline-block;
+  background-color: #007bff;
+  color: white;
+  border-radius: 20px;
+  padding: 15px 30px;
+  font-size: 2vw;
+  font-weight: bold; /* 글자 두께를 굵게 설정 */
+  text-align: center;
+  line-height: 1.5;
+  margin: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 .round-btn:hover {
-	background-color: #0056b3;
+  background-color: #0056b3;
 }
 
 #content {
-	flex: 1;
-	padding: 0.7vw;
-	border: 1px solid #e0e0e0;
-	border-radius: 5px;
-	font-size: 2vw;
+  flex: 1;
+  padding: 0.7vw;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  font-size: 2vw;
 }
 
 table {
-	border: 1px solid #e0e0e0;
-	border-radius: 10px;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
 }
 
 table td {
-	padding: 1vw;
-	font-size: 1.2vw;
-	background-color: #F0F8FF;
-	color: #00008B;
-	border-radius: 10px;
+  padding: 1vw;
+  font-size: 1.2vw;
+  background-color: #f0f8ff;
+  color: #00008b;
+  border-radius: 10px;
 }
 
 table.all {
-	width: 75%;
-	border : 1px solid black;
-	border-radius: 1px;
-	font-family : 'HHB';
+  width: 75%;
+  border: 1px solid black;
+  border-radius: 1px;
+  font-family: "HHB";
 }
 
 table.base {
-	width: 100%;
-	border : 1px solid black;
-	border-radius: 1px;
-	font-family : 'HHB';
+  width: 100%;
+  border: 1px solid black;
+  border-radius: 1px;
+  font-family: "HHB";
 }
 
 table td.base {
-	padding: 0.1vw;
-	font-size: 0.8vw;
-	background-color: white;
-	color: black;
-	border-radius: 1px;
-	border-left: 1px solid black;
-	border-bottom: 1px solid black;
-	font-family: 'HHB';
-	text-align: center;
-	height: 2.4vw;
+  padding: 0.1vw;
+  font-size: 0.8vw;
+  background-color: white;
+  color: black;
+  border-radius: 1px;
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
+  font-family: "HHB";
+  text-align: center;
+  height: 2.4vw;
 }
 
 table td.base2 {
-	padding: 0.1vw;
-	font-size: 0.8vw;
-	background-color: white;
-	color: black;
-	border-radius: 1px;
-	border-left: 1px solid black;
-	border-bottom: 1px solid black;
-	font-family: 'HHB';
-	text-align: center;
-	height: 3.0vw;
+  padding: 0.1vw;
+  font-size: 0.8vw;
+  background-color: white;
+  color: black;
+  border-radius: 1px;
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
+  font-family: "HHB";
+  text-align: center;
+  height: 3vw;
 }
 
 table td.base3 {
-	padding: 0.1vw;
-	font-size: 0.8vw;
-	background-color: white;
-	color: black;
-	border-radius: 1px;
-	border-left: 1px solid black;
-	border-bottom: 1px solid black;
-	font-family: 'HHB';
-	text-align: center;
-	height: 4.0vw;
+  padding: 0.1vw;
+  font-size: 0.8vw;
+  background-color: white;
+  color: black;
+  border-radius: 1px;
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
+  font-family: "HHB";
+  text-align: center;
+  height: 4vw;
 }
 
 table td.base_left {
-	padding: 0.03vw;
-	font-size: 0.8vw;
-	background-color: white;
-	color: black;
-	border-radius: 1px;
-	border-left: 1px solid black;
-	border-bottom: 1px solid black;
-	font-family: 'HHB';
-	text-align: left;
-	height: 1.0vw;
+  padding: 0.03vw;
+  font-size: 0.8vw;
+  background-color: white;
+  color: black;
+  border-radius: 1px;
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
+  font-family: "HHB";
+  text-align: left;
+  height: 1vw;
 }
 
 table td.base_header {
-	padding: 0.03vw;
-	font-size: 0.8vw;
-	background-color: yellowgreen;
-	color: black;
-	border-radius: 1px;
-	border-left: 1px solid black;
-	border-bottom: 1px solid black;
-	font-family: 'HHB';
-	text-align: center;
-	font-weight: bold;
-	height: 1.0vw;
+  padding: 0.03vw;
+  font-size: 0.8vw;
+  background-color: yellowgreen;
+  color: black;
+  border-radius: 1px;
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
+  font-family: "HHB";
+  text-align: center;
+  font-weight: bold;
+  height: 1vw;
 }
 
 table td.base_header2 {
-	padding: 0.03vw;
-	font-size: 0.8vw;
-	background-color: lime;
-	color: black;
-	border-radius: 1px;
-	border-left: 1px solid black;
-	border-bottom: 1px solid black;
-	font-family: 'HHB';
-	text-align: center;
-	font-weight: bold;
-	height: 1.0vw;
+  padding: 0.03vw;
+  font-size: 0.8vw;
+  background-color: lime;
+  color: black;
+  border-radius: 1px;
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
+  font-family: "HHB";
+  text-align: center;
+  font-weight: bold;
+  height: 1vw;
 }
 
 table td.base_header3 {
-	padding: 0.03vw;
-	font-size: 0.8vw;
-	background-color: white;
-	color: black;
-	border-radius: 1px;
-	border-left: 1px solid black;
-	border-bottom: 1px solid black;
-	font-family: 'HHB';
-	text-align: center;
-	font-weight: bold;
-	height: 1.0vw;
+  padding: 0.03vw;
+  font-size: 0.8vw;
+  background-color: white;
+  color: black;
+  border-radius: 1px;
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
+  font-family: "HHB";
+  text-align: center;
+  font-weight: bold;
+  height: 1vw;
 }
 
 table td.result_header {
-	background-color: lime;
-	color: black;
-	border: 1px solid black;
-	font-family: 'HHB';
-	width: 3vw;
+  background-color: lime;
+  color: black;
+  border: 1px solid black;
+  font-family: "HHB";
+  width: 3vw;
 }
 
 table td.result {
-	padding: 0vw;
-	font-size: 0.8vw;
-	background-color: white;
-	color: black;
-	border-radius: 1px;
-	border: 1px solid black;
-	font-family: 'HHB';
-	text-align: left;
-	width: 60vw;
+  padding: 0vw;
+  font-size: 0.8vw;
+  background-color: white;
+  color: black;
+  border-radius: 1px;
+  border: 1px solid black;
+  font-family: "HHB";
+  text-align: left;
+  width: 60vw;
 }
 
 table.bottom {
-	padding: 0.05vw;
-	font-size: 0.8vw;
-	background-color: white;
-	color: black;
-	border: none;
-	width: 85%;
+  padding: 0.05vw;
+  font-size: 0.8vw;
+  background-color: white;
+  color: black;
+  border: none;
+  width: 85%;
 }
 
 table td.bottom {
-	padding: 0.05vw;
-	font-size: 0.8vw;
-	background-color: white;
-	color: black;
-	border: none;
+  padding: 0.05vw;
+  font-size: 0.8vw;
+  background-color: white;
+  color: black;
+  border: none;
 }
 
 #_QR_Label {
-	padding: 1vw;
-	font-size: 1.2vw;
-	background-color: white;
-	color: black;
-	border-radius: 10px;
+  padding: 1vw;
+  font-size: 1.2vw;
+  background-color: white;
+  color: black;
+  border-radius: 10px;
 }
 
 @font-face {
-	font-family : 'HHB'
-	src : url(HHB.ttf);
+  font-family: "HHB";
+  src: url(HHB.ttf);
 }
 
 @font-face {
-	font-family : 'HHM'
-	src : url(HHM.ttf);
+  font-family: "HHM";
+  src: url(HHM.ttf);
 }
 
 .HHB {
-	font-family : 'HHB'
+  font-family: "HHB";
 }
 
 .HHM {
-	font-family : 'HHM'
+  font-family: "HHM";
 }
 
 .종합평가_img {
-	width: 50vw;
-	height: 10vw;
-	background-image: url('../img/jp.png');
-	background-size: contain;
-	background-repeat: no-repeat;
-	background-position: center;
-	border:1px solid black;
+  width: 50vw;
+  height: 10vw;
+  background-image: url("../img/jp.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: 1px solid black;
 }
 
 .pic {
-	height: 25vw;
-	width: 100%;
-	overflow:scroll;	
+  height: 25vw;
+  width: 100%;
+  overflow: scroll;
+}
+.version {
+  width: 80%;
+  height: 25px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+.version span {
+  color: skyblue;
 }
 
-input {
-	color: #00008B;
-	border-radius: 10px;
-}
-* {
-	margin: 0;
-	padding: 0;
-}
-ul li{
-	list-style: none;
-}
-a {
-	text-decoration: none;
-	color: white;
-}
 #menu {
-	font:bold 1.5vw "malgun gothic";
-	width:100%;
-	height:3vw;
-	background: black;
-	color:black;
-	line-height: 3vw;
-	margin:0 auto;
-	text-align: center;
+  width: 100%;
+  height: 8vh;
+  background: #b0c2cb54;
+  color: #000;
+  cursor: pointer;
+  text-align: center;
+  font: bold 1.5vw "malgun gothic";
+  box-sizing: border-box;
+  border-radius: 13px 13px 0 0;
+}
+
+#menu > ul {
+  width: 100%;
+  display: flex;
 }
 
 #menu > ul > li {
-	float:left;
-	width:10vw;
-	position:relative;
+  width: 15vw;
+  height: 8vh;
+  line-height: 8vh;
+  position: relative;
+  color: #000;
+}
+
+#menu > ul > li:hover {
+  background: #0a723f;
+  /* background-color: rgb(0, 110, 220); */
+  color: #fff;
+}
+#menu > ul > li:hover > .menu-btn {
+  color: #fff;
+}
+
+#menu > ul > li:hover:nth-child(1) {
+  border-radius: 13px 0 0 0;
+}
+
+#menu > ul > li:hover:last-child {
+  border-radius: 0 13px 0 0;
 }
 
 #menu > ul > li > ul {
-	width:15vw;
-	display:none;
-	position: absolute;
-	font-size: 1.2vw;
-	background: green;
-	opacity: 0.90;
+  z-index: 999;
+  width: 16vw;
+  display: none;
+  position: absolute;
+  background-color: white;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.41);
+  font-size: 1.3vw;
+}
+
+#menu > ul > li > ul > li {
+  transition: all 600ms ease;
 }
 
 #menu > ul > li:hover > ul {
-	display:block;
-	position:relative;
-	z-index:1;
+  display: block;
+}
+#menu > ul > li > ul > li:hover {
+  background: #0a723f;
 }
 
-#menu > ul > li > ul > li:hover {
-	background: skyblue;
-	transition: ease 1s;
+#menu > ul > li > ul > li:hover > .menu-btn {
+  color: #fff;
+}
+
+#menu > ul > li:hover:nth-last-child(-n + 2) {
+  background: transparent;
+  outline: none;
+}
+
+/* media query  */
+@media (max-width: 767px) {
+  #menu {
+    padding: 0 5px;
+    height: 4vh;
+  }
+  #menu > ul > li {
+    height: 4vh;
+    line-height: 4vh;
+    white-space: nowrap;
+  }
+
+  #menu > ul > li > ul {
+    width: 18vw;
+    line-height: 4vh;
+  }
 }
