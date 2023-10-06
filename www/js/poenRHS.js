@@ -2140,6 +2140,19 @@ async function 공정단계찾기(_관리번호) {
 }
 
 async function 공정단계자동입력(_관리번호) {
+	count(BSA재제조, { 관리번호 : _관리번호 });
+	await delay();
+
+	if(doc_count > 0) {
+		find(BSA재제조, _관리번호);
+		await delay();
+		
+		console.log('check: ', find_array[0].공정단계);
+		if(find_array[0].공정단계 == '출하') {
+			return;
+		}
+	}
+
 	var _공정단계 = await 공정단계찾기(_관리번호);
 	console.log('공정단계:', _공정단계);
 
