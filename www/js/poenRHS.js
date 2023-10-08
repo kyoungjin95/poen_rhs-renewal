@@ -1,4 +1,4 @@
-const DELAY = 10; 
+const DELAY = 1; 
 const DELAY_SYS = 1000; 
 const 계정 = '계정';
 const BSA재제조 = 'BSA재제조';
@@ -1383,6 +1383,7 @@ socket.on('insert_result', function(id) {
 
 socket.on('count_result', async function(count, rcv_check) {
 	//console.log('count: ', count);
+	doc_count = 0;
 	if(rcv_check != check) return;
 	doc_count = count;
 	await sleep(1);
@@ -1393,6 +1394,7 @@ socket.on('count_result', async function(count, rcv_check) {
 socket.on('find_result', async function(result, rcv_check) {
 	//console.log('finded result array: ', result);
 	//console.log('recv count:', rcv_check, 'check:', check);
+	find_result = [];
 	if(rcv_check != check) return;
 	find_array = result;
 	await sleep(1);

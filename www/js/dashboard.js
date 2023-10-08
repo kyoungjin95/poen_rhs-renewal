@@ -10,7 +10,7 @@ var 성능검사cnt = 0;
 var EOLcnt = 0;
 var 출하검사cnt = 0;
 var 출하cnt = 0;
-
+var wait_start = false;
 async function 대시보드_시작() {
 	flag_대시보드 = false;
 	if(worker == '') return;
@@ -47,6 +47,13 @@ async function 대시보드_시작() {
 function dashboard_조회() {
 	today_begin = document.getElementById('_검색일_from').value + 'T00:00:000Z';;
 	today_end = document.getElementById('_검색일_to').value + 'T24:00:000Z';;
+	if(wait_start == true) return;
+	wait_start = true;
+
+	setTimeout(function() {
+		wait_start = false;
+	}, 5000);
+
 	조회_list(today_begin, today_end);
 	날짜지정조회 = true;
 }
