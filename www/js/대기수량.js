@@ -1,12 +1,13 @@
 var BSA대기수량_table;
+var BSA출하수량_table;
 var 출하대기_BSA_관리번호 = '';
 var 선택대기공정 = '세척';
 
-async function BSA_수량_현황_시작() {
-	flag_BSA_수량_현황 = false;
+async function 대기수량_현황_시작() {
+	flag_대기수량_현황 = false;
 	if(worker == '') return;
 	await sleep(200);
-	BSA_수량_현황_조회();
+	대기수량_현황_조회();
 
 	document.getElementById("filter-field").addEventListener("change", BSA대기수량_updateFilter);
 	document.getElementById("filter-type").addEventListener("change", BSA대기수량_updateFilter);
@@ -21,7 +22,7 @@ async function BSA_수량_현황_시작() {
 		typeEl.value = "=";
 		valueEl.value = "";
 
-		BSA대기수량_table.clearFilter();
+		BSA출하수량_table.clearFilter();
 	});
 	
 	document.getElementById('입고').addEventListener("click", function(){
@@ -48,7 +49,7 @@ async function BSA_수량_현황_시작() {
 	});
 }
 
-async function BSA_수량_현황_조회() {
+async function 대기수량_현황_조회() {
 	await 작업대기();
 	await 세척대기();
 	await 기초검사대기();
@@ -201,7 +202,7 @@ async function 출하대기목록() {
 
 	출하대기_tabledata_BSA = find_array;
 
-	BSA대기수량_table = new Tabulator("#grid_출하대기", {
+	BSA출하수량_table = new Tabulator("#grid_출하대기", {
 		layout: "resizableColumnFit",
                 data: 출하대기_tabledata_BSA,
 		height: '700px',
@@ -237,7 +238,7 @@ async function 출하대기목록() {
 		],
 	});
 
-	BSA대기수량_table.on("rowClick", async function(e, row){
+	BSA출하수량_table.on("rowClick", async function(e, row){
 		console.log('selected 관리번호: ', row.getData().관리번호);
 		출하대기_BSA_관리번호 = row.getData().관리번호;
 		
@@ -264,7 +265,7 @@ function BSA대기수량_updateFilter(){
 	}
 
 	if(filterVal){
-		BSA대기수량_table.setFilter(filter,typeVal, valueEl.value.trim());
+		BSA출하수량_table.setFilter(filter,typeVal, valueEl.value.trim());
 	}
 }
 
@@ -293,7 +294,7 @@ async function 출하예약() {
 		alert('저장 되었습니다');
 	}
 
-	BSA_수량_현황_조회();
+	대기수량_현황_조회();
 }
 
 async function 출하예약취소() {
@@ -321,5 +322,5 @@ async function 출하예약취소() {
 		alert('저장 되었습니다');
 	}
 
-	BSA_수량_현황_조회();
+	대기수량_현황_조회();
 }

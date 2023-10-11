@@ -736,6 +736,7 @@ async function 재제조현황_조회() {
 			{title:"EOL투입일", field:"EOL투입일", sorter:"string", width:'180'},
 			{title:"EOL", field:"EOL", sorter:"string", visible: true, width:'180'},//
 			{title:"출하검사", field:"출하검사", sorter:"string", width:'180'},
+			{title:"납품처", field:"납품처", sorter:"string", width:'180'},
 			{title:"출하", field:"출하", sorter:"string", width:'180'},
 			{title:"반품입고", field:"반품입고", sorter:"string", width:'180'},
 			{title:"재출하", field:"재출하", sorter:"string", width:'180'},

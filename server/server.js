@@ -37,7 +37,7 @@ app.get('/apk', (req, res) => {
 });
 
 app.get('/manual', (req, res) => {
-	res.sendFile(path.join(__dirname, '../doc/Poen_RHS_Manual.xlsx'));
+	res.sendFile(path.join(__dirname, '../doc/RHMS_Manual.pdf'));
 });
 
 app.get('/qr_label', (req, res) => {

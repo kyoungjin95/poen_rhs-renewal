@@ -420,3 +420,7 @@ table td.bottom {
     border-radius: 0;
   }
 }
+
+textarea {
+	border: none;
+}

@@ -60,6 +60,7 @@ async function 구장재고_조회(is재제조 = false) {
 		_부품번호.value = find_array[0].부품번호;
 		_생산연도.value = find_array[0].생산연도.value;
 		_ROM_ID.value = find_array[0].ROM_ID;
+		_보관위치.value = find_array[0].보관위치;
 		_출고일.value = find_array[0].출고일;
 		_출고처.value = find_array[0].출고처;
 		_비고.value = find_array[0].비고;
@@ -91,6 +92,7 @@ async function 구장재고_save() {
 	doc.부품번호 = _부품번호.value;
 	doc.생산연도 = _생산연도.value;
 	doc.ROM_ID = _ROM_ID.value;
+	doc.보관위치 = _보관위치.value;
 	doc.출고일 = _출고일.value;
 	doc.출고처 = _출고처.value;
 	doc.비고 = _비고.value;

@@ -27,7 +27,7 @@
 				<button class="round-btn" onclick="pre_관리번호 = ''; loadPage('base/dashboard.html'); flag_대시보드 = true;">대시 보드</button>
 				<button class="round-btn" onclick="pre_관리번호 = ''; loadPage('base/재충전정보.html'); flag_재충전정보 = true;">재충전정보</button>
 				<button class="round-btn" onclick="pre_관리번호 = ''; loadPage('base/camera.html'); flag_camera = true;">사진 촬영</button>
-				<button class="round-btn" onclick="pre_관리번호 = ''; loadPage('base/BSA_수량_현황.html'); flag_BSA_수량_현황 = true;">BSA 대기수량</button>
+				<button class="round-btn" onclick="pre_관리번호 = ''; loadPage('base/대기수량_현황.html'); flag_대기수량_현황 = true;">BSA 대기수량</button>
 				<button class="round-btn" onclick="pre_관리번호 = ''; loadPage('base/공정제외.html'); flag_BSA_제외분류 = true;">BSA 제외분류</button>
 				<button class="round-btn" onclick="pre_관리번호 = ''; loadPage('base/ETC.html');">ETC</button>
 				<div id='구장재고_btn'>
@@ -86,7 +86,7 @@
 		<script src="base/jslib/d3@7"></script>
 		<script src='base/js/admin.js'></script>
 		<script src='base/js/camera.js'></script>
-		<script src='base/js/BSA_수량_현황.js'></script>
+		<script src='base/js/대기수량_현황.js'></script>
 		<script src='base/js/기초보고서.js'></script>
 		<script src='base/js/공정제외.js'></script>
 		<script src='base/js/수량집계.js'></script>

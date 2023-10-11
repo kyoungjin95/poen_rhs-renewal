@@ -484,5 +484,5 @@ function 교체부품상세_콤보박스(e) {
 }
 
 function 기초보고서() {
-	loadPage('base/기초보고서.html');
+	기초보고서_시작();
 }

@@ -717,4 +717,13 @@ async function 당일목록(공정, data) {
 			{title:"폐기", field:"폐기", sorter:"string", width:'180'},
 		],
 	});
+
+	BSA대기수량_table.on("rowClick", async function(e, row){
+		console.log('selected 관리번호: ', row.getData().관리번호);
+		관리번호 = row.getData().관리번호;
+
+                pre_관리번호 = ''; 
+		flag_상세입력 = true;
+		loadPage('base/item-details.html'); 
+	});
 }

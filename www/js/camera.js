@@ -23,10 +23,8 @@ var doc;
 
 function pic_load(e) {
 	if(worker == '') return;
-	load_element();
+	//load_element();
 	
-	;
-
 	image_count = e.length;
 	if(image_count > 15) {
 		image_count = 15;
@@ -136,6 +134,8 @@ async function pic_save() {
 	console.log('update :', update_count);
 	console.log('insert :', insert_count);
 	alert('Saved');
+
+	load_element();
 }
 
 function getDataUrl(file, no) {
@@ -152,7 +152,7 @@ function getDataUrl(file, no) {
 function camera_공정입력_콤보박스(e) {
 	if(worker == '') return;
 	pic_step = e.value;
-
+	
 	switch(pic_step) {
 		case '입고' :
 			col = 입고_pic;
