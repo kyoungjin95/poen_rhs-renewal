@@ -314,12 +314,10 @@ table td.bottom {
   box-sizing: border-box;
   border-radius: 13px 13px 0 0;
 }
-
 #menu > ul {
   width: 100%;
   display: flex;
 }
-
 #menu > ul > li {
   width: 15vw;
   height: 8vh;
@@ -335,7 +333,6 @@ table td.bottom {
 }
 #menu > ul > li:hover {
   background: #0a723f;
-  /* background-color: rgb(0, 110, 220); */
   color: #fff;
 }
 #menu > ul > li:hover > .menu-btn {
@@ -398,8 +395,16 @@ table td.bottom {
 }
 @media (max-width: 767px) {
   #menu {
-    padding: 0 5px;
-    height: 4vh;
+    /* display: inline-block; */
+    height: 8vh;
+    line-height: 8vh;
+  }
+  #menu > ul {
+    width: 90%;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 0 auto;
   }
   #menu > ul > li {
     height: 4vh;
@@ -410,5 +415,8 @@ table td.bottom {
   #menu > ul > li > ul {
     width: 18vw;
     line-height: 4vh;
+  }
+  #menu > ul > li:hover:nth-child(1) {
+    border-radius: 0;
   }
 }
