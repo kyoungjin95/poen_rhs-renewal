@@ -88,6 +88,13 @@ async function 기초보고서_조회() {
 		_입고사진.src = 'data:image/;base64,' + find_array[0].pic1;
 		_BSA_QR.src = 'data:image/;base64,' + find_array[0].pic2;
 	}
+
+	var DateTime = luxon.DateTime;
+	var seoul = DateTime.local().setZone("Asia/Seoul");
+	var now = seoul.toString();
+	
+	document.getElementById('_작성일_input').value = now.substr(0, 10);
+	_작성일.innerHTML = now.substr(0, 10);
 }
 
 
@@ -125,8 +132,10 @@ async function 기초보고서_save() {
 }
 
 function 기초보고서_apply() {
-  	_냉각유로.innerHTML = 'OK'
-  	_케이스.innerHTML = 'OK'
+  	_외부점검.innerHTML = 'OK';
+  	_내부점검.innerHTML = 'OK';
+  	_냉각유로.innerHTML = 'OK';
+  	_케이스.innerHTML = 'OK';
   	_PRA_P.innerHTML = 'OK';
   	_PRA_N.innerHTML = 'OK';
   	_HV커넥터_P.innerHTML = 'OK';
@@ -147,10 +156,23 @@ function 기초보고서_apply() {
 	_센터조치.innerHTML = document.getElementById('_센터조치_input').value;
 	_작성일.innerHTML = document.getElementById('_작성일_input').value;
 	_고장코드사유.innerHTML = document.getElementById('_고장코드사유_input').value;
+	_릴레이제어사유.innerHTML = document.getElementById('_릴레이제어사유_input').value;
 	_입고정보사유.innerHTML = document.getElementById('_입고정보사유_input').value;
 	_재제조이력사유.innerHTML = document.getElementById('_재제조이력사유_input').value;
 	_결과.innerHTML = document.getElementById('_결과_input').value;
 
+}
+
+function _기초보고서_외부점검_콤보박스(e) {
+	const value = e.value;
+
+  	document.getElementById('_외부점검').innerHTML = value;
+}
+
+function _기초보고서_내부점검_콤보박스(e) {
+	const value = e.value;
+
+  	document.getElementById('_내부점검').innerHTML = value;
 }
 
 function _기초보고서_냉각유로_콤보박스(e) {
@@ -193,6 +215,12 @@ function _기초보고서_릴레이제어_콤보박스(e) {
 	const value = e.value;
 
   	document.getElementById('_릴레이제어').innerHTML = value;
+}
+
+function _기초보고서_고장코드_콤보박스(e) {
+	const value = e.value;
+
+  	document.getElementById('_고장코드').innerHTML = value;
 }
 
 function _기초보고서_입고정보_콤보박스(e) {
