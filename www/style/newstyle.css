@@ -186,9 +186,12 @@ p {
   background-color: #1a3b3b;
   color: #fff;
 }
-.exclusion .con__body {
+
+.exclusion .con__body,
+.quantity-status .con__body {
   margin-top: 2rem;
 }
+
 /* ========================================
   etc */
 .input-group ul {
@@ -230,7 +233,6 @@ p {
 .input-group .etc__content:hover button {
   background: #0056b3;
 }
-
 /* ========================================
   responsive 반응형 */
 @media (min-width: 2200px) {
