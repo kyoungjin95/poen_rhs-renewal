@@ -105,7 +105,7 @@ table td {
 }
 
 table.all {
-  width: 75%;
+  width: 100%;
   border: 1px solid black;
   border-radius: 1px;
   font-family: "HHB";
@@ -217,7 +217,7 @@ table td.result_header {
   color: black;
   border: 1px solid black;
   font-family: "HHB";
-  width: 3vw;
+  width: 10vw;
 }
 
 table td.result {
@@ -229,7 +229,7 @@ table td.result {
   border: 1px solid black;
   font-family: "HHB";
   text-align: left;
-  width: 60vw;
+  width: 100%;
 }
 
 table.bottom {
@@ -238,7 +238,7 @@ table.bottom {
   background-color: white;
   color: black;
   border: none;
-  width: 85%;
+  width: 100%;
 }
 
 table td.bottom {

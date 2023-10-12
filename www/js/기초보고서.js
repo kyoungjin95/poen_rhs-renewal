@@ -104,7 +104,7 @@ async function 기초보고서_save() {
 	var body = document.getElementsByTagName('body')[0];
 	if (window.innerWidth > 1920) { alert('해상도가 1920 x 1080일때만 사용이 가능합니다.');}
 
-	html2canvas(document.getElementById('_기초보고서'), { width : 3100, height : 2000 }).then(canvas => {
+	html2canvas(document.getElementById('_기초보고서'), { width : 4000, height : 2000 }).then(canvas => {
 			var data = canvas.toDataURL();
 			var canvas = document.getElementById('_canvas');
 			var ctx = canvas.getContext('2d');
@@ -114,7 +114,7 @@ async function 기초보고서_save() {
     				ctx.drawImage(img, 1920, 1080);
   			};
 
-			canvas.width = 310;
+			canvas.width = 400;
 			canvas.width = 200;
 
 			var docDefinition = {
@@ -147,6 +147,7 @@ function 기초보고서_apply() {
   	_재제조이력.innerHTML = 'OK';
   	_고장코드.innerHTML = 'OK';
 	
+	_셀제조사사유.innerHTML = document.getElementById('_셀제조사사유_input').value;
 	_생산일.innerHTML = document.getElementById('_생산일_input').value;
 	_판매일.innerHTML = document.getElementById('_판매일_input').value;
 	_수리일.innerHTML = document.getElementById('_수리일_input').value;
