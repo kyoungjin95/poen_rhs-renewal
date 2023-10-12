@@ -28,24 +28,33 @@ async function 대기수량_현황_시작() {
 	document.getElementById('입고').addEventListener("click", function(){
 		대기목록('입고');
 	});
+
 	document.getElementById('세척').addEventListener("click", function(){
 		대기목록('세척');
 	});
+
 	document.getElementById('기초').addEventListener("click", function(){
 		대기목록('기초검사');
 	});
+
 	document.getElementById('분해').addEventListener("click", function(){
 		대기목록('분해조립');
 	});
+
 	document.getElementById('성능').addEventListener("click", function(){
 		대기목록('성능검사');
 	});
+
 	document.getElementById('EOL').addEventListener("click", function(){
 		대기목록('EOL');
 	});
 
 	document.getElementById('공정대기').addEventListener("click", function(){
 		대기목록('공정대기');
+	});
+
+	document.getElementById('품질대기').addEventListener("click", function(){
+		대기목록('품질대기');
 	});
 }
 
@@ -58,6 +67,7 @@ async function 대기수량_현황_조회() {
 	await EOL대기();
 	await 출하대기();
 	await 공정대기();
+	await 품질대기();
 
 	console.log('update');
 }
@@ -121,13 +131,20 @@ async function 공정대기() {
 	 document.getElementById('check_num8').innerHTML = doc_count;
 }
 
+async function 품질대기() {
+	 count(BSA재제조, { 소재지 : '품질대기' , 완전분해 : { $eq : '' }, 폐기 : { $eq : '' }, 구분 : { $nin: ['일반기타', '보증기타']} } );
+	 await delay();
+
+	 document.getElementById('check_num9').innerHTML = doc_count;
+}
+
 async function 대기목록(공정) {
 	var 대기_tabledata_BSA = [];
 	선택대기공정 = 공정;
 
 	document.getElementById('대기라벨').innerHTML = 선택대기공정 + ' 대기 목록';
 
-	if(공정 != '공정대기') {
+	if(공정 != '공정대기' && 공정 != '품질대기') {
 		count(BSA재제조, { 공정단계 : 공정 });
 		await delay();
 
@@ -139,7 +156,7 @@ async function 대기목록(공정) {
 
 			대기_tabledata_BSA = find_array;
 		}
-	} else {
+	} else if(공정 == '공정대기') {
 		count(BSA재제조, { 소재지 : '공정대기' });
 		await delay();
 
@@ -147,6 +164,18 @@ async function 대기목록(공정) {
 			대기_tabledata_BSA = [];
 		} else {
 			find_BSA재제조(BSA재제조, { 소재지 : '공정대기', 완전분해 : { $eq : '' }, 폐기 : { $eq : ''}, 구분: { $nin: ['일반기타', '보증기타']}});
+			await delay();
+
+			대기_tabledata_BSA = find_array;
+		}
+	} else if(공정 == '품질대기') {
+		count(BSA재제조, { 소재지 : '품질대기' });
+		await delay();
+
+		if(doc_count == 0) {
+			대기_tabledata_BSA = [];
+		} else {
+			find_BSA재제조(BSA재제조, { 소재지 : '품질대기', 완전분해 : { $eq : '' }, 폐기 : { $eq : ''}, 구분: { $nin: ['일반기타', '보증기타']}});
 			await delay();
 
 			대기_tabledata_BSA = find_array;
