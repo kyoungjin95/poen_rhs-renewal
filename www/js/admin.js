@@ -103,14 +103,13 @@ function func_csv() {
 		reader.addEventListener('load', async function() {
 			const res = d3.csvParse(reader.result);
 
-			insertMany(BSA재제조, res);
-			await delay();
+			//insertMany(BSA재제조, res);
+			//await delay();
 
-
-			//for(var i = 0; i < res.length; i++) {
-			//	update(BSA재제조, res[i]);
-			//	await delay();
-			//};
+			for(var i = 0; i < res.length; i++) {
+				update(BSA재제조, res[i]);
+				await delay();
+			};
 			console.log('complete');
 		});
 		reader.readAsText(file);
