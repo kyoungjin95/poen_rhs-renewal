@@ -718,7 +718,7 @@ async function 당일목록(공정, data) {
 		],
 	});
 
-	BSA대기수량_table.on("rowClick", async function(e, row){
+	BSA대기수량_table.on("rowDblClick", async function(e, row){
 		console.log('selected 관리번호: ', row.getData().관리번호);
 		관리번호 = row.getData().관리번호;
 
