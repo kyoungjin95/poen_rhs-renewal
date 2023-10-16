@@ -155,6 +155,9 @@ function camera_공정입력_콤보박스(e) {
 	
 	switch(pic_step) {
 		case '입고' :
+      slot1.innerHTML = '입고';
+      slot2.innerHTML = 'BSA QR 코드';
+
 			col = 입고_pic;
 			doc = 입고_pic_doc;
 			break;

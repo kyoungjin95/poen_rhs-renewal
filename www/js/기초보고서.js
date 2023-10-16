@@ -51,7 +51,8 @@ async function 기초보고서_조회() {
     _릴레이제어.innerHTML = find_array[0].통신검사_릴레이구동 == undefined?'':find_array[0].통신검사_릴레이구동;
     //릴레이제어사유.innerHTML = find_array[0].통신검사_릴레이구동;
     _고장코드.innerHTML = find_array[0].고장현상코드 == undefined?'':find_array[0].고장현상코드;
-    _고장코드사유.innerHTML = find_array[0].고장코드현상명 == undefined?'':find_array[0].고장코드현상명;
+    _고장코드사유.innerHTML = find_array[0].고장현상명 == undefined?'':find_array[0].고장현상명;
+
     //_입고정보.innerHTML =
     //_입고정보사유.innerHTML =
     //재제조이력.innerHTML
@@ -64,8 +65,11 @@ async function 기초보고서_조회() {
   if(doc_count > 0) {
     find(입고, _management_id.value);
     await delay();
+    console.log(find_array);
 
-    _입고일.value = find_array[0].입고일;
+    _입고일.innerHTML = find_array[0].입고일;
+  } else {
+    _입고일.innerHTML = '';
   }
 
   count(세척, { 관리번호 : _management_id.value });
@@ -77,6 +81,9 @@ async function 기초보고서_조회() {
 
     _케이스.innerHTML = find_array[0].기밀검사_케이스 == undefined?'':find_array[0].기밀검사_케이스;
     _케이스감압량.innerHTML = find_array[0].기밀검사_케이스_특이사항 == undefined?'':find_array[0].기밀검사_케이스_특이사항;
+  } else {
+    _케이스.innerHTML = '';
+    _케이스감압량.innerHTML = '';
   }
 
   count(입고_pic, { 관리번호 : _management_id.value });
