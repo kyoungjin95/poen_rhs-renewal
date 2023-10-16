@@ -30,8 +30,8 @@ async function 관리자_시작() {
 			],
 		});
 	}
-	//_csv = document.getElementById('_csv');
-	//func_csv();
+	_csv = document.getElementById('_csv');
+	func_csv();
 }
 
 async function add_user() {
@@ -107,7 +107,15 @@ function func_csv() {
 			//await delay();
 
 			for(var i = 0; i < res.length; i++) {
-				update(BSA재제조, res[i]);
+				var doc = {};
+				doc.관리번호 = res[i].관리번호;
+				if(res[i].공정단계 != '') doc.공정단계 = res[i].공정단계;
+				if(res[i].출하일 != '') doc.출하 = res[i].출하일 + 'T16:30:00';
+				if(res[i].소재지 != '') doc.소재지 = res[i].소재지;
+				if(res[i].완전분해 != '') doc.완전분해 = res[i].완전분해 + 'T16:30:00';
+				if(res[i].폐기 != '') doc.폐기 = res[i].폐기 + 'T16:30:00';
+
+				update(BSA재제조, doc);
 				await delay();
 			};
 			console.log('complete');

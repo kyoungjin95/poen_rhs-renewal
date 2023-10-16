@@ -129,7 +129,7 @@ function read_신품정보_func_csv() {
 		reader.addEventListener('load', async function() {
 			if(flag_신품정보_엑셀 == true) return;
 			flag_신품정보_엑셀 = true;
-			alert('진입');
+
 			const res = d3.csvParse(reader.result);
 			var docs = [];
 			console.log(res.length);

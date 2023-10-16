@@ -147,6 +147,7 @@ async function 대기목록(공정) {
 	if(공정 != '공정대기' && 공정 != '품질대기') {
 		count(BSA재제조, { 공정단계 : 공정 });
 		await delay();
+		await sleep(100);
 
 		if(doc_count == 0) {
 			대기_tabledata_BSA = [];
