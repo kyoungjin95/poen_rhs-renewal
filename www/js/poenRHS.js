@@ -1528,6 +1528,17 @@ async function deleteOne(col, management_id) {
 	}
 }
 
+
+async function deleteOneBSA(col, management_id, 재제조번호) {
+	if(socket == undefined) return;
+	flag_arrivedMSG = false;
+	while(flag_arrivedMSG == false) {
+		socket.emit('delete', worker, col, { 관리번호: management_id, 재제조번호: 재제조번호});
+		await sleep(DELAY_SYS * 2);
+	}
+}
+
+
 async function deleteOne재제조번호(col, 재제조번호) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;

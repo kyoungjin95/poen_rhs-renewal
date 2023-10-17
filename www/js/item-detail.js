@@ -146,6 +146,7 @@ async function 상세입력_시작(is재제조번호 = false) {
 		if(find_array[0].출하검사 != undefined) _출하검사.value = find_array[0].출하검사.substr(0, 16);
 		_납품처.value = find_array[0].납품처;
 		_출하.value = find_array[0].출하.substr(0, 16);
+		if(find_array[0].출하.length > 5) _공정단계.value = '출하';
 		_소재지.value = find_array[0].소재지.substr(0, 16);
 		_마지막충전일.value = find_array[0].마지막충전일.substr(0, 16);
 		_반품입고.value = find_array[0].반품입고.substr(0, 16);
@@ -165,7 +166,7 @@ async function 상세입력_시작(is재제조번호 = false) {
 			_품번.value = find_array[0].품번;
 			//_RO_no.value = find_array[0].RO_no;
 			_입고.value = find_array[0].입고일.substr(0, 16);
-			if(_입고.value != '') {
+			if(_입고.value != '' && _공정단계.value != '출하') {
 				_공정단계.value = '세척';
 			}
 			if(_입고.value != '' && _입고.value != undefined) {
@@ -273,8 +274,10 @@ async function 상세입력_시작(is재제조번호 = false) {
 			find(출하정보, _management_id.value);
 			await delay();
 
-			if(_출하검사.value == '') _출하검사.value = find_array[0].검사일.substr(0, 10) + 'T12:00';
-			_공정단계.value = '출하';
+			if(_출하검사.value == '') {
+				_출하검사.value = find_array[0].검사일.substr(0, 10) + 'T12:00';
+				_공정단계.value = '출하';
+			}
 		}
 		item_detail_save(true);
 	} else {
@@ -349,6 +352,7 @@ async function item_detail_save(flag_result = false) {
 	doc.EOL = _EOL.value;
 	doc.출하검사 = _출하검사.value;
 	doc.출하 = _출하.value;
+	if(_출하.value != '') _공정단계.value = '출하';
 	doc.납품처 = _납품처.value;
 	doc.소재지 = _소재지.value;
 	doc.마지막충전일 = _마지막충전일.value;
