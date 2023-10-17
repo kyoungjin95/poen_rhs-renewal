@@ -109,14 +109,12 @@ function func_csv() {
 			for(var i = 0; i < res.length; i++) {
 				var doc = {};
 				doc.관리번호 = res[i].관리번호;
-				if(res[i].공정단계 != '') doc.공정단계 = res[i].공정단계;
-				if(res[i].출하일 != '') doc.출하 = res[i].출하일 + 'T16:30:00';
-				if(res[i].소재지 != '') doc.소재지 = res[i].소재지;
-				if(res[i].완전분해 != '') doc.완전분해 = res[i].완전분해 + 'T16:30:00';
-				if(res[i].폐기 != '') doc.폐기 = res[i].폐기 + 'T16:30:00';
+				doc.공정단계 = res[i].공정단계;
 
 				update(BSA재제조, doc);
 				await delay();
+
+				console.log(doc);
 			};
 			console.log('complete');
 		});
