@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="base/style/공정.css" />
+    <title>육안 검사 - 외부 1</title>
+  </head>
+  <body>
+    <div>
+      <table border="2" id="tb">
+        <tr>
+          <td class="base">
+            <label for="management_id"><b>관리번호</b></label>
+          </td>
+          <td class="base">
+            <input
+              type="text"
+              id="_management_id"
+              value="조회 버튼을 누르세요"
+              size="40"
+              required
+            />
+            <button onClick="기초보고서_조회();">조 회</button>
+          </td>
+        </tr>
+        <tr>
+          <td class="base">
+            <label for="_재제조번호"><b>재제조번호</b></label>
+          </td>
+          <td class="base">
+            <input
+              type="text"
+              id="_재제조번호"
+              value="조회 버튼을 누르세요"
+              size="40"
+              required
+            />
+            <button onClick="기초보고서_재제조번호_조회();">조 회</button>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div id="external">
+      <button type="button" class="btn btn1">외부사진</button>
+      <button type="button" class="btn btn2">이상부위 상세사진</button>
+      <div id="_육안검사외부1" class="check-all">
+        <h3>▣ 육안 검사 - 외부</h3>
+        <div>
+          <table class="all">
+            <!-- <caption>
+              육안검사 - 외부
+            </caption> -->
+            <colgroup>
+              <col class="col_1" style="width: 33.3333%" />
+              <col class="col_2" />
+              <col class="col_3" />
+            </colgroup>
+            <tr>
+              <td class="title">TOP</td>
+              <td class="title">FRONT</td>
+              <td class="title">LEFT</td>
+            </tr>
+            <tr>
+              <td style="height: 23vh" class="imgName">
+                <img id="top_pic" width="100%" height="100%" />
+              </td>
+              <td id="front_pic" style="height: 23vh" class="imgName">
+                <img id="front_pic" width="100%" height="100%" />
+              </td>
+              <td style="height: 23vh" class="imgName">
+                <img id="left_pic" width="100%" height="100%" />
+              </td>
+            </tr>
+            <tr>
+              <td class="title">BOTTOM</td>
+              <td class="title">REAR</td>
+              <td class="title">RIGHT</td>
+            </tr>
+            <tr>
+              <td style="height: 23vh" class="imgName">
+                <img id="bottom_pic" width="100%" height="100%" />
+              </td>
+              <td style="height: 23vh" class="imgName">
+                <img id="rear_pic" width="100%" height="100%" />
+              </td>
+              <td style="height: 23vh" class="imgName">
+                <img id="right_pic" width="100%" height="100%" />
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div id="_육안검사외부2" class="check-all">
+        <h3>▣ 육안검사 - 외부_<em>이상부위 상세사진</em></h3>
+        <table border="2" class="all">
+          <!-- <caption>
+            육안검사 - 외부_이상부위 상세사진
+          </caption> -->
+          <colgroup>
+            <col class="col_1" style="width: 100%" />
+            <col class="col_2" />
+          </colgroup>
+          <tbody>
+            <tr>
+              <td>
+                <img id="_이상부위_외부1" width="100%" height="100%" />
+              </td>
+              <td>
+                <img id="_이상부위_외부2" width="100%" height="100%" />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <img id="_이상부위_외부3" width="100%" height="100%" />
+              </td>
+              <td>
+                <img id="_이상부위_외부4" width="100%" height="100%" />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <table class="bottom" width="100%">
+          <tr>
+            <td class="bottom" align="left">FQ850-05</td>
+            <td class="bottom" align="center">A4(297x210mm)</td>
+            <td class="bottom" align="right">
+              Positive <font color="skyblue">En</font>ergy
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <canvas id="_canvas"></canvas>
+      </div>
+      <div>
+        <button onClick="육안검사외부_save();">SAVE</button>
+      </div>
+    </div>
+    <script>
+      var _management_id = document.getElementById("_management_id");
+      var _재제조번호 = document.getElementById("_재제조번호");
+    </script>
+  </body>
+</html>

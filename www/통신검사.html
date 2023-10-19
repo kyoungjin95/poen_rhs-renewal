@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="base/style/공정.css" />
+    <title>CAN 통신검사</title>
+  </head>
+  <body>
+    <div>
+      <table border="2" id="tb">
+        <tr>
+          <td class="base">
+            <label for="management_id"><b>관리번호</b></label>
+          </td>
+          <td class="base">
+            <input
+              type="text"
+              id="_management_id"
+              value="조회 버튼을 누르세요"
+              size="40"
+              required
+            />
+            <button onClick="기초보고서_조회();">조 회</button>
+          </td>
+        </tr>
+        <tr>
+          <td class="base">
+            <label for="_재제조번호"><b>재제조번호</b></label>
+          </td>
+          <td class="base">
+            <input
+              type="text"
+              id="_재제조번호"
+              value="조회 버튼을 누르세요"
+              size="40"
+              required
+            />
+            <button onClick="기초보고서_재제조번호_조회();">조 회</button>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div id="communication">
+      <button type="button" class="btn btn1">CAN 통신검사</button>
+      <button type="button" class="btn btn2">G-SCAN 진단결과</button>
+      <div id="_통신검사" class="check-all">
+        <h3>▣ CAN 통신검사</h3>
+        <table border="2" class="all">
+          <!-- <caption>
+            CAN 통신검사
+          </caption> -->
+          <colgroup>
+            <col class="col_1" />
+            <col class="col_2" />
+          </colgroup>
+          <thead>
+            <tr class="title">
+              <th scope="col">항목</th>
+              <th colspan="2" scope="col">CAN 통신검사</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>장비</th>
+              <td colspan="2">PDS</td>
+            </tr>
+            <tr>
+              <th>평가방법</th>
+              <td colspan="2">
+                PDS를 이용하여 BSA와 연결 후,<br />
+                릴레이 제어 가능 여부 확인
+              </td>
+            </tr>
+            <tr>
+              <th>판정기준</th>
+              <td colspan="2" style="color: blue">
+                릴레이 ON/OFF 제어가능.<br />
+                셀 전압 편차 40mV 이하
+              </td>
+            </tr>
+            <tr>
+              <th rowspan="2">검사결과</th>
+              <td style="font-weight: bold">릴레이 제어 검사</td>
+              <td style="font-weight: bold">CELL 전압 검사</td>
+            </tr>
+            <tr>
+              <td class="photo">
+                <img
+                  id=""
+                  width="100%"
+                  height="80%"
+                  style="background: rgba(128, 128, 128, 0.221)"
+                />
+                <table border="1" class="s-table">
+                  <tbody>
+                    <tr>
+                      <td style="width: 30%">릴레이 제어</td>
+                      <td>
+                        <span class="result-vlaue r1">OK</span>
+                        <strong> &sol;</strong>
+                        <span class="result-vlaue r2">NG</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>팩 전압(V)</td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td class="photo">
+                <img
+                  id=""
+                  width="100%"
+                  height="80%"
+                  style="background: rgba(128, 128, 128, 0.221)"
+                />
+                <table border="1" class="s-table">
+                  <tr>
+                    <td>셀 전압 MAX. (V)</td>
+                    <td></td>
+                    <td>셀 전압 편차(mV)</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>셀 전압 MIN. (V)</td>
+                    <td></td>
+                    <td>문자 셀 번호</td>
+                    <td></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <th>합부판정</th>
+              <td class="result">
+                <span class="result-vlaue r1">OK</span>
+                <strong> &sol;</strong>
+                <span class="result-vlaue r2">NG</span>
+              </td>
+              <td class="result">
+                <span class="result-vlaue r1">OK</span>
+                <strong> &sol;</strong>
+                <span class="result-vlaue r2">NG</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div id="_진단결과" class="check-all">
+        <h3>▣ CAN 통신검사 - G-SCAN 진단결과</h3>
+        <table border="2" class="all">
+          <!-- <caption>
+            G-SCAN 진단결과
+          </caption> -->
+          <colgroup>
+            <col class="col_1" />
+            <col class="col_2" />
+            <col class="col_3" />
+          </colgroup>
+          <thead>
+            <tr class="title">
+              <th scope="col">항목</th>
+              <th colspan="2" scope="col">G-SCAN 진단</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th rowspan="4">진단결과</th>
+              <td>고장코드진단</td>
+              <td>센서데이터진단</td>
+            </tr>
+            <tr>
+              <td rowspan="2" class="photo">
+                <img id="" width="100%" height="100%" />
+              </td>
+              <td class="photo">
+                <img id="" width="100%" height="100%" />
+              </td>
+            </tr>
+            <tr>
+              <td>ROM ID</td>
+            </tr>
+            <tr>
+              <td class="photo"><img id="" width="100%" height="100%" /></td>
+              <td class="photo"><img id="" width="100%" height="100%" /></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <table class="bottom" width="100%">
+        <tr>
+          <td class="bottom" align="left">FQ850-05</td>
+          <td class="bottom" align="center">A4(297x210mm)</td>
+          <td class="bottom" align="right">
+            Positive <font color="skyblue">En</font>ergy
+          </td>
+        </tr>
+      </table>
+      <div>
+        <canvas id="_canvas"></canvas>
+      </div>
+      <div>
+        <button onClick="통신검사_save();">SAVE</button>
+      </div>
+    </div>
+    <script>
+      var _management_id = document.getElementById("_management_id");
+      var _재제조번호 = document.getElementById("_재제조번호");
+    </script>
+  </body>
+</html>

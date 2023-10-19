@@ -302,7 +302,8 @@ table td.bottom {
 .version span {
   color: skyblue;
 }
-
+/* ========================================
+  menubar*/
 #menu {
   width: 100%;
   height: 8vh;
@@ -422,9 +423,9 @@ table td.bottom {
 }
 
 textarea {
-	border: none;
+  border: none;
 }
 
 textarea {
-	border: none;
+  border: none;
 }
