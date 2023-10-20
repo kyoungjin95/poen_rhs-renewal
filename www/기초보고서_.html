@@ -1,0 +1,782 @@
+<html>
+	<head>
+		<title>기초 보고서</title>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="base/style/공정.css">
+	</head>
+	<body>
+		<div>
+			<table border="2" id="tb">
+				<tr>
+					<td class='base'>
+						<label for="management_id"><b>관리번호</b></label>
+					</td>
+					<td class='base'>
+						<input type="text" id="_management_id" value="조회 버튼을 누르세요" size="40" required>
+						<button onClick="기초보고서_조회();">조 회</button>
+					</td>
+				</tr>
+				<tr>
+					<td class='base'>
+						<label for="_재제조번호"><b>재제조번호</b></label>
+					</td>
+					<td class='base'>
+						<input type="text" id="_재제조번호" value="조회 버튼을 누르세요" size="40" required>
+						<button onClick="기초보고서_재제조번호_조회();">조 회</button>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="_셀제조사사유_input"><b>셀제조사확인</b></label>
+					</td>
+					<td>
+						<input type="text" id="_셀제조사사유_input" size="40" required>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="_생산일_input"><b>생산일</b></label>
+					</td>
+					<td>
+						<input type="text" id="_생산일_input" size="40" required>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="_판매일_input"><b>판매일</b></label>
+					</td>
+					<td>
+						<input type="text" id="_판매일_input" size="40" required>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="_수리일_input"><b>수리일</b></label>
+					</td>
+					<td>
+						<input type="text" id="_수리일_input" size="40" required>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="_필드현상_input"><b>필드현상</b></label>
+					</td>
+					<td>
+						<input type="text" id="_필드현상_input" size="40" required>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="_센터진단_input"><b>센터진단</b></label>
+					</td>
+					<td>
+						<input type="text" id="_센터진단_input" size="40" required>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="_센터조치_input"><b>센터조치</b></label>
+					</td>
+					<td>
+						<input type="text" id="_센터조치_input" size="40" required>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="_작성일_input"><b>작성일</b></label>
+					</td>
+					<td>
+						<input type="text" id="_작성일_input" size="40" required>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="_결과_input"><b>결과</b></label>
+					</td>
+					<td>
+						<input type="text" id="_결과_input" size="40" required>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label><b>외부 점검</b></label>
+					</td>
+					<td>
+						<select id='cb외부점검' name="language" onchange="_기초보고서_외부점검_콤보박스(this);">
+							<option value="OK">OK</option>
+							<option value="NG">NG</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label><b>내부 점검</b></label>
+					</td>
+					<td>
+						<select id='cb내부점검' name="language" onchange="_기초보고서_내부점검_콤보박스(this);">
+							<option value="OK">OK</option>
+							<option value="NG">NG</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label><b>냉각유로</b></label>
+					</td>
+					<td>
+						<select id='cb냉각유로' name="language" onchange="_기초보고서_냉각유로_콤보박스(this);">
+							<option value="OK">OK</option>
+							<option value="NG">NG</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label><b>케이스</b></label>
+					</td>
+					<td>
+						<select id='cb케이스' name="language" onchange="_기초보고서_케이스_콤보박스(this);">
+							<option value="OK">OK</option>
+							<option value="NG">NG</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label><b>PRA_Plus</b></label>
+					</td>
+					<td>
+						<select id='cb절연검사P' name="language" onchange="_기초보고서_PRA_P_콤보박스(this);">
+							<option value="OK">OK</option>
+							<option value="NG">NG</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label><b>PRA_Minus</b></label>
+					</td>
+					<td>
+						<select id='cb절연검사N' name="language" onchange="_기초보고서_PRA_N_콤보박스(this);">
+							<option value="OK">OK</option>
+							<option value="NG">NG</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label><b>HV_Plus</b></label>
+					</td>
+					<td>
+						<select id='cbHVP' name="language" onchange="_기초보고서_HVP_콤보박스(this);">
+							<option value="OK">OK</option>
+							<option value="NG">NG</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label><b>HV_Minus</b></label>
+					</td>
+					<td>
+						<select id='cbHVN' name="language" onchange="_기초보고서_HVN_콤보박스(this);">
+							<option value="OK">OK</option>
+							<option value="NG">NG</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label><b>팩전압</b></label>
+					</td>
+					<td>
+						<select id='cb팩전압' name="language" onchange="_기초보고서_팩전압_콤보박스(this);">
+							<option value="OK">OK</option>
+							<option value="NG">NG</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label><b>셀전압편차</b></label>
+					</td>
+					<td>
+						<select id='cb셀전압편차' name="language" onchange="_기초보고서_셀전압편차_콤보박스(this);">
+							<option value="OK">OK</option>
+							<option value="NG">NG</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label><b>릴레이제어</b></label>
+					</td>
+					<td>
+						<select id='cb릴레이제어' name="language" onchange="_기초보고서_릴레이제어_콤보박스(this);">
+							<option value="OK">OK</option>
+							<option value="NG">NG</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="_릴레이제어사유_input"><b>릴레이제어사유</b></label>
+					</td>
+					<td>
+						<input type="text" id="_릴레이제어사유_input" size="40" value='릴레이 제어 가능' required>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label><b>고장코드</b></label>
+					</td>
+					<td>
+						<select id='cb고장코드' name="language" onchange="_기초보고서_고장코드_콤보박스(this);">
+							<option value="OK">OK</option>
+							<option value="NG">NG</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label><b>고장코드 사유</b></label>
+					</td>
+					<td>
+						<input type="text" id="_고장코드사유_input" size="40" value='고장코드 없음' required>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label><b>입고정보</b></label>
+					</td>
+					<td>
+						<select id='cb입고정보' name="language" onchange="_기초보고서_입고정보_콤보박스(this);">
+							<option value="OK">OK</option>
+							<option value="NG">NG</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="_입고정보사유_input"><b>입고정보사유</b></label>
+					</td>
+					<td>
+						<input type="text" id="_입고정보사유_input" size="40" value='데이터 누락 없음' required>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label><b>재제조이력</b></label>
+					</td>
+					<td>
+						<select id='cb재제조이력' name="language" onchange="_기초보고서_재제조이력_콤보박스(this);">
+							<option value="OK">OK</option>
+							<option value="NG">NG</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="_재제조이력사유_input"><b>재제조이력사유</b></label>
+					</td>
+					<td>
+						<input type="text" id="_재제조이력사유_input" size="40" value='데이터 누락 없음' required>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div>
+			<button onClick="기초보고서_apply();">적용</button>
+		</div>
+		<div id='_기초보고서'>
+			<div align='left'>
+				▣ 기초보고서 [<span id='차종'>HR_EV</span>] <span id='_재제조번호_'></span>
+			</div>
+			<div id='line'>
+			</div>
+			<div>
+				<table class='all'>
+					<tr>
+						<td class='base'>
+							<table class='base' height='100%'>
+								<tr>
+									<td class='base_header' colspan='4'>
+										차량 정보
+									</td>
+								</tr>
+								<tr>
+									<td class='base_header'>
+										VIN NO.
+									</td>
+									<td class='base_header'>
+										R/O NO.
+									</td>
+									<td class='base_header'>
+										주행거리
+									</td>
+									<td class='base_header'>
+										차량번호
+									</td>
+								</tr>
+								<tr>
+									<td class='base2' id='_VINNo'>
+									</td>
+									<td class='base2' id='_RONo'>
+									</td>
+									<td class='base2' id='_주행거리'>
+									</td>
+									<td class='base2' id='_차량번호'>
+									</td>
+								</tr>
+								<tr>
+									<td class='base_header' colspan='4'>
+										BSA 정보
+									</td>
+								</tr>
+								<tr>
+									<td class='base_header'>
+										생산일
+									</td>
+									<td class='base_header'>
+										판매일
+									</td>
+									<td class='base_header'>
+										수리일
+									</td>
+									<td class='base_header'>
+										입고일
+									</td>
+								</tr>
+								<tr>
+									<td class='base' id='_생산일'>
+									</td>
+									<td class='base' id='_판매일'>
+									</td>
+									<td class='base' id='_수리일'>
+									</td>
+									<td class='base' id='_입고일'>
+									</td>
+								</tr>
+								<tr>
+									<td class='base_header3' colspan='2'>
+										입고사진
+									</td>
+									<td class='base_header3' colspan='2'>
+										BSA QR 코드 사진
+									</td>
+								</tr>
+								<tr>
+									<td class='base3' colspan='2' height="0">
+                    <div style="height:100%"><img id='_입고사진' width=100% height=100%></img></div>
+									</td>
+									<td class='base3' colspan='2' height="0">
+                    <div style="height:100%"><img id='_BSA_QR' width=100% height=100%></img></div>
+									</td>
+								</tr>
+								<tr>
+									<td class='base_left' colspan='4'>
+										1. 관리번호:<p id='_관리번호'></p>
+										2. 필드현상:<p id='_필드현상'></p>
+										3. A/S 센터 진단:<p id='_센터진단'></p>
+										4. A/S 센터 조치:<p id='_센터조치'></p>
+									</td>
+								</tr>
+								<tr>
+									<td class='base_header' colspan='2' width='50%'>
+										작성자
+									</td>
+									<td class='base_header' colspan='2' width='50%'>
+										작성일
+									</td>
+								</tr>
+								<tr>
+									<td class='base' colspan='2' id='_작성자'>
+									</td>
+									<td class='base' colspan='2' id='_작성일'>
+									</td>
+								</tr>
+							</table>
+						</td>
+						<td class='base'>
+							<table class='base'>
+								<tr>
+									<td class='base_header2'>
+										No
+									</td>
+									<td class='base_header2' colspan='2'>
+										점검 항목
+									</td>
+									<td class='base_header2'>
+										점검 기준
+									</td>
+									<td class='base_header2'>
+										판정
+									</td>
+									<td class='base_header2'>
+										결과 값 / 특이사항 / 미실시 사유
+									</td>
+									<td class='base_header2'>
+										첨부
+									</td>
+								</tr>
+								<tr>
+									<td class='base' rowspan='3'>
+										1
+									</td>
+									<td class='base' rowspan='3'>
+										육안검사
+									</td>
+									<td class='base'>
+										외부 점검
+									</td>
+									<td class='base'>
+										BSA 상,하부 이물질 및 손상 확인
+									</td>
+									<td class='base' id='_외부점검'>
+										OK/NG
+									</td>
+									<td class='base' id='_외부점검사유'>
+										NG 사유 및 특이사항 입력
+									</td>
+									<td class='base' rowspan='3'>
+
+									</td>
+								</tr>
+								<tr>
+									<td class='base'>
+										내부 점검
+									</td>
+									<td class='base'>
+										BSA 내부 이물질 및 손상 확인
+									</td>
+									<td class='base' id='_내부점검'>
+										OK/NG
+									</td>
+									<td class='base' id='_내부점검사유'>
+										NG 사유 및 특이사항 입력
+									</td>
+								</tr>
+								<tr>
+									<td class='base'>
+										셀 제조사 확인
+									</td>
+									<td class='base'>
+										-
+									</td>
+									<td class='base'>
+										-
+									</td>
+									<td class='base' id='_셀제조사사유'>
+										NG 사유 및 특이사항 입력
+									</td>
+								</tr>
+								<tr>
+									<td class='base' rowspan='2'>
+										2
+									</td>
+									<td class='base' rowspan='2'>
+										기밀 검사
+									</td>
+									<td class='base'>
+										케이스
+									</td>
+									<td class='base'>
+										2분간 감압량 2mbar 이내
+									</td>
+									<td class='base' id='_케이스'>
+										OK/NG
+									</td>
+									<td class='base' id='_케이스감압량'>
+										감압 량(mbar):
+									</td>
+									<td class='base' rowspan='2'>
+
+									</td>
+								</tr>
+								<tr>
+									<td class='base'>
+										냉각 유로
+									</td>
+									<td class='base'>
+										2분간 감압량 2mbar 이내
+									</td>
+									<td class='base' id='_냉각유로'>
+										OK/NG
+									</td>
+									<td class='base' id='_냉각유로감압량'>
+										감압 량(mbar):
+									</td>
+								</tr>
+								<tr>
+									<td class='base' rowspan='4'>
+										3
+									</td>
+									<td class='base' rowspan='4'>
+										절연 검사
+									</td>
+									<td class='base'>
+										PRA(+) ~ 샤시
+									</td>
+									<td class='base'>
+										100 MΩ 이상
+									</td>
+									<td class='base' id='_PRA_P'>
+										OK/NG
+									</td>
+									<td class='base' id='_PRA_P값'>
+										0000 MΩ
+									</td>
+									<td class='base' rowspan='4'>
+									</td>
+								</tr>
+								<tr>
+									<td class='base'>
+										PRA(-) ~  샤시
+									</td>
+									<td class='base'>
+										50 MΩ 이상
+									</td>
+									<td class='base' id='_PRA_N'>
+										OK/NG
+									</td>
+									<td class='base' id='_PRA_N값'>
+										0000 MΩ
+									</td>
+								</tr>
+								<tr>
+									<td class='base'>
+										HV커넥터(+)~샤시
+									</td>
+									<td class='base'>
+										100 MΩ 이상
+									</td>
+									<td class='base' id='_HV커넥터_P'>
+										OK/NG
+									</td>
+									<td class='base' id='_HV커넥터_P값'>
+										0000 MΩ
+									</td>
+								</tr>
+								<tr>
+									<td class='base'>
+										HV커넥터(-)~샤시
+									</td>
+									<td class='base'>
+										100 MΩ 이상
+									</td>
+									<td class='base' id='_HV커넥터_N'>
+										OK/NG
+									</td>
+									<td class='base' id='_HV커넥터_N값'>
+										0000 MΩ
+									</td>
+								</tr>
+								<tr>
+									<td class='base' rowspan='5'>
+										4
+									</td>
+									<td class='base' rowspan='5'>
+										통신 검사
+									</td>
+									<td class='base'>
+										팩 전압
+									</td>
+									<td class='base'>
+										OCV 기준 277.9~377.2V
+									</td>
+									<td class='base' id='_팩전압'>
+										OK/NG
+									</td>
+									<td class='base' id='_팩전압값'>
+										팩 전압(V):
+									</td>
+									<td class='base' rowspan='5'>
+									</td>
+								</tr>
+								<tr>
+									<td class='base'>
+										셀 전압 편차
+									</td>
+									<td class='base'>
+										40mV 이하
+									</td>
+									<td class='base' id='_셀전압편차'>
+										OK/NG
+									</td>
+									<td class='base' id='_셀전압편차값'>
+										셀 전압편차(mV):
+									</td>
+								</tr>
+								<tr>
+									<td class='base'>
+										릴레이 제어
+									</td>
+									<td class='base'>
+										릴레이 제어 가능할 것
+									</td>
+									<td class='base' id='_릴레이제어'>
+										OK/NG
+									</td>
+									<td class='base' id='_릴레이제어사유'>
+										릴레이 제어 가능 / 불가능 사유
+									</td>
+								</tr>
+								<tr>
+									<td class='base'>
+										고장코드
+									</td>
+									<td class='base'>
+										고장코드없을 것
+									</td>
+									<td class='base' id='_고장코드'>
+										OK/NG
+									</td>
+									<td class='base' id='_고장코드사유'>
+										고장코드 없음 / (현재),(과거)구분
+									</td>
+								</tr>
+								<tr>
+									<td class='base'>
+										ROM ID
+									</td>
+									<td class='base'>
+										-
+									</td>
+									<td class='base'>
+										-
+									</td>
+									<td class='base'>
+										-
+									</td>
+								</tr>
+								<tr>
+									<td class='base' rowspan='2'>
+										5
+									</td>
+									<td class='base' rowspan='2'>
+										이력 확인
+									</td>
+									<td class='base'>
+										입고 정보
+									</td>
+									<td class='base'>
+										데이터 누락 없을 것
+									</td>
+									<td class='base' id='_입고정보'>
+										OK/NG
+									</td>
+									<td class='base' id='_입고정보사유'>
+										데이터 누락 없음
+									</td>
+									<td class='base'>
+									</td>
+								</tr>
+								<tr>
+									<td class='base'>
+										재제조 이력
+									</td>
+									<td class='base'>
+										데이터 누락 없을 것
+									</td>
+									<td class='base' id='_재제조이력'>
+										OK/NG
+									</td>
+									<td class='base' id='_재제조이력사유'>
+										데이터 누락 없음
+									</td>
+									<td class='base'>
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<table>
+							<tr>
+								<td class='result_header'>
+									결 과
+								</td>
+								<td class='result' id='_결과'>
+								<td>
+							</tr>
+						</table>
+					</tr>
+				</table>
+			</div>
+			<div>
+				<table class='bottom' width='100%'>
+					<tr>
+						<td class='bottom' align='left'>
+							FQ850-05
+						</td>
+						<td class='bottom' align=center>
+							A4(297x210mm)
+						</td>
+						<td class='bottom' align='right'>
+							Positive <font color='skyblue'>En</font>ergy
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div>
+			<canvas id='_canvas'></canvas>
+		</div>
+		<div>
+			<button onClick="기초보고서_save();">SAVE</button>
+		</div>
+		<script>
+			var _management_id = document.getElementById('_management_id');
+			var _재제조번호 = document.getElementById('_재제조번호');
+			var _재제조번호_ = document.getElementById('_재제조번호_');
+			var _VIN = document.getElementById('_VINNo');
+			var _RO = document.getElementById('_RONo');
+			var _주행거리 = document.getElementById('_주행거리');
+			var _차량번호 = document.getElementById('_차량번호');
+			var _생산일 = document.getElementById('_생산일');
+			var _판매일 = document.getElementById('_판매일');
+			var _수리일 = document.getElementById('_수리일');
+			var _입고일 = document.getElementById('_입고일');
+			var _입고사진 = document.getElementById('_입고사진');
+			var _BSA_QR = document.getElementById('_BSA_QR');
+			var _관리번호 = document.getElementById('_관리번호');
+			var _필드현상 = document.getElementById('_필드현상');
+			var _센터진단 = document.getElementById('_센터진단');
+			var _센터조치 = document.getElementById('_센터조치');
+			var _작성자 = document.getElementById('_작성자');
+			var _작성일 = document.getElementById('_작성일');
+			var _외부점검 = document.getElementById('_외부점검');
+			var _외부점검사유 = document.getElementById('_외부점검사유');
+			var _내부점검 = document.getElementById('_내부점검');
+			var _내부점검사유 = document.getElementById('_내부점검사유');
+			var _셀제조사사유 = document.getElementById('_셀제조사사유');
+			var _케이스 = document.getElementById('_케이스');
+			var _케이스감압량 = document.getElementById('_케이스감압량');
+			var _냉각유로 = document.getElementById('_냉각유로');
+			var _냉각유로감압량 = document.getElementById('_냉각유로감압량');
+			var _PRA_P = document.getElementById('_PRA_P');
+			var _PRA_P값 = document.getElementById('_PRA_P값');
+			var _PRA_N = document.getElementById('_PRA_N');
+			var _PRA_N값 = document.getElementById('_PRA_N값');
+			var _HV커넥터_P = document.getElementById('_HV커넥터_P');
+			var _HV커넥터_P값 = document.getElementById('_HV커넥터_P값');
+			var _HV커넥터_N = document.getElementById('_HV커넥터_N');
+			var _HV커넥터_N값 = document.getElementById('_HV커넥터_N값');
+			var _팩전압 = document.getElementById('_팩전압');
+			var _팩전압값 = document.getElementById('_팩전압값');
+			var _셀전압편차 = document.getElementById('_셀전압편차');
+			var _셀전압편차값 = document.getElementById('_셀전압편차값');
+			var _릴레이제어 = document.getElementById('_릴레이제어');
+			var _릴레이제어사유 = document.getElementById('_릴레이제어사유');
+			var _고장코드 = document.getElementById('_고장코드');
+			var _고장코드사유 = document.getElementById('_고장코드사유');
+			var _셀제조사사유 = document.getElementById('_셀제조사사유');
+			var _입고정보 = document.getElementById('_입고정보');
+			var _입고정보사유 = document.getElementById('_입고정보사유');
+			var _재제조이력 = document.getElementById('_재제조이력');
+			var _재제조이력사유 = document.getElementById('_재제조이력사유');
+			var _결과 = document.getElementById('_결과');
+		</script>
+	</body>
+</html>
+

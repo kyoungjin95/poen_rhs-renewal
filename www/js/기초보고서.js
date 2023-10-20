@@ -8,148 +8,28 @@ async function 기초보고서_조회() {
   console.log("load: ", _management_id.value);
   if (_management_id.value.length == 0) return;
 
-  count(기초검사, { 관리번호: _management_id.value });
+  count(세척, { 관리번호 : _management_id.value });
   await delay();
-
-  if (doc_count > 0) {
-    find(기초검사, _management_id.value);
-    await delay();
-
-    var _VIN = document.getElementById("_VINNo");
-    _VIN.innerHTML = find_array[0].VIN == undefined ? "" : find_array[0].VIN;
-    var _RO = document.getElementById("_RONo");
-    _RO.innerHTML = find_array[0].RO_no == undefined ? "" : find_array[0].RO_no;
-    _주행거리.innerHTML =
-      find_array[0].주행거리 == undefined ? "" : find_array[0].주행거리;
-    _차량번호.innerHTML =
-      find_array[0].차량번호 == undefined ? "" : find_array[0].차량번호;
-    //생산일
-    //판매일
-    //수리일
-    //입고사진
-    //_BSA_QR 사진
-    _관리번호.innerHTML = find_array[0].관리번호;
-    //필드현상
-    _센터진단.innerHTML =
-      find_array[0].샌터진단내용 == undefined ? "" : find_array[0].센터진단내용;
-    //센터조치
-    _작성자.innerHTML = worker;
-    //_작성일.innerHTML =
-    _외부점검.innerHTML =
-      find_array[0].육안검사_외부 == undefined
-        ? ""
-        : find_array[0].육안검사_외부;
-    _외부점검사유.innerHTML =
-      find_array[0].육안검사_외부_특이사항 == undefined
-        ? ""
-        : find_array[0].육안검사_외부_특이사항;
-    _내부점검.innerHTML =
-      find_array[0].육안검사_내부 == undefined
-        ? ""
-        : find_array[0].육안검사_내부;
-    _내부점검사유.innerHTML =
-      find_array[0].육안검사_내부_특이사항 == undefined
-        ? ""
-        : find_array[0].육안검사_내부_특이사항;
-    //_셀제조사사유.innerHTML = find_array[0].
-    //_냉각유로.innerHTML = find_array[0].기밀검사_냉각유로;
-    _냉각유로감압량.innerHTML =
-      find_array[0].기밀검사_냉각유로_특이사항 == undefined
-        ? ""
-        : find_array[0].기밀검사_냉각유로_특이사항;
-    //_PRA_P.innerHTML = find_array[0].절연검사_Plus;
-    _PRA_P값.innerHTML =
-      find_array[0].절연검사_Plus == undefined
-        ? ""
-        : find_array[0].절연검사_Plus;
-    //_PRA_N.innerHTML = find_array[0].절연검사_Minus;
-    _PRA_N값.innerHTML =
-      find_array[0].절연검사_Minus == undefined
-        ? ""
-        : find_array[0].절연검사_Minus;
-    _HV커넥터_P값.innerHTML =
-      find_array[0].절연감사_HVPlus == undefined
-        ? ""
-        : find_array[0].절연검사_HVPlus;
-    _HV커넥터_N값.innerHTML =
-      find_array[0].절연감사_HVMinus == undefined
-        ? ""
-        : find_array[0].절연검사_HVMinus;
-    //_팩전압.innerHTML = find_array[0].통신검사_팩전압;
-    _팩전압값.innerHTML =
-      find_array[0].통신검사_팩전압 == undefined
-        ? ""
-        : find_array[0].통신검사_팩전압;
-    //_셀전압편차.innerHTML = find_array[0].통신검사_셀전압편차;
-    _셀전압편차값.innerHTML =
-      find_array[0].통신검사_셀전압편차 == undefined
-        ? ""
-        : find_array[0].통신검사_셀전압편차;
-    _릴레이제어.innerHTML =
-      find_array[0].통신검사_릴레이구동 == undefined
-        ? ""
-        : find_array[0].통신검사_릴레이구동;
-    //릴레이제어사유.innerHTML = find_array[0].통신검사_릴레이구동;
-    _고장코드.innerHTML =
-      find_array[0].고장현상코드 == undefined ? "" : find_array[0].고장현상코드;
-    _고장코드사유.innerHTML =
-      find_array[0].고장현상명 == undefined ? "" : find_array[0].고장현상명;
-
-    //_입고정보.innerHTML =
-    //_입고정보사유.innerHTML =
-    //재제조이력.innerHTML
-    //재제조이력사유.innerHTML
+  
+  if(doc_count > 0) {
+   _케이스.innerHTML = find_array[0].기밀검사_케이스;
+   _케이스감압량.innerHTML = find_array[0].기밀검사_케이스_특이사항;
   }
 
-  count(입고, { 관리번호: _management_id.value });
+  count(기초검사, { 관리번호 : _management_id.value });
   await delay();
 
-  if (doc_count > 0) {
-    find(입고, _management_id.value);
-    await delay();
-    console.log(find_array);
+  if(doc_count > 0) {
+    _외부점검.innerHTML = find_array[0].육안검사_외부;
+    _외부점검사유.innerHTML = find_array[0].육안검사_외부_특이사항;
+    _내부점검.innerHTML = find_array[0].육안검사_내부;
+    _내부점검사유.innerHTML = find_array[0].육안검사_내부_특이사항;
 
-    _입고일.innerHTML = find_array[0].입고일;
-  } else {
-    _입고일.innerHTML = "";
+    _냉각유로.innerHTML = find_array[0].기밀검사_냉각유로; 
+    _냉각유로감압량.innerHTML = find_array[0].기밀검사_냉각유로_특이사항;
+
+
   }
-
-  count(세척, { 관리번호: _management_id.value });
-  await delay();
-
-  if (doc_count > 0) {
-    find(세척, _management_id.value);
-    await delay();
-
-    _케이스.innerHTML =
-      find_array[0].기밀검사_케이스 == undefined
-        ? ""
-        : find_array[0].기밀검사_케이스;
-    _케이스감압량.innerHTML =
-      find_array[0].기밀검사_케이스_특이사항 == undefined
-        ? ""
-        : find_array[0].기밀검사_케이스_특이사항;
-  } else {
-    _케이스.innerHTML = "";
-    _케이스감압량.innerHTML = "";
-  }
-
-  count(입고_pic, { 관리번호: _management_id.value });
-  await delay();
-  if (doc_count > 0) {
-    find(입고_pic, _management_id.value);
-    await delay();
-
-    _입고사진.src = "data:image/;base64," + find_array[0].pic1;
-    _BSA_QR.src = "data:image/;base64," + find_array[0].pic2;
-  }
-
-  var DateTime = luxon.DateTime;
-  var seoul = DateTime.local().setZone("Asia/Seoul");
-  var now = seoul.toString();
-
-  document.getElementById("_작성일_input").value = now.substr(0, 10);
-  _작성일.innerHTML = now.substr(0, 10);
 }
 
 async function 기초보고서_save() {
