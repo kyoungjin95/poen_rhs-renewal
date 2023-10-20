@@ -23,6 +23,24 @@ async function 육안검사내부_시작() {
   });
 }
 
+async function 육안검사내부_조회() {
+  if (_management_id.value.trim() == "조회 버튼을 누르세요")
+    _management_id.value = 관리번호;
+  console.log("load: ", _management_id.value);
+  if (_management_id.value.length == 0) return;
+부
+  find(입고_pic, _management_id.value);
+  await delay();
+
+  _BMU.src = "data:image/;base64," + find_array[0].pic3;
+  _CMU.src = "data:image/;base64," + find_array[0].pic4;
+  _PRA.src = "data:image/;base64," + find_array[0].pic5;
+  _이상부위_내부1.src = "data:image/;base64," + find_array[0].pic6;
+  _이상부위_내부2.src = "data:image/;base64," + find_array[0].pic7;
+  _이상부위_내부3.src = "data:image/;base64," + find_array[0].pic8;
+  _이상부위_내부4.src = "data:image/;base64," + find_array[0].pic9;
+}
+
 async function 육안검사내부_save() {
   var _date = new Date();
   var file_name = "육안검사내부" + _date + ".pdf";
@@ -39,7 +57,7 @@ async function 육안검사내부_save() {
   }
 
   html2canvas(type2, {
-    width: 4000,
+    width: 4100,
     height: 2000,
   }).then((canvas) => {
     var data = canvas.toDataURL();
@@ -51,7 +69,7 @@ async function 육안검사내부_save() {
       ctx.drawImage(img, 1920, 1080);
     };
 
-    canvas.width = 400;
+    canvas.width = 410;
     canvas.width = 200;
 
     var docDefinition = {

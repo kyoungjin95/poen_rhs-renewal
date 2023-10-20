@@ -21,7 +21,7 @@
               size="40"
               required
             />
-            <button onClick="기초보고서_조회();">조 회</button>
+            <button onClick="통신검사_조회();">조 회</button>
           </td>
         </tr>
         <tr>
@@ -36,7 +36,7 @@
               size="40"
               required
             />
-            <button onClick="기초보고서_재제조번호_조회();">조 회</button>
+            <button onClick="통신검사_재제조번호_조회();">조 회</button>
           </td>
         </tr>
       </table>
@@ -87,16 +87,16 @@
             <tr>
               <td class="photo">
                 <img
-                  id=""
-                  width="100%"
-                  height="80%"
+                  id="relay_control_pic"
+                  width="500vw"
+                  height="350vw"
                   style="background: rgba(128, 128, 128, 0.221)"
                 />
                 <table border="1" class="s-table">
                   <tbody>
                     <tr>
                       <td style="width: 30%">릴레이 제어</td>
-                      <td>
+                      <td id='relay_control'>
                         <span class="result-vlaue r1">OK</span>
                         <strong> &sol;</strong>
                         <span class="result-vlaue r2">NG</span>
@@ -104,42 +104,42 @@
                     </tr>
                     <tr>
                       <td>팩 전압(V)</td>
-                      <td></td>
+                      <td id='relay_pack_vol'></td>
                     </tr>
                   </tbody>
                 </table>
               </td>
               <td class="photo">
                 <img
-                  id=""
-                  width="100%"
-                  height="80%"
+                  id="cell_vol_test"
+                  width="500vw"
+                  height="350vw"
                   style="background: rgba(128, 128, 128, 0.221)"
                 />
                 <table border="1" class="s-table">
                   <tr>
                     <td>셀 전압 MAX. (V)</td>
-                    <td></td>
+                    <td id='cell_vol_max'></td>
                     <td>셀 전압 편차(mV)</td>
-                    <td></td>
+                    <td id='cell_vol_편차'></td>
                   </tr>
                   <tr>
                     <td>셀 전압 MIN. (V)</td>
-                    <td></td>
+                    <td id='cell_vol_min'></td>
                     <td>문자 셀 번호</td>
-                    <td></td>
+                    <td id='charicter_cell_no'></td>
                   </tr>
                 </table>
               </td>
             </tr>
             <tr>
               <th>합부판정</th>
-              <td class="result">
+              <td class="result" id='relay_ok'>
                 <span class="result-vlaue r1">OK</span>
                 <strong> &sol;</strong>
                 <span class="result-vlaue r2">NG</span>
               </td>
-              <td class="result">
+              <td class="result" id='cell_vol_test_ok'>
                 <span class="result-vlaue r1">OK</span>
                 <strong> &sol;</strong>
                 <span class="result-vlaue r2">NG</span>
@@ -173,18 +173,18 @@
             </tr>
             <tr>
               <td rowspan="2" class="photo">
-                <img id="" width="100%" height="100%" />
+                <img id="DTC" width="500vw" height="350vw" />
               </td>
               <td class="photo">
-                <img id="" width="100%" height="100%" />
+                <img id="sensor" width="500vw" height="350vw" />
               </td>
             </tr>
             <tr>
               <td>ROM ID</td>
             </tr>
             <tr>
-              <td class="photo"><img id="" width="100%" height="100%" /></td>
-              <td class="photo"><img id="" width="100%" height="100%" /></td>
+              <td class="photo"><img id="DTC2" width="500vw" height="350vw" /></td>
+              <td class="photo"><img id="ROM_ID" width="500vw" height="350vw" /></td>
             </tr>
           </tbody>
         </table>
@@ -208,6 +208,20 @@
     <script>
       var _management_id = document.getElementById("_management_id");
       var _재제조번호 = document.getElementById("_재제조번호");
+      var relay_control_pic = document.getElementById('relay_control_pic');
+      var relay_control = document.getElementById('relay_control');
+      var relay_pack_vol = document.getElementById('relay_pack_vol');
+      var cell_vol_test = document.getElementById('cell_vol_test);
+      var cell_vol_max = document.getElementById('cell_vol_max');
+      var cell_vol_편차 = document.getElementById('cell_vol_편차');
+      var cell_vol_min = document.getElementById('cell_vol_min');
+      var charicter_cell_no = document.getElementById('charicter_cell_no');
+      var relay_ok = document.getElementById('relay_ok');
+      var cell_vol_test_ok = document.getElementById('cell_vol_test_ok')
+      var DTC = document.getElementById('DTC');
+      var sensor = document.getElementById('sensor');
+      var DTC2 = document.getElementById('DTC2');
+      var ROM_ID = document.getElementById('ROM_ID');
     </script>
   </body>
 </html>

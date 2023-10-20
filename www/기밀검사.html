@@ -21,7 +21,7 @@
               size="40"
               required
             />
-            <button onClick="기초보고서_조회();">조 회</button>
+            <button onClick="기밀검사_조회();">조 회</button>
           </td>
         </tr>
         <tr>
@@ -36,7 +36,7 @@
               size="40"
               required
             />
-            <button onClick="기초보고서_재제조번호_조회();">조 회</button>
+            <button onClick="기밀검사_재제조번호_조회();">조 회</button>
           </td>
         </tr>
       </table>
@@ -116,14 +116,14 @@
           </tr>
           <tr>
             <th scope="row">합부판정</th>
-            <td colspan="2" class="result">
+            <td colspan="2" class="result" id='_케이스'>
               <span class="result-vlaue r1">OK</span>
               <strong> &sol;</strong>
               <span class="result-vlaue r2">NG</span>
               <stdrong> &sol;</stdrong>
               <span class="result-vlaue r3">미실시(이유:)</span>
             </td>
-            <td colspan="2" class="result">
+            <td colspan="2" class="result" id='_냉각유로'>
               <span class="result-vlaue r1">OK</span>
               <strong> &sol;</strong>
               <span class="result-vlaue r2">NG</span>
@@ -154,7 +154,12 @@
     <script>
       var _management_id = document.getElementById("_management_id");
       var _재제조번호 = document.getElementById("_재제조번호");
-      var _재제조번호_ = document.getElementById("_재제조번호_");
+      var _케이스 = document.getElementById('_케이스');
+      var _냉각유로 = document.getElementById('_냉각유로');
+      var _측정사진1 = document.getElementById('_측정사진1');
+      var _측정사진2 = document.getElementById('_측정사진2');
+      var _측정값사진1 = document.getElementById('_측정값사진1');
+      var _측정값사진2 = document.getElementById('_측정값사진2');
     </script>
   </body>
 </html>

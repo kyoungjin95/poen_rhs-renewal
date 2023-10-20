@@ -27,6 +27,21 @@ async function 육안검사외부_조회() {
     _management_id.value = 관리번호;
   console.log("load: ", _management_id.value);
   if (_management_id.value.length == 0) return;
+
+  find(입고_pic, _management_id.value);
+  await delay();
+
+  _top_pic.src = "data:image/;base64," + find_array[0].pic1;
+  _front_pic.src = "data:image/;base64," + find_array[0].pic2;
+  _left_pic.src = "data:image/;base64," + find_array[0].pic3;
+  _bottom_pic.src = "data:image/;base64," + find_array[0].pic4;
+  _rear_pic.src = "data:image/;base64," + find_array[0].pic5;
+  _right_pic.src = "data:image/;base64," + find_array[0].pic6;
+  _이상부위_외부1.src = "data:image/;base64," + find_array[0].pic7;
+  _이상부위_외부2.src = "data:image/;base64," + find_array[0].pic8;
+  _이상부위_외부3.src = "data:image/;base64," + find_array[0].pic9;
+  _이상부위_외부4.src = "data:image/;base64," + find_array[0].pic10;
+
 }
 
 async function 육안검사외부_save() {
@@ -44,7 +59,7 @@ async function 육안검사외부_save() {
     type1 = document.getElementById("_육안검사외부2");
   }
   html2canvas(type1, {
-    width: 4000,
+    width: 4100,
     height: 2000,
   }).then((canvas) => {
     var data = canvas.toDataURL();
@@ -56,7 +71,7 @@ async function 육안검사외부_save() {
       ctx.drawImage(img, 1920, 1080);
     };
 
-    canvas.width = 400;
+    canvas.width = 410;
     canvas.width = 200;
 
     var docDefinition = {

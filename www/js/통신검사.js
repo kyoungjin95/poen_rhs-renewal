@@ -28,6 +28,39 @@ async function 통신검사_조회() {
     _management_id.value = 관리번호;
   console.log("load: ", _management_id.value);
   if (_management_id.value.length == 0) return;
+
+  count(입고_pic, { 관리번호: _management_id.value });
+  await delay();
+  
+  if(doc_count > 0) {
+    find(입고_pic, _management_id.value);
+    await delay();
+
+    relay_control_pic.src = "data:image/;base64," + find_array[0].pic1;
+    cell_vol_test.src = "data:image/;base64," + find_array[0].pic2;
+
+    DTC.src = "data:image/;base64," + find_array[0].pic3;
+    sensor.src = "data:image/;base64," + find_array[0].pic4;
+    DTC2.src = "data:image/;base64," + find_array[0].pic5;
+    ROM_ID.src = "data:image/;base64," + find_array[0].pic6;
+  }
+
+  count(출하정보, { 관리번호 : _management_id.value });
+  await delay();
+
+  if(doc_count > 0) {
+    find(출하정보, _management_id.value);
+    await delay();
+
+    relay_control.innerHTML = find_array[0].릴레이_강제구동;
+    relay_pack_vol.innerHTML = find_array[0].배터리팩_측정값;
+    cell_vol_max.innerHTML = find_array[0].배터리셀전압_최대;
+    cell_vol_편차.innerHTML = find_array[0].셀전압편차_측정값;
+    cell_vol_min.innerHTML = find_array[0].배터리셀전압_최소;
+    charicter_cell_no.innerHTML = '??';//find_array[0].
+    relay_ok.innerHTML = 'OK';
+    cell_vol_test_ok.innerHTML = 'OK';
+  }
 }
 
 async function 통신검사_save() {
@@ -45,8 +78,8 @@ async function 통신검사_save() {
     type3 = document.getElementById("_진단결과");
   }
   html2canvas(type3, {
-    width: 4000,
-    height: 2000,
+    width: 4100,
+    height: 2200,
   }).then((canvas) => {
     var data = canvas.toDataURL();
     var canvas = document.getElementById("_canvas");
@@ -57,8 +90,8 @@ async function 통신검사_save() {
       ctx.drawImage(img, 1920, 1080);
     };
 
-    canvas.width = 400;
-    canvas.width = 200;
+    canvas.width = 410;
+    canvas.width = 220;
 
     var docDefinition = {
       content: [

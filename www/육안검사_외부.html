@@ -21,7 +21,7 @@
               size="40"
               required
             />
-            <button onClick="기초보고서_조회();">조 회</button>
+            <button onClick="육안검사외부_조회();">조 회</button>
           </td>
         </tr>
         <tr>
@@ -36,7 +36,7 @@
               size="40"
               required
             />
-            <button onClick="기초보고서_재제조번호_조회();">조 회</button>
+            <button onClick="육안검사외부_조회_재제조번호_조회();">조 회</button>
           </td>
         </tr>
       </table>
@@ -63,13 +63,13 @@
             </tr>
             <tr>
               <td style="height: 23vh" class="imgName">
-                <img id="top_pic" width="100%" height="100%" />
+                <img id="_top_pic" width="100%" height="100%" />
               </td>
               <td id="front_pic" style="height: 23vh" class="imgName">
-                <img id="front_pic" width="100%" height="100%" />
+                <img id="_front_pic" width="100%" height="100%" />
               </td>
               <td style="height: 23vh" class="imgName">
-                <img id="left_pic" width="100%" height="100%" />
+                <img id="_left_pic" width="100%" height="100%" />
               </td>
             </tr>
             <tr>
@@ -79,13 +79,13 @@
             </tr>
             <tr>
               <td style="height: 23vh" class="imgName">
-                <img id="bottom_pic" width="100%" height="100%" />
+                <img id="_bottom_pic" width="100%" height="100%" />
               </td>
               <td style="height: 23vh" class="imgName">
-                <img id="rear_pic" width="100%" height="100%" />
+                <img id="_rear_pic" width="100%" height="100%" />
               </td>
               <td style="height: 23vh" class="imgName">
-                <img id="right_pic" width="100%" height="100%" />
+                <img id="_right_pic" width="100%" height="100%" />
               </td>
             </tr>
           </table>
@@ -142,6 +142,16 @@
     <script>
       var _management_id = document.getElementById("_management_id");
       var _재제조번호 = document.getElementById("_재제조번호");
+      var _top_pic = document.getElementById("_top_pic");
+      var _front_pic = document.getElementById("_front_pic");
+      var _left_pic = document.getElementById("_left_pic");
+      var _bottom_pic = document.getElementById("_bottom_pic");
+      var _rear_pic = document.getElementById("_rear_pic");
+      var _right_pic = document.getElementById("_right_pic");
+      var _이상부위_외부1 = document.getElementById("_이상부위_외부1");
+      var _이상부위_위부2 = document.getElementById("_이상부위_외부2");
+      var _이상부위_위부3 = document.getElementById("_이상부위_외부3");
+      var _이상부위_위부4 = document.getElementById("_이상부위_외부4");
     </script>
   </body>
 </html>
