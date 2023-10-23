@@ -2179,3 +2179,9 @@ async function 공정단계자동입력(_관리번호) {
 	update(BSA재제조, doc);
 	await delay();
 }
+
+function back() {
+  loadPage("base/item-details.html");
+  flag_상세입력 = true;
+}
+
