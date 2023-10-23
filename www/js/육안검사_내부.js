@@ -28,7 +28,7 @@ async function 육안검사내부_조회() {
     _management_id.value = 관리번호;
   console.log("load: ", _management_id.value);
   if (_management_id.value.length == 0) return;
-부
+
   find(입고_pic, _management_id.value);
   await delay();
 
@@ -50,7 +50,7 @@ async function 육안검사내부_save() {
   }
 
   var type2 = "";
-  if (print_doc_type2 == 1) {
+  if (print_doc_type2 == 1 || print_doc_type2 == null) {
     type2 = document.getElementById("_육안검사내부1");
   } else {
     type2 = document.getElementById("_육안검사내부2");

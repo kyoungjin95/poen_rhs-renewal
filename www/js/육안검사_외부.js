@@ -41,7 +41,6 @@ async function 육안검사외부_조회() {
   _이상부위_외부2.src = "data:image/;base64," + find_array[0].pic8;
   _이상부위_외부3.src = "data:image/;base64," + find_array[0].pic9;
   _이상부위_외부4.src = "data:image/;base64," + find_array[0].pic10;
-
 }
 
 async function 육안검사외부_save() {
@@ -53,7 +52,7 @@ async function 육안검사외부_save() {
   }
 
   let type1 = "";
-  if (print_doc_type1 == 1) {
+  if (print_doc_type1 == 1 || print_doc_type1 == null) {
     type1 = document.getElementById("_육안검사외부1");
   } else {
     type1 = document.getElementById("_육안검사외부2");

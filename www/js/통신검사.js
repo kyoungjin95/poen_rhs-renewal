@@ -31,8 +31,8 @@ async function 통신검사_조회() {
 
   count(입고_pic, { 관리번호: _management_id.value });
   await delay();
-  
-  if(doc_count > 0) {
+
+  if (doc_count > 0) {
     find(입고_pic, _management_id.value);
     await delay();
 
@@ -45,10 +45,10 @@ async function 통신검사_조회() {
     ROM_ID.src = "data:image/;base64," + find_array[0].pic6;
   }
 
-  count(출하정보, { 관리번호 : _management_id.value });
+  count(출하정보, { 관리번호: _management_id.value });
   await delay();
 
-  if(doc_count > 0) {
+  if (doc_count > 0) {
     find(출하정보, _management_id.value);
     await delay();
 
@@ -57,9 +57,9 @@ async function 통신검사_조회() {
     cell_vol_max.innerHTML = find_array[0].배터리셀전압_최대;
     cell_vol_편차.innerHTML = find_array[0].셀전압편차_측정값;
     cell_vol_min.innerHTML = find_array[0].배터리셀전압_최소;
-    charicter_cell_no.innerHTML = '??';//find_array[0].
-    relay_ok.innerHTML = 'OK';
-    cell_vol_test_ok.innerHTML = 'OK';
+    charicter_cell_no.innerHTML = "??"; //find_array[0].
+    relay_ok.innerHTML = "OK";
+    cell_vol_test_ok.innerHTML = "OK";
   }
 }
 
@@ -72,7 +72,7 @@ async function 통신검사_save() {
   }
 
   let type3 = "";
-  if (print_doc_type3 == 1) {
+  if (print_doc_type3 == 1 || print_doc_type3 == null) {
     type3 = document.getElementById("_통신검사");
   } else {
     type3 = document.getElementById("_진단결과");
