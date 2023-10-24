@@ -177,7 +177,7 @@ async function 기초보고서_조회() {
 
 async function 기초보고서_save() {
   var _date = new Date();
-  var file_name = "기초보고서_" + _date.toString().substr(0, 10) + ".pdf";
+  var file_name = "기초보고서_" + _date + ".pdf";
   var body = document.getElementsByTagName("body")[0];
   if (window.innerWidth > 1920) {
     alert("해상도가 1920 x 1080일때만 사용이 가능합니다.");
