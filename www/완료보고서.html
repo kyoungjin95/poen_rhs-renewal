@@ -5,79 +5,6 @@
     <link rel="stylesheet" href="base/style/공정.css" />
   </head>
   <body>
-    <div>
-      <table border="2" id="tb">
-        <tr>
-          <td class="base">
-            <label for="management_id"><b>관리번호</b></label>
-          </td>
-          <td class="base">
-            <input
-              type="text"
-              id="_management_id"
-              value="조회 버튼을 누르세요"
-              size="40"
-              required
-            />
-            <button onClick="완료보고서_조회();">조 회</button>
-          </td>
-        </tr>
-        <tr>
-          <td class="base">
-            <label for="_재제조번호"><b>재제조번호</b></label>
-          </td>
-          <td class="base">
-            <input
-              type="text"
-              id="_재제조번호"
-              value="조회 버튼을 누르세요"
-              size="40"
-              required
-            />
-            <button onClick="완료보고서_재제조번호_조회();">조 회</button>
-          </td>
-        </tr>
-          <td>
-            <label for="_생산일_input"><b>생산일</b></label>
-          </td>
-          <td>
-            <input type="text" id="_생산일_input" size="40" required />
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <label for="_판매일_input"><b>판매일</b></label>
-          </td>
-          <td>
-            <input type="text" id="_판매일_input" size="40" required />
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <label for="_수리일_input"><b>수리일</b></label>
-          </td>
-          <td>
-            <input type="text" id="_수리일_input" size="40" required />
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <label for="_작성일_input"><b>작성일</b></label>
-          </td>
-          <td>
-            <input type="text" id="_작성일_input" size="40" required />
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <label for="_결과_input"><b>결과</b></label>
-          </td>
-          <td>
-            <input type="text" id="_결과_input" size="40" required />
-          </td>
-        </tr>
-      <button onClick="완료보고서_apply();">적용</button>
-    </div>
     <div id="_완료보고서">
       <div align="left">
         ▣ 완료보고서 [<span id="차종">HR_EV</span>]
@@ -313,6 +240,83 @@
     <div>
       <button onClick="완료보고서_save();">SAVE</button>
       <button onClick="back();">되돌아 가기</button>
+    </div>
+    <div>
+      <table border="2" id="tb">
+        <tr>
+          <td class="base">
+            <label for="management_id"><b>관리번호</b></label>
+          </td>
+          <td class="base">
+            <input
+              type="text"
+              id="_management_id"
+              value="조회 버튼을 누르세요"
+              size="40"
+              required
+            />
+            <button onClick="완료보고서_조회();">조 회</button>
+          </td>
+        </tr>
+        <tr>
+          <td class="base">
+            <label for="_재제조번호"><b>재제조번호</b></label>
+          </td>
+          <td class="base">
+            <input
+              type="text"
+              id="_재제조번호"
+              value="조회 버튼을 누르세요"
+              size="40"
+              required
+            />
+            <button onClick="완료보고서_재제조번호_조회();">조 회</button>
+          </td>
+        </tr>
+          <td>
+            <label for="_생산일_input"><b>생산일</b></label>
+          </td>
+          <td>
+            <input type="text" id="_생산일_input" size="40" required />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="_판매일_input"><b>판매일</b></label>
+          </td>
+          <td>
+            <input type="text" id="_판매일_input" size="40" required />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="_수리일_input"><b>수리일</b></label>
+          </td>
+          <td>
+            <input type="text" id="_수리일_input" size="40" required />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="_작성일_input"><b>작성일</b></label>
+          </td>
+          <td>
+            <input type="text" id="_작성일_input" size="40" required />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="_결과_input"><b>결과</b></label>
+          </td>
+          <td>
+            <input type="text" id="_결과_input" size="40" required />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button onClick="완료보고서_apply();">적용</button>
+          </td>
+        </tr>
     </div>
     <script>
       var _management_id = document.getElementById("_management_id");

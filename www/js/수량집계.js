@@ -52,7 +52,7 @@ function 수량집계_기간조회() {
 	수량집계_조회(집계_today_begin, 집계_today_end, 구분);
 }
 
-async function 수량집계_조회(집계_today_begin = '', 집계_today_end = '', 구분 = '') {
+async function 수량집계_조회(집계_today_begin = '', 집계_today_end = '', 구분 = 'all') {
 	var begin = 집계_today_begin;
 	var end = 집계_today_end;
 
@@ -62,11 +62,11 @@ async function 수량집계_조회(집계_today_begin = '', 집계_today_end = '
 	await 부품_info(begin, end, 구분);
 }
 
-async function BSA_info(begin = '', end = '', 구분 = '') {
+async function BSA_info(begin = '', end = '', 구분 = 'all') {
 	var counts = [];
 	var types_list = [];
 
-	if (begin == '' || end == '' || 구분 == '') {
+	if (begin == '' || end == '' || 구분 == 'all') {
 		count(BSA재제조, { 품번: { $exists: true } });
 		await delay();
 	} else {
@@ -75,7 +75,7 @@ async function BSA_info(begin = '', end = '', 구분 = '') {
 	}
 
 	if (doc_count > 0) {
-		if (begin == '' || end == '' || 구분 == '') {
+		if (begin == '' || end == '' || 구분 == 'all') {
 			find_BSA재제조(BSA재제조, { 품번: { $exists: true } });
 			await delay();
 		} else {
@@ -158,11 +158,11 @@ async function BSA_info(begin = '', end = '', 구분 = '') {
 	BSA재고(types_list, counts);
 }
 
-async function BMA_info(begin = '', end = '', 구분 = '') {
+async function BMA_info(begin = '', end = '', 구분 = 'all') {
 	var counts = [];
 	var types_list = [];
 
-	if (begin == '' || end == '' || 구분 == '') {
+	if (begin == '' || end == '' || 구분 == 'all') {
 		count(고품정보, { 품명: 'BMA', 폐기여부 : '폐기' });
 		await delay();
 	} else {
@@ -171,7 +171,7 @@ async function BMA_info(begin = '', end = '', 구분 = '') {
 	}
 
 	if (doc_count > 0) {
-		if (begin == '' || end == '' || 구분 == '') {
+		if (begin == '' || end == '' || 구분 == 'all') {
 			find_고품정보(고품정보, { 품명: 'BMA', 폐기여부 : '폐기'  });
 			await delay();
 		} else {
@@ -214,12 +214,12 @@ async function BMA_info(begin = '', end = '', 구분 = '') {
 	BMA재고(types_list, counts);
 }
 
-async function 자재재료_info(begin = '', end = '', 구분 = '') {
+async function 자재재료_info(begin = '', end = '', 구분 = 'all') {
 	var counts = [];
 	var types_list = [];
 	var 품명_list = [];
 
-	if (begin == '' || end == '' || 구분 == '') {
+	if (begin == '' || end == '' || 구분 == 'all') {
 		count(고품정보, { 폐기여부: '자재' });
 		await delay();
 	} else {
@@ -228,7 +228,7 @@ async function 자재재료_info(begin = '', end = '', 구분 = '') {
 	}
 
 	if (doc_count > 0) {
-		if (begin == '' || end == '' || 구분 == '') {
+		if (begin == '' || end == '' || 구분 == 'all') {
 			find_고품정보(고품정보, { 폐기여부: '자재' });
 			await delay();
 		} else {
@@ -272,15 +272,15 @@ async function 자재재료_info(begin = '', end = '', 구분 = '') {
 	자재재고(품명_list, types_list, counts);
 }
 
-async function 부품_info(begin = '', end = '', 구분 ='') {
+async function 부품_info(begin = '', end = '', 구분 = 'all') {
 	var 품명 = [];
 	var 부품정보 = [];
 
-	if (begin == '' || end == '') {
+	if (begin == '' || end == '' ) {
 		count(자재입출고, { QR: { $exists: true } });
 		await delay();
 	} else {
-		count(자재입출고, { QR: { $exists: true }, 날짜: { $gte: begin, $lte: end } });
+		count(자재입출고, { QR: { $exists: true }, 날짜: { $gte: begin, $lte: end }});
 		await delay();
 	}
 
@@ -289,7 +289,7 @@ async function 부품_info(begin = '', end = '', 구분 ='') {
 			find_신품정보(자재입출고, { QR: { $exists: true } });
 			await delay();
 		} else {
-			find_신품정보(자재입출고, { QR: { $exists: true }, 날짜: { $gte: begin, $lte: end } });
+			find_신품정보(자재입출고, { QR: { $exists: true }, 날짜: { $gte: begin, $lte: end }});
 			await delay();
 		}
 	}
@@ -305,11 +305,11 @@ async function 부품_info(begin = '', end = '', 구분 ='') {
 		var counts = [];
 		var types_list = [];
 
-		if (begin == '', end == '') {
-			find_신품정보(자재입출고, { 품명: 품명[i], QR: { $exists: true } });
+		if (begin == ''|| end == '') {
+			find_신품정보(자재입출고, { 품명: 품명[i], QR: { $exists: true }});
 			await delay();
 		} else {
-			find_신품정보(자재입출고, { 품명: 품명[i], QR: { $exists: true }, 날짜: { $gte: begin, $lte: end } });
+			find_신품정보(자재입출고, { 품명: 품명[i], QR: { $exists: true }, 날짜: { $gte: begin, $lte: end }});
 			await delay();
 		}
 		console.log(find_array);

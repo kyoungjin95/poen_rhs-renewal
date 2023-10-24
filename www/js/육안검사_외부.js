@@ -67,7 +67,7 @@ async function 육안검사외부_save() {
     var img = new Image();
     img.src = data;
     img.onload = function () {
-      ctx.drawImage(img, 1920, 1080);
+      ctx.drawImage(img, window.innerWidth, window.innerHeight);
     };
 
     canvas.width = 410;
@@ -77,8 +77,8 @@ async function 육안검사외부_save() {
       content: [
         {
           image: data,
-          width: 1920,
-          height: 1080,
+          width: window.innerWidth,
+          height: window.innerHeight,
         },
       ],
       pageSize: "A4",
