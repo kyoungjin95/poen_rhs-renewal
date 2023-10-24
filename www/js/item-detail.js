@@ -31,21 +31,6 @@ async function 상세입력_시작(is재제조번호 = false) {
   Busbars_count = 1;
   BMA_count = 1;
 
-  // item-detalis - select option
-  const optionMenu = document.querySelector(".select-menu"),
-    selectBtn = optionMenu.querySelector(".select-btn"),
-    options = optionMenu.querySelectorAll(".option");
-
-  selectBtn.addEventListener("click", () => {
-    optionMenu.classList.toggle("active");
-  });
-
-  options.forEach((option) => {
-    option.addEventListener("click", (e) => {
-      optionMenu.classList.remove("active");
-    });
-  });
-
   await sleep(100);
   if (is재제조번호 == false) {
     _management_id.value = _management_id.value.trim();
@@ -1065,4 +1050,17 @@ function 기밀검사() {
 }
 function 통신검사() {
   통신검사_시작();
+}
+
+function showOptionMenu() {
+  const options = document.querySelectorAll(".option");
+  const optionContainer = document.querySelector(".options");
+  // item-detalis - select option
+  optionContainer.classList.toggle("active");
+
+  options.forEach((option) => {
+    option.addEventListener("click", () => {
+      optionContainer.classList.remove("active");
+    });
+  });
 }

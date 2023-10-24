@@ -415,51 +415,49 @@
         </table>
       </div>
       <div class="input-group">
-        <center>
-          <div class="input-btn-group">
-            <button onClick="item_detail_save();">SAVE</button>
-            <!-- <button onClick="기초보고서();">기초 보고서</button> -->
+        <div class="input-btn-group">
+          <button onClick="item_detail_save();">SAVE</button>
+          <!-- <button onClick="기초보고서();">기초 보고서</button> -->
 
-            <div class="select-menu">
-              <div class="select-btn">
-                <span class="sBtn-text">Select option</span>
-              </div>
-              <ul class="options">
-                <li class="option">
-                  <span class="option-text" onclick="기초보고서_시작();"
-                    >기초보고서</span
-                  >
-                </li>
-                <li class="option">
-                  <span class="option-text" onclick="완료보고서_시작();"
-                    >완료보고서</span
-                  >
-                </li>
-                <li class="option">
-                  <span class="option-text" onclick="육안검사외부_시작();"
-                    >육안검사 - 외부</span
-                  >
-                </li>
-                <li class="option">
-                  <span class="option-text" onclick="육안검사내부_시작();"
-                    >육안검사 - 내부</span
-                  >
-                </li>
-                <li class="option">
-                  <span class="option-text" onclick="기밀검사_시작();"
-                    >기밀검사</span
-                  >
-                </li>
-                <li class="option">
-                  <span class="option-text" onclick="통신검사_시작();"
-                    >CAN 통신검사</span
-                  >
-                </li>
-              </ul>
+          <div class="select-menu">
+            <div class="select-btn" onclick="showOptionMenu();">
+              <span class="sBtn-text">Select option</span>
             </div>
-            <!-- <button onClick="완료보고서();">완료 보고서</button> -->
+            <ul class="options">
+              <li class="option">
+                <span class="option-text" onclick="기초보고서_시작();"
+                  >기초보고서</span
+                >
+              </li>
+              <li class="option">
+                <span class="option-text" onclick="완료보고서_시작();"
+                  >완료보고서</span
+                >
+              </li>
+              <li class="option">
+                <span class="option-text" onclick="육안검사외부_시작();"
+                  >육안검사 - 외부</span
+                >
+              </li>
+              <li class="option">
+                <span class="option-text" onclick="육안검사내부_시작();"
+                  >육안검사 - 내부</span
+                >
+              </li>
+              <li class="option">
+                <span class="option-text" onclick="기밀검사_시작();"
+                  >기밀검사</span
+                >
+              </li>
+              <li class="option">
+                <span class="option-text" onclick="통신검사_시작();"
+                  >CAN 통신검사</span
+                >
+              </li>
+            </ul>
           </div>
-        </center>
+          <!-- <button onClick="완료보고서();">완료 보고서</button> -->
+        </div>
       </div>
     </div>
     <script>

@@ -56,6 +56,7 @@ button:hover {
   height: 70px;
   margin-left: 10px;
   box-sizing: border-box;
+  z-index: 999;
 }
 
 .select-menu .select-btn {
@@ -86,21 +87,18 @@ button:hover {
   display: none;
 }
 
-.select-menu.active .options {
-  display: block;
-}
-
 .options .option {
-  display: flex;
   height: 55px;
   cursor: pointer;
   padding: 5px 16px;
   border-radius: 8px;
   line-height: 55px;
-  align-items: center;
-  justify-content: center;
   background-color: #fff;
   transition: background-color 0.3s;
+}
+
+.options.active {
+  display: block;
 }
 
 .options .option:hover {
@@ -111,6 +109,7 @@ button:hover {
 }
 
 .option .option-text {
+  text-align: center;
   font-size: 1.2vw;
   color: #333;
   display: block;
