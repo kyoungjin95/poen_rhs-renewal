@@ -745,6 +745,7 @@ async function 재제조현황_조회() {
 			{title:"폐기", field:"폐기", sorter:"string", width:'180'},
 			{title:"마지막충전일", field:"마지막충전일", sorter:"string", width:'180'},
 			{title:"출하예약", field:"출하예약", sorter:"string", width:'180'},
+			{title:"렉번호", field:"렉번호", sorter:"string", width:'180'},
 		],
 	});
 

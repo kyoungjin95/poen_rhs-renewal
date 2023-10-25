@@ -672,7 +672,8 @@ async function 상세입력_시작(is재제조번호 = false) {
     _폐기.value = find_array[0].폐기.substr(0, 16);
     if (find_array[0].출하예약 != undefined)
       _출하예약.value = find_array[0].출하예약.substr(0, 16);
-
+    if (find_array[0].렉번호 != undefined)
+      _렉번호.value = find_array[0].렉번호.substr(0, 16);
     count(입고, { 관리번호: _management_id.value });
     await delay();
     if (doc_count > 0) {
@@ -862,6 +863,7 @@ async function 상세입력_시작(is재제조번호 = false) {
     _완전분해.value = "0000-00-00T00:00";
     _폐기.value = "0000-00-00T00:00";
     _출하예약.value = "";
+    _렉번호.value = "";
 
     item_detail_save(true);
   }
@@ -907,6 +909,7 @@ async function item_detail_save(flag_result = false) {
   doc.완전분해 = _완전분해.value;
   doc.폐기 = _폐기.value;
   doc.출하예약 = _출하예약.value;
+  doc.렉번호 = _렉번호.value;
 
   update(BSA재제조, doc);
   await delay();
