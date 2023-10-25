@@ -48,6 +48,7 @@ function 구장창고조회(data) {
 			{title:"출고일", field:"출고일", sorter:"string", width:'180'},
 			{title:"출고처", field:"출고처", sorter:"string", width:'180'},
 			{title:"비고", field:"비고", sorter:"string", width:'180'},
+			{title:"구분", field:"구분", sorter:"string", width:'180'},
 		],
 	});
 

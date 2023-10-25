@@ -355,8 +355,7 @@ async function 부품_info(begin = '', end = '', 구분 = 'all') {
 }
 
 
-
-
+var table_BSA;
 function BSA재고(품번_list, datas) {
 	var BSA집계_datas = [];
 
@@ -371,7 +370,7 @@ function BSA재고(품번_list, datas) {
 		BSA집계_datas.push(_datas);
 	}
 	
-	var table_BSA = new Tabulator("#grid_BSA집계", {
+	table_BSA = new Tabulator("#grid_BSA집계", {
 		layout: "resizableColumnFit",
 		data: BSA집계_datas,
 		height: '700px',
@@ -386,6 +385,7 @@ function BSA재고(품번_list, datas) {
 	});
 }
 
+var table_BMA;
 function BMA재고(품번_list, datas) {
 	var BMA집계_datas = [];
 
@@ -404,7 +404,7 @@ function BMA재고(품번_list, datas) {
 		return;
 	}
 
-	var table_BMA = new Tabulator("#grid_BMA집계", {
+	table_BMA = new Tabulator("#grid_BMA집계", {
 		layout: "resizableColumnFit",
 		data: BMA집계_datas,
 		height: '400px',
@@ -418,6 +418,7 @@ function BMA재고(품번_list, datas) {
 	});
 }
 
+var table_자재재고;
 function 자재재고(품명_list, 품번_list, datas) {
 	var 자재집계_datas = [];
 
@@ -437,7 +438,7 @@ function 자재재고(품명_list, 품번_list, datas) {
 		return;
 	}
 
-	var table_자재재고 = new Tabulator("#grid_자재집계", {
+	table_자재재고 = new Tabulator("#grid_자재집계", {
 		layout: "resizableColumnFit",
 		data: 자재집계_datas,
 		height: '400px',
@@ -452,6 +453,7 @@ function 자재재고(품명_list, 품번_list, datas) {
 	});
 }
 
+var table_BMA;
 function 부품재고(부품정보) {
 	var 부품집계_datas = [];
 
@@ -474,7 +476,7 @@ function 부품재고(부품정보) {
 		return;
 	}
 
-	var table_BMA = new Tabulator("#grid_부품집계", {
+	table_BMA = new Tabulator("#grid_부품집계", {
 		layout: "resizableColumnFit",
 		data: 부품집계_datas,
 		height: '700px',
@@ -487,4 +489,15 @@ function 부품재고(부품정보) {
 			{ title: "합계", field: "합계", sorter: "string", width: '180' },
 		],
 	});
+}
+
+function 수량집계_export_to_excel() {
+	var sheets = {
+		'BSA집계' : true,
+		'BMA집계' : table_BMA,
+		'자재집계' : table_자재재고,
+		'부품집계' : table_BMA,
+	};
+	table_BSA.download("xlsx", "RHMS_수량집계.xlsx", {sheets:sheets});
+	
 }

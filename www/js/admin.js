@@ -110,6 +110,14 @@ function func_csv() {
 				var doc = {};
 				doc.관리번호 = res[i].관리번호;
 				doc.공정단계 = res[i].공정단계;
+				if(res[i].완전분해 != '') doc.완전분혜 = res[i].완전분해 + 'T14:00:00';
+				else doc.완전분해 = '';
+				
+				if(res[i].폐기 != '') doc.폐기 = res[i].폐기 + 'T14:00:00';
+				else doc.폐기 = '';
+				
+				if(res[i].출하 != '') doc.출하 = res[i].출하 + 'T14:00:00';
+				else doc.출하 = '';
 
 				update(BSA재제조, doc);
 				await delay();
@@ -123,25 +131,18 @@ function func_csv() {
 }
 
 async function doo() {
-	find_BSA재제조(BSA재제조, { 입고 : { $eq : '' }, 세척 : { $ne : '' }});
+	find_BSA재제조(BSA재제조, { 출하 : 'T14:00:00'});
 	await delay();
 
 	find_array.forEach(async function(info) {
-		var year = info.세척.substr(0, 4);
-		var month = info.세척.substr(5, 2);
-		var day = info.세척.substr(8, 2);
-		day = String(parseInt(day) - 1);
-		
-		var 입고일 = year + '-' + month + '-' + day + 'T00:00';
-
 		var doc = {
 			관리번호 : info.관리번호,
-			입고 : 입고일
+			출하 : ''
 		}
 
 		update(BSA재제조, doc);
 		await delay();
-
-		console.log('.');
 	});
+
+	console.log('complete');
 }

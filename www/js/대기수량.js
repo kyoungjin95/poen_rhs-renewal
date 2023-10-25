@@ -182,7 +182,7 @@ async function 대기목록(공정) {
 			{title:"차종", field:"차종", sorter:"string", width:'180'},
 			{title:"품번", field:"품번", sorter:"string", width:'180'},
 			{title:"RO_no", field:"RO_no", sorter:"string", width:'180'},
-			{title:"공정단계", field:"공정단계", sorter:"string", width:'180'},
+			{title:"공정처단계", field:"공정단계", sorter:"string", width:'180'},
 			{title:"소재지", field:"소재지", sorter:"string", width:'180'},
 			{title:"적재No", field:"적재No", sorter:"string", visible: true, width:'180'}, //
 			{title:"입고", field:"입고", sorter:"string", visible: true, width:'180'},//
@@ -197,6 +197,8 @@ async function 대기목록(공정) {
 			{title:"성능검사", field:"성능검사", sorter:"string", visible: true, width:'180'},//
 			{title:"EOL투입일", field:"EOL투입일", sorter:"string", width:'180'},
 			{title:"EOL", field:"EOL", sorter:"string", visible: true, width:'180'},//
+			{title:"출하검사", field:"출하검사", sorter:"string", width:'180'},
+			{title:"납품처", field:"납품처", sorter:"string", width:'180'},
 			{title:"출하", field:"출하", sorter:"string", width:'180'},
 			{title:"반품입고", field:"반품입고", sorter:"string", width:'180'},
 			{title:"재출하", field:"재출하", sorter:"string", width:'180'},
@@ -247,6 +249,8 @@ async function 출하대기목록() {
 			{title:"성능검사", field:"성능검사", sorter:"string", visible: true, width:'180'},//
 			{title:"EOL투입일", field:"EOL투입일", sorter:"string", width:'180'},
 			{title:"EOL", field:"EOL", sorter:"string", visible: true, width:'180'},//
+			{title:"출하검사", field:"출하검사", sorter:"string", width:'180'},
+			{title:"납품처", field:"납품처", sorter:"string", width:'180'},
 			{title:"출하", field:"출하", sorter:"string", width:'180'},
 			{title:"반품입고", field:"반품입고", sorter:"string", width:'180'},
 			{title:"재출하", field:"재출하", sorter:"string", width:'180'},
