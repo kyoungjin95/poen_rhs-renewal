@@ -21,9 +21,22 @@ async function 육안검사내부_시작() {
     internalInspection.style.display = "none";
     internalInspectionImg.style.display = "block";
   });
+  
+  _management_id.value = 관리번호;
+  육안검사내부_조회();
 }
 
-async function 육안검사내부_조회() {
+async function 육안검사내부_조회(is재제조번호 = false) {
+  if(is재제조번호 == true) {
+    count(BSA재제조, { 재제조번호 : _재제조번호.value});
+    await delay();
+
+    find_BSA재제조(BSA재제조, { 재제조번호 : _재제조번호.value});
+    await delay();
+
+    _management_id.value = find_array[0].관리번호;
+  }
+
   if (_management_id.value.trim() == "조회 버튼을 누르세요")
     _management_id.value = 관리번호;
   console.log("load: ", _management_id.value);

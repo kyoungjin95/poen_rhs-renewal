@@ -74,6 +74,7 @@ async function 구장재고_조회(is재제조 = false) {
 		_부품번호.value = '';
 		_생산연도.value = '0000-00-00T00:00:00';
 		_ROM_ID.value = '';
+		_보관위치.value = '';
 		_출고일.value = '0000-00-00T00:00:00';
 		_출고처.value = '';
 		_비고.value = '';

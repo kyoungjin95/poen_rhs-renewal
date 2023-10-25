@@ -1,8 +1,26 @@
 async function 완료보고서_시작() {
   loadPage("base/완료보고서.html");
+  await sleep(1000);
+
+  _management_id.value = 관리번호;
+  완료보고서_조회();
 }
 
-async function 완료보고서_조회() {
+async function 완료보고서_조회(is재제조번호 = false) {
+  if(is재제조번호 == true) {
+    count(BSA재제조, { 재제조번호: _재제조번호.value });
+    await delay();
+
+    console.log(doc_count);
+    if(doc_count > 0) {
+      find_BSA재제조(BSA재제조, { 재제조번호: _재제조번호.value});
+      await delay();
+      
+      console.log('test:', find_array);
+      _management_id.value = find_array[0].관리번호;
+    }
+  } 
+
   count(기초검사, { 관리번호: _management_id.value });
   await delay();
 

@@ -103,7 +103,7 @@ async function EOL대기() {
 }
 
 async function 출하대기() {
-	 count(BSA재제조, { 공정단계 : '제조완료' ,  소재지 : { $nin : ['공정대기', '품질대기'] }, 완전분해 : { $eq : '' }, 폐기 : { $eq : '' }, 구분 : { $nin: ['일반기타', '보증기타']} });
+	 count(BSA재제조, { 공정단계 : { $in : ['제조완료', '출하검사'] } ,  소재지 : { $nin : ['공정대기', '품질대기'] }, 완전분해 : { $eq : '' }, 폐기 : { $eq : '' }, 구분 : { $nin: ['일반기타', '보증기타']} });
 	 await delay();
 
 	 document.getElementById('check_num7').innerHTML = doc_count;
@@ -211,12 +211,12 @@ async function 대기목록(공정) {
 async function 출하대기목록() {
 	var 출하대기_tabledata_BSA = [];
 
-	count(BSA재제조, { 공정단계 : '제조완료' });
+	count(BSA재제조, { 공정단계 : { $in : ['제조완료', '출하검사'] } });
 	await delay();
 
 	if(doc_count == 0) return;
 
-	find_BSA재제조(BSA재제조, { 공정단계 : '제조완료' });
+	find_BSA재제조(BSA재제조, { 공정단계 : { $in : ['제조완료', '출하검사'] } });
 	await delay();
 
 	출하대기_tabledata_BSA = find_array;
@@ -344,4 +344,12 @@ async function 출하예약취소() {
 	}
 
 	대기수량_현황_조회();
+}
+
+function export_출하대기() {
+	var sheets = {
+		'출하대기' : true,
+	};
+	BSA출하수량_table.download("xlsx", "RHMS_출하대기.xlsx", {sheets:sheets});
+	
 }

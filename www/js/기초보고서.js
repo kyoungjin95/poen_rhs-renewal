@@ -14,12 +14,25 @@ async function 기초보고서_apply() {
   _수리일.innerHTML = document.getElementById('_수리일_input').value;
   _관리번호.innerHTML = _management_id.value;
   _필드현상.innerHTML = document.getElementById('_필드현상_input').value;
-  _센터진단.innerHTML = document.getElementById('_필드현상_input').value;
   _센터조치.innerHTML = document.getElementById('_센터조치_input').value;
   _결과.innerHTML = document.getElementById('_결과_input').value;
 }
 
-async function 기초보고서_조회() {
+async function 기초보고서_조회(is재제조번호 = false) {
+  if(is재제조번호 == true) {
+    count(BSA재제조, { 재제조번호: _재제조번호.value });
+    await delay();
+
+    console.log(doc_count);
+    if(doc_count > 0) {
+      find_BSA재제조(BSA재제조, { 재제조번호: _재제조번호.value});
+      await delay();
+      
+      console.log('test:', find_array);
+      _management_id.value = find_array[0].관리번호;
+    }
+  } 
+
   count(기초검사, { 관리번호: _management_id.value });
   await delay();
 
@@ -76,6 +89,7 @@ async function 기초보고서_조회() {
     _고장코드사유.innerHTML =
       find_array[0].고장현상명 == undefined ? "" : find_array[0].고장현상명;
 
+    _센터진단.innerHTML = find_array[0].센터진단내용 == undefined ? "" : find_array[0].센터진단내용;
     _재제조이력.innerHTML = 'OK';
   } else {
     _재제조이력.innerHTML = 'NG';

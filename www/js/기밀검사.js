@@ -1,8 +1,24 @@
-function 기밀검사_시작() {
+async function 기밀검사_시작() {
   loadPage("base/기밀검사.html");
+  await sleep(1000);
+
+  _management_id.value = 관리번호;
+  기밀검사_조회();
 }
 
-async function 기밀검사_조회() {
+async function 기밀검사_조회(is재제조번호 = false) {
+  if(is재제조번호 == true) {
+    count(BSA재제조, { 재제조번호 : _재제조번호.value});
+    await delay();
+
+    if(doc_count > 0) {
+      find_BSA재제조(BSA재제조, { 재제조번호: _재제조번호.value });
+      await delay();
+
+      _management_id.value = find_array[0].관리번호;
+    }
+  }
+
   if (_management_id.value.trim() == "조회 버튼을 누르세요")
     _management_id.value = 관리번호;
   console.log("load: ", _management_id.value);
