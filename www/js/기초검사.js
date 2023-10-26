@@ -359,7 +359,7 @@ async function 기초검사_SAVE() {
 		await delay();
 	}
 
-	공정단계자동입력(_management_id.value);
+	await 공정단계자동입력(_management_id.value);
 }
 
 function _육안검사외부_콤보박스(e) {

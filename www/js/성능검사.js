@@ -137,6 +137,6 @@ async function 성능검사_save() {
 		await delay();
 	}
 
-	공정단계자동입력(_management_id.value);
+	await 공정단계자동입력(_management_id.value);
 	//이전페이지();
 }

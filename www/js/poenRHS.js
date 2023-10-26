@@ -81,7 +81,7 @@ const BSA재제조_doc = {
 	완전분해: '',
 	폐기: '',
 	출하예약: '',
-  렉번호: ''
+  	렉번호: ''
 };
 
 const 입고_doc = {
@@ -685,7 +685,7 @@ const 계정_ = {
 };
 
 const BSA재제조_ = {
-	_id : 0,
+	_id : 1,
 	관리번호: 1, 
 	재제조번호: 1,
 	구분: 1,
@@ -717,7 +717,7 @@ const BSA재제조_ = {
 	완전분해: 1,
 	폐기: 1,
 	출하예약: 1,
-  렉번호: 1
+  	렉번호: 1
 };
 
 const 입고_ = {
@@ -1390,7 +1390,7 @@ socket.on('count_result', async function(count, rcv_check) {
 	doc_count = 0;
 	if(rcv_check != check) return;
 	doc_count = count;
-	await sleep(1);
+	await sleep(10);
 
 	flag_arrivedMSG = true;
 });
@@ -1531,11 +1531,11 @@ async function deleteOne(col, management_id) {
 }
 
 
-async function deleteOneBSA(col, management_id, 재제조번호) {
+async function deleteOneBSA(col, id) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
 	while(flag_arrivedMSG == false) {
-		socket.emit('delete', worker, col, { 관리번호: management_id, 재제조번호: 재제조번호});
+		socket.emit('delete_by_id', worker, col, id);
 		await sleep(DELAY_SYS * 2);
 	}
 }
@@ -2013,7 +2013,7 @@ async function delay() {
 	while(flag_arrivedMSG == false) {
 		await sleep(1);
 	}
-	await sleep(1);
+	await sleep(10);
 	return true;
 }
 

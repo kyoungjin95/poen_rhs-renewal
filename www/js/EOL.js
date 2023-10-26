@@ -289,7 +289,7 @@ async function EOL_SAVE() {
 		await delay();
 	}
 
-	공정단계자동입력(_management_id.value);
+	await 공정단계자동입력(_management_id.value);
 }
 
 function EOL_save() {

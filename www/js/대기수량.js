@@ -182,7 +182,7 @@ async function 대기목록(공정) {
 			{title:"차종", field:"차종", sorter:"string", width:'180'},
 			{title:"품번", field:"품번", sorter:"string", width:'180'},
 			{title:"RO_no", field:"RO_no", sorter:"string", width:'180'},
-			{title:"공정처단계", field:"공정단계", sorter:"string", width:'180'},
+			{title:"공정단계", field:"공정단계", sorter:"string", width:'180'},
 			{title:"소재지", field:"소재지", sorter:"string", width:'180'},
 			{title:"적재No", field:"적재No", sorter:"string", visible: true, width:'180'}, //
 			{title:"입고", field:"입고", sorter:"string", visible: true, width:'180'},//
@@ -211,12 +211,12 @@ async function 대기목록(공정) {
 async function 출하대기목록() {
 	var 출하대기_tabledata_BSA = [];
 
-	count(BSA재제조, { 공정단계 : { $in : ['제조완료', '출하검사'] } });
+	count(BSA재제조, { 공정단계 : { $in : ['제조완료', '출하검사'] } ,  소재지 : { $nin : ['공정대기', '품질대기'] }, 완전분해 : { $eq : '' }, 폐기 : { $eq : ''}, 구분: { $nin: ['일반기타', '보증기타']}});
 	await delay();
 
 	if(doc_count == 0) return;
 
-	find_BSA재제조(BSA재제조, { 공정단계 : { $in : ['제조완료', '출하검사'] } });
+	find_BSA재제조(BSA재제조, { 공정단계 :  { $in : ['제조완료', '출하검사'] } ,  소재지 : { $nin : ['공정대기', '품질대기'] }, 완전분해 : { $eq : '' }, 폐기 : { $eq : ''}, 구분: { $nin: ['일반기타', '보증기타']}});
 	await delay();
 
 	출하대기_tabledata_BSA = find_array;

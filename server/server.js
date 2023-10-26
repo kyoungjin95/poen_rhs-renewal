@@ -1,4 +1,5 @@
 const http = require('http');
+const mongo = require('mongodb');
 const express = require('express');
 const path = require('path');
 const app = express();
@@ -42,6 +43,10 @@ app.get('/manual', (req, res) => {
 
 app.get('/qr_label', (req, res) => {
 	res.sendFile(path.join(__dirname, '../doc/qr_label.docx'));
+});
+
+app.get('/tesseract', (req, res) => {
+	res.sendFile(path.join(__dirname, '../www/tesseract_ocr.html'));
 });
 
 client = new MongoClient(uri);
@@ -131,8 +136,15 @@ io.on('connection', async function(socket) {
 	socket.on('delete', async function(worker, col, query) {
 		if(account.login == false) return;
 		//logger.info('worker:'+ worker + ' delete col:' + col + 'query:'+ JSON.stringify(query));
-
 		const result_count = await deleteOne(col, query);
+		socket.emit('delete_result', result_count);
+	});
+
+	socket.on('delete_by_id', async function(worker, col, id) {
+		if(account.login == false) return;
+		//logger.info('worker:'+ worker + ' delete col:' + col + 'query:'+ JSON.stringify(query));
+		console.log('delete:', id);
+		const result_count = await deleteOneById(col, id);
 		socket.emit('delete_result', result_count);
 	});
 
@@ -275,6 +287,22 @@ async function update(col, filter, updateDoc) {
 		console.error(err);
 		logger.info(err);
 		return null;
+	} finally {
+	}
+}
+
+async function deleteOneById(col, id) {
+	try {
+		const database = client.db(db_name);
+		const collection = database.collection(col);
+		const o_id = new mongo.ObjectId(id);
+		const result = await collection.deleteOne({ '_id' : o_id });
+		console.log(`Delete ${result.deletedCount} documents`);
+		return result.deletedCount;
+	} catch(err) {
+		console.error(err);
+		logger.info(err);
+		return 0;
 	} finally {
 	}
 }

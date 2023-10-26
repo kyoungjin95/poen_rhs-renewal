@@ -1,6 +1,7 @@
 var row_one_id = '';
 var 재제조번호;
 var tabledata_BSA = [];
+var _id;
 var m_id;
 var m_ids = [];
 var flag_id_search = 0;
@@ -715,6 +716,7 @@ async function 재제조현황_조회() {
 		height: '700px',
 
 		columns:[
+			{title:"ID", field:"_id", sorter:"string", width:'180'},
 			{title:"관리번호", field:"관리번호", sorter:"string", width:'180'},
 			{title:"재제조번호", field:"재제조번호", sorter:"string", width:'180'},
 			{title:"구분", field:"구분", sorter:"string", width:'180'},
@@ -753,8 +755,9 @@ async function 재제조현황_조회() {
 	table.on("rowClick", async function(e, row){
 		console.log('selected 관리번호: ',  row.getData().관리번호);
 		m_id = row.getData().관리번호;
+		_id = row.getData()._id;
 		row_one_id = m_id;
-
+		
 		document.getElementById('m_id').innerHTML = '관리번호: ' + m_id;
 
 		await grid_입고(m_id);
@@ -879,148 +882,168 @@ async function 재제조현황_조회() {
 	await 폐기_load_pic();
 };
 
+async function delete_bsa_중복정보() {
+	console.log('delete : ', _id);
+
+	deleteOneBSA(BSA재제조, _id);
+	await delay();
+
+	var fieldEl = document.getElementById("filter-field");
+	var typeEl = document.getElementById("filter-type");
+	var valueEl = document.getElementById("filter-value");
+	fieldEl.value = "";
+	typeEl.value = "=";
+	valueEl.value = "";
+
+	table.clearFilter();
+
+	if(delete_count > 0) {
+		alert('삭제 되었습니다.');
+	}
+	재제조현황_조회();
+}
+
 async function delete_bsa() {
 	console.log('delete : ', row_one_id);
-	console.log('delete : ', 재제조번호);
 
-	deleteOneBSA(BSA재제조, row_one_id, 재제조번호);
+	deleteOne(BSA재제조, row_one_id);
 	await delay();
 
 	progress.value = 1 / 18 * 100;
 
-	deleteOneBSA(입고, row_one_id, 재제조번호);
+	deleteOne(입고, row_one_id);
 	await delay();
 
 	progress.value = 2 / 18 * 100;
 
-	deleteOneBSA(입고_pic, row_one_id, 재제조번호);
+	deleteOne(입고_pic, row_one_id);
 	await delay();
 
 	progress.value = 3 / 18 * 100;
 
-	deleteOneBSA(세척, row_one_id), 재제조번호;
+	deleteOne(세척, row_one_id);
 	await delay();
 
 	progress.value = 4 / 18 * 100;
 
-	deleteOneBSA(세척_pic, row_one_id, 재제조번호);
+	deleteOne(세척_pic, row_one_id);
 	await delay();
 
 	progress.value = 5 / 18 * 100;
 
-	deleteOneBSA(기초검사, row_one_id, 재제조번호);
+	deleteOne(기초검사, row_one_id);
 	await delay();
 
 	progress.value = 6 / 18 * 100;
 
-	deleteOneBSA(기초검사_pic, row_one_id, 재제조번호);
+	deleteOne(기초검사_pic, row_one_id);
 	await delay();
 
 	progress.value = 7 / 18 * 100;
 
-	deleteOneBSA(분해조립, row_one_id, 재제조번호);
+	deleteOne(분해조립, row_one_id);
 	await delay();
 
 	progress.value = 8 / 18 * 100;
 
-	deleteOneBSA(분해조립_pic, row_one_id, 재제조번호);
+	deleteOne(분해조립_pic, row_one_id);
 	await delay();
 
 	progress.value = 9 / 18 * 100;
 
-	deleteOneBSA(성능검사, row_one_id, 재제조번호);
+	deleteOne(성능검사, row_one_id);
 	await delay();
 
 	progress.value = 10 / 18 * 100;
 
-	deleteOneBSA(성능검사_pic, row_one_id, 재제조번호);
+	deleteOne(성능검사_pic, row_one_id);
 	await delay();
 
 	progress.value = 11 / 18 * 100;
 
-	deleteOneBSA(EOL, row_one_id, 재제조번호);
+	deleteOne(EOL, row_one_id);
 	await delay();
 
 	progress.value = 12 / 18 * 100;
 
-	deleteOneBSA(EOL_pic, row_one_id, 재제조번호);
+	deleteOne(EOL_pic, row_one_id);
 	await delay();
 
 	progress.value = 13 / 18 * 100;
 
-	deleteOneBSA(출하정보, row_one_id, 재제조번호);
+	deleteOne(출하정보, row_one_id);
 	await delay();
 
 	progress.value = 13 / 18 * 100;
 
-	deleteOneBSA(출하_pic, row_one_id, 재제조번호);
+	deleteOne(출하_pic, row_one_id);
 	await delay();
 
 	progress.value = 14 / 18 * 100;
 
-	deleteOneBSA(특이사항, row_one_id, 재제조번호);
+	deleteOne(특이사항, row_one_id);
 	await delay();
 
 	progress.value = 15 / 18 * 100;
 
-	deleteOneBSA(특이사항_pic, row_one_id, 재제조번호);
+	deleteOne(특이사항_pic, row_one_id);
 	await delay();
 
 	progress.value = 16 / 18 * 100;
 
-	deleteOneBSA(교체부품상세1 , row_one_id, 재제조번호);
+	deleteOne(교체부품상세1 , row_one_id);
 	await delay();
 	progress.value = 17 / 18 * 100;
 
-	deleteOneBSA(교체부품상세2 , row_one_id, 재제조번호);
+	deleteOne(교체부품상세2 , row_one_id);
 	await delay();
 	progress.value = 18 / 18 * 100;
 
-	deleteOneBSA(교체부품상세3 , row_one_id, 재제조번호);
+	deleteOne(교체부품상세3 , row_one_id);
 	await delay();
 	progress.value = 19 / 18 * 100;
 
-	deleteOneBSA(교체부품상세4 , row_one_id, 재제조번호);
+	deleteOne(교체부품상세4 , row_one_id);
 	await delay();
 	progress.value = 20 / 18 * 100;
 
-	deleteOneBSA(교체부품상세5 , row_one_id, 재제조번호);
+	deleteOne(교체부품상세5 , row_one_id);
 	await delay();
 	progress.value = 21 / 18 * 100;
 
-	deleteOneBSA(교체부품상세6 , row_one_id, 재제조번호);
+	deleteOne(교체부품상세6 , row_one_id);
 	await delay();
 	progress.value = 22 / 18 * 100;
 
-	deleteOneBSA(교체부품상세7 , row_one_id, 재제조번호);
+	deleteOne(교체부품상세7 , row_one_id);
 	await delay();
 	progress.value = 23 / 18 * 100;
 
-	deleteOneBSA(교체부품상세8 , row_one_id, 재제조번호);
+	deleteOne(교체부품상세8 , row_one_id);
 	await delay();
 	progress.value = 24 / 18 * 100;
 
-	deleteOneBSA(교체부품상세9 , row_one_id, 재제조번호);
+	deleteOne(교체부품상세9 , row_one_id);
 	await delay();
 	progress.value = 25 / 18 * 100;
 
-	deleteOneBSA(교체부품상세10 , row_one_id, 재제조번호);
+	deleteOne(교체부품상세10 , row_one_id);
 	await delay();
 	progress.value = 26 / 18 * 100;
 
-	deleteOneBSA(반품입고_pic, row_one_id, 재제조번호);
+	deleteOne(반품입고_pic, row_one_id);
 	await delay();
 	progress.value = 27 / 18 * 100;
 
-	deleteOneBSA(재출하_pic, row_one_id, 재제조번호);
+	deleteOne(재출하_pic, row_one_id);
 	await delay();
 	progress.value = 28 / 18 * 100;
 
-	deleteOneBSA(완전분해_pic, row_one_id, 재제조번호);
+	deleteOne(완전분해_pic, row_one_id);
 	await delay();
 	progress.value = 29 / 18 * 100;
 
-	deleteOneBSA(폐기_pic, row_one_id, 재제조번호);
+	deleteOne(폐기_pic, row_one_id);
 	await delay();
 
 	var fieldEl = document.getElementById("filter-field");
