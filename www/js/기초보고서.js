@@ -8,30 +8,31 @@ async function 기초보고서_시작() {
 }
 
 async function 기초보고서_apply() {
-  _셀제조사사유.innerHTML = document.getElementById('_셀제조사사유_input').value;
-  _생산일.innerHTML = document.getElementById('_생산일_input').value;
-  _판매일.innerHTML = document.getElementById('_판매일_input').value;
-  _수리일.innerHTML = document.getElementById('_수리일_input').value;
+  _셀제조사사유.innerHTML =
+    document.getElementById("_셀제조사사유_input").value;
+  _생산일.innerHTML = document.getElementById("_생산일_input").value;
+  _판매일.innerHTML = document.getElementById("_판매일_input").value;
+  _수리일.innerHTML = document.getElementById("_수리일_input").value;
   _관리번호.innerHTML = _management_id.value;
-  _필드현상.innerHTML = document.getElementById('_필드현상_input').value;
-  _센터조치.innerHTML = document.getElementById('_센터조치_input').value;
-  _결과.innerHTML = document.getElementById('_결과_input').value;
+  _필드현상.innerHTML = document.getElementById("_필드현상_input").value;
+  _센터조치.innerHTML = document.getElementById("_센터조치_input").value;
+  _결과.innerHTML = document.getElementById("_결과_input").value;
 }
 
 async function 기초보고서_조회(is재제조번호 = false) {
-  if(is재제조번호 == true) {
+  if (is재제조번호 == true) {
     count(BSA재제조, { 재제조번호: _재제조번호.value });
     await delay();
 
     console.log(doc_count);
-    if(doc_count > 0) {
-      find_BSA재제조(BSA재제조, { 재제조번호: _재제조번호.value});
+    if (doc_count > 0) {
+      find_BSA재제조(BSA재제조, { 재제조번호: _재제조번호.value });
       await delay();
 
-      console.log('test:', find_array);
+      console.log("test:", find_array);
       _management_id.value = find_array[0].관리번호;
     }
-  } 
+  }
 
   count(기초검사, { 관리번호: _management_id.value });
   await delay();
@@ -55,80 +56,85 @@ async function 기초보고서_조회(is재제조번호 = false) {
 
     _외부점검.innerHTML =
       find_array[0].육안검사_외부 == undefined
-      ? ""
-      : find_array[0].육안검사_외부;
+        ? ""
+        : find_array[0].육안검사_외부;
 
     _외부점검사유.innerHTML =
       find_array[0].육안검사_외부_특이사항 == undefined
-      ? ""
-      : find_array[0].육안검사_외부_특이사항;
+        ? ""
+        : find_array[0].육안검사_외부_특이사항;
 
     _내부점검.innerHTML =
       find_array[0].육안검사_내부 == undefined
-      ? ""
-      : find_array[0].육안검사_내부;
+        ? ""
+        : find_array[0].육안검사_내부;
 
     _내부점검사유.innerHTML =
       find_array[0].육안검사_내부_특이사항 == undefined
-      ? ""
-      : find_array[0].육안검사_내부_특이사항;
+        ? ""
+        : find_array[0].육안검사_내부_특이사항;
 
     _PRA_P값.innerHTML =
       find_array[0].절연검사_Plus == undefined
-      ? ""
-      : find_array[0].절연검사_Plus;
+        ? ""
+        : find_array[0].절연검사_Plus;
 
     _PRA_N값.innerHTML =
       find_array[0].절연검사_Minus == undefined
-      ? ""
-      : find_array[0].절연검사_Minus;
+        ? ""
+        : find_array[0].절연검사_Minus;
 
-    _고장코드.innerHTML =
-      find_array[0].고장현상코드 == undefined ? "NG" : "OK";
+    _고장코드.innerHTML = find_array[0].고장현상코드 == undefined ? "NG" : "OK";
 
     _고장코드사유.innerHTML =
       find_array[0].고장현상명 == undefined ? "" : find_array[0].고장현상명;
 
-    _센터진단.innerHTML = find_array[0].센터진단내용 == undefined ? "" : find_array[0].센터진단내용;
-    _재제조이력.innerHTML = 'OK';
+    _센터진단.innerHTML =
+      find_array[0].센터진단내용 == undefined ? "" : find_array[0].센터진단내용;
+    _재제조이력.innerHTML = "OK";
   } else {
-    _재제조이력.innerHTML = 'NG';
+    _재제조이력.innerHTML = "NG";
   }
 
   count(입고, { 관리번호: _management_id.value });
   await delay();
 
   if (doc_count > 0) {
-    _입고정보.innerHTML = 'OK';
+    _입고정보.innerHTML = "OK";
     find(입고, _management_id.value);
     await delay();
     console.log(find_array);
 
     _입고일.innerHTML = find_array[0].입고일;
   } else {
-    _입고정보.innerHTML = 'NG';
+    _입고정보.innerHTML = "NG";
     _입고일.innerHTML = "";
   }
 
-  count(EOL, { 관리번호 : _management_id.value});
+  count(EOL, { 관리번호: _management_id.value });
   await delay();
 
-  if(doc_count > 0) {
+  if (doc_count > 0) {
     find(EOL, _management_id.value);
     await delay();
 
-    console.log('EOL:', find_array);
+    console.log("EOL:", find_array);
     _케이스.innerHTML =
       find_array[0].기밀검사_케이스 == undefined
-      ? ""
-      : find_array[0].기밀검사_케이스;
+        ? ""
+        : find_array[0].기밀검사_케이스;
     _케이스감압량.innerHTML =
       find_array[0].기밀검사_케이스_특이사항 == undefined
-      ? ""
-      : find_array[0].기밀검사_케이스_특이사항;
+        ? ""
+        : find_array[0].기밀검사_케이스_특이사항;
     _냉각유로.innerHTML =
-      find_array[0].기밀검사_냉각유로 == undefined ? "" : find_array[0].기밀검사_냉각유로;
-    _냉각유로감압량.innerHTML = find_array[0].기밀검사_냉각유로_특이사항 == undefined ? "" : find_array[0].기밀검사_냉각유로_특이사항;
+      find_array[0].기밀검사_냉각유로 == undefined
+        ? ""
+        : find_array[0].기밀검사_냉각유로;
+    _냉각유로감압량.innerHTML =
+      find_array[0].기밀검사_냉각유로_특이사항 == undefined
+        ? ""
+        : find_array[0].기밀검사_냉각유로_특이사항;
     //_팩전압.innerHTML = find_array[0].통신검사_팩전압 == undefined ? "" :  find_array[0].통신검사_팩전압;
   } else {
     _케이스.innerHTML = "";
@@ -137,10 +143,10 @@ async function 기초보고서_조회(is재제조번호 = false) {
     _냉각유로감압량.innerHTML = "";
   }
 
-  count(입고_pic, { 관리번호 : _management_id.value });
+  count(입고_pic, { 관리번호: _management_id.value });
   await delay();
 
-  if(doc_count > 0) {
+  if (doc_count > 0) {
     find(입고_pic, _management_id.value);
     await delay();
 
@@ -178,38 +184,34 @@ async function 기초보고서_조회(is재제조번호 = false) {
 
   _작성일.innerHTML = now.substr(0, 10);
 
-  count(출하정보, { 관리번호 : _management_id.value});
+  count(출하정보, { 관리번호: _management_id.value });
   await delay();
 
-  if(doc_count > 0) {
+  if (doc_count > 0) {
     find(출하정보, _management_id.value);
     await delay();
 
-    console.log('===>', find_array);
+    console.log("===>", find_array);
     _팩전압.innerHTML =
-      find_array[0].배터리팩전압 == undefined
-      ? ""
-      : find_array[0].배터리팩전압;
+      find_array[0].배터리팩전압 == undefined ? "" : find_array[0].배터리팩전압;
 
     _팩전압값.innerHTML =
       find_array[0].배터리팩_측정값 == undefined
-      ? ""
-      : find_array[0].배터리팩_측정값;
+        ? ""
+        : find_array[0].배터리팩_측정값;
 
     _셀전압편차.innerHTML =
-      find_array[0].셀전압편차 == undefined
-      ? ""
-      : find_array[0].셀전압편차;
+      find_array[0].셀전압편차 == undefined ? "" : find_array[0].셀전압편차;
 
     _셀전압편차값.innerHTML =
       find_array[0].셀전압편차_측정값 == undefined
-      ? ""
-      : find_array[0].셀전압편차_측정값;
+        ? ""
+        : find_array[0].셀전압편차_측정값;
 
     _릴레이제어.innerHTML =
       find_array[0].릴레이_강제구동 == undefined
-      ? ""
-      : find_array[0].릴레이_강제구동;
+        ? ""
+        : find_array[0].릴레이_강제구동;
   }
 }
 
@@ -219,38 +221,37 @@ async function 기초보고서_save(type = 0) {
   var _width = 4200;
   var _height = 2200;
 
+  if (type == 0) type = document.getElementById("_기초보고서");
 
-  if(type == 0) type = document.getElementById("_기초보고서");
-
-  if(type == '육외') {
+  if (type == "육외") {
     type = document.getElementById("_육안검사외부1");
     file_name = "기초보고서_육안검사외부" + _date + ".pdf";
     _width = 4200;
     _height = 2100;
   }
 
-  if(type == '육외상') {
+  if (type == "육외상") {
     type = document.getElementById("_육안검사외부2");
     file_name = "기초보고서_육안검사외부_상세" + _date + ".pdf";
     _width = 4200;
     _height = 2100;
   }
 
-  if(type == '육내') {
+  if (type == "육내") {
     type = document.getElementById("_육안검사내부1");
     file_name = "기초보고서_육안검사내부" + _date + ".pdf";
     _width = 4200;
     _height = 2500;
   }
 
-  if(type == '육내상') {
+  if (type == "육내상") {
     type = document.getElementById("_육안검사내부2");
-    ggfile_name = "기초보고서_육안검사내부_상세" + _date + ".pdf";
+    file_name = "기초보고서_육안검사내부_상세" + _date + ".pdf";
     _width = 4200;
     _height = 2100;
   }
 
-  if(type == '기밀') {
+  if (type == "기밀") {
     type = document.getElementById("_기밀검사");
     file_name = "기초보고서_기밀검사" + _date + ".pdf";
     _width = 4200;
@@ -258,8 +259,8 @@ async function 기초보고서_save(type = 0) {
   }
 
   html2canvas(type, {
-    width: _width * window.innerWidth / 1920,
-    height: _height * window.innerHeight / 1080,
+    width: (_width * window.innerWidth) / 1920,
+    height: (_height * window.innerHeight) / 1080,
   }).then((canvas) => {
     var data = canvas.toDataURL();
     var canvas = document.getElementById("_canvas");
