@@ -140,7 +140,7 @@ async function 완료보고서_조회(is재제조번호 = false) {
     _이상부위_외부3.src = "data:image/;base64," + find_array[0].pic9;
     _이상부위_외부4.src = "data:image/;base64," + find_array[0].pic10;
 
-    //_전체.src = "data:image/;base64," + find_array[0].pic2;
+    _allImg.src = "data:image/;base64," + find_array[0].pic2;
     _BMU.src = "data:image/;base64," + find_array[0].pic3;
     _CMU.src = "data:image/;base64," + find_array[0].pic4;
     _PRA.src = "data:image/;base64," + find_array[0].pic5;
@@ -233,7 +233,7 @@ async function 완료보고서_save(type = 0) {
     type = document.getElementById("_육안검사내부1");
     file_name = "완료보고서_육안검사내부" + _date + ".pdf";
     _width = 4200;
-    _height = 2500;
+    _height = 2700;
   }
 
   if(type == '육내상') {
