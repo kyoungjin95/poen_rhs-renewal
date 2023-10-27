@@ -240,11 +240,7 @@ button:hover {
   border-left-color: transparent;
   background: #fff;
 }
-#_육안검사외부2,
-#_육안검사내부2,
-#_진단결과 {
-  display: none;
-}
+
 #_육안검사외부2 em,
 #_육안검사내부2 em {
   color: red;
