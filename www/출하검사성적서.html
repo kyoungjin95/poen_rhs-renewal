@@ -41,12 +41,12 @@
         </thead>
         <tbody>
           <tr>
-            <td colspan="2"></td>
-            <td colspan="3"></td>
-            <td colspan="2"></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td colspan="2" id='_출하일'></td>
+            <td colspan="3" id='_납품처'></td>
+            <td colspan="2" id='_검사일'></td>
+            <td id='_검사자'></td>
+            <td id='_검토'></td>
+            <td id='_승인'></td>
           </tr>
           <tr>
             <th style="background: #a8d789" rowspan="2" colspan="2">BSA정보</th>
@@ -56,10 +56,10 @@
             <th style="background: #a8d789" colspan="3">R/O</th>
           </tr>
           <tr>
-            <td colspan="2"></td>
-            <td></td>
-            <td colspan="2"></td>
-            <td colspan="3"></td>
+            <td colspan="2" id'_재제조번호'></td>
+            <td id='_차종'></td>
+            <td colspan="2" id='_품번'></td>
+            <td colspan="3" id='_RO'></td>
           </tr>
         </tbody>
       </table>
@@ -105,17 +105,17 @@
             <td colspan="7" class="t-left" style="padding: 1em">
               기초보고서 (이력확인 철저)
             </td>
-            <td></td>
-            <td></td>
-            <td colspan="7"></td>
+            <td id='_기초보고서_OK'></td>
+            <td id='_기초보고서_NG'></td>
+            <td colspan="7" id='_기초보고서_세부사항'></td>
           </tr>
           <tr>
             <td colspan="7" class="t-left" style="padding: 1em">
               완료보고서 (이력확인 철저)
             </td>
-            <td></td>
-            <td></td>
-            <td colspan="7"></td>
+            <td id='_완료보고서_OK'></td>
+            <td id='_완료보고서_NG'></td>
+            <td colspan="7" id='_완료보고서_세부사항'></td>
           </tr>
         </tbody>
         <tbody style="border-bottom: double">
@@ -198,69 +198,69 @@
           <tr>
             <th rowspan="10">EOL<br />검사</th>
             <td rowspan="6">성능<br />검사</td>
-            <td colspan="6" class="t-left">릴레이 동기 수동 - PDS</td>
-            <td></td>
-            <td></td>
-            <td colspan="7" class="t-left"></td>
+            <td colspan="6" class="t-left">릴레이 동시 구동 - PDS</td>
+            <td id='_릴레이동시구동_OK'></td>
+            <td id='_릴레이동시구동_NG'></td>
+            <td colspan="7" class="t-left" id='_릴레이동시구동_비고'></td>
           </tr>
           <tr>
             <td colspan="6" class="t-left">SOC 60&#37; 전압(V)</td>
-            <td></td>
-            <td></td>
-            <td colspan="7" class="t-left">팩전압 :</td>
+            <td id='_SOC전압_OK'></td>
+            <td id='_SOC전압_NG'></td>
+            <td colspan="7" class="t-left" id='_팩전압'>팩전압 :</td>
           </tr>
           <tr>
             <td colspan="6" class="t-left">셀 전압(V)</td>
-            <td></td>
-            <td></td>
-            <td colspan="4" class="t-left" style="border-right: none">
+            <td id='_셀전압_OK'></td>
+            <td id='_셀전압_NG'></td>
+            <td colspan="4" class="t-left" style="border-right: none" id='_셀전압_최대'>
               최대 :
             </td>
-            <td colspan="3" class="t-left" style="border-left: none">최소 :</td>
+            <td colspan="3" class="t-left" style="border-left: none" id='_셀전압_최소'>최소 :</td>
           </tr>
           <tr>
             <td colspan="6" class="t-left">셀 전압 편차(V)</td>
-            <td></td>
-            <td></td>
-            <td colspan="7" class="t-left">측정값 :</td>
+            <td id='_셀전압편차_OK'></td>
+            <td id='_셀전압편차_NG'></td>
+            <td colspan="7" class="t-left" id='_셀전압편차_측정값'>측정값 :</td>
           </tr>
           <tr>
             <td colspan="6" class="t-left">DCIR(m&#937;)</td>
-            <td></td>
-            <td></td>
-            <td colspan="7" class="t-left">측정값 :</td>
+            <td id='_DCIR_OK'></td>
+            <td id='_DCIR_NG'></td>
+            <td colspan="7" class="t-left" id='_DCIR_측정값'>측정값 :</td>
           </tr>
           <tr>
             <td colspan="6" class="t-left">용량평가(Ah,kWh)</td>
-            <td></td>
-            <td></td>
-            <td colspan="7" class="t-left">측정값 :</td>
+            <td id='_용량평가_OK'></td>
+            <td id='_용량평가_NG'></td>
+            <td colspan="7" class="t-left" id='_용량평가_측정값'>측정값 :</td>
           </tr>
           <tr>
             <td rowspan="2">기밀<br />검사</td>
             <td colspan="6" class="t-left">케이스(mbar)</td>
-            <td></td>
-            <td></td>
-            <td colspan="7" class="t-left">측정값 :</td>
+            <td id='_케이스_OK'></td>
+            <td id='_케이스_NG'></td>
+            <td colspan="7" class="t-left" id='_케이스_측정값'>측정값 :</td>
           </tr>
           <tr>
             <td colspan="6" class="t-left">냉각유로(mbar)</td>
-            <td></td>
-            <td></td>
-            <td colspan="7" class="t-left">측정값 :</td>
+            <td id='_냉각유로_OK'></td>
+            <td id='_냉각유로_NG'></td>
+            <td colspan="7" class="t-left" id='_냉각유로_측정값'>측정값 :</td>
           </tr>
           <tr>
             <td rowspan="2">절연<br />검사</td>
             <td colspan="6" class="t-left">접지 : (+) (M&#937;)</td>
-            <td></td>
-            <td></td>
-            <td colspan="7" class="t-left">측정값 :</td>
+            <td id='_접지P_OK'></td>
+            <td id='_접지P_NG'></td>
+            <td colspan="7" class="t-left" id='_접지P_측정값'>측정값 :</td>
           </tr>
           <tr>
             <td colspan="6" class="t-left">접지 : (-) (M&#937;)</td>
-            <td></td>
-            <td></td>
-            <td colspan="7" class="t-left">측정값 :</td>
+            <td id='_접지N_OK'></td>
+            <td id='_접지N_NG'></td>
+            <td colspan="7" class="t-left" id='_접지N_측정값'>측정값 :</td>
           </tr>
         </tbody>
         <tbody>
@@ -268,83 +268,83 @@
             <th rowspan="12">출하<br />검사</th>
             <td rowspan="12">통신<br />검사</td>
             <td colspan="6" class="t-left">DTC</td>
-            <td></td>
-            <td></td>
-            <td colspan="4" style="border-right: none" class="t-left">
+            <td id='_DTC_OK'></td>
+            <td id='_DTC_NG'></td>
+            <td colspan="4" style="border-right: none" class="t-left" id='_DTC_현재'>
               현재 :
             </td>
-            <td colspan="3" style="border-left: none" class="t-left">과거 :</td>
+            <td colspan="3" style="border-left: none" class="t-left" id='_DTC_과거'>과거 :</td>
           </tr>
           <tr>
             <td colspan="6" class="t-left">배터리 충전 상태(&#37;)</td>
-            <td></td>
-            <td></td>
-            <td colspan="7" class="t-left">측정값 :</td>
+            <td id='_배터리충전상태_OK'></td>
+            <td id='_배터리충전상태_NG'></td>
+            <td colspan="7" class="t-left" id='_배터리충전상태_측정값'>측정값 :</td>
           </tr>
           <tr>
             <td colspan="6" class="t-left">BMS 고장 NO</td>
-            <td></td>
-            <td></td>
+            <td id='_BMS고장NO_OK'></td>
+            <td id='_BMS고장NO_NG'></td>
             <td colspan="7" class="t-left"></td>
           </tr>
           <tr>
             <td colspan="6" class="t-left">BMS 융착 NO</td>
-            <td></td>
-            <td></td>
+            <td id='_BMS융착NO_OK'></td>
+            <td id='_BMS융착NO_NG'></td>
             <td colspan="7" class="t-left"></td>
           </tr>
           <tr>
             <td colspan="6" class="t-left">배터리 팩 전압(V)</td>
-            <td></td>
-            <td></td>
-            <td colspan="7" class="t-left">측정값 :</td>
+            <td id='_배터리팩전압_OK'></td>
+            <td id='_배터리책전압_NG'></td>
+            <td colspan="7" class="t-left" id='_배터리팩전압_측정값'>측정값 :</td>
           </tr>
           <tr>
             <td colspan="6" class="t-left">배터리 모듈 온도(&#8451;)</td>
-            <td></td>
-            <td></td>
-            <td colspan="4" style="border-right: none" class="t-left">
+            <td id='_배터리모듈온도_OK'></td>
+            <td id='_배터리모듈온도_NG'></td>
+            <td colspan="4" style="border-right: none" class="t-left" id='_배터리모듈온도_최대'>
               최대 :
             </td>
-            <td colspan="3" style="border-left: none" class="t-left">최소 :</td>
+            <td colspan="3" style="border-left: none" class="t-left" id='_배터리모듈온도_최소'>최소 :</td>
           </tr>
           <tr>
             <td colspan="6" class="t-left">배터리 셀 전압 (V)</td>
-            <td></td>
-            <td></td>
-            <td colspan="4" style="border-right: none" class="t-left">
+            <td id='_배터리셀전압_OK'></td>
+            <td id='_배터리셀전압_NG'></td>
+            <td colspan="4" style="border-right: none" class="t-left" id='_배터리셀전압_최대'>
               최대 :
             </td>
-            <td colspan="3" style="border-left: none" class="t-left">최소 :</td>
+            <td colspan="3" style="border-left: none" class="t-left" id='_배터리셀전압_최소'>최소 :</td>
           </tr>
           <tr>
             <td colspan="6" class="t-left">배터리 셀간 전압편차 (mV)</td>
-            <td></td>
-            <td></td>
-            <td colspan="7" class="t-left">측정값 :</td>
+            <td id='_배터리셀간전압편차_OK'></td>
+            <td id='_배터리셀간전압편차_NG'></td>
+            <td colspan="7" class="t-left" id='_배터리셀간전압편차_측정값'>측정값 :</td>
           </tr>
           <tr>
             <td colspan="6" class="t-left">절연저항(k&#937;)</td>
-            <td></td>
-            <td></td>
-            <td colspan="7" class="t-left">측정값 :</td>
+            <td id='_절연저항_OK'></td>
+            <td id='_절연저항_NG'></td>
+            <td colspan="7" class="t-left" id='_절연저항_측정값'>측정값 :</td>
           </tr>
           <tr>
             <td colspan="6" class="t-left">SOH</td>
-            <td></td>
-            <td></td>
-            <td colspan="7" class="t-left">측정값 :</td>
+            <td id='_SOH_OK'></td>
+            <td id='_SOH_NG'></td>
+            <td colspan="7" class="t-left" id='_SOH측정값'>측정값 :</td>
           </tr>
           <tr>
             <td colspan="6" class="t-left">릴레이 강제구동</td>
-            <td></td>
-            <td></td>
+            <td id='_릴레이강제구동_OK'></td>
+            <td id='_릴레이강제구동_NG'></td>
             <td colspan="7" class="t-left">승용 모델에 한함</td>
           </tr>
           <tr>
             <td colspan="6" class="t-left">커넥터 체결검사</td>
-            <td></td>
-            <td></td>
+            <td id='_커넥터체결검사_OK'></td>
+            <td id='_커넥터체결검사_NG'></td>
             <td colspan="7" class="t-left">CV : GDS / ETC : PDS</td>
           </tr>
         </tbody>
@@ -406,67 +406,6 @@
             <button onClick="출하검사성적서_조회(true);">조 회</button>
           </td>
         </tr>
-        <tr>
-          <td>
-            <label for="_셀제조사사유_input"><b>셀제조사확인</b></label>
-          </td>
-          <td>
-            <input type="text" id="_셀제조사사유_input" size="40" required />
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <label for="_생산일_input"><b>생산일</b></label>
-          </td>
-          <td>
-            <input type="text" id="_생산일_input" size="40" required />
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <label for="_판매일_input"><b>판매일</b></label>
-          </td>
-          <td>
-            <input type="text" id="_판매일_input" size="40" required />
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <label for="_수리일_input"><b>수리일</b></label>
-          </td>
-          <td>
-            <input type="text" id="_수리일_input" size="40" required />
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <label for="_필드현상_input"><b>필드현상</b></label>
-          </td>
-          <td>
-            <input type="text" id="_필드현상_input" size="40" required />
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <label for="_센터조치_input"><b>센터조치</b></label>
-          </td>
-          <td>
-            <input type="text" id="_센터조치_input" size="40" required />
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <label for="_결과_input"><b>결과</b></label>
-          </td>
-          <td>
-            <input type="text" id="_결과_input" size="40" required />
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <button onClick="출하검사성적서_apply();">적용</button>
-          </td>
-        </tr>
       </table>
     </div>
     <div>
@@ -476,53 +415,79 @@
     <script>
       var _management_id = document.getElementById("_management_id");
       var _재제조번호 = document.getElementById("_재제조번호");
-      var _VIN = document.getElementById("_VINNo");
-      var _RO = document.getElementById("_RONo");
-      var _주행거리 = document.getElementById("_주행거리");
-      var _차량번호 = document.getElementById("_차량번호");
-      var _생산일 = document.getElementById("_생산일");
-      var _판매일 = document.getElementById("_판매일");
-      var _수리일 = document.getElementById("_수리일");
-      var _입고일 = document.getElementById("_입고일");
-      var _입고사진 = document.getElementById("_입고사진");
-      var _BSA_QR = document.getElementById("_BSA_QR");
-      var _관리번호 = document.getElementById("_관리번호");
-      var _필드현상 = document.getElementById("_필드현상");
-      var _센터진단 = document.getElementById("_센터진단");
-      var _센터조치 = document.getElementById("_센터조치");
-      var _작성자 = document.getElementById("_작성자");
-      var _작성일 = document.getElementById("_작성일");
-      var _외부점검 = document.getElementById("_외부점검");
-      var _외부점검사유 = document.getElementById("_외부점검사유");
-      var _내부점검 = document.getElementById("_내부점검");
-      var _내부점검사유 = document.getElementById("_내부점검사유");
-      var _셀제조사사유 = document.getElementById("_셀제조사사유");
-      var _케이스 = document.getElementById("_케이스");
-      var _케이스감압량 = document.getElementById("_케이스감압량");
-      var _냉각유로 = document.getElementById("_냉각유로");
-      var _냉각유로감압량 = document.getElementById("_냉각유로감압량");
-      var _PRA_P = document.getElementById("_PRA_P");
-      var _PRA_P값 = document.getElementById("_PRA_P값");
-      var _PRA_N = document.getElementById("_PRA_N");
-      var _PRA_N값 = document.getElementById("_PRA_N값");
-      var _HV커넥터_P = document.getElementById("_HV커넥터_P");
-      var _HV커넥터_P값 = document.getElementById("_HV커넥터_P값");
-      var _HV커넥터_N = document.getElementById("_HV커넥터_N");
-      var _HV커넥터_N값 = document.getElementById("_HV커넥터_N값");
+      var _출하일 = document.getElementById("_출하일");
+      var _납품처 = document.getElementById("_납품처");
+      var _검사일 = document.getElementById("_검사일");
+      var _검사자 = document.getElementById("_검사자");
+      var _검토 = document.getElementById("_검토");
+      var _승인 = document.getElementById("_승인");
+      var _차종 = document.getElementById("_차종");
+      var _품번 = document.getElementById("_품번");
+      var _RO = document.getElementById("_RO");
+      var _기초보고서_OK = document.getElementById("_기초보고서_OK");
+      var _기초보고서_NG = document.getElementById("_기초보고서_NG");
+      var _기초보고서_세부사항 = document.getElementById("_기초보고서_세부사항");
+      var _완료보고서_OK = document.getElementById("_완료보고서_OK");
+      var _완료보고서_NG = document.getElementById("_완료보고서_NG");
+      var _완료보고서_세부사항 = document.getElementById("_완료보고서_세부사항");
+      var _릴레이동시구동_OK = document.getElementById("_릴레이동시구동_OK");
+      var _릴레이동시구동_NG = document.getElementById("_릴레이동시구동_NG");
+      var _SOC전압_OK = document.getElementById("_SOC전압_OK");
+      var _SOC전압_NG = document.getElementById("_SOC전압_NG");
       var _팩전압 = document.getElementById("_팩전압");
-      var _팩전압값 = document.getElementById("_팩전압값");
-      var _셀전압편차 = document.getElementById("_셀전압편차");
-      var _셀전압편차값 = document.getElementById("_셀전압편차값");
-      var _릴레이제어 = document.getElementById("_릴레이제어");
-      var _릴레이제어사유 = document.getElementById("_릴레이제어사유");
-      var _고장코드 = document.getElementById("_고장코드");
-      var _고장코드사유 = document.getElementById("_고장코드사유");
-      var _셀제조사사유 = document.getElementById("_셀제조사사유");
-      var _입고정보 = document.getElementById("_입고정보");
-      var _입고정보사유 = document.getElementById("_입고정보사유");
-      var _재제조이력 = document.getElementById("_재제조이력");
-      var _재제조이력사유 = document.getElementById("_재제조이력사유");
-      var _결과 = document.getElementById("_결과");
+      var _셀전압_OK = document.getElementById("_셀전압_OK");
+      var _셀전압_NG = document.getElementById("_셀전압_NG");
+      var _셀전압_최대 = document.getElementById("_셀전압_최대");
+      var _셀전압_최소 = document.getElementById("_셀전압_최소");
+      var _셀전압편차_OK = document.getElementById("_셀전압편차_OK");
+      var _셀전압편차_NG = document.getElementById("_셀전압편차_NG");
+      var _셀전압편차_측정값 = document.getElementById("_셀전압편차_측정값");
+      var _DCIR_OK = document.getElementById("_DCIR_OK");
+      var _DCIR_NG = document.getElementById("_DCIR_NG");
+      var _DCIR_측정값 = document.getElementById("_DCIR_측정값");
+      var _용량평가_OK = document.getElementById("_용량평가_OK");
+      var _용량평가_NG = document.getElementById("_용량평가_NG");
+      var _용량평가_측정값 = document.getElementById("_용량평가_측정값");
+      var _케이스_OK = document.getElementById("_케이스_OK");
+      var _케이스_NG = document.getElementById("_케이스_NG");
+      var _케이스_측정값 = document.getElementById("_케이스_측정값");
+      var _냉각유로_OK = document.getElementById("_냉각유로_OK");
+      var _냉각유로_NG = document.getElementById("_냉각유로_NG");
+      var _냉각유로_측정값 = document.getElementById("_냉각유로_측정값");
+      var _접지P_OK = document.getElementById("_접지P_OK");
+      var _접지P_NG = document.getElementById("_접지P_NG");
+      var _접지N_OK = document.getElementById("_접지N_OK");
+      var _접지N_NG = document.getElementById("_접지N_NG");
+      var _DTC_OK = document.getElementById("_DTC_OK");
+      var _DTC_NG = document.getElementById("_DTC_NG");
+      var _DTC_현재 = document.getElementById("_DTC_현재");
+      var _DTC_과거 = document.getElementById("_DTC_과거");
+      var _배터리충전상태_OK = document.getElementById("_배터리충전상태_OK");
+      var _배터리충전상태_NG = document.getElementById("_배터리충전상태_NG");
+      var _배터리충전상태_측정값 = document.getElementById("_배터리충전상태_측정값");
+      var _BMS고장NO_OK = document.getElementById("_BMS고장NO_OK");
+      var _BMS고장NO_NG = document.getElementById("_BMS고장NO_NG");
+      var _BMS융착NO_OK = document.getElementById("_BMS융착NO_OK");
+      var _BMS융착NO_NG = document.getElementById("_BMS융착NO_NG");
+      var _배터리팩전압_OK = document.getElementById("_배터리팩전압_OK");
+      var _배터리팩전압_NG = document.getElementById("_배터리팩전압_NG");
+      var _배터리모듈온도_OK = document.getElementById("_배터리모듈온도_OK");
+      var _배터리모듈온도_NG = document.getElementById("_배터리모듈온도_NG");
+      var _배터리모듈온도_최대 = document.getElementById("_배터리모듈온도_최대");
+      var _배터리모듈온도_최소 = document.getElementById("_배터리모듈온도_최소");
+      var _배터리셀간전압편차_OK = document.getElementById("_배터리셀간전압편차_OK");
+      var _배터리셀간전압편차_NG = document.getElementById("_배터리셀간전압편차_NG");
+      var _배터리셀간전압편차_측정값 = document.getElementById("_배터리셀간전압편차_측정값");
+      var _절연저항_OK = document.getElementById("_절연저항_OK");
+      var _절연저항_NG = document.getElementById("_절연저항_NG");
+      var _절연저항_측정값 = document.getElementById("_절연저항_측정값");
+      var _SOH_OK = document.getElementById("_SOH_OK");
+      var _SOH_NG = document.getElementById("_SOH_NG");
+      var _SOH측정값 = document.getElementById("_SOH측정값");
+      var _릴레이강제구동_OK = document.getElementById("_릴레이강제구동_OK");
+      var _릴레이강제구동_NG = document.getElementById("_릴레이강제구동_NG");
+      var _커넥터체결검사_OK = document.getElementById("_커넥터체결검사_OK");
+      var _커넥터체결검사_NG = document.getElementById("_커넥터체결검사_NG");
     </script>
   </body>
 </html>
