@@ -34,6 +34,58 @@ async function 기초보고서_조회(is재제조번호 = false) {
     }
   }
 
+  count(입고, { 관리번호: _management_id.value });
+  await delay();
+
+  if (doc_count > 0) {
+    _입고정보.innerHTML = "OK";
+    find(입고, _management_id.value);
+    await delay();
+    console.log(find_array);
+
+    _차종.innerHTML = find_array[0].차종;
+    
+    switch(find_array[0].차종) {
+      case 'CS_EV' :
+        break;
+      
+      case 'CV_EV' :
+        break;
+
+      case 'DE_EV' :
+        break;
+
+      case 'HR_EV' :
+        break;
+
+      case 'LK_EV' :
+        break;
+
+      case 'LM_EV' :
+        break;
+
+      case 'NE_EV' :
+        break;
+
+      case 'OS_EV' :
+        break;
+
+      case 'PU_EV' :
+        break;
+
+      case 'SK3_EV' :
+        break;
+
+      default :
+        alert('차종을 확인해 주세요');
+    }
+
+    _입고일.innerHTML = find_array[0].입고일;
+  } else {
+    _입고정보.innerHTML = "NG";
+    _입고일.innerHTML = "";
+  }
+
   count(기초검사, { 관리번호: _management_id.value });
   await delay();
 
@@ -94,21 +146,6 @@ async function 기초보고서_조회(is재제조번호 = false) {
     _재제조이력.innerHTML = "OK";
   } else {
     _재제조이력.innerHTML = "NG";
-  }
-
-  count(입고, { 관리번호: _management_id.value });
-  await delay();
-
-  if (doc_count > 0) {
-    _입고정보.innerHTML = "OK";
-    find(입고, _management_id.value);
-    await delay();
-    console.log(find_array);
-
-    _입고일.innerHTML = find_array[0].입고일;
-  } else {
-    _입고정보.innerHTML = "NG";
-    _입고일.innerHTML = "";
   }
 
   count(EOL, { 관리번호: _management_id.value });
