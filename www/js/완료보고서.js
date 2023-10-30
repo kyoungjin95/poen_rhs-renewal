@@ -7,67 +7,82 @@ async function 완료보고서_시작() {
 }
 
 async function 완료보고서_조회(is재제조번호 = false) {
-  if(is재제조번호 == true) {
+  if (is재제조번호 == true) {
     count(BSA재제조, { 재제조번호: _재제조번호.value });
     await delay();
 
-    if(doc_count > 0) {
-      find_BSA재제조(BSA재제조, { 재제조번호: _재제조번호.value});
+    if (doc_count > 0) {
+      find_BSA재제조(BSA재제조, { 재제조번호: _재제조번호.value });
       await delay();
 
-      console.log('test:', find_array);
+      console.log("test:", find_array);
       _management_id.value = find_array[0].관리번호;
     }
-  } 
+  }
 
   count(입고, { 관리번호: _management_id.value });
   await delay();
 
   if (doc_count > 0) {
-    _입고정보.innerHTML = 'OK';
+    _입고정보.innerHTML = "OK";
     find(입고, _management_id.value);
     await delay();
     console.log(find_array);
 
     _입고일.innerHTML = find_array[0].입고일;
+
     _차종.innerHTML = find_array[0].차종;
-    switch(find_array[0].차종) {
-      case 'CS_EV' :
+    switch (find_array[0].차종) {
+      case "CS_EV":
+        showTable("_CS_EV");
         break;
 
-      case 'CV_EV' :
+      case "CV_EV":
+        showTable("_CV_EV");
         break;
 
-      case 'DE_EV' :
+      case "DE_EV":
+        showTable("_DE_EV");
         break;
 
-      case 'HR_EV' :
+      case "HR_EV":
+      case "PU_EV":
+        showTable("_HR_PU_EV");
         break;
 
-      case 'LK_EV' :
+      case "LK_EV":
+        showTable("_LK_EV");
         break;
 
-      case 'LM_EV' :
+      case "LM_EV":
+      case "NE_EV":
+        showTable("_LM_NE_EV");
         break;
 
-      case 'NE_EV' :
+      case "OS_EV":
+        showTable("_OS_EV");
         break;
 
-      case 'OS_EV' :
+      case "SK3_EV":
+        showTable("_SK3_EV");
         break;
 
-      case 'PU_EV' :
-        break;
+      default:
+        showTable("_CS_EV");
+        alert("차종을 확인해 주세요");
+    }
 
-      case 'SK3_EV' :
-        break;
-
-      default :
-        alert('차종을 확인해 주세요');
-        break;
+    function showTable(tableId) {
+      // 모든 테이블을 숨김
+      const tables = document.querySelectorAll(".tableAll");
+      for (let i = 0; i < tables.length; i++) {
+        tables[i].style.display = "none";
+      }
+      // 선택된 테이블만 표시
+      document.getElementById(tableId).style.display = "table";
     }
   } else {
-    _입고정보.innerHTML = 'NG';
+    _입고정보.innerHTML = "NG";
     _입고일.innerHTML = "";
   }
 
@@ -92,33 +107,33 @@ async function 완료보고서_조회(is재제조번호 = false) {
 
     _외부점검.innerHTML =
       find_array[0].육안검사_외부 == undefined
-      ? ""
-      : find_array[0].육안검사_외부;
+        ? ""
+        : find_array[0].육안검사_외부;
 
     _외부점검사유.innerHTML =
       find_array[0].육안검사_외부_특이사항 == undefined
-      ? ""
-      : find_array[0].육안검사_외부_특이사항;
+        ? ""
+        : find_array[0].육안검사_외부_특이사항;
 
     _내부점검.innerHTML =
       find_array[0].육안검사_내부 == undefined
-      ? ""
-      : find_array[0].육안검사_내부;
+        ? ""
+        : find_array[0].육안검사_내부;
 
     _내부점검사유.innerHTML =
       find_array[0].육안검사_내부_특이사항 == undefined
-      ? ""
-      : find_array[0].육안검사_내부_특이사항;
+        ? ""
+        : find_array[0].육안검사_내부_특이사항;
 
     _PRA_P값.innerHTML =
       find_array[0].절연검사_Plus == undefined
-      ? ""
-      : find_array[0].절연검사_Plus;
+        ? ""
+        : find_array[0].절연검사_Plus;
 
     _PRA_N값.innerHTML =
       find_array[0].절연검사_Minus == undefined
-      ? ""
-      : find_array[0].절연검사_Minus;
+        ? ""
+        : find_array[0].절연검사_Minus;
 
     _고장코드.innerHTML =
       find_array[0].고장현상코드 == undefined ? "" : find_array[0].고장현상코드;
@@ -126,30 +141,35 @@ async function 완료보고서_조회(is재제조번호 = false) {
     _고장코드사유.innerHTML =
       find_array[0].고장현상명 == undefined ? "" : find_array[0].고장현상명;
 
-    _재제조이력.innerHTML = 'OK';
+    _재제조이력.innerHTML = "OK";
   } else {
-    _재제조이력.innerHTML = 'NG';
+    _재제조이력.innerHTML = "NG";
   }
 
-  count(EOL, { 관리번호 : _management_id.value});
+  count(EOL, { 관리번호: _management_id.value });
   await delay();
 
-  if(doc_count > 0) {
+  if (doc_count > 0) {
     find(EOL, _management_id.value);
     await delay();
 
-    console.log('EOL:', find_array);
+    console.log("EOL:", find_array);
     _케이스.innerHTML =
       find_array[0].기밀검사_케이스 == undefined
-      ? ""
-      : find_array[0].기밀검사_케이스;
+        ? ""
+        : find_array[0].기밀검사_케이스;
     _케이스감압량.innerHTML =
       find_array[0].기밀검사_케이스_특이사항 == undefined
-      ? ""
-      : find_array[0].기밀검사_케이스_특이사항;
+        ? ""
+        : find_array[0].기밀검사_케이스_특이사항;
     _냉각유로.innerHTML =
-      find_array[0].기밀검사_냉각유로 == undefined ? "" : find_array[0].기밀검사_냉각유로;
-    _냉각유로감압량.innerHTML = find_array[0].기밀검사_냉각유로_특이사항 == undefined ? "" : find_array[0].기밀검사_냉각유로_특이사항;
+      find_array[0].기밀검사_냉각유로 == undefined
+        ? ""
+        : find_array[0].기밀검사_냉각유로;
+    _냉각유로감압량.innerHTML =
+      find_array[0].기밀검사_냉각유로_특이사항 == undefined
+        ? ""
+        : find_array[0].기밀검사_냉각유로_특이사항;
     //_팩전압.innerHTML = find_array[0].통신검사_팩전압 == undefined ? "" :  find_array[0].통신검사_팩전압;
   } else {
     _케이스.innerHTML = "";
@@ -158,10 +178,10 @@ async function 완료보고서_조회(is재제조번호 = false) {
     _냉각유로감압량.innerHTML = "";
   }
 
-  count(입고_pic, { 관리번호 : _management_id.value });
+  count(입고_pic, { 관리번호: _management_id.value });
   await delay();
 
-  if(doc_count > 0) {
+  if (doc_count > 0) {
     find(입고_pic, _management_id.value);
     await delay();
 
@@ -200,40 +220,34 @@ async function 완료보고서_조회(is재제조번호 = false) {
 
   _작성일.innerHTML = now.substr(0, 10);
 
-  count(출하정보, { 관리번호 : _management_id.value});
+  count(출하정보, { 관리번호: _management_id.value });
   await delay();
 
-  if(doc_count > 0) {
+  if (doc_count > 0) {
     find(출하정보, _management_id.value);
     await delay();
 
-    _출하QR.innerHTML = find_array[0].출하코드 == undefined?'NG': 'OK';
+    _출하QR.innerHTML = find_array[0].출하코드 == undefined ? "NG" : "OK";
     _출하QR사유.innerHTML = find_array[0].출하코드;
 
     _팩전압.innerHTML =
-      find_array[0].배터리팩전압 == undefined
-      ? ""
-      : find_array[0].배터리팩전압;
+      find_array[0].배터리팩전압 == undefined ? "" : find_array[0].배터리팩전압;
 
     _팩전압값.innerHTML =
       find_array[0].배터리팩_측정값 == undefined
-      ? ""
-      : find_array[0].배터리팩_측정값;
+        ? ""
+        : find_array[0].배터리팩_측정값;
 
     _셀전압편차.innerHTML =
-      find_array[0].셀전압편차 == undefined
-      ? ""
-      : find_array[0].셀전압편차;
+      find_array[0].셀전압편차 == undefined ? "" : find_array[0].셀전압편차;
 
     _셀전압편차값.innerHTML =
-      find_array[0].셀전압편차값 == undefined
-      ? ""
-      : find_array[0].셀전압편차값;
+      find_array[0].셀전압편차값 == undefined ? "" : find_array[0].셀전압편차값;
 
     _릴레이제어.innerHTML =
       find_array[0].통신검사_릴레이구동 == undefined
-      ? ""
-      : find_array[0].통신검사_릴레이구동;
+        ? ""
+        : find_array[0].통신검사_릴레이구동;
 
     _커버류.innerHTML = find_array[0].냉각유로_커버;
     _커버류확인.innerHTML = find_array[0].냉각유로_커버;
@@ -249,37 +263,37 @@ async function 완료보고서_save(type = 0) {
   var _width = 4200;
   var _height = 2200;
 
-  if(type == 0) type = document.getElementById("_완료보고서");
+  if (type == 0) type = document.getElementById("_완료보고서");
 
-  if(type == '육외') {
+  if (type == "육외") {
     type = document.getElementById("_육안검사외부1");
     file_name = "완료보고서_육안검사외부" + _date + ".pdf";
     _width = 4200;
     _height = 2100;
   }
 
-  if(type == '육외상') {
+  if (type == "육외상") {
     type = document.getElementById("_육안검사외부2");
     file_name = "완료보고서_육안검사외부_상세" + _date + ".pdf";
     _width = 4200;
     _height = 2100;
   }
 
-  if(type == '육내') {
+  if (type == "육내") {
     type = document.getElementById("_육안검사내부1");
     file_name = "완료보고서_육안검사내부" + _date + ".pdf";
     _width = 4200;
     _height = 2700;
   }
 
-  if(type == '육내상') {
+  if (type == "육내상") {
     type = document.getElementById("_육안검사내부2");
     file_name = "완료보고서_육안검사내부_상세" + _date + ".pdf";
     _width = 4200;
     _height = 2100;
   }
 
-  if(type == '기밀') {
+  if (type == "기밀") {
     type = document.getElementById("_기밀검사");
     file_name = "완료보고서_기밀검사" + _date + ".pdf";
     _width = 4200;
@@ -287,8 +301,8 @@ async function 완료보고서_save(type = 0) {
   }
 
   html2canvas(type, {
-    width: _width * window.innerWidth / 1920,
-    height: _height * window.innerHeight / 1080,
+    width: (_width * window.innerWidth) / 1920,
+    height: (_height * window.innerHeight) / 1080,
   }).then((canvas) => {
     var data = canvas.toDataURL();
     var canvas = document.getElementById("_canvas");

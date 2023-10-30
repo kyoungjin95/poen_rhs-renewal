@@ -296,7 +296,13 @@ button:hover {
   font-weight: bold;
   font-family: Arial, Helvetica, sans-serif;
 }
-
+/* 완료보고서 */
+.color-blue {
+  color: blue !important;
+}
+.weight-bold {
+  font-weight: bold;
+}
 /* media query */
 
 @media screen and (max-width: 1023px) {

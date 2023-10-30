@@ -44,40 +44,58 @@ async function 기초보고서_조회(is재제조번호 = false) {
     console.log(find_array);
 
     _차종.innerHTML = find_array[0].차종;
-    
-    switch(find_array[0].차종) {
-      case 'CS_EV' :
-        break;
-      
-      case 'CV_EV' :
+
+    switch (find_array[0].차종) {
+      case "CS_EV":
+        showTable("_CS_EV");
         break;
 
-      case 'DE_EV' :
+      case "CV_EV":
+        showTable("_CV_EV");
         break;
 
-      case 'HR_EV' :
+      case "DE_EV":
+        showTable("_DE_EV");
         break;
 
-      case 'LK_EV' :
+      case "HR_EV":
+        showTable("_HR_EV");
         break;
 
-      case 'LM_EV' :
+      case "LK_EV":
+        showTable("_LK_EV");
         break;
 
-      case 'NE_EV' :
+      case "LM_EV":
+        showTable("_LM_EV");
         break;
 
-      case 'OS_EV' :
+      case "NE_EV":
+        showTable("_NE_EV");
         break;
 
-      case 'PU_EV' :
+      case "OS_EV":
+      case "SK3_EV":
+        showTable("_OS_SK3_EV");
         break;
 
-      case 'SK3_EV' :
+      case "PU_EV":
+        showTable("_PU_EV");
         break;
 
-      default :
-        alert('차종을 확인해 주세요');
+      default:
+        showTable("_CS_EV");
+        alert("차종을 확인해 주세요");
+    }
+
+    function showTable(tableId) {
+      // 모든 테이블을 숨김
+      const tables = document.querySelectorAll(".tableAll");
+      for (let i = 0; i < tables.length; i++) {
+        tables[i].style.display = "none";
+      }
+      // 선택된 테이블만 표시
+      document.getElementById(tableId).style.display = "table";
     }
 
     _입고일.innerHTML = find_array[0].입고일;
@@ -132,6 +150,26 @@ async function 기초보고서_조회(is재제조번호 = false) {
         : find_array[0].절연검사_Plus;
 
     _PRA_N값.innerHTML =
+      find_array[0].절연검사_Minus == undefined
+        ? ""
+        : find_array[0].절연검사_Minus;
+
+    _HV커넥터_P값.innerHTML =
+      find_array[0].절연검사_Plus == undefined
+        ? ""
+        : find_array[0].절연검사_Plus;
+
+    _HV커넥터_N값.innerHTML =
+      find_array[0].절연검사_Minus == undefined
+        ? ""
+        : find_array[0].절연검사_Minus;
+
+    _HV_P값.innerHTML =
+      find_array[0].절연검사_Plus == undefined
+        ? ""
+        : find_array[0].절연검사_Plus;
+
+    _HV_N값.innerHTML =
       find_array[0].절연검사_Minus == undefined
         ? ""
         : find_array[0].절연검사_Minus;
