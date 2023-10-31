@@ -127,7 +127,7 @@ async function dash_입고(today_begin, today_end) {
 		count(BSA재제조, { 입고 : { $exists : true, $ne : 'none', $ne : ''}});
 		await delay();
 	}
-	await sleep(DELAY);
+	await sleep(100);
 	console.log('입고 count:', doc_count);
 	입고cnt = doc_count;
 }

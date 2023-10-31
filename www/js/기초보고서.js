@@ -2,6 +2,9 @@ async function 기초보고서_시작() {
   loadPage("base/기초보고서.html");
   await sleep(1000);
 
+  if(level == '작업자' || level == '' || level == '관리자' || level == '부품관리자') _교체부품.style.display = 'block';
+  else _교체부품.style.display = 'none';
+
   _management_id.value = 관리번호;
 
   await 기초보고서_조회();

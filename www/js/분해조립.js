@@ -101,6 +101,7 @@ async function 분해조립_시작(is재제조번호 = false) {
 	count(BSA재제조, { 관리번호 : _management_id.value.trim() });
 	await delay();
 	console.log('재제조번호 찾기');
+
 	if(doc_count > 0) {
 		find_BSA재제조(BSA재제조, { 관리번호: _management_id.value.trim() });
 		await delay();
@@ -122,99 +123,119 @@ async function 분해조립_시작(is재제조번호 = false) {
 			console.log(find_array);
 			_재제조번호.value = find_array[0].재제조번호;
 		}
+
+
 		find(분해조립, _management_id.value);
 		await delay();
 
+    console.log('분해조립 LOAD:', find_array);
 		var no_count = 6;
 		_공정입고일.value = find_array[0].공정입고일;
 		_BMU1.value = find_array[0].BMU1;
-		if(find_array[0].BMU2 != '') { BMU_count += 1; type_add('BMU', 'BMU', no_count, BMU_count); document.getElementById('_BMU2').value = find_array[0].BMU2;}
-		if(find_array[0].BMU3 != '') { BMU_count += 1; type_add('BMU', 'BMU', no_count, BMU_count); document.getElementById('_BMU3').value = find_array[0].BMU3;}
-		if(find_array[0].BMU4 != '') { BMU_count += 1; type_add('BMU', 'BMU', no_count, BMU_count); document.getElementById('_BMU4').value = find_array[0].BMU4;}
-		if(find_array[0].BMU5 != '') { BMU_count += 1; type_add('BMU', 'BMU', no_count, BMU_count); document.getElementById('_BMU5').value = find_array[0].BMU5;}
-		if(find_array[0].BMU6 != '') { BMU_count += 1; type_add('BMU', 'BMU', no_count, BMU_count); document.getElementById('_BMU6').value = find_array[0].BMU6;}
-		if(find_array[0].BMU7 != '') { BMU_count += 1; type_add('BMU', 'BMU', no_count, BMU_count); document.getElementById('_BMU7').value = find_array[0].BMU7;}
-		if(find_array[0].BMU8 != '') { BMU_count += 1; type_add('BMU', 'BMU', no_count, BMU_count); document.getElementById('_BMU8').value = find_array[0].BMU8;}
-		if(find_array[0].BMU9 != '') { BMU_count += 1; type_add('BMU', 'BMU', no_count, BMU_count); document.getElementById('_BMU9').value = find_array[0].BMU9;}
-		if(find_array[0].BMU10 != '') { BMU_count += 1; type_add('BMU', 'BMU', no_count, BMU_count); document.getElementById('_BMU10').value = find_array[0].BMU10;}
+		_BMU1_2.value = find_array[0].BMU1_2;
+		if(find_array[0].BMU2 != '') { BMU_count += 1; type_add('BMU', 'BMU', no_count, BMU_count); document.getElementById('_BMU2').value = find_array[0].BMU2; document.getElementById('_BMU2_2').value = find_array[0].BMU2_2;}
+		if(find_array[0].BMU3 != '') { BMU_count += 1; type_add('BMU', 'BMU', no_count, BMU_count); document.getElementById('_BMU3').value = find_array[0].BMU3; document.getElementById('_BMU3_2').value = find_array[0].BMU3_2;}
+		if(find_array[0].BMU4 != '') { BMU_count += 1; type_add('BMU', 'BMU', no_count, BMU_count); document.getElementById('_BMU4').value = find_array[0].BMU4; document.getElementById('_BMU4_2').value = find_array[0].BMU4_2;}
+		if(find_array[0].BMU5 != '') { BMU_count += 1; type_add('BMU', 'BMU', no_count, BMU_count); document.getElementById('_BMU5').value = find_array[0].BMU5; document.getElementById('_BMU5_2').value = find_array[0].BMU5_2;}
+		if(find_array[0].BMU6 != '') { BMU_count += 1; type_add('BMU', 'BMU', no_count, BMU_count); document.getElementById('_BMU6').value = find_array[0].BMU6; document.getElementById('_BMU6_2').value = find_array[0].BMU6_2;}
+		if(find_array[0].BMU7 != '') { BMU_count += 1; type_add('BMU', 'BMU', no_count, BMU_count); document.getElementById('_BMU7').value = find_array[0].BMU7; document.getElementById('_BMU7_2').value = find_array[0].BMU7_2;}
+		if(find_array[0].BMU8 != '') { BMU_count += 1; type_add('BMU', 'BMU', no_count, BMU_count); document.getElementById('_BMU8').value = find_array[0].BMU8; document.getElementById('_BMU8_2').value = find_array[0].BMU8_2;}
+		if(find_array[0].BMU9 != '') { BMU_count += 1; type_add('BMU', 'BMU', no_count, BMU_count); document.getElementById('_BMU9').value = find_array[0].BMU9; document.getElementById('_BMU9_2').value = find_array[0].BMU9_2;}
+		if(find_array[0].BMU10 != '') { BMU_count += 1; type_add('BMU', 'BMU', no_count, BMU_count); document.getElementById('_BMU10').value = find_array[0].BMU10; document.getElementById('_BMU10_2').value = find_array[0].BMU10_2;}
 
 		_CMU1.value = find_array[0].CMU1;
+		_CMU1_2.value = find_array[0].CMU1_2;
 		no_count += BMU_count;
-		for(var i = 2; i <= 10; i++) eval('if(find_array[0].CMU' + i + ' != \'\') ' + '{ CMU_count += 1; type_add(\'CMU\', \'CMU\', no_count, CMU_count); document.getElementById(\'_CMU' + i + '\').value = ' + 'find_array[0].CMU' + i + ';}');
+		for(var i = 2; i <= 10; i++) eval('if(find_array[0].CMU' + i + ' != \'\' || (find_array[0].CMU' + i + '_2 != \'\' && find_array[0].CMU' + i + '_2 != undefined)) ' + '{ CMU_count += 1; type_add(\'CMU\', \'CMU\', no_count, CMU_count); document.getElementById(\'_CMU' + i + '\').value = ' + 'find_array[0].CMU' + i + '; document.getElementById(\'_CMU' + i + '_2\').value = ' + 'find_array[0].CMU' + i + '_2;}');
 
 		_PRA1.value = find_array[0].PRA1;
+		_PRA1_2.value = find_array[0].PRA1_2;
 		no_count += CMU_count;
-		for(var i = 2; i <= 10; i++) eval('if(find_array[0].PRA' + i + ' != \'\') ' + '{ PRA_count += 1; type_add(\'PRA\', \'PRA\', no_count, PRA_count); document.getElementById(\'_PRA' + i + '\').value = ' + 'find_array[0].PRA' + i + ';}');
+		for(var i = 2; i <= 10; i++) eval('if(find_array[0].PRA' + i + ' != \'\' || (find_array[0].PRA' + i + '_2 != \'\' && find_array[0].PRA' + i + '_2 != undefined)) ' + '{ PRA_count += 1; type_add(\'PRA\', \'PRA\', no_count, PRA_count); document.getElementById(\'_PRA' + i + '\').value = ' + 'find_array[0].PRA' + i + '; document.getElementById(\'_PRA' + i + '_2\').value = ' + 'find_array[0].PRA' + i + '_2; }');
 
 		_SPA1.value = find_array[0].SPA1;
+		_SPA1_2.value = find_array[0].SPA1_2;
 		no_count += PRA_count;
-		for(var i = 2; i <= 10; i++) eval('if(find_array[0].SPA' + i + ' != \'\') ' + '{ SPA_count += 1; type_add(\'SPA\', \'SPA\', no_count, SPA_count); document.getElementById(\'_SPA' + i + '\').value = ' + 'find_array[0].SPA' + i + ';}');
+		for(var i = 2; i <= 10; i++) eval('if(find_array[0].SPA' + i + ' != \'\' || (find_array[0].SPA' + i + '_2 != \'\' && find_array[0].SPA' + i + '_2 != undefined)) ' + '{ SPA_count += 1; type_add(\'SPA\', \'SPA\', no_count, SPA_count); document.getElementById(\'_SPA' + i + '\').value = ' + 'find_array[0].SPA' + i + '; document.getElementById(\'_SPA' + i + '_2\').value = ' + 'find_array[0].SPA' + i + '_2; }');
 
 		_LWR_C1.value = find_array[0].LWR_C1;
+		_LWR_C1_2.value = find_array[0].LWR_C1_2;
 		no_count += SPA_count;
-		for(var i = 2; i <= 10; i++) eval('if(find_array[0].LWR_C' + i + ' != \'\') ' + '{ LWR_C_count += 1; type_add(\'LWR Cace\', \'LWR_C\', no_count, LWR_C_count); document.getElementById(\'_LWR_C' + i + '\').value = ' + 'find_array[0].LWR_C' + i + ';}');
+		for(var i = 2; i <= 10; i++) eval('if(find_array[0].LWR_C' + i + ' != \'\' || (find_array[0].LWR_C' + i + '_2 != \'\' && find_array[0].LWR_C' + i + '_2 != undefined)) ' + '{ LWR_C_count += 1; type_add(\'LWR Cace\', \'LWR_C\', no_count, LWR_C_count); document.getElementById(\'_LWR_C' + i + '\').value = ' + 'find_array[0].LWR_C' + i + '; document.getElementById(\'_LWR_C' + i + '_2\').value = ' + 'find_array[0].LWR_C' + i + '_2; }');
 
 		_UPR_C1.value = find_array[0].UPR_C1;
+		_UPR_C1_2.value = find_array[0].UPR_C1_2;
 		no_count += LWR_C_count;
-		for(var i = 2; i <= 10; i++) eval('if(find_array[0].UPR_C' + i + ' != \'\') ' + '{ UPR_C_count += 1; type_add(\'UPR Case\', \'UPR_C\', no_count, UPR_C_count); document.getElementById(\'_UPR_C' + i + '\').value = ' + 'find_array[0].UPR_C' + i + ';}');
+		for(var i = 2; i <= 10; i++) eval('if(find_array[0].UPR_C' + i + ' != \'\' || (find_array[0].UPR_C' + i + '_2 != \'\' && find_array[0].UPR_C' + i + '_2 != undefined)) ' + '{ UPR_C_count += 1; type_add(\'UPR Case\', \'UPR_C\', no_count, UPR_C_count); document.getElementById(\'_UPR_C' + i + '\').value = ' + 'find_array[0].UPR_C' + i + '; document.getElementById(\'_UPR_C' + i + '_2\').value = ' + 'find_array[0].UPR_C' + i + '_2; }');
 
 		_PBE.value = find_array[0].PBE;
+		_PBE_2.value = find_array[0].PBE_2;
 		_Gasket.value = find_array[0].Gasket;
+		_Gasket_2.value = find_array[0].Gasket_2;
 		
 		_Relay1.value = find_array[0].Relay1;
+		_Relay1_2.value = find_array[0].Relay1_2;
 		no_count += 2 + UPR_C_count;
-		for(var i = 2; i <= 10; i++) eval('if(find_array[0].Relay' + i + ' != \'\') ' + '{ Relay_count += 1; type_add(\'Relay\', \'Relay\', no_count, Relay_count); document.getElementById(\'_Relay' + i + '\').value = ' + 'find_array[0].Relay' + i + ';}');
+		for(var i = 2; i <= 10; i++) eval('if(find_array[0].Relay' + i + ' != \'\' || (find_array[0].Relay' + i + '_2 != \'\' && find_array[0].Relay' + i + '_2 != undefined)) ' + '{ Relay_count += 1; type_add(\'Relay\', \'Relay\', no_count, Relay_count); document.getElementById(\'_Relay' + i + '\').value = ' + 'find_array[0].Relay' + i + '; document.getElementById(\'_Relay' + i + '_2\').value = ' + 'find_array[0].Relay' + i + '_2;}');
 
 		_HV_CNTR1.value = find_array[0].HV_CNTR1;
+		_HV_CNTR1_2.value = find_array[0].HV_CNTR1_2;
 		no_count += Relay_count;
-		for(var i = 2; i <= 10; i++) eval('if(find_array[0].HV_CNTR' + i + ' != \'\') ' + '{ HV_CNTR_count += 1; type_add(\'HV CNTR\', \'HV_CNTR\', no_count, HV_CNTR_count); document.getElementById(\'_HV_CNTR' + i + '\').value = ' + 'find_array[0].HV_CNTR' + i + ';}');
+		for(var i = 2; i <= 10; i++) eval('if(find_array[0].HV_CNTR' + i + ' != \'\' || (find_array[0].HV_CNTR' + i + '_2 != \'\' && find_array[0].HV_CNTR' + i + '_2 != undefined)) ' + '{ HV_CNTR_count += 1; type_add(\'HV CNTR\', \'HV_CNTR\', no_count, HV_CNTR_count); document.getElementById(\'_HV_CNTR' + i + '\').value = ' + 'find_array[0].HV_CNTR' + i + '; document.getElementById(\'_HV_CNTR' + i + '_2\').value = ' + 'find_array[0].HV_CNTR' + i + '_2; }');
 
 		_Heating_CNTR1.value = find_array[0].Heating_CNTR1;
+		_Heating_CNTR1_2.value = find_array[0].Heating_CNTR1_2;
 		no_count += HV_CNTR_count;
-		for(var i = 2; i <= 10; i++) eval('if(find_array[0].Heating_CNTR' + i + ' != \'\') ' + '{ Heating_CNTR_count += 1; type_add(\'Heating CNTR\', \'Heating_CNTR\', no_count, Heating_CNTR_count); document.getElementById(\'_Heating_CNTR' + i + '\').value = ' + 'find_array[0].Heating_CNTR' + i + ';}');
+		for(var i = 2; i <= 10; i++) eval('if(find_array[0].Heating_CNTR' + i + ' != \'\' || (find_array[0].Heating_CNTR' + i + '_2 != \'\' && find_array[0].Heating_CNTR' + i + '_2 != undefined)) ' + '{ Heating_CNTR_count += 1; type_add(\'Heating CNTR\', \'Heating_CNTR\', no_count, Heating_CNTR_count); document.getElementById(\'_Heating_CNTR' + i + '\').value = ' + 'find_array[0].Heating_CNTR' + i + '; document.getElementById(\'_Heating_CNTR' + i + '_2\').value = ' + 'find_array[0].Heating_CNTR' + i + '_2;}');
 
 		_FuseBox1.value = find_array[0].FuseBox1;
+		_FuseBox1_2.value = find_array[0].FuseBox1_2;
 		no_count += Heating_CNTR_count;
-		for(var i = 2; i <= 10; i++) eval('if(find_array[0].FuseBox' + i + ' != \'\') ' + '{ FuseBox_count += 1; type_add(\'FuseBox\', \'FuseBox\', no_count, FuseBox_count); document.getElementById(\'_FuseBox' + i + '\').value = ' + 'find_array[0].FuseBox' + i + ';}');
+		for(var i = 2; i <= 10; i++) eval('if(find_array[0].FuseBox' + i + ' != \'\' || (find_array[0].FuseBox' + i + '_2 != \'\' && find_array[0].FuseBox' + i + '_2 != undefined)) ' + '{ FuseBox_count += 1; type_add(\'FuseBox\', \'FuseBox\', no_count, FuseBox_count); document.getElementById(\'_FuseBox' + i + '\').value = ' + 'find_array[0].FuseBox' + i + '; document.getElementById(\'_FuseBox' + i + '_2\').value = ' + 'find_array[0].FuseBox' + i + '_2;}');
 
 		_LV_W_H1.value = find_array[0].LV_W_H1;
+		_LV_W_H1_2.value = find_array[0].LV_W_H1_2;
 		no_count += FuseBox_count;
-		for(var i = 2; i <= 10; i++) eval('if(find_array[0].LV_W_H' + i + ' != \'\') ' + '{ LV_W_H_count += 1; type_add(\'LV W/H\', \'LV_W_H\', no_count, LV_W_H_count); document.getElementById(\'_LV_W_H' + i + '\').value = ' + 'find_array[0].LV_W_H' + i + ';}');
+		for(var i = 2; i <= 10; i++) eval('if(find_array[0].LV_W_H' + i + ' != \'\' || (find_array[0].LV_W_H' + i + '_2 != \'\' && find_array[0].LV_W_H' + i + '_2 != undefined)) ' + '{ LV_W_H_count += 1; type_add(\'LV W/H\', \'LV_W_H\', no_count, LV_W_H_count); document.getElementById(\'_LV_W_H' + i + '\').value = ' + 'find_array[0].LV_W_H' + i + '; document.getElementById(\'_LV_W_H' + i + '_2\').value = ' + 'find_array[0].LV_W_H' + i + '_2;}');
 
 		_HV_W_H1.value = find_array[0].HV_W_H1;
+		_HV_W_H1_2.value = find_array[0].HV_W_H1_2;
 		no_count += LV_W_H_count;
-		for(var i = 2; i <= 10; i++) eval('if(find_array[0].HV_W_H' + i + ' != \'\') ' + '{ HV_W_H_count += 1; type_add(\'HV W/H\', \'HV_W_H\', no_count, HV_W_H_count); document.getElementById(\'_HV_W_H' + i + '\').value = ' + 'find_array[0].HV_W_H' + i + ';}');
+		for(var i = 2; i <= 10; i++) eval('if(find_array[0].HV_W_H' + i + ' != \'\' || (find_array[0].HV_W_H' + i + '_2 != \'\' && find_array[0].HV_W_H' + i + '_2 != undefined)) ' + '{ HV_W_H_count += 1; type_add(\'HV W/H\', \'HV_W_H\', no_count, HV_W_H_count); document.getElementById(\'_HV_W_H' + i + '\').value = ' + 'find_array[0].HV_W_H' + i + '; document.getElementById(\'_HV_W_H' + i + '_2\').value = ' + 'find_array[0].HV_W_H' + i + '_2;}');
 
 		_온도센서1.value = find_array[0].온도센서1;
+		_온도센서1_2.value = find_array[0].온도센서1_2;
 		no_count += HV_W_H_count;
-		for(var i = 2; i <= 10; i++) eval('if(find_array[0].온도센서' + i + ' != \'\') ' + '{ 온도센서_count += 1; type_add(\'온도센서\', \'온도센서\', no_count, 온도센서_count); document.getElementById(\'_온도센서' + i + '\').value = ' + 'find_array[0].온도센서' + i + ';}');
+		for(var i = 2; i <= 10; i++) eval('if(find_array[0].온도센서' + i + ' != \'\' || (find_array[0].온도센서' + i + '_2 != \'\' && find_array[0].온도센서' + i + '_2 != undefined)) ' + '{ 온도센서_count += 1; type_add(\'온도센서\', \'온도센서\', no_count, 온도센서_count); document.getElementById(\'_온도센서' + i + '\').value = ' + 'find_array[0].온도센서' + i + '; document.getElementById(\'_온도센서' + i + '_2\').value = ' + 'find_array[0].온도센서' + i + '_2;}');
 
 		_Busbars.value = find_array[0].Busbars;
+		_Busbars_2.value = find_array[0].Busbars_2;
 		no_count += 1 + 온도센서_count;
 		_BMA1.value = find_array[0].BMA1;
-		for(var i = 2; i <= 10; i++) eval('if(find_array[0].BMA' + i + ' != \'\') ' + '{ BMA_count += 1; type_add(\'BMA\', \'BMA\', no_count, BMA_count); document.getElementById(\'_BMA' + i + '\').value = ' + 'find_array[0].BMA' + i + ';}');
+		_BMA1_2.value = find_array[0].BMA1_2;
+		for(var i = 2; i <= 10; i++) eval('if(find_array[0].BMA' + i + ' != \'\' || (find_array[0].BMA' + i + '_2 != \'\' && find_array[0].BMA' + i + '_2 != undefined)) ' + '{ BMA_count += 1; type_add(\'BMA\', \'BMA\', no_count, BMA_count); document.getElementById(\'_BMA' + i + '\').value = ' + 'find_array[0].BMA' + i + '; document.getElementById(\'_BMA' + i + '_\').value = ' + 'find_array[0].BMA' + i + '_2;}');
 
 		_ETC.value = find_array[0].ETC;
 		_공정완료일.value = find_array[0].공정완료일;
 		_작업자.value = find_array[0].작업자;
 	} else {
 		_공정입고일.value = '0000-00-00T00:00';
-                _BMU1.value = '';
-                _CMU1.value = '';
-                _PRA1.value = '';
-                _SPA1.value = '';
-                _LWR_C1.value = '';
-		_UPR_C1.value = '';
-                _HV_CNTR1.value = '';
-                _Heating_CNTR1.value = '';
-                _FuseBox1.value = '';
-                _LV_W_H1.value = '';
-                _HV_W_H1.value = '';
-                _PBE.value = '';
-                _Gasket.value = '';
-                _Relay1.value = '';
-                _온도센서1.value = '';
-		_Busbars.value = '';
+    _BMU1.value = '';
+    _CMU1.value = '';
+    _PRA1.value = '';
+    _SPA1.value = '';
+    _LWR_C1.value = '';
+    _UPR_C1.value = '';
+    _HV_CNTR1.value = '';
+    _Heating_CNTR1.value = '';
+    _FuseBox1.value = '';
+    _LV_W_H1.value = '';
+    _HV_W_H1.value = '';
+    _PBE.value = '';
+    _Gasket.value = '';
+    _Relay1.value = '';
+    _온도센서1.value = '';
+    _Busbars.value = '';
 		_BMA1.value = '';
 		_ETC.value = '';
 		_공정완료일.value = '0000-00-00T00:00';
@@ -512,19 +533,33 @@ async function 분해조립_save() {
 	doc.관리번호 = _management_id.value;
 	doc.공정입고일 = _공정입고일.value;
 	for(var i = 1; i <= BMU_count; i++) eval('doc.BMU' + i + ' = document.getElementById(\'_BMU' + i + '\').value;');
+	for(var i = 1; i <= BMU_count; i++) eval('doc.BMU' + i + '_2 = document.getElementById(\'_BMU' + i + '_2\').value;');
 	for(var i = 1; i <= CMU_count; i++) eval('doc.CMU' + i + ' = document.getElementById(\'_CMU' + i + '\').value;');
+	for(var i = 1; i <= CMU_count; i++) eval('doc.CMU' + i + '_2 = document.getElementById(\'_CMU' + i + '_2\').value;');
 	for(var i = 1; i <= PRA_count; i++) eval('doc.PRA' + i + ' = document.getElementById(\'_PRA' + i + '\').value;');
+	for(var i = 1; i <= PRA_count; i++) eval('doc.PRA' + i + '_2 = document.getElementById(\'_PRA' + i + '_2\').value;');
 	for(var i = 1; i <= SPA_count; i++) eval('doc.SPA' + i + ' = document.getElementById(\'_SPA' + i + '\').value;');
+	for(var i = 1; i <= SPA_count; i++) eval('doc.SPA' + i + '_2 = document.getElementById(\'_SPA' + i + '_2\').value;');
 	for(var i = 1; i <= LWR_C_count; i++) eval('doc.LWR_C' + i + ' = document.getElementById(\'_LWR_C' + i + '\').value;');
+	for(var i = 1; i <= LWR_C_count; i++) eval('doc.LWR_C' + i + '_2 = document.getElementById(\'_LWR_C' + i + '_2\').value;');
 	for(var i = 1; i <= UPR_C_count; i++) eval('doc.UPR_C' + i + ' = document.getElementById(\'_UPR_C' + i + '\').value;');
+	for(var i = 1; i <= UPR_C_count; i++) eval('doc.UPR_C' + i + '_2 = document.getElementById(\'_UPR_C' + i + '_2\').value;');
 	for(var i = 1; i <= Relay_count; i++) eval('doc.Relay' + i + ' = document.getElementById(\'_Relay' + i + '\').value;');
+	for(var i = 1; i <= Relay_count; i++) eval('doc.Relay' + i + '_2 = document.getElementById(\'_Relay' + i + '_2\').value;');
 	for(var i = 1; i <= HV_CNTR_count; i++) eval('doc.HV_CNTR' + i + ' = document.getElementById(\'_HV_CNTR' + i + '\').value;');
+	for(var i = 1; i <= HV_CNTR_count; i++) eval('doc.HV_CNTR' + i + '_2 = document.getElementById(\'_HV_CNTR' + i + '_2\').value;');
 	for(var i = 1; i <= Heating_CNTR_count; i++) eval('doc.Heating_CNTR' + i + ' = document.getElementById(\'_Heating_CNTR' + i + '\').value;');
+	for(var i = 1; i <= Heating_CNTR_count; i++) eval('doc.Heating_CNTR' + i + '_2 = document.getElementById(\'_Heating_CNTR' + i + '_2\').value;');
 	for(var i = 1; i <= FuseBox_count; i++) eval('doc.FuseBox' + i + ' = document.getElementById(\'_FuseBox' + i + '\').value;');
+	for(var i = 1; i <= FuseBox_count; i++) eval('doc.FuseBox' + i + '_2 = document.getElementById(\'_FuseBox' + i + '_2\').value;');
 	for(var i = 1; i <= LV_W_H_count; i++) eval('doc.LV_W_H' + i + ' = document.getElementById(\'_LV_W_H' + i + '\').value;');
+	for(var i = 1; i <= LV_W_H_count; i++) eval('doc.LV_W_H' + i + '_2 = document.getElementById(\'_LV_W_H' + i + '_2\').value;');
 	for(var i = 1; i <= HV_W_H_count; i++) eval('doc.HV_W_H' + i + ' = document.getElementById(\'_HV_W_H' + i + '\').value;');
+	for(var i = 1; i <= HV_W_H_count; i++) eval('doc.HV_W_H' + i + '_2 = document.getElementById(\'_HV_W_H' + i + '_2\').value;');
 	for(var i = 1; i <= 온도센서_count; i++) eval('doc.온도센서' + i + ' = document.getElementById(\'_온도센서' + i + '\').value;');
+	for(var i = 1; i <= 온도센서_count; i++) eval('doc.온도센서' + i + '_2 = document.getElementById(\'_온도센서' + i + '_2\').value;');
 	for(var i = 1; i <= BMA_count; i++) eval('doc.BMA' + i + ' = document.getElementById(\'_BMA' + i + '\').value;');
+	for(var i = 1; i <= BMA_count; i++) eval('doc.BMA' + i + '_2 = document.getElementById(\'_BMA' + i + '_2\').value;');
 	doc.PBE = _PBE.value;
 	doc.Gasket = _Gasket.value;
 	doc.Busbars = _Busbars.value;
@@ -550,6 +585,7 @@ async function 분해조립_save() {
 		console.log(insert_count);
 	});
 
+  console.log('분해조립 SAVE:', doc);
 	update(분해조립, doc);
 	await delay();
 
@@ -586,6 +622,8 @@ async function 분해조립_save() {
 		update(BSA재제조, _doc);
 		await delay();
 	}
+
+  doc = 분해조립_doc;
 
 	await 공정단계자동입력(_management_id.value);
 	//이전페이지();
@@ -668,7 +706,7 @@ async function type_add(name, type, row_index, no) {
 	console.log('type:', '_' + type + no);
 	var current_row;
 	current_row = _tb.insertRow(row_index + (no - 1));
-	var insert_string = "<td><label for=\"_" + type + no + "\"><b>" + name + " " + no + "</b></label></td><td><input type=\"text\" id=\"_" + type + no + "\" size=\"100\" value=\' \' required><select name=\"language\" onchange=\"_콤보박스(\'_" + type + no + "\', this);\"><option value=\"\">---</option><option value=\"신품 교체\">신품 교체</option><option value=\"고품 교체\">고품 교체</option><option value=\"N/A\">N/A</option></select></td><td><center><button>-</button></center></td>";
+	var insert_string = "<td><label for=\"_" + type + no + "\"><b>" + name + " " + no + "</b></label></td><td>교환전<input type=\"text\" id=\"_" + type + no + "\" size=\"100\" value=\' \' required><select name=\"language\" onchange=\"_콤보박스(\'_" + type + no + "\', this);\"><option value=\"\">---</option><option value=\"신품 교체\">신품 교체</option><option value=\"고품 교체\">고품 교체</option><option value=\"N/A\">N/A</option></select><br/>교환후<input type=\"text\" id=\"_" + type + no + "_2\" size=\"100\" value=\' \' required><select name=\"language\" onchange=\"_콤보박스(\'_" + type + no + "_2\', this);\"><option value=\"\">---</option><option value=\"신품 교체\">신품 교체</option><option value=\"고품 교체\">고품 교체</option><option value=\"N/A\">N/A</option></select></td><td><center><button>-</button></center></td>";
 	console.log(insert_string);
 	current_row.innerHTML = insert_string;
 	await sleep(20);
