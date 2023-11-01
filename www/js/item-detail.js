@@ -877,7 +877,7 @@ async function item_detail_save(flag_result = false) {
 
   관리번호 = _management_id.value;
 
-  var doc = BSA재제조_doc;
+  var doc = JSON.parse(JSON.stringify(BSA재제조_doc));
   doc.관리번호 = _management_id.value;
   doc.재제조번호 = _재제조번호.value;
   doc.구분 = _구분.value;

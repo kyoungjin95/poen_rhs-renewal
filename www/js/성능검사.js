@@ -90,7 +90,7 @@ async function 성능검사_save() {
 	if(_management_id.value.length == 0) return;
 	console.log('save: ', _management_id.value);
 
-	var doc = 성능검사_doc;
+	var doc = JSON.parse(JSON.stringify(성능검사_doc));
 	doc.관리번호 = _management_id.value;
 	doc.공정입고일 = _공정입고일.value;
 	doc.용량평가 = _용량평가.value;

@@ -48,7 +48,7 @@ async function 입고_save() {
 	if(_management_id.value.length == 0) return;
 	console.log('save: ', _management_id.value);
 
-	var doc = 입고_doc;
+	var doc = JSON.parse(JSON.stringify(입고_doc));
 	doc.관리번호 = _management_id.value;
 	doc.입고일 = _입고일.value;
 	doc.입고처 = _입고처.value;

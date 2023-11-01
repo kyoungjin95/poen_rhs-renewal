@@ -165,7 +165,7 @@ async function EOL_SAVE() {
 	if(_management_id.value.length == 0) return;
 	console.log('save: ', _management_id.value);
 
-	var doc = EOL_doc;
+	var doc = JSON.parse(JSON.stringify(EOL_doc));
 	doc.관리번호 = _management_id.value;
 	doc.공정입고일 = _공정입고일.value;
 	doc.UPR_C조립 = _UPR_C조립.value;

@@ -47,7 +47,7 @@ async function add_user() {
 
 	const hash = CryptoJS.MD5(_passwd.value.trim()); 	
 
-	var doc = 계정_doc;
+	var doc = JSON.parse(JSON.stringify(계정_doc));
 	doc.id = _id.value.trim();
 	doc.passwd = hash.toString();
 	doc.level = _set_level.value;

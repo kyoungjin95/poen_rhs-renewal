@@ -159,62 +159,62 @@ function camera_공정입력_콤보박스(e) {
       slot2.innerHTML = 'BSA QR 코드';
 
 			col = 입고_pic;
-			doc = 입고_pic_doc;
+			doc = JSON.parse(JSON.stringify(입고_pic_doc));
 			break;
 
 		case '세척' :
 			col = 세척_pic;
-			doc = 세척_pic_doc;
+			doc = JSON.parse(JSON.stringify(세척_pic_doc));
 			break;
 
 		case '기초검사' :
 			col = 기초검사_pic;
-			doc = 기초검사_pic_doc;
+			doc = JSON.parse(JSON.stringify(기초검사_pic_doc));
 			break;
 
 		case '분해조립' :
 			col = 분해조립_pic;
-			doc = 분해조립_pic_doc;
+			doc = JSON.parse(JSON.stringify(분해조립_pic_doc));
 			break;
 
 		case '성능검사' :
 			col = 성능검사_pic;
-			doc = 성능검사_pic_doc;
+			doc = JSON.parse(JSON.stringify(성능검사_pic_doc));
 			break;
 
 		case 'EOL' :
 			col = EOL_pic;
-			doc = EOL_pic_doc;
+			doc = JSON.parse(JSON.stringify(EOL_pic_doc));
 			break;
 
 		case '출하검사' :
 			col = 출하_pic;
-			doc = 출하_pic_doc;
+			doc = JSON.parse(JSON.stringify(출하_pic_doc));
 			break;
 
 		case '특이사항' :
 			col = 특이사항_pic;
-			doc = 특이사항_pic_doc;
+			doc = JSON.parse(JSON.stringify(특이사항_pic_doc));
 			break;
 
 		case '반품입고' :
 			col = 반품입고_pic;
-			doc = 반품입고_pic_doc;
+			doc = JSON.parse(JSON.stringify(반품입고_pic_doc));
 			break;
 
 		case '재출하' :
 			col = 재출하_pic;
-			doc = 재출하_pic_doc;
+			doc = JSON.parse(JSON.stringify(재출하_pic_doc));
 			break;
 
 		case '완전분해' :
 			col = 완전분해_pic;
-			doc = 완전분해_pic_doc;
+			doc = JSON.parse(JSON.stringify(완전분해_pic_doc));
 			break;
 
 		case '폐기' :
 			col = 폐기_pic;
-			doc = 폐기_pic_doc;
+			doc = JSON.parse(JSON.stringify(폐기_pic_doc));
 			break;
 
 		default :

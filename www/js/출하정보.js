@@ -293,7 +293,7 @@ async function 출하정보_save() {
 	console.log(update_count);
 	console.log(insert_count);
 
-	var doc = 출하정보_doc;
+	var doc = JSON.parse(JSON.stringify(출하정보_doc));
 	
 	doc.관리번호 = _management_id.value;
 	//doc.출하일 = _출하일.value;

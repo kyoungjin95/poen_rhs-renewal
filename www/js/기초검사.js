@@ -221,7 +221,7 @@ async function 기초검사_SAVE() {
 		alert('VIN 번호가 입력되지 않았습니다.');
 	}
 
-	var doc = 기초검사_doc;
+	var doc = JSON.parse(JSON.stringify(기초검사_doc));
         doc.관리번호 = _management_id.value;
 	doc.공정입고일 = _공정입고일.value;
 	doc.RO_no = _RO_no.value;

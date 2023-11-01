@@ -137,7 +137,7 @@ async function 세척_카메라시작() {
 	if(_management_id.value.length == 0) return;
 	console.log('save: ', _management_id.value);
 
-	var doc = 세척_doc;
+	var doc = JSON.parse(JSON.stringify(세척_doc));
 	doc.관리번호 = _management_id.value;
 	doc.공정입고일 = _공정입고일.value;
 	doc.공정완료일 = _공정완료일.value;

@@ -962,6 +962,8 @@ const 분해조립_ = {
 	PRA9: 1,
 	PRA10: 1,
 	SPA1: 1,
+	SPA2: 1,
+	SPA3: 1,
 	SPA4: 1,
 	SPA5: 1,
 	SPA6: 1,
