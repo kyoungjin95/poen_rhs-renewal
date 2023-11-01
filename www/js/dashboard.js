@@ -75,6 +75,7 @@ function 총합계_조회() {
 async function 조회_list(today_begin, today_end) {
 	console.log(today_begin, today_end);
 
+	await sleep(DELAY);
 	await dash_입고(today_begin, today_end);
 	await sleep(DELAY);
 	await dash_입고_당일(today_begin, today_end);

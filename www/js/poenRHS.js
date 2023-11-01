@@ -158,7 +158,7 @@ const 분해조립_doc = {
 	BMU7: '',
 	BMU8: '',
 	BMU9: '',
-	BMU1_10: '',
+	BMU10: '',
 	CMU1 : '',
 	CMU2 : '',
 	CMU3 : '',
@@ -168,7 +168,7 @@ const 분해조립_doc = {
 	CMU7 : '',
 	CMU8 : '',
 	CMU9 : '',
-	CMU1_10 : '',
+	CMU10 : '',
 	PRA1 : '',
 	PRA2 : '',
 	PRA3 : '',
@@ -178,7 +178,7 @@ const 분해조립_doc = {
 	PRA7 : '',
 	PRA8 : '',
 	PRA9 : '',
-	PRA1_10:  '',
+	PRA10:  '',
 	SPA1 : '',
 	SPA2 : '',
 	SPA3 : '',
@@ -1672,7 +1672,7 @@ socket.on('insert_result', function(id) {
 
 socket.on('count_result', async function(count, rcv_check) {
 	//console.log('count: ', count);
-  doc_count = 0;
+  	doc_count = 0;
 	if(rcv_check != check) return;
 	doc_count = count;
 	await sleep(10);

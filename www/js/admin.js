@@ -131,18 +131,55 @@ function func_csv() {
 }
 
 async function doo() {
-	find_BSA재제조(BSA재제조, { 출하 : 'T14:00:00'});
+	find_BSA재제조(BSA재제조, { 출하 : { $eq : '' }, 출하검사 : { $ne : ''}});
 	await delay();
 
-	find_array.forEach(async function(info) {
-		var doc = {
-			관리번호 : info.관리번호,
-			출하 : ''
-		}
+	var test_BSA = find_array;
+	var table = new Tabulator("#grid_bsa", {
+		layout: "resizableColumnFit",
+		data:test_BSA,
+		height: '700px',
 
-		update(BSA재제조, doc);
-		await delay();
+		columns:[
+			{title:"ID", field:"_id", sorter:"string", width:'180'},
+			{title:"관리번호", field:"관리번호", sorter:"string", width:'180'},
+			{title:"재제조번호", field:"재제조번호", sorter:"string", width:'180'},
+			{title:"구분", field:"구분", sorter:"string", width:'180'},
+			{title:"차종", field:"차종", sorter:"string", width:'180'},
+			{title:"품번", field:"품번", sorter:"string", width:'180'},
+			{title:"RO_no", field:"RO_no", sorter:"string", width:'180'},
+			{title:"공정단계", field:"공정단계", sorter:"string", width:'180'},
+			{title:"소재지", field:"소재지", sorter:"string", width:'180'},
+			{title:"적재No", field:"적재No", sorter:"string", visible: true, width:'180'}, //
+			{title:"입고", field:"입고", sorter:"string", visible: true, width:'180'},//
+			{title:"제조투입", field:"제조투입", sorter:"string", visible: true, width:'180'},//
+			{title:"세척투입일", field:"세척투입일", sorter:"string", width:'180'},
+			{title:"세척", field:"세척", sorter:"string", visible: true, width:'180'},//
+			{title:"기초검사투입일", field:"기초검사투입일", sorter:"string", width:'180'},
+			{title:"기초검사", field:"기초검사", sorter:"string", visible: true, width:'180'},//
+			{title:"분해조립투입일", field:"분해조립투입일", sorter:"string", width:'180'},
+			{title:"분해조립", field:"분해조립", sorter:"string", visible: true, width:'180'},//
+			{title:"성능검사투입일", field:"성능검사투입일", sorter:"string", width:'180'},
+			{title:"성능검사", field:"성능검사", sorter:"string", visible: true, width:'180'},//
+			{title:"EOL투입일", field:"EOL투입일", sorter:"string", width:'180'},
+			{title:"EOL", field:"EOL", sorter:"string", visible: true, width:'180'},//
+			{title:"출하검사", field:"출하검사", sorter:"string", width:'180'},
+			{title:"납품처", field:"납품처", sorter:"string", width:'180'},
+			{title:"출하", field:"출하", sorter:"string", width:'180'},
+			{title:"반품입고", field:"반품입고", sorter:"string", width:'180'},
+			{title:"재출하", field:"재출하", sorter:"string", width:'180'},
+			{title:"완전분해", field:"완전분해", sorter:"string", width:'180'},
+			{title:"폐기", field:"폐기", sorter:"string", width:'180'},
+			{title:"마지막충전일", field:"마지막충전일", sorter:"string", width:'180'},
+			{title:"출하예약", field:"출하예약", sorter:"string", width:'180'},
+			{title:"렉번호", field:"렉번호", sorter:"string", width:'180'},
+		],
 	});
 
-	console.log('complete');
+	await sleep(2000);
+	var sheets = {
+		'BSA기본정보' : true,
+	};
+	table.download("xlsx", "출하검사vs출하_bsa.xlsx", {sheets:sheets});
+
 }
