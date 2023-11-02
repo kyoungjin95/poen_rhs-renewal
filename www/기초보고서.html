@@ -8,7 +8,7 @@
     <div id="_기초보고서">
       <div align="left">
         ▣ 기초보고서 [<span id="_차종">CS_EV</span>]
-        <span id="_재제조번호_"></span>
+        <span id="_재제조번호_"></span><input type="checkbox" id="_cb기초보고서" checked>
       </div>
       <div id="line"></div>
       <div>
@@ -1190,7 +1190,7 @@
       </div>
     </div>
     <div id="_육안검사외부1" class="check-all">
-      <h3>▣ 육안 검사 - 외부</h3>
+      <h3>▣ 육안 검사 - 외부<input type="checkbox" id="_cb육안검사외부" checked></h3>
       <div>
         <table class="all">
           <!-- <caption>
@@ -1237,7 +1237,7 @@
       </div>
     </div>
     <div id="_육안검사외부2" class="check-all">
-      <h3>▣ 육안검사 - 외부_<em>이상부위 상세사진</em></h3>
+      <h3>▣ 육안검사 - 외부_<em>이상부위 상세사진</em><input type="checkbox" id="_cb육안검사외부상세" checked></h3>
       <table border="2" class="all">
         <!-- <caption>
           육안검사 - 외부_이상부위 상세사진
@@ -1267,7 +1267,7 @@
       </table>
     </div>
     <div id="_육안검사내부1" class="check-all">
-      <h3>▣ 육안검사 - 내부</h3>
+      <h3>▣ 육안검사 - 내부<input type="checkbox" id="_cb육안검사내부" checked></h3>
       <table border="2" class="all">
         <!-- <caption>
           육안검사 - 내부
@@ -1321,7 +1321,7 @@
       </table>
     </div>
     <div id="_육안검사내부2" class="check-all">
-      <h3>▣ 육안검사 - 내부_<em>이상부위 상세사진</em></h3>
+      <h3>▣ 육안검사 - 내부_<em>이상부위 상세사진</em><input type="checkbox" id="_cb육안검사내부상세" checked></h3>
       <table border="2" class="all">
         <!-- <caption>
           육안검사 - 내부_이상부위 상세사진
@@ -1362,7 +1362,7 @@
       </table>
     </div>
     <div id="_기밀검사" class="check-all">
-      <h3>▣ 기밀검사</h3>
+      <h3>▣ 기밀검사<input type="checkbox" id="_cb기밀검사" checked></h3>
       <table border="2" class="all">
         <!-- <caption>
           기밀검사
@@ -1643,6 +1643,18 @@
       var _이상부위_내부4 = document.getElementById("_이상부위_내부4");
       var _교체부품 = document.getElementById("_교체부품");
       var _교체부품내용 = document.getElementById("_교체부품내용");
+      var _기초보고서 = document.getElementById("_기초보고서");
+      var _육안검사외부1 = document.getElementById("_육안검사외부1");
+      var _육안검사외부2 = document.getElementById("_육안검사외부2");
+      var _육안검사내부1 = document.getElementById("_육안검사내부1");
+      var _육안검사내부2 = document.getElementById("_육안검사내부2");
+      var _기밀검사 = document.getElementById("_기밀검사");
+      var _cb기초보고서 = document.getElementById("_cb기초보고서");
+      var _육안검사외부 = document.getElementById("_cb육안검사외부");
+      var _육안검사외부상세 = document.getElementById("_cb육안검사외부상세");
+      var _육안검사내부 = document.getElementById("_cb육안검사내부");
+      var _육안검사내부상세 = document.getElementById("_cb육안검사내부상세");
+      var _기밀검사 = document.getElementById("_cb기밀검사");
     </script>
   </body>
 </html>

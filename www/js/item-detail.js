@@ -1036,25 +1036,6 @@ function 교체부품상세_콤보박스(e) {
   교체부품상세No = value;
 }
 
-function 기초보고서() {
-  기초보고서_시작();
-}
-function 완료보고서() {
-  완료보고서_시작();
-}
-function 육안검사외부() {
-  육안검사외부_시작();
-}
-function 육안검사내부() {
-  육안검사내부_시작();
-}
-function 기밀검사() {
-  기밀검사_시작();
-}
-function 통신검사() {
-  통신검사_시작();
-}
-
 function showOptionMenu() {
   const options = document.querySelectorAll(".option");
   const optionContainer = document.querySelector(".options");

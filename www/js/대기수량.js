@@ -326,7 +326,7 @@ async function 출하예약취소() {
 
 	var doc = {
 		관리번호 : 출하대기_BSA_관리번호,
-		출하예약 : '예약 취소'
+		출하예약 : ''
 	}
 
 	update(BSA재제조, doc);

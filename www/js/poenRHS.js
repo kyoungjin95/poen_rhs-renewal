@@ -36,6 +36,8 @@ const 반품입고_pic = '반품입고_pic';
 const 재출하_pic = '재출하_pic';
 const 완전분해_pic = '완전분해_pic';
 const 폐기_pic = '폐기_pic';
+const 기초보고서 = '기초보고서';
+const 완료보고서 = '완료보고서';
 
 var 관리번호 = '';
 var 교체부품상세No = '교체부품상세1';
@@ -817,6 +819,26 @@ const 자재입출고_doc = {
 	LotNo : '',
 	비고 : '',
 	사용관리번호 : ''
+};
+
+const 기초보고서_doc = {
+	level : '',
+	기초보고서 : '',
+	육안검사외부 : '',
+	육안검사외부상세 : '',
+	육안검사내부 : '',
+	육안검사내부상세 : '',
+	기밀검사 : ''
+};
+
+const 완료보고서_doc = {
+	level : '',
+	완료보고서 : '',
+	육안검사외부 : '',
+	육안검사외부상세 : '',
+	육안검사내부 : '',
+	육안검사내부상세 : '',
+	기밀검사 : ''
 };
 
 const 계정_ = {
@@ -1626,6 +1648,28 @@ const 자재입출고_ = {
 	사용관리번호 : 1
 };
 
+const 기초보고서_ = {
+	_id : 0,
+	level : 1,
+	기초보고서 : 1,
+	육안검사외부 : 1,
+	육안검사외부상세 : 1,
+	육안검사내부 : 1,
+	육안검사내부상세 : 1,
+	기밀검사 : 1
+};
+
+const 완료보고서_ = {
+	_id : 0,
+	level : 1,
+	완료보고서 : 1,
+	육안검사외부 : 1,
+	육안검사외부상세 : 1,
+	육안검사내부 : 1,
+	육안검사내부상세 : 1,
+	기밀검사 : 1
+};
+
 var doc_count = 0;
 var update_count = 0;
 var insert_count = 0;
@@ -1770,6 +1814,15 @@ async function update(col, doc) {
 	flag_arrivedMSG = false;
 	while(flag_arrivedMSG == false) {
 		socket.emit('update', worker, col, { 관리번호: doc.관리번호 }, {$set: doc});
+		await sleep(DELAY_SYS * 2);
+	}
+}
+
+async function update_보고서(col, doc) {
+	if(socket == undefined) return;
+	flag_arrivedMSG = false;
+	while(flag_arrivedMSG == false) {
+		socket.emit('update', worker, col, { level: doc.level }, {$set: doc});
 		await sleep(DELAY_SYS * 2);
 	}
 }
@@ -2127,6 +2180,30 @@ async function find(col, management_id) {
 			console.log('collection name is not match');
 	}
 
+}
+
+async function find_기초보고서(col, query) {
+	if(socket == undefined) return;
+	flag_arrivedMSG = false;
+	check++;
+	if(check > 10000) check = 0;
+
+	while(flag_arrivedMSG == false) {
+		socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: 기초보고서_ }, check);
+		await sleep(DELAY_SYS * 10);
+	}
+}
+
+async function find_완료보고서(col, query) {
+	if(socket == undefined) return;
+	flag_arrivedMSG = false;
+	check++;
+	if(check > 10000) check = 0;
+
+	while(flag_arrivedMSG == false) {
+		socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: 완료보고서_ }, check);
+		await sleep(DELAY_SYS * 10);
+	}
 }
 
 async function find_계정(col, query) {
