@@ -1,7 +1,7 @@
 
 <html>
 	<head>
-		<title>BAS 재제조 현황</title>
+		<title>BSA 재제조 현황</title>
 		<meta charset="UTF-8">
 		<link rel="stylesheet" href="base/style/공정.css">
 		<link rel="stylesheet" href="base/style/camera.css">
@@ -10,6 +10,15 @@
 		<div class="BSA 재제조 현황">
 			<div>
 				<label for='grid_BSA'>구장 창고 BSA 재고 현황</label>
+			</div>
+			<div>
+				<button onClick='구장_수량집계_year();'>Year</button>
+				<button onClick='구장_수량집계_month();'>Month</button>
+			</div>
+			<div>
+				<input type="date" id="_검색일_from" size="40" value="0000-00-00" max="240-12-4" required>&nbsp; ~ &nbsp;
+				<input type="date" id="_검색일_to" size="40" value="0000-00-00" max="240-12-4" required>&nbsp;
+				<button onClick="구장_수량집계_기간조회();">조회</button>
 			</div>
 			<div>
 				<select id="filter-field">

@@ -37,10 +37,68 @@ async function 구장재고조회_시작() {
 
 		출고처별_수량집계(find_array);
 		await sleep(100);
-
 	}
 }
 
+function 구장_수량집계_year() {
+		var DateTime = luxon.DateTime;
+		var seoul = DateTime.local().setZone("Asia/Seoul");
+		var now = seoul.toString();
+		var s_day = now.slice(0, 5) + '01-01';
+		var e_day = now.slice(0, 5) + '12-31';
+
+		document.getElementById('_검색일_from').value = s_day;
+		document.getElementById('_검색일_to').value = e_day;
+}
+
+function 구장_수량집계_month() {
+		var DateTime = luxon.DateTime;
+		var seoul = DateTime.local().setZone("Asia/Seoul");
+		var now = seoul.toString();
+		var s_day = now.slice(0, 8) + '01';
+		var e_day;
+		if(now.slice(5, 2) in ['01', '03', '05', '07', '08', '10', '12']) e_day = now.slice(0, 8) + '31';
+		else if(now.slice(5, 2) == '02') e_day = now.slice(0, 8) + '28';
+		else e_day = now.slice(0, 8) + '30';
+
+		document.getElementById('_검색일_from').value = s_day;
+		document.getElementById('_검색일_to').value = e_day;
+}
+
+async function 구장_수량집계_기간조회() {
+	var 집계_today_begin = document.getElementById('_검색일_from').value + 'T00:00:000Z';;
+	var 집계_today_end = document.getElementById('_검색일_to').value + 'T23:59:000Z';;
+ 	var 구분 = '';
+
+	if(document.getElementById('_검색일_from').value == '') 집계_today_begin = '';
+	if(document.getElementById('_검색일_to').value == '') 집계_today_end = '';
+	
+	console.log('begin:', 집계_today_begin, 'end:', 집계_today_end);
+	
+	count(구장재고, { 관리번호 : { $exists : true }, 입고일 : { $gte : 집계_today_begin, $lte : 집계_today_end }}); 
+	await delay();
+	
+	if(doc_count > 0) {
+		find_구장재고(구장재고, { 관리번호 : { $exists : true }, 입고일 : { $gte : 집계_today_begin, $lte : 집계_today_end }});
+		await delay();
+
+		console.log(find_array);
+
+		구장창고조회(find_array);
+		await sleep(100);
+
+		품번별_수량집계(find_array);
+		await sleep(100);
+
+		입고처별_수량집계(find_array);
+		await sleep(100);
+
+		출고처별_수량집계(find_array);
+		await sleep(100);
+	} else {
+		alert('검색 조건에 맞는 데이터가 없습니다');
+	}
+}
 function 구장창고조회(data) {
 	var datas = [];
 	var cnt = 0;
@@ -188,6 +246,8 @@ function 입고처별_수량집계(data) {
 		}
 		
 		datas.push(v);
+
+		cnt_index++;
 	});
 
 	입고처_수량집계_table = new Tabulator("#grid_입고처_수량집계", {
@@ -228,6 +288,8 @@ function 출고처별_수량집계(data) {
 		}
 		
 		datas.push(v);
+
+		cnt_index++;
 	});
 
 	출고처_수량집계_table = new Tabulator("#grid_출고처_수량집계", {
