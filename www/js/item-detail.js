@@ -684,7 +684,7 @@ async function 상세입력_시작(is재제조번호 = false) {
       _차종.value = find_array[0].차종;
       _품번.value = find_array[0].품번;
       //_RO_no.value = find_array[0].RO_no;
-      _입고.value = find_array[0].입고일.substr(0, 16);
+      if(find_array[0].입고일 != undefined) _입고.value = find_array[0].입고일.substr(0, 16);
       if (_입고.value != "" && _공정단계.value != "출하") {
         _공정단계.value = "세척";
       }
