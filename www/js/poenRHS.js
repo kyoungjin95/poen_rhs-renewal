@@ -1,4 +1,4 @@
-const DELAY = 10; 
+const DELAY = 1; 
 const DELAY_SYS = 1000; 
 const 계정 = '계정';
 const BSA재제조 = 'BSA재제조';
@@ -1706,7 +1706,7 @@ socket.on('qr_lebel_result', function(result) {
 
 socket.on('distinct_result', function(result) {
 	//console.log('distincted result array: ', result);
-	find_array = result;
+	find_array = JSON.parse(JSON.stringify(result));
 	flag_arrivedMSG = true;
 });
 
@@ -1720,7 +1720,8 @@ socket.on('count_result', async function(count, rcv_check) {
 	//console.log('count: ', count);
   	doc_count = 0;
 	if(rcv_check != check) return;
-	doc_count = count;
+	doc_count = JSON.parse(JSON.stringify(count));
+	//doc_count = count;
 	await sleep(10);
 
 	flag_arrivedMSG = true;
@@ -1732,7 +1733,7 @@ socket.on('find_result', async function(result, rcv_check) {
 	find_array = [];
 	if(rcv_check != check) return;
 
-	find_array = result
+	find_array = JSON.parse(JSON.stringify(result));
   
 	await sleep(1);
 	flag_arrivedMSG = true;
@@ -2382,7 +2383,7 @@ async function delay() {
 	while(flag_arrivedMSG == false) {
 		await sleep(1);
 	}
-	await sleep(100);
+	await sleep(10);
 	return true;
 }
 
