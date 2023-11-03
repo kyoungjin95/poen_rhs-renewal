@@ -2383,7 +2383,7 @@ async function delay() {
 	while(flag_arrivedMSG == false) {
 		await sleep(1);
 	}
-	await sleep(100);
+	await sleep(50);
 	return true;
 }
 
