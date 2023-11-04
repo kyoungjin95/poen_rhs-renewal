@@ -130,8 +130,25 @@ function func_csv() {
 	});
 }
 
+async function doo_() {
+	find_BSA재제조(BSA재제조, { 완전분해 : { $ne : '' }, 공정단계 : { $ne : '완전분해'}});
+	await delay();
+
+	find_array.forEach(async function(item) {
+		var doc = {
+			관리번호 : item.관리번호,
+			공정단계 : '분해조립'
+		}
+
+		update(BSA재제조, doc);
+		await delay();
+	});
+
+	console.log('complete');
+}
+
 async function doo() {
-	find_BSA재제조(BSA재제조, { 출하 : { $eq : '' }, 출하검사 : { $ne : ''}});
+	find_BSA재제조(BSA재제조, { EOL : { $ne : '' }, 출하검사 : { $eq : ''}});
 	await delay();
 
 	var test_BSA = find_array;
@@ -176,10 +193,10 @@ async function doo() {
 		],
 	});
 
-	await sleep(2000);
+	await sleep(1000);
 	var sheets = {
-		'BSA기본정보' : true,
+		'EOLvs출하검사' : true,
 	};
-	table.download("xlsx", "출하검사vs출하_bsa.xlsx", {sheets:sheets});
+	table.download("xlsx", "EOLvs출하검사_bsa.xlsx", {sheets:sheets});
 
 }

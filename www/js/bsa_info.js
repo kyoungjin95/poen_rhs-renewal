@@ -749,6 +749,30 @@ async function 재제조현황_조회() {
 			{title:"출하예약", field:"출하예약", sorter:"string", width:'180'},
 			{title:"렉번호", field:"렉번호", sorter:"string", width:'180'},
 		],
+		rowFormatter: function(row){
+			console.log(row.getData());
+			if (row.getData().완전분해 != ''){
+				const children = row.getElement().childNodes;
+				children.forEach((child) => {
+					child.style.backgroundColor = 'pink';
+				})
+			} else if (row.getData().폐기 != ''){
+				const children = row.getElement().childNodes;
+				children.forEach((child) => {
+					child.style.backgroundColor = 'yellow';
+				})
+			} else if (row.getData().공정단계 === '제조완료'){
+				const children = row.getElement().childNodes;
+				children.forEach((child) => {
+					child.style.backgroundColor = '#CCCCFF';
+				})
+			} else if (row.getData().공정단계 != '출하'){
+				const children = row.getElement().childNodes;
+				children.forEach((child) => {
+					child.style.backgroundColor = '#E8F8F5';
+				})
+			} 
+		}
 	});
 
 	var progress = document.getElementById('progress');
