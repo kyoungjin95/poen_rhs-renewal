@@ -257,6 +257,15 @@ async function 출하대기목록() {
 			{title:"완전분해", field:"완전분해", sorter:"string", width:'180'},
 			{title:"폐기", field:"폐기", sorter:"string", width:'180'},
 		],
+		rowFormatter: function(row){
+			console.log(row.getData());
+			if (row.getData().출하예약 === '예약'){
+				const children = row.getElement().childNodes;
+				children.forEach((child) => {
+					child.style.backgroundColor = 'pink';
+				})
+			}
+		}
 	});
 
 	BSA출하수량_table.on("rowClick", async function(e, row){

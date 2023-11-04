@@ -1,5 +1,5 @@
 const DELAY = 10; 
-const DELAY_SYS = 1000; 
+const DELAY_SYS = 500; 
 const 계정 = '계정';
 const BSA재제조 = 'BSA재제조';
 const 입고 = '입고';
@@ -1704,16 +1704,18 @@ socket.on('qr_lebel_result', function(result) {
 	}
 });
 
-socket.on('distinct_result', function(result) {
+socket.on('distinct_result', async function(result) {
 	//console.log('distincted result array: ', result);
 	find_array = JSON.parse(JSON.stringify(result));
 	flag_arrivedMSG = true;
+	await sleep(DELAY);
 });
 
-socket.on('insert_result', function(id) {
+socket.on('insert_result', async function(id) {
 	//console.log('insert id: ', id);
 	insert_id = id;
 	flag_arrivedMSG = true;
+	await sleep(DELAY);
 });
 
 socket.on('count_result', async function(count, rcv_check) {
@@ -1722,9 +1724,9 @@ socket.on('count_result', async function(count, rcv_check) {
 	if(rcv_check != check) return;
 	doc_count = JSON.parse(JSON.stringify(count));
 	//doc_count = count;
-	await sleep(10);
 
 	flag_arrivedMSG = true;
+	await sleep(DELAY);
 });
 
 socket.on('find_result', async function(result, rcv_check) {
@@ -1735,11 +1737,11 @@ socket.on('find_result', async function(result, rcv_check) {
 
 	find_array = JSON.parse(JSON.stringify(result));
   
-	await sleep(1);
 	flag_arrivedMSG = true;
+	await sleep(DELAY);
 });
 
-socket.on('update_result', function(result) {
+socket.on('update_result', async function(result) {
 	flag_arrivedMSG = true;
 	update_count = 0;
 	insert_count = 0;
@@ -1748,17 +1750,15 @@ socket.on('update_result', function(result) {
 	//console.log('insert result count: ', result.upsertedCount);
 	update_count = result.modifiedCount;
 	insert_count = result.upsertedCount;
+
+	await sleep(DELAY);
 });
 
-socket.on('delete_result', function(count) {
+socket.on('delete_result', async function(count) {
 	console.log('delete result count: ', count);
 	delete_count = count;
 	flag_arrivedMSG = true;
-});
-
-socket.on('management_id', function(mid) {
-	관리번호 = mid;
-	flag_arrivedMSG = true;
+	await sleep(DELAY);
 });
 
 socket.on('disconnect', function() {
@@ -1787,7 +1787,8 @@ async function distinct(col, query, field_name) {
 }
 
 async function count(col, query) {
-	if(socket == undefined) return;
+	if(socket == undefined) return
+	await sleep(DELAY);
 	flag_arrivedMSG = false;
 	doc_count = 0;
 	while(flag_arrivedMSG == false) {
@@ -1800,6 +1801,7 @@ async function count(col, query) {
 
 async function insert(col, doc) {
 	if(socket == undefined) return;
+	await sleep(DELAY);
 	flag_arrivedMSG = false;
 	socket.emit('insert', worker, col, doc);
 }
@@ -1812,6 +1814,7 @@ async function insertMany(col, doc) {
 
 async function update(col, doc) {
 	if(socket == undefined) return;
+	await sleep(DELAY);
 	flag_arrivedMSG = false;
 	while(flag_arrivedMSG == false) {
 		socket.emit('update', worker, col, { 관리번호: doc.관리번호 }, {$set: doc});
@@ -1821,6 +1824,7 @@ async function update(col, doc) {
 
 async function update_보고서(col, doc) {
 	if(socket == undefined) return;
+	await sleep(DELAY);
 	flag_arrivedMSG = false;
 	while(flag_arrivedMSG == false) {
 		socket.emit('update', worker, col, { level: doc.level }, {$set: doc});
@@ -1830,6 +1834,7 @@ async function update_보고서(col, doc) {
 
 async function update_재제조번호(col, doc) {
 	if(socket == undefined) return;
+	await sleep(DELAY);
 	flag_arrivedMSG = false;
 	while(flag_arrivedMSG == false) {
 		socket.emit('update', worker, col, { 재제조번호: doc.재제조번호 }, {$set: doc});
@@ -1839,6 +1844,7 @@ async function update_재제조번호(col, doc) {
 
 async function update_계정(col, doc) {
 	if(socket == undefined) return;
+	await sleep(DELAY);
 	flag_arrivedMSG = false;
 	while(flag_arrivedMSG == false) {
 		socket.emit('update', worker, col, { id: doc.id }, {$set: doc});
@@ -1848,6 +1854,7 @@ async function update_계정(col, doc) {
 
 async function update_신품정보(col, doc) {
 	if(socket == undefined) return;
+	await sleep(DELAY);
 	if(doc.QR == '') return;
 	flag_arrivedMSG = false;
 	while(flag_arrivedMSG == false) {
@@ -1858,6 +1865,7 @@ async function update_신품정보(col, doc) {
 
 async function update_고품정보(col, doc) {
 	if(socket == undefined) return;
+	await sleep(DELAY);
 	flag_arrivedMSG = false;
 	while(flag_arrivedMSG == false) {
 		socket.emit('update', worker, col, { QR: doc.QR }, {$set: doc});
@@ -1867,6 +1875,7 @@ async function update_고품정보(col, doc) {
 
 async function deleteOne(col, management_id) {
 	if(socket == undefined) return;
+	await sleep(DELAY);
 	flag_arrivedMSG = false;
 	while(flag_arrivedMSG == false) {
 		socket.emit('delete', worker, col, { 관리번호: management_id});
@@ -1877,6 +1886,7 @@ async function deleteOne(col, management_id) {
 
 async function deleteOneBSA(col, id) {
 	if(socket == undefined) return;
+	await sleep(DELAY);
 	flag_arrivedMSG = false;
 	while(flag_arrivedMSG == false) {
 		socket.emit('delete_by_id', worker, col, id);
@@ -1887,6 +1897,7 @@ async function deleteOneBSA(col, id) {
 
 async function deleteOne재제조번호(col, 재제조번호) {
 	if(socket == undefined) return;
+	await sleep(DELAY);
 	flag_arrivedMSG = false;
 	while(flag_arrivedMSG == false) {
 		socket.emit('delete', worker, col, { 재제조번호: 재제조번호 });
@@ -1896,6 +1907,7 @@ async function deleteOne재제조번호(col, 재제조번호) {
 
 async function deleteOne_신품정보(col, QR) {
 	if(socket == undefined) return;
+	await sleep(DELAY);
 	flag_arrivedMSG = false;
 	while(flag_arrivedMSG == false) {
 		socket.emit('delete', worker, col, { QR: QR});
@@ -1905,6 +1917,7 @@ async function deleteOne_신품정보(col, QR) {
 
 async function deleteOne_고품정보(col, QR) {
 	if(socket == undefined) return;
+	await sleep(DELAY);
 	flag_arrivedMSG = false;
 	while(flag_arrivedMSG == false) {
 		socket.emit('delete', worker, col, { QR: QR});
@@ -1914,6 +1927,7 @@ async function deleteOne_고품정보(col, QR) {
 
 async function deleteOne_구장재고(col, 관리번호) {
 	if(socket == undefined) return;
+	await sleep(DELAY);
 	flag_arrivedMSG = false;
 	while(flag_arrivedMSG == false) {
 		socket.emit('delete', worker, col, { 관리번호: 관리번호});
@@ -1923,6 +1937,7 @@ async function deleteOne_구장재고(col, 관리번호) {
 
 async function delete_계정(_id) {
 	if(socket == undefined) return;
+	await sleep(DELAY);
 	flag_arrivedMSG = false;
 	while(flag_arrivedMSG == false) {
 		socket.emit('delete', worker, 계정, { id: _id});
@@ -1932,8 +1947,9 @@ async function delete_계정(_id) {
 
 async function find(col, management_id) {
 	if(socket == undefined) return;
+	await sleep(DELAY);
 	flag_arrivedMSG = false;
-  find_array = [];
+  	find_array = [];
 
 	check++;
 	if(check > 10000) check = 0;
@@ -2185,6 +2201,7 @@ async function find(col, management_id) {
 
 async function find_기초보고서(col, query) {
 	if(socket == undefined) return;
+	await sleep(DELAY);
 	flag_arrivedMSG = false;
 	check++;
 	if(check > 10000) check = 0;
@@ -2197,6 +2214,7 @@ async function find_기초보고서(col, query) {
 
 async function find_완료보고서(col, query) {
 	if(socket == undefined) return;
+	await sleep(DELAY);
 	flag_arrivedMSG = false;
 	check++;
 	if(check > 10000) check = 0;
@@ -2209,6 +2227,7 @@ async function find_완료보고서(col, query) {
 
 async function find_계정(col, query) {
 	if(socket == undefined) return;
+	await sleep(DELAY);
 	flag_arrivedMSG = false;
 	check++;
 	if(check > 10000) check = 0;
@@ -2221,6 +2240,7 @@ async function find_계정(col, query) {
 
 async function find_구장재고(col, query) {
 	if(socket == undefined) return;
+	await sleep(DELAY);
 	flag_arrivedMSG = false;
 	check++;
 	if(check > 10000) check = 0;
@@ -2233,6 +2253,7 @@ async function find_구장재고(col, query) {
 
 async function find_신품정보(col, query) {
 	if(socket == undefined) return;
+	await sleep(DELAY);
 	flag_arrivedMSG = false;
 	check++;
 	if(check > 10000) check = 0;
@@ -2245,6 +2266,7 @@ async function find_신품정보(col, query) {
 
 async function find_고품정보(col, query) {
 	if(socket == undefined) return;
+	await sleep(DELAY);
 	flag_arrivedMSG = false;
 	check++;
 	if(check > 10000) check = 0;
@@ -2257,6 +2279,7 @@ async function find_고품정보(col, query) {
 
 async function find_BSA재제조(col, query) {
 	if(socket == undefined) return;
+	await sleep(DELAY);
 	flag_arrivedMSG = false;
 	check++;
 	if(check > 10000) check = 0;
@@ -2269,6 +2292,7 @@ async function find_BSA재제조(col, query) {
 
 async function find_입고(col, query) {
 	if(socket == undefined) return;
+	await sleep(DELAY);
 	flag_arrivedMSG = false;
 	check++;
 	if(check > 10000) check = 0;
@@ -2281,6 +2305,7 @@ async function find_입고(col, query) {
 
 async function find_세척(col, query) {
 	if(socket == undefined) return;
+	await sleep(DELAY);
 	flag_arrivedMSG = false;
 	check++;
 	if(check > 10000) check = 0;
@@ -2293,6 +2318,7 @@ async function find_세척(col, query) {
 
 async function find_기초검사(col, query) {
 	if(socket == undefined) return;
+	await sleep(DELAY);
 	flag_arrivedMSG = false;
 	check++;
 	if(check > 10000) check = 0;
@@ -2305,6 +2331,7 @@ async function find_기초검사(col, query) {
 
 async function find_분해조립(col, query) {
 	if(socket == undefined) return;
+	await sleep(DELAY);
 	flag_arrivedMSG = false;
 	check++;
 	if(check > 10000) check = 0;
@@ -2317,6 +2344,7 @@ async function find_분해조립(col, query) {
 
 async function find_성능검사(col, query) {
 	if(socket == undefined) return;
+	await sleep(DELAY);
 	flag_arrivedMSG = false;
 	check++;
 	if(check > 10000) check = 0;
@@ -2329,6 +2357,7 @@ async function find_성능검사(col, query) {
 
 async function find_EOL(col, query) {
 	if(socket == undefined) return;
+	await sleep(DELAY);
 	flag_arrivedMSG = false;
 	check++;
 	if(check > 10000) check = 0;
@@ -2341,6 +2370,7 @@ async function find_EOL(col, query) {
 
 async function find_출하정보(col, query) {
 	if(socket == undefined) return;
+	await sleep(DELAY);
 	flag_arrivedMSG = false;
 	check++;
 	if(check > 10000) check = 0;
@@ -2353,6 +2383,7 @@ async function find_출하정보(col, query) {
 
 async function find_특이사항(col, query) {
 	if(socket == undefined) return;
+	await sleep(DELAY);
 	flag_arrivedMSG = false;
 	check++;
 	if(check > 10000) check = 0;
@@ -2365,6 +2396,7 @@ async function find_특이사항(col, query) {
 
 async function find_교체부품상세(col, query) {
 	if(socket == undefined) return;
+	await sleep(DELAY);
 	flag_arrivedMSG = false;
 	check++;
 	if(check > 10000) check = 0;
@@ -2380,10 +2412,12 @@ function sleep(ms) {
 }
 
 async function delay() {
+	await sleep(DELAY);
+
 	while(flag_arrivedMSG == false) {
 		await sleep(1);
 	}
-	await sleep(30);
+	await sleep(DELAY * 20);
 	return true;
 }
 
