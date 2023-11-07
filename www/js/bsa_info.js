@@ -664,8 +664,6 @@ async function 재제조현황_시작() {
 	toggle11();
 	toggle12();
 
-	관리번호 = '';
-
 	재제조현황_조회();
 }
 
@@ -748,6 +746,10 @@ async function 재제조현황_조회() {
 			{title:"마지막충전일", field:"마지막충전일", sorter:"string", width:'180'},
 			{title:"출하예약", field:"출하예약", sorter:"string", width:'180'},
 			{title:"렉번호", field:"렉번호", sorter:"string", width:'180'},
+			{formatter:"buttonCross", width:40, align:"center", cellClick:function(e, cell){
+				delete_bsa_중복정보();
+				cell.getRow().delete();
+			}},
 		],
 		rowFormatter: function(row){
 			console.log(row.getData());
@@ -908,6 +910,8 @@ async function 재제조현황_조회() {
 
 async function delete_bsa_중복정보() {
 	console.log('delete : ', _id);
+	var ok = window.confirm('선택한것만 지워집니다. 계속하겠습니까?');
+	if(ok == false) return;
 
 	deleteOneBSA(BSA재제조, _id);
 	await delay();
@@ -924,11 +928,12 @@ async function delete_bsa_중복정보() {
 	if(delete_count > 0) {
 		alert('삭제 되었습니다.');
 	}
-	재제조현황_조회();
 }
 
 async function delete_bsa() {
 	console.log('delete : ', row_one_id);
+	var ok = window.confirm('동일한(대소문자 동일 취급) 관리번호는 모두 지워집니다. 계속하겠습니까?');
+	if(ok == false) return;
 
 	deleteOne(BSA재제조, row_one_id);
 	await delay();
@@ -1079,9 +1084,8 @@ async function delete_bsa() {
 
 	table.clearFilter();
 
-	if(delete_count > 0) {
-		alert('삭제 되었습니다.');
-	}
+	alert('삭제 되었습니다.');
+
 	재제조현황_조회();
 }
 
