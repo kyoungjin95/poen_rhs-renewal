@@ -62,12 +62,14 @@ async function 세척_시작(is재제조 = false) {
 		await delay();
 		_공정입고일.value = find_array[0].공정입고일;
 		_공정완료일.value = find_array[0].공정완료일;
+		_어퍼케이스재사용가능.value = find_array[0].어퍼케이스재사용가능;
 		_기밀검사_케이스.value = find_array[0].기밀검사_케이스;
 		_기밀검사_케이스_특이사항.value = find_array[0].기밀검사_케이스_특이사항;
 		_특이사항.value = find_array[0].특이사항
 	} else {
 		_공정입고일.value = '0000-00-00T00:00';
 		_공정완료일.value = '0000-00-00T00:00';
+		_어퍼케이스재사용가능.value = '';
 		_기밀검사_케이스.value = '';
 		_기밀검사_케이스_특이사항.value = '';
 		_특이사항.value = '';
@@ -82,6 +84,7 @@ async function 세척_save() {
 	doc.관리번호 = _management_id.value;
 	doc.공정입고일 = _공정입고일.value;
 	doc.공정완료일 = _공정완료일.value;
+	doc.어퍼케이스재사용가능 = _어퍼케이스재사용가능.value;
 	doc.기밀검사_케이스 = _기밀검사_케이스.value;
 	doc.기밀검사_케이스_특이사항 = _기밀검사_케이스_특이사항.value;
 	doc.특이사항 = _특이사항.value;
@@ -126,6 +129,12 @@ async function 세척_save() {
 	//이전페이지();
 }
 
+function _어퍼케이스재사용가능_콤보박스(e) {
+	const value = e.value;
+
+  	document.getElementById('_어퍼케이스재사용가능').value = value;
+}
+
 function _기밀검사_케이스_콤보박스(e) {
 	const value = e.value;
 
@@ -141,6 +150,7 @@ async function 세척_카메라시작() {
 	doc.관리번호 = _management_id.value;
 	doc.공정입고일 = _공정입고일.value;
 	doc.공정완료일 = _공정완료일.value;
+	doc.어퍼케이스재사용가능 = _어퍼케이스재사용가능.value;
 	doc.기밀검사_케이스 = _기밀검사_케이스.value;
 	doc.기밀검사_케이스_특이사항 = _기밀검사_케이스_특이사항.value;
 	doc.특이사항 = _특이사항.value;

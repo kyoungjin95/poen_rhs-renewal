@@ -74,6 +74,19 @@
 						</tr>
 						<tr>
 							<td>
+								<label for="_어퍼케이스재사용가능"><b>어퍼케이스 재사용가능</b></label>
+							</td>
+							<td>
+								<input type="text" id="_어퍼케이스재사용가능" size="40" required>
+								<select name="language" onchange="_어퍼케이스재사용가능_콤보박스(this);">
+									<option value="">---</option>
+									<option value="OK">OK</option>
+									<option value="NG">NG</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td>
 								<label for="_기밀검사_케이스"><b>기밀검사 케이스</b></label>
 							</td>
 							<td>
@@ -116,6 +129,9 @@
 				const _재제조번호 = document.getElementById('_재제조번호');
 				const _공정입고일 = document.getElementById('_공정입고일');
 				const _공정완료일 = document.getElementById('_공정완료일');
+				const _어퍼케이스재사용가능 = document.getElementById('_어퍼케이스재사용가능');
+				const _기밀검사_케이스 = document.getElementById('_기밀검사_케이스');
+				const _기밀검사_케이스_특이사항 = document.getElementById('_기밀검사_케이스_특이사항');
 				const _특이사항 = document.getElementById('_특이사항');
 			</script>
 	</body>
