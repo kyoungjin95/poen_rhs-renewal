@@ -1,4 +1,4 @@
-const DELAY = 2; 
+const DELAY = 4; 
 const DELAY_SYS = 1000; 
 const 계정 = '계정';
 const BSA재제조 = 'BSA재제조';
@@ -2203,7 +2203,6 @@ async function find(col, management_id) {
 
 async function find_기초보고서(col, query) {
 	if(socket == undefined) return;
-	await sleep(DELAY);
 	flag_arrivedMSG = false;
 	check++;
 	if(check > 10000) check = 0;
@@ -2216,7 +2215,6 @@ async function find_기초보고서(col, query) {
 
 async function find_완료보고서(col, query) {
 	if(socket == undefined) return;
-	await sleep(DELAY);
 	flag_arrivedMSG = false;
 	check++;
 	if(check > 10000) check = 0;
@@ -2229,7 +2227,6 @@ async function find_완료보고서(col, query) {
 
 async function find_계정(col, query) {
 	if(socket == undefined) return;
-	await sleep(DELAY);
 	flag_arrivedMSG = false;
 	check++;
 	if(check > 10000) check = 0;
@@ -2242,7 +2239,6 @@ async function find_계정(col, query) {
 
 async function find_구장재고(col, query) {
 	if(socket == undefined) return;
-	await sleep(DELAY);
 	flag_arrivedMSG = false;
 	check++;
 	if(check > 10000) check = 0;
@@ -2255,7 +2251,6 @@ async function find_구장재고(col, query) {
 
 async function find_신품정보(col, query) {
 	if(socket == undefined) return;
-	await sleep(DELAY);
 	flag_arrivedMSG = false;
 	check++;
 	if(check > 10000) check = 0;
@@ -2268,7 +2263,6 @@ async function find_신품정보(col, query) {
 
 async function find_고품정보(col, query) {
 	if(socket == undefined) return;
-	await sleep(DELAY);
 	flag_arrivedMSG = false;
 	check++;
 	if(check > 10000) check = 0;
@@ -2281,7 +2275,6 @@ async function find_고품정보(col, query) {
 
 async function find_BSA재제조(col, query) {
 	if(socket == undefined) return;
-	await sleep(DELAY);
 	flag_arrivedMSG = false;
 	check++;
 	if(check > 10000) check = 0;
@@ -2294,7 +2287,6 @@ async function find_BSA재제조(col, query) {
 
 async function find_입고(col, query) {
 	if(socket == undefined) return;
-	await sleep(DELAY);
 	flag_arrivedMSG = false;
 	check++;
 	if(check > 10000) check = 0;
@@ -2307,7 +2299,6 @@ async function find_입고(col, query) {
 
 async function find_세척(col, query) {
 	if(socket == undefined) return;
-	await sleep(DELAY);
 	flag_arrivedMSG = false;
 	check++;
 	if(check > 10000) check = 0;
@@ -2320,7 +2311,6 @@ async function find_세척(col, query) {
 
 async function find_기초검사(col, query) {
 	if(socket == undefined) return;
-	await sleep(DELAY);
 	flag_arrivedMSG = false;
 	check++;
 	if(check > 10000) check = 0;
@@ -2333,7 +2323,6 @@ async function find_기초검사(col, query) {
 
 async function find_분해조립(col, query) {
 	if(socket == undefined) return;
-	await sleep(DELAY);
 	flag_arrivedMSG = false;
 	check++;
 	if(check > 10000) check = 0;
@@ -2346,7 +2335,6 @@ async function find_분해조립(col, query) {
 
 async function find_성능검사(col, query) {
 	if(socket == undefined) return;
-	await sleep(DELAY);
 	flag_arrivedMSG = false;
 	check++;
 	if(check > 10000) check = 0;
@@ -2359,7 +2347,6 @@ async function find_성능검사(col, query) {
 
 async function find_EOL(col, query) {
 	if(socket == undefined) return;
-	await sleep(DELAY);
 	flag_arrivedMSG = false;
 	check++;
 	if(check > 10000) check = 0;
@@ -2372,7 +2359,6 @@ async function find_EOL(col, query) {
 
 async function find_출하정보(col, query) {
 	if(socket == undefined) return;
-	await sleep(DELAY);
 	flag_arrivedMSG = false;
 	check++;
 	if(check > 10000) check = 0;
@@ -2385,7 +2371,6 @@ async function find_출하정보(col, query) {
 
 async function find_특이사항(col, query) {
 	if(socket == undefined) return;
-	await sleep(DELAY);
 	flag_arrivedMSG = false;
 	check++;
 	if(check > 10000) check = 0;
@@ -2398,7 +2383,6 @@ async function find_특이사항(col, query) {
 
 async function find_교체부품상세(col, query) {
 	if(socket == undefined) return;
-	await sleep(DELAY);
 	flag_arrivedMSG = false;
 	check++;
 	if(check > 10000) check = 0;

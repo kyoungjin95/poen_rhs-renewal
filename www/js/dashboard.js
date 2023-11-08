@@ -14,7 +14,11 @@ var wait_start = false;
 async function 대시보드_시작() {
 	flag_대시보드 = false;
 	if(worker == '') return;
-	await sleep(200);
+
+	while(document.getElementById('입고') != undefined) {
+		await sleep(1);
+	}
+	await sleep(100);
 
 	document.getElementById('입고').addEventListener("click", function(){
 		dash_입고_당일_get(today_begin, today_end);
@@ -76,6 +80,7 @@ async function 조회_list(today_begin, today_end) {
 	console.log(today_begin, today_end);
 
 	await dash_입고(today_begin, today_end);
+	await dash_입고(today_begin, today_end)
 	await dash_입고_당일(today_begin, today_end);
 	await dash_세척(today_begin, today_end);
 	await dash_세척_당일(today_begin, today_end);
@@ -111,7 +116,6 @@ async function dash_입고(today_begin, today_end) {
 		count(BSA재제조, { 입고 : { $exists : true, $ne : 'none', $ne : ''}});
 		await delay();
 	}
-	await sleep(100);
 	console.log('입고 count:', doc_count);
 	입고cnt = doc_count;
 }
@@ -179,7 +183,6 @@ async function dash_세척(today_begin, today_end) {
 		count(BSA재제조, { 세척 : { $exists : true, $ne : 'none', $ne : ''}});
 		await delay();
 	}
-	await sleep(DELAY);
 	console.log('세척 count:', doc_count);
 	세척cnt = doc_count;
 }

@@ -630,7 +630,7 @@ async function 재제조현황_시작() {
 
 	if(worker == '') return;
 	while(document.getElementById('폐기_pic4') == undefined) {
-		await sleep(100);
+		await sleep(120);
 	}
 	await sleep(10);
 
@@ -688,7 +688,7 @@ async function 재제조현황_조회() {
 	}
 
 	console.log('doc_count: ', doc_count);
-	if(doc_count > 0) {
+	if(true || doc_count > 0) {
 		if(level == 'kia_일반') {
 			find_BSA재제조(BSA재제조, { 차종 : { $in : ['DE', 'DE_EV', 'DEPBV', 'DEPBV-EV', 'CV', 'CV_EV', 'MV', 'MV_EV', 'PU', 'PU_EV', 'SG2', 'SG2-EV', 'TAM', 'TAM-EV', 'PS', 'PS_EV', 'SK3']}, 구분 : '일반'});
 			await delay();
@@ -851,81 +851,78 @@ async function 재제조현황_조회() {
 	await grid_입고();
 	progress.value = 1 / 18 * 100;
 	
-	await sleep(100);
+	await sleep(10);
 	await grid_세척();
 	progress.value = 2 / 18 * 100;
 
-	await sleep(100);
+	await sleep(10);
 	await grid_기초검사();
 	progress.value = 3 / 18 * 100;
 
-	await sleep(100);
+	await sleep(1000);
 	await grid_분해조립();
 	progress.value = 4 / 18 * 100;
 
-	await sleep(100);
+	await sleep(500);
 	await grid_성능검사();
 	progress.value = 5 / 18 * 100;
 
-	await sleep(100);
+	await sleep(500);
 	await grid_EOL();
 	progress.value = 6 / 18 * 100;
 
-	await sleep(100);
+	await sleep(500);
 	await grid_출하정보();
 	progress.value = 7 / 18 * 100;
 
-	await sleep(100);
+	await sleep(500);
 	await grid_특이사항();
 	progress.value = 8 / 18 * 100;
 
-	await sleep(100);
+	await sleep(500);
 	await grid_교체부품상세1();
 	progress.value = 9 / 18 * 100;
 
-	await sleep(100);
+	await sleep(500);
 	await grid_교체부품상세2();
 	progress.value = 10 / 18 * 100;
 
-	await sleep(100);
+	await sleep(500);
 	await grid_교체부품상세3();
 	progress.value = 11 / 18 * 100;
 
-	await sleep(100);
+	await sleep(500);
 	await grid_교체부품상세4();
 	progress.value = 12 / 18 * 100;
 
-	await sleep(100);
+	await sleep(500);
 	await grid_교체부품상세5();
 	progress.value = 13 / 18 * 100;
 
-	await sleep(100);
+	await sleep(500);
 	await grid_교체부품상세6();
 	progress.value = 14 / 18 * 100;
 
-	await sleep(100);
+	await sleep(500);
 	await grid_교체부품상세7();
 	progress.value = 15 / 18 * 100;
 
-	await sleep(100);
+	await sleep(500);
 	await grid_교체부품상세8();
 	progress.value = 16 / 18 * 100;
 
-	await sleep(100);
+	await sleep(500);
 	await grid_교체부품상세9();
 	progress.value = 17 / 18 * 100;
 
-	await sleep(100);
+	await sleep(500);
 	await grid_교체부품상세10();
 	progress.value = 18 / 18 * 100;
 
-	await sleep(100);
+	await sleep(500);
 	await 반품입고_load_pic();
-	await sleep(100);
 	await 재출하_load_pic();
-	await sleep(100);
 	await 완전분해_load_pic();
-	await sleep(100);
 	await 폐기_load_pic();
 };
 
@@ -1410,12 +1407,14 @@ async function grid_분해조립(m_id = '') {
 
 	var tabledata_분해조립 = [];
 
+	find_array = [];
 	if(m_id == '') {
 		find_분해조립(분해조립, { 관리번호 : { $exists: true } });
+		await delay();
 	} else {
 		find(분해조립, m_id);
+		await delay();
 	}
-	await delay();
 
 	tabledata_분해조립 = find_array;
 	console.log('분해조립 : ', find_array);
@@ -1579,10 +1578,15 @@ async function grid_분해조립(m_id = '') {
 
 	count(분해조립_pic, { 관리번호 : m_id });
 	await delay();
+
 	if(doc_count > 0) {
 		find(분해조립_pic, m_id);
 		await delay();
+		
+		if(find_array.length == 0) return;
+
 		console.log(find_array);
+
 		pic1.src='data:image/;base64,' + find_array[0].pic1;
 		pic2.src='data:image/;base64,' + find_array[0].pic2;
 		pic3.src='data:image/;base64,' + find_array[0].pic3;
@@ -1727,10 +1731,11 @@ async function grid_EOL(m_id = '') {
 	var tabledata_EOL = [];
 	if(m_id == '') {
 		find_EOL(EOL, { 관리번호 : { $exists: true } });
+		await delay();
 	} else {
 		find(EOL, m_id);
+		await delay();
 	}
-	await delay();
 	tabledata_EOL = find_array;
 	console.log('EOL : ', find_array);;
 
@@ -2399,6 +2404,7 @@ async function 반품입고_load_pic(m_id = '') {
 	if(doc_count > 0) {
 		find(반품입고_pic, m_id);
 		await delay();
+		if(find_array.length == 0) return;
 		console.log(find_array);
 		pic1.src='data:image/;base64,' + find_array[0].pic1;
 		pic2.src='data:image/;base64,' + find_array[0].pic2;
@@ -2453,9 +2459,10 @@ async function 재출하_load_pic(m_id = '') {
 
 	count(재출하_pic, { 관리번호 : m_id });
 	await delay();
-	if(doc_count > 0) {
+	if(true || doc_count > 0) {
 		find(재출하_pic, m_id);
 		await delay();
+		if(find_array.length == 0) return;
 		console.log(find_array);
 		pic1.src='data:image/;base64,' + find_array[0].pic1;
 		pic2.src='data:image/;base64,' + find_array[0].pic2;
@@ -2510,9 +2517,10 @@ async function 완전분해_load_pic(m_id = '') {
 
 	count(완전분해_pic, { 관리번호 : m_id });
 	await delay();
-	if(doc_count > 0) {
+	if(true || doc_count > 0) {
 		find(완전분해_pic, m_id);
 		await delay();
+		if(find_array.length == 0) return;
 		console.log(find_array);
 		pic1.src='data:image/;base64,' + find_array[0].pic1;
 		pic2.src='data:image/;base64,' + find_array[0].pic2;
@@ -2567,9 +2575,10 @@ async function 폐기_load_pic(m_id = '') {
 
 	count(폐기_pic, { 관리번호 : m_id });
 	await delay();
-	if(doc_count > 0) {
+	if(true || doc_count > 0) {
 		find(폐기_pic, m_id);
 		await delay();
+		if(find_array.length == 0) return;
 		console.log(find_array);
 		pic1.src='data:image/;base64,' + find_array[0].pic1;
 		pic2.src='data:image/;base64,' + find_array[0].pic2;
