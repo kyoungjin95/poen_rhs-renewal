@@ -15,7 +15,7 @@ async function 대시보드_시작() {
 	flag_대시보드 = false;
 	if(worker == '') return;
 
-	while(document.getElementById('입고') != undefined) {
+	while(document.getElementById('입고') == undefined) {
 		await sleep(1);
 	}
 	await sleep(100);
