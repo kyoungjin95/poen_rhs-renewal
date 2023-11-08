@@ -1,4 +1,4 @@
-const DELAY = 1; 
+const DELAY = 2; 
 const DELAY_SYS = 1000; 
 const 계정 = '계정';
 const BSA재제조 = 'BSA재제조';
