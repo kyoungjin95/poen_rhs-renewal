@@ -116,6 +116,16 @@ button:hover {
   height: 100%;
 }
 /* btn */
+.consent-btn {
+  border: 1px solid #00536f;
+  color: #000;
+  background: #fff;
+  transition: all 0.6s ease;
+}
+.consent-btn:hover {
+  border-radius: 0;
+  background: #fff;
+}
 
 /* ========================================
   검사 */
