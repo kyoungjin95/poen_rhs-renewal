@@ -848,14 +848,15 @@ async function 재제조현황_조회() {
 		return;
 	});
 
+	await sleep(1000);
 	await grid_입고();
 	progress.value = 1 / 18 * 100;
 	
-	await sleep(10);
+	await sleep(1000);
 	await grid_세척();
 	progress.value = 2 / 18 * 100;
 
-	await sleep(10);
+	await sleep(1000);
 	await grid_기초검사();
 	progress.value = 3 / 18 * 100;
 
@@ -863,63 +864,63 @@ async function 재제조현황_조회() {
 	await grid_분해조립();
 	progress.value = 4 / 18 * 100;
 
-	await sleep(500);
+	await sleep(1000);
 	await grid_성능검사();
 	progress.value = 5 / 18 * 100;
 
-	await sleep(500);
+	await sleep(1000);
 	await grid_EOL();
 	progress.value = 6 / 18 * 100;
 
-	await sleep(500);
+	await sleep(1000);
 	await grid_출하정보();
 	progress.value = 7 / 18 * 100;
 
-	await sleep(500);
+	await sleep(1000);
 	await grid_특이사항();
 	progress.value = 8 / 18 * 100;
 
-	await sleep(500);
+	await sleep(1000);
 	await grid_교체부품상세1();
 	progress.value = 9 / 18 * 100;
 
-	await sleep(500);
+	await sleep(1000);
 	await grid_교체부품상세2();
 	progress.value = 10 / 18 * 100;
 
-	await sleep(500);
+	await sleep(1000);
 	await grid_교체부품상세3();
 	progress.value = 11 / 18 * 100;
 
-	await sleep(500);
+	await sleep(1000);
 	await grid_교체부품상세4();
 	progress.value = 12 / 18 * 100;
 
-	await sleep(500);
+	await sleep(1000);
 	await grid_교체부품상세5();
 	progress.value = 13 / 18 * 100;
 
-	await sleep(500);
+	await sleep(1000);
 	await grid_교체부품상세6();
 	progress.value = 14 / 18 * 100;
 
-	await sleep(500);
+	await sleep(1000);
 	await grid_교체부품상세7();
 	progress.value = 15 / 18 * 100;
 
-	await sleep(500);
+	await sleep(1000);
 	await grid_교체부품상세8();
 	progress.value = 16 / 18 * 100;
 
-	await sleep(500);
+	await sleep(1000);
 	await grid_교체부품상세9();
 	progress.value = 17 / 18 * 100;
 
-	await sleep(500);
+	await sleep(1000);
 	await grid_교체부품상세10();
 	progress.value = 18 / 18 * 100;
 
-	await sleep(500);
+	await sleep(1000);
 	await 반품입고_load_pic();
 	await 재출하_load_pic();
 	await 완전분해_load_pic();
@@ -1157,6 +1158,7 @@ async function grid_입고(m_id = '') {
 	if(doc_count > 0) {
 		find(입고_pic, m_id);
 		await delay();
+		if(find_array.length == 0) return;
 		console.log(find_array);
 		pic1.src = 'data:image/;base64,' + find_array[0].pic1;
 		pic2.src = 'data:image/;base64,' + find_array[0].pic2;
@@ -1244,6 +1246,7 @@ async function grid_세척(m_id = '') {
 	if(doc_count > 0) {
 		find(세척_pic, m_id);
 		await delay();
+		if(find_array.length == 0) return;
 		console.log(find_array);
 		pic1.src='data:image/;base64,' + find_array[0].pic1;
 		pic2.src='data:image/;base64,' + find_array[0].pic2;
@@ -1353,6 +1356,7 @@ async function grid_기초검사(m_id = '') {
 	if(doc_count > 0) {
 		find(기초검사_pic, m_id);
 		await delay();
+		if(find_array.length == 0) return;
 		console.log(find_array);
 		pic1.src='data:image/;base64,' + find_array[0].pic1;
 		pic2.src='data:image/;base64,' + find_array[0].pic2;
@@ -1408,7 +1412,6 @@ async function grid_분해조립(m_id = '') {
 
 	var tabledata_분해조립 = [];
 
-	find_array = [];
 	if(m_id == '') {
 		find_분해조립(분해조립, { 관리번호 : { $exists: true } });
 		await delay();
@@ -1416,9 +1419,9 @@ async function grid_분해조립(m_id = '') {
 		find(분해조립, m_id);
 		await delay();
 	}
-
-	tabledata_분해조립 = find_array;
+	
 	console.log('분해조립 : ', find_array);
+	tabledata_분해조립 = find_array;
 
 	table_분해조립 = new Tabulator("#grid_분해조립", {
 		layout: "resizableColumnFit",
@@ -1664,8 +1667,8 @@ async function grid_성능검사(m_id = '') {
 			{title:"DCIR", field:"DCIR", sorter:"string", width:'180'},
 			{title:"DCIR_Charge", field:"DCIR_Charge", sorter:"string", width:'180'},
 			{title:"DCIR_Discharge", field:"DCIR_Discharge", sorter:"string", width:'180'},
-			{title:"절연저항_HVP", field:"절연저항_HVP", sorter:"string", width:'180'},
-			{title:"절연저항_HVN", field:"절연저항_HVN", sorter:"string", width:'180'},
+			//{title:"절연저항_HVP", field:"절연저항_HVP", sorter:"string", width:'180'},
+			//{title:"절연저항_HVN", field:"절연저항_HVN", sorter:"string", width:'180'},
 			{title:"완료일", field:"완료일", sorter:"string", width:'180'},
 			{title:"검사자", field:"검사자", sorter:"string", width:'180'},
 		],
@@ -1676,7 +1679,10 @@ async function grid_성능검사(m_id = '') {
 	if(doc_count > 0) {
 		find(성능검사_pic, m_id);
 		await delay();
+		
+		if(find_array.length == 0) return;
 		console.log(find_array);
+
 		pic1.src='data:image/;base64,' + find_array[0].pic1;
 		pic2.src='data:image/;base64,' + find_array[0].pic2;
 		pic3.src='data:image/;base64,' + find_array[0].pic3;
@@ -1784,6 +1790,7 @@ async function grid_EOL(m_id = '') {
 		find(EOL_pic, m_id);
 		await delay();
 		console.log(find_array);
+		if(find_array.length == 0) return;
 		pic1.src='data:image/;base64,' + find_array[0].pic1;
 		pic2.src='data:image/;base64,' + find_array[0].pic2;
 		pic3.src='data:image/;base64,' + find_array[0].pic3;
@@ -1916,6 +1923,7 @@ async function grid_출하정보(m_id = '') {
 	if(doc_count > 0) {
 		find(출하_pic, m_id);
 		await delay();
+		if(find_array.length == 0) return;
 		console.log(find_array);
 		pic1.src='data:image/;base64,' + find_array[0].pic1;
 		pic2.src='data:image/;base64,' + find_array[0].pic2;
@@ -1998,6 +2006,7 @@ async function grid_특이사항(m_id = '') {
 	if(doc_count > 0) {
 		find(특이사항_pic, m_id);
 		await delay();
+		if(find_array.length == 0) return;
 		console.log(find_array);
 		pic1.src='data:image/;base64,' + find_array[0].pic1;
 		pic2.src='data:image/;base64,' + find_array[0].pic2;

@@ -110,6 +110,7 @@ io.on('connection', async function(socket) {
 		const cnt = await count(col, query);
 		socket.emit('count_result', cnt, check);
 		////logger.info('worker:'+ worker + ' count col:' + col +'query:'+ JSON.stringify(query));
+		//
 		if(account.login == false && col == '계정' && cnt > 0) {
 			account.login = true;
 		} else if(account.login == true && col == '계정' && cnt < 1){
@@ -119,10 +120,9 @@ io.on('connection', async function(socket) {
 
 	socket.on('find', async function(worker, col, query, options, check) {
 		if(account.login == false) return;
-
+		await sleep(10);
 		const result_array = await find(col, query, options);
 		socket.emit('find_result', result_array, check);
-		await sleep(10);
 		////logger.info('worker:'+ worker + ' find col:' + col +'query:'+ JSON.stringify(query));
 	});
 
