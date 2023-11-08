@@ -61,6 +61,7 @@ async function 대기수량_현황_조회() {
 	await 성능검사대기();
 	await EOL대기();
 	await 출하대기();
+	await sleep(100);
 	await 공정대기();
 	await 품질대기();
 

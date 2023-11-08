@@ -76,20 +76,37 @@
               <label for="_공정단계"><b>공정단계</b></label>
             </td>
             <td>
-              <input type="text" id="_공정단계" size="40" readonly required />
-              <select name="language" onchange="공정입력_콤보박스(this)">
-                <option value="">---</option>
-                <option value="입고">입고</option>
-                <option value="세척">세척</option>
-                <option value="기초검사">기초검사</option>
-                <option value="분해조립">분해조립</option>
-                <option value="성능검사">성능검사</option>
-                <option value="EOL">EOL</option>
-                <option value="제조완료">제조완료</option>
-                <option value="출하검사">출하검사</option>
-                <option value="출하">출하</option>
-              </select>
-              <button onClick="processStep();">공정 상세 입력</button>
+		    <table>
+			    <tr>
+				    <td>
+					    <input type="text" id="_공정단계" size="40" readonly required />
+					    <select name="language" onchange="공정입력_콤보박스(this)">
+						    <option value="">---</option>
+						    <option value="입고">입고</option>
+						    <option value="세척">세척</option>
+						    <option value="기초검사">기초검사</option>
+						    <option value="분해조립">분해조립</option>
+						    <option value="성능검사">성능검사</option>
+						    <option value="EOL">EOL</option>
+						    <option value="제조완료">제조완료</option>
+						    <option value="출하검사">출하검사</option>
+						    <option value="출하">출하</option>
+					    </select>
+					    <!--<button onClick="processStep();">공정 상세 입력</button>-->
+				    </td>
+			    </tr>
+			    <tr>
+				    <td>
+					    <button onClick="flag_입고 = true; loadPage('base/입고.html');">입고</button>
+					    <button onClick="flag_세척 = true; loadPage('base/세척.html');">세척</button>
+					    <button onClick="flag_기초검사 = true; loadPage('base/기초검사.html');">기초검사</button>
+					    <button onClick="flag_분해조립 = true; loadPage('base/분해조립.html');">분해조립</button>
+					    <button onClick="flag_성능검사 = true; loadPage('base/성능검사.html');">성능검사</button>
+					    <button onClick="flag_EOL = true; loadPage('base/EOL.html');">EOL</button>
+					    <button onClick="flag_출하 = true; loadPage('base/출하정보.html');">출하 정보</button>
+				    </td>
+			    </tr>
+		    </table>
             </td>
           </tr>
           <tr>

@@ -80,7 +80,11 @@ async function 조회_list(today_begin, today_end) {
 	console.log(today_begin, today_end);
 
 	await dash_입고(today_begin, today_end);
+<<<<<<< Updated upstream
 	await dash_입고(today_begin, today_end)
+=======
+	await dash_입고(today_begin, today_end);
+>>>>>>> Stashed changes
 	await dash_입고_당일(today_begin, today_end);
 	await dash_세척(today_begin, today_end);
 	await dash_세척_당일(today_begin, today_end);
