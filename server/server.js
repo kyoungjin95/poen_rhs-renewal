@@ -122,6 +122,7 @@ io.on('connection', async function(socket) {
 
 		const result_array = await find(col, query, options);
 		socket.emit('find_result', result_array, check);
+		await sleep(10);
 		////logger.info('worker:'+ worker + ' find col:' + col +'query:'+ JSON.stringify(query));
 	});
 

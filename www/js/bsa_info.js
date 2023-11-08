@@ -1233,6 +1233,7 @@ async function grid_세척(m_id = '') {
 			{title:"입고일", field:"공정입고일", sorter:"string", width:'180'},
 			{title:"완료일", field:"공정완료일", sorter:"string", width:'180'},
 			{title:"기밀검사 케이스", field:"기밀검사_케이스", sorter:"string", width:'180'},
+			{title:"어퍼케이스재사용가능", field:"어퍼케이스재사용가능", sirter:"string", width:'180'},
 			{title:"기밀검사 케이스 특이사항", field:"기밀검사_케이스_특이사항", sorter:"string", width:'180'},
 			{title:"특이사항", field:"특이사항", sorter:"string", width:'180'},
 		]
