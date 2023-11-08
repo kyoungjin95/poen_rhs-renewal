@@ -28,7 +28,10 @@ async function 기초검사_시작(is재제조 = false) {
 		if(doc_count > 0) {
 			find(BSA재제조, _management_id.value);
 			await delay();
-			_재제조번호.value = find_array[0].재제조번호;
+
+			if(재제조번호 != undefined) {
+				_재제조번호.value = find_array[0].재제조번호;
+			}
 		} else {
 			_재제조번호.value = '';
 		}
@@ -88,8 +91,6 @@ async function 기초검사_시작(is재제조 = false) {
 		_기밀검사_냉각유로_특이사항.value = find_array[0].기밀검사_냉각유로_특이사항;
 		_절연검사P.value = find_array[0].절연검사_Plus;
 		_절연검사N.value = find_array[0].절연검사_Minus;
-		_절연검사HVP.value = find_array[0].절연검사_HVPlus;
-		_절연검사HVN.value = find_array[0].절연검사_HVMinus;
 		_통신검사_DTC코드1.value = find_array[0].통신검사_DTC코드1;
 		_통신검사_DTC코드2.value = find_array[0].통신검사_DTC코드2;
 		_통신검사_DTC코드3.value = find_array[0].통신검사_DTC코드3;
@@ -138,6 +139,8 @@ async function 기초검사_시작(is재제조 = false) {
 		_통신검사_팩전압.value = find_array[0].통신검사_팩전압;
 		_통신검사_셀전압편차.value = find_array[0].통신검사_셀전압편차;
 		_통신검사_릴레이구동.value = find_array[0].통신검사_릴레이구동;
+		_BSA생산일자.value = find_array[0].BSA생산일자;
+		_BMA_ROM_ID.value = find_array[0].BMA_ROM_ID;
 		_고장현상코드.value = find_array[0].고장현상코드;
 		_고장현상명.value = find_array[0].고장현상명;
 		_문제Cell_No.value = find_array[0].문제Cell_No;
@@ -170,6 +173,9 @@ async function 기초검사_시작(is재제조 = false) {
 		_통신검사_팩전압.value = '';
 		_통신검사_셀전압편차.value = '';
 		_통신검사_릴레이구동.value = '';
+		_BSA생산일자.value = '';
+		_BMA_ROM_ID.value = '';
+		_고장현상코드.value = '';
 		_고장현상코드.value = '';
 		_고장현상명.value = '';
 		_문제Cell_No.value = '';
@@ -238,8 +244,6 @@ async function 기초검사_SAVE() {
 	doc.기밀검사_냉각유로_특이사항 = _기밀검사_냉각유로_특이사항.value;
 	doc.절연검사_Plus = _절연검사P.value;
 	doc.절연검사_Minus = _절연검사N.value;
-	doc.절연검사_HVPlus = _절연검사HVP.value
-	doc.절연검사_HVMinus = _절연검사HVN.value;
 	doc.통신검사_DTC코드1 = _통신검사_DTC코드1.value;
 	doc.통신검사_DTC코드2 = _통신검사_DTC코드2.value;
 	doc.통신검사_DTC코드3 = _통신검사_DTC코드3.value;
@@ -311,6 +315,8 @@ async function 기초검사_SAVE() {
 	doc.통신검사_팩전압 = _통신검사_팩전압.value;
 	doc.통신검사_셀전압편차 = _통신검사_셀전압편차.value;
 	doc.통신검사_릴레이구동 = _통신검사_릴레이구동.value;
+	doc.BSA생산일자 = _BSA생산일자.value;
+	doc.BMA_ROM_ID = _BMA_ROM_ID.value;
 	doc.고장현상코드 = _고장현상코드.value;
 	doc.고장현상명 = _고장현상명.value;
 	doc.문제Cell_No = _문제Cell_No.value;

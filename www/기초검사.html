@@ -185,22 +185,6 @@
 						</tr>
 						<tr>
 							<td>
-								<label for="_절연검사HVP"><b>절연저항 HV+</b></label>
-							</td>
-							<td>
-								<input type="text" id="_절연검사HVP" size="40" required>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<label for="_절연검사HVN"><b>절연저항 HV-</b></label>
-							</td>
-							<td>
-								<input type="text" id="_절연검사HVN" size="40" required>
-							</td>
-						</tr>
-						<tr>
-							<td>
 								<label for="_통신검사_DTC코드1"><b>통신검사 DTC코드 1</b></label>
 							</td>
 							<td>
@@ -260,6 +244,23 @@
 								</select>
 							</td>
 						</tr>
+						<tr>
+							<td>
+								<label for="_BSA생산일자"><b>BSA 생산일자</b></label>
+							</td>
+							<td>
+								<input type="text" id="_BSA생산일자" size="40" required>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="_BMA_ROM_ID"><b>BMA ROM ID</b></label>
+							</td>
+							<td>
+								<input type="text" id="_BMA_ROM_ID" size="40" required>
+							</td>
+						</tr>
+
 						<tr>
 							<td>
 								<label for="_고장현상코드"><b>고장현상 코드</b></label>
@@ -353,10 +354,10 @@
 			<script>
 				const _management_id = document.getElementById('_management_id');
 				const _RO_no = document.getElementById('_RO_no');
-        const _VIN = document.getElementById('_VIN');
-        const _QRCode = document.getElementById('_QRCode');
-        const _주행거리 = document.getElementById('_주행거리');
-        const _차량번호 = document.getElementById('_차량번호');
+				const _VIN = document.getElementById('_VIN');
+				const _QRCode = document.getElementById('_QRCode');
+				const _주행거리 = document.getElementById('_주행거리');
+				const _차량번호 = document.getElementById('_차량번호');
 				const _공정입고일 = document.getElementById('_공정입고일');
 				const _육안검사_외부 = document.getElementById('_육안검사_외부');
 				const _육안검사_외부_특이사항 = document.getElementById('_육안검사_외부');
@@ -368,8 +369,6 @@
 				const _기밀검사_냉각유로_특이사항 = document.getElementById('_기밀검사_냉각유로');
 				const _절연검사P = document.getElementById('_절연검사P');
 				const _절연검사N = document.getElementById('_절연검사N');
-				const _절연검사HVP = document.getElementById('_절연검사HVP');
-				const _절연검사HVN = document.getElementById('_절연검사HVN');
 				const _토크검사_UPR_C = document.getElementById('_토크검사_UPR_C');
 				const _토크검사_버스바 = document.getElementById('_통신검사_버스바');
 				const _통신검사_DTC코드1 = document.getElementById('_통신검사_DTC코드1');
@@ -385,6 +384,8 @@
 				const _통신검사_팩전압 = document.getElementById('_통신검사_팩전압');
 				const _통신검사_셀전압편차 = document.getElementById('_통신검사_셀전압편차');
 				const _통신검사_릴레이구동 = document.getElementById('_통신검사_릴레이구동');
+				const _BSA생산일자 =  document.getElementById('_BSA생산일자');
+				const _BMA_ROM_ID =  document.getElementById('_BMA_ROM_ID');
 				const _고장현상코드 = document.getElementById('_고장현상코드');
 				const _고장현상명 = document.getElementById('_고장현상명');
 				const _문제Cell_No = document.getElementById('_문제Cell_No');
