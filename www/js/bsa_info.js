@@ -850,61 +850,82 @@ async function 재제조현황_조회() {
 
 	await grid_입고();
 	progress.value = 1 / 18 * 100;
-
+	
+	await sleep(100);
 	await grid_세척();
 	progress.value = 2 / 18 * 100;
 
+	await sleep(100);
 	await grid_기초검사();
 	progress.value = 3 / 18 * 100;
 
+	await sleep(100);
 	await grid_분해조립();
 	progress.value = 4 / 18 * 100;
 
+	await sleep(100);
 	await grid_성능검사();
 	progress.value = 5 / 18 * 100;
 
+	await sleep(100);
 	await grid_EOL();
 	progress.value = 6 / 18 * 100;
 
+	await sleep(100);
 	await grid_출하정보();
 	progress.value = 7 / 18 * 100;
 
+	await sleep(100);
 	await grid_특이사항();
 	progress.value = 8 / 18 * 100;
 
+	await sleep(100);
 	await grid_교체부품상세1();
 	progress.value = 9 / 18 * 100;
 
+	await sleep(100);
 	await grid_교체부품상세2();
 	progress.value = 10 / 18 * 100;
 
+	await sleep(100);
 	await grid_교체부품상세3();
 	progress.value = 11 / 18 * 100;
 
+	await sleep(100);
 	await grid_교체부품상세4();
 	progress.value = 12 / 18 * 100;
 
+	await sleep(100);
 	await grid_교체부품상세5();
 	progress.value = 13 / 18 * 100;
 
+	await sleep(100);
 	await grid_교체부품상세6();
 	progress.value = 14 / 18 * 100;
 
+	await sleep(100);
 	await grid_교체부품상세7();
 	progress.value = 15 / 18 * 100;
 
+	await sleep(100);
 	await grid_교체부품상세8();
 	progress.value = 16 / 18 * 100;
 
+	await sleep(100);
 	await grid_교체부품상세9();
 	progress.value = 17 / 18 * 100;
 
+	await sleep(100);
 	await grid_교체부품상세10();
 	progress.value = 18 / 18 * 100;
 
+	await sleep(100);
 	await 반품입고_load_pic();
+	await sleep(100);
 	await 재출하_load_pic();
+	await sleep(100);
 	await 완전분해_load_pic();
+	await sleep(100);
 	await 폐기_load_pic();
 };
 
