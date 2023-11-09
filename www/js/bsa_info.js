@@ -848,7 +848,7 @@ async function 재제조현황_조회() {
 		return;
 	});
 
-	await sleep(1000);
+	await sleep(2000);
 	await grid_입고();
 	progress.value = 1 / 18 * 100;
 	
