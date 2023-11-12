@@ -2,213 +2,196 @@
   <head>
     <title>완료 보고서</title>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="base/style/newstyle.css" />
+    <link rel="stylesheet" href="base/style/contract.css" />
   </head>
   <body>
-    <div id="confirmation" class="page">
-      <div class="confirmation-back"></div>
-      <div class="confirmation">
-        <div class="confirmation__header">
-          <div class="header__top">
-            <div class="header__top_logo">
+    <div class="agreement-all c">
+      <div id="confirmation" class="page">
+        <div class="confirmation-back"></div>
+        <div class="confirmation">
+          <div class="confirmation__header">
+            <div class="header__top">
+              <div class="header__top_logo">
+                <img
+                  src="base/img/poen.png"
+                  alt="포엔 로고 이미지"
+                  class="logo_img"
+                />
+                <h2 class="logo_txt"><span>(주)</span> 포엔</h2>
+              </div>
+              <table class="content__table">
+                <tr>
+                  <th class="confirm">보증기간</th>
+                </tr>
+                <tr>
+                  <td class="confirm">5년 or 10만km 우선 도래일</td>
+                </tr>
+              </table>
+            </div>
+            <div class="header__text">
+              <h2>전기차 리퍼비시 배터리팩 거래 사실 확인서</h2>
+              <p>
+                고객은 제공된 약관에 따라 구입하는 것에 동의하며, <br />판매자는
+                '리퍼비시 배터리팩'과 부대 서비스를 제공합니다. 납품처는 아래
+                '수리거점'입니다.
+              </p>
+              <div class="amount">
+                <span> - 금&nbsp;액 :</span>금
+                <input
+                  type="text"
+                  style="color: #444"
+                  placeholder="금액 입력란"
+                /><em>원</em>(부가세 제외)
+                <span>(※ 장착비/고품회수 조건 등 옵션 기입 – 특이사항시)</span>
+              </div>
+            </div>
+          </div>
+          <div class="confirmation__content">
+            <div class="privacy__con">
+              <h3>판매자</h3>
+              <p style="letter-spacing: 0.5px">
+                주식회사 포엔 (사업자등록번호 : 368-81-01544)<br />
+                주소 : 경기도 의왕시 안양판교로 82, 6층 605호 (포일동,
+                기업성장지원센터)<br />
+                전화번호 : 070-7797-8423<br />
+                이메일 : refurbish@poen.co.kr<br />
+                대표이사 : 최성진 (인)
+              </p>
               <img
-                src="base/img/poen.png"
-                alt="포엔 로고 이미지"
-                width="30%"
-                height="30%"
+                src="base/img/poen-stamp.png"
+                alt="포엔 도장"
+                class="poen-stamp"
               />
-              <h2><span>(주)</span> 포엔</h2>
             </div>
-            <table class="content__table" style="width: 100%">
-              <tr>
-                <th class="confirm">보증기간</th>
-              </tr>
-              <tr>
-                <td class="confirm">5년 or 10만km 우선 도래일</td>
-              </tr>
-            </table>
-          </div>
-          <div class="header__text">
-            <h2>전기차 리퍼비시 배터리팩 거래 사실 확인서</h2>
-            <p>
-              고객은 제공된 약관에 따라 구입하는 것에 동의하며, <br />판매자는
-              '리퍼비시 배터리팩'과 부대 서비스를 제공합니다. 납품처는 아래
-              '수리거점'입니다.
-            </p>
-            <div class="amount">
-              <span> - 금&nbsp;액 :</span>금
-              <input
-                type="text"
-                style="
-                  font-size: 18px;
-                  color: #000;
-                  width: 150px;
-                  text-align: center;
-                "
-                placeholder="금액 입력란"
-                onfocus="this.placeholder = ''"
-              /><em>원</em>(부가세 제외)
-              <span>(※ 장착비/고품회수 조건 등 옵션 기입 – 특이사항시)</span>
+            <div class="privacy__con">
+              <h3>고객 (고객님 작성)</h3>
+              <table class="content__table">
+                <colgroup>
+                  <col class="col_1" width="30%" />
+                  <col class="col_2" width="70%" />
+                </colgroup>
+                <tr>
+                  <td>성명/상호</td>
+                  <td>
+                    <input type="text" />
+                  </td>
+                </tr>
+                <tr>
+                  <td>생년월일/사업자번호</td>
+                  <td>
+                    <input type="text" />
+                  </td>
+                </tr>
+                <tr>
+                  <td>주소</td>
+                  <td>
+                    <input type="text" />
+                  </td>
+                </tr>
+                <tr>
+                  <td>전화번호</td>
+                  <td>
+                    <input type="text" />
+                  </td>
+                </tr>
+                <tr>
+                  <td>e-mail</td>
+                  <td>
+                    <input type="text" />
+                  </td>
+                </tr>
+              </table>
+              <div class="sign" style="text-align: left; font-weight: bold">
+                서명 :
+                <span style="color: #888"
+                  >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;성&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;명&nbsp;&nbsp;&nbsp;&nbsp;(인)</span
+                >
+                <canvas style="width: 20px"></canvas>
+              </div>
             </div>
-          </div>
-        </div>
-        <div class="confirmation__content">
-          <div class="privacy__con">
-            <h3>판매자</h3>
-            <p style="letter-spacing: 0.5px">
-              주식회사 포엔 (사업자등록번호 : 368-81-01544)<br />
-              주소 : 경기도 의왕시 안양판교로 82, 6층 605호 (포일동,
-              기업성장지원센터)<br />
-              전화번호 : 070-7797-8423<br />
-              이메일 : refurbish@poen.co.kr<br />
-              대표이사 : 최성진 (인)
-            </p>
-            <img
-              src="base/img/poen-stamp.png"
-              alt="포엔 도장"
-              class="poen-stamp"
-            />
-          </div>
-          <div class="privacy__con" style="margin-top: 45px">
-            <h3>고객 (고객님 작성)</h3>
-            <table class="content__table">
-              <colgroup>
-                <col class="col_1" width="30%" />
-                <col class="col_2" width="70%" />
-              </colgroup>
-              <tr>
-                <td>성명/상호</td>
-                <td>
-                  <input type="text" />
-                </td>
-              </tr>
-              <tr>
-                <td>생년월일/사업자번호</td>
-                <td>
-                  <input type="text" />
-                </td>
-              </tr>
-              <tr>
-                <td>주소</td>
-                <td>
-                  <input type="text" />
-                </td>
-              </tr>
-              <tr>
-                <td>전화번호</td>
-                <td>
-                  <input type="text" />
-                </td>
-              </tr>
-              <tr>
-                <td>e-mail</td>
-                <td>
-                  <input type="text" />
-                </td>
-              </tr>
-            </table>
-            <div class="sign" style="text-align: left; font-weight: bold">
-              서명 :
-              <!-- <input
-                type="text"
-                placeholder="성&nbsp;&nbsp;&nbsp;&nbsp;명"
-                style="background-color: transparent"
-                onfocus="this.placeholder = ''"
-              /> -->
-              <span style="color: #888"
-                >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;성&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;명&nbsp;&nbsp;&nbsp;&nbsp;(인)</span
-              >
-              <canvas style="width: 20px"></canvas>
+            <div class="privacy__con">
+              <h3>가입차량 (고객님 or 수리처 작성)</h3>
+              <table class="content__table">
+                <colgroup>
+                  <col class="col_1" width="35%" />
+                  <col class="col_2" width="65%" />
+                </colgroup>
+                <tr>
+                  <td>차량제조사/모델명/트림(배터리옵션)</td>
+                  <td>
+                    <input type="text" />
+                  </td>
+                </tr>
+                <tr>
+                  <td>제조년도</td>
+                  <td>
+                    <input type="text" />
+                  </td>
+                </tr>
+                <tr>
+                  <td>구매 신청일 누적주행 거리</td>
+                  <td>
+                    <input type="text" placeholder="계기판 사진 제출 必" />
+                  </td>
+                </tr>
+                <tr>
+                  <td>차량 번호</td>
+                  <td>
+                    <input type="text" />
+                  </td>
+                </tr>
+                <tr>
+                  <td>차대 번호</td>
+                  <td>
+                    <input type="text" />
+                  </td>
+                </tr>
+                <tr>
+                  <td>차량 용도</td>
+                  <td>
+                    <input
+                      type="text"
+                      placeholder="법인택시, 개인택시, 렌터카, 리스, 일반법인, 개인, 기타 직접입력 中 택1"
+                    />
+                  </td>
+                </tr>
+              </table>
             </div>
-          </div>
-          <div class="privacy__con">
-            <h3>가입차량 (고객님 or 수리처 작성)</h3>
-            <table class="content__table">
-              <colgroup>
-                <col class="col_1" width="35%" />
-                <col class="col_2" width="65%" />
-              </colgroup>
-              <tr>
-                <td>차량제조사/모델명/트림(배터리옵션)</td>
-                <td>
-                  <input type="text" />
-                </td>
-              </tr>
-              <tr>
-                <td>제조년도</td>
-                <td>
-                  <input type="text" />
-                </td>
-              </tr>
-              <tr>
-                <td>구매 신청일 누적주행 거리</td>
-                <td>
-                  <input
-                    type="text"
-                    class="fzchange"
-                    placeholder="계기판 사진 제출 必"
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td>차량 번호</td>
-                <td>
-                  <input type="text" />
-                </td>
-              </tr>
-              <tr>
-                <td>차대 번호</td>
-                <td>
-                  <input type="text" />
-                </td>
-              </tr>
-              <tr>
-                <td>차량 용도</td>
-                <td>
-                  <input
-                    class="fzchange"
-                    type="text"
-                    placeholder="법인택시, 개인택시, 렌터카, 리스, 일반법인, 개인, 기타 직접입력 中 택1"
-                    onfocus="this.placeholder = ''"
-                  />
-                </td>
-              </tr>
-            </table>
-          </div>
-          <div class="privacy__con">
-            <h3>수리거점 (수리처 작성)</h3>
-            <table class="content__table">
-              <colgroup>
-                <col class="col_1" width="30%" />
-                <col class="col_2" width="70%" />
-              </colgroup>
-              <tr>
-                <td>상호</td>
-                <td>
-                  <input type="text" />
-                </td>
-              </tr>
-              <tr>
-                <td>주소</td>
-                <td>
-                  <input type="text" />
-                </td>
-              </tr>
-              <tr>
-                <td>전화번호</td>
-                <td>
-                  <input type="text" />
-                </td>
-              </tr>
-            </table>
-          </div>
-          <div class="privacy__con">
-            <div class="date" style="font-weight: bold">
-              2023 .
-              <input type="text" />. <input type="text" />.
+            <div class="privacy__con">
+              <h3>수리거점 (수리처 작성)</h3>
+              <table class="content__table">
+                <colgroup>
+                  <col class="col_1" width="30%" />
+                  <col class="col_2" width="70%" />
+                </colgroup>
+                <tr>
+                  <td>상호</td>
+                  <td>
+                    <input type="text" />
+                  </td>
+                </tr>
+                <tr>
+                  <td>주소</td>
+                  <td>
+                    <input type="text" />
+                  </td>
+                </tr>
+                <tr>
+                  <td>전화번호</td>
+                  <td>
+                    <input type="text" />
+                  </td>
+                </tr>
+              </table>
             </div>
+            <div class="privacy__con">
+              <div class="date" style="font-weight: bold">
+                2023 .
+                <input type="text" />. <input type="text" />.
+              </div>
 
-            <p>※ 본 문서를 제시하는 고객에게만 보증수리가 제공됩니다.</p>
+              <p>※ 본 문서를 제시하는 고객에게만 보증수리가 제공됩니다.</p>
+            </div>
           </div>
         </div>
       </div>
