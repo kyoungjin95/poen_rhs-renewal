@@ -1,4 +1,4 @@
-const DELAY = 3; 
+const DELAY = 4; 
 const DELAY_SYS = 1000; 
 const 계정 = '계정';
 const BSA재제조 = 'BSA재제조';
@@ -2409,7 +2409,7 @@ async function delay() {
 	while(flag_arrivedMSG == false) {
 		await sleep(1);
 	}
-	await sleep(DELAY * 20);
+	await sleep(DELAY * 10);
 	return true;
 }
 

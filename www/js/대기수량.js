@@ -2,6 +2,7 @@ var BSA대기수량_table;
 var BSA출하수량_table;
 var 출하대기_BSA_관리번호 = '';
 var 선택대기공정 = '세척';
+var 대기수량Timer;
 
 async function 대기수량_현황_시작() {
 	flag_대기수량_현황 = false;
@@ -52,18 +53,30 @@ async function 대기수량_현황_시작() {
 	document.getElementById('품질대기').addEventListener("click", function(){
 		대기목록('품질대기');
 	});
+
+	if(대기수량Timer != undefined) clearInverter(대기수량Timer);
+	대기수량Timer = setInverter(function() {
+		대기수량_현황_조회();
+	}, 1000 * 30);
 }
 
 async function 대기수량_현황_조회() {
 	await 세척대기();
+	await sleep(100);
 	await 기초검사대기();
+	await sleep(100);
 	await 분해조립대기();
+	await sleep(100);
 	await 성능검사대기();
+	await sleep(100);
 	await EOL대기();
+	await sleep(100);
 	await 출하대기();
 	await sleep(100);
 	await 공정대기();
+	await sleep(100);
 	await 품질대기();
+	await sleep(100);
 
 	console.log('update');
 }

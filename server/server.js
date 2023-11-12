@@ -128,7 +128,7 @@ io.on('connection', async function(socket) {
 
 	socket.on('update', async function(worker, col, filter, doc) {
 		if(account.login == false && col != '계정') return;
-		//logger.info('worker:'+ worker + ' update col:' + col + 'doc:' + JSON.stringify(doc));
+		logger.info('worker:'+ worker + ' update col:' + col + 'doc:' + JSON.stringify(doc));
 
 		const result = await update(col, filter, doc);
 		socket.emit('update_result', result);
@@ -136,14 +136,14 @@ io.on('connection', async function(socket) {
 
 	socket.on('delete', async function(worker, col, query) {
 		if(account.login == false) return;
-		//logger.info('worker:'+ worker + ' delete col:' + col + 'query:'+ JSON.stringify(query));
+		logger.info('worker:'+ worker + ' delete col:' + col + 'query:'+ JSON.stringify(query));
 		const result_count = await deleteOne(col, query);
 		socket.emit('delete_result', result_count);
 	});
 
 	socket.on('delete_by_id', async function(worker, col, id) {
 		if(account.login == false) return;
-		//logger.info('worker:'+ worker + ' delete col:' + col + 'query:'+ JSON.stringify(query));
+		logger.info('worker:'+ worker + ' delete col:' + col + 'query:'+ JSON.stringify(query));
 		console.log('delete:', id);
 		const result_count = await deleteOneById(col, id);
 		socket.emit('delete_result', result_count);
@@ -219,7 +219,7 @@ async function insertMany(col, doc) {
 		const database = client.db(db_name);
 		const collection = database.collection(col);
 		const result = await collection.insertMany(doc);
-		console.log(`A document was inserted with the _id: ${result.insertedId}`);
+		//console.log(`A document was inserted with the _id: ${result.insertedId}`);
 
 		return result.insertedId;
 	} catch(err) {
@@ -235,7 +235,7 @@ async function count(col, query) {
 		const database = client.db(db_name);
 		const collection = database.collection(col);
 		const cnt = await collection.countDocuments(query);
-		console.log('db: ', db_name, 'collection: ', col, 'count: ', cnt, 'by :', query);
+		//console.log('db: ', db_name, 'collection: ', col, 'count: ', cnt, 'by :', query);
 		return cnt;
 	} catch(err) {
 		console.error(err);
@@ -257,7 +257,7 @@ async function find(col, query, options) {
 		const collection = database.collection(col);
 		const cursor = await collection.find(query, options);
 		const result_array = await cursor.toArray();
-		console.log('finded (', col, ':', query, ') :', result_array);
+		//console.log('finded (', col, ':', query, ') :', result_array);
 		return result_array;
 	} catch(err) {
 		console.error(err);

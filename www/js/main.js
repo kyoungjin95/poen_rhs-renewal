@@ -119,11 +119,11 @@ var interval = setInterval(function() {
 	if(flag_출하 == true) { stop_repeat(); 출하정보_시작();}
 }, 500);
 
-var intervalRepeat = setInterval(function() {
+//var intervalRepeat = setInterval(function() {
 	//if(flag_repeat_생산현황 == true) 생산현황_시작();
-	if(flag_repeat_대시보드 == true) 대시보드_시작();
-	if(flag_repeat_대기수량_현황 == true) 대기수량_현황_조회();
-}, 1000 * 30);
+//	if(flag_repeat_대시보드 == true) 대시보드_시작();
+//	if(flag_repeat_대기수량_현황 == true) 대기수량_현황_조회();
+//}, 1000 * 30);
 
 function stop_repeat() {
 	console.log('stop repeat');
