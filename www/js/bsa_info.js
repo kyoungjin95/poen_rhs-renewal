@@ -683,12 +683,14 @@ async function 재제조현황_조회() {
 		count(BSA재제조, { 차종 : { $in : ['OS', 'OS_EV', 'NE', 'NE_EV', 'HR', 'HR_EV', 'LK', 'LK_EV', 'LM', 'LM_EV', 'LKFC', 'LKFC-EV', 'CS', 'CS-EV', 'CS_EV', 'SX2', 'SX2-EV', 'AE', 'AE_EV', 'CE', 'CE_EV', 'ME', 'ME_EV', 'FE', 'FE_EV', 'RG3', 'RG3-EV', 'JW', 'JW_EV', 'JK', 'JK_EV', 'JX', 'JX_EV']}, 구분 : '보증'});
 		await delay();
 	} else {
-		count(BSA재제조, { 관리번호 : { $exists: true } });
-		await delay();
+		//count(BSA재제조, { 관리번호 : { $exists: true } });
+		//await delay();
+
+		doc_count = 1;
 	}
 
 	console.log('doc_count: ', doc_count);
-	if(true || doc_count > 0) {
+	if(doc_count > 0) {
 		if(level == 'kia_일반') {
 			find_BSA재제조(BSA재제조, { 차종 : { $in : ['DE', 'DE_EV', 'DEPBV', 'DEPBV-EV', 'CV', 'CV_EV', 'MV', 'MV_EV', 'PU', 'PU_EV', 'SG2', 'SG2-EV', 'TAM', 'TAM-EV', 'PS', 'PS_EV', 'SK3']}, 구분 : '일반'});
 			await delay();
@@ -704,6 +706,7 @@ async function 재제조현황_조회() {
 		} else {
 			find_BSA재제조(BSA재제조, { 관리번호 : { $exists: true } });
 			await delay();
+			await sleep(2000);
 		}
 	} 
 
