@@ -3,6 +3,7 @@
     <title>완료 보고서</title>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="base/style/contract.css" />
+    <script src="base/jslib/luxon.min.js"></script>
     <script src="base/jslib/socket.io.min.js"></script>
     <script src="base/js/poenRHS_mini.js"></script>
   </head>
@@ -191,7 +192,7 @@
             <div class="privacy__con">
               <div class="date" style="font-weight: bold">
 		<input type="text" placehorder="2023" id="_year"> .
-                <input type="text" id="_month"/>. <input type="text" id="_day"/>.
+                <input type="text" id="_month"/>. <input type="text" id="_day"/>
               </div>
 
               <p>※ 본 문서를 제시하는 고객에게만 보증수리가 제공됩니다.</p>
@@ -201,7 +202,7 @@
       </div>
     </div>
     <div>
-	    <center><button onClick="save();">저 장</button>></center>
+	    <center><button onClick="save();">저 장</button></center>
     </div>
 
     <script>
@@ -212,10 +213,10 @@
 	    var _전화번호 = document.getElementById('_전화번호');
 	    var _email = document.getElementById('_email');
 	    var _서명 = document.getElementById('_서명');
-	    var _제조사 = document.getElementById('제조사');
+	    var _제조사 = document.getElementById('_제조사');
 	    var _제조년도 = document.getElementById('_제조년도');
 	    var _누적주행거리 = document.getElementById('_누적주행거리');
-	    var _차량번호 = document.getElementById('차량번호');
+	    var _차량번호 = document.getElementById('_차량번호');
 	    var _차대번호 = document.getElementById('_차대번호');
 	    var _차량용도 = document.getElementById('_차량용도');
 	    var _상호 = document.getElementById('_상호');
@@ -225,9 +226,13 @@
 	    var _month = document.getElementById('_month');
 	    var _day = document.getElementById('_day');
 
-	    function save() {
+	    async function save() {
+	    	var DateTime = luxon.DateTime;
+	    	var seoul = DateTime.local().setZone("Asia/Seoul");
+	    	var now = seoul.toString().slice(0, 19);
+
 		var doc = 거래확인서_doc;
-		doc.date = now();
+		doc.날짜ID = now;
 		doc.금액 = _금액.value;
 		doc.성명 = _성명.value;
 		doc.생년월일 = _생년월일.value;
@@ -250,6 +255,18 @@
 
 	    	update_거래확인서(거래확인서, doc);
 	    	await delay();
+
+		console.log('save:', doc);
+		console.log(update_count);
+		console.log(insert_count);
+
+		if(update_count > 0) {
+			alert('업데이트 되었습니다');
+		}
+
+		if(insert_count > 0) {
+			alert('저장 되었습니다');
+		}
 	    }
     </script>
   </body>

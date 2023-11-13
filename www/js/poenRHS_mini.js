@@ -1,9 +1,11 @@
 const DELAY = 20; 
 const DELAY_SYS = 1000; 
 const 거래확인서 = '거래확인서';
+const worker = '고객';
+const level = '영업팀';
 
 const 거래확인서_doc = {
-	date : '',
+	날짜ID : '',
 	금액 : '',
 	성명 : '',
 	생년월일 : '',
@@ -17,8 +19,6 @@ const 거래확인서_doc = {
 	차량번호 : '',
 	차대번호 : '',
 	상호 : '',
-	주소 : '',
-	전화번호 : '',
 	year : '',
 	month : '',
 	day : ''
@@ -26,7 +26,7 @@ const 거래확인서_doc = {
 
 const 거래확인서_ = {
 	_id : 0,
-	date : 1,
+	날짜ID : 1,
 	금액 : 1,
 	성명 : 1,
 	생년월일 : 1,
@@ -40,8 +40,6 @@ const 거래확인서_ = {
 	차량번호 : 1,
 	차대번호 : 1,
 	상호 : 1,
-	주소 : 1,
-	전화번호 : 1,
 	year : 1,
 	month : 1,
 	day : 1
@@ -148,7 +146,11 @@ async function update_거래확인서(col, doc) {
 	await sleep(DELAY);
 	flag_arrivedMSG = false;
 	while(flag_arrivedMSG == false) {
-		socket.emit('update', worker, col, { level: doc.date }, {$set: doc});
+		console.log('worker :', worker);
+		console.log('doc :', doc);
+
+
+		socket.emit('update', worker, col, { 날짜ID: doc.날짜ID }, {$set: doc});
 		await sleep(DELAY_SYS * 2);
 	}
 }
@@ -170,6 +172,7 @@ async function find_거래확인서(col, query) {
 	if(check > 10000) check = 0;
 
 	while(flag_arrivedMSG == false) {
+		console.log(worker, col, query, 거래확인서, check);
 		socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: 거래확인서_ }, check);
 		await sleep(DELAY_SYS * 10);
 	}

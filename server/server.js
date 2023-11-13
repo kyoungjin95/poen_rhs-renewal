@@ -49,6 +49,14 @@ app.get('/tesseract', (req, res) => {
 	res.sendFile(path.join(__dirname, '../www/tesseract_ocr.html'));
 });
 
+app.get('/confirm_doc', (req, res) => {
+	res.sendFile(path.join(__dirname, '../www/거래확인서.html'));
+});
+
+app.get('/confirm_doc_search', (req, res) => {
+	res.sendFile(path.join(__dirname, '../www/거래확인서조회.html'));
+});
+
 client = new MongoClient(uri);
 
 server.listen(80, () => {
@@ -106,7 +114,7 @@ io.on('connection', async function(socket) {
 	});
 
 	socket.on('count', async function(level, col, query, check) {
-		if(account.login == false && col != '계정') return;
+		if(account.login == false && col != '계정' && col != '거래확인서') return;
 		const cnt = await count(col, query);
 		socket.emit('count_result', cnt, check);
 		////logger.info('worker:'+ worker + ' count col:' + col +'query:'+ JSON.stringify(query));
@@ -119,7 +127,7 @@ io.on('connection', async function(socket) {
 	});
 
 	socket.on('find', async function(worker, col, query, options, check) {
-		if(account.login == false) return;
+		if(account.login == false && col != '거래확인서') return;
 		await sleep(10);
 		const result_array = await find(col, query, options);
 		socket.emit('find_result', result_array, check);
@@ -127,7 +135,7 @@ io.on('connection', async function(socket) {
 	});
 
 	socket.on('update', async function(worker, col, filter, doc) {
-		if(account.login == false && col != '계정') return;
+		if(account.login == false && col != '계정' && col != '거래확인서') return;
 		logger.info('worker:'+ worker + ' update col:' + col + 'doc:' + JSON.stringify(doc));
 
 		const result = await update(col, filter, doc);
