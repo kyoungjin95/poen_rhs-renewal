@@ -3,6 +3,8 @@
     <title>완료 보고서</title>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="base/style/contract.css" />
+    <script src="base/jslib/socket.io.min.js"></script>
+    <script src="base/js/poenRHS_mini.js"></script>
   </head>
   <body>
     <div class="agreement-all c">
@@ -41,6 +43,7 @@
                   type="text"
                   style="color: #444"
                   placeholder="금액 입력란"
+		  id="_금액"
                 /><em>원</em>(부가세 제외)
                 <span>(※ 장착비/고품회수 조건 등 옵션 기입 – 특이사항시)</span>
               </div>
@@ -73,31 +76,31 @@
                 <tr>
                   <td>성명/상호</td>
                   <td>
-                    <input type="text" />
+                    <input type="text" id="_성명" />
                   </td>
                 </tr>
                 <tr>
                   <td>생년월일/사업자번호</td>
                   <td>
-                    <input type="text" />
+                    <input type="text" id="_생년월일"/>
                   </td>
                 </tr>
                 <tr>
                   <td>주소</td>
                   <td>
-                    <input type="text" />
+                    <input type="text" id="_주소"/>
                   </td>
                 </tr>
                 <tr>
                   <td>전화번호</td>
                   <td>
-                    <input type="text" />
+                    <input type="text" id="_전화번호"/>
                   </td>
                 </tr>
                 <tr>
                   <td>e-mail</td>
                   <td>
-                    <input type="text" />
+                    <input type="text" id="_email"/>
                   </td>
                 </tr>
               </table>
@@ -106,7 +109,7 @@
                 <span style="color: #888"
                   >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;성&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;명&nbsp;&nbsp;&nbsp;&nbsp;(인)</span
                 >
-                <canvas style="width: 20px"></canvas>
+                <canvas style="width: 20px" id="_서명"></canvas>
               </div>
             </div>
             <div class="privacy__con">
@@ -119,31 +122,31 @@
                 <tr>
                   <td>차량제조사/모델명/트림(배터리옵션)</td>
                   <td>
-                    <input type="text" />
+                    <input type="text" id="_제조사"/>
                   </td>
                 </tr>
                 <tr>
                   <td>제조년도</td>
                   <td>
-                    <input type="text" />
+                    <input type="text" id="_제조년도"/>
                   </td>
                 </tr>
                 <tr>
                   <td>구매 신청일 누적주행 거리</td>
                   <td>
-                    <input type="text" placeholder="계기판 사진 제출 必" />
+                    <input type="text" placeholder="계기판 사진 제출 必" id="_누적주행거리"/>
                   </td>
                 </tr>
                 <tr>
                   <td>차량 번호</td>
                   <td>
-                    <input type="text" />
+                    <input type="text" id="_차량번호" />
                   </td>
                 </tr>
                 <tr>
                   <td>차대 번호</td>
                   <td>
-                    <input type="text" />
+                    <input type="text" id="_차대번호"/>
                   </td>
                 </tr>
                 <tr>
@@ -152,6 +155,7 @@
                     <input
                       type="text"
                       placeholder="법인택시, 개인택시, 렌터카, 리스, 일반법인, 개인, 기타 직접입력 中 택1"
+		      id="_차량용도"
                     />
                   </td>
                 </tr>
@@ -167,27 +171,27 @@
                 <tr>
                   <td>상호</td>
                   <td>
-                    <input type="text" />
+                    <input type="text" id="_상호"/>
                   </td>
                 </tr>
                 <tr>
                   <td>주소</td>
                   <td>
-                    <input type="text" />
+                    <input type="text" id="_주소"/>
                   </td>
                 </tr>
                 <tr>
                   <td>전화번호</td>
                   <td>
-                    <input type="text" />
+                    <input type="text" id="_전화번호"/>
                   </td>
                 </tr>
               </table>
             </div>
             <div class="privacy__con">
               <div class="date" style="font-weight: bold">
-                2023 .
-                <input type="text" />. <input type="text" />.
+		<input type="text" placehorder="2023" id="_year"> .
+                <input type="text" id="_month"/>. <input type="text" id="_day"/>.
               </div>
 
               <p>※ 본 문서를 제시하는 고객에게만 보증수리가 제공됩니다.</p>
@@ -196,5 +200,57 @@
         </div>
       </div>
     </div>
+    <div>
+	    <center><button onClick="save();">저 장</button>></center>
+    </div>
+
+    <script>
+	    var _금액 = document.getElementById('_금액');
+	    var _성명 = document.getElementById('_성명');
+	    var _생년월일 = document.getElementById('_생년월일');
+	    var _주소 = document.getElementById('_주소');
+	    var _전화번호 = document.getElementById('_전화번호');
+	    var _email = document.getElementById('_email');
+	    var _서명 = document.getElementById('_서명');
+	    var _제조사 = document.getElementById('제조사');
+	    var _제조년도 = document.getElementById('_제조년도');
+	    var _누적주행거리 = document.getElementById('_누적주행거리');
+	    var _차량번호 = document.getElementById('차량번호');
+	    var _차대번호 = document.getElementById('_차대번호');
+	    var _차량용도 = document.getElementById('_차량용도');
+	    var _상호 = document.getElementById('_상호');
+	    var _주소 = document.getElementById('_주소');
+	    var _전화번호 = document.getElementById('_전화번호');
+	    var _year = document.getElementById('_year');
+	    var _month = document.getElementById('_month');
+	    var _day = document.getElementById('_day');
+
+	    function save() {
+		var doc = 거래확인서_doc;
+		doc.date = now();
+		doc.금액 = _금액.value;
+		doc.성명 = _성명.value;
+		doc.생년월일 = _생년월일.value;
+		doc.주소 = _주소.value;
+		doc.전화번호 = _전화번호.value;
+		doc.email = _email.value;
+		doc.서명 = _서명.value;
+		doc.제조사 = _제조사.value;
+		doc.제조년도 = _제조년도.value;
+		doc.누적주행거리 = _누적주행거리.value;
+		doc.차량번호 = _차량번호.value;
+		doc.차대번호 = _차대번호.value;
+		doc.차량용도 = _차량용도.value;
+		doc.상호 = _상호.value;
+		doc.주소 = _주소.value;
+		doc.전화번호 = _전화번호.value;
+		doc.year = _year.value;
+		doc.month = _month.value;
+		doc.day = _day.value;
+
+	    	update_거래확인서(거래확인서, doc);
+	    	await delay();
+	    }
+    </script>
   </body>
 </html>
