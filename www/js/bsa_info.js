@@ -706,7 +706,7 @@ async function 재제조현황_조회() {
 		} else {
 			find_BSA재제조(BSA재제조, { 관리번호 : { $exists: true } });
 			await delay();
-			await sleep(2000);
+			await sleep(1500);
 		}
 	} 
 
