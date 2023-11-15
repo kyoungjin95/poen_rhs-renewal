@@ -108,7 +108,7 @@
               </table>
               <div class="sign" style="text-align: left; font-weight: bold">
                 서명 :
-                <input type="text" placeholder="성    명" />
+                <input type="text" placeholder="성    명" id='_서명성명' />
                 <span style="color: #666">(인)</span>
                 <img style="width: 170px; height: 50px" id="_서명" />
               </div>
@@ -220,8 +220,8 @@
             style="position: relative; border: 1px solid #000"
           ></canvas>
           <br />
-          <a href="#" onclick="onClear();">지우기</a>&nbsp;&nbsp;&nbsp;&nbsp;
-          <a href="#" onclick="서명저장();">적용</a>
+          <button onclick="onClear();">지우기</button>&nbsp;&nbsp;&nbsp;&nbsp;
+          <button onclick="서명저장();">적용</button>
         </center>
       </div>
     </div>
@@ -358,6 +358,7 @@
       var _고객_주소 = document.getElementById("_고객_주소");
       var _고객_전화번호 = document.getElementById("_고객_전화번호");
       var _email = document.getElementById("_email");
+      var _서명성명 = document.getElementById("_서명성명");
       var _서명 = document.getElementById("_서명");
       var _제조사 = document.getElementById("_제조사");
       var _제조년도 = document.getElementById("_제조년도");
@@ -384,6 +385,7 @@
         doc.날짜ID = now;
         doc.금액 = _금액.value;
         doc.성명 = _성명.value;
+        doc.서명성명 = _서명성명.value;
         doc.생년월일 = _생년월일.value;
         doc.고객_주소 = _고객_주소.value;
         doc.고객_전화번호 = _고객_전화번호.value;

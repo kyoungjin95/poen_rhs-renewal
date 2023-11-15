@@ -19,6 +19,7 @@ async function 성능검사_시작(is재제조 = false) {
 		if(doc_count > 0) {
 			find(BSA재제조, _management_id.value);
 			await delay();
+			await sleep(100);
 
 			_재제조번호.value = find_array[0].재제조번호;
 		}
@@ -31,6 +32,7 @@ async function 성능검사_시작(is재제조 = false) {
 		if(doc_count > 0) {
 			find_BSA재제조(BSA재제조, { 재제조번호 : _재제조번호.value });
 			await delay();
+			await sleep(100);
 
 			_management_id.value = find_array[0].관리번호;
 		} else {
@@ -44,6 +46,7 @@ async function 성능검사_시작(is재제조 = false) {
 	if(doc_count > 0) {
 		find(입고, _management_id.value);
 		await delay();
+		await sleep(100);
 		console.log('입고 data:', find_array);
 
 		_구분.value = find_array[0].구분;
@@ -61,6 +64,7 @@ async function 성능검사_시작(is재제조 = false) {
 	if(doc_count > 0) {
 		find(성능검사, _management_id.value);
 		await delay();
+		await sleep(100);
 		
 		_공정입고일.value = find_array[0].공정입고일;
 		_용량평가.value = find_array[0].용량평가;

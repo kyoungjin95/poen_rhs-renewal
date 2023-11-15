@@ -23,6 +23,7 @@ async function 출하정보_시작(is재제조 = false) {
 		if(doc_count > 0) {
 			find(BSA재제조, _management_id.value );
 			await delay();
+			await sleep(100);
 		
 			_재제조번호.value = find_array[0].재제조번호;
 		}
@@ -33,6 +34,7 @@ async function 출하정보_시작(is재제조 = false) {
 		if(doc_count > 0) {
 			find_BSA재제조(BSA재제조, { 재제조번호: _재제조번호.value });
 			await delay();
+			await sleep(100);
 
 			_management_id.value = find_array[0].관리번호;
 		} else {
@@ -46,6 +48,7 @@ async function 출하정보_시작(is재제조 = false) {
 	if(doc_count > 0) {
 		find(입고, _management_id.value);
 		await delay();
+		await sleep(100);
 		console.log('입고 data:', find_array);
 
 		_차종.value = find_array[0].차종;
@@ -127,6 +130,7 @@ async function 출하정보_시작(is재제조 = false) {
 
 		find(출하정보, _management_id.value);
 		await delay();
+		await sleep(100);
 
 		_management_id.value = find_array[0].관리번호;
 		//_출하일.value = find_array[0].출하일;

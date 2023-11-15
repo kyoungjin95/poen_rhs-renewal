@@ -120,7 +120,7 @@
                 </table>
                 <div class="sign" style="text-align: left; font-weight: bold">
                   서명 :
-                  <input type="text" placeholder="성    명" />
+                  <input type="text" placeholder="성    명" id="_서명성명"/>
                   <span style="color: #666">(인)</span>
                   <img style="width: 170px; height: 50px" id="_서명" />
                 </div>
@@ -250,6 +250,7 @@
       var _고객_주소 = document.getElementById("_고객_주소");
       var _고객_전화번호 = document.getElementById("_고객_전화번호");
       var _email = document.getElementById("_email");
+      var _서명성명 = document.getElementById("_서명성명");
       var _서명 = document.getElementById("_서명");
       var _제조사 = document.getElementById("_제조사");
       var _제조년도 = document.getElementById("_제조년도");
@@ -257,27 +258,24 @@
       var _차량번호 = document.getElementById("_차량번호");
       var _차대번호 = document.getElementById("_차대번호");
       var _차량용도 = document.getElementById("_차량용도");
-      var _수리처_상호 = document.getElementById("_수리처_상호");
+      var _상호 = document.getElementById("_상호");
       var _수리처_주소 = document.getElementById("_수리처_주소");
       var _수리처_전화번호 = document.getElementById("_수리처_전화번호");
       var _year = document.getElementById("_year");
       var _month = document.getElementById("_month");
       var _day = document.getElementById("_day");
+      var 날짜ID;
 
       async function save() {
-        var DateTime = luxon.DateTime;
-        var seoul = DateTime.local().setZone("Asia/Seoul");
-        var now = seoul.toString().slice(0, 19);
-
         var doc = 거래확인서_doc;
-        doc.날짜ID = now;
+        doc.날짜ID = 날짜ID;
         doc.금액 = _금액.value;
         doc.성명 = _성명.value;
         doc.생년월일 = _생년월일.value;
         doc.고객_주소 = _고객_주소.value;
         doc.고객_전화번호 = _고객_전화번호.value;
         doc.email = _email.value;
-        //doc.서명 = _서명.value;
+        doc.서명성명 = _서명성명.value;
         doc.제조사 = _제조사.value;
         doc.제조년도 = _제조년도.value;
         doc.누적주행거리 = _누적주행거리.value;
@@ -308,6 +306,29 @@
       }
 
       async function 조회() {
+	날짜ID = '';
+			  
+	_금액.value = '';
+	_성명.value = '';
+	_생년월일.value = '';
+	_고객_주소.value = '';
+	_고객_전화번호.value = '';
+	_email.value = '';
+	_서명성명.value = '';
+	_서명.src = '';
+	_제조사.value = '';
+	_제조년도.value = '';
+	_누적주행거리.value = '';
+	_차량번호.value = '';
+	_차대번호.value = '';
+	_차량용도.value = '';
+	_상호.value = '';
+	_수리처_주소.value = '';
+	_수리처_전화번호.value = '';
+	_year.value = '';
+	_month.value = '';
+	_day.value = '';
+
         count(거래확인서, { 날짜ID: { $exists: true } });
         await delay();
         console.log("doc_count:", doc_count);
@@ -315,6 +336,8 @@
           find_거래확인서(거래확인서, { 날짜ID: { $exists: true } });
           await delay();
           console.log("find:", find_array);
+
+	  날짜ID = find_array[0].날짜ID;
 
           var table_거래확인서 = new Tabulator("#grid_거래확인서", {
             layout: "resizableColumnFit",
@@ -379,6 +402,7 @@
             _고객_주소.value = find_array[0].고객_주소;
             _고객_전화번호.value = find_array[0].고객_전화번호;
             _email.value = find_array[0].email;
+            _서명성명.value = find_array[0].서명성명;
             _제조사.value = find_array[0].제조사;
             _제조년도.value = find_array[0].제조년도;
             _누적주행거리.value = find_array[0].누적주행거리;
