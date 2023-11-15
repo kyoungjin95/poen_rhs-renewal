@@ -74,7 +74,8 @@ async function 입고_save() {
 	await delay();
 
 	if(doc_count == 0) {
-		var _doc = BSA재제조_doc;
+		
+		var _doc = JSON.parse(JSON.stringify(BSA재제조_doc));
 		_doc.관리번호 = _management_id.value;
 		_doc.입고 = _입고일.value;
 

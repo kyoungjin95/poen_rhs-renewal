@@ -347,7 +347,7 @@ async function 기초검사_SAVE() {
 	await delay();
 
 	if(doc_count == 0) {
-		var _doc = BSA재제조_doc;
+		var _doc = JSON.parse(JSON.stringify(BSA재제조_doc));
 		_doc.관리번호 = _management_id.value;
 		_doc.기초검사투입일 = _공정입고일.value;
 		_doc.기초검사 = _공정완료일.value;

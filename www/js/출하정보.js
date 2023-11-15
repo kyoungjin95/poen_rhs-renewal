@@ -125,7 +125,6 @@ async function 출하정보_시작(is재제조 = false) {
 	if(doc_count > 0) {
 		console.log('관리번호:', 관리번호);
 
-		
 		find(출하정보, _management_id.value);
 		await delay();
 
@@ -172,7 +171,6 @@ async function 출하정보_시작(is재제조 = false) {
 		_SOH.value = find_array[0].SOH;
 		_릴레이_강제구동.value = find_array[0].릴레이_강제구동;
 		_커넥터_체결검사.value = find_array[0].커넥터_체결검사;
-
 		
 		브라켓 = find_array[0].브라켓;
 		S_PLUG = find_array[0].S_PLUG;
@@ -273,7 +271,7 @@ async function 출하정보_save() {
 	await delay();
 
 	if(doc_count == 0) {
-		var _doc = BSA재제조_doc;
+		var _doc = JSON.parse(JSON.stringify(BSA재제조_doc));
 		_doc.관리번호 = _management_id.value;
 		_doc.출하검사 = _검사일.value.substr(0, 16);
 
