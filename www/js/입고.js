@@ -78,6 +78,9 @@ async function 입고_save() {
 		var _doc = JSON.parse(JSON.stringify(BSA재제조_doc));
 		_doc.관리번호 = _management_id.value;
 		_doc.입고 = _입고일.value;
+		_doc.구분 = _구분.value;
+		_doc.차종 = _차종.value;
+		_doc.품번 = _품번.value;
 
 		update(BSA재제조, _doc);
 		await delay();
@@ -85,6 +88,9 @@ async function 입고_save() {
 		var _doc = {
 			관리번호 : _management_id.value,
 			입고 : _입고일.value,
+			구분 : _구분.value,
+			차종 : _차종.value,
+			품번 : _품번.value
 		}
 
 		update(BSA재제조, _doc);
