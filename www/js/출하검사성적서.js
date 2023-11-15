@@ -124,8 +124,8 @@ async function 출하검사성적서_조회(is재제조번호 = false) {
     _SOH_OK.innerHTML = find_array[0].SOH == 'OK' ? 'OK' : '';
     _SOH_NG.innerHTML = find_array[0].SOH == 'NG' ? 'NG' : '';
     //SOH측정값
-    _릴레이_강제구동_OK.innerHTML = find_array[0].릴레이_강제구동 == 'OK' ? 'OK' : '';
-    _릴레이_강제구동_NG.innerHTML = find_array[0].릴레이_강제구동 == 'NG' ? 'NG' : '';
+    _릴레이강제구동_OK.innerHTML = find_array[0].릴레이_강제구동 == 'OK' ? 'OK' : '';
+    _릴레이강제구동_NG.innerHTML = find_array[0].릴레이_강제구동 == 'NG' ? 'NG' : '';
     _커넥터체결검사_OK.innerHTML = find_array[0].커넥터체결검사 == 'OK' ? 'OK' : '';
     _커넥터체결검사_NG.innerHTML = find_array[0].커넥터체결검사 == 'NG' ? 'NG' : '';
   }

@@ -101,6 +101,7 @@ async function 상세입력_시작(is재제조번호 = false) {
 				구분: "일반",
 			});
 			await delay();
+			await sleep(100);
 		} else if (level == "hyundai_일반") {
 			count(BSA재제조, {
 				차종: {
@@ -144,6 +145,7 @@ async function 상세입력_시작(is재제조번호 = false) {
 				구분: "일반",
 			});
 			await delay();
+			await sleep(100);
 		} else if (level == "kia_보증") {
 			count(BSA재제조, {
 				차종: {
@@ -171,6 +173,7 @@ async function 상세입력_시작(is재제조번호 = false) {
 				구분: "보증",
 			});
 			await delay();
+			await sleep(100);
 		} else if (level == "hyundai_보증") {
 			count(BSA재제조, {
 				차종: {
@@ -214,9 +217,11 @@ async function 상세입력_시작(is재제조번호 = false) {
 				구분: "보증",
 			});
 			await delay();
+			await sleep(100);
 		} else {
 			count(BSA재제조, { 관리번호: _management_id.value });
 			await delay();
+			await sleep(100);
 		}
 	} else {
 		console.log("재제조번호:", _재제조번호.value);
@@ -247,6 +252,7 @@ async function 상세입력_시작(is재제조번호 = false) {
 				구분: "일반",
 			});
 			await delay();
+			await sleep(100);
 		} else if (level == "hyundai_일반") {
 			count(BSA재제조, {
 				차종: {
@@ -290,6 +296,7 @@ async function 상세입력_시작(is재제조번호 = false) {
 				구분: "일반",
 			});
 			await delay();
+			await sleep(100);
 		} else if (level == "kia_보증") {
 			count(BSA재제조, {
 				차종: {
@@ -317,6 +324,7 @@ async function 상세입력_시작(is재제조번호 = false) {
 				구분: "보증",
 			});
 			await delay();
+			await sleep(100);
 		} else if (level == "hyundai_보증") {
 			count(BSA재제조, {
 				차종: {
@@ -360,9 +368,11 @@ async function 상세입력_시작(is재제조번호 = false) {
 				구분: "보증",
 			});
 			await delay();
+			await sleep(100);
 		} else {
 			count(BSA재제조, { 재제조번호: _재제조번호.value });
 			await delay();
+			await sleep(100);
 		}
 	}
 	console.log("초기 doc_count: ", doc_count);
@@ -399,6 +409,7 @@ async function 상세입력_시작(is재제조번호 = false) {
 					구분: "일반",
 				});
 				await delay();
+				await sleep(100);
 			} else if (level == "hyundai_일반") {
 				find_BSA재제조(BSA재제조, {
 					차종: {
@@ -442,6 +453,7 @@ async function 상세입력_시작(is재제조번호 = false) {
 					구분: "일반",
 				});
 				await delay();
+				await sleep(100);
 			} else if (level == "kia_보증") {
 				find_BSA재제조(BSA재제조, {
 					차종: {
@@ -469,6 +481,7 @@ async function 상세입력_시작(is재제조번호 = false) {
 					구분: "보증",
 				});
 				await delay();
+				await sleep(100);
 			} else if (level == "hyundai_보증") {
 				find_BSA재제조(BSA재제조, {
 					차종: {
@@ -512,9 +525,11 @@ async function 상세입력_시작(is재제조번호 = false) {
 					구분: "보증",
 				});
 				await delay();
+				await sleep(100);
 			} else {
 				find_BSA재제조(BSA재제조, { 관리번호: _management_id.value });
 				await delay();
+				await sleep(100);
 			}
 		} else {
 			_재제조번호.value = _재제조번호.value.trim();
@@ -580,6 +595,7 @@ async function 상세입력_시작(is재제조번호 = false) {
 					구분: "일반",
 				});
 				await delay();
+				await sleep(100);
 			} else if (level == "hyundai_일반") {
 				count(BSA재제조, {
 					차종: {
@@ -623,6 +639,7 @@ async function 상세입력_시작(is재제조번호 = false) {
 					구분: "일반",
 				});
 				await delay();
+				await sleep(100);
 			} else if (level == "kia_보증") {
 				count(BSA재제조, {
 					차종: {
@@ -650,6 +667,7 @@ async function 상세입력_시작(is재제조번호 = false) {
 					구분: "보증",
 				});
 				await delay();
+				await sleep(100);
 			} else if (level == "hyundai_보증") {
 				count(BSA재제조, {
 					차종: {
@@ -693,9 +711,11 @@ async function 상세입력_시작(is재제조번호 = false) {
 					구분: "보증",
 				});
 				await delay();
+				await sleep(100);
 			} else {
 				find_BSA재제조(BSA재제조, { 재제조번호: _재제조번호.value });
 				await delay();
+				await sleep(100);
 			}
 		}
 
@@ -741,6 +761,7 @@ async function 상세입력_시작(is재제조번호 = false) {
 		if (doc_count > 0) {
 			find(입고, _management_id.value);
 			await delay();
+			await sleep(100);
 
 			_구분.value = find_array[0].구분;
 			_차종.value = find_array[0].차종;
@@ -767,131 +788,12 @@ async function 상세입력_시작(is재제조번호 = false) {
 		if (doc_count > 0) {
 			find(기초검사, _management_id.value);
 			await delay();
+			await sleep(100);
 
 			_RO_no.value = find_array[0].RO_no;
 		}
 
-		count(세척, { 관리번호: _management_id.value });
-		await delay();
-		console.log("doc_count: ", doc_count);
-		if (doc_count > 0) {
-			find(세척, _management_id.value);
-			await delay();
-
-			if (_세척투입일.value == "")
-				_세척투입일.value = find_array[0].공정입고일.substr(0, 16);
-			if (_세척.value == "")
-				_세척.value = find_array[0].공정완료일.substr(0, 16);
-			if (
-				_세척.value != "" &&
-				_세척.value != "none" &&
-				_세척.value != "0000-00-00T00:00"
-			) {
-				if (_공정단계.value != "출하") _공정단계.value = "기초검사";
-			} else {
-				if (_공정단계.value != "출하") _공정단계.value = "세척";
-			}
-		}
-
-		count(기초검사, { 관리번호: _management_id.value });
-		await delay();
-		console.log("doc_count: ", doc_count);
-		if (doc_count > 0) {
-			find(기초검사, _management_id.value);
-			await delay();
-
-			if (_기초검사투입일.value == "")
-				_기초검사투입일.value = find_array[0].공정입고일.substr(0, 16);
-			if (_기초검사.value == "")
-				_기초검사.value = find_array[0].공정완료일.substr(0, 16);
-			if (
-				_기초검사.value != "" &&
-				_기초검사.value != "none" &&
-				_기초검사.value != "0000-00-00T00:00"
-			) {
-				if (_공정단계.value != "출하") _공정단계.value = "분해조립";
-			} else {
-				if (_공정단계.value != "출하") _공정단계.value = "기초검사";
-			}
-		}
-
-		count(분해조립, { 관리번호: _management_id.value });
-		await delay();
-		console.log("doc_count: ", doc_count);
-		if (doc_count > 0) {
-			find(분해조립, _management_id.value);
-			await delay();
-
-			if (_분해조립투입일.value == "")
-				_분해조립투입일.value = find_array[0].공정입고일.substr(0, 16);
-			if (_분해조립.value == "")
-				_분해조립.value = find_array[0].공정완료일.substr(0, 16);
-			if (
-				_분해조립.value != "" &&
-				_분해조립.value != "none" &&
-				_분해조립.value != "0000-00-00T00:00"
-			) {
-				if (_공정단계.value != "출하") _공정단계.value = "성능검사";
-			} else {
-				if (_공정단계.value != "출하") _공정단계.value = "분해조립";
-			}
-		}
-
-		count(성능검사, { 관리번호: _management_id.value });
-		await delay();
-		console.log("doc_count: ", doc_count);
-		if (doc_count > 0) {
-			find(성능검사, _management_id.value);
-			await delay();
-
-			if (_성능검사투입일.value == "")
-				_성능검사투입일.value = find_array[0].공정입고일.substr(0, 16);
-			if (_성능검사.value == "")
-				_성능검사.value = find_array[0].공정완료일.substr(0, 16);
-			if (
-				_성능검사.value != "" &&
-				_성능검사.value != "none" &&
-				_성능검사.value != "0000-00-00T00:00"
-			) {
-				if (_공정단계.value != "출하") _공정단계.value = "EOL";
-			} else {
-				if (_공정단계.value != "출하") _공정단계.value = "성능검사";
-			}
-		}
-
-		count(EOL, { 관리번호: _management_id.value });
-		await delay();
-		console.log("doc_count: ", doc_count);
-		if (doc_count > 0) {
-			find(EOL, _management_id.value);
-			await delay();
-
-			if (_EOL투입일.value == "" && find_array[0].공정입고일 != undefined)
-				_EOL투입일.value = find_array[0].공정입고일.substr(0, 16);
-			if (_EOL.value == "") _EOL.value = find_array[0].공정완료일.substr(0, 16);
-			if (
-				_EOL.value != "" ||
-				(_EOL.value != "none" && _EOL.value != "0000-00-00T00:00")
-			) {
-				if (_공정단계.value != "출하") _공정단계.value = "제조완료";
-			} else {
-				if (_공정단계.value != "출하") _공정단계.value = "EOL";
-			}
-		}
-
-		count(출하정보, { 관리번호: _management_id.value });
-		await delay();
-		console.log("doc_count: ", doc_count);
-		if (doc_count > 0) {
-			find(출하정보, _management_id.value);
-			await delay();
-
-			if (_출하검사.value == "") {
-				_출하검사.value = find_array[0].검사일.substr(0, 10) + "T12:00";
-				_공정단계.value = "출하";
-			}
-		}
-		item_detail_save(true);
+		//item_detail_save(true);
 	} else {
 		if (is재제조번호 == false) {
 			_재제조번호.value = "";
