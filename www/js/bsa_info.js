@@ -706,7 +706,7 @@ async function 재제조현황_조회() {
 		} else {
 			find_BSA재제조(BSA재제조, { 관리번호 : { $exists: true } });
 			await delay();
-			await sleep(1500);
+			await sleep(2500);
 		}
 	} 
 
@@ -932,7 +932,7 @@ async function 재제조현황_조회() {
 
 async function delete_bsa_중복정보() {
 	console.log('delete : ', _id);
-	var ok = window.confirm('선택한것만 지워집니다. 계속하겠습니까?');
+	var ok = window.confirm('BSA기본정보에서만 지워집니다. 계속하겠습니까?');
 	if(ok == false) return;
 
 	deleteOneBSA(BSA재제조, _id);

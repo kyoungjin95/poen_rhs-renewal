@@ -723,7 +723,10 @@ async function 상세입력_시작(is재제조번호 = false) {
 
 		_management_id.value = find_array[0].관리번호;
 		_재제조번호.value = find_array[0].재제조번호;
-
+		_구분.value = find_array[0].구분;
+		_차종.value = find_array[0].차종;
+		_품번.value = find_array[0].품번;
+		_RO_no.value = find_array[0].RO_no;
 		_공정단계.value = find_array[0].공정단계;
 		_적재No.value = find_array[0].적재No;
 		_입고.value = find_array[0].입고.substr(0, 16);
@@ -755,45 +758,6 @@ async function 상세입력_시작(is재제조번호 = false) {
 			_출하예약.value = find_array[0].출하예약.substr(0, 16);
 		if (find_array[0].렉번호 != undefined)
 			_렉번호.value = find_array[0].렉번호.substr(0, 16);
-
-		count(입고, { 관리번호: _management_id.value });
-		await delay();
-		if (doc_count > 0) {
-			find(입고, _management_id.value);
-			await delay();
-			await sleep(100);
-
-			_구분.value = find_array[0].구분;
-			_차종.value = find_array[0].차종;
-			_품번.value = find_array[0].품번;
-			//_RO_no.value = find_array[0].RO_no;
-			if(find_array[0].입고일 != undefined) _입고.value = find_array[0].입고일.substr(0, 16);
-			if (_입고.value != "" && _공정단계.value != "출하") {
-				_공정단계.value = "세척";
-			}
-			if (_입고.value != "" && _입고.value != undefined) {
-				flag_입고_complete = true;
-			} else {
-				flag_입고_complete = false;
-			}
-		} else {
-			flag_입고_complete = false;
-			_구분.value = '';
-			_차종.value = '';
-			_품번.value = '';
-		}
-
-		count(기초검사, { 관리번호: _management_id.value });
-		await delay();
-		if (doc_count > 0) {
-			find(기초검사, _management_id.value);
-			await delay();
-			await sleep(100);
-
-			_RO_no.value = find_array[0].RO_no;
-		}
-
-		//item_detail_save(true);
 	} else {
 		if (is재제조번호 == false) {
 			_재제조번호.value = "";

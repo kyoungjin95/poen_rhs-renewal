@@ -117,7 +117,7 @@ io.on('connection', async function(socket) {
 		if(account.login == false && col != '계정' && col != '거래확인서') return;
 		const cnt = await count(col, query);
 		socket.emit('count_result', cnt, check);
-		////logger.info('worker:'+ worker + ' count col:' + col +'query:'+ JSON.stringify(query));
+		//logger.info('worker:'+ worker + ' count col:' + col +'query:'+ JSON.stringify(query));
 		//
 		if(account.login == false && col == '계정' && cnt > 0) {
 			account.login = true;
