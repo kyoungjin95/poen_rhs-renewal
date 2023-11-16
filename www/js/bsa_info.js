@@ -711,6 +711,7 @@ async function 재제조현황_조회() {
 	} 
 
 	tabledata_BSA = find_array;
+	await sleep(500);
 	table = new Tabulator("#grid_BSA", {
 		layout: "resizableColumnFit",
 		data:tabledata_BSA,
