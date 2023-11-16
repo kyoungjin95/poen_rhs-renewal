@@ -24,17 +24,17 @@ async function 입고_시작() {
 
 	count(입고, { 관리번호 : _management_id.value });
 	await delay();
-	console.log('doc_count: ', doc_count);
-	if(doc_count > 0) {
+	console.log('doc_count: ', 입고_v);
+	if(입고_cnt > 0) {
 		find(입고, _management_id.value);
 		await delay();
-		console.log('입고 data:', find_array);
+		console.log('입고 data:', 입고_v);
 
-		_입고일.value = find_array[0].입고일;
-		_입고처.value = find_array[0].입고처;
-		_구분.value = find_array[0].구분;
-		_차종.value = find_array[0].차종;
-		_품번.value = find_array[0].품번;
+		_입고일.value = 입고v[0].입고일;
+		_입고처.value = 입고v[0].입고처;
+		_구분.value = 입고v[0].구분;
+		_차종.value = 입고v[0].차종;
+		_품번.value = 입고v[0].품번;
 	} else {
 		_입고일.value = "0000-00-00T00:00";
 		_입고처.value = '';

@@ -24,11 +24,11 @@ async function EOL_시작(EOL_is재제조번호 = false) {
 		count(BSA재제조, { 관리번호 : _management_id.value });
 		await delay();
 
-		if(doc_count > 0) {
+		if(BSA재제조_cnt > 0) {
 			find(BSA재제조, _management_id.value);
 			await delay();
 			
-			if(find_array[0].재제조번호 != undefined) _재제조번호.value = find_array[0].재제조번호;
+			if(BSA재제조_v[0].재제조번호 != undefined) _재제조번호.value = BSA재제조_v[0].재제조번호;
 		}
 	} else {
 		if(_재제조번호.value.length == 0) return;
@@ -37,105 +37,98 @@ async function EOL_시작(EOL_is재제조번호 = false) {
 		count(BSA재제조, { 재제조번호 : _재제조번호.value });
 		await delay();
 
-		if(doc_count > 0) {
+		if(BSA재제조_cnt > 0) {
 			find_BSA재제조(BSA재제조, { 재제조번호 : _재제조번호.value });
 			await delay();
 			
-			_management_id.value = find_array[0].관리번호;
-			count(EOL, { 관리번호 : find_array[0].관리번호 });
-			await delay();
+			_management_id.value = BSA재제조_v[0].관리번호;
 		} else {
 			_management_id.value = '찾지 못하였습니다';;
-			count(EOL, { 관리번호 : _management_id.value });
-			await delay();
 		}
 	}
-	console.log('doc_count: ', doc_count);
-	if(doc_count > 0) {
-		count(EOL, { 관리번호 : _management_id.value });
-		await delay();
 
-		if(doc_count > 0) {
+	count(EOL, { 관리번호 : _management_id.value });
+	await delay();
+
+	if(EOL_cnt > 0) {
 			find(EOL, _management_id.value);
 			await delay();
 
-			console.log('EOL load data:', find_array);
-			_공정입고일.value = find_array[0].공정입고일; 
-			_UPR_C조립.value = find_array[0].UPR_C조립; 
-			_기밀검사_케이스.value = find_array[0].기밀검사_케이스;
-			_기밀검사_케이스_특이사항.value = find_array[0].기밀검사_케이스_특이사항;
-			_기밀검사_냉각유로.value = find_array[0].기밀검사_냉각유로;
-			_기밀검사_냉각유로_특이사항.value = find_array[0].기밀검사_냉각유로_특이사항;
-			_절연검사P.value = find_array[0].절연검사_Plus;
-			_절연검사M.value = find_array[0].절연검사_Minus;
-			_절연저항HVP.value = find_array[0].절연저항_HVP;
-			_절연저항HVN.value = find_array[0].절연저항_HVN;
-			_통신검사_DTC코드1.value = find_array[0].통신검사_DTC코드1;
-			_통신검사_DTC코드2.value = find_array[0].통신검사_DTC코드2;
-			_통신검사_DTC코드3.value = find_array[0].통신검사_DTC코드3;
-			if(find_array[0].통신검사_DTC코드4 != '') {
+			console.log('EOL load data:', EOL_v);
+			_공정입고일.value = EOL_v[0].공정입고일; 
+			_UPR_C조립.value = EOL_v[0].UPR_C조립; 
+			_기밀검사_케이스.value = EOL_v[0].기밀검사_케이스;
+			_기밀검사_케이스_특이사항.value = EOL_v[0].기밀검사_케이스_특이사항;
+			_기밀검사_냉각유로.value = EOL_v[0].기밀검사_냉각유로;
+			_기밀검사_냉각유로_특이사항.value = EOL_v[0].기밀검사_냉각유로_특이사항;
+			_절연검사P.value = EOL_v[0].절연검사_Plus;
+			_절연검사M.value = EOL_v[0].절연검사_Minus;
+			_절연저항HVP.value = EOL_v[0].절연저항_HVP;
+			_절연저항HVN.value = EOL_v[0].절연저항_HVN;
+			_통신검사_DTC코드1.value = EOL_v[0].통신검사_DTC코드1;
+			_통신검사_DTC코드2.value = EOL_v[0].통신검사_DTC코드2;
+			_통신검사_DTC코드3.value = EOL_v[0].통신검사_DTC코드3;
+			if(EOL_v[0].통신검사_DTC코드4 != '') {
 				_EOL_add_DTC_Code();
 				await sleep(10);
-				_통신검사_DTC코드4.value = find_array[0].통신검사_DTC코드4;
+				_통신검사_DTC코드4.value = EOL_v[0].통신검사_DTC코드4;
 			}
 
-			if(find_array[0].통신검사_DTC코드5 != '') {
+			if(EOL_v[0].통신검사_DTC코드5 != '') {
 				_EOL_add_DTC_Code();
 				await sleep(10);
-				_통신검사_DTC코드5.value = find_array[0].통신검사_DTC코드5;
+				_통신검사_DTC코드5.value = EOL_v[0].통신검사_DTC코드5;
 			}
 
-			if(find_array[0].통신검사_DTC코드6 != '') {
+			if(EOL_v[0].통신검사_DTC코드6 != '') {
 				_EOL_add_DTC_Code();
 				await sleep(10);
-				_통신검사_DTC코드6.value = find_array[0].통신검사_DTC코드6;
+				_통신검사_DTC코드6.value = EOL_v[0].통신검사_DTC코드6;
 			}
 
-			if(find_array[0].통신검사_DTC코드7 != '') {
+			if(EOL_v[0].통신검사_DTC코드7 != '') {
 				_EOL_add_DTC_Code();
 				await sleep(10);
-				_통신검사_DTC코드7.value = find_array[0].통신검사_DTC코드7;
+				_통신검사_DTC코드7.value = EOL_v[0].통신검사_DTC코드7;
 			}
 
-			if(find_array[0].통신검사_DTC코드8 != '') {
+			if(EOL_v[0].통신검사_DTC코드8 != '') {
 				_EOL_add_DTC_Code();
 				await sleep(10);
-				_통신검사_DTC코드8.value = find_array[0].통신검사_DTC코드8;
+				_통신검사_DTC코드8.value = EOL_v[0].통신검사_DTC코드8;
 			}
 
-			if(find_array[0].통신검사_DTC코드9 != '') {
+			if(EOL_v[0].통신검사_DTC코드9 != '') {
 				_EOL_add_DTC_Code();
 				await sleep(10);
-				_통신검사_DTC코드9.value = find_array[0].통신검사_DTC코드9;
+				_통신검사_DTC코드9.value = EOL_v[0].통신검사_DTC코드9;
 			}
 
-			if(find_array[0].통신검사_DTC코드10 != '') {
+			if(EOL_v[0].통신검사_DTC코드10 != '') {
 				_EOL_add_DTC_Code();
 				await sleep(10);
-				_통신검사_DTC코드10.value = find_array[0].통신검사_DTC코드10;
+				_통신검사_DTC코드10.value = EOL_v[0].통신검사_DTC코드10;
 			}
 
-			_통신검사_팩전압.value = find_array[0].통신검사_팩전압;
-			_통신검사_셀전압편차.value = find_array[0].통신검사_셀전압편차;
-			_통신검사_릴레이구동.value = find_array[0].통신검사_릴레이구동;
-			_공정완료일.value = find_array[0].공정완료일;
-			_비고.value = find_array[0].비고;
-			_QR.value = find_array[0].QR;
-			_검사자.value = find_array[0].검사자;
+			_통신검사_팩전압.value = EOL_v[0].통신검사_팩전압;
+			_통신검사_셀전압편차.value = EOL_v[0].통신검사_셀전압편차;
+			_통신검사_릴레이구동.value = EOL_v[0].통신검사_릴레이구동;
+			_공정완료일.value = EOL_v[0].공정완료일;
+			_비고.value = EOL_v[0].비고;
+			_QR.value = EOL_v[0].QR;
+			_검사자.value = EOL_v[0].검사자;
 
 			count(입고, { 관리번호 : _management_id.value });
 			await delay();
-			console.log('::doc_count: ', doc_count);
-			if(doc_count > 0) {
+			if(입고_cnt > 0) {
 				find(입고, _management_id.value);
 				await delay();
-				console.log('입고 data:', find_array);
 
-				_구분.value = find_array[0].구분;
-				_차종.value = find_array[0].차종;
-				_품번.value = find_array[0].품번;
+				_구분.value = 입고_v[0].구분;
+				_차종.value = 입고_v[0].차종;
+				_품번.value = 입고_v[0].품번;
+			
 			}
-		}
 	} else {
 		_재제조번호.value = '';
 		_구분.value = '';
@@ -273,7 +266,7 @@ async function EOL_SAVE() {
 	count(BSA재제조, { 관리번호 : _management_id.value });
 	await delay();
 
-	if(doc_count == 0) {
+	if(BSA재제조_cnt == 0) {
 		var _doc = JSON.parse(JSON.stringify(BSA재제조_doc));
 		_doc.관리번호 = _management_id.value;
 		_doc.EOL투입일 = _공정입고일.value;

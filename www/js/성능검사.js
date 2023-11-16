@@ -16,12 +16,11 @@ async function 성능검사_시작(is재제조 = false) {
 		count(BSA재제조, { 관리번호 : _management_id.value });
 		await delay();
 		
-		if(doc_count > 0) {
+		if(BSA재제조_cnt > 0) {
 			find(BSA재제조, _management_id.value);
 			await delay();
-			await sleep(100);
 
-			_재제조번호.value = find_array[0].재제조번호;
+			_재제조번호.value = BSA재제조_v[0].재제조번호;
 		}
 	} else {
 		if(_재제조번호.value.length == 0) return;
@@ -29,10 +28,9 @@ async function 성능검사_시작(is재제조 = false) {
 		count(BSA재제조, { 재제조번호 : _재제조번호.value });
 		await delay();
 
-		if(doc_count > 0) {
+		if(BSA재제조_cnt > 0) {
 			find_BSA재제조(BSA재제조, { 재제조번호 : _재제조번호.value });
 			await delay();
-			await sleep(100);
 
 			_management_id.value = find_array[0].관리번호;
 		} else {
@@ -42,16 +40,13 @@ async function 성능검사_시작(is재제조 = false) {
 
 	count(입고, { 관리번호 : _management_id.value });
 	await delay();
-	console.log('doc_count: ', doc_count);
-	if(doc_count > 0) {
+	if(입고_v > 0) {
 		find(입고, _management_id.value);
 		await delay();
-		await sleep(100);
-		console.log('입고 data:', find_array);
 
-		_구분.value = find_array[0].구분;
-		_차종.value = find_array[0].차종;
-		_품번.value = find_array[0].품번;
+		_구분.value = 입고_v[0].구분;
+		_차종.value = 입고_v[0].차종;
+		_품번.value = 입고_v[0].품번;
 	} else {
 		_구분.value = '';
 		_차종.value = '';
@@ -60,20 +55,18 @@ async function 성능검사_시작(is재제조 = false) {
 
 	count(성능검사, { 관리번호 : _management_id.value });
 	await delay();
-	console.log('doc_count: ', doc_count);
-	if(doc_count > 0) {
+	if(성능검사_cnt > 0) {
 		find(성능검사, _management_id.value);
 		await delay();
-		await sleep(100);
 		
-		_공정입고일.value = find_array[0].공정입고일;
-		_용량평가.value = find_array[0].용량평가;
-		_SOC60Percent.value = find_array[0].SOC60Percent;
-		_DCIR.value = find_array[0].DCIR;
-		_DCIR_Charge.value    = find_array[0].DCIR_Charge;
-		_DCIR_Discharge.value =	find_array[0].DCIR_Discharge;
-		_공정완료일.value = find_array[0].공정완료일;
-		_검사자.value = find_array[0].검사자;
+		_공정입고일.value = 성능검사_v[0].공정입고일;
+		_용량평가.value = 성능검사_v[0].용량평가;
+		_SOC60Percent.value = 성능검사_v[0].SOC60Percent;
+		_DCIR.value = 성능검사_v[0].DCIR;
+		_DCIR_Charge.value    = 성능검사_v[0].DCIR_Charge;
+		_DCIR_Discharge.value =	성능검사_v[0].DCIR_Discharge;
+		_공정완료일.value = 성능검사_v[0].공정완료일;
+		_검사자.value = 성능검사_v[0].검사자;
 	} else {
 		_공정입고일.value = '0000-00-00T00:00'
 		_용량평가.value = '';
@@ -122,7 +115,7 @@ async function 성능검사_save() {
 	count(BSA재제조, { 관리번호 : _management_id.value });
 	await delay();
 
-	if(doc_count == 0) {
+	if(BSA재제조_cnt == 0) {
 		var _doc = JSON.parse(JSON.stringify(BSA재제조_doc));
 		_doc.관리번호 = _management_id.value;
 		_doc.성능검사투입일 ; _공정입고일.value;

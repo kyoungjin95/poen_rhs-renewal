@@ -20,7 +20,7 @@ async function 출하정보_시작(is재제조 = false) {
 		count(BSA재제조, { 관리번호 : _management_id.value });
 		await delay();
 
-		if(doc_count > 0) {
+		if(BSA재제조_cnt > 0) {
 			find(BSA재제조, _management_id.value );
 			await delay();
 			await sleep(100);

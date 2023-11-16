@@ -1,4 +1,4 @@
-const DELAY = 15; 
+const DELAY = 1; 
 const DELAY_SYS = 5000; 
 const 계정 = '계정';
 const BSA재제조 = 'BSA재제조';
@@ -38,6 +38,82 @@ const 완전분해_pic = '완전분해_pic';
 const 폐기_pic = '폐기_pic';
 const 기초보고서 = '기초보고서';
 const 완료보고서 = '완료보고서';
+
+var BSA재제조_v = [];
+var 입고_v = [];
+var 세척_v = [];
+var 기초검사_v = [];
+var 성능검사_v = [];
+var EOL_v = [];
+var 출하정보_v = [];
+var 분해조립_v = [];
+var 신품정보_v = [];
+var 고품정보_v = [];
+var 특이사항_v = [];
+var 교체부품상세1_v = [];
+var 교체부품상세2_v = [];
+var 교체부품상세3_v = [];
+var 교체부품상세4_v = [];
+var 교체부품상세5_v = [];
+var 교체부품상세6_v = [];
+var 교체부품상세7_v = [];
+var 교체부품상세8_v = [];
+var 교체부품상세9_v = [];
+var 교체부품상세10_v = [];
+var 자재입출고_v = [];
+var 구장재고_v = [];
+var 입고_pic_v = [];
+var 세척_pic_v = [];
+var 기초검사_pic_v = [];
+var 분해조립_pic_v = [];
+var 성능검사_pic_v = [];
+var EOL_pic_v = [];
+var 특이사항_pic_v = [];
+var 출하_pic_v = [];
+var 반품입고_pic_v = [];
+var 재출하_pic_v = [];
+var 완전분해_pic_v = [];
+var 폐기_pic_v = [];
+var 기초보고서_v = [];
+var 완료보고서_v = [];
+
+var BSA재제조_cnt = 0;
+var 입고_cnt = 0;
+var 세척_cnt = 0;
+var 기초검사_cnt = 0;
+var 성능검사_cnt = 0;
+var EOL_cnt = 0;
+var 출하정보_cnt = 0;
+var 분해조립_cnt = 0;
+var 신품정보_cnt = 0;
+var 고품정보_cnt = 0;
+var 특이사항_cnt = 0;
+var 교체부품상세1_cnt = 0;
+var 교체부품상세2_cnt = 0;
+var 교체부품상세3_cnt = 0;
+var 교체부품상세4_cnt = 0;
+var 교체부품상세5_cnt = 0;
+var 교체부품상세6_cnt = 0;
+var 교체부품상세7_cnt = 0;
+var 교체부품상세8_cnt = 0;
+var 교체부품상세9_cnt = 0;
+var 교체부품상세10_cnt = 0;
+var 자재입출고_cnt = 0;
+var 구장재고_cnt = 0;
+var 입고_pic_cnt = 0;
+var 세척_pic_cnt = 0;
+var 기초검사_pic_cnt = 0;
+var 분해조립_pic_cnt = 0;
+var 성능검사_pic_cnt = 0;
+var EOL_pic_cnt = 0;
+var 특이사항_pic_cnt = 0;
+var 출하_pic_cnt = 0;
+var 반품입고_pic_cnt = 0;
+var 재출하_pic_cnt = 0;
+var 완전분해_pic_cnt = 0;
+var 폐기_pic_cnt = 0;
+var 기초보고서_cnt = 0;
+var 완료보고서_cnt = 0;
 
 var 관리번호 = '';
 var 교체부품상세No = '교체부품상세1';
@@ -1716,25 +1792,212 @@ socket.on('distinct_result', async function(result) {
 	//console.log('distincted result array: ', result);
 	find_array = JSON.parse(JSON.stringify(result));
 	flag_arrivedMSG = true;
-	await sleep(DELAY);
+	await sleep(1);
 });
 
 socket.on('insert_result', async function(id) {
 	//console.log('insert id: ', id);
 	insert_id = id;
 	flag_arrivedMSG = true;
-	await sleep(DELAY);
+	await sleep(1);
 });
 
-socket.on('count_result', async function(count, rcv_check) {
-	//console.log('count: ', count);
-  	doc_count = 0;
+socket.on('count_result', async function(col, count, rcv_check) {
 	if(rcv_check != check) return;
-	doc_count = JSON.parse(JSON.stringify(count));
-	//doc_count = count;
+	switch(col) {
+		case BSA재제조 :
+			BSA재제조_cnt = 0;
+			BSA재제조_cnt = JSON.parse(JSON.stringify(count));
+			break;
+
+		case 입고 : 
+			입고_cnt = 0;
+			입고_cnt = JSON.parse(JSON.stringify(count));
+			break;
+
+		case 세척 :
+			세척_cnt = 0;
+			세척_cnt = JSON.parse(JSON.stringify(count));
+			break;
+
+		case 기초검사 :
+			기초검사_cnt = 0;
+			기초검사_cnt = JSON.parse(JSON.stringify(count));
+			break;
+
+		case 성능검사 :
+			성능검사_cnt = 0;
+			성능검사_cnt = JSON.parse(JSON.stringify(count));
+			break;
+
+		case EOL :
+			EOL_cnt = 0;
+			EOL_cnt = JSON.parse(JSON.stringify(count));
+			break;
+
+		case 출하정보 :
+			출하정보_cnt = 0;
+			출하정보_cnt = JSON.parse(JSON.stringify(count));
+			break;
+
+		case 분해조립 :
+			분해조립_cnt = 0;
+			분해조립_cnt = JSON.parse(JSON.stringify(count));
+			break;
+
+		case 신품정보 :
+			신품정보_cnt = 0;
+			신품정보_cnt = JSON.parse(JSON.stringify(count));
+			break;
+		
+		case 고품정보 :
+			고품정보_cnt = 0;
+			고품정보_cnt = JSON.parse(JSON.stringify(count));
+			break;
+
+		case 특이사항 : 
+			특이사항_cnt = 0;
+			특이사항_cnt = JSON.parse(JSON.stringify(count));
+			break;
+
+		case 교체부품상세1 :
+			교체부품상세1_cnt = 0;
+			교체부품상세1_cnt = JSON.parse(JSON.stringify(count));
+			break;
+
+		case 교체부품상세2 :
+			교체부품상세2_cnt = 0;
+			교체부품상세2_cnt = JSON.parse(JSON.stringify(count));
+			break;
+
+		case 교체부품상세3 :
+			교체부품상세3_cnt = 0;
+			교체부품상세3_cnt = JSON.parse(JSON.stringify(count));
+			break;
+
+		case 교체부품상세4 :
+			교체부품상세4_cnt = 0;
+			교체부품상세4_cnt = JSON.parse(JSON.stringify(count));
+			break;
+
+		case 교체부품상세5 :
+			교체부품상세5_cnt = 0;
+			교체부품상세5_cnt = JSON.parse(JSON.stringify(count));
+			break;
+
+		case 교체부품상세6 :
+			교체부품상세6_cnt = 0;
+			교체부품상세6_cnt = JSON.parse(JSON.stringify(count));
+			break;
+
+		case 교체부품상세7 :
+			교체부품상세7_cnt = 0;
+			교체부품상세7_cnt = JSON.parse(JSON.stringify(count));
+			break;
+
+		case 교체부품상세8 :
+			교체부품상세8_cnt = 0;
+			교체부품상세8_cnt = JSON.parse(JSON.stringify(count));
+			break;
+
+		case 교체부품상세9 :
+			교체부품상세9_cnt = 0;
+			교체부품상세9_cnt = JSON.parse(JSON.stringify(count));
+			break;
+
+		case 교체부품상세10 :
+			교체부품상세10_cnt = 0;
+			교체부품상세10_cnt = JSON.parse(JSON.stringify(count));
+			break;
+
+		case 자재입출고 :
+			자재입출고_cnt = 0;
+			자재입출고_cnt = JSON.parse(JSON.stringify(count));
+			break;
+
+		case 구장재고 :
+			구장재고_cnt = 0;
+			구장재고_cnt = JSON.parse(JSON.stringify(count));
+			break;
+
+		case 입고_pic :
+			입고_pic_cnt = 0;
+			입고_pic_cnt = JSON.parse(JSON.stringify(count));
+			break;
+
+		case 세척_pic_cnt :
+			세척_pic_cnt = 0;
+			세척_pic_cnt = JSON.parse(JSON.stringify(count));
+			break;
+
+		case 기초검사_pic:
+			기초검사_pic_cnt = 0;
+			기초검사_pic_cnt = JSON.parse(JSON.stringify(count));
+			break;
+
+		case 분해조립_pic :
+			분해조립_pic_cnt = 0;
+			분해조립_pic_cnt = JSON.parse(JSON.stringify(count));
+			break;
+
+		case 성능검사_pic :
+			성능검사_pic_cnt = 0;
+			성능검사_pic_cnt = JSON.parse(JSON.stringify(count));
+			break;
+
+		case EOL_pic:
+			EOL_pic_cnt = 0;
+			EOL_pic_cnt = JSON.parse(JSON.stringify(count));
+			break;
+
+		case 특이사항 :
+			특이사항_pic_cnt =  0;
+			특이사항_pic_cnt =  JSON.parse(JSON.stringify(count));
+			break;
+
+		case 출하_pic :
+			출하_pic_cnt = 0;
+			출하_pic_cnt = JSON.parse(JSON.stringify(count));
+			break;
+
+		case 반품입고_pic :
+			반품입고_pic_cnt = 0;
+			반품입고_pic_cnt = JSON.parse(JSON.stringify(count));
+			break;
+
+		case 재출하_pic :
+			재출하_pic_cnt = 0;
+			재출하_pic_cnt = JSON.parse(JSON.stringify(count));
+			break;
+
+		case 완전분해_pic :
+			완전분해_pic_cnt = 0;
+			완전분해_pic_cnt = JSON.parse(JSON.stringify(count));
+			break;
+
+		case 폐기_pic :
+			폐기_pic_cnt = 0;
+			폐기_pic_cnt = JSON.parse(JSON.stringify(count));
+			break;
+
+		case 기초보고서 :
+			기초보고서_cnt = 0;
+			기초보고서_cnt = JSON.parse(JSON.stringify(count));
+			break;
+
+		case 완료보고서 :
+			완료보고서_cnt = 0;
+			완료보고서_cnt = JSON.parse(JSON.stringify(count));
+			break;
+		
+		default : 
+			doc_count = 0; 
+			doc_count = JSON.parse(JSON.stringify(count)); 
+			break;
+	}
 
 	flag_arrivedMSG = true;
-	await sleep(DELAY);
+	await sleep(1);
 });
 
 socket.on('find_result', async function(result, rcv_check) {
@@ -1743,10 +2006,200 @@ socket.on('find_result', async function(result, rcv_check) {
 	find_array = [];
 	if(rcv_check != check) return;
 
-	find_array = JSON.parse(JSON.stringify(result));
+	switch(col) {
+		case BSA재제조 :
+			BSA재제조_v = [];
+			BSA재제조_v = JSON.parse(JSON.stringify(result));
+			break;
+
+		case 입고 : 
+			입고_v = [];
+			입고_v = JSON.parse(JSON.stringify(result));
+			break;
+
+		case 세척 :
+			세척_v = [];
+			세척_v = JSON.parse(JSON.stringify(result));
+			break;
+
+		case 기초검사 :
+			기초검사_v = [];
+			기초검사_v = JSON.parse(JSON.stringify(result));
+			break;
+
+		case 성능검사 :
+			성능검사_v = [];
+			성능검사_v = JSON.parse(JSON.stringify(result));
+			break;
+
+		case EOL :
+			EOL_v = [];
+			EOL_v = JSON.parse(JSON.stringify(result));
+			break;
+
+		case 출하정보 :
+			출하정보_v = [];
+			출하정보_v = JSON.parse(JSON.stringify(result));
+			break;
+
+		case 분해조립 :
+			분해조립_v = [];
+			분해조립_v = JSON.parse(JSON.stringify(result));
+			break;
+
+		case 신품정보 :
+			신품정보_v = [];
+			신품정보_v = JSON.parse(JSON.stringify(result));
+			break;
+		
+		case 고품정보 :
+			고품정보_v = [];
+			고품정보_v = JSON.parse(JSON.stringify(result));
+			break;
+
+		case 특이사항 : 
+			특이사항_v = [];
+			특이사항_v = JSON.parse(JSON.stringify(result));
+			break;
+
+		case 교체부품상세1 :
+			교체부품상세1_v = [];
+			교체부품상세1_v = JSON.parse(JSON.stringify(result));
+			break;
+
+		case 교체부품상세2 :
+			교체부품상세2_v = [];
+			교체부품상세2_v = JSON.parse(JSON.stringify(result));
+			break;
+
+		case 교체부품상세3 :
+			교체부품상세3_v = [];
+			교체부품상세3_v = JSON.parse(JSON.stringify(result));
+			break;
+
+		case 교체부품상세4 :
+			교체부품상세4_v = [];
+			교체부품상세4_v = JSON.parse(JSON.stringify(result));
+			break;
+
+		case 교체부품상세5 :
+			교체부품상세5_v = [];
+			교체부품상세5_v = JSON.parse(JSON.stringify(result));
+			break;
+
+		case 교체부품상세6 :
+			교체부품상세6_v = [];
+			교체부품상세6_v = JSON.parse(JSON.stringify(result));
+			break;
+
+		case 교체부품상세7 :
+			교체부품상세7_v = [];
+			교체부품상세7_v = JSON.parse(JSON.stringify(result));
+			break;
+
+		case 교체부품상세8 :
+			교체부품상세8_v = [];
+			교체부품상세8_v = JSON.parse(JSON.stringify(result));
+			break;
+
+		case 교체부품상세9 :
+			교체부품상세9_v = [];
+			교체부품상세9_v = JSON.parse(JSON.stringify(result));
+			break;
+
+		case 교체부품상세1[] :
+			교체부품상세1[]_v = [];
+			교체부품상세1[]_v = JSON.parse(JSON.stringify(result));
+			break;
+
+		case 자재입출고 :
+			자재입출고_v = [];
+			자재입출고_v = JSON.parse(JSON.stringify(result));
+			break;
+
+		case 구장재고 :
+			구장재고_v = [];
+			구장재고_v = JSON.parse(JSON.stringify(result));
+			break;
+
+		case 입고_pic :
+			입고_pic_v = [];
+			입고_pic_v = JSON.parse(JSON.stringify(result));
+			break;
+
+		case 세척_pic_v :
+			세척_pic_v = [];
+			세척_pic_v = JSON.parse(JSON.stringify(result));
+			break;
+
+		case 기초검사_pic:
+			기초검사_pic_v = [];
+			기초검사_pic_v = JSON.parse(JSON.stringify(result));
+			break;
+
+		case 분해조립_pic :
+			분해조립_pic_v = [];
+			분해조립_pic_v = JSON.parse(JSON.stringify(result));
+			break;
+
+		case 성능검사_pic :
+			성능검사_pic_v = [];
+			성능검사_pic_v = JSON.parse(JSON.stringify(result));
+			break;
+
+		case EOL_pic:
+			EOL_pic_v = [];
+			EOL_pic_v = JSON.parse(JSON.stringify(result));
+			break;
+
+		case 특이사항 :
+			특이사항_pic_v =  [];
+			특이사항_pic_v =  JSON.parse(JSON.stringify(result));
+			break;
+
+		case 출하_pic :
+			출하_pic_v = [];
+			출하_pic_v = JSON.parse(JSON.stringify(result));
+			break;
+
+		case 반품입고_pic :
+			반품입고_pic_v = [];
+			반품입고_pic_v = JSON.parse(JSON.stringify(result));
+			break;
+
+		case 재출하_pic :
+			재출하_pic_v = [];
+			재출하_pic_v = JSON.parse(JSON.stringify(result));
+			break;
+
+		case 완전분해_pic :
+			완전분해_pic_v = [];
+			완전분해_pic_v = JSON.parse(JSON.stringify(result));
+			break;
+
+		case 폐기_pic :
+			폐기_pic_v = [];
+			폐기_pic_v = JSON.parse(JSON.stringify(result));
+			break;
+
+		case 기초보고서 :
+			기초보고서_v = [];
+			기초보고서_v = JSON.parse(JSON.stringify(result));
+			break;
+
+		case 완료보고서 :
+			완료보고서_v = [];
+			완료보고서_v = JSON.parse(JSON.stringify(result));
+			break;
+		
+		default : 
+			find_array = []; 
+			find_array = JSON.parse(JSON.stringify(result)); 
+			break;
+	}
   
 	flag_arrivedMSG = true;
-	await sleep(DELAY);
+	await sleep(1);
 });
 
 socket.on('update_result', async function(result) {
@@ -1759,14 +2212,14 @@ socket.on('update_result', async function(result) {
 	update_count = result.modifiedCount;
 	insert_count = result.upsertedCount;
 
-	await sleep(DELAY);
+	await sleep(1);
 });
 
 socket.on('delete_result', async function(count) {
 	console.log('delete result count: ', count);
 	delete_count = count;
 	flag_arrivedMSG = true;
-	await sleep(DELAY);
+	await sleep(1);
 });
 
 socket.on('disconnect', function() {
@@ -2404,12 +2857,10 @@ function sleep(ms) {
 }
 
 async function delay() {
-	await sleep(DELAY);
-
 	while(flag_arrivedMSG == false) {
 		await sleep(1);
 	}
-	await sleep(DELAY * 10);
+	await sleep(DELAY);
 	return true;
 }
 
