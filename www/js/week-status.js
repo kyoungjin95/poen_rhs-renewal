@@ -122,8 +122,8 @@ async function 주간입고_table(week_start = '', week_end = '') {
 		count(BSA재제조, { 입고 : { $gte: week_start, $lte: week_end }});
 		await delay();
 	}
-	console.log('doc_count: ', doc_count);
-	if(doc_count > 0) {
+
+	if(BSA재제조_cnt > 0) {
 		if(level == 'kia_일반') {
 			find_BSA재제조(BSA재제조, { 차종 : { $in : ['DE', 'DE_EV', 'DEPBV', 'DEPBV-EV', 'CV', 'CV_EV', 'MV', 'MV_EV', 'PU', 'PU_EV', 'SG2', 'SG2-EV', 'TAM', 'TAM-EV', 'PS', 'PS_EV', 'SK3']}, 입고 : { $gte: week_start, $lte: week_end } , 구분 : '일반' });
 			await delay();
@@ -140,22 +140,19 @@ async function 주간입고_table(week_start = '', week_end = '') {
 			find_BSA재제조(BSA재제조, { 입고 : { $gte: week_start, $lte: week_end }});
 			await delay();
 		}
-		await sleep(100);
 
-		for(var i = 0; i < find_array.length; i++) {
-			delete find_array[i].적재No;
-			//delete find_array[i].입고;
-			delete find_array[i].제조투입;
-			delete find_array[i].세척;
-			delete find_array[i].기초검사;
-			delete find_array[i].분해조립;
-			delete find_array[i].성능검사;
-			delete find_array[i].EOL;
-			delete find_array[i].출하;
-			delete find_array[i].마지막충전일;
+		for(var i = 0; i < BSA재제조_v.length; i++) {
+			delete BSA재제조_v[i].적재No;
+			delete BSA재제조_v[i].제조투입;
+			delete BSA재제조_v[i].세척;
+			delete BSA재제조_v[i].기초검사;
+			delete BSA재제조_v[i].분해조립;
+			delete BSA재제조_v[i].성능검사;
+			delete BSA재제조_v[i].EOL;
+			delete BSA재제조_v[i].출하;
+			delete BSA재제조_v[i].마지막충전일;
 		}
-		tabledata_BSA_입고 = find_array;
-		await sleep(100);
+		tabledata_BSA_입고 = JSON.parse(JSON.stringify(BSA재제조_v));
 	}
 	var table = new Tabulator("#grid_입고", {
 		layout: "resizableColumnFit",
@@ -169,20 +166,12 @@ async function 주간입고_table(week_start = '', week_end = '') {
 			{title:"품번", field:"품번", sorter:"string"},
 			{title:"RO no", field:"RO_no", sorter:"string"},
 			{title:"공정단계", field:"공정단계", sorter:"string"},
-			//{title:"적재No", field:"적재No", sorter:"string"},
 			{title:"입고", field:"입고", sorter:"string"},
-			//{title:"제조투입", field:"제조투입", sorter:"string"},
-			//{title:"세척", field:"세척", sorter:"string"},
-			//{title:"기초검사", field:"기초검사", sorter:"string"},
-			//{title:"분해조립", field:"분해조립", sorter:"string"},
-			//{title:"성능검사", field:"성능검사", sorter:"string"},
-			//{title:"EOL", field:"EOL", sorter:"string"},
-			//{title:"출하", field:"출하", sorter:"string"},
 			{title:"소재지", field:"소재지", sorter:"string"},
 		],
 	});
 
-	return doc_count;
+	return BSA재제조_cnt;
 }
 
 async function 주간제조완료_table(week_start = '', week_end = '') {
@@ -206,8 +195,7 @@ async function 주간제조완료_table(week_start = '', week_end = '') {
 		await delay();
 	}
 
-	console.log('doc_count: ', doc_count);
-	if(doc_count > 0) {
+	if(BSA재제조_cnt > 0) {
 		if(level == 'kia_일반') {
 			find_BSA재제조(BSA재제조, { 차종 : { $in : ['DE', 'DE_EV', 'DEPBV', 'DEPBV-EV', 'CV', 'CV_EV', 'MV', 'MV_EV', 'PU', 'PU_EV', 'SG2', 'SG2-EV', 'TAM', 'TAM-EV', 'PS', 'PS_EV', 'SK3']}, EOL : { $gte: week_start, $lte: week_end } , 구분 : '일반' });
 			await delay();
@@ -224,29 +212,25 @@ async function 주간제조완료_table(week_start = '', week_end = '') {
 			find_BSA재제조(BSA재제조, { EOL : { $gte: week_start, $lte: week_end }});
 			await delay();
 		}
-		await sleep(100);
 
-		for(var i = 0; i < find_array.length; i++) {
-			delete find_array[i].적재No;
-			//delete find_array[i].입고;
-			delete find_array[i].제조투입;
-			delete find_array[i].세척;
-			delete find_array[i].기초검사;
-			delete find_array[i].분해조립;
-			delete find_array[i].성능검사;
-			delete find_array[i].EOL;
-			delete find_array[i].출하;
-			delete find_array[i].마지막충전일;
+		for(var i = 0; i < BSA재제조_v.length; i++) {
+			delete BSA재제조_v[i].적재No;
+			delete BSA재제조_v[i].제조투입;
+			delete BSA재제조_v[i].세척;
+			delete BSA재제조_v[i].기초검사;
+			delete BSA재제조_v[i].분해조립;
+			delete BSA재제조_v[i].성능검사;
+			delete BSA재제조_v[i].EOL;
+			delete BSA재제조_v[i].출하;
+			delete BSA재제조_v[i].마지막충전일;
 		}
-		tabledata_BSA_제조완료 = find_array;
-		await sleep(100);
+		tabledata_BSA_제조완료 = JSON.parse(JSON.stringify(BSA재제조_v));
 	}
 
 	var table = new Tabulator("#grid_제조완료", {
 		layout: "resizableColumnFit",
 		height:500,
 		data:tabledata_BSA_제조완료, 
-		//autoColumns:true,
 		
 		columns:[
 			{title:"관리번호", field:"관리번호", sorter:"string"},
@@ -254,20 +238,12 @@ async function 주간제조완료_table(week_start = '', week_end = '') {
 			{title:"품번", field:"품번", sorter:"string"},
 			{title:"RO no", field:"RO_no", sorter:"string"},
 			{title:"공정단계", field:"공정단계", sorter:"string"},
-			//{title:"적재No", field:"적재No", sorter:"string"},
 			{title:"입고", field:"입고", sorter:"string"},
-			//{title:"제조투입", field:"제조투입", sorter:"string"},
-			//{title:"세척", field:"세척", sorter:"string"},
-			//{title:"기초검사", field:"기초검사", sorter:"string"},
-			//{title:"분해조립", field:"분해조립", sorter:"string"},
-			//{title:"성능검사", field:"성능검사", sorter:"string"},
-			//{title:"EOL", field:"EOL", sorter:"string"},
-			//{title:"출하", field:"출하", sorter:"string"},
 			{title:"소재지", field:"소재지", sorter:"string"},
 		],
 	});
 
-	return doc_count;
+	return BSA재제조_cnt;
 }
 
 async function 주간출하_table(week_start, week_end) {
@@ -290,8 +266,7 @@ async function 주간출하_table(week_start, week_end) {
 		await delay();
 	}
 
-	console.log('doc_count: ', doc_count);
-	if(doc_count > 0) {
+	if(BSA재제조_cnt > 0) {
 		if(level == 'kia_일반') {
 			find_BSA재제조(BSA재제조, { 차종 : { $in : ['DE', 'DE_EV', 'DEPBV', 'DEPBV-EV', 'CV', 'CV_EV', 'MV', 'MV_EV', 'PU', 'PU_EV', 'SG2', 'SG2-EV', 'TAM', 'TAM-EV', 'PS', 'PS_EV', 'SK3']}, 출하 : { $gte: week_start, $lte: week_end } , 구분 : '일반' });
 			await delay();
@@ -310,18 +285,18 @@ async function 주간출하_table(week_start, week_end) {
 		}
 		await sleep(100);
 
-		for(var i = 0; i < find_array.length; i++) {
-			delete find_array[i].적재No;
-			delete find_array[i].입고;
-			delete find_array[i].제조투입;
-			delete find_array[i].세척;
-			delete find_array[i].기초검사;
-			delete find_array[i].분해조립;
-			delete find_array[i].성능검사;
-			delete find_array[i].EOL;
-			delete find_array[i].마지막충전일;
+		for(var i = 0; i < BSA재제조_v.length; i++) {
+			delete BSA재제조_v[i].적재No;
+			delete BSA재제조_v[i].입고;
+			delete BSA재제조_v[i].제조투입;
+			delete BSA재제조_v[i].세척;
+			delete BSA재제조_v[i].기초검사;
+			delete BSA재제조_v[i].분해조립;
+			delete BSA재제조_v[i].성능검사;
+			delete BSA재제조_v[i].EOL;
+			delete BSA재제조_v[i].마지막충전일;
 		}
-		tabledata_BSA_출하 = find_array;
+		tabledata_BSA_출하 = JSON.parse(JSON.stringify(BSA재제조_v));
 		await sleep(100);
 	}
 
@@ -329,7 +304,6 @@ async function 주간출하_table(week_start, week_end) {
 		layout: "resizableColumnFit",
 		height:500,
 		data:tabledata_BSA_출하, 
-		////autoColumns:true,
 		
 		columns:[
 			{title:"관리번호", field:"관리번호", sorter:"string"},
@@ -337,19 +311,10 @@ async function 주간출하_table(week_start, week_end) {
 			{title:"품번", field:"품번", sorter:"string"},
 			{title:"RO no", field:"RO_no", sorter:"string"},
 			{title:"공정단계", field:"공정단계", sorter:"string"},
-			//{title:"적재No", field:"적재No", sorter:"string"},
-			//{title:"입고", field:"입고", sorter:"string"},
-			//{title:"제조투입", field:"제조투입", sorter:"string"},
-			//{title:"세척", field:"세척", sorter:"string"},
-			//{title:"기초검사", field:"기초검사", sorter:"string"},
-			//{title:"분해조립", field:"분해조립", sorter:"string"},
-			//{title:"성능검사", field:"성능검사", sorter:"string"},
-			//{title:"EOL", field:"EOL", sorter:"string"},
 			{title:"출하", field:"출하", sorter:"string"},
 			{title:"소재지", field:"소재지", sorter:"string"},
 		],
 	});
 
-	return doc_count;
+	return BSA재제조_cnt;
 }
-

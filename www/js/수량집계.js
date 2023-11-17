@@ -74,7 +74,7 @@ async function BSA_info(begin = '', end = '', 구분 = 'all') {
 		await delay();
 	}
 
-	if (doc_count > 0) {
+	if (BSA재제조_cnt > 0) {
 		if (begin == '' || end == '' || 구분 == 'all') {
 			find_BSA재제조(BSA재제조, { 품번: { $exists: true } });
 			await delay();
@@ -83,7 +83,7 @@ async function BSA_info(begin = '', end = '', 구분 = 'all') {
 			await delay();
 		}
 
-		find_array.forEach(function (info) {
+		BSA재제조_v.forEach(function (info) {
 			if (types_list.indexOf(info.품번) < 0) {
 				types_list.push(info.품번);
 
@@ -170,7 +170,7 @@ async function BMA_info(begin = '', end = '', 구분 = 'all') {
 		await delay();
 	}
 
-	if (doc_count > 0) {
+	if (고품정보_cnt > 0) {
 		if (begin == '' || end == '' || 구분 == 'all') {
 			find_고품정보(고품정보, { 품명: 'BMA', 폐기여부 : '폐기'  });
 			await delay();
@@ -179,7 +179,7 @@ async function BMA_info(begin = '', end = '', 구분 = 'all') {
 			await delay();
 		}
 
-		find_array.forEach(function (info) {
+		고품정보_v.forEach(function (info) {
 			if (types_list.indexOf(info.품번) < 0) {
 				types_list.push(info.품번);
 
@@ -227,7 +227,7 @@ async function 자재재료_info(begin = '', end = '', 구분 = 'all') {
 		await delay();
 	}
 
-	if (doc_count > 0) {
+	if (고품정보_cnt > 0) {
 		if (begin == '' || end == '' || 구분 == 'all') {
 			find_고품정보(고품정보, { 폐기여부: '자재' });
 			await delay();
@@ -236,7 +236,7 @@ async function 자재재료_info(begin = '', end = '', 구분 = 'all') {
 			await delay();
 		}
 
-		find_array.forEach(function (info) {
+		고품정보_v.forEach(function (info) {
 			if (types_list.indexOf(info.품번) < 0) {
 				types_list.push(info.품번);
 				품명_list.push(info.품명);
@@ -284,7 +284,7 @@ async function 부품_info(begin = '', end = '', 구분 = 'all') {
 		await delay();
 	}
 
-	if (doc_count > 0) {
+	if (자재입출고_cnt > 0) {
 		if (begin == '' || end == '') {
 			find_신품정보(자재입출고, { QR: { $exists: true } });
 			await delay();
@@ -294,8 +294,7 @@ async function 부품_info(begin = '', end = '', 구분 = 'all') {
 		}
 	}
 
-	
-	find_array.forEach(async function (infos) {
+	자재입출고_v.forEach(async function (infos) {
 		if (품명.indexOf(infos.품명) < 0) {
 			품명.push(infos.품명);
 		}
@@ -312,9 +311,8 @@ async function 부품_info(begin = '', end = '', 구분 = 'all') {
 			find_신품정보(자재입출고, { 품명: 품명[i], QR: { $exists: true }, 날짜: { $gte: begin, $lte: end }});
 			await delay();
 		}
-		console.log(find_array);
 
-		find_array.forEach(function (info) {
+		자재입출고_v.forEach(function (info) {
 			var 수량 = parseInt(info.수량);
 
 			if (types_list.indexOf(info.품번) < 0) {

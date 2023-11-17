@@ -132,14 +132,12 @@ async function 분해조립_시작(is재제조번호 = false) {
 		find_BSA재제조(BSA재제조, { 관리번호: _management_id.value.trim() });
 		await delay();
 		_재제조번호.value = BSA재제조_v[0].재제조번호;
-		console.log(find_array);
 	} else {
 		_재제조번호.value = '';
 	}
 
 	count(분해조립, { 관리번호 : _management_id.value });
 	await delay();
-	console.log('doc_count: ', doc_count);
 
 	if(분해조립_cnt > 0) {
 		count(BSA재제조, { 관리번호 : _management_id.value });
@@ -648,7 +646,7 @@ async function 분해조립_save() {
 	count(BSA재제조, { 관리번호 : _management_id.value });
 	await delay();
 
-	if(doc_count == 0) {
+	if(BSA재제조 == 0) {
 		var _doc = JSON.parse(JSON.stringify(BSA재제조_doc));
 		_doc.관리번호 = _management_id.value;
 		_doc.분해조립투입일 = _공정입고일.value;
@@ -693,18 +691,16 @@ async function request_고품QR() {
 	
 	count(고품정보, { QR: 교체후_QR });
 	await delay();	
-	console.log('고품정보 doc_count: ', doc_count);
-	if(doc_count > 0) {
+	if(고품정보_cnt > 0) {
 		find_고품정보(고품정보, { QR: 교체후_QR });
 		await delay();
-		console.log('고품정보:', find_array);
 
 		var doc = JSON.parse(JSON.stringify(고품정보_doc));
-		doc.관리번호 = find_array[0].관리번호;
-		doc.품명 = find_array[0].품명;
-		doc.번호 = find_array[0].번호;
-		doc.QR = find_array[0].QR;
-		doc.폐기여부 = find_array[0].폐기여부;
+		doc.관리번호 = 고품정보_v[0].관리번호;
+		doc.품명 = 고품정보_v[0].품명;
+		doc.번호 = 고품정보_v[0].번호;
+		doc.QR = 고품정보_v[0].QR;
+		doc.폐기여부 = 고품정보_v[0].폐기여부;
 		doc.사용여부 = '사용';
 		doc.사용일 = now;
 		doc.사용_작업자 = _작업자.value;

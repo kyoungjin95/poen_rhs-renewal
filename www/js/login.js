@@ -9,13 +9,14 @@ async function login() {
 
 	count(계정, { id: _id.value, passwd: hash.toString() });
 	await delay();
-	if(doc_count > 0) {
+
+	if(계정_cnt > 0) {
 		if(worker == '') {
 			worker = _id.value;
 			find_계정(계정, { id: _id.value })
-			await delay()
-			console.log('test:', find_array);
-			level = find_array[0].level;
+			await delay();
+			console.log('teddst:', 계정_v);
+			level = 계정_v[0].level;
 			//sessionStorage.setItem('worker',  worker);
 			sessionStorage.setItem('level',  level);
 
@@ -39,9 +40,8 @@ async function login() {
 				count(BSA재제조, { 마지막충전일 : { $lte : 기준일, $ne : '' }, 공정단계 : { $ne : '출하'}});
 				await delay();
 
-				console.log('recharge_count: ', doc_count);
-				if(doc_count > 0) {
-					//alert('재충전이 필요한 BSA가 있습니다.');
+				if(BSA재제조_cnt > 0) {
+					alert('재충전이 필요한 BSA가 있습니다.');
 				}
 			}, 1000);
 		} else if(worker == _id.value) {
@@ -102,7 +102,7 @@ async function change_label() {
 
 	count(계정, { id: 'admin' });
 	await delay();
-	if(doc_count == 0 || level == 'admin') {
+	if(계정_cnt == 0 || level == 'admin') {
 		admin_btn.style.display = 'block';
 	}
 }

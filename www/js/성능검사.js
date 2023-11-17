@@ -32,7 +32,7 @@ async function 성능검사_시작(is재제조 = false) {
 			find_BSA재제조(BSA재제조, { 재제조번호 : _재제조번호.value });
 			await delay();
 
-			_management_id.value = find_array[0].관리번호;
+			_management_id.value = BSA재제조_v[0].관리번호;
 		} else {
 			_management_id.value = '찾지 못하였습니다';
 		}

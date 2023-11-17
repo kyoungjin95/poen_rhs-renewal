@@ -24,7 +24,6 @@ async function 입고_시작() {
 
 	count(입고, { 관리번호 : _management_id.value });
 	await delay();
-	console.log('doc_count: ', 입고_v);
 	if(입고_cnt > 0) {
 		find(입고, _management_id.value);
 		await delay();
@@ -73,8 +72,7 @@ async function 입고_save() {
 	count(BSA재제조, { 관리번호 : _management_id.value });
 	await delay();
 
-	if(doc_count == 0) {
-		
+	if(BSA재제조_cnt == 0) {
 		var _doc = JSON.parse(JSON.stringify(BSA재제조_doc));
 		_doc.관리번호 = _management_id.value;
 		_doc.입고 = _입고일.value;

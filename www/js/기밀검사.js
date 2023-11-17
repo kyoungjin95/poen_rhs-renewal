@@ -11,41 +11,41 @@ async function 기밀검사_조회(is재제조번호 = false) {
     count(BSA재제조, { 재제조번호 : _재제조번호.value});
     await delay();
 
-    if(doc_count > 0) {
+    if(BSA재제조_cnt > 0) {
       find_BSA재제조(BSA재제조, { 재제조번호: _재제조번호.value });
       await delay();
 
-      _management_id.value = find_array[0].관리번호;
+      _management_id.value = BSA재제조_v[0].관리번호;
     }
   }
 
   if (_management_id.value.trim() == "조회 버튼을 누르세요")
     _management_id.value = 관리번호;
-  console.log("load: ", _management_id.value);
+
   if (_management_id.value.length == 0) return;
 
   count(EOL, { 관리번호: _management_id.value });
   await delay();
 
-  if (doc_count > 0) {
+  if (EOL_cnt > 0) {
     find(EOL, _management_id.value);
     await delay();
 
-    _케이스.innerHTML = find_array[0].기밀검사_케이스;
-    _냉각유로.innerHTML = find_array[0].기밀검사_냉각유로;
+    _케이스.innerHTML = EOL_v[0].기밀검사_케이스;
+    _냉각유로.innerHTML = EOL_v[0].기밀검사_냉각유로;
   }
 
   count(입고_pic, { 관리번호 : _management_id.value });
   await delay();
 
-  if(doc_count > 0) {
+  if(입고_pic_cnt > 0) {
     find(입고_pic, _management_id.value);
     await delay();
 
-    _측정사진1.src = "data:image/;base64," + find_array[0].pic1;
-    _측정사진2.src = "data:image/;base64," + find_array[0].pic2;
-    _측정값사진1.src = "data:image/;base64," + find_array[0].pic3;
-    _측정값사진2.src = "data:image/;base64," + find_array[0].pic4;
+    _측정사진1.src = "data:image/;base64," + 입고_pic_v[0].pic1;
+    _측정사진2.src = "data:image/;base64," + 입고_pic_v[0].pic2;
+    _측정값사진1.src = "data:image/;base64," + 입고_pic_v[0].pic3;
+    _측정값사진2.src = "data:image/;base64," + 입고_pic_v[0].pic4;
   }
 }
 

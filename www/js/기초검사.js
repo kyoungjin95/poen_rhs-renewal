@@ -52,9 +52,10 @@ async function 기초검사_시작(is재제조 = false) {
 	}
 
 	if(_management_id.value == '' | _management_id.value == 'none') return
+
 	count(입고, { 관리번호 : _management_id.value });
 	await delay();
-	console.log('doc_count: ', 입고_cnt);
+
 	if(입고_cnt > 0) {
 		find(입고, _management_id.value);
 		await delay();

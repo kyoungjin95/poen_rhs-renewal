@@ -39,11 +39,10 @@ async function 세척_시작(is재제조 = false) {
 
 	count(입고, { 관리번호 : _management_id.value });
 	await delay();
-	console.log('doc_count: ', 입고_cnt);
+
 	if(입고_cnt > 0) {
 		find(입고, _management_id.value);
 		await delay();
-		console.log('입고 data:', 입고_v);
 
 		_구분.value = 입고_v[0].구분;
 		_차종.value = 입고_v[0].차종;
@@ -56,7 +55,7 @@ async function 세척_시작(is재제조 = false) {
 
 	count(세척, { 관리번호 : _management_id.value });
 	await delay();
-	console.log('doc_count: ', 세척_cnt);
+
 	if(세척_cnt > 0) {
 		find(세척, _management_id.value);
 		await delay();
@@ -106,7 +105,7 @@ async function 세척_save() {
 	count(BSA재제조, { 관리번호 : _management_id.value });
 	await delay();
 
-	if(doc_count == 0) {
+	if(BSA재제조_cnt == 0) {
 		var _doc = JSON.parse(JSON.stringify(BSA재제조_doc));
 		_doc.관리번호 = _management_id.value;
 		_doc.세척투입일 = _공정입고일.value;

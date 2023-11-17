@@ -20,32 +20,18 @@ async function 재충전정보_시작() {
 	console.log('검색 기준일:', 기준일, now);
 	count(BSA재제조, { 마지막충전일 : { $lte : 기준일, $ne : '' }, 공정단계 : { $ne : '출하' }});
 	await delay();
-	await sleep(100);
 
-	console.log('doc_count: ', doc_count);
-	if(doc_count > 0) {
+	if(BSA재제조_cnt > 0) {
 		find_BSA재제조(BSA재제조, { 마지막충전일 : { $lte : 기준일, $ne : '' }, 공정단계 : { $ne : '출하' }});
 		await delay();
 
-		console.log('result:', find_array);
-
-		tabledata = find_array;
-		//find_array.forEach(function(data) {
-		//	var info = {
-		//		관리번호 : data.관리번호,
-		//		재제조번호 : data.재제조번호,
-		//		마지막충전일 : data.마지막충전일.substring(0, 10) + ' ' + data.마지막충전일.substring(11, 16)
-		//	}
-
-		//	tabledata.push(info);
-		//});
+		tabledata = BSA재제조_v;
 	}
 
 	var table_고품정보 = new Tabulator("#grid_재충전정보", {
 		layout: "resizableColumnFit",
 		height:1500,
 		data:tabledata, 
-		//autoColumns:true,
 		
 		columns:[
 			{title:"관리번호", field:"관리번호", sorter:"string"},

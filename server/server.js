@@ -90,13 +90,6 @@ io.on('connection', async function(socket) {
 		socket.emit('qr_lebel_result', 'complete');
 	});
 
-	socket.on('distinct', async function(worker, col, query, field_name) {
-		if(account.login == false) return;
-
-		const result_array = await distinct(col, query, field_name);
-		socket.emit('distinct_result', result_array);
-	});
-
 	socket.on('insert', async function(worker, col, doc) {
 		if(account.login == false) return;
 
@@ -116,7 +109,7 @@ io.on('connection', async function(socket) {
 	socket.on('count', async function(level, col, query, check) {
 		if(account.login == false && col != '계정' && col != '거래확인서') return;
 		const cnt = await count(col, query);
-		socket.emit('count_result', cnt, check);
+		socket.emit('count_result', col, cnt, check);
 		//logger.info('worker:'+ worker + ' count col:' + col +'query:'+ JSON.stringify(query));
 		//
 		if(account.login == false && col == '계정' && cnt > 0) {
@@ -130,7 +123,7 @@ io.on('connection', async function(socket) {
 		if(account.login == false && col != '거래확인서') return;
 		await sleep(10);
 		const result_array = await find(col, query, options);
-		socket.emit('find_result', result_array, check);
+		socket.emit('find_result', col, result_array, check);
 		////logger.info('worker:'+ worker + ' find col:' + col +'query:'+ JSON.stringify(query));
 	});
 

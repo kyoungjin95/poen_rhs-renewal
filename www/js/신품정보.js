@@ -3,8 +3,6 @@ var tabledata = [];
 
 async function 신품정보_시작() {
 	read_신품정보_func_csv();
-
-	;
 }
 
 async function 신품정보등록_조회() {
@@ -17,23 +15,21 @@ async function 신품정보등록_조회() {
 	console.log('load: ', _QR.value);
 	if(_QR.value == '' | _QR.value == 'none') return;
 
-	count(신품정보, { QR : _QR.value });
+	count(자재입출고, { QR : _QR.value });
 	await delay();
-	console.log('doc_count: ', doc_count);
-	if(doc_count > 0) {
+	if(자재입출고_cnt > 0) {
 		find_신품정보(자재입출고, { QR : _QR.value });
 		await delay();
-		console.log('신품정보 : ', find_array);
 		
-		_QR.value = find_array[0].QR;
-		_날짜.value = find_array[0].날짜;
-		_구분.value = find_array[0].구분;
-		_차종.value = find_array[0].차종;
-		_품명.value = find_array[0].품명;
-		_품번.value = find_array[0].품번;
-		_수량.value = find_array[0].수량;
-                _LotNo.value = find_array[0].LotNo;
-                _비고.value = find_array[0].비고;
+		_QR.value   = 자재입출고_v[0].QR;
+		_날짜.value = 자재입출고_v[0].날짜;
+		_구분.value = 자재입출고_v[0].구분;
+		_차종.value = 자재입출고_v[0].차종;
+		_품명.value = 자재입출고_v[0].품명;
+		_품번.value = 자재입출고_v[0].품번;
+		_수량.value = 자재입출고_v[0].수량;
+                _LotNo.value = 자재입출고_v[0].LotNo;
+                _비고.value = 자재입출고_v[0].비고;
 	} else {
 		_QR.value = '';
 		_날짜.value = '';
@@ -48,7 +44,7 @@ async function 신품정보등록_조회() {
 
 	find_신품정보(자재입출고, { QR : { $exists: true }});
 	await delay();
-	tabledata = find_array;
+	tabledata = 자재입출고_v;
 
 	var table_신품정보 = new Tabulator("#grid_신품정보", {
 		layout: "resizableColumnFit",
@@ -145,7 +141,6 @@ function read_신품정보_func_csv() {
 					count(자재입출고, { QR : { $exists : true} });
 					await delay();
 
-					console.log(doc_count);
 					docs = [];
 
 					await sleep(1000);
