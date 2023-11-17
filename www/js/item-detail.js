@@ -835,14 +835,12 @@ async function item_detail_save(flag_result = false) {
 	console.log(update_count);
 	console.log(insert_count);
 
-	if (flag_result == false) {
-		if (update_count > 0) {
-			alert("업데이트 되었습니다");
-		}
+	if (update_count > 0) {
+		alert("업데이트 되었습니다");
+	}
 
-		if (insert_count > 0) {
-			alert("신규 항목이 저장 되었습니다");
-		}
+	if (insert_count > 0) {
+		alert("신규 항목이 저장 되었습니다");
 	}
 }
 
