@@ -2718,7 +2718,6 @@ async function delay() {
 	while(flag_arrivedMSG == false) {
 		await sleep(1);
 	}
-	console.log(flag_arrivedMSG);
 	return true;
 }
 
