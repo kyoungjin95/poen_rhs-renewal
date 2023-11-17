@@ -1730,7 +1730,7 @@ async function grid_교체부품상세8(m_id = '') {
 	var tabledata_교체부품상세8 = [];
 
 	if(m_id == '') {
-		find_교체부품상세(교체부품상세6, { 관리번호 : { $exists: true } });
+		find_교체부품상세(교체부품상세8, { 관리번호 : { $exists: true } });
 		await delay();
 	} else {
 		count(교체부품상세8, { 관리번호 : { $exists : true } });
