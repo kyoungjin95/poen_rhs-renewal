@@ -28,7 +28,7 @@ const logger = winston.createLogger({
       dirname: logDir,
       filename: `%DATE%.log`,
       maxFiles: 30,  // 30일치 로그 파일 저장
-      zippedArchive: false, 
+      zippedArchive: true, 
     }),
     // error 레벨 로그를 저장할 파일 설정
     new winstonDaily({
