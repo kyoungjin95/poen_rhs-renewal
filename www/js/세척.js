@@ -15,11 +15,11 @@ async function 세척_시작(is재제조 = false) {
 	if(is재제조 == false) {
 		count(BSA재제조, {관리번호 : _management_id.value });
 		await delay();
-		if(doc_count > 0) {
+		if(BSA재제조_cnt > 0) {
 			find(BSA재제조, _management_id.value);
 			await delay();
 
-			_재제조번호.value = find_array[0].재제조번호;
+			_재제조번호.value = BSA재제조_v[0].재제조번호;
 		} else {
 			_재제조번호.value = '';
 		}
@@ -27,11 +27,11 @@ async function 세척_시작(is재제조 = false) {
 		count(BSA재제조, { 재제조번호 : _재제조번호.value });
 		await delay();
 
-		if(doc_count > 0) {
+		if(BSA재제조_cnt > 0) {
 			find_BSA재제조(BSA재제조, { 재제조번호 : _재제조번호.value });
 			await delay();
 
-			_management_id.value = find_array[0].관리번호;
+			_management_id.value = BSA재제조_v[0].관리번호;
 		} else {
 			_management_id.value = '찾지 못하였습니다';
 		}
@@ -39,15 +39,14 @@ async function 세척_시작(is재제조 = false) {
 
 	count(입고, { 관리번호 : _management_id.value });
 	await delay();
-	console.log('doc_count: ', doc_count);
-	if(doc_count > 0) {
+
+	if(입고_cnt > 0) {
 		find(입고, _management_id.value);
 		await delay();
-		console.log('입고 data:', find_array);
 
-		_구분.value = find_array[0].구분;
-		_차종.value = find_array[0].차종;
-		_품번.value = find_array[0].품번;
+		_구분.value = 입고_v[0].구분;
+		_차종.value = 입고_v[0].차종;
+		_품번.value = 입고_v[0].품번;
 	} else {
 		_구분.value = '';
 		_차종.value = '';
@@ -56,16 +55,16 @@ async function 세척_시작(is재제조 = false) {
 
 	count(세척, { 관리번호 : _management_id.value });
 	await delay();
-	console.log('doc_count: ', doc_count);
-	if(doc_count > 0) {
+
+	if(세척_cnt > 0) {
 		find(세척, _management_id.value);
 		await delay();
-		_공정입고일.value = find_array[0].공정입고일;
-		_공정완료일.value = find_array[0].공정완료일;
-		_어퍼케이스재사용가능.value = find_array[0].어퍼케이스재사용가능;
-		_기밀검사_케이스.value = find_array[0].기밀검사_케이스;
-		_기밀검사_케이스_특이사항.value = find_array[0].기밀검사_케이스_특이사항;
-		_특이사항.value = find_array[0].특이사항
+		_공정입고일.value = 세척_v[0].공정입고일;
+		_공정완료일.value = 세척_v[0].공정완료일;
+		_어퍼케이스재사용가능.value = 세척_v[0].어퍼케이스재사용가능;
+		_기밀검사_케이스.value = 세척_v[0].기밀검사_케이스;
+		_기밀검사_케이스_특이사항.value = 세척_v[0].기밀검사_케이스_특이사항;
+		_특이사항.value = 세척_v[0].특이사항
 	} else {
 		_공정입고일.value = '0000-00-00T00:00';
 		_공정완료일.value = '0000-00-00T00:00';
@@ -106,7 +105,7 @@ async function 세척_save() {
 	count(BSA재제조, { 관리번호 : _management_id.value });
 	await delay();
 
-	if(doc_count == 0) {
+	if(BSA재제조_cnt == 0) {
 		var _doc = JSON.parse(JSON.stringify(BSA재제조_doc));
 		_doc.관리번호 = _management_id.value;
 		_doc.세척투입일 = _공정입고일.value;

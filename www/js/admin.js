@@ -15,7 +15,7 @@ async function 관리자_시작() {
 	count(계정, { id : {$exists : true }});
 	await delay();
 
-	if(doc_count > 0) {
+	if(계정_cnt > 0) {
 		find_계정(계정, { id : { $exists : true }})
 		await delay();
 
@@ -134,7 +134,7 @@ async function doo_() {
 	find_BSA재제조(BSA재제조, { 완전분해 : { $ne : '' }, 공정단계 : { $ne : '완전분해'}});
 	await delay();
 
-	find_array.forEach(async function(item) {
+	BSA재제조_v.forEach(async function(item) {
 		var doc = {
 			관리번호 : item.관리번호,
 			공정단계 : '분해조립'
@@ -151,7 +151,7 @@ async function doo() {
 	find_BSA재제조(BSA재제조, { EOL : { $ne : '' }, 출하검사 : { $eq : ''}});
 	await delay();
 
-	var test_BSA = find_array;
+	var test_BSA = BSA재제조_v;
 	var table = new Tabulator("#grid_bsa", {
 		layout: "resizableColumnFit",
 		data:test_BSA,
@@ -198,5 +198,4 @@ async function doo() {
 		'EOLvs출하검사' : true,
 	};
 	table.download("xlsx", "EOLvs출하검사_bsa.xlsx", {sheets:sheets});
-
 }

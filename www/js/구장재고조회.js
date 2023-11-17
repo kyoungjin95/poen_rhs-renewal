@@ -22,20 +22,20 @@ async function 구장재고조회_시작() {
 	count(구장재고, { 관리번호 : { $exists : true } }); 
 	await delay();
 	
-	if(doc_count > 0) {
+	if(구장재고_cnt > 0) {
 		find_구장재고(구장재고, { 관리번호 : { $exists : true } });
 		await delay();
 
-		구장창고조회(find_array);
+		구장창고조회(구장재고_v);
 		await sleep(100);
 
-		품번별_수량집계(find_array);
+		품번별_수량집계(구장재고_v);
 		await sleep(100);
 
-		입고처별_수량집계(find_array);
+		입고처별_수량집계(구장재고_v);
 		await sleep(100);
 
-		출고처별_수량집계(find_array);
+		출고처별_수량집계(구장재고_v);
 		await sleep(100);
 	}
 }
@@ -78,22 +78,20 @@ async function 구장_수량집계_기간조회() {
 	count(구장재고, { 관리번호 : { $exists : true }, 입고일 : { $gte : 집계_today_begin, $lte : 집계_today_end }}); 
 	await delay();
 	
-	if(doc_count > 0) {
+	if(구장재고_cnt > 0) {
 		find_구장재고(구장재고, { 관리번호 : { $exists : true }, 입고일 : { $gte : 집계_today_begin, $lte : 집계_today_end }});
 		await delay();
 
-		console.log(find_array);
-
-		구장창고조회(find_array);
+		구장창고조회(구장재고_v);
 		await sleep(100);
 
-		품번별_수량집계(find_array);
+		품번별_수량집계(구장재고_v);
 		await sleep(100);
 
-		입고처별_수량집계(find_array);
+		입고처별_수량집계(구장재고_v);
 		await sleep(100);
 
-		출고처별_수량집계(find_array);
+		출고처별_수량집계(구장재고_v);
 		await sleep(100);
 	} else {
 		alert('검색 조건에 맞는 데이터가 없습니다');
@@ -176,7 +174,7 @@ async function delete_구장재고_bsa() {
 	find_구장재고(구장재고, { 관리번호 : { $exists : true } });
 	await delay();
 
-	구장창고조회(find_array);
+	구장창고조회(구장재고_v);
 }
 
 function 품번별_수량집계(data) {

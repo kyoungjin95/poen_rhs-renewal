@@ -31,10 +31,12 @@ async function 육안검사내부_조회(is재제조번호 = false) {
     count(BSA재제조, { 재제조번호 : _재제조번호.value});
     await delay();
 
-    find_BSA재제조(BSA재제조, { 재제조번호 : _재제조번호.value});
-    await delay();
+    if(BSA재제조_cnt > 0) {
+    	find_BSA재제조(BSA재제조, { 재제조번호 : _재제조번호.value});
+    	await delay();
 
-    _management_id.value = find_array[0].관리번호;
+    	_management_id.value = BSA재제조_v[0].관리번호;
+    }
   }
 
   if (_management_id.value.trim() == "조회 버튼을 누르세요")
@@ -42,16 +44,21 @@ async function 육안검사내부_조회(is재제조번호 = false) {
   console.log("load: ", _management_id.value);
   if (_management_id.value.length == 0) return;
 
+  count(입고_pic, { 관리번호 : _management_id.value });
+  await delay();
+
+  if(입고_pic_cnt == 0) return;
+
   find(입고_pic, _management_id.value);
   await delay();
 
-  _BMU.src = "data:image/;base64," + find_array[0].pic3;
-  _CMU.src = "data:image/;base64," + find_array[0].pic4;
-  _PRA.src = "data:image/;base64," + find_array[0].pic5;
-  _이상부위_내부1.src = "data:image/;base64," + find_array[0].pic6;
-  _이상부위_내부2.src = "data:image/;base64," + find_array[0].pic7;
-  _이상부위_내부3.src = "data:image/;base64," + find_array[0].pic8;
-  _이상부위_내부4.src = "data:image/;base64," + find_array[0].pic9;
+  _BMU.src = "data:image/;base64," + 입고_pic_v[0].pic3;
+  _CMU.src = "data:image/;base64," + 입고_pic_v[0].pic4;
+  _PRA.src = "data:image/;base64," + 입고_pic_v[0].pic5;
+  _이상부위_내부1.src = "data:image/;base64," + 입고_pic_v[0].pic6;
+  _이상부위_내부2.src = "data:image/;base64," + 입고_pic_v[0].pic7;
+  _이상부위_내부3.src = "data:image/;base64," + 입고_pic_v[0].pic8;
+  _이상부위_내부4.src = "data:image/;base64," + 입고_pic_v[0].pic9;
 }
 
 async function 육안검사내부_save() {

@@ -13,8 +13,6 @@ async function 생산현황_시작() {
 		await sleep(DELAY);
 	}
 
-	;
-
 	품번_조회();
 }
 
@@ -41,9 +39,7 @@ async function 품번_조회() {
 		count(BSA재제조, { 출하 : { $exists : true}, 품번 : { $exists: true}});
 		await delay();
 	}
-	await sleep(100);
-	console.log('doc_count: ', doc_count);
-	if(doc_count < 1) return;
+	if(BSA재제조_cnt < 1) return;
 
 	if(level == 'kia_일반') {
 		find_BSA재제조(BSA재제조, { 차종 : { $in : ['DE', 'DE_EV', 'DEPBV', 'DEPBV-EV', 'CV', 'CV_EV', 'MV', 'MV_EV', 'PU', 'PU_EV', 'SG2', 'SG2-EV', 'TAM', 'TAM-EV', 'PS', 'PS_EV', 'SK3']}, 출하 : { $exists : true}, 품번 : { $exists: true}, 구분 : '일반' });
@@ -62,7 +58,7 @@ async function 품번_조회() {
 		await delay();
 	}
 	
-	find_array.forEach(function(doc) {
+	BSA재제조_v.forEach(function(doc) {
 		if(labels.indexOf(doc.품번) < 0) {
 			labels.push(doc.품번);
 			counts.push(1);

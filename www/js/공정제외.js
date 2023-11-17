@@ -33,33 +33,29 @@ async function BSA_제외분류_조회() {
 async function 일반기타() {
 	 count(BSA재제조, { 구분 : '일반기타'});
 	 await delay();
-	 await sleep(500);
 
-	 document.getElementById('check_num1').innerHTML = doc_count;
+	 document.getElementById('check_num1').innerHTML = BSA재제조_cnt;
 }
 
 async function 보증기타() {
 	 count(BSA재제조, { 구분 : '보증기타'});
 	 await delay();
-	 await sleep(500);
 
-	 document.getElementById('check_num2').innerHTML = doc_count;
+	 document.getElementById('check_num2').innerHTML = BSA재제조_cnt;
 }
 
 async function 완전분해() {
 	 count(BSA재제조, { 완전분해 : { $ne : '', $exists : true } });
 	 await delay();
-	 await sleep(500);
 
-	 document.getElementById('check_num3').innerHTML = doc_count;
+	 document.getElementById('check_num3').innerHTML = BSA재제조_cnt;
 }
 
 async function 폐기() {
 	count(BSA재제조, { 폐기 : { $ne : '', $exists : true } });
 	await delay();
-	await sleep(500);
 
-	document.getElementById('check_num4').innerHTML = doc_count;
+	document.getElementById('check_num4').innerHTML = BSA재제조_cnt;
 }
 
 async function 제외목록(제외) {
@@ -72,15 +68,13 @@ async function 제외목록(제외) {
 		case '일반기타' :
 			count(BSA재제조, { 구분 : '일반기타' });
 			await delay();
-	 		await sleep(500);
 
-			if(doc_count == 0) {
+			if(BSA재제조_cnt == 0) {
 				제외_tabledata_BSA = [];
 			} else {
 				find_BSA재제조(BSA재제조, { 구분 : '일반기타' });
 				await delay();
-				await sleep(500);
-				제외_tabledata_BSA = find_array;
+				제외_tabledata_BSA = JSON.parse(JSON.stringify(BSA재제조_v));
 			}
 
 			break;
@@ -88,16 +82,14 @@ async function 제외목록(제외) {
 		case '보증기타' :
 			count(BSA재제조, { 구분 : '보증기타' });
 			await delay();
-			await sleep(500);
 
-			if(doc_count == 0) {
+			if(BSA재제조_cnt == 0) {
 				제외_tabledata_BSA = [];
 			} else {
 				find_BSA재제조(BSA재제조, { 구분 : '보증기타' });
 				await delay();
-				await sleep(500);
 
-				제외_tabledata_BSA = find_array;
+				제외_tabledata_BSA = JSON.parse(JSON.stringify(BSA재제조_v));
 			}
 
 			break;
@@ -105,16 +97,14 @@ async function 제외목록(제외) {
 		case '완전분해' :
 			count(BSA재제조, { 완전분해 : {$ne : '', $exists : true} });
 			await delay();
-			await sleep(500);
 
-			if(doc_count == 0) {
+			if(BSA재제조_cnt == 0) {
 				제외_tabledata_BSA = [];
 			} else {
 				find_BSA재제조(BSA재제조, { 완전분해 : {$ne : '', $exists : true} });
 				await delay();
-				await sleep(500);
 
-				제외_tabledata_BSA = find_array;
+				제외_tabledata_BSA = JSON.parse(JSON.stringify(BSA재제조_v));
 			}
 
 			break;
@@ -122,16 +112,14 @@ async function 제외목록(제외) {
 		case '폐기' :
 			count(BSA재제조, { 폐기 : {$ne : '', $exists : true} });
 			await delay();
-			await sleep(500);
 
-			if(doc_count == 0) {
+			if(BSA재제조_cnt == 0) {
 				제외_tabledata_BSA = [];
 			} else {
 				find_BSA재제조(BSA재제조, { 폐기 : {$ne : '', $exists : true} });
 				await delay();
-				await sleep(500);
 
-				제외_tabledata_BSA = find_array;
+				제외_tabledata_BSA = JSON.parse(JSON.stringify(BSA재제조_v));
 			}
 
 			break;

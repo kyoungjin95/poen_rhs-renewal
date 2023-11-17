@@ -50,7 +50,7 @@ function pic_load(e) {
 async function 세척_사진촬영(m_id) {
 	if(worker == '') return;
 	loadPage('base/camera.html'); 
-	await sleep(DELAY);
+	await sleep(100);
 
 	var mid = document.getElementById('_pic_management_id');
 	var step_sel = document.getElementById('camera_step');
@@ -86,7 +86,7 @@ async function 기초검사_사진촬영(m_id) {
 async function EOL_사진촬영(m_id) {
 	if(worker == '') return;
 	loadPage('base/camera.html'); 
-	await sleep(DELAY);
+	await sleep(100);
 
 	var mid = document.getElementById('_pic_management_id');
 	var step_sel = document.getElementById('camera_step');
@@ -155,8 +155,8 @@ function camera_공정입력_콤보박스(e) {
 	
 	switch(pic_step) {
 		case '입고' :
-      slot1.innerHTML = '입고';
-      slot2.innerHTML = 'BSA QR 코드';
+      			slot1.innerHTML = '입고';
+      			slot2.innerHTML = 'BSA QR 코드';
 
 			col = 입고_pic;
 			doc = JSON.parse(JSON.stringify(입고_pic_doc));

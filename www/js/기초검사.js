@@ -25,12 +25,12 @@ async function 기초검사_시작(is재제조 = false) {
 	if(is재제조 == false) {
 		count(BSA재제조, {관리번호 : _management_id.value});
 		await delay();
-		if(doc_count > 0) {
+		if(BSA재제조_cnt > 0) {
 			find(BSA재제조, _management_id.value);
 			await delay();
 
 			if(재제조번호 != undefined) {
-				_재제조번호.value = find_array[0].재제조번호;
+				_재제조번호.value = BSA재제조_v[0].재제조번호;
 			}
 		} else {
 			_재제조번호.value = '';
@@ -38,11 +38,11 @@ async function 기초검사_시작(is재제조 = false) {
 	} else {
 		count(BSA재제조, { 재제조번호 : _재제조번호.value});
 		await delay();
-		if(doc_count > 0) {
+		if(BSA재제조_cnt > 0) {
 			find_BSA재제조(BSA재제조, { 재제조번호 : _재제조번호.value });
 			await delay();
 
-			_management_id.value = find_array[0].관리번호;
+			_management_id.value = BSA재제조_v[0].관리번호;
 		} else {
 			_management_id.value = '찾지 못하였습니다';
 			_구분.value = '';
@@ -52,17 +52,17 @@ async function 기초검사_시작(is재제조 = false) {
 	}
 
 	if(_management_id.value == '' | _management_id.value == 'none') return
+
 	count(입고, { 관리번호 : _management_id.value });
 	await delay();
-	console.log('doc_count: ', doc_count);
-	if(doc_count > 0) {
+
+	if(입고_cnt > 0) {
 		find(입고, _management_id.value);
 		await delay();
-		console.log('입고 data:', find_array);
 
-		_구분.value = find_array[0].구분;
-		_차종.value = find_array[0].차종;
-		_품번.value = find_array[0].품번;
+		_구분.value = 입고_v[0].구분;
+		_차종.value = 입고_v[0].차종;
+		_품번.value = 입고_v[0].품번;
 	} else {
 		_구분.value = '';
 		_차종.value = '';
@@ -71,86 +71,85 @@ async function 기초검사_시작(is재제조 = false) {
 
 	count(기초검사, { 관리번호 : _management_id.value });
 	await delay();
-	console.log('doc_count: ', doc_count);
-	if(doc_count > 0) {
+	if(기초검사_cnt > 0) {
 		find(기초검사, _management_id.value);
 		await delay();
 		
-		_공정입고일.value = find_array[0].공정입고일;
-		_RO_no.value = find_array[0].RO_no;
-		_VIN.value = find_array[0].VIN;
-		//_랙번호.value = find_array[0].랙번호;
-		_QRCode.value = find_array[0].QRcode;
-		_주행거리.value = find_array[0].주행거리;
-		_차량번호.value = find_array[0].차량번호;
-		_육안검사_외부.value = find_array[0].육안검사_외부;
-		_육안검사_외부_특이사항.value = find_array[0].육안검사_외부_특이사항;
-		_육안검사_내부.value = find_array[0].육안검사_내부;
-		_육안검사_내부_특이사항.value = find_array[0].육안검사_내부_특이사항;
-		_기밀검사_냉각유로.value = find_array[0].기밀검사_냉각유로;
-		_기밀검사_냉각유로_특이사항.value = find_array[0].기밀검사_냉각유로_특이사항;
-		_절연검사P.value = find_array[0].절연검사_Plus;
-		_절연검사N.value = find_array[0].절연검사_Minus;
-		_통신검사_DTC코드1.value = find_array[0].통신검사_DTC코드1;
-		_통신검사_DTC코드2.value = find_array[0].통신검사_DTC코드2;
-		_통신검사_DTC코드3.value = find_array[0].통신검사_DTC코드3;
-		if(find_array[0].통신검사_DTC코드4 != '') {
+		_공정입고일.value = 기초검사_v[0].공정입고일;
+		_RO_no.value = 기초검사_v[0].RO_no;
+		_VIN.value = 기초검사_v[0].VIN;
+		//_랙번호.value = 기초검사_v[0].랙번호;
+		_QRCode.value = 기초검사_v[0].QRcode;
+		_주행거리.value = 기초검사_v[0].주행거리;
+		_차량번호.value = 기초검사_v[0].차량번호;
+		_육안검사_외부.value = 기초검사_v[0].육안검사_외부;
+		_육안검사_외부_특이사항.value = 기초검사_v[0].육안검사_외부_특이사항;
+		_육안검사_내부.value = 기초검사_v[0].육안검사_내부;
+		_육안검사_내부_특이사항.value = 기초검사_v[0].육안검사_내부_특이사항;
+		_기밀검사_냉각유로.value = 기초검사_v[0].기밀검사_냉각유로;
+		_기밀검사_냉각유로_특이사항.value = 기초검사_v[0].기밀검사_냉각유로_특이사항;
+		_절연검사P.value = 기초검사_v[0].절연검사_Plus;
+		_절연검사N.value = 기초검사_v[0].절연검사_Minus;
+		_통신검사_DTC코드1.value = 기초검사_v[0].통신검사_DTC코드1;
+		_통신검사_DTC코드2.value = 기초검사_v[0].통신검사_DTC코드2;
+		_통신검사_DTC코드3.value = 기초검사_v[0].통신검사_DTC코드3;
+		if(기초검사_v[0].통신검사_DTC코드4 != '') {
 			_기초검사_add_DTC_Code();
 			await sleep(10);
-			_통신검사_DTC코드4.value = find_array[0].통신검사_DTC코드4;
+			_통신검사_DTC코드4.value = 기초검사_v[0].통신검사_DTC코드4;
 		}
                
-    if(find_array[0].통신검사_DTC코드5 != '') {
+    if(기초검사_v[0].통신검사_DTC코드5 != '') {
 			_기초검사_add_DTC_Code();
 			await sleep(10);
-			_통신검사_DTC코드5.value = find_array[0].통신검사_DTC코드5;
+			_통신검사_DTC코드5.value = 기초검사_v[0].통신검사_DTC코드5;
 		}
 
-    if(find_array[0].통신검사_DTC코드6 != '') {
+    if(기초검사_v[0].통신검사_DTC코드6 != '') {
 			_기초검사_add_DTC_Code();
 			await sleep(10);
-			_통신검사_DTC코드6.value = find_array[0].통신검사_DTC코드6;
+			_통신검사_DTC코드6.value = 기초검사_v[0].통신검사_DTC코드6;
 		}
 
-    if(find_array[0].통신검사_DTC코드7 != '') {
+    if(기초검사_v[0].통신검사_DTC코드7 != '') {
 			_기초검사_add_DTC_Code();
 			await sleep(10);
-			_통신검사_DTC코드7.value = find_array[0].통신검사_DTC코드7;
+			_통신검사_DTC코드7.value = 기초검사_v[0].통신검사_DTC코드7;
 		}
 
-    if(find_array[0].통신검사_DTC코드8 != '') {
+    if(기초검사_v[0].통신검사_DTC코드8 != '') {
 			_기초검사_add_DTC_Code();
 			await sleep(10);
-			_통신검사_DTC코드8.value = find_array[0].통신검사_DTC코드8;
+			_통신검사_DTC코드8.value = 기초검사_v[0].통신검사_DTC코드8;
 		}
 
-     if(find_array[0].통신검사_DTC코드9 != '') {
+     if(기초검사_v[0].통신검사_DTC코드9 != '') {
 			_기초검사_add_DTC_Code();
 			await sleep(10);
-			_통신검사_DTC코드9.value = find_array[0].통신검사_DTC코드9;
+			_통신검사_DTC코드9.value = 기초검사_v[0].통신검사_DTC코드9;
 		}
 
-    if(find_array[0].통신검사_DTC코드10 != '') {
+    if(기초검사_v[0].통신검사_DTC코드10 != '') {
 			_기초검사_add_DTC_Code();
 			await sleep(10);
-			_통신검사_DTC코드10.value = find_array[0].통신검사_DTC코드10;
+			_통신검사_DTC코드10.value = 기초검사_v[0].통신검사_DTC코드10;
 		}
 
-		_통신검사_팩전압.value = find_array[0].통신검사_팩전압;
-		_통신검사_셀전압편차.value = find_array[0].통신검사_셀전압편차;
-		_통신검사_릴레이구동.value = find_array[0].통신검사_릴레이구동;
-		_BSA생산일자.value = find_array[0].BSA생산일자;
-		_BMA_ROM_ID.value = find_array[0].BMA_ROM_ID;
-		_고장현상코드.value = find_array[0].고장현상코드;
-		_고장현상명.value = find_array[0].고장현상명;
-		_문제Cell_No.value = find_array[0].문제Cell_No;
-		_문제BMA_No.value = find_array[0].문제BMA_No;
-		_문제BMA_cnt.value = find_array[0].문제BMA_cnt;
-		_공정완료일.value = find_array[0].공정완료일;
-		_요청사항.value = find_array[0].요청사항;
-		_비고.value = find_array[0].비고;
-		_센터진단내용.value = find_array[0].센터진단내용;
-		_검사자.value = find_array[0].검사자;
+		_통신검사_팩전압.value = 기초검사_v[0].통신검사_팩전압;
+		_통신검사_셀전압편차.value = 기초검사_v[0].통신검사_셀전압편차;
+		_통신검사_릴레이구동.value = 기초검사_v[0].통신검사_릴레이구동;
+		_BSA생산일자.value = 기초검사_v[0].BSA생산일자;
+		_BMA_ROM_ID.value = 기초검사_v[0].BMA_ROM_ID;
+		_고장현상코드.value = 기초검사_v[0].고장현상코드;
+		_고장현상명.value = 기초검사_v[0].고장현상명;
+		_문제Cell_No.value = 기초검사_v[0].문제Cell_No;
+		_문제BMA_No.value = 기초검사_v[0].문제BMA_No;
+		_문제BMA_cnt.value = 기초검사_v[0].문제BMA_cnt;
+		_공정완료일.value = 기초검사_v[0].공정완료일;
+		_요청사항.value = 기초검사_v[0].요청사항;
+		_비고.value = 기초검사_v[0].비고;
+		_센터진단내용.value = 기초검사_v[0].센터진단내용;
+		_검사자.value = 기초검사_v[0].검사자;
 	} else {
 		_공정입고일.value = '0000-00-00T00:00';
 		_RO_no.value = '';
@@ -346,7 +345,7 @@ async function 기초검사_SAVE() {
 	count(BSA재제조, { 관리번호 : _management_id.value });
 	await delay();
 
-	if(doc_count == 0) {
+	if(BSA재제조_cnt == 0) {
 		var _doc = JSON.parse(JSON.stringify(BSA재제조_doc));
 		_doc.관리번호 = _management_id.value;
 		_doc.기초검사투입일 = _공정입고일.value;

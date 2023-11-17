@@ -56,8 +56,6 @@ async function 부품재고_시작() {
 		await sleep(DELAY);
 	}
 
-	;
-
 	//Update filters on value change
 	document.getElementById("new_filter-field").addEventListener("change", 신품_updateFilter);
 	document.getElementById("new_filter-type").addEventListener("change", 신품_updateFilter);
@@ -98,12 +96,10 @@ async function 부품재고_시작() {
 	count(자재입출고, { QR : { $exists : true }});
 	await delay();
 
-	console.log('doc_count: ', doc_count);
-	if(doc_count > 0) {
+	if(자재입출고_cnt > 0) {
 		find_신품정보(자재입출고, { QR : { $exists : true }});
 		await delay();
-		tabledata_신품재고 = find_array;
-		//console.log(find_array);
+		tabledata_신품재고 = JSON.parse(JSON.stringify(자재입출고_v));
 	}
 
 	table_신품재고 = new Tabulator("#grid_신품재고", {
@@ -137,11 +133,11 @@ async function 부품재고_시작() {
 	count(고품정보, { 관리번호 : { $exists : true }});
 	await delay();
 
-	console.log('doc_count: ', doc_count);
-	if(doc_count > 0) {
+	if(고품정보_cnt > 0) {
 		find_고품정보(고품정보, { 관리번호 : { $exists : true }});
 		await delay();
-		tabledata_고품재고 = find_array;
+
+		tabledata_고품재고 = JSON.parse(JSON.stringify(고품정보_v));
 	}
 
 	table_고품재고 = new Tabulator("#grid_고품재고", {

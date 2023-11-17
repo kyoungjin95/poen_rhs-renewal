@@ -4,7 +4,6 @@ async function 특이사항_시작() {
 		await sleep(DELAY);
 	}
 	
-	;
 	_management_id.value =  관리번호;
 
 	if(_management_id.value.length == 0) return;
@@ -14,12 +13,11 @@ async function 특이사항_시작() {
 	count(특이사항, { 관리번호 : _management_id.value });
 	await delay();
 
-	console.log('doc_count: ', doc_count);
-	if(doc_count > 0) {
+	if(특이사항_cnt > 0) {
 		find(특이사항, _management_id.value);
 		await delay();
 		
-		_특이사항.value = find_array[0].특이사항;
+		_특이사항.value = 특이사항_v[0].특이사항;
 	} else {
 		_특이사항.value = '';
 	}

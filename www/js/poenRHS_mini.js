@@ -68,26 +68,21 @@ socket.on('connect', function() {
 });
 
 socket.on('insert_result', async function(id) {
-	//console.log('insert id: ', id);
 	insert_id = id;
 	flag_arrivedMSG = true;
 	await sleep(DELAY);
 });
 
 socket.on('count_result', async function(count, rcv_check) {
-	//console.log('count: ', count);
   	doc_count = 0;
 	if(rcv_check != check) return;
 	doc_count = JSON.parse(JSON.stringify(count));
-	//doc_count = count;
 
 	flag_arrivedMSG = true;
 	await sleep(DELAY);
 });
 
 socket.on('find_result', async function(result, rcv_check) {
-	//console.log('finded result array: ', result);
-	//console.log('recv count:', rcv_check, 'check:', check);
 	find_array = [];
 	if(rcv_check != check) return;
 
@@ -102,8 +97,6 @@ socket.on('update_result', async function(result) {
 	update_count = 0;
 	insert_count = 0;
 	if(result == null) return;
-	//console.log('update result count: ', result.modifiedCount);
-	//console.log('insert result count: ', result.upsertedCount);
 	update_count = result.modifiedCount;
 	insert_count = result.upsertedCount;
 

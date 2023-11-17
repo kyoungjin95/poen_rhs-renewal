@@ -39,7 +39,7 @@ async function 관리번호_변경() {
 	find(BSA재제조, m_id);
 	await delay();
 
-	var doc = find_array[0];
+	var doc = JSON.parse(JSON.stringify(BSA재제조_v[0]));
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -55,7 +55,7 @@ async function 관리번호_변경() {
 	find(입고, m_id);
 	await delay();
 
-	doc = find_array[0];
+	doc = JSON.parse(JSON.stringify(입고_v[0]));
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -71,7 +71,7 @@ async function 관리번호_변경() {
 	find(세척, m_id);
 	await delay();
 
-	doc = find_array[0];
+	doc = JSON.parse(JSON.stringify(세척_v[0]));
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -87,7 +87,7 @@ async function 관리번호_변경() {
 	find(기초검사, m_id);
 	await delay();
 
-	doc = find_array[0];
+	doc = JSON.parse(JSON.stringify(기초검사_v[0]));
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -103,7 +103,7 @@ async function 관리번호_변경() {
 	find(분해조립, m_id);
 	await delay();
 
-	doc = find_array[0];
+	doc = JSON.parse(JSON.stringify(분해조립_v[0]));
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -119,7 +119,7 @@ async function 관리번호_변경() {
 	find(성능검사, m_id);
 	await delay();
 
-	doc = find_array[0];
+	doc = JSON.parse(JSON.stringify(성능검사_v[0]));
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -135,7 +135,7 @@ async function 관리번호_변경() {
 	find(EOL, m_id);
 	await delay();
 
-	doc = find_array[0];
+	doc = JSON.parse(JSON.stringify(EOL_v[0]));
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -151,7 +151,7 @@ async function 관리번호_변경() {
 	find(출하정보, m_id);
 	await delay();
 
-	doc = find_array[0];
+	doc = JSON.parse(JSON.stringify(출하정보_v[0]));
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -167,7 +167,7 @@ async function 관리번호_변경() {
 	find(특이사항, m_id);
 	await delay();
 
-	doc = find_array[0];
+	doc = JSON.parse(JSON.stringify(특이사항_v[0]));
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -183,7 +183,7 @@ async function 관리번호_변경() {
 	find(교체부품상세1, m_id);
 	await delay();
 
-	doc = find_array[0];
+	doc = JSON.parse(JSON.stringify(교체부품상세1_v[0]));
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -199,7 +199,7 @@ async function 관리번호_변경() {
 	find(교체부품상세2, m_id);
 	await delay();
 
-	doc = find_array[0];
+	doc = JSON.parse(JSON.stringify(교체부품상세2_v[0]));
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -215,7 +215,7 @@ async function 관리번호_변경() {
 	find(교체부품상세3, m_id);
 	await delay();
 
-	doc = find_array[0];
+	doc = JSON.parse(JSON.stringify(교체부품상세3_v[0]));
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -231,7 +231,7 @@ async function 관리번호_변경() {
 	find(교체부품상세4, m_id);
 	await delay();
 
-	doc = find_array[0];
+	doc = JSON.parse(JSON.stringify(교체부품상세4_v[0]));
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -247,7 +247,7 @@ async function 관리번호_변경() {
 	find(교체부품상세5, m_id);
 	await delay();
 
-	doc = find_array[0];
+	doc = JSON.parse(JSON.stringify(교체부품상세5_v[0]));
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -263,7 +263,7 @@ async function 관리번호_변경() {
 	find(교체부품상세6, m_id);
 	await delay();
 
-	doc = find_array[0];
+	doc = JSON.parse(JSON.stringify(교체부품상세6_v[0]));
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -279,7 +279,7 @@ async function 관리번호_변경() {
 	find(교체부품상세7, m_id);
 	await delay();
 
-	doc = find_array[0];
+	doc = JSON.parse(JSON.stringify(교체부품상세7_v[0]));
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -295,7 +295,7 @@ async function 관리번호_변경() {
 	find(교체부품상세8, m_id);
 	await delay();
 
-	doc = find_array[0];
+	doc = JSON.parse(JSON.stringify(교체부품상세8_v[0]));
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -311,7 +311,7 @@ async function 관리번호_변경() {
 	find(교체부품상세9, m_id);
 	await delay();
 
-	doc = find_array[0];
+	doc = JSON.parse(JSON.stringify(교체부품상세9_v[0]));
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -327,7 +327,7 @@ async function 관리번호_변경() {
 	find(교체부품상세10, m_id);
 	await delay();
 
-	doc = find_array[0];
+	doc = JSON.parse(JSON.stringify(교체부품상세10_v[0]));
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -356,7 +356,7 @@ async function copy() {
 	find(BSA재제조, m_id);
 	await delay();
 
-	var doc = find_array[0];
+	var doc = BSA재제조_v[0];
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -369,7 +369,7 @@ async function copy() {
 	find(입고, m_id);
 	await delay();
 
-	doc = find_array[0];
+	doc = 입고_v[0];
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -382,7 +382,7 @@ async function copy() {
 	find(세척, m_id);
 	await delay();
 
-	doc = find_array[0];
+	doc = 세척_v[0];
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -395,7 +395,7 @@ async function copy() {
 	find(기초검사, m_id);
 	await delay();
 
-	doc = find_array[0];
+	doc = 기초검사_v[0];
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -408,7 +408,7 @@ async function copy() {
 	find(분해조립, m_id);
 	await delay();
 
-	doc = find_array[0];
+	doc = 분해조립_v[0];
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -421,7 +421,7 @@ async function copy() {
 	find(성능검사, m_id);
 	await delay();
 
-	doc = find_array[0];
+	doc = 성능검사_v[0];
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -434,7 +434,7 @@ async function copy() {
 	find(EOL, m_id);
 	await delay();
 
-	doc = find_array[0];
+	doc = EOL_v[0];
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -447,7 +447,7 @@ async function copy() {
 	find(출하정보, m_id);
 	await delay();
 
-	doc = find_array[0];
+	doc = 출하정보_v[0];
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -460,7 +460,7 @@ async function copy() {
 	find(특이사항, m_id);
 	await delay();
 
-	doc = find_array[0];
+	doc = 특이사항_v[0];
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -473,7 +473,7 @@ async function copy() {
 	find(교체부품상세1, m_id);
 	await delay();
 
-	doc = find_array[0];
+	doc = 교체부품상세1_v[0];
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -486,7 +486,7 @@ async function copy() {
 	find(교체부품상세2, m_id);
 	await delay();
 
-	doc = find_array[0];
+	doc = 교체부품상세2_v[0];
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -499,7 +499,7 @@ async function copy() {
 	find(교체부품상세3, m_id);
 	await delay();
 
-	doc = find_array[0];
+	doc = 교체부품상세2_v[0];
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -512,7 +512,7 @@ async function copy() {
 	find(교체부품상세4, m_id);
 	await delay();
 
-	doc = find_array[0];
+	doc = 교체부품상세3_v[0];
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -525,7 +525,7 @@ async function copy() {
 	find(교체부품상세5, m_id);
 	await delay();
 
-	doc = find_array[0];
+	doc = 교체부품상세5_v[0];
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -538,7 +538,7 @@ async function copy() {
 	find(교체부품상세6, m_id);
 	await delay();
 
-	doc = find_array[0];
+	doc = 교체부품상세6_v[0];
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -551,7 +551,7 @@ async function copy() {
 	find(교체부품상세7, m_id);
 	await delay();
 
-	doc = find_array[0];
+	doc = 교체부품상세7_v[0];
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -564,7 +564,7 @@ async function copy() {
 	find(교체부품상세8, m_id);
 	await delay();
 
-	doc = find_array[0];
+	doc = 교체부품상세8_v[0];
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -577,7 +577,7 @@ async function copy() {
 	find(교체부품상세9, m_id);
 	await delay();
 
-	doc = find_array[0];
+	doc = 교체부품상세9_v[0];
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -590,7 +590,7 @@ async function copy() {
 	find(교체부품상세10, m_id);
 	await delay();
 
-	doc = find_array[0];
+	doc = 교체부품상세10_v[0];
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -669,7 +669,6 @@ async function 재제조현황_시작() {
 
 async function 재제조현황_조회() {
 	if(worker == '') return;
-	find_array = undefined;
 	if(level == 'kia_일반') {
 		count(BSA재제조, { 차종 : { $in : ['DE', 'DE_EV', 'DEPBV', 'DEPBV-EV', 'CV', 'CV_EV', 'MV', 'MV_EV', 'PU', 'PU_EV', 'SG2', 'SG2-EV', 'TAM', 'TAM-EV', 'PS', 'PS_EV', 'SK3']}, 구분 : '일반' });
 		await delay();
@@ -686,11 +685,10 @@ async function 재제조현황_조회() {
 		//count(BSA재제조, { 관리번호 : { $exists: true } });
 		//await delay();
 
-		doc_count = 1;
+		BSA재제조_cnt = 1;
 	}
 
-	console.log('doc_count: ', doc_count);
-	if(doc_count > 0) {
+	if(BSA재제조_cnt > 0) {
 		if(level == 'kia_일반') {
 			find_BSA재제조(BSA재제조, { 차종 : { $in : ['DE', 'DE_EV', 'DEPBV', 'DEPBV-EV', 'CV', 'CV_EV', 'MV', 'MV_EV', 'PU', 'PU_EV', 'SG2', 'SG2-EV', 'TAM', 'TAM-EV', 'PS', 'PS_EV', 'SK3']}, 구분 : '일반'});
 			await delay();
@@ -706,15 +704,12 @@ async function 재제조현황_조회() {
 		} else {
 			find_BSA재제조(BSA재제조, { 관리번호 : { $exists: true } });
 			await delay();
-			await sleep(2500);
 		}
 	} 
 
-	tabledata_BSA = find_array;
-	await sleep(500);
 	table = new Tabulator("#grid_BSA", {
 		layout: "resizableColumnFit",
-		data:tabledata_BSA,
+		data:BSA재제조_v,
 		height: '700px',
 
 		columns:[
@@ -852,79 +847,60 @@ async function 재제조현황_조회() {
 		return;
 	});
 
-	await sleep(2000);
 	await grid_입고();
 	progress.value = 1 / 18 * 100;
 	
-	await sleep(1000);
 	await grid_세척();
 	progress.value = 2 / 18 * 100;
 
-	await sleep(1000);
 	await grid_기초검사();
 	progress.value = 3 / 18 * 100;
 
-	await sleep(1000);
 	await grid_분해조립();
 	progress.value = 4 / 18 * 100;
 
-	await sleep(1000);
 	await grid_성능검사();
 	progress.value = 5 / 18 * 100;
 
-	await sleep(1000);
 	await grid_EOL();
 	progress.value = 6 / 18 * 100;
 
-	await sleep(1000);
 	await grid_출하정보();
 	progress.value = 7 / 18 * 100;
 
-	await sleep(1000);
 	await grid_특이사항();
 	progress.value = 8 / 18 * 100;
 
-	await sleep(1000);
 	await grid_교체부품상세1();
 	progress.value = 9 / 18 * 100;
 
-	await sleep(1000);
 	await grid_교체부품상세2();
 	progress.value = 10 / 18 * 100;
 
-	await sleep(1000);
 	await grid_교체부품상세3();
 	progress.value = 11 / 18 * 100;
 
-	await sleep(1000);
 	await grid_교체부품상세4();
 	progress.value = 12 / 18 * 100;
 
-	await sleep(1000);
 	await grid_교체부품상세5();
 	progress.value = 13 / 18 * 100;
 
-	await sleep(1000);
 	await grid_교체부품상세6();
 	progress.value = 14 / 18 * 100;
 
-	await sleep(1000);
 	await grid_교체부품상세7();
 	progress.value = 15 / 18 * 100;
 
-	await sleep(1000);
 	await grid_교체부품상세8();
 	progress.value = 16 / 18 * 100;
 
-	await sleep(1000);
 	await grid_교체부품상세9();
 	progress.value = 17 / 18 * 100;
 
-	await sleep(1000);
 	await grid_교체부품상세10();
 	progress.value = 18 / 18 * 100;
 
-	await sleep(1000);
 	await 반품입고_load_pic();
 	await 재출하_load_pic();
 	await 완전분해_load_pic();
@@ -1140,8 +1116,7 @@ async function grid_입고(m_id = '') {
 		await delay();
 	}
 
-	tabledata_입고 = find_array;
-	console.log('입고 : ', find_array)
+	tabledata_입고 = JSON.parse(JSON.stringify(입고_v));
 
 	table_입고 = new Tabulator("#grid_입고정보", {
 		layout: "resizableColumnFit",
@@ -1159,26 +1134,26 @@ async function grid_입고(m_id = '') {
 
 	count(입고_pic, { 관리번호 : m_id });
 	await delay();
-	if(doc_count > 0) {
+	if(입고_pic_cnt > 0) {
 		find(입고_pic, m_id);
 		await delay();
-		if(find_array.length == 0) return;
-		console.log(find_array);
-		pic1.src = 'data:image/;base64,' + find_array[0].pic1;
-		pic2.src = 'data:image/;base64,' + find_array[0].pic2;
-		pic3.src = 'data:image/;base64,' + find_array[0].pic3;
-		pic4.src = 'data:image/;base64,' + find_array[0].pic4;
-		pic5.src = 'data:image/;base64,' + find_array[0].pic5;
-		pic6.src = 'data:image/;base64,' + find_array[0].pic6;
-		pic7.src = 'data:image/;base64,' + find_array[0].pic7;
-		pic8.src = 'data:image/;base64,' + find_array[0].pic8;
-		pic9.src = 'data:image/;base64,' + find_array[0].pic9;
-		pic10.src = 'data:image/;base64,' + find_array[0].pic10;
-		pic11.src = 'data:image/;base64,' + find_array[0].pic11;
-		pic12.src = 'data:image/;base64,' + find_array[0].pic12;
-		pic13.src = 'data:image/;base64,' + find_array[0].pic13;
-		pic14.src = 'data:image/;base64,' + find_array[0].pic14;
-		pic15.src = 'data:image/;base64,' + find_array[0].pic15;
+
+		if(입고_pic_v.length == 0) return;
+		pic1.src = 'data:image/;base64,' + 입고_pic_v[0].pic1;
+		pic2.src = 'data:image/;base64,' + 입고_pic_v[0].pic2;
+		pic3.src = 'data:image/;base64,' + 입고_pic_v[0].pic3;
+		pic4.src = 'data:image/;base64,' + 입고_pic_v[0].pic4;
+		pic5.src = 'data:image/;base64,' + 입고_pic_v[0].pic5;
+		pic6.src = 'data:image/;base64,' + 입고_pic_v[0].pic6;
+		pic7.src = 'data:image/;base64,' + 입고_pic_v[0].pic7;
+		pic8.src = 'data:image/;base64,' + 입고_pic_v[0].pic8;
+		pic9.src = 'data:image/;base64,' + 입고_pic_v[0].pic9;
+		pic10.src = 'data:image/;base64,' + 입고_pic_v[0].pic10;
+		pic11.src = 'data:image/;base64,' + 입고_pic_v[0].pic11;
+		pic12.src = 'data:image/;base64,' + 입고_pic_v[0].pic12;
+		pic13.src = 'data:image/;base64,' + 입고_pic_v[0].pic13;
+		pic14.src = 'data:image/;base64,' + 입고_pic_v[0].pic14;
+		pic15.src = 'data:image/;base64,' + 입고_pic_v[0].pic15;
 	} else {
 		pic1.src = '';
 		pic2.src = '';
@@ -1220,20 +1195,19 @@ async function grid_세척(m_id = '') {
 
 	if(m_id == '') {
 		find_세척(세척, { 관리번호 : { $exists: true } });
+		await delay();
 	} else {
 		find(세척, m_id);
+		await delay();
 	}
-	await delay();
-
-	tabledata_세척 = find_array;
-	console.log('세척 : ', find_array);;
-
+	
+	if(세척_v.length == 0 ) return;
+	
+	tabledata_세척 = JSON.parse(JSON.stringify(세척_v));
 	table_세척 = new Tabulator("#grid_세척정보", {
 		layout: "resizableColumnFit",
 		height:130,
 		data:tabledata_세척, 
-		//autoColumns:true
-		//
 		columns:[
 			{title:"관리번호", field:"관리번호", sorter:"string", width:'180'},
 			{title:"입고일", field:"공정입고일", sorter:"string", width:'180'},
@@ -1247,26 +1221,26 @@ async function grid_세척(m_id = '') {
 
 	count(세척_pic, { 관리번호 : m_id });
 	await delay();
-	if(doc_count > 0) {
+
+	if(세척_pic_cnt > 0) {
 		find(세척_pic, m_id);
 		await delay();
-		if(find_array.length == 0) return;
-		console.log(find_array);
-		pic1.src='data:image/;base64,' + find_array[0].pic1;
-		pic2.src='data:image/;base64,' + find_array[0].pic2;
-		pic3.src='data:image/;base64,' + find_array[0].pic3;
-		pic4.src='data:image/;base64,' + find_array[0].pic4;
-		pic5.src='data:image/;base64,' + find_array[0].pic5;
-		pic6.src='data:image/;base64,' + find_array[0].pic6;
-		pic7.src='data:image/;base64,' + find_array[0].pic7;
-		pic8.src='data:image/;base64,' + find_array[0].pic8;
-		pic9.src='data:image/;base64,' + find_array[0].pic9;
-		pic10.src='data:image/;base64,' + find_array[0].pic10;
-		pic11.src='data:image/;base64,' + find_array[0].pic11;
-		pic12.src='data:image/;base64,' + find_array[0].pic12;
-		pic13.src='data:image/;base64,' + find_array[0].pic13;
-		pic14.src='data:image/;base64,' + find_array[0].pic14;
-		pic15.src='data:image/;base64,' + find_array[0].pic15;
+
+		pic1.src='data:image/;base64,' + 세척_pic_v[0].pic1;
+		pic2.src='data:image/;base64,' + 세척_pic_v[0].pic2;
+		pic3.src='data:image/;base64,' + 세척_pic_v[0].pic3;
+		pic4.src='data:image/;base64,' + 세척_pic_v[0].pic4;
+		pic5.src='data:image/;base64,' + 세척_pic_v[0].pic5;
+		pic6.src='data:image/;base64,' + 세척_pic_v[0].pic6;
+		pic7.src='data:image/;base64,' + 세척_pic_v[0].pic7;
+		pic8.src='data:image/;base64,' + 세척_pic_v[0].pic8;
+		pic9.src='data:image/;base64,' + 세척_pic_v[0].pic9;
+		pic10.src='data:image/;base64,' + 세척_pic_v[0].pic10;
+		pic11.src='data:image/;base64,' + 세척_pic_v[0].pic11;
+		pic12.src='data:image/;base64,' + 세척_pic_v[0].pic12;
+		pic13.src='data:image/;base64,' + 세척_pic_v[0].pic13;
+		pic14.src='data:image/;base64,' + 세척_pic_v[0].pic14;
+		pic15.src='data:image/;base64,' + 세척_pic_v[0].pic15;
 	} else {
 		pic1.src = '';
 		pic2.src = '';
@@ -1304,8 +1278,6 @@ async function grid_기초검사(m_id = '') {
 	var pic14 = document.getElementById('기초검사_pic14');
 	var pic15 = document.getElementById('기초검사_pic15');
 
-	var tabledata_기초검사 = [];
-
 	if(m_id == '') {
 		find_기초검사(기초검사, { 관리번호 : { $exists: true } });
 	} else {
@@ -1313,8 +1285,7 @@ async function grid_기초검사(m_id = '') {
 	}
 	await delay();
 
-	tabledata_기초검사 = find_array;
-	console.log('기초검사 : ', find_array);;
+	tabledata_기초검사 = JSON.parse(JSON.stringify(기초검사_v));
 
 	table_기초검사 = new Tabulator("#grid_기초검사", {
 		layout: "resizableColumnFit",
@@ -1357,26 +1328,28 @@ async function grid_기초검사(m_id = '') {
 
 	count(기초검사_pic, { 관리번호 : m_id });
 	await delay();
-	if(doc_count > 0) {
+
+	if(기초검사_pic_cnt > 0) {
 		find(기초검사_pic, m_id);
 		await delay();
-		if(find_array.length == 0) return;
-		console.log(find_array);
-		pic1.src='data:image/;base64,' + find_array[0].pic1;
-		pic2.src='data:image/;base64,' + find_array[0].pic2;
-		pic3.src='data:image/;base64,' + find_array[0].pic3;
-		pic4.src='data:image/;base64,' + find_array[0].pic4;
-		pic5.src='data:image/;base64,' + find_array[0].pic5;
-		pic6.src='data:image/;base64,' + find_array[0].pic6;
-		pic7.src='data:image/;base64,' + find_array[0].pic7;
-		pic8.src='data:image/;base64,' + find_array[0].pic8;
-		pic9.src='data:image/;base64,' + find_array[0].pic9;
-		pic10.src='data:image/;base64,' + find_array[0].pic10;
-		pic11.src='data:image/;base64,' + find_array[0].pic11;
-		pic12.src='data:image/;base64,' + find_array[0].pic12;
-		pic13.src='data:image/;base64,' + find_array[0].pic13;
-		pic14.src='data:image/;base64,' + find_array[0].pic14;
-		pic15.src='data:image/;base64,' + find_array[0].pic15;
+
+		if(기초검사_pic_cnt.length == 0) return;
+
+		pic1.src='data:image/;base64,' + 기초검사_pic_v[0].pic1;
+		pic2.src='data:image/;base64,' + 기초검사_pic_v[0].pic2;
+		pic3.src='data:image/;base64,' + 기초검사_pic_v[0].pic3;
+		pic4.src='data:image/;base64,' + 기초검사_pic_v[0].pic4;
+		pic5.src='data:image/;base64,' + 기초검사_pic_v[0].pic5;
+		pic6.src='data:image/;base64,' + 기초검사_pic_v[0].pic6;
+		pic7.src='data:image/;base64,' + 기초검사_pic_v[0].pic7;
+		pic8.src='data:image/;base64,' + 기초검사_pic_v[0].pic8;
+		pic9.src='data:image/;base64,' + 기초검사_pic_v[0].pic9;
+		pic10.src='data:image/;base64,' + 기초검사_pic_v[0].pic10;
+		pic11.src='data:image/;base64,' + 기초검사_pic_v[0].pic11;
+		pic12.src='data:image/;base64,' + 기초검사_pic_v[0].pic12;
+		pic13.src='data:image/;base64,' + 기초검사_pic_v[0].pic13;
+		pic14.src='data:image/;base64,' + 기초검사_pic_v[0].pic14;
+		pic15.src='data:image/;base64,' + 기초검사_pic_v[0].pic15;
 	} else {
 		pic1.src = '';
 		pic2.src = '';
@@ -1424,14 +1397,12 @@ async function grid_분해조립(m_id = '') {
 		await delay();
 	}
 	
-	console.log('분해조립 : ', find_array);
-	tabledata_분해조립 = find_array;
+	tabledata_분해조립 = JSON.parse(JSON.stringify(분해조립_v));
 
 	table_분해조립 = new Tabulator("#grid_분해조립", {
 		layout: "resizableColumnFit",
 		height:130,
 		data:tabledata_분해조립, 
-		//autoColumns:true,
 
 		columns:[
 			{title:"관리번호", field:"관리번호", sorter:"string", width:'180'},
@@ -1587,29 +1558,27 @@ async function grid_분해조립(m_id = '') {
 	count(분해조립_pic, { 관리번호 : m_id });
 	await delay();
 
-	if(doc_count > 0) {
+	if(분해조립_pic_cnt > 0) {
 		find(분해조립_pic, m_id);
 		await delay();
 		
-		if(find_array.length == 0) return;
+		if(분해조립_pic_v.length == 0) return;
 
-		console.log(find_array);
-
-		pic1.src='data:image/;base64,' + find_array[0].pic1;
-		pic2.src='data:image/;base64,' + find_array[0].pic2;
-		pic3.src='data:image/;base64,' + find_array[0].pic3;
-		pic4.src='data:image/;base64,' + find_array[0].pic4;
-		pic5.src='data:image/;base64,' + find_array[0].pic5;
-		pic6.src='data:image/;base64,' + find_array[0].pic6;
-		pic7.src='data:image/;base64,' + find_array[0].pic7;
-		pic8.src='data:image/;base64,' + find_array[0].pic8;
-		pic9.src='data:image/;base64,' + find_array[0].pic9;
-		pic10.src='data:image/;base64,' + find_array[0].pic10;
-		pic11.src='data:image/;base64,' + find_array[0].pic11;
-		pic12.src='data:image/;base64,' + find_array[0].pic12;
-		pic13.src='data:image/;base64,' + find_array[0].pic13;
-		pic14.src='data:image/;base64,' + find_array[0].pic14;
-		pic15.src='data:image/;base64,' + find_array[0].pic15;
+		pic1.src='data:image/;base64,' + 분해조립_pic_v[0].pic1;
+		pic2.src='data:image/;base64,' + 분해조립_pic_v[0].pic2;
+		pic3.src='data:image/;base64,' + 분해조립_pic_v[0].pic3;
+		pic4.src='data:image/;base64,' + 분해조립_pic_v[0].pic4;
+		pic5.src='data:image/;base64,' + 분해조립_pic_v[0].pic5;
+		pic6.src='data:image/;base64,' + 분해조립_pic_v[0].pic6;
+		pic7.src='data:image/;base64,' + 분해조립_pic_v[0].pic7;
+		pic8.src='data:image/;base64,' + 분해조립_pic_v[0].pic8;
+		pic9.src='data:image/;base64,' + 분해조립_pic_v[0].pic9;
+		pic10.src='data:image/;base64,' + 분해조립_pic_v[0].pic10;
+		pic11.src='data:image/;base64,' + 분해조립_pic_v[0].pic11;
+		pic12.src='data:image/;base64,' + 분해조립_pic_v[0].pic12;
+		pic13.src='data:image/;base64,' + 분해조립_pic_v[0].pic13;
+		pic14.src='data:image/;base64,' + 분해조립_pic_v[0].pic14;
+		pic15.src='data:image/;base64,' + 분해조립_pic_v[0].pic15;
 	} else {
 		pic1.src = '';
 		pic2.src = '';
@@ -1651,18 +1620,18 @@ async function grid_성능검사(m_id = '') {
 
 	if(m_id == '') {
 		find_성능검사(성능검사, { 관리번호 : { $exists: true } });
+		await delay();
 	} else {
 		find(성능검사, m_id);
+		await delay();
 	}
-	await delay();
-	tabledata_성능검사 = find_array;
-	console.log('성능검사 : ', find_array);;
+
+	tabledata_성능검사 = JSON.parse(JSON.stringify(성능검사_v));
 
 	table_성능검사 = new Tabulator("#grid_성능검사", {
 		layout: "resizableColumnFit",
 		height:130,
 		data:tabledata_성능검사, 
-		//autoColumns:true,
 
 		columns:[
 			{title:"관리번호", field:"관리번호", sorter:"string", width:'180'},
@@ -1680,28 +1649,28 @@ async function grid_성능검사(m_id = '') {
 
 	count(성능검사_pic, { 관리번호 : m_id });
 	await delay();
-	if(doc_count > 0) {
+
+	if(성능검사_pic_cnt > 0) {
 		find(성능검사_pic, m_id);
 		await delay();
 		
-		if(find_array.length == 0) return;
-		console.log(find_array);
+		if(성능검사_pic_cnt.length == 0) return;
 
-		pic1.src='data:image/;base64,' + find_array[0].pic1;
-		pic2.src='data:image/;base64,' + find_array[0].pic2;
-		pic3.src='data:image/;base64,' + find_array[0].pic3;
-		pic4.src='data:image/;base64,' + find_array[0].pic4;
-		pic5.src='data:image/;base64,' + find_array[0].pic5;
-		pic6.src='data:image/;base64,' + find_array[0].pic6;
-		pic7.src='data:image/;base64,' + find_array[0].pic7;
-		pic8.src='data:image/;base64,' + find_array[0].pic8;
-		pic9.src='data:image/;base64,' + find_array[0].pic9;
-		pic10.src='data:image/;base64,' + find_array[0].pic10;
-		pic11.src='data:image/;base64,' + find_array[0].pic11;
-		pic12.src='data:image/;base64,' + find_array[0].pic12;
-		pic13.src='data:image/;base64,' + find_array[0].pic13;
-		pic14.src='data:image/;base64,' + find_array[0].pic14;
-		pic15.src='data:image/;base64,' + find_array[0].pic15;
+		pic1.src='data:image/;base64,' + 성능검사_pic_v[0].pic1;
+		pic2.src='data:image/;base64,' + 성능검사_pic_v[0].pic2;
+		pic3.src='data:image/;base64,' + 성능검사_pic_v[0].pic3;
+		pic4.src='data:image/;base64,' + 성능검사_pic_v[0].pic4;
+		pic5.src='data:image/;base64,' + 성능검사_pic_v[0].pic5;
+		pic6.src='data:image/;base64,' + 성능검사_pic_v[0].pic6;
+		pic7.src='data:image/;base64,' + 성능검사_pic_v[0].pic7;
+		pic8.src='data:image/;base64,' + 성능검사_pic_v[0].pic8;
+		pic9.src='data:image/;base64,' + 성능검사_pic_v[0].pic9;
+		pic10.src='data:image/;base64,' + 성능검사_pic_v[0].pic10;
+		pic11.src='data:image/;base64,' + 성능검사_pic_v[0].pic11;
+		pic12.src='data:image/;base64,' + 성능검사_pic_v[0].pic12;
+		pic13.src='data:image/;base64,' + 성능검사_pic_v[0].pic13;
+		pic14.src='data:image/;base64,' + 성능검사_pic_v[0].pic14;
+		pic15.src='data:image/;base64,' + 성능검사_pic_v[0].pic15;
 	} else {
 		pic1.src = '';
 		pic2.src = '';
@@ -1747,14 +1716,13 @@ async function grid_EOL(m_id = '') {
 		find(EOL, m_id);
 		await delay();
 	}
-	tabledata_EOL = find_array;
-	console.log('EOL : ', find_array);;
+
+	tabledata_EOL = JSON.parse(JSON.stringify(EOL_v));
 
 	table_EOL = new Tabulator("#grid_EOL", {
 		layout: "resizableColumnFit",
 		height:130,
 		data:tabledata_EOL, 
-		//autoColumns:true,
 
 		columns:[
 			{title:"관리번호", field:"관리번호", sorter:"string", width:'180'},
@@ -1790,26 +1758,27 @@ async function grid_EOL(m_id = '') {
 
 	count(EOL_pic, { 관리번호 : m_id });
 	await delay();
-	if(doc_count > 0) {
+
+	if(EOL_pic_cnt > 0) {
 		find(EOL_pic, m_id);
 		await delay();
-		console.log(find_array);
-		if(find_array.length == 0) return;
-		pic1.src='data:image/;base64,' + find_array[0].pic1;
-		pic2.src='data:image/;base64,' + find_array[0].pic2;
-		pic3.src='data:image/;base64,' + find_array[0].pic3;
-		pic4.src='data:image/;base64,' + find_array[0].pic4;
-		pic5.src='data:image/;base64,' + find_array[0].pic5;
-		pic6.src='data:image/;base64,' + find_array[0].pic6;
-		pic7.src='data:image/;base64,' + find_array[0].pic7;
-		pic8.src='data:image/;base64,' + find_array[0].pic8;
-		pic9.src='data:image/;base64,' + find_array[0].pic9;
-		pic10.src='data:image/;base64,' + find_array[0].pic10;
-		pic11.src='data:image/;base64,' + find_array[0].pic11;
-		pic12.src='data:image/;base64,' + find_array[0].pic12;
-		pic13.src='data:image/;base64,' + find_array[0].pic13;
-		pic14.src='data:image/;base64,' + find_array[0].pic14;
-		pic15.src='data:image/;base64,' + find_array[0].pic15;
+
+		if(EOL_pic_v.length == 0) return;
+		pic1.src='data:image/;base64,' + EOL_pic_v[0].pic1;
+		pic2.src='data:image/;base64,' + EOL_pic_v[0].pic2;
+		pic3.src='data:image/;base64,' + EOL_pic_v[0].pic3;
+		pic4.src='data:image/;base64,' + EOL_pic_v[0].pic4;
+		pic5.src='data:image/;base64,' + EOL_pic_v[0].pic5;
+		pic6.src='data:image/;base64,' + EOL_pic_v[0].pic6;
+		pic7.src='data:image/;base64,' + EOL_pic_v[0].pic7;
+		pic8.src='data:image/;base64,' + EOL_pic_v[0].pic8;
+		pic9.src='data:image/;base64,' + EOL_pic_v[0].pic9;
+		pic10.src='data:image/;base64,' + EOL_pic_v[0].pic10;
+		pic11.src='data:image/;base64,' + EOL_pic_v[0].pic11;
+		pic12.src='data:image/;base64,' + EOL_pic_v[0].pic12;
+		pic13.src='data:image/;base64,' + EOL_pic_v[0].pic13;
+		pic14.src='data:image/;base64,' + EOL_pic_v[0].pic14;
+		pic15.src='data:image/;base64,' + EOL_pic_v[0].pic15;
 	} else {
 		pic1.src = '';
 		pic2.src = '';
@@ -1855,8 +1824,7 @@ async function grid_출하정보(m_id = '') {
 	}
 	await delay();
 
-	tabledata_출하정보 = find_array;
-	console.log('출하정보 : ', find_array);;
+	tabledata_출하정보 = JSON.parse(JSON.stringify(출하정보_v));
 
 	table_출하정보 = new Tabulator("#grid_출하정보", {
 		layout: "resizableColumnFit",
@@ -1924,26 +1892,26 @@ async function grid_출하정보(m_id = '') {
 
 	count(출하_pic, { 관리번호 : m_id });
 	await delay();
-	if(doc_count > 0) {
+	if(출하_pic_cnt > 0) {
 		find(출하_pic, m_id);
 		await delay();
-		if(find_array.length == 0) return;
-		console.log(find_array);
-		pic1.src='data:image/;base64,' + find_array[0].pic1;
-		pic2.src='data:image/;base64,' + find_array[0].pic2;
-		pic3.src='data:image/;base64,' + find_array[0].pic3;
-		pic4.src='data:image/;base64,' + find_array[0].pic4;
-		pic5.src='data:image/;base64,' + find_array[0].pic5;
-		pic6.src='data:image/;base64,' + find_array[0].pic6;
-		pic7.src='data:image/;base64,' + find_array[0].pic7;
-		pic8.src='data:image/;base64,' + find_array[0].pic8;
-		pic9.src='data:image/;base64,' + find_array[0].pic9;
-		pic10.src='data:image/;base64,' + find_array[0].pic10;
-		pic11.src='data:image/;base64,' + find_array[0].pic11;
-		pic12.src='data:image/;base64,' + find_array[0].pic12;
-		pic13.src='data:image/;base64,' + find_array[0].pic13;
-		pic14.src='data:image/;base64,' + find_array[0].pic14;
-		pic15.src='data:image/;base64,' + find_array[0].pic15;
+
+		if(출하_pic_v.length == 0) return;
+		pic1.src='data:image/;base64,' + 출하_pic_v[0].pic1;
+		pic2.src='data:image/;base64,' + 출하_pic_v[0].pic2;
+		pic3.src='data:image/;base64,' + 출하_pic_v[0].pic3;
+		pic4.src='data:image/;base64,' + 출하_pic_v[0].pic4;
+		pic5.src='data:image/;base64,' + 출하_pic_v[0].pic5;
+		pic6.src='data:image/;base64,' + 출하_pic_v[0].pic6;
+		pic7.src='data:image/;base64,' + 출하_pic_v[0].pic7;
+		pic8.src='data:image/;base64,' + 출하_pic_v[0].pic8;
+		pic9.src='data:image/;base64,' + 출하_pic_v[0].pic9;
+		pic10.src='data:image/;base64,' + 출하_pic_v[0].pic10;
+		pic11.src='data:image/;base64,' + 출하_pic_v[0].pic11;
+		pic12.src='data:image/;base64,' + 출하_pic_v[0].pic12;
+		pic13.src='data:image/;base64,' + 출하_pic_v[0].pic13;
+		pic14.src='data:image/;base64,' + 출하_pic_v[0].pic14;
+		pic15.src='data:image/;base64,' + 출하_pic_v[0].pic15;
 	} else {
 		pic1.src = '';
 		pic2.src = '';
@@ -1985,13 +1953,13 @@ async function grid_특이사항(m_id = '') {
 
 	if(m_id == '') {
 		find_특이사항(특이사항, { 관리번호 : { $exists: true } });
+		await delay();
 	} else {
 		find(특이사항, m_id);
+		await delay();
 	}
-	await delay();
 
-	tabledata_특이사항 = find_array;
-	console.log('특이사항 : ', find_array);;
+	tabledata_특이사항 = JSON.parse(JSON.stringify(특이사항_v));
 
 	table_특이사항 = new Tabulator("#grid_특이사항", {
 		layout: "resizableColumnFit",
@@ -2007,26 +1975,27 @@ async function grid_특이사항(m_id = '') {
 
 	count(특이사항_pic, { 관리번호 : m_id });
 	await delay();
-	if(doc_count > 0) {
+
+	if(특이사항_pic_cnt > 0) {
 		find(특이사항_pic, m_id);
 		await delay();
-		if(find_array.length == 0) return;
-		console.log(find_array);
-		pic1.src='data:image/;base64,' + find_array[0].pic1;
-		pic2.src='data:image/;base64,' + find_array[0].pic2;
-		pic3.src='data:image/;base64,' + find_array[0].pic3;
-		pic4.src='data:image/;base64,' + find_array[0].pic4;
-		pic5.src='data:image/;base64,' + find_array[0].pic5;
-		pic6.src='data:image/;base64,' + find_array[0].pic6;
-		pic7.src='data:image/;base64,' + find_array[0].pic7;
-		pic8.src='data:image/;base64,' + find_array[0].pic8;
-		pic9.src='data:image/;base64,' + find_array[0].pic9;
-		pic10.src='data:image/;base64,' + find_array[0].pic10;
-		pic11.src='data:image/;base64,' + find_array[0].pic11;
-		pic12.src='data:image/;base64,' + find_array[0].pic12;
-		pic13.src='data:image/;base64,' + find_array[0].pic13;
-		pic14.src='data:image/;base64,' + find_array[0].pic14;
-		pic15.src='data:image/;base64,' + find_array[0].pic15;
+
+		if(특이사항_pic_v.length == 0) return;
+		pic1.src='data:image/;base64,' + 특이사항_pic[0].pic1;
+		pic2.src='data:image/;base64,' + 특이사항_pic[0].pic2;
+		pic3.src='data:image/;base64,' + 특이사항_pic[0].pic3;
+		pic4.src='data:image/;base64,' + 특이사항_pic[0].pic4;
+		pic5.src='data:image/;base64,' + 특이사항_pic[0].pic5;
+		pic6.src='data:image/;base64,' + 특이사항_pic[0].pic6;
+		pic7.src='data:image/;base64,' + 특이사항_pic[0].pic7;
+		pic8.src='data:image/;base64,' + 특이사항_pic[0].pic8;
+		pic9.src='data:image/;base64,' + 특이사항_pic[0].pic9;
+		pic10.src='data:image/;base64,' + 특이사항_pic[0].pic10;
+		pic11.src='data:image/;base64,' + 특이사항_pic[0].pic11;
+		pic12.src='data:image/;base64,' + 특이사항_pic[0].pic12;
+		pic13.src='data:image/;base64,' + 특이사항_pic[0].pic13;
+		pic14.src='data:image/;base64,' + 특이사항_pic[0].pic14;
+		pic15.src='data:image/;base64,' + 특이사항_pic[0].pic15;
 	} else {
 		pic1.src = '';
 		pic2.src = '';
@@ -2052,19 +2021,25 @@ async function grid_교체부품상세1(m_id = '') {
 
 	if(m_id == '') {
 		find_교체부품상세(교체부품상세1, { 관리번호 : { $exists: true } });
+		await delay();
 	} else {
-		find(교체부품상세1, m_id);
-	}
-	await delay();
+		count(교체부품상세1, { 관리번호 : { $exists : true } });
+		await delay();
 
-	tabledata_교체부품상세1 = find_array;
-	console.log('교체부품상세1 : ', find_array);;
+		if(교체부품상세1_cnt > 0) {
+			find(교체부품상세2, m_id);
+			await delay();
+		} else {
+			교채부품상세1_v = [];
+		}
+	}
+
+	tabledata_교체부품상세1 = JSON.parse(JSON.stringify(교체부품상세1_v));
 
 	table_교체부품상세1 = new Tabulator("#grid_교체부품상세1", {
 		layout: "resizableColumnFit",
 		height:130,
 		data:tabledata_교체부품상세1, 
-		//autoColumns:true,
 
 		columns:[
 			{title:"관리번호", field:"관리번호", sorter:"string", width:'180'},
@@ -2087,19 +2062,25 @@ async function grid_교체부품상세2(m_id = '') {
 
 	if(m_id == '') {
 		find_교체부품상세(교체부품상세2, { 관리번호 : { $exists: true } });
+		await delay();
 	} else {
-		find(교체부품상세2, m_id);
-	}
-	await delay();
+		count(교체부품상세2, { 관리번호 : { $exists : true } });
+		await delay();
 
-	tabledata_교체부품상세2 = find_array;
-	console.log('교체부품상세2 : ', find_array);;
+		if(교체부품상세2_cnt > 0) {
+			find(교체부품상세2, m_id);
+			await delay();
+		} else {
+			교채부품상세2_v = [];
+		}
+	}
+
+	tabledata_교체부품상세2 = JSON.parse(JSON.stringify(교체부품상세2_v));
 
 	table_교체부품상세2 = new Tabulator("#grid_교체부품상세2", {
 		layout: "resizableColumnFit",
 		height:130,
 		data:tabledata_교체부품상세2, 
-		//autoColumns:true,
 
 		columns:[
 			{title:"관리번호", field:"관리번호", sorter:"string", width:'180'},
@@ -2122,19 +2103,25 @@ async function grid_교체부품상세3(m_id = '') {
 
 	if(m_id == '') {
 		find_교체부품상세(교체부품상세3, { 관리번호 : { $exists: true } });
+		await delay();
 	} else {
-		find(교체부품상세3, m_id);
-	}
-	await delay();
+		count(교체부품상세3, { 관리번호 : { $exists : true } });
+		await delay();
 
-	tabledata_교체부품상세3 = find_array;
-	console.log('교체부품상세3 : ', find_array);;
+		if(교체부품상세3_cnt > 0) {
+			find(교체부품상세3, m_id);
+			await delay();
+		} else {
+			교채부품상세3_v = [];
+		}
+	}
+
+	tabledata_교체부품상세3 = JSON.parse(JSON.stringify(교체부품상세3));
 
 	table_교체부품상세3 = new Tabulator("#grid_교체부품상세3", {
 		layout: "resizableColumnFit",
 		height:130,
 		data:tabledata_교체부품상세3, 
-		//autoColumns:true,
 
 		columns:[
 			{title:"관리번호", field:"관리번호", sorter:"string", width:'180'},
@@ -2157,19 +2144,25 @@ async function grid_교체부품상세4(m_id = '') {
 
 	if(m_id == '') {
 		find_교체부품상세(교체부품상세4, { 관리번호 : { $exists: true } });
+		await delay();
 	} else {
-		find(교체부품상세4, m_id);
-	}
-	await delay();
+		count(교체부품상세4, { 관리번호 : { $exists : true } });
+		await delay();
 
-	tabledata_교체부품상세4 = find_array;
-	console.log('교체부품상세4 : ', find_array);;
+		if(교체부품상세4_cnt > 0) {
+			find(교체부품상세4, m_id);
+			await delay();
+		} else {
+			교채부품상세4_v = [];
+		}
+	}
+
+	tabledata_교체부품상세4 = JSON.parse(JSON.stringify(교체부품상세4));
 
 	table_교체부품상세4 = new Tabulator("#grid_교체부품상세4", {
 		layout: "resizableColumnFit",
 		height:130,
 		data:tabledata_교체부품상세4, 
-		//autoColumns:true,
 
 		columns:[
 			{title:"관리번호", field:"관리번호", sorter:"string", width:'180'},
@@ -2192,19 +2185,25 @@ async function grid_교체부품상세5(m_id = '') {
 
 	if(m_id == '') {
 		find_교체부품상세(교체부품상세5, { 관리번호 : { $exists: true } });
+		await delay();
 	} else {
-		find(교체부품상세5, m_id);
-	}
-	await delay();
+		count(교체부품상세5, { 관리번호 : { $exists : true } });
+		await delay();
 
-	tabledata_교체부품상세5 = find_array;
-	console.log('교체부품상세5 : ', find_array);;
+		if(교체부품상세5_cnt > 0) {
+			find(교체부품상세5, m_id);
+			await delay();
+		} else {
+			교채부품상세5_v = [];
+		}
+	}
+
+	tabledata_교체부품상세5 = JSON.parse(JSON.stringify(교체부품상세5));
 
 	table_교체부품상세5 = new Tabulator("#grid_교체부품상세5", {
 		layout: "resizableColumnFit",
 		height:130,
 		data:tabledata_교체부품상세5, 
-		//autoColumns:true,
 
 		columns:[
 			{title:"관리번호", field:"관리번호", sorter:"string", width:'180'},
@@ -2227,19 +2226,25 @@ async function grid_교체부품상세6(m_id = '') {
 
 	if(m_id == '') {
 		find_교체부품상세(교체부품상세6, { 관리번호 : { $exists: true } });
+		await delay();
 	} else {
-		find(교체부품상세6, m_id);
-	}
-	await delay();
+		count(교체부품상세6, { 관리번호 : { $exists : true } });
+		await delay();
 
-	tabledata_교체부품상세6 = find_array;
-	console.log('교체부품상세6 : ', find_array);;
+		if(교체부품상세6_cnt > 0) {
+			find(교체부품상세6, m_id);
+			await delay();
+		} else {
+			교채부품상세6_v = [];
+		}
+	}
+
+	tabledata_교체부품상세6 = JSON.parse(JSON.stringify(교체부품상세6));
 
 	table_교체부품상세6 = new Tabulator("#grid_교체부품상세6", {
 		layout: "resizableColumnFit",
 		height:130,
 		data:tabledata_교체부품상세6, 
-		//autoColumns:true,
 
 		columns:[
 			{title:"관리번호", field:"관리번호", sorter:"string", width:'180'},
@@ -2262,19 +2267,25 @@ async function grid_교체부품상세7(m_id = '') {
 
 	if(m_id == '') {
 		find_교체부품상세(교체부품상세7, { 관리번호 : { $exists: true } });
+		await delay();
 	} else {
-		find(교체부품상세7, m_id);
-	}
-	await delay();
+		count(교체부품상세7, { 관리번호 : { $exists : true } });
+		await delay();
 
-	tabledata_교체부품상세7 = find_array;
-	console.log('교체부품상세7 : ', find_array);;
+		if(교체부품상세7_cnt > 0) {
+			find(교체부품상세7, m_id);
+			await delay();
+		} else {
+			교채부품상세7_v = [];
+		}
+	}
+
+	tabledata_교체부품상세7 = JSON.parse(JSON.stringify(교체부품상세7));
 
 	table_교체부품상세7 = new Tabulator("#grid_교체부품상세7", {
 		layout: "resizableColumnFit",
 		height:130,
 		data:tabledata_교체부품상세7, 
-		//autoColumns:true,
 
 		columns:[
 			{title:"관리번호", field:"관리번호", sorter:"string", width:'180'},
@@ -2297,19 +2308,25 @@ async function grid_교체부품상세8(m_id = '') {
 
 	if(m_id == '') {
 		find_교체부품상세(교체부품상세6, { 관리번호 : { $exists: true } });
+		await delay();
 	} else {
-		find(교체부품상세8, m_id);
-	}
-	await delay();
+		count(교체부품상세8, { 관리번호 : { $exists : true } });
+		await delay();
 
-	tabledata_교체부품상세8 = find_array;
-	console.log('교체부품상세8 : ', find_array);;
+		if(교체부품상세8_cnt > 0) {
+			find(교체부품상세8, m_id);
+			await delay();
+		} else {
+			교채부품상세8_v = [];
+		}
+	}
+
+	tabledata_교체부품상세8 = JSON.parse(JSON.stringify(교체부품상세8));
 
 	table_교체부품상세8 = new Tabulator("#grid_교체부품상세8", {
 		layout: "resizableColumnFit",
 		height:130,
 		data:tabledata_교체부품상세8, 
-		//autoColumns:true,
 
 		columns:[
 			{title:"관리번호", field:"관리번호", sorter:"string", width:'180'},
@@ -2332,13 +2349,20 @@ async function grid_교체부품상세9(m_id = '') {
 
 	if(m_id == '') {
 		find_교체부품상세(교체부품상세9, { 관리번호 : { $exists: true } });
+		await delay();
 	} else {
-		find(교체부품상세9, m_id);
-	}
-	await delay();
+		count(교체부품상세9, { 관리번호 : { $exists : true } });
+		await delay();
 
-	tabledata_교체부품상세9 = find_array;
-	console.log('교체부품상세9 : ', find_array);;
+		if(교체부품상세9_cnt > 0) {
+			find(교체부품상세9, m_id);
+			await delay();
+		} else {
+			교채부품상세9_v = [];
+		}
+	}
+
+	tabledata_교체부품상세9 = JSON.parse(JSON.stringify(교체부품상세9));
 
 	table_교체부품상세9 = new Tabulator("#grid_교체부품상세9", {
 		layout: "resizableColumnFit",
@@ -2367,19 +2391,25 @@ async function grid_교체부품상세10(m_id = '') {
 
 	if(m_id == '') {
 		find_교체부품상세(교체부품상세10, { 관리번호 : { $exists: true } });
+		await delay();
 	} else {
-		find(교체부품상세10, m_id);
-	}
-	await delay();
+		count(교체부품상세10, { 관리번호 : { $exists : true } });
+		await delay();
 
-	tabledata_교체부품상세10 = find_array;
-	console.log('교체부품상세10 : ', find_array);;
+		if(교체부품상세10_cnt > 0) {
+			find(교체부품상세10, m_id);
+			await delay();
+		} else {
+			교채부품상세10_v = [];
+		}
+	}
+
+	tabledata_교체부품상세10 = JSON.parse(JSON.stringify(교체부품상세10));
 
 	table_교체부품상세10 = new Tabulator("#grid_교체부품상세10", {
 		layout: "resizableColumnFit",
 		height:130,
 		data:tabledata_교체부품상세10, 
-		//autoColumns:true,
 
 		columns:[
 			{title:"관리번호", field:"관리번호", sorter:"string", width:'180'},
@@ -2415,26 +2445,25 @@ async function 반품입고_load_pic(m_id = '') {
 
 	count(반품입고_pic, { 관리번호 : m_id });
 	await delay();
-	if(doc_count > 0) {
+	if(반품입고_pic_cnt > 0) {
 		find(반품입고_pic, m_id);
 		await delay();
-		if(find_array.length == 0) return;
-		console.log(find_array);
-		pic1.src='data:image/;base64,' + find_array[0].pic1;
-		pic2.src='data:image/;base64,' + find_array[0].pic2;
-		pic3.src='data:image/;base64,' + find_array[0].pic3;
-		pic4.src='data:image/;base64,' + find_array[0].pic4;
-		pic5.src='data:image/;base64,' + find_array[0].pic5;
-		pic6.src='data:image/;base64,' + find_array[0].pic6;
-		pic7.src='data:image/;base64,' + find_array[0].pic7;
-		pic8.src='data:image/;base64,' + find_array[0].pic8;
-		pic9.src='data:image/;base64,' + find_array[0].pic9;
-		pic10.src='data:image/;base64,' + find_array[0].pic10;
-		pic11.src='data:image/;base64,' + find_array[0].pic11;
-		pic12.src='data:image/;base64,' + find_array[0].pic12;
-		pic13.src='data:image/;base64,' + find_array[0].pic13;
-		pic14.src='data:image/;base64,' + find_array[0].pic14;
-		pic15.src='data:image/;base64,' + find_array[0].pic15;
+		if(반품입고_v.length == 0) return;
+		pic1.src='data:image/;base64,' + 반품입고_v[0].pic1;
+		pic2.src='data:image/;base64,' + 반품입고_v[0].pic2;
+		pic3.src='data:image/;base64,' + 반품입고_v[0].pic3;
+		pic4.src='data:image/;base64,' + 반품입고_v[0].pic4;
+		pic5.src='data:image/;base64,' + 반품입고_v[0].pic5;
+		pic6.src='data:image/;base64,' + 반품입고_v[0].pic6;
+		pic7.src='data:image/;base64,' + 반품입고_v[0].pic7;
+		pic8.src='data:image/;base64,' + 반품입고_v[0].pic8;
+		pic9.src='data:image/;base64,' + 반품입고_v[0].pic9;
+		pic10.src='data:image/;base64,' + 반품입고_v[0].pic10;
+		pic11.src='data:image/;base64,' + 반품입고_v[0].pic11;
+		pic12.src='data:image/;base64,' + 반품입고_v[0].pic12;
+		pic13.src='data:image/;base64,' + 반품입고_v[0].pic13;
+		pic14.src='data:image/;base64,' + 반품입고_v[0].pic14;
+		pic15.src='data:image/;base64,' + 반품입고_v[0].pic15;
 	} else {
 		pic1.src = '';
 		pic2.src = '';
@@ -2473,26 +2502,25 @@ async function 재출하_load_pic(m_id = '') {
 
 	count(재출하_pic, { 관리번호 : m_id });
 	await delay();
-	if(true || doc_count > 0) {
+	if(재출하_pic_cnt > 0) {
 		find(재출하_pic, m_id);
 		await delay();
-		if(find_array.length == 0) return;
-		console.log(find_array);
-		pic1.src='data:image/;base64,' + find_array[0].pic1;
-		pic2.src='data:image/;base64,' + find_array[0].pic2;
-		pic3.src='data:image/;base64,' + find_array[0].pic3;
-		pic4.src='data:image/;base64,' + find_array[0].pic4;
-		pic5.src='data:image/;base64,' + find_array[0].pic5;
-		pic6.src='data:image/;base64,' + find_array[0].pic6;
-		pic7.src='data:image/;base64,' + find_array[0].pic7;
-		pic8.src='data:image/;base64,' + find_array[0].pic8;
-		pic9.src='data:image/;base64,' + find_array[0].pic9;
-		pic10.src='data:image/;base64,' + find_array[0].pic10;
-		pic11.src='data:image/;base64,' + find_array[0].pic11;
-		pic12.src='data:image/;base64,' + find_array[0].pic12;
-		pic13.src='data:image/;base64,' + find_array[0].pic13;
-		pic14.src='data:image/;base64,' + find_array[0].pic14;
-		pic15.src='data:image/;base64,' + find_array[0].pic15;
+		if(재출하_pic_v.length == 0) return;
+		pic1.src='data:image/;base64,' + 재출하_pic_v[0].pic1;
+		pic2.src='data:image/;base64,' + 재출하_pic_v[0].pic2;
+		pic3.src='data:image/;base64,' + 재출하_pic_v[0].pic3;
+		pic4.src='data:image/;base64,' + 재출하_pic_v[0].pic4;
+		pic5.src='data:image/;base64,' + 재출하_pic_v[0].pic5;
+		pic6.src='data:image/;base64,' + 재출하_pic_v[0].pic6;
+		pic7.src='data:image/;base64,' + 재출하_pic_v[0].pic7;
+		pic8.src='data:image/;base64,' + 재출하_pic_v[0].pic8;
+		pic9.src='data:image/;base64,' + 재출하_pic_v[0].pic9;
+		pic10.src='data:image/;base64,' + 재출하_pic_v[0].pic10;
+		pic11.src='data:image/;base64,' + 재출하_pic_v[0].pic11;
+		pic12.src='data:image/;base64,' + 재출하_pic_v[0].pic12;
+		pic13.src='data:image/;base64,' + 재출하_pic_v[0].pic13;
+		pic14.src='data:image/;base64,' + 재출하_pic_v[0].pic14;
+		pic15.src='data:image/;base64,' + 재출하_pic_v[0].pic15;
 	} else {
 		pic1.src = '';
 		pic2.src = '';
@@ -2531,26 +2559,25 @@ async function 완전분해_load_pic(m_id = '') {
 
 	count(완전분해_pic, { 관리번호 : m_id });
 	await delay();
-	if(true || doc_count > 0) {
+	if(완전분해_pic_cnt > 0) {
 		find(완전분해_pic, m_id);
 		await delay();
-		if(find_array.length == 0) return;
-		console.log(find_array);
-		pic1.src='data:image/;base64,' + find_array[0].pic1;
-		pic2.src='data:image/;base64,' + find_array[0].pic2;
-		pic3.src='data:image/;base64,' + find_array[0].pic3;
-		pic4.src='data:image/;base64,' + find_array[0].pic4;
-		pic5.src='data:image/;base64,' + find_array[0].pic5;
-		pic6.src='data:image/;base64,' + find_array[0].pic6;
-		pic7.src='data:image/;base64,' + find_array[0].pic7;
-		pic8.src='data:image/;base64,' + find_array[0].pic8;
-		pic9.src='data:image/;base64,' + find_array[0].pic9;
-		pic10.src='data:image/;base64,' + find_array[0].pic10;
-		pic11.src='data:image/;base64,' + find_array[0].pic11;
-		pic12.src='data:image/;base64,' + find_array[0].pic12;
-		pic13.src='data:image/;base64,' + find_array[0].pic13;
-		pic14.src='data:image/;base64,' + find_array[0].pic14;
-		pic15.src='data:image/;base64,' + find_array[0].pic15;
+		if(완전분해_pic_v.length == 0) return;
+		pic1.src='data:image/;base64,' + 완전분해_pic_v[0].pic1;
+		pic2.src='data:image/;base64,' + 완전분해_pic_v[0].pic2;
+		pic3.src='data:image/;base64,' + 완전분해_pic_v[0].pic3;
+		pic4.src='data:image/;base64,' + 완전분해_pic_v[0].pic4;
+		pic5.src='data:image/;base64,' + 완전분해_pic_v[0].pic5;
+		pic6.src='data:image/;base64,' + 완전분해_pic_v[0].pic6;
+		pic7.src='data:image/;base64,' + 완전분해_pic_v[0].pic7;
+		pic8.src='data:image/;base64,' + 완전분해_pic_v[0].pic8;
+		pic9.src='data:image/;base64,' + 완전분해_pic_v[0].pic9;
+		pic10.src='data:image/;base64,' + 완전분해_pic_v[0].pic10;
+		pic11.src='data:image/;base64,' + 완전분해_pic_v[0].pic11;
+		pic12.src='data:image/;base64,' + 완전분해_pic_v[0].pic12;
+		pic13.src='data:image/;base64,' + 완전분해_pic_v[0].pic13;
+		pic14.src='data:image/;base64,' + 완전분해_pic_v[0].pic14;
+		pic15.src='data:image/;base64,' + 완전분해_pic_v[0].pic15;
 	} else {
 		pic1.src = '';
 		pic2.src = '';
@@ -2589,26 +2616,25 @@ async function 폐기_load_pic(m_id = '') {
 
 	count(폐기_pic, { 관리번호 : m_id });
 	await delay();
-	if(true || doc_count > 0) {
+	if(폐기_pic_cnt > 0) {
 		find(폐기_pic, m_id);
 		await delay();
-		if(find_array.length == 0) return;
-		console.log(find_array);
-		pic1.src='data:image/;base64,' + find_array[0].pic1;
-		pic2.src='data:image/;base64,' + find_array[0].pic2;
-		pic3.src='data:image/;base64,' + find_array[0].pic3;
-		pic4.src='data:image/;base64,' + find_array[0].pic4;
-		pic5.src='data:image/;base64,' + find_array[0].pic5;
-		pic6.src='data:image/;base64,' + find_array[0].pic6;
-		pic7.src='data:image/;base64,' + find_array[0].pic7;
-		pic8.src='data:image/;base64,' + find_array[0].pic8;
-		pic9.src='data:image/;base64,' + find_array[0].pic9;
-		pic10.src='data:image/;base64,' + find_array[0].pic10;
-		pic11.src='data:image/;base64,' + find_array[0].pic11;
-		pic12.src='data:image/;base64,' + find_array[0].pic12;
-		pic13.src='data:image/;base64,' + find_array[0].pic13;
-		pic14.src='data:image/;base64,' + find_array[0].pic14;
-		pic15.src='data:image/;base64,' + find_array[0].pic15;
+		if(폐기_pic_v.length == 0) return;
+		pic1.src='data:image/;base64,' + 폐기_pic_v[0].pic1;
+		pic2.src='data:image/;base64,' + 폐기_pic_v[0].pic2;
+		pic3.src='data:image/;base64,' + 폐기_pic_v[0].pic3;
+		pic4.src='data:image/;base64,' + 폐기_pic_v[0].pic4;
+		pic5.src='data:image/;base64,' + 폐기_pic_v[0].pic5;
+		pic6.src='data:image/;base64,' + 폐기_pic_v[0].pic6;
+		pic7.src='data:image/;base64,' + 폐기_pic_v[0].pic7;
+		pic8.src='data:image/;base64,' + 폐기_pic_v[0].pic8;
+		pic9.src='data:image/;base64,' + 폐기_pic_v[0].pic9;
+		pic10.src='data:image/;base64,' + 폐기_pic_v[0].pic10;
+		pic11.src='data:image/;base64,' + 폐기_pic_v[0].pic11;
+		pic12.src='data:image/;base64,' + 폐기_pic_v[0].pic12;
+		pic13.src='data:image/;base64,' + 폐기_pic_v[0].pic13;
+		pic14.src='data:image/;base64,' + 폐기_pic_v[0].pic14;
+		pic15.src='data:image/;base64,' + 폐기_pic_v[0].pic15;
 	} else {
 		pic1.src = '';
 		pic2.src = '';

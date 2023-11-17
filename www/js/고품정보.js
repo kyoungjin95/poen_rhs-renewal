@@ -14,12 +14,10 @@ async function 고품정보등록_시작() {
 
 	count(고품정보, { 관리번호 : _management_id.value });
 	await delay();
-	console.log('doc_count: ', doc_count);
-	if(doc_count > 0) {
+	if(고품정보_cnt > 0) {
 		find(고품정보, _management_id.value);
 		await delay();
-		tabledata = find_array;
-		console.log('고품정보 : ', find_array);
+		tabledata = 고품정보_v;
 	} else {
 		_품명.value = '';
 		_구분.value = '';
@@ -34,7 +32,6 @@ async function 고품정보등록_시작() {
 		layout: "resizableColumnFit",
 		height:1500,
 		data:tabledata, 
-		//autoColumns:true,
 
 		columns:[
 			{title:"품명", field:"품명", sorter:"string"},

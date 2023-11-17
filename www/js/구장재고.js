@@ -29,7 +29,7 @@ async function 구장재고_조회(is재제조 = false) {
 		count(구장재고, { 관리번호 : _management_id.value });
 		await delay();
 		
-		if(doc_count > 0) {
+		if(구장재고_cnt > 0) {
 			find_구장재고(구장재고, { 관리번호 : _management_id.value });
 			await delay();
 		} else {
@@ -43,7 +43,7 @@ async function 구장재고_조회(is재제조 = false) {
 		count(구장재고, { 재제조번호 : _재제조번호.value });
 		await delay();
 
-		if(doc_count > 0) {
+		if(구장재고_cnt > 0) {
 			find_구장재고(구장재고, { 재제조번호 : _재제조번호.value });
 			await delay();
 		} else {
@@ -52,18 +52,18 @@ async function 구장재고_조회(is재제조 = false) {
 	}
 	
 	if(flag_empty == false) {
-		_management_id.value = find_array[0].관리번호;
-		_재제조번호.value = find_array[0].재제조번호;
-		_입고일.value = find_array[0].입고일;
-		_입고처.value = find_array[0].입고처;
-		_RO번호.value = find_array[0].RO번호;
-		_부품번호.value = find_array[0].부품번호;
-		_생산연도.value = find_array[0].생산연도.value;
-		_ROM_ID.value = find_array[0].ROM_ID;
-		_보관위치.value = find_array[0].보관위치;
-		_출고일.value = find_array[0].출고일;
-		_출고처.value = find_array[0].출고처;
-		_비고.value = find_array[0].비고;
+		_management_id.value = 구장재고_v[0].관리번호;
+		_재제조번호.value = 구장재고_v[0].재제조번호;
+		_입고일.value = 구장재고_v[0].입고일;
+		_입고처.value = 구장재고_v[0].입고처;
+		_RO번호.value = 구장재고_v[0].RO번호;
+		_부품번호.value = 구장재고_v[0].부품번호;
+		_생산연도.value = 구장재고_v[0].생산연도.value;
+		_ROM_ID.value = 구장재고_v[0].ROM_ID;
+		_보관위치.value = 구장재고_v[0].보관위치;
+		_출고일.value = 구장재고_v[0].출고일;
+		_출고처.value = 구장재고_v[0].출고처;
+		_비고.value = 구장재고_v[0].비고;
 	} else {
 		if(is재제조 == false) _재제조번호.value = '';
 		else _management_id.value = '';
