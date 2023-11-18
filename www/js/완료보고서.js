@@ -15,7 +15,7 @@ async function 완료보고서_조회(is재제조번호 = false) {
       find_BSA재제조(BSA재제조, { 재제조번호: _재제조번호.value });
       await delay();
 
-      _management_id.value = BSA재제조_v[0].관리번호;
+      _management_id.value = BSA재제조_v.관리번호;
     }
   }
 
@@ -29,10 +29,10 @@ async function 완료보고서_조회(is재제조번호 = false) {
     await delay();
     console.log(find_array);
 
-    _입고일.innerHTML = 입고_v[0].입고일;
+    _입고일.innerHTML = 입고_v.입고일;
 
-    _차종.innerHTML = 입고_v[0].차종;
-    switch (입고_v[0].차종) {
+    _차종.innerHTML = 입고_v.차종;
+    switch (입고_v.차종) {
       case "CS_EV":
         showTable("_CS_EV");
         break;
@@ -94,53 +94,53 @@ async function 완료보고서_조회(is재제조번호 = false) {
     await delay();
 
     var _VIN = document.getElementById("_VINNo");
-    _VIN.innerHTML = 기초검사_v[0].VIN == undefined ? "" : 기초검사_v[0].VIN;
+    _VIN.innerHTML = 기초검사_v.VIN == undefined ? "" : 기초검사_v.VIN;
     var _RO = document.getElementById("_RONo");
-    _RO.innerHTML = 기초검사_v[0].RO_no == undefined ? "" : 기초검사_v[0].RO_no;
+    _RO.innerHTML = 기초검사_v.RO_no == undefined ? "" : 기초검사_v.RO_no;
     _주행거리.innerHTML =
-      기초검사_v[0].주행거리 == undefined ? "" : 기초검사_v[0].주행거리;
+      기초검사_v.주행거리 == undefined ? "" : 기초검사_v.주행거리;
     _차량번호.innerHTML =
-      기초검사_v[0].차량번호 == undefined ? "" : 기초검사_v[0].차량번호;
+      기초검사_v.차량번호 == undefined ? "" : 기초검사_v.차량번호;
 
-    _management_id.value = 기초검사_v[0].관리번호;
+    _management_id.value = 기초검사_v.관리번호;
 
     _작성자.innerHTML = worker;
 
     _외부점검.innerHTML =
-      기초검사_v[0].육안검사_외부 == undefined
+      기초검사_v.육안검사_외부 == undefined
         ? ""
-        : 기초검사_v[0].육안검사_외부;
+        : 기초검사_v.육안검사_외부;
 
     _외부점검사유.innerHTML =
-      기초검사_v[0].육안검사_외부_특이사항 == undefined
+      기초검사_v.육안검사_외부_특이사항 == undefined
         ? ""
-        : 기초검사_v[0].육안검사_외부_특이사항;
+        : 기초검사_v.육안검사_외부_특이사항;
 
     _내부점검.innerHTML =
-      기초검사_v[0].육안검사_내부 == undefined
+      기초검사_v.육안검사_내부 == undefined
         ? ""
-        : 기초검사_v[0].육안검사_내부;
+        : 기초검사_v.육안검사_내부;
 
     _내부점검사유.innerHTML =
-      기초검사_v[0].육안검사_내부_특이사항 == undefined
+      기초검사_v.육안검사_내부_특이사항 == undefined
         ? ""
-        : 기초검사_v[0].육안검사_내부_특이사항;
+        : 기초검사_v.육안검사_내부_특이사항;
 
     _PRA_P값.innerHTML =
-      기초검사_v[0].절연검사_Plus == undefined
+      기초검사_v.절연검사_Plus == undefined
         ? ""
-        : 기초검사_v[0].절연검사_Plus;
+        : 기초검사_v.절연검사_Plus;
 
     _PRA_N값.innerHTML =
-      기초검사_v[0].절연검사_Minus == undefined
+      기초검사_v.절연검사_Minus == undefined
         ? ""
-        : 기초검사_v[0].절연검사_Minus;
+        : 기초검사_v.절연검사_Minus;
 
     _고장코드.innerHTML =
-      기초검사_v[0].고장현상코드 == undefined ? "" : 기초검사_v[0].고장현상코드;
+      기초검사_v.고장현상코드 == undefined ? "" : 기초검사_v.고장현상코드;
 
     _고장코드사유.innerHTML =
-      기초검사_v[0].고장현상명 == undefined ? "" : 기초검사_v[0].고장현상명;
+      기초검사_v.고장현상명 == undefined ? "" : 기초검사_v.고장현상명;
 
     _재제조이력.innerHTML = "OK";
   } else {
@@ -155,22 +155,22 @@ async function 완료보고서_조회(is재제조번호 = false) {
     await delay();
 
     _케이스.innerHTML =
-      EOL_v[0].기밀검사_케이스 == undefined
+      EOL_v.기밀검사_케이스 == undefined
         ? ""
-        : EOL_v[0].기밀검사_케이스;
+        : EOL_v.기밀검사_케이스;
     _케이스감압량.innerHTML =
-      EOL_v[0].기밀검사_케이스_특이사항 == undefined
+      EOL_v.기밀검사_케이스_특이사항 == undefined
         ? ""
-        : EOL_v[0].기밀검사_케이스_특이사항;
+        : EOL_v.기밀검사_케이스_특이사항;
     _냉각유로.innerHTML =
-      EOL_v[0].기밀검사_냉각유로 == undefined
+      EOL_v.기밀검사_냉각유로 == undefined
         ? ""
-        : EOL_v[0].기밀검사_냉각유로;
+        : EOL_v.기밀검사_냉각유로;
     _냉각유로감압량.innerHTML =
-      EOL_v[0].기밀검사_냉각유로_특이사항 == undefined
+      EOL_v.기밀검사_냉각유로_특이사항 == undefined
         ? ""
-        : EOL_v[0].기밀검사_냉각유로_특이사항;
-    //_팩전압.innerHTML = EOL_v[0].통신검사_팩전압 == undefined ? "" :  EOL_v[0].통신검사_팩전압;
+        : EOL_v.기밀검사_냉각유로_특이사항;
+    //_팩전압.innerHTML = EOL_v.통신검사_팩전압 == undefined ? "" :  EOL_v.통신검사_팩전압;
   } else {
     _케이스.innerHTML = "";
     _케이스감압량.innerHTML = "";
@@ -185,33 +185,33 @@ async function 완료보고서_조회(is재제조번호 = false) {
     find(입고_pic, _management_id.value);
     await delay();
 
-    _top_pic.src = "data:image/;base64," + 입고_pic_v[0].pic1;
-    _front_pic.src = "data:image/;base64," + 입고_pic_v[0].pic2;
-    _left_pic.src = "data:image/;base64," + 입고_pic_v[0].pic3;
-    _bottom_pic.src = "data:image/;base64," + 입고_pic_v[0].pic4;
-    _rear_pic.src = "data:image/;base64," + 입고_pic_v[0].pic5;
-    _right_pic.src = "data:image/;base64," + 입고_pic_v[0].pic6;
-    _이상부위_외부1.src = "data:image/;base64," + 입고_pic_v[0].pic7;
-    _이상부위_외부2.src = "data:image/;base64," + 입고_pic_v[0].pic8;
-    _이상부위_외부3.src = "data:image/;base64," + 입고_pic_v[0].pic9;
-    _이상부위_외부4.src = "data:image/;base64," + 입고_pic_v[0].pic10;
+    _top_pic.src = "data:image/;base64," + 입고_pic_v.pic1;
+    _front_pic.src = "data:image/;base64," + 입고_pic_v.pic2;
+    _left_pic.src = "data:image/;base64," + 입고_pic_v.pic3;
+    _bottom_pic.src = "data:image/;base64," + 입고_pic_v.pic4;
+    _rear_pic.src = "data:image/;base64," + 입고_pic_v.pic5;
+    _right_pic.src = "data:image/;base64," + 입고_pic_v.pic6;
+    _이상부위_외부1.src = "data:image/;base64," + 입고_pic_v.pic7;
+    _이상부위_외부2.src = "data:image/;base64," + 입고_pic_v.pic8;
+    _이상부위_외부3.src = "data:image/;base64," + 입고_pic_v.pic9;
+    _이상부위_외부4.src = "data:image/;base64," + 입고_pic_v.pic10;
 
-    _allImg.src = "data:image/;base64," + 입고_pic_v[0].pic2;
-    _BMU.src = "data:image/;base64," + 입고_pic_v[0].pic3;
-    _CMU.src = "data:image/;base64," + 입고_pic_v[0].pic4;
-    _PRA.src = "data:image/;base64," + 입고_pic_v[0].pic5;
-    _이상부위_내부1.src = "data:image/;base64," + 입고_pic_v[0].pic6;
-    _이상부위_내부2.src = "data:image/;base64," + 입고_pic_v[0].pic7;
-    _이상부위_내부3.src = "data:image/;base64," + 입고_pic_v[0].pic8;
-    _이상부위_내부4.src = "data:image/;base64," + 입고_pic_v[0].pic9;
+    _allImg.src = "data:image/;base64," + 입고_pic_v.pic2;
+    _BMU.src = "data:image/;base64," + 입고_pic_v.pic3;
+    _CMU.src = "data:image/;base64," + 입고_pic_v.pic4;
+    _PRA.src = "data:image/;base64," + 입고_pic_v.pic5;
+    _이상부위_내부1.src = "data:image/;base64," + 입고_pic_v.pic6;
+    _이상부위_내부2.src = "data:image/;base64," + 입고_pic_v.pic7;
+    _이상부위_내부3.src = "data:image/;base64," + 입고_pic_v.pic8;
+    _이상부위_내부4.src = "data:image/;base64," + 입고_pic_v.pic9;
 
-    _측정사진1.src = "data:image/;base64," + 입고_pic_v[0].pic1;
-    _측정사진2.src = "data:image/;base64," + 입고_pic_v[0].pic2;
-    _측정값사진1.src = "data:image/;base64," + 입고_pic_v[0].pic3;
-    _측정값사진2.src = "data:image/;base64," + 입고_pic_v[0].pic4;
+    _측정사진1.src = "data:image/;base64," + 입고_pic_v.pic1;
+    _측정사진2.src = "data:image/;base64," + 입고_pic_v.pic2;
+    _측정값사진1.src = "data:image/;base64," + 입고_pic_v.pic3;
+    _측정값사진2.src = "data:image/;base64," + 입고_pic_v.pic4;
 
-    _입고사진.src = "data:image/;base64," + 입고_pic_v[0].pic1;
-    _BSA_QR.src = "data:image/;base64," + 입고_pic_v[0].pic2;
+    _입고사진.src = "data:image/;base64," + 입고_pic_v.pic1;
+    _BSA_QR.src = "data:image/;base64," + 입고_pic_v.pic2;
   }
 
   var DateTime = luxon.DateTime;
@@ -227,33 +227,33 @@ async function 완료보고서_조회(is재제조번호 = false) {
     find(출하정보, _management_id.value);
     await delay();
 
-    _출하QR.innerHTML = 출하정보_v[0].출하코드 == undefined ? "NG" : "OK";
-    _출하QR사유.innerHTML = 출하정보_v[0].출하코드;
+    _출하QR.innerHTML = 출하정보_v.출하코드 == undefined ? "NG" : "OK";
+    _출하QR사유.innerHTML = 출하정보_v.출하코드;
 
     _팩전압.innerHTML =
-      출하정보_v[0].배터리팩전압 == undefined ? "" : 출하정보_v[0].배터리팩전압;
+      출하정보_v.배터리팩전압 == undefined ? "" : 출하정보_v.배터리팩전압;
 
     _팩전압값.innerHTML =
-      출하정보_v[0].배터리팩_측정값 == undefined
+      출하정보_v.배터리팩_측정값 == undefined
         ? ""
-        : 출하정보_v[0].배터리팩_측정값;
+        : 출하정보_v.배터리팩_측정값;
 
     _셀전압편차.innerHTML =
-      출하정보_v[0].셀전압편차 == undefined ? "" : 출하정보_v[0].셀전압편차;
+      출하정보_v.셀전압편차 == undefined ? "" : 출하정보_v.셀전압편차;
 
     _셀전압편차값.innerHTML =
-      출하정보_v[0].셀전압편차값 == undefined ? "" : 출하정보_v[0].셀전압편차값;
+      출하정보_v.셀전압편차값 == undefined ? "" : 출하정보_v.셀전압편차값;
 
     _릴레이제어.innerHTML =
-      출하정보_v[0].통신검사_릴레이구동 == undefined
+      출하정보_v.통신검사_릴레이구동 == undefined
         ? ""
-        : 출하정보_v[0].통신검사_릴레이구동;
+        : 출하정보_v.통신검사_릴레이구동;
 
-    _커버류.innerHTML = 출하정보_v[0].냉각유로_커버;
-    _커버류확인.innerHTML = 출하정보_v[0].냉각유로_커버;
+    _커버류.innerHTML = 출하정보_v.냉각유로_커버;
+    _커버류확인.innerHTML = 출하정보_v.냉각유로_커버;
 
-    _브라켓정보.innerHTML = 출하정보_v[0].브라켓;
-    _브라켓값.innerHTML = 출하정보_v[0].브라켓_비고;
+    _브라켓정보.innerHTML = 출하정보_v.브라켓;
+    _브라켓값.innerHTML = 출하정보_v.브라켓_비고;
   }
 }
 

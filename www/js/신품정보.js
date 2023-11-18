@@ -21,15 +21,15 @@ async function 신품정보등록_조회() {
 		find_신품정보(자재입출고, { QR : _QR.value });
 		await delay();
 		
-		_QR.value   = 자재입출고_v[0].QR;
-		_날짜.value = 자재입출고_v[0].날짜;
-		_구분.value = 자재입출고_v[0].구분;
-		_차종.value = 자재입출고_v[0].차종;
-		_품명.value = 자재입출고_v[0].품명;
-		_품번.value = 자재입출고_v[0].품번;
-		_수량.value = 자재입출고_v[0].수량;
-                _LotNo.value = 자재입출고_v[0].LotNo;
-                _비고.value = 자재입출고_v[0].비고;
+		_QR.value   = 자재입출고_v.QR;
+		_날짜.value = 자재입출고_v.날짜;
+		_구분.value = 자재입출고_v.구분;
+		_차종.value = 자재입출고_v.차종;
+		_품명.value = 자재입출고_v.품명;
+		_품번.value = 자재입출고_v.품번;
+		_수량.value = 자재입출고_v.수량;
+                _LotNo.value = 자재입출고_v.LotNo;
+                _비고.value = 자재입출고_v.비고;
 	} else {
 		_QR.value = '';
 		_날짜.value = '';
@@ -119,7 +119,7 @@ function read_신품정보_func_csv() {
 	_재고관리_csv.addEventListener('input', function(event) {
 		const target = event.target;
 		const files = target.files;
-		const file = files[0];
+		const file = files;
 
 		const reader = new FileReader();
 		reader.addEventListener('load', async function() {

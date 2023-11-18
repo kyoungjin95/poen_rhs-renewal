@@ -35,8 +35,8 @@ function pic_load(e) {
 	if(image_count == 1) {
 		if(slot == undefined) slot = '1';
 
-		eval('camera_img' + slot +'.src = URL.createObjectURL(file[0]);');
-		getDataUrl(file[0], (slot - 1));
+		eval('camera_img' + slot +'.src = URL.createObjectURL(file);');
+		getDataUrl(file, (slot - 1));
 
 		return;
 	}
@@ -110,7 +110,7 @@ async function pic_save() {
 	}
 
 	doc.관리번호 = mid.value.trim();
-	doc.pic1 = imgBase64Str[0];
+	doc.pic1 = imgBase64Str;
 	doc.pic2 = imgBase64Str[1];
 	doc.pic3 = imgBase64Str[2];
 	doc.pic4 = imgBase64Str[3];
@@ -242,21 +242,21 @@ async function pic_loading() {
 		find(col, doc.관리번호);
 		await delay();
 
-		camera_img1.src = 'data:image/;base64,' + find_array[0].pic1;
-		camera_img2.src = 'data:image/;base64,' + find_array[0].pic2;
-		camera_img3.src = 'data:image/;base64,' + find_array[0].pic3;
-		camera_img4.src = 'data:image/;base64,' + find_array[0].pic4;
-		camera_img5.src = 'data:image/;base64,' + find_array[0].pic5;
-		camera_img6.src = 'data:image/;base64,' + find_array[0].pic6;
-		camera_img7.src = 'data:image/;base64,' + find_array[0].pic7;
-		camera_img8.src = 'data:image/;base64,' + find_array[0].pic8;
-		camera_img9.src = 'data:image/;base64,' + find_array[0].pic9;
-		camera_img10.src = 'data:image/;base64,' + find_array[0].pic10;
-		camera_img11.src = 'data:image/;base64,' + find_array[0].pic11;
-		camera_img12.src = 'data:image/;base64,' + find_array[0].pic12;
-		camera_img13.src = 'data:image/;base64,' + find_array[0].pic13;
-		camera_img14.src = 'data:image/;base64,' + find_array[0].pic14;
-	        camera_img15.src = 'data:image/;base64,' + find_array[0].pic15;
+		camera_img1.src = 'data:image/;base64,' + find_array.pic1;
+		camera_img2.src = 'data:image/;base64,' + find_array.pic2;
+		camera_img3.src = 'data:image/;base64,' + find_array.pic3;
+		camera_img4.src = 'data:image/;base64,' + find_array.pic4;
+		camera_img5.src = 'data:image/;base64,' + find_array.pic5;
+		camera_img6.src = 'data:image/;base64,' + find_array.pic6;
+		camera_img7.src = 'data:image/;base64,' + find_array.pic7;
+		camera_img8.src = 'data:image/;base64,' + find_array.pic8;
+		camera_img9.src = 'data:image/;base64,' + find_array.pic9;
+		camera_img10.src = 'data:image/;base64,' + find_array.pic10;
+		camera_img11.src = 'data:image/;base64,' + find_array.pic11;
+		camera_img12.src = 'data:image/;base64,' + find_array.pic12;
+		camera_img13.src = 'data:image/;base64,' + find_array.pic13;
+		camera_img14.src = 'data:image/;base64,' + find_array.pic14;
+	        camera_img15.src = 'data:image/;base64,' + find_array.pic15;
 	} else {
 		camera_img1.src = '';
 		camera_img2.src = '';

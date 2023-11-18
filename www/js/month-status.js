@@ -40,7 +40,7 @@ async function 월간현황_시작() {
 			document.getElementById('_검색일_year').appendChild(addYear);
 			console.log(i);
 		}
-		document.getElementById('_검색일_year').options[0].selected = true;
+		document.getElementById('_검색일_year').options.selected = true;
 	}
 
 	for(var i = 1; i <= 12; i++) {

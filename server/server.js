@@ -127,6 +127,14 @@ io.on('connection', async function(socket) {
 		////logger.info('worker:'+ worker + ' find col:' + col +'query:'+ JSON.stringify(query));
 	});
 
+	socket.on('findOne', async function(worker, col, query, options, check) {
+		if(account.login == false && col != '거래확인서') return;
+		await sleep(10);
+		const result_array = await findOne(col, query, options);
+		socket.emit('find_result', col, result_array, check);
+		////logger.info('worker:'+ worker + ' find col:' + col +'query:'+ JSON.stringify(query));
+	});
+
 	socket.on('update', async function(worker, col, filter, doc) {
 		if(account.login == false && col != '계정' && col != '거래확인서') return;
 		logger.info('worker:'+ worker + ' update col:' + col + 'doc:' + JSON.stringify(doc));
@@ -268,6 +276,21 @@ async function find(col, query, options) {
 	}
 }
 
+async function findOne(col, query, options) {
+	try {
+		const database = client.db(db_name);
+		const collection = database.collection(col);
+		const result = await collection.findOne(query, options);
+		//console.log('finded (', col, ':', query, ') :', result_array);
+		return result;
+	} catch(err) {
+		console.error(err);
+		logger.info(err);
+		return null;
+	} finally {
+	}
+}
+
 /**
  *  filter = { title: "Random Harvest" };
  *  const updateDoc = {
@@ -284,6 +307,7 @@ async function update(col, filter, updateDoc) {
 		const result = await collection.updateOne(filter, updateDoc, options);
 		console.log(`Updated ${result.modifiedCount} documents`);
 		console.log(`Inserted ${result.upsertedCount} documents`);
+		console.log(updateDoc);
 		return result;
 	} catch(err) {
 		console.error(err);
@@ -315,6 +339,7 @@ async function deleteOne(col, query) {
 		const collection = database.collection(col);
 		const result = await collection.deleteOne(query);
 		console.log(`Delete ${result.deletedCount} documents`);
+		console.log(query);
 		return result.deletedCount;
 	} catch(err) {
 		console.error(err);

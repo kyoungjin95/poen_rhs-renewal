@@ -24,7 +24,7 @@ async function 출하정보_시작(is재제조 = false) {
 			find(BSA재제조, _management_id.value );
 			await delay();
 		
-			_재제조번호.value = BSA재제조_v[0].재제조번호;
+			_재제조번호.value = BSA재제조_v.재제조번호;
 		}
 	} else {
 		count(BSA재제조, { 재제조번호 : _재제조번호.value });
@@ -34,7 +34,7 @@ async function 출하정보_시작(is재제조 = false) {
 			find_BSA재제조(BSA재제조, { 재제조번호: _재제조번호.value });
 			await delay();
 
-			_management_id.value = BSA재제조_v[0].관리번호;
+			_management_id.value = BSA재제조_v.관리번호;
 		} else {
 			_management_id.value = '찾지 못하였습니다';
 		}
@@ -47,9 +47,9 @@ async function 출하정보_시작(is재제조 = false) {
 		find(입고, _management_id.value);
 		await delay();
 
-		_차종.value = 입고_v[0].차종;
-		_품번.value = 입고_v[0].품번;
-		_RO_no.value = 입고_v[0].RO_no;
+		_차종.value = 입고_v.차종;
+		_품번.value = 입고_v.품번;
+		_RO_no.value = 입고_v.RO_no;
 	} else {
 		_차종.value = '';
 		_품번.value = '';
@@ -126,53 +126,53 @@ async function 출하정보_시작(is재제조 = false) {
 		find(출하정보, _management_id.value);
 		await delay();
 
-		_management_id.value = 출하정보_v[0].관리번호;
-		//_출하일.value = 출하정보_v[0].출하일;
-		_출하코드.value = 출하정보_v[0].출하코드;
-		//_납품처.value = 출하정보_v[0].납품처;
-		_검사일.value = 출하정보_v[0].검사일;
-		if(_검사자.value == '') _검사자.value = 출하정보_v[0].검사자;
-		_기초보고서_작성확인.value = 출하정보_v[0].기초보고서_작성확인;
-		_완료보고서_작성확인.value = 출하정보_v[0].완료보고서_작성확인;
-		_클린상태.value =  출하정보_v[0].클린상태;
-		_팔레트_적정위치.value = 출하정보_v[0].팔레트_적정위치;
-		_포장랩상태.value = 출하정보_v[0].포장랩상태;
-		_UPR_QR.value = 출하정보_v[0].UPR_QR;
-		_LWR_QR.value = 출하정보_v[0].LWR_QR;
-		_HKMC_스티커_URP.value = 출하정보_v[0].HKMC_스티커_URP;
-		_냉각유로_커버.value = 출하정보_v[0].냉각유로_커버;
-		//_브라켓.value = 출하정보_v[0].브라켓;
-		_브라켓_비고 .value = 출하정보_v[0].브라켓_비고;
-		//_S_PLUG .value = 출하정보_v[0].S_PLUG;
-		_S_PLUG_비고 .value = 출하정보_v[0].S_PLUG_비고;
-		//_접지 .value = 출하정보_v[0].접지;
-		_접지_비고 .value = 출하정보_v[0].접지_비고
-		_DTC.value = 출하정보_v[0].DTC;
-		_DTC_현재.value = 출하정보_v[0].DTC_현재;
-		_DTC_과거.value = 출하정보_v[0].DTC_과거;
-		_배터리충전상태.value = 출하정보_v[0].배터리충전상태;
-		_배터리충전상태_측정값.value = 출하정보_v[0].배터리충전상태_측정값;
-		_BMS고장NO.value = 출하정보_v[0].BMS고장NO;
-		_BMS융착NO.value = 출하정보_v[0].BMS융착NO;
-		_배터리팩전압.value = 출하정보_v[0].배터리팩전압;
-		_배터리팩_측정값.value = 출하정보_v[0].배터리팩_측정값;
-		_배터리모듈온도.value = 출하정보_v[0].배터리모듈온도;
-		_배터리모듈온도_최대.value = 출하정보_v[0].배터리모듈온도_최대;
-		_배터리모듈온도_최소:1, 출하정보_v[0].배터리모듈온도_최소;
-		_배터리셀전압.value = 출하정보_v[0].배터리셀전압;
-		_배터리셀전압_최대.value = 출하정보_v[0].배터리셀전압_최대;
-		_배터리셀전압_최소.value = 출하정보_v[0].배터리셀전압_최소;
-		_셀전압편차.value = 출하정보_v[0].셀전압편차;
-		_셀전압편차_측정값.value = 출하정보_v[0].셀전압편차_측정값;
-		_절연저항.value = 출하정보_v[0].절연저항;
-		_절연저항_측정값.value = 출하정보_v[0].절연저항_측정값;
-		_SOH.value = 출하정보_v[0].SOH;
-		_릴레이_강제구동.value = 출하정보_v[0].릴레이_강제구동;
-		_커넥터_체결검사.value = 출하정보_v[0].커넥터_체결검사;
+		_management_id.value = 출하정보_v.관리번호;
+		//_출하일.value = 출하정보_v.출하일;
+		_출하코드.value = 출하정보_v.출하코드;
+		//_납품처.value = 출하정보_v.납품처;
+		_검사일.value = 출하정보_v.검사일;
+		if(_검사자.value == '') _검사자.value = 출하정보_v.검사자;
+		_기초보고서_작성확인.value = 출하정보_v.기초보고서_작성확인;
+		_완료보고서_작성확인.value = 출하정보_v.완료보고서_작성확인;
+		_클린상태.value =  출하정보_v.클린상태;
+		_팔레트_적정위치.value = 출하정보_v.팔레트_적정위치;
+		_포장랩상태.value = 출하정보_v.포장랩상태;
+		_UPR_QR.value = 출하정보_v.UPR_QR;
+		_LWR_QR.value = 출하정보_v.LWR_QR;
+		_HKMC_스티커_URP.value = 출하정보_v.HKMC_스티커_URP;
+		_냉각유로_커버.value = 출하정보_v.냉각유로_커버;
+		//_브라켓.value = 출하정보_v.브라켓;
+		_브라켓_비고 .value = 출하정보_v.브라켓_비고;
+		//_S_PLUG .value = 출하정보_v.S_PLUG;
+		_S_PLUG_비고 .value = 출하정보_v.S_PLUG_비고;
+		//_접지 .value = 출하정보_v.접지;
+		_접지_비고 .value = 출하정보_v.접지_비고
+		_DTC.value = 출하정보_v.DTC;
+		_DTC_현재.value = 출하정보_v.DTC_현재;
+		_DTC_과거.value = 출하정보_v.DTC_과거;
+		_배터리충전상태.value = 출하정보_v.배터리충전상태;
+		_배터리충전상태_측정값.value = 출하정보_v.배터리충전상태_측정값;
+		_BMS고장NO.value = 출하정보_v.BMS고장NO;
+		_BMS융착NO.value = 출하정보_v.BMS융착NO;
+		_배터리팩전압.value = 출하정보_v.배터리팩전압;
+		_배터리팩_측정값.value = 출하정보_v.배터리팩_측정값;
+		_배터리모듈온도.value = 출하정보_v.배터리모듈온도;
+		_배터리모듈온도_최대.value = 출하정보_v.배터리모듈온도_최대;
+		_배터리모듈온도_최소:1, 출하정보_v.배터리모듈온도_최소;
+		_배터리셀전압.value = 출하정보_v.배터리셀전압;
+		_배터리셀전압_최대.value = 출하정보_v.배터리셀전압_최대;
+		_배터리셀전압_최소.value = 출하정보_v.배터리셀전압_최소;
+		_셀전압편차.value = 출하정보_v.셀전압편차;
+		_셀전압편차_측정값.value = 출하정보_v.셀전압편차_측정값;
+		_절연저항.value = 출하정보_v.절연저항;
+		_절연저항_측정값.value = 출하정보_v.절연저항_측정값;
+		_SOH.value = 출하정보_v.SOH;
+		_릴레이_강제구동.value = 출하정보_v.릴레이_강제구동;
+		_커넥터_체결검사.value = 출하정보_v.커넥터_체결검사;
 		
-		브라켓 = 출하정보_v[0].브라켓;
-		S_PLUG = 출하정보_v[0].S_PLUG;
-		접지 = 출하정보_v[0].접지;
+		브라켓 = 출하정보_v.브라켓;
+		S_PLUG = 출하정보_v.S_PLUG;
+		접지 = 출하정보_v.접지;
 		
 		if(String(_출하코드.value).trim() == '') {
 			count(EOL, { 관리번호 : _management_id.value });
@@ -181,7 +181,7 @@ async function 출하정보_시작(is재제조 = false) {
 				find(EOL, _management_id.value);
 				await delay();
 
-				_출하코드.value = EOL_v[0].QR;
+				_출하코드.value = EOL_v.QR;
 			}
 		}
 
@@ -190,7 +190,7 @@ async function 출하정보_시작(is재제조 = false) {
 		} else if(브라켓 == 'NG') {
 			_bracket.options[2].selected = true;
 		} else {
-			_bracket.options[0].selected = true;
+			_bracket.options.selected = true;
 		}
 
 		if(S_PLUG == 'OK') {
@@ -198,7 +198,7 @@ async function 출하정보_시작(is재제조 = false) {
 		} else if(S_PLUG == 'NG') {
 			_S_PLUG.options[2].selected = true;
 		} else {
-			_S_PLUG.options[0].selected = true;
+			_S_PLUG.options.selected = true;
 		}
 
 		if(접지 == 'OK') {
@@ -206,7 +206,7 @@ async function 출하정보_시작(is재제조 = false) {
 		} else if(접지 == 'NG') {
 			_접지.options[2].selected = true;
 		} else {
-			_접지.options[0].selected = true;
+			_접지.options.selected = true;
 		}
 	} else {
 		if(is재제조 == false) {
@@ -254,9 +254,9 @@ async function 출하정보_시작(is재제조 = false) {
 		_릴레이_강제구동.value = '';
 		_커넥터_체결검사.value = '';
 
-		_bracket.options[0].selected = true;
-		_S_PLUG.options[0].selected = true;
-		_접지.options[0].selected = true;
+		_bracket.options.selected = true;
+		_S_PLUG.options.selected = true;
+		_접지.options.selected = true;
 	}
 }
 

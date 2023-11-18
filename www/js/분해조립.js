@@ -92,9 +92,9 @@ async function 분해조립_시작(is재제조번호 = false) {
 		find(입고, _management_id.value);
 		await delay();
 
-		_구분.value = 입고_v[0].구분;
-		_차종.value = 입고_v[0].차종;
-		_품번.value = 입고_v[0].품번;
+		_구분.value = 입고_v.구분;
+		_차종.value = 입고_v.차종;
+		_품번.value = 입고_v.품번;
 	} else {
 		_구분.value = '';
 		_차종.value = '';
@@ -113,7 +113,7 @@ async function 분해조립_시작(is재제조번호 = false) {
 			find_BSA재제조(BSA재제조, { 재제조번호: _재제조번호.value.trim() });
 			await delay();
 			
-			_management_id.value = BSA재제조_v[0].관리번호;
+			_management_id.value = BSA재제조_v.관리번호;
 		} else {
 			_management_id.value = '찾지 못하였습니다';
 		}
@@ -131,7 +131,7 @@ async function 분해조립_시작(is재제조번호 = false) {
 	if(BSA재제조_cnt > 0) {
 		find_BSA재제조(BSA재제조, { 관리번호: _management_id.value.trim() });
 		await delay();
-		_재제조번호.value = BSA재제조_v[0].재제조번호;
+		_재제조번호.value = BSA재제조_v.재제조번호;
 	} else {
 		_재제조번호.value = '';
 	}
@@ -146,7 +146,7 @@ async function 분해조립_시작(is재제조번호 = false) {
 			find_BSA재제조(BSA재제조, { 관리번호: _management_id.value.trim() });
 			await delay();
 			
-			_재제조번호.value = BSA재제조_v[0].재제조번호;
+			_재제조번호.value = BSA재제조_v.재제조번호;
 		}
 
 
@@ -154,94 +154,94 @@ async function 분해조립_시작(is재제조번호 = false) {
 		await delay();
 
 		var no_count = 6;
-		_공정입고일.value = 분해조립_v[0].공정입고일;
-		_BMU1.value = 분해조립_v[0].BMU1;
-		_BMU1_2.value = 분해조립_v[0].BMU1_2;
-		if(분해조립_v[0].BMU2 != '') { BMU_count += 1; type_add('BMU', 'BMU', no_count, BMU_count); document.getElementById('_BMU2').value = 분해조립_v[0].BMU2; document.getElementById('_BMU2_2').value = 분해조립_v[0].BMU2_2;}
-		if(분해조립_v[0].BMU3 != '') { BMU_count += 1; type_add('BMU', 'BMU', no_count, BMU_count); document.getElementById('_BMU3').value = 분해조립_v[0].BMU3; document.getElementById('_BMU3_2').value = 분해조립_v[0].BMU3_2;}
-		if(분해조립_v[0].BMU4 != '') { BMU_count += 1; type_add('BMU', 'BMU', no_count, BMU_count); document.getElementById('_BMU4').value = 분해조립_v[0].BMU4; document.getElementById('_BMU4_2').value = 분해조립_v[0].BMU4_2;}
-		if(분해조립_v[0].BMU5 != '') { BMU_count += 1; type_add('BMU', 'BMU', no_count, BMU_count); document.getElementById('_BMU5').value = 분해조립_v[0].BMU5; document.getElementById('_BMU5_2').value = 분해조립_v[0].BMU5_2;}
-		if(분해조립_v[0].BMU6 != '') { BMU_count += 1; type_add('BMU', 'BMU', no_count, BMU_count); document.getElementById('_BMU6').value = 분해조립_v[0].BMU6; document.getElementById('_BMU6_2').value = 분해조립_v[0].BMU6_2;}
-		if(분해조립_v[0].BMU7 != '') { BMU_count += 1; type_add('BMU', 'BMU', no_count, BMU_count); document.getElementById('_BMU7').value = 분해조립_v[0].BMU7; document.getElementById('_BMU7_2').value = 분해조립_v[0].BMU7_2;}
-		if(분해조립_v[0].BMU8 != '') { BMU_count += 1; type_add('BMU', 'BMU', no_count, BMU_count); document.getElementById('_BMU8').value = 분해조립_v[0].BMU8; document.getElementById('_BMU8_2').value = 분해조립_v[0].BMU8_2;}
-		if(분해조립_v[0].BMU9 != '') { BMU_count += 1; type_add('BMU', 'BMU', no_count, BMU_count); document.getElementById('_BMU9').value = 분해조립_v[0].BMU9; document.getElementById('_BMU9_2').value = 분해조립_v[0].BMU9_2;}
-		if(분해조립_v[0].BMU10 != '') { BMU_count += 1; type_add('BMU', 'BMU', no_count, BMU_count); document.getElementById('_BMU10').value = 분해조립_v[0].BMU10; document.getElementById('_BMU10_2').value = 분해조립_v[0].BMU10_2;}
+		_공정입고일.value = 분해조립_v.공정입고일;
+		_BMU1.value = 분해조립_v.BMU1;
+		_BMU1_2.value = 분해조립_v.BMU1_2;
+		if(분해조립_v.BMU2 != '') { BMU_count += 1; type_add('BMU', 'BMU', no_count, BMU_count); document.getElementById('_BMU2').value = 분해조립_v.BMU2; document.getElementById('_BMU2_2').value = 분해조립_v.BMU2_2;}
+		if(분해조립_v.BMU3 != '') { BMU_count += 1; type_add('BMU', 'BMU', no_count, BMU_count); document.getElementById('_BMU3').value = 분해조립_v.BMU3; document.getElementById('_BMU3_2').value = 분해조립_v.BMU3_2;}
+		if(분해조립_v.BMU4 != '') { BMU_count += 1; type_add('BMU', 'BMU', no_count, BMU_count); document.getElementById('_BMU4').value = 분해조립_v.BMU4; document.getElementById('_BMU4_2').value = 분해조립_v.BMU4_2;}
+		if(분해조립_v.BMU5 != '') { BMU_count += 1; type_add('BMU', 'BMU', no_count, BMU_count); document.getElementById('_BMU5').value = 분해조립_v.BMU5; document.getElementById('_BMU5_2').value = 분해조립_v.BMU5_2;}
+		if(분해조립_v.BMU6 != '') { BMU_count += 1; type_add('BMU', 'BMU', no_count, BMU_count); document.getElementById('_BMU6').value = 분해조립_v.BMU6; document.getElementById('_BMU6_2').value = 분해조립_v.BMU6_2;}
+		if(분해조립_v.BMU7 != '') { BMU_count += 1; type_add('BMU', 'BMU', no_count, BMU_count); document.getElementById('_BMU7').value = 분해조립_v.BMU7; document.getElementById('_BMU7_2').value = 분해조립_v.BMU7_2;}
+		if(분해조립_v.BMU8 != '') { BMU_count += 1; type_add('BMU', 'BMU', no_count, BMU_count); document.getElementById('_BMU8').value = 분해조립_v.BMU8; document.getElementById('_BMU8_2').value = 분해조립_v.BMU8_2;}
+		if(분해조립_v.BMU9 != '') { BMU_count += 1; type_add('BMU', 'BMU', no_count, BMU_count); document.getElementById('_BMU9').value = 분해조립_v.BMU9; document.getElementById('_BMU9_2').value = 분해조립_v.BMU9_2;}
+		if(분해조립_v.BMU10 != '') { BMU_count += 1; type_add('BMU', 'BMU', no_count, BMU_count); document.getElementById('_BMU10').value = 분해조립_v.BMU10; document.getElementById('_BMU10_2').value = 분해조립_v.BMU10_2;}
 
-		_CMU1.value = 분해조립_v[0].CMU1;
-		_CMU1_2.value = 분해조립_v[0].CMU1_2;
+		_CMU1.value = 분해조립_v.CMU1;
+		_CMU1_2.value = 분해조립_v.CMU1_2;
 		no_count += BMU_count;
-		for(var i = 2; i <= 10; i++) eval('if(분해조립_v[0].CMU' + i + ' != \'\' || (분해조립_v[0].CMU' + i + '_2 != \'\' && 분해조립_v[0].CMU' + i + '_2 != undefined)) ' + '{ CMU_count += 1; type_add(\'CMU\', \'CMU\', no_count, CMU_count); document.getElementById(\'_CMU' + i + '\').value = ' + '분해조립_v[0].CMU' + i + '; document.getElementById(\'_CMU' + i + '_2\').value = ' + '분해조립_v[0].CMU' + i + '_2;}');
+		for(var i = 2; i <= 10; i++) eval('if(분해조립_v.CMU' + i + ' != \'\' || (분해조립_v.CMU' + i + '_2 != \'\' && 분해조립_v.CMU' + i + '_2 != undefined)) ' + '{ CMU_count += 1; type_add(\'CMU\', \'CMU\', no_count, CMU_count); document.getElementById(\'_CMU' + i + '\').value = ' + '분해조립_v.CMU' + i + '; document.getElementById(\'_CMU' + i + '_2\').value = ' + '분해조립_v.CMU' + i + '_2;}');
 
-		_PRA1.value = 분해조립_v[0].PRA1;
-		_PRA1_2.value = 분해조립_v[0].PRA1_2;
+		_PRA1.value = 분해조립_v.PRA1;
+		_PRA1_2.value = 분해조립_v.PRA1_2;
 		no_count += CMU_count;
-		for(var i = 2; i <= 10; i++) eval('if(분해조립_v[0].PRA' + i + ' != \'\' || (분해조립_v[0].PRA' + i + '_2 != \'\' && 분해조립_v[0].PRA' + i + '_2 != undefined)) ' + '{ PRA_count += 1; type_add(\'PRA\', \'PRA\', no_count, PRA_count); document.getElementById(\'_PRA' + i + '\').value = ' + '분해조립_v[0].PRA' + i + '; document.getElementById(\'_PRA' + i + '_2\').value = ' + '분해조립_v[0].PRA' + i + '_2; }');
+		for(var i = 2; i <= 10; i++) eval('if(분해조립_v.PRA' + i + ' != \'\' || (분해조립_v.PRA' + i + '_2 != \'\' && 분해조립_v.PRA' + i + '_2 != undefined)) ' + '{ PRA_count += 1; type_add(\'PRA\', \'PRA\', no_count, PRA_count); document.getElementById(\'_PRA' + i + '\').value = ' + '분해조립_v.PRA' + i + '; document.getElementById(\'_PRA' + i + '_2\').value = ' + '분해조립_v.PRA' + i + '_2; }');
 
-		_SPA1.value = 분해조립_v[0].SPA1;
-		_SPA1_2.value = 분해조립_v[0].SPA1_2;
+		_SPA1.value = 분해조립_v.SPA1;
+		_SPA1_2.value = 분해조립_v.SPA1_2;
 		no_count += PRA_count;
-		for(var i = 2; i <= 10; i++) eval('if(분해조립_v[0].SPA' + i + ' != \'\' || (분해조립_v[0].SPA' + i + '_2 != \'\' && 분해조립_v[0].SPA' + i + '_2 != undefined)) ' + '{ SPA_count += 1; type_add(\'SPA\', \'SPA\', no_count, SPA_count); document.getElementById(\'_SPA' + i + '\').value = ' + '분해조립_v[0].SPA' + i + '; document.getElementById(\'_SPA' + i + '_2\').value = ' + '분해조립_v[0].SPA' + i + '_2; }');
+		for(var i = 2; i <= 10; i++) eval('if(분해조립_v.SPA' + i + ' != \'\' || (분해조립_v.SPA' + i + '_2 != \'\' && 분해조립_v.SPA' + i + '_2 != undefined)) ' + '{ SPA_count += 1; type_add(\'SPA\', \'SPA\', no_count, SPA_count); document.getElementById(\'_SPA' + i + '\').value = ' + '분해조립_v.SPA' + i + '; document.getElementById(\'_SPA' + i + '_2\').value = ' + '분해조립_v.SPA' + i + '_2; }');
 
-		_LWR_C1.value = 분해조립_v[0].LWR_C1;
-		_LWR_C1_2.value = 분해조립_v[0].LWR_C1_2;
+		_LWR_C1.value = 분해조립_v.LWR_C1;
+		_LWR_C1_2.value = 분해조립_v.LWR_C1_2;
 		no_count += SPA_count;
-		for(var i = 2; i <= 10; i++) eval('if(분해조립_v[0].LWR_C' + i + ' != \'\' || (분해조립_v[0].LWR_C' + i + '_2 != \'\' && 분해조립_v[0].LWR_C' + i + '_2 != undefined)) ' + '{ LWR_C_count += 1; type_add(\'LWR Case\', \'LWR_C\', no_count, LWR_C_count); document.getElementById(\'_LWR_C' + i + '\').value = ' + '분해조립_v[0].LWR_C' + i + '; document.getElementById(\'_LWR_C' + i + '_2\').value = ' + '분해조립_v[0].LWR_C' + i + '_2; }');
+		for(var i = 2; i <= 10; i++) eval('if(분해조립_v.LWR_C' + i + ' != \'\' || (분해조립_v.LWR_C' + i + '_2 != \'\' && 분해조립_v.LWR_C' + i + '_2 != undefined)) ' + '{ LWR_C_count += 1; type_add(\'LWR Case\', \'LWR_C\', no_count, LWR_C_count); document.getElementById(\'_LWR_C' + i + '\').value = ' + '분해조립_v.LWR_C' + i + '; document.getElementById(\'_LWR_C' + i + '_2\').value = ' + '분해조립_v.LWR_C' + i + '_2; }');
 
-		_UPR_C1.value = 분해조립_v[0].UPR_C1;
-		_UPR_C1_2.value = 분해조립_v[0].UPR_C1_2;
+		_UPR_C1.value = 분해조립_v.UPR_C1;
+		_UPR_C1_2.value = 분해조립_v.UPR_C1_2;
 		no_count += LWR_C_count;
-		for(var i = 2; i <= 10; i++) eval('if(분해조립_v[0].UPR_C' + i + ' != \'\' || (분해조립_v[0].UPR_C' + i + '_2 != \'\' && 분해조립_v[0].UPR_C' + i + '_2 != undefined)) ' + '{ UPR_C_count += 1; type_add(\'UPR Case\', \'UPR_C\', no_count, UPR_C_count); document.getElementById(\'_UPR_C' + i + '\').value = ' + '분해조립_v[0].UPR_C' + i + '; document.getElementById(\'_UPR_C' + i + '_2\').value = ' + '분해조립_v[0].UPR_C' + i + '_2; }');
+		for(var i = 2; i <= 10; i++) eval('if(분해조립_v.UPR_C' + i + ' != \'\' || (분해조립_v.UPR_C' + i + '_2 != \'\' && 분해조립_v.UPR_C' + i + '_2 != undefined)) ' + '{ UPR_C_count += 1; type_add(\'UPR Case\', \'UPR_C\', no_count, UPR_C_count); document.getElementById(\'_UPR_C' + i + '\').value = ' + '분해조립_v.UPR_C' + i + '; document.getElementById(\'_UPR_C' + i + '_2\').value = ' + '분해조립_v.UPR_C' + i + '_2; }');
 
-		_PBE.value = 분해조립_v[0].PBE;
-		_PBE_2.value = 분해조립_v[0].PBE_2;
-		_Gasket.value = 분해조립_v[0].Gasket;
-		_Gasket_2.value = 분해조립_v[0].Gasket_2;
+		_PBE.value = 분해조립_v.PBE;
+		_PBE_2.value = 분해조립_v.PBE_2;
+		_Gasket.value = 분해조립_v.Gasket;
+		_Gasket_2.value = 분해조립_v.Gasket_2;
 		
-		_Relay1.value = 분해조립_v[0].Relay1;
-		_Relay1_2.value = 분해조립_v[0].Relay1_2;
+		_Relay1.value = 분해조립_v.Relay1;
+		_Relay1_2.value = 분해조립_v.Relay1_2;
 		no_count += 2 + UPR_C_count;
-		for(var i = 2; i <= 10; i++) eval('if(분해조립_v[0].Relay' + i + ' != \'\' || (분해조립_v[0].Relay' + i + '_2 != \'\' && 분해조립_v[0].Relay' + i + '_2 != undefined)) ' + '{ Relay_count += 1; type_add(\'Relay\', \'Relay\', no_count, Relay_count); document.getElementById(\'_Relay' + i + '\').value = ' + '분해조립_v[0].Relay' + i + '; document.getElementById(\'_Relay' + i + '_2\').value = ' + '분해조립_v[0].Relay' + i + '_2;}');
+		for(var i = 2; i <= 10; i++) eval('if(분해조립_v.Relay' + i + ' != \'\' || (분해조립_v.Relay' + i + '_2 != \'\' && 분해조립_v.Relay' + i + '_2 != undefined)) ' + '{ Relay_count += 1; type_add(\'Relay\', \'Relay\', no_count, Relay_count); document.getElementById(\'_Relay' + i + '\').value = ' + '분해조립_v.Relay' + i + '; document.getElementById(\'_Relay' + i + '_2\').value = ' + '분해조립_v.Relay' + i + '_2;}');
 
-		_HV_CNTR1.value = 분해조립_v[0].HV_CNTR1;
-		_HV_CNTR1_2.value = 분해조립_v[0].HV_CNTR1_2;
+		_HV_CNTR1.value = 분해조립_v.HV_CNTR1;
+		_HV_CNTR1_2.value = 분해조립_v.HV_CNTR1_2;
 		no_count += Relay_count;
-		for(var i = 2; i <= 10; i++) eval('if(분해조립_v[0].HV_CNTR' + i + ' != \'\' || (분해조립_v[0].HV_CNTR' + i + '_2 != \'\' && 분해조립_v[0].HV_CNTR' + i + '_2 != undefined)) ' + '{ HV_CNTR_count += 1; type_add(\'HV CNTR\', \'HV_CNTR\', no_count, HV_CNTR_count); document.getElementById(\'_HV_CNTR' + i + '\').value = ' + '분해조립_v[0].HV_CNTR' + i + '; document.getElementById(\'_HV_CNTR' + i + '_2\').value = ' + '분해조립_v[0].HV_CNTR' + i + '_2; }');
+		for(var i = 2; i <= 10; i++) eval('if(분해조립_v.HV_CNTR' + i + ' != \'\' || (분해조립_v.HV_CNTR' + i + '_2 != \'\' && 분해조립_v.HV_CNTR' + i + '_2 != undefined)) ' + '{ HV_CNTR_count += 1; type_add(\'HV CNTR\', \'HV_CNTR\', no_count, HV_CNTR_count); document.getElementById(\'_HV_CNTR' + i + '\').value = ' + '분해조립_v.HV_CNTR' + i + '; document.getElementById(\'_HV_CNTR' + i + '_2\').value = ' + '분해조립_v.HV_CNTR' + i + '_2; }');
 
-		_Heating_CNTR1.value = 분해조립_v[0].Heating_CNTR1;
-		_Heating_CNTR1_2.value = 분해조립_v[0].Heating_CNTR1_2;
+		_Heating_CNTR1.value = 분해조립_v.Heating_CNTR1;
+		_Heating_CNTR1_2.value = 분해조립_v.Heating_CNTR1_2;
 		no_count += HV_CNTR_count;
-		for(var i = 2; i <= 10; i++) eval('if(분해조립_v[0].Heating_CNTR' + i + ' != \'\' || (분해조립_v[0].Heating_CNTR' + i + '_2 != \'\' && 분해조립_v[0].Heating_CNTR' + i + '_2 != undefined)) ' + '{ Heating_CNTR_count += 1; type_add(\'Heating CNTR\', \'Heating_CNTR\', no_count, Heating_CNTR_count); document.getElementById(\'_Heating_CNTR' + i + '\').value = ' + '분해조립_v[0].Heating_CNTR' + i + '; document.getElementById(\'_Heating_CNTR' + i + '_2\').value = ' + '분해조립_v[0].Heating_CNTR' + i + '_2;}');
+		for(var i = 2; i <= 10; i++) eval('if(분해조립_v.Heating_CNTR' + i + ' != \'\' || (분해조립_v.Heating_CNTR' + i + '_2 != \'\' && 분해조립_v.Heating_CNTR' + i + '_2 != undefined)) ' + '{ Heating_CNTR_count += 1; type_add(\'Heating CNTR\', \'Heating_CNTR\', no_count, Heating_CNTR_count); document.getElementById(\'_Heating_CNTR' + i + '\').value = ' + '분해조립_v.Heating_CNTR' + i + '; document.getElementById(\'_Heating_CNTR' + i + '_2\').value = ' + '분해조립_v.Heating_CNTR' + i + '_2;}');
 
-		_FuseBox1.value = 분해조립_v[0].FuseBox1;
-		_FuseBox1_2.value = 분해조립_v[0].FuseBox1_2;
+		_FuseBox1.value = 분해조립_v.FuseBox1;
+		_FuseBox1_2.value = 분해조립_v.FuseBox1_2;
 		no_count += Heating_CNTR_count;
-		for(var i = 2; i <= 10; i++) eval('if(분해조립_v[0].FuseBox' + i + ' != \'\' || (분해조립_v[0].FuseBox' + i + '_2 != \'\' && 분해조립_v[0].FuseBox' + i + '_2 != undefined)) ' + '{ FuseBox_count += 1; type_add(\'FuseBox\', \'FuseBox\', no_count, FuseBox_count); document.getElementById(\'_FuseBox' + i + '\').value = ' + '분해조립_v[0].FuseBox' + i + '; document.getElementById(\'_FuseBox' + i + '_2\').value = ' + '분해조립_v[0].FuseBox' + i + '_2;}');
+		for(var i = 2; i <= 10; i++) eval('if(분해조립_v.FuseBox' + i + ' != \'\' || (분해조립_v.FuseBox' + i + '_2 != \'\' && 분해조립_v.FuseBox' + i + '_2 != undefined)) ' + '{ FuseBox_count += 1; type_add(\'FuseBox\', \'FuseBox\', no_count, FuseBox_count); document.getElementById(\'_FuseBox' + i + '\').value = ' + '분해조립_v.FuseBox' + i + '; document.getElementById(\'_FuseBox' + i + '_2\').value = ' + '분해조립_v.FuseBox' + i + '_2;}');
 
-		_LV_W_H1.value = 분해조립_v[0].LV_W_H1;
-		_LV_W_H1_2.value = 분해조립_v[0].LV_W_H1_2;
+		_LV_W_H1.value = 분해조립_v.LV_W_H1;
+		_LV_W_H1_2.value = 분해조립_v.LV_W_H1_2;
 		no_count += FuseBox_count;
-		for(var i = 2; i <= 10; i++) eval('if(분해조립_v[0].LV_W_H' + i + ' != \'\' || (분해조립_v[0].LV_W_H' + i + '_2 != \'\' && 분해조립_v[0].LV_W_H' + i + '_2 != undefined)) ' + '{ LV_W_H_count += 1; type_add(\'LV W/H\', \'LV_W_H\', no_count, LV_W_H_count); document.getElementById(\'_LV_W_H' + i + '\').value = ' + '분해조립_v[0].LV_W_H' + i + '; document.getElementById(\'_LV_W_H' + i + '_2\').value = ' + '분해조립_v[0].LV_W_H' + i + '_2;}');
+		for(var i = 2; i <= 10; i++) eval('if(분해조립_v.LV_W_H' + i + ' != \'\' || (분해조립_v.LV_W_H' + i + '_2 != \'\' && 분해조립_v.LV_W_H' + i + '_2 != undefined)) ' + '{ LV_W_H_count += 1; type_add(\'LV W/H\', \'LV_W_H\', no_count, LV_W_H_count); document.getElementById(\'_LV_W_H' + i + '\').value = ' + '분해조립_v.LV_W_H' + i + '; document.getElementById(\'_LV_W_H' + i + '_2\').value = ' + '분해조립_v.LV_W_H' + i + '_2;}');
 
-		_HV_W_H1.value = 분해조립_v[0].HV_W_H1;
-		_HV_W_H1_2.value = 분해조립_v[0].HV_W_H1_2;
+		_HV_W_H1.value = 분해조립_v.HV_W_H1;
+		_HV_W_H1_2.value = 분해조립_v.HV_W_H1_2;
 		no_count += LV_W_H_count;
-		for(var i = 2; i <= 10; i++) eval('if(분해조립_v[0].HV_W_H' + i + ' != \'\' || (분해조립_v[0].HV_W_H' + i + '_2 != \'\' && 분해조립_v[0].HV_W_H' + i + '_2 != undefined)) ' + '{ HV_W_H_count += 1; type_add(\'HV W/H\', \'HV_W_H\', no_count, HV_W_H_count); document.getElementById(\'_HV_W_H' + i + '\').value = ' + '분해조립_v[0].HV_W_H' + i + '; document.getElementById(\'_HV_W_H' + i + '_2\').value = ' + '분해조립_v[0].HV_W_H' + i + '_2;}');
+		for(var i = 2; i <= 10; i++) eval('if(분해조립_v.HV_W_H' + i + ' != \'\' || (분해조립_v.HV_W_H' + i + '_2 != \'\' && 분해조립_v.HV_W_H' + i + '_2 != undefined)) ' + '{ HV_W_H_count += 1; type_add(\'HV W/H\', \'HV_W_H\', no_count, HV_W_H_count); document.getElementById(\'_HV_W_H' + i + '\').value = ' + '분해조립_v.HV_W_H' + i + '; document.getElementById(\'_HV_W_H' + i + '_2\').value = ' + '분해조립_v.HV_W_H' + i + '_2;}');
 
-		_온도센서1.value = 분해조립_v[0].온도센서1;
-		_온도센서1_2.value = 분해조립_v[0].온도센서1_2;
+		_온도센서1.value = 분해조립_v.온도센서1;
+		_온도센서1_2.value = 분해조립_v.온도센서1_2;
 		no_count += HV_W_H_count;
-		for(var i = 2; i <= 10; i++) eval('if(분해조립_v[0].온도센서' + i + ' != \'\' || (분해조립_v[0].온도센서' + i + '_2 != \'\' && 분해조립_v[0].온도센서' + i + '_2 != undefined)) ' + '{ 온도센서_count += 1; type_add(\'온도센서\', \'온도센서\', no_count, 온도센서_count); document.getElementById(\'_온도센서' + i + '\').value = ' + '분해조립_v[0].온도센서' + i + '; document.getElementById(\'_온도센서' + i + '_2\').value = ' + '분해조립_v[0].온도센서' + i + '_2;}');
+		for(var i = 2; i <= 10; i++) eval('if(분해조립_v.온도센서' + i + ' != \'\' || (분해조립_v.온도센서' + i + '_2 != \'\' && 분해조립_v.온도센서' + i + '_2 != undefined)) ' + '{ 온도센서_count += 1; type_add(\'온도센서\', \'온도센서\', no_count, 온도센서_count); document.getElementById(\'_온도센서' + i + '\').value = ' + '분해조립_v.온도센서' + i + '; document.getElementById(\'_온도센서' + i + '_2\').value = ' + '분해조립_v.온도센서' + i + '_2;}');
 
-		_Busbars.value = 분해조립_v[0].Busbars;
-		_Busbars_2.value = 분해조립_v[0].Busbars_2;
+		_Busbars.value = 분해조립_v.Busbars;
+		_Busbars_2.value = 분해조립_v.Busbars_2;
 		no_count += 1 + 온도센서_count;
-		_BMA1.value = 분해조립_v[0].BMA1;
-		_BMA1_2.value = 분해조립_v[0].BMA1_2;
-		for(var i = 2; i <= 10; i++) eval('if(분해조립_v[0].BMA' + i + ' != \'\' || (분해조립_v[0].BMA' + i + '_2 != \'\' && 분해조립_v[0].BMA' + i + '_2 != undefined)) ' + '{ BMA_count += 1; type_add(\'BMA\', \'BMA\', no_count, BMA_count); document.getElementById(\'_BMA' + i + '\').value = ' + '분해조립_v[0].BMA' + i + '; document.getElementById(\'_BMA' + i + '_2\').value = ' + '분해조립_v[0].BMA' + i + '_2;}');
+		_BMA1.value = 분해조립_v.BMA1;
+		_BMA1_2.value = 분해조립_v.BMA1_2;
+		for(var i = 2; i <= 10; i++) eval('if(분해조립_v.BMA' + i + ' != \'\' || (분해조립_v.BMA' + i + '_2 != \'\' && 분해조립_v.BMA' + i + '_2 != undefined)) ' + '{ BMA_count += 1; type_add(\'BMA\', \'BMA\', no_count, BMA_count); document.getElementById(\'_BMA' + i + '\').value = ' + '분해조립_v.BMA' + i + '; document.getElementById(\'_BMA' + i + '_2\').value = ' + '분해조립_v.BMA' + i + '_2;}');
 
-		_ETC.value = 분해조립_v[0].ETC;
-		_공정완료일.value = 분해조립_v[0].공정완료일;
-		_작업자.value = 분해조립_v[0].작업자;
+		_ETC.value = 분해조립_v.ETC;
+		_공정완료일.value = 분해조립_v.공정완료일;
+		_작업자.value = 분해조립_v.작업자;
 	} else {
 		_공정입고일.value = '0000-00-00T00:00';
 		for(var i = 1; i <= 10; i++) eval('if(typeof _BMU' + i + ' != \'undefined\') _BMU' + i + '.value = \'\';');
@@ -293,7 +293,7 @@ async function 분해조립_시작(is재제조번호 = false) {
 			console.log('row:', row_index);
 			console.log('col:', cell_index);
 			if(row_index < 2 || cell_index != 2) return;
-			var str = row.children[0].innerText;
+			var str = row.children.innerText;
 			var type = str.slice(0, -2);
 			var no = str.slice(-2);
 			console.log('type:', type, 'no:', no);
@@ -396,7 +396,7 @@ async function 분해조립_시작(is재제조번호 = false) {
 			console.log('row:', row_index);
 			console.log('col:', cell_index);
 			if(row_index < 2 || cell_index != 2) return;
-			var str = row.children[0].innerText;
+			var str = row.children.innerText;
 			var type = str.slice(0, -2);
 			var no = str.slice(-2);
 			console.log('type:', type, 'no:', no);
@@ -696,11 +696,11 @@ async function request_고품QR() {
 		await delay();
 
 		var doc = JSON.parse(JSON.stringify(고품정보_doc));
-		doc.관리번호 = 고품정보_v[0].관리번호;
-		doc.품명 = 고품정보_v[0].품명;
-		doc.번호 = 고품정보_v[0].번호;
-		doc.QR = 고품정보_v[0].QR;
-		doc.폐기여부 = 고품정보_v[0].폐기여부;
+		doc.관리번호 = 고품정보_v.관리번호;
+		doc.품명 = 고품정보_v.품명;
+		doc.번호 = 고품정보_v.번호;
+		doc.QR = 고품정보_v.QR;
+		doc.폐기여부 = 고품정보_v.폐기여부;
 		doc.사용여부 = '사용';
 		doc.사용일 = now;
 		doc.사용_작업자 = _작업자.value;

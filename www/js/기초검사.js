@@ -30,7 +30,7 @@ async function 기초검사_시작(is재제조 = false) {
 			await delay();
 
 			if(재제조번호 != undefined) {
-				_재제조번호.value = BSA재제조_v[0].재제조번호;
+				_재제조번호.value = BSA재제조_v.재제조번호;
 			}
 		} else {
 			_재제조번호.value = '';
@@ -39,10 +39,10 @@ async function 기초검사_시작(is재제조 = false) {
 		count(BSA재제조, { 재제조번호 : _재제조번호.value});
 		await delay();
 		if(BSA재제조_cnt > 0) {
-			find_BSA재제조(BSA재제조, { 재제조번호 : _재제조번호.value });
+			findOne_BSA재제조(BSA재제조, { 재제조번호 : _재제조번호.value });
 			await delay();
 
-			_management_id.value = BSA재제조_v[0].관리번호;
+			_management_id.value = BSA재제조_v.관리번호;
 		} else {
 			_management_id.value = '찾지 못하였습니다';
 			_구분.value = '';
@@ -60,9 +60,9 @@ async function 기초검사_시작(is재제조 = false) {
 		find(입고, _management_id.value);
 		await delay();
 
-		_구분.value = 입고_v[0].구분;
-		_차종.value = 입고_v[0].차종;
-		_품번.value = 입고_v[0].품번;
+		_구분.value = 입고_v.구분;
+		_차종.value = 입고_v.차종;
+		_품번.value = 입고_v.품번;
 	} else {
 		_구분.value = '';
 		_차종.value = '';
@@ -75,81 +75,81 @@ async function 기초검사_시작(is재제조 = false) {
 		find(기초검사, _management_id.value);
 		await delay();
 		
-		_공정입고일.value = 기초검사_v[0].공정입고일;
-		_RO_no.value = 기초검사_v[0].RO_no;
-		_VIN.value = 기초검사_v[0].VIN;
-		//_랙번호.value = 기초검사_v[0].랙번호;
-		_QRCode.value = 기초검사_v[0].QRcode;
-		_주행거리.value = 기초검사_v[0].주행거리;
-		_차량번호.value = 기초검사_v[0].차량번호;
-		_육안검사_외부.value = 기초검사_v[0].육안검사_외부;
-		_육안검사_외부_특이사항.value = 기초검사_v[0].육안검사_외부_특이사항;
-		_육안검사_내부.value = 기초검사_v[0].육안검사_내부;
-		_육안검사_내부_특이사항.value = 기초검사_v[0].육안검사_내부_특이사항;
-		_기밀검사_냉각유로.value = 기초검사_v[0].기밀검사_냉각유로;
-		_기밀검사_냉각유로_특이사항.value = 기초검사_v[0].기밀검사_냉각유로_특이사항;
-		_절연검사P.value = 기초검사_v[0].절연검사_Plus;
-		_절연검사N.value = 기초검사_v[0].절연검사_Minus;
-		_통신검사_DTC코드1.value = 기초검사_v[0].통신검사_DTC코드1;
-		_통신검사_DTC코드2.value = 기초검사_v[0].통신검사_DTC코드2;
-		_통신검사_DTC코드3.value = 기초검사_v[0].통신검사_DTC코드3;
-		if(기초검사_v[0].통신검사_DTC코드4 != '') {
+		_공정입고일.value = 기초검사_v.공정입고일;
+		_RO_no.value = 기초검사_v.RO_no;
+		_VIN.value = 기초검사_v.VIN;
+		//_랙번호.value = 기초검사_v.랙번호;
+		_QRCode.value = 기초검사_v.QRcode;
+		_주행거리.value = 기초검사_v.주행거리;
+		_차량번호.value = 기초검사_v.차량번호;
+		_육안검사_외부.value = 기초검사_v.육안검사_외부;
+		_육안검사_외부_특이사항.value = 기초검사_v.육안검사_외부_특이사항;
+		_육안검사_내부.value = 기초검사_v.육안검사_내부;
+		_육안검사_내부_특이사항.value = 기초검사_v.육안검사_내부_특이사항;
+		_기밀검사_냉각유로.value = 기초검사_v.기밀검사_냉각유로;
+		_기밀검사_냉각유로_특이사항.value = 기초검사_v.기밀검사_냉각유로_특이사항;
+		_절연검사P.value = 기초검사_v.절연검사_Plus;
+		_절연검사N.value = 기초검사_v.절연검사_Minus;
+		_통신검사_DTC코드1.value = 기초검사_v.통신검사_DTC코드1;
+		_통신검사_DTC코드2.value = 기초검사_v.통신검사_DTC코드2;
+		_통신검사_DTC코드3.value = 기초검사_v.통신검사_DTC코드3;
+		if(기초검사_v.통신검사_DTC코드4 != '') {
 			_기초검사_add_DTC_Code();
 			await sleep(10);
-			_통신검사_DTC코드4.value = 기초검사_v[0].통신검사_DTC코드4;
+			_통신검사_DTC코드4.value = 기초검사_v.통신검사_DTC코드4;
 		}
                
-    if(기초검사_v[0].통신검사_DTC코드5 != '') {
+    if(기초검사_v.통신검사_DTC코드5 != '') {
 			_기초검사_add_DTC_Code();
 			await sleep(10);
-			_통신검사_DTC코드5.value = 기초검사_v[0].통신검사_DTC코드5;
+			_통신검사_DTC코드5.value = 기초검사_v.통신검사_DTC코드5;
 		}
 
-    if(기초검사_v[0].통신검사_DTC코드6 != '') {
+    if(기초검사_v.통신검사_DTC코드6 != '') {
 			_기초검사_add_DTC_Code();
 			await sleep(10);
-			_통신검사_DTC코드6.value = 기초검사_v[0].통신검사_DTC코드6;
+			_통신검사_DTC코드6.value = 기초검사_v.통신검사_DTC코드6;
 		}
 
-    if(기초검사_v[0].통신검사_DTC코드7 != '') {
+    if(기초검사_v.통신검사_DTC코드7 != '') {
 			_기초검사_add_DTC_Code();
 			await sleep(10);
-			_통신검사_DTC코드7.value = 기초검사_v[0].통신검사_DTC코드7;
+			_통신검사_DTC코드7.value = 기초검사_v.통신검사_DTC코드7;
 		}
 
-    if(기초검사_v[0].통신검사_DTC코드8 != '') {
+    if(기초검사_v.통신검사_DTC코드8 != '') {
 			_기초검사_add_DTC_Code();
 			await sleep(10);
-			_통신검사_DTC코드8.value = 기초검사_v[0].통신검사_DTC코드8;
+			_통신검사_DTC코드8.value = 기초검사_v.통신검사_DTC코드8;
 		}
 
-     if(기초검사_v[0].통신검사_DTC코드9 != '') {
+     if(기초검사_v.통신검사_DTC코드9 != '') {
 			_기초검사_add_DTC_Code();
 			await sleep(10);
-			_통신검사_DTC코드9.value = 기초검사_v[0].통신검사_DTC코드9;
+			_통신검사_DTC코드9.value = 기초검사_v.통신검사_DTC코드9;
 		}
 
-    if(기초검사_v[0].통신검사_DTC코드10 != '') {
+    if(기초검사_v.통신검사_DTC코드10 != '') {
 			_기초검사_add_DTC_Code();
 			await sleep(10);
-			_통신검사_DTC코드10.value = 기초검사_v[0].통신검사_DTC코드10;
+			_통신검사_DTC코드10.value = 기초검사_v.통신검사_DTC코드10;
 		}
 
-		_통신검사_팩전압.value = 기초검사_v[0].통신검사_팩전압;
-		_통신검사_셀전압편차.value = 기초검사_v[0].통신검사_셀전압편차;
-		_통신검사_릴레이구동.value = 기초검사_v[0].통신검사_릴레이구동;
-		_BSA생산일자.value = 기초검사_v[0].BSA생산일자;
-		_BMA_ROM_ID.value = 기초검사_v[0].BMA_ROM_ID;
-		_고장현상코드.value = 기초검사_v[0].고장현상코드;
-		_고장현상명.value = 기초검사_v[0].고장현상명;
-		_문제Cell_No.value = 기초검사_v[0].문제Cell_No;
-		_문제BMA_No.value = 기초검사_v[0].문제BMA_No;
-		_문제BMA_cnt.value = 기초검사_v[0].문제BMA_cnt;
-		_공정완료일.value = 기초검사_v[0].공정완료일;
-		_요청사항.value = 기초검사_v[0].요청사항;
-		_비고.value = 기초검사_v[0].비고;
-		_센터진단내용.value = 기초검사_v[0].센터진단내용;
-		_검사자.value = 기초검사_v[0].검사자;
+		_통신검사_팩전압.value = 기초검사_v.통신검사_팩전압;
+		_통신검사_셀전압편차.value = 기초검사_v.통신검사_셀전압편차;
+		_통신검사_릴레이구동.value = 기초검사_v.통신검사_릴레이구동;
+		_BSA생산일자.value = 기초검사_v.BSA생산일자;
+		_BMA_ROM_ID.value = 기초검사_v.BMA_ROM_ID;
+		_고장현상코드.value = 기초검사_v.고장현상코드;
+		_고장현상명.value = 기초검사_v.고장현상명;
+		_문제Cell_No.value = 기초검사_v.문제Cell_No;
+		_문제BMA_No.value = 기초검사_v.문제BMA_No;
+		_문제BMA_cnt.value = 기초검사_v.문제BMA_cnt;
+		_공정완료일.value = 기초검사_v.공정완료일;
+		_요청사항.value = 기초검사_v.요청사항;
+		_비고.value = 기초검사_v.비고;
+		_센터진단내용.value = 기초검사_v.센터진단내용;
+		_검사자.value = 기초검사_v.검사자;
 	} else {
 		_공정입고일.value = '0000-00-00T00:00';
 		_RO_no.value = '';

@@ -16,7 +16,7 @@ async function login() {
 			find_계정(계정, { id: _id.value })
 			await delay();
 			console.log('teddst:', 계정_v);
-			level = 계정_v[0].level;
+			level = 계정_v.level;
 			//sessionStorage.setItem('worker',  worker);
 			sessionStorage.setItem('level',  level);
 

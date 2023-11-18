@@ -35,7 +35,7 @@ async function 통신검사_조회(is재제조번호 = false) {
       find_BSA재제조(BSA재제조, { 재제조번호: _재제조번호.value });
       await delay();
 
-      _management_id.value = BSA재제조_v[0].관리번호;
+      _management_id.value = BSA재제조_v.관리번호;
     }
   }
 
@@ -51,13 +51,13 @@ async function 통신검사_조회(is재제조번호 = false) {
     find(입고_pic, _management_id.value);
     await delay();
 
-    relay_control_pic.src = "data:image/;base64," + 입고_pic_v[0].pic1;
-    cell_vol_test.src = "data:image/;base64," + 입고_pic_v[0].pic2;
+    relay_control_pic.src = "data:image/;base64," + 입고_pic_v.pic1;
+    cell_vol_test.src = "data:image/;base64," + 입고_pic_v.pic2;
 
-    DTC.src = "data:image/;base64," + 입고_pic_v[0].pic3;
-    sensor.src = "data:image/;base64," + 입고_pic_v[0].pic4;
-    DTC2.src = "data:image/;base64," + 입고_pic_v[0].pic5;
-    ROM_ID.src = "data:image/;base64," + 입고_pic_v[0].pic6;
+    DTC.src = "data:image/;base64," + 입고_pic_v.pic3;
+    sensor.src = "data:image/;base64," + 입고_pic_v.pic4;
+    DTC2.src = "data:image/;base64," + 입고_pic_v.pic5;
+    ROM_ID.src = "data:image/;base64," + 입고_pic_v.pic6;
   }
 
   count(출하정보, { 관리번호: _management_id.value });
@@ -67,12 +67,12 @@ async function 통신검사_조회(is재제조번호 = false) {
     find(출하정보, _management_id.value);
     await delay();
 
-    relay_control.innerHTML = 출하정보_v[0].릴레이_강제구동;
-    relay_pack_vol.innerHTML = 출하정보_v[0].배터리팩_측정값;
-    cell_vol_max.innerHTML = 출하정보_v[0].배터리셀전압_최대;
-    cell_vol_편차.innerHTML = 출하정보_v[0].셀전압편차_측정값;
-    cell_vol_min.innerHTML = 출하정보_v[0].배터리셀전압_최소;
-    charicter_cell_no.innerHTML = "??"; //find_array[0].
+    relay_control.innerHTML = 출하정보_v.릴레이_강제구동;
+    relay_pack_vol.innerHTML = 출하정보_v.배터리팩_측정값;
+    cell_vol_max.innerHTML = 출하정보_v.배터리셀전압_최대;
+    cell_vol_편차.innerHTML = 출하정보_v.셀전압편차_측정값;
+    cell_vol_min.innerHTML = 출하정보_v.배터리셀전압_최소;
+    charicter_cell_no.innerHTML = "??"; //find_array.
     relay_ok.innerHTML = "OK";
     cell_vol_test_ok.innerHTML = "OK";
   }
@@ -81,7 +81,7 @@ async function 통신검사_조회(is재제조번호 = false) {
 async function 통신검사_save() {
   var _date = new Date();
   var file_name = "CAN통신검사" + _date + ".pdf";
-  var body = document.getElementsByTagName("body")[0];
+  var body = document.getElementsByTagName("body");
   if (window.innerWidth > 1920) {
     alert("해상도가 1920 x 1080일때만 사용이 가능합니다.");
   }

@@ -29,11 +29,11 @@ async function 입고_시작() {
 		await delay();
 		console.log('입고 data:', 입고_v);
 
-		_입고일.value = 입고v[0].입고일;
-		_입고처.value = 입고v[0].입고처;
-		_구분.value = 입고v[0].구분;
-		_차종.value = 입고v[0].차종;
-		_품번.value = 입고v[0].품번;
+		_입고일.value = 입고_v.입고일;
+		_입고처.value = 입고_v.입고처;
+		_구분.value = 입고_v.구분;
+		_차종.value = 입고_v.차종;
+		_품번.value = 입고_v.품번;
 	} else {
 		_입고일.value = "0000-00-00T00:00";
 		_입고처.value = '';

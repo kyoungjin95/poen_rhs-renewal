@@ -15,7 +15,7 @@ async function 기밀검사_조회(is재제조번호 = false) {
       find_BSA재제조(BSA재제조, { 재제조번호: _재제조번호.value });
       await delay();
 
-      _management_id.value = BSA재제조_v[0].관리번호;
+      _management_id.value = BSA재제조_v.관리번호;
     }
   }
 
@@ -31,8 +31,8 @@ async function 기밀검사_조회(is재제조번호 = false) {
     find(EOL, _management_id.value);
     await delay();
 
-    _케이스.innerHTML = EOL_v[0].기밀검사_케이스;
-    _냉각유로.innerHTML = EOL_v[0].기밀검사_냉각유로;
+    _케이스.innerHTML = EOL_v.기밀검사_케이스;
+    _냉각유로.innerHTML = EOL_v.기밀검사_냉각유로;
   }
 
   count(입고_pic, { 관리번호 : _management_id.value });
@@ -42,17 +42,17 @@ async function 기밀검사_조회(is재제조번호 = false) {
     find(입고_pic, _management_id.value);
     await delay();
 
-    _측정사진1.src = "data:image/;base64," + 입고_pic_v[0].pic1;
-    _측정사진2.src = "data:image/;base64," + 입고_pic_v[0].pic2;
-    _측정값사진1.src = "data:image/;base64," + 입고_pic_v[0].pic3;
-    _측정값사진2.src = "data:image/;base64," + 입고_pic_v[0].pic4;
+    _측정사진1.src = "data:image/;base64," + 입고_pic_v.pic1;
+    _측정사진2.src = "data:image/;base64," + 입고_pic_v.pic2;
+    _측정값사진1.src = "data:image/;base64," + 입고_pic_v.pic3;
+    _측정값사진2.src = "data:image/;base64," + 입고_pic_v.pic4;
   }
 }
 
 async function 기밀검사_save() {
   var _date = new Date();
   var file_name = "기밀검사" + _date + ".pdf";
-  var body = document.getElementsByTagName("body")[0];
+  var body = document.getElementsByTagName("body");
   if (window.innerWidth > 1920) {
     alert("해상도가 1920 x 1080일때만 사용이 가능합니다.");
   }

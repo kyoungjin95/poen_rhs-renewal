@@ -17,7 +17,7 @@ async function 특이사항_시작() {
 		find(특이사항, _management_id.value);
 		await delay();
 		
-		_특이사항.value = 특이사항_v[0].특이사항;
+		_특이사항.value = 특이사항_v.특이사항;
 	} else {
 		_특이사항.value = '';
 	}

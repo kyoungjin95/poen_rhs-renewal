@@ -34,7 +34,7 @@ async function 육안검사외부_조회(is재제조번호 = false) {
     	find_BSA재제조(BSA재제조, { 재제조번호 : _재제조번호.value});
     	await delay();
 
-    	_management_id.value = find_array[0].관리번호;
+    	_management_id.value = find_array.관리번호;
     }
   }
 
@@ -46,22 +46,22 @@ async function 육안검사외부_조회(is재제조번호 = false) {
   find(입고_pic, _management_id.value);
   await delay();
 
-  _top_pic.src = "data:image/;base64," + find_array[0].pic1;
-  _front_pic.src = "data:image/;base64," + find_array[0].pic2;
-  _left_pic.src = "data:image/;base64," + find_array[0].pic3;
-  _bottom_pic.src = "data:image/;base64," + find_array[0].pic4;
-  _rear_pic.src = "data:image/;base64," + find_array[0].pic5;
-  _right_pic.src = "data:image/;base64," + find_array[0].pic6;
-  _이상부위_외부1.src = "data:image/;base64," + find_array[0].pic7;
-  _이상부위_외부2.src = "data:image/;base64," + find_array[0].pic8;
-  _이상부위_외부3.src = "data:image/;base64," + find_array[0].pic9;
-  _이상부위_외부4.src = "data:image/;base64," + find_array[0].pic10;
+  _top_pic.src = "data:image/;base64," + find_array.pic1;
+  _front_pic.src = "data:image/;base64," + find_array.pic2;
+  _left_pic.src = "data:image/;base64," + find_array.pic3;
+  _bottom_pic.src = "data:image/;base64," + find_array.pic4;
+  _rear_pic.src = "data:image/;base64," + find_array.pic5;
+  _right_pic.src = "data:image/;base64," + find_array.pic6;
+  _이상부위_외부1.src = "data:image/;base64," + find_array.pic7;
+  _이상부위_외부2.src = "data:image/;base64," + find_array.pic8;
+  _이상부위_외부3.src = "data:image/;base64," + find_array.pic9;
+  _이상부위_외부4.src = "data:image/;base64," + find_array.pic10;
 }
 
 async function 육안검사외부_save() {
   var _date = new Date();
   var file_name = "육안검사외부" + _date + ".pdf";
-  var body = document.getElementsByTagName("body")[0];
+  var body = document.getElementsByTagName("body");
   if (window.innerWidth > 1920) {
     alert("해상도가 1920 x 1080일때만 사용이 가능합니다.");
   }

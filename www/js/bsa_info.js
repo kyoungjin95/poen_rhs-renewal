@@ -562,21 +562,21 @@ async function grid_입고(m_id = '') {
 		await delay();
 
 		if(입고_pic_v.length == 0) return;
-		pic1.src = 'data:image/;base64,' + 입고_pic_v[0].pic1;
-		pic2.src = 'data:image/;base64,' + 입고_pic_v[0].pic2;
-		pic3.src = 'data:image/;base64,' + 입고_pic_v[0].pic3;
-		pic4.src = 'data:image/;base64,' + 입고_pic_v[0].pic4;
-		pic5.src = 'data:image/;base64,' + 입고_pic_v[0].pic5;
-		pic6.src = 'data:image/;base64,' + 입고_pic_v[0].pic6;
-		pic7.src = 'data:image/;base64,' + 입고_pic_v[0].pic7;
-		pic8.src = 'data:image/;base64,' + 입고_pic_v[0].pic8;
-		pic9.src = 'data:image/;base64,' + 입고_pic_v[0].pic9;
-		pic10.src = 'data:image/;base64,' + 입고_pic_v[0].pic10;
-		pic11.src = 'data:image/;base64,' + 입고_pic_v[0].pic11;
-		pic12.src = 'data:image/;base64,' + 입고_pic_v[0].pic12;
-		pic13.src = 'data:image/;base64,' + 입고_pic_v[0].pic13;
-		pic14.src = 'data:image/;base64,' + 입고_pic_v[0].pic14;
-		pic15.src = 'data:image/;base64,' + 입고_pic_v[0].pic15;
+		pic1.src = 'data:image/;base64,' + 입고_pic_v.pic1;
+		pic2.src = 'data:image/;base64,' + 입고_pic_v.pic2;
+		pic3.src = 'data:image/;base64,' + 입고_pic_v.pic3;
+		pic4.src = 'data:image/;base64,' + 입고_pic_v.pic4;
+		pic5.src = 'data:image/;base64,' + 입고_pic_v.pic5;
+		pic6.src = 'data:image/;base64,' + 입고_pic_v.pic6;
+		pic7.src = 'data:image/;base64,' + 입고_pic_v.pic7;
+		pic8.src = 'data:image/;base64,' + 입고_pic_v.pic8;
+		pic9.src = 'data:image/;base64,' + 입고_pic_v.pic9;
+		pic10.src = 'data:image/;base64,' + 입고_pic_v.pic10;
+		pic11.src = 'data:image/;base64,' + 입고_pic_v.pic11;
+		pic12.src = 'data:image/;base64,' + 입고_pic_v.pic12;
+		pic13.src = 'data:image/;base64,' + 입고_pic_v.pic13;
+		pic14.src = 'data:image/;base64,' + 입고_pic_v.pic14;
+		pic15.src = 'data:image/;base64,' + 입고_pic_v.pic15;
 	} else {
 		pic1.src = '';
 		pic2.src = '';
@@ -649,21 +649,21 @@ async function grid_세척(m_id = '') {
 		find(세척_pic, m_id);
 		await delay();
 
-		pic1.src='data:image/;base64,' + 세척_pic_v[0].pic1;
-		pic2.src='data:image/;base64,' + 세척_pic_v[0].pic2;
-		pic3.src='data:image/;base64,' + 세척_pic_v[0].pic3;
-		pic4.src='data:image/;base64,' + 세척_pic_v[0].pic4;
-		pic5.src='data:image/;base64,' + 세척_pic_v[0].pic5;
-		pic6.src='data:image/;base64,' + 세척_pic_v[0].pic6;
-		pic7.src='data:image/;base64,' + 세척_pic_v[0].pic7;
-		pic8.src='data:image/;base64,' + 세척_pic_v[0].pic8;
-		pic9.src='data:image/;base64,' + 세척_pic_v[0].pic9;
-		pic10.src='data:image/;base64,' + 세척_pic_v[0].pic10;
-		pic11.src='data:image/;base64,' + 세척_pic_v[0].pic11;
-		pic12.src='data:image/;base64,' + 세척_pic_v[0].pic12;
-		pic13.src='data:image/;base64,' + 세척_pic_v[0].pic13;
-		pic14.src='data:image/;base64,' + 세척_pic_v[0].pic14;
-		pic15.src='data:image/;base64,' + 세척_pic_v[0].pic15;
+		pic1.src='data:image/;base64,' + 세척_pic_v.pic1;
+		pic2.src='data:image/;base64,' + 세척_pic_v.pic2;
+		pic3.src='data:image/;base64,' + 세척_pic_v.pic3;
+		pic4.src='data:image/;base64,' + 세척_pic_v.pic4;
+		pic5.src='data:image/;base64,' + 세척_pic_v.pic5;
+		pic6.src='data:image/;base64,' + 세척_pic_v.pic6;
+		pic7.src='data:image/;base64,' + 세척_pic_v.pic7;
+		pic8.src='data:image/;base64,' + 세척_pic_v.pic8;
+		pic9.src='data:image/;base64,' + 세척_pic_v.pic9;
+		pic10.src='data:image/;base64,' + 세척_pic_v.pic10;
+		pic11.src='data:image/;base64,' + 세척_pic_v.pic11;
+		pic12.src='data:image/;base64,' + 세척_pic_v.pic12;
+		pic13.src='data:image/;base64,' + 세척_pic_v.pic13;
+		pic14.src='data:image/;base64,' + 세척_pic_v.pic14;
+		pic15.src='data:image/;base64,' + 세척_pic_v.pic15;
 	} else {
 		pic1.src = '';
 		pic2.src = '';
@@ -758,21 +758,21 @@ async function grid_기초검사(m_id = '') {
 
 		if(기초검사_pic_cnt.length == 0) return;
 
-		pic1.src='data:image/;base64,' + 기초검사_pic_v[0].pic1;
-		pic2.src='data:image/;base64,' + 기초검사_pic_v[0].pic2;
-		pic3.src='data:image/;base64,' + 기초검사_pic_v[0].pic3;
-		pic4.src='data:image/;base64,' + 기초검사_pic_v[0].pic4;
-		pic5.src='data:image/;base64,' + 기초검사_pic_v[0].pic5;
-		pic6.src='data:image/;base64,' + 기초검사_pic_v[0].pic6;
-		pic7.src='data:image/;base64,' + 기초검사_pic_v[0].pic7;
-		pic8.src='data:image/;base64,' + 기초검사_pic_v[0].pic8;
-		pic9.src='data:image/;base64,' + 기초검사_pic_v[0].pic9;
-		pic10.src='data:image/;base64,' + 기초검사_pic_v[0].pic10;
-		pic11.src='data:image/;base64,' + 기초검사_pic_v[0].pic11;
-		pic12.src='data:image/;base64,' + 기초검사_pic_v[0].pic12;
-		pic13.src='data:image/;base64,' + 기초검사_pic_v[0].pic13;
-		pic14.src='data:image/;base64,' + 기초검사_pic_v[0].pic14;
-		pic15.src='data:image/;base64,' + 기초검사_pic_v[0].pic15;
+		pic1.src='data:image/;base64,' + 기초검사_pic_v.pic1;
+		pic2.src='data:image/;base64,' + 기초검사_pic_v.pic2;
+		pic3.src='data:image/;base64,' + 기초검사_pic_v.pic3;
+		pic4.src='data:image/;base64,' + 기초검사_pic_v.pic4;
+		pic5.src='data:image/;base64,' + 기초검사_pic_v.pic5;
+		pic6.src='data:image/;base64,' + 기초검사_pic_v.pic6;
+		pic7.src='data:image/;base64,' + 기초검사_pic_v.pic7;
+		pic8.src='data:image/;base64,' + 기초검사_pic_v.pic8;
+		pic9.src='data:image/;base64,' + 기초검사_pic_v.pic9;
+		pic10.src='data:image/;base64,' + 기초검사_pic_v.pic10;
+		pic11.src='data:image/;base64,' + 기초검사_pic_v.pic11;
+		pic12.src='data:image/;base64,' + 기초검사_pic_v.pic12;
+		pic13.src='data:image/;base64,' + 기초검사_pic_v.pic13;
+		pic14.src='data:image/;base64,' + 기초검사_pic_v.pic14;
+		pic15.src='data:image/;base64,' + 기초검사_pic_v.pic15;
 	} else {
 		pic1.src = '';
 		pic2.src = '';
@@ -987,21 +987,21 @@ async function grid_분해조립(m_id = '') {
 		
 		if(분해조립_pic_v.length == 0) return;
 
-		pic1.src='data:image/;base64,' + 분해조립_pic_v[0].pic1;
-		pic2.src='data:image/;base64,' + 분해조립_pic_v[0].pic2;
-		pic3.src='data:image/;base64,' + 분해조립_pic_v[0].pic3;
-		pic4.src='data:image/;base64,' + 분해조립_pic_v[0].pic4;
-		pic5.src='data:image/;base64,' + 분해조립_pic_v[0].pic5;
-		pic6.src='data:image/;base64,' + 분해조립_pic_v[0].pic6;
-		pic7.src='data:image/;base64,' + 분해조립_pic_v[0].pic7;
-		pic8.src='data:image/;base64,' + 분해조립_pic_v[0].pic8;
-		pic9.src='data:image/;base64,' + 분해조립_pic_v[0].pic9;
-		pic10.src='data:image/;base64,' + 분해조립_pic_v[0].pic10;
-		pic11.src='data:image/;base64,' + 분해조립_pic_v[0].pic11;
-		pic12.src='data:image/;base64,' + 분해조립_pic_v[0].pic12;
-		pic13.src='data:image/;base64,' + 분해조립_pic_v[0].pic13;
-		pic14.src='data:image/;base64,' + 분해조립_pic_v[0].pic14;
-		pic15.src='data:image/;base64,' + 분해조립_pic_v[0].pic15;
+		pic1.src='data:image/;base64,' + 분해조립_pic_v.pic1;
+		pic2.src='data:image/;base64,' + 분해조립_pic_v.pic2;
+		pic3.src='data:image/;base64,' + 분해조립_pic_v.pic3;
+		pic4.src='data:image/;base64,' + 분해조립_pic_v.pic4;
+		pic5.src='data:image/;base64,' + 분해조립_pic_v.pic5;
+		pic6.src='data:image/;base64,' + 분해조립_pic_v.pic6;
+		pic7.src='data:image/;base64,' + 분해조립_pic_v.pic7;
+		pic8.src='data:image/;base64,' + 분해조립_pic_v.pic8;
+		pic9.src='data:image/;base64,' + 분해조립_pic_v.pic9;
+		pic10.src='data:image/;base64,' + 분해조립_pic_v.pic10;
+		pic11.src='data:image/;base64,' + 분해조립_pic_v.pic11;
+		pic12.src='data:image/;base64,' + 분해조립_pic_v.pic12;
+		pic13.src='data:image/;base64,' + 분해조립_pic_v.pic13;
+		pic14.src='data:image/;base64,' + 분해조립_pic_v.pic14;
+		pic15.src='data:image/;base64,' + 분해조립_pic_v.pic15;
 	} else {
 		pic1.src = '';
 		pic2.src = '';
@@ -1079,21 +1079,21 @@ async function grid_성능검사(m_id = '') {
 		
 		if(성능검사_pic_cnt.length == 0) return;
 
-		pic1.src='data:image/;base64,' + 성능검사_pic_v[0].pic1;
-		pic2.src='data:image/;base64,' + 성능검사_pic_v[0].pic2;
-		pic3.src='data:image/;base64,' + 성능검사_pic_v[0].pic3;
-		pic4.src='data:image/;base64,' + 성능검사_pic_v[0].pic4;
-		pic5.src='data:image/;base64,' + 성능검사_pic_v[0].pic5;
-		pic6.src='data:image/;base64,' + 성능검사_pic_v[0].pic6;
-		pic7.src='data:image/;base64,' + 성능검사_pic_v[0].pic7;
-		pic8.src='data:image/;base64,' + 성능검사_pic_v[0].pic8;
-		pic9.src='data:image/;base64,' + 성능검사_pic_v[0].pic9;
-		pic10.src='data:image/;base64,' + 성능검사_pic_v[0].pic10;
-		pic11.src='data:image/;base64,' + 성능검사_pic_v[0].pic11;
-		pic12.src='data:image/;base64,' + 성능검사_pic_v[0].pic12;
-		pic13.src='data:image/;base64,' + 성능검사_pic_v[0].pic13;
-		pic14.src='data:image/;base64,' + 성능검사_pic_v[0].pic14;
-		pic15.src='data:image/;base64,' + 성능검사_pic_v[0].pic15;
+		pic1.src='data:image/;base64,' + 성능검사_pic_v.pic1;
+		pic2.src='data:image/;base64,' + 성능검사_pic_v.pic2;
+		pic3.src='data:image/;base64,' + 성능검사_pic_v.pic3;
+		pic4.src='data:image/;base64,' + 성능검사_pic_v.pic4;
+		pic5.src='data:image/;base64,' + 성능검사_pic_v.pic5;
+		pic6.src='data:image/;base64,' + 성능검사_pic_v.pic6;
+		pic7.src='data:image/;base64,' + 성능검사_pic_v.pic7;
+		pic8.src='data:image/;base64,' + 성능검사_pic_v.pic8;
+		pic9.src='data:image/;base64,' + 성능검사_pic_v.pic9;
+		pic10.src='data:image/;base64,' + 성능검사_pic_v.pic10;
+		pic11.src='data:image/;base64,' + 성능검사_pic_v.pic11;
+		pic12.src='data:image/;base64,' + 성능검사_pic_v.pic12;
+		pic13.src='data:image/;base64,' + 성능검사_pic_v.pic13;
+		pic14.src='data:image/;base64,' + 성능검사_pic_v.pic14;
+		pic15.src='data:image/;base64,' + 성능검사_pic_v.pic15;
 	} else {
 		pic1.src = '';
 		pic2.src = '';
@@ -1187,21 +1187,21 @@ async function grid_EOL(m_id = '') {
 		await delay();
 
 		if(EOL_pic_v.length == 0) return;
-		pic1.src='data:image/;base64,' + EOL_pic_v[0].pic1;
-		pic2.src='data:image/;base64,' + EOL_pic_v[0].pic2;
-		pic3.src='data:image/;base64,' + EOL_pic_v[0].pic3;
-		pic4.src='data:image/;base64,' + EOL_pic_v[0].pic4;
-		pic5.src='data:image/;base64,' + EOL_pic_v[0].pic5;
-		pic6.src='data:image/;base64,' + EOL_pic_v[0].pic6;
-		pic7.src='data:image/;base64,' + EOL_pic_v[0].pic7;
-		pic8.src='data:image/;base64,' + EOL_pic_v[0].pic8;
-		pic9.src='data:image/;base64,' + EOL_pic_v[0].pic9;
-		pic10.src='data:image/;base64,' + EOL_pic_v[0].pic10;
-		pic11.src='data:image/;base64,' + EOL_pic_v[0].pic11;
-		pic12.src='data:image/;base64,' + EOL_pic_v[0].pic12;
-		pic13.src='data:image/;base64,' + EOL_pic_v[0].pic13;
-		pic14.src='data:image/;base64,' + EOL_pic_v[0].pic14;
-		pic15.src='data:image/;base64,' + EOL_pic_v[0].pic15;
+		pic1.src='data:image/;base64,' + EOL_pic_v.pic1;
+		pic2.src='data:image/;base64,' + EOL_pic_v.pic2;
+		pic3.src='data:image/;base64,' + EOL_pic_v.pic3;
+		pic4.src='data:image/;base64,' + EOL_pic_v.pic4;
+		pic5.src='data:image/;base64,' + EOL_pic_v.pic5;
+		pic6.src='data:image/;base64,' + EOL_pic_v.pic6;
+		pic7.src='data:image/;base64,' + EOL_pic_v.pic7;
+		pic8.src='data:image/;base64,' + EOL_pic_v.pic8;
+		pic9.src='data:image/;base64,' + EOL_pic_v.pic9;
+		pic10.src='data:image/;base64,' + EOL_pic_v.pic10;
+		pic11.src='data:image/;base64,' + EOL_pic_v.pic11;
+		pic12.src='data:image/;base64,' + EOL_pic_v.pic12;
+		pic13.src='data:image/;base64,' + EOL_pic_v.pic13;
+		pic14.src='data:image/;base64,' + EOL_pic_v.pic14;
+		pic15.src='data:image/;base64,' + EOL_pic_v.pic15;
 	} else {
 		pic1.src = '';
 		pic2.src = '';
@@ -1320,21 +1320,21 @@ async function grid_출하정보(m_id = '') {
 		await delay();
 
 		if(출하_pic_v.length == 0) return;
-		pic1.src='data:image/;base64,' + 출하_pic_v[0].pic1;
-		pic2.src='data:image/;base64,' + 출하_pic_v[0].pic2;
-		pic3.src='data:image/;base64,' + 출하_pic_v[0].pic3;
-		pic4.src='data:image/;base64,' + 출하_pic_v[0].pic4;
-		pic5.src='data:image/;base64,' + 출하_pic_v[0].pic5;
-		pic6.src='data:image/;base64,' + 출하_pic_v[0].pic6;
-		pic7.src='data:image/;base64,' + 출하_pic_v[0].pic7;
-		pic8.src='data:image/;base64,' + 출하_pic_v[0].pic8;
-		pic9.src='data:image/;base64,' + 출하_pic_v[0].pic9;
-		pic10.src='data:image/;base64,' + 출하_pic_v[0].pic10;
-		pic11.src='data:image/;base64,' + 출하_pic_v[0].pic11;
-		pic12.src='data:image/;base64,' + 출하_pic_v[0].pic12;
-		pic13.src='data:image/;base64,' + 출하_pic_v[0].pic13;
-		pic14.src='data:image/;base64,' + 출하_pic_v[0].pic14;
-		pic15.src='data:image/;base64,' + 출하_pic_v[0].pic15;
+		pic1.src='data:image/;base64,' + 출하_pic_v.pic1;
+		pic2.src='data:image/;base64,' + 출하_pic_v.pic2;
+		pic3.src='data:image/;base64,' + 출하_pic_v.pic3;
+		pic4.src='data:image/;base64,' + 출하_pic_v.pic4;
+		pic5.src='data:image/;base64,' + 출하_pic_v.pic5;
+		pic6.src='data:image/;base64,' + 출하_pic_v.pic6;
+		pic7.src='data:image/;base64,' + 출하_pic_v.pic7;
+		pic8.src='data:image/;base64,' + 출하_pic_v.pic8;
+		pic9.src='data:image/;base64,' + 출하_pic_v.pic9;
+		pic10.src='data:image/;base64,' + 출하_pic_v.pic10;
+		pic11.src='data:image/;base64,' + 출하_pic_v.pic11;
+		pic12.src='data:image/;base64,' + 출하_pic_v.pic12;
+		pic13.src='data:image/;base64,' + 출하_pic_v.pic13;
+		pic14.src='data:image/;base64,' + 출하_pic_v.pic14;
+		pic15.src='data:image/;base64,' + 출하_pic_v.pic15;
 	} else {
 		pic1.src = '';
 		pic2.src = '';
@@ -1404,21 +1404,21 @@ async function grid_특이사항(m_id = '') {
 		await delay();
 
 		if(특이사항_pic_v.length == 0) return;
-		pic1.src='data:image/;base64,' + 특이사항_pic[0].pic1;
-		pic2.src='data:image/;base64,' + 특이사항_pic[0].pic2;
-		pic3.src='data:image/;base64,' + 특이사항_pic[0].pic3;
-		pic4.src='data:image/;base64,' + 특이사항_pic[0].pic4;
-		pic5.src='data:image/;base64,' + 특이사항_pic[0].pic5;
-		pic6.src='data:image/;base64,' + 특이사항_pic[0].pic6;
-		pic7.src='data:image/;base64,' + 특이사항_pic[0].pic7;
-		pic8.src='data:image/;base64,' + 특이사항_pic[0].pic8;
-		pic9.src='data:image/;base64,' + 특이사항_pic[0].pic9;
-		pic10.src='data:image/;base64,' + 특이사항_pic[0].pic10;
-		pic11.src='data:image/;base64,' + 특이사항_pic[0].pic11;
-		pic12.src='data:image/;base64,' + 특이사항_pic[0].pic12;
-		pic13.src='data:image/;base64,' + 특이사항_pic[0].pic13;
-		pic14.src='data:image/;base64,' + 특이사항_pic[0].pic14;
-		pic15.src='data:image/;base64,' + 특이사항_pic[0].pic15;
+		pic1.src='data:image/;base64,' + 특이사항_pic.pic1;
+		pic2.src='data:image/;base64,' + 특이사항_pic.pic2;
+		pic3.src='data:image/;base64,' + 특이사항_pic.pic3;
+		pic4.src='data:image/;base64,' + 특이사항_pic.pic4;
+		pic5.src='data:image/;base64,' + 특이사항_pic.pic5;
+		pic6.src='data:image/;base64,' + 특이사항_pic.pic6;
+		pic7.src='data:image/;base64,' + 특이사항_pic.pic7;
+		pic8.src='data:image/;base64,' + 특이사항_pic.pic8;
+		pic9.src='data:image/;base64,' + 특이사항_pic.pic9;
+		pic10.src='data:image/;base64,' + 특이사항_pic.pic10;
+		pic11.src='data:image/;base64,' + 특이사항_pic.pic11;
+		pic12.src='data:image/;base64,' + 특이사항_pic.pic12;
+		pic13.src='data:image/;base64,' + 특이사항_pic.pic13;
+		pic14.src='data:image/;base64,' + 특이사항_pic.pic14;
+		pic15.src='data:image/;base64,' + 특이사항_pic.pic15;
 	} else {
 		pic1.src = '';
 		pic2.src = '';
@@ -1872,21 +1872,21 @@ async function 반품입고_load_pic(m_id = '') {
 		find(반품입고_pic, m_id);
 		await delay();
 		if(반품입고_v.length == 0) return;
-		pic1.src='data:image/;base64,' + 반품입고_v[0].pic1;
-		pic2.src='data:image/;base64,' + 반품입고_v[0].pic2;
-		pic3.src='data:image/;base64,' + 반품입고_v[0].pic3;
-		pic4.src='data:image/;base64,' + 반품입고_v[0].pic4;
-		pic5.src='data:image/;base64,' + 반품입고_v[0].pic5;
-		pic6.src='data:image/;base64,' + 반품입고_v[0].pic6;
-		pic7.src='data:image/;base64,' + 반품입고_v[0].pic7;
-		pic8.src='data:image/;base64,' + 반품입고_v[0].pic8;
-		pic9.src='data:image/;base64,' + 반품입고_v[0].pic9;
-		pic10.src='data:image/;base64,' + 반품입고_v[0].pic10;
-		pic11.src='data:image/;base64,' + 반품입고_v[0].pic11;
-		pic12.src='data:image/;base64,' + 반품입고_v[0].pic12;
-		pic13.src='data:image/;base64,' + 반품입고_v[0].pic13;
-		pic14.src='data:image/;base64,' + 반품입고_v[0].pic14;
-		pic15.src='data:image/;base64,' + 반품입고_v[0].pic15;
+		pic1.src='data:image/;base64,' + 반품입고_v.pic1;
+		pic2.src='data:image/;base64,' + 반품입고_v.pic2;
+		pic3.src='data:image/;base64,' + 반품입고_v.pic3;
+		pic4.src='data:image/;base64,' + 반품입고_v.pic4;
+		pic5.src='data:image/;base64,' + 반품입고_v.pic5;
+		pic6.src='data:image/;base64,' + 반품입고_v.pic6;
+		pic7.src='data:image/;base64,' + 반품입고_v.pic7;
+		pic8.src='data:image/;base64,' + 반품입고_v.pic8;
+		pic9.src='data:image/;base64,' + 반품입고_v.pic9;
+		pic10.src='data:image/;base64,' + 반품입고_v.pic10;
+		pic11.src='data:image/;base64,' + 반품입고_v.pic11;
+		pic12.src='data:image/;base64,' + 반품입고_v.pic12;
+		pic13.src='data:image/;base64,' + 반품입고_v.pic13;
+		pic14.src='data:image/;base64,' + 반품입고_v.pic14;
+		pic15.src='data:image/;base64,' + 반품입고_v.pic15;
 	} else {
 		pic1.src = '';
 		pic2.src = '';
@@ -1929,21 +1929,21 @@ async function 재출하_load_pic(m_id = '') {
 		find(재출하_pic, m_id);
 		await delay();
 		if(재출하_pic_v.length == 0) return;
-		pic1.src='data:image/;base64,' + 재출하_pic_v[0].pic1;
-		pic2.src='data:image/;base64,' + 재출하_pic_v[0].pic2;
-		pic3.src='data:image/;base64,' + 재출하_pic_v[0].pic3;
-		pic4.src='data:image/;base64,' + 재출하_pic_v[0].pic4;
-		pic5.src='data:image/;base64,' + 재출하_pic_v[0].pic5;
-		pic6.src='data:image/;base64,' + 재출하_pic_v[0].pic6;
-		pic7.src='data:image/;base64,' + 재출하_pic_v[0].pic7;
-		pic8.src='data:image/;base64,' + 재출하_pic_v[0].pic8;
-		pic9.src='data:image/;base64,' + 재출하_pic_v[0].pic9;
-		pic10.src='data:image/;base64,' + 재출하_pic_v[0].pic10;
-		pic11.src='data:image/;base64,' + 재출하_pic_v[0].pic11;
-		pic12.src='data:image/;base64,' + 재출하_pic_v[0].pic12;
-		pic13.src='data:image/;base64,' + 재출하_pic_v[0].pic13;
-		pic14.src='data:image/;base64,' + 재출하_pic_v[0].pic14;
-		pic15.src='data:image/;base64,' + 재출하_pic_v[0].pic15;
+		pic1.src='data:image/;base64,' + 재출하_pic_v.pic1;
+		pic2.src='data:image/;base64,' + 재출하_pic_v.pic2;
+		pic3.src='data:image/;base64,' + 재출하_pic_v.pic3;
+		pic4.src='data:image/;base64,' + 재출하_pic_v.pic4;
+		pic5.src='data:image/;base64,' + 재출하_pic_v.pic5;
+		pic6.src='data:image/;base64,' + 재출하_pic_v.pic6;
+		pic7.src='data:image/;base64,' + 재출하_pic_v.pic7;
+		pic8.src='data:image/;base64,' + 재출하_pic_v.pic8;
+		pic9.src='data:image/;base64,' + 재출하_pic_v.pic9;
+		pic10.src='data:image/;base64,' + 재출하_pic_v.pic10;
+		pic11.src='data:image/;base64,' + 재출하_pic_v.pic11;
+		pic12.src='data:image/;base64,' + 재출하_pic_v.pic12;
+		pic13.src='data:image/;base64,' + 재출하_pic_v.pic13;
+		pic14.src='data:image/;base64,' + 재출하_pic_v.pic14;
+		pic15.src='data:image/;base64,' + 재출하_pic_v.pic15;
 	} else {
 		pic1.src = '';
 		pic2.src = '';
@@ -1986,21 +1986,21 @@ async function 완전분해_load_pic(m_id = '') {
 		find(완전분해_pic, m_id);
 		await delay();
 		if(완전분해_pic_v.length == 0) return;
-		pic1.src='data:image/;base64,' + 완전분해_pic_v[0].pic1;
-		pic2.src='data:image/;base64,' + 완전분해_pic_v[0].pic2;
-		pic3.src='data:image/;base64,' + 완전분해_pic_v[0].pic3;
-		pic4.src='data:image/;base64,' + 완전분해_pic_v[0].pic4;
-		pic5.src='data:image/;base64,' + 완전분해_pic_v[0].pic5;
-		pic6.src='data:image/;base64,' + 완전분해_pic_v[0].pic6;
-		pic7.src='data:image/;base64,' + 완전분해_pic_v[0].pic7;
-		pic8.src='data:image/;base64,' + 완전분해_pic_v[0].pic8;
-		pic9.src='data:image/;base64,' + 완전분해_pic_v[0].pic9;
-		pic10.src='data:image/;base64,' + 완전분해_pic_v[0].pic10;
-		pic11.src='data:image/;base64,' + 완전분해_pic_v[0].pic11;
-		pic12.src='data:image/;base64,' + 완전분해_pic_v[0].pic12;
-		pic13.src='data:image/;base64,' + 완전분해_pic_v[0].pic13;
-		pic14.src='data:image/;base64,' + 완전분해_pic_v[0].pic14;
-		pic15.src='data:image/;base64,' + 완전분해_pic_v[0].pic15;
+		pic1.src='data:image/;base64,' + 완전분해_pic_v.pic1;
+		pic2.src='data:image/;base64,' + 완전분해_pic_v.pic2;
+		pic3.src='data:image/;base64,' + 완전분해_pic_v.pic3;
+		pic4.src='data:image/;base64,' + 완전분해_pic_v.pic4;
+		pic5.src='data:image/;base64,' + 완전분해_pic_v.pic5;
+		pic6.src='data:image/;base64,' + 완전분해_pic_v.pic6;
+		pic7.src='data:image/;base64,' + 완전분해_pic_v.pic7;
+		pic8.src='data:image/;base64,' + 완전분해_pic_v.pic8;
+		pic9.src='data:image/;base64,' + 완전분해_pic_v.pic9;
+		pic10.src='data:image/;base64,' + 완전분해_pic_v.pic10;
+		pic11.src='data:image/;base64,' + 완전분해_pic_v.pic11;
+		pic12.src='data:image/;base64,' + 완전분해_pic_v.pic12;
+		pic13.src='data:image/;base64,' + 완전분해_pic_v.pic13;
+		pic14.src='data:image/;base64,' + 완전분해_pic_v.pic14;
+		pic15.src='data:image/;base64,' + 완전분해_pic_v.pic15;
 	} else {
 		pic1.src = '';
 		pic2.src = '';
@@ -2043,21 +2043,21 @@ async function 폐기_load_pic(m_id = '') {
 		find(폐기_pic, m_id);
 		await delay();
 		if(폐기_pic_v.length == 0) return;
-		pic1.src='data:image/;base64,' + 폐기_pic_v[0].pic1;
-		pic2.src='data:image/;base64,' + 폐기_pic_v[0].pic2;
-		pic3.src='data:image/;base64,' + 폐기_pic_v[0].pic3;
-		pic4.src='data:image/;base64,' + 폐기_pic_v[0].pic4;
-		pic5.src='data:image/;base64,' + 폐기_pic_v[0].pic5;
-		pic6.src='data:image/;base64,' + 폐기_pic_v[0].pic6;
-		pic7.src='data:image/;base64,' + 폐기_pic_v[0].pic7;
-		pic8.src='data:image/;base64,' + 폐기_pic_v[0].pic8;
-		pic9.src='data:image/;base64,' + 폐기_pic_v[0].pic9;
-		pic10.src='data:image/;base64,' + 폐기_pic_v[0].pic10;
-		pic11.src='data:image/;base64,' + 폐기_pic_v[0].pic11;
-		pic12.src='data:image/;base64,' + 폐기_pic_v[0].pic12;
-		pic13.src='data:image/;base64,' + 폐기_pic_v[0].pic13;
-		pic14.src='data:image/;base64,' + 폐기_pic_v[0].pic14;
-		pic15.src='data:image/;base64,' + 폐기_pic_v[0].pic15;
+		pic1.src='data:image/;base64,' + 폐기_pic_v.pic1;
+		pic2.src='data:image/;base64,' + 폐기_pic_v.pic2;
+		pic3.src='data:image/;base64,' + 폐기_pic_v.pic3;
+		pic4.src='data:image/;base64,' + 폐기_pic_v.pic4;
+		pic5.src='data:image/;base64,' + 폐기_pic_v.pic5;
+		pic6.src='data:image/;base64,' + 폐기_pic_v.pic6;
+		pic7.src='data:image/;base64,' + 폐기_pic_v.pic7;
+		pic8.src='data:image/;base64,' + 폐기_pic_v.pic8;
+		pic9.src='data:image/;base64,' + 폐기_pic_v.pic9;
+		pic10.src='data:image/;base64,' + 폐기_pic_v.pic10;
+		pic11.src='data:image/;base64,' + 폐기_pic_v.pic11;
+		pic12.src='data:image/;base64,' + 폐기_pic_v.pic12;
+		pic13.src='data:image/;base64,' + 폐기_pic_v.pic13;
+		pic14.src='data:image/;base64,' + 폐기_pic_v.pic14;
+		pic15.src='data:image/;base64,' + 폐기_pic_v.pic15;
 	} else {
 		pic1.src = '';
 		pic2.src = '';
@@ -2241,7 +2241,7 @@ async function 관리번호_변경() {
 	find(BSA재제조, m_id);
 	await delay();
 
-	var doc = JSON.parse(JSON.stringify(BSA재제조_v[0]));
+	var doc = JSON.parse(JSON.stringify(BSA재제조_v));
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -2257,7 +2257,7 @@ async function 관리번호_변경() {
 	find(입고, m_id);
 	await delay();
 
-	doc = JSON.parse(JSON.stringify(입고_v[0]));
+	doc = JSON.parse(JSON.stringify(입고_v));
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -2273,7 +2273,7 @@ async function 관리번호_변경() {
 	find(세척, m_id);
 	await delay();
 
-	doc = JSON.parse(JSON.stringify(세척_v[0]));
+	doc = JSON.parse(JSON.stringify(세척_v));
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -2289,7 +2289,7 @@ async function 관리번호_변경() {
 	find(기초검사, m_id);
 	await delay();
 
-	doc = JSON.parse(JSON.stringify(기초검사_v[0]));
+	doc = JSON.parse(JSON.stringify(기초검사_v));
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -2305,7 +2305,7 @@ async function 관리번호_변경() {
 	find(분해조립, m_id);
 	await delay();
 
-	doc = JSON.parse(JSON.stringify(분해조립_v[0]));
+	doc = JSON.parse(JSON.stringify(분해조립_v));
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -2321,7 +2321,7 @@ async function 관리번호_변경() {
 	find(성능검사, m_id);
 	await delay();
 
-	doc = JSON.parse(JSON.stringify(성능검사_v[0]));
+	doc = JSON.parse(JSON.stringify(성능검사_v));
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -2337,7 +2337,7 @@ async function 관리번호_변경() {
 	find(EOL, m_id);
 	await delay();
 
-	doc = JSON.parse(JSON.stringify(EOL_v[0]));
+	doc = JSON.parse(JSON.stringify(EOL_v));
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -2353,7 +2353,7 @@ async function 관리번호_변경() {
 	find(출하정보, m_id);
 	await delay();
 
-	doc = JSON.parse(JSON.stringify(출하정보_v[0]));
+	doc = JSON.parse(JSON.stringify(출하정보_v));
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -2369,7 +2369,7 @@ async function 관리번호_변경() {
 	find(특이사항, m_id);
 	await delay();
 
-	doc = JSON.parse(JSON.stringify(특이사항_v[0]));
+	doc = JSON.parse(JSON.stringify(특이사항_v));
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -2385,7 +2385,7 @@ async function 관리번호_변경() {
 	find(교체부품상세1, m_id);
 	await delay();
 
-	doc = JSON.parse(JSON.stringify(교체부품상세1_v[0]));
+	doc = JSON.parse(JSON.stringify(교체부품상세1_v));
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -2401,7 +2401,7 @@ async function 관리번호_변경() {
 	find(교체부품상세2, m_id);
 	await delay();
 
-	doc = JSON.parse(JSON.stringify(교체부품상세2_v[0]));
+	doc = JSON.parse(JSON.stringify(교체부품상세2_v));
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -2417,7 +2417,7 @@ async function 관리번호_변경() {
 	find(교체부품상세3, m_id);
 	await delay();
 
-	doc = JSON.parse(JSON.stringify(교체부품상세3_v[0]));
+	doc = JSON.parse(JSON.stringify(교체부품상세3_v));
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -2433,7 +2433,7 @@ async function 관리번호_변경() {
 	find(교체부품상세4, m_id);
 	await delay();
 
-	doc = JSON.parse(JSON.stringify(교체부품상세4_v[0]));
+	doc = JSON.parse(JSON.stringify(교체부품상세4_v));
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -2449,7 +2449,7 @@ async function 관리번호_변경() {
 	find(교체부품상세5, m_id);
 	await delay();
 
-	doc = JSON.parse(JSON.stringify(교체부품상세5_v[0]));
+	doc = JSON.parse(JSON.stringify(교체부품상세5_v));
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -2465,7 +2465,7 @@ async function 관리번호_변경() {
 	find(교체부품상세6, m_id);
 	await delay();
 
-	doc = JSON.parse(JSON.stringify(교체부품상세6_v[0]));
+	doc = JSON.parse(JSON.stringify(교체부품상세6_v));
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -2481,7 +2481,7 @@ async function 관리번호_변경() {
 	find(교체부품상세7, m_id);
 	await delay();
 
-	doc = JSON.parse(JSON.stringify(교체부품상세7_v[0]));
+	doc = JSON.parse(JSON.stringify(교체부품상세7_v));
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -2497,7 +2497,7 @@ async function 관리번호_변경() {
 	find(교체부품상세8, m_id);
 	await delay();
 
-	doc = JSON.parse(JSON.stringify(교체부품상세8_v[0]));
+	doc = JSON.parse(JSON.stringify(교체부품상세8_v));
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -2513,7 +2513,7 @@ async function 관리번호_변경() {
 	find(교체부품상세9, m_id);
 	await delay();
 
-	doc = JSON.parse(JSON.stringify(교체부품상세9_v[0]));
+	doc = JSON.parse(JSON.stringify(교체부품상세9_v));
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -2529,7 +2529,7 @@ async function 관리번호_변경() {
 	find(교체부품상세10, m_id);
 	await delay();
 
-	doc = JSON.parse(JSON.stringify(교체부품상세10_v[0]));
+	doc = JSON.parse(JSON.stringify(교체부품상세10_v));
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -2558,7 +2558,7 @@ async function copy() {
 	find(BSA재제조, m_id);
 	await delay();
 
-	var doc = BSA재제조_v[0];
+	var doc = BSA재제조_v;
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -2571,7 +2571,7 @@ async function copy() {
 	find(입고, m_id);
 	await delay();
 
-	doc = 입고_v[0];
+	doc = 입고_v;
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -2584,7 +2584,7 @@ async function copy() {
 	find(세척, m_id);
 	await delay();
 
-	doc = 세척_v[0];
+	doc = 세척_v;
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -2597,7 +2597,7 @@ async function copy() {
 	find(기초검사, m_id);
 	await delay();
 
-	doc = 기초검사_v[0];
+	doc = 기초검사_v;
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -2610,7 +2610,7 @@ async function copy() {
 	find(분해조립, m_id);
 	await delay();
 
-	doc = 분해조립_v[0];
+	doc = 분해조립_v;
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -2623,7 +2623,7 @@ async function copy() {
 	find(성능검사, m_id);
 	await delay();
 
-	doc = 성능검사_v[0];
+	doc = 성능검사_v;
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -2636,7 +2636,7 @@ async function copy() {
 	find(EOL, m_id);
 	await delay();
 
-	doc = EOL_v[0];
+	doc = EOL_v;
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -2649,7 +2649,7 @@ async function copy() {
 	find(출하정보, m_id);
 	await delay();
 
-	doc = 출하정보_v[0];
+	doc = 출하정보_v;
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -2662,7 +2662,7 @@ async function copy() {
 	find(특이사항, m_id);
 	await delay();
 
-	doc = 특이사항_v[0];
+	doc = 특이사항_v;
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -2675,7 +2675,7 @@ async function copy() {
 	find(교체부품상세1, m_id);
 	await delay();
 
-	doc = 교체부품상세1_v[0];
+	doc = 교체부품상세1_v;
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -2688,7 +2688,7 @@ async function copy() {
 	find(교체부품상세2, m_id);
 	await delay();
 
-	doc = 교체부품상세2_v[0];
+	doc = 교체부품상세2_v;
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -2701,7 +2701,7 @@ async function copy() {
 	find(교체부품상세3, m_id);
 	await delay();
 
-	doc = 교체부품상세2_v[0];
+	doc = 교체부품상세2_v;
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -2714,7 +2714,7 @@ async function copy() {
 	find(교체부품상세4, m_id);
 	await delay();
 
-	doc = 교체부품상세3_v[0];
+	doc = 교체부품상세3_v;
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -2727,7 +2727,7 @@ async function copy() {
 	find(교체부품상세5, m_id);
 	await delay();
 
-	doc = 교체부품상세5_v[0];
+	doc = 교체부품상세5_v;
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -2740,7 +2740,7 @@ async function copy() {
 	find(교체부품상세6, m_id);
 	await delay();
 
-	doc = 교체부품상세6_v[0];
+	doc = 교체부품상세6_v;
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -2753,7 +2753,7 @@ async function copy() {
 	find(교체부품상세7, m_id);
 	await delay();
 
-	doc = 교체부품상세7_v[0];
+	doc = 교체부품상세7_v;
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -2766,7 +2766,7 @@ async function copy() {
 	find(교체부품상세8, m_id);
 	await delay();
 
-	doc = 교체부품상세8_v[0];
+	doc = 교체부품상세8_v;
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -2779,7 +2779,7 @@ async function copy() {
 	find(교체부품상세9, m_id);
 	await delay();
 
-	doc = 교체부품상세9_v[0];
+	doc = 교체부품상세9_v;
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 
@@ -2792,7 +2792,7 @@ async function copy() {
 	find(교체부품상세10, m_id);
 	await delay();
 
-	doc = 교체부품상세10_v[0];
+	doc = 교체부품상세10_v;
 	if(doc != undefined) {
 		doc.관리번호 = new_관리번호;
 

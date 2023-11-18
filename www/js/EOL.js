@@ -28,7 +28,7 @@ async function EOL_시작(EOL_is재제조번호 = false) {
 			find(BSA재제조, _management_id.value);
 			await delay();
 			
-			if(BSA재제조_v[0].재제조번호 != undefined) _재제조번호.value = BSA재제조_v[0].재제조번호;
+			if(BSA재제조_v.재제조번호 != undefined) _재제조번호.value = BSA재제조_v.재제조번호;
 		}
 	} else {
 		if(_재제조번호.value.length == 0) return;
@@ -41,7 +41,7 @@ async function EOL_시작(EOL_is재제조번호 = false) {
 			find_BSA재제조(BSA재제조, { 재제조번호 : _재제조번호.value });
 			await delay();
 			
-			_management_id.value = BSA재제조_v[0].관리번호;
+			_management_id.value = BSA재제조_v.관리번호;
 		} else {
 			_management_id.value = '찾지 못하였습니다';;
 		}
@@ -55,68 +55,68 @@ async function EOL_시작(EOL_is재제조번호 = false) {
 			await delay();
 
 			console.log('EOL load data:', EOL_v);
-			_공정입고일.value = EOL_v[0].공정입고일; 
-			_UPR_C조립.value = EOL_v[0].UPR_C조립; 
-			_기밀검사_케이스.value = EOL_v[0].기밀검사_케이스;
-			_기밀검사_케이스_특이사항.value = EOL_v[0].기밀검사_케이스_특이사항;
-			_기밀검사_냉각유로.value = EOL_v[0].기밀검사_냉각유로;
-			_기밀검사_냉각유로_특이사항.value = EOL_v[0].기밀검사_냉각유로_특이사항;
-			_절연검사P.value = EOL_v[0].절연검사_Plus;
-			_절연검사M.value = EOL_v[0].절연검사_Minus;
-			_절연저항HVP.value = EOL_v[0].절연저항_HVP;
-			_절연저항HVN.value = EOL_v[0].절연저항_HVN;
-			_통신검사_DTC코드1.value = EOL_v[0].통신검사_DTC코드1;
-			_통신검사_DTC코드2.value = EOL_v[0].통신검사_DTC코드2;
-			_통신검사_DTC코드3.value = EOL_v[0].통신검사_DTC코드3;
-			if(EOL_v[0].통신검사_DTC코드4 != '') {
+			_공정입고일.value = EOL_v.공정입고일; 
+			_UPR_C조립.value = EOL_v.UPR_C조립; 
+			_기밀검사_케이스.value = EOL_v.기밀검사_케이스;
+			_기밀검사_케이스_특이사항.value = EOL_v.기밀검사_케이스_특이사항;
+			_기밀검사_냉각유로.value = EOL_v.기밀검사_냉각유로;
+			_기밀검사_냉각유로_특이사항.value = EOL_v.기밀검사_냉각유로_특이사항;
+			_절연검사P.value = EOL_v.절연검사_Plus;
+			_절연검사M.value = EOL_v.절연검사_Minus;
+			_절연저항HVP.value = EOL_v.절연저항_HVP;
+			_절연저항HVN.value = EOL_v.절연저항_HVN;
+			_통신검사_DTC코드1.value = EOL_v.통신검사_DTC코드1;
+			_통신검사_DTC코드2.value = EOL_v.통신검사_DTC코드2;
+			_통신검사_DTC코드3.value = EOL_v.통신검사_DTC코드3;
+			if(EOL_v.통신검사_DTC코드4 != '') {
 				_EOL_add_DTC_Code();
 				await sleep(10);
-				_통신검사_DTC코드4.value = EOL_v[0].통신검사_DTC코드4;
+				_통신검사_DTC코드4.value = EOL_v.통신검사_DTC코드4;
 			}
 
-			if(EOL_v[0].통신검사_DTC코드5 != '') {
+			if(EOL_v.통신검사_DTC코드5 != '') {
 				_EOL_add_DTC_Code();
 				await sleep(10);
-				_통신검사_DTC코드5.value = EOL_v[0].통신검사_DTC코드5;
+				_통신검사_DTC코드5.value = EOL_v.통신검사_DTC코드5;
 			}
 
-			if(EOL_v[0].통신검사_DTC코드6 != '') {
+			if(EOL_v.통신검사_DTC코드6 != '') {
 				_EOL_add_DTC_Code();
 				await sleep(10);
-				_통신검사_DTC코드6.value = EOL_v[0].통신검사_DTC코드6;
+				_통신검사_DTC코드6.value = EOL_v.통신검사_DTC코드6;
 			}
 
-			if(EOL_v[0].통신검사_DTC코드7 != '') {
+			if(EOL_v.통신검사_DTC코드7 != '') {
 				_EOL_add_DTC_Code();
 				await sleep(10);
-				_통신검사_DTC코드7.value = EOL_v[0].통신검사_DTC코드7;
+				_통신검사_DTC코드7.value = EOL_v.통신검사_DTC코드7;
 			}
 
-			if(EOL_v[0].통신검사_DTC코드8 != '') {
+			if(EOL_v.통신검사_DTC코드8 != '') {
 				_EOL_add_DTC_Code();
 				await sleep(10);
-				_통신검사_DTC코드8.value = EOL_v[0].통신검사_DTC코드8;
+				_통신검사_DTC코드8.value = EOL_v.통신검사_DTC코드8;
 			}
 
-			if(EOL_v[0].통신검사_DTC코드9 != '') {
+			if(EOL_v.통신검사_DTC코드9 != '') {
 				_EOL_add_DTC_Code();
 				await sleep(10);
-				_통신검사_DTC코드9.value = EOL_v[0].통신검사_DTC코드9;
+				_통신검사_DTC코드9.value = EOL_v.통신검사_DTC코드9;
 			}
 
-			if(EOL_v[0].통신검사_DTC코드10 != '') {
+			if(EOL_v.통신검사_DTC코드10 != '') {
 				_EOL_add_DTC_Code();
 				await sleep(10);
-				_통신검사_DTC코드10.value = EOL_v[0].통신검사_DTC코드10;
+				_통신검사_DTC코드10.value = EOL_v.통신검사_DTC코드10;
 			}
 
-			_통신검사_팩전압.value = EOL_v[0].통신검사_팩전압;
-			_통신검사_셀전압편차.value = EOL_v[0].통신검사_셀전압편차;
-			_통신검사_릴레이구동.value = EOL_v[0].통신검사_릴레이구동;
-			_공정완료일.value = EOL_v[0].공정완료일;
-			_비고.value = EOL_v[0].비고;
-			_QR.value = EOL_v[0].QR;
-			_검사자.value = EOL_v[0].검사자;
+			_통신검사_팩전압.value = EOL_v.통신검사_팩전압;
+			_통신검사_셀전압편차.value = EOL_v.통신검사_셀전압편차;
+			_통신검사_릴레이구동.value = EOL_v.통신검사_릴레이구동;
+			_공정완료일.value = EOL_v.공정완료일;
+			_비고.value = EOL_v.비고;
+			_QR.value = EOL_v.QR;
+			_검사자.value = EOL_v.검사자;
 
 			count(입고, { 관리번호 : _management_id.value });
 			await delay();
@@ -124,9 +124,9 @@ async function EOL_시작(EOL_is재제조번호 = false) {
 				find(입고, _management_id.value);
 				await delay();
 
-				_구분.value = 입고_v[0].구분;
-				_차종.value = 입고_v[0].차종;
-				_품번.value = 입고_v[0].품번;
+				_구분.value = 입고_v.구분;
+				_차종.value = 입고_v.차종;
+				_품번.value = 입고_v.품번;
 			
 			}
 	} else {
@@ -367,7 +367,7 @@ async function EOL_QR_Label() {
 	find(BSA재제조, 관리번호);
 	await delay();
 
-	sn = find_array[0].재제조번호;
+	sn = find_array.재제조번호;
 
 	qrcode = new QRCode(document.getElementById('_QR_Code'), {
 		width: 100,
@@ -375,12 +375,12 @@ async function EOL_QR_Label() {
 	});
 
 	var 배터리팩_제조번호 = prompt('배터리팩 제조번호를 입력하세요');
-	console.log(배터리팩_제조번호 + ' '+ find_array[0].재제조번호);
-	qrcode.makeCode(배터리팩_제조번호 + ' '+ find_array[0].재제조번호);
+	console.log(배터리팩_제조번호 + ' '+ find_array.재제조번호);
+	qrcode.makeCode(배터리팩_제조번호 + ' '+ find_array.재제조번호);
 	let qrcode_base64 = qrcode._oDrawing._elCanvas.toDataURL("image/png");
 	console.log(qrcode_base64);
 
-	document.getElementById('_QR_Label').innerHTML = '<html><head></head><body style="color:black"><div class=\'HHB\' align=\'left\' width=\'264\'><h5>배터리 시스템 어셈블리</h5></div><div class=\'HHB\'><h6>(Battery System Assembly)</h6></div><div><br/></div><div class=\'HHB\' align=\'left\'><h5>R' + find_array[0].품번 + '</h5></div><div align=\'center\' width=\'264\'><img src=\'' + qrcode_base64 + '\'></center></div><div><br/></div><div class=\'HHM\' align=\'center\'><h5>' + find_array[0].재제조번호  + '</h5></div><div align=\'right\'><img src=\'' + hyundai_logo  + '\'></div></body></html>';
+	document.getElementById('_QR_Label').innerHTML = '<html><head></head><body style="color:black"><div class=\'HHB\' align=\'left\' width=\'264\'><h5>배터리 시스템 어셈블리</h5></div><div class=\'HHB\'><h6>(Battery System Assembly)</h6></div><div><br/></div><div class=\'HHB\' align=\'left\'><h5>R' + find_array.품번 + '</h5></div><div align=\'center\' width=\'264\'><img src=\'' + qrcode_base64 + '\'></center></div><div><br/></div><div class=\'HHM\' align=\'center\'><h5>' + find_array.재제조번호  + '</h5></div><div align=\'right\'><img src=\'' + hyundai_logo  + '\'></div></body></html>';
 
 	html2canvas(document.getElementById('_QR_Label'), { width : 264, height : 302 }).then(canvas => {
 		html_string = '<html><head></head><body><img src=' + canvas.toDataURL('image/png') + '\'></body></html>';
