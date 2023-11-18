@@ -12,16 +12,13 @@ async function 관리자_시작() {
 	_passwd2 = document.getElementById('_passwd2');
 	_set_level = document.getElementById('_level');
 
-	count(계정, { id : {$exists : true }});
+	find_계정(계정, { id : { $exists : true }})
 	await delay();
 
-	if(계정_cnt > 0) {
-		find_계정(계정, { id : { $exists : true }})
-		await delay();
-
+	if(계정_v != null) {
 		var table = new Tabulator("#grid_user_info", {
 			layout: "resizableColumnFit",
-			data: find_array,
+			data: 계정_v,
 			height: '700px',
 
 			columns:[

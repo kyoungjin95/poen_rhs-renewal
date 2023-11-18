@@ -21,40 +21,33 @@ async function EOL_시작(EOL_is재제조번호 = false) {
 		if(_management_id.value.length == 0) return;
 		console.log('load: ', _management_id.value);
 
-		count(BSA재제조, { 관리번호 : _management_id.value });
+		find(BSA재제조, _management_id.value);
 		await delay();
 
-		if(BSA재제조_cnt > 0) {
-			find(BSA재제조, _management_id.value);
-			await delay();
-			
+		if(BSA재제조_v != null) {
 			if(BSA재제조_v.재제조번호 != undefined) _재제조번호.value = BSA재제조_v.재제조번호;
 		}
 	} else {
 		if(_재제조번호.value.length == 0) return;
 		console.log('load: ', _재제조번호.value);
 		
-		count(BSA재제조, { 재제조번호 : _재제조번호.value });
+		findOne_BSA재제조(BSA재제조, { 재제조번호 : _재제조번호.value });
 		await delay();
 
-		if(BSA재제조_cnt > 0) {
-			find_BSA재제조(BSA재제조, { 재제조번호 : _재제조번호.value });
-			await delay();
-			
+		if(BSA재제조_v != null) {
 			_management_id.value = BSA재제조_v.관리번호;
 		} else {
 			_management_id.value = '찾지 못하였습니다';;
 		}
 	}
 
-	count(EOL, { 관리번호 : _management_id.value });
+	find(EOL, _management_id.value);
 	await delay();
 
-	if(EOL_cnt > 0) {
+	if(EOL_v != null) {
 			find(EOL, _management_id.value);
 			await delay();
 
-			console.log('EOL load data:', EOL_v);
 			_공정입고일.value = EOL_v.공정입고일; 
 			_UPR_C조립.value = EOL_v.UPR_C조립; 
 			_기밀검사_케이스.value = EOL_v.기밀검사_케이스;
@@ -118,16 +111,12 @@ async function EOL_시작(EOL_is재제조번호 = false) {
 			_QR.value = EOL_v.QR;
 			_검사자.value = EOL_v.검사자;
 
-			count(입고, { 관리번호 : _management_id.value });
+			find(입고, _management_id.value);
 			await delay();
-			if(입고_cnt > 0) {
-				find(입고, _management_id.value);
-				await delay();
-
+			if(입고_v != null) {
 				_구분.value = 입고_v.구분;
 				_차종.value = 입고_v.차종;
 				_품번.value = 입고_v.품번;
-			
 			}
 	} else {
 		_재제조번호.value = '';
@@ -263,10 +252,10 @@ async function EOL_SAVE() {
 		alert('저장 되었습니다');
 	}
 
-	count(BSA재제조, { 관리번호 : _management_id.value });
+	find(BSA재제조, _management_id.value);
 	await delay();
 
-	if(BSA재제조_cnt == 0) {
+	if(BSA재제조_v == null) {
 		var _doc = JSON.parse(JSON.stringify(BSA재제조_doc));
 		_doc.관리번호 = _management_id.value;
 		_doc.EOL투입일 = _공정입고일.value;

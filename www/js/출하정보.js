@@ -17,36 +17,27 @@ async function 출하정보_시작(is재제조 = false) {
 	_검사자.value = worker;
 
 	if(is재제조 == false) {
-		count(BSA재제조, { 관리번호 : _management_id.value });
+		find(BSA재제조, _management_id.value );
 		await delay();
 
-		if(BSA재제조_cnt > 0) {
-			find(BSA재제조, _management_id.value );
-			await delay();
-		
+		if(BSA재제조_v != null) {
 			_재제조번호.value = BSA재제조_v.재제조번호;
 		}
 	} else {
-		count(BSA재제조, { 재제조번호 : _재제조번호.value });
+		findOne_BSA재제조(BSA재제조, { 재제조번호: _재제조번호.value });
 		await delay();
 
-		if(BSA재제조_cnt > 0) {
-			find_BSA재제조(BSA재제조, { 재제조번호: _재제조번호.value });
-			await delay();
-
+		if(BSA재제조_v != null) {
 			_management_id.value = BSA재제조_v.관리번호;
 		} else {
 			_management_id.value = '찾지 못하였습니다';
 		}
 	}
 
-	count(입고, { 관리번호 : _management_id.value });
+	find(입고, _management_id.value);
 	await delay();
 
-	if(입고_cnt > 0) {
-		find(입고, _management_id.value);
-		await delay();
-
+	if(입고_v != null) {
 		_차종.value = 입고_v.차종;
 		_품번.value = 입고_v.품번;
 		_RO_no.value = 입고_v.RO_no;
@@ -175,12 +166,10 @@ async function 출하정보_시작(is재제조 = false) {
 		접지 = 출하정보_v.접지;
 		
 		if(String(_출하코드.value).trim() == '') {
-			count(EOL, { 관리번호 : _management_id.value });
+			find(EOL, _management_id.value);
 			await delay();
-			if(EOL_cnt > 0) {
-				find(EOL, _management_id.value);
-				await delay();
 
+			if(EOL_v != null) {
 				_출하코드.value = EOL_v.QR;
 			}
 		}
@@ -265,10 +254,10 @@ async function 출하정보_save() {
 	if(_management_id.value.length == 0) return;
 	console.log('save: ', _management_id.value);
 
-	count(BSA재제조, { 관리번호 : _management_id.value });
+	fine(BSA재제조, _management_id.value);
 	await delay();
 
-	if(BSA재제조_cnt == 0) {
+	if(BSA재제조_v == null) {
 		var _doc = JSON.parse(JSON.stringify(BSA재제조_doc));
 		_doc.관리번호 = _management_id.value;
 		_doc.출하검사 = _검사일.value.substr(0, 16);

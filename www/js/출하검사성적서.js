@@ -8,13 +8,10 @@ async function 출하검사성적서_시작() {
 
 async function 출하검사성적서_조회(is재제조번호 = false) {
   if (is재제조번호 == true) {
-    count(BSA재제조, { 재제조번호: _재제조번호.value });
+    findOne_BSA재제조(BSA재제조, { 재제조번호: _재제조번호.value });
     await delay();
 
-    if (BSA재제조_cnt > 0) {
-      find_BSA재제조(BSA재제조, { 재제조번호: _재제조번호.value });
-      await delay();
-
+    if (BSA재제조_v != null) {
       _management_id.value = BSA재제조_v.관리번호;
     }
   }
@@ -26,42 +23,32 @@ async function 출하검사성적서_조회(is재제조번호 = false) {
 
   if (_management_id.value.length == 0) return;
 
-  count(BSA재제조, {관리번호: _management_id.value });
+  find(BSA재제조, _management_id.value);
   await delay();
 
-  if(BSA재제조_cnt > 0) {
-    find(BSA재제조, _management_id.value);
-    await delay();
-
+  if(BSA재제조_v != null) {
     _재제조번호.innerHTML = BSA재제조_v.재제조번호;
   }
 
-  count(입고, { 관리번호: _management_id.value });
+  find(입고, _management_id.value);
   await delay();
 
-  if(입고_cnt > 0) {
-    find(입고, _management_id.value);
+  if(입고_v != 0) {
     _차종.innerHTML = 입고_v.차종;
     _품번.innerHTML = 입고_v.품번;
   }
 
-  count(기초검사, { 관리번호: _management_id.value });
+  find(기초검사, _management_id.value);
   await delay();
 
-  if(기초검사_cnt > 0) {
-    find(기초검사, _management_id.value);
-    await delay();
-
+  if(기초검사_v != null) {
     _RO.innerHTML = 기초검사_v.RO_no;
   }
 
-  count(출하정보, { 관리번호: _management_id.value });
+  find(출하정보, _management_id.value);
   await delay();
 
-  if (출하정보_cnt > 0) {
-    find(출하정보, _management_id.value);
-    await delay();
-
+  if (출하정보_v != null) {
     _출하일.innerHTML = 출하정보_v.출하일;
     _납품처.innerHTML = 출하정보_v.납품처;
     _검사일.innerHTML = 출하정보_v.검사일;

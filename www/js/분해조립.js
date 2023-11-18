@@ -86,12 +86,9 @@ async function 분해조립_시작(is재제조번호 = false) {
 	if(_management_id.value == '조회 버튼을 누르세요') _management_id.value =  관리번호;
 	console.log(_management_id.vaue);
 
-	count(입고, { 관리번호 : _management_id.value });
+	find(입고, _management_id.value);
 	await delay();
-	if(입고_cnt > 0) {
-		find(입고, _management_id.value);
-		await delay();
-
+	if(입고_v != null) {
 		_구분.value = 입고_v.구분;
 		_차종.value = 입고_v.차종;
 		_품번.value = 입고_v.품번;
@@ -106,13 +103,9 @@ async function 분해조립_시작(is재제조번호 = false) {
 		console.log('load: ', _재제조번호.value);
 		if(_재제조번호.value == '' | _재제조번호.value == 'none') return;
 		
-		count(BSA재제조, { 재제조번호 : _재제조번호.value });
+		findOne_BSA재제조(BSA재제조, { 재제조번호: _재제조번호.value.trim() });
 		await delay();
-		console.log('관리번호 찾기');
-		if(BSA재제조_cnt > 0) {
-			find_BSA재제조(BSA재제조, { 재제조번호: _재제조번호.value.trim() });
-			await delay();
-			
+		if(BSA재제조_v != null) {
 			_management_id.value = BSA재제조_v.관리번호;
 		} else {
 			_management_id.value = '찾지 못하였습니다';
@@ -121,38 +114,21 @@ async function 분해조립_시작(is재제조번호 = false) {
 	}
 
 	if(_management_id.value.length == 0) return;
-	console.log('load: ', _management_id.value);
 	if(_management_id.value == '' | _management_id == 'none') return;
 
-	count(BSA재제조, { 관리번호 : _management_id.value.trim() });
+	findOne_BSA재제조(BSA재제조, { 관리번호: _management_id.value.trim() });
 	await delay();
-	console.log('재제조번호 찾기');
 
-	if(BSA재제조_cnt > 0) {
-		find_BSA재제조(BSA재제조, { 관리번호: _management_id.value.trim() });
-		await delay();
+	if(BSA재제조_v != null) {
 		_재제조번호.value = BSA재제조_v.재제조번호;
 	} else {
 		_재제조번호.value = '';
 	}
 
-	count(분해조립, { 관리번호 : _management_id.value });
+	find(분해조립, _management_id.value);
 	await delay();
 
-	if(분해조립_cnt > 0) {
-		count(BSA재제조, { 관리번호 : _management_id.value });
-		await delay();
-		if(BSA재제조_cnt > 0) {
-			find_BSA재제조(BSA재제조, { 관리번호: _management_id.value.trim() });
-			await delay();
-			
-			_재제조번호.value = BSA재제조_v.재제조번호;
-		}
-
-
-		find(분해조립, _management_id.value);
-		await delay();
-
+	if(분해조립_v != null) {
 		var no_count = 6;
 		_공정입고일.value = 분해조립_v.공정입고일;
 		_BMU1.value = 분해조립_v.BMU1;
@@ -643,10 +619,10 @@ async function 분해조립_save() {
 		alert('저장 되었습니다');
 	}
 
-	count(BSA재제조, { 관리번호 : _management_id.value });
+	find(BSA재제조, _management_id.value);
 	await delay();
 
-	if(BSA재제조 == 0) {
+	if(BSA재제조_v != null) {
 		var _doc = JSON.parse(JSON.stringify(BSA재제조_doc));
 		_doc.관리번호 = _management_id.value;
 		_doc.분해조립투입일 = _공정입고일.value;
@@ -664,8 +640,6 @@ async function 분해조립_save() {
 		update(BSA재제조, _doc);
 		await delay();
 	}
-
-  doc = 분해조립_doc;
 
 	await 공정단계자동입력(_management_id.value);
 	//이전페이지();

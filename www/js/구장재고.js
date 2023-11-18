@@ -26,29 +26,18 @@ async function 구장재고_조회(is재제조 = false) {
 		관리번호 = _management_id.value;
 		console.log('관리번호:', 관리번호);
 
-		count(구장재고, { 관리번호 : _management_id.value });
+		findOne_구장재고(구장재고, { 관리번호 : _management_id.value });
 		await delay();
 		
-		if(구장재고_cnt > 0) {
-			find_구장재고(구장재고, { 관리번호 : _management_id.value });
-			await delay();
-		} else {
-			flag_empty = true;
-		}
-
+		if(구장재고_v == null) flag_empty = true;
 	} else {
 		_재제조번호.value = _재제조번호.value.trim();
 		if(_재제조번호.value.length == 0) return;
 
-		count(구장재고, { 재제조번호 : _재제조번호.value });
+		findOne_구장재고(구장재고, { 재제조번호 : _재제조번호.value });
 		await delay();
 
-		if(구장재고_cnt > 0) {
-			find_구장재고(구장재고, { 재제조번호 : _재제조번호.value });
-			await delay();
-		} else {
-			flag_empty = true;
-		}
+		if(구장재고_v == null) flag_empty = true;
 	}
 	
 	if(flag_empty == false) {

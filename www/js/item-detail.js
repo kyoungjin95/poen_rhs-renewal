@@ -74,7 +74,7 @@ async function 상세입력_시작(is재제조번호 = false) {
 		_폐기사유.value = '';
 
 		if (level == "kia_일반") {
-			count(BSA재제조, {
+			findOne_BSA재제조(BSA재제조, {
 				차종: {
 					$in: [
 						"DE",
@@ -101,7 +101,7 @@ async function 상세입력_시작(is재제조번호 = false) {
 			});
 			await delay();
 		} else if (level == "hyundai_일반") {
-			count(BSA재제조, {
+			findOne_BSA재제조(BSA재제조, {
 				차종: {
 					$in: [
 						"OS",
@@ -144,7 +144,7 @@ async function 상세입력_시작(is재제조번호 = false) {
 			});
 			await delay();
 		} else if (level == "kia_보증") {
-			count(BSA재제조, {
+			findOne_BSA재제조(BSA재제조, {
 				차종: {
 					$in: [
 						"DE",
@@ -171,7 +171,7 @@ async function 상세입력_시작(is재제조번호 = false) {
 			});
 			await delay();
 		} else if (level == "hyundai_보증") {
-			count(BSA재제조, {
+			findOne_BSA재제조(BSA재제조, {
 				차종: {
 					$in: [
 						"OS",
@@ -214,13 +214,13 @@ async function 상세입력_시작(is재제조번호 = false) {
 			});
 			await delay();
 		} else {
-			count(BSA재제조, { 관리번호: _management_id.value });
+			find(BSA재제조, _management_id.value);
 			await delay();
 		}
 	} else {
 		console.log("재제조번호:", _재제조번호.value);
 		if (level == "kia_일반") {
-			count(BSA재제조, {
+			findOne_BSA재제조(BSA재제조, {
 				차종: {
 					$in: [
 						"DE",
@@ -248,7 +248,7 @@ async function 상세입력_시작(is재제조번호 = false) {
 			await delay();
 			await sleep(100);
 		} else if (level == "hyundai_일반") {
-			count(BSA재제조, {
+			findOne_BSA재제조(BSA재제조, {
 				차종: {
 					$in: [
 						"OS",
@@ -292,7 +292,7 @@ async function 상세입력_시작(is재제조번호 = false) {
 			await delay();
 			await sleep(100);
 		} else if (level == "kia_보증") {
-			count(BSA재제조, {
+			findOne_BSA재제조(BSA재제조, {
 				차종: {
 					$in: [
 						"DE",
@@ -320,7 +320,7 @@ async function 상세입력_시작(is재제조번호 = false) {
 			await delay();
 			await sleep(100);
 		} else if (level == "hyundai_보증") {
-			count(BSA재제조, {
+			findOne_BSA재제조(BSA재제조, {
 				차종: {
 					$in: [
 						"OS",
@@ -363,11 +363,11 @@ async function 상세입력_시작(is재제조번호 = false) {
 			});
 			await delay();
 		} else {
-			count(BSA재제조, { 재제조번호: _재제조번호.value });
+			findOne_BSA재제조(BSA재제조, { 재제조번호: _재제조번호.value });
 			await delay();
 		}
 	}
-	if (BSA재제조_cnt > 0) {
+	if (BSA재제조_v != null) {
 		if (is재제조번호 == false) {
 			관리번호 = _management_id.value.trim();
 			pre_관리번호 = 관리번호;
@@ -555,7 +555,7 @@ async function 상세입력_시작(is재제조번호 = false) {
 			_폐기사유.value = '';
 
 			if (level == "kia_일반") {
-				count(BSA재제조, {
+				findOne_BSA재제조(BSA재제조, {
 					차종: {
 						$in: [
 							"DE",
@@ -582,7 +582,7 @@ async function 상세입력_시작(is재제조번호 = false) {
 				});
 				await delay();
 			} else if (level == "hyundai_일반") {
-				count(BSA재제조, {
+				findOne_BSA재제조(BSA재제조, {
 					차종: {
 						$in: [
 							"OS",
@@ -625,7 +625,7 @@ async function 상세입력_시작(is재제조번호 = false) {
 				});
 				await delay();
 			} else if (level == "kia_보증") {
-				count(BSA재제조, {
+				findOne_BSA재제조(BSA재제조, {
 					차종: {
 						$in: [
 							"DE",
@@ -652,7 +652,7 @@ async function 상세입력_시작(is재제조번호 = false) {
 				});
 				await delay();
 			} else if (level == "hyundai_보증") {
-				count(BSA재제조, {
+				findOne_BSA재제조(BSA재제조, {
 					차종: {
 						$in: [
 							"OS",

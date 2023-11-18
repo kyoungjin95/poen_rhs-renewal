@@ -13,37 +13,29 @@ async function 세척_시작(is재제조 = false) {
 	}
 
 	if(is재제조 == false) {
-		count(BSA재제조, {관리번호 : _management_id.value });
+		find(BSA재제조, _management_id.value);
 		await delay();
-		if(BSA재제조_cnt > 0) {
-			find(BSA재제조, _management_id.value);
-			await delay();
 
+		if(BSA재제조_v != null) {
 			_재제조번호.value = BSA재제조_v.재제조번호;
 		} else {
 			_재제조번호.value = '';
 		}
 	} else {
-		count(BSA재제조, { 재제조번호 : _재제조번호.value });
+		findOne_BSA재제조(BSA재제조, { 재제조번호 : _재제조번호.value });
 		await delay();
-
-		if(BSA재제조_cnt > 0) {
-			find_BSA재제조(BSA재제조, { 재제조번호 : _재제조번호.value });
-			await delay();
-
+		console.log(BSA재제조_v);
+		if(BSA재제조_v != null) {
 			_management_id.value = BSA재제조_v.관리번호;
 		} else {
 			_management_id.value = '찾지 못하였습니다';
 		}
 	}
 
-	count(입고, { 관리번호 : _management_id.value });
+	find(입고, _management_id.value);
 	await delay();
 
-	if(입고_cnt > 0) {
-		find(입고, _management_id.value);
-		await delay();
-
+	if(입고_v != null) {
 		_구분.value = 입고_v.구분;
 		_차종.value = 입고_v.차종;
 		_품번.value = 입고_v.품번;
@@ -53,12 +45,10 @@ async function 세척_시작(is재제조 = false) {
 		_품번.value = '';
 	}
 
-	count(세척, { 관리번호 : _management_id.value });
+	find(세척, _management_id.value);
 	await delay();
 
-	if(세척_cnt > 0) {
-		find(세척, _management_id.value);
-		await delay();
+	if(세척_v != null) {
 		_공정입고일.value = 세척_v.공정입고일;
 		_공정완료일.value = 세척_v.공정완료일;
 		_어퍼케이스재사용가능.value = 세척_v.어퍼케이스재사용가능;
@@ -102,10 +92,10 @@ async function 세척_save() {
 		alert('저장 되었습니다');
 	}
 
-	count(BSA재제조, { 관리번호 : _management_id.value });
+	find(BSA재제조, _management_id.value );
 	await delay();
 
-	if(BSA재제조_cnt == 0) {
+	if(BSA재제조_v == null) {
 		var _doc = JSON.parse(JSON.stringify(BSA재제조_doc));
 		_doc.관리번호 = _management_id.value;
 		_doc.세척투입일 = _공정입고일.value;

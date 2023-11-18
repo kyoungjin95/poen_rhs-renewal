@@ -10,13 +10,10 @@ async function 특이사항_시작() {
 	console.log('load: ', _management_id.value);
 	if(_management_id.value == '' | _management_id.value == 'none') return;
 
-	count(특이사항, { 관리번호 : _management_id.value });
+	find(특이사항, _management_id.value);
 	await delay();
 
-	if(특이사항_cnt > 0) {
-		find(특이사항, _management_id.value);
-		await delay();
-		
+	if(특이사항_v != null) {
 		_특이사항.value = 특이사항_v.특이사항;
 	} else {
 		_특이사항.value = '';

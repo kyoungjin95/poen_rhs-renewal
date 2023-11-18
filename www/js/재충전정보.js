@@ -18,15 +18,10 @@ async function 재충전정보_시작() {
 	var 기준일 = year + '-' + month + '-' + day + 'T00:00:00Z'
 
 	console.log('검색 기준일:', 기준일, now);
-	count(BSA재제조, { 마지막충전일 : { $lte : 기준일, $ne : '' }, 공정단계 : { $ne : '출하' }});
+	find_BSA재제조(BSA재제조, { 마지막충전일 : { $lte : 기준일, $ne : '' }, 공정단계 : { $ne : '출하' }});
 	await delay();
 
-	if(BSA재제조_cnt > 0) {
-		find_BSA재제조(BSA재제조, { 마지막충전일 : { $lte : 기준일, $ne : '' }, 공정단계 : { $ne : '출하' }});
-		await delay();
-
-		tabledata = BSA재제조_v;
-	}
+	if(BSA재제조_v > 0) tabledata = BSA재제조_v;
 
 	var table_고품정보 = new Tabulator("#grid_재충전정보", {
 		layout: "resizableColumnFit",

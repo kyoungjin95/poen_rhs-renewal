@@ -100,9 +100,10 @@ async function change_label() {
 		_login_info.innerHTML = worker;
 	}
 
-	count(계정, { id: 'admin' });
+	findOne_계정(계정, { id: 'admin' });
 	await delay();
-	if(계정_cnt == 0 || level == 'admin') {
+
+	if(계정_v != null || 계정_v.level == 'admin') {
 		admin_btn.style.display = 'block';
 	}
 }

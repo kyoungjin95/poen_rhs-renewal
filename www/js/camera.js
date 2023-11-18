@@ -19,6 +19,7 @@ var camera_img13;
 var camera_img14;
 var camera_img15;
 var col;
+var result;
 var doc;
 
 function pic_load(e) {
@@ -110,7 +111,7 @@ async function pic_save() {
 	}
 
 	doc.관리번호 = mid.value.trim();
-	doc.pic1 = imgBase64Str;
+	doc.pic1 = imgBase64Str[0];
 	doc.pic2 = imgBase64Str[1];
 	doc.pic3 = imgBase64Str[2];
 	doc.pic4 = imgBase64Str[3];
@@ -159,61 +160,73 @@ function camera_공정입력_콤보박스(e) {
       			slot2.innerHTML = 'BSA QR 코드';
 
 			col = 입고_pic;
+			result = 입고_pic_v;
 			doc = JSON.parse(JSON.stringify(입고_pic_doc));
 			break;
 
 		case '세척' :
 			col = 세척_pic;
+			result = 세척_pic_v;
 			doc = JSON.parse(JSON.stringify(세척_pic_doc));
 			break;
 
 		case '기초검사' :
 			col = 기초검사_pic;
+			result = 기초검사_pic_v;
 			doc = JSON.parse(JSON.stringify(기초검사_pic_doc));
 			break;
 
 		case '분해조립' :
 			col = 분해조립_pic;
+			result = 분해조립_pic_v;
 			doc = JSON.parse(JSON.stringify(분해조립_pic_doc));
 			break;
 
 		case '성능검사' :
 			col = 성능검사_pic;
+			result = 성능검사_pic_v;
 			doc = JSON.parse(JSON.stringify(성능검사_pic_doc));
 			break;
 
 		case 'EOL' :
 			col = EOL_pic;
+			result = EOL_pic_v;
 			doc = JSON.parse(JSON.stringify(EOL_pic_doc));
 			break;
 
 		case '출하검사' :
 			col = 출하_pic;
+			result = 출하_pic_v;
 			doc = JSON.parse(JSON.stringify(출하_pic_doc));
 			break;
 
 		case '특이사항' :
 			col = 특이사항_pic;
+			result = 특이사항_pic_v;
 			doc = JSON.parse(JSON.stringify(특이사항_pic_doc));
 			break;
 
 		case '반품입고' :
 			col = 반품입고_pic;
+			result = 반품입고_pic_v;
 			doc = JSON.parse(JSON.stringify(반품입고_pic_doc));
 			break;
 
 		case '재출하' :
 			col = 재출하_pic;
+			result = 재출하_pic_v;
 			doc = JSON.parse(JSON.stringify(재출하_pic_doc));
 			break;
 
 		case '완전분해' :
 			col = 완전분해_pic;
+			result = 완전분해_pic_v;
 			doc = JSON.parse(JSON.stringify(완전분해_pic_doc));
 			break;
 
 		case '폐기' :
 			col = 폐기_pic;
+			result = 폐기_pic_v;
 			doc = JSON.parse(JSON.stringify(폐기_pic_doc));
 			break;
 
@@ -235,28 +248,25 @@ async function pic_loading() {
 	doc.관리번호 = mid.value;
 	console.log('check:', doc.관리번호);
 	console.log('col:', col);
-	count(col, { 관리번호: doc.관리번호});
+	find(col, doc.관리번호);
 	await delay();
 
-	if(doc_count > 0) {
-		find(col, doc.관리번호);
-		await delay();
-
-		camera_img1.src = 'data:image/;base64,' + find_array.pic1;
-		camera_img2.src = 'data:image/;base64,' + find_array.pic2;
-		camera_img3.src = 'data:image/;base64,' + find_array.pic3;
-		camera_img4.src = 'data:image/;base64,' + find_array.pic4;
-		camera_img5.src = 'data:image/;base64,' + find_array.pic5;
-		camera_img6.src = 'data:image/;base64,' + find_array.pic6;
-		camera_img7.src = 'data:image/;base64,' + find_array.pic7;
-		camera_img8.src = 'data:image/;base64,' + find_array.pic8;
-		camera_img9.src = 'data:image/;base64,' + find_array.pic9;
-		camera_img10.src = 'data:image/;base64,' + find_array.pic10;
-		camera_img11.src = 'data:image/;base64,' + find_array.pic11;
-		camera_img12.src = 'data:image/;base64,' + find_array.pic12;
-		camera_img13.src = 'data:image/;base64,' + find_array.pic13;
-		camera_img14.src = 'data:image/;base64,' + find_array.pic14;
-	        camera_img15.src = 'data:image/;base64,' + find_array.pic15;
+	if(result != null) {
+		camera_img1.src = 'data:image/;base64,' + result.pic1;
+		camera_img2.src = 'data:image/;base64,' + result.pic2;
+		camera_img3.src = 'data:image/;base64,' + result.pic3;
+		camera_img4.src = 'data:image/;base64,' + result.pic4;
+		camera_img5.src = 'data:image/;base64,' + result.pic5;
+		camera_img6.src = 'data:image/;base64,' + result.pic6;
+		camera_img7.src = 'data:image/;base64,' + result.pic7;
+		camera_img8.src = 'data:image/;base64,' + result.pic8;
+		camera_img9.src = 'data:image/;base64,' + result.pic9;
+		camera_img10.src = 'data:image/;base64,' + result.pic10;
+		camera_img11.src = 'data:image/;base64,' + result.pic11;
+		camera_img12.src = 'data:image/;base64,' + result.pic12;
+		camera_img13.src = 'data:image/;base64,' + result.pic13;
+		camera_img14.src = 'data:image/;base64,' + result.pic14;
+	        camera_img15.src = 'data:image/;base64,' + result.pic15;
 	} else {
 		camera_img1.src = '';
 		camera_img2.src = '';
