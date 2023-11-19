@@ -27,16 +27,12 @@ async function 구장재고조회_시작() {
 		await delay();
 
 		구장창고조회(구장재고_v);
-		await sleep(100);
 
 		품번별_수량집계(구장재고_v);
-		await sleep(100);
 
 		입고처별_수량집계(구장재고_v);
-		await sleep(100);
 
 		출고처별_수량집계(구장재고_v);
-		await sleep(100);
 	}
 }
 
@@ -83,16 +79,12 @@ async function 구장_수량집계_기간조회() {
 		await delay();
 
 		구장창고조회(구장재고_v);
-		await sleep(100);
 
 		품번별_수량집계(구장재고_v);
-		await sleep(100);
 
 		입고처별_수량집계(구장재고_v);
-		await sleep(100);
 
 		출고처별_수량집계(구장재고_v);
-		await sleep(100);
 	} else {
 		alert('검색 조건에 맞는 데이터가 없습니다');
 	}
