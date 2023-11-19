@@ -2,7 +2,7 @@ let print_doc_type3;
 
 async function 통신검사_시작() {
   loadPage("base/통신검사.html");
-  await sleep(1000);
+  await sleep(1);
 
   // 각각 통신검사, 진단결과 show, hide 버튼
   const firstBtn = document.querySelector("#communication .btn1");

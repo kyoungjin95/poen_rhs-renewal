@@ -59,7 +59,7 @@ if(worker == '' || worker == null) {
 		}
 		loadPage('base/dashboard.html');
 		flag_대시보드 = true;
-	}, 1000);
+	}, 1);
 }
 
 //alert('#공지사항#\n사원번호로 로그인 해주세요!!\n ID : 사원번호 , Password: 사원번호*\n\n사진입력시 버퍼크기로 제한으로 \n업로드 못하던 문제 해결을 위해 버퍼크기를 10배로 늘렸습니다');
@@ -123,7 +123,7 @@ var interval = setInterval(function() {
 	//if(flag_repeat_생산현황 == true) 생산현황_시작();
 //	if(flag_repeat_대시보드 == true) 대시보드_시작();
 //	if(flag_repeat_대기수량_현황 == true) 대기수량_현황_조회();
-//}, 1000 * 30);
+//}, 1 * 30);
 
 function stop_repeat() {
 	console.log('stop repeat');

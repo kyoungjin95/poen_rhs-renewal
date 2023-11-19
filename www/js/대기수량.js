@@ -57,7 +57,7 @@ async function 대기수량_현황_시작() {
 	if(대기수량Timer != undefined) clearIntervar(대기수량Timer);
 	대기수량Timer = setInterval(function() {
 		대기수량_현황_조회();
-	}, 1000 * 30);
+	}, 1 * 30);
 }
 
 async function 대기수량_현황_조회() {

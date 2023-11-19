@@ -1,6 +1,6 @@
 async function 출하검사성적서_시작() {
   loadPage("base/출하검사성적서.html");
-  await sleep(1000);
+  await sleep(1);
 
   _management_id.value = 관리번호;
   출하검사성적서_조회();

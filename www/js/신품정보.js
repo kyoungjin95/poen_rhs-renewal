@@ -143,7 +143,7 @@ function read_신품정보_func_csv() {
 
 					docs = [];
 
-					await sleep(1000);
+					await sleep(1);
 				} 
 			};
 			console.log('complete:', res.length);

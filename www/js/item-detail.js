@@ -30,7 +30,6 @@ async function 상세입력_시작(is재제조번호 = false) {
 	Busbars_count = 1;
 	BMA_count = 1;
 
-	await sleep(100);
 	if (is재제조번호 == false) { _management_id.value =
 			_management_id.value.trim();
 		if (_management_id.value == "조회를 누르세요")
@@ -246,7 +245,6 @@ async function 상세입력_시작(is재제조번호 = false) {
 				구분: "일반",
 			});
 			await delay();
-			await sleep(100);
 		} else if (level == "hyundai_일반") {
 			findOne_BSA재제조(BSA재제조, {
 				차종: {
@@ -290,7 +288,6 @@ async function 상세입력_시작(is재제조번호 = false) {
 				구분: "일반",
 			});
 			await delay();
-			await sleep(100);
 		} else if (level == "kia_보증") {
 			findOne_BSA재제조(BSA재제조, {
 				차종: {
@@ -318,7 +315,6 @@ async function 상세입력_시작(is재제조번호 = false) {
 				구분: "보증",
 			});
 			await delay();
-			await sleep(100);
 		} else if (level == "hyundai_보증") {
 			findOne_BSA재제조(BSA재제조, {
 				차종: {

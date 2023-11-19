@@ -15,7 +15,7 @@ async function EOL_시작(EOL_is재제조번호 = false) {
 	_eol_delete_all();
 	EOL_DTC_count = 0;
 
-	if(_management_id.value == '조회 버튼을 누르세요') _management_id.value =  관리번호;
+	if(_management_id.value == '조회를 누르세요') _management_id.value =  관리번호;
 
 	if(EOL_is재제조번호 == false) {
 		if(_management_id.value.length == 0) return;

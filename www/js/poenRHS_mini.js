@@ -1,5 +1,5 @@
 const DELAY = 20; 
-const DELAY_SYS = 1000; 
+const DELAY_SYS = 1; 
 const 거래확인서 = '거래확인서';
 const worker = '고객';
 const level = '영업팀';
@@ -121,7 +121,7 @@ async function count(col, query) {
 	doc_count = 0;
 	while(flag_arrivedMSG == false) {
 		check++;
-		if(check > 10000) check = 0;
+		if(check > 10) check = 0;
 		socket.emit('count', level, col, query, check);
 		await sleep(DELAY_SYS * 2);
 	}
@@ -168,7 +168,7 @@ async function find_거래확인서(col, query) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
-	if(check > 10000) check = 0;
+	if(check > 10) check = 0;
 
 	while(flag_arrivedMSG == false) {
 		console.log(worker, col, query, 거래확인서, check);

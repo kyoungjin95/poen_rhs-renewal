@@ -43,7 +43,7 @@ async function login() {
 				if(BSA재제조_cnt > 0) {
 					alert('재충전이 필요한 BSA가 있습니다.');
 				}
-			}, 1000);
+			}, 1);
 		} else if(worker == _id.value) {
 			worker = '';
 			level = '';

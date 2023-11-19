@@ -190,7 +190,7 @@ async function doo() {
 		],
 	});
 
-	await sleep(1000);
+	await sleep(1);
 	var sheets = {
 		'EOLvs출하검사' : true,
 	};

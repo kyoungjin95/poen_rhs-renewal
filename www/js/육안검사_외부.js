@@ -2,7 +2,7 @@ var print_doc_type1;
 
 async function 육안검사외부_시작() {
   loadPage("base/육안검사_외부.html");
-  await sleep(1000);
+  await sleep(1);
 
   const firstBtn = document.querySelector("#external .btn1");
   const secondBtn = document.querySelector("#external .btn2");

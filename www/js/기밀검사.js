@@ -1,6 +1,6 @@
 async function 기밀검사_시작() {
   loadPage("base/기밀검사.html");
-  await sleep(1000);
+  await sleep(1);
 
   _management_id.value = 관리번호;
   기밀검사_조회();

@@ -1,6 +1,6 @@
 async function 완료보고서_시작() {
   loadPage("base/완료보고서.html");
-  await sleep(1000);
+  await sleep(1);
 
   _management_id.value = 관리번호;
   await 완료보고서_조회();

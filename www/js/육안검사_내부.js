@@ -2,7 +2,7 @@ let print_doc_type2;
 
 async function 육안검사내부_시작() {
   loadPage("base/육안검사_내부.html");
-  await sleep(1000);
+  await sleep(1);
 
   // 각각 통신검사, 진단결과 show, hide 버튼
   const firstBtn = document.querySelector("#internal .btn1");

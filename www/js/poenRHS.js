@@ -2421,7 +2421,7 @@ async function count(col, query, option = '') {
 	if(socket == undefined) return
 	flag_arrivedMSG = false;
 	check++;
-	if(check > 10000) check = 0;
+	if(check > 10) check = 0;
 	socket.emit('count', level, col, query, check, option);
 }
 
@@ -2523,7 +2523,7 @@ async function find(col, management_id) {
 	flag_arrivedMSG = false;
 
 	check++;
-	if(check > 10000) check = 0;
+	if(check > 10) check = 0;
 
 	switch(col) {
 		case 'BSA재제조' :
@@ -2671,7 +2671,7 @@ async function findOne_기초보고서(col, query) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
-	if(check > 10000) check = 0;
+	if(check > 10) check = 0;
 	socket.emit('findOne', worker, col, query, { sort: { kind: 1}, projection: 기초보고서_ }, check);
 }
 
@@ -2679,7 +2679,7 @@ async function findOne_완료보고서(col, query) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
-	if(check > 10000) check = 0;
+	if(check > 10) check = 0;
 
 	socket.emit('findOne', worker, col, query, { sort: { kind: 1}, projection: 완료보고서_ }, check);
 }
@@ -2688,7 +2688,7 @@ async function findOne_계정(col, query) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
-	if(check > 10000) check = 0;
+	if(check > 10) check = 0;
 
 	socket.emit('findOne', worker, col, query, { sort: { kind: 1}, projection: 계정_ }, check);
 }
@@ -2697,7 +2697,7 @@ async function findOne_구장재고(col, query) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
-	if(check > 10000) check = 0;
+	if(check > 10) check = 0;
 
 	socket.emit('findOne', worker, col, query, { sort: { kind: 1}, projection: 구장재고_ }, check);
 }
@@ -2706,7 +2706,7 @@ async function findOne_신품정보(col, query) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
-	if(check > 10000) check = 0;
+	if(check > 10) check = 0;
 
 	socket.emit('findOne', worker, col, query, { sort: { kind: 1}, projection: 자재입출고_ }, check);
 }
@@ -2715,7 +2715,7 @@ async function findOne_고품정보(col, query) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
-	if(check > 10000) check = 0;
+	if(check > 10) check = 0;
 
 	socket.emit('findOne', worker, col, query, { sort: { kind: 1}, projection: 고품정보_ }, check);
 }
@@ -2724,7 +2724,7 @@ async function findOne_BSA재제조(col, query) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
-	if(check > 10000) check = 0;
+	if(check > 10) check = 0;
 
 	socket.emit('findOne', worker, col, query, { sort: { kind: 1}, projection: BSA재제조_ }, check);
 }
@@ -2733,7 +2733,7 @@ async function findOne_입고(col, query) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
-	if(check > 10000) check = 0;
+	if(check > 10) check = 0;
 
 	socket.emit('findOne', worker, col, query, { sort: { kind: 1}, projection: 입고_ }, check);
 }
@@ -2742,7 +2742,7 @@ async function findOne_세척(col, query) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
-	if(check > 10000) check = 0;
+	if(check > 10) check = 0;
 
 	socket.emit('findOne', worker, col, query, { sort: { kind: 1}, projection: 세척_ }, check);
 }
@@ -2751,7 +2751,7 @@ async function findOne_기초검사(col, query) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
-	if(check > 10000) check = 0;
+	if(check > 10) check = 0;
 
 	socket.emit('findOne', worker, col, query, { sort: { kind: 1}, projection: 기초검사_ }, check);
 }
@@ -2760,7 +2760,7 @@ async function findOne_분해조립(col, query) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
-	if(check > 10000) check = 0;
+	if(check > 10) check = 0;
 
 	socket.emit('findOne', worker, col, query, { sort: { kind: 1}, projection: 분해조립_ }, check);
 }
@@ -2769,7 +2769,7 @@ async function findOne_성능검사(col, query) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
-	if(check > 10000) check = 0;
+	if(check > 10) check = 0;
 
 	socket.emit('findOne', worker, col, query, { sort: { kind: 1}, projection: 성능검사_ }, check);
 }
@@ -2778,7 +2778,7 @@ async function findOne_EOL(col, query) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
-	if(check > 10000) check = 0;
+	if(check > 10) check = 0;
 
 	socket.emit('findOne', worker, col, query, { sort: { kind: 1}, projection: EOL_ }, check);
 }
@@ -2787,7 +2787,7 @@ async function findOne_출하정보(col, query) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
-	if(check > 10000) check = 0;
+	if(check > 10) check = 0;
 
 	socket.emit('findOne', worker, col, query, { sort: { kind: 1}, projection: 출하정보_ }, check);
 }
@@ -2796,7 +2796,7 @@ async function findOne_특이사항(col, query) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
-	if(check > 10000) check = 0;
+	if(check > 10) check = 0;
 
 	socket.emit('findOne', worker, col, query, { sort: { kind: 1}, projection: 특이사항_ }, check);
 }
@@ -2805,7 +2805,7 @@ async function findOne_교체부품상세(col, query) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
-	if(check > 10000) check = 0;
+	if(check > 10) check = 0;
 
 	socket.emit('findOne', worker, col, query, { sort: { kind: 1}, projection: 교체부품상세_ }, check);
 }
@@ -2815,7 +2815,7 @@ async function find_기초보고서(col, query) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
-	if(check > 10000) check = 0;
+	if(check > 10) check = 0;
 	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: 기초보고서_ }, check);
 }
 
@@ -2823,7 +2823,7 @@ async function find_완료보고서(col, query) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
-	if(check > 10000) check = 0;
+	if(check > 10) check = 0;
 
 	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: 완료보고서_ }, check);
 }
@@ -2832,7 +2832,7 @@ async function find_계정(col, query) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
-	if(check > 10000) check = 0;
+	if(check > 10) check = 0;
 
 	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: 계정_ }, check);
 }
@@ -2841,7 +2841,7 @@ async function find_구장재고(col, query) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
-	if(check > 10000) check = 0;
+	if(check > 10) check = 0;
 
 	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: 구장재고_ }, check);
 }
@@ -2850,7 +2850,7 @@ async function find_신품정보(col, query) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
-	if(check > 10000) check = 0;
+	if(check > 10) check = 0;
 
 	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: 자재입출고_ }, check);
 }
@@ -2859,7 +2859,7 @@ async function find_고품정보(col, query) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
-	if(check > 10000) check = 0;
+	if(check > 10) check = 0;
 
 	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: 고품정보_ }, check);
 }
@@ -2868,7 +2868,7 @@ async function find_BSA재제조(col, query) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
-	if(check > 10000) check = 0;
+	if(check > 10) check = 0;
 
 	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: BSA재제조_ }, check);
 }
@@ -2877,7 +2877,7 @@ async function find_입고(col, query) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
-	if(check > 10000) check = 0;
+	if(check > 10) check = 0;
 
 	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: 입고_ }, check);
 }
@@ -2886,7 +2886,7 @@ async function find_세척(col, query) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
-	if(check > 10000) check = 0;
+	if(check > 10) check = 0;
 
 	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: 세척_ }, check);
 }
@@ -2895,7 +2895,7 @@ async function find_기초검사(col, query) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
-	if(check > 10000) check = 0;
+	if(check > 10) check = 0;
 
 	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: 기초검사_ }, check);
 }
@@ -2904,7 +2904,7 @@ async function find_분해조립(col, query) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
-	if(check > 10000) check = 0;
+	if(check > 10) check = 0;
 
 	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: 분해조립_ }, check);
 }
@@ -2913,7 +2913,7 @@ async function find_성능검사(col, query) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
-	if(check > 10000) check = 0;
+	if(check > 10) check = 0;
 
 	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: 성능검사_ }, check);
 }
@@ -2922,7 +2922,7 @@ async function find_EOL(col, query) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
-	if(check > 10000) check = 0;
+	if(check > 10) check = 0;
 
 	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: EOL_ }, check);
 }
@@ -2931,7 +2931,7 @@ async function find_출하정보(col, query) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
-	if(check > 10000) check = 0;
+	if(check > 10) check = 0;
 
 	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: 출하정보_ }, check);
 }
@@ -2940,7 +2940,7 @@ async function find_특이사항(col, query) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
-	if(check > 10000) check = 0;
+	if(check > 10) check = 0;
 
 	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: 특이사항_ }, check);
 }
@@ -2949,7 +2949,7 @@ async function find_교체부품상세(col, query) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
-	if(check > 10000) check = 0;
+	if(check > 10) check = 0;
 
 	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: 교체부품상세_ }, check);
 }
