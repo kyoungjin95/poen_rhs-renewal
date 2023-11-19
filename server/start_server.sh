@@ -1,4 +1,4 @@
 export NODE_OPTIONS=--max_old_space_size=8192
-nohup /usr/local/bin/node /home/poen/poen/poen_rhs/server/server.js 
+nohup /usr/local/bin/node /home/poen/poen/poen_rhs/server/server.js &
 
 
