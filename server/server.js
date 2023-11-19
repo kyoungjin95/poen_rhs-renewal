@@ -106,10 +106,10 @@ io.on('connection', async function(socket) {
 		//logger.info('worker:'+ worker + ' insert col:' + col +'doc:'+ JSON.stringify(doc));
 	});
 
-	socket.on('count', async function(level, col, query, check) {
+	socket.on('count', async function(level, col, query, check, option = '') {
 		if(account.login == false && col != '계정' && col != '거래확인서') return;
 		const cnt = await count(col, query);
-		socket.emit('count_result', col, cnt, check);
+		socket.emit('count_result', col, cnt, check, option);
 		//logger.info('worker:'+ worker + ' count col:' + col +'query:'+ JSON.stringify(query));
 		//
 		if(account.login == false && col == '계정' && cnt > 0) {

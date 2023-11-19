@@ -254,7 +254,7 @@ async function 출하정보_save() {
 	if(_management_id.value.length == 0) return;
 	console.log('save: ', _management_id.value);
 
-	fine(BSA재제조, _management_id.value);
+	find(BSA재제조, _management_id.value);
 	await delay();
 
 	if(BSA재제조_v == null) {

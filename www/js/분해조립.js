@@ -622,7 +622,7 @@ async function 분해조립_save() {
 	find(BSA재제조, _management_id.value);
 	await delay();
 
-	if(BSA재제조_v != null) {
+	if(BSA재제조_v == null) {
 		var _doc = JSON.parse(JSON.stringify(BSA재제조_doc));
 		_doc.관리번호 = _management_id.value;
 		_doc.분해조립투입일 = _공정입고일.value;

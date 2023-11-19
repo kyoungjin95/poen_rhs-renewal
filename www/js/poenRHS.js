@@ -117,6 +117,21 @@ var 기초보고서_cnt = 0;
 var 완료보고서_cnt = 0;
 var 계정_cnt = 0;
 
+var option_입고_cnt = 0;
+var option_세척_cnt = 0;
+var option_기초검사_cnt = 0;
+var option_성능검사_cnt = 0;
+var option_EOL_cnt = 0;
+var option_출하정보_cnt = 0;
+var option_출하_cnt = 0;
+var option_입고당일_cnt = 0;
+var option_세척당일_cnt = 0;
+var option_기초검사당일_cnt = 0;
+var option_성능검사당일_cnt = 0;
+var option_EOL당일_cnt = 0;
+var option_출하정보당일_cnt = 0;
+var option_출하당일_cnt = 0;
+
 var 관리번호 = '';
 var 교체부품상세No = '교체부품상세1';
 var worker = '';
@@ -1796,7 +1811,7 @@ socket.on('insert_result', async function(id) {
 	flag_arrivedMSG = true;
 });
 
-socket.on('count_result', async function(col, count, rcv_check) {
+socket.on('count_result', async function(col, count, rcv_check, option = '') {
 	reset_count();
 
 	if(rcv_check != check) return;
@@ -1992,6 +2007,91 @@ socket.on('count_result', async function(col, count, rcv_check) {
 		default : 
 			doc_count = 0; 
 			doc_count = JSON.parse(JSON.stringify(count)); 
+			break;
+	}
+
+	switch(option) {
+		case '입고' : 
+			option_입고_cnt = JSON.parse(JSON.stringify(BSA재제조_cnt)); 
+			BSA재제조_cnt = 0;
+			break;
+
+		case '세척' : 
+			option_세척_cnt = JSON.parse(JSON.stringify(BSA재제조_cnt)); 
+			BSA재제조_cnt = 0;
+			break;
+
+		case '기초검사' : 
+			option_기초검사_cnt = JSON.parse(JSON.stringify(BSA재제조_cnt)); 
+			BSA재제조_cnt = 0;
+			break;
+
+		case '분해조립' : 
+			option_분해조립_cnt = JSON.parse(JSON.stringify(BSA재제조_cnt)); 
+			BSA재제조_cnt = 0;
+			break;
+
+		case '성능검사' : 
+			option_성능검사_cnt = JSON.parse(JSON.stringify(BSA재제조_cnt)); 
+			BSA재제조_cnt = 0;
+			break;
+
+		case 'EOL' : 
+			option_EOL_cnt = JSON.parse(JSON.stringify(BSA재제조_cnt)); 
+			BSA재제조_cnt = 0;
+			break;
+
+		case '출하정보' :
+			option_출하정보_cnt = JSON.parse(JSON.stringify(BSA재제조_cnt)); 
+			BSA재제조_cnt = 0;
+			break;
+
+		case '출하' :
+			option_출하_cnt = JSON.parse(JSON.stringify(BSA재제조_cnt)); 
+			BSA재제조_cnt = 0;
+			break;
+
+		case '입고당일' : 
+			option_입고당일_cnt = JSON.parse(JSON.stringify(BSA재제조_cnt)); 
+			BSA재제조_cnt = 0;
+			break;
+
+		case '세척당일' : 
+			option_세척당일_cnt = JSON.parse(JSON.stringify(BSA재제조_cnt)); 
+			BSA재제조_cnt = 0;
+			break;
+
+		case '기초검사당일' : 
+			option_기초검사당일_cnt = JSON.parse(JSON.stringify(BSA재제조_cnt)); 
+			BSA재제조_cnt = 0;
+			break;
+
+		case '분해조립당일' : 
+			option_분해조립당일_cnt = JSON.parse(JSON.stringify(BSA재제조_cnt)); 
+			BSA재제조_cnt = 0;
+			break;
+
+		case '성능검사당일' : 
+			option_성능검사당일_cnt = JSON.parse(JSON.stringify(BSA재제조_cnt)); 
+			BSA재제조_cnt = 0;
+			break;
+
+		case 'EOL당일' : 
+			option_EOL당일_cnt = JSON.parse(JSON.stringify(BSA재제조_cnt)); 
+			BSA재제조_cnt = 0;
+			break;
+
+		case '출하정보당일' :
+			option_출하정보당일_cnt = JSON.parse(JSON.stringify(BSA재제조_cnt)); 
+			BSA재제조_cnt = 0;
+			break;
+
+		case '출하당일' :
+			option_출하당일_cnt = JSON.parse(JSON.stringify(BSA재제조_cnt)); 
+			BSA재제조_cnt = 0;
+			break;
+
+		default:
 			break;
 	}
 
@@ -2317,12 +2417,12 @@ async function aggregate() {
 	socket.emit('aggregate', level);
 }
 
-async function count(col, query) {
+async function count(col, query, option = '') {
 	if(socket == undefined) return
 	flag_arrivedMSG = false;
 	check++;
 	if(check > 10000) check = 0;
-	socket.emit('count', level, col, query, check);
+	socket.emit('count', level, col, query, check, option);
 }
 
 async function insert(col, doc) {
