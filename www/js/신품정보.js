@@ -119,7 +119,7 @@ function read_신품정보_func_csv() {
 	_재고관리_csv.addEventListener('input', function(event) {
 		const target = event.target;
 		const files = target.files;
-		const file = files;
+		const file = files[0];
 
 		const reader = new FileReader();
 		reader.addEventListener('load', async function() {
@@ -148,6 +148,7 @@ function read_신품정보_func_csv() {
 			};
 			console.log('complete:', res.length);
 		});
+		console.log(file);
 		reader.readAsText(file);
 	});
 }
