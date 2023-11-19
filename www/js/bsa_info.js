@@ -53,9 +53,8 @@ async function 재제조현황_시작() {
 
 	if(worker == '') return;
 	while(document.getElementById('폐기_pic4') == undefined) {
-		await sleep(120);
+		await sleep(1);
 	}
-	await sleep(10);
 
 	//Update filters on value change
 	document.getElementById("filter-field").addEventListener("change", updateFilter);
