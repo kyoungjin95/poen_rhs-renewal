@@ -356,7 +356,7 @@ async function EOL_QR_Label() {
 	find(BSA재제조, 관리번호);
 	await delay();
 
-	sn = find_array.재제조번호;
+	sn = BSA재제조_v.재제조번호;
 
 	qrcode = new QRCode(document.getElementById('_QR_Code'), {
 		width: 100,
@@ -364,18 +364,13 @@ async function EOL_QR_Label() {
 	});
 
 	var 배터리팩_제조번호 = prompt('배터리팩 제조번호를 입력하세요');
-	console.log(배터리팩_제조번호 + ' '+ find_array.재제조번호);
-	qrcode.makeCode(배터리팩_제조번호 + ' '+ find_array.재제조번호);
+	qrcode.makeCode(배터리팩_제조번호 + ' '+ sn);
 	let qrcode_base64 = qrcode._oDrawing._elCanvas.toDataURL("image/png");
 	console.log(qrcode_base64);
 
-	document.getElementById('_QR_Label').innerHTML = '<html><head></head><body style="color:black"><div class=\'HHB\' align=\'left\' width=\'264\'><h5>배터리 시스템 어셈블리</h5></div><div class=\'HHB\'><h6>(Battery System Assembly)</h6></div><div><br/></div><div class=\'HHB\' align=\'left\'><h5>R' + find_array.품번 + '</h5></div><div align=\'center\' width=\'264\'><img src=\'' + qrcode_base64 + '\'></center></div><div><br/></div><div class=\'HHM\' align=\'center\'><h5>' + find_array.재제조번호  + '</h5></div><div align=\'right\'><img src=\'' + hyundai_logo  + '\'></div></body></html>';
-
-	html2canvas(document.getElementById('_QR_Label'), { width : 264, height : 302 }).then(canvas => {
-		html_string = '<html><head></head><body><img src=' + canvas.toDataURL('image/png') + '\'></body></html>';
-
-		make_qr_label(html_string);
-	});	
+	document.getElementById('_QR_Label').innerHTML = '<div class=\'HHB\' align=\'left\' width=\'264\'><h5>배터리 시스템 어셈블리</h5></div><div class=\'HHB\'><h6>(Battery System Assembly)</h6></div><div><br/></div><div class=\'HHB\' align=\'left\'><h5>R' + BSA재제조_v.품번 + '</h5></div><div align=\'center\' width=\'264\'><img src=\'' + qrcode_base64 + '\'></center></div><div><br/></div><div class=\'HHM\' align=\'center\'><h5>' + BSA재제조_v.재제조번호  + '</h5></div><div align=\'right\'><img src=\'' + hyundai_logo  + '\'></div>';
+	
+	pdf();
 }
 
 function saveAs(uri, filename) { 
@@ -410,4 +405,45 @@ function EOL_카메라시작() {
 	EOL_SAVE();
 
 	EOL_사진촬영(_management_id.value);
+}
+
+
+function pdf() {
+	var _QR_Label = document.getElementById("_QR_Label");
+	var _width = 4000;
+	var _height = 2000;
+
+	html2canvas(_QR_Label, {
+		width: (_width * window.innerWidth) / 1920,
+		height: (_height * window.innerHeight) / 1080,
+	}).then((canvas) => {
+		var data = canvas.toDataURL();
+		var canvas = document.getElementById("_canvas");
+		var ctx = canvas.getContext("2d");
+		var img = new Image();
+		img.src = data;
+		img.onload = function () {
+			ctx.drawImage(img, 1920, 1080);
+		};
+
+		canvas.width = _width / 10;
+		canvas.height = _height / 10;
+
+		var docDefinition = {
+			content: [
+				{
+					image: data,
+					width: 1920,
+					height: 1080,
+				},
+			],
+			pageSize: {
+				width: 2.75591 * 72,
+				height : 3.14961 * 72
+			},
+			pageOrientation: "portrait",
+		};
+		pdfMake.createPdf(docDefinition).download("거래확인서.pdf");
+	});
+	console.log("file name:", "거래확인서.pdf");
 }
