@@ -380,8 +380,8 @@ function _통신검사_릴레이구동_콤보박스(e) {
 function _기초검사_add_DTC_Code() {
 	var oCurrentRow;
 	var tb = document.getElementById('tb');
-	var rowIcnt = tb.rows.length - 15;
-	var code_no = rowIcnt - 19;
+	var rowIcnt = tb.rows.length - 16;
+	var code_no = rowIcnt - 18;
 	console.log('row count:', rowIcnt);
 	console.log('code No:', code_no);
 	if(rowIcnt > 31) return false;
@@ -396,7 +396,7 @@ function _기초검사_add_DTC_Code() {
 
 function _기초검사_delete_row(index) {
 	var tb = document.getElementById('tb');
-	var rowIcnt = tb.rows.length - 15;
+	var rowIcnt = tb.rows.length - 17;
 
 	console.log('index:', index, 'rowIcnt:', rowIcnt);
 	if(index == rowIcnt) tb.deleteRow(index);
