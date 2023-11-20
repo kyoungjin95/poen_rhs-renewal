@@ -1,24 +1,27 @@
 async function login() {
 	const _id = document.getElementById('_id');
 	const _passwd = document.getElementById('_passwd');
+	const _login_btn = document.getElementById('login_btn');
+
 	if(_id.value == '' || _passwd.value == '') return;
-	
+
 	const hash = CryptoJS.MD5(_passwd.value); 	
 
 	count(계정, { id: _id.value, passwd: hash.toString() });
 	await delay();
-
-	if(계정_cnt > 0) {
+	if(doc_count > 0) {
 		if(worker == '') {
 			worker = _id.value;
-			find_계정(계정, { id: _id.value })
-			await delay();
-			console.log('teddst:', 계정_v);
+			findOne_계정(계정, { id: _id.value })
+			await delay()
+			console.log('test:', find_array);
 			level = 계정_v.level;
 			//sessionStorage.setItem('worker',  worker);
 			sessionStorage.setItem('level',  level);
 
 			alert('로그인 성공');
+
+			const _login_btn = document.getElementById('login_btn');
 
 			setTimeout(async function() {
 				loadPage('base/dashboard.html');
@@ -39,10 +42,11 @@ async function login() {
 				count(BSA재제조, { 마지막충전일 : { $lte : 기준일, $ne : '' }, 공정단계 : { $ne : '출하'}});
 				await delay();
 
-				if(BSA재제조_cnt > 0) {
+				console.log('recharge_count: ', doc_count);
+				if(doc_count > 0) {
 					alert('재충전이 필요한 BSA가 있습니다.');
 				}
-			}, 1);
+			}, 1000);
 		} else if(worker == _id.value) {
 			worker = '';
 			level = '';
@@ -50,7 +54,6 @@ async function login() {
 			admin_btn.style.display = 'none';
 			부품재고_btn.style.display = 'none';
 			const _login_info = document.getElementById('login_info');
-			alert('로그아웃 성공');
 		}
 		change_label();
 	} else {
@@ -59,9 +62,14 @@ async function login() {
 }
 
 async function change_label() {
+	while(document.getElementById('login_label') == undefined) {
+		await sleep(DELAY);
+	}
+	await sleep(10);
 	const _label = document.getElementById('login_label');
 	const _login_btn = document.getElementById('login_btn');
 	const _login_info = document.getElementById('login_info');
+	_label.innerHTML = 'Login';
 
 	if(_login_btn.innerHTML == '로그아웃') {
 		sessionStorage.clear();
@@ -94,10 +102,9 @@ async function change_label() {
 		_login_info.innerHTML = worker;
 	}
 
-	findOne_계정(계정, { id: 'admin' });
+	count(계정, { id: 'admin' });
 	await delay();
-
-	if(계정_v != null || 계정_v.level == 'admin') {
+	if(doc_count == 0 || level == 'admin') {
 		admin_btn.style.display = 'block';
 	}
 }
