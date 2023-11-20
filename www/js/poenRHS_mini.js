@@ -1,5 +1,6 @@
 const DELAY = 1; 
 const 거래확인서 = '거래확인서';
+const 제공동의서 = '제공동의서';
 const worker = '고객';
 const level = '영업팀';
 
@@ -50,6 +51,33 @@ const 거래확인서_ = {
 	day : 1
 };
 
+const 제공동의서_doc = {
+	날짜ID : '',
+	ok1 : '',
+	no1: '',
+	ok2 : '',
+	no2 : '',
+	year : '',
+	month : '',
+	day : '',
+	성명 : '',
+	서명 : ''
+}
+
+const 제공동의서_ = {
+	_id : 0,
+	날짜ID : 1,
+	ok1 : 1,
+	no1: 1,
+	ok2 : 1,
+	no2 : 1,
+	year : 1,
+	month : 1,
+	day : 1,
+	성명 : 1,
+	서명 : 1
+}
+
 var doc_count = 0;
 var update_count = 0;
 var insert_count = 0;
@@ -69,26 +97,21 @@ socket.on('connect', function() {
 socket.on('insert_result', async function(id) {
 	insert_id = id;
 	flag_arrivedMSG = true;
-	await sleep(DELAY);
 });
 
-socket.on('count_result', async function(count, rcv_check) {
+socket.on('count_result', async function(col, count, rcv_check) {
   	doc_count = 0;
-	if(rcv_check != check) return;
-	doc_count = JSON.parse(JSON.stringify(count));
-
+	doc_count = count;
 	flag_arrivedMSG = true;
-	await sleep(DELAY);
 });
 
-socket.on('find_result', async function(result, rcv_check) {
+socket.on('find_result', async function(col, result, rcv_check) {
 	find_array = [];
 	if(rcv_check != check) return;
 
 	find_array = JSON.parse(JSON.stringify(result));
   
 	flag_arrivedMSG = true;
-	await sleep(DELAY);
 });
 
 socket.on('update_result', async function(result) {
@@ -99,14 +122,12 @@ socket.on('update_result', async function(result) {
 	insert_count = result.upsertedCount;
 
 	flag_arrivedMSG = true;
-	await sleep(DELAY);
 });
 
 socket.on('delete_result', async function(count) {
 	console.log('delete result count: ', count);
 	delete_count = count;
 	flag_arrivedMSG = true;
-	await sleep(DELAY);
 });
 
 socket.on('disconnect', function() {
@@ -118,12 +139,10 @@ async function count(col, query) {
 	await sleep(DELAY);
 	flag_arrivedMSG = false;
 	doc_count = 0;
-	while(flag_arrivedMSG == false) {
-		check++;
-		if(check > 10) check = 0;
-		socket.emit('count', level, col, query, check);
-		await sleep(1);
-	}
+	check++;
+	if(check > 10) check = 0;
+	socket.emit('count', level, col, query, check);
+	console.log('#########################');
 }
 
 async function insert(col, doc) {
@@ -144,24 +163,28 @@ async function update_거래확인서(col, doc) {
 	await sleep(DELAY);
 
 	flag_arrivedMSG = false;
-	while(flag_arrivedMSG == false) {
-		console.log('worker :', worker);
-		console.log('doc :', doc);
+	console.log('worker :', worker);
+	console.log('doc :', doc);
 
+	socket.emit('update', worker, col, { 날짜ID: doc.날짜ID }, {$set: doc});
+}
 
-		socket.emit('update', worker, col, { 날짜ID: doc.날짜ID }, {$set: doc});
-		await sleep(1);
-	}
+async function update_제공동의서(col, doc) {
+	if(socket == undefined) return;
+	await sleep(DELAY);
+
+	flag_arrivedMSG = false;
+	console.log('worker :', worker);
+	console.log('doc :', doc);
+
+	socket.emit('update', worker, col, { 날짜ID: doc.날짜ID }, {$set: doc});
 }
 
 async function deleteOne(col, date) {
 	if(socket == undefined) return;
 	await sleep(DELAY);
 	flag_arrivedMSG = false;
-	while(flag_arrivedMSG == false) {
-		socket.emit('delete', worker, col, { date: date});
-		await sleep(1);
-	}
+	socket.emit('delete', worker, col, { date: date});
 }
 
 async function find_거래확인서(col, query) {
@@ -170,11 +193,20 @@ async function find_거래확인서(col, query) {
 	check++;
 	if(check > 10) check = 0;
 
-	while(flag_arrivedMSG == false) {
-		console.log(worker, col, query, 거래확인서, check);
-		socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: 거래확인서_ }, check);
-		await sleep(1);
-	}
+	console.log(worker, col, query, 거래확인서, check);
+	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: 거래확인서_ }, check);
+}
+
+async function find_제공동의서(col, query) {
+	console.log('=====================');
+
+	if(socket == undefined) return;
+	flag_arrivedMSG = false;
+	check++;
+	if(check > 10) check = 0;
+
+	console.log(worker, col, query, 제공동의서, check);
+	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: 제공동의서_ }, check);
 }
 
 function sleep(ms) {
