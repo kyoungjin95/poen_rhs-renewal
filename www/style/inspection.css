@@ -1,0 +1,304 @@
+table.all {
+  width: 100%;
+  border: none;
+}
+table.base {
+  width: 100%;
+  border-collapse: collapse;
+}
+table td.base,
+table td.base2,
+table td.base3 {
+  padding: 0.1vw;
+  font-size: 0.8vw;
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+  text-align: center;
+  border-collapse: collapse;
+  height: 2.4vw;
+}
+table td.base2 {
+  height: 3vw;
+}
+table td.base3 {
+  height: 4vw;
+}
+table td.base_left {
+  padding: 0.5vw;
+  font-size: 0.8vw;
+  background-color: white;
+  color: black;
+  text-align: left;
+  border: 1px solid black;
+  height: 1vh;
+}
+.base_header,
+.base_header2,
+.base_header3 {
+  padding: 0.03vw;
+  font-size: 0.8vw;
+  color: black;
+  border: 1px solid black;
+  text-align: center;
+  font-weight: bold;
+  height: 1vw;
+}
+.base_header {
+  background: #c8e7a7;
+}
+.base_header2 {
+  padding: 5px;
+  background: #92d050;
+}
+.base_header3 {
+  background: #fff;
+}
+table td.result_header {
+  background-color: #92d050;
+  color: black;
+  font-size: 1.2vw;
+  font-weight: bold;
+  border: 1px solid black;
+  width: 10vw;
+}
+table td.result,
+table.bottom,
+table td.bottom {
+  font-size: 0.8vw;
+  background-color: white;
+  color: black;
+}
+table td.result {
+  border: 1px solid black;
+  width: 100%;
+  font-weight: bold;
+}
+table.bottom,
+table td.bottom {
+  padding: 0.05vw;
+  border: none;
+}
+table.bottom {
+  width: 100%;
+}
+/* ========================================
+  검사 */
+.check-all table {
+  border: 1px solid #000;
+  font-size: 0.9em;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+  width: 100%;
+  max-width: 100%;
+  border-collapse: collapse;
+  border-radius: 5px;
+  table-layout: fixed;
+  font-family: Arial, Helvetica, sans-serif;
+}
+/* .check-all table caption {
+  text-indent: -9999px;
+  overflow: hidden;
+  height: 2px;
+  margin-top: -2px;
+  margin-bottom: 20px;
+} */
+.check-all h3 {
+  margin: 10px 0 20px;
+}
+.check-all thead {
+  font-weight: bold;
+  background: #92d050;
+}
+
+.check-all td,
+.check-all th {
+  padding: 1em 0.5em;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 1vw;
+  color: #000;
+  border: 1px solid #000;
+}
+
+.check-all td {
+  border-bottom: 1px solid rgba(0, 0, 0);
+  background: #fff;
+  width: 100%;
+  border-radius: 0;
+}
+
+.check-all .col_1 {
+  width: 10%;
+}
+.check-all .result {
+  background: #fcd770;
+  text-align: center;
+}
+.check-all .result-vlaue {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+.check-all .result-vlaue.r1 {
+  color: blue;
+}
+.check-all .result-vlaue.r2 {
+  color: red;
+}
+.check-all .result-vlaue.r3 {
+  color: black;
+}
+
+/* _기밀검사 */
+#_기밀검사 .td1 {
+  text-align: left;
+  padding-left: 6vw;
+}
+#_기밀검사 .td1 span {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+#_기밀검사 .col_2,
+#_기밀검사 .col_4 {
+  width: 8%;
+}
+#_기밀검사 .photo {
+  height: 20vh;
+}
+/* _CAN 통신검사 - G-SCAN 진단결과*/
+#_진단결과 .photo,
+#_통신검사 .photo {
+  height: 26vh;
+}
+/* _CAN 통신검사*/
+#_통신검사 .photo {
+  height: 500px;
+}
+#_통신검사 .s-table {
+  margin-top: 20px;
+}
+#_통신검사 .s-table td {
+  height: 10px;
+  padding: 5px;
+}
+#_통신검사 .s-table .result-vlaue {
+  font-size: 1vw;
+}
+/* _육안검사_내,외부 */
+#external .btn,
+#internal .btn,
+#communication .btn {
+  margin: 20px 0;
+}
+#_육안검사내부1 .title,
+#_육안검사외부1 .title {
+  font-weight: bold;
+  background: #92d050;
+}
+#_육안검사내부1 p {
+  padding-top: 3px;
+}
+#_육안검사내부1 img {
+  margin-top: 10px;
+}
+#_육안검사내부1 .result {
+  border-left-color: transparent;
+  background: #fff;
+}
+
+#_육안검사외부2 em,
+#_육안검사내부2 em {
+  color: red;
+  font-style: normal;
+}
+#_육안검사외부2 td,
+#_육안검사내부2 td {
+  height: 26vh;
+}
+#_육안검사외부2 img,
+#_육안검사내부2 img {
+  border: none !important;
+}
+/* 출하검사성적서 */
+
+#_출하검사성적서 .subject {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#_출하검사성적서 .subject .sub-text {
+  width: 80%;
+}
+#_출하검사성적서 .subject .logo {
+  width: 10%;
+  height: 10%;
+}
+#_출하검사성적서 .subject .logo img {
+  width: 100%;
+  height: 100%;
+}
+
+#_출하검사성적서 table {
+  border: 3px solid black;
+}
+
+#_출하검사성적서 th {
+  padding: 6px 0;
+}
+#_출하검사성적서 .another1 td {
+  padding: 2em;
+}
+#_출하검사성적서 .another2 td {
+  padding: 0.5em;
+}
+#_출하검사성적서 .t-left {
+  text-align: left;
+}
+#_출하검사성적서 .notice {
+  padding: 0.2em 0.5em;
+}
+#_출하검사성적서 .notice p {
+  font-size: 1vw;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+}
+/* 완료보고서 */
+.color-blue {
+  color: blue !important;
+}
+.weight-bold {
+  font-weight: bold;
+}
+/* media query */
+@media screen and (min-width: 2000px) {
+  .Login .container {
+    max-width: 90%;
+  }
+}
+@media screen and (max-width: 1023px) {
+  .select-menu {
+    width: 18vw;
+  }
+}
+@media screen and (max-width: 767px) {
+  #_통신검사 .photo {
+    height: 300px;
+  }
+  #_통신검사 .s-table {
+    margin-top: 5px;
+  }
+  #_통신검사 .photo img {
+    width: 100%;
+    height: 60% !important;
+  }
+  .options .option {
+    height: 30px;
+    line-height: 30px;
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .select-menu {
+    width: 20vw;
+  }
+}

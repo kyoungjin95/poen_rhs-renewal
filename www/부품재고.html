@@ -1,106 +1,120 @@
-<html>
-	<head>
-		<title>부품재고</title>
-		<meta charset="UTF-8">
-		<link rel="stylesheet" href="base/style/공정.css">
-	</head>
-	<body>
-		<div class="부품재고">
-			<div>
-				<center>
-					<div>
-						<div>
-							<select id="new_filter-field">
-								<option></option>
-								<option value="QR">QR</option>
-								<option value="날짜">날짜</option>
-								<option value="구분">구분</option>
-								<option value="차종">차종</option>
-								<option value="품명">품명</option>
-								<option value="품번">품번</option>
-								<option value="수량">수량</option>
-								<option value="LotNo">LotNo</option>
-								<option value="비고">비고</option>
-								<option value="세척투입일">세척투입일</option>
-								<option value="사용관리번호">사용관리번호</option>
-							</select>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>부품 재고</title>
+    <link rel="stylesheet" href="base/style/공정.css" />
+  </head>
+  <body>
+    <div class="부품재고">
+      <div class="process">
+        <div class="process__tit">
+          <label for="grid_신품재고">신품 재고</label>
+        </div>
+        <div class="gather-filter">
+          <select id="new_filter-field">
+            <option></option>
+            <option value="QR">QR</option>
+            <option value="날짜">날짜</option>
+            <option value="구분">구분</option>
+            <option value="차종">차종</option>
+            <option value="품명">품명</option>
+            <option value="품번">품번</option>
+            <option value="수량">수량</option>
+            <option value="LotNo">LotNo</option>
+            <option value="비고">비고</option>
+            <option value="세척투입일">세척투입일</option>
+            <option value="사용관리번호">사용관리번호</option>
+          </select>
 
-							<select id="new_filter-type">
-								<option value="=">=</option>
-								<option value="<"><</option>
-								<option value="<="><=</option>
-								<option value=">">></option>
-								<option value=">=">>=</option>
-								<option value="!=">!=</option>
-								<option value="like">like</option>
-							</select>
+          <select id="new_filter-type">
+            <option value="=">=</option>
+            <option value="<"><</option>
+            <option value="<="><=</option>
+            <option value=">">></option>
+            <option value=">=">>=</option>
+            <option value="!=">!=</option>
+            <option value="like">like</option>
+          </select>
 
-							<input id="new_filter-value" type="text" placeholder="value to filter">
+          <input
+            id="new_filter-value"
+            type="text"
+            placeholder="value to filter"
+          />
 
-							<button id="new_filter-clear">Clear Filter</button>
-						</div>
-						<div>
-							<label for='grid_신품재고'><b>신품 재고</b></label>
-						</div>
-						<div id='grid_신품재고'>
-						</div>
-						<div>
-							<div style='float:left; margin: 0 1vw'>
-								<button onClick="flag_신품정보 = true; loadPage('base/신품정보.html');">신품정보 등록 및 수정</button>
-							</div>
-							<div style='float:left'>
-								<button onClick='신품정보_삭제();'>삭제</button>
-								<p id='신품_바코드'></p>
-							</div>
-						</div>
-					</div>
-					</br></br></br>
-					<div>
-						<div>
-							<select id="old_filter-field">
-								<option></option>
-								<option value="QR">QR</option>
-								<option value="관리번호">관리번호</option>
-								<option value="품명">품명</option>
-								<option value="번호">번호</option>
-								<option value="폐기여부">폐기여부</option>
-								<option value="사용여부">사용여부</option>
-								<option value="사용_관리번호">사용 관리번호</option>
-							</select>
+          <button id="new_filter-clear">Clear Filter</button>
+        </div>
+        <div id="grid_신품재고"></div>
+        <div class="pb">
+          <p id="신품_바코드"></p>
+          <div class="process__btn">
+            <div class="process__btns">
+              <button
+                onClick="flag_신품정보 = true; loadPage('base/신품정보.html');"
+              >
+                신품정보 등록 및 수정
+              </button>
+              <button onClick="신품정보_삭제();" class="delete__bsa">
+                삭제
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="process">
+        <div class="process__tit">
+          <label for="grid_고품재고">고품 재고</label>
+        </div>
+        <div class="gather-filter">
+          <select id="old_filter-field">
+            <option></option>
+            <option value="QR">QR</option>
+            <option value="관리번호">관리번호</option>
+            <option value="품명">품명</option>
+            <option value="번호">번호</option>
+            <option value="폐기여부">폐기여부</option>
+            <option value="사용여부">사용여부</option>
+            <option value="사용_관리번호">사용 관리번호</option>
+          </select>
 
-							<select id="old_filter-type">
-								<option value="=">=</option>
-								<option value="<"><</option>
-								<option value="<="><=</option>
-								<option value=">">></option>
-								<option value=">=">>=</option>
-								<option value="!=">!=</option>
-								<option value="like">like</option>
-							</select>
+          <select id="old_filter-type">
+            <option value="=">=</option>
+            <option value="<"><</option>
+            <option value="<="><=</option>
+            <option value=">">></option>
+            <option value=">=">>=</option>
+            <option value="!=">!=</option>
+            <option value="like">like</option>
+          </select>
 
-							<input id="old_filter-value" type="text" placeholder="value to filter">
+          <input
+            id="old_filter-value"
+            type="text"
+            placeholder="value to filter"
+          />
 
-							<button id="old_filter-clear">Clear Filter</button>
-						</div>
-						<div>
-							<label for='grid_고품재고'><b>고품 재고</b></label>
-						</div>
-						<div id='grid_고품재고'>
-						</div>
-						<div style='float:left; margin: 0 1vw'>
-							<button onClick='고품정보_삭제();'>삭제</button>
-							<p id='고품_QR'></p>
-						</div>
-						<div style='float:left; margin: 0 1vw'>
-							<button onClick='폐기품출고();'>폐기품 출고</button>
-						</div>
-						<div style='float:left; margin: 0 1vw'>
-							<button onClick='폐기품출고취소();'>폐기품 출고 취소</button>
-						</div>
-						
-					</div>
-				</center>
-			</div>
-		</div>
-	</body>
+          <button id="old_filter-clear">Clear Filter</button>
+        </div>
+        <div id="grid_고품재고"></div>
+        <div class="pb">
+          <p id="고품_QR" class="id__name"></p>
+          <div class="process__btn">
+            <div class="process__btns">
+              <button onClick="고품정보_삭제();" class="delete__bsa">
+                삭제
+              </button>
+              <button onClick="폐기품출고();" class="delivery__waste">
+                폐기품 출고
+              </button>
+              <button onClick="폐기품출고취소();" class="cancle__waste">
+                폐기품 출고 취소
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>

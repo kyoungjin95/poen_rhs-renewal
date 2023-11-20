@@ -1,61 +1,81 @@
-
-<html>
-	<head>
-		<title>품번별 수량 현황</title>
-		<meta charset="UTF-8">
-		<link rel="stylesheet" href="base/style/공정.css">
-	</head>
-	<body>
-		<div>
-			<h1 style="text-align: center;">품번별 수량 현황</h1>
-			<center>
-				<div>
-					<button onClick='수량집계_year();'>Year</button>
-					<button onClick='수량집계_month();'>Month</button>
-				</div>
-				<div>
-					<input type="date" id="_검색일_from" size="40" value="0000-00-00" max="240-12-4" required>&nbsp; ~ &nbsp;
-					<input type="date" id="_검색일_to" size="40" value="0000-00-00" max="240-12-4" required>&nbsp;
-					<button onClick="수량집계_기간조회();">조회</button>
-				</div>
-				<div>
-					<div>
-						<input type="radio" id="_all" name="구분" value="all" checked/>
-						<label for="huey">All</label>
-						<input type="radio" id="_일반" name="구분" value="일반"/>
-						<label for="huey">일반</label>
-						<input type="radio" id="_보증" name="구분" value="보증"/>
-						<label for="huey">보증</label>
-					</div>
-				</div>
-				<br/>
-				<br/>
-				<div>
-					<label for='grid_BSA집계'><b><h2>품번별 BSA 집계</h2></b></label>
-					<div id='grid_BSA집계'></div>
-				</div>
-				<br/>
-				<br/>
-				<div>
-					<label for='grid_BMA집계'><b><h2>품번별 폐기 BMA 집계</h2></b></label>
-					<div id='grid_BMA집계'></div>
-				</div>
-				<br/>
-				<br/>
-				<div>
-					<label for='grid_자재집계'><b><h2>품번별 고품 자재 집계</h2></b></label>
-					<div id='grid_자재집계'></div>
-				</div>
-				<br/>
-				<br/>
-				<div>
-					<label for='grid_부품집계'><b><h2>품번별 부재료 집계</h2></b></label>
-					<div id='grid_부품집계'></div>
-				</div>
-				<div>
-					<button onClick='수량집계_export_to_excel();'>Export To Excel</button>
-				</div>
-			</center>
-		</div>
-	</body>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>품번별 수량 현황</title>
+    <link rel="stylesheet" href="base/style/공정.css" />
+  </head>
+  <body>
+    <div>
+      <div class="process__tit change-tit">
+        <h2>품번별 수량 현황</h2>
+      </div>
+      <div class="data">
+        <div class="data__query">
+          <div>
+            <button onClick="수량집계_year();">Year</button>
+            <button onClick="수량집계_month();">Month</button>
+          </div>
+          <div class="data-check">
+            <input
+              type="date"
+              id="_검색일_from"
+              size="40"
+              value="0000-00-00"
+              max="240-12-4"
+              required
+            />
+            <span class="tilde">&#126;</span>
+            <input
+              type="date"
+              id="_검색일_to"
+              size="40"
+              value="0000-00-00"
+              max="240-12-4"
+              required
+            />&nbsp;
+            <button onClick="수량집계_기간조회();">조회</button>
+          </div>
+          <div class="data__radio">
+            <input type="radio" id="_all" name="구분" value="all" checked />
+            <label for="_all"><span>All</span></label>
+            <input type="radio" id="_일반" name="구분" value="일반" />
+            <label for="_일반"><span>일반</span></label>
+            <input type="radio" id="_보증" name="구분" value="보증" />
+            <label for="_보증"><span>보증</span></label>
+          </div>
+        </div>
+      </div>
+      <div class="data__btn">
+        <button onClick="수량집계_export_to_excel();" class="down__excel">
+          Export To Excel
+        </button>
+      </div>
+      <div class="process">
+        <div class="process__tit">
+          <label for="grid_BSA집계">품번별 BSA 집계</label>
+        </div>
+        <div id="grid_BSA집계"></div>
+      </div>
+      <div class="process">
+        <div class="process__tit">
+          <label for="grid_BMA집계">품번별 폐기 BMA 집계</label>
+        </div>
+        <div id="grid_BMA집계"></div>
+      </div>
+      <div class="process">
+        <div class="process__tit">
+          <label for="grid_자재집계">품번별 고품 자재 집계</label>
+        </div>
+        <div id="grid_자재집계"></div>
+      </div>
+      <div class="process">
+        <div class="process__tit">
+          <label for="grid_부품집계">품번별 부재료 집계</label>
+        </div>
+        <div id="grid_부품집계"></div>
+      </div>
+    </div>
+  </body>
 </html>

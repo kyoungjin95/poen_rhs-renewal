@@ -1,23 +1,25 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
-    <title>품목 상세 입력</title>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>품목 상세 입력</title>
     <link rel="stylesheet" href="base/style/공정.css" />
   </head>
   <body>
     <div class="품목상세">
-      <div>
-        <center>
-          <label
-            ><h2><b>품목 상세</b></h2></label
-          >
-        </center>
+      <div class="process__tit change-tit">
+        <h2>품목 상세</h2>
       </div>
       <div class="input-group">
-        <table border="2">
+        <table>
+          <colgroup>
+            <col class="col_1" width="20%" />
+            <col class="col_2" width="80%" />
+          </colgroup>
           <tr>
             <td>
-              <label for="_management_id"><b>관리번호</b></label>
+              <label for="_management_id">관리번호</label>
             </td>
             <td>
               <input
@@ -32,7 +34,7 @@
           </tr>
           <tr>
             <td>
-              <label for="_재제조번호"><b>재제조번호</b></label>
+              <label for="_재제조번호">재제조번호</label>
             </td>
             <td>
               <input type="text" id="_재제조번호" size="40" required />
@@ -41,7 +43,7 @@
           </tr>
           <tr>
             <td>
-              <label for="_구분"><b>구분</b></label>
+              <label for="_구분">구분</label>
             </td>
             <td>
               <input type="text" id="_구분" size="40" readonly required />
@@ -49,7 +51,7 @@
           </tr>
           <tr>
             <td>
-              <label for="_차종"><b>차종</b></label>
+              <label for="_차종">차종</label>
             </td>
             <td>
               <input type="text" id="_차종" size="40" readonly required />
@@ -57,7 +59,7 @@
           </tr>
           <tr>
             <td>
-              <label for="_품번"><b>품번</b></label>
+              <label for="_품번">품번</label>
             </td>
             <td>
               <input type="text" id="_품번" size="40" readonly required />
@@ -65,7 +67,7 @@
           </tr>
           <tr>
             <td>
-              <label for="_RO_no"><b>RO_no</b></label>
+              <label for="_RO_no">RO_no</label>
             </td>
             <td>
               <input type="text" id="_RO_no" size="40" readonly required />
@@ -73,45 +75,79 @@
           </tr>
           <tr>
             <td>
-              <label for="_공정단계"><b>공정단계</b></label>
+              <label for="_공정단계">공정단계</label>
             </td>
             <td>
-		    <table>
-			    <tr>
-				    <td>
-					    <input type="text" id="_공정단계" size="40" readonly required />
-					    <select name="language" onchange="공정입력_콤보박스(this)">
-						    <option value="">---</option>
-						    <option value="입고">입고</option>
-						    <option value="세척">세척</option>
-						    <option value="기초검사">기초검사</option>
-						    <option value="분해조립">분해조립</option>
-						    <option value="성능검사">성능검사</option>
-						    <option value="EOL">EOL</option>
-						    <option value="제조완료">제조완료</option>
-						    <option value="출하검사">출하검사</option>
-						    <option value="출하">출하</option>
-					    </select>
-					    <!--<button onClick="processStep();">공정 상세 입력</button>-->
-				    </td>
-			    </tr>
-			    <tr>
-				    <td>
-					    <button onClick="flag_입고 = true; loadPage('base/입고.html');">입고</button>
-					    <button onClick="flag_세척 = true; loadPage('base/세척.html');">세척</button>
-					    <button onClick="flag_기초검사 = true; loadPage('base/기초검사.html');">기초검사</button>
-					    <button onClick="flag_분해조립 = true; loadPage('base/분해조립.html');">분해조립</button>
-					    <button onClick="flag_성능검사 = true; loadPage('base/성능검사.html');">성능검사</button>
-					    <button onClick="flag_EOL = true; loadPage('base/EOL.html');">EOL</button>
-					    <button onClick="flag_출하 = true; loadPage('base/출하정보.html');">출하검사</button>
-				    </td>
-			    </tr>
-		    </table>
+              <table>
+                <tr>
+                  <td>
+                    <input
+                      type="text"
+                      id="_공정단계"
+                      size="40"
+                      readonly
+                      required
+                    />
+                    <select name="language" onchange="공정입력_콤보박스(this)">
+                      <option value="">---</option>
+                      <option value="입고">입고</option>
+                      <option value="세척">세척</option>
+                      <option value="기초검사">기초검사</option>
+                      <option value="분해조립">분해조립</option>
+                      <option value="성능검사">성능검사</option>
+                      <option value="EOL">EOL</option>
+                      <option value="제조완료">제조완료</option>
+                      <option value="출하검사">출하검사</option>
+                      <option value="출하">출하</option>
+                    </select>
+                    <!--<button onClick="processStep();">공정 상세 입력</button>-->
+                  </td>
+                </tr>
+                <tr>
+                  <td class="process__btn">
+                    <button
+                      onClick="flag_입고 = true; loadPage('base/입고.html');"
+                    >
+                      입고
+                    </button>
+                    <button
+                      onClick="flag_세척 = true; loadPage('base/세척.html');"
+                    >
+                      세척
+                    </button>
+                    <button
+                      onClick="flag_기초검사 = true; loadPage('base/기초검사.html');"
+                    >
+                      기초검사
+                    </button>
+                    <button
+                      onClick="flag_분해조립 = true; loadPage('base/분해조립.html');"
+                    >
+                      분해조립
+                    </button>
+                    <button
+                      onClick="flag_성능검사 = true; loadPage('base/성능검사.html');"
+                    >
+                      성능검사
+                    </button>
+                    <button
+                      onClick="flag_EOL = true; loadPage('base/EOL.html');"
+                    >
+                      EOL
+                    </button>
+                    <button
+                      onClick="flag_출하 = true; loadPage('base/출하정보.html');"
+                    >
+                      출하검사
+                    </button>
+                  </td>
+                </tr>
+              </table>
             </td>
           </tr>
           <tr>
             <td>
-              <label for="_적재No"><b>적재No</b></label>
+              <label for="_적재No">적재No</label>
             </td>
             <td>
               <input type="text" id="_적재No" size="40" required />
@@ -119,7 +155,7 @@
           </tr>
           <tr>
             <td>
-              <label for="_입고"><b>입고</b></label>
+              <label for="_입고">입고</label>
             </td>
             <td>
               <input
@@ -133,7 +169,7 @@
           </tr>
           <tr>
             <td>
-              <label for="_제조투입"><b>제조투입</b></label>
+              <label for="_제조투입">제조투입</label>
             </td>
             <td>
               <input
@@ -146,7 +182,7 @@
           </tr>
           <tr>
             <td>
-              <label for="_세척투입일"><b>세척투입일</b></label>
+              <label for="_세척투입일">세척투입일</label>
             </td>
             <td>
               <input
@@ -160,7 +196,7 @@
           </tr>
           <tr>
             <td>
-              <label for="_세척"><b>세척</b></label>
+              <label for="_세척">세척</label>
             </td>
             <td>
               <input
@@ -174,7 +210,7 @@
           </tr>
           <tr>
             <td>
-              <label for="_기초검사투입일"><b>기초검사투입일</b></label>
+              <label for="_기초검사투입일">기초검사투입일</label>
             </td>
             <td>
               <input
@@ -188,7 +224,7 @@
           </tr>
           <tr>
             <td>
-              <label for="_기초검사"><b>기초검사</b></label>
+              <label for="_기초검사">기초검사</label>
             </td>
             <td>
               <input
@@ -202,7 +238,7 @@
           </tr>
           <tr>
             <td>
-              <label for="_분해조립투입일"><b>분해조립투입일</b></label>
+              <label for="_분해조립투입일">분해조립투입일</label>
             </td>
             <td>
               <input
@@ -216,7 +252,7 @@
           </tr>
           <tr>
             <td>
-              <label for="_분해조립"><b>분해조립</b></label>
+              <label for="_분해조립">분해조립</label>
             </td>
             <td>
               <input
@@ -230,7 +266,7 @@
           </tr>
           <tr>
             <td>
-              <label for="_성능검사투입일"><b>성능검사투입일</b></label>
+              <label for="_성능검사투입일">성능검사투입일</label>
             </td>
             <td>
               <input
@@ -244,7 +280,7 @@
           </tr>
           <tr>
             <td>
-              <label for="_성능검사"><b>성능검사</b></label>
+              <label for="_성능검사">성능검사</label>
             </td>
             <td>
               <input
@@ -258,7 +294,7 @@
           </tr>
           <tr>
             <td>
-              <label for="_EOL투입일"><b>EOL투입일</b></label>
+              <label for="_EOL투입일">EOL투입일</label>
             </td>
             <td>
               <input
@@ -272,7 +308,7 @@
           </tr>
           <tr>
             <td>
-              <label for="_EOL"><b>EOL</b></label>
+              <label for="_EOL">EOL</label>
             </td>
             <td>
               <input
@@ -286,7 +322,7 @@
           </tr>
           <tr>
             <td>
-              <label for="_출하검사"><b>출하검사</b></label>
+              <label for="_출하검사">출하검사</label>
             </td>
             <td>
               <input
@@ -300,7 +336,7 @@
           </tr>
           <tr>
             <td>
-              <label for="_출하"><b>출하</b></label>
+              <label for="_출하">출하</label>
             </td>
             <td>
               <input
@@ -313,7 +349,7 @@
           </tr>
           <tr>
             <td>
-              <label for="_납품처"><b>납품처</b></label>
+              <label for="_납품처">납품처</label>
             </td>
             <td>
               <input type="text" id="_납품처" required />
@@ -321,7 +357,7 @@
           </tr>
           <tr>
             <td>
-              <label for="_소재지"><b>소재지</b></label>
+              <label for="_소재지">소재지</label>
             </td>
             <td>
               <input type="text" id="_소재지" size="40" required />
@@ -337,7 +373,7 @@
           </tr>
           <tr>
             <td>
-              <label for="_마지막충전일"><b>마지막 충전일</b></label>
+              <label for="_마지막충전일">마지막 충전일</label>
             </td>
             <td>
               <input
@@ -350,7 +386,7 @@
           </tr>
           <tr>
             <td>
-              <label for="_반품입고"><b>반품입고</b></label>
+              <label for="_반품입고">반품입고</label>
             </td>
             <td>
               <input
@@ -363,7 +399,7 @@
           </tr>
           <tr>
             <td>
-              <label for="_재출하"><b>재출하</b></label>
+              <label for="_재출하">재출하</label>
             </td>
             <td>
               <input
@@ -376,7 +412,7 @@
           </tr>
           <tr>
             <td>
-              <label for="_완전분해"><b>완전분해</b></label>
+              <label for="_완전분해">완전분해</label>
             </td>
             <td>
               <input
@@ -385,14 +421,12 @@
                 value="0000-00-00T00:00"
                 required
               />
-            </td>
-	    <td>
               <input type="text" id="_완전분해사유" size="40" required />
-	    </td>
+            </td>
           </tr>
           <tr>
             <td>
-              <label for="_폐기"><b>폐기</b></label>
+              <label for="_폐기">폐기</label>
             </td>
             <td>
               <input
@@ -401,14 +435,12 @@
                 value="0000-00-00T00:00"
                 required
               />
-            </td>
-	    <td>
               <input type="text" id="_폐기사유" size="40" required />
-	    </td>
+            </td>
           </tr>
           <tr>
             <td>
-              <label for="_출하예약"><b>출하예약</b></label>
+              <label for="_출하예약">출하예약</label>
             </td>
             <td>
               <input type="text" id="_출하예약" size="40" required />
@@ -420,7 +452,7 @@
           </tr>
           <tr>
             <td>
-              <label for="_렉번호"><b>렉번호</b></label>
+              <label for="_렉번호">렉번호</label>
             </td>
             <td>
               <input type="text" id="_렉번호" value="" required />
@@ -428,7 +460,7 @@
           </tr>
           <tr>
             <td>
-              <label><b>고품정보등록</b></label>
+              <label>고품정보등록</label>
             </td>
             <td>
               <button onClick="func_고품정보등록();">고품정보 등록</button>
@@ -436,7 +468,7 @@
           </tr>
           <tr>
             <td>
-              <label><b>특이사항</b></label>
+              <label>특이사항</label>
             </td>
             <td>
               <button onClick="func_특이사항();">특이 사항</button>

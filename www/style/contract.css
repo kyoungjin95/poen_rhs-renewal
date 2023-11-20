@@ -1,5 +1,8 @@
 @import url(./newstyle.css);
 
+* {
+  box-sizing: content-box;
+}
 /* ========================================
   제공동의서 & 거래확인서*/
 .agreement-all {

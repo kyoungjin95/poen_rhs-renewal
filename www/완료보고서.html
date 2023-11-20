@@ -2,12 +2,13 @@
   <head>
     <title>완료 보고서</title>
     <meta charset="UTF-8" />
+    <link rel="stylesheet" href="base/style/inspection.css" />
     <link rel="stylesheet" href="base/style/공정.css" />
   </head>
   <body>
     <div id="_완료보고서">
-      <div align="left">
-        ▣ 완료보고서 [<span id="_차종">CS_EV</span>]
+      <div class="report__tit">
+        <h3>▣ 완료보고서 [<span id="_차종">CS_EV</span>]</h3>
         <span id="_재제조번호_"></span>
       </div>
       <div>
@@ -1243,12 +1244,11 @@
       </div>
     </div>
     <div id="_육안검사외부1" class="check-all">
-      <h3>▣ 육안 검사 - 외부</h3>
+      <div class="report__tit">
+        <h3>▣ 육안 검사 - 외부</h3>
+      </div>
       <div>
         <table class="all">
-          <!-- <caption>
-            육안검사 - 외부
-            </caption> -->
           <colgroup>
             <col class="col_1" style="width: 33.3333%" />
             <col class="col_2" />
@@ -1290,7 +1290,9 @@
       </div>
     </div>
     <div id="_육안검사외부2" class="check-all">
-      <h3>▣ 육안검사 - 외부_<em>이상부위 상세사진</em></h3>
+      <div class="report__tit">
+        <h3>▣ 육안검사 - 외부_<em>이상부위 상세사진</em></h3>
+      </div>
       <table border="2" class="all">
         <!-- <caption>
           육안검사 - 외부_이상부위 상세사진
@@ -1320,7 +1322,9 @@
       </table>
     </div>
     <div id="_육안검사내부1" class="check-all">
-      <h3>▣ 육안검사 - 내부</h3>
+      <div class="report__tit">
+        <h3>▣ 육안검사 - 내부</h3>
+      </div>
       <table border="2" class="all">
         <!-- <caption>
           육안검사 - 내부
@@ -1374,7 +1378,9 @@
       </table>
     </div>
     <div id="_육안검사내부2" class="check-all">
-      <h3>▣ 육안검사 - 내부_<em>이상부위 상세사진</em></h3>
+      <div class="report__tit">
+        <h3>▣ 육안검사 - 내부_<em>이상부위 상세사진</em></h3>
+      </div>
       <table border="2" class="all">
         <!-- <caption>
           육안검사 - 내부_이상부위 상세사진
@@ -1415,7 +1421,9 @@
       </table>
     </div>
     <div id="_기밀검사" class="check-all">
-      <h3>▣ 기밀검사</h3>
+      <div class="report__tit">
+        <h3>▣ 기밀검사</h3>
+      </div>
       <table border="2" class="all">
         <!-- <caption>
           기밀검사
@@ -1522,21 +1530,16 @@
       <canvas id="_canvas"></canvas>
     </div>
     <div>
-      <button onClick="완료보고서_save();">완료보고서</button>
-      <button onClick="완료보고서_save('육외');">육안검사외부</button>
-      <button onClick="완료보고서_save('육외상');">육안검사외부 상세</button>
-      <button onClick="완료보고서_save('육내');">육안검사내부</button>
-      <button onClick="완료보고서_save('육내상');">육안검사내부 상세</button>
-      <button onClick="완료보고서_save('기밀');">기밀검사</button>
-      <button onClick="back();">되돌아 가기</button>
-    </div>
-    <div>
-      <table border="2" id="tb">
+      <table id="tb" class="tb">
+        <colgroup>
+          <col class="col_1" witdh="50%" />
+          <col class="col_2" witdh="50%" />
+        </colgroup>
         <tr>
-          <td class="base">
-            <label for="management_id"><b>관리번호</b></label>
+          <td>
+            <label for="management_id">관리번호</label>
           </td>
-          <td class="base">
+          <td>
             <input
               type="text"
               id="_management_id"
@@ -1548,10 +1551,10 @@
           </td>
         </tr>
         <tr>
-          <td class="base">
-            <label for="_재제조번호"><b>재제조번호</b></label>
+          <td>
+            <label for="_재제조번호">재제조번호</label>
           </td>
-          <td class="base">
+          <td>
             <input
               type="text"
               id="_재제조번호"
@@ -1564,7 +1567,7 @@
         </tr>
         <tr>
           <td>
-            <label for="_생산일_input"><b>생산일</b></label>
+            <label for="_생산일_input">생산일</label>
           </td>
           <td>
             <input type="text" id="_생산일_input" size="40" required />
@@ -1572,7 +1575,7 @@
         </tr>
         <tr>
           <td>
-            <label for="_판매일_input"><b>판매일</b></label>
+            <label for="_판매일_input">판매일</label>
           </td>
           <td>
             <input type="text" id="_판매일_input" size="40" required />
@@ -1580,7 +1583,7 @@
         </tr>
         <tr>
           <td>
-            <label for="_수리일_input"><b>수리일</b></label>
+            <label for="_수리일_input">수리일</label>
           </td>
           <td>
             <input type="text" id="_수리일_input" size="40" required />
@@ -1588,7 +1591,7 @@
         </tr>
         <tr>
           <td>
-            <label for="_작성일_input"><b>작성일</b></label>
+            <label for="_작성일_input">작성일</label>
           </td>
           <td>
             <input type="text" id="_작성일_input" size="40" required />
@@ -1596,18 +1599,30 @@
         </tr>
         <tr>
           <td>
-            <label for="_결과_input"><b>결과</b></label>
+            <label for="_결과_input">결과</label>
           </td>
           <td>
             <input type="text" id="_결과_input" size="40" required />
           </td>
         </tr>
         <tr>
-          <td>
-            <button onClick="완료보고서_apply();">적용</button>
+          <td></td>
+          <td class="left-line-del">
+            <button onClick="완료보고서_apply();" class="report__btn">
+              적용
+            </button>
+            <button onClick="back();" class="report__btn">되돌아 가기</button>
           </td>
         </tr>
       </table>
+    </div>
+    <div class="report__btns">
+      <button onClick="완료보고서_save();">완료보고서</button>
+      <button onClick="완료보고서_save('육외');">육안검사외부</button>
+      <button onClick="완료보고서_save('육외상');">육안검사외부 상세</button>
+      <button onClick="완료보고서_save('육내');">육안검사내부</button>
+      <button onClick="완료보고서_save('육내상');">육안검사내부 상세</button>
+      <button onClick="완료보고서_save('기밀');">기밀검사</button>
     </div>
     <script>
       var _차종 = document.getElementById("_차종");

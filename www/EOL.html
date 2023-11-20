@@ -1,305 +1,363 @@
-<html>
-	<head>
-		<title>EOL</title>
-		<meta charset="UTF-8">
-		<link rel="stylesheet" href="base/style/공정.css">
-	</head>
-	<body>
-		<div>
-			<center>
-				<label><h2><b>EOL</b></h2></label>
-			</center>
-		</div>
-		<div class="EOL">
-			<center>
-				<table border="2" id='tb'>
-					<tr>
-						<td>
-							<label for="management_id"><b>관리번호</b></label>
-						</td>
-						<td>
-							<input type="text" id="_management_id" value="조회를 누르세요" size="40" required>
-							<button onClick="EOL_시작();">조 회</button>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label for="_재제조번호"><b>재제조번호</b></label>
-						</td>
-						<td>
-							<input type="text" id="_재제조번호" value="조회를 누르세요" size="40" required>
-							<button onClick="EOL_재제조번호_시작();">조 회</button>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label for="_구분"><b>구분</b></label>
-						</td>
-						<td>
-							<input type="text" id="_구분" size="40" readonly required>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label for="_차종"><b>차종</b></label>
-						</td>
-						<td>
-							<input type="text" id="_차종" size="40" readonly required>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label for="_품번"><b>품번</b></label>
-						</td>
-						<td>
-							<input type="text" id="_품번" size="40" readonly required>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label for="_공정입고일"><b>공정 입고일</b></label>
-						</td>
-						<td>
-							<input type="datetime-local" id="_공정입고일" value='0000-00-00T00:00' required>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label for="_UPR_C조립"><b>UPR/C 조립</b></label>
-						</td>
-						<td>
-							<input type="text" id="_UPR_C조립" size="40" required>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label for="_기밀검사_케이스"><b>기밀검사 케이스</b></label>
-						</td>
-						<td>
-							<input type="text" id="_기밀검사_케이스" size="40" required>
-							<select name="language" onchange="_기밀검사_케이스_콤보박스(this);">
-								<option value="">---</option>
-								<option value="OK">OK</option>
-								<option value="미실시">미실시</option>
-							</select>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label for="_기밀검사_케이스_특이사항"><b>기밀검사 케이스 특이사항</b></label>
-						</td>
-						<td>
-							<input type="text" id="_기밀검사_케이스_특이사항" size="100" required>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label for="_기밀검사_냉각유로"><b>기밀검사 냉각유로</b></label>
-						</td>
-						<td>
-							<input type="text" id="_기밀검사_냉각유로" size="40" required>
-							<select name="language" onchange="_기밀검사_냉각유로_콤보박스(this);">
-								<option value="">---</option>
-								<option value="OK">OK</option>
-								<option value="미실시">미실시</option>
-							</select>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label for="_기밀검사_냉각유로_특이사항"><b>기밀검사 냉각유로 특이사항</b></label>
-						</td>
-						<td>
-							<input type="text" id="_기밀검사_냉각유로_특이사항" size="100" required>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label for="_절연검사P"><b>절연 검사 +(MΩ)</b></label>
-						</td>
-						<td>
-							<input type="text" id="_절연검사P" size="40" required>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label for="_절연검사M"><b>절연 검사 -(MΩ)</b></label>
-						</td>
-						<td>
-							<input type="text" id="_절연검사M" size="40" required>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label for="_절연저항HVP"><b>절연저항 HV+</b></label>
-						</td>
-						<td>
-							<input type="text" id="_절연저항HVP" size="40" required>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label for="_절연저항HVN"><b>절연저항 HV-</b></label>
-						</td>
-						<td>
-							<input type="text" id="_절연저항HVN" size="40" required>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label for="_통신검사_DTC코드1"><b>통신검사 DTC코드 1</b></label>
-						</td>
-						<td>
-							<input type="text" id="_통신검사_DTC코드1" size="40" required>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label for="_통신검사_DTC코드2"><b>통신검사 DTC코드 2</b></label>
-						</td>
-						<td>
-							<input type="text" id="_통신검사_DTC코드2" size="40" required>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label for="_통신검사_DTC코드3"><b>통신검사 DTC코드 3</b></label>
-						</td>
-						<td>
-							<input type="text" id="_통신검사_DTC코드3" size="40" required>
-						</td>
-					</tr>
-					<tr>
-						<td colspan="2">
-							<center>
-								<button onClick='_EOL_add_DTC_Code();'>Add DTC Code(+)</button>
-							</center>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label for="_통신검사_팩전압"><b>통신검사 팩전압(V)</b></label>
-						</td>
-						<td>
-							<input type="text" id="_통신검사_팩전압" size="40" required>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label for="_통신검사_셀전압편차"><b>통신검사 셀전압 편차(mV)</b></label>
-						</td>
-						<td>
-							<input type="text" id="_통신검사_셀전압편차" size="40" required>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label for="_통신검사_릴레이구동"><b>통신검사 릴레이 구동</b></label>
-						</td>
-						<td>
-							<input type="text" id="_통신검사_릴레이구동" size="40" required>
-							<select name="language" onchange="_통신검사_릴레이구동_콤보박스(this);">
-								<option value="">---</option>
-								<option value="통신불가">통신불가</option>
-								<option value="OK">OK</option>
-								<option value="NG">NG</option>
-							</select>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label for="_공정완료일"><b>완료일</b></label>
-						</td>
-						<td>
-							<input type="datetime-local" id="_공정완료일" value="0000-00-00T00:00" required>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label for="_비고"><b>비고</b></label>
-						</td>
-						<td>
-							<input type="text" id="_비고" size="40" required>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label for="_QR"><b>QR</b></label>
-						</td>
-						<td>
-							<input type="text" id="_QR" size="40" required>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label for="_검사자"><b>검사자</b></label>
-						</td>
-						<td>
-							<input type="text" id="_검사자" size="40" required>
-						</td>
-					</tr>
-					<tr id='QR1'>
-						<td>
-							<div id='_QR_Code'>
-							</div>
-						</td>
-					</tr>
-					<tr id='QR2'>
-						<td>
-							<div id='_QR_Label'>
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<canvas id='_canvas'>
-							</canvas>
-						</td>
-					</tr>
-				</table>
-			</center>
-		</div>
-		<div class="input-group">
-			<center>
-				<button onClick="EOL_save();">SAVE</button>
-				<button onClick="이전페이지();">이전 Page</button>
-				<button onClick="EOL_카메라시작();">사진촬영</button>
-				<button onClick="EOL_QR_Label();">QR Label</button>
-			</center>
-		</div>
-		</div>
-		<script>
-			const _management_id = document.getElementById('_management_id');
-			const _재제조번호 = document.getElementById('_재제조번호');
-			const _공정입고일 = document.getElementById('_공정입고일');
-			const _기밀검사_케이스 = document.getElementById('_기밀검사_케이스');
-			const _기밀검사_케이스_특이사항 = document.getElementById('_기밀검사_케이스_특이사항');
-			const _기밀검사_냉각유로 = document.getElementById('_기밀검사_냉각유로');
-			const _기밀검사_냉각유로_특이사항 = document.getElementById('_기밀검사_냉각유로_특이사항');
-			const _절연검사P = document.getElementById('_절연검사P');
-			const _절연검사M = document.getElementById('_절연검사M');
-			const _절연저항HVP = document.getElementById('_절연저항HVP');
-			const _절연저항HVN = document.getElementById('_절연저항HVN');
-			const _UPR_C조립 = document.getElementById('_UPR_C조립');
-			const _통신검사_DTC코드1 = document.getElementById('_통신검사_DTC코드1');
-			const _통신검사_DTC코드2 = document.getElementById('_통신검사_DTC코드2');
-			const _통신검사_DTC코드3 = document.getElementById('_통신검사_DTC코드3');
-			const _통신검사_DTC코드4 = document.getElementById('_통신검사_DTC코드4');
-			const _통신검사_DTC코드5 = document.getElementById('_통신검사_DTC코드5');
-			const _통신검사_DTC코드6 = document.getElementById('_통신검사_DTC코드6');
-			const _통신검사_DTC코드7 = document.getElementById('_통신검사_DTC코드7');
-			const _통신검사_DTC코드8 = document.getElementById('_통신검사_DTC코드8');
-			const _통신검사_DTC코드9 = document.getElementById('_통신검사_DTC코드9');
-			const _통신검사_DTC코드10 = document.getElementById('_통신검사_DTC코드10');
-			const _통신검사_팩전압 = document.getElementById('_통신검사_팩전압');
-			const _통신검사_셀전압편차 = document.getElementById('_통신검사_셀전압편차');
-			const _통신검사_릴레이구동 = document.getElementById('_통신검사_릴레이구동');
-			const _공정완료일 = document.getElementById('_공정완료일');
-			const _비고 = document.getElementById('_비고');
-			const _QR = document.getElementById('_QR');
-			const _검사자 = document.getElementById('_검사자');
-			const _QR_Code = document.getElementById('_QR_Code');
-			const _canvas = document.getElementById('_canvas');
-		</script>
-	</body>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EOL</title>
+    <link rel="stylesheet" href="base/style/공정.css" />
+  </head>
+  <body>
+    <div class="EOL">
+      <div class="input-group">
+        <div class="process__tit">
+          <h2>EOL</h2>
+        </div>
+        <div class="input-group process-step">
+          <table class="tb" id="tb">
+            <tr>
+              <td>
+                <label for="management_id">관리번호</label>
+              </td>
+              <td>
+                <input
+                  type="text"
+                  id="_management_id"
+                  value="조회를 누르세요"
+                  size="40"
+                  required
+                />
+                <button onClick="EOL_시작();">조 회</button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="_재제조번호">재제조번호</label>
+              </td>
+              <td>
+                <input
+                  type="text"
+                  id="_재제조번호"
+                  value="조회를 누르세요"
+                  size="40"
+                  required
+                />
+                <button onClick="EOL_재제조번호_시작();">조 회</button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="_구분">구분</label>
+              </td>
+              <td>
+                <input type="text" id="_구분" size="40" readonly required />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="_차종">차종</label>
+              </td>
+              <td>
+                <input type="text" id="_차종" size="40" readonly required />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="_품번">품번</label>
+              </td>
+              <td>
+                <input type="text" id="_품번" size="40" readonly required />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="_공정입고일">공정 입고일</label>
+              </td>
+              <td>
+                <input
+                  type="datetime-local"
+                  id="_공정입고일"
+                  value="0000-00-00T00:00"
+                  required
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="_UPR_C조립">UPR/C 조립</label>
+              </td>
+              <td>
+                <input type="text" id="_UPR_C조립" size="40" required />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="_기밀검사_케이스">기밀검사 케이스</label>
+              </td>
+              <td>
+                <input type="text" id="_기밀검사_케이스" size="40" required />
+                <select
+                  name="language"
+                  onchange="_기밀검사_케이스_콤보박스(this);"
+                >
+                  <option value="">---</option>
+                  <option value="OK">OK</option>
+                  <option value="미실시">미실시</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="_기밀검사_케이스_특이사항"
+                  >기밀검사 케이스 특이사항</label
+                >
+              </td>
+              <td>
+                <input
+                  type="text"
+                  id="_기밀검사_케이스_특이사항"
+                  size="100"
+                  required
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="_기밀검사_냉각유로">기밀검사 냉각유로</label>
+              </td>
+              <td>
+                <input type="text" id="_기밀검사_냉각유로" size="40" required />
+                <select
+                  name="language"
+                  onchange="_기밀검사_냉각유로_콤보박스(this);"
+                >
+                  <option value="">---</option>
+                  <option value="OK">OK</option>
+                  <option value="미실시">미실시</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="_기밀검사_냉각유로_특이사항"
+                  >기밀검사 냉각유로 특이사항</label
+                >
+              </td>
+              <td>
+                <input
+                  type="text"
+                  id="_기밀검사_냉각유로_특이사항"
+                  size="100"
+                  required
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="_절연검사P">절연 검사 +(MΩ)</label>
+              </td>
+              <td>
+                <input type="text" id="_절연검사P" size="40" required />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="_절연검사M">절연 검사 -(MΩ)</label>
+              </td>
+              <td>
+                <input type="text" id="_절연검사M" size="40" required />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="_절연저항HVP">절연저항 HV+</label>
+              </td>
+              <td>
+                <input type="text" id="_절연저항HVP" size="40" required />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="_절연저항HVN">절연저항 HV-</label>
+              </td>
+              <td>
+                <input type="text" id="_절연저항HVN" size="40" required />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="_통신검사_DTC코드1">통신검사 DTC코드 1</label>
+              </td>
+              <td>
+                <input type="text" id="_통신검사_DTC코드1" size="40" required />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="_통신검사_DTC코드2">통신검사 DTC코드 2</label>
+              </td>
+              <td>
+                <input type="text" id="_통신검사_DTC코드2" size="40" required />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="_통신검사_DTC코드3">통신검사 DTC코드 3</label>
+              </td>
+              <td>
+                <input type="text" id="_통신검사_DTC코드3" size="40" required />
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" style="text-align: center">
+                <button onClick="_EOL_add_DTC_Code();">Add DTC Code(+)</button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="_통신검사_팩전압">통신검사 팩전압(V)</label>
+              </td>
+              <td>
+                <input type="text" id="_통신검사_팩전압" size="40" required />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="_통신검사_셀전압편차"
+                  >통신검사 셀전압 편차(mV)</label
+                >
+              </td>
+              <td>
+                <input
+                  type="text"
+                  id="_통신검사_셀전압편차"
+                  size="40"
+                  required
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="_통신검사_릴레이구동">통신검사 릴레이 구동</label>
+              </td>
+              <td>
+                <input
+                  type="text"
+                  id="_통신검사_릴레이구동"
+                  size="40"
+                  required
+                />
+                <select
+                  name="language"
+                  onchange="_통신검사_릴레이구동_콤보박스(this);"
+                >
+                  <option value="">---</option>
+                  <option value="통신불가">통신불가</option>
+                  <option value="OK">OK</option>
+                  <option value="NG">NG</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="_공정완료일">완료일</label>
+              </td>
+              <td>
+                <input
+                  type="datetime-local"
+                  id="_공정완료일"
+                  value="0000-00-00T00:00"
+                  required
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="_비고">비고</label>
+              </td>
+              <td>
+                <input type="text" id="_비고" size="40" required />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="_QR">QR</label>
+              </td>
+              <td>
+                <input type="text" id="_QR" size="40" required />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="_검사자">검사자</label>
+              </td>
+              <td>
+                <input type="text" id="_검사자" size="40" required />
+              </td>
+            </tr>
+            <tr id="QR1">
+              <td>
+                <div id="_QR_Code"></div>
+              </td>
+            </tr>
+            <tr id="QR2">
+              <td>
+                <div id="_QR_Label"></div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <canvas id="_canvas"> </canvas>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="input-group">
+      <div class="input-btn-group">
+        <button onClick="EOL_save();">SAVE</button>
+        <button onClick="이전페이지();">이전 Page</button>
+        <button onClick="EOL_카메라시작();">사진촬영</button>
+        <button onClick="EOL_QR_Label();">QR Label</button>
+      </div>
+    </div>
+    <script>
+      const _management_id = document.getElementById("_management_id");
+      const _재제조번호 = document.getElementById("_재제조번호");
+      const _공정입고일 = document.getElementById("_공정입고일");
+      const _기밀검사_케이스 = document.getElementById("_기밀검사_케이스");
+      const _기밀검사_케이스_특이사항 =
+        document.getElementById("_기밀검사_케이스_특이사항");
+      const _기밀검사_냉각유로 = document.getElementById("_기밀검사_냉각유로");
+      const _기밀검사_냉각유로_특이사항 =
+        document.getElementById("_기밀검사_냉각유로_특이사항");
+      const _절연검사P = document.getElementById("_절연검사P");
+      const _절연검사M = document.getElementById("_절연검사M");
+      const _절연저항HVP = document.getElementById("_절연저항HVP");
+      const _절연저항HVN = document.getElementById("_절연저항HVN");
+      const _UPR_C조립 = document.getElementById("_UPR_C조립");
+      const _통신검사_DTC코드1 = document.getElementById("_통신검사_DTC코드1");
+      const _통신검사_DTC코드2 = document.getElementById("_통신검사_DTC코드2");
+      const _통신검사_DTC코드3 = document.getElementById("_통신검사_DTC코드3");
+      const _통신검사_DTC코드4 = document.getElementById("_통신검사_DTC코드4");
+      const _통신검사_DTC코드5 = document.getElementById("_통신검사_DTC코드5");
+      const _통신검사_DTC코드6 = document.getElementById("_통신검사_DTC코드6");
+      const _통신검사_DTC코드7 = document.getElementById("_통신검사_DTC코드7");
+      const _통신검사_DTC코드8 = document.getElementById("_통신검사_DTC코드8");
+      const _통신검사_DTC코드9 = document.getElementById("_통신검사_DTC코드9");
+      const _통신검사_DTC코드10 =
+        document.getElementById("_통신검사_DTC코드10");
+      const _통신검사_팩전압 = document.getElementById("_통신검사_팩전압");
+      const _통신검사_셀전압편차 =
+        document.getElementById("_통신검사_셀전압편차");
+      const _통신검사_릴레이구동 =
+        document.getElementById("_통신검사_릴레이구동");
+      const _공정완료일 = document.getElementById("_공정완료일");
+      const _비고 = document.getElementById("_비고");
+      const _QR = document.getElementById("_QR");
+      const _검사자 = document.getElementById("_검사자");
+      const _QR_Code = document.getElementById("_QR_Code");
+      const _canvas = document.getElementById("_canvas");
+    </script>
+  </body>
 </html>
