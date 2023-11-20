@@ -2303,7 +2303,6 @@ socket.on('find_result', async function(col, result, rcv_check) {
 });
 
 socket.on('update_result', async function(result) {
-	flag_arrivedMSG = true;
 	update_count = 0;
 	insert_count = 0;
 	if(result == null) return;
@@ -2311,6 +2310,7 @@ socket.on('update_result', async function(result) {
 	//console.log('insert result count: ', result.upsertedCount);
 	update_count = result.modifiedCount;
 	insert_count = result.upsertedCount;
+	flag_arrivedMSG = true;
 });
 
 socket.on('delete_result', async function(count) {

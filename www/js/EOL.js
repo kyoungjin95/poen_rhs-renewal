@@ -63,43 +63,43 @@ async function EOL_시작(EOL_is재제조번호 = false) {
 			_통신검사_DTC코드3.value = EOL_v.통신검사_DTC코드3;
 			if(EOL_v.통신검사_DTC코드4 != '') {
 				_EOL_add_DTC_Code();
-				await sleep(10);
+				await sleep(1);
 				_통신검사_DTC코드4.value = EOL_v.통신검사_DTC코드4;
 			}
 
 			if(EOL_v.통신검사_DTC코드5 != '') {
 				_EOL_add_DTC_Code();
-				await sleep(10);
+				await sleep(1);
 				_통신검사_DTC코드5.value = EOL_v.통신검사_DTC코드5;
 			}
 
 			if(EOL_v.통신검사_DTC코드6 != '') {
 				_EOL_add_DTC_Code();
-				await sleep(10);
+				await sleep(1);
 				_통신검사_DTC코드6.value = EOL_v.통신검사_DTC코드6;
 			}
 
 			if(EOL_v.통신검사_DTC코드7 != '') {
 				_EOL_add_DTC_Code();
-				await sleep(10);
+				await sleep(1);
 				_통신검사_DTC코드7.value = EOL_v.통신검사_DTC코드7;
 			}
 
 			if(EOL_v.통신검사_DTC코드8 != '') {
 				_EOL_add_DTC_Code();
-				await sleep(10);
+				await sleep(1);
 				_통신검사_DTC코드8.value = EOL_v.통신검사_DTC코드8;
 			}
 
 			if(EOL_v.통신검사_DTC코드9 != '') {
 				_EOL_add_DTC_Code();
-				await sleep(10);
+				await sleep(1);
 				_통신검사_DTC코드9.value = EOL_v.통신검사_DTC코드9;
 			}
 
 			if(EOL_v.통신검사_DTC코드10 != '') {
 				_EOL_add_DTC_Code();
-				await sleep(10);
+				await sleep(1);
 				_통신검사_DTC코드10.value = EOL_v.통신검사_DTC코드10;
 			}
 

@@ -1,5 +1,4 @@
 async function 구장재고_시작() {
-	await  sleep(100);
 	while(_비고 == undefined) {
 		await sleep(DELAY);
 	}

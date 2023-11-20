@@ -49,12 +49,20 @@ app.get('/tesseract', (req, res) => {
 	res.sendFile(path.join(__dirname, '../www/tesseract_ocr.html'));
 });
 
+app.get('/agreement', (req, res) => {
+	res.sendFile(path.join(__dirname, '../www/agreement.html'));
+});
+
 app.get('/confirm_doc', (req, res) => {
 	res.sendFile(path.join(__dirname, '../www/거래확인서.html'));
 });
 
 app.get('/confirm_doc_search', (req, res) => {
 	res.sendFile(path.join(__dirname, '../www/거래확인서조회.html'));
+});
+
+app.get('/agreement_doc', (req, res) => {
+	res.sendFile(path.join(__dirname, '../www/제공동의서.html'));
 });
 
 client = new MongoClient(uri);

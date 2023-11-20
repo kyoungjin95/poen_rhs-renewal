@@ -3,8 +3,6 @@ async function login() {
 	const _passwd = document.getElementById('_passwd');
 	if(_id.value == '' || _passwd.value == '') return;
 	
-	;
-
 	const hash = CryptoJS.MD5(_passwd.value); 	
 
 	count(계정, { id: _id.value, passwd: hash.toString() });
@@ -21,6 +19,7 @@ async function login() {
 			sessionStorage.setItem('level',  level);
 
 			alert('로그인 성공');
+
 			setTimeout(async function() {
 				loadPage('base/dashboard.html');
 				start_repeat_대시보드();
@@ -60,14 +59,9 @@ async function login() {
 }
 
 async function change_label() {
-	while(document.getElementById('login_label') == undefined) {
-		await sleep(DELAY);
-	}
-	await sleep(10);
 	const _label = document.getElementById('login_label');
 	const _login_btn = document.getElementById('login_btn');
 	const _login_info = document.getElementById('login_info');
-	_label.innerHTML = 'Login';
 
 	if(_login_btn.innerHTML == '로그아웃') {
 		sessionStorage.clear();

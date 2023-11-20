@@ -1,6 +1,5 @@
 async function 성능검사_시작(is재제조 = false) {
 	if(worker == '') return;
-	await sleep(100);
 	while(_management_id == undefined) {
 		await sleep(DELAY);
 	}

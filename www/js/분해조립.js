@@ -269,7 +269,7 @@ async function 분해조립_시작(is재제조번호 = false) {
 			console.log('row:', row_index);
 			console.log('col:', cell_index);
 			if(row_index < 2 || cell_index != 2) return;
-			var str = row.children.innerText;
+			var str = row.children[0].innerText;
 			var type = str.slice(0, -2);
 			var no = str.slice(-2);
 			console.log('type:', type, 'no:', no);
@@ -723,7 +723,7 @@ async function type_add(name, type, row_index, no) {
 	var insert_string = "<td><label for=\"_" + type + no + "\"><b>" + name + " " + no + "</b></label></td><td>교환전&nbsp;<input type=\"text\" id=\"_" + type + no + "\" size=\"100\" value=\' \' required>&nbsp;<select name=\"language\" onchange=\"_콤보박스(\'_" + type + no + "\', this);\"><option value=\"\">---</option><option value=\"신품 교체\">신품 교체</option><option value=\"고품 교체\">고품 교체</option><option value=\"N/A\">N/A</option></select><br/>교환후&nbsp;<input type=\"text\" id=\"_" + type + no + "_2\" size=\"100\" value=\' \' required>&nbsp;<select name=\"language\" onchange=\"_콤보박스(\'_" + type + no + "_2\', this);\"><option value=\"\">---</option><option value=\"신품 교체\">신품 교체</option><option value=\"고품 교체\">고품 교체</option><option value=\"N/A\">N/A</option></select></td><td><center><button>-</button></center></td>";
 	console.log(insert_string);
 	current_row.innerHTML = insert_string;
-	await sleep(20);
+	await sleep(1);
 }
 
 function _delete_row(index, no, type) {

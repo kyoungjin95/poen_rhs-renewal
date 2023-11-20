@@ -2,7 +2,6 @@ async function 입고_시작() {
 	while(_management_id == undefined) {
 		await sleep(DELAY);
 	}
-	await sleep(100);
 	
 	const _입고기타 = document.getElementById('_입고_기타');
 	const _입고일반 = document.getElementById('_입고_일반');

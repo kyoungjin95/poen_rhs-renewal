@@ -82,43 +82,43 @@ async function 기초검사_시작(is재제조 = false) {
 		_통신검사_DTC코드3.value = 기초검사_v.통신검사_DTC코드3;
 		if(기초검사_v.통신검사_DTC코드4 != '') {
 			_기초검사_add_DTC_Code();
-			await sleep(10);
+			await sleep(1);
 			_통신검사_DTC코드4.value = 기초검사_v.통신검사_DTC코드4;
 		}
                
     if(기초검사_v.통신검사_DTC코드5 != '') {
 			_기초검사_add_DTC_Code();
-			await sleep(10);
+			await sleep(1);
 			_통신검사_DTC코드5.value = 기초검사_v.통신검사_DTC코드5;
 		}
 
     if(기초검사_v.통신검사_DTC코드6 != '') {
 			_기초검사_add_DTC_Code();
-			await sleep(10);
+			await sleep(1);
 			_통신검사_DTC코드6.value = 기초검사_v.통신검사_DTC코드6;
 		}
 
     if(기초검사_v.통신검사_DTC코드7 != '') {
 			_기초검사_add_DTC_Code();
-			await sleep(10);
+			await sleep(1);
 			_통신검사_DTC코드7.value = 기초검사_v.통신검사_DTC코드7;
 		}
 
     if(기초검사_v.통신검사_DTC코드8 != '') {
 			_기초검사_add_DTC_Code();
-			await sleep(10);
+			await sleep(1);
 			_통신검사_DTC코드8.value = 기초검사_v.통신검사_DTC코드8;
 		}
 
      if(기초검사_v.통신검사_DTC코드9 != '') {
 			_기초검사_add_DTC_Code();
-			await sleep(10);
+			await sleep(1);
 			_통신검사_DTC코드9.value = 기초검사_v.통신검사_DTC코드9;
 		}
 
     if(기초검사_v.통신검사_DTC코드10 != '') {
 			_기초검사_add_DTC_Code();
-			await sleep(10);
+			await sleep(1);
 			_통신검사_DTC코드10.value = 기초검사_v.통신검사_DTC코드10;
 		}
 
@@ -234,7 +234,7 @@ async function 기초검사_SAVE() {
 	var oCurrentRow;
 	var tb = document.getElementById('tb');
 	var rowIcnt = tb.rows.length - 14;
-	var code_no = rowIcnt - 22;
+	var code_no = rowIcnt - 21;
 	console.log('save rowIcnt:', rowIcnt);
 	console.log('save code_no:', code_no);
 
@@ -380,8 +380,8 @@ function _통신검사_릴레이구동_콤보박스(e) {
 function _기초검사_add_DTC_Code() {
 	var oCurrentRow;
 	var tb = document.getElementById('tb');
-	var rowIcnt = tb.rows.length - 14;
-	var code_no = rowIcnt - 21;
+	var rowIcnt = tb.rows.length - 15;
+	var code_no = rowIcnt - 19;
 	console.log('row count:', rowIcnt);
 	console.log('code No:', code_no);
 	if(rowIcnt > 31) return false;
