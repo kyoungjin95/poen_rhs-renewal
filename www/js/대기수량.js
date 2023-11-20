@@ -74,48 +74,45 @@ async function 대기수량_현황_조회() {
 }
 
 async function 세척대기() {
-	 count(BSA재제조, { 입고 : { $ne : ''}, 세척 : { $eq : '' }, 기초검사 : { $eq : '' }, 분해조립 : { $eq : '' }, 성능검사 : { $eq : '' }, EOL : { $eq : '' } ,  소재지 : { $nin : ['공정대기', '품질대기'] }, 완전분해 : { $eq : ''}, 폐기 : { $eq : '' }, 출하 : { $eq : '' }, 구분 : { $nin: ['일반기타', '보증기타']} });
+	 count(BSA재제조, { 입고 : { $ne : ''}, 세척 : { $eq : '' }, 기초검사 : { $eq : '' }, 분해조립 : { $eq : '' }, 성능검사 : { $eq : '' }, EOL : { $eq : '' } ,  소재지 : { $nin : ['공정대기', '품질대기'] }, 완전분해 : { $eq : ''}, 폐기 : { $eq : '' }, 출하 : { $eq : '' }, 구분 : { $nin: ['일반기타', '보증기타']} }, 세척);
 	 await delay();
 
-	 document.getElementById('check_num2').innerHTML = BSA재제조_cnt;
+	 document.getElementById('check_num2').innerHTML = option_세척_cnt;
 }
 
 async function 기초검사대기() {
-	 count(BSA재제조, { 세척 : { $ne : '' }, 기초검사 : { $eq : '' }, 분해조립 : { $eq : '' }, 성능검사 : { $eq : '' }, EOL : { $eq : '' }, 소재지 : { $nin : ['공정대기', '품질대기'] }, 완전분해 : { $eq : ''}, 폐기 : { $eq : '' }, 출하 : { $eq : '' }, 구분 : { $nin: ['일반기타', '보증기타']} });
+	 count(BSA재제조, { 세척 : { $ne : '' }, 기초검사 : { $eq : '' }, 분해조립 : { $eq : '' }, 성능검사 : { $eq : '' }, EOL : { $eq : '' }, 소재지 : { $nin : ['공정대기', '품질대기'] }, 완전분해 : { $eq : ''}, 폐기 : { $eq : '' }, 출하 : { $eq : '' }, 구분 : { $nin: ['일반기타', '보증기타']} }, 기초검사);
 	 await delay();
 
-	 document.getElementById('check_num3').innerHTML = BSA재제조_cnt;
+	 document.getElementById('check_num3').innerHTML = option_기초검사_cnt;
 }
 
 async function 분해조립대기() {
-	 count(BSA재제조, { 기초검사 : { $ne : '' }, 분해조립 : { $eq : '' }, 성능검사 : { $eq : '' }, EOL : { $eq : '' }, 소재지 : { $nin : ['공정대기', '품질대기'] }, 완전분해 : { $eq : ''}, 폐기 : { $eq : '' }, 출하 : { $eq : '' }, 구분 : { $nin: ['일반기타', '보증기타']} });
+	 count(BSA재제조, { 기초검사 : { $ne : '' }, 분해조립 : { $eq : '' }, 성능검사 : { $eq : '' }, EOL : { $eq : '' }, 소재지 : { $nin : ['공정대기', '품질대기'] }, 완전분해 : { $eq : ''}, 폐기 : { $eq : '' }, 출하 : { $eq : '' }, 구분 : { $nin: ['일반기타', '보증기타']} }, 분해조립);
 	 await delay();
 
-	 document.getElementById('check_num4').innerHTML = BSA재제조_cnt;
+	 document.getElementById('check_num4').innerHTML = option_분해조립_cnt;
 }
 
 async function 성능검사대기() {
-	 count(BSA재제조, { 분해조립 : { $ne : '' }, 성능검사 : { $eq : '' }, EOL : { $eq : '' }, 소재지 : { $nin : ['공정대기', '품질대기'] }, 완전분해 : { $eq : ''}, 폐기 : { $eq : '' }, 출하 : { $eq : '' }, 구분 : { $nin: ['일반기타', '보증기타']} });
+	 count(BSA재제조, { 분해조립 : { $ne : '' }, 성능검사 : { $eq : '' }, EOL : { $eq : '' }, 소재지 : { $nin : ['공정대기', '품질대기'] }, 완전분해 : { $eq : ''}, 폐기 : { $eq : '' }, 출하 : { $eq : '' }, 구분 : { $nin: ['일반기타', '보증기타']} }, 성능검사);
 	 await delay();
 
-	 document.getElementById('check_num5').innerHTML = BSA재제조_cnt;
+	 document.getElementById('check_num5').innerHTML = option_성능검사_cnt;
 }
 
 async function EOL대기() {
-	 count(BSA재제조, { 성능검사 : { $ne : '' }, EOL : { $eq : '' }, 소재지 : { $nin : ['공정대기', '품질대기'] }, 완전분해 : { $eq : ''}, 폐기 : { $eq : '' }, 출하 : { $eq : '' }, 구분 : { $nin: ['일반기타', '보증기타']} });
+	 count(BSA재제조, { 성능검사 : { $ne : '' }, EOL : { $eq : '' }, 소재지 : { $nin : ['공정대기', '품질대기'] }, 완전분해 : { $eq : ''}, 폐기 : { $eq : '' }, 출하 : { $eq : '' }, 구분 : { $nin: ['일반기타', '보증기타']} }, EOL);
 	 await delay();
 
-	 document.getElementById('check_num6').innerHTML = BSA재제조_cnt;
+	 document.getElementById('check_num6').innerHTML = option_EOL_cnt;
 }
 
 async function 출하대기() {
-	 count(BSA재제조, { EOL : { $ne : '' }, 소재지 : { $nin : ['공정대기', '품질대기'] }, 완전분해 : { $eq : ''}, 폐기 : { $eq : '' }, 출하 : { $eq : '' }, 구분 : { $nin: ['일반기타', '보증기타']} });
+	 count(BSA재제조, { EOL : { $ne : '' }, 소재지 : { $nin : ['공정대기', '품질대기'] }, 완전분해 : { $eq : ''}, 폐기 : { $eq : '' }, 출하 : { $eq : '' }, 구분 : { $nin: ['일반기타', '보증기타']} }, 출하정보);
 	 await delay();
 
-	 document.getElementById('check_num7').innerHTML = BSA재제조_cnt;
-
-	 await 출하대기목록();
-	 await 대기목록(선택대기공정);
+	 document.getElementById('check_num7').innerHTML = option_출하정보_cnt;
 }
 
 async function 공정대기() {
@@ -130,6 +127,9 @@ async function 품질대기() {
 	 await delay();
 
 	 document.getElementById('check_num9').innerHTML = BSA재제조_cnt;
+
+	 await 출하대기목록();
+	 await 대기목록(선택대기공정);
 }
 
 async function 대기목록(공정) {
