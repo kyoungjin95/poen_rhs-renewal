@@ -1,7 +1,16 @@
 @import url(./newstyle.css);
+/* font */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap");
+@import url("//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css");
+/* root */
+:root {
+  --en-font: "Poppins", sans-serif;
+  --ko-font: "Spoqa Han Sans Neo", "sans-serif";
+}
 
 * {
   box-sizing: content-box;
+  font-family: var(--ko-font);
 }
 /* ========================================
   제공동의서 & 거래확인서*/
@@ -43,6 +52,7 @@
   font-size: 24px;
   text-decoration: underline;
   margin-bottom: 20px;
+  text-align: center;
 }
 .agreement__header p,
 .agreement__content,
@@ -235,10 +245,101 @@ input:focus:-ms-input-placeholder {
 input::placeholder.fzchange {
   font-size: 1px;
 }
-.sign img {
+.sign-1 img {
+  position: absolute;
+  top: 55%;
+  left: 65%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+.sign-2 img {
   position: absolute;
   top: -10%;
   left: 13%;
+  z-index: -1;
+}
+
+/* 서명란 */
+button {
+  background-color: #0a723f;
+  color: white;
+  font-size: 1vw;
+  outline: none;
+  border: none;
+  border-radius: 0.5vw;
+  padding: 0.5vw 2vw;
+  cursor: pointer;
+  user-select: none;
+  text-align: center;
+  white-space: nowrap;
+  transition: all 0.2s linear;
+}
+button:hover {
+  background-color: #12b566;
+}
+.apply__check {
+  text-align: center;
+  width: 98%;
+  padding-top: 15px;
+}
+.apply__check span {
+  display: inline-block;
+  font-size: 1.2vw;
+  font-weight: bold;
+}
+.apply__sign {
+  display: flex;
+  justify-content: center;
+}
+.customer__write {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.8vw 0;
+}
+.customer__modifty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.customer__modifty button {
+  width: 50px;
+  margin-left: 10px;
+  padding: 0;
+  height: 70px;
+  font-size: 15px;
+  border-radius: 0;
+  transition: all 0.7s ease;
+}
+.customer__modifty .del {
+  border: 1px solid #c83312;
+  color: #c83312;
+  background: transparent;
+}
+.customer__modifty .apl {
+  border: 1px solid #0a3c72;
+  color: #0a3c72;
+  background: transparent;
+}
+.customer__modifty .del:hover {
+  background: #c83312;
+  color: #fff;
+}
+.customer__modifty .apl:hover {
+  background: #0a3c72;
+  color: #fff;
+}
+.apply__sign label h2 {
+  font-size: 1.5vw;
+  margin: 1vw 0;
+}
+.apply__btn {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 10px;
 }
 
 /* 미디어쿼리 */

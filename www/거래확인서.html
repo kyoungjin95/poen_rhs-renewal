@@ -1,14 +1,15 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
-    <title>거래 확인서</title>
     <meta charset="UTF-8" />
+    <title>거래 확인서</title>
+    <link rel="stylesheet" href="base/style/contract.css" />
     <script src="base/jslib/luxon.min.js"></script>
     <script src="base/jslib/socket.io.min.js"></script>
     <script src="base/js/poenRHS_mini.js"></script>
   </head>
-
   <body>
-    <div class="agreement-all c">
+    <section class="agreement-all c">
       <div id="confirmation" class="page">
         <div class="confirmation-back"></div>
         <div class="confirmation">
@@ -105,9 +106,12 @@
                   </td>
                 </tr>
               </table>
-              <div class="sign" style="text-align: left; font-weight: bold">
+              <div
+                class="sign sign-2"
+                style="text-align: left; font-weight: bold"
+              >
                 서명 :
-                <input type="text" placeholder="성    명" id='_서명성명' />
+                <input type="text" placeholder="성    명" id="_서명성명" />
                 <span style="color: #666">(인)</span>
                 <img style="width: 170px; height: 50px" id="_서명" />
               </div>
@@ -198,34 +202,33 @@
                 <input type="text" id="_month" />.
                 <input type="text" id="_day" />
               </div>
-
               <p>※ 본 문서를 제시하는 고객에게만 보증수리가 제공됩니다.</p>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <div>
-      <div style="padding-bottom: 15px; width: 98%">
-        <center>
-          <span style="font-weight: bold"
-            >서명 후 꼭~ 우측 하단의 '적용' 버튼을 클릭해주세요.</span
-          >
-          <br />
+    </section>
+    <div class="apply__check">
+      <span>서명 후 꼭~ 우측 하단의 '적용' 버튼을 클릭해주세요.</span>
+      <div class="apply__sign">
+        <div class="customer__write">
           <canvas
             id="drawCanvas"
             width="300"
             height="150"
             style="position: relative; border: 1px solid #000"
           ></canvas>
-          <br />
-          <button onclick="onClear();">지우기</button>&nbsp;&nbsp;&nbsp;&nbsp;
-          <button onclick="서명저장();">적용</button>
-        </center>
+        </div>
+        <div class="customer__modifty">
+          <button onclick="onClear();" class="del">지우기</button>
+          <button onclick="서명저장();" class="apl">적용</button>
+        </div>
       </div>
-    </div>
-    <div>
-	    <center><button onClick="save();">저 장</button>&nbsp;&nbsp;&nbsp;<button onClick="location.href='agreement'">이전화면으로</button></center>
+
+      <div class="apply__btn">
+        <button onClick="save();">저장</button>
+        <button onClick="location.href='agreement'">이전화면으로</button>
+      </div>
     </div>
 
     <script>

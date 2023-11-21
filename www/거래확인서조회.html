@@ -2,13 +2,11 @@
   <head>
     <title>거래확인서</title>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="base/style/공정.css" />
-    <link rel="stylesheet" href="base/style/style.css" />
+    <link rel="stylesheet" href="base/style/contract.css" />
     <link
       rel="stylesheet"
       href="base/style/tabulator_css/tabulator_modern.min.css"
     />
-    <link rel="stylesheet" href="base/style/contract.css" />
     <script src="base/jslib/luxon.min.js"></script>
     <script src="base/jslib/socket.io.min.js"></script>
     <script src="base/js/poenRHS_mini.js"></script>
@@ -18,7 +16,7 @@
   </head>
 
   <body>
-    <div class="agreement-all c">
+    <section class="agreement-all c">
       <div id="_거래확인서">
         <div id="confirmation" class="page">
           <div class="confirmation-back"></div>
@@ -45,9 +43,9 @@
               <div class="header__text">
                 <h2>전기차 리퍼비시 배터리팩 거래 사실 확인서</h2>
                 <p>
-                  고객은 제공된 약관에 따라 구입하는 것에 동의하며,
-                  <br />판매자는 '리퍼비시 배터리팩'과 부대 서비스를 제공합니다.
-                  납품처는 아래 '수리거점'입니다.
+                  고객은 제공된 약관에 따라 구입하는 것에 동의하며, 판매자는
+                  '리퍼비시 배터리팩'과 부대 서비스를 제공합니다. 납품처는 아래
+                  '수리거점'입니다.
                 </p>
                 <div class="amount">
                   <span> - 금&nbsp;액 :</span>금
@@ -118,9 +116,12 @@
                     </td>
                   </tr>
                 </table>
-                <div class="sign" style="text-align: left; font-weight: bold">
+                <div
+                  class="sign sign-2"
+                  style="text-align: left; font-weight: bold"
+                >
                   서명 :
-                  <input type="text" placeholder="성    명" id="_서명성명"/>
+                  <input type="text" placeholder="성    명" id="_서명성명" />
                   <span style="color: #666">(인)</span>
                   <img style="width: 170px; height: 50px" id="_서명" />
                 </div>
@@ -211,36 +212,25 @@
                   <input type="text" id="_month" />.
                   <input type="text" id="_day" />
                 </div>
-
                 <p>※ 본 문서를 제시하는 고객에게만 보증수리가 제공됩니다.</p>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <br />
-      <br />
-      <br />
-      <div>
-        <center>
-          <div>
-            <label for="grid_거래확인서"
-              ><b>
-                <h2>거래확인서 조회</h2>
-              </b></label
-            >
-            <div id="grid_거래확인서"></div>
-          </div>
-          <div>
-            <button onClick="조회();">조 회</button>&nbsp;&nbsp;&nbsp;<button
-              onClick="save();"
-            >
-              저 장</button
-            >&nbsp;&nbsp;&nbsp;<button onClick="pdf();">PDF</button>
-          </div>
-        </center>
+    </section>
+    <div class="apply__check">
+      <div class="apply__sign">
+        <label for="grid_거래확인서">
+          <h2>거래확인서 조회</h2>
+        </label>
       </div>
-      <br />
+      <div id="grid_거래확인서"></div>
+      <div class="apply__btn">
+        <button onClick="조회();">조 회</button>
+        <button onClick="save();">저 장</button>
+        <button onClick="pdf();">PDF</button>
+      </div>
       <canvas id="_canvas"></canvas>
     </div>
     <script>
@@ -306,28 +296,28 @@
       }
 
       async function 조회() {
-	날짜ID = '';
-			  
-	_금액.value = '';
-	_성명.value = '';
-	_생년월일.value = '';
-	_고객_주소.value = '';
-	_고객_전화번호.value = '';
-	_email.value = '';
-	_서명성명.value = '';
-	_서명.src = '';
-	_제조사.value = '';
-	_제조년도.value = '';
-	_누적주행거리.value = '';
-	_차량번호.value = '';
-	_차대번호.value = '';
-	_차량용도.value = '';
-	_상호.value = '';
-	_수리처_주소.value = '';
-	_수리처_전화번호.value = '';
-	_year.value = '';
-	_month.value = '';
-	_day.value = '';
+        날짜ID = "";
+
+        _금액.value = "";
+        _성명.value = "";
+        _생년월일.value = "";
+        _고객_주소.value = "";
+        _고객_전화번호.value = "";
+        _email.value = "";
+        _서명성명.value = "";
+        _서명.src = "";
+        _제조사.value = "";
+        _제조년도.value = "";
+        _누적주행거리.value = "";
+        _차량번호.value = "";
+        _차대번호.value = "";
+        _차량용도.value = "";
+        _상호.value = "";
+        _수리처_주소.value = "";
+        _수리처_전화번호.value = "";
+        _year.value = "";
+        _month.value = "";
+        _day.value = "";
 
         count(거래확인서, { 날짜ID: { $exists: true } });
         await delay();
@@ -337,7 +327,7 @@
           await delay();
           console.log("find:", find_array);
 
-	  날짜ID = find_array[0].날짜ID;
+          날짜ID = find_array[0].날짜ID;
 
           var table_거래확인서 = new Tabulator("#grid_거래확인서", {
             layout: "resizableColumnFit",

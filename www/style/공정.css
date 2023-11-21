@@ -86,7 +86,6 @@ form {
 }
 .process__btn {
   display: flex;
-  justify-content: space-between;
   gap: 1vw;
 }
 .id__name {
@@ -198,6 +197,9 @@ table input {
 .process-step {
   align-items: center;
 }
+.process-step table label {
+  font-size: 1.2vw;
+}
 /* item-detail 검사보고서 dropdwon menu Btn css */
 .select-menu {
   position: relative;
@@ -289,15 +291,12 @@ td.process__btn {
 }
 /* 분해조립, 출하정보 크기 줄이기위함*/
 .t1 td {
-  font-size: 1.3vw;
+  font-size: 1.2vw;
 }
 .t2 td {
-  font-size: 1.5vw;
+  font-size: 1.3vw;
   font-weight: bold;
   padding: 0.6vw 1vw;
-}
-.t3 td label {
-  font-size: 1.2vw;
 }
 .t3 table input {
   width: 70%;
