@@ -83,10 +83,6 @@ io.on('connection', async function(socket) {
 	}
 
 	console.log('a user connected');
-	if(client_ip == '::ffff:112.186.96.70') {
-		//client.close();
-		//console.log('force disconnect a user connection');
-	}
 
 	socket.on('qr_label', async function(html_string) {
 		const fileBuffer = await HTMLtoDOCX(html_string, null, {
@@ -124,7 +120,6 @@ io.on('connection', async function(socket) {
 	});
 
 	socket.on('count', async function(level, col, query, check, option = '') {
-		//if(client_ip == '::ffff:112.186.96.70') return;
 		if(account.login == false && col != '계정' && col != '거래확인서' && col != '제공동의서') return;
 		console.log(col, query, client_ip);
 		const cnt = await count(col, query);
@@ -139,7 +134,6 @@ io.on('connection', async function(socket) {
 	});
 
 	socket.on('find', async function(worker, col, query, options, check) {
-		//if(client_ip == '::ffff:112.186.96.70') return;
 		if(account.login == false && col != '거래확인서' && col != '제공동의서') return;
 		const result_array = await find(col, query, options);
 		socket.emit('find_result', col, result_array, check);
@@ -147,7 +141,6 @@ io.on('connection', async function(socket) {
 	});
 
 	socket.on('findOne', async function(worker, col, query, options, check) {
-		//if(client_ip == '::ffff:112.186.96.70') return;
 		if(account.login == false && col != '거래확인서' && col != '제공동의서') return;
 		const result_array = await findOne(col, query, options);
 		socket.emit('find_result', col, result_array, check);
