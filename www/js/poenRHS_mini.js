@@ -141,15 +141,14 @@ async function count(col, query) {
 	doc_count = 0;
 	check++;
 	if(check > 10) check = 0;
-	socket.emit('count', level, col, query, check);
-	console.log('#########################');
+	socket.emit('count_agree', level, col, query, check);
 }
 
 async function insert(col, doc) {
 	if(socket == undefined) return;
 	await sleep(DELAY);
 	flag_arrivedMSG = false;
-	socket.emit('insert', worker, col, doc);
+	socket.emit('insert_agree', worker, col, doc);
 }
 
 async function insertMany(col, doc) {
@@ -166,7 +165,7 @@ async function update_거래확인서(col, doc) {
 	console.log('worker :', worker);
 	console.log('doc :', doc);
 
-	socket.emit('update', worker, col, { 날짜ID: doc.날짜ID }, {$set: doc});
+	socket.emit('update_agree', worker, col, { 날짜ID: doc.날짜ID }, {$set: doc});
 }
 
 async function update_제공동의서(col, doc) {
@@ -177,14 +176,15 @@ async function update_제공동의서(col, doc) {
 	console.log('worker :', worker);
 	console.log('doc :', doc);
 
-	socket.emit('update', worker, col, { 날짜ID: doc.날짜ID }, {$set: doc});
+	socket.emit('update_agree', worker, col, { 날짜ID: doc.날짜ID }, {$set: doc});
 }
 
-async function deleteOne(col, date) {
+async function deleteOne(col, 날짜ID) {
 	if(socket == undefined) return;
 	await sleep(DELAY);
 	flag_arrivedMSG = false;
-	socket.emit('delete', worker, col, { date: date});
+	socket.emit('delete_agree', worker, col, { 날짜ID: 날짜ID});
+	console.log('===>', col, 날짜ID);
 }
 
 async function find_거래확인서(col, query) {
@@ -194,7 +194,7 @@ async function find_거래확인서(col, query) {
 	if(check > 10) check = 0;
 
 	console.log(worker, col, query, 거래확인서, check);
-	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: 거래확인서_ }, check);
+	socket.emit('find_agree', worker, col, query, { sort: { kind: 1}, projection: 거래확인서_ }, check);
 }
 
 async function find_제공동의서(col, query) {
@@ -204,7 +204,7 @@ async function find_제공동의서(col, query) {
 	if(check > 10) check = 0;
 
 	console.log(worker, col, query, 제공동의서, check);
-	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: 제공동의서_ }, check);
+	socket.emit('find_agree', worker, col, query, { sort: { kind: 1}, projection: 제공동의서_ }, check);
 }
 
 function sleep(ms) {

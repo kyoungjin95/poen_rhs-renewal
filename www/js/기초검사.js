@@ -335,6 +335,7 @@ async function 기초검사_SAVE() {
 		_doc.관리번호 = _management_id.value;
 		_doc.기초검사투입일 = _공정입고일.value;
 		_doc.기초검사 = _공정완료일.value;
+		_doc.RO_no = _RO_no.value;
 
 		update(BSA재제조, _doc);
 		await delay();
@@ -343,6 +344,7 @@ async function 기초검사_SAVE() {
 			관리번호 : _management_id.value,
 			기초검사투입일 : _공정입고일.value,
 			기초검사 : _공정완료일.value
+			RO_no : _RO_no.value;
 		}
 
 		update(BSA재제조, _doc);

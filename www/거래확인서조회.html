@@ -292,7 +292,8 @@
 
         if (insert_count > 0) {
           alert("저장 되었습니다");
-        }
+        } 
+        location.reload();
       }
 
       async function 조회() {
@@ -381,7 +382,7 @@
 
           table_거래확인서.on("rowClick", async function (e, row) {
             console.log("selected 날짜ID: ", row.getData().날짜ID);
-            var 날짜ID = row.getData().날짜ID;
+            날짜ID = row.getData().날짜ID;
 
             find_거래확인서(거래확인서, { 날짜ID: 날짜ID });
             await delay();

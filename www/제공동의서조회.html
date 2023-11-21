@@ -204,13 +204,15 @@
         날짜ID = "";
         count(제공동의서, { 날짜ID: { $exists: true } });
         await delay();
-        console.log("doc_count:", doc_count);
-        if (doc_count > 0) {
-          find_제공동의서(제공동의서, { 날짜ID: { $exists: true } });
-          await delay();
-          console.log("find:", find_array);
 
-          날짜ID = find_array[0].날짜ID;
+	console.log(doc_count);
+
+        if (doc_count > 0) {
+           find_제공동의서(제공동의서, { 날짜ID: { $exists: true } });
+	   await delay();
+           console.log("find:", find_array);
+
+          날짜ID = '';
 
           var table_제공동의서 = new Tabulator("#grid_제공동의서", {
             layout: "resizableColumnFit",
@@ -229,6 +231,19 @@
               { title: "year", field: "year", sorter: "string", width: "80" },
               { title: "month", field: "month", sorter: "string", width: "80" },
               { title: "day", field: "day", sorter: "string", width: "80" },
+	      { formatter: "buttonCross", width: 40, align: "center", cellClick: async function (e, cell) {
+  				var ok = window.confirm("지워집니다. 계속하겠습니까?");
+				if(ok == false) return;
+
+				cell.getRow().delete();
+				deleteOne(제공동의서, cell.getRow().getData().날짜ID);
+				await delay(); 
+
+				if (delete_count > 0) {
+					    alert("삭제 되었습니다.");
+  				}
+	      		}
+      	      },
             ],
           });
 

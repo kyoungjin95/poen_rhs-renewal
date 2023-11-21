@@ -178,7 +178,7 @@ const BSA재제조_doc = {
 	폐기: '',
 	폐기사유: '',
 	출하예약: '',
-  	렉번호: ''
+	렉번호: ''
 };
 
 const 입고_doc = {
@@ -979,7 +979,7 @@ const BSA재제조_ = {
 	폐기: 1,
 	폐기사유: 1,
 	출하예약: 1,
-  	렉번호: 1
+	렉번호: 1
 };
 
 const 입고_ = {
@@ -1860,7 +1860,7 @@ socket.on('count_result', async function(col, count, rcv_check, option = '') {
 			신품정보_cnt = 0;
 			신품정보_cnt = JSON.parse(JSON.stringify(count));
 			break;
-		
+
 		case 고품정보 :
 			고품정보_cnt = 0;
 			고품정보_cnt = JSON.parse(JSON.stringify(count));
@@ -2147,7 +2147,7 @@ socket.on('find_result', async function(col, result, rcv_check) {
 			신품정보_v = [];
 			신품정보_v = JSON.parse(JSON.stringify(result));
 			break;
-		
+
 		case 고품정보 :
 			고품정보_v = [];
 			고품정보_v = JSON.parse(JSON.stringify(result));
@@ -2298,7 +2298,7 @@ socket.on('find_result', async function(col, result, rcv_check) {
 			find_array = JSON.parse(JSON.stringify(result)); 
 			break;
 	}
-  
+
 	flag_arrivedMSG = true;
 });
 
@@ -2440,82 +2440,81 @@ async function insertMany(col, doc) {
 async function update(col, doc) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
-		socket.emit('update', worker, col, { 관리번호: doc.관리번호 }, {$set: doc});
+	socket.emit('update', worker, col, { 관리번호: doc.관리번호 }, {$set: doc});
 }
 
 async function update_보고서(col, doc) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
-		socket.emit('update', worker, col, { level: doc.level }, {$set: doc});
+	socket.emit('update', worker, col, { level: doc.level }, {$set: doc});
 }
 
 async function update_재제조번호(col, doc) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
-		socket.emit('update', worker, col, { 재제조번호: doc.재제조번호 }, {$set: doc});
+	socket.emit('update', worker, col, { 재제조번호: doc.재제조번호 }, {$set: doc});
 }
 
 async function update_계정(col, doc) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
-		socket.emit('update', worker, col, { id: doc.id }, {$set: doc});
+	socket.emit('update', worker, col, { id: doc.id }, {$set: doc});
 }
 
 async function update_신품정보(col, doc) {
 	if(socket == undefined) return;
 	if(doc.QR == '') return;
 	flag_arrivedMSG = false;
-		socket.emit('update', worker, col, { QR: doc.QR }, {$set: doc});
+	socket.emit('update', worker, col, { QR: doc.QR }, {$set: doc});
 }
 
 async function update_고품정보(col, doc) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
-		socket.emit('update', worker, col, { QR: doc.QR }, {$set: doc});
+	socket.emit('update', worker, col, { QR: doc.QR }, {$set: doc});
 }
 
 async function deleteOne(col, management_id) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
-		socket.emit('delete', worker, col, { 관리번호: management_id});
+	socket.emit('delete', worker, col, { 관리번호: management_id});
 }
-
 
 async function deleteOneBSA(col, id) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
-		socket.emit('delete_by_id', worker, col, id);
+	socket.emit('delete_by_id', worker, col, id);
 }
 
 
 async function deleteOne재제조번호(col, 재제조번호) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
-		socket.emit('delete', worker, col, { 재제조번호: 재제조번호 });
+	socket.emit('delete', worker, col, { 재제조번호: 재제조번호 });
 }
 
 async function deleteOne_신품정보(col, QR) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
-		socket.emit('delete', worker, col, { QR: QR});
+	socket.emit('delete', worker, col, { QR: QR});
 }
 
 async function deleteOne_고품정보(col, QR) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
-		socket.emit('delete', worker, col, { QR: QR});
+	socket.emit('delete', worker, col, { QR: QR});
 }
 
 async function deleteOne_구장재고(col, 관리번호) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
-		socket.emit('delete', worker, col, { 관리번호: 관리번호});
+	socket.emit('delete', worker, col, { 관리번호: 관리번호});
 }
 
 async function delete_계정(_id) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
-		socket.emit('delete', worker, 계정, { id: _id});
+	socket.emit('delete', worker, 계정, { id: _id});
 }
 
 async function find(col, management_id) {
@@ -2527,139 +2526,139 @@ async function find(col, management_id) {
 
 	switch(col) {
 		case 'BSA재제조' :
-				socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: BSA재제조_}, check);
+			socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: BSA재제조_}, check);
 			break;
 
 		case '입고' :
-				socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 입고_}, check);
+			socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 입고_}, check);
 			break;
 
 		case '세척' :
-				socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 세척_}, check);
+			socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 세척_}, check);
 			break;
 
 		case '기초검사' :
-				socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 기초검사_}, check);
+			socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 기초검사_}, check);
 			break;
 
 		case '성능검사' :
-				socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 성능검사_}, check);
+			socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 성능검사_}, check);
 			break;
 
 		case 'EOL' :
-				socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: EOL_}, check);
+			socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: EOL_}, check);
 			break;
 
 		case '출하정보' :
-				socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 출하정보_}, check);
+			socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 출하정보_}, check);
 			break;
 
 		case '분해조립' :
-				socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 분해조립_}, check);
+			socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 분해조립_}, check);
 			break;
 
 		case '분해조립_부품정보' :
-				socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 분해조립_부품정보_}, check);
+			socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 분해조립_부품정보_}, check);
 			break;
 
 		case '고품정보' :
-				socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 고품정보_}, check);
+			socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 고품정보_}, check);
 			break;
 
 		case '신품정보' :
-				socket.emit('findOne', worker, col, { QR: management_id}, { sort: { kind: 1}, projection: 신품정보_}, check);
+			socket.emit('findOne', worker, col, { QR: management_id}, { sort: { kind: 1}, projection: 신품정보_}, check);
 			break;
 
 		case '특이사항' :
-				socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 특이사항_},  check);
+			socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 특이사항_},  check);
 			break;
 
 		case '교체부품상세1' :
-				socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 교체부품상세_}, check);
+			socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 교체부품상세_}, check);
 			break;
 
 		case '교체부품상세2' :
-				socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 교체부품상세_}, check);
+			socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 교체부품상세_}, check);
 			break;
 
 		case '교체부품상세3' :
-				socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 교체부품상세_}, check);
+			socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 교체부품상세_}, check);
 			break;
 
 		case '교체부품상세4' :
-				socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 교체부품상세_}, check);
+			socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 교체부품상세_}, check);
 			break;
 
 		case '교체부품상세5' :
-				socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 교체부품상세_}, check);
+			socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 교체부품상세_}, check);
 			break;
 
 		case '교체부품상세6' :
-				socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 교체부품상세_}, check);
+			socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 교체부품상세_}, check);
 			break;
 
 		case '교체부품상세7' :
-				socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 교체부품상세_}, check);
+			socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 교체부품상세_}, check);
 			break;
 
 		case '교체부품상세8' :
-				socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 교체부품상세_}, check);
+			socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 교체부품상세_}, check);
 			break;
 
 		case '교체부품상세9' :
-				socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 교체부품상세_}, check);
+			socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 교체부품상세_}, check);
 			break;
 
 		case '교체부품상세10' :
-				socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 교체부품상세_}, check);
+			socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 교체부품상세_}, check);
 			break;
 
 		case '입고_pic' :
-				socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 입고_pic_}, check);
+			socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 입고_pic_}, check);
 			break;
 
 		case '세척_pic' :
-				socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 세척_pic_}, check);
+			socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 세척_pic_}, check);
 			break;
 
 		case '기초검사_pic' :
-				socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 기초검사_pic_}, check);
+			socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 기초검사_pic_}, check);
 			break;
 
 		case '분해조립_pic' :
-				socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 분해조립_pic_}, check);
+			socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 분해조립_pic_}, check);
 			break;
 
 		case '성능검사_pic' :
-				socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 성능검사_pic_}, check);
+			socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 성능검사_pic_}, check);
 			break;
 
 		case  'EOL_pic' :
-				socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: EOL_pic_}, check);
+			socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: EOL_pic_}, check);
 			break;
 
 		case '특이사항_pic' :
-				socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 특이사항_pic_}, check);
+			socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 특이사항_pic_}, check);
 			break;
 
 		case '출하_pic' :
-				socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 출하_pic_}, check);
+			socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 출하_pic_}, check);
 			break;
 
 		case '반품입고_pic' :
-				socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 반품입고_pic_}, check);
+			socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 반품입고_pic_}, check);
 			break;
 
 		case '재출하_pic' :
-				socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 재출하_pic_}, check);
+			socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 재출하_pic_}, check);
 			break;
 
 		case '완전분해_pic' :
-				socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 완전분해_pic_}, check);
+			socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 완전분해_pic_}, check);
 			break;
 
 		case '폐기_pic' :
-				socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 폐기_pic_}, check);
+			socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 폐기_pic_}, check);
 			break;
 		default: 
 			console.log('collection name is not match');
@@ -3112,7 +3111,7 @@ async function 공정단계자동입력(_관리번호) {
 	if(BSA재제조_cnt > 0) {
 		find(BSA재제조, _관리번호);
 		await delay();
-		
+
 		if(BSA재제조_v.공정단계 == '출하') {
 			return;
 		}
@@ -3131,7 +3130,7 @@ async function 공정단계자동입력(_관리번호) {
 }
 
 function back() {
-  loadPage("base/item-details.html");
-  flag_상세입력 = true;
+	loadPage("base/item-details.html");
+	flag_상세입력 = true;
 }
 
