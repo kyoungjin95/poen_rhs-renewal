@@ -213,7 +213,7 @@ async function 기초검사_SAVE() {
 	}
 
 	var doc = JSON.parse(JSON.stringify(기초검사_doc));
-        doc.관리번호 = _management_id.value;
+        doc.관리번호 = _management_id.value.trim();
 	doc.공정입고일 = _공정입고일.value;
 	doc.RO_no = _RO_no.value;
 	doc.VIN = _VIN.value;
@@ -332,7 +332,7 @@ async function 기초검사_SAVE() {
 
 	if(BSA재제조_v == null) {
 		var _doc = JSON.parse(JSON.stringify(BSA재제조_doc));
-		_doc.관리번호 = _management_id.value;
+		_doc.관리번호 = _management_id.value.trim();
 		_doc.기초검사투입일 = _공정입고일.value;
 		_doc.기초검사 = _공정완료일.value;
 		_doc.RO_no = _RO_no.value;

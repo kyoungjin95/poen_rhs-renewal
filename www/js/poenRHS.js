@@ -2521,6 +2521,7 @@ async function find(col, management_id) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
 
+	console.log('find:', col, management_id);
 	check++;
 	if(check > 10) check = 0;
 
@@ -2684,6 +2685,8 @@ async function findOne_완료보고서(col, query) {
 }
 
 async function findOne_계정(col, query) {
+	console.log('login:', col, query);
+
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;

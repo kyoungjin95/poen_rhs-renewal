@@ -48,7 +48,7 @@ async function 입고_save() {
   console.log("save: ", _management_id.value);
 
   var doc = JSON.parse(JSON.stringify(입고_doc));
-  doc.관리번호 = _management_id.value;
+  doc.관리번호 = _management_id.value.trim();
   doc.입고일 = _입고일.value;
   doc.입고처 = _입고처.value;
   doc.구분 = _구분.value;
@@ -74,7 +74,7 @@ async function 입고_save() {
 
   if (BSA재제조_cnt == 0) {
     var _doc = JSON.parse(JSON.stringify(BSA재제조_doc));
-    _doc.관리번호 = _management_id.value;
+    _doc.관리번호 = _management_id.value.trim();
     _doc.입고 = _입고일.value;
     _doc.구분 = _구분.value;
     _doc.차종 = _차종.value;

@@ -545,7 +545,7 @@ async function 분해조립_save() {
 
 	var doc = JSON.parse(JSON.stringify(분해조립_doc));
   	console.log('분해조립 init SAVE:', doc);
-	doc.관리번호 = _management_id.value;
+	doc.관리번호 = _management_id.value.trim();
 	doc.공정입고일 = _공정입고일.value;
 	for(var i = 1; i <= BMU_count; i++) eval('var item = document.getElementById(\'_BMU' + i + '\'); if(typeof item != \'undefined\') doc.BMU' + i + ' = item.value;');
 	for(var i = 1; i <= BMU_count; i++) eval('var item = document.getElementById(\'_BMU' + i + '_2\'); if(typeof item != \'undefined\') doc.BMU' + i + '_2 = item.value;');
@@ -624,7 +624,7 @@ async function 분해조립_save() {
 
 	if(BSA재제조_v == null) {
 		var _doc = JSON.parse(JSON.stringify(BSA재제조_doc));
-		_doc.관리번호 = _management_id.value;
+		_doc.관리번호 = _management_id.value.trim();
 		_doc.분해조립투입일 = _공정입고일.value;
 		_doc.분해조립 = _공정완료일.value;
 
@@ -678,7 +678,7 @@ async function request_고품QR() {
 		doc.사용여부 = '사용';
 		doc.사용일 = now;
 		doc.사용_작업자 = _작업자.value;
-		doc.사용_관리번호 = _management_id.value;
+		doc.사용_관리번호 = _management_id.value.trim();
 		고품_docs.push(doc);
 		console.log(고품_docs);
 	} else {

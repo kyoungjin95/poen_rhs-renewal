@@ -259,7 +259,7 @@ async function 출하정보_save() {
 
 	if(BSA재제조_v == null) {
 		var _doc = JSON.parse(JSON.stringify(BSA재제조_doc));
-		_doc.관리번호 = _management_id.value;
+		_doc.관리번호 = _management_id.value.trim();
 		_doc.출하검사 = _검사일.value.substr(0, 16);
 
 		update(BSA재제조, _doc);
@@ -280,7 +280,7 @@ async function 출하정보_save() {
 
 	var doc = JSON.parse(JSON.stringify(출하정보_doc));
 	
-	doc.관리번호 = _management_id.value;
+	doc.관리번호 = _management_id.value.trim();
 	//doc.출하일 = _출하일.value;
 	doc.출하코드 = _출하코드.value;
 	//doc.납품처 = _납품처.value;

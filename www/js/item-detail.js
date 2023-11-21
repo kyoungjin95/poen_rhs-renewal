@@ -39,7 +39,7 @@ async function 상세입력_시작(is재제조번호 = false) {
 		if (_management_id.value.length == 0 && _재제조번호.value.length == 0)
 			return;
 
-		관리번호 = _management_id.value;
+		관리번호 = _management_id.value.trim();
 		console.log("관리번호:", 관리번호);
 
 		_재제조번호.value = '';
@@ -783,11 +783,11 @@ async function item_detail_save(flag_result = false) {
 	if (_management_id.value.slice(0, 2) == "조회") return;
 	console.log("save: ", _management_id.value);
 
-	관리번호 = _management_id.value;
+	관리번호 = _management_id.value.trim();
 
 	var doc = JSON.parse(JSON.stringify(BSA재제조_doc));
-	doc.관리번호 = _management_id.value;
-	doc.재제조번호 = _재제조번호.value;
+	doc.관리번호 = _management_id.value.trim();
+	doc.재제조번호 = _재제조번호.value.trim();
 	doc.구분 = _구분.value;
 	doc.차종 = _차종.value;
 	doc.품번 = _품번.value;
@@ -840,7 +840,7 @@ async function processStep() {
 	if (worker == "") return;
 	if (_management_id.value.length == 0) return;
 	pre_관리번호 = "";
-	관리번호 = _management_id.value;
+	관리번호 = _management_id.value.trim();
 
 	var step = _공정단계.value;
 

@@ -22,7 +22,7 @@ async function 구장재고_조회(is재제조 = false) {
 		_management_id.value = _management_id.value.trim();
 		if(_management_id.value == '조회를 누르세요') _management_id.value = 관리번호;
 		if(_management_id.value.length == 0) return;
-		관리번호 = _management_id.value;
+		관리번호 = _management_id.value.trim();
 		console.log('관리번호:', 관리번호);
 
 		findOne_구장재고(구장재고, { 관리번호 : _management_id.value });
@@ -73,7 +73,7 @@ async function 구장재고_save() {
 	if(_management_id.value.length == 0) return;
 
 	var doc = 구장재고_doc;
-	doc.관리번호 = _management_id.value;
+	doc.관리번호 = _management_id.value.trim();
 	doc.재제조번호 = _재제조번호.value;
 	doc.입고일 = _입고일.value;
 	doc.입고처 = _입고처.value;

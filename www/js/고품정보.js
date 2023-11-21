@@ -57,7 +57,7 @@ async function 고품정보_save() {
 	var now = seoul.toString().substr(0, 19);
 	var doc = 고품정보_doc;
 
-	doc.관리번호 = _management_id.value;
+	doc.관리번호 = _management_id.value.trim();
 	doc.구분 = _구분.value;
 	doc.품명 = _품명.value;
 	doc.품번 = _품번.value;

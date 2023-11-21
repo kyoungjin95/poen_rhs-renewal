@@ -1,4 +1,5 @@
 async function login() {
+	console.log('try login');
 	const _id = document.getElementById('_id');
 	const _passwd = document.getElementById('_passwd');
 	const _login_btn = document.getElementById('login_btn');
@@ -7,9 +8,11 @@ async function login() {
 
 	const hash = CryptoJS.MD5(_passwd.value); 	
 
-	count(계정, { id: _id.value, passwd: hash.toString() });
+	findOne_계정(계정, { id: _id.value, passwd: hash.toString() });
 	await delay();
-	if(doc_count > 0) {
+
+	console.log(계정_v);
+	if(계정_v != null) {
 		if(worker == '') {
 			worker = _id.value;
 			findOne_계정(계정, { id: _id.value })

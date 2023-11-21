@@ -104,6 +104,7 @@ io.on('connection', async function(socket) {
 	});
 
 	socket.on('insert', async function(worker, col, doc) {
+		console.log('request insert');
 		if(account.login == false) return;
 
 		const result = await insert(col, doc);
@@ -112,6 +113,7 @@ io.on('connection', async function(socket) {
 	});
 
 	socket.on('insertMany', async function(worker, col, doc) {
+		console.log('request insertMany');
 		if(account.login == false) return;
 
 		const result = await insertMany(col, doc);
@@ -120,20 +122,17 @@ io.on('connection', async function(socket) {
 	});
 
 	socket.on('count', async function(level, col, query, check, option = '') {
+		console.log('request count');
 		if(account.login == false) return;
 		console.log(col, query, client_ip);
 		const cnt = await count(col, query);
 		socket.emit('count_result', col, cnt, check, option);
 		//logger.info('worker:'+ worker + ' count col:' + col +'query:'+ JSON.stringify(query));
 		//
-		if(account.login == false && col == '계정' && cnt > 0) {
-			account.login = true;
-		} else if(account.login == true && col == '계정' && cnt < 1){
-			account.login = false;
-		}
 	});
 
 	socket.on('find', async function(worker, col, query, options, check) {
+		console.log('request find');
 		if(account.login == false) return;
 		const result_array = await find(col, query, options);
 		socket.emit('find_result', col, result_array, check);
@@ -141,21 +140,30 @@ io.on('connection', async function(socket) {
 	});
 
 	socket.on('findOne', async function(worker, col, query, options, check) {
-		if(account.login == false) return;
+		console.log('request findOne');
+		if(account.login == false && col != '계정') return;
 		const result_array = await findOne(col, query, options);
 		socket.emit('find_result', col, result_array, check);
+
+		if(account.login == false && col == '계정' && result_array != null) {
+			account.login = true;
+		} else if(account.login == true && col == '계정' && result_array == null){
+			account.login = false;
+		}
 		////logger.info('worker:'+ worker + ' find col:' + col +'query:'+ JSON.stringify(query));
 	});
 
 	socket.on('update', async function(worker, col, filter, doc) {
+		console.log('request update');
 		if(account.login == false && col != '계정') return;
-		logger.info('worker:'+ worker + ' update col:' + col + 'doc:' + JSON.stringify(doc));
+		logger.info('client ip:' + client_ip + ' worker:'+ worker + ' update col:' + col + 'doc:' + JSON.stringify(doc));
 
 		const result = await update(col, filter, doc);
 		socket.emit('update_result', result);
 	});
 
 	socket.on('delete', async function(worker, col, query) {
+		console.log('request delete');
 		if(account.login == false) return;
 		logger.info('worker:'+ worker + ' delete col:' + col + 'query:'+ JSON.stringify(query));
 		const result_count = await deleteOne(col, query);
@@ -163,6 +171,7 @@ io.on('connection', async function(socket) {
 	});
 
 	socket.on('count_agree', async function(level, col, query, check, option = '') {
+		console.log('request count agree');
 		console.log(col, query, client_ip);
 		if(col != '제공동의서' && col != '거래확인서') return;
 		const cnt = await count(col, query);
@@ -177,6 +186,7 @@ io.on('connection', async function(socket) {
 	});
 
 	socket.on('find_agree', async function(worker, col, query, options, check) {
+		console.log('request find agree');
 		if(col != '제공동의서' && col != '거래확인서') return;
 		const result_array = await find(col, query, options);
 		socket.emit('find_result', col, result_array, check);
@@ -184,6 +194,7 @@ io.on('connection', async function(socket) {
 	});
 
 	socket.on('findOne_agree', async function(worker, col, query, options, check) {
+		console.log('request findone agree');
 		if(col != '제공동의서' && col != '거래확인서') return;
 		const result_array = await findOne(col, query, options);
 		socket.emit('find_result', col, result_array, check);
@@ -191,6 +202,7 @@ io.on('connection', async function(socket) {
 	});
 
 	socket.on('update_agree', async function(worker, col, filter, doc) {
+		console.log('request update agree');
 		if(col != '제공동의서' && col != '거래확인서') return;
 		logger.info('worker:'+ worker + ' update col:' + col + 'doc:' + JSON.stringify(doc));
 
@@ -199,12 +211,15 @@ io.on('connection', async function(socket) {
 	});
 
 	socket.on('delete_agree', async function(worker, col, query) {
+		console.log('request delete agree');
 		if(col != '제공동의서' && col != '거래확인서') return;
 		logger.info('worker:'+ worker + ' delete col:' + col + 'query:'+ JSON.stringify(query));
 		const result_count = await deleteOne(col, query);
 		socket.emit('delete_result', result_count);
 	});
+
 	socket.on('delete_by_id', async function(worker, col, id) {
+		console.log('request delete by id');
 		if(account.login == false) return;
 		logger.info('worker:'+ worker + ' delete col:' + col + 'query:'+ JSON.stringify(query));
 		console.log('delete:', id);
