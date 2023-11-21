@@ -167,7 +167,7 @@ async function EOL_SAVE() {
 	doc.통신검사_DTC코드3 =  _통신검사_DTC코드3.value;
 	var tb = document.getElementById('tb');
 	var rowIcnt = tb.rows.length - 9;
-	var code_no = rowIcnt - 16;
+	var code_no = rowIcnt - 17;
 	console.log('rowIcnt:', rowIcnt, 'code_no:', code_no);
 
 	if(code_no == 10) {
@@ -306,7 +306,7 @@ function _통신검사_릴레이구동_콤보박스(e) {
 function _EOL_add_DTC_Code() {
 	var oCurrentRow;
 	var tb = document.getElementById('tb');
-	var rowIcnt = tb.rows.length - 10;
+	var rowIcnt = tb.rows.length - 11;
 	var code_no = rowIcnt - 14;
 	console.log('rosw count:', rowIcnt);
 	if(rowIcnt > 24) return false;
@@ -319,7 +319,7 @@ function _EOL_add_DTC_Code() {
 
 function _eol_delete_row(index) {
 	var tb = document.getElementById('tb');
-	var rowIcnt = tb.rows.length - 11;
+	var rowIcnt = tb.rows.length - 12;
 	console.log('index:', index, 'rowIcnt:', rowIcnt);
 	if(index == rowIcnt) tb.deleteRow(index);
 	EOL_DTC_count--;

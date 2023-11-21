@@ -198,8 +198,6 @@ async function find_거래확인서(col, query) {
 }
 
 async function find_제공동의서(col, query) {
-	console.log('=====================');
-
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;

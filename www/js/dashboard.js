@@ -19,7 +19,6 @@ async function 대시보드_시작() {
 	while(document.getElementById('입고') == undefined) {
 		await sleep(1);
 	}
-	
 
 	document.getElementById('입고').addEventListener("click", function(){
 		dash_입고_당일_get(today_begin, today_end);
@@ -49,7 +48,7 @@ async function 대시보드_시작() {
 	if(dashboardTimer != undefined) clearInterval(dashboardTimer);
 	dashboardTimer = setInterval(function() {
 		총합계_조회();
-	}, 500 * 30);
+	}, 1000 * 30);
 
 	총합계_조회();
 }
