@@ -410,8 +410,8 @@ function EOL_카메라시작() {
 
 function pdf() {
 	var _QR_Label = document.getElementById("_QR_Label");
-	var _width = 4000;
-	var _height = 2000;
+	var _width = 2400;
+	var _height = 1700;
 
 	html2canvas(_QR_Label, {
 		width: (_width * window.innerWidth) / 1920,
@@ -442,6 +442,7 @@ function pdf() {
 				height : 3.14961 * 72
 			},
 			pageOrientation: "portrait",
+			pageMargins: [ 0, 0, 0, 0 ],
 		};
 		pdfMake.createPdf(docDefinition).download("거래확인서.pdf");
 	});

@@ -47,8 +47,6 @@ function 수량집계_기간조회() {
 	if(document.getElementById('_보증').checked == true) 구분 = '보증';
 	if(document.getElementById('_all').checked == true) 구분 = '';
 
-	console.log('begin:', 집계_today_begin, 'end:', 집계_today_end, '구분:', 구분);
-	
 	수량집계_조회(집계_today_begin, 집계_today_end, 구분);
 }
 
@@ -334,9 +332,9 @@ async function 부품_info(begin = '', end = '', 구분 = 'all') {
 				if (info.구분 == '출고') counts[no].출고 = parseInt(counts[no].출고) + 수량;
 			}
 		});
-		console.log('품명:', 품명[i]);
-		console.log('Type:', types_list);
-		console.log('Counts:', counts);
+		//console.log('품명:', 품명[i]);
+		//console.log('Type:', types_list);
+		//console.log('Counts:', counts);
 
 		var data = {
 			품명: 품명[i],
@@ -346,7 +344,7 @@ async function 부품_info(begin = '', end = '', 구분 = 'all') {
 
 		부품정보.push(data);
 
-		console.log(data);
+		//console.log(data);
 	}
 
 	부품재고(부품정보);

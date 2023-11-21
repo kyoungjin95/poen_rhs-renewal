@@ -328,7 +328,6 @@ async function 출하대기목록() {
 			{title:"폐기사유", field:"폐기사유", sorter:"string", width:'180'},
 		],
 		rowFormatter: function(row){
-			console.log(row.getData());
 			if (row.getData().출하예약 === '예약'){
 				const children = row.getElement().childNodes;
 				children.forEach((child) => {
