@@ -15,12 +15,10 @@ async function 신품정보등록_조회() {
 	console.log('load: ', _QR.value);
 	if(_QR.value == '' | _QR.value == 'none') return;
 
-	count(자재입출고, { QR : _QR.value });
+	findOne_자재입출고(자재입출고, { QR : _QR.value });
 	await delay();
-	if(자재입출고_cnt > 0) {
-		find_신품정보(자재입출고, { QR : _QR.value });
-		await delay();
-		
+
+	if(자재입출고_v != null) {
 		_QR.value   = 자재입출고_v.QR;
 		_날짜.value = 자재입출고_v.날짜;
 		_구분.value = 자재입출고_v.구분;
@@ -41,26 +39,6 @@ async function 신품정보등록_조회() {
                 _LotNo.value = '';
                 _비고.value = '';
 	}
-
-	find_신품정보(자재입출고, { QR : { $exists: true }});
-	await delay();
-	tabledata = 자재입출고_v;
-
-	var table_신품정보 = new Tabulator("#grid_신품정보", {
-		layout: "resizableColumnFit",
-		height:200,
-		data:tabledata, 
-		//autoColumns:true,
-		
-		columns:[
-			{title:"차종", field:"차종", sorter:"string"},
-			{title:"품명", field:"품명", sorter:"string"},
-			{title:"품번", field:"품번", sorter:"string"},
-			{title:"입고수량", field:"입고수량", sorter:"string"},
-			{title:"출고수량", field:"출고수량", sorter:"string"},
-			{title:"남은수량", field:"남은수량", sorter:"string"},
-		]
-	});
 }
 
 async function 신품정보_save() {
@@ -92,8 +70,6 @@ async function 신품정보_save() {
 	if(insert_count > 0) {
 		alert('저장 되었습니다');
 	}
-
-	신품정보등록_조회();
 }
 
 function _구분_콤보박스(e) {

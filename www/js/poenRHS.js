@@ -2812,6 +2812,15 @@ async function findOne_교체부품상세(col, query) {
 	socket.emit('findOne', worker, col, query, { sort: { kind: 1}, projection: 교체부품상세_ }, check);
 }
 
+async function findOne_자재입출고(col, query) {
+	if(socket == undefined) return;
+	flag_arrivedMSG = false;
+	check++;
+	if(check > 10) check = 0;
+
+	socket.emit('findOne', worker, col, query, { sort: { kind: 1}, projection: 자재입출고_ }, check);
+}
+
 
 async function find_기초보고서(col, query) {
 	if(socket == undefined) return;

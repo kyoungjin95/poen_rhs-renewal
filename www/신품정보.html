@@ -16,10 +16,10 @@
 					<table border="2">
 						<tr>
 							<td>
-								<label for="바코드"><b>바코드</b></label>
+								<label for="QR"><b>QR</b></label>
 							</td>
 							<td>
-								<input type="text" id="_바코드" value="" size="40" required>
+								<input type="text" id="_QR" value="" size="40" required>
 								<button onClick="신품정보등록_조회();">조 회</button>
 							</td>
 						</tr>
@@ -121,19 +121,12 @@
 					<button onClick="신품정보_save();">SAVE</button>
 				</center>
 			</div>
-		        <div>
-                                <center>
-                                        <label for='grid_신품정보'><b>신품 정보</b></label>
-                                        <div id='grid_신품정보'>
-                                        </div>
-                                </center>
-                        </div>
-			<div>
+			<!--<div>
 				<label>excel 문서 data 자동 입력 </label></br>
 				<input type='file' id='_재고관리_csv' accept='.csv'/>
-			</div>
+			</div>-->
 			<script>
-				const _바코드 = document.getElementById('_바코드');
+				const _QR = document.getElementById('_QR');
 				const _품명 = document.getElementById('_품명');
 				const _품번 = document.getElementById('_품번');
 				const _날짜 = document.getElementById('_날짜');
