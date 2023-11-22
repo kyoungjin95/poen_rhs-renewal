@@ -3,7 +3,7 @@ var 차종 = "";
 var flag_입고_complete = false;
 
 async function 상세입력_시작(is재제조번호 = false) {
-	while (_폐기 == undefined) {
+	while (typeof _폐기 == 'undefined') {
 		await sleep(DELAY);
 	}
 

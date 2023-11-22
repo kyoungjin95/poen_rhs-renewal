@@ -1,3 +1,4 @@
+const ipfilter = require('express-ipfilter').IpFilter;
 const http = require('http');
 const mongo = require('mongodb');
 const express = require('express');
@@ -74,7 +75,7 @@ app.get('/agreement_doc_search', (req, res) => {
 	res.sendFile(path.join(__dirname, '../www/제공동의서조회.html'));
 });
 
-client = new MongoClient(uri);
+//client = new MongoClient(uri);
 
 server.listen(80, () => {
 	console.log('listening on *:80');
@@ -90,6 +91,7 @@ io.on('connection', async function(socket) {
 	if (~idx && ~client_ip.indexOf('.'))
   	client_ip = client_ip.slice(idx + 1);
 	console.log('connected ip', client_ip);
+	app.use(ipfilter(_black_ip_list));
 
 	socket.on('insert', async function(worker, col, doc) {
 		console.log('request insert');
@@ -142,6 +144,20 @@ io.on('connection', async function(socket) {
 	});
 
 	socket.on('findOne', async function(worker, col, query, options, check) {
+		if(_old_client_ip != client_ip) {
+			_start_time = new Date().getTime();
+			_old_client_ip = client_ip;
+		} else {
+			_same_ip_cnt++;
+			if(_same_ip_cnt > 30) {
+				_end_time = new Date().getTime();
+				if((_end_time - _start_time) < 1000) {
+					client.close();
+					_black_ip_list.push(client_ip);
+				}
+			}
+		}
+
 		console.log('request findOne');
 		if(account.login == false && col != '계정') return;
 		const result_array = await findOne(col, query, options);
@@ -242,9 +258,7 @@ setInterval(function() {
 		if (err) {
 			console.log('Error getting list:', err);
 		} else {
-			resultList.forEach((process) => {
-				console.log('PID: %s, COMMAND: %s, ARGUMENTS: %s', process.pid, process.command, process.arguments);
-				
+			resultList.forEach((process) => {			
 				if(process.arguments == './auto_backup_db.sh') {
 					flag_autobackup_db = true;
 				} else {
@@ -263,6 +277,7 @@ setInterval(function() {
 
 async function distinct(col, query, field_name) {
 	try {
+		client = new MongoClient(uri);
 		const database = client.db(db_name);
 		const collection = database.collection(col);
 		const result_array = await collection.distinct(field_name, query);
@@ -274,11 +289,13 @@ async function distinct(col, query, field_name) {
 		logger.info(err);
 		return null;
 	} finally {
+		await client.close();
 	}
 }
 
 async function insert(col, doc) {
 	try {
+		client = new MongoClient(uri);
 		const database = client.db(db_name);
 		const collection = database.collection(col);
 		const result = await collection.insertOne(doc);
@@ -290,11 +307,13 @@ async function insert(col, doc) {
 		logger.info(err);
 		return null;
 	} finally {
+		await client.close();
 	}
 }
 
 async function insertMany(col, doc) {
 	try {
+		client = new MongoClient(uri);
 		const database = client.db(db_name);
 		const collection = database.collection(col);
 		const result = await collection.insertMany(doc);
@@ -306,11 +325,13 @@ async function insertMany(col, doc) {
 		logger.info(err);
 		return null;
 	} finally {
+		await client.close();
 	}
 }
 
 async function count(col, query) {
 	try {
+		client = new MongoClient(uri);
 		const database = client.db(db_name);
 		const collection = database.collection(col);
 		const cnt = await collection.countDocuments(query);
@@ -321,6 +342,7 @@ async function count(col, query) {
 		logger.info(err);
 		return 0;
 	} finally {
+		await client.close();
 	}
 }
 
@@ -332,6 +354,7 @@ async function count(col, query) {
  */
 async function find(col, query, options) {
 	try {
+		client = new MongoClient(uri);
 		const database = client.db(db_name);
 		const collection = database.collection(col);
 		const cursor = await collection.find(query, options);
@@ -343,11 +366,13 @@ async function find(col, query, options) {
 		logger.info(err);
 		return null;
 	} finally {
+		await client.close();
 	}
 }
 
 async function findOne(col, query, options) {
 	try {
+		client = new MongoClient(uri);
 		const database = client.db(db_name);
 		const collection = database.collection(col);
 		const result = await collection.findOne(query, options);
@@ -358,6 +383,7 @@ async function findOne(col, query, options) {
 		logger.info(err);
 		return null;
 	} finally {
+		await client.close();
 	}
 }
 
@@ -371,9 +397,10 @@ async function findOne(col, query, options) {
     */
 async function update(col, filter, updateDoc) {
 	try {
+		client = new MongoClient(uri);
 		const options = { upsert: true };
 		const database = client.db(db_name);
-		const collection = database.collection(col);
+		const collection = await database.collection(col);
 		const result = await collection.updateOne(filter, updateDoc, options);
 		console.log(`Updated ${result.modifiedCount} documents`);
 		console.log(`Inserted ${result.upsertedCount} documents`);
@@ -384,11 +411,13 @@ async function update(col, filter, updateDoc) {
 		logger.info(err);
 		return null;
 	} finally {
+		await client.close();
 	}
 }
 
 async function deleteOneById(col, id) {
 	try {
+		client = new MongoClient(uri);
 		const database = client.db(db_name);
 		const collection = database.collection(col);
 		const o_id = new mongo.ObjectId(id);
@@ -400,11 +429,13 @@ async function deleteOneById(col, id) {
 		logger.info(err);
 		return 0;
 	} finally {
+		await client.close();
 	}
 }
 
 async function deleteOne(col, query) {
 	try {
+		client = new MongoClient(uri);
 		const database = client.db(db_name);
 		const collection = database.collection(col);
 		const result = await collection.deleteOne(query);
@@ -416,6 +447,7 @@ async function deleteOne(col, query) {
 		logger.info(err);
 		return 0;
 	} finally {
+		await client.close();
 	}
 }
 
