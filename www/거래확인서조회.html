@@ -293,7 +293,6 @@
         if (insert_count > 0) {
           alert("저장 되었습니다");
         } 
-        location.reload();
       }
 
       async function 조회() {
@@ -320,12 +319,9 @@
         _month.value = "";
         _day.value = "";
 
-        count(거래확인서, { 날짜ID: { $exists: true } });
+        find_거래확인서(거래확인서, { 날짜ID: { $exists: true } });
         await delay();
-        console.log("doc_count:", doc_count);
-        if (doc_count > 0) {
-          find_거래확인서(거래확인서, { 날짜ID: { $exists: true } });
-          await delay();
+        if (find_array != null) {
           console.log("find:", find_array);
 
           날짜ID = find_array[0].날짜ID;
@@ -377,6 +373,19 @@
               { title: "year", field: "year", sorter: "string", width: "80" },
               { title: "month", field: "month", sorter: "string", width: "80" },
               { title: "day", field: "day", sorter: "string", width: "80" },
+	      { formatter: "buttonCross", width: 40, align: "center", cellClick: async function (e, cell) {
+  				var ok = window.confirm("지워집니다. 계속하겠습니까?");
+				if(ok == false) return;
+
+				cell.getRow().delete();
+				deleteOne(거래확인서, cell.getRow().getData().날짜ID);
+				await delay(); 
+
+				if (delete_count > 0) {
+					    alert("삭제 되었습니다.");
+  				}
+	      		}
+      	      },
             ],
           });
 
@@ -400,7 +409,7 @@
             _차량번호.value = find_array[0].차량번호;
             _차대번호.value = find_array[0].차대번호;
             _차량용도.value = find_array[0].차량용도;
-            if (find_array[0].서명 != "") _서명.src = find_array[0].서명;
+            _서명.src = find_array[0].서명;
             _상호.value = find_array[0].상호;
             _수리처_주소.value = find_array[0].수리처_주소;
             _수리처_전화번호.value = find_array[0].수리처_전화번호;

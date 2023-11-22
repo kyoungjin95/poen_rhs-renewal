@@ -84,25 +84,6 @@ io.on('connection', async function(socket) {
 
 	console.log('a user connected');
 
-	socket.on('qr_label', async function(html_string) {
-		const fileBuffer = await HTMLtoDOCX(html_string, null, {
-			pageSize: { width: '7cm', height: '8cm' },
-			margins: { top: '0.0cm' , bottom: '0.0cm', right: '0.0cm', left: '0.0cm' },
-			pageNumber: false,
-			table: { row : { cantSplit : true } },
-		});
-
-		var file = path.join(__dirname, '../doc/qr_label.docx');
-		fs.writeFile(file, fileBuffer, (error) => {
-			if (error) {
-				console.log('Docx file creation failed');
-				return;
-			}
-			console.log('Docx file created successfully');
-		});
-		socket.emit('qr_lebel_result', 'complete');
-	});
-
 	socket.on('insert', async function(worker, col, doc) {
 		console.log('request insert');
 		if(account.login == false) return;
@@ -172,7 +153,6 @@ io.on('connection', async function(socket) {
 
 	socket.on('count_agree', async function(level, col, query, check, option = '') {
 		console.log('request count agree');
-		console.log(col, query, client_ip);
 		if(col != '제공동의서' && col != '거래확인서') return;
 		const cnt = await count(col, query);
 		socket.emit('count_result', col, cnt, check, option);
@@ -221,7 +201,7 @@ io.on('connection', async function(socket) {
 	socket.on('delete_by_id', async function(worker, col, id) {
 		console.log('request delete by id');
 		if(account.login == false) return;
-		logger.info('worker:'+ worker + ' delete col:' + col + 'query:'+ JSON.stringify(query));
+		logger.info('worker:'+ worker + ' delete col:' + col);
 		console.log('delete:', id);
 		const result_count = await deleteOneById(col, id);
 		socket.emit('delete_result', result_count);

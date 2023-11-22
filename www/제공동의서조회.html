@@ -202,14 +202,10 @@
 
       async function 조회() {
         날짜ID = "";
-        count(제공동의서, { 날짜ID: { $exists: true } });
+        find_제공동의서(제공동의서, { 날짜ID: { $exists: true } });
         await delay();
 
-	console.log(doc_count);
-
-        if (doc_count > 0) {
-           find_제공동의서(제공동의서, { 날짜ID: { $exists: true } });
-	   await delay();
+        if (find_array != null) {
            console.log("find:", find_array);
 
           날짜ID = '';
@@ -271,7 +267,7 @@
       function pdf() {
         var _제공동의서 = document.getElementById("_제공동의서");
         var _width = 2350;
-        var _height = 2000;
+        var _height = 1900;
 
         html2canvas(_제공동의서, {
           width: (_width * window.innerWidth) / 1920,
