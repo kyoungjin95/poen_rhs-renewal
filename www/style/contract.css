@@ -152,6 +152,9 @@
 .header__top_logo h2 span {
   font-size: 14px;
 }
+.header__text h2 {
+  text-align: center;
+}
 .header__text .amount {
   font-size: 16px;
   margin-top: 20px;
@@ -172,7 +175,7 @@
   position: relative;
 }
 .confirmation__content .privacy__con:nth-child(2) {
-  margin-top: 45px;
+  margin-top: 48px;
 }
 .poen-stamp {
   width: 9%;
@@ -263,7 +266,7 @@ input::placeholder.fzchange {
 button {
   background-color: #0a723f;
   color: white;
-  font-size: 1vw;
+  font-size: clamp(12px, 2vw, 20px);
   outline: none;
   border: none;
   border-radius: 0.5vw;

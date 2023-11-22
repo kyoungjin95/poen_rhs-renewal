@@ -67,7 +67,7 @@ label {
 button {
   background-color: #0a723f;
   color: white;
-  font-size: 1vw;
+  font-size: clamp(12px, 2vw, 20px);
   outline: none;
   border: none;
   border-radius: 0.5vw;
