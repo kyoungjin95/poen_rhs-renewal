@@ -36,7 +36,7 @@ form {
   padding-top: 50px;
 }
 .process__tit {
-  padding: 20px 0;
+  padding: 30px 0;
   display: flex;
   align-items: stretch;
   justify-content: center;
@@ -58,6 +58,7 @@ form {
   font-size: 1.4vw;
   font-weight: bold;
   text-align: center;
+  padding: 0.5vw !important;
 }
 .process__tit > button {
   background: transparent;
@@ -87,6 +88,10 @@ form {
 .process__btn {
   display: flex;
   gap: 1vw;
+}
+.BSA재제조현황 .process__btn {
+  justify-content: space-between;
+  align-items: center;
 }
 .id__name {
   font-size: 1.8vw;
@@ -197,8 +202,21 @@ table input {
 .process-step {
   align-items: center;
 }
+.process-step table td:nth-child(1) {
+  padding: 0 2vw;
+}
+.분해조립 .process-step table .t1-d {
+  padding: 0.5vw;
+}
 .process-step table label {
-  font-size: 1.2vw;
+  font-size: clamp(10px, 2vw, 22px);
+  margin-left: 0;
+}
+.process-step table td {
+  padding: 0.5vw;
+}
+.process-step table input {
+  padding: 0.3vw;
 }
 /* item-detail 검사보고서 dropdwon menu Btn css */
 .select-menu {
@@ -213,7 +231,7 @@ table input {
   background-color: #0a723f;
   color: #fff;
   padding: 0.6vw;
-  font-size: 1vw;
+  font-size: clamp(12px, 2vw, 16px);
   font-weight: 400;
   border-radius: 0.7vw;
   align-items: center;
@@ -270,7 +288,7 @@ td.process__btn {
   font-weight: bold;
   display: inline-block;
 }
-/* 공정단계 + 검사보고서 품목 조회 (맨 하단) */
+/* 공정단계, 고품정보등록, 검사보고서 하단 table */
 .tb {
   width: 80%;
   border-collapse: collapse;
@@ -286,9 +304,17 @@ td.process__btn {
 .분해조립 .tb .plus {
   text-align: center;
 }
+.출하정보 .tb {
+  width: 90%;
+}
 .출하정보 .tb td label {
   margin-left: 5px;
 }
+.고품정보 .tb .step-con {
+  display: flex;
+  align-items: center;
+}
+
 /* 분해조립, 출하정보 크기 줄이기위함*/
 .t1 td {
   font-size: 1.2vw;
@@ -297,6 +323,9 @@ td.process__btn {
   font-size: 1.3vw;
   font-weight: bold;
   padding: 0.6vw 1vw;
+}
+.t2 td label {
+  font-size: 1.3vw;
 }
 .t3 table input {
   width: 70%;
@@ -458,3 +487,21 @@ td.process__btn {
 .부품재고 .process__btn {
   justify-content: flex-end;
 }
+/* 신품정보 */
+.new-product {
+  margin-top: 30px;
+}
+/* 
+.신품정보 .excel-data {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+.신품정보 .excel-data label {
+  font-size: 1.1vw;
+  font-weight: bold;
+  color: #0a3c72;
+} */

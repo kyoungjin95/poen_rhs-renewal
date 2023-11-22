@@ -67,7 +67,7 @@ label {
 button {
   background-color: #0a723f;
   color: white;
-  font-size: clamp(12px, 2vw, 20px);
+  font-size: clamp(8px, 1vw, 18px);
   outline: none;
   border: none;
   border-radius: 0.5vw;
@@ -276,13 +276,14 @@ button:hover {
 .login-form button {
   display: block;
   background: #0a723f;
-  margin-top: 1rem;
+  margin: 10px auto 0;
   padding: 1vw;
+  display: flex;
+  justify-content: center;
 }
 .login-form button:hover {
   background: #12b566;
 }
-
 /* media query  */
 @media (min-width: 768px) and (max-width: 1200px) {
   #menu {
