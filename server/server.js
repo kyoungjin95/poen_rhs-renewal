@@ -91,7 +91,7 @@ io.on('connection', async function(socket) {
 	if (~idx && ~client_ip.indexOf('.'))
   	client_ip = client_ip.slice(idx + 1);
 	console.log('connected ip', client_ip);
-	app.use(ipfilter(_black_ip_list));
+	//app.use(ipfilter(_black_ip_list));
 
 	socket.on('insert', async function(worker, col, doc) {
 		console.log('request insert');
