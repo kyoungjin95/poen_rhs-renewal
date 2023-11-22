@@ -17,6 +17,11 @@ const db_name = 'poenDB';
 var db;
 var 관리번호 = '';
 var client;
+var _old_client_ip;
+var _same_ip_cnt = 0;
+var _start_time;
+var _end_time;
+var _black_ip_list = [];
 
 const 계정_ = {
 	_id : 0,
@@ -81,8 +86,10 @@ io.on('connection', async function(socket) {
 		login : false,
 		level : ''
 	}
-
-	console.log('a user connected');
+	var idx = client_ip.lastIndexOf(':');
+	if (~idx && ~client_ip.indexOf('.'))
+  	client_ip = client_ip.slice(idx + 1);
+	console.log('connected ip', client_ip);
 
 	socket.on('insert', async function(worker, col, doc) {
 		console.log('request insert');
@@ -103,6 +110,20 @@ io.on('connection', async function(socket) {
 	});
 
 	socket.on('count', async function(level, col, query, check, option = '') {
+		if(_old_client_ip != client_ip) {
+			_start_time = new Date().getTime();
+			_old_client_ip = client_ip;
+		} else {
+			_same_ip_cnt++;
+			if(_same_ip_cnt > 30) {
+				_end_time = new Date().getTime();
+				if((_end_time - _start_time) < 1000) {
+					client.close();
+					_black_ip_list.push(client_ip);
+				}
+			}
+		}
+
 		console.log('request count');
 		if(account.login == false) return;
 		console.log(col, query, client_ip);
