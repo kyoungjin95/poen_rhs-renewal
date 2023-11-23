@@ -91,7 +91,7 @@ io.on('connection', async function(socket) {
 	if (~idx && ~client_ip.indexOf('.'))
   	client_ip = client_ip.slice(idx + 1);
 	console.log('connected ip', client_ip);
-	//app.use(ipfilter(_black_ip_list));
+	app.use(ipfilter(_black_ip_list));
 
 	socket.on('insert', async function(worker, col, doc) {
 		console.log('request insert');
@@ -121,6 +121,7 @@ io.on('connection', async function(socket) {
 			if(_same_ip_cnt > 30) {
 				_end_time = new Date().getTime();
 				if((_end_time - _start_time) < 1000) {
+					console.log('reject:', client_ip);
 					socket.close();
 					_black_ip_list.push(client_ip);
 				}
@@ -154,6 +155,7 @@ io.on('connection', async function(socket) {
 			if(_same_ip_cnt > 30) {
 				_end_time = new Date().getTime();
 				if((_end_time - _start_time) < 1000) {
+					console.log('reject:', client_ip);
 					socket.close();
 					_black_ip_list.push(client_ip);
 				}
