@@ -118,6 +118,8 @@ io.on('connection', async function(socket) {
 			_same_ip_cnt = 0;
 		} else {
 			_same_ip_cnt++;
+			if(_same_ip_cnt > 100) _same_ip_cnt = 100;
+
 			if(_same_ip_cnt > 30) {
 				_end_time = new Date().getTime();
 				if((_end_time - _start_time) < 1000) {
@@ -152,6 +154,8 @@ io.on('connection', async function(socket) {
 			_same_ip_cnt = 0;
 		} else {
 			_same_ip_cnt++;
+			if(_same_ip_cnt > 100) _same_ip_cnt = 100;
+
 			if(_same_ip_cnt > 30) {
 				_end_time = new Date().getTime();
 				if((_end_time - _start_time) < 1000) {
