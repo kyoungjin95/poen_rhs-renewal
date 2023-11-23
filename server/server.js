@@ -115,12 +115,13 @@ io.on('connection', async function(socket) {
 		if(_old_client_ip != client_ip) {
 			_start_time = new Date().getTime();
 			_old_client_ip = client_ip;
+			_same_ip_cnt = 0;
 		} else {
 			_same_ip_cnt++;
 			if(_same_ip_cnt > 30) {
 				_end_time = new Date().getTime();
 				if((_end_time - _start_time) < 1000) {
-					client.close();
+					socket.close();
 					_black_ip_list.push(client_ip);
 				}
 			}
@@ -147,12 +148,13 @@ io.on('connection', async function(socket) {
 		if(_old_client_ip != client_ip) {
 			_start_time = new Date().getTime();
 			_old_client_ip = client_ip;
+			_same_ip_cnt = 0;
 		} else {
 			_same_ip_cnt++;
 			if(_same_ip_cnt > 30) {
 				_end_time = new Date().getTime();
 				if((_end_time - _start_time) < 1000) {
-					client.close();
+					socket.close();
 					_black_ip_list.push(client_ip);
 				}
 			}
@@ -289,7 +291,7 @@ async function distinct(col, query, field_name) {
 		logger.info(err);
 		return null;
 	} finally {
-		await client.close();
+		if(client != undefined) await client.close();
 	}
 }
 
@@ -307,7 +309,7 @@ async function insert(col, doc) {
 		logger.info(err);
 		return null;
 	} finally {
-		await client.close();
+		if(client != undefined) await client.close();
 	}
 }
 
@@ -325,7 +327,7 @@ async function insertMany(col, doc) {
 		logger.info(err);
 		return null;
 	} finally {
-		await client.close();
+		if(client != undefined) await client.close();
 	}
 }
 
@@ -342,7 +344,7 @@ async function count(col, query) {
 		logger.info(err);
 		return 0;
 	} finally {
-		await client.close();
+		if(client != undefined) await client.close();
 	}
 }
 
@@ -366,7 +368,7 @@ async function find(col, query, options) {
 		logger.info(err);
 		return null;
 	} finally {
-		await client.close();
+		if(client != undefined) await client.close();
 	}
 }
 
@@ -383,7 +385,7 @@ async function findOne(col, query, options) {
 		logger.info(err);
 		return null;
 	} finally {
-		await client.close();
+		if(client != undefined) await client.close();
 	}
 }
 
@@ -411,7 +413,7 @@ async function update(col, filter, updateDoc) {
 		logger.info(err);
 		return null;
 	} finally {
-		await client.close();
+		if(client != undefined) await client.close();
 	}
 }
 
@@ -429,7 +431,7 @@ async function deleteOneById(col, id) {
 		logger.info(err);
 		return 0;
 	} finally {
-		await client.close();
+		if(client != undefined) await client.close();
 	}
 }
 
@@ -447,7 +449,7 @@ async function deleteOne(col, query) {
 		logger.info(err);
 		return 0;
 	} finally {
-		await client.close();
+		if(client != undefined) await client.close();
 	}
 }
 
