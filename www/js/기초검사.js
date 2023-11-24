@@ -5,13 +5,15 @@ async function 기초검사_시작(is재제조 = false) {
 		await sleep(DELAY);
 	}
 	
+	기초검사_list();
+
 	flag_기초검사 = false;
 	console.log('DTC count:', 기초검사_DTC_count);
 
 	_기초검사_delete_all();
 	기초검사_DTC_count = 0;
 
-	if(_management_id.value == '조회 버튼을 누르세요') _management_id.value =  관리번호;
+	//if(_management_id.value == '조회 버튼을 누르세요') _management_id.value =  관리번호;
 
 	if(is재제조 == false) {
 		if(_management_id.value.length == 0) return;
@@ -418,4 +420,151 @@ async function 기초검사_카메라시작() {
 	기초검사_SAVE();
 
 	기초검사_사진촬영(_management_id.value);
+}
+
+async function 기초검사_list() {
+	 findOne_BSA재제조(BSA재제조, { 공정단계 : { $ne : '출하' }, 세척 : { $ne : '' }, 기초검사 : { $eq : '' }, 분해조립 : { $eq : '' }, 성능검사 : { $eq : '' }, EOL : { $eq : '' } ,  소재지 : { $nin : ['공정대기', '품질대기'] }, 완전분해 : { $eq : ''}, 폐기 : { $eq : '' }, 출하 : { $eq : '' }, 구분 : { $nin: ['일반기타', '보증기타']} });
+	await delay();
+
+	if(BSA재제조_v != null) {
+		find_BSA재제조(BSA재제조, { 공정단계 : { $ne : '출하' }, 세척 : { $ne : '' }, 기초검사 : { $eq : '' }, 분해조립 : { $eq : '' }, 성능검사 : { $eq : '' }, EOL : { $eq : '' } ,  소재지 : { $nin : ['공정대기', '품질대기'] }, 완전분해 : { $eq : ''}, 폐기 : { $eq : '' }, 출하 : { $eq : '' }, 구분 : { $nin: ['일반기타', '보증기타']} });
+		await delay();
+	}
+
+	var table = new Tabulator("#grid_list", {
+		layout: "resizableColumnFit",
+		data: BSA재제조_v,
+		height: "700px",
+
+		columns: [
+			{ title: "ID", field: "_id", sorter: "string", width: "180" },
+			{ title: "관리번호", field: "관리번호", sorter: "string", width: "180" },
+			{
+				title: "재제조번호",
+				field: "재제조번호",
+				sorter: "string",
+				width: "180",
+			},
+			{ title: "구분", field: "구분", sorter: "string", width: "180" },
+			{ title: "차종", field: "차종", sorter: "string", width: "180" },
+			{ title: "품번", field: "품번", sorter: "string", width: "180" },
+			{ title: "RO_no", field: "RO_no", sorter: "string", width: "180" },
+			{ title: "공정단계", field: "공정단계", sorter: "string", width: "180" },
+			{ title: "소재지", field: "소재지", sorter: "string", width: "180" },
+			{
+				title: "적재No",
+				field: "적재No",
+				sorter: "string",
+				visible: true,
+				width: "180",
+			}, //
+			{
+				title: "입고",
+				field: "입고",
+				sorter: "string",
+				visible: true,
+				width: "180",
+			}, //
+			{
+				title: "제조투입",
+				field: "제조투입",
+				sorter: "string",
+				visible: true,
+				width: "180",
+			}, //
+			{
+				title: "세척투입일",
+				field: "세척투입일",
+				sorter: "string",
+				width: "180",
+			},
+			{
+				title: "세척",
+				field: "세척",
+				sorter: "string",
+				visible: true,
+				width: "180",
+			}, //
+			{
+				title: "기초검사투입일",
+				field: "기초검사투입일",
+				sorter: "string",
+				width: "180",
+			},
+			{
+				title: "기초검사",
+				field: "기초검사",
+				sorter: "string",
+				visible: true,
+				width: "180",
+			}, //
+			{
+				title: "분해조립투입일",
+				field: "분해조립투입일",
+				sorter: "string",
+				width: "180",
+			},
+			{
+				title: "분해조립",
+				field: "분해조립",
+				sorter: "string",
+				visible: true,
+				width: "180",
+			}, //
+			{
+				title: "성능검사투입일",
+				field: "성능검사투입일",
+				sorter: "string",
+				width: "180",
+			},
+			{
+				title: "성능검사",
+				field: "성능검사",
+				sorter: "string",
+				visible: true,
+				width: "180",
+			}, //
+			{
+				title: "EOL투입일",
+				field: "EOL투입일",
+				sorter: "string",
+				width: "180",
+			},
+			{
+				title: "EOL",
+				field: "EOL",
+				sorter: "string",
+				visible: true,
+				width: "180",
+			}, //
+			{ title: "출하검사", field: "출하검사", sorter: "string", width: "180" },
+			{ title: "납품처", field: "납품처", sorter: "string", width: "180" },
+			{ title: "출하", field: "출하", sorter: "string", width: "180" },
+			{ title: "반품입고", field: "반품입고", sorter: "string", width: "180" },
+			{ title: "재출하", field: "재출하", sorter: "string", width: "180" },
+			{ title: "완전분해", field: "완전분해", sorter: "string", width: "180" },
+			{
+				title: "완전분해사유",
+				field: "완전분해사유",
+				sorter: "string",
+				width: "180",
+			},
+			{ title: "폐기", field: "폐기", sorter: "string", width: "180" },
+			{ title: "폐기사유", field: "폐기사유", sorter: "string", width: "180" },
+			{
+				title: "마지막충전일",
+				field: "마지막충전일",
+				sorter: "string",
+				width: "180",
+			},
+			{ title: "출하예약", field: "출하예약", sorter: "string", width: "180" },
+			{ title: "렉번호", field: "렉번호", sorter: "string", width: "180" },
+		],
+	});
+	
+	table.on("rowClick", async function (e, row) {
+		console.log("selected 관리번호: ", row.getData().관리번호);
+
+		_management_id.value = row.getData().관리번호;
+	});
 }

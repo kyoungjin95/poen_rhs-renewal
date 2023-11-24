@@ -7,6 +7,12 @@
     <link rel="stylesheet" href="base/style/공정.css" />
   </head>
   <body>
+    <section>
+	    <div id='grid_list'></div>
+	    <button onClick='출하정보_list();'>LIST</button>
+    </section>
+    <br />
+    <br />
     <section class="출하정보">
       <div class="input-group">
         <div class="process__tit">
@@ -31,7 +37,7 @@
                 size="20"
                 required
               />
-              <button onClick="출하정보_시작(false);">조 회</button>
+              <button onClick="출하정보_시작(0);">조 회</button>
             </td>
           </tr>
           <tr>
@@ -46,7 +52,22 @@
                 size="20"
                 required
               />
-              <button onClick="출하정보_시작(true);">조 회</button>
+              <button onClick="출하정보_시작(1);">조 회</button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_RO_no">RO no.</label>
+            </td>
+            <td>
+              <input
+                type="text"
+                id="_RO_no"
+                value="조회 버튼을 누르세요"
+                size="20"
+                required
+              />
+              <button onClick="출하정보_시작(2);">조 회</button>
             </td>
           </tr>
           <tr>
@@ -613,6 +634,7 @@
     <script>
       var _management_id = document.ElementById("_management_id");
       var _재제조번호 = document.ElementById("_재제조번호");
+      var _RO_no = document.ElementById("_RO_no");
       var _출하코드 = document.ElementById("_출하코드");
       var _검사일 = document.ElementById("_검사일");
       var _검사자 = document.ElementById("_검사자");

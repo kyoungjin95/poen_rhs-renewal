@@ -3043,7 +3043,7 @@ function 업체(code) {
 	return result;
 }
 
-async function 공정단계찾기(_관리번호) {
+async function 공정단계찾기__(_관리번호) {
 	var 공정단계 = '입고';
 
 	count(입고, { 관리번호 : _관리번호 });
@@ -3116,14 +3116,46 @@ async function 공정단계찾기(_관리번호) {
 	return 공정단계;
 }
 
-async function 공정단계자동입력(_관리번호) {
-	count(BSA재제조, { 관리번호 : _관리번호 });
+async function 공정단계찾기(_관리번호) {
+	var 공정단계 = '입고';
+
+	find(BSA재제조, _관리번호 );
 	await delay();
 
-	if(BSA재제조_cnt > 0) {
-		find(BSA재제조, _관리번호);
-		await delay();
+	if(BSA재제조_v != null) {
+		if(BSA재제조_v.입고 != undefined && BSA재제조_v.입고.trim().substr(10, 1) == 'T') {
+			공정단계 = '세척';
+		}
 
+		if(BSA재제조_v.세척 != undefined && BSA재제조_v.세척.trim().substr(10, 1) == 'T') {
+			공정단계 = '기초검사';
+		} 
+
+		if(BSA재제조_v.기초검사 != undefined && BSA재제조_v.기초검사.trim().substr(10, 1) == 'T') {
+			공정단계 = '분해조립';
+		} 
+
+		if(BSA재제조_v.분해조립 != undefined && BSA재제조_v.분해조립.trim().substr(10, 1) == 'T') {
+			공정단계 = '성능검사';
+		} 
+
+		if(BSA재제조_v.성능검사 != undefined && BSA재제조_v.성능검사.trim().substr(10, 1) == 'T') {
+			공정단계 = 'EOL';
+		} 
+
+		if(BSA재제조_v.EOL != undefined && BSA재제조_v.EOL.trim().substr(10, 1) == 'T') {
+			공정단계 = '제조완료';
+		} 
+	}
+
+	return 공정단계;
+}
+
+async function 공정단계자동입력(_관리번호) {
+	find(BSA재제조, _관리번호 );
+	await delay();
+
+	if(BSA재제조_v != null) {
 		if(BSA재제조_v.공정단계 == '출하') {
 			return;
 		}
