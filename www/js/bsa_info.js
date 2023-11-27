@@ -906,6 +906,7 @@ async function grid_입고(m_id = "") {
       { title: "구분", field: "구분", sorter: "string", width: "180" },
       { title: "차종", field: "차종", sorter: "string", width: "180" },
       { title: "품번", field: "품번", sorter: "string", width: "180" },
+      { title: "RO No.", field: "RO_no", sorter: "string", width: "180" },
     ],
   });
 

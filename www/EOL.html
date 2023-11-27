@@ -7,6 +7,12 @@
     <link rel="stylesheet" href="base/style/공정.css" />
   </head>
   <body>
+    <section>
+	    <button onClick='EOL_list();'>LIST</button>
+	    <div id='grid_list'></div>
+    </section>
+    <br />
+    <br />
     <section class="EOL">
       <div class="input-group">
         <div class="process__tit">
@@ -22,7 +28,7 @@
                 <input
                   type="text"
                   id="_management_id"
-                  value="조회를 누르세요"
+                  value=""
                   size="40"
                   required
                 />
@@ -37,11 +43,26 @@
                 <input
                   type="text"
                   id="_재제조번호"
-                  value="조회를 누르세요"
+                  value=""
                   size="40"
                   required
                 />
                 <button onClick="EOL_재제조번호_시작();">조 회</button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="_RO_no">RO no.</label>
+              </td>
+              <td>
+                <input
+                  type="text"
+                  id="_RO_no"
+                  value=""
+                  size="40"
+                  required
+                />
+                <button onClick="EOL_RO_시작();">조 회</button>
               </td>
             </tr>
             <tr>
@@ -324,13 +345,12 @@
     <script>
       const _management_id = document.getElementById("_management_id");
       const _재제조번호 = document.getElementById("_재제조번호");
+      const _RO_no = document.getElementById("_RO_no");
       const _공정입고일 = document.getElementById("_공정입고일");
       const _기밀검사_케이스 = document.getElementById("_기밀검사_케이스");
-      const _기밀검사_케이스_특이사항 =
-        document.getElementById("_기밀검사_케이스_특이사항");
+      const _기밀검사_케이스_특이사항 = document.getElementById("_기밀검사_케이스_특이사항");
       const _기밀검사_냉각유로 = document.getElementById("_기밀검사_냉각유로");
-      const _기밀검사_냉각유로_특이사항 =
-        document.getElementById("_기밀검사_냉각유로_특이사항");
+      const _기밀검사_냉각유로_특이사항 = document.getElementById("_기밀검사_냉각유로_특이사항");
       const _절연검사P = document.getElementById("_절연검사P");
       const _절연검사M = document.getElementById("_절연검사M");
       const _절연저항HVP = document.getElementById("_절연저항HVP");
@@ -345,13 +365,10 @@
       const _통신검사_DTC코드7 = document.getElementById("_통신검사_DTC코드7");
       const _통신검사_DTC코드8 = document.getElementById("_통신검사_DTC코드8");
       const _통신검사_DTC코드9 = document.getElementById("_통신검사_DTC코드9");
-      const _통신검사_DTC코드10 =
-        document.getElementById("_통신검사_DTC코드10");
+      const _통신검사_DTC코드10 = document.getElementById("_통신검사_DTC코드10");
       const _통신검사_팩전압 = document.getElementById("_통신검사_팩전압");
-      const _통신검사_셀전압편차 =
-        document.getElementById("_통신검사_셀전압편차");
-      const _통신검사_릴레이구동 =
-        document.getElementById("_통신검사_릴레이구동");
+      const _통신검사_셀전압편차 = document.getElementById("_통신검사_셀전압편차");
+      const _통신검사_릴레이구동 = document.getElementById("_통신검사_릴레이구동");
       const _공정완료일 = document.getElementById("_공정완료일");
       const _비고 = document.getElementById("_비고");
       const _QR = document.getElementById("_QR");
