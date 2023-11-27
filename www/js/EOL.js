@@ -593,5 +593,6 @@ async function EOL_list() {
 		console.log("selected 관리번호: ", row.getData().관리번호);
 
 		_management_id.value = row.getData().관리번호;
+		EOL_시작();
 	});
 }

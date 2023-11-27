@@ -631,5 +631,6 @@ async function 출하정보_list() {
 		console.log("selected 관리번호: ", row.getData().관리번호);
 
 		_management_id.value = row.getData().관리번호;
+		출하정보_시작();
 	});
 }

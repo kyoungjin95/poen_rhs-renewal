@@ -307,5 +307,6 @@ async function 세척_list() {
 		console.log("selected 관리번호: ", row.getData().관리번호);
 
 		_management_id.value = row.getData().관리번호;
+		세척_시작();
 	});
 }

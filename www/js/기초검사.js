@@ -5,7 +5,6 @@ async function 기초검사_시작(is재제조 = false) {
 		await sleep(DELAY);
 	}
 	
-	기초검사_list();
 
 	flag_기초검사 = false;
 	console.log('DTC count:', 기초검사_DTC_count);
@@ -566,5 +565,6 @@ async function 기초검사_list() {
 		console.log("selected 관리번호: ", row.getData().관리번호);
 
 		_management_id.value = row.getData().관리번호;
+		기초검사_시작();
 	});
 }

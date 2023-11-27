@@ -272,5 +272,6 @@ async function 성능검사_list() {
 		console.log("selected 관리번호: ", row.getData().관리번호);
 
 		_management_id.value = row.getData().관리번호;
+		성능검사_시작();
 	});
 }
