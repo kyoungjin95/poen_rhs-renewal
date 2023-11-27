@@ -3048,99 +3048,99 @@ function 업체(code) {
 async function 공정단계찾기(_관리번호) {
 	var 공정단계 = '입고';
 
-	count(입고, { 관리번호 : _관리번호 });
-	await delay();
+	//count(입고, { 관리번호 : _관리번호 });
+	//await delay();
 
-	if(입고_cnt > 0) {
-		find(입고, _관리번호);
-		await delay();
+	//if(입고_cnt > 0) {
+	//	find(입고, _관리번호);
+	//	await delay();
 
-		if(입고_cnt.입고일 != '') {
-			공정단계 = '세척';
-		}
-	}
+	//	if(입고_cnt.입고일 != '') {
+	//		공정단계 = '세척';
+	//	}
+	//}
 
-	count(세척, { 관리번호 : _관리번호 });
-	await delay();
-	if(세척_cnt > 0) {
-		find(세척, _관리번호);
-		await delay();
+	//count(세척, { 관리번호 : _관리번호 });
+	//await delay();
+	//if(세척_cnt > 0) {
+	//	find(세척, _관리번호);
+	//	await delay();
 
-		if(세척_v.공정완료일 != '') {
-			공정단계 = '기초검사';
-		}
-	}
+	//	if(세척_v.공정완료일 != '') {
+	//		공정단계 = '기초검사';
+	//	}
+	//}
 
-	count(기초검사, { 관리번호 : _관리번호 });
-	await delay();
-	if(기초검사_cnt > 0) {
-		find(기초검사, _관리번호);
-		await delay();
+	//count(기초검사, { 관리번호 : _관리번호 });
+	//await delay();
+	//if(기초검사_cnt > 0) {
+	//	find(기초검사, _관리번호);
+	//	await delay();
 
-		if(기초검사_v.공정완료일 != '') {
-			공정단계 = '분해조립';
-		}
-	}
+	//	if(기초검사_v.공정완료일 != '') {
+	//		공정단계 = '분해조립';
+	//	}
+	//}
 
-	count(분해조립, { 관리번호 : _관리번호 });
-	await delay();
-	if(분해조립_cnt > 0) {
-		find(분해조립, _관리번호);
-		await delay();
+	//count(분해조립, { 관리번호 : _관리번호 });
+	//await delay();
+	//if(분해조립_cnt > 0) {
+	//	find(분해조립, _관리번호);
+	//	await delay();
 
-		if(분해조립_v.공정완료일 != '') {
-			공정단계 = '성능검사';
-		}
-	}
+	//	if(분해조립_v.공정완료일 != '') {
+	//		공정단계 = '성능검사';
+	//	}
+	//}
 
-	count(성능검사, { 관리번호 : _관리번호 });
-	await delay();
-	if(성능검사_cnt > 0) {
-		find(성능검사, _관리번호);
-		await delay();
+	//count(성능검사, { 관리번호 : _관리번호 });
+	//await delay();
+	//if(성능검사_cnt > 0) {
+	//	find(성능검사, _관리번호);
+	//	await delay();
 
-		if(성능검사_v.공정완료일 != '') {
-			공정단계 = 'EOL';
-		}
-	}
+	//	if(성능검사_v.공정완료일 != '') {
+	//		공정단계 = 'EOL';
+	//	}
+	//}
 
-	count(EOL, { 관리번호 : _관리번호 });
-	await delay();
-	if(EOL_cnt > 0) {
-		find(EOL, _관리번호);
-		await delay();
+	//count(EOL, { 관리번호 : _관리번호 });
+	//await delay();
+	//if(EOL_cnt > 0) {
+	//	find(EOL, _관리번호);
+	//	await delay();
 
-		if(EOL_v.공정완료일 != '') {
-			공정단계 = '제조완료';
-		}
-	}
+	//	if(EOL_v.공정완료일 != '') {
+	//		공정단계 = '제조완료';
+	//	}
+	//}
 
 	return 공정단계;
 }
 
 async function 공정단계자동입력(_관리번호) {
-	count(BSA재제조, { 관리번호 : _관리번호 });
-	await delay();
-
-	if(BSA재제조_cnt > 0) {
-		find(BSA재제조, _관리번호);
+		findOne_BSA재제조(BSA재제조, { 관리번호 :  _관리번호,  공정단계 : { $ne : '출하' } });
 		await delay();
 
-		if(BSA재제조_v.공정단계 == '출하') {
-			return;
+		if(BSA재제조_v == null) return;
+
+		var _공정단계 = '입고';
+		if(BSA재제조_v.입고 != '') _공정단계 = '세척';
+		if(BSA재제조_v.세척 != '') _공정단계 = '기초검사';
+		if(BSA재제조_v.기초검사 != '') _공정단계 = '분해조립';
+		if(BSA재제조_v.분해조립 != '') _공정단계 = '성능검사';
+		if(BSA재제조_v.성능검사 != '') _공정단계 = 'EOL';
+		if(BSA재제조_v.EOL != '') _공정단계 = '제조완료';
+		if(BSA재제조_v.출하검사 != '') _공정단계 = '제조완료';
+		if(BSA재제조_v.출하 != '') _공정단계 = '출하';
+
+		var doc = {
+			관리번호 : _관리번호,
+			공정단계 : _공정단계
 		}
-	}
 
-	var _공정단계 = await 공정단계찾기(_관리번호);
-	console.log('공정단계:', _공정단계);
-
-	var doc = {
-		관리번호 : _관리번호,
-		공정단계 : _공정단계
-	}
-
-	update(BSA재제조, doc);
-	await delay();
+		update(BSA재제조, doc);
+		await delay();
 }
 
 function back() {
