@@ -1,185 +1,207 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>세척</title>
-    <link rel="stylesheet" href="base/style/공정.css" />
-  </head>
-  <body>
-    <section class="세척">
-      <div class="process__tit">
-        <h2>세척</h2>
-      </div>
-      <div class="input-group process-step">
-        <table class="tb">
-          <colgroup>
-            <col class="col_1" width="30%" />
-            <col class="col_2" width="70%" />
-          </colgroup>
-          <tr>
-            <td>
-              <label for="_management_id">관리번호</label>
-            </td>
-            <td>
-              <input
-                type="text"
-                id="_management_id"
-                value="조회 버튼을 누르세요"
-                size="40"
-                required
-              />
-              <button onClick="세척_시작(false);">조 회</button>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <label for="_재제조번호">재제조번호</label>
-            </td>
-            <td>
-              <input
-                type="text"
-                id="_재제조번호"
-                value="조회 버튼을 누르세요"
-                size="40"
-                required
-              />
-              <button onClick="세척_시작(true);">조 회</button>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <label for="_구분">구분</label>
-            </td>
-            <td>
-              <input type="text" id="_구분" size="40" readonly required />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <label for="_차종">차종</label>
-            </td>
-            <td>
-              <input type="text" id="_차종" size="40" readonly required />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <label for="_품번">품번</label>
-            </td>
-            <td>
-              <input type="text" id="_품번" size="40" readonly required />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <label for="_공정입고일">공정 입고일</label>
-            </td>
-            <td>
-              <input
-                type="datetime-local"
-                id="_공정입고일"
-                value="0000-00-00T00:00"
-                size="40"
-                required
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <label for="_공정완료일">공정 완료일</label>
-            </td>
-            <td>
-              <input
-                type="datetime-local"
-                id="_공정완료일"
-                value="0000-00-00T00:00"
-                size="40"
-                required
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <label for="_어퍼케이스재사용가능">어퍼케이스 재사용가능</label>
-            </td>
-            <td>
-              <input
-                type="text"
-                id="_어퍼케이스재사용가능"
-                size="40"
-                required
-              />
-              <select
-                name="language"
-                onchange="_어퍼케이스재사용가능_콤보박스(this);"
-              >
-                <option value="">---</option>
-                <option value="OK">OK</option>
-                <option value="NG">NG</option>
-              </select>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <label for="_기밀검사_케이스">기밀검사 케이스</label>
-            </td>
-            <td>
-              <input type="text" id="_기밀검사_케이스" size="40" required />
-              <select
-                name="language"
-                onchange="_기밀검사_케이스_콤보박스(this);"
-              >
-                <option value="">---</option>
-                <option value="OK">OK</option>
-                <option value="NG">NG</option>
-              </select>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <label for="_기밀검사_케이스_특이사항"
-                >기밀검사 케이스 특이사항</label
-              >
-            </td>
-            <td>
-              <input
-                type="text"
-                id="_기밀검사_케이스_특이사항"
-                size="100"
-                required
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <label for="_특이사항">특이사항</label>
-            </td>
-            <td>
-              <input type="text" id="_특이사항" size="100" required />
-            </td>
-          </tr>
-        </table>
-      </div>
-      <div class="input-group">
-        <div class="input-btn-group">
-          <button onClick="세척_save();">SAVE</button>
-          <button onClick="이전페이지();">이전 Page</button>
-          <button onClick="세척_카메라시작();">사진촬영</button>
-        </div>
-      </div>
-    </section>
-    <script>
-      const _management_id = document.getElementById("_management_id");
-      const _재제조번호 = document.getElementById("_재제조번호");
-      const _공정입고일 = document.getElementById("_공정입고일");
-      const _공정완료일 = document.getElementById("_공정완료일");
-      const _어퍼케이스재사용가능 =
-        document.getElementById("_어퍼케이스재사용가능");
-      const _기밀검사_케이스 = document.getElementById("_기밀검사_케이스");
-      const _기밀검사_케이스_특이사항 =
-        document.getElementById("_기밀검사_케이스_특이사항");
-      const _특이사항 = document.getElementById("_특이사항");
-    </script>
-  </body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>세척</title>
+		<link rel="stylesheet" href="base/style/공정.css" />
+	</head>
+	<body>
+		<section>
+			<button onClick='세척_list();'>LIST</button>
+			<div id='grid_list'></div>
+		</section>
+		<br />
+		<br />
+		<section class="세척">
+			<div class="process__tit">
+				<h2>세척</h2>
+			</div>
+			<div class="input-group process-step">
+				<table class="tb">
+					<colgroup>
+						<col class="col_1" width="30%" />
+						<col class="col_2" width="70%" />
+					</colgroup>
+					<tr>
+						<td>
+							<label for="_management_id">관리번호</label>
+						</td>
+						<td>
+							<input
+									type="text"
+									id="_management_id"
+									value=""
+									size="40"
+									required
+									/>
+							<button onClick="세척_시작(0);">조 회</button>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="_재제조번호">재제조번호</label>
+						</td>
+						<td>
+							<input
+									type="text"
+									id="_재제조번호"
+									value=""
+									size="40"
+									required
+									/>
+							<button onClick="세척_시작(1);">조 회</button>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="_RO_no">RO No.</label>
+						</td>
+						<td>
+							<input
+									type="text"
+									id="_RO_no"
+									value=""
+									size="40"
+									required
+									/>
+							<button onClick="세척_시작(3);">조 회</button>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="_구분">구분</label>
+						</td>
+						<td>
+							<input type="text" id="_구분" size="40" readonly required />
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="_차종">차종</label>
+						</td>
+						<td>
+							<input type="text" id="_차종" size="40" readonly required />
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="_품번">품번</label>
+						</td>
+						<td>
+							<input type="text" id="_품번" size="40" readonly required />
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="_공정입고일">공정 입고일</label>
+						</td>
+						<td>
+							<input
+									type="datetime-local"
+									id="_공정입고일"
+									value="0000-00-00T00:00"
+									size="40"
+									required
+									/>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="_공정완료일">공정 완료일</label>
+						</td>
+						<td>
+							<input
+									type="datetime-local"
+									id="_공정완료일"
+									value="0000-00-00T00:00"
+									size="40"
+									required
+									/>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="_어퍼케이스재사용가능">어퍼케이스 재사용가능</label>
+						</td>
+						<td>
+							<input
+									type="text"
+									id="_어퍼케이스재사용가능"
+									size="40"
+									required
+									/>
+							<select
+									name="language"
+									onchange="_어퍼케이스재사용가능_콤보박스(this);"
+									>
+									<option value="">---</option>
+									<option value="OK">OK</option>
+									<option value="NG">NG</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="_기밀검사_케이스">기밀검사 케이스</label>
+						</td>
+						<td>
+							<input type="text" id="_기밀검사_케이스" size="40" required />
+							<select
+									name="language"
+									onchange="_기밀검사_케이스_콤보박스(this);"
+									>
+									<option value="">---</option>
+									<option value="OK">OK</option>
+									<option value="NG">NG</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="_기밀검사_케이스_특이사항"
+							       >기밀검사 케이스 특이사항</label
+						       >
+						</td>
+								<td>
+									<input
+											type="text"
+											id="_기밀검사_케이스_특이사항"
+											size="100"
+											required
+											/>
+								</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="_특이사항">특이사항</label>
+						</td>
+						<td>
+							<input type="text" id="_특이사항" size="100" required />
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="input-group">
+				<div class="input-btn-group">
+					<button onClick="세척_save();">SAVE</button>
+					<button onClick="이전페이지();">이전 Page</button>
+					<button onClick="세척_카메라시작();">사진촬영</button>
+				</div>
+			</div>
+		</section>
+		<script>
+			const _management_id = document.getElementById("_management_id");
+			const _재제조번호 = document.getElementById("_재제조번호");
+			const _RO_no = document.getElementById("_RO_no");
+			const _공정입고일 = document.getElementById("_공정입고일");
+			const _공정완료일 = document.getElementById("_공정완료일");
+			const _어퍼케이스재사용가능 =
+				document.getElementById("_어퍼케이스재사용가능");
+			const _기밀검사_케이스 = document.getElementById("_기밀검사_케이스");
+			const _기밀검사_케이스_특이사항 =
+				document.getElementById("_기밀검사_케이스_특이사항");
+			const _특이사항 = document.getElementById("_특이사항");
+		</script>
+	</body>
 </html>

@@ -188,6 +188,7 @@ const 입고_doc = {
 	구분 : '',
 	차종: '', 
 	품번: '', 
+	RO_no : ''
 };
 
 const 세척_doc = {
@@ -991,6 +992,7 @@ const 입고_ = {
 	구분 : 1,
 	차종: 1, 
 	품번: 1, 
+	RO_no : 1
 };
 
 const 세척_ = {
@@ -3045,7 +3047,7 @@ function 업체(code) {
 	return result;
 }
 
-async function 공정단계찾기(_관리번호) {
+async function 공정단계찾기__(_관리번호) {
 	var 공정단계 = '입고';
 
 	//count(입고, { 관리번호 : _관리번호 });
