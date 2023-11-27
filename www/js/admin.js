@@ -127,14 +127,14 @@ function func_csv() {
 	});
 }
 
-async function doo_() {
-	find_BSA재제조(BSA재제조, { 완전분해 : { $ne : '' }, 공정단계 : { $ne : '완전분해'}});
+async function doo() {
+	find_BSA재제조(BSA재제조, { 관리번호 : { $exists : true },  공정단계 : { $ne : '출하' } });
 	await delay();
 
 	BSA재제조_v.forEach(async function(item) {
 		var doc = {
 			관리번호 : item.관리번호,
-			공정단계 : '분해조립'
+			공정단계 : ''
 		}
 
 		update(BSA재제조, doc);
@@ -144,7 +144,7 @@ async function doo_() {
 	console.log('complete');
 }
 
-async function doo() {
+async function doo_() {
 	find_BSA재제조(BSA재제조, { EOL : { $ne : '' }, 출하검사 : { $eq : ''}});
 	await delay();
 
