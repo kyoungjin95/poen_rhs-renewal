@@ -131,10 +131,12 @@ async function 부품재고_시작() {
 		document.getElementById('신품_QR').innerHTML = 'QR: ' + 신품_QR;
 	});
 
+	var input_counts = [];
 	var counts = [];
 	var 품번 = [];
 	var 단가합 = [];
 	var 평균단가 = [];
+	var 합계 = [];
 
 	find_신품정보(자재입출고, { QR: { $exists: true } });
 	await delay();
@@ -142,18 +144,27 @@ async function 부품재고_시작() {
 	자재입출고_v.forEach(async function (infos) {
 		if (품번.indexOf(infos.품번) < 0) {
 			품번.push(infos.품번);
-			counts.push(1);
+			counts.push(infos.수량);
+			input_counts.push(1);
 			
 			if(infos.단가 != undefined) 단가합.push(infos.단가);
 			else 단가합.push(0);
 
 			if(infos.단가 != undefined) 평균단가.push(infos.단가);
 			else 평균단가.push(0);
+
+			if(infos.단가 != undefined) 합계.push(infos.단가 * infos.수량);
+			else 합계.push(0);
 		} else {
 			var no = 품번.indexOf(infos.품번);
-			counts[no]++;
-			if(infos.단가 != undefined) 단가합[no] += infos.단가;
-			if(infos.단가 != undefined) 평균단가[no] = 단가합[no] / counts[no];
+			input_counts[no]++;
+			if(infos.단가 != undefined && infos.단가 != '') { 
+				counts[no] += infos.수량;
+				단가합[no] += infos.단가;
+				평균단가[no] = 단가합[no] / input_counts[no];
+				합계[no] += infos.단가 * infos.수량;
+			}
+
 		}
 	});
 	console.log(평균단가, 단가합);
@@ -161,8 +172,9 @@ async function 부품재고_시작() {
 	for(var i = 0; i < 품번.length; i++) {
 		var item = {
 			품번 : 품번[i],
-			수량 : counts[i],
-			평균단가 : 평균단가[i]
+			수량 : Number(counts[i]).toLocaleString('ko-KR'),
+			평균단가 : Number(평균단가[i]).toLocaleString('ko-KR'),
+			합계 : Number(합계[i]).toLocaleString('ko-KR')
 		}
 
 		list.push(item);
@@ -177,6 +189,7 @@ async function 부품재고_시작() {
 			{title:"품번", field:"품번", sorter:"string", width:'180'},
 			{title:"평균단가", field:"평균단가", sorter:"string", width:'180'},
 			{title:"수량", field:"수량", sorter:"string", width:'180'},
+			{title:"합계", field:"합계", sorter:"string", width:'180'},
 		],
 	});
 
