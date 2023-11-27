@@ -30,7 +30,7 @@ async function 분해조립_시작(is재제조번호 = false) {
 		await sleep(DELAY);
 	}
 	
-	if(flag_분해조립 == true) 기초검사_list();
+	if(flag_분해조립 == true) 분해조립_list();
 	flag_분해조립 = false;
 	flag_loaded = true;
 
