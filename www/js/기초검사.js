@@ -5,8 +5,10 @@ async function 기초검사_시작(is재제조 = false) {
 		await sleep(DELAY);
 	}
 	
-
+	if(flag_기초검사 == true) 기초검사_list();
 	flag_기초검사 = false;
+
+
 	console.log('DTC count:', 기초검사_DTC_count);
 
 	_기초검사_delete_all();
@@ -83,43 +85,36 @@ async function 기초검사_시작(is재제조 = false) {
 		_통신검사_DTC코드3.value = 기초검사_v.통신검사_DTC코드3;
 		if(기초검사_v.통신검사_DTC코드4 != '') {
 			_기초검사_add_DTC_Code();
-			await sleep(1);
 			_통신검사_DTC코드4.value = 기초검사_v.통신검사_DTC코드4;
 		}
                
     if(기초검사_v.통신검사_DTC코드5 != '') {
 			_기초검사_add_DTC_Code();
-			await sleep(1);
 			_통신검사_DTC코드5.value = 기초검사_v.통신검사_DTC코드5;
 		}
 
     if(기초검사_v.통신검사_DTC코드6 != '') {
 			_기초검사_add_DTC_Code();
-			await sleep(1);
 			_통신검사_DTC코드6.value = 기초검사_v.통신검사_DTC코드6;
 		}
 
     if(기초검사_v.통신검사_DTC코드7 != '') {
 			_기초검사_add_DTC_Code();
-			await sleep(1);
 			_통신검사_DTC코드7.value = 기초검사_v.통신검사_DTC코드7;
 		}
 
     if(기초검사_v.통신검사_DTC코드8 != '') {
 			_기초검사_add_DTC_Code();
-			await sleep(1);
 			_통신검사_DTC코드8.value = 기초검사_v.통신검사_DTC코드8;
 		}
 
      if(기초검사_v.통신검사_DTC코드9 != '') {
 			_기초검사_add_DTC_Code();
-			await sleep(1);
 			_통신검사_DTC코드9.value = 기초검사_v.통신검사_DTC코드9;
 		}
 
     if(기초검사_v.통신검사_DTC코드10 != '') {
 			_기초검사_add_DTC_Code();
-			await sleep(1);
 			_통신검사_DTC코드10.value = 기초검사_v.통신검사_DTC코드10;
 		}
 
@@ -565,6 +560,8 @@ async function 기초검사_list() {
 		console.log("selected 관리번호: ", row.getData().관리번호);
 
 		_management_id.value = row.getData().관리번호;
+
+		await sleep(1);
 		기초검사_시작();
 	});
 }

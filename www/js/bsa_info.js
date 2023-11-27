@@ -886,13 +886,15 @@ async function grid_입고(m_id = "") {
   if (m_id == "") {
     find_입고(입고, { 관리번호: { $exists: true } });
     await delay();
+  	
+    tabledata_입고 = JSON.parse(JSON.stringify(입고_v));
   } else {
     find(입고, m_id);
     await delay();
+
+    tabledata_입고.push(JSON.parse(JSON.stringify(입고_v)));
   }
-
-  tabledata_입고 = JSON.parse(JSON.stringify(입고_v));
-
+ 
   table_입고 = new Tabulator("#grid_입고정보", {
     layout: "resizableColumnFit",
     height: "300px",
@@ -907,13 +909,9 @@ async function grid_입고(m_id = "") {
     ],
   });
 
-  count(입고_pic, { 관리번호: m_id });
+  find(입고_pic, m_id );
   await delay();
-  if (입고_pic_cnt > 0) {
-    find(입고_pic, m_id);
-    await delay();
-
-    if (입고_pic_v.length == 0) return;
+  if (입고_pic_v != null) {
     pic1.src = "data:image/;base64," + 입고_pic_v.pic1;
     pic2.src = "data:image/;base64," + 입고_pic_v.pic2;
     pic3.src = "data:image/;base64," + 입고_pic_v.pic3;
@@ -971,14 +969,17 @@ async function grid_세척(m_id = "") {
   if (m_id == "") {
     find_세척(세척, { 관리번호: { $exists: true } });
     await delay();
+	  
+    tabledata_세척 = JSON.parse(JSON.stringify(세척_v));
   } else {
     find(세척, m_id);
     await delay();
+
+    tabledata_세척.push(JSON.parse(JSON.stringify(세척_v)));
   }
 
-  if (세척_v.length == 0) return;
+  if (세척_v == null) return;
 
-  tabledata_세척 = JSON.parse(JSON.stringify(세척_v));
   table_세척 = new Tabulator("#grid_세척정보", {
     layout: "resizableColumnFit",
     height: 130,
@@ -1009,13 +1010,11 @@ async function grid_세척(m_id = "") {
     ],
   });
 
-  count(세척_pic, { 관리번호: m_id });
+
+  find(세척_pic, m_id);
   await delay();
 
-  if (세척_pic_cnt > 0) {
-    find(세척_pic, m_id);
-    await delay();
-
+  if (세척_pic_v != null) {
     pic1.src = "data:image/;base64," + 세척_pic_v.pic1;
     pic2.src = "data:image/;base64," + 세척_pic_v.pic2;
     pic3.src = "data:image/;base64," + 세척_pic_v.pic3;
@@ -1068,20 +1067,24 @@ async function grid_기초검사(m_id = "") {
   var pic14 = document.getElementById("기초검사_pic14");
   var pic15 = document.getElementById("기초검사_pic15");
 
+  tabledata_기초검사 = [];
+
   if (m_id == "") {
     find_기초검사(기초검사, { 관리번호: { $exists: true } });
+    await delay();
+  
+    tabledata_기초검사 = JSON.parse(JSON.stringify(기초검사_v));
   } else {
     find(기초검사, m_id);
-  }
-  await delay();
+    await delay();
 
-  tabledata_기초검사 = JSON.parse(JSON.stringify(기초검사_v));
+    tabledata_기초검사.push(JSON.parse(JSON.stringify(기초검사_v)));
+  }
 
   table_기초검사 = new Tabulator("#grid_기초검사", {
     layout: "resizableColumnFit",
     height: 130,
     data: tabledata_기초검사,
-    //autoColumns:true,
 
     columns: [
       { title: "관리번호", field: "관리번호", sorter: "string", width: "180" },
@@ -1206,15 +1209,10 @@ async function grid_기초검사(m_id = "") {
     ],
   });
 
-  count(기초검사_pic, { 관리번호: m_id });
+  find(기초검사_pic, m_id);
   await delay();
 
-  if (기초검사_pic_cnt > 0) {
-    find(기초검사_pic, m_id);
-    await delay();
-
-    if (기초검사_pic_cnt.length == 0) return;
-
+  if(기초검사_pic_v != null) {
     pic1.src = "data:image/;base64," + 기초검사_pic_v.pic1;
     pic2.src = "data:image/;base64," + 기초검사_pic_v.pic2;
     pic3.src = "data:image/;base64," + 기초검사_pic_v.pic3;
@@ -1272,12 +1270,15 @@ async function grid_분해조립(m_id = "") {
   if (m_id == "") {
     find_분해조립(분해조립, { 관리번호: { $exists: true } });
     await delay();
+  
+    tabledata_분해조립 = JSON.parse(JSON.stringify(분해조립_v));
   } else {
     find(분해조립, m_id);
     await delay();
-  }
 
-  tabledata_분해조립 = JSON.parse(JSON.stringify(분해조립_v));
+    tabledata_분해조립.push(JSON.parse(JSON.stringify(분해조립_v)));
+    await delay();
+  }
 
   table_분해조립 = new Tabulator("#grid_분해조립", {
     layout: "resizableColumnFit",
@@ -1555,15 +1556,10 @@ async function grid_분해조립(m_id = "") {
     ],
   });
 
-  count(분해조립_pic, { 관리번호: m_id });
+  find(분해조립_pic, m_id);
   await delay();
 
-  if (분해조립_pic_cnt > 0) {
-    find(분해조립_pic, m_id);
-    await delay();
-
-    if (분해조립_pic_v.length == 0) return;
-
+  if (분해조립_pic_v != null) {
     pic1.src = "data:image/;base64," + 분해조립_pic_v.pic1;
     pic2.src = "data:image/;base64," + 분해조립_pic_v.pic2;
     pic3.src = "data:image/;base64," + 분해조립_pic_v.pic3;
@@ -1621,12 +1617,14 @@ async function grid_성능검사(m_id = "") {
   if (m_id == "") {
     find_성능검사(성능검사, { 관리번호: { $exists: true } });
     await delay();
+  	
+    tabledata_성능검사 = JSON.parse(JSON.stringify(성능검사_v));
   } else {
     find(성능검사, m_id);
     await delay();
-  }
 
-  tabledata_성능검사 = JSON.parse(JSON.stringify(성능검사_v));
+    tabledata_성능검사.push(JSON.parse(JSON.stringify(성능검사_v)));
+  }
 
   table_성능검사 = new Tabulator("#grid_성능검사", {
     layout: "resizableColumnFit",
@@ -1662,15 +1660,10 @@ async function grid_성능검사(m_id = "") {
     ],
   });
 
-  count(성능검사_pic, { 관리번호: m_id });
+  find(성능검사_pic, m_id);
   await delay();
 
-  if (성능검사_pic_cnt > 0) {
-    find(성능검사_pic, m_id);
-    await delay();
-
-    if (성능검사_pic_cnt.length == 0) return;
-
+  if (성능검사_pic_v != null) {
     pic1.src = "data:image/;base64," + 성능검사_pic_v.pic1;
     pic2.src = "data:image/;base64," + 성능검사_pic_v.pic2;
     pic3.src = "data:image/;base64," + 성능검사_pic_v.pic3;
@@ -1727,12 +1720,14 @@ async function grid_EOL(m_id = "") {
   if (m_id == "") {
     find_EOL(EOL, { 관리번호: { $exists: true } });
     await delay();
+
+    tabledata_EOL = JSON.parse(JSON.stringify(EOL_v));
   } else {
     find(EOL, m_id);
     await delay();
-  }
 
-  tabledata_EOL = JSON.parse(JSON.stringify(EOL_v));
+    tabledata_EOL.push(JSON.parse(JSON.stringify(EOL_v)));
+  }
 
   table_EOL = new Tabulator("#grid_EOL", {
     layout: "resizableColumnFit",
@@ -1886,14 +1881,10 @@ async function grid_EOL(m_id = "") {
     ],
   });
 
-  count(EOL_pic, { 관리번호: m_id });
+  find(EOL_pic, m_id);
   await delay();
 
-  if (EOL_pic_cnt > 0) {
-    find(EOL_pic, m_id);
-    await delay();
-
-    if (EOL_pic_v.length == 0) return;
+  if (EOL_pic_v != null) {
     pic1.src = "data:image/;base64," + EOL_pic_v.pic1;
     pic2.src = "data:image/;base64," + EOL_pic_v.pic2;
     pic3.src = "data:image/;base64," + EOL_pic_v.pic3;
@@ -1949,18 +1940,21 @@ async function grid_출하정보(m_id = "") {
 
   if (m_id == "") {
     find_출하정보(출하정보, { 관리번호: { $exists: true } });
+    await delay();
+	  
+    tabledata_출하정보 = JSON.parse(JSON.stringify(출하정보_v));
   } else {
     find(출하정보, m_id);
+    await delay();
+  
+    tabledata_출하정보.push(JSON.parse(JSON.stringify(출하정보_v)));
   }
-  await delay();
 
-  tabledata_출하정보 = JSON.parse(JSON.stringify(출하정보_v));
 
   table_출하정보 = new Tabulator("#grid_출하정보", {
     layout: "resizableColumnFit",
     height: 130,
     data: tabledata_출하정보,
-    //autoColumns:true,
 
     columns: [
       { title: "관리번호", field: "관리번호", sorter: "string", width: "180" },
@@ -2175,13 +2169,10 @@ async function grid_출하정보(m_id = "") {
     ],
   });
 
-  count(출하_pic, { 관리번호: m_id });
+  find(출하_pic, m_id);
   await delay();
-  if (출하_pic_cnt > 0) {
-    find(출하_pic, m_id);
-    await delay();
 
-    if (출하_pic_v.length == 0) return;
+  if (출하_pic_v != null) {
     pic1.src = "data:image/;base64," + 출하_pic_v.pic1;
     pic2.src = "data:image/;base64," + 출하_pic_v.pic2;
     pic3.src = "data:image/;base64," + 출하_pic_v.pic3;
@@ -2239,18 +2230,19 @@ async function grid_특이사항(m_id = "") {
   if (m_id == "") {
     find_특이사항(특이사항, { 관리번호: { $exists: true } });
     await delay();
+    
+    tabledata_특이사항 = JSON.parse(JSON.stringify(특이사항_v));
   } else {
     find(특이사항, m_id);
     await delay();
-  }
 
-  tabledata_특이사항 = JSON.parse(JSON.stringify(특이사항_v));
+    tabledata_특이사항.push(JSON.parse(JSON.stringify(특이사항_v)));
+  }
 
   table_특이사항 = new Tabulator("#grid_특이사항", {
     layout: "resizableColumnFit",
     height: 130,
     data: tabledata_특이사항,
-    //autoColumns:true,
 
     columns: [
       { title: "관리번호", field: "관리번호", sorter: "string", width: "180" },
@@ -2258,14 +2250,10 @@ async function grid_특이사항(m_id = "") {
     ],
   });
 
-  count(특이사항_pic, { 관리번호: m_id });
+  find(특이사항_pic, m_id);
   await delay();
 
-  if (특이사항_pic_cnt > 0) {
-    find(특이사항_pic, m_id);
-    await delay();
-
-    if (특이사항_pic_v.length == 0) return;
+  if (특이사항_pic_v != null) {
     pic1.src = "data:image/;base64," + 특이사항_pic.pic1;
     pic2.src = "data:image/;base64," + 특이사항_pic.pic2;
     pic3.src = "data:image/;base64," + 특이사항_pic.pic3;
@@ -2307,19 +2295,14 @@ async function grid_교체부품상세1(m_id = "") {
   if (m_id == "") {
     find_교체부품상세(교체부품상세1, { 관리번호: { $exists: true } });
     await delay();
+
+    tabledata_교체부품상세1 = JSON.parse(JSON.stringify(교체부품상세1_v));
   } else {
-    count(교체부품상세1, { 관리번호: { $exists: true } });
+    find(교체부품상세1, m_id);
     await delay();
 
-    if (교체부품상세1_cnt > 0) {
-      find(교체부품상세2, m_id);
-      await delay();
-    } else {
-      교채부품상세1_v = [];
-    }
+    tabledata_교체부품상세1.push(JSON.parse(JSON.stringify(교체부품상세1_v)));
   }
-
-  tabledata_교체부품상세1 = JSON.parse(JSON.stringify(교체부품상세1_v));
 
   table_교체부품상세1 = new Tabulator("#grid_교체부품상세1", {
     layout: "resizableColumnFit",
@@ -2388,19 +2371,14 @@ async function grid_교체부품상세2(m_id = "") {
   if (m_id == "") {
     find_교체부품상세(교체부품상세2, { 관리번호: { $exists: true } });
     await delay();
+
+    tabledata_교체부품상세2 = JSON.parse(JSON.stringify(교체부품상세2_v));
   } else {
-    count(교체부품상세2, { 관리번호: { $exists: true } });
+    find(교체부품상세2, m_id);
     await delay();
 
-    if (교체부품상세2_cnt > 0) {
-      find(교체부품상세2, m_id);
-      await delay();
-    } else {
-      교채부품상세2_v = [];
-    }
+    tabledata_교체부품상세2.push(JSON.parse(JSON.stringify(교체부품상세2_v)));
   }
-
-  tabledata_교체부품상세2 = JSON.parse(JSON.stringify(교체부품상세2_v));
 
   table_교체부품상세2 = new Tabulator("#grid_교체부품상세2", {
     layout: "resizableColumnFit",
@@ -2469,19 +2447,14 @@ async function grid_교체부품상세3(m_id = "") {
   if (m_id == "") {
     find_교체부품상세(교체부품상세3, { 관리번호: { $exists: true } });
     await delay();
+
+    tabledata_교체부품상세3 = JSON.parse(JSON.stringify(교체부품상세3_v));
   } else {
-    count(교체부품상세3, { 관리번호: { $exists: true } });
+    find(교체부품상세3, m_id);
     await delay();
 
-    if (교체부품상세3_cnt > 0) {
-      find(교체부품상세3, m_id);
-      await delay();
-    } else {
-      교채부품상세3_v = [];
-    }
+    tabledata_교체부품상세3.push(JSON.parse(JSON.stringify(교체부품상세3_v)));
   }
-
-  tabledata_교체부품상세3 = JSON.parse(JSON.stringify(교체부품상세3_v));
 
   table_교체부품상세3 = new Tabulator("#grid_교체부품상세3", {
     layout: "resizableColumnFit",
@@ -2550,19 +2523,14 @@ async function grid_교체부품상세4(m_id = "") {
   if (m_id == "") {
     find_교체부품상세(교체부품상세4, { 관리번호: { $exists: true } });
     await delay();
+
+    tabledata_교체부품상세4 = JSON.parse(JSON.stringify(교체부품상세4_v));
   } else {
-    count(교체부품상세4, { 관리번호: { $exists: true } });
+    find(교체부품상세4, m_id);
     await delay();
 
-    if (교체부품상세4_cnt > 0) {
-      find(교체부품상세4, m_id);
-      await delay();
-    } else {
-      교채부품상세4_v = [];
-    }
+    tabledata_교체부품상세4.push(JSON.parse(JSON.stringify(교체부품상세4_v)));
   }
-
-  tabledata_교체부품상세4 = JSON.parse(JSON.stringify(교체부품상세4_v));
 
   table_교체부품상세4 = new Tabulator("#grid_교체부품상세4", {
     layout: "resizableColumnFit",
@@ -2631,19 +2599,14 @@ async function grid_교체부품상세5(m_id = "") {
   if (m_id == "") {
     find_교체부품상세(교체부품상세5, { 관리번호: { $exists: true } });
     await delay();
+
+    tabledata_교체부품상세5 = JSON.parse(JSON.stringify(교체부품상세5_v));
   } else {
-    count(교체부품상세5, { 관리번호: { $exists: true } });
+    find(교체부품상세5, m_id);
     await delay();
 
-    if (교체부품상세5_cnt > 0) {
-      find(교체부품상세5, m_id);
-      await delay();
-    } else {
-      교채부품상세5_v = [];
-    }
+    tabledata_교체부품상세5.push(JSON.parse(JSON.stringify(교체부품상세5_v)));
   }
-
-  tabledata_교체부품상세5 = JSON.parse(JSON.stringify(교체부품상세5_v));
 
   table_교체부품상세5 = new Tabulator("#grid_교체부품상세5", {
     layout: "resizableColumnFit",
@@ -2712,19 +2675,14 @@ async function grid_교체부품상세6(m_id = "") {
   if (m_id == "") {
     find_교체부품상세(교체부품상세6, { 관리번호: { $exists: true } });
     await delay();
+
+    tabledata_교체부품상세6 = JSON.parse(JSON.stringify(교체부품상세6_v));
   } else {
-    count(교체부품상세6, { 관리번호: { $exists: true } });
+    find(교체부품상세6, m_id);
     await delay();
 
-    if (교체부품상세6_cnt > 0) {
-      find(교체부품상세6, m_id);
-      await delay();
-    } else {
-      교채부품상세6_v = [];
-    }
+    tabledata_교체부품상세6.push(JSON.parse(JSON.stringify(교체부품상세6_v)));
   }
-
-  tabledata_교체부품상세6 = JSON.parse(JSON.stringify(교체부품상세6_v));
 
   table_교체부품상세6 = new Tabulator("#grid_교체부품상세6", {
     layout: "resizableColumnFit",
@@ -2793,19 +2751,14 @@ async function grid_교체부품상세7(m_id = "") {
   if (m_id == "") {
     find_교체부품상세(교체부품상세7, { 관리번호: { $exists: true } });
     await delay();
+
+    tabledata_교체부품상세7 = JSON.parse(JSON.stringify(교체부품상세7_v));
   } else {
-    count(교체부품상세7, { 관리번호: { $exists: true } });
+    find(교체부품상세7, m_id);
     await delay();
 
-    if (교체부품상세7_cnt > 0) {
-      find(교체부품상세7, m_id);
-      await delay();
-    } else {
-      교채부품상세7_v = [];
-    }
+    tabledata_교체부품상세7.push(JSON.parse(JSON.stringify(교체부품상세7_v)));
   }
-
-  tabledata_교체부품상세7 = JSON.parse(JSON.stringify(교체부품상세7_v));
 
   table_교체부품상세7 = new Tabulator("#grid_교체부품상세7", {
     layout: "resizableColumnFit",
@@ -2874,19 +2827,14 @@ async function grid_교체부품상세8(m_id = "") {
   if (m_id == "") {
     find_교체부품상세(교체부품상세8, { 관리번호: { $exists: true } });
     await delay();
+
+    tabledata_교체부품상세8 = JSON.parse(JSON.stringify(교체부품상세8_v));
   } else {
-    count(교체부품상세8, { 관리번호: { $exists: true } });
+    find(교체부품상세8, m_id);
     await delay();
 
-    if (교체부품상세8_cnt > 0) {
-      find(교체부품상세8, m_id);
-      await delay();
-    } else {
-      교채부품상세8_v = [];
-    }
+    tabledata_교체부품상세8.push(JSON.parse(JSON.stringify(교체부품상세8_v)));
   }
-
-  tabledata_교체부품상세8 = JSON.parse(JSON.stringify(교체부품상세8_v));
 
   table_교체부품상세8 = new Tabulator("#grid_교체부품상세8", {
     layout: "resizableColumnFit",
@@ -2955,19 +2903,14 @@ async function grid_교체부품상세9(m_id = "") {
   if (m_id == "") {
     find_교체부품상세(교체부품상세9, { 관리번호: { $exists: true } });
     await delay();
+
+    tabledata_교체부품상세9 = JSON.parse(JSON.stringify(교체부품상세9_v));
   } else {
-    count(교체부품상세9, { 관리번호: { $exists: true } });
+    find(교체부품상세9, m_id);
     await delay();
 
-    if (교체부품상세9_cnt > 0) {
-      find(교체부품상세9, m_id);
-      await delay();
-    } else {
-      교채부품상세9_v = [];
-    }
+    tabledata_교체부품상세9.push(JSON.parse(JSON.stringify(교체부품상세9_v)));
   }
-
-  tabledata_교체부품상세9 = JSON.parse(JSON.stringify(교체부품상세9_v));
 
   table_교체부품상세9 = new Tabulator("#grid_교체부품상세9", {
     layout: "resizableColumnFit",
@@ -3037,19 +2980,14 @@ async function grid_교체부품상세10(m_id = "") {
   if (m_id == "") {
     find_교체부품상세(교체부품상세10, { 관리번호: { $exists: true } });
     await delay();
+
+    tabledata_교체부품상세10 = JSON.parse(JSON.stringify(교체부품상세10_v));
   } else {
-    count(교체부품상세10, { 관리번호: { $exists: true } });
+    find(교체부품상세10, m_id);
     await delay();
 
-    if (교체부품상세10_cnt > 0) {
-      find(교체부품상세10, m_id);
-      await delay();
-    } else {
-      교채부품상세10_v = [];
-    }
+    tabledata_교체부품상세10.push(JSON.parse(JSON.stringify(교체부품상세10_v)));
   }
-
-  tabledata_교체부품상세10 = JSON.parse(JSON.stringify(교체부품상세10_v));
 
   table_교체부품상세10 = new Tabulator("#grid_교체부품상세10", {
     layout: "resizableColumnFit",

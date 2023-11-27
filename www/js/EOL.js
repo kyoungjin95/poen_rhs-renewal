@@ -10,24 +10,14 @@ async function EOL_시작(EOL_is재제조번호 = false) {
 		await sleep(DELAY);
 	}
 
+	if(flag_EOL == true) EOL_list();
 	flag_EOL = false;
 
 	_eol_delete_all();
-	EOL_DTC_count = 0;
 
 	if(_management_id.value == '조회를 누르세요') _management_id.value =  관리번호;
 
-	if(EOL_is재제조번호 == false) {
-		if(_management_id.value.length == 0) return;
-		console.log('load: ', _management_id.value);
-
-		find(BSA재제조, _management_id.value);
-		await delay();
-
-		if(BSA재제조_v != null) {
-			if(BSA재제조_v.재제조번호 != undefined) _재제조번호.value = BSA재제조_v.재제조번호;
-		}
-	} else {
+	if(EOL_is재제조번호 == true) {
 		if(_재제조번호.value.length == 0) return;
 		console.log('load: ', _재제조번호.value);
 		
@@ -45,9 +35,6 @@ async function EOL_시작(EOL_is재제조번호 = false) {
 	await delay();
 
 	if(EOL_v != null) {
-			find(EOL, _management_id.value);
-			await delay();
-
 			_공정입고일.value = EOL_v.공정입고일; 
 			_UPR_C조립.value = EOL_v.UPR_C조립; 
 			_기밀검사_케이스.value = EOL_v.기밀검사_케이스;
@@ -61,45 +48,38 @@ async function EOL_시작(EOL_is재제조번호 = false) {
 			_통신검사_DTC코드1.value = EOL_v.통신검사_DTC코드1;
 			_통신검사_DTC코드2.value = EOL_v.통신검사_DTC코드2;
 			_통신검사_DTC코드3.value = EOL_v.통신검사_DTC코드3;
-			if(EOL_v.통신검사_DTC코드4 != '') {
+			if(EOL_v.통신검사_DTC코드4 != '' && EOL_v.통신검사_DTC코드4 != undefined) {
 				_EOL_add_DTC_Code();
-				await sleep(1);
 				_통신검사_DTC코드4.value = EOL_v.통신검사_DTC코드4;
 			}
 
-			if(EOL_v.통신검사_DTC코드5 != '') {
+			if(EOL_v.통신검사_DTC코드5 != '' && EOL_v.통신검사_DTC코드5 != undefined) {
 				_EOL_add_DTC_Code();
-				await sleep(1);
 				_통신검사_DTC코드5.value = EOL_v.통신검사_DTC코드5;
 			}
 
-			if(EOL_v.통신검사_DTC코드6 != '') {
+			if(EOL_v.통신검사_DTC코드6 != '' && EOL_v.통신검사_DTC코드6 != undefined) {
 				_EOL_add_DTC_Code();
-				await sleep(1);
 				_통신검사_DTC코드6.value = EOL_v.통신검사_DTC코드6;
 			}
 
-			if(EOL_v.통신검사_DTC코드7 != '') {
+			if(EOL_v.통신검사_DTC코드7 != '' && EOL_v.통신검사_DTC코드7 != undefined) {
 				_EOL_add_DTC_Code();
-				await sleep(1);
 				_통신검사_DTC코드7.value = EOL_v.통신검사_DTC코드7;
 			}
 
-			if(EOL_v.통신검사_DTC코드8 != '') {
+			if(EOL_v.통신검사_DTC코드8 != '' && EOL_v.통신검사_DTC코드8 != undefined) {
 				_EOL_add_DTC_Code();
-				await sleep(1);
 				_통신검사_DTC코드8.value = EOL_v.통신검사_DTC코드8;
 			}
 
-			if(EOL_v.통신검사_DTC코드9 != '') {
+			if(EOL_v.통신검사_DTC코드9 != '' && EOL_v.통신검사_DTC코드9 != undefined) {
 				_EOL_add_DTC_Code();
-				await sleep(1);
 				_통신검사_DTC코드9.value = EOL_v.통신검사_DTC코드9;
 			}
 
-			if(EOL_v.통신검사_DTC코드10 != '') {
+			if(EOL_v.통신검사_DTC코드10 != '' && EOL_v.통신검사_DTC코드10 != undefined ) {
 				_EOL_add_DTC_Code();
-				await sleep(1);
 				_통신검사_DTC코드10.value = EOL_v.통신검사_DTC코드10;
 			}
 
@@ -142,6 +122,13 @@ async function EOL_시작(EOL_is재제조번호 = false) {
 		_QR.value = '';
 		_검사자.value = worker;
 	}
+
+	find(BSA재제조, _management_id.value);
+	await delay();
+
+	if(BSA재제조_v != null) {
+		if(BSA재제조_v.재제조번호 != undefined) _재제조번호.value = BSA재제조_v.재제조번호;
+	}
 }
 
 async function EOL_SAVE() {
@@ -167,7 +154,7 @@ async function EOL_SAVE() {
 	doc.통신검사_DTC코드3 =  _통신검사_DTC코드3.value;
 	var tb = document.getElementById('tb');
 	var rowIcnt = tb.rows.length - 9;
-	var code_no = rowIcnt - 17;
+	var code_no = rowIcnt - 18;
 	console.log('rowIcnt:', rowIcnt, 'code_no:', code_no);
 
 	if(code_no == 10) {
@@ -235,8 +222,6 @@ async function EOL_SAVE() {
 	doc.비고 = _비고.value;
 	doc.QR = _QR.value;
 	doc.검사자 = _검사자.value;
-
-	console.log(doc);
 
 	update(EOL, doc);
 	await delay();
@@ -307,9 +292,9 @@ function _EOL_add_DTC_Code() {
 	var oCurrentRow;
 	var tb = document.getElementById('tb');
 	var rowIcnt = tb.rows.length - 11;
-	var code_no = rowIcnt - 14;
+	var code_no = rowIcnt - 15;
 	console.log('rosw count:', rowIcnt);
-	if(rowIcnt > 24) return false;
+	if(rowIcnt > 25) return false;
 	oCurrentRow = tb.insertRow(rowIcnt);
 	var insert_string = "<td><label for=\"_통신검사_DTC코드\"" + code_no + "><b>통신검사 DTC코드 " + code_no + "</b></label></td><td><input type=\"text\" id=\"_통신검사_DTC코드" + code_no + "\" size=\"40\" required></td><td><button onClick=\"_eol_delete_row(" + rowIcnt + ");\">삭제</button></td>";
 	console.log(insert_string);
@@ -319,7 +304,7 @@ function _EOL_add_DTC_Code() {
 
 function _eol_delete_row(index) {
 	var tb = document.getElementById('tb');
-	var rowIcnt = tb.rows.length - 12;
+	var rowIcnt = tb.rows.length - 11;
 	console.log('index:', index, 'rowIcnt:', rowIcnt);
 	if(index == rowIcnt) tb.deleteRow(index);
 	EOL_DTC_count--;
@@ -329,7 +314,7 @@ function _eol_delete_all() {
 	var tb = document.getElementById('tb');
 
 	while(EOL_DTC_count > 0) {
-		var rowIcnt = tb.rows.length - 11;
+		var rowIcnt = tb.rows.length - 12;
 		tb.deleteRow(rowIcnt);
 		EOL_DTC_count--;
 	}
@@ -593,6 +578,9 @@ async function EOL_list() {
 		console.log("selected 관리번호: ", row.getData().관리번호);
 
 		_management_id.value = row.getData().관리번호;
+
+		await sleep(1);
+
 		EOL_시작();
 	});
 }

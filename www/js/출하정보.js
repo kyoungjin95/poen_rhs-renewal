@@ -8,6 +8,7 @@ async function 출하정보_시작(is재제조 = false) {
 		await sleep(DELAY);
 	}
 
+	if(flag_출하 == true) 출하정보_list();
 	flag_출하 =  false;
 
 	if(_management_id.value == '조회 버튼을 누르세요') _management_id.value =  관리번호;
@@ -631,6 +632,9 @@ async function 출하정보_list() {
 		console.log("selected 관리번호: ", row.getData().관리번호);
 
 		_management_id.value = row.getData().관리번호;
+
+		await sleep(1);
+
 		출하정보_시작();
 	});
 }

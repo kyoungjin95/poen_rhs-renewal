@@ -30,9 +30,10 @@ async function 분해조립_시작(is재제조번호 = false) {
 		await sleep(DELAY);
 	}
 	
+	if(flag_분해조립 == true) 기초검사_list();
 	flag_분해조립 = false;
-
 	flag_loaded = true;
+
 
 	for(var i = 1; i <= 10; i++) eval('if(typeof _BMU' + i + ' != \'undefined\') _BMU' + i + '.value = \'\';');
 	for(var i = 1; i <= 10; i++) eval('if(typeof _BMU' + i + '_2 != \'undefined\') _BMU' + i + '_2.value = \'\';');
@@ -1044,6 +1045,9 @@ async function 분해조립_list() {
 		console.log("selected 관리번호: ", row.getData().관리번호);
 
 		_management_id.value = row.getData().관리번호;
+
+		await sleep(1);
+
 		분해조립_시작();
 	});
 }
