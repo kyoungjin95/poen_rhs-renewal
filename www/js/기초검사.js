@@ -45,22 +45,25 @@ async function 기초검사_시작(is재제조 = false) {
 			_구분.value = '';
 			_차종.value = '';
 			_품번.value = '';
+			_RO_no.value = '';
 		}
 	}
 
 	if(_management_id.value == '' | _management_id.value == 'none') return
 
-	find(입고, _management_id.value);
+	find(BSA재제조, _management_id.value);
 	await delay();
 
-	if(입고_v != null) {
-		_구분.value = 입고_v.구분;
-		_차종.value = 입고_v.차종;
-		_품번.value = 입고_v.품번;
+	if(BSA재제조_v != null) {
+		_구분.value = BSA재제조_v.구분;
+		_차종.value = BSA재제조_v.차종;
+		_품번.value = BSA재제조_v.품번;
+		_RO_no.value = BSA재제조_v.RO_no;
 	} else {
 		_구분.value = '';
 		_차종.value = '';
 		_품번.value = '';
+		_RO_no.value = '';
 	}
 
 	find(기초검사, _management_id.value);
@@ -135,7 +138,6 @@ async function 기초검사_시작(is재제조 = false) {
 		_검사자.value = 기초검사_v.검사자;
 	} else {
 		_공정입고일.value = '0000-00-00T00:00';
-		_RO_no.value = '';
 		_VIN.value = '';
 		_QRCode.value = '';
 		_주행거리.value = '';

@@ -35,22 +35,22 @@ async function 출하정보_시작(is재제조 = false) {
 		}
 	}
 
-	find(입고, _management_id.value);
+	find(BSA재제조, _management_id.value);
 	await delay();
 
-	if(입고_v != null) {
-		_차종.value = 입고_v.차종;
-		_품번.value = 입고_v.품번;
-		_RO_no.value = 입고_v.RO_no;
+	if(BSA재제조_v != null) {
+		_차종.value = BSA재제조_v.차종;
+		_품번.value = BSA재제조_v.품번;
+		_RO_no.value = BSA재제조_v.RO_no;
 	} else {
 		_차종.value = '';
 		_품번.value = '';
 		_RO_no.value = '';
 	}
 
-	//if(_차종.value == '') {
-	//	_차종.value = prompt('차종을 입력하세요.(예: LK_EV)');
-	//}
+	if(_차종.value == '') {
+		_차종.value = prompt('차종을 입력하세요.(예: LK_EV)');
+	}
 
 	let 브라켓_text = document.getElementById('_브라켓');
 	let s_plug_show = document.getElementById('_S_PLUG');

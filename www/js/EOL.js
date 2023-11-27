@@ -90,19 +90,12 @@ async function EOL_시작(EOL_is재제조번호 = false) {
 			_비고.value = EOL_v.비고;
 			_QR.value = EOL_v.QR;
 			_검사자.value = EOL_v.검사자;
-
-			find(입고, _management_id.value);
-			await delay();
-			if(입고_v != null) {
-				_구분.value = 입고_v.구분;
-				_차종.value = 입고_v.차종;
-				_품번.value = 입고_v.품번;
-			}
 	} else {
 		_재제조번호.value = '';
 		_구분.value = '';
 		_차종.value = '';
 		_품번.value = '';
+		_RO_no.value = '';
 		_공정입고일.value = '';
 		_UPR_C조립.value = '';
 		_기밀검사_케이스.value = '';
@@ -121,6 +114,15 @@ async function EOL_시작(EOL_is재제조번호 = false) {
 		_비고.value = '';
 		_QR.value = '';
 		_검사자.value = worker;
+	}
+
+	find(BSA재제조, _management_id.value);
+	await delay();
+	if(BSA재제조_v != null) {
+		_구분.value = BSA재제조_v.구분;
+		_차종.value = BSA재제조_v.차종;
+		_품번.value = BSA재제조_v.품번;
+		_RO_no.value = BSA재제조_v.RO_no;
 	}
 
 	find(BSA재제조, _management_id.value);

@@ -33,17 +33,19 @@ async function 성능검사_시작(is재제조 = false) {
 		}
 	}
 
-	find(입고, _management_id.value);
+	find(BSA재제조, _management_id.value);
 	await delay();
 
-	if(입고_v != null) {
-		_구분.value = 입고_v.구분;
-		_차종.value = 입고_v.차종;
-		_품번.value = 입고_v.품번;
+	if(BSA재제조_v != null) {
+		_구분.value = BSA재제조_v.구분;
+		_차종.value = BSA재제조_v.차종;
+		_품번.value = BSA재제조_v.품번;
+		_RO_no.value = BSA재제조_v.RO_no;
 	} else {
 		_구분.value = '';
 		_차종.value = '';
 		_품번.value = '';
+		_RO_no.value = '';
 	}
 
 	find(성능검사, _management_id.value);

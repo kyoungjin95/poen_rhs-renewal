@@ -87,12 +87,12 @@ async function 분해조립_시작(is재제조번호 = false) {
 	if(_management_id.value == '조회 버튼을 누르세요') _management_id.value =  관리번호;
 	console.log(_management_id.vaue);
 
-	find(입고, _management_id.value);
+	find(BSA재제조, _management_id.value);
 	await delay();
-	if(입고_v != null) {
-		_구분.value = 입고_v.구분;
-		_차종.value = 입고_v.차종;
-		_품번.value = 입고_v.품번;
+	if(BSA재제조_v != null) {
+		_구분.value = BSA재제조_v.구분;
+		_차종.value = BSA재제조_v.차종;
+		_품번.value = BSA재제조_v.품번;
 	} else {
 		_구분.value = '';
 		_차종.value = '';
