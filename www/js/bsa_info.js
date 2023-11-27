@@ -978,8 +978,6 @@ async function grid_세척(m_id = "") {
     tabledata_세척.push(JSON.parse(JSON.stringify(세척_v)));
   }
 
-  if (세척_v == null) return;
-
   table_세척 = new Tabulator("#grid_세척정보", {
     layout: "resizableColumnFit",
     height: 130,
