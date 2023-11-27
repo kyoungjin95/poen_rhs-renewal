@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
     <title>BSA 대기 수량 현황</title>
     <meta charset="UTF-8" />
@@ -75,15 +76,13 @@
               </div>
             </div>
           </div>
-          <br />
-          <br />
-          <div class="bsa-process">
-            <label id="대기라벨" for="grid_대기">선택 대기 BSA</label>
+          <div class="process">
+            <div class="process__tit">
+              <label id="대기라벨" for="grid_대기">선택 대기 BSA</label>
+            </div>
             <div id="grid_대기"></div>
           </div>
-          <br />
-          <br />
-          <div>
+          <div class="gather-filter">
             <select id="filter-field">
               <option></option>
               <option value="출하예약">출하예약</option>
@@ -133,17 +132,23 @@
 
             <button id="filter-clear">Clear Filter</button>
           </div>
-          <div class="bsa-process">
-            <label for="grid_출하대기">출하대기 BSA</label>
+          <div class="process">
+            <div class="process__tit">
+              <label for="grid_출하대기">출하대기 BSA</label>
+            </div>
             <div id="grid_출하대기"></div>
-          </div>
-          <div>
-            <label id="출하예약_관리번호">출하 예약 관리번호:</label>
-          </div>
-          <div>
-            <button onClick="출하예약();">출하 예약</button>
-            <button onClick="출하예약취소();">예약 취소</button>
-            <button onClick="export_출하대기();">Export to Excel</button>
+            <div class="process__btn pb">
+              <label id="출하예약_관리번호">출하 예약 관리번호:</label>
+              <div class="process__btns">
+                <button onClick="출하예약();">출하 예약</button>
+                <button onClick="출하예약취소();" class="delete__bsa">
+                  예약 취소
+                </button>
+                <button onClick="export_출하대기();" class="down__excel">
+                  Export to Excel
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
