@@ -268,7 +268,7 @@ async function 출하정보_save() {
 	} else {
 		var _doc = {
 			관리번호 : _management_id.value,
-			출하검사 : _검사일.value.substr(0, 16)
+			출하검사 : _검사일.value.substr(0, 16),
 		}
 		update(BSA재제조, _doc);
 		await delay();
