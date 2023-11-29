@@ -38,7 +38,7 @@
 									style="text-transform: uppercase"
 									required
 									/>
-							<button onClick="분해조립_시작();">조 회</button>
+							<button onClick="분해조립_시작(0);">조 회</button>
 						</td>
 					</tr>
 					<tr>
@@ -53,7 +53,22 @@
 									size="100"
 									required
 									/>
-							<button onClick="분해조립_재제조번호_시작();">조 회</button>
+							<button onClick="분해조립_시작(1);">조 회</button>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="_">RO No.</label>
+						</td>
+						<td>
+							<input
+									type="text"
+									id="_RO_no"
+									value=""
+									size="100"
+									required
+									/>
+							<button onClick="분해조립_시작(2);">조 회</button>
 						</td>
 					</tr>
 					<tr>
@@ -629,6 +644,8 @@
 		<script>
 			const _tb = document.getElementById("_tb");
 			const _management_id = document.getElementById("_management_id");
+			const _재제조번호 = document.getElementById("_재제조번호");
+			const _RO_no_id = document.getElementById("_RO_no");
 			const _공정입고일 = document.getElementById("_공정입고일");
 			const _BMU1 = document.getElementById("_BMU1");
 			const _BMU1_2 = document.getElementById("_BMU1_2");

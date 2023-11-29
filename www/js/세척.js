@@ -1,53 +1,70 @@
-async function 세척_시작(is재제조 = false) {
+async function 세척_시작(is재제조 = 0) {
 	while(_management_id == undefined) {
 		await sleep(DELAY);
 	}
 	if(flag_세척 == true) await 세척_list();
 	flag_세척 = false;
 
-	//if(_management_id.value == '조회 버튼을 누르세요') _management_id.value =  관리번호;
-
-	if(is재제조 == false) {
+	if(is재제조 == 0) {
 		if(_management_id.value.length == 0) return;
-		console.log('load: ', _management_id.value);
-	} else {
-		if(_재제조번호.value.length == 0) return;
-	}
 
-	if(is재제조 == false) {
 		find(BSA재제조, _management_id.value);
 		await delay();
 
 		if(BSA재제조_v != null) {
 			_재제조번호.value = BSA재제조_v.재제조번호;
+			_구분.value = BSA재제조_v.구분;
+			_차종.value = BSA재제조_v.차종;
+			_품번.value = BSA재제조_v.품번;
+			_RO_no.value = BSA재제조_v.RO_no;
 		} else {
 			_재제조번호.value = '';
+			_구분.value = '';
+			_차종.value = '';
+			_품번.value = '';
+			_RO_no.value = '';
 		}
-	} else {
+	} else if(is재제조 == 1) {
+		if(_재제조번호.value.length == 0) return;
+
 		findOne_BSA재제조(BSA재제조, { 재제조번호 : _재제조번호.value });
 		await delay();
-		console.log(BSA재제조_v);
+
 		if(BSA재제조_v != null) {
 			_management_id.value = BSA재제조_v.관리번호;
+			_구분.value = BSA재제조_v.구분;
+			_차종.value = BSA재제조_v.차종;
+			_품번.value = BSA재제조_v.품번;
+			_RO_no.value = BSA재제조_v.RO_no;
 		} else {
-			_management_id.value = '찾지 못하였습니다';
+			_management_id.value = '';
+			_구분.value = '';
+			_차종.value = '';
+			_품번.value = '';
+			_RO_no.value = '';
+		}
+	} else if(is재제조 == 2) {
+		if(_RO_no.value.length == 0) return;
+
+		findOne_BSA재제조(BSA재제조, { RO_no : _RO_no.value });
+		await delay();
+
+		if(BSA재제조_v != null) {
+			_management_id.value = BSA재제조_v.관리번호;
+			_재제조번호.value = BSA재제조_v.재제조번호;
+			_구분.value = BSA재제조_v.구분;
+			_차종.value = BSA재제조_v.차종;
+			_품번.value = BSA재제조_v.품번;
+		} else {
+			_management_id.value = '';
+			_재제조번호.value = '';
+			_구분.value = '';
+			_차종.value = '';
+			_품번.value = '';
 		}
 	}
 
-	find(BSA재제조, _management_id.value);
-	await delay();
-
-	if(BSA재제조_v != null) {
-		_구분.value = BSA재제조_v.구분;
-		_차종.value = BSA재제조_v.차종;
-		_품번.value = BSA재제조_v.품번;
-		_RO_no.value = BSA재제조_v.RO_no;
-	} else {
-		_구분.value = '';
-		_차종.value = '';
-		_품번.value = '';
-		_RO_no.value = '';
-	}
+	console.log('load: ', _management_id.value);
 
 	find(세척, _management_id.value);
 	await delay();

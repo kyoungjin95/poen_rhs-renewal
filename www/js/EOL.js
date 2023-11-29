@@ -4,7 +4,7 @@ function EOL_재제조번호_시작() {
 
 var EOL_DTC_count = 0;
 
-async function EOL_시작(EOL_is재제조번호 = false) {
+async function EOL_시작(is재제조 = 0) {
 	if(worker == '') return;
 	while(_management_id == undefined) {
 		await sleep(DELAY);
@@ -15,22 +15,47 @@ async function EOL_시작(EOL_is재제조번호 = false) {
 
 	_eol_delete_all();
 
-	if(_management_id.value == '조회를 누르세요') _management_id.value =  관리번호;
+	if(is재제조 == 0) {
+		if(_management_id.value.length == 0) return;
 
-	if(EOL_is재제조번호 == true) {
+		find(BSA재제조, _management_id.value);
+		await delay();
+		if(BSA재제조_v != null) {
+			_재제조번호.value = BSA재제조_v.재제조번호;
+			_RO_no.value = BSA재제조_v.RO_no;
+		} else {
+			_재제조번호.value = '';
+			_RO_no.value = '';
+		}
+	} else if(is재제조 == 1) {
 		if(_재제조번호.value.length == 0) return;
-		console.log('load: ', _재제조번호.value);
-		
-		findOne_BSA재제조(BSA재제조, { 재제조번호 : _재제조번호.value });
+
+		findOne_BSA재제조(BSA재제조, { 재제조번호 : _재제조번호.value});
 		await delay();
 
 		if(BSA재제조_v != null) {
 			_management_id.value = BSA재제조_v.관리번호;
+			_RO_no.value = BSA재제조_v.RO_no;
 		} else {
-			_management_id.value = '찾지 못하였습니다';;
+			_management_id.value = '';
+			_RO_no.value = '';
+		}
+	} else if(is재제조 == 2) {
+		if(_RO_no.value.length == 0) return;
+
+		findOne_BSA재제조(BSA재제조, { RO_no : _RO_no.value});
+		await delay();
+
+		if(BSA재제조_v != null) {
+			_management_id.value = BSA재제조_v.관리번호;
+			_재제조번호.value = BSA재제조_v.재제조번호;
+		} else {
+			_management_id.value = '';
+			_재제조번호.value = '';
 		}
 	}
 
+	console.log('load: ', _management_id.value);
 	find(EOL, _management_id.value);
 	await delay();
 
