@@ -281,7 +281,7 @@ async function 출하정보_save() {
 
 	var doc = JSON.parse(JSON.stringify(출하정보_doc));
 	
-	doc.관리번호 = _management_id.value.trim();
+	doc.관리번호 = _management_id.value.trim().toUpperCase();
 	//doc.출하일 = _출하일.value;
 	doc.출하코드 = _출하코드.value;
 	//doc.납품처 = _납품처.value;

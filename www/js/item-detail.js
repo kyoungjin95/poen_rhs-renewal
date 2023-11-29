@@ -783,10 +783,10 @@ async function item_detail_save(flag_result = false) {
 	if (_management_id.value.slice(0, 2) == "조회") return;
 	console.log("save: ", _management_id.value);
 
-	관리번호 = _management_id.value.trim();
+	관리번호 = _management_id.value.trim().toUpperCase();
 
 	var doc = JSON.parse(JSON.stringify(BSA재제조_doc));
-	doc.관리번호 = _management_id.value.trim();
+	doc.관리번호 = _management_id.value.trim().toUpperCase();
 	doc.재제조번호 = _재제조번호.value.trim();
 	doc.구분 = _구분.value;
 	doc.차종 = _차종.value;

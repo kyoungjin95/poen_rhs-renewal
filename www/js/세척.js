@@ -74,7 +74,7 @@ async function 세척_save() {
 	console.log('save: ', _management_id.value);
 
 	var doc = 세척_doc;
-	doc.관리번호 = _management_id.value.trim();
+	doc.관리번호 = _management_id.value.trim().toUpperCase();
 	doc.공정입고일 = _공정입고일.value;
 	doc.공정완료일 = _공정완료일.value;
 	doc.어퍼케이스재사용가능 = _어퍼케이스재사용가능.value;

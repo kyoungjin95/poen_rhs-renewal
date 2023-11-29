@@ -211,7 +211,7 @@ async function 기초검사_SAVE() {
 	}
 
 	var doc = JSON.parse(JSON.stringify(기초검사_doc));
-        doc.관리번호 = _management_id.value.trim();
+        doc.관리번호 = _management_id.value.trim().toUpperCase();
 	doc.공정입고일 = _공정입고일.value;
 	doc.RO_no = _RO_no.value;
 	doc.VIN = _VIN.value;

@@ -81,7 +81,7 @@ async function 성능검사_save() {
 	console.log('save: ', _management_id.value);
 
 	var doc = JSON.parse(JSON.stringify(성능검사_doc));
-	doc.관리번호 = _management_id.value.trim();
+	doc.관리번호 = _management_id.value.trim().toUpperCase();
 	doc.공정입고일 = _공정입고일.value;
 	doc.용량평가 = _용량평가.value;
 	doc.SOC60Percent = _SOC60Percent.value;

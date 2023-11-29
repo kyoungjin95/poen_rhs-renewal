@@ -546,7 +546,7 @@ async function 분해조립_save() {
 
 	var doc = JSON.parse(JSON.stringify(분해조립_doc));
   	console.log('분해조립 init SAVE:', doc);
-	doc.관리번호 = _management_id.value.trim();
+	doc.관리번호 = _management_id.value.trim().toUpperCase();
 	doc.공정입고일 = _공정입고일.value;
 	for(var i = 1; i <= BMU_count; i++) eval('var item = document.getElementById(\'_BMU' + i + '\'); if(typeof item != \'undefined\') doc.BMU' + i + ' = item.value;');
 	for(var i = 1; i <= BMU_count; i++) eval('var item = document.getElementById(\'_BMU' + i + '_2\'); if(typeof item != \'undefined\') doc.BMU' + i + '_2 = item.value;');
