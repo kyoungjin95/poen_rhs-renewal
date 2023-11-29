@@ -33,6 +33,7 @@
 									id="_management_id"
 									value=""
 									size="40"
+									style="text-transform: uppercase"
 									required
 									/>
 							<button onClick="세척_시작(0);">조 회</button>
@@ -55,7 +56,7 @@
 					</tr>
 					<tr>
 						<td>
-							<label for="_RO">RO No.</label>
+							<label for="_RO_no">RO No.</label>
 						</td>
 						<td>
 							<input
@@ -65,7 +66,7 @@
 									size="40"
 									required
 									/>
-							<button onClick="세척_시작(3);">조 회</button>
+							<button onClick="세척_시작(2);">조 회</button>
 						</td>
 					</tr>
 					<tr>
@@ -196,11 +197,9 @@
 			const _RO_no = document.getElementById("_RO_no");
 			const _공정입고일 = document.getElementById("_공정입고일");
 			const _공정완료일 = document.getElementById("_공정완료일");
-			const _어퍼케이스재사용가능 =
-				document.getElementById("_어퍼케이스재사용가능");
+			const _어퍼케이스재사용가능 = document.getElementById("_어퍼케이스재사용가능");
 			const _기밀검사_케이스 = document.getElementById("_기밀검사_케이스");
-			const _기밀검사_케이스_특이사항 =
-				document.getElementById("_기밀검사_케이스_특이사항");
+			const _기밀검사_케이스_특이사항 = document.getElementById("_기밀검사_케이스_특이사항");
 			const _특이사항 = document.getElementById("_특이사항");
 		</script>
 	</body>

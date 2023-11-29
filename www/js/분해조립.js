@@ -23,14 +23,15 @@ async function 분해조립_재제조번호_시작() {
 	분해조립_시작(true);
 }
 
-async function 분해조립_시작(is재제조번호 = false) {
+async function 분해조립_시작(is재제조 = 0) {
 	//if(flag_loaded == true) return;
 	if(worker == '') return;
 	while(_management_id == undefined) {
 		await sleep(DELAY);
 	}
 	
-	if(flag_분해조립 == true) 분해조립_list();
+	if(flag_분해조립 == true) await 분해조립_list();
+
 	flag_분해조립 = false;
 	flag_loaded = true;
 
@@ -84,46 +85,45 @@ async function 분해조립_시작(is재제조번호 = false) {
 	Busbars_count = 1;
 	BMA_count = 1;
 
-	if(_management_id.value == '조회 버튼을 누르세요') _management_id.value =  관리번호;
-	console.log(_management_id.vaue);
+	if(is재제조 == 0) {
+		if(_management_id.value.length == 0) return;
 
-	find(BSA재제조, _management_id.value);
-	await delay();
-	if(BSA재제조_v != null) {
-		_구분.value = BSA재제조_v.구분;
-		_차종.value = BSA재제조_v.차종;
-		_품번.value = BSA재제조_v.품번;
-	} else {
-		_구분.value = '';
-		_차종.value = '';
-		_품번.value = '';
-	}
-
-	if(is재제조번호 == true) {
-		if(_재제조번호.value.length == 0) return;
-		console.log('load: ', _재제조번호.value);
-		if(_재제조번호.value == '' | _재제조번호.value == 'none') return;
-		
-		findOne_BSA재제조(BSA재제조, { 재제조번호: _재제조번호.value.trim() });
+		find(BSA재제조, _management_id.value);
 		await delay();
+
+		if(BSA재제조_v != null) {
+			_재제조번호.value = BSA재제조_v.재제조번호;
+			_RO_no.value = BSA재제조_v.RO_no;
+		} else {
+			_재제조번호.value = '';
+			_RO_no.value = '';
+		}
+	} else if(is재제조 == 1) {
+		if(_재제조번호.value.length == 0) return;
+
+		findOne_BSA재제조(BSA재제조, { 재제조번호 : _재제조번호.value});
+		await delay();
+
 		if(BSA재제조_v != null) {
 			_management_id.value = BSA재제조_v.관리번호;
+			_RO_no.value = BSA재제조_v.RO_no;
 		} else {
-			_management_id.value = '찾지 못하였습니다';
+			_management_id.value = '';
+			_RO_no.value = '';
 		}
+	} else if(is재제조 == 2) {
+		if(_RO_no.value.length == 0) return;
 
-	}
+		findOne_BSA재제조(BSA재제조, { RO_no : _RO_no.value});
+		await delay();
 
-	if(_management_id.value.length == 0) return;
-	if(_management_id.value == '' | _management_id == 'none') return;
-
-	findOne_BSA재제조(BSA재제조, { 관리번호: _management_id.value.trim() });
-	await delay();
-
-	if(BSA재제조_v != null) {
-		_재제조번호.value = BSA재제조_v.재제조번호;
-	} else {
-		_재제조번호.value = '';
+		if(BSA재제조_v != null) {
+			_management_id.value = BSA재제조_v.관리번호;
+			_재제조번호.value = BSA재제조_v.재제조번호;
+		} else {
+			_management_id.value = '';
+			_재제조번호.value = '';
+		}
 	}
 
 	find(분해조립, _management_id.value);
@@ -546,7 +546,7 @@ async function 분해조립_save() {
 
 	var doc = JSON.parse(JSON.stringify(분해조립_doc));
   	console.log('분해조립 init SAVE:', doc);
-	doc.관리번호 = _management_id.value.trim();
+	doc.관리번호 = _management_id.value.trim().toUpperCase();
 	doc.공정입고일 = _공정입고일.value;
 	for(var i = 1; i <= BMU_count; i++) eval('var item = document.getElementById(\'_BMU' + i + '\'); if(typeof item != \'undefined\') doc.BMU' + i + ' = item.value;');
 	for(var i = 1; i <= BMU_count; i++) eval('var item = document.getElementById(\'_BMU' + i + '_2\'); if(typeof item != \'undefined\') doc.BMU' + i + '_2 = item.value;');
@@ -902,13 +902,15 @@ function _delete_all() {
 }
 
 async function 분해조립_list() {
-	 findOne_BSA재제조(BSA재제조, { 공정단계 : { $ne : '출하' },  기초검사 : { $ne : '' }, 분해조립 : { $eq : '' }, 성능검사 : { $eq : '' }, EOL : { $eq : '' } ,  소재지 : { $nin : ['공정대기', '품질대기'] }, 완전분해 : { $eq : ''}, 폐기 : { $eq : '' }, 출하 : { $eq : '' }, 구분 : { $nin: ['일반기타', '보증기타']} });
+	findOne_BSA재제조(BSA재제조, { 공정단계 : { $ne : '출하' },  기초검사 : { $ne : '' }, 분해조립 : { $eq : '' }, 성능검사 : { $eq : '' }, EOL : { $eq : '' } ,  소재지 : { $nin : ['공정대기', '품질대기'] }, 완전분해 : { $eq : ''}, 폐기 : { $eq : '' }, 출하 : { $eq : '' }, 구분 : { $nin: ['일반기타', '보증기타']} });
 	await delay();
 
 	if(BSA재제조_v != null) {
 	 	find_BSA재제조(BSA재제조, {공정단계 : { $ne : '출하' }, 기초검사 : { $ne : '' }, 분해조립 : { $eq : '' }, 성능검사 : { $eq : '' }, EOL : { $eq : '' } ,  소재지 : { $nin : ['공정대기', '품질대기'] }, 완전분해 : { $eq : ''}, 폐기 : { $eq : '' }, 출하 : { $eq : '' }, 구분 : { $nin: ['일반기타', '보증기타']} });
 		await delay();
 	}
+
+	console.log(BSA재제조_v);
 
 	var table = new Tabulator("#grid_list", {
 		layout: "resizableColumnFit",
@@ -1048,6 +1050,6 @@ async function 분해조립_list() {
 
 		await sleep(1);
 
-		분해조립_시작();
+		분해조립_시작(0);
 	});
 }

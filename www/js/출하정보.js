@@ -2,56 +2,56 @@ let 브라켓 = '';
 let S_PLUG = '';
 let 접지 = '';
 
-async function 출하정보_시작(is재제조 = false) {
+async function 출하정보_시작(is재제조 = 0) {
 	if(worker == '') return;
 	while(_management_id == undefined) {
 		await sleep(DELAY);
 	}
 
-	if(flag_출하 == true) 출하정보_list();
+	if(flag_출하 == true) await 출하정보_list();
 	flag_출하 =  false;
 
-	if(_management_id.value == '조회 버튼을 누르세요') _management_id.value =  관리번호;
+	if(is재제조 == 0) {
+		if(_management_id.value.length == 0) return;
 
-	if(_management_id.value.length == 0 && _재제조번호.value.length == 0) return;
-
-	_검사자.value = worker;
-
-	if(is재제조 == false) {
-		find(BSA재제조, _management_id.value );
+		find(BSA재제조, _management_id.value);
 		await delay();
-
 		if(BSA재제조_v != null) {
 			_재제조번호.value = BSA재제조_v.재제조번호;
+			_RO_no.value = BSA재제조_v.RO_no;
+		} else {
+			_재제조번호.value = '';
+			_RO_no.value = '';
 		}
-	} else {
-		findOne_BSA재제조(BSA재제조, { 재제조번호: _재제조번호.value });
+	} else if(is재제조 == 1) {
+		if(_재제조번호.value.length == 0) return;
+
+		findOne_BSA재제조(BSA재제조, { 재제조번호 : _재제조번호.value});
 		await delay();
 
 		if(BSA재제조_v != null) {
 			_management_id.value = BSA재제조_v.관리번호;
+			_RO_no.value = BSA재제조_v.RO_no;
 		} else {
-			_management_id.value = '찾지 못하였습니다';
+			_management_id.value = '';
+			_RO_no.value = '';
+		}
+	} else if(is재제조 == 2) {
+		if(_RO_no.value.length == 0) return;
+
+		findOne_BSA재제조(BSA재제조, { RO_no : _RO_no.value});
+		await delay();
+
+		if(BSA재제조_v != null) {
+			_management_id.value = BSA재제조_v.관리번호;
+			_재제조번호.value = BSA재제조_v.재제조번호;
+		} else {
+			_management_id.value = '';
+			_재제조번호.value = '';
 		}
 	}
 
-	find(BSA재제조, _management_id.value);
-	await delay();
-
-	if(BSA재제조_v != null) {
-		_차종.value = BSA재제조_v.차종;
-		_품번.value = BSA재제조_v.품번;
-		_RO_no.value = BSA재제조_v.RO_no;
-	} else {
-		_차종.value = '';
-		_품번.value = '';
-		_RO_no.value = '';
-	}
-
-	if(_차종.value == '') {
-		_차종.value = prompt('차종을 입력하세요.(예: LK_EV)');
-	}
-
+	console.log('load: ', _management_id.value);
 	let 브라켓_text = document.getElementById('_브라켓');
 	let s_plug_show = document.getElementById('_S_PLUG');
 	let s_plug_show_비고 = document.getElementById('_S_PLUG_비고');
@@ -268,7 +268,7 @@ async function 출하정보_save() {
 	} else {
 		var _doc = {
 			관리번호 : _management_id.value,
-			출하검사 : _검사일.value.substr(0, 16)
+			출하검사 : _검사일.value.substr(0, 16),
 		}
 		update(BSA재제조, _doc);
 		await delay();
@@ -281,7 +281,7 @@ async function 출하정보_save() {
 
 	var doc = JSON.parse(JSON.stringify(출하정보_doc));
 	
-	doc.관리번호 = _management_id.value.trim();
+	doc.관리번호 = _management_id.value.trim().toUpperCase();
 	//doc.출하일 = _출하일.value;
 	doc.출하코드 = _출하코드.value;
 	//doc.납품처 = _납품처.value;

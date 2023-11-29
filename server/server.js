@@ -124,7 +124,8 @@ io.on('connection', async function(socket) {
 				_end_time = new Date().getTime();
 				if((_end_time - _start_time) < 1000) {
 					console.log('reject:', client_ip);
-					socket.close();
+					logger.info('reject:', client_ip);
+					socket.disconnect(0);
 					_black_ip_list.push(client_ip);
 				}
 			}
@@ -156,11 +157,12 @@ io.on('connection', async function(socket) {
 			_same_ip_cnt++;
 			if(_same_ip_cnt > 100) _same_ip_cnt = 100;
 
-			if(_same_ip_cnt > 30) {
+			if(_same_ip_cnt > 50) {
 				_end_time = new Date().getTime();
 				if((_end_time - _start_time) < 1000) {
 					console.log('reject:', client_ip);
-					socket.close();
+					logger.info('reject:', client_ip);
+					socket.disconnect(0);
 					_black_ip_list.push(client_ip);
 				}
 			}

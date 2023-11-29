@@ -1,75 +1,68 @@
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" href="base/style/style.css">
-		<link rel="stylesheet" href="base/style/공정.css">
-		<title>Poen Admin System</title>
-	</head>
-	<body>
-		<div> 
-			<center>
-				<div>
-					<label>계정 관리</label>
-				</div>
-				<div>
-					<table border="2">
-						<tr>
-							<td>
-								<label for='_id'><b>ID</b></label>
-							</td>
-							<td>
-								<input type=text value='' id='_id' require></input>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<label for='_pawsswd'><b>Password</b></label>
-							</td>
-							<td>
-								<input type=password value='' id='_passwd' require></input>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<label for='_pawsswd2'><b>Password</b></label>
-							</td>
-							<td>
-								<input type=password value='' id='_passwd2' require></input>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<label for='_level'><b>Level</b></label>
-							</td>
-							<td>
-								<input type=text value='' id='_level' require></input>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<button onClick='add_user();'>Add user</button>
-							</td>
-							<td>
-								<button onClick='delete_user();'>Delete user</button>
-							</td>
-						</tr>
-					</table>
-				</div>
-				<div id='grid_user_info'>
-				</div>
-				</br>
-				</br>
-				<div>
-					<label>구엑셀문서 data 입력</label></br>
-					<input type='file' id='_csv' accept='.csv'/>
-				</div>
-				<div>
-					<button onClick='doo();'>Doo</button>
-				</div>
-				<div id='grid_bsa'>
-				</div>
-			</center>
-		</div>
-	</body>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Poen Admin System</title>
+    <link rel="stylesheet" href="base/style/style.css" />
+    <link rel="stylesheet" href="base/style/공정.css" />
+  </head>
+  <body>
+    <section class="adminSystem">
+      <div class="process__tit change-tit">
+        <h2>계정 관리</h2>
+      </div>
+      <div class="input-group">
+        <table>
+          <tr>
+            <td>
+              <label for="_id">ID</label>
+            </td>
+            <td class="answer">
+              <input type="text" id="_id" require />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_pawsswd">Password</label>
+            </td>
+            <td class="answer">
+              <input type="password" id="_passwd" require />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_pawsswd2">Password</label>
+            </td>
+            <td class="answer">
+              <input type="password" id="_passwd2" require />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_level">Level</label>
+            </td>
+            <td class="answer">
+              <input type="text" id="_level" require />
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" class="btn-group">
+              <button onClick="add_user();">Add user</button>
+              <button onClick="delete_user();">Delete user</button>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div id="grid_user_info"></div>
+      <div class="excel-data">
+        <label>구엑셀문서 data 입력</label>
+        <input type="file" id="_csv" accept=".csv" />
+      </div>
+      <div>
+        <button onClick="doo();">Doo</button>
+      </div>
+      <div id="grid_bsa"></div>
+    </section>
+  </body>
 </html>

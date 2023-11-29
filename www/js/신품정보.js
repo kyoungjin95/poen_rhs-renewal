@@ -25,6 +25,7 @@ async function 신품정보등록_조회() {
 		_차종.value = 자재입출고_v.차종;
 		_품명.value = 자재입출고_v.품명;
 		_품번.value = 자재입출고_v.품번;
+		_단가.value = 자재입출고_v.단가;
 		_수량.value = 자재입출고_v.수량;
                 _LotNo.value = 자재입출고_v.LotNo;
                 _비고.value = 자재입출고_v.비고;
@@ -35,6 +36,7 @@ async function 신품정보등록_조회() {
 		_차종.value = '';
 		_품명.value = '';
 		_품번.value = '';
+		_단가.value = '';
 		_수량.value = '';
                 _LotNo.value = '';
                 _비고.value = '';
@@ -53,6 +55,7 @@ async function 신품정보_save() {
 	doc.차종 = _차종.value;
 	doc.품명 = _품명.value;
 	doc.품번 = _품번.value;
+	doc.단가 = _단가.value;
 	doc.수량 = _수량.value;
 	doc.LotNo = _LotNo.value;
 	doc.비고 = _비고.value;
@@ -106,6 +109,7 @@ function read_신품정보_func_csv() {
 			var docs = [];
 			console.log(res.length);
 			for(var i = 0; i < res.length; i++) {
+				if(res[i].QR == '') continue;
 				docs.push(res[i]);
 				console.log('docs count: ', docs.length);
 				if((i > 0 && (i % 2000) == 0) || i == (res.length - 1)) {

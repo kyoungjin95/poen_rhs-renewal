@@ -128,12 +128,27 @@ function func_csv() {
 }
 
 async function doo() {
-	find_BSA재제조(BSA재제조, { 관리번호 : { $exists : true }});
+	find_BSA재제조(BSA재제조, { 관리번호 : { $exists : true },  공정단계 : { $ne : '출하' } });
 	await delay();
 
 	BSA재제조_v.forEach(async function(item) {
-		await 공정단계자동입력(item.관리번호);
-		await sleep(1000);
+		var _공정단계 = '입고';
+		if(item.입고 != '') _공정단계 = '세척';
+		if(item.세척 != '') _공정단계 = '기초검사';
+		if(item.기초검사 != '') _공정단계 = '분해조립';
+		if(item.분해조립 != '') _공정단계 = '성능검사';
+		if(item.성능검사 != '') _공정단계 = 'EOL';
+		if(item.EOL != '') _공정단계 = '제조완료';
+		if(item.출하검사 != '') _공정단계 = '제조완료';
+		if(item.출하 != '') _공정단계 = '출하';
+
+		var doc = {
+			관리번호 : item.관리번호,
+			공정단계 : _공정단계
+		}
+
+		update(BSA재제조, doc);
+		await delay();
 	});
 
 	console.log('complete');

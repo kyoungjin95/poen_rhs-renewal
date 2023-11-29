@@ -1,11 +1,11 @@
 var 기초검사_DTC_count = 0;
 
-async function 기초검사_시작(is재제조 = false) {
+async function 기초검사_시작(is재제조 = 0) {
 	while(_management_id == undefined) {
 		await sleep(DELAY);
 	}
 	
-	if(flag_기초검사 == true) 기초검사_list();
+	if(flag_기초검사 == true) await 기초검사_list();
 	flag_기초검사 = false;
 
 
@@ -14,57 +14,65 @@ async function 기초검사_시작(is재제조 = false) {
 	_기초검사_delete_all();
 	기초검사_DTC_count = 0;
 
-	//if(_management_id.value == '조회 버튼을 누르세요') _management_id.value =  관리번호;
-
-	if(is재제조 == false) {
+	if(is재제조 == 0) {
 		if(_management_id.value.length == 0) return;
-		console.log('load: ', _management_id.value);
-		if(_management_id.value == '' | _management_id.value == 'none') return;
-	} else {
-		if(_재제조번호.value.length == 0) return;
-	}
-	
-	
-	if(is재제조 == false) {
+
 		find(BSA재제조, _management_id.value);
 		await delay();
 		if(BSA재제조_v != null) {
-			if(BSA재제조_v.재제조번호 != undefined) {
-				_재제조번호.value = BSA재제조_v.재제조번호;
-			}
+			_재제조번호.value = BSA재제조_v.재제조번호;
+			_구분.value = BSA재제조_v.구분;
+			_차종.value = BSA재제조_v.차종;
+			_품번.value = BSA재제조_v.품번;;
+			_RO_no.value = BSA재제조_v.RO_no;
 		} else {
 			_재제조번호.value = '';
-		}
-	} else {
-		findOne_BSA재제조(BSA재제조, { 재제조번호 : _재제조번호.value});
-		await delay();
-		if(BSA재제조_cnt != null) {
-			_management_id.value = BSA재제조_v.관리번호;
-		} else {
-			_management_id.value = '찾지 못하였습니다';
 			_구분.value = '';
 			_차종.value = '';
 			_품번.value = '';
 			_RO_no.value = '';
 		}
+	} else if(is재제조 == 1) {
+		if(_재제조번호.value.length == 0) return;
+
+		findOne_BSA재제조(BSA재제조, { 재제조번호 : _재제조번호.value});
+		await delay();
+
+		if(BSA재제조_v != null) {
+			_management_id.value = BSA재제조_v.관리번호;
+			_구분.value = BSA재제조_v.구분;
+			_차종.value = BSA재제조_v.차종;
+			_품번.value = BSA재제조_v.품번;;
+			_RO_no.value = BSA재제조_v.RO_no;
+		} else {
+			_management_id.value = '';
+			_구분.value = '';
+			_차종.value = '';
+			_품번.value = '';
+			_RO_no.value = '';
+		}
+	} else if(is재제조 == 2) {
+		if(_RO_no.value.length == 0) return;
+
+		findOne_BSA재제조(BSA재제조, { RO_no : _RO_no.value});
+		await delay();
+
+		if(BSA재제조_v != null) {
+			_management_id.value = BSA재제조_v.관리번호;
+			_재제조번호.value = BSA재제조_v.재제조번호;
+			_구분.value = BSA재제조_v.구분;
+			_차종.value = BSA재제조_v.차종;
+			_품번.value = BSA재제조_v.품번;;
+		} else {
+			_management_id.value = '';
+			_재제조번호.value = '';
+			_구분.value = '';
+			_차종.value = '';
+			_품번.value = '';
+		}
 	}
 
-	if(_management_id.value == '' | _management_id.value == 'none') return
-
-	find(BSA재제조, _management_id.value);
-	await delay();
-
-	if(BSA재제조_v != null) {
-		_구분.value = BSA재제조_v.구분;
-		_차종.value = BSA재제조_v.차종;
-		_품번.value = BSA재제조_v.품번;
-		_RO_no.value = BSA재제조_v.RO_no;
-	} else {
-		_구분.value = '';
-		_차종.value = '';
-		_품번.value = '';
-		_RO_no.value = '';
-	}
+	console.log('load: ', _management_id.value);
 
 	find(기초검사, _management_id.value);
 	await delay();
@@ -172,10 +180,6 @@ async function 기초검사_시작(is재제조 = false) {
 	}
 }
 
-async function 기초검사_재제조번호_시작() {
-	기초검사_시작(true);
-}
-
 function 기초검사_save() {
 	기초검사_SAVE();
 
@@ -211,7 +215,7 @@ async function 기초검사_SAVE() {
 	}
 
 	var doc = JSON.parse(JSON.stringify(기초검사_doc));
-        doc.관리번호 = _management_id.value.trim();
+        doc.관리번호 = _management_id.value.trim().toUpperCase();
 	doc.공정입고일 = _공정입고일.value;
 	doc.RO_no = _RO_no.value;
 	doc.VIN = _VIN.value;

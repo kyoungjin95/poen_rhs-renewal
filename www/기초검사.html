@@ -31,9 +31,10 @@
 									id="_management_id"
 									value=""
 									size="40"
+									style="text-transform: uppercase"
 									required
 									/>
-							<button onClick="기초검사_시작();">조 회</button>
+							<button onClick="기초검사_시작(0);">조 회</button>
 						</td>
 					</tr>
 					<tr>
@@ -48,7 +49,7 @@
 									size="40"
 									required
 									/>
-							<button onClick="기초검사_재제조번호_시작();">조 회</button>
+							<button onClick="기초검사_시작(1);">조 회</button>
 						</td>
 					</tr>
 					<tr>
@@ -63,7 +64,7 @@
 									size="40"
 									required
 									/>
-							<button onClick="기초검사_RO번호_시작();">조 회</button>
+							<button onClick="기초검사_시작(2);">조 회</button>
 						</td>
 					</tr>
 					<tr>
@@ -428,11 +429,9 @@
 			const _육안검사_내부 = document.getElementById("_육안검사_내부");
 			const _육안검사_내부_특이사항 = document.getElementById("_육안검사_내부");
 			const _기밀검사_케이스 = document.getElementById("_기밀검사_케이스");
-			const _기밀검사_케이스_특이사항 =
-				document.getElementById("_기밀검사_케이스");
+			const _기밀검사_케이스_특이사항 = document.getElementById("_기밀검사_케이스");
 			const _기밀검사_냉각유로 = document.getElementById("_기밀검사_냉각유로");
-			const _기밀검사_냉각유로_특이사항 =
-				document.getElementById("_기밀검사_냉각유로");
+			const _기밀검사_냉각유로_특이사항 = document.getElementById("_기밀검사_냉각유로");
 			const _절연검사P = document.getElementById("_절연검사P");
 			const _절연검사N = document.getElementById("_절연검사N");
 			const _토크검사_UPR_C = document.getElementById("_토크검사_UPR_C");
