@@ -8,7 +8,7 @@ async function 출하정보_시작(is재제조 = false) {
 		await sleep(DELAY);
 	}
 
-	if(flag_출하 == true) 출하정보_list();
+	if(flag_출하 == true) await 출하정보_list();
 	flag_출하 =  false;
 
 	if(_management_id.value == '조회 버튼을 누르세요') _management_id.value =  관리번호;

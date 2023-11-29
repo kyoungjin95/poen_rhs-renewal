@@ -10,7 +10,7 @@ async function EOL_시작(EOL_is재제조번호 = false) {
 		await sleep(DELAY);
 	}
 
-	if(flag_EOL == true) EOL_list();
+	if(flag_EOL == true) await EOL_list();
 	flag_EOL = false;
 
 	_eol_delete_all();

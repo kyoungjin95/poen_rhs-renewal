@@ -4,7 +4,7 @@ async function 성능검사_시작(is재제조 = false) {
 		await sleep(DELAY);
 	}
 	
-	if(flag_성능검사 == true) 성능검사_list();
+	if(flag_성능검사 == true) await 성능검사_list();
 	flag_성능검사 = false;
 
 	if(_management_id.value == '조회 버튼을 누르세요') _management_id.value =  관리번호;

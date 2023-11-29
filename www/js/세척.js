@@ -2,7 +2,7 @@ async function 세척_시작(is재제조 = false) {
 	while(_management_id == undefined) {
 		await sleep(DELAY);
 	}
-	if(flag_세척 == true) 세척_list();
+	if(flag_세척 == true) await 세척_list();
 	flag_세척 = false;
 
 	//if(_management_id.value == '조회 버튼을 누르세요') _management_id.value =  관리번호;

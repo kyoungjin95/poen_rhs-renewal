@@ -5,7 +5,7 @@ async function 기초검사_시작(is재제조 = false) {
 		await sleep(DELAY);
 	}
 	
-	if(flag_기초검사 == true) 기초검사_list();
+	if(flag_기초검사 == true) await 기초검사_list();
 	flag_기초검사 = false;
 
 

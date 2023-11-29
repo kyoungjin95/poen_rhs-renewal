@@ -30,7 +30,8 @@ async function 분해조립_시작(is재제조번호 = false) {
 		await sleep(DELAY);
 	}
 	
-	if(flag_분해조립 == true) 분해조립_list();
+	if(flag_분해조립 == true) await 분해조립_list();
+	
 	flag_분해조립 = false;
 	flag_loaded = true;
 
@@ -902,13 +903,15 @@ function _delete_all() {
 }
 
 async function 분해조립_list() {
-	 findOne_BSA재제조(BSA재제조, { 공정단계 : { $ne : '출하' },  기초검사 : { $ne : '' }, 분해조립 : { $eq : '' }, 성능검사 : { $eq : '' }, EOL : { $eq : '' } ,  소재지 : { $nin : ['공정대기', '품질대기'] }, 완전분해 : { $eq : ''}, 폐기 : { $eq : '' }, 출하 : { $eq : '' }, 구분 : { $nin: ['일반기타', '보증기타']} });
+	findOne_BSA재제조(BSA재제조, { 공정단계 : { $ne : '출하' },  기초검사 : { $ne : '' }, 분해조립 : { $eq : '' }, 성능검사 : { $eq : '' }, EOL : { $eq : '' } ,  소재지 : { $nin : ['공정대기', '품질대기'] }, 완전분해 : { $eq : ''}, 폐기 : { $eq : '' }, 출하 : { $eq : '' }, 구분 : { $nin: ['일반기타', '보증기타']} });
 	await delay();
 
 	if(BSA재제조_v != null) {
 	 	find_BSA재제조(BSA재제조, {공정단계 : { $ne : '출하' }, 기초검사 : { $ne : '' }, 분해조립 : { $eq : '' }, 성능검사 : { $eq : '' }, EOL : { $eq : '' } ,  소재지 : { $nin : ['공정대기', '품질대기'] }, 완전분해 : { $eq : ''}, 폐기 : { $eq : '' }, 출하 : { $eq : '' }, 구분 : { $nin: ['일반기타', '보증기타']} });
 		await delay();
 	}
+
+	console.log(BSA재제조_v);
 
 	var table = new Tabulator("#grid_list", {
 		layout: "resizableColumnFit",
