@@ -3149,4 +3149,3 @@ function back() {
 	loadPage("base/item-details.html");
 	flag_상세입력 = true;
 }
-
