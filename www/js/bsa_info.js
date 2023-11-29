@@ -1778,14 +1778,14 @@ async function grid_EOL(m_id = "") {
         width: "180",
       },
       {
-        title: "절연검사 HV+",
-        field: "절연검사_Plus",
+        title: "절연저항 HV+",
+        field: "절연저항_HVP",
         sorter: "string",
         width: "180",
       },
       {
-        title: "절연검사 HV-",
-        field: "절연검사_Minus",
+        title: "절연저항 HV-",
+        field: "절연저항_HVN",
         sorter: "string",
         width: "180",
       },
