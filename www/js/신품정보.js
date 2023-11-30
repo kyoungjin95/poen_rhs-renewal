@@ -107,8 +107,12 @@ function read_신품정보_func_csv() {
 
 			const res = d3.csvParse(reader.result);
 			var docs = [];
+			count(자재입출고, { QR : { $exists : true }});
+			await delay();
+			
+
 			console.log(res.length);
-			for(var i = 0; i < res.length; i++) {
+			for(var i = 자재입출고_cnt; i < res.length; i++) {
 				if(res[i].QR == '') continue;
 				docs.push(res[i]);
 				console.log('docs count: ', docs.length);
