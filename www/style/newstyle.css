@@ -161,6 +161,31 @@
 .quantity-status .con__body {
   margin-top: 2rem;
 }
+/* item-detail */
+.BSA정보입력 .process {
+  padding-bottom: 100px;
+}
+.BSA정보입력 .inner {
+  padding: 1vw;
+}
+.BSA정보입력 .item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  background-color: #e8e8e8;
+  border-radius: 0;
+  padding: 1vw;
+}
+.BSA정보입력 .item .icon {
+  width: 40%;
+}
+.BSA정보입력 .item h3 {
+  font-size: 1.5vw;
+  margin: 0.9375rem 0;
+}
+.BSA정보입력 .item:hover {
+  color: #e8212e;
+}
 /* ========================================
     responsive 반응형 */
 @media (min-width: 2200px) {
@@ -259,6 +284,13 @@
   .item h3,
   .item span {
     font-size: 1rem;
+  }
+
+  .BSA정보입력 .item .icon {
+    width: 30%;
+  }
+  .BSA정보입력 .item h3 {
+    font-size: 2.5vw;
   }
   .bsa-process label {
     font-size: 1.475rem;

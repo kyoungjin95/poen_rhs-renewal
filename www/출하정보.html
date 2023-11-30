@@ -8,8 +8,8 @@
   </head>
   <body>
     <section>
-	    <div id='grid_list'></div>
-	    <button onClick='출하정보_list();'>LIST</button>
+      <div id="grid_list"></div>
+      <button onClick="출하정보_list();">LIST</button>
     </section>
     <br />
     <br />
@@ -35,7 +35,7 @@
                 id="_management_id"
                 value=""
                 size="20"
-		style="text-transform: uppercase"
+                style="text-transform: uppercase"
                 required
               />
               <button onClick="출하정보_시작(0);">조 회</button>
@@ -51,7 +51,7 @@
                 id="_재제조번호"
                 value=""
                 size="20"
-		style="text-transform: uppercase"
+                style="text-transform: uppercase"
                 required
               />
               <button onClick="출하정보_시작(1);">조 회</button>
@@ -62,12 +62,7 @@
               <label for="_RO_no">RO no.</label>
             </td>
             <td>
-              <input
-                type="text"
-                id="_RO_no"
-                size="20"
-                required
-              />
+              <input type="text" id="_RO_no" size="20" required />
               <button onClick="출하정보_시작(2);">조 회</button>
             </td>
           </tr>
@@ -619,8 +614,8 @@
       </div>
       <div class="input-group">
         <div class="input-btn-group">
-          <button onClick="출하정보_save();">SAVE</button>
-          <button onClick="이전페이지();">이전 Page</button>
+          <button onClick="출하정보_save();">저장</button>
+          <button onClick="이전페이지();">이전페이지</button>
         </div>
       </div>
     </section>
