@@ -25,6 +25,7 @@ async function 기초검사_시작(is재제조 = 0) {
 			_차종.value = BSA재제조_v.차종;
 			_품번.value = BSA재제조_v.품번;;
 			_RO_no.value = BSA재제조_v.RO_no;
+			관리번호 = _management_id.value;
 		} else {
 			_재제조번호.value = '';
 			_구분.value = '';
@@ -44,6 +45,7 @@ async function 기초검사_시작(is재제조 = 0) {
 			_차종.value = BSA재제조_v.차종;
 			_품번.value = BSA재제조_v.품번;;
 			_RO_no.value = BSA재제조_v.RO_no;
+			관리번호 = _management_id.value;
 		} else {
 			_management_id.value = '';
 			_구분.value = '';
@@ -63,6 +65,7 @@ async function 기초검사_시작(is재제조 = 0) {
 			_구분.value = BSA재제조_v.구분;
 			_차종.value = BSA재제조_v.차종;
 			_품번.value = BSA재제조_v.품번;;
+			관리번호 = _management_id.value;
 		} else {
 			_management_id.value = '';
 			_재제조번호.value = '';
@@ -189,6 +192,8 @@ function 기초검사_save() {
 async function 기초검사_SAVE() {
 	if(_management_id.value.length == 0) return;
 	console.log('save: ', _management_id.value);
+
+	관리번호 = _management_id.value;
 
 	if(_RO_no.value.length != 17 && _RO_no.value.length != 0) {
 		var cnt = (_RO_no.value.match(/-/g) || []).length;
