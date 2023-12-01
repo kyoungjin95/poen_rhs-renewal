@@ -83,10 +83,10 @@ async function 입고_save() {
 		alert("저장 되었습니다");
 	}
 
-	count(BSA재제조, { 관리번호: _management_id.value });
+	find(BSA재제조, _management_id.value );
 	await delay();
 
-	if (BSA재제조_cnt == 0) {
+	if (BSA재제조_v == null) {
 		var _doc = JSON.parse(JSON.stringify(BSA재제조_doc));
 		_doc.관리번호 = _management_id.value.trim().toUpperCase();
 		_doc.입고 = _입고일.value;

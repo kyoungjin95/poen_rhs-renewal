@@ -107,14 +107,13 @@ function read_신품정보_func_csv() {
 
 			const res = d3.csvParse(reader.result);
 			var docs = [];
+
 			count(자재입출고, { QR : { $exists : true }});
 			await delay();
 			
-
-			console.log(res.length);
+			console.log(자재입출고_cnt, res.length);
 			for(var i = 자재입출고_cnt; i < res.length; i++) {
-				if(res[i].QR == '') continue;
-				docs.push(res[i]);
+				if(res[i].QR != '') docs.push(res[i]);
 				console.log('docs count: ', docs.length);
 				if((i > 0 && (i % 2000) == 0) || i == (res.length - 1)) {
 					insertMany(자재입출고, docs);
@@ -122,9 +121,6 @@ function read_신품정보_func_csv() {
 
 					console.log('processing:', i, docs.length);
 					
-					count(자재입출고, { QR : { $exists : true} });
-					await delay();
-
 					docs = [];
 
 					await sleep(1);
