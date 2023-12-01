@@ -500,7 +500,7 @@ async function 출하정보_list() {
 	var table = new Tabulator("#grid_list", {
 		layout: "resizableColumnFit",
 		data: BSA재제조_v,
-		height: "700px",
+		height: "400px",
 
 		columns: [
 			{ title: "ID", field: "_id", sorter: "string", width: "180" },

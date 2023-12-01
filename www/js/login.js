@@ -11,7 +11,6 @@ async function login() {
 	findOne_계정(계정, { id: _id.value, passwd: hash.toString() });
 	await delay();
 
-	console.log(계정_v);
 	if(계정_v != null) {
 		if(worker == '') {
 			worker = _id.value;

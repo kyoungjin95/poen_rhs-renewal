@@ -38,6 +38,7 @@ const 완전분해_pic = '완전분해_pic';
 const 폐기_pic = '폐기_pic';
 const 기초보고서 = '기초보고서';
 const 완료보고서 = '완료보고서';
+const 부품정보_list = '부품정보_list';
 
 var BSA재제조_v = [];
 var 입고_v = [];
@@ -77,6 +78,7 @@ var 폐기_pic_v = [];
 var 기초보고서_v = [];
 var 완료보고서_v = [];
 var 계정_v = [];
+var 부품정보_list_v = [];
 
 var BSA재제조_cnt = 0;
 var 입고_cnt = 0;
@@ -116,6 +118,7 @@ var 폐기_pic_cnt = 0;
 var 기초보고서_cnt = 0;
 var 완료보고서_cnt = 0;
 var 계정_cnt = 0;
+var 부품정보_list_cnt = 0;
 
 var option_입고_cnt = 0;
 var option_세척_cnt = 0;
@@ -133,6 +136,7 @@ var option_출하정보당일_cnt = 0;
 var option_출하당일_cnt = 0;
 
 var 관리번호 = '';
+var 차종 = '';
 var 교체부품상세No = '교체부품상세1';
 var worker = '';
 var level = '';
@@ -937,6 +941,121 @@ const 완료보고서_doc = {
 	육안검사내부 : '',
 	육안검사내부상세 : '',
 	기밀검사 : ''
+};
+
+const 부품정보_list_doc = {
+	관리번호 : '',
+	A_UPR_CASE : '',
+	A_LWR_CASE : '',
+	A_S_PLUG : '',
+	A_SPA : '',
+	A_HV_CNTR : '',
+	A_Heating_CNTR : '',
+	A_PRA : '',
+	A_LV_W_H : '',
+	A_HV_W_H_1 : '',
+	A_HV_W_H_2 : '',
+	A_HV_W_H_3 : '',
+	A_HV_W_H_4 : '',
+	A_HV_W_H_5 : '',
+	A_BUSBAR : '',
+	A_BMU : '',
+	A_CMU_1 : '',
+	A_CMU_2 : '',
+	A_CMU_3 : '',
+	A_CMU_4 : '',
+	A_CMU_5 : '',
+	A_BMA_1 : '',
+	A_BMA_2 : '',
+	A_BMA_3 : '',
+	A_BMA_4 : '',
+	A_BMA_5 : '',
+	B_UPR_CASE : '',
+	B_LWR_CASE : '',
+	B_HV_CNTR : '',
+	B_Heating_CNTR : '',
+	B_PRA : '',
+	B_FUSE_BOX : '',
+	B_LV_W_H : '',
+	B_HV_W_H_1 : '',
+	B_HV_W_H_2 : '',
+	B_HV_W_H_3 : '',
+	B_HV_W_H_4 : '',        
+	B_HV_W_H_5 : '',         
+	B_HV_W_H_6 : '',         
+	B_HV_W_H_7 : '',         
+	B_HV_W_H_8 : '',         
+	B_HV_W_H_9 : '',         
+	B_HV_W_H_10 : '',  
+	B_BUSBAR : '',
+	B_BMU : '',
+	B_CMU_1 : '',
+	B_CMU_2 : '',             
+	B_CMU_3 : '',        
+	B_CMU_4 : '',             
+	B_CMU_5 : '',             
+	B_BMA_1 : '',             
+	B_BMA_2 : '',             
+	B_BMA_3 : '',             
+	B_BMA_4 : '',             
+	B_BMA_5 : '',             
+	B_BMA_6 : '',             
+	B_BMA_7 : '',             
+	B_BMA_8 : '',             
+	B_BMA_9 : '',             
+	B_BMA_10 : '',  
+	C_UPR_CASE : '',
+	C_LWR_CASE : '',
+	C_HV_CNTR_1 : '',
+	C_HV_CNTR_2 : '',
+	C_Heating_CNTR : '',
+	C_PRA : '',
+	C_FUSE_BOX : '',
+	C_LV_W_H : '',
+	C_HV_W_H_1 : '',
+	C_HV_W_H_2 : '',
+	C_HV_W_H_3 : '',
+	C_HV_W_H_4 : '',
+	C_HV_W_H_5 : '',
+	C_HV_W_H_6 : '',
+	C_HV_W_H_7 : '',
+	C_HV_W_H_8 : '',
+	C_BUSBAR : '',
+	C_BMU : '',
+	C_CMU_1 : '',             
+	C_CMU_2 : '',             
+	C_CMU_3 : '',             
+	C_CMU_4 : '',             
+	C_CMU_5 : '',             
+	C_CMU_6 : '',             
+	C_CMU_7 : '',             
+	C_CMU_8 : '',             
+	C_BMA_1 : '',             
+	C_BMA_2 : '',             
+	C_BMA_3 : '',             
+	C_BMA_4 : '',             
+	C_BMA_5 : '',             
+	C_BMA_6 : '',             
+	C_BMA_7 : '',             
+	C_BMA_8 : '',             
+	C_BMA_9 : '',             
+	C_BMA_10 : '',
+	C_BMA_11 : '',
+	C_BMA_12 : '',
+	D_UPR_CASE : '',
+	D_LWR_CASE : '',
+	D_HV_CNTR_RH : '',
+	D_HV_CNTR_LH : '',
+	D_RELAY : '',
+	D_LV_W_H : '',
+	D_HV_W_H_1 : '',
+	D_HV_W_H_2 : '',
+	D_BUSBAR : '',
+	D_BMU : '',
+	D_CMU_1 : '',
+	D_CMU_2 : '',
+	D_BMA_1 : '',
+	D_BMA_2 : ''
 };
 
 const 계정_ = {
@@ -1775,6 +1894,122 @@ const 완료보고서_ = {
 	기밀검사 : 1
 };
 
+const 부품정보_list_ = {
+	_id :0,
+	관리번호 : 1,
+	A_UPR_CASE : 1,
+	A_LWR_CASE : 1,
+	A_S_PLUG : 1,
+	A_SPA : 1,
+	A_HV_CNTR : 1,
+	A_Heating_CNTR : 1,
+	A_PRA : 1,
+	A_LV_W_H : 1,
+	A_HV_W_H_1 : 1,
+	A_HV_W_H_2 : 1,
+	A_HV_W_H_3 : 1,
+	A_HV_W_H_4 : 1,
+	A_HV_W_H_5 : 1,
+	A_BUSBAR : 1,
+	A_BMU : 1,
+	A_CMU_1 : 1,
+	A_CMU_2 : 1,
+	A_CMU_3 : 1,
+	A_CMU_4 : 1,
+	A_CMU_5 : 1,
+	A_BMA_1 : 1,
+	A_BMA_2 : 1,
+	A_BMA_3 : 1,
+	A_BMA_4 : 1,
+	A_BMA_5 : 1,
+	B_UPR_CASE : 1,
+	B_LWR_CASE : 1,
+	B_HV_CNTR : 1,
+	B_Heating_CNTR : 1,
+	B_PRA : 1,
+	B_FUSE_BOX : 1,
+	B_LV_W_H : 1,
+	B_HV_W_H_1 : 1,
+	B_HV_W_H_2 : 1,
+	B_HV_W_H_3 : 1,
+	B_HV_W_H_4 : 1,        
+	B_HV_W_H_5 : 1,         
+	B_HV_W_H_6 : 1,         
+	B_HV_W_H_7 : 1,         
+	B_HV_W_H_8 : 1,         
+	B_HV_W_H_9 : 1,         
+	B_HV_W_H_10 : 1,  
+	B_BUSBAR : 1,
+	B_BMU : 1,
+	B_CMU_1 : 1,
+	B_CMU_2 : 1,             
+	B_CMU_3 : 1,        
+	B_CMU_4 : 1,             
+	B_CMU_5 : 1,             
+	B_BMA_1 : 1,             
+	B_BMA_2 : 1,             
+	B_BMA_3 : 1,             
+	B_BMA_4 : 1,             
+	B_BMA_5 : 1,             
+	B_BMA_6 : 1,             
+	B_BMA_7 : 1,             
+	B_BMA_8 : 1,             
+	B_BMA_9 : 1,             
+	B_BMA_10 : 1,  
+	C_UPR_CASE : 1,
+	C_LWR_CASE : 1,
+	C_HV_CNTR_1 : 1,
+	C_HV_CNTR_2 : 1,
+	C_Heating_CNTR : 1,
+	C_PRA : 1,
+	C_FUSE_BOX : 1,
+	C_LV_W_H : 1,
+	C_HV_W_H_1 : 1,
+	C_HV_W_H_2 : 1,
+	C_HV_W_H_3 : 1,
+	C_HV_W_H_4 : 1,
+	C_HV_W_H_5 : 1,
+	C_HV_W_H_6 : 1,
+	C_HV_W_H_7 : 1,
+	C_HV_W_H_8 : 1,
+	C_BUSBAR : 1,
+	C_BMU : 1,
+	C_CMU_1 : 1,             
+	C_CMU_2 : 1,             
+	C_CMU_3 : 1,             
+	C_CMU_4 : 1,             
+	C_CMU_5 : 1,             
+	C_CMU_6 : 1,             
+	C_CMU_7 : 1,             
+	C_CMU_8 : 1,             
+	C_BMA_1 : 1,             
+	C_BMA_2 : 1,             
+	C_BMA_3 : 1,             
+	C_BMA_4 : 1,             
+	C_BMA_5 : 1,             
+	C_BMA_6 : 1,             
+	C_BMA_7 : 1,             
+	C_BMA_8 : 1,             
+	C_BMA_9 : 1,             
+	C_BMA_10 : 1,
+	C_BMA_11 : 1,
+	C_BMA_12 : 1,
+	D_UPR_CASE : 1,
+	D_LWR_CASE : 1,
+	D_HV_CNTR_RH : 1,
+	D_HV_CNTR_LH : 1,
+	D_RELAY : 1,
+	D_LV_W_H : 1,
+	D_HV_W_H_1 : 1,
+	D_HV_W_H_2 : 1,
+	D_BUSBAR : 1,
+	D_BMU : 1,
+	D_CMU_1 : 1,
+	D_CMU_2 : 1,
+	D_BMA_1 : 1,
+	D_BMA_2 : 1
+};
+
 var doc_count = 0;
 var update_count = 0;
 var insert_count = 0;
@@ -2004,9 +2239,14 @@ socket.on('count_result', async function(col, count, rcv_check, option = '') {
 			완료보고서_cnt = 0;
 			완료보고서_cnt = JSON.parse(JSON.stringify(count));
 			break;
+
 		case 계정 :
 			계정_cnt = 0;
 			계정_cnt = JSON.parse(JSON.stringify(count));
+
+		case 부품정보_list :
+			부품정보_list_cnt = 0;
+			부품정보_list_cnt = JSON.parse(JSON.stringify(count));
 
 		default : 
 			doc_count = 0; 
@@ -2297,6 +2537,11 @@ socket.on('find_result', async function(col, result, rcv_check) {
 			계정_v = JSON.parse(JSON.stringify(result));
 			break;
 
+		case 부품정보_list :
+			부품정보_list_v = [];
+			부품정보_list_v = JSON.parse(JSON.stringify(result));
+			break;
+
 		default : 
 			find_array = []; 
 			find_array = JSON.parse(JSON.stringify(result)); 
@@ -2365,6 +2610,7 @@ function reset_result() {
 	폐기_pic_v = [];
 	기초보고서_v = [];
 	완료보고서_v = [];
+	부품정보_list_v = [];
 	find_array = []
 }
 
@@ -2406,6 +2652,7 @@ function reset_count() {
 	폐기_pic_cnt = 0;
 	기초보고서_cnt = 0;
 	완료보고서_cnt = 0;
+	부품정보_list_cnt = 0;
 	doc_count = 0;
 }
 
@@ -2665,6 +2912,11 @@ async function find(col, management_id) {
 		case '폐기_pic' :
 			socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 폐기_pic_}, check);
 			break;
+
+		case '부품정보_list' :
+			socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 부품정보_list_}, check);
+			break;
+
 		default: 
 			console.log('collection name is not match');
 	}
@@ -2689,8 +2941,6 @@ async function findOne_완료보고서(col, query) {
 }
 
 async function findOne_계정(col, query) {
-	console.log('login:', col, query);
-
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
@@ -2823,6 +3073,15 @@ async function findOne_자재입출고(col, query) {
 	if(check > 10) check = 0;
 
 	socket.emit('findOne', worker, col, query, { sort: { kind: 1}, projection: 자재입출고_ }, check);
+}
+
+async function findOne_부품정보_list(col, query) {
+	if(socket == undefined) return;
+	flag_arrivedMSG = false;
+	check++;
+	if(check > 10) check = 0;
+
+	socket.emit('findOne', worker, col, query, { sort: { kind: 1}, projection: 부품정보_list_ }, check);
 }
 
 

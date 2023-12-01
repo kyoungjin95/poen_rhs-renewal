@@ -4,12 +4,80 @@ async function 부품정보_list_loadPage() {
 
 async function 부품정보_list_시작() {
 	console.log(관리번호);
-	_management_id.value = 관리번호;
-	await 부품정보_list_load();
+	if(_management_id.value == '') _management_id.value = 관리번호;
+	_차종.value = 차종;
+	
+	document.getElementById('_A_DE_OS_SK3_LK').style.display = 'none';
+	document.getElementById('_B_HR_PU').style.display = 'none';
+	document.getElementById('_C_CN_NE_JW1_LM').style.display = 'none';
+	document.getElementById('_D_CS').style.display = 'none';
 
+	switch(차종) {
+		case 'DE':
+		case 'DE_EV':
+		case 'OS':
+		case 'OS_EV':
+		case 'SK3':
+		case 'SK3_EV':
+		case 'LK':
+		case 'LK_EV':
+			document.getElementById('_A_DE_OS_SK3_LK').style.display = 'block';
+			document.getElementById('_B_HR_PU').style.display = 'none';
+			document.getElementById('_C_CN_NE_JW1_LM').style.display = 'none';
+			document.getElementById('_D_CS').style.display = 'none';
+			_A_UPR_CASE.focus();
+			auto_focus_A();
+			break;
+
+		case 'PU':
+		case 'PU_EV':
+		case 'HR':
+		case 'HR_EV':
+			document.getElementById('_A_DE_OS_SK3_LK').style.display = 'none';
+			document.getElementById('_B_HR_PU').style.display = 'block';
+			document.getElementById('_C_CN_NE_JW1_LM').style.display = 'none';
+			document.getElementById('_D_CS').style.display = 'none';
+			_B_UPR_CASE.focus();
+			auto_focus_B();
+			break;
+
+		case 'CV':
+		case 'CV_EV':
+		case 'NE':
+		case 'NE_EV':
+		case 'LM':
+		case 'LM_EV':
+			document.getElementById('_A_DE_OS_SK3_LK').style.display = 'none';
+			document.getElementById('_B_HR_PU').style.display = 'none';
+			document.getElementById('_C_CN_NE_JW1_LM').style.display = 'block';
+			document.getElementById('_D_CS').style.display = 'none';
+			_C_UPR_CASE.focus();
+			auto_focus_C();
+			break;
+
+		case 'CS':
+		case 'CS_EV':
+			document.getElementById('_A_DE_OS_SK3_LK').style.display = 'none';
+			document.getElementById('_B_HR_PU').style.display = 'none';
+			document.getElementById('_C_CN_NE_JW1_LM').style.display = 'none';
+			document.getElementById('_D_CS').style.display = 'block';
+			_D_UPR_CASE.focus();
+			auto_focus_D();
+			break;
+
+		default:
+			alert('차종 정보를 확인해주세요');
+
+			return;
+			break;
+	} 
+
+	await 부품정보_list_load();
 }
 
 async function 부품정보_list_load() {
+	if(_management_id.value == '') return;
+
 	find(부품정보_list, _management_id.value);
 	await delay();
 
@@ -37,8 +105,8 @@ async function 부품정보_list_load() {
 	_A_CMU_5.value = 부품정보_list_v.A_CMU_5;              
 	_A_BMA_1.value = 부품정보_list_v.A_BMA_1;              
 	_A_BMA_2.value = 부품정보_list_v.A_BMA_2;              
-	_A_BMA_5.value = 부품정보_list_v.A_BMA_5;              
-	_A_BMA_5.value = 부품정보_list_v.A_BMA_5;              
+	_A_BMA_3.value = 부품정보_list_v.A_BMA_3;              
+	_A_BMA_4.value = 부품정보_list_v.A_BMA_4;              
 	_A_BMA_5.value = 부품정보_list_v.A_BMA_5;              
 	_B_UPR_CASE.value = 부품정보_list_v.B_UPR_CASE;           
 	_B_LWR_CASE.value = 부품정보_list_v.B_LWR_CASE;           
@@ -129,6 +197,8 @@ async function 부품정보_list_load() {
 }
 
 async function 부품정보_list_save() {
+	if(_management_id.value == '') return;
+
 	var doc = 부품정보_list_doc;
 	doc.관리번호 = _management_id.value;
 	doc.A_UPR_CASE = _A_UPR_CASE.value;
@@ -153,8 +223,8 @@ async function 부품정보_list_save() {
 	doc.A_CMU_5 = _A_CMU_5.value;
 	doc.A_BMA_1 = _A_BMA_1.value;
 	doc.A_BMA_2 = _A_BMA_2.value;
-	doc.A_BMA_5 = _A_BMA_5.value;
-	doc.A_BMA_5 = _A_BMA_5.value;
+	doc.A_BMA_3 = _A_BMA_3.value;
+	doc.A_BMA_4 = _A_BMA_4.value;
 	doc.A_BMA_5 = _A_BMA_5.value;
 	doc.B_UPR_CASE = _B_UPR_CASE.value; 
 	doc.B_LWR_CASE = _B_LWR_CASE.value;
@@ -256,4 +326,429 @@ async function 부품정보_list_save() {
 	if(insert_count > 0) {
 		alert('저장 되었습니다');
 	}
+}
+
+function auto_focus_A() {
+	_A_UPR_CASE.onchange = function(event) {
+		_A_LWR_CASE.focus();
+	}
+	_A_LWR_CASE.onchange = function(event) {
+		_A_S_PLUG.focus();
+	}
+	_A_S_PLUG.onchange = function(event) {
+		_A_SPA.focus();
+	}
+	_A_SPA.onchange = function(event) {
+		_A_HV_CNTR.focus();
+	}
+	_A_HV_CNTR.onchange = function(event) {
+		_A_Heating_CNTR.focus();
+	}
+	_A_Heating_CNTR.onchange = function(event) {
+		_A_PRA.focus();
+	}
+	_A_PRA.onchange = function(event) {
+		_A_LV_W_H.focus();
+	}
+	_A_LV_W_H.onchange = function(event) {
+		_A_HV_W_H_1.focus();
+	}
+	_A_HV_W_H_1.onchange = function(event) {  
+		_A_HV_W_H_2.focus();
+	}
+	_A_HV_W_H_2.onchange = function(event) {
+		_A_HV_W_H_3.focus();
+	}
+	_A_HV_W_H_3.onchange = function(event) {
+		_A_HV_W_H_4.focus();
+	}
+	_A_HV_W_H_4.onchange = function(event) {
+		_A_HV_W_H_5.focus();
+	}
+	_A_HV_W_H_5.onchange = function(event) {
+		_A_BUSBAR.focus();
+	}
+	_A_BUSBAR.onchange = function(event) {
+		_A_BMU.focus();
+	}
+	_A_BMU.onchange = function(event) {
+		_A_CMU_1.focus();
+	}
+	_A_CMU_1.onchange = function(event) {
+		_A_CMU_2.focus();
+	}
+	_A_CMU_2.onchange = function(event) {
+		_A_CMU_3.focus();
+	}
+	_A_CMU_3.onchange = function(event) {
+		_A_CMU_4.focus();
+	}
+	_A_CMU_4.onchange = function(event) {
+		_A_CMU_5.focus();
+	}
+	_A_CMU_5.onchange = function(event) {
+		_A_BMA_1.focus();
+	}
+	_A_BMA_1.onchange = function(event) {
+		_A_BMA_2.focus();
+	}
+	_A_BMA_2.onchange = function(event) {
+		_A_BMA_3.focus();
+	}
+	_A_BMA_3.onchange = function(event) {
+		_A_BMA_4.focus();
+	}
+	_A_BMA_4.onchange = function(event) {
+		_A_BMA_5.focus();
+	}
+	//_A_BMA_5.onchange = function(event) {
+}
+
+function auto_focus_B() {
+	_B_UPR_CASE.onchange = function(event) {
+		_B_LWR_CASE.focus();
+	}
+
+	_B_LWR_CASE.onchange = function(event) {
+		_B_HV_CNTR.focus();
+	}
+
+	_B_HV_CNTR.onchange = function(event) {
+		_B_Heating_CNTR.focus();
+	}
+
+	_B_Heating_CNTR.onchange = function(event) {
+		_B_PRA.focus();
+	}
+
+	_B_PRA.onchange = function(event) {
+		_B_FUSE_BOX.focus();
+	}
+
+	_B_FUSE_BOX.onchange = function(event) {
+		_B_LV_W_H.focus();
+	}
+
+	_B_LV_W_H.onchange = function(event) {
+		_B_HV_W_H_1.focus();
+	}
+            
+	_B_HV_W_H_1.onchange = function(event) {
+		_B_HV_W_H_2.focus();
+	}
+
+	_B_HV_W_H_2.onchange = function(event) {
+		_B_HV_W_H_3.focus();
+	}
+
+	_B_HV_W_H_3.onchange = function(event) {
+		_B_HV_W_H_4.focus();
+	}
+
+	_B_HV_W_H_4.onchange = function(event) {
+		_B_HV_W_H_5.focus();
+	}
+
+	_B_HV_W_H_5.onchange = function(event) {
+		_B_HV_W_H_6.focus();
+	}
+          
+	_B_HV_W_H_6.onchange = function(event) {
+		_B_HV_W_H_7.focus();
+	}
+
+	_B_HV_W_H_7.onchange = function(event) {
+		_B_HV_W_H_8.focus();
+	}
+
+	_B_HV_W_H_8.onchange = function(event) {
+		_B_HV_W_H_9.focus();
+	}
+
+	_B_HV_W_H_9.onchange = function(event) {
+		_B_HV_W_H_10.focus();
+	}
+
+	_B_HV_W_H_10.onchange = function(event) {
+		_B_BUSBAR.focus();
+	}
+
+	_B_BUSBAR.onchange = function(event) {
+		_B_BMU.focus();
+	}
+
+	_B_BMU.onchange = function(event) {
+		_B_CMU_1.focus();
+	}
+
+	_B_CMU_1.onchange = function(event) {
+		_B_CMU_2.focus();
+	}
+
+	_B_CMU_2.onchange = function(event) {
+		_B_CMU_3.focus();
+	}
+
+	_B_CMU_3.onchange = function(event) {
+		_B_CMU_4.focus();
+	}
+
+	_B_CMU_4.onchange = function(event) {
+		_B_CMU_5.focus();
+	}
+
+	_B_CMU_5.onchange = function(event) {
+		_B_BMA_1.focus();
+	}
+
+	_B_BMA_1.onchange = function(event) {
+		_B_BMA_2.focus();
+	}
+
+	_B_BMA_2.onchange = function(event) {
+		_B_BMA_3.focus();
+	}
+
+	_B_BMA_3.onchange = function(event) {
+		_B_BMA_4.focus();
+	}
+
+	_B_BMA_4.onchange = function(event) {
+		_B_BMA_5.focus();
+	}
+
+	_B_BMA_5.onchange = function(event) {
+		_B_BMA_6.focus();
+	}
+
+	_B_BMA_6.onchange = function(event) {
+		_B_BMA_7.focus();
+	}
+
+	_B_BMA_7.onchange = function(event) {
+		_B_BMA_8.focus();
+	}
+
+	_B_BMA_8.onchange = function(event) {
+		_B_BMA_9.focus();
+	}
+
+	_B_BMA_9.onchange = function(event) {
+		_B_BMA_10.focus();
+	}
+
+	//_B_BMA_10.onchange = function(event) {
+	//	_B_LWR_CASE.focus();
+	//}
+}
+
+function auto_focus_C() {
+	_C_UPR_CASE.onchange = function(event) {
+		_C_.focus();
+	}
+
+	_C_LWR_CASE.onchange = function(event) {
+		_C_HV_CNTR_1.focus();
+	}
+
+	_C_HV_CNTR_1.onchange = function(event) {
+		_C_HC_CNTR_2.focus();
+	}
+
+	_C_HV_CNTR_2.onchange = function(event) {
+		_C_Heating_CNTR.focus();
+	}
+
+	_C_Heating_CNTR.onchange = function(event) {
+		_C_PRA.focus();
+	}
+
+	_C_PRA.onchange = function(event) {
+		_C_FUSE_BOX.focus();
+	}
+
+	_C_FUSE_BOX.onchange = function(event) {
+		_C_LV_W_H.focus();
+	}
+
+	_C_LV_W_H.onchange = function(event) {
+		_C_HV_W_H_1.focus();
+	}
+
+	_C_HV_W_H_1.onchange = function(event) {
+		_C_HV_W_H_2.focus();
+	}
+
+	_C_HV_W_H_2.onchange = function(event) {
+		_C_HV_W_H_3.focus();
+	}
+
+	_C_HV_W_H_3.onchange = function(event) {
+		_C_HV_W_H_4.focus();
+	}
+
+	_C_HV_W_H_4.onchange = function(event) {
+		_C_HV_W_H_5.focus();
+	}
+
+	_C_HV_W_H_5.onchange = function(event) {
+		_C_HV_W_H_6.focus();
+	}
+
+	_C_HV_W_H_6.onchange = function(event) {
+		_C_HV_W_H_7.focus();
+	}
+
+	_C_HV_W_H_7.onchange = function(event) {
+		_C_HV_W_H_8.focus();
+	}
+
+	_C_HV_W_H_8.onchange = function(event) {
+		_C_BUSBAR.focus();
+	}
+
+	_C_BUSBAR.onchange = function(event) {
+		_C_BMU.focus();
+	}
+
+	_C_BMU.onchange = function(event) {
+		_C_CMU_1.focus();
+	}
+
+	_C_CMU_1.onchange = function(event) {
+		_C_CMU_2.focus();
+	}
+
+	_C_CMU_2.onchange = function(event) {
+		_C_CMU_3.focus();
+	}
+
+	_C_CMU_3.onchange = function(event) {
+		_C_CMU_4.focus();
+	}
+
+	_C_CMU_4.onchange = function(event) {
+		_C_CMU_5.focus();
+	}
+
+	_C_CMU_5.onchange = function(event) {
+		_C_CMU_6.focus();
+	}
+
+	_C_CMU_6.onchange = function(event) {
+		_C_CMU_7.focus();
+	}
+
+	_C_CMU_7.onchange = function(event) {
+		_C_CMU_8.focus();
+	}
+
+	_C_CMU_8.onchange = function(event) {
+		_C_BMA_1.focus();
+	}
+
+	_C_BMA_1.onchange = function(event) {
+		_C_BMA_2.focus();
+	}
+
+	_C_BMA_2.onchange = function(event) {
+		_C_BMA_3.focus();
+	}
+
+	_C_BMA_3.onchange = function(event) {
+		_C_BMA_4.focus();
+	}
+
+	_C_BMA_4.onchange = function(event) {
+		_C_BMA_5.focus();
+	}
+
+	_C_BMA_5.onchange = function(event) {
+		_C_BMA_6.focus();
+	}
+
+	_C_BMA_6.onchange = function(event) {
+		_C_BMA_7.focus();
+	}
+
+	_C_BMA_7.onchange = function(event) {
+		_C_BMA_8.focus();
+	}
+
+	_C_BMA_8.onchange = function(event) {
+		_C_BMA_9.focus();
+	}
+
+	_C_BMA_9.onchange = function(event) {
+		_C_BMA_10.focus();
+	}
+
+	_C_BMA_10.onchange = function(event) {
+		_C_BMA_11.focus();
+	}
+
+	_C_BMA_11.onchange = function(event) {
+		_C_BMA_12.focus();
+	}
+
+	//_C_BMA_12.onchange = function(event) {
+	//	_C_BMA_2.focus();
+	//}
+}
+
+function auto_focus_D() {
+	_D_UPR_CASE.onchange = function(event) {
+		_D_LWR_CASE.focus();
+	}
+
+	_D_LWR_CASE.onchange = function(event) {
+		_D_HV_CNTR_RH.focus();
+	}
+
+	_D_HV_CNTR_RH.onchange = function(event) {
+		_D_HV_CNTR_LH.focus();
+	}
+
+	_D_HV_CNTR_LH.onchange = function(event) {
+		_D_RELAY.focus();
+	}
+
+	_D_RELAY.onchange = function(event) {
+		_D_LV_W_H.focus();
+	}
+
+	_D_LV_W_H.onchange = function(event) {
+		_D_HV_W_H_1.focus();
+	}
+
+	_D_HV_W_H_1.onchange = function(event) {
+		_D_HV_W_H_2.focus();
+	}
+
+	_D_HV_W_H_2.onchange = function(event) {
+		_D_BUSBAR.focus();
+	}
+
+	_D_BUSBAR.onchange = function(event) {
+		_D_BMU.focus();
+	}
+
+	_D_BMU.onchange = function(event) {
+		_D_CMU_1.focus();
+	}
+
+	_D_CMU_1.onchange = function(event) {
+		_D_CMU_2.focus();
+	}
+
+	_D_CMU_2.onchange = function(event) {
+		_D_BMA_1.focus();
+	}
+
+	_D_BMA_1.onchange = function(event) {
+		_D_BMA_2.focus();
+	}
+
+	//_D_BMA_2.onchange = function(event) {
+	//}
 }

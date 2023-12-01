@@ -4,7 +4,7 @@ async function 기초검사_시작(is재제조 = 0) {
 	while(_management_id == undefined) {
 		await sleep(DELAY);
 	}
-	
+
 	if(flag_기초검사 == true) await 기초검사_list();
 	flag_기초검사 = false;
 
@@ -26,12 +26,16 @@ async function 기초검사_시작(is재제조 = 0) {
 			_품번.value = BSA재제조_v.품번;;
 			_RO_no.value = BSA재제조_v.RO_no;
 			관리번호 = _management_id.value;
+
+			차종 = BSA재제조_v.차종;
 		} else {
 			_재제조번호.value = '';
 			_구분.value = '';
 			_차종.value = '';
 			_품번.value = '';
 			_RO_no.value = '';
+
+			차종 = '';
 		}
 	} else if(is재제조 == 1) {
 		if(_재제조번호.value.length == 0) return;
@@ -46,12 +50,16 @@ async function 기초검사_시작(is재제조 = 0) {
 			_품번.value = BSA재제조_v.품번;;
 			_RO_no.value = BSA재제조_v.RO_no;
 			관리번호 = _management_id.value;
+
+			차종 = BSA재제조_v.차종;
 		} else {
 			_management_id.value = '';
 			_구분.value = '';
 			_차종.value = '';
 			_품번.value = '';
 			_RO_no.value = '';
+
+			차종 = '';
 		}
 	} else if(is재제조 == 2) {
 		if(_RO_no.value.length == 0) return;
@@ -66,12 +74,16 @@ async function 기초검사_시작(is재제조 = 0) {
 			_차종.value = BSA재제조_v.차종;
 			_품번.value = BSA재제조_v.품번;;
 			관리번호 = _management_id.value;
+
+			차종 = BSA재제조_v.차종;
 		} else {
 			_management_id.value = '';
 			_재제조번호.value = '';
 			_구분.value = '';
 			_차종.value = '';
 			_품번.value = '';
+
+			차종 = '';
 		}
 	}
 
@@ -101,33 +113,33 @@ async function 기초검사_시작(is재제조 = 0) {
 			_기초검사_add_DTC_Code();
 			_통신검사_DTC코드4.value = 기초검사_v.통신검사_DTC코드4;
 		}
-               
-    if(기초검사_v.통신검사_DTC코드5 != '') {
+
+		if(기초검사_v.통신검사_DTC코드5 != '') {
 			_기초검사_add_DTC_Code();
 			_통신검사_DTC코드5.value = 기초검사_v.통신검사_DTC코드5;
 		}
 
-    if(기초검사_v.통신검사_DTC코드6 != '') {
+		if(기초검사_v.통신검사_DTC코드6 != '') {
 			_기초검사_add_DTC_Code();
 			_통신검사_DTC코드6.value = 기초검사_v.통신검사_DTC코드6;
 		}
 
-    if(기초검사_v.통신검사_DTC코드7 != '') {
+		if(기초검사_v.통신검사_DTC코드7 != '') {
 			_기초검사_add_DTC_Code();
 			_통신검사_DTC코드7.value = 기초검사_v.통신검사_DTC코드7;
 		}
 
-    if(기초검사_v.통신검사_DTC코드8 != '') {
+		if(기초검사_v.통신검사_DTC코드8 != '') {
 			_기초검사_add_DTC_Code();
 			_통신검사_DTC코드8.value = 기초검사_v.통신검사_DTC코드8;
 		}
 
-     if(기초검사_v.통신검사_DTC코드9 != '') {
+		if(기초검사_v.통신검사_DTC코드9 != '') {
 			_기초검사_add_DTC_Code();
 			_통신검사_DTC코드9.value = 기초검사_v.통신검사_DTC코드9;
 		}
 
-    if(기초검사_v.통신검사_DTC코드10 != '') {
+		if(기초검사_v.통신검사_DTC코드10 != '') {
 			_기초검사_add_DTC_Code();
 			_통신검사_DTC코드10.value = 기초검사_v.통신검사_DTC코드10;
 		}
@@ -220,7 +232,7 @@ async function 기초검사_SAVE() {
 	}
 
 	var doc = JSON.parse(JSON.stringify(기초검사_doc));
-        doc.관리번호 = _management_id.value.trim().toUpperCase();
+	doc.관리번호 = _management_id.value.trim().toUpperCase();
 	doc.공정입고일 = _공정입고일.value;
 	doc.RO_no = _RO_no.value;
 	doc.VIN = _VIN.value;
@@ -318,11 +330,11 @@ async function 기초검사_SAVE() {
 	doc.비고 = _비고.value;
 	doc.센터진단내용 = _센터진단내용.value;
 	doc.검사자 = _검사자.value;
-	
+
 	console.log('save data:', doc);
 	update(기초검사, doc);
 	await delay();
-	
+
 	console.log(update_count);
 	console.log(insert_count);
 
@@ -365,25 +377,25 @@ function _육안검사외부_콤보박스(e) {
 
 	const value = e.value;
 
-  	document.getElementById('_육안검사_외부').value = value;
+	document.getElementById('_육안검사_외부').value = value;
 }
 
 function _육안검사내부_콤보박스(e) {
 	const value = e.value;
 
-  	document.getElementById('_육안검사_내부').value = value;
+	document.getElementById('_육안검사_내부').value = value;
 }
 
 function _기밀검사_냉각유로_콤보박스(e) {
 	const value = e.value;
 
-  	document.getElementById('_기밀검사_냉각유로').value = value;
+	document.getElementById('_기밀검사_냉각유로').value = value;
 }
 
 function _통신검사_릴레이구동_콤보박스(e) {
 	const value = e.value;
 
-  	document.getElementById('_통신검사_릴레이구동').value = value;
+	document.getElementById('_통신검사_릴레이구동').value = value;
 }
 
 function _기초검사_add_DTC_Code() {
@@ -428,7 +440,7 @@ async function 기초검사_카메라시작() {
 }
 
 async function 기초검사_list() {
-	 findOne_BSA재제조(BSA재제조, { 공정단계 : { $ne : '출하' }, 세척 : { $ne : '' }, 기초검사 : { $eq : '' }, 분해조립 : { $eq : '' }, 성능검사 : { $eq : '' }, EOL : { $eq : '' } ,  소재지 : { $nin : ['공정대기', '품질대기'] }, 완전분해 : { $eq : ''}, 폐기 : { $eq : '' }, 출하 : { $eq : '' }, 구분 : { $nin: ['일반기타', '보증기타']} });
+	findOne_BSA재제조(BSA재제조, { 공정단계 : { $ne : '출하' }, 세척 : { $ne : '' }, 기초검사 : { $eq : '' }, 분해조립 : { $eq : '' }, 성능검사 : { $eq : '' }, EOL : { $eq : '' } ,  소재지 : { $nin : ['공정대기', '품질대기'] }, 완전분해 : { $eq : ''}, 폐기 : { $eq : '' }, 출하 : { $eq : '' }, 구분 : { $nin: ['일반기타', '보증기타']} });
 	await delay();
 
 	if(BSA재제조_v != null) {
@@ -439,7 +451,7 @@ async function 기초검사_list() {
 	var table = new Tabulator("#grid_list", {
 		layout: "resizableColumnFit",
 		data: BSA재제조_v,
-		height: "700px",
+		height: "400px",
 
 		columns: [
 			{ title: "ID", field: "_id", sorter: "string", width: "180" },
@@ -566,7 +578,7 @@ async function 기초검사_list() {
 			{ title: "렉번호", field: "렉번호", sorter: "string", width: "180" },
 		],
 	});
-	
+
 	table.on("rowClick", async function (e, row) {
 		console.log("selected 관리번호: ", row.getData().관리번호);
 
