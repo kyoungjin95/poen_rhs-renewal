@@ -94,9 +94,15 @@ async function 분해조립_시작(is재제조 = 0) {
 		if(BSA재제조_v != null) {
 			_재제조번호.value = BSA재제조_v.재제조번호;
 			_RO_no.value = BSA재제조_v.RO_no;
+			_구분.value = BSA재제조_v.구분;
+			_차종.value = BSA재제조_v.차종;
+			_품번.value = BSA재제조_v.품번;;
 		} else {
 			_재제조번호.value = '';
 			_RO_no.value = '';
+			_구분.value = '';
+			_차종.value = '';
+			_품번.value = '';
 		}
 	} else if(is재제조 == 1) {
 		if(_재제조번호.value.length == 0) return;
@@ -107,9 +113,15 @@ async function 분해조립_시작(is재제조 = 0) {
 		if(BSA재제조_v != null) {
 			_management_id.value = BSA재제조_v.관리번호;
 			_RO_no.value = BSA재제조_v.RO_no;
+			_구분.value = BSA재제조_v.구분;
+			_차종.value = BSA재제조_v.차종;
+			_품번.value = BSA재제조_v.품번;;
 		} else {
 			_management_id.value = '';
 			_RO_no.value = '';
+			_구분.value = '';
+			_차종.value = '';
+			_품번.value = '';
 		}
 	} else if(is재제조 == 2) {
 		if(_RO_no.value.length == 0) return;
@@ -120,9 +132,15 @@ async function 분해조립_시작(is재제조 = 0) {
 		if(BSA재제조_v != null) {
 			_management_id.value = BSA재제조_v.관리번호;
 			_재제조번호.value = BSA재제조_v.재제조번호;
+			_구분.value = BSA재제조_v.구분;
+			_차종.value = BSA재제조_v.차종;
+			_품번.value = BSA재제조_v.품번;;
 		} else {
 			_management_id.value = '';
 			_재제조번호.value = '';
+			_구분.value = '';
+			_차종.value = '';
+			_품번.value = '';
 		}
 	}
 
