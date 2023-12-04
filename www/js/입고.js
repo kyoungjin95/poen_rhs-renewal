@@ -22,6 +22,7 @@ async function 입고_시작() {
 	if (_management_id.value.length == 0) return;
 	if ((_management_id.value == "") | (_management_id.value == "none")) return;
 
+	_management_id.value = _management_id.value
 	count(입고, { 관리번호: _management_id.value });
 	await delay();
 	if (입고_cnt > 0) {
@@ -54,7 +55,7 @@ async function 입고_save() {
 	doc.입고일 = _입고일.value;
 	doc.입고처 = _입고처.value;
 	doc.구분 = _구분.value;
-	doc.차종 = _차종.value;
+	doc.차종 = _차종.value.replace('-', '_');
 	doc.품번 = _품번.value;
 	doc.RO_no = _RO_no.value;
 
