@@ -93,13 +93,13 @@ async function 분해조립_시작(is재제조 = 0) {
 
 		if(BSA재제조_v != null) {
 			_재제조번호.value = BSA재제조_v.재제조번호;
-			_RO_no.value = BSA재제조_v.RO_no;
+			//_RO_no.value = BSA재제조_v.RO_no;
 			_구분.value = BSA재제조_v.구분;
 			_차종.value = BSA재제조_v.차종;
 			_품번.value = BSA재제조_v.품번;;
 		} else {
 			_재제조번호.value = '';
-			_RO_no.value = '';
+			//_RO_no.value = '';
 			_구분.value = '';
 			_차종.value = '';
 			_품번.value = '';
@@ -112,13 +112,13 @@ async function 분해조립_시작(is재제조 = 0) {
 
 		if(BSA재제조_v != null) {
 			_management_id.value = BSA재제조_v.관리번호;
-			_RO_no.value = BSA재제조_v.RO_no;
+			//_RO_no.value = BSA재제조_v.RO_no;
 			_구분.value = BSA재제조_v.구분;
 			_차종.value = BSA재제조_v.차종;
 			_품번.value = BSA재제조_v.품번;;
 		} else {
 			_management_id.value = '';
-			_RO_no.value = '';
+			//_RO_no.value = '';
 			_구분.value = '';
 			_차종.value = '';
 			_품번.value = '';
@@ -148,7 +148,7 @@ async function 분해조립_시작(is재제조 = 0) {
 	await delay();
 
 	if(분해조립_v != null) {
-		var no_count = 6;
+		var no_count = 7;
 		_공정입고일.value = 분해조립_v.공정입고일;
 		_BMU1.value = 분해조립_v.BMU1;
 		_BMU1_2.value = 분해조립_v.BMU1_2;
@@ -164,27 +164,27 @@ async function 분해조립_시작(is재제조 = 0) {
 
 		_CMU1.value = 분해조립_v.CMU1;
 		_CMU1_2.value = 분해조립_v.CMU1_2;
-		no_count += BMU_count;
+		no_count += BMU_count + 1;
 		for(var i = 2; i <= 10; i++) eval('if(분해조립_v.CMU' + i + ' != \'\' || (분해조립_v.CMU' + i + '_2 != \'\' && 분해조립_v.CMU' + i + '_2 != undefined)) ' + '{ CMU_count += 1; type_add(\'CMU\', \'CMU\', no_count, CMU_count); document.getElementById(\'_CMU' + i + '\').value = ' + '분해조립_v.CMU' + i + '; document.getElementById(\'_CMU' + i + '_2\').value = ' + '분해조립_v.CMU' + i + '_2;}');
 
 		_PRA1.value = 분해조립_v.PRA1;
 		_PRA1_2.value = 분해조립_v.PRA1_2;
-		no_count += CMU_count;
+		no_count += CMU_count + 1;
 		for(var i = 2; i <= 10; i++) eval('if(분해조립_v.PRA' + i + ' != \'\' || (분해조립_v.PRA' + i + '_2 != \'\' && 분해조립_v.PRA' + i + '_2 != undefined)) ' + '{ PRA_count += 1; type_add(\'PRA\', \'PRA\', no_count, PRA_count); document.getElementById(\'_PRA' + i + '\').value = ' + '분해조립_v.PRA' + i + '; document.getElementById(\'_PRA' + i + '_2\').value = ' + '분해조립_v.PRA' + i + '_2; }');
 
 		_SPA1.value = 분해조립_v.SPA1;
 		_SPA1_2.value = 분해조립_v.SPA1_2;
-		no_count += PRA_count;
+		no_count += PRA_count + 1;
 		for(var i = 2; i <= 10; i++) eval('if(분해조립_v.SPA' + i + ' != \'\' || (분해조립_v.SPA' + i + '_2 != \'\' && 분해조립_v.SPA' + i + '_2 != undefined)) ' + '{ SPA_count += 1; type_add(\'SPA\', \'SPA\', no_count, SPA_count); document.getElementById(\'_SPA' + i + '\').value = ' + '분해조립_v.SPA' + i + '; document.getElementById(\'_SPA' + i + '_2\').value = ' + '분해조립_v.SPA' + i + '_2; }');
 
 		_LWR_C1.value = 분해조립_v.LWR_C1;
 		_LWR_C1_2.value = 분해조립_v.LWR_C1_2;
-		no_count += SPA_count;
+		no_count += SPA_count + 1;
 		for(var i = 2; i <= 10; i++) eval('if(분해조립_v.LWR_C' + i + ' != \'\' || (분해조립_v.LWR_C' + i + '_2 != \'\' && 분해조립_v.LWR_C' + i + '_2 != undefined)) ' + '{ LWR_C_count += 1; type_add(\'LWR Case\', \'LWR_C\', no_count, LWR_C_count); document.getElementById(\'_LWR_C' + i + '\').value = ' + '분해조립_v.LWR_C' + i + '; document.getElementById(\'_LWR_C' + i + '_2\').value = ' + '분해조립_v.LWR_C' + i + '_2; }');
 
 		_UPR_C1.value = 분해조립_v.UPR_C1;
 		_UPR_C1_2.value = 분해조립_v.UPR_C1_2;
-		no_count += LWR_C_count;
+		no_count += LWR_C_count + 1;
 		for(var i = 2; i <= 10; i++) eval('if(분해조립_v.UPR_C' + i + ' != \'\' || (분해조립_v.UPR_C' + i + '_2 != \'\' && 분해조립_v.UPR_C' + i + '_2 != undefined)) ' + '{ UPR_C_count += 1; type_add(\'UPR Case\', \'UPR_C\', no_count, UPR_C_count); document.getElementById(\'_UPR_C' + i + '\').value = ' + '분해조립_v.UPR_C' + i + '; document.getElementById(\'_UPR_C' + i + '_2\').value = ' + '분해조립_v.UPR_C' + i + '_2; }');
 
 		_PBE.value = 분해조립_v.PBE;
@@ -194,44 +194,45 @@ async function 분해조립_시작(is재제조 = 0) {
 		
 		_Relay1.value = 분해조립_v.Relay1;
 		_Relay1_2.value = 분해조립_v.Relay1_2;
-		no_count += 2 + UPR_C_count;
+		no_count += 2 + UPR_C_count + 3;
 		for(var i = 2; i <= 10; i++) eval('if(분해조립_v.Relay' + i + ' != \'\' || (분해조립_v.Relay' + i + '_2 != \'\' && 분해조립_v.Relay' + i + '_2 != undefined)) ' + '{ Relay_count += 1; type_add(\'Relay\', \'Relay\', no_count, Relay_count); document.getElementById(\'_Relay' + i + '\').value = ' + '분해조립_v.Relay' + i + '; document.getElementById(\'_Relay' + i + '_2\').value = ' + '분해조립_v.Relay' + i + '_2;}');
 
 		_HV_CNTR1.value = 분해조립_v.HV_CNTR1;
 		_HV_CNTR1_2.value = 분해조립_v.HV_CNTR1_2;
-		no_count += Relay_count;
+		no_count += Relay_count + 1;
 		for(var i = 2; i <= 10; i++) eval('if(분해조립_v.HV_CNTR' + i + ' != \'\' || (분해조립_v.HV_CNTR' + i + '_2 != \'\' && 분해조립_v.HV_CNTR' + i + '_2 != undefined)) ' + '{ HV_CNTR_count += 1; type_add(\'HV CNTR\', \'HV_CNTR\', no_count, HV_CNTR_count); document.getElementById(\'_HV_CNTR' + i + '\').value = ' + '분해조립_v.HV_CNTR' + i + '; document.getElementById(\'_HV_CNTR' + i + '_2\').value = ' + '분해조립_v.HV_CNTR' + i + '_2; }');
 
 		_Heating_CNTR1.value = 분해조립_v.Heating_CNTR1;
 		_Heating_CNTR1_2.value = 분해조립_v.Heating_CNTR1_2;
-		no_count += HV_CNTR_count;
+		no_count += HV_CNTR_count + 1;
 		for(var i = 2; i <= 10; i++) eval('if(분해조립_v.Heating_CNTR' + i + ' != \'\' || (분해조립_v.Heating_CNTR' + i + '_2 != \'\' && 분해조립_v.Heating_CNTR' + i + '_2 != undefined)) ' + '{ Heating_CNTR_count += 1; type_add(\'Heating CNTR\', \'Heating_CNTR\', no_count, Heating_CNTR_count); document.getElementById(\'_Heating_CNTR' + i + '\').value = ' + '분해조립_v.Heating_CNTR' + i + '; document.getElementById(\'_Heating_CNTR' + i + '_2\').value = ' + '분해조립_v.Heating_CNTR' + i + '_2;}');
 
 		_FuseBox1.value = 분해조립_v.FuseBox1;
 		_FuseBox1_2.value = 분해조립_v.FuseBox1_2;
-		no_count += Heating_CNTR_count;
+		no_count += Heating_CNTR_count + 1;
 		for(var i = 2; i <= 10; i++) eval('if(분해조립_v.FuseBox' + i + ' != \'\' || (분해조립_v.FuseBox' + i + '_2 != \'\' && 분해조립_v.FuseBox' + i + '_2 != undefined)) ' + '{ FuseBox_count += 1; type_add(\'FuseBox\', \'FuseBox\', no_count, FuseBox_count); document.getElementById(\'_FuseBox' + i + '\').value = ' + '분해조립_v.FuseBox' + i + '; document.getElementById(\'_FuseBox' + i + '_2\').value = ' + '분해조립_v.FuseBox' + i + '_2;}');
 
 		_LV_W_H1.value = 분해조립_v.LV_W_H1;
 		_LV_W_H1_2.value = 분해조립_v.LV_W_H1_2;
-		no_count += FuseBox_count;
+		no_count += FuseBox_count + 1;
 		for(var i = 2; i <= 10; i++) eval('if(분해조립_v.LV_W_H' + i + ' != \'\' || (분해조립_v.LV_W_H' + i + '_2 != \'\' && 분해조립_v.LV_W_H' + i + '_2 != undefined)) ' + '{ LV_W_H_count += 1; type_add(\'LV W/H\', \'LV_W_H\', no_count, LV_W_H_count); document.getElementById(\'_LV_W_H' + i + '\').value = ' + '분해조립_v.LV_W_H' + i + '; document.getElementById(\'_LV_W_H' + i + '_2\').value = ' + '분해조립_v.LV_W_H' + i + '_2;}');
 
 		_HV_W_H1.value = 분해조립_v.HV_W_H1;
 		_HV_W_H1_2.value = 분해조립_v.HV_W_H1_2;
-		no_count += LV_W_H_count;
+		no_count += LV_W_H_count + 1;
 		for(var i = 2; i <= 10; i++) eval('if(분해조립_v.HV_W_H' + i + ' != \'\' || (분해조립_v.HV_W_H' + i + '_2 != \'\' && 분해조립_v.HV_W_H' + i + '_2 != undefined)) ' + '{ HV_W_H_count += 1; type_add(\'HV W/H\', \'HV_W_H\', no_count, HV_W_H_count); document.getElementById(\'_HV_W_H' + i + '\').value = ' + '분해조립_v.HV_W_H' + i + '; document.getElementById(\'_HV_W_H' + i + '_2\').value = ' + '분해조립_v.HV_W_H' + i + '_2;}');
 
 		_온도센서1.value = 분해조립_v.온도센서1;
 		_온도센서1_2.value = 분해조립_v.온도센서1_2;
-		no_count += HV_W_H_count;
+		no_count += HV_W_H_count + 1;
 		for(var i = 2; i <= 10; i++) eval('if(분해조립_v.온도센서' + i + ' != \'\' || (분해조립_v.온도센서' + i + '_2 != \'\' && 분해조립_v.온도센서' + i + '_2 != undefined)) ' + '{ 온도센서_count += 1; type_add(\'온도센서\', \'온도센서\', no_count, 온도센서_count); document.getElementById(\'_온도센서' + i + '\').value = ' + '분해조립_v.온도센서' + i + '; document.getElementById(\'_온도센서' + i + '_2\').value = ' + '분해조립_v.온도센서' + i + '_2;}');
 
 		_Busbars.value = 분해조립_v.Busbars;
 		_Busbars_2.value = 분해조립_v.Busbars_2;
-		no_count += 1 + 온도센서_count;
+
 		_BMA1.value = 분해조립_v.BMA1;
 		_BMA1_2.value = 분해조립_v.BMA1_2;
+		no_count += 1 + 온도센서_count + 2;
 		for(var i = 2; i <= 10; i++) eval('if(분해조립_v.BMA' + i + ' != \'\' || (분해조립_v.BMA' + i + '_2 != \'\' && 분해조립_v.BMA' + i + '_2 != undefined)) ' + '{ BMA_count += 1; type_add(\'BMA\', \'BMA\', no_count, BMA_count); document.getElementById(\'_BMA' + i + '\').value = ' + '분해조립_v.BMA' + i + '; document.getElementById(\'_BMA' + i + '_2\').value = ' + '분해조립_v.BMA' + i + '_2;}');
 
 		_ETC.value = 분해조립_v.ETC;
@@ -682,12 +683,10 @@ async function request_고품QR() {
 	var now = seoul.toString().substr(0, 19);
 	var 교체후_QR = prompt('교체후 QR을 입력하세요');
 	
-	count(고품정보, { QR: 교체후_QR });
+	findOne_고품정보(고품정보, { QR: 교체후_QR });
 	await delay();	
-	if(고품정보_cnt > 0) {
-		find_고품정보(고품정보, { QR: 교체후_QR });
-		await delay();
 
+	if(고품정보_v != null) {
 		var doc = JSON.parse(JSON.stringify(고품정보_doc));
 		doc.관리번호 = 고품정보_v.관리번호;
 		doc.품명 = 고품정보_v.품명;
@@ -738,7 +737,7 @@ async function type_add(name, type, row_index, no) {
 	const _tb = document.getElementById('_tb');
 	console.log('type:', '_' + type + no);
 	var current_row;
-	current_row = _tb.insertRow(row_index + (no - 1));
+	current_row = _tb.insertRow(row_index + no);
 	var insert_string = "<td><label for=\"_" + type + no + "\"><b>" + name + " " + no + "</b></label></td><td>교환전&nbsp;<input type=\"text\" id=\"_" + type + no + "\" size=\"100\" value=\' \' required>&nbsp;<select name=\"language\" onchange=\"_콤보박스(\'_" + type + no + "\', this);\"><option value=\"\">---</option><option value=\"신품 교체\">신품 교체</option><option value=\"고품 교체\">고품 교체</option><option value=\"N/A\">N/A</option></select><br/>교환후&nbsp;<input type=\"text\" id=\"_" + type + no + "_2\" size=\"100\" value=\' \' required>&nbsp;<select name=\"language\" onchange=\"_콤보박스(\'_" + type + no + "_2\', this);\"><option value=\"\">---</option><option value=\"신품 교체\">신품 교체</option><option value=\"고품 교체\">고품 교체</option><option value=\"N/A\">N/A</option></select></td><td><center><button>-</button></center></td>";
 	console.log(insert_string);
 	current_row.innerHTML = insert_string;
@@ -748,7 +747,8 @@ async function type_add(name, type, row_index, no) {
 function _delete_row(index, no, type) {
 	const _tb = document.getElementById('_tb');
 	type = type.trim();
-	console.log(index, no, type, LWR_C_count);
+	console.log(index, no, type, BMU_count);
+	
 	if(type == 'BMU' && no == BMU_count) {
 
 		_tb.deleteRow(index);
@@ -841,79 +841,79 @@ function _delete_all() {
 	}
 
 	while(온도센서_count > 1) {
-		var index = _tb.rows.length - 6;
+		var index = _tb.rows.length - 8;
 		_tb.deleteRow(index);
 		온도센서_count--;
 	}
 
 	while(HV_W_H_count > 1) {
-		var index = _tb.rows.length - 7;
+		var index = _tb.rows.length - 10;
 		_tb.deleteRow(index);
 		HV_W_H_count--;
 	}
 
 	while(LV_W_H_count > 1) {
-		var index = _tb.rows.length - 8;
+		var index = _tb.rows.length - 12;
 		_tb.deleteRow(index);
 		LV_W_H_count--;
 	}
 
 	while(FuseBox_count > 1) {
-		var index = _tb.rows.length - 9;
+		var index = _tb.rows.length - 14;
 		_tb.deleteRow(index);
 		FuseBox_count--;
 	}
 
 	while(Heating_CNTR_count > 1) {
-		var index = _tb.rows.length - 10;
+		var index = _tb.rows.length - 16;
 		_tb.deleteRow(index);
 		Heating_CNTR_count--;
 	}
 
 	while(HV_CNTR_count > 1) {
-		var index = _tb.rows.length - 11;
+		var index = _tb.rows.length - 18;
 		_tb.deleteRow(index);
 		HV_CNTR_count--;
 	}
 
 	while(Relay_count > 1) {
-		var index = _tb.rows.length - 12;
+		var index = _tb.rows.length - 20;
 		_tb.deleteRow(index);
 		Relay_count--;
 	}
 
 	while(UPR_C_count > 1) {
-		var index = _tb.rows.length - 15;
+		var index = _tb.rows.length - 26;
 		_tb.deleteRow(index);
 		UPR_C_count--;
 	}
 
 	while(LWR_C_count > 1) {
-		var index = _tb.rows.length - 16;
+		var index = _tb.rows.length - 28;
 		_tb.deleteRow(index);
 		LWR_C_count--;
 	}
 
 	while(SPA_count > 1) {
-		var index = _tb.rows.length - 17;
+		var index = _tb.rows.length - 30;
 		_tb.deleteRow(index);
 		SPA_count--;
 	}
 
 	while(PRA_count > 1) {
-		var index = _tb.rows.length - 18;
+		var index = _tb.rows.length - 32;
 		_tb.deleteRow(index);
 		PRA_count--;
 	}
 
 	while(CMU_count > 1) {
-		var index = _tb.rows.length - 19;
+		var index = _tb.rows.length - 34;
 		_tb.deleteRow(index);
 		CMU_count--;
 	}
 
 	while(BMU_count > 1) {
-		var index = _tb.rows.length - 20;
+		var index = _tb.rows.length - 36;
 		_tb.deleteRow(index);
 		BMU_count--;
 	}
