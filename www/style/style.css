@@ -221,6 +221,12 @@ button:hover {
   box-sizing: border-box;
 }
 
+#menu > ul > li > a,
+#menu > ul > li > a > span {
+  display: block;
+  width: 100%;
+  color: #000;
+}
 #menu > ul > li:hover > ul {
   display: block;
 }
@@ -228,7 +234,8 @@ button:hover {
   background: #0a723f;
 }
 
-#menu > ul > li > ul > li:hover > .menu-btn {
+#menu > ul > li > ul > li:hover > .menu-btn,
+#menu > ul > li:hover > a > span {
   color: #fff;
 }
 

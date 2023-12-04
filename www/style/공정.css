@@ -304,7 +304,8 @@ td.process__btn {
   border-left: 1px solid #ddd;
 }
 
-.분해조립 .tb .plus {
+.분해조립 .tb .plus,
+.분해조립 .tb .minus {
   text-align: center;
 }
 .출하정보 .tb {
@@ -318,7 +319,8 @@ td.process__btn {
   align-items: center;
 }
 /* 분해조립, 출하정보 크기 줄이기위함*/
-.t1 td {
+.t1 td,
+.td_plus {
   font-size: 1.2vw;
 }
 .t2 td {
