@@ -26,7 +26,7 @@ async function 특이사항_save() {
 	console.log('save: ', _management_id.value);
 
 	var doc = 특이사항_doc;
-	doc.관리번호 = _management_id.value.trim();
+	doc.관리번호 = _management_id.value.trim().toUpperCase();
 	doc.특이사항 = _특이사항.value;
 	
 	update(특이사항, doc);

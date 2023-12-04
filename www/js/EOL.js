@@ -269,7 +269,7 @@ async function EOL_SAVE() {
 
 	if(BSA재제조_v == null) {
 		var _doc = JSON.parse(JSON.stringify(BSA재제조_doc));
-		_doc.관리번호 = _management_id.value.trim();
+		_doc.관리번호 = _management_id.value.trim().toUpperCase();
 		_doc.EOL투입일 = _공정입고일.value;
 		_doc.EOL = _공정완료일.value;
 		_doc.마지막충전일 = _공정완료일.value;
@@ -278,7 +278,7 @@ async function EOL_SAVE() {
 		await delay();
 	} else {
 		var _doc = {
-			관리번호 : _management_id.value,
+			관리번호 : _management_id.value.toUpperCase(),
 			EOL투입일 : _공정입고일.value,
 			EOL : _공정완료일.value,
 			마지막충전일 : _공정완료일.value

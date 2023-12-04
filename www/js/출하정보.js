@@ -272,14 +272,14 @@ async function 출하정보_save() {
 
 	if(BSA재제조_v == null) {
 		var _doc = JSON.parse(JSON.stringify(BSA재제조_doc));
-		_doc.관리번호 = _management_id.value.trim();
+		_doc.관리번호 = _management_id.value.trim().toUpperCase();
 		_doc.출하검사 = _검사일.value.substr(0, 16);
 
 		update(BSA재제조, _doc);
 		await delay();
 	} else {
 		var _doc = {
-			관리번호 : _management_id.value,
+			관리번호 : _management_id.value.toUpperCase(),
 			출하검사 : _검사일.value.substr(0, 16),
 		}
 		update(BSA재제조, _doc);

@@ -118,7 +118,7 @@ async function 세척_save() {
 
 	if(BSA재제조_v == null) {
 		var _doc = JSON.parse(JSON.stringify(BSA재제조_doc));
-		_doc.관리번호 = _management_id.value.trim();
+		_doc.관리번호 = _management_id.value.trim().toUpperCase();
 		_doc.세척투입일 = _공정입고일.value;
 		_doc.세척 = _공정완료일.value;
 
@@ -126,7 +126,7 @@ async function 세척_save() {
 		await delay();
 	} else {
 		var _doc = {
-			관리번호 : _management_id.value,
+			관리번호 : _management_id.value.toUpperCase(),
 			세척투입일 : _공정입고일.value,
 			세척 : _공정완료일.value,
 		}
@@ -157,7 +157,7 @@ async function 세척_카메라시작() {
 	console.log('save: ', _management_id.value);
 
 	var doc = JSON.parse(JSON.stringify(세척_doc));
-	doc.관리번호 = _management_id.value.trim();
+	doc.관리번호 = _management_id.value.trim().toUpperCase();
 	doc.공정입고일 = _공정입고일.value;
 	doc.공정완료일 = _공정완료일.value;
 	doc.어퍼케이스재사용가능 = _어퍼케이스재사용가능.value;
