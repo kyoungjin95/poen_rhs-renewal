@@ -49,13 +49,13 @@ async function 입고_시작() {
 async function 입고_save() {
 	if (_management_id.value.length == 0) return;
 	console.log("save: ", _management_id.value);
-
+	_차종.value = _차종.value.replace('-', '_');
 	var doc = JSON.parse(JSON.stringify(입고_doc));
 	doc.관리번호 = _management_id.value.trim().toUpperCase();
 	doc.입고일 = _입고일.value;
 	doc.입고처 = _입고처.value;
 	doc.구분 = _구분.value;
-	doc.차종 = _차종.value.replace('-', '_');
+	doc.차종 = _차종.value;
 	doc.품번 = _품번.value;
 	doc.RO_no = _RO_no.value;
 
