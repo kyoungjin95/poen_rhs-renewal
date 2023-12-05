@@ -142,6 +142,11 @@ async function 부품재고_시작() {
 	await delay();
 
 	자재입출고_v.forEach(async function (infos) {
+		var date_start = new Date('2023-04-30');
+		var date_date = new Date(infos.날짜);
+
+		if(date_date < date_start) return;
+
 		if (품번.indexOf(infos.품번) < 0) {
 			품번.push(infos.품번);
 			counts.push(infos.수량);

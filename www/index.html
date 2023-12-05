@@ -42,7 +42,12 @@
             </button>
           </li>
           <li>
-            조회
+            <a href="javascript:void(0)"
+              ><span
+                onclick="pre_관리번호 = ''; loadPage('base/bsa_info.html'); flag_재제조현황 = true;"
+                >조회</span
+              ></a
+            >
             <ul>
               <li>
                 <button
@@ -95,7 +100,12 @@
             </ul>
           </li>
           <li>
-            DATA 입력
+            <a href="javascript:void(0)"
+              ><span
+                onclick="pre_관리번호 = ''; loadPage('base/item-details.html'); flag_상세입력 = true;"
+                >DATA 입력</span
+              ></a
+            >
             <ul>
               <li>
                 <button
@@ -141,7 +151,12 @@
             </button>
           </li>
           <li>
-            현황 조회
+            <a href="javascript:void(0)">
+              <span
+                onclick="loadPage('base/year-status.html' ); flag_년간현황 = true;"
+                >현황 조회</span
+              >
+            </a>
             <ul>
               <li>
                 <button
@@ -185,7 +200,11 @@
               관리자
             </button>
           </li>
-	  <li><button class="menu-btn" onClick="loadPage('base/passwd.html');"><font id="login_info" color='green'></font></button></li>
+          <li>
+            <button class="menu-btn" onClick="loadPage('base/passwd.html');">
+              <font id="login_info" color="green"></font>
+            </button>
+          </li>
           <li><font id="auto_backup_db_status" color="tomato"></font></li>
         </ul>
       </div>

@@ -152,5 +152,5 @@ function start_repeat_대기수량_현황() {
 }
 
 function 이전페이지() {
-	var btn = document.getElementById('item_detail_btn').click();
+	back();
 }

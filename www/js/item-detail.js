@@ -8,8 +8,8 @@ async function 상세입력_시작(is재제조번호 = false) {
 	}
 
 	flag_상세입력 = false;
-
 	first_분해조립 = true;
+
 	기초검사_DTC_count = 0;
 	EOL_DTC_count = 0;
 	BMU_count = 1;
