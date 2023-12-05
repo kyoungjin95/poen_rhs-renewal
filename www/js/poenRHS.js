@@ -3407,4 +3407,5 @@ async function 공정단계자동입력(_관리번호) {
 function back() {
 	loadPage("base/item-details.html");
 	flag_상세입력 = true;
+	first_분해조립 = true;
 }

@@ -35,180 +35,7 @@ async function 분해조립_시작(is재제조 = 0) {
   flag_분해조립 = false;
   flag_loaded = true;
 
-  for (var i = 1; i <= 10; i++)
-    eval("if(typeof _BMU" + i + " != 'undefined') _BMU" + i + ".value = '';");
-  for (var i = 1; i <= 10; i++)
-    eval(
-      "if(typeof _BMU" + i + "_2 != 'undefined') _BMU" + i + "_2.value = '';"
-    );
-  for (var i = 1; i <= 10; i++)
-    eval("if(typeof _CMU" + i + " != 'undefined') _CMU" + i + ".value = '';");
-  for (var i = 1; i <= 10; i++)
-    eval(
-      "if(typeof _CMU" + i + "_2 != 'undefined') _CMU" + i + "_2.value = '';"
-    );
-  for (var i = 1; i <= 10; i++)
-    eval("if(typeof _PRA" + i + " != 'undefined') _PRA" + i + ".value = '';");
-  for (var i = 1; i <= 10; i++)
-    eval(
-      "if(typeof _PRA" + i + "_2 != 'undefined') _PRA" + i + "_2.value = '';"
-    );
-  for (var i = 1; i <= 10; i++)
-    eval("if(typeof _SPA" + i + " != 'undefined') _SPA" + i + ".value = '';");
-  for (var i = 1; i <= 10; i++)
-    eval(
-      "if(typeof _SPA" + i + "_2 != 'undefined') _SPA" + i + "_2.value = '';"
-    );
-  for (var i = 1; i <= 10; i++)
-    eval(
-      "if(typeof _LWR_C" + i + " != 'undefined') _LWR_C" + i + ".value = '';"
-    );
-  for (var i = 1; i <= 10; i++)
-    eval(
-      "if(typeof _LWR_C" +
-        i +
-        "_2 != 'undefined') _LWR_C" +
-        i +
-        "_2.value = '';"
-    );
-  for (var i = 1; i <= 10; i++)
-    eval(
-      "if(typeof _UPR_C" + i + " != 'undefined') _UPR_C" + i + ".value = '';"
-    );
-  for (var i = 1; i <= 10; i++)
-    eval(
-      "if(typeof _UPR_C" +
-        i +
-        "_2 != 'undefined') _UPR_C" +
-        i +
-        "_2.value = '';"
-    );
-  for (var i = 1; i <= 10; i++)
-    eval(
-      "if(typeof _HV_CNTR" +
-        i +
-        " != 'undefined') _HV_CNTR" +
-        i +
-        ".value = '';"
-    );
-  for (var i = 1; i <= 10; i++)
-    eval(
-      "if(typeof _HV_CNTR" +
-        i +
-        "_2 != 'undefined') _HV_CNTR" +
-        i +
-        "_2.value = '';"
-    );
-  for (var i = 1; i <= 10; i++)
-    eval(
-      "if(typeof _Heating_CNTR" +
-        i +
-        " != 'undefined') _Heating_CNTR" +
-        i +
-        ".value = '';"
-    );
-  for (var i = 1; i <= 10; i++)
-    eval(
-      "if(typeof _Heating_CNTR" +
-        i +
-        "_2 != 'undefined') _Heating_CNTR" +
-        i +
-        "_2.value = '';"
-    );
-  for (var i = 1; i <= 10; i++)
-    eval(
-      "if(typeof _FuseBox" +
-        i +
-        " != 'undefined') _FuseBox" +
-        i +
-        ".value = '';"
-    );
-  for (var i = 1; i <= 10; i++)
-    eval(
-      "if(typeof _FuseBox" +
-        i +
-        "_2 != 'undefined') _FuseBox" +
-        i +
-        "_2.value = '';"
-    );
-  for (var i = 1; i <= 10; i++)
-    eval(
-      "if(typeof _LV_W_H" + i + " != 'undefined') _LV_W_H" + i + ".value = '';"
-    );
-  for (var i = 1; i <= 10; i++)
-    eval(
-      "if(typeof _LV_W_H" +
-        i +
-        "_2 != 'undefined') _LV_W_H" +
-        i +
-        "_2.value = '';"
-    );
-  for (var i = 1; i <= 10; i++)
-    eval(
-      "if(typeof _HV_W_H" + i + " != 'undefined') _HV_W_H" + i + ".value = '';"
-    );
-  for (var i = 1; i <= 10; i++)
-    eval(
-      "if(typeof _HV_W_H" +
-        i +
-        "_2 != 'undefined') _HV_W_H" +
-        i +
-        "_2.value = '';"
-    );
-  for (var i = 1; i <= 10; i++)
-    eval(
-      "if(typeof _온도센서" +
-        i +
-        " != 'undefined') _온도센서" +
-        i +
-        ".value = '';"
-    );
-  for (var i = 1; i <= 10; i++)
-    eval(
-      "if(typeof _온도센서" +
-        i +
-        "_2 != 'undefined') _온도센서" +
-        i +
-        "_2.value = '';"
-    );
-  for (var i = 1; i <= 10; i++)
-    eval(
-      "if(typeof _Relay" + i + " != 'undefined') _Relay" + i + ".value = '';"
-    );
-  for (var i = 1; i <= 10; i++)
-    eval(
-      "if(typeof _Relay" +
-        i +
-        "_2 != 'undefined') _Relay" +
-        i +
-        "_2.value = '';"
-    );
-  for (var i = 1; i <= 10; i++)
-    eval("if(typeof _BMA" + i + " != 'undefined') _BMA" + i + ".value = '';");
-  for (var i = 1; i <= 10; i++)
-    eval(
-      "if(typeof _BMA" + i + "_2 != 'undefined') _BMA" + i + "_2.value = '';"
-    );
-
-  _delete_all();
-
-  BMU_count = 1;
-  CMU_count = 1;
-  PRA_count = 1;
-  SPA_count = 1;
-  LWR_C_count = 1;
-  UPR_C_count = 1;
-  PBE_count = 1;
-  Gasket_count = 1;
-  Relay_count = 1;
-  HV_CNTR_count = 1;
-  Heating_CNTR_count = 1;
-  FuseBox_count = 1;
-  LV_W_H_count = 1;
-  HV_W_H_count = 1;
-  온도센서_count = 1;
-  Busbars_count = 1;
-  BMA_count = 1;
+  분해조립_loading();
 
   if (is재제조 == 0) {
     if (_management_id.value.length == 0) return;
@@ -1880,4 +1707,187 @@ async function 분해조립_list() {
 
     분해조립_시작(0);
   });
+}
+
+function 분해조립_loading() {
+  for (var i = 1; i <= 10; i++)
+    eval("if(typeof _BMU" + i + " != 'undefined') _BMU" + i + ".value = '';");
+  for (var i = 1; i <= 10; i++)
+    eval(
+      "if(typeof _BMU" + i + "_2 != 'undefined') _BMU" + i + "_2.value = '';"
+    );
+  for (var i = 1; i <= 10; i++)
+    eval("if(typeof _CMU" + i + " != 'undefined') _CMU" + i + ".value = '';");
+  for (var i = 1; i <= 10; i++)
+    eval(
+      "if(typeof _CMU" + i + "_2 != 'undefined') _CMU" + i + "_2.value = '';"
+    );
+  for (var i = 1; i <= 10; i++)
+    eval("if(typeof _PRA" + i + " != 'undefined') _PRA" + i + ".value = '';");
+  for (var i = 1; i <= 10; i++)
+    eval(
+      "if(typeof _PRA" + i + "_2 != 'undefined') _PRA" + i + "_2.value = '';"
+    );
+  for (var i = 1; i <= 10; i++)
+    eval("if(typeof _SPA" + i + " != 'undefined') _SPA" + i + ".value = '';");
+  for (var i = 1; i <= 10; i++)
+    eval(
+      "if(typeof _SPA" + i + "_2 != 'undefined') _SPA" + i + "_2.value = '';"
+    );
+  for (var i = 1; i <= 10; i++)
+    eval(
+      "if(typeof _LWR_C" + i + " != 'undefined') _LWR_C" + i + ".value = '';"
+    );
+  for (var i = 1; i <= 10; i++)
+    eval(
+      "if(typeof _LWR_C" +
+        i +
+        "_2 != 'undefined') _LWR_C" +
+        i +
+        "_2.value = '';"
+    );
+  for (var i = 1; i <= 10; i++)
+    eval(
+      "if(typeof _UPR_C" + i + " != 'undefined') _UPR_C" + i + ".value = '';"
+    );
+  for (var i = 1; i <= 10; i++)
+    eval(
+      "if(typeof _UPR_C" +
+        i +
+        "_2 != 'undefined') _UPR_C" +
+        i +
+        "_2.value = '';"
+    );
+  for (var i = 1; i <= 10; i++)
+    eval(
+      "if(typeof _HV_CNTR" +
+        i +
+        " != 'undefined') _HV_CNTR" +
+        i +
+        ".value = '';"
+    );
+  for (var i = 1; i <= 10; i++)
+    eval(
+      "if(typeof _HV_CNTR" +
+        i +
+        "_2 != 'undefined') _HV_CNTR" +
+        i +
+        "_2.value = '';"
+    );
+  for (var i = 1; i <= 10; i++)
+    eval(
+      "if(typeof _Heating_CNTR" +
+        i +
+        " != 'undefined') _Heating_CNTR" +
+        i +
+        ".value = '';"
+    );
+  for (var i = 1; i <= 10; i++)
+    eval(
+      "if(typeof _Heating_CNTR" +
+        i +
+        "_2 != 'undefined') _Heating_CNTR" +
+        i +
+        "_2.value = '';"
+    );
+  for (var i = 1; i <= 10; i++)
+    eval(
+      "if(typeof _FuseBox" +
+        i +
+        " != 'undefined') _FuseBox" +
+        i +
+        ".value = '';"
+    );
+  for (var i = 1; i <= 10; i++)
+    eval(
+      "if(typeof _FuseBox" +
+        i +
+        "_2 != 'undefined') _FuseBox" +
+        i +
+        "_2.value = '';"
+    );
+  for (var i = 1; i <= 10; i++)
+    eval(
+      "if(typeof _LV_W_H" + i + " != 'undefined') _LV_W_H" + i + ".value = '';"
+    );
+  for (var i = 1; i <= 10; i++)
+    eval(
+      "if(typeof _LV_W_H" +
+        i +
+        "_2 != 'undefined') _LV_W_H" +
+        i +
+        "_2.value = '';"
+    );
+  for (var i = 1; i <= 10; i++)
+    eval(
+      "if(typeof _HV_W_H" + i + " != 'undefined') _HV_W_H" + i + ".value = '';"
+    );
+  for (var i = 1; i <= 10; i++)
+    eval(
+      "if(typeof _HV_W_H" +
+        i +
+        "_2 != 'undefined') _HV_W_H" +
+        i +
+        "_2.value = '';"
+    );
+  for (var i = 1; i <= 10; i++)
+    eval(
+      "if(typeof _온도센서" +
+        i +
+        " != 'undefined') _온도센서" +
+        i +
+        ".value = '';"
+    );
+  for (var i = 1; i <= 10; i++)
+    eval(
+      "if(typeof _온도센서" +
+        i +
+        "_2 != 'undefined') _온도센서" +
+        i +
+        "_2.value = '';"
+    );
+  for (var i = 1; i <= 10; i++)
+    eval(
+      "if(typeof _Relay" + i + " != 'undefined') _Relay" + i + ".value = '';"
+    );
+  for (var i = 1; i <= 10; i++)
+    eval(
+      "if(typeof _Relay" +
+        i +
+        "_2 != 'undefined') _Relay" +
+        i +
+        "_2.value = '';"
+    );
+  for (var i = 1; i <= 10; i++)
+    eval("if(typeof _BMA" + i + " != 'undefined') _BMA" + i + ".value = '';");
+  for (var i = 1; i <= 10; i++)
+    eval(
+      "if(typeof _BMA" + i + "_2 != 'undefined') _BMA" + i + "_2.value = '';"
+    );
+
+  _delete_all();
+
+  BMU_count = 1;
+  CMU_count = 1;
+  PRA_count = 1;
+  SPA_count = 1;
+  LWR_C_count = 1;
+  UPR_C_count = 1;
+  PBE_count = 1;
+  Gasket_count = 1;
+  Relay_count = 1;
+  HV_CNTR_count = 1;
+  Heating_CNTR_count = 1;
+  FuseBox_count = 1;
+  LV_W_H_count = 1;
+  HV_W_H_count = 1;
+  온도센서_count = 1;
+  Busbars_count = 1;
+  BMA_count = 1;
+
+}
+
+function 분해조립_exit() {
+	분해조립_loading();
+	back();
 }
