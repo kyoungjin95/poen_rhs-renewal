@@ -343,9 +343,9 @@ function _절연검사p_콤보박스(e) {
 
 	document.getElementById('_절연검사P').value = value;
 	if(value == 'OK') {
-		document.getElementById('_절연검사P_label').innerHTML = '절연검사P 입력값';
+		document.getElementById('_절연검사P_label').innerHTML = '절연검사+ 입력값';
 	} else if(value == '미실시') {
-		document.getElementById('_절연검사P_label').innerHTML = '절연검사P 특이사항';
+		document.getElementById('_절연검사P_label').innerHTML = '절연검사+ 특이사항';
 	}
 }
 
@@ -354,9 +354,9 @@ function _절연검사M_콤보박스(e) {
 
 	document.getElementById('_절연검사M').value = value;
 	if(value == 'OK') {
-		document.getElementById('_절연검사M_label').innerHTML = '절연검사M 입력값';
+		document.getElementById('_절연검사M_label').innerHTML = '절연검사- 입력값';
 	} else if(value == '미실시') {
-		document.getElementById('_절연검사M_label').innerHTML = '절연검사M 특이사항';
+		document.getElementById('_절연검사M_label').innerHTML = '절연검사- 특이사항';
 	}
 }
 
@@ -365,9 +365,9 @@ function _절연저항HVP_콤보박스(e) {
 
 	document.getElementById('_절연저항HVP').value = value;
 	if(value == 'OK') {
-		document.getElementById('_절연저항HVP_label').innerHTML = '절연검사HVP 입력값';
+		document.getElementById('_절연저항HVP_label').innerHTML = '절연저항HV+ 입력값';
 	} else if(value == '미실시') {
-		document.getElementById('_절연검사HVP_label').innerHTML = '절연검사HVP 특이사항';
+		document.getElementById('_절연저항HVP_label').innerHTML = '절연저항HV+ 특이사항';
 	}
 }
 
@@ -376,23 +376,33 @@ function _절연저항HVN_콤보박스(e) {
 
 	document.getElementById('_절연저항HVN').value = value;
 	if(value == 'OK') {
-		document.getElementById('_절연저항HVN_label').innerHTML = '절연검사HVN 입력값';
+		document.getElementById('_절연저항HVN_label').innerHTML = '절연저항HV- 입력값';
 	} else if(value == '미실시') {
-		document.getElementById('_절연검사HVN_label').innerHTML = '절연검사HVN 특이사항';
+		document.getElementById('_절연저항HVN_label').innerHTML = '절연저항HV- 특이사항';
 	}
 }
 
-function _통신전압_팩전압_콤보박스(e) {
+function _통신검사_팩전압_콤보박스(e) {
 	const value = e.value;
 
-	document.getElementById('_통신전압_팩전압').value = value;
+	document.getElementById('_통신검사_팩전압').value = value;
 	if(value == 'OK') {
-		document.getElementById('_통신전압_팩전압_label').innerHTML = '통신전압 팩전압 입력값';
+		document.getElementById('_통신검사_팩전압_label').innerHTML = '통신검사 팩전압 입력값';
 	} else if(value == '미실시') {
-		document.getElementById('_통신전압_팩전압_label').innerHTML = '통신전압 팩전압 특이사항';
+		document.getElementById('_통신검사_팩전압_label').innerHTML = '통신검사 팩전압 특이사항';
 	}
 }
 
+function _통신검사_셀전압편차_콤보박스(e) {
+	const value = e.value;
+
+	document.getElementById('_통신검사_셀전압편차').value = value;
+	if(value == 'OK') {
+		document.getElementById('_통신검사_셀전압편차_label').innerHTML = '통신검사 셀전압편차 입력값';
+	} else if(value == '미실시') {
+		document.getElementById('_통신검사_셀전압편차_label').innerHTML = '통신검사 셀전압편차 특이사항';
+	}
+}
 
 function _통신검사_릴레이구동_콤보박스(e) {
 	const value = e.value;
@@ -400,7 +410,9 @@ function _통신검사_릴레이구동_콤보박스(e) {
 	document.getElementById('_통신검사_릴레이구동').value = value;
 	if(value == 'OK') {
 		document.getElementById('_통신검사_릴레이구동_label').innerHTML = '통신검사 릴레이구동 입력값';
-	} else if(value == '미실시') {
+	} else if(value == 'NG') {
+		document.getElementById('_통신검사_릴레이구동_label').innerHTML = '통신검사 릴레이구동 특이사항';
+	} else if(value == '통신불가') {
 		document.getElementById('_통신검사_릴레이구동_label').innerHTML = '통신검사 릴레이구동 특이사항';
 	}
 }
