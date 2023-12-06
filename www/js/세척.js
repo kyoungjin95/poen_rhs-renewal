@@ -90,11 +90,18 @@ async function 세척_save() {
 	if(_management_id.value.length == 0) return;
 	console.log('save: ', _management_id.value);
 
-	var doc = 세척_doc;
+	var doc = JSON.parse(JSON.stringify(세척_doc));
+
+	var DateTime = luxon.DateTime;
+	var seoul = DateTime.local().setZone("Asia/Seoul");
+	var now = seoul.toString().slice(0, 19);
+
 	doc.관리번호 = _management_id.value.trim().toUpperCase();
 	doc.재제조번호 = _재제조번호.value;
-	doc.공정입고일 = _공정입고일.value;
-	doc.공정완료일 = _공정완료일.value;
+	if(doc.공정입고일 == '') doc.공정입고일 = _공정입고일.value;
+	if(level == '관리자') doc.공정입고일 = _공정입고일.value;
+	doc.공정완료일 = now; //_공정완료일.value;
+	if(level == '관리자') doc.공정완료일 = _공정완료일.value;
 	doc.어퍼케이스재사용가능 = _어퍼케이스재사용가능.value;
 	doc.기밀검사_케이스 = _기밀검사_케이스.value;
 	doc.기밀검사_케이스_특이사항 = _기밀검사_케이스_특이사항.value;
@@ -159,10 +166,15 @@ async function 세척_카메라시작() {
 	if(_management_id.value.length == 0) return;
 	console.log('save: ', _management_id.value);
 
+	var DateTime = luxon.DateTime;
+	var seoul = DateTime.local().setZone("Asia/Seoul");
+	var now = seoul.toString().slice(0, 19);
+
 	var doc = JSON.parse(JSON.stringify(세척_doc));
 	doc.관리번호 = _management_id.value.trim().toUpperCase();
-	doc.공정입고일 = _공정입고일.value;
-	doc.공정완료일 = _공정완료일.value;
+	if(_공정입고일.value == '') doc.공정입고일 = now;//_공정입고일.value;
+	doc.공정완료일 = now;
+	if(level == '관리자') doc.공정완료일 = _공정완료일.value;
 	doc.어퍼케이스재사용가능 = _어퍼케이스재사용가능.value;
 	doc.기밀검사_케이스 = _기밀검사_케이스.value;
 	doc.기밀검사_케이스_특이사항 = _기밀검사_케이스_특이사항.value;
@@ -185,6 +197,31 @@ async function 세척_카메라시작() {
 	세척_사진촬영(doc.관리번호);
 }
 
+function 세척_updateFilter() {
+  var fieldEl = document.getElementById("filter-field");
+  var typeEl = document.getElementById("filter-type");
+  var valueEl = document.getElementById("filter-value");
+
+  var filterVal = fieldEl.options[fieldEl.selectedIndex].value;
+  var typeVal = typeEl.options[typeEl.selectedIndex].value;
+
+  var filter = filterVal == "function" ? customFilter : filterVal;
+
+  if (filterVal == "function") {
+    typeEl.disabled = true;
+    valueEl.disabled = true;
+  } else {
+    typeEl.disabled = false;
+    valueEl.disabled = false;
+  }
+
+  if (filterVal) {
+    세척_list_table.setFilter(filter, typeVal, valueEl.value);
+  }
+}
+
+var 세척_list_table;
+
 async function 세척_list() {
 	findOne_BSA재제조(BSA재제조, { 공정단계 : { $ne : '출하' }, 입고 : { $ne : ''}, 세척 : { $eq : '' }, 기초검사 : { $eq : '' }, 분해조립 : { $eq : '' }, 성능검사 : { $eq : '' }, EOL : { $eq : '' } ,  소재지 : { $nin : ['공정대기', '품질대기'] }, 완전분해 : { $eq : ''}, 폐기 : { $eq : '' }, 출하 : { $eq : '' }, 구분 : { $nin: ['일반기타', '보증기타']} });
 	await delay();
@@ -194,7 +231,7 @@ async function 세척_list() {
 		await delay();
 
 	}
-	var table = new Tabulator("#grid_list", {
+	세척_list_table = new Tabulator("#grid_list", {
 		layout: "resizableColumnFit",
 		data: BSA재제조_v,
 		height: "400px",
@@ -325,7 +362,7 @@ async function 세척_list() {
 		],
 	});
 	
-	table.on("rowClick", async function (e, row) {
+	세척_list_table.on("rowClick", async function (e, row) {
 		console.log("selected 관리번호: ", row.getData().관리번호);
 
 		_management_id.value = row.getData().관리번호;
@@ -333,4 +370,29 @@ async function 세척_list() {
 		await sleep(1);
 		세척_시작();
 	});
+
+	//Update filters on value change
+	document
+		.getElementById("filter-field")
+		.addEventListener("change", 세척_updateFilter);
+	document
+		.getElementById("filter-type")
+		.addEventListener("change", 세척_updateFilter);
+	document
+		.getElementById("filter-value")
+		.addEventListener("keyup", 세척_updateFilter);
+
+	//Clear filters on "Clear Filters" button click
+	document
+		.getElementById("filter-clear")
+		.addEventListener("click", function () {
+			var fieldEl = document.getElementById("filter-field");
+			var typeEl = document.getElementById("filter-type");
+			var valueEl = document.getElementById("filter-value");
+			fieldEl.value = "";
+			typeEl.value = "=";
+			valueEl.value = "";
+
+			세척_list_table.clearFilter();
+		});
 }

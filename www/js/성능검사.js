@@ -99,15 +99,21 @@ async function 성능검사_save() {
 	if(_management_id.value.length == 0) return;
 	console.log('save: ', _management_id.value);
 
+	var DateTime = luxon.DateTime;
+	var seoul = DateTime.local().setZone("Asia/Seoul");
+	var now = seoul.toString().slice(0, 19);
+
 	var doc = JSON.parse(JSON.stringify(성능검사_doc));
 	doc.관리번호 = _management_id.value.trim().toUpperCase();
-	doc.공정입고일 = _공정입고일.value;
+	if(doc.공정입고일 == '') doc.공정입고일 = now; //_공정입고일.value;
+	if(level == '관리자') doc.공정입고일 = _공정입고일.value;
 	doc.용량평가 = _용량평가.value;
 	doc.SOC60Percent = _SOC60Percent.value;
 	doc.DCIR = _DCIR.value;
 	doc.DCIR_Charge = _DCIR_Charge.value;
 	doc.DCIR_Discharge = _DCIR_Discharge.value;
-	doc.공정완료일 = _공정완료일.value;
+	doc.공정완료일 = now; //_공정완료일.value;
+	if(level == '관리자') doc.공정완료일 = _공정완료일.value;
 	doc.검사자 = _검사자.value;
 	
 	update(성능검사, doc);
@@ -150,6 +156,30 @@ async function 성능검사_save() {
 	//이전페이지();
 }
 
+function 성능검사_updateFilter() {
+  var fieldEl = document.getElementById("filter-field");
+  var typeEl = document.getElementById("filter-type");
+  var valueEl = document.getElementById("filter-value");
+
+  var filterVal = fieldEl.options[fieldEl.selectedIndex].value;
+  var typeVal = typeEl.options[typeEl.selectedIndex].value;
+
+  var filter = filterVal == "function" ? customFilter : filterVal;
+
+  if (filterVal == "function") {
+    typeEl.disabled = true;
+    valueEl.disabled = true;
+  } else {
+    typeEl.disabled = false;
+    valueEl.disabled = false;
+  }
+
+  if (filterVal) {
+    성능검사_list_table.setFilter(filter, typeVal, valueEl.value);
+  }
+}
+
+var 성능검사_list_table;
 async function 성능검사_list() {
 	findOne_BSA재제조(BSA재제조, {공정단계 : { $ne : '출하' }, 분해조립 : { $ne : '' }, 성능검사 : { $eq : '' }, EOL : { $eq : '' } ,  소재지 : { $nin : ['공정대기', '품질대기'] }, 완전분해 : { $eq : ''}, 폐기 : { $eq : '' }, 출하 : { $eq : '' }, 구분 : { $nin: ['일반기타', '보증기타']} });
 	await delay();
@@ -159,7 +189,7 @@ async function 성능검사_list() {
 		await delay();
 	}
 
-	var table = new Tabulator("#grid_list", {
+	성능검사_list_table = new Tabulator("#grid_list", {
 		layout: "resizableColumnFit",
 		data: BSA재제조_v,
 		height: "400px",
@@ -290,7 +320,7 @@ async function 성능검사_list() {
 		],
 	});
 	
-	table.on("rowClick", async function (e, row) {
+	성능검사_list_table.on("rowClick", async function (e, row) {
 		console.log("selected 관리번호: ", row.getData().관리번호);
 
 		_management_id.value = row.getData().관리번호;
@@ -299,4 +329,29 @@ async function 성능검사_list() {
 
 		성능검사_시작();
 	});
+
+	//Update filters on value change
+	document
+		.getElementById("filter-field")
+		.addEventListener("change", 성능검사_updateFilter);
+	document
+		.getElementById("filter-type")
+		.addEventListener("change", 성능검사_updateFilter);
+	document
+		.getElementById("filter-value")
+		.addEventListener("keyup", 성능검사_updateFilter);
+
+	//Clear filters on "Clear Filters" button click
+	document
+		.getElementById("filter-clear")
+		.addEventListener("click", function () {
+			var fieldEl = document.getElementById("filter-field");
+			var typeEl = document.getElementById("filter-type");
+			var valueEl = document.getElementById("filter-value");
+			fieldEl.value = "";
+			typeEl.value = "=";
+			valueEl.value = "";
+
+			성능검사_list_table.clearFilter();
+		});
 }

@@ -51,8 +51,14 @@ async function 입고_save() {
 	console.log("save: ", _management_id.value);
 	_차종.value = _차종.value.replace('-', '_');
 	var doc = JSON.parse(JSON.stringify(입고_doc));
+
+	var DateTime = luxon.DateTime;
+	var seoul = DateTime.local().setZone("Asia/Seoul");
+	var now = seoul.toString().slice(0, 19);
+
 	doc.관리번호 = _management_id.value.trim().toUpperCase();
-	doc.입고일 = _입고일.value;
+	doc.입고일 = now;//_입고일.value;
+	if(level == '관리자') doc.입고일 = _입고일.value;
 	doc.입고처 = _입고처.value;
 	doc.구분 = _구분.value;
 	doc.차종 = _차종.value;
