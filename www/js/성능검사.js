@@ -129,7 +129,7 @@ async function 성능검사_save() {
 
 	if(BSA재제조_v == null) {
 		var _doc = JSON.parse(JSON.stringify(BSA재제조_doc));
-		_doc.관리번호 = _management_id.value.trim();
+		_doc.관리번호 = _management_id.value.trim().toUpperCase();
 		_doc.성능검사투입일 ; _공정입고일.value;
 		_doc.성능검사 = _공정완료일.value;
 
@@ -137,7 +137,7 @@ async function 성능검사_save() {
 		await delay();
 	} else {
 		var _doc = {
-			관리번호 : _management_id.value,
+			관리번호 : _management_id.value.toUpperCase(),
 			성능검사투입일 : _공정입고일.value,
 			성능검사 : _공정완료일.value
 		}

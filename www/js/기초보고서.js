@@ -77,7 +77,7 @@ async function 기초보고서_apply() {
 	_생산일.innerHTML = document.getElementById("_생산일_input").value;
 	_판매일.innerHTML = document.getElementById("_판매일_input").value;
 	_수리일.innerHTML = document.getElementById("_수리일_input").value;
-	_관리번호.innerHTML = _management_id.value.trim();
+	_관리번호.innerHTML = _management_id.value.trim().toUpperCase();
 	_필드현상.innerHTML = document.getElementById("_필드현상_input").value;
 	_센터조치.innerHTML = document.getElementById("_센터조치_input").value;
 	_결과.innerHTML = document.getElementById("_결과_input").value;
@@ -179,7 +179,7 @@ async function 기초보고서_조회(is재제조번호 = false) {
 		_주행거리.innerHTML = 기초검사_v.주행거리 == undefined ? "" : 기초검사_v.주행거리;
 		_차량번호.innerHTML = 기초검사_v.차량번호 == undefined ? "" : 기초검사_v.차량번호;
 
-		_관리번호.value = _management_id.value.trim();
+		_관리번호.value = _management_id.value.trim().toUpperCase();
 
 		_작성자.innerHTML = worker;
 

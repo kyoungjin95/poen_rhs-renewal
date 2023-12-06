@@ -22,6 +22,7 @@ async function 입고_시작() {
 	if (_management_id.value.length == 0) return;
 	if ((_management_id.value == "") | (_management_id.value == "none")) return;
 
+	_management_id.value = _management_id.value
 	count(입고, { 관리번호: _management_id.value });
 	await delay();
 	if (입고_cnt > 0) {
@@ -48,7 +49,7 @@ async function 입고_시작() {
 async function 입고_save() {
 	if (_management_id.value.length == 0) return;
 	console.log("save: ", _management_id.value);
-
+	_차종.value = _차종.value.replace('-', '_');
 	var doc = JSON.parse(JSON.stringify(입고_doc));
 	doc.관리번호 = _management_id.value.trim().toUpperCase();
 	doc.입고일 = _입고일.value;
