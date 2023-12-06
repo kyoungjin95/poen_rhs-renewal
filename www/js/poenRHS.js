@@ -552,6 +552,7 @@ const 성능검사_doc = {
 	DCIR: '',
 	DCIR_Charge: '',
 	DCIR_Discharge: '',
+	분해조립_재의뢰사유: '',
 	공정완료일: '',
 	비고: '',
 	검사자: ''
@@ -1531,8 +1532,7 @@ const 성능검사_ = {
 	DCIR: 1,
 	DCIR_Charge: 1,
 	DCIR_Discharge: 1,
-	절연저항_HVP: 1,
-	절연저항_HVN: 1,
+	분해조립_재의뢰사유: 1,
 	공정완료일: 1,
 	비고: 1,
 	검사자: 1
@@ -3401,7 +3401,7 @@ async function 공정단계찾기__(_관리번호) {
 	return 공정단계;
 }
 
-async function 공정단계자동입력(_관리번호) {
+async function 공정단계자동입력(_관리번호, 단계 = '') {
 		findOne_BSA재제조(BSA재제조, { 관리번호 :  _관리번호,  공정단계 : { $ne : '출하' } });
 		await delay();
 
@@ -3416,6 +3416,7 @@ async function 공정단계자동입력(_관리번호) {
 		if(BSA재제조_v.EOL != '') _공정단계 = '제조완료';
 		if(BSA재제조_v.출하검사 != '') _공정단계 = '제조완료';
 		if(BSA재제조_v.출하 != '') _공정단계 = '출하';
+		if(단계 != '') _공정단계 = 단계;
 
 		var doc = {
 			관리번호 : _관리번호,

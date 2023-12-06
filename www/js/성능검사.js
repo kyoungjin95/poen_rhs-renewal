@@ -77,6 +77,7 @@ async function 성능검사_시작(is재제조 = 0) {
 		_DCIR.value = 성능검사_v.DCIR;
 		_DCIR_Charge.value    = 성능검사_v.DCIR_Charge;
 		_DCIR_Discharge.value =	성능검사_v.DCIR_Discharge;
+		_분해조립_재의뢰사유.value = 성능검사_v.분해조립_재의뢰사유;
 		_공정완료일.value = 성능검사_v.공정완료일;
 		_검사자.value = 성능검사_v.검사자;
 	} else {
@@ -86,6 +87,7 @@ async function 성능검사_시작(is재제조 = 0) {
 		_DCIR.value = '';
 		_DCIR_Charge.value    = '';
 		_DCIR_Discharge.value =	'';
+		_분해조립_재의뢰사유.value = '';
 		_공정완료일.value = '0000-00-00T00:00';
 		_검사자.value = worker;
 	}
@@ -112,6 +114,7 @@ async function 성능검사_save() {
 	doc.DCIR = _DCIR.value;
 	doc.DCIR_Charge = _DCIR_Charge.value;
 	doc.DCIR_Discharge = _DCIR_Discharge.value;
+	doc.분해조립_재의뢰사유 = _분해조립_재의뢰사유.value;
 	doc.공정완료일 = now; //_공정완료일.value;
 	if(level == '관리자') doc.공정완료일 = _공정완료일.value;
 	doc.검사자 = _검사자.value;
@@ -137,22 +140,35 @@ async function 성능검사_save() {
 		var _doc = JSON.parse(JSON.stringify(BSA재제조_doc));
 		_doc.관리번호 = _management_id.value.trim().toUpperCase();
 		_doc.성능검사투입일 ; _공정입고일.value;
-		_doc.성능검사 = _공정완료일.value;
-
+		if(_분해조립_재의뢰사유.value == '') {
+			_doc.성능검사 = _공정완료일.value;
+		} else {
+			_doc.분해조립 = '';
+			_doc.성능검사 = '';
+		}
+		
 		update(BSA재제조, _doc);
 		await delay();
 	} else {
-		var _doc = {
-			관리번호 : _management_id.value.toUpperCase(),
-			성능검사투입일 : _공정입고일.value,
-			성능검사 : _공정완료일.value
+		if(_분해조립_재의뢰사유.value == '') {
+			var _doc = {
+				관리번호 : _management_id.value.toUpperCase(),
+				성능검사투입일 : _공정입고일.value,
+				성능검사 : _공정완료일.value
+			}
+		} else {
+			var _doc = {
+				관리번호 : _management_id.value.toUpperCase(),
+				성능검사투입일 : _공정입고일.value,
+				분해조립 : '',
+				성능검사 : ''
+			}
 		}
 
 		update(BSA재제조, _doc);
 		await delay();
 	}
 
-	await 공정단계자동입력(_management_id.value);
 	//이전페이지();
 }
 

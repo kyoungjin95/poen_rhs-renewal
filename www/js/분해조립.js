@@ -495,6 +495,13 @@ async function 분해조립_시작(is재제조 = 0) {
 		_ETC.value = 분해조립_v.ETC;
 		_공정완료일.value = 분해조립_v.공정완료일;
 		_작업자.value = 분해조립_v.작업자;
+
+		find(성능검사, _management_id.value);
+		await delay();
+
+		if(성능검사_v != null) {
+			_분해조립_재의뢰사유.value = 성능검사_v.분해조립_재의뢰사유;
+		}
 	} else {
 		_공정입고일.value = "0000-00-00T00:00";
 		for (var i = 1; i <= 10; i++)
