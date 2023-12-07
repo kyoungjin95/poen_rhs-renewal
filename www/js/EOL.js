@@ -4,6 +4,7 @@ function EOL_재제조번호_시작() {
 
 var EOL_DTC_count = 0;
 
+var 사전_EOL_입고일 = '';
 async function EOL_시작(is재제조 = 0) {
 	if(worker == '') return;
 	while(_management_id == undefined) {
@@ -38,6 +39,15 @@ async function EOL_시작(is재제조 = 0) {
 		} else {
 			_재제조번호.value = '';
 			_RO_no.value = '';
+
+			var yes = prompt('EOL 공정을 시작하겠습니까?(y/n)');
+			if(yes == 'y') {
+				var DateTime = luxon.DateTime;
+				var seoul = DateTime.local().setZone("Asia/Seoul");
+				var now = seoul.toString().slice(0, 19);
+
+				사전_EOL_입고일 = now;
+			}
 		}
 	} else if(is재제조 == 1) {
 		if(_재제조번호.value.length == 0) return;
@@ -77,7 +87,7 @@ async function EOL_시작(is재제조 = 0) {
 			if(_UPR_C조립.value == 'OK') {
 				document.getElementById('_UPR_C조립_label').innerHTML = 'UPR_C조립 입력값';
 			} else {
-				document.getElementById('_UPR_C_label').innerHTML = 'UPR_C조립 특이사항';
+				document.getElementById('_UPR_C조립_label').innerHTML = 'UPR_C조립 특이사항';
 			}
 			_기밀검사_케이스.value = EOL_v.기밀검사_케이스;
 			if(_기밀검사_케이스.value == 'OK') {
@@ -106,16 +116,16 @@ async function EOL_시작(is재제조 = 0) {
 				document.getElementById('_절연검사M_label').innerHTML = '절연검사- 특이사항';
 			}
 			_절연저항HVP.value = EOL_v.절연저항_HVP;
-			if(_절연검사HVP.value == 'OK') {
-				document.getElementById('_절연검사HVP_label').innerHTML = '절연저항HV+ 입력값';
+			if(_절연저항HVP.value == 'OK') {
+				document.getElementById('_절연저항HVP_label').innerHTML = '절연저항HV+ 입력값';
 			} else {
-				document.getElementById('_절연검사HVP_label').innerHTML = '절연저항HV+ 특이사항';
+				document.getElementById('_절연저항HVP_label').innerHTML = '절연저항HV+ 특이사항';
 			}
 			_절연저항HVN.value = EOL_v.절연저항_HVN;
-			if(_절연검사HVN.value == 'OK') {
-				document.getElementById('_절연검사HVN_label').innerHTML = '절연저항HV- 입력값';
+			if(_절연저항HVN.value == 'OK') {
+				document.getElementById('_절연저항HVN_label').innerHTML = '절연저항HV- 입력값';
 			} else {
-				document.getElementById('_절연검사HVN_label').innerHTML = '절연저항HV- 특이사항';
+				document.getElementById('_절연저항HVN_label').innerHTML = '절연저항HV- 특이사항';
 			}
 			_통신검사_DTC코드1.value = EOL_v.통신검사_DTC코드1;
 			_통신검사_DTC코드2.value = EOL_v.통신검사_DTC코드2;
@@ -210,7 +220,7 @@ async function EOL_SAVE() {
 	var doc = JSON.parse(JSON.stringify(EOL_doc));
 	console.log('new doc:', doc);
 	doc.관리번호 = _management_id.value.trim().toUpperCase();
-	if(doc.공정입고일 == '') doc.공정입고일 = now; //_공정입고일.value;
+	if(doc.공정입고일 == '') doc.공정입고일 = 사전_EOL_입고일; //_공정입고일.value;
 	if(level == '관리자') doc.공정입고일 = _공정입고일.value;
 	doc.UPR_C조립 = _UPR_C조립.value;
 	doc.UPR_C조립_특이사항 = _UPR_C조립_특이사항.value;

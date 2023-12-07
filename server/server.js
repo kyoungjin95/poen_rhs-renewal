@@ -254,6 +254,14 @@ io.on('connection', async function(socket) {
 		socket.emit('delete_result', result_count);
 	});
 
+	socket.on('drop', async function(worker, col) {
+		console.log('request drop:', col);
+		if(account.login == false) return;
+		logger.info('worker:'+ worker + ' drop col:' + col);
+		const result = await drop(col);
+		socket.emit('drop_result', result);
+	});
+
 	process.on('exit', function(code) {
 		console.log('Exit : ', code);
 		client.close();
@@ -393,6 +401,23 @@ async function findOne(col, query, options) {
       },
     };
     */
+async function drop(col) {
+	try {
+		const database = client.db(db_name);
+		const collection = await database.collection(col);
+		const result = await collection.drop(function(err, result) {
+			if(err) throw err;
+			if(result) console.log(col, "Collection successfully dropped");
+		});
+		return result;
+	} catch(err) {
+		console.error(err);
+		logger.info(err);
+		return null;
+	} finally {
+	}
+}
+
 async function update(col, filter, updateDoc) {
 	try {
 		const options = { upsert: true };

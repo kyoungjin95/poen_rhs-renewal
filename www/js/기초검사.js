@@ -1,4 +1,5 @@
 var 기초검사_DTC_count = 0;
+var 사전_기초검사_입고일 = '';
 
 async function 기초검사_시작(is재제조 = 0) {
 	while(_management_id == undefined) {
@@ -36,6 +37,17 @@ async function 기초검사_시작(is재제조 = 0) {
 			_RO_no.value = '';
 
 			차종 = '';
+
+			var yes = prompt('기초검사 공정을 시작하겠습니까? (y/n)');
+			if(yes == 'y') {
+				var DateTime = luxon.DateTime;
+				var seoul = DateTime.local().setZone("Asia/Seoul");
+				var now = seoul.toString().slice(0, 19);
+
+				사전_기초검사_입고일 = now;
+			} else {
+				back();
+			}
 		}
 	} else if(is재제조 == 1) {
 		if(_재제조번호.value.length == 0) return;
@@ -60,6 +72,16 @@ async function 기초검사_시작(is재제조 = 0) {
 			_RO_no.value = '';
 
 			차종 = '';
+			var yes = prompt('기초검사 공정을 시작하겠습니까? (y/n)');
+			if(yes == 'y') {
+				var DateTime = luxon.DateTime;
+				var seoul = DateTime.local().setZone("Asia/Seoul");
+				var now = seoul.toString().slice(0, 19);
+
+				사전_기초검사_입고일 = now;
+			} else {
+				back();
+			}
 		}
 	} else if(is재제조 == 2) {
 		if(_RO_no.value.length == 0) return;
@@ -76,6 +98,17 @@ async function 기초검사_시작(is재제조 = 0) {
 			관리번호 = _management_id.value;
 
 			차종 = BSA재제조_v.차종;
+
+			var yes = prompt('기초검사 공정을 시작하겠습니까? (y/n)');
+			if(yes == 'y') {
+				var DateTime = luxon.DateTime;
+				var seoul = DateTime.local().setZone("Asia/Seoul");
+				var now = seoul.toString().slice(0, 19);
+
+				사전_기초검사_입고일 = now;
+			} else {
+				back();
+			}
 		} else {
 			_management_id.value = '';
 			_재제조번호.value = '';
@@ -237,7 +270,7 @@ async function 기초검사_SAVE() {
 
 	var doc = JSON.parse(JSON.stringify(기초검사_doc));
 	doc.관리번호 = _management_id.value.trim().toUpperCase();
-	if(doc.공정입고일 == '') doc.공정입고일 = now;//_공정입고일.value;
+	if(doc.공정입고일 == '') doc.공정입고일 = 사전_기초검사_입고일;
 	if(level == '관리자') doc.공정입고일 = _공정입고일.value;
 	doc.RO_no = _RO_no.value;
 	doc.VIN = _VIN.value;

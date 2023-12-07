@@ -2590,6 +2590,11 @@ socket.on('delete_result', async function(count) {
 	flag_arrivedMSG = true;
 });
 
+socket.on('drop_result', async function(result) {
+	console.log('drop result: ', result);
+	flag_arrivedMSG = true;
+});
+
 socket.on('disconnect', function() {
 	console.log('disconnect');
 });
@@ -2716,6 +2721,12 @@ async function update(col, doc) {
 	socket.emit('update', worker, col, { 관리번호: doc.관리번호 }, {$set: doc});
 }
 
+async function update_자재입출고(col, doc) {
+	if(socket == undefined) return;
+	flag_arrivedMSG = false;
+	socket.emit('update', worker, col, { QR: doc.QR }, {$set: doc});
+}
+
 async function update_보고서(col, doc) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
@@ -2788,6 +2799,12 @@ async function delete_계정(_id) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
 	socket.emit('delete', worker, 계정, { id: _id});
+}
+
+async function drop(_col) {
+	if(socket == undefined) return;
+	flag_arrivedMSG = false;
+	socket.emit('drop', worker, _col);
 }
 
 async function find(col, management_id) {

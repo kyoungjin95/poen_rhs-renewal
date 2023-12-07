@@ -107,6 +107,9 @@ function read_신품정보_func_csv() {
 
 			const res = d3.csvParse(reader.result);
 			var docs = [];
+			
+			drop(자재입출고);
+			await delay();
 
 			count(자재입출고, { QR : { $exists : true }});
 			await delay();
@@ -143,7 +146,6 @@ async function 신품정보_insert(val) {
 	doc.품명 = val.품명;
 	doc.품번 = val.품번;
 	doc.수량 = val.수량;
-	doc.단가 = val.단가;
 	doc.LotNo = val.LotNo; 
 	doc.비고 = val.비고; 
 	doc.사용관리번호 = ''; 
