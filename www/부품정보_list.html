@@ -1,1250 +1,1714 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>부품 정보</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>부품 정보</title>
+    <link rel="stylesheet" href="base/style/공정.css" />
+    <link rel="stylesheet" href="base/style/module.css" />
+  </head>
+  <body>
+    <section class="부품정보">
+      <div class="process__tit">
+        <label for="_부품정보">부품정보</label>
+      </div>
+      <div class="module_con con__first">
+        <h3>NE/CV/JW1/LM</h3>
+        <div class="layout">
+          <div class="upper_con">
+            <div class="left_section">
+              <button type="button" class="btn btn__orange">
+                H/T <br />CNTR
+              </button>
+              <button type="button" class="btn btn__navy">PRA</button>
+            </div>
+            <div class="middle_section">
+              <div>
+                <p class="product">Module #1</p>
+                <p class="product">Module #2</p>
+                <p class="product">Module #3</p>
+                <p class="product">Module #4</p>
+              </div>
+              <div>
+                <p class="product">Module #5</p>
+                <p class="product">Module #6</p>
+                <p class="product">Module #7</p>
+                <p class="product">Module #8</p>
+              </div>
+              <div>
+                <p class="product">Module #9</p>
+                <p class="product">Module #10</p>
+                <p class="product">Module #11</p>
+                <p class="product">Module #12</p>
+              </div>
+              <div>
+                <p class="product">Module #13</p>
+                <p class="product">Module #14</p>
+                <p class="product">Module #15</p>
+                <p class="product">Module #16</p>
+              </div>
+            </div>
+            <div class="right_section">
+              <button type="button" class="btn btn__green">
+                LWR <br />CASE
+              </button>
+              <button type="button" class="btn btn__green">
+                UPR <br />CASE
+              </button>
+            </div>
+          </div>
+          <div class="middle_con">
+            <div class="left_section">
+              <button type="button" class="btn btn__orange">
+                HV <br />CNTR#1
+              </button>
+            </div>
+            <div class="smiddle_section">
+              <div>
+                <button type="button" class="btn btn__gray">CMU #8</button>
+                <button type="button" class="btn btn__yellow">
+                  HV <br />W/H#8
+                </button>
+              </div>
+              <div>
+                <button type="button" class="btn btn__gray">CMU #1</button>
+                <button type="button" class="btn btn__yellow">
+                  HV <br />W/H#1
+                </button>
+              </div>
+              <div>
+                <button type="button" class="btn btn__gray">CMU #7</button>
+                <button type="button" class="btn btn__yellow">
+                  HV <br />W/H#7
+                </button>
+              </div>
+              <div>
+                <button type="button" class="btn btn__gray">CMU #2</button>
+                <button type="button" class="btn btn__yellow">
+                  HV <br />W/H#2
+                </button>
+              </div>
+              <div>
+                <button type="button" class="btn btn__gray">CMU #6</button>
+                <button type="button" class="btn btn__yellow">
+                  HV <br />W/H#6
+                </button>
+              </div>
+              <div>
+                <button type="button" class="btn btn__gray">CMU #3</button>
+                <button type="button" class="btn btn__yellow">
+                  HV <br />W/H#3
+                </button>
+              </div>
+              <div>
+                <button type="button" class="btn btn__gray">CMU #5</button>
+                <button type="button" class="btn btn__yellow">
+                  HV <br />W/H#5
+                </button>
+              </div>
+              <div>
+                <button type="button" class="btn btn__gray">CMU #4</button>
+                <button type="button" class="btn btn__yellow">
+                  HV <br />W/H#4
+                </button>
+              </div>
+            </div>
+            <div class="right_section">
+              <button type="button" class="btn btn__orange">
+                HV <br />CNTR#2
+              </button>
+            </div>
+          </div>
+          <div class="bottom_con">
+            <div class="left_section">
+              <button type="button" class="btn btn__navy">BMU</button>
+              <button type="button" class="btn btn__black">LV <br />W/H</button>
+            </div>
+            <div class="middle_section">
+              <div>
+                <p class="product">Module #1</p>
+                <p class="product">Module #2</p>
+                <p class="product">Module #3</p>
+                <p class="product">Module #4</p>
+              </div>
+              <div>
+                <p class="product">Module #5</p>
+                <p class="product">Module #6</p>
+                <p class="product">Module #7</p>
+                <p class="product">Module #8</p>
+              </div>
+              <div>
+                <p class="product">Module #9</p>
+                <p class="product">Module #10</p>
+                <p class="product">Module #11</p>
+                <p class="product">Module #12</p>
+              </div>
+              <div>
+                <p class="product">Module #13</p>
+                <p class="product">Module #14</p>
+                <p class="product">Module #15</p>
+                <p class="product">Module #16</p>
+              </div>
+            </div>
+            <div class="right_section">
+              <button type="button" class="btn btn__navy navy2">
+                F<br />U<br />S<br />E
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="product__info">
+          <dl class="product__name">
+            <dt>품명 :</dt>
+            <dd class="product_name"></dd>
+          </dl>
+          <dl class="product__con">
+            <dt>문제여부 :</dt>
+            <dd class="">OK [콤보박스 : OK, NG]</dd>
+          </dl>
+        </div>
+      </div>
+      <div class="module_con con__second">
+        <h3>HR / PU</h3>
+        <div class="layout">
+          <div class="upper_con">
+            <div class="left_section">
+              <div class="box">
+                <p class="product">Module #1</p>
+                <button type="button" class="btn btn__orange up-btn">
+                  hv w/h #2
+                </button>
+              </div>
+              <div class="box">
+                <p class="product">Module #2</p>
+                <button type="button" class="btn btn__orange up-btn">
+                  hv w/h #1
+                </button>
+              </div>
+            </div>
+            <div class="middle_section">
+              <p class="product">Module #3</p>
+              <div class="btn-box">
+                <button type="button" class="btn btn__gray">
+                  CMU <br />
+                  #1
+                </button>
+                <button type="button" class="btn btn__gray">
+                  CMU <br />
+                  #2
+                </button>
+              </div>
+            </div>
+            <div class="right_section">
+              <p class="product">Module #4</p>
+              <p class="product">Module #5</p>
+            </div>
+          </div>
 
-		<link rel="stylesheet" href="base/style/공정.css" />
-	</head>
-	<body>
-		<section class="부품정보">
-			<div class="process__tit">
-				<label for="_부품정보">부품정보</label>
-			</div>
-			<div class="input-group process-step">
-				<table id="_tb" class="tb">
-					<colgroup>
-						<col class="col_1" width="40%" />
-						<col class="col_2" width="60%" />
-					</colgroup>
-					<tr>
-						<td>
-							<label for="management_id">관리번호</label>
-						</td>
-						<td>
-							<input
-									type="text"
-									id="_management_id"
-									value=""
-									size="100"
-									readonly 
-									required
-									/>
-							<button onClick="부품정보_list_시작();">조 회</button>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label for="_차종">차종</label>
-						</td>
-						<td>
-							<input type="text" id="_차종" size="40" readonly required />
-						</td>
-					</tr>
-				</table>
-				<table id='_A_DE_OS_SK3_LK' class="tb">
-					<colgroup>
-						<col class="col_1" width="40%" />
-						<col class="col_2" width="60%" />
-					</colgroup>
-					<tr class="t1">
-						<td>
-							<label for="_A_UPR_CASE">UPR CASE</label>
-						</td>
-						<td>
-							<input type="text" id="_A_UPR_CASE" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_A_LWR_CASE">LWR CASE</label>
-						</td>
-						<td>
-							<input type="text" id="_A_LWR_CASE" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_A_S_PLUG">S/PLUG</label>
-						</td>
-						<td>
-							<input type="text" id="_A_S_PLUG" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_A_SPA">SPA</label>
-						</td>
-						<td>
-							<input type="text" id="_A_SPA" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_A_HV_CNTR">HV CNTR</label>
-						</td>
-						<td>
-							<input type="text" id="_A_HV_CNTR" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_A_Heating_CNTR">Heating CNTR</label>
-						</td>
-						<td>
-							<input type="text" id="_A_Heating_CNTR" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_A_PRA">PRA</label>
-						</td>
-						<td>
-							<input type="text" id="_A_PRA" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_A_LV_W_H">LV W/H</label>
-						</td>
-						<td>
-							<input type="text" id="_A_LV_W_H" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_A_HV_W_H_1">HV W/H #1</label>
-						</td>
-						<td>
-							<input type="text" id="_A_HV_W_H_1" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_A_HV_W_H_2">HV W/H #2</label>
-						</td>
-						<td>
-							<input type="text" id="_A_HV_W_H_2" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_A_HV_W_H_3">HV W/H #3</label>
-						</td>
-						<td>
-							<input type="text" id="_A_HV_W_H_3" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_A_HV_W_H_4">HV W/H #4</label>
-						</td>
-						<td>
-							<input type="text" id="_A_HV_W_H_4" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_A_HV_W_H_5">HV W/H #1</label>
-						</td>
-						<td>
-							<input type="text" id="_A_HV_W_H_5" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_A_BUSBAR">BUSBAR</label>
-						</td>
-						<td>
-							<input type="text" id="_A_BUSBAR" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_A_BMU">BMU</label>
-						</td>
-						<td>
-							<input type="text" id="_A_BMU" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_A_CMU_1">CMU #1</label>
-						</td>
-						<td>
-							<input type="text" id="_A_CMU_1" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_A_CMU_2">CMU #2</label>
-						</td>
-						<td>
-							<input type="text" id="_A_CMU_2" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_A_CMU_3">CMU #3</label>
-						</td>
-						<td>
-							<input type="text" id="_A_CMU_3" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_A_CMU_4">CMU #4</label>
-						</td>
-						<td>
-							<input type="text" id="_A_CMU_4" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_A_CMU_5">CMU #5</label>
-						</td>
-						<td>
-							<input type="text" id="_A_CMU_5" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_A_BMA_1">BMA #1</label>
-						</td>
-						<td>
-							<input type="text" id="_A_BMA_1" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_A_BMA_2">BMA #2</label>
-						</td>
-						<td>
-							<input type="text" id="_A_BMA_2" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_A_BMA_3">BMA #3</label>
-						</td>
-						<td>
-							<input type="text" id="_A_BMA_3" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_A_BMA_4">BMA #4</label>
-						</td>
-						<td>
-							<input type="text" id="_A_BMA_4" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_A_BMA_5">BMA #5</label>
-						</td>
-						<td>
-							<input type="text" id="_A_BMA_5" size="100" required />
-						</td>
-					</tr>
-				</table>
-				<table id='_B_HR_PU' class="tb">
-					<colgroup>
-						<col class="col_1" width="40%" />
-						<col class="col_2" width="60%" />
-					</colgroup>
-					<tr class="t1">
-						<td>
-							<label for="_B_UPR_CASE">UPR CASE</label>
-						</td>
-						<td>
-							<input type="text" id="_B_UPR_CASE" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_B_LWR_CASE">LWR CASE</label>
-						</td>
-						<td>
-							<input type="text" id="_B_LWR_CASE" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_B_HV_CNTR">HV CNTR</label>
-						</td>
-						<td>
-							<input type="text" id="_B_HV_CNTR" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_B_Heating_CNTR">Heating CNTR</label>
-						</td>
-						<td>
-							<input type="text" id="_B_Heating_CNTR" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_B_PRA">PRA</label>
-						</td>
-						<td>
-							<input type="text" id="_B_PRA" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_B_FUSE_BOX">FUSE BOX</label>
-						</td>
-						<td>
-							<input type="text" id="_B_FUSE_BOX" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_B_LV_W_H">LV W/H</label>
-						</td>
-						<td>
-							<input type="text" id="_B_LV_W_H" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_B_HV_W_H_1">HV W/H #1</label>
-						</td>
-						<td>
-							<input type="text" id="_B_HV_W_H_1" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_B_HV_W_H_1">HV W/H #1</label>
-						</td>
-						<td>
-							<input type="text" id="_B_HV_W_H_1" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_B_HV_W_H_2">HV W/H #2</label>
-						</td>
-						<td>
-							<input type="text" id="_B_HV_W_H_2" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_B_HV_W_H_3">HV W/H #3</label>
-						</td>
-						<td>
-							<input type="text" id="_B_HV_W_H_3" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_B_HV_W_H_4">HV W/H #4</label>
-						</td>
-						<td>
-							<input type="text" id="_B_HV_W_H_4" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_B_HV_W_H_5">HV W/H #5</label>
-						</td>
-						<td>
-							<input type="text" id="_B_HV_W_H_5" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_B_HV_W_H_6">HV W/H #6</label>
-						</td>
-						<td>
-							<input type="text" id="_B_HV_W_H_6" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_B_HV_W_H_7">HV W/H #7</label>
-						</td>
-						<td>
-							<input type="text" id="_B_HV_W_H_7" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_B_HV_W_H_8">HV W/H #8</label>
-						</td>
-						<td>
-							<input type="text" id="_B_HV_W_H_8" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_B_HV_W_H_9">HV W/H #9</label>
-						</td>
-						<td>
-							<input type="text" id="_B_HV_W_H_9" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_B_HV_W_H_10">HV W/H #10</label>
-						</td>
-						<td>
-							<input type="text" id="_B_HV_W_H_10" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_B_BUSBAR">BUSBAR</label>
-						</td>
-						<td>
-							<input type="text" id="_B_BUSBAR" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_B_BMU">BMU</label>
-						</td>
-						<td>
-							<input type="text" id="_B_BMU" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_B_CMU_1">CMU #1</label>
-						</td>
-						<td>
-							<input type="text" id="_B_CMU_1" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_B_CMU_2">CMU #2</label>
-						</td>
-						<td>
-							<input type="text" id="_B_CMU_2" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_B_CMU_3">CMU #3</label>
-						</td>
-						<td>
-							<input type="text" id="_B_CMU_3" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_B_CMU_4">CMU #4</label>
-						</td>
-						<td>
-							<input type="text" id="_B_CMU_4" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_B_CMU_5">CMU #5</label>
-						</td>
-						<td>
-							<input type="text" id="_B_CMU_5" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_B_BMA_1">BMA #1</label>
-						</td>
-						<td>
-							<input type="text" id="_B_BMA_1" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_B_BMA_2">BMA #2</label>
-						</td>
-						<td>
-							<input type="text" id="_B_BMA_2" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_B_BMA_3">BMA #3</label>
-						</td>
-						<td>
-							<input type="text" id="_B_BMA_3" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_B_BMA_4">BMA #4</label>
-						</td>
-						<td>
-							<input type="text" id="_B_BMA_4" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_B_BMA_5">BMA #5</label>
-						</td>
-						<td>
-							<input type="text" id="_B_BMA_5" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_B_BMA_6">BMA #6</label>
-						</td>
-						<td>
-							<input type="text" id="_B_BMA_6" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_B_BMA_7">BMA #7</label>
-						</td>
-						<td>
-							<input type="text" id="_B_BMA_7" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_B_BMA_8">BMA #8</label>
-						</td>
-						<td>
-							<input type="text" id="_B_BMA_8" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_B_BMA_9">BMA #9</label>
-						</td>
-						<td>
-							<input type="text" id="_B_BMA_9" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_B_BMA_10">BMA #10</label>
-						</td>
-						<td>
-							<input type="text" id="_B_BMA_10" size="100" required />
-						</td>
-					</tr>
-				</table>
-				<table id='_C_CN_NE_JW1_LM' class="tb">
-					<colgroup>
-						<col class="col_1" width="40%" />
-						<col class="col_2" width="60%" />
-					</colgroup>
-					<tr class="t1">
-						<td>
-							<label for="_C_UPR_CASE">UPR CASE</label>
-						</td>
-						<td>
-							<input type="text" id="_C_UPR_CASE" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_C_LWR_CASE">LWR CASE</label>
-						</td>
-						<td>
-							<input type="text" id="_C_LWR_CASE" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_C_HV_CNTR_1">HV CNTR #1</label>
-						</td>
-						<td>
-							<input type="text" id="_C_HV_CNTR_1" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_C_HV_CNTR_2">HV CNTR #2</label>
-						</td>
-						<td>
-							<input type="text" id="_C_HV_CNTR_2" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_C_Heating_CNTR">Heating CNTR</label>
-						</td>
-						<td>
-							<input type="text" id="_C_Heating_CNTR" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_C_PRA">PRA</label>
-						</td>
-						<td>
-							<input type="text" id="_C_PRA" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_C_FUSE_BOX">FUSE BOX</label>
-						</td>
-						<td>
-							<input type="text" id="_C_FUSE_BOX" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_C_LV_W_H">LV W/H</label>
-						</td>
-						<td>
-							<input type="text" id="_C_LV_W_H" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_C_HV_W_H_1">HV W/H #1</label>
-						</td>
-						<td>
-							<input type="text" id="_C_HV_W_H_1" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_C_HV_W_H_2">HV W/H #2</label>
-						</td>
-						<td>
-							<input type="text" id="_C_HV_W_H_2" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_C_HV_W_H_3">HV W/H #3</label>
-						</td>
-						<td>
-							<input type="text" id="_C_HV_W_H_3" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_C_HV_W_H_4">HV W/H #4</label>
-						</td>
-						<td>
-							<input type="text" id="_C_HV_W_H_4" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_C_HV_W_H_5">HV W/H #5</label>
-						</td>
-						<td>
-							<input type="text" id="_C_HV_W_H_5" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_C_HV_W_H_6">HV W/H #6</label>
-						</td>
-						<td>
-							<input type="text" id="_C_HV_W_H_6" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_C_HV_W_H_7">HV W/H #7</label>
-						</td>
-						<td>
-							<input type="text" id="_C_HV_W_H_7" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_C_HV_W_H_8">HV W/H #8</label>
-						</td>
-						<td>
-							<input type="text" id="_C_HV_W_H_8" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_C_BUSBAR">BUSBAR</label>
-						</td>
-						<td>
-							<input type="text" id="_C_BUSBAR" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_C_BMU">BMU</label>
-						</td>
-						<td>
-							<input type="text" id="_C_BMU" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_C_CMU_1">CMU #1</label>
-						</td>
-						<td>
-							<input type="text" id="_C_CMU_1" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_C_CMU_2">CMU #2</label>
-						</td>
-						<td>
-							<input type="text" id="_C_CMU_2" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_C_CMU_3">CMU #3</label>
-						</td>
-						<td>
-							<input type="text" id="_C_CMU_3" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_C_CMU_4">CMU #4</label>
-						</td>
-						<td>
-							<input type="text" id="_C_CMU_4" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_C_CMU_5">CMU #5</label>
-						</td>
-						<td>
-							<input type="text" id="_C_CMU_5" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_C_CMU_6">CMU #6</label>
-						</td>
-						<td>
-							<input type="text" id="_C_CMU_6" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_C_CMU_7">CMU #7</label>
-						</td>
-						<td>
-							<input type="text" id="_C_CMU_7" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_C_CMU_8">CMU #8</label>
-						</td>
-						<td>
-							<input type="text" id="_C_CMU_8" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_C_BMA_1">BMA #1</label>
-						</td>
-						<td>
-							<input type="text" id="_C_BMA_1" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_C_BMA_2">BMA #2</label>
-						</td>
-						<td>
-							<input type="text" id="_C_BMA_2" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_C_BMA_3">BMA #3</label>
-						</td>
-						<td>
-							<input type="text" id="_C_BMA_3" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_C_BMA_4">BMA #4</label>
-						</td>
-						<td>
-							<input type="text" id="_C_BMA_4" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_C_BMA_5">BMA #5</label>
-						</td>
-						<td>
-							<input type="text" id="_C_BMA_5" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_C_BMA_6">BMA #6</label>
-						</td>
-						<td>
-							<input type="text" id="_C_BMA_6" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_C_BMA_7">BMA #7</label>
-						</td>
-						<td>
-							<input type="text" id="_C_BMA_7" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_C_BMA_8">BMA #8</label>
-						</td>
-						<td>
-							<input type="text" id="_C_BMA_8" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_C_BMA_9">BMA #9</label>
-						</td>
-						<td>
-							<input type="text" id="_C_BMA_9" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_C_BMA_10">BMA #10</label>
-						</td>
-						<td>
-							<input type="text" id="_C_BMA_10" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_C_BMA_11">BMA #11</label>
-						</td>
-						<td>
-							<input type="text" id="_C_BMA_11" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_C_BMA_12">BMA #12</label>
-						</td>
-						<td>
-							<input type="text" id="_C_BMA_12" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_C_BMA_13">BMA #13</label>
-						</td>
-						<td>
-							<input type="text" id="_C_BMA_13" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_C_BMA_14">BMA #14</label>
-						</td>
-						<td>
-							<input type="text" id="_C_BMA_14" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_C_BMA_15">BMA #15</label>
-						</td>
-						<td>
-							<input type="text" id="_C_BMA_15" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_C_BMA_16">BMA #16</label>
-						</td>
-						<td>
-							<input type="text" id="_C_BMA_16" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_C_BMA_17">BMA #17</label>
-						</td>
-						<td>
-							<input type="text" id="_C_BMA_17" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_C_BMA_18">BMA #18</label>
-						</td>
-						<td>
-							<input type="text" id="_C_BMA_18" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_C_BMA_19">BMA #19</label>
-						</td>
-						<td>
-							<input type="text" id="_C_BMA_19" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_C_BMA_20">BMA #20</label>
-						</td>
-						<td>
-							<input type="text" id="_C_BMA_20" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_C_BMA_21">BMA #21</label>
-						</td>
-						<td>
-							<input type="text" id="_C_BMA_21" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_C_BMA_22">BMA #22</label>
-						</td>
-						<td>
-							<input type="text" id="_C_BMA_22" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_C_BMA_23">BMA #23</label>
-						</td>
-						<td>
-							<input type="text" id="_C_BMA_23" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_C_BMA_24">BMA #24</label>
-						</td>
-						<td>
-							<input type="text" id="_C_BMA_24" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_C_BMA_25">BMA #25</label>
-						</td>
-						<td>
-							<input type="text" id="_C_BMA_25" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_C_BMA_26">BMA #26</label>
-						</td>
-						<td>
-							<input type="text" id="_C_BMA_26" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_C_BMA_27">BMA #27</label>
-						</td>
-						<td>
-							<input type="text" id="_C_BMA_27" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_C_BMA_28">BMA #28</label>
-						</td>
-						<td>
-							<input type="text" id="_C_BMA_28" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_C_BMA_29">BMA #29</label>
-						</td>
-						<td>
-							<input type="text" id="_C_BMA_29" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_C_BMA_30">BMA #30</label>
-						</td>
-						<td>
-							<input type="text" id="_C_BMA_30" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_C_BMA_31">BMA #31</label>
-						</td>
-						<td>
-							<input type="text" id="_C_BMA_31" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_C_BMA_32">BMA #32</label>
-						</td>
-						<td>
-							<input type="text" id="_C_BMA_32" size="100" required />
-						</td>
-					</tr>
-				</table>
-				<table id='_D_CS' class="tb">
-					<colgroup>
-						<col class="col_1" width="40%" />
-						<col class="col_2" width="60%" />
-					</colgroup>
-					<tr class="t1">
-						<td>
-							<label for="_D_UPR_CASE">UPR CASE</label>
-						</td>
-						<td>
-							<input type="text" id="_D_UPR_CASE" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_D_LWR_CASE">LWR CASE</label>
-						</td>
-						<td>
-							<input type="text" id="_D_LWR_CASE" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_D_HV_CNTR_RH">HV CNTR RH</label>
-						</td>
-						<td>
-							<input type="text" id="_D_HV_CNTR_RH" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_D_HV_CNTR_LH">HV CNTR LH</label>
-						</td>
-						<td>
-							<input type="text" id="_D_HV_CNTR_LH" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_D_RELAY">RELAY</label>
-						</td>
-						<td>
-							<input type="text" id="_D_RELAY" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_D_LV_W_H">LV W/H</label>
-						</td>
-						<td>
-							<input type="text" id="_D_LV_W_H" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_D_HV_W_H_1">HV W/H #1</label>
-						</td>
-						<td>
-							<input type="text" id="_D_HV_W_H_1" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_D_HV_W_H_2">HV W/H #2</label>
-						</td>
-						<td>
-							<input type="text" id="_D_HV_W_H_2" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_D_BUSBAR">BUSBAR</label>
-						</td>
-						<td>
-							<input type="text" id="_D_BUSBAR" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_D_BMU">BMU</label>
-						</td>
-						<td>
-							<input type="text" id="_D_BMU" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_D_CMU_1">CMU #1</label>
-						</td>
-						<td>
-							<input type="text" id="_D_CMU_1" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_D_CMU_2">CMU #2</label>
-						</td>
-						<td>
-							<input type="text" id="_D_CMU_2" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_D_BMA_1">BMA #1</label>
-						</td>
-						<td>
-							<input type="text" id="_D_BMA_1" size="100" required />
-						</td>
-					</tr>
-					<tr class="t1">
-						<td>
-							<label for="_D_BMA_2">BMA #2</label>
-						</td>
-						<td>
-							<input type="text" id="_D_BMA_2" size="100" required />
-						</td>
-					</tr>
-				</table>
-			</div>
-			<div class="input-group">
-				<div class="input-btn-group">
-					<button onClick="부품정보_list_save();">SAVE</button>
-					<button onClick="loadPage('base/기초검사.html');">이전 Page</button>
-				</div>
-			</div>
-		</section>
-		<script>
-			const _tb = document.getElementById("_tb");
-			const _management_id = document.getElementById("_management_id");
-			const _A_UPR_CASE = document.getElementById("_A_UPR_CASE");
-			const _A_LWR_CASE = document.getElementById("_A_LWR_CASE");
-			const _A_S_PLUG = document.getElementById("_A_S_PLUG");
-			const _A_SPA = document.getElementById("_A_SPA");
-			const _A_HV_CNTR = document.getElementById("_A_HV_CNTR");
-			const _A_Heating_CNTR = document.getElementById("_A_Heating_CNTR");
-			const _A_PRA = document.getElementById("_A_PRA");
-			const _A_LV_W_H = document.getElementById("_A_LV_W_H");
-			const _A_HV_W_H_1 = document.getElementById("_A_HV_W_H_1");
-			const _A_HV_W_H_2 = document.getElementById("_A_HV_W_H_2");
-			const _A_HV_W_H_3 = document.getElementById("_A_HV_W_H_3");
-			const _A_HV_W_H_4 = document.getElementById("_A_HV_W_H_4");
-			const _A_HV_W_H_5 = document.getElementById("_A_HV_W_H_5");
-			const _A_BUSBAR = document.getElementById("_A_BUSBAR");
-			const _A_BMU = document.getElementById("_A_BMU");
-			const _A_CMU_1 = document.getElementById("_A_CMU_1");
-			const _A_CMU_2 = document.getElementById("_A_CMU_2");
-			const _A_CMU_3 = document.getElementById("_A_CMU_3");
-			const _A_CMU_4 = document.getElementById("_A_CMU_4");
-			const _A_CMU_5 = document.getElementById("_A_CMU_5");
-			const _A_BMA_1 = document.getElementById("_A_BMA_1");
-			const _A_BMA_2 = document.getElementById("_A_BMA_2");
-			const _A_BMA_5 = document.getElementById("_A_BMA_3");
-			const _A_BMA_5 = document.getElementById("_A_BMA_4");
-			const _A_BMA_5 = document.getElementById("_A_BMA_5");
-			const _B_UPR_CASE = document.getElementById("_B_UPR_CASE");
-			const _B_LWR_CASE = document.getElementById("_B_LWR_CASE");
-			const _B_HV_CNTR = document.getElementById("_B_HV_CNTR");
-			const _B_Heating_CNTR = document.getElementById("_B_Heating_CNTR");
-			const _B_PRA = document.getElementById("_B_PRA");
-			const _B_FUSE_BOX = document.getElementById("_B_FUSE_BOX");
-			const _B_LV_W_H = document.getElementById("_B_LV_W_H");
-			const _B_HV_W_H_1 = document.getElementById("_B_HV_W_H_1");
-			const _B_HV_W_H_2 = document.getElementById("_B_HV_W_H_2");
-			const _B_HV_W_H_3 = document.getElementById("_B_HV_W_H_3");
-			const _B_HV_W_H_4 = document.getElementById("_B_HV_W_H_4");
-			const _B_HV_W_H_5 = document.getElementById("_B_HV_W_H_5");
-			const _B_HV_W_H_6 = document.getElementById("_B_HV_W_H_6");
-			const _B_HV_W_H_7 = document.getElementById("_B_HV_W_H_7");
-			const _B_HV_W_H_8 = document.getElementById("_B_HV_W_H_8");
-			const _B_HV_W_H_9 = document.getElementById("_B_HV_W_H_9");
-			const _B_HV_W_H_10 = document.getElementById("_B_HV_W_H_10");
-			const _B_BUSBAR = document.getElementById("_B_BUSBAR");
-			const _B_BMU = document.getElementById("_B_BMU");
-			const _B_CMU_1 = document.getElementById("_B_CMU_1");
-			const _B_CMU_2 = document.getElementById("_B_CMU_2");
-			const _B_CMU_3 = document.getElementById("_B_CMU_3");
-			const _B_CMU_4 = document.getElementById("_B_CMU_4");
-			const _B_CMU_5 = document.getElementById("_B_CMU_5");
-			const _B_BMA_1 = document.getElementById("_B_BMA_1");
-			const _B_BMA_2 = document.getElementById("_B_BMA_2");
-			const _B_BMA_3 = document.getElementById("_B_BMA_3");
-			const _B_BMA_4 = document.getElementById("_B_BMA_4");
-			const _B_BMA_5 = document.getElementById("_B_BMA_5");
-			const _B_BMA_6 = document.getElementById("_B_BMA_6");
-			const _B_BMA_7 = document.getElementById("_B_BMA_7");
-			const _B_BMA_8 = document.getElementById("_B_BMA_8");
-			const _B_BMA_9 = document.getElementById("_B_BMA_9");
-			const _B_BMA_10 = document.getElementById("_B_BMA_10");
-			const _C_UPR_CASE = document.getElementById("_C_UPR_CASE");
-			const _C_LWR_CASE = document.getElementById("_C_LWR_CASE");
-			const _C_HV_CNTR_1 = document.getElementById("_C_HV_CNTR_1");
-			const _C_HV_CNTR_2 = document.getElementById("_C_HV_CNTR_2");
-			const _C_Heating_CNTR = document.getElementById("_C_HV_Heating_CNTR");
-			const _C_PRA = document.getElementById("_C_PRA");
-			const _C_FUSE_BOX = document.getElementById("_C_FUSE_BOX");
-			const _C_LV_W_H = document.getElementById("_C_LV_W_H");
-			const _C_HV_W_H_1 = document.getElementById("_C_HV_W_H_1");
-			const _C_HV_W_H_2 = document.getElementById("_C_HV_W_H_2");
-			const _C_HV_W_H_3 = document.getElementById("_C_HV_W_H_3");
-			const _C_HV_W_H_4 = document.getElementById("_C_HV_W_H_4");
-			const _C_HV_W_H_5 = document.getElementById("_C_HV_W_H_5");
-			const _C_HV_W_H_6 = document.getElementById("_C_HV_W_H_6");
-			const _C_HV_W_H_7 = document.getElementById("_C_HV_W_H_7");
-			const _C_HV_W_H_8 = document.getElementById("_C_HV_W_H_8");
-			const _C_BUSBAR = document.getElementById("_C_BUSBAR");
-			const _C_BMU = document.getElementById("_C_BMU");
-			const _C_CMU_1 = document.getElementById("_C_CMU_1");
-			const _C_CMU_2 = document.getElementById("_C_CMU_2");
-			const _C_CMU_3 = document.getElementById("_C_CMU_3");
-			const _C_CMU_4 = document.getElementById("_C_CMU_4");
-			const _C_CMU_5 = document.getElementById("_C_CMU_5");
-			const _C_CMU_6 = document.getElementById("_C_CMU_6");
-			const _C_CMU_7 = document.getElementById("_C_CMU_7");
-			const _C_CMU_8 = document.getElementById("_C_CMU_8");
-			const _C_BMA_1 = document.getElementById("_C_BMA_1");
-			const _C_BMA_2 = document.getElementById("_C_BMA_2");
-			const _C_BMA_3 = document.getElementById("_C_BMA_3");
-			const _C_BMA_4 = document.getElementById("_C_BMA_4");
-			const _C_BMA_5 = document.getElementById("_C_BMA_5");
-			const _C_BMA_6 = document.getElementById("_C_BMA_6");
-			const _C_BMA_7 = document.getElementById("_C_BMA_7");
-			const _C_BMA_8 = document.getElementById("_C_BMA_8");
-			const _C_BMA_9 = document.getElementById("_C_BMA_9");
-			const _C_BMA_10 = document.getElementById("_C_BMA_10");
-			const _C_BMA_11 = document.getElementById("_C_BMA_11");
-			const _C_BMA_12 = document.getElementById("_C_BMA_12");
-			const _D_UPR_CASE = document.getElementById("_D_UPR_CASE");
-			const _D_LWR_CASE = document.getElementById("_D_LWR_CASE");
-			const _D_HV_CNTR_RH = document.getElementById("_D_HV_CNTR_RH");
-			const _D_HV_CNTR_LH = document.getElementById("_D_HV_CNTR_LH");
-			const _D_RELAY = document.getElementById("_D_RELAY");
-			const _D_LV_W_H = document.getElementById("_D_LV_W_H");
-			const _D_HV_W_H_1 = document.getElementById("_D_HV_W_H_1");
-			const _D_HV_W_H_2 = document.getElementById("_D_HV_W_H_2");
-			const _D_BUSBAR = document.getElementById("_D_BUSBAR");
-			const _D_BMU = document.getElementById("_D_BMU");
-			const _D_CMU_1 = document.getElementById("_D_CMU_1");
-			const _D_CMU_2 = document.getElementById("_D_CMU_2");
-			const _D_BMA_1 = document.getElementById("_D_BMA_1");
-			const _D_BMA_2 = document.getElementById("_D_BMA_2");
-		</script>
-	</body>
+          <div class="middle_con">
+            <div class="left_section">
+              <p class="product">Module #9</p>
+              <p class="product">Module #10</p>
+            </div>
+            <div class="middle_section">
+              <div class="btn-box">
+                <button type="button" class="btn btn__gray">
+                  CMU <br />
+                  #5
+                </button>
+                <button type="button" class="btn btn__gray">
+                  CMU <br />
+                  #4
+                </button>
+                <button type="button" class="btn btn__gray">
+                  CMU <br />
+                  #3
+                </button>
+              </div>
+              <p class="product">Module #8</p>
+            </div>
+            <div class="right_section">
+              <p class="product">Module #7</p>
+              <p class="product">Module #6</p>
+            </div>
+          </div>
+
+          <div class="bottom_con">
+            <div class="btn-box">
+              <button type="button" class="btn btn__orange">
+                hv <br />
+                cntr
+              </button>
+              <button type="button" class="btn btn__orange">
+                hv <br />
+                cntr
+              </button>
+              <button type="button" class="btn btn__navy">PRA</button>
+            </div>
+            <div class="btn-box">
+              <button type="button" class="btn btn__green">
+                lwr <br />
+                case
+              </button>
+              <button type="button" class="btn btn__green">
+                lwr <br />
+                case
+              </button>
+            </div>
+            <div class="btn-box">
+              <button type="button" class="btn btn__navy">BMU</button>
+              <button type="button" class="btn btn__black">LV<br />W/H</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product__info">
+          <dl class="product__name">
+            <dt>품명 :</dt>
+            <dd class="product_name"></dd>
+          </dl>
+          <dl class="product__con">
+            <dt>문제여부 :</dt>
+            <dd class="">OK [콤보박스 : OK, NG]</dd>
+          </dl>
+        </div>
+      </div>
+      <div class="module_con con__third">
+        <h3>os/ed/sk3/lk</h3>
+        <div class="layout">
+          <div class="first_con">
+            <button type="button" class="btn btn__black">lv<br />w/h</button>
+            <button type="button" class="btn btn__navy">b<br />m<br />u</button>
+            <button type="button" class="btn btn__orange">hv<br />cntr</button>
+            <button type="button" class="btn btn__orange">h/t<br />cntr</button>
+            <button type="button" class="btn btn__navy navy2">
+              p<br />r<br />a
+            </button>
+          </div>
+          <div class="second_con">
+            <button type="button" class="btn btn__gray">cmu<br />#4</button>
+            <button type="button" class="btn btn__gray">cmu<br />#5</button>
+          </div>
+          <div class="third_con">
+            <div class="box">
+              <p class="product">Module #4</p>
+              <button type="button" class="btn btn__orange up-btn">
+                hv<br />
+                w/h #2
+              </button>
+            </div>
+            <div class="box">
+              <p class="product">Module #5</p>
+              <button type="button" class="btn btn__orange up-btn">
+                hv <br />w/h #1
+              </button>
+            </div>
+            <div class="box">
+              <p class="product">Module #1</p>
+              <button type="button" class="btn btn__orange up-btn">
+                hv <br />w/h #1
+              </button>
+            </div>
+          </div>
+          <div class="fourth_con">
+            <button type="button" class="btn btn__gray">cmu<br />#3</button>
+            <button type="button" class="btn btn__gray">cmu<br />#2</button>
+            <button type="button" class="btn btn__gray">cmu<br />#1</button>
+          </div>
+          <div class="fifth_con">
+            <div class="box">
+              <p class="product">Module #2</p>
+              <button type="button" class="btn btn__orange up-btn">
+                hv<br />w/h#2
+              </button>
+            </div>
+            <div class="box">
+              <p class="product">Module #3</p>
+              <button type="button" class="btn btn__orange up-btn">
+                hv<br />w/h#3
+              </button>
+            </div>
+            <button type="button" class="btn btn__yellow middle-btn">
+              spa
+            </button>
+          </div>
+          <div class="sixth_con">
+            <button type="button" class="btn btn__green">lwr<br />case</button>
+            <button type="button" class="btn btn__green">upr<br />case</button>
+            <button type="button" class="btn btn__yellow">s/plug</button>
+          </div>
+        </div>
+
+        <div class="product__info">
+          <dl class="product__name">
+            <dt>품명 :</dt>
+            <dd class="product_name"></dd>
+          </dl>
+          <dl class="product__con">
+            <dt>문제여부 :</dt>
+            <dd class="">OK [콤보박스 : OK, NG]</dd>
+          </dl>
+        </div>
+      </div>
+      <div class="fourth">
+        <div class="module_con con__fourth">
+          <h3>cs</h3>
+          <h4>Master / Slave 2</h4>
+          <div class="layout">
+            <div class="upper_con">
+              <div class="left_section">
+                <div class="box">
+                  <p class="product">Module #2</p>
+                  <button type="button" class="btn btn__orange up-btn">
+                    hv w/h #2
+                  </button>
+                </div>
+                <div class="box">
+                  <p class="product">Module #1</p>
+                  <button type="button" class="btn btn__orange up-btn">
+                    hv w/h #1
+                  </button>
+                </div>
+              </div>
+              <div class="middle_section">
+                <button type="button" class="btn btn__gray">
+                  cmu<br />
+                  #1
+                </button>
+                <button type="button" class="btn btn__navy">relay</button>
+              </div>
+              <div class="right_section">
+                <button type="button" class="btn btn__navy">bmu</button>
+                <button type="button" class="btn btn__orange">
+                  hv<br />
+                  cntr #1
+                </button>
+                <button type="button" class="btn btn__orange">
+                  hv<br />
+                  cntr #2
+                </button>
+              </div>
+            </div>
+            <div class="bottom_con">
+              <button type="button" class="btn btn__green">
+                lwr <br />
+                case
+              </button>
+              <button type="button" class="btn btn__green">
+                upr<br />
+                case
+              </button>
+              <button type="button" class="btn btn__black">
+                lv <br />
+                w/h
+              </button>
+            </div>
+          </div>
+          <div class="product__info">
+            <dl class="product__name">
+              <dt>품명 :</dt>
+              <dd class="product_name"></dd>
+            </dl>
+            <dl class="product__con">
+              <dt>문제여부 :</dt>
+              <dd class="">OK [콤보박스 : OK, NG]</dd>
+            </dl>
+          </div>
+        </div>
+        <div class="module_con con__fourth">
+          <h3>cs</h3>
+          <h4>Master / Slave 2</h4>
+          <div class="layout">
+            <div class="upper_con">
+              <div class="left_section">
+                <div class="box">
+                  <p class="product">Module #1</p>
+                  <button type="button" class="btn btn__orange up-btn">
+                    hv w/h #1
+                  </button>
+                </div>
+              </div>
+              <div class="middle_section">
+                <button type="button" class="btn btn__gray">
+                  cmu<br />
+                  #1
+                </button>
+                <button type="button" class="btn btn__navy">relay</button>
+              </div>
+              <div class="right_section">
+                <button type="button" class="btn btn__navy">bmu</button>
+                <button type="button" class="btn btn__orange">
+                  hv<br />
+                  cntr #1
+                </button>
+                <button type="button" class="btn btn__orange">
+                  hv<br />
+                  cntr #2
+                </button>
+              </div>
+            </div>
+            <div class="bottom_con">
+              <button type="button" class="btn btn__green">
+                lwr <br />
+                case
+              </button>
+              <button type="button" class="btn btn__green">
+                upr<br />
+                case
+              </button>
+              <button type="button" class="btn btn__black">
+                lv <br />
+                w/h
+              </button>
+            </div>
+          </div>
+          <div class="product__info">
+            <dl class="product__name">
+              <dt>품명 :</dt>
+              <dd class="product_name"></dd>
+            </dl>
+            <dl class="product__con">
+              <dt>문제여부 :</dt>
+              <dd class="">OK [콤보박스 : OK, NG]</dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+
+      <div class="input-group process-step">
+        <table id="_tb" class="tb">
+          <colgroup>
+            <col class="col_1" width="40%" />
+            <col class="col_2" width="60%" />
+          </colgroup>
+          <tr>
+            <td>
+              <label for="management_id">관리번호</label>
+            </td>
+            <td>
+              <input
+                type="text"
+                id="_management_id"
+                value=""
+                size="100"
+                readonly
+                required
+              />
+              <button onClick="부품정보_list_시작();">조 회</button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_차종">차종</label>
+            </td>
+            <td>
+              <input type="text" id="_차종" size="40" readonly required />
+            </td>
+          </tr>
+        </table>
+        <table id="_A_DE_OS_SK3_LK" class="tb">
+          <colgroup>
+            <col class="col_1" width="40%" />
+            <col class="col_2" width="60%" />
+          </colgroup>
+          <tr class="t1">
+            <td>
+              <label for="_A_UPR_CASE">UPR CASE</label>
+            </td>
+            <td>
+              <input type="text" id="_A_UPR_CASE" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_A_LWR_CASE">LWR CASE</label>
+            </td>
+            <td>
+              <input type="text" id="_A_LWR_CASE" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_A_S_PLUG">S/PLUG</label>
+            </td>
+            <td>
+              <input type="text" id="_A_S_PLUG" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_A_SPA">SPA</label>
+            </td>
+            <td>
+              <input type="text" id="_A_SPA" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_A_HV_CNTR">HV CNTR</label>
+            </td>
+            <td>
+              <input type="text" id="_A_HV_CNTR" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_A_Heating_CNTR">Heating CNTR</label>
+            </td>
+            <td>
+              <input type="text" id="_A_Heating_CNTR" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_A_PRA">PRA</label>
+            </td>
+            <td>
+              <input type="text" id="_A_PRA" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_A_LV_W_H">LV W/H</label>
+            </td>
+            <td>
+              <input type="text" id="_A_LV_W_H" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_A_HV_W_H_1">HV W/H #1</label>
+            </td>
+            <td>
+              <input type="text" id="_A_HV_W_H_1" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_A_HV_W_H_2">HV W/H #2</label>
+            </td>
+            <td>
+              <input type="text" id="_A_HV_W_H_2" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_A_HV_W_H_3">HV W/H #3</label>
+            </td>
+            <td>
+              <input type="text" id="_A_HV_W_H_3" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_A_HV_W_H_4">HV W/H #4</label>
+            </td>
+            <td>
+              <input type="text" id="_A_HV_W_H_4" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_A_HV_W_H_5">HV W/H #1</label>
+            </td>
+            <td>
+              <input type="text" id="_A_HV_W_H_5" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_A_BUSBAR">BUSBAR</label>
+            </td>
+            <td>
+              <input type="text" id="_A_BUSBAR" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_A_BMU">BMU</label>
+            </td>
+            <td>
+              <input type="text" id="_A_BMU" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_A_CMU_1">CMU #1</label>
+            </td>
+            <td>
+              <input type="text" id="_A_CMU_1" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_A_CMU_2">CMU #2</label>
+            </td>
+            <td>
+              <input type="text" id="_A_CMU_2" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_A_CMU_3">CMU #3</label>
+            </td>
+            <td>
+              <input type="text" id="_A_CMU_3" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_A_CMU_4">CMU #4</label>
+            </td>
+            <td>
+              <input type="text" id="_A_CMU_4" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_A_CMU_5">CMU #5</label>
+            </td>
+            <td>
+              <input type="text" id="_A_CMU_5" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_A_BMA_1">BMA #1</label>
+            </td>
+            <td>
+              <input type="text" id="_A_BMA_1" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_A_BMA_2">BMA #2</label>
+            </td>
+            <td>
+              <input type="text" id="_A_BMA_2" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_A_BMA_3">BMA #3</label>
+            </td>
+            <td>
+              <input type="text" id="_A_BMA_3" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_A_BMA_4">BMA #4</label>
+            </td>
+            <td>
+              <input type="text" id="_A_BMA_4" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_A_BMA_5">BMA #5</label>
+            </td>
+            <td>
+              <input type="text" id="_A_BMA_5" size="100" required />
+            </td>
+          </tr>
+        </table>
+        <table id="_B_HR_PU" class="tb">
+          <colgroup>
+            <col class="col_1" width="40%" />
+            <col class="col_2" width="60%" />
+          </colgroup>
+          <tr class="t1">
+            <td>
+              <label for="_B_UPR_CASE">UPR CASE</label>
+            </td>
+            <td>
+              <input type="text" id="_B_UPR_CASE" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_B_LWR_CASE">LWR CASE</label>
+            </td>
+            <td>
+              <input type="text" id="_B_LWR_CASE" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_B_HV_CNTR">HV CNTR</label>
+            </td>
+            <td>
+              <input type="text" id="_B_HV_CNTR" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_B_Heating_CNTR">Heating CNTR</label>
+            </td>
+            <td>
+              <input type="text" id="_B_Heating_CNTR" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_B_PRA">PRA</label>
+            </td>
+            <td>
+              <input type="text" id="_B_PRA" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_B_FUSE_BOX">FUSE BOX</label>
+            </td>
+            <td>
+              <input type="text" id="_B_FUSE_BOX" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_B_LV_W_H">LV W/H</label>
+            </td>
+            <td>
+              <input type="text" id="_B_LV_W_H" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_B_HV_W_H_1">HV W/H #1</label>
+            </td>
+            <td>
+              <input type="text" id="_B_HV_W_H_1" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_B_HV_W_H_1">HV W/H #1</label>
+            </td>
+            <td>
+              <input type="text" id="_B_HV_W_H_1" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_B_HV_W_H_2">HV W/H #2</label>
+            </td>
+            <td>
+              <input type="text" id="_B_HV_W_H_2" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_B_HV_W_H_3">HV W/H #3</label>
+            </td>
+            <td>
+              <input type="text" id="_B_HV_W_H_3" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_B_HV_W_H_4">HV W/H #4</label>
+            </td>
+            <td>
+              <input type="text" id="_B_HV_W_H_4" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_B_HV_W_H_5">HV W/H #5</label>
+            </td>
+            <td>
+              <input type="text" id="_B_HV_W_H_5" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_B_HV_W_H_6">HV W/H #6</label>
+            </td>
+            <td>
+              <input type="text" id="_B_HV_W_H_6" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_B_HV_W_H_7">HV W/H #7</label>
+            </td>
+            <td>
+              <input type="text" id="_B_HV_W_H_7" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_B_HV_W_H_8">HV W/H #8</label>
+            </td>
+            <td>
+              <input type="text" id="_B_HV_W_H_8" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_B_HV_W_H_9">HV W/H #9</label>
+            </td>
+            <td>
+              <input type="text" id="_B_HV_W_H_9" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_B_HV_W_H_10">HV W/H #10</label>
+            </td>
+            <td>
+              <input type="text" id="_B_HV_W_H_10" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_B_BUSBAR">BUSBAR</label>
+            </td>
+            <td>
+              <input type="text" id="_B_BUSBAR" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_B_BMU">BMU</label>
+            </td>
+            <td>
+              <input type="text" id="_B_BMU" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_B_CMU_1">CMU #1</label>
+            </td>
+            <td>
+              <input type="text" id="_B_CMU_1" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_B_CMU_2">CMU #2</label>
+            </td>
+            <td>
+              <input type="text" id="_B_CMU_2" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_B_CMU_3">CMU #3</label>
+            </td>
+            <td>
+              <input type="text" id="_B_CMU_3" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_B_CMU_4">CMU #4</label>
+            </td>
+            <td>
+              <input type="text" id="_B_CMU_4" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_B_CMU_5">CMU #5</label>
+            </td>
+            <td>
+              <input type="text" id="_B_CMU_5" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_B_BMA_1">BMA #1</label>
+            </td>
+            <td>
+              <input type="text" id="_B_BMA_1" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_B_BMA_2">BMA #2</label>
+            </td>
+            <td>
+              <input type="text" id="_B_BMA_2" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_B_BMA_3">BMA #3</label>
+            </td>
+            <td>
+              <input type="text" id="_B_BMA_3" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_B_BMA_4">BMA #4</label>
+            </td>
+            <td>
+              <input type="text" id="_B_BMA_4" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_B_BMA_5">BMA #5</label>
+            </td>
+            <td>
+              <input type="text" id="_B_BMA_5" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_B_BMA_6">BMA #6</label>
+            </td>
+            <td>
+              <input type="text" id="_B_BMA_6" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_B_BMA_7">BMA #7</label>
+            </td>
+            <td>
+              <input type="text" id="_B_BMA_7" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_B_BMA_8">BMA #8</label>
+            </td>
+            <td>
+              <input type="text" id="_B_BMA_8" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_B_BMA_9">BMA #9</label>
+            </td>
+            <td>
+              <input type="text" id="_B_BMA_9" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_B_BMA_10">BMA #10</label>
+            </td>
+            <td>
+              <input type="text" id="_B_BMA_10" size="100" required />
+            </td>
+          </tr>
+        </table>
+        <table id="_C_CN_NE_JW1_LM" class="tb">
+          <colgroup>
+            <col class="col_1" width="40%" />
+            <col class="col_2" width="60%" />
+          </colgroup>
+          <tr class="t1">
+            <td>
+              <label for="_C_UPR_CASE">UPR CASE</label>
+            </td>
+            <td>
+              <input type="text" id="_C_UPR_CASE" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_C_LWR_CASE">LWR CASE</label>
+            </td>
+            <td>
+              <input type="text" id="_C_LWR_CASE" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_C_HV_CNTR_1">HV CNTR #1</label>
+            </td>
+            <td>
+              <input type="text" id="_C_HV_CNTR_1" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_C_HV_CNTR_2">HV CNTR #2</label>
+            </td>
+            <td>
+              <input type="text" id="_C_HV_CNTR_2" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_C_Heating_CNTR">Heating CNTR</label>
+            </td>
+            <td>
+              <input type="text" id="_C_Heating_CNTR" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_C_PRA">PRA</label>
+            </td>
+            <td>
+              <input type="text" id="_C_PRA" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_C_FUSE_BOX">FUSE BOX</label>
+            </td>
+            <td>
+              <input type="text" id="_C_FUSE_BOX" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_C_LV_W_H">LV W/H</label>
+            </td>
+            <td>
+              <input type="text" id="_C_LV_W_H" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_C_HV_W_H_1">HV W/H #1</label>
+            </td>
+            <td>
+              <input type="text" id="_C_HV_W_H_1" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_C_HV_W_H_2">HV W/H #2</label>
+            </td>
+            <td>
+              <input type="text" id="_C_HV_W_H_2" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_C_HV_W_H_3">HV W/H #3</label>
+            </td>
+            <td>
+              <input type="text" id="_C_HV_W_H_3" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_C_HV_W_H_4">HV W/H #4</label>
+            </td>
+            <td>
+              <input type="text" id="_C_HV_W_H_4" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_C_HV_W_H_5">HV W/H #5</label>
+            </td>
+            <td>
+              <input type="text" id="_C_HV_W_H_5" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_C_HV_W_H_6">HV W/H #6</label>
+            </td>
+            <td>
+              <input type="text" id="_C_HV_W_H_6" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_C_HV_W_H_7">HV W/H #7</label>
+            </td>
+            <td>
+              <input type="text" id="_C_HV_W_H_7" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_C_HV_W_H_8">HV W/H #8</label>
+            </td>
+            <td>
+              <input type="text" id="_C_HV_W_H_8" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_C_BUSBAR">BUSBAR</label>
+            </td>
+            <td>
+              <input type="text" id="_C_BUSBAR" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_C_BMU">BMU</label>
+            </td>
+            <td>
+              <input type="text" id="_C_BMU" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_C_CMU_1">CMU #1</label>
+            </td>
+            <td>
+              <input type="text" id="_C_CMU_1" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_C_CMU_2">CMU #2</label>
+            </td>
+            <td>
+              <input type="text" id="_C_CMU_2" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_C_CMU_3">CMU #3</label>
+            </td>
+            <td>
+              <input type="text" id="_C_CMU_3" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_C_CMU_4">CMU #4</label>
+            </td>
+            <td>
+              <input type="text" id="_C_CMU_4" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_C_CMU_5">CMU #5</label>
+            </td>
+            <td>
+              <input type="text" id="_C_CMU_5" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_C_CMU_6">CMU #6</label>
+            </td>
+            <td>
+              <input type="text" id="_C_CMU_6" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_C_CMU_7">CMU #7</label>
+            </td>
+            <td>
+              <input type="text" id="_C_CMU_7" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_C_CMU_8">CMU #8</label>
+            </td>
+            <td>
+              <input type="text" id="_C_CMU_8" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_C_BMA_1">BMA #1</label>
+            </td>
+            <td>
+              <input type="text" id="_C_BMA_1" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_C_BMA_2">BMA #2</label>
+            </td>
+            <td>
+              <input type="text" id="_C_BMA_2" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_C_BMA_3">BMA #3</label>
+            </td>
+            <td>
+              <input type="text" id="_C_BMA_3" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_C_BMA_4">BMA #4</label>
+            </td>
+            <td>
+              <input type="text" id="_C_BMA_4" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_C_BMA_5">BMA #5</label>
+            </td>
+            <td>
+              <input type="text" id="_C_BMA_5" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_C_BMA_6">BMA #6</label>
+            </td>
+            <td>
+              <input type="text" id="_C_BMA_6" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_C_BMA_7">BMA #7</label>
+            </td>
+            <td>
+              <input type="text" id="_C_BMA_7" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_C_BMA_8">BMA #8</label>
+            </td>
+            <td>
+              <input type="text" id="_C_BMA_8" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_C_BMA_9">BMA #9</label>
+            </td>
+            <td>
+              <input type="text" id="_C_BMA_9" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_C_BMA_10">BMA #10</label>
+            </td>
+            <td>
+              <input type="text" id="_C_BMA_10" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_C_BMA_11">BMA #11</label>
+            </td>
+            <td>
+              <input type="text" id="_C_BMA_11" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_C_BMA_12">BMA #12</label>
+            </td>
+            <td>
+              <input type="text" id="_C_BMA_12" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_C_BMA_13">BMA #13</label>
+            </td>
+            <td>
+              <input type="text" id="_C_BMA_13" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_C_BMA_14">BMA #14</label>
+            </td>
+            <td>
+              <input type="text" id="_C_BMA_14" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_C_BMA_15">BMA #15</label>
+            </td>
+            <td>
+              <input type="text" id="_C_BMA_15" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_C_BMA_16">BMA #16</label>
+            </td>
+            <td>
+              <input type="text" id="_C_BMA_16" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_C_BMA_17">BMA #17</label>
+            </td>
+            <td>
+              <input type="text" id="_C_BMA_17" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_C_BMA_18">BMA #18</label>
+            </td>
+            <td>
+              <input type="text" id="_C_BMA_18" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_C_BMA_19">BMA #19</label>
+            </td>
+            <td>
+              <input type="text" id="_C_BMA_19" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_C_BMA_20">BMA #20</label>
+            </td>
+            <td>
+              <input type="text" id="_C_BMA_20" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_C_BMA_21">BMA #21</label>
+            </td>
+            <td>
+              <input type="text" id="_C_BMA_21" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_C_BMA_22">BMA #22</label>
+            </td>
+            <td>
+              <input type="text" id="_C_BMA_22" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_C_BMA_23">BMA #23</label>
+            </td>
+            <td>
+              <input type="text" id="_C_BMA_23" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_C_BMA_24">BMA #24</label>
+            </td>
+            <td>
+              <input type="text" id="_C_BMA_24" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_C_BMA_25">BMA #25</label>
+            </td>
+            <td>
+              <input type="text" id="_C_BMA_25" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_C_BMA_26">BMA #26</label>
+            </td>
+            <td>
+              <input type="text" id="_C_BMA_26" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_C_BMA_27">BMA #27</label>
+            </td>
+            <td>
+              <input type="text" id="_C_BMA_27" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_C_BMA_28">BMA #28</label>
+            </td>
+            <td>
+              <input type="text" id="_C_BMA_28" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_C_BMA_29">BMA #29</label>
+            </td>
+            <td>
+              <input type="text" id="_C_BMA_29" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_C_BMA_30">BMA #30</label>
+            </td>
+            <td>
+              <input type="text" id="_C_BMA_30" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_C_BMA_31">BMA #31</label>
+            </td>
+            <td>
+              <input type="text" id="_C_BMA_31" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_C_BMA_32">BMA #32</label>
+            </td>
+            <td>
+              <input type="text" id="_C_BMA_32" size="100" required />
+            </td>
+          </tr>
+        </table>
+        <table id="_D_CS" class="tb">
+          <colgroup>
+            <col class="col_1" width="40%" />
+            <col class="col_2" width="60%" />
+          </colgroup>
+          <tr class="t1">
+            <td>
+              <label for="_D_UPR_CASE">UPR CASE</label>
+            </td>
+            <td>
+              <input type="text" id="_D_UPR_CASE" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_D_LWR_CASE">LWR CASE</label>
+            </td>
+            <td>
+              <input type="text" id="_D_LWR_CASE" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_D_HV_CNTR_RH">HV CNTR RH</label>
+            </td>
+            <td>
+              <input type="text" id="_D_HV_CNTR_RH" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_D_HV_CNTR_LH">HV CNTR LH</label>
+            </td>
+            <td>
+              <input type="text" id="_D_HV_CNTR_LH" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_D_RELAY">RELAY</label>
+            </td>
+            <td>
+              <input type="text" id="_D_RELAY" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_D_LV_W_H">LV W/H</label>
+            </td>
+            <td>
+              <input type="text" id="_D_LV_W_H" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_D_HV_W_H_1">HV W/H #1</label>
+            </td>
+            <td>
+              <input type="text" id="_D_HV_W_H_1" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_D_HV_W_H_2">HV W/H #2</label>
+            </td>
+            <td>
+              <input type="text" id="_D_HV_W_H_2" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_D_BUSBAR">BUSBAR</label>
+            </td>
+            <td>
+              <input type="text" id="_D_BUSBAR" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_D_BMU">BMU</label>
+            </td>
+            <td>
+              <input type="text" id="_D_BMU" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_D_CMU_1">CMU #1</label>
+            </td>
+            <td>
+              <input type="text" id="_D_CMU_1" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_D_CMU_2">CMU #2</label>
+            </td>
+            <td>
+              <input type="text" id="_D_CMU_2" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_D_BMA_1">BMA #1</label>
+            </td>
+            <td>
+              <input type="text" id="_D_BMA_1" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td>
+              <label for="_D_BMA_2">BMA #2</label>
+            </td>
+            <td>
+              <input type="text" id="_D_BMA_2" size="100" required />
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="input-group">
+        <div class="input-btn-group">
+          <button onClick="부품정보_list_save();">SAVE</button>
+          <button onClick="loadPage('base/기초검사.html');">이전 Page</button>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      const _tb = document.getElementById("_tb");
+      const _management_id = document.getElementById("_management_id");
+      const _A_UPR_CASE = document.getElementById("_A_UPR_CASE");
+      const _A_LWR_CASE = document.getElementById("_A_LWR_CASE");
+      const _A_S_PLUG = document.getElementById("_A_S_PLUG");
+      const _A_SPA = document.getElementById("_A_SPA");
+      const _A_HV_CNTR = document.getElementById("_A_HV_CNTR");
+      const _A_Heating_CNTR = document.getElementById("_A_Heating_CNTR");
+      const _A_PRA = document.getElementById("_A_PRA");
+      const _A_LV_W_H = document.getElementById("_A_LV_W_H");
+      const _A_HV_W_H_1 = document.getElementById("_A_HV_W_H_1");
+      const _A_HV_W_H_2 = document.getElementById("_A_HV_W_H_2");
+      const _A_HV_W_H_3 = document.getElementById("_A_HV_W_H_3");
+      const _A_HV_W_H_4 = document.getElementById("_A_HV_W_H_4");
+      const _A_HV_W_H_5 = document.getElementById("_A_HV_W_H_5");
+      const _A_BUSBAR = document.getElementById("_A_BUSBAR");
+      const _A_BMU = document.getElementById("_A_BMU");
+      const _A_CMU_1 = document.getElementById("_A_CMU_1");
+      const _A_CMU_2 = document.getElementById("_A_CMU_2");
+      const _A_CMU_3 = document.getElementById("_A_CMU_3");
+      const _A_CMU_4 = document.getElementById("_A_CMU_4");
+      const _A_CMU_5 = document.getElementById("_A_CMU_5");
+      const _A_BMA_1 = document.getElementById("_A_BMA_1");
+      const _A_BMA_2 = document.getElementById("_A_BMA_2");
+      const _A_BMA_5 = document.getElementById("_A_BMA_3");
+      const _A_BMA_5 = document.getElementById("_A_BMA_4");
+      const _A_BMA_5 = document.getElementById("_A_BMA_5");
+      const _B_UPR_CASE = document.getElementById("_B_UPR_CASE");
+      const _B_LWR_CASE = document.getElementById("_B_LWR_CASE");
+      const _B_HV_CNTR = document.getElementById("_B_HV_CNTR");
+      const _B_Heating_CNTR = document.getElementById("_B_Heating_CNTR");
+      const _B_PRA = document.getElementById("_B_PRA");
+      const _B_FUSE_BOX = document.getElementById("_B_FUSE_BOX");
+      const _B_LV_W_H = document.getElementById("_B_LV_W_H");
+      const _B_HV_W_H_1 = document.getElementById("_B_HV_W_H_1");
+      const _B_HV_W_H_2 = document.getElementById("_B_HV_W_H_2");
+      const _B_HV_W_H_3 = document.getElementById("_B_HV_W_H_3");
+      const _B_HV_W_H_4 = document.getElementById("_B_HV_W_H_4");
+      const _B_HV_W_H_5 = document.getElementById("_B_HV_W_H_5");
+      const _B_HV_W_H_6 = document.getElementById("_B_HV_W_H_6");
+      const _B_HV_W_H_7 = document.getElementById("_B_HV_W_H_7");
+      const _B_HV_W_H_8 = document.getElementById("_B_HV_W_H_8");
+      const _B_HV_W_H_9 = document.getElementById("_B_HV_W_H_9");
+      const _B_HV_W_H_10 = document.getElementById("_B_HV_W_H_10");
+      const _B_BUSBAR = document.getElementById("_B_BUSBAR");
+      const _B_BMU = document.getElementById("_B_BMU");
+      const _B_CMU_1 = document.getElementById("_B_CMU_1");
+      const _B_CMU_2 = document.getElementById("_B_CMU_2");
+      const _B_CMU_3 = document.getElementById("_B_CMU_3");
+      const _B_CMU_4 = document.getElementById("_B_CMU_4");
+      const _B_CMU_5 = document.getElementById("_B_CMU_5");
+      const _B_BMA_1 = document.getElementById("_B_BMA_1");
+      const _B_BMA_2 = document.getElementById("_B_BMA_2");
+      const _B_BMA_3 = document.getElementById("_B_BMA_3");
+      const _B_BMA_4 = document.getElementById("_B_BMA_4");
+      const _B_BMA_5 = document.getElementById("_B_BMA_5");
+      const _B_BMA_6 = document.getElementById("_B_BMA_6");
+      const _B_BMA_7 = document.getElementById("_B_BMA_7");
+      const _B_BMA_8 = document.getElementById("_B_BMA_8");
+      const _B_BMA_9 = document.getElementById("_B_BMA_9");
+      const _B_BMA_10 = document.getElementById("_B_BMA_10");
+      const _C_UPR_CASE = document.getElementById("_C_UPR_CASE");
+      const _C_LWR_CASE = document.getElementById("_C_LWR_CASE");
+      const _C_HV_CNTR_1 = document.getElementById("_C_HV_CNTR_1");
+      const _C_HV_CNTR_2 = document.getElementById("_C_HV_CNTR_2");
+      const _C_Heating_CNTR = document.getElementById("_C_HV_Heating_CNTR");
+      const _C_PRA = document.getElementById("_C_PRA");
+      const _C_FUSE_BOX = document.getElementById("_C_FUSE_BOX");
+      const _C_LV_W_H = document.getElementById("_C_LV_W_H");
+      const _C_HV_W_H_1 = document.getElementById("_C_HV_W_H_1");
+      const _C_HV_W_H_2 = document.getElementById("_C_HV_W_H_2");
+      const _C_HV_W_H_3 = document.getElementById("_C_HV_W_H_3");
+      const _C_HV_W_H_4 = document.getElementById("_C_HV_W_H_4");
+      const _C_HV_W_H_5 = document.getElementById("_C_HV_W_H_5");
+      const _C_HV_W_H_6 = document.getElementById("_C_HV_W_H_6");
+      const _C_HV_W_H_7 = document.getElementById("_C_HV_W_H_7");
+      const _C_HV_W_H_8 = document.getElementById("_C_HV_W_H_8");
+      const _C_BUSBAR = document.getElementById("_C_BUSBAR");
+      const _C_BMU = document.getElementById("_C_BMU");
+      const _C_CMU_1 = document.getElementById("_C_CMU_1");
+      const _C_CMU_2 = document.getElementById("_C_CMU_2");
+      const _C_CMU_3 = document.getElementById("_C_CMU_3");
+      const _C_CMU_4 = document.getElementById("_C_CMU_4");
+      const _C_CMU_5 = document.getElementById("_C_CMU_5");
+      const _C_CMU_6 = document.getElementById("_C_CMU_6");
+      const _C_CMU_7 = document.getElementById("_C_CMU_7");
+      const _C_CMU_8 = document.getElementById("_C_CMU_8");
+      const _C_BMA_1 = document.getElementById("_C_BMA_1");
+      const _C_BMA_2 = document.getElementById("_C_BMA_2");
+      const _C_BMA_3 = document.getElementById("_C_BMA_3");
+      const _C_BMA_4 = document.getElementById("_C_BMA_4");
+      const _C_BMA_5 = document.getElementById("_C_BMA_5");
+      const _C_BMA_6 = document.getElementById("_C_BMA_6");
+      const _C_BMA_7 = document.getElementById("_C_BMA_7");
+      const _C_BMA_8 = document.getElementById("_C_BMA_8");
+      const _C_BMA_9 = document.getElementById("_C_BMA_9");
+      const _C_BMA_10 = document.getElementById("_C_BMA_10");
+      const _C_BMA_11 = document.getElementById("_C_BMA_11");
+      const _C_BMA_12 = document.getElementById("_C_BMA_12");
+      const _D_UPR_CASE = document.getElementById("_D_UPR_CASE");
+      const _D_LWR_CASE = document.getElementById("_D_LWR_CASE");
+      const _D_HV_CNTR_RH = document.getElementById("_D_HV_CNTR_RH");
+      const _D_HV_CNTR_LH = document.getElementById("_D_HV_CNTR_LH");
+      const _D_RELAY = document.getElementById("_D_RELAY");
+      const _D_LV_W_H = document.getElementById("_D_LV_W_H");
+      const _D_HV_W_H_1 = document.getElementById("_D_HV_W_H_1");
+      const _D_HV_W_H_2 = document.getElementById("_D_HV_W_H_2");
+      const _D_BUSBAR = document.getElementById("_D_BUSBAR");
+      const _D_BMU = document.getElementById("_D_BMU");
+      const _D_CMU_1 = document.getElementById("_D_CMU_1");
+      const _D_CMU_2 = document.getElementById("_D_CMU_2");
+      const _D_BMA_1 = document.getElementById("_D_BMA_1");
+      const _D_BMA_2 = document.getElementById("_D_BMA_2");
+    </script>
+  </body>
 </html>
