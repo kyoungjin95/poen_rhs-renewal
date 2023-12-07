@@ -93,12 +93,10 @@ async function 부품재고_시작() {
 	var tabledata_신품재고 = [];
 	var tabledata_고품재고 = [];
 
-	count(자재입출고, { QR : { $exists : true }});
+	find_자재입출고(자재입출고, { QR : { $exists : true }});
 	await delay();
 
-	if(자재입출고_cnt > 0) {
-		find_신품정보(자재입출고, { QR : { $exists : true }});
-		await delay();
+	if(자재입출고_v != null) {
 		tabledata_신품재고 = JSON.parse(JSON.stringify(자재입출고_v));
 	}
 
@@ -138,7 +136,7 @@ async function 부품재고_시작() {
 	var 평균단가 = [];
 	var 합계 = [];
 
-	find_신품정보(자재입출고, { QR: { $exists: true } });
+	find_자재입출고(자재입출고, { QR: { $exists: true } });
 	await delay();
 
 	자재입출고_v.forEach(async function (infos) {
@@ -198,13 +196,10 @@ async function 부품재고_시작() {
 		],
 	});
 
-	count(고품정보, { 관리번호 : { $exists : true }});
+	find_고품정보(고품정보, { 관리번호 : { $exists : true }});
 	await delay();
 
-	if(고품정보_cnt > 0) {
-		find_고품정보(고품정보, { 관리번호 : { $exists : true }});
-		await delay();
-
+	if(고품정보_v != null) {
 		tabledata_고품재고 = JSON.parse(JSON.stringify(고품정보_v));
 	}
 

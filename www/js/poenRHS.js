@@ -3250,6 +3250,15 @@ async function find_교체부품상세(col, query) {
 	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: 교체부품상세_ }, check);
 }
 
+async function find_자재입출고(col, query) {
+	if(socket == undefined) return;
+	flag_arrivedMSG = false;
+	check++;
+	if(check > 10) check = 0;
+
+	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: 자재입출고_ }, check);
+}
+
 function sleep(ms) {
 	return new Promise((resolve) => setTimeout(resolve, ms))
 }
