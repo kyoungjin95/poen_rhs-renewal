@@ -107,12 +107,11 @@ function read_신품정보_func_csv() {
 
 			const res = d3.csvParse(reader.result);
 			var docs = [];
-
-			count(자재입출고, { QR : { $exists : true }});
-			await delay();
 			
-			console.log(자재입출고_cnt, res.length);
-			for(var i = 자재입출고_cnt; i < res.length; i++) {
+			drop(자재입출고);
+			await delay();
+
+			for(var i = 0; i < res.length; i++) {
 				if(res[i].QR != '') docs.push(res[i]);
 				console.log('docs count: ', docs.length);
 				if((i > 0 && (i % 2000) == 0) || i == (res.length - 1)) {
@@ -127,6 +126,7 @@ function read_신품정보_func_csv() {
 				} 
 			};
 			console.log('complete:', res.length);
+			alert('업로드가 완료되었습니다. 새로고침후 다시 로그인하세요');
 		});
 		console.log(file);
 		reader.readAsText(file);
@@ -143,7 +143,6 @@ async function 신품정보_insert(val) {
 	doc.품명 = val.품명;
 	doc.품번 = val.품번;
 	doc.수량 = val.수량;
-	doc.단가 = val.단가;
 	doc.LotNo = val.LotNo; 
 	doc.비고 = val.비고; 
 	doc.사용관리번호 = ''; 

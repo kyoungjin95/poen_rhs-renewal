@@ -678,6 +678,8 @@ async function 재제조현황_조회() {
   await 재출하_load_pic();
   await 완전분해_load_pic();
   await 폐기_load_pic();
+
+  alert('로딩이 완료되었습니다');
 }
 
 async function delete_bsa_중복정보() {

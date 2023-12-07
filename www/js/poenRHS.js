@@ -552,6 +552,7 @@ const 성능검사_doc = {
 	DCIR: '',
 	DCIR_Charge: '',
 	DCIR_Discharge: '',
+	분해조립_재의뢰사유: '',
 	공정완료일: '',
 	비고: '',
 	검사자: ''
@@ -1531,8 +1532,7 @@ const 성능검사_ = {
 	DCIR: 1,
 	DCIR_Charge: 1,
 	DCIR_Discharge: 1,
-	절연저항_HVP: 1,
-	절연저항_HVN: 1,
+	분해조립_재의뢰사유: 1,
 	공정완료일: 1,
 	비고: 1,
 	검사자: 1
@@ -2590,6 +2590,11 @@ socket.on('delete_result', async function(count) {
 	flag_arrivedMSG = true;
 });
 
+socket.on('drop_result', async function(result) {
+	console.log('drop result: ', result);
+	flag_arrivedMSG = true;
+});
+
 socket.on('disconnect', function() {
 	console.log('disconnect');
 });
@@ -2716,6 +2721,12 @@ async function update(col, doc) {
 	socket.emit('update', worker, col, { 관리번호: doc.관리번호 }, {$set: doc});
 }
 
+async function update_자재입출고(col, doc) {
+	if(socket == undefined) return;
+	flag_arrivedMSG = false;
+	socket.emit('update', worker, col, { QR: doc.QR }, {$set: doc});
+}
+
 async function update_보고서(col, doc) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
@@ -2788,6 +2799,12 @@ async function delete_계정(_id) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
 	socket.emit('delete', worker, 계정, { id: _id});
+}
+
+async function drop(_col) {
+	if(socket == undefined) return;
+	flag_arrivedMSG = false;
+	socket.emit('drop', worker, _col);
 }
 
 async function find(col, management_id) {
@@ -3250,6 +3267,15 @@ async function find_교체부품상세(col, query) {
 	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: 교체부품상세_ }, check);
 }
 
+async function find_자재입출고(col, query) {
+	if(socket == undefined) return;
+	flag_arrivedMSG = false;
+	check++;
+	if(check > 10) check = 0;
+
+	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: 자재입출고_ }, check);
+}
+
 function sleep(ms) {
 	return new Promise((resolve) => setTimeout(resolve, ms))
 }
@@ -3401,7 +3427,7 @@ async function 공정단계찾기__(_관리번호) {
 	return 공정단계;
 }
 
-async function 공정단계자동입력(_관리번호) {
+async function 공정단계자동입력(_관리번호, 단계 = '') {
 		findOne_BSA재제조(BSA재제조, { 관리번호 :  _관리번호,  공정단계 : { $ne : '출하' } });
 		await delay();
 
@@ -3416,6 +3442,7 @@ async function 공정단계자동입력(_관리번호) {
 		if(BSA재제조_v.EOL != '') _공정단계 = '제조완료';
 		if(BSA재제조_v.출하검사 != '') _공정단계 = '제조완료';
 		if(BSA재제조_v.출하 != '') _공정단계 = '출하';
+		if(단계 != '') _공정단계 = 단계;
 
 		var doc = {
 			관리번호 : _관리번호,
