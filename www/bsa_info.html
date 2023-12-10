@@ -75,12 +75,12 @@
               type="text"
               placeholder="변경후 관리번호"
             />
-            <button onClick="관리번호_변경();">변경</button>
+            <button onClick="if(계정_stat.관리번호 == 'o') 관리번호_변경();">변경</button>
             <input id="copy_관리번호" type="text" placeholder="To 관리번호" />
-            <button onClick="copy();">복사</button>
+            <button onClick="if(계정_stat.관리번호 == 'o') copy();">복사</button>
           </div>
           <div class="process__btns">
-            <button onClick="delete_bsa();" class="delete__bsa">삭제</button>
+            <button onClick="if(계정_stat.관리번호 == 'o') delete_bsa();" class="delete__bsa">삭제</button>
             <button onClick="export_excel();" class="down__excel">
               BSA 정보 Data Excel
             </button>

@@ -683,6 +683,7 @@ async function 재제조현황_조회() {
 }
 
 async function delete_bsa_중복정보() {
+  if(계정_stat.관리번호 != 'o') return;
   console.log("delete : ", _id);
   var ok = window.confirm("BSA기본정보에서만 지워집니다. 계속하겠습니까?");
   if (ok == false) return;

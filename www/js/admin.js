@@ -10,13 +10,25 @@ async function 관리자_시작() {
 	_id = document.getElementById('_id');
 	_passwd = document.getElementById('_passwd');
 	_passwd2 = document.getElementById('_passwd2');
-	_set_level = document.getElementById('_level');
+	_level = document.getElementById('_level');
+	_이름 = document.getElementById('_이름');
+	_기본정보 = document.getElementById('_기본정보');
+	_입고 = document.getElementById('_입고');
+	_세척 = document.getElementById('_세척');
+	_기초검사 = document.getElementById('_기초검사');
+	_분해조립 = document.getElementById('_분해조립');
+	_성능검사 = document.getElementById('_성능검사');
+	_EOL = document.getElementById('_EOL');
+	_출하검사 = document.getElementById('_출하검사');
+	_부품재고 = document.getElementById('_부품재고');
+	_관리번호 = document.getElementById('_관리번호');
 
 	find_계정(계정, { id : { $exists : true }})
 	await delay();
 
+	var table;
 	if(계정_v != null) {
-		var table = new Tabulator("#grid_user_info", {
+		table = new Tabulator("#grid_user_info", {
 			layout: "resizableColumnFit",
 			data: 계정_v,
 			height: '700px',
@@ -24,18 +36,45 @@ async function 관리자_시작() {
 			columns:[
 				{title:"ID", field:"id", sorter:"string", width:'180'},
 				{title:"LEVEL", field:"level", sorter:"string", width:'180'},
+				{title:"이름", field:"이름", sorter:"string", width:'180'},
+				{title:"기본정보", field:"기본정보", sorter:"string", width:'180'},
+				{title:"입고", field:"입고", sorter:"string", width:'180'},
+				{title:"세척", field:"세척", sorter:"string", width:'180'},
+				{title:"기초검사", field:"기초검사", sorter:"string", width:'180'},
+				{title:"분해조립", field:"분해조립", sorter:"string", width:'180'},
+				{title:"성능검사", field:"성능검사", sorter:"string", width:'180'},
+				{title:"EOL", field:"EOL", sorter:"string", width:'180'},
+				{title:"출하검사", field:"출하검사", sorter:"string", width:'180'},
+				{title:"부품재고", field:"부품재고", sorter:"string", width:'180'},
+				{title:"관리번호", field:"관리번호", sorter:"string", width:'180'},
 			],
 		});
 	}
+
+	table.on("rowClick", async function (e, row) {
+    		console.log("selected 관리번호: ", row.getData().id);
+		if (row.getData().id != ''){
+			_id.value = row.getData().id;
+			_level.value = row.getData().level;
+			_이름.value = row.getData().이름;
+			_기본정보.value = row.getData().기본정보;
+			_입고.value = row.getData().입고;
+			_세척.value = row.getData().세척;
+			_기초검사.value = row.getData().기초검사;
+			_분해조립.value = row.getData().분해조립;
+			_성능검사.value = row.getData().성능검사;
+			_EOL.value = row.getData().EOL;
+			_출하검사.value = row.getData().출하검사;
+			_부품재고.value = row.getData().부품재고;
+			_관리번호.value = row.getData().관리번호;
+		}
+	});
 	_csv = document.getElementById('_csv');
-	func_csv();
 }
 
 async function add_user() {
-	_id = document.getElementById('_id');
 	_passwd = document.getElementById('_passwd');
 	_passwd2 = document.getElementById('_passwd2');
-	_set_level = document.getElementById('_level');
 	if(_id.value == '' || _passwd.value == '') return;
 	if(_passwd.value != _passwd2.value) {
 		alert('패스워드가 서로 다름니다.');
@@ -44,12 +83,22 @@ async function add_user() {
 
 	const hash = CryptoJS.MD5(_passwd.value.trim()); 	
 
+	var hash_str = hash.toString();
 	var doc = JSON.parse(JSON.stringify(계정_doc));
 	doc.id = _id.value.trim();
-	doc.passwd = hash.toString();
-	doc.level = _set_level.value;
-
-	console.log('hash:', hash.toString());
+	doc.passwd = hash_str;
+	doc.level = _level.value;
+	doc.이름 = _이름.value;
+	doc.기본정보 = _기본정보.value;
+	doc.입고 = _입고.value;
+	doc.세척 = _세척.value;
+	doc.기초검사 = _기초검사.value;
+	doc.분해조립 = _분해조립.value;
+	doc.성능검사 = _성능검사.value;
+	doc.EOL = _EOL.value;
+	doc.출하검사 = _출하검사.value;
+	doc.부품재고 = _부품재고.value;
+	doc.관리번호 = _관리번호.value;
 
 	update_계정(계정, doc);
 	await delay();
@@ -90,50 +139,14 @@ var total_insert_count = 0;
 var total_update_count = 0;
 var fail_count = 0;
 
-function func_csv() {
-	_csv.addEventListener('input', function(event) {
-		const target = event.target;
-		const files = target.files;
-		const file = files[0];
-
-		const reader = new FileReader();
-		reader.addEventListener('load', async function() {
-			const res = d3.csvParse(reader.result);
-
-			//insertMany(BSA재제조, res);
-			//await delay();
-
-			for(var i = 0; i < res.length; i++) {
-				var doc = {};
-				doc.관리번호 = res[i].관리번호;
-				doc.공정단계 = res[i].공정단계;
-				if(res[i].완전분해 != '') doc.완전분혜 = res[i].완전분해 + 'T14:00:00';
-				else doc.완전분해 = '';
-				
-				if(res[i].폐기 != '') doc.폐기 = res[i].폐기 + 'T14:00:00';
-				else doc.폐기 = '';
-				
-				if(res[i].출하 != '') doc.출하 = res[i].출하 + 'T14:00:00';
-				else doc.출하 = '';
-
-				update(BSA재제조, doc);
-				await delay();
-
-				console.log(doc);
-			};
-			console.log('complete');
-		});
-		reader.readAsText(file);
-	});
-}
-
-async function doo_1() {
+async function doo() {
 	find_BSA재제조(BSA재제조, { 관리번호 : { $exists : true },  공정단계 : { $ne : '출하' } });
 	await delay();
 
 	BSA재제조_v.forEach(async function(item) {
 		var _공정단계 = '입고';
 		if(item.입고 != '') _공정단계 = '세척';
+		E
 		if(item.세척 != '') _공정단계 = '기초검사';
 		if(item.기초검사 != '') _공정단계 = '분해조립';
 		if(item.분해조립 != '') _공정단계 = '성능검사';
