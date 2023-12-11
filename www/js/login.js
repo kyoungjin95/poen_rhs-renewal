@@ -1,3 +1,5 @@
+var 계정_stat = '';
+
 async function login() {
 	console.log('try login');
 	const _id = document.getElementById('_id');
@@ -16,10 +18,11 @@ async function login() {
 			worker = _id.value;
 			findOne_계정(계정, { id: _id.value })
 			await delay()
-			console.log('test:', find_array);
-			level = 계정_v.level;
+			계정_stat = 계정_v;
+			console.log(계정_stat);
+
 			//sessionStorage.setItem('worker',  worker);
-			sessionStorage.setItem('level',  level);
+			sessionStorage.setItem('level',  계정_stat.level);
 
 			alert('로그인 성공');
 

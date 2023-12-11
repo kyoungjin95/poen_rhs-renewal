@@ -26,7 +26,7 @@
         <h1>RHMS</h1>
         <p class="version" style="font: italic bold 0.3em/1em Georgia, serif">
           (Remanufacturing History Management System) Ver.
-          <span>Code sky 0.28</span>
+          <span>Code sky 0.29</span>
         </p>
       </div>
       <br />
@@ -137,7 +137,7 @@
           <li id="부품재고_btn">
             <button
               class="menu-btn"
-              onclick="pre_관리번호 = ''; loadPage('base/부품재고.html'); flag_부품재고 = true;"
+              onclick="pre_관리번호 = ''; if(계정_stat.부품재고 == 'o') loadPage('base/부품재고.html'); flag_부품재고 = true;"
             >
               부품재고
             </button>

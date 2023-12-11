@@ -111,11 +111,7 @@ function read_신품정보_func_csv() {
 			drop(자재입출고);
 			await delay();
 
-			count(자재입출고, { QR : { $exists : true }});
-			await delay();
-			
-			console.log(자재입출고_cnt, res.length);
-			for(var i = 자재입출고_cnt; i < res.length; i++) {
+			for(var i = 0; i < res.length; i++) {
 				if(res[i].QR != '') docs.push(res[i]);
 				console.log('docs count: ', docs.length);
 				if((i > 0 && (i % 2000) == 0) || i == (res.length - 1)) {
@@ -130,6 +126,7 @@ function read_신품정보_func_csv() {
 				} 
 			};
 			console.log('complete:', res.length);
+			alert('업로드가 완료되었습니다. 새로고침후 다시 로그인하세요');
 		});
 		console.log(file);
 		reader.readAsText(file);
