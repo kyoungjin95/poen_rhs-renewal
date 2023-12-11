@@ -94,6 +94,44 @@ function _사용여부_콤보박스(e) {
 }
 
 var flag_신품정보_엑셀 = false;
+function 구자료_read_신품정보_func_csv() {
+	_재고관리_csv.addEventListener('input', function(event) {
+		const target = event.target;
+		const files = target.files;
+		const file = files[0];
+
+		const reader = new FileReader();
+		reader.addEventListener('load', async function() {
+			if(flag_신품정보_엑셀 == true) return;
+			flag_신품정보_엑셀 = true;
+
+			const res = d3.csvParse(reader.result);
+			var docs = [];
+			
+			drop(구자료);
+			await delay();
+
+			for(var i = 0; i < res.length; i++) {
+				if(res[i].품번 != '') docs.push(res[i]);
+				console.log('docs count: ', docs.length);
+				if((i > 0 && (i % 2000) == 0) || i == (res.length - 1)) {
+					insertMany(구자료, docs);
+					await delay();
+
+					console.log('processing:', i, docs.length);
+					
+					docs = [];
+
+					await sleep(1);
+				} 
+			};
+			console.log('complete:', res.length);
+			alert('업로드가 완료되었습니다. 새로고침후 다시 로그인하세요');
+		});
+		console.log(file);
+		reader.readAsText(file);
+	});
+}
 function read_신품정보_func_csv() {
 	_재고관리_csv.addEventListener('input', function(event) {
 		const target = event.target;

@@ -93,10 +93,13 @@ async function 부품재고_시작() {
 	var tabledata_신품재고 = [];
 	var tabledata_고품재고 = [];
 
-	find_자재입출고(자재입출고, { QR : { $exists : true }});
+	findOne_자재입출고(자재입출고, { QR : { $exists : true }});
 	await delay();
 
 	if(자재입출고_v != null) {
+		find_자재입출고(자재입출고, { QR : { $exists : true }});
+		await delay();
+
 		tabledata_신품재고 = JSON.parse(JSON.stringify(자재입출고_v));
 	}
 
@@ -129,54 +132,51 @@ async function 부품재고_시작() {
 		document.getElementById('신품_QR').innerHTML = 'QR: ' + 신품_QR;
 	});
 
-	var input_counts = [];
 	var counts = [];
 	var 품번 = [];
-	var 단가합 = [];
-	var 평균단가 = [];
 	var 합계 = [];
 
 	find_자재입출고(자재입출고, { QR: { $exists: true } });
 	await delay();
 
 	자재입출고_v.forEach(async function (infos) {
-		var date_start = new Date('2023-04-30');
+		var date_start = new Date('2023-12-1');
 		var date_date = new Date(infos.날짜);
 
-		if(date_date < date_start) return;
+		//if(date_date < date_start) return;
 
 		if (품번.indexOf(infos.품번) < 0) {
 			품번.push(infos.품번);
-			counts.push(infos.수량);
-			input_counts.push(1);
+			counts.push(Number(infos.수량));
 			
-			if(infos.단가 != undefined) 단가합.push(infos.단가);
-			else 단가합.push(0);
-
-			if(infos.단가 != undefined) 평균단가.push(infos.단가);
-			else 평균단가.push(0);
-
 			if(infos.단가 != undefined) 합계.push(infos.단가 * infos.수량);
 			else 합계.push(0);
 		} else {
 			var no = 품번.indexOf(infos.품번);
-			input_counts[no]++;
 			if(infos.단가 != undefined && infos.단가 != '') { 
-				counts[no] += infos.수량;
-				단가합[no] += infos.단가;
-				평균단가[no] = 단가합[no] / input_counts[no];
-				합계[no] += infos.단가 * infos.수량;
+				counts[no] += Number(infos.수량);
+				합계[no] += Number(infos.단가) * Number(infos.수량);
 			}
-
 		}
 	});
-	console.log(평균단가, 단가합);
+
+	find_구자료(구자료, { 품번 : {$exists : true }});
+	await delay();
+
+	구자료_v.forEach(function(infos) {
+		var no = 품번.indexOf(infos.품번);
+		if(no >= 0) {
+			counts[no] += Number(infos.수량);
+			합계[no] += Number(infos.공급가액);
+		}
+	});
+
 	var list = [];
 	for(var i = 0; i < 품번.length; i++) {
 		var item = {
 			품번 : 품번[i],
 			수량 : Number(counts[i]).toLocaleString('ko-KR'),
-			평균단가 : Number(평균단가[i]).toLocaleString('ko-KR'),
+			평균단가 : (Number(합계[i]) / Number(counts[i])).toLocaleString('ko-KR'),
 			합계 : Number(합계[i]).toLocaleString('ko-KR')
 		}
 

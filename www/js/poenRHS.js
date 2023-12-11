@@ -39,7 +39,9 @@ const 폐기_pic = '폐기_pic';
 const 기초보고서 = '기초보고서';
 const 완료보고서 = '완료보고서';
 const 부품정보_list = '부품정보_list';
+const 구자료 = '구자료';
 
+var 구자료_v = [];
 var BSA재제조_v = [];
 var 입고_v = [];
 var 세척_v = [];
@@ -119,6 +121,7 @@ var 기초보고서_cnt = 0;
 var 완료보고서_cnt = 0;
 var 계정_cnt = 0;
 var 부품정보_list_cnt = 0;
+var 구자료_cnt = 0;
 
 var option_입고_cnt = 0;
 var option_세척_cnt = 0;
@@ -159,6 +162,16 @@ const 계정_doc = {
 	부품재고: '',
 	관리번호: ''
 };
+
+const 구자료_doc = {
+	품번 : '',
+	품명 : '',
+	수량 : '',
+	공급가액 : '',
+	부가세 : '',
+	합계 : '',
+	평균단가 : ''
+}
 
 const BSA재제조_doc = {
 	관리번호: '', 
@@ -1099,6 +1112,16 @@ const 계정_ = {
 	부품재고: 1,
 	관리번호: 1
 };
+
+const 구자료_ = {
+	품번 : 1,
+	품명 : 1,
+	수량 : 1,
+	공급가액 : 1,
+	부가세 : 1,
+	합계 : 1,
+	평균단가 : 1
+}
 
 const BSA재제조_ = {
 	_id : 1,
@@ -2587,6 +2610,11 @@ socket.on('find_result', async function(col, result, rcv_check) {
 			부품정보_list_v = JSON.parse(JSON.stringify(result));
 			break;
 
+		case 구자료 :
+			구자료_v = [];
+			구자료_v = JSON.parse(JSON.stringify(result));
+			break;
+
 		default : 
 			find_array = []; 
 			find_array = JSON.parse(JSON.stringify(result)); 
@@ -2661,6 +2689,7 @@ function reset_result() {
 	기초보고서_v = [];
 	완료보고서_v = [];
 	부품정보_list_v = [];
+	구자료_v = [];
 	find_array = []
 }
 
@@ -2760,6 +2789,12 @@ async function update_재제조번호(col, doc) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
 	socket.emit('update', worker, col, { 재제조번호: doc.재제조번호 }, {$set: doc});
+}
+
+async function update_구자료(col, doc) {
+	if(socket == undefined) return;
+	flag_arrivedMSG = false;
+	socket.emit('update', worker, col, { 품번: doc.품번 }, {$set: doc});
 }
 
 async function update_계정(col, doc) {
@@ -2985,6 +3020,15 @@ async function find(col, management_id) {
 
 
 }
+
+async function findOne_구자료(col, query) {
+	if(socket == undefined) return;
+	flag_arrivedMSG = false;
+	check++;
+	if(check > 10) check = 0;
+	socket.emit('findOne', worker, col, query, { sort: { kind: 1}, projection: 구자료_ }, check);
+}
+
 async function findOne_기초보고서(col, query) {
 	if(socket == undefined) return;
 	flag_arrivedMSG = false;
@@ -3162,6 +3206,15 @@ async function find_완료보고서(col, query) {
 	if(check > 10) check = 0;
 
 	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: 완료보고서_ }, check);
+}
+
+async function find_구자료(col, query) {
+	if(socket == undefined) return;
+	flag_arrivedMSG = false;
+	check++;
+	if(check > 10) check = 0;
+
+	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: 구자료_ }, check);
 }
 
 async function find_계정(col, query) {
