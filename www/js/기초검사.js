@@ -450,6 +450,8 @@ function _기초검사_delete_all() {
 }
 
 async function 기초검사_카메라시작() {
+	if(_management_id.value == '') rturn;
+
 	기초검사_SAVE();
 
 	기초검사_사진촬영(_management_id.value);

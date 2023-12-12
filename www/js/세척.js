@@ -65,6 +65,8 @@ async function 세척_시작(is재제조 = 0) {
 	}
 
 	console.log('load: ', _management_id.value);
+	
+	관리번호 = _management_id.value;
 
 	find(세척, _management_id.value);
 	await delay();
@@ -173,11 +175,10 @@ function _기밀검사_케이스_콤보박스(e) {
 }
 
 async function 세척_카메라시작() {
-	if(worker == '') return;
-	if(_management_id.value.length == 0) return;
-
-	세척_save();
-	세척_사진촬영(doc.관리번호);
+	if(관리번호 =='') return;
+	await 세척_save();
+	
+	세척_사진촬영(관리번호);
 }
 
 function 세척_updateFilter() {

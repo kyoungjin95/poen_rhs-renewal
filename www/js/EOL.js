@@ -575,6 +575,7 @@ function convertImageToBase64(imgUrl, callback) {
 }
 
 function EOL_카메라시작() {
+	if(_management_id.value == '') return;
 	EOL_SAVE();
 
 	EOL_사진촬영(_management_id.value);
