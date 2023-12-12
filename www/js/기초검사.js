@@ -625,6 +625,10 @@ async function 기초검사_list() {
 		_management_id.value = row.getData().관리번호;
 
 		await sleep(1);
+
+		var yes = prompt('선택한 bsa로 세척 공정 정보입력을 시작하시겠습니까?(y/n)');
+		if(yes != 'y' &&  yes != 'Y') return;
+
 		기초검사_시작();
 	});
 
