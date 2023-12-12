@@ -1,4 +1,3 @@
-
 async function 부품정보_list_시작() {
 	while(typeof _D == 'undefined') {
 		await sleep(100);
@@ -9,10 +8,13 @@ async function 부품정보_list_시작() {
 	_management_id.value = 관리번호;
 	_차종.value = 차종;
 
+	auto_focus();
+
 	_A.style.display = "none";
 	_B.style.display = "none";
 	_C.style.display = "none";
 	_D.style.display = "none";
+	_D2.style.display = "none";
 
 	switch (차종) {
 		case "DE":
@@ -27,6 +29,7 @@ async function 부품정보_list_시작() {
 			_B.style.display = "none";
 			_C.style.display = "none";
 			_D.style.display = "none";
+			_D2.style.display = "none";
 
 			_img_1.style.display = "block";
 			_img_2.style.display = "none";
@@ -35,8 +38,6 @@ async function 부품정보_list_시작() {
 			_img_5.style.display = "none";
 
 			_A_UPR_CASE_QR.focus();
-			auto_focus_AA();
-			auto_focus_A();
 			break;
 
 		case "PU":
@@ -47,6 +48,7 @@ async function 부품정보_list_시작() {
 			_B.style.display = "block";
 			_C.style.display = "none";
 			_D.style.display = "none";
+			_D2.style.display = "none";
 
 			_img_1.style.display = "none";
 			_img_2.style.display = "block";
@@ -55,8 +57,6 @@ async function 부품정보_list_시작() {
 			_img_5.style.display = "none";
 
 			_B_UPR_CASE_QR.focus();
-			auto_focus_BB();
-			auto_focus_B();
 			break;
 
 		case "CV":
@@ -69,6 +69,7 @@ async function 부품정보_list_시작() {
 			_B.style.display = "none";
 			_C.style.display = "block";
 			_D.style.display = "none";
+			_D2.style.display = "none";
 
 			_img_1.style.display = "none";
 			_img_2.style.display = "none";
@@ -76,9 +77,7 @@ async function 부품정보_list_시작() {
 			_img_4.style.display = "none";
 			_img_5.style.display = "none";
 
-			_C_UPR_CASE_QR.
-			auto_focus_CC();
-			auto_focus_C();
+			_C_UPR_CASE_QR.focus();
 			break;
 
 		case "CS":
@@ -87,6 +86,7 @@ async function 부품정보_list_시작() {
 			_B.style.display = "none";
 			_C.style.display = "none";
 			_D.style.display = "block";
+			_D2.style.display = "block";
 
 			_img_1.style.display = "none";
 			_img_2.style.display = "none";
@@ -95,8 +95,6 @@ async function 부품정보_list_시작() {
 			_img_5.style.display = "block";
 
 			_D_UPR_CASE_QR.focus();
-			auto_focus_DD();
-			auto_focus_D();
 			break;
 
 		default:
@@ -123,7 +121,6 @@ async function 부품정보_list_load() {
 	_A_SPA_QR.value =                   부품정보_list_v.A_SPA_QR;
 	_A_HT_CNTR_QR.value =               부품정보_list_v.A_HT_CNTR_QR;
 	_A_HV_CNTR_QR.value =               부품정보_list_v.A_HV_CNTR_QR;
-	_A_Heating_CNTR_QR.value =          부품정보_list_v.A_Heating_CNTR_QR;
 	_A_PRA_QR.value =                   부품정보_list_v.A_PRA_QR;
 	_A_LV_W_H_QR.value =                부품정보_list_v.A_LV_W_H_QR;
 	_A_HV_W_H_1_QR.value =              부품정보_list_v.A_HV_W_H_1_QR;
@@ -202,7 +199,6 @@ async function 부품정보_list_load() {
 	_A_SPA_품번.value =                 부품정보_list_v.A_SPA_품번;
 	_A_HT_CNTR_품번.value =             부품정보_list_v.A_HT_CNTR_품번;
 	_A_HV_CNTR_품번.value =             부품정보_list_v.A_HV_CNTR_품번;
-	_A_Heating_CNTR_품번.value =        부품정보_list_v.A_Heating_CNTR_품번;
 	_A_PRA_품번.value =                 부품정보_list_v.A_PRA_품번;
 	_A_LV_W_H_품번.value =              부품정보_list_v.A_LV_W_H_품번;
 	_A_HV_W_H_1_품번.value =            부품정보_list_v.A_HV_W_H_1_품번;
@@ -289,7 +285,6 @@ async function 부품정보_list_save() {
 	doc.A_SPA_QR =            _A_SPA_QR.value;                 
 	doc.A_HT_CNTR_QR =        _A_HT_CNTR_QR.value;             
 	doc.A_HV_CNTR_QR =        _A_HV_CNTR_QR.value;             
-	doc.A_Heating_CNTR_QR =   _A_Heating_CNTR_QR.value;        
 	doc.A_PRA_QR =            _A_PRA_QR.value;                 
 	doc.A_LV_W_H_QR =         _A_LV_W_H_QR.value;              
 	doc.A_HV_W_H_1_QR =       _A_HV_W_H_1_QR.value;            
@@ -368,7 +363,6 @@ async function 부품정보_list_save() {
 	doc.A_SPA_품번 =          _A_SPA_품번.value;               
 	doc.A_HT_CNTR_품번 =      _A_HT_CNTR_품번.value;           
 	doc.A_HV_CNTR_품번 =      _A_HV_CNTR_품번.value;           
-	doc.A_Heating_CNTR_품번 = _A_Heating_CNTR_품번.value;      
 	doc.A_PRA_품번 =          _A_PRA_품번.value;               
 	doc.A_LV_W_H_품번 =       _A_LV_W_H_품번.value;            
 	doc.A_HV_W_H_1_품번 =     _A_HV_W_H_1_품번.value;          
@@ -456,323 +450,626 @@ async function 부품정보_list_save() {
 	}
 }
 
-function auto_focus_A() {
-}
-
-function auto_focus_B() {
-}
-
-function auto_focus_C() {
-}
-
-function auto_focus_D() {
-}
-
-function auto_focus_AA() {
-}
-
-function auto_focus_BB() {
-}
-
-function auto_focus_CC() {
-}
-
 function auto_focus() {
-_A_UPR_CASE_QR.onchange = function(event) {   
-	_A_UPR_CASE_품번.focus();
-}
+	_A_UPR_CASE_QR.onchange = function(event) {   
+		_A_UPR_CASE_품번.focus();
+	}
 
-_A_LWR_CASE_QR.onchange = function(event) {   
-	_A_LWR_CASE_품번.focus();
-}
+	_A_LWR_CASE_QR.onchange = function(event) {   
+		_A_LWR_CASE_품번.focus();
+	}
 
-_A_S_PLUG_QR.onchange = function(event) {     
-	_A_S_PLUG_품번.focus();
-}
+	_A_S_PLUG_QR.onchange = function(event) {     
+		_A_S_PLUG_품번.focus();
+	}
 
-_A_SPA_QR.onchange = function(event) {        
-	_A_SPA_품번.focus();
-}
+	_A_SPA_QR.onchange = function(event) {        
+		_A_SPA_품번.focus();
+	}
 
-_A_HT_CNTR_QR.onchange = function(event) {    
-	_A_HT_CNTR_품번.focus();
-}
+	_A_HT_CNTR_QR.onchange = function(event) {    
+		_A_HT_CNTR_품번.focus();
+	}
 
-_A_HV_CNTR_QR.onchange = function(event) {    
-	_A_HV_CNTR_품번.focus();
-}
+	_A_HV_CNTR_QR.onchange = function(event) {    
+		_A_HV_CNTR_품번.focus();
+	}
 
-_A_Heating_CNTR_QR.onchange = function(event) { 
-	_A_Heating_CNTR_품번.focus();
-}
+	_A_PRA_QR.onchange = function(event) {        
+		_A_PRA_품번.focus();
+	}
 
-_A_PRA_QR.onchange = function(event) {        
-	_A_PRA_품번.focus();
-}
+	_A_LV_W_H_QR.onchange = function(event) {     
+		_A_LV_W_H_품번.focus();
+	}
 
-_A_LV_W_H_QR.onchange = function(event) {     
-	_A_LV_W_H_품번.focus();
-}
+	_A_HV_W_H_1_QR.onchange = function(event) {  
+		_A_HV_W_H_1_품번.focus();
+	}
 
-_A_HV_W_H_1_QR.onchange = function(event) {  
-	_A_HV_W_H_1_품번.focus();
-}
+	_A_HV_W_H_2_QR.onchange = function(event) {   
+		_A_HV_W_H_2_품번.focus();
+	}
+	_A_HV_W_H_3_QR.onchange = function(event) {   
+		_A_HV_W_H_3_품번.focus();
+	}
 
-_A_HV_W_H_2_QR.onchange = function(event) {   
-	_A_HV_W_H_2_품번.focus();
-}
-_A_HV_W_H_3_QR.onchange = function(event) {   
-	_A_HV_W_H_3_품번.focus();
-}
+	_A_HV_W_H_4_QR.onchange = function(event) {   
+		_A_HV_W_H_4_품번.focus();
+	}
 
-_A_HV_W_H_4_QR.onchange = function(event) {   
-	_A_HV_W_H_4_품번.focus();
-}
+	_A_HV_W_H_5_QR.onchange = function(event) {   
+		_A_HV_W_H_5_품번.focus();
+	}
 
-_A_HV_W_H_5_QR.onchange = function(event) {   
-	_A_HV_W_H_5_품번.focus();
-}
+	_A_BMU_QR.onchange = function(event) {        
+		_A_BMU_품번.focus();
+	}
 
-_A_BMU_QR.onchange = function(event) {        
-	_A_BMU_품번.focus();
-}
+	_A_CMU_1_QR.onchange = function(event) {      
+		_A_CMU_1_품번.focus();
+	}
 
-_A_CMU_1_QR.onchange = function(event) {      
-	_A_CMU_1_품번.focus();
-}
+	_A_CMU_2_QR.onchange = function(event) {      
+		_A_CMU_2_품번.focus();
+	}
 
-_A_CMU_2_QR.onchange = function(event) {      
-	_A_CMU_2_품번.focus();
-}
+	_A_CMU_3_QR.onchange = function(event) {      
+		_A_CMU_3_품번.focus();
+	}
 
-_A_CMU_3_QR.onchange = function(event) {      
-	_A_CMU_3_품번.focus();
-}
+	_A_CMU_4_QR.onchange = function(event) {      
+		_A_CMU_4_품번.focus();
+	}
 
-_A_CMU_4_QR.onchange = function(event) {      
-	_A_CMU_4_품번.focus();
-}
+	_A_CMU_5_QR.onchange = function(event) {      
+		_A_CMU_5_품번.focus();
+	}
 
-_A_CMU_5_QR.onchange = function(event) {      
-	_A_CMU_5_품번.focus();
-}
+	_B_UPR_CASE_QR.onchange = function(event) {   
+		_B_UPR_CASE_품번.focus();
+	}
 
-_B_UPR_CASE_QR.onchange = function(event) {   
-	_B_UPR_CASE_품번.focus();
-}
+	_B_LWR_CASE_QR.onchange = function(event) {   
+		_B_LWR_CASE_품번.focus();
+	}
 
-_B_LWR_CASE_QR.onchange = function(event) {   
-	_B_LWR_CASE_품번.focus();
-}
+	_B_HV_CNTR_QR.onchange = function(event) {    
+		_B_HV_CNTR_품번.focus();
+	}
 
-_B_HV_CNTR_QR.onchange = function(event) {    
-	_B_HV_CNTR_품번.focus();
-}
+	_B_HT_CNTR_QR.onchange = function(event) {
+		_B_HT_CNTR_품번.focus();
+	}
 
-_B_HT_CNTR_QR.onchange = function(event) {
-	_B_HT_CNTR_품번.focus();
-}
+	_B_PRA_QR.onchange = function(event) {        
+		_B_PRA_품번.focus();
+	}
 
-_B_PRA_QR.onchange = function(event) {        
-	_B_PRA_품번.focus();
-}
+	_B_FUSE_QR.onchange = function(event) {       
+		_B_FUSE_품번.focus();
+	}
 
-_B_FUSE_QR.onchange = function(event) {       
-	_B_FUSE_품번.focus();
-}
+	_B_HV_W_H_1_QR.onchange = function(event) {   
+		_B_HV_W_H_1_품번.focus();
+	}
 
-_B_HV_W_H_1_QR.onchange = function(event) {   
-	_B_HV_W_H_1_품번.focus();
-}
+	_B_HV_W_H_2_QR.onchange = function(event) {   
+		_B_HV_W_H_2_품번.focus();
+	}
 
-_B_HV_W_H_2_QR.onchange = function(event) {   
-	_B_HV_W_H_2_품번.focus();
-}
+	_B_LV_W_H_QR.onchange = function(event) {     
+		_B_LV_W_H_품번.focus();
+	}
 
-_B_LV_W_H_QR.onchange = function(event) {     
-	_B_LV_W_H_품번.focus();
-}
+	_B_BMU_QR.onchange = function(event) {        
+		_B_BMU_품번.focus();
+	}
 
-_B_BMU_QR.onchange = function(event) {        
-	_B_BMU_품번.focus();
-}
+	_B_CMU_1_QR.onchange = function(event) {      
+		_B_CMU_1_품번.focus();
+	}
 
-_B_CMU_1_QR.onchange = function(event) {      
-	_B_CMU_1_품번.focus();
-}
+	_B_CMU_2_QR.onchange = function(event) {      
+		_B_CMU_2_품번.focus();
+	}
 
-_B_CMU_2_QR.onchange = function(event) {      
-	_B_CMU_2_품번.focus();
-}
+	_B_CMU_3_QR.onchange = function(event) {      
+		_B_CMU_3_품번.focus();
+	}
 
-_B_CMU_3_QR.onchange = function(event) {      
-	_B_CMU_3_품번.focus();
-}
+	_B_CMU_4_QR.onchange = function(event) {      
+		_B_CMU_4_품번.focus();
+	}
 
-_B_CMU_4_QR.onchange = function(event) {      
-	_B_CMU_4_품번.focus();
-}
+	_B_CMU_5_QR.onchange = function(event) {      
+		_B_CMU_5_품번.focus();
+	}
 
-_B_CMU_5_QR.onchange = function(event) {      
-	_B_CMU_5_품번.focus();
-}
+	_C_UPR_CASE_QR.onchange = function(event) {
+		_C_UPR_CASE_품번.focus();
+	}
 
-_C_UPR_CASE_QR.onchange = function(event) {
-	_C_UPR_CASE_품번.focus();
-}
+	_C_LWR_CASE_QR.onchange = function(event) {   
+		_C_LWR_CASE_품번.focus();
+	}
 
-_C_LWR_CASE_QR.onchange = function(event) {   
-	_C_LWR_CASE_품번.focus();
-}
+	_C_HV_CNTR_1_QR.onchange = function(event) {  
+		_C_HV_CNTR_1_품번.focus();
+	}
 
-_C_HV_CNTR_1_QR.onchange = function(event) {  
-	_C_HV_CNTR_1_품번.focus();
-}
+	_C_HV_CNTR_2_QR.onchange = function(event) {  
+		_C_HV_CNTR_2_품번.focus();
+	}
 
-_C_HV_CNTR_2_QR.onchange = function(event) {  
-	_C_HV_CNTR_2_품번.focus();
-}
+	_C_HT_CNTR_QR.onchange = function(event) {    
+		_C_HT_CNTR_품번.focus();
+	}
 
-_C_HT_CNTR_QR.onchange = function(event) {    
-	_C_HT_CNTR_품번.focus();
-}
+	_C_PRA_QR.onchange = function(event) {        
+		_C_PRA_품번.focus();
+	}
 
-_C_PRA_QR.onchange = function(event) {        
-	_C_PRA_품번.focus();
-}
+	_C_FUSE_QR.onchange = function(event) {       
+		_C_FUSE_품번.focus();
+	}
 
-_C_FUSE_QR.onchange = function(event) {       
-	_C_FUSE_품번.focus();
-}
+	_C_LV_W_H_QR.onchange = function(event) {     
+		_C_LV_W_H_품번.focus();
+	}
 
-_C_LV_W_H_QR.onchange = function(event) {     
-	_C_LV_W_H_품번.focus();
-}
+	_C_HV_W_H_1_QR.onchange = function(event) {   
+		_C_HV_W_H_1_품번.focus();
+	}
 
-_C_HV_W_H_1_QR.onchange = function(event) {   
-	_C_HV_W_H_1_품번.focus();
-}
+	_C_HV_W_H_2_QR.onchange = function(event) {   
+		_C_HV_W_H_2_품번.focus();
+	}
 
-_C_HV_W_H_2_QR.onchange = function(event) {   
-	_C_HV_W_H_2_품번.focus();
-}
+	_C_HV_W_H_3_QR.onchange = function(event) {   
+		_C_HV_W_H_3_품번.focus();
+	}
 
-_C_HV_W_H_3_QR.onchange = function(event) {   
-	_C_HV_W_H_3_품번.focus();
-}
+	_C_HV_W_H_4_QR.onchange = function(event) {   
+		_C_HV_W_H_4_품번.focus();
+	}
 
-_C_HV_W_H_4_QR.onchange = function(event) {   
-	_C_HV_W_H_4_품번.focus();
-}
+	_C_HV_W_H_5_QR.onchange = function(event) {  
+		_C_HV_W_H_5_품번.focus();
+	}
 
-_C_HV_W_H_5_QR.onchange = function(event) {   
-_C_HV_W_H_6_QR.onchange = function(event) {   
-_C_HV_W_H_7_QR.onchange = function(event) {   
-_C_HV_W_H_8_QR.onchange = function(event) {   
-_C_BMU_QR.onchange = function(event) {        
-_C_CMU_1_QR.onchange = function(event) {      
-_C_CMU_2_QR.onchange = function(event) {      
-_C_CMU_3_QR.onchange = function(event) {      
-_C_CMU_4_QR.onchange = function(event) {      
-_C_CMU_5_QR.onchange = function(event) {      
-_C_CMU_6_QR.onchange = function(event) {      
-_C_CMU_7_QR.onchange = function(event) {      
-_C_CMU_8_QR.onchange = function(event) {      
-_D_UPR_CASE_QR.onchange = function(event) {   
-_D_LWR_CASE_QR.onchange = function(event) {   
-_D_HV_CNTR_1_QR.onchange = function(event) {  
-_D_HV_CNTR_2_QR.onchange = function(event) {  
-_D_RELAY_QR.onchange = function(event) {      
-_D_LV_W_H_QR.onchange = function(event) {     
-_D_HV_W_H_1_QR.onchange = function(event) {   
-_D_HV_W_H_2_QR.onchange = function(event) {   
-_D_BMU_QR.onchange = function(event) {        
-_D_CMU_1_QR.onchange = function(event) {      
-_D2_HV_W_H_1_QR.onchange = function(event) {  
-_D2_CMU_1_QR.onchange = function(event) {     
-_D2_RELAY_QR.onchange = function(event) {     
-_D2_BMU_QR.onchange = function(event) {       
-_D2_HV_CNTR_1_QR.onchange = function(event) { 
-_D2_HV_CNTR_2_QR.onchange = function(event) { 
-_D2_LWR_CASE_QR.onchange = function(event) {  
-_D2_UPR_CASE_QR.onchange = function(event) {  
-_D2_LV_W_H_QR.onchange = function(event) {    
-_A_UPR_CASE_품번.onchange = function(event) { 
-_A_LWR_CASE_품번.onchange = function(event) { 
-_A_S_PLUG_품번.onchange = function(event) {   
-_A_SPA_품번.onchange = function(event) {      
-_A_HT_CNTR_품번.onchange = function(event) {  
-_A_HV_CNTR_품번.onchange = function(event) {  
-_A_Heating_CNTR_품번.value
-_A_PRA_품번.onchange = function(event) {      
-_A_LV_W_H_품번.onchange = function(event) {   
-_A_HV_W_H_1_품번.onchange = function(event) { 
-_A_HV_W_H_2_품번.onchange = function(event) { 
-_A_HV_W_H_3_품번.onchange = function(event) { 
-_A_HV_W_H_4_품번.onchange = function(event) { 
-_A_HV_W_H_5_품번.onchange = function(event) { 
-_A_BMU_품번.onchange = function(event) {      
-_A_CMU_1_품번.onchange = function(event) {    
-_A_CMU_2_품번.onchange = function(event) {    
-_A_CMU_3_품번.onchange = function(event) {    
-_A_CMU_4_품번.onchange = function(event) {    
-_A_CMU_5_품번.onchange = function(event) {    
-_B_UPR_CASE_품번.onchange = function(event) { 
-_B_LWR_CASE_품번.onchange = function(event) { 
-_B_HV_CNTR_품번.onchange = function(event) {  
-_B_HT_CNTR_품번.onchange = function(event) {  
-_B_PRA_품번.onchange = function(event) {      
-_B_FUSE_품번.onchange = function(event) {     
-_B_HV_W_H_1_품번.onchange = function(event) { 
-_B_HV_W_H_2_품번.onchange = function(event) { 
-_B_LV_W_H_품번.onchange = function(event) {   
-_B_BMU_품번.onchange = function(event) {      
-_B_CMU_1_품번.onchange = function(event) {    
-_B_CMU_2_품번.onchange = function(event) {    
-_B_CMU_3_품번.onchange = function(event) {    
-_B_CMU_4_품번.onchange = function(event) {    
-_B_CMU_5_품번.onchange = function(event) {    
-_C_UPR_CASE_품번.onchange = function(event) { 
-_C_LWR_CASE_품번.onchange = function(event) { 
-_C_HV_CNTR_1_품번.onchange = function(event) {
-_C_HV_CNTR_2_품번.onchange = function(event) {
-_C_HT_CNTR_품번.onchange = function(event) {  
-_C_PRA_품번.onchange = function(event) {      
-_C_FUSE_품번.onchange = function(event) {     
-_C_LV_W_H_품번.onchange = function(event) {   
-_C_HV_W_H_1_품번.onchange = function(event) { 
-_C_HV_W_H_2_품번.onchange = function(event) { 
-_C_HV_W_H_3_품번.onchange = function(event) { 
-_C_HV_W_H_4_품번.onchange = function(event) { 
-_C_HV_W_H_5_품번.onchange = function(event) { 
-_C_HV_W_H_6_품번.onchange = function(event) { 
-_C_HV_W_H_7_품번.onchange = function(event) { 
-_C_HV_W_H_8_품번.onchange = function(event) { 
-_C_BMU_품번.onchange = function(event) {      
-_C_CMU_1_품번.onchange = function(event) {    
-_C_CMU_2_품번.onchange = function(event) {    
-_C_CMU_3_품번.onchange = function(event) {    
-_C_CMU_4_품번.onchange = function(event) {    
-_C_CMU_5_품번.onchange = function(event) {    
-_C_CMU_6_품번.onchange = function(event) {    
-_C_CMU_7_품번.onchange = function(event) {    
-_C_CMU_8_품번.onchange = function(event) {    
-_D_UPR_CASE_품번.onchange = function(event) { 
-_D_LWR_CASE_품번.onchange = function(event) { 
-_D_HV_CNTR_1_품번.onchange = function(event) {
-_D_HV_CNTR_2_품번.onchange = function(event) {
-_D_RELAY_품번.onchange = function(event) {    
-_D_LV_W_H_품번.onchange = function(event) {   
-_D_HV_W_H_1_품번.onchange = function(event) { 
-_D_HV_W_H_2_품번.onchange = function(event) { 
-_D_BMU_품번.onchange = function(event) {      
-_D_CMU_1_품번.onchange = function(event) {    
-_D2_HV_W_H_1_품번.onchange = function(event) {
-_D2_CMU_1_품번.onchange = function(event) {   
-_D2_RELAY_품번.onchange = function(event) {   
-_D2_BMU_품번.onchange = function(event) {     
-_D2_HV_CNTR_1_품번.value = function(event) {  
-_D2_HV_CNTR_2_품번.value  = function(event) {  
-_D2_LWR_CASE_품번.onchange = function(event) {
-_D2_UPR_CASE_품번.onchange = function(event) {
-_D2_LV_W_H_품번.onchange = function(event) {  
+	_C_HV_W_H_6_QR.onchange = function(event) {   
+		_C_HV_W_H_6_품번.focus();
+	}
+
+	_C_HV_W_H_7_QR.onchange = function(event) {   
+		_C_HV_W_H_7_품번.focus();
+	}
+
+	_C_HV_W_H_8_QR.onchange = function(event) {
+		_C_HV_W_H_8_품번.focus();
+	}
+
+	_C_BMU_QR.onchange = function(event) {        
+		_C_BMU_품번.focus();
+	}
+
+	_C_CMU_1_QR.onchange = function(event) {      
+		_C_CMU_1_품번.focus();
+	}
+
+	_C_CMU_2_QR.onchange = function(event) {      
+		_C_CMU_2_품번.focus();
+	}
+
+	_C_CMU_3_QR.onchange = function(event) {      
+		_C_CMU_3_품번.focus();
+	}
+
+	_C_CMU_4_QR.onchange = function(event) {      
+		_C_CMU_4_품번.focus();
+	}
+
+	_C_CMU_5_QR.onchange = function(event) {      
+		_C_CMU_5_품번.focus();
+	}
+
+	_C_CMU_6_QR.onchange = function(event) {      
+		_C_CMU_6_품번.focus();
+	}
+
+	_C_CMU_7_QR.onchange = function(event) {      
+		_C_CMU_7_품번.focus();
+	}
+
+	_C_CMU_8_QR.onchange = function(event) {      
+		_C_CMU_8_품번.focus();
+	}
+
+	_D_UPR_CASE_QR.onchange = function(event) {   
+		_D_UPR_CASE_품번.focus();
+	}
+
+	_D_LWR_CASE_QR.onchange = function(event) {   
+		_D_LWR_CASE_품번.focus();
+	}
+
+	_D_HV_CNTR_1_QR.onchange = function(event) {  
+		_D_HV_CNTR_1_품번.focus();
+	}
+
+	_D_HV_CNTR_2_QR.onchange = function(event) {  
+		_D_HV_CNTR_2_품번.focus();
+	}
+
+	_D_RELAY_QR.onchange = function(event) {
+		_D_RELAY_품번.focus();
+	}
+
+	_D_LV_W_H_QR.onchange = function(event) {     
+		_D_LV_W_H_품번.focus();
+	}
+
+	_D_HV_W_H_1_QR.onchange = function(event) {   
+		_D_HV_W_H_1_품번.focus();
+	}
+
+	_D_HV_W_H_2_QR.onchange = function(event) {   
+		_D_HV_W_H_2_품번.focus();
+	}
+
+	_D_BMU_QR.onchange = function(event) {        
+		_D_BMU_품번.focus();
+	}
+
+	_D_CMU_1_QR.onchange = function(event) {      
+		_D_CMU_1_품번.focus();
+	}
+
+	_D2_HV_W_H_1_QR.onchange = function(event) {  
+		_D2_HV_W_H_1_품번.focus();
+	}
+
+	_D2_CMU_1_QR.onchange = function(event) {     
+		_D2_CMU_1_품번.focus();
+	}
+
+	_D2_RELAY_QR.onchange = function(event) {     
+		_D2_RELAY_품번.focus();
+	}
+
+	_D2_BMU_QR.onchange = function(event) {       
+		_D2_BMU_품번.focus();
+	}
+
+	_D2_HV_CNTR_1_QR.onchange = function(event) { 
+		_D2_HV_CNTR_1_품번.focus();
+	}
+
+	_D2_HV_CNTR_2_QR.onchange = function(event) { 
+		_D2_HV_CNTR_2_품번.focus();
+	}
+
+	_D2_LWR_CASE_QR.onchange = function(event) {
+		_D2_LWR_CASE_품번.focus();
+	}
+
+	_D2_UPR_CASE_QR.onchange = function(event) {  
+		_D2_UPR_CASE_품번.focus();
+	}
+
+	_D2_LV_W_H_QR.onchange = function(event) {    
+		_D2_LV_W_H_품번.focus();
+	}
+
+	_A_UPR_CASE_품번.onchange = function(event) { 
+		_A_LWR_CASE_QR.focus();
+	}
+
+	_A_LWR_CASE_품번.onchange = function(event) { 
+		_A_S_PLUG_QR.focus();
+	}
+
+	_A_S_PLUG_품번.onchange = function(event) {   
+		_A_SPA_QR.focus();
+	}
+
+	_A_SPA_품번.onchange = function(event) {      
+		_A_HT_CNTR_QR.focus();
+	}
+
+	_A_HT_CNTR_품번.onchange = function(event) {  
+		_A_HV_CNTR_QR.focus();
+	}
+
+	_A_HV_CNTR_품번.onchange = function(event) {  
+		_A_PRA_QR.focus();
+	}
+
+	_A_PRA_품번.onchange = function(event) {      
+		_A_LV_W_H_QR.focus();
+	}
+
+	_A_LV_W_H_품번.onchange = function(event) {   
+		_A_HV_W_H_1_QR.focus();
+	}
+
+	_A_HV_W_H_1_품번.onchange = function(event) { 
+		_A_HV_W_H_2_QR.focus();
+	}
+
+	_A_HV_W_H_2_품번.onchange = function(event) { 
+		_A_HV_W_H_3_QR.focus();
+	}
+
+	_A_HV_W_H_3_품번.onchange = function(event) { 
+		_A_HV_W_H_4_QR.focus();
+	}
+
+	_A_HV_W_H_4_품번.onchange = function(event) { 
+		_A_HV_W_H_5_QR.focus();
+	}
+
+	_A_HV_W_H_5_품번.onchange = function(event) { 
+		_A_BMU_QR.focus();
+	}
+
+	_A_BMU_품번.onchange = function(event) {      
+		_A_CMU_1_QR.focus();
+	}
+
+	_A_CMU_1_품번.onchange = function(event) {    
+		_A_CMU_2_QR.focus();
+	}
+
+	_A_CMU_2_품번.onchange = function(event) {    
+		_A_CMU_3_QR.focus();
+	}
+
+	_A_CMU_3_품번.onchange = function(event) {    
+		_A_CMU_4_QR.focus();
+	}
+
+	_A_CMU_4_품번.onchange = function(event) {    
+		_A_CMU_5_QR.focus();
+	}
+
+	_A_CMU_5_품번.onchange = function(event) {    
+		//_B_UPR_CASE_QR.focus();
+	}
+
+	_B_UPR_CASE_품번.onchange = function(event) { 
+		_B_LWR_CASE_QR.focus();
+	}
+
+	_B_LWR_CASE_품번.onchange = function(event) { 
+		_B_HV_CNTR_QR.focus();
+	}
+
+	_B_HV_CNTR_품번.onchange = function(event) {  
+		_B_HT_CNTR_QR.focus();
+	}
+
+	_B_HT_CNTR_품번.onchange = function(event) {  
+		_B_PRA_QR.focus();
+	}
+
+	_B_PRA_품번.onchange = function(event) {      
+		_B_FUSE_QR.focus();
+	}
+
+	_B_FUSE_품번.onchange = function(event) {     
+		_B_HV_W_H_1_QR.focus();
+	}
+
+	_B_HV_W_H_1_품번.onchange = function(event) { 
+		_B_HV_W_H_2_QR.focus();
+	}
+
+	_B_HV_W_H_2_품번.onchange = function(event) { 
+		_B_LV_W_H_QR.focus();
+	}
+
+	_B_LV_W_H_품번.onchange = function(event) {   
+		_B_BMU_QR.focus();
+	}
+
+	_B_BMU_품번.onchange = function(event) {      
+		_B_CMU_1_QR.focus();
+	}
+
+	_B_CMU_1_품번.onchange = function(event) {    
+		_B_CMU_2_QR.focus();
+	}
+
+	_B_CMU_2_품번.onchange = function(event) {    
+		_B_CMU_3_QR.focus();
+	}
+
+	_B_CMU_3_품번.onchange = function(event) {    
+		_B_CMU_4_QR.focus();
+	}
+
+	_B_CMU_4_품번.onchange = function(event) {    
+		_B_CMU_5_QR.focus();
+	}
+
+	_B_CMU_5_품번.onchange = function(event) {    
+		//_C_UPR_CASE_QR.focus();
+	}
+
+	_C_UPR_CASE_품번.onchange = function(event) { 
+		_C_LWR_CASE_QR.focus();
+	}
+
+	_C_LWR_CASE_품번.onchange = function(event) { 
+		_C_HV_CNTR_1_QR.focus();
+	}
+
+	_C_HV_CNTR_1_품번.onchange = function(event) {
+		_C_HV_CNTR_2_QR.focus();
+	}
+
+	_C_HV_CNTR_2_품번.onchange = function(event) {
+		_C_HT_CNTR_QR.focus();
+	}
+
+	_C_HT_CNTR_품번.onchange = function(event) {  
+		_C_PRA_QR.focus();
+	}
+
+	_C_PRA_품번.onchange = function(event) {      
+		_C_FUSE_QR.focus();
+	}
+
+	_C_FUSE_품번.onchange = function(event) {     
+		_C_LV_W_H_QR.focus();
+	}
+
+	_C_LV_W_H_품번.onchange = function(event) {   
+		_C_HV_W_H_1_QR.focus();
+	}
+
+	_C_HV_W_H_1_품번.onchange = function(event) { 
+		_C_HV_W_H_2_QR.focus();
+	}
+
+	_C_HV_W_H_2_품번.onchange = function(event) { 
+		_C_HV_W_H_3_QR.focus();
+	}
+
+	_C_HV_W_H_3_품번.onchange = function(event) { 
+		_C_HV_W_H_4_QR.focus();
+	}
+
+	_C_HV_W_H_4_품번.onchange = function(event) { 
+		_C_HV_W_H_5_QR.focus();
+	}
+
+	_C_HV_W_H_5_품번.onchange = function(event) { 
+		_C_HV_W_H_6_QR.focus();
+	}
+
+	_C_HV_W_H_6_품번.onchange = function(event) { 
+		_C_HV_W_H_7_QR.focus();
+	}
+
+	_C_HV_W_H_7_품번.onchange = function(event) { 
+		_C_HV_W_H_8_QR.focus();
+	}
+
+	_C_HV_W_H_8_품번.onchange = function(event) { 
+		_C_BMU_QR.focus();
+	}
+
+	_C_BMU_품번.onchange = function(event) {      
+		_C_CMU_1_QR.focus();
+	}
+
+	_C_CMU_1_품번.onchange = function(event) {    
+		_C_CMU_2_QR.focus();
+	}
+
+	_C_CMU_2_품번.onchange = function(event) {    
+		_C_CMU_3_QR.focus();
+	}
+
+	_C_CMU_3_품번.onchange = function(event) {    
+		_C_CMU_4_QR.focus();
+	}
+
+	_C_CMU_4_품번.onchange = function(event) {    
+		_C_CMU_5_QR.focus();
+	}
+
+	_C_CMU_5_품번.onchange = function(event) {    
+		_C_CMU_6_QR.focus();
+	}
+
+	_C_CMU_6_품번.onchange = function(event) {    
+		_C_CMU_7_QR.focus();
+	}
+
+	_C_CMU_7_품번.onchange = function(event) {    
+		_C_CMU_8_QR.focus();
+	}
+
+	_C_CMU_8_품번.onchange = function(event) {    
+		//_D_UPR_CASE_QR.focus();
+	}
+
+	_D_UPR_CASE_품번.onchange = function(event) { 
+		_D_LWR_CASE_QR.focus();
+	}
+
+	_D_LWR_CASE_품번.onchange = function(event) { 
+		_D_HV_CNTR_1_QR.focus();
+	}
+
+	_D_HV_CNTR_1_품번.onchange = function(event) {
+		_D_HV_CNTR_2_QR.focus();
+	}
+
+	_D_HV_CNTR_2_품번.onchange = function(event) {
+		_D_RELAY_QR.focus();
+	}
+
+	_D_RELAY_품번.onchange = function(event) {    
+		_D_LV_W_H_QR.focus();
+	}
+
+	_D_LV_W_H_품번.onchange = function(event) {   
+		_D_HV_W_H_1_QR.focus();
+	}
+
+	_D_HV_W_H_1_품번.onchange = function(event) { 
+		_D_HV_W_H_2_QR.focus();
+	}
+
+	_D_HV_W_H_2_품번.onchange = function(event) { 
+		_D_BMU_QR.focus();
+	}
+
+	_D_BMU_품번.onchange = function(event) {      
+		_D_CMU_1_QR.focus();
+	}
+
+	_D_CMU_1_품번.onchange = function(event) {    
+		_D2_HV_W_H_1_QR.focus();
+	}
+
+	_D2_HV_W_H_1_품번.onchange = function(event) {
+		_D2_CMU_1_QR.focus();
+	}
+
+	_D2_CMU_1_품번.onchange = function(event) {   
+		_D2_RELAY_QR.focus();
+	}
+
+	_D2_RELAY_품번.onchange = function(event) {   
+		_D2_BMU_QR.focus();
+	}
+
+	_D2_BMU_품번.onchange = function(event) {     
+		_D2_HV_CNTR_1_QR.focus();
+	}
+
+	_D2_HV_CNTR_1_품번.onchange = function(event) {  
+		_D2_HV_CNTR_2_QR.focus();
+	}
+
+	_D2_HV_CNTR_2_품번.onchange  = function(event) {  
+		_D2_LWR_CASE_QR.focus();
+	}
+
+	_D2_LWR_CASE_품번.onchange = function(event) {
+		_D2_UPR_CASE_QR.focus();
+	}
+
+	_D2_UPR_CASE_품번.onchange = function(event) {
+		_D2_LV_W_H_QR.focus();
+	}
+
+	//_D2_LV_W_H_품번.onchange = function(event) {  
+	//}
+}

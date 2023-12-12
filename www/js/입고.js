@@ -138,3 +138,9 @@ function _구분_콤보박스(e) {
 
 	document.getElementById("_구분").value = value;
 }
+
+function _차종_리스트_콤보박스(e) {
+	const value = e.value;
+
+	document.getElementById("_차종").value = value;
+}
