@@ -133,6 +133,16 @@ async function 출하정보_시작(is재제조 = 0) {
 		_management_id.value = 출하정보_v.관리번호;
 		//_출하일.value = 출하정보_v.출하일;
 		_출하코드.value = 출하정보_v.출하코드;
+
+		if(_출하코드.value == '') {
+			find(EOL, _management_id.value);
+			await delay();
+
+			if(EOL_v != null) {
+				_출하코드.value = EOL_v.QR;
+			}
+		}
+
 		//_납품처.value = 출하정보_v.납품처;
 		_검사일.value = 출하정보_v.검사일;
 		if(_검사자.value == '') _검사자.value = 출하정보_v.검사자;
@@ -500,6 +510,30 @@ function _커넥터_체결검사_콤보박스(e) {
 	document.getElementById('_커넥터_체결검사').value = value;
 }
 
+function 출하정보_updateFilter() {
+  var fieldEl = document.getElementById("filter-field");
+  var typeEl = document.getElementById("filter-type");
+  var valueEl = document.getElementById("filter-value");
+
+  var filterVal = fieldEl.options[fieldEl.selectedIndex].value;
+  var typeVal = typeEl.options[typeEl.selectedIndex].value;
+
+  var filter = filterVal == "function" ? customFilter : filterVal;
+
+  if (filterVal == "function") {
+    typeEl.disabled = true;
+    valueEl.disabled = true;
+  } else {
+    typeEl.disabled = false;
+    valueEl.disabled = false;
+  }
+
+  if (filterVal) {
+    출하정보_list_table.setFilter(filter, typeVal, valueEl.value);
+  }
+}
+
+var 출하정보_list_table;
 async function 출하정보_list() {
 	findOne_BSA재제조(BSA재제조, { 공정단계 : { $ne : '출하' }, 성능검사 : { $ne : '' }, EOL : { $ne : '' } ,  소재지 : { $nin : ['공정대기', '품질대기'] }, 완전분해 : { $eq : ''}, 폐기 : { $eq : '' }, 출하검사 : { $eq : '' }, 출하 : { $eq : '' }, 구분 : { $nin: ['일반기타', '보증기타']} });
 	await delay();
@@ -509,7 +543,7 @@ async function 출하정보_list() {
 		await delay();
 	}
 
-	var table = new Tabulator("#grid_list", {
+	출하정보_list_table = new Tabulator("#grid_list", {
 		layout: "resizableColumnFit",
 		data: BSA재제조_v,
 		height: "400px",
@@ -640,7 +674,7 @@ async function 출하정보_list() {
 		],
 	});
 	
-	table.on("rowClick", async function (e, row) {
+	출하정보_list_table.on("rowClick", async function (e, row) {
 		console.log("selected 관리번호: ", row.getData().관리번호);
 
 		_management_id.value = row.getData().관리번호;
@@ -649,4 +683,29 @@ async function 출하정보_list() {
 
 		출하정보_시작();
 	});
+
+	//Update filters on value change
+	document
+		.getElementById("filter-field")
+		.addEventListener("change", 출하정보_updateFilter);
+	document
+		.getElementById("filter-type")
+		.addEventListener("change", 출하정보_updateFilter);
+	document
+		.getElementById("filter-value")
+		.addEventListener("keyup", 출하정보_updateFilter);
+
+	//Clear filters on "Clear Filters" button click
+	document
+		.getElementById("filter-clear")
+		.addEventListener("click", function () {
+			var fieldEl = document.getElementById("filter-field");
+			var typeEl = document.getElementById("filter-type");
+			var valueEl = document.getElementById("filter-value");
+			fieldEl.value = "";
+			typeEl.value = "=";
+			valueEl.value = "";
+
+			출하정보_list_table.clearFilter();
+		});
 }

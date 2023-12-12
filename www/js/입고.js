@@ -1,3 +1,4 @@
+var 사전_입고일 = '';
 async function 입고_시작() {
 	while (_management_id == undefined) {
 		await sleep(DELAY);
@@ -43,6 +44,16 @@ async function 입고_시작() {
 		_차종.value = "";
 		_품번.value = "";
 		_RO_no.value = "";
+		var yes = prompt('입고 공정을 시작하겠습니까?(y/n)');
+		if(yes == 'y') {
+			var DateTime = luxon.DateTime;
+			var seoul = DateTime.local().setZone("Asia/Seoul");
+			var now = seoul.toString().slice(0, 19);
+
+			사전_입고일 = now;
+		} else {
+			back();
+		}
 	}
 }
 
@@ -51,8 +62,14 @@ async function 입고_save() {
 	console.log("save: ", _management_id.value);
 	_차종.value = _차종.value.replace('-', '_');
 	var doc = JSON.parse(JSON.stringify(입고_doc));
+
+	var DateTime = luxon.DateTime;
+	var seoul = DateTime.local().setZone("Asia/Seoul");
+	var now = seoul.toString().slice(0, 19);
+
 	doc.관리번호 = _management_id.value.trim().toUpperCase();
-	doc.입고일 = _입고일.value;
+	if(doc.입고일 == '') doc.입고일 = 사전_입고일;
+	if(level == '관리자') doc.입고일 = _입고일.value;
 	doc.입고처 = _입고처.value;
 	doc.구분 = _구분.value;
 	doc.차종 = _차종.value;
@@ -120,4 +137,10 @@ function _구분_콤보박스(e) {
 	const value = e.value;
 
 	document.getElementById("_구분").value = value;
+}
+
+function _차종_리스트_콤보박스(e) {
+	const value = e.value;
+
+	document.getElementById("_차종").value = value;
 }

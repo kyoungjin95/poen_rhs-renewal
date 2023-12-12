@@ -8,6 +8,54 @@
   </head>
   <body>
     <section>
+      <div class="gather-filter">
+        <select id="filter-field">
+          <option></option>
+          <option value="관리번호">관리번호</option>
+          <option value="재제조번호">재제조번호</option>
+          <option value="구분">구분</option>
+          <option value="차종">차종</option>
+          <option value="품번">품번</option>
+          <option value="RO_no">RO_no</option>
+          <option value="공정단계">공정단계</option>
+          <option value="적재No">적재No</option>
+          <option value="입고">입고</option>
+          <option value="제조투입">제조투입</option>
+          <option value="세척투입일">세척투입일</option>
+          <option value="세척">세척</option>
+          <option value="기초검사투입">기초검사투입</option>
+          <option value="기초검사">기초검사</option>
+          <option value="분해조립투입">분해조립투입</option>
+          <option value="분해조립">분해조립</option>
+          <option value="성능검사투입">성능검사투입</option>
+          <option value="성능검사">성능검사</option>
+          <option value="EOL투입일">EOL투입일</option>
+          <option value="EOL">EOL</option>
+          <option value="출하검사">출하검사</option>
+          <option value="납품처">납품처</option>
+          <option value="출하">출하</option>
+          <option value="소재지">소재지</option>
+          <option value="반품입고">반품입고</option>
+          <option value="재출하">재출하</option>
+          <option value="완전분해">완전분해</option>
+          <option value="폐기">폐기</option>
+          <option value="마지막충전일">마지막충전일</option>
+        </select>
+
+        <select id="filter-type">
+          <option value="=">=</option>
+          <option value="<"><</option>
+          <option value="<="><=</option>
+          <option value=">">></option>
+          <option value=">=">>=</option>
+          <option value="!=">!=</option>
+          <option value="like">like</option>
+        </select>
+
+        <input id="filter-value" type="text" placeholder="value to filter" />
+
+        <button id="filter-clear">Clear Filter</button>
+      </div>
       <button onClick="EOL_list();">LIST</button>
       <div id="grid_list"></div>
     </section>
@@ -161,7 +209,7 @@
             </tr>
             <tr>
               <td>
-                <label id='_기밀검사_냉각유로_label' for="_기밀검사_냉각유로">기밀검사 냉각유로</label>
+                <label for="_기밀검사_냉각유로">기밀검사 냉각유로</label>
               </td>
               <td>
                 <input type="text" id="_기밀검사_냉각유로" size="40" required />
@@ -177,7 +225,7 @@
             </tr>
             <tr>
               <td>
-                <label for="_기밀검사_냉각유로_특이사항"
+                <label id='_기밀검사_냉각유로_label' for="_기밀검사_냉각유로_특이사항"
                   >기밀검사 냉각유로 특이사항</label
                 >
               </td>
@@ -271,13 +319,13 @@
             <tr>
               <td>
                 <label id='_절연저항HVP_label' for="_절연저항HVP_특이사항"
-                  >절연검사P 특이사항</label
+                  >절연저항HV+ 특이사항</label
                 >
               </td>
               <td>
                 <input
                   type="text"
-                  id="_절연검사HVP_특이사항"
+                  id="_절연저항HVP_특이사항"
                   size="100"
                   required
                 />
@@ -302,13 +350,13 @@
             <tr>
               <td>
                 <label id='_절연저항HVN_label' for="_절연저항HVN_특이사항"
-                  >절연검사N 특이사항</label
+                  >절연저항HV- 특이사항</label
                 >
               </td>
               <td>
                 <input
                   type="text"
-                  id="_절연검사HVN_특이사항"
+                  id="_절연저항HVN_특이사항"
                   size="100"
                   required
                 />
@@ -361,14 +409,14 @@
             </tr>
             <tr>
               <td>
-                <label id='_통신전압_팩전압_label' for="_절연저항HVP_특이사항"
-                  >절연검사P 특이사항</label
+                <label id='_통신검사_팩전압_label' for="_통신검사_팩전압_특이사항"
+                  >통신검사_팩전압 특이사항</label
                 >
               </td>
               <td>
                 <input
                   type="text"
-                  id="_통신전압_팩전압_특이사항"
+                  id="_통신검사_팩전압_특이사항"
                   size="100"
                   required
                 />
@@ -400,7 +448,7 @@
             <tr>
               <td>
                 <label id='_통신검사_셀전압편차_label' for="_통신검사_셀전압편차_특이사항"
-                  >절연검사P 특이사항</label
+                  >통신검사 셀전압편차 특이사항</label
                 >
               </td>
               <td>
@@ -437,7 +485,7 @@
             <tr>
               <td>
                 <label id='_통신검사_릴레이구동_label' for="_통신검사_릴레이구동_특이사항"
-                  >절연검사P 특이사항</label
+                  >통신검사 릴레이구동 특이사항</label
                 >
               </td>
               <td>
@@ -519,16 +567,19 @@
       const _RO_no = document.getElementById("_RO_no");
       const _공정입고일 = document.getElementById("_공정입고일");
       const _기밀검사_케이스 = document.getElementById("_기밀검사_케이스");
-      const _기밀검사_케이스_특이사항 =
-        document.getElementById("_기밀검사_케이스_특이사항");
+      const _기밀검사_케이스_특이사항 = document.getElementById("_기밀검사_케이스_특이사항");
       const _기밀검사_냉각유로 = document.getElementById("_기밀검사_냉각유로");
-      const _기밀검사_냉각유로_특이사항 =
-        document.getElementById("_기밀검사_냉각유로_특이사항");
+      const _기밀검사_냉각유로_특이사항 = document.getElementById("_기밀검사_냉각유로_특이사항");
       const _절연검사P = document.getElementById("_절연검사P");
+      const _절연검사P_특이사항 = document.getElementById("_절연검사P_특이사항");
       const _절연검사M = document.getElementById("_절연검사M");
+      const _절연검사M_특이사항 = document.getElementById("_절연검사M_특이사항");
       const _절연저항HVP = document.getElementById("_절연저항HVP");
+      const _절연저항HVP_특이사항 = document.getElementById("_절연저항HVP_특이사항");
       const _절연저항HVN = document.getElementById("_절연저항HVN");
+      const _절연저항HVN_특이사항 = document.getElementById("_절연저항HVN_특이사항");
       const _UPR_C조립 = document.getElementById("_UPR_C조립");
+      const _UPR_C조립_특이사항 = document.getElementById("_UPR_C조립_특이사항");
       const _통신검사_DTC코드1 = document.getElementById("_통신검사_DTC코드1");
       const _통신검사_DTC코드2 = document.getElementById("_통신검사_DTC코드2");
       const _통신검사_DTC코드3 = document.getElementById("_통신검사_DTC코드3");
@@ -538,13 +589,13 @@
       const _통신검사_DTC코드7 = document.getElementById("_통신검사_DTC코드7");
       const _통신검사_DTC코드8 = document.getElementById("_통신검사_DTC코드8");
       const _통신검사_DTC코드9 = document.getElementById("_통신검사_DTC코드9");
-      const _통신검사_DTC코드10 =
-        document.getElementById("_통신검사_DTC코드10");
+      const _통신검사_DTC코드10 = document.getElementById("_통신검사_DTC코드10");
       const _통신검사_팩전압 = document.getElementById("_통신검사_팩전압");
-      const _통신검사_셀전압편차 =
-        document.getElementById("_통신검사_셀전압편차");
-      const _통신검사_릴레이구동 =
-        document.getElementById("_통신검사_릴레이구동");
+      const _통신검사_팩전압_특이사항 = document.getElementById("_통신검사_팩전압_특이사항");
+      const _통신검사_셀전압편차 = document.getElementById("_통신검사_셀전압편차");
+      const _통신검사_셀전압편차_특이사항 = document.getElementById("_통신검사_셀전압편차_특이사항");
+      const _통신검사_릴레이구동 = document.getElementById("_통신검사_릴레이구동");
+      const _통신검사_릴레이구동_특이사항 = document.getElementById("_통신검사_릴레이구동_특이사항");
       const _공정완료일 = document.getElementById("_공정완료일");
       const _비고 = document.getElementById("_비고");
       const _QR = document.getElementById("_QR");

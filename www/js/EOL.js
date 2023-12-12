@@ -4,6 +4,7 @@ function EOL_재제조번호_시작() {
 
 var EOL_DTC_count = 0;
 
+var 사전_EOL_입고일 = '';
 async function EOL_시작(is재제조 = 0) {
 	if(worker == '') return;
 	while(_management_id == undefined) {
@@ -14,6 +15,18 @@ async function EOL_시작(is재제조 = 0) {
 	flag_EOL = false;
 
 	_eol_delete_all();
+	init_EOL();
+
+	document.getElementById('_UPR_C조립_label').innerHTML = 'UPR_C조립 특이사항';
+	document.getElementById('_기밀검사_케이스_label').innerHTML = '기밀검사 케이스 특이사항';
+	document.getElementById('_기밀검사_냉각유로_label').innerHTML = '기밀검사 냉각유로 특이사항';
+	document.getElementById('_절연검사P_label').innerHTML = '절연검사+ 특이사항';
+	document.getElementById('_절연검사M_label').innerHTML = '절연검사- 특이사항';
+	document.getElementById('_절연저항HVP_label').innerHTML = '절연저항HV+ 특이사항';
+	document.getElementById('_절연저항HVN_label').innerHTML = '절연저항HV- 특이사항';
+	document.getElementById('_통신검사_팩전압_label').innerHTML = '통신검사_팩전압 특이사항';
+	document.getElementById('_통신검사_셀전압편차_label').innerHTML = '통신검사_셀전압편차 특이사항';
+	document.getElementById('_통신검사_릴레이구동_label').innerHTML = '통신검사_릴레이구동 특이사항';
 
 	if(is재제조 == 0) {
 		if(_management_id.value.length == 0) return;
@@ -26,6 +39,15 @@ async function EOL_시작(is재제조 = 0) {
 		} else {
 			_재제조번호.value = '';
 			_RO_no.value = '';
+
+			var yes = prompt('EOL 공정을 시작하겠습니까?(y/n)');
+			if(yes == 'y') {
+				var DateTime = luxon.DateTime;
+				var seoul = DateTime.local().setZone("Asia/Seoul");
+				var now = seoul.toString().slice(0, 19);
+
+				사전_EOL_입고일 = now;
+			}
 		}
 	} else if(is재제조 == 1) {
 		if(_재제조번호.value.length == 0) return;
@@ -62,14 +84,49 @@ async function EOL_시작(is재제조 = 0) {
 	if(EOL_v != null) {
 			_공정입고일.value = EOL_v.공정입고일; 
 			_UPR_C조립.value = EOL_v.UPR_C조립; 
+			if(_UPR_C조립.value == 'OK') {
+				document.getElementById('_UPR_C조립_label').innerHTML = 'UPR_C조립 입력값';
+			} else {
+				document.getElementById('_UPR_C조립_label').innerHTML = 'UPR_C조립 특이사항';
+			}
 			_기밀검사_케이스.value = EOL_v.기밀검사_케이스;
+			if(_기밀검사_케이스.value == 'OK') {
+				document.getElementById('_기밀검사_케이스_label').innerHTML = '기밀검사 케이스 입력값';
+			} else {
+				document.getElementById('_기밀검사_케이스_label').innerHTML = '기밀검사 케이스 특이사항';
+			}
 			_기밀검사_케이스_특이사항.value = EOL_v.기밀검사_케이스_특이사항;
 			_기밀검사_냉각유로.value = EOL_v.기밀검사_냉각유로;
+			if(_기밀검사_냉각유로.value == 'OK') {
+				document.getElementById('_기밀검사_냉각유로_label').innerHTML = '기밀검사 냉각유로 입력값';
+			} else {
+				document.getElementById('_기밀검사_냉각유로_label').innerHTML = '기밀검사 냉각유로 특이사항';
+			}
 			_기밀검사_냉각유로_특이사항.value = EOL_v.기밀검사_냉각유로_특이사항;
 			_절연검사P.value = EOL_v.절연검사_Plus;
+			if(_절연검사P.value == 'OK') {
+				document.getElementById('_절연검사P_label').innerHTML = '절연검사+ 입력값';
+			} else {
+				document.getElementById('_절연검사P_label').innerHTML = '절연검사+ 특이사항';
+			}
 			_절연검사M.value = EOL_v.절연검사_Minus;
+			if(_절연검사M.value == 'OK') {
+				document.getElementById('_절연검사M_label').innerHTML = '절연검사- 입력값';
+			} else {
+				document.getElementById('_절연검사M_label').innerHTML = '절연검사- 특이사항';
+			}
 			_절연저항HVP.value = EOL_v.절연저항_HVP;
+			if(_절연저항HVP.value == 'OK') {
+				document.getElementById('_절연저항HVP_label').innerHTML = '절연저항HV+ 입력값';
+			} else {
+				document.getElementById('_절연저항HVP_label').innerHTML = '절연저항HV+ 특이사항';
+			}
 			_절연저항HVN.value = EOL_v.절연저항_HVN;
+			if(_절연저항HVN.value == 'OK') {
+				document.getElementById('_절연저항HVN_label').innerHTML = '절연저항HV- 입력값';
+			} else {
+				document.getElementById('_절연저항HVN_label').innerHTML = '절연저항HV- 특이사항';
+			}
 			_통신검사_DTC코드1.value = EOL_v.통신검사_DTC코드1;
 			_통신검사_DTC코드2.value = EOL_v.통신검사_DTC코드2;
 			_통신검사_DTC코드3.value = EOL_v.통신검사_DTC코드3;
@@ -109,36 +166,29 @@ async function EOL_시작(is재제조 = 0) {
 			}
 
 			_통신검사_팩전압.value = EOL_v.통신검사_팩전압;
+			if(_통신검사_팩전압.value == 'OK') {
+				document.getElementById('_통신검사_팩전압_label').innerHTML = '통신검사_팩전압 입력값';
+			} else {
+				document.getElementById('_통신검사_팩전압_label').innerHTML = '통신검사_팩전압 특이사항';
+			}
 			_통신검사_셀전압편차.value = EOL_v.통신검사_셀전압편차;
+			if(_통신검사_셀전압편차.value == 'OK') {
+				document.getElementById('_통신검사_셀전압편차_label').innerHTML = '통신검사_셀전압편차 입력값';
+			} else  {
+				document.getElementById('_통신검사_셀전압편차_label').innerHTML = '통신검사_셀전압편차 특이사항';
+			}
 			_통신검사_릴레이구동.value = EOL_v.통신검사_릴레이구동;
+			if(_통신검사_릴레이구동.value == 'OK') {
+				document.getElementById('_통신검사_릴레이구동_label').innerHTML = '통신검사_릴레이구동 입력값';
+			} else {
+				document.getElementById('_통신검사_릴레이구동_label').innerHTML = '통신검사_릴레이구동 특이사항';
+			}
 			_공정완료일.value = EOL_v.공정완료일;
 			_비고.value = EOL_v.비고;
 			_QR.value = EOL_v.QR;
 			_검사자.value = EOL_v.검사자;
 	} else {
-		_재제조번호.value = '';
-		_구분.value = '';
-		_차종.value = '';
-		_품번.value = '';
-		_RO_no.value = '';
-		_공정입고일.value = '';
-		_UPR_C조립.value = '';
-		_기밀검사_케이스.value = '';
-		_기밀검사_케이스_특이사항.value = '';
-		_기밀검사_냉각유로.value = '';
-		_기밀검사_냉각유로_특이사항.value = '';
-		_절연검사P.value = '';
-		_절연검사M.value = '';
-		_통신검사_DTC코드1.value = '';
-		_통신검사_DTC코드2.value = '';
-		_통신검사_DTC코드3.value = '';
-		_통신검사_팩전압.value = '';
-		_통신검사_셀전압편차.value = ''; 
-		_통신검사_릴레이구동.value = ''; 
-		_공정완료일.value = '';
-		_비고.value = '';
-		_QR.value = '';
-		_검사자.value = worker;
+		init_EOL();
 	}
 
 	find(BSA재제조, _management_id.value);
@@ -163,10 +213,15 @@ async function EOL_SAVE() {
 	if(_management_id.value.length == 0) return;
 	console.log('save: ', _management_id.value);
 
+	var DateTime = luxon.DateTime;
+	var seoul = DateTime.local().setZone("Asia/Seoul");
+	var now = seoul.toString().slice(0, 19);
+
 	var doc = JSON.parse(JSON.stringify(EOL_doc));
 	console.log('new doc:', doc);
 	doc.관리번호 = _management_id.value.trim().toUpperCase();
-	doc.공정입고일 = _공정입고일.value;
+	if(doc.공정입고일 == '') doc.공정입고일 = 사전_EOL_입고일; //_공정입고일.value;
+	if(level == '관리자') doc.공정입고일 = _공정입고일.value;
 	doc.UPR_C조립 = _UPR_C조립.value;
 	doc.기밀검사_케이스 = _기밀검사_케이스.value;
 	doc.기밀검사_케이스_특이사항 = _기밀검사_케이스_특이사항.value;
@@ -245,7 +300,9 @@ async function EOL_SAVE() {
 	doc.통신검사_팩전압 = _통신검사_팩전압.value;
 	doc.통신검사_셀전압편차 = _통신검사_셀전압편차.value
 	doc.통신검사_릴레이구동 = _통신검사_릴레이구동.value;
-	doc.공정완료일 = _공정완료일.value;
+	doc.통신검사_릴레이구동_특이사항 = _통신검사_릴레이구동_특이사항.value;
+	doc.공정완료일 = now; //_공정완료일.value;
+	if(level == '관리자') doc.공정완료일 = _공정완료일.value;
 	doc.비고 = _비고.value;
 	doc.QR = _QR.value;
 	doc.검사자 = _검사자.value;
@@ -289,6 +346,26 @@ async function EOL_SAVE() {
 	}
 
 	await 공정단계자동입력(_management_id.value);
+
+	find(출하정보, _management_id.value);
+	await delay();
+
+	if(출하정보_v == null) {
+		var _doc = JSON.parse(JSON.stringify(출하정보_doc));
+		_doc.관리번호 = _management_id.value;
+		_doc.출하코드 = _QR.value;
+
+		update(출하정보, _doc);
+		await delay();
+	} else {
+		var _doc = {
+			관리번호 : _management_id.value,
+			출하코드 : _QR.value
+		}
+
+		update(출하정보, _doc);
+		await delay();
+	}
 }
 
 function EOL_save() {
@@ -309,19 +386,103 @@ function _기밀검사_냉각유로_콤보박스(e) {
 	document.getElementById('_기밀검사_냉각유로').value = value;
 }
 
+function _UPR_C조립_콤보박스(e) {
+	const value = e.value;
+
+	document.getElementById('_UPR_C조립').value = value;
+	if(value == 'OK') {
+		document.getElementById('_UPR_C조립_label').innerHTML = 'UPR_C조립 입력값';
+	} else if(value == '미실시') {
+		document.getElementById('_UPR_C조립_label').innerHTML = 'UPR_C조립 특이사항';
+	}
+}
+
+function _절연검사p_콤보박스(e) {
+	const value = e.value;
+
+	document.getElementById('_절연검사P').value = value;
+	if(value == 'OK') {
+		document.getElementById('_절연검사P_label').innerHTML = '절연검사+ 입력값';
+	} else if(value == '미실시') {
+		document.getElementById('_절연검사P_label').innerHTML = '절연검사+ 특이사항';
+	}
+}
+
+function _절연검사M_콤보박스(e) {
+	const value = e.value;
+
+	document.getElementById('_절연검사M').value = value;
+	if(value == 'OK') {
+		document.getElementById('_절연검사M_label').innerHTML = '절연검사- 입력값';
+	} else if(value == '미실시') {
+		document.getElementById('_절연검사M_label').innerHTML = '절연검사- 특이사항';
+	}
+}
+
+function _절연저항HVP_콤보박스(e) {
+	const value = e.value;
+
+	document.getElementById('_절연저항HVP').value = value;
+	if(value == 'OK') {
+		document.getElementById('_절연저항HVP_label').innerHTML = '절연저항HV+ 입력값';
+	} else if(value == '미실시') {
+		document.getElementById('_절연저항HVP_label').innerHTML = '절연저항HV+ 특이사항';
+	}
+}
+
+function _절연저항HVN_콤보박스(e) {
+	const value = e.value;
+
+	document.getElementById('_절연저항HVN').value = value;
+	if(value == 'OK') {
+		document.getElementById('_절연저항HVN_label').innerHTML = '절연저항HV- 입력값';
+	} else if(value == '미실시') {
+		document.getElementById('_절연저항HVN_label').innerHTML = '절연저항HV- 특이사항';
+	}
+}
+
+function _통신검사_팩전압_콤보박스(e) {
+	const value = e.value;
+
+	document.getElementById('_통신검사_팩전압').value = value;
+	if(value == 'OK') {
+		document.getElementById('_통신검사_팩전압_label').innerHTML = '통신검사 팩전압 입력값';
+	} else if(value == '미실시') {
+		document.getElementById('_통신검사_팩전압_label').innerHTML = '통신검사 팩전압 특이사항';
+	}
+}
+
+function _통신검사_셀전압편차_콤보박스(e) {
+	const value = e.value;
+
+	document.getElementById('_통신검사_셀전압편차').value = value;
+	if(value == 'OK') {
+		document.getElementById('_통신검사_셀전압편차_label').innerHTML = '통신검사 셀전압편차 입력값';
+	} else if(value == '미실시') {
+		document.getElementById('_통신검사_셀전압편차_label').innerHTML = '통신검사 셀전압편차 특이사항';
+	}
+}
+
 function _통신검사_릴레이구동_콤보박스(e) {
 	const value = e.value;
 
 	document.getElementById('_통신검사_릴레이구동').value = value;
+	if(value == 'OK') {
+		document.getElementById('_통신검사_릴레이구동_label').innerHTML = '통신검사 릴레이구동 입력값';
+	} else if(value == 'NG') {
+		document.getElementById('_통신검사_릴레이구동_label').innerHTML = '통신검사 릴레이구동 특이사항';
+	} else if(value == '통신불가') {
+		document.getElementById('_통신검사_릴레이구동_label').innerHTML = '통신검사 릴레이구동 특이사항';
+	}
 }
 
 function _EOL_add_DTC_Code() {
 	var oCurrentRow;
 	var tb = document.getElementById('tb');
 	var rowIcnt = tb.rows.length - 11;
-	var code_no = rowIcnt - 15;
+	var code_no = rowIcnt - 26;
 	console.log('rosw count:', rowIcnt);
-	if(rowIcnt > 25) return false;
+	if(rowIcnt > 37) return false;
 	oCurrentRow = tb.insertRow(rowIcnt);
 	var insert_string = "<td><label for=\"_통신검사_DTC코드\"" + code_no + "><b>통신검사 DTC코드 " + code_no + "</b></label></td><td><input type=\"text\" id=\"_통신검사_DTC코드" + code_no + "\" size=\"40\" required></td><td><button onClick=\"_eol_delete_row(" + rowIcnt + ");\">삭제</button></td>";
 	console.log(insert_string);
@@ -461,6 +622,30 @@ function pdf() {
 	console.log("file name:", "거래확인서.pdf");
 }
 
+function EOL_updateFilter() {
+  var fieldEl = document.getElementById("filter-field");
+  var typeEl = document.getElementById("filter-type");
+  var valueEl = document.getElementById("filter-value");
+
+  var filterVal = fieldEl.options[fieldEl.selectedIndex].value;
+  var typeVal = typeEl.options[typeEl.selectedIndex].value;
+
+  var filter = filterVal == "function" ? customFilter : filterVal;
+
+  if (filterVal == "function") {
+    typeEl.disabled = true;
+    valueEl.disabled = true;
+  } else {
+    typeEl.disabled = false;
+    valueEl.disabled = false;
+  }
+
+  if (filterVal) {
+    EOL_list_table.setFilter(filter, typeVal, valueEl.value);
+  }
+}
+
+var EOL_list_table;
 async function EOL_list() {
 	findOne_BSA재제조(BSA재제조, { 공정단계 : { $ne : '출하' }, 성능검사 : { $ne : '' }, EOL : { $eq : '' } ,  소재지 : { $nin : ['공정대기', '품질대기'] }, 완전분해 : { $eq : ''}, 폐기 : { $eq : '' }, 출하 : { $eq : '' }, 구분 : { $nin: ['일반기타', '보증기타']} });
 	await delay();
@@ -470,7 +655,7 @@ async function EOL_list() {
 		await delay();
 	}
 
-	var table = new Tabulator("#grid_list", {
+	EOL_list_table = new Tabulator("#grid_list", {
 		layout: "resizableColumnFit",
 		data: BSA재제조_v,
 		height: "400px",
@@ -601,7 +786,7 @@ async function EOL_list() {
 		],
 	});
 	
-	table.on("rowClick", async function (e, row) {
+	EOL_list_table.on("rowClick", async function (e, row) {
 		console.log("selected 관리번호: ", row.getData().관리번호);
 
 		_management_id.value = row.getData().관리번호;
@@ -610,4 +795,64 @@ async function EOL_list() {
 
 		EOL_시작();
 	});
+	
+	//Update filters on value change
+	document
+		.getElementById("filter-field")
+		.addEventListener("change", EOL_updateFilter);
+	document
+		.getElementById("filter-type")
+		.addEventListener("change", EOL_updateFilter);
+	document
+		.getElementById("filter-value")
+		.addEventListener("keyup", EOL_updateFilter);
+
+	//Clear filters on "Clear Filters" button click
+	document
+		.getElementById("filter-clear")
+		.addEventListener("click", function () {
+			var fieldEl = document.getElementById("filter-field");
+			var typeEl = document.getElementById("filter-type");
+			var valueEl = document.getElementById("filter-value");
+			fieldEl.value = "";
+			typeEl.value = "=";
+			valueEl.value = "";
+
+			EOL_list_table.clearFilter();
+		});
+}
+
+function init_EOL() {
+		_재제조번호.value = '';
+		_구분.value = '';
+		_차종.value = '';
+		_품번.value = '';
+		_RO_no.value = '';
+		_공정입고일.value = '';
+		_UPR_C조립.value = '';
+		_UPR_C조립_특이사항.value = '';
+		_기밀검사_케이스.value = '';
+		_기밀검사_케이스_특이사항.value = '';
+		_기밀검사_냉각유로.value = '';
+		_기밀검사_냉각유로_특이사항.value = '';
+		_절연저항HVP.value = '';
+		_절연저항HVN.value = '';
+		_절연검사P.value = '';
+		_절연검사P.value = '';
+		_절연검사P_특이사항.value = '';
+		_절연검사M.value = '';
+		_절연검사M_특이사항.value = '';
+		_통신검사_DTC코드1.value = '';
+		_통신검사_DTC코드2.value = '';
+		_통신검사_DTC코드3.value = '';
+		_통신검사_팩전압.value = '';
+		_통신검사_팩전압_특이사항.value = '';
+		_통신검사_셀전압편차.value = ''; 
+		_통신검사_셀전압편차_특이사항.value = ''; 
+		_통신검사_릴레이구동.value = ''; 
+		_통신검사_릴레이구동_특이사항.value = ''; 
+		_공정완료일.value = '';
+		_비고.value = '';
+		_QR.value = '';
+		_검사자.value = worker;
 }
