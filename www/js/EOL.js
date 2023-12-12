@@ -793,8 +793,8 @@ async function EOL_list() {
 
 		await sleep(1);
 
-		var yes = prompt('선택한 bsa로 세척 공정 정보입력을 시작하시겠습니까?(y/n)');
-		if(yes != 'y' &&  yes != 'Y') return;
+		var yes = confirm('선택한 BSA로 EOL 공정 정보입력을 시작하시겠습니까?');
+		if(yes != true) return;
 
 		EOL_시작();
 	});
