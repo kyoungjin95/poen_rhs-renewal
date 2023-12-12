@@ -1,4 +1,3 @@
-var 사전_입고일 = '';
 async function 입고_시작() {
 	while (_management_id == undefined) {
 		await sleep(DELAY);
@@ -44,16 +43,12 @@ async function 입고_시작() {
 		_차종.value = "";
 		_품번.value = "";
 		_RO_no.value = "";
-		var yes = prompt('입고 공정을 시작하겠습니까?(y/n)');
-		if(yes == 'y') {
-			var DateTime = luxon.DateTime;
-			var seoul = DateTime.local().setZone("Asia/Seoul");
-			var now = seoul.toString().slice(0, 19);
 
-			사전_입고일 = now;
-		} else {
-			back();
-		}
+		var DateTime = luxon.DateTime;
+		var seoul = DateTime.local().setZone("Asia/Seoul");
+		var now = seoul.toString().slice(0, 19);
+
+		_입고일.value = now;
 	}
 }
 
@@ -67,8 +62,13 @@ async function 입고_save() {
 	var seoul = DateTime.local().setZone("Asia/Seoul");
 	var now = seoul.toString().slice(0, 19);
 
+	if(level != '관리자') _입고일.value = now;
+
+	find(입고, _management_id.value);
+	await delay();
+
 	doc.관리번호 = _management_id.value.trim().toUpperCase();
-	if(doc.입고일 == '') doc.입고일 = 사전_입고일;
+	if(입고_v == null) doc.입고일 = _입고일.value;
 	if(level == '관리자') doc.입고일 = _입고일.value;
 	doc.입고처 = _입고처.value;
 	doc.구분 = _구분.value;

@@ -4,7 +4,6 @@ function EOL_재제조번호_시작() {
 
 var EOL_DTC_count = 0;
 
-var 사전_EOL_입고일 = '';
 async function EOL_시작(is재제조 = 0) {
 	if(worker == '') return;
 	while(_management_id == undefined) {
@@ -39,15 +38,6 @@ async function EOL_시작(is재제조 = 0) {
 		} else {
 			_재제조번호.value = '';
 			_RO_no.value = '';
-
-			var yes = prompt('EOL 공정을 시작하겠습니까?(y/n)');
-			if(yes == 'y') {
-				var DateTime = luxon.DateTime;
-				var seoul = DateTime.local().setZone("Asia/Seoul");
-				var now = seoul.toString().slice(0, 19);
-
-				사전_EOL_입고일 = now;
-			}
 		}
 	} else if(is재제조 == 1) {
 		if(_재제조번호.value.length == 0) return;
@@ -189,6 +179,12 @@ async function EOL_시작(is재제조 = 0) {
 			_검사자.value = EOL_v.검사자;
 	} else {
 		init_EOL();
+
+		var DateTime = luxon.DateTime;
+		var seoul = DateTime.local().setZone("Asia/Seoul");
+		var now = seoul.toString().slice(0, 19);
+
+		_공정입고일.value = now;
 	}
 
 	find(BSA재제조, _management_id.value);
@@ -217,10 +213,14 @@ async function EOL_SAVE() {
 	var seoul = DateTime.local().setZone("Asia/Seoul");
 	var now = seoul.toString().slice(0, 19);
 
+	if(level != '관리자') _공정완료일.value = now;
+	find(EOL, _management_id.value);
+	await delay();
+
 	var doc = JSON.parse(JSON.stringify(EOL_doc));
 	console.log('new doc:', doc);
 	doc.관리번호 = _management_id.value.trim().toUpperCase();
-	if(doc.공정입고일 == '') doc.공정입고일 = 사전_EOL_입고일; //_공정입고일.value;
+	if(EOL_v == null) doc.공정입고일 = _공정입고일.value;
 	if(level == '관리자') doc.공정입고일 = _공정입고일.value;
 	doc.UPR_C조립 = _UPR_C조립.value;
 	doc.기밀검사_케이스 = _기밀검사_케이스.value;

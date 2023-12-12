@@ -19,8 +19,6 @@ var Busbars_count = 1;
 var BMA_count = 1;
 var first_분해조립 = true;
 
-var 사전_분해조립_입고일 = '';
-
 async function 분해조립_재제조번호_시작() {
 	분해조립_시작(true);
 }
@@ -57,16 +55,6 @@ async function 분해조립_시작(is재제조 = 0) {
 			_구분.value = "";
 			_차종.value = "";
 			_품번.value = "";
-
-			var yes = prompt('분해조립 공정을 시작하겠습니까?(y/n)');
-
-			if(yes == 'y') {
-				var DateTime = luxon.DateTime;
-				var seoul = DateTime.local().setZone("Asia/Seoul");
-				var now = seoul.toString().substr(0, 19);
-
-				사전_분해조립_입고일 = now;	
-			}
 		}
 	} else if (is재제조 == 1) {
 		if (_재제조번호.value.length == 0) return;
@@ -86,16 +74,6 @@ async function 분해조립_시작(is재제조 = 0) {
 			_구분.value = "";
 			_차종.value = "";
 			_품번.value = "";
-
-			var yes = prompt('분해조립 공정을 시작하겠습니까?(y/n)');
-
-			if(yes == 'y') {
-				var DateTime = luxon.DateTime;
-				var seoul = DateTime.local().setZone("Asia/Seoul");
-				var now = seoul.toString().substr(0, 19);
-
-				사전_분해조립_입고일 = now;	
-			}
 		}
 	} else if (is재제조 == 2) {
 		if (_RO_no.value.length == 0) return;
@@ -115,16 +93,6 @@ async function 분해조립_시작(is재제조 = 0) {
 			_구분.value = "";
 			_차종.value = "";
 			_품번.value = "";
-
-			var yes = prompt('분해조립 공정을 시작하겠습니까?(y/n)');
-
-			if(yes == 'y') {
-				var DateTime = luxon.DateTime;
-				var seoul = DateTime.local().setZone("Asia/Seoul");
-				var now = seoul.toString().substr(0, 19);
-
-				사전_분해조립_입고일 = now;	
-			}
 		}
 	}
 
@@ -704,6 +672,12 @@ async function 분해조립_시작(is재제조 = 0) {
 		_ETC.value = "";
 		_공정완료일.value = "0000-00-00T00:00";
 		_작업자.value = worker;
+
+		var DateTime = luxon.DateTime;
+		var seoul = DateTime.local().setZone("Asia/Seoul");
+		var now = seoul.toString().substr(0, 19);
+
+		_공정입고일.value = now;	
 	}
 
 	const tbody = document.querySelector("#_tb tbody");
@@ -1003,10 +977,21 @@ async function 분해조립_save() {
 	if (_management_id.value.length == 0) return;
 	console.log("save: ", _management_id.value);
 
+	find(분해조립, _management_id.value);
+	await delay();
+
+	var DateTime = luxon.DateTime;
+	var seoul = DateTime.local().setZone("Asia/Seoul");
+	var now = seoul.toString().slice(0, 19);
+
+	if(level != '관리자') _공정완료일.value = now;
+
 	var doc = JSON.parse(JSON.stringify(분해조립_doc));
+
 	console.log("분해조립 init SAVE:", doc);
+
 	doc.관리번호 = _management_id.value.trim().toUpperCase();
-	if(doc.공정입고일 == '') doc.공정입고일 = 사전_분해조립_입고일;
+	if(분해조립_v == null) doc.공정입고일 = _공정입고일.value;
 	if(level == '관리자') doc.공정입고일 = _공정입고일.value;
 	for (var i = 1; i <= BMU_count; i++)
 		eval(
