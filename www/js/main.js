@@ -28,15 +28,16 @@ if(worker == null) {
 
 var flag_show = false;
 
+const _login_info = document.getElementById('login_info');
+const _admin_btn = document.getElementById('admin_btn');
+const _부품재고_btn = document.getElementById('부품재고_btn');
+
 console.log('worker:', worker);
 if(worker == '' || worker == null) {
 	loadPage('base/login.html');
 
 	change_label();
 
-	const _login_info = document.getElementById('login_info');
-	const _admin_btn = document.getElementById('admin_btn');
-	const _부품재고_btn = document.getElementById('부품재고_btn');
 
 	_login_info.innerHTML = '';
 	_admin_btn.style.display = 'none';
