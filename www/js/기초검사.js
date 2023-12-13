@@ -241,14 +241,12 @@ async function 기초검사_SAVE() {
 	var seoul = DateTime.local().setZone("Asia/Seoul");
 	var now = seoul.toString().slice(0, 19);
 
-	if(level != '관리자') _공정완료일.value = now;
-	find(기초검사, _management_id.value);
-	await delay();
+	if(_공정입고일.value == '') _공정입고일.value = now;
+	_공정완료일.value = now;
 
 	var doc = JSON.parse(JSON.stringify(기초검사_doc));
 	doc.관리번호 = _management_id.value.trim().toUpperCase();
-	if(기초검사_v == null) doc.공정입고일 = _공정입고일.value;
-	if(level == '관리자') doc.공정입고일 = _공정입고일.value;
+	doc.공정입고일 = _공정입고일.value;
 	doc.RO_no = _RO_no.value;
 	doc.VIN = _VIN.value;
 	doc.QRcode = _QRCode.value;
@@ -340,7 +338,7 @@ async function 기초검사_SAVE() {
 	//doc.문제Cell_No = _문제Cell_No.value;
 	//doc.문제BMA_No = _문제BMA_No.value;
 	//doc.문제BMA_cnt = _문제BMA_cnt.value; 
-	doc.공정완료일 = now;//_공정완료일.value;
+	doc.공정완료일 = _공정완료일.value;
 	if(level == '관리자') doc.공정완료일 = _공정완료일.value;
 	doc.요청사항 = _요청사항.value;
 	doc.비고 = _비고.value;

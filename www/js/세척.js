@@ -104,17 +104,13 @@ async function 세척_save() {
 	var seoul = DateTime.local().setZone("Asia/Seoul");
 	var now = seoul.toString().slice(0, 19);
 	
-	if(level != '관리자') _공정완료일.value = now;
-
-	find(세척, _management_id.value);
-	await delay();
+	if(_공정입고일.value == '') _공정입고일.value = now;
+	_공정완료일.value = now;
 
 	doc.관리번호 = _management_id.value.trim().toUpperCase();
 	doc.재제조번호 = _재제조번호.value;
-	if(세척_v == null) doc.공정입고일 = _공정입고일.value;;
-	if(level == '관리자') doc.공정입고일 = _공정입고일.value;
-	doc.공정완료일 = now; //_공정완료일.value;
-	if(level == '관리자') doc.공정완료일 = _공정완료일.value;
+	doc.공정입고일 = _공정입고일.value;
+	doc.공정완료일 = _공정완료일.value;
 	doc.어퍼케이스재사용가능 = _어퍼케이스재사용가능.value;
 	doc.기밀검사_케이스 = _기밀검사_케이스.value;
 	doc.기밀검사_케이스_특이사항 = _기밀검사_케이스_특이사항.value;
