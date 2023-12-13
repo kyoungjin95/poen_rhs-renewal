@@ -855,5 +855,5 @@ function init_EOL() {
 		_공정완료일.value = '';
 		_비고.value = '';
 		_QR.value = '';
-		_검사자.value = worker;
+		_검사자.value = 계정_stat.이름;
 }

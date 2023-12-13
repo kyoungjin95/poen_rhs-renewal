@@ -7,7 +7,8 @@ async function 성능검사_시작(is재제조 = 0) {
 	if(flag_성능검사 == true) await 성능검사_list();
 	flag_성능검사 = false;
 
-	_검사자.value = worker;
+	console.log('작업자:', 계정_stat.이름);
+	_검사자.value = 계정_stat.이름;;
 
 	if(is재제조 == 0) {
 		if(_management_id.value.length == 0) return;
@@ -89,7 +90,7 @@ async function 성능검사_시작(is재제조 = 0) {
 		_DCIR_Discharge.value =	'';
 		_분해조립_재의뢰사유.value = '';
 		_공정완료일.value = '0000-00-00T00:00';
-		_검사자.value = worker;
+		_검사자.value = 계정_stat.이름;
 
 		var DateTime = luxon.DateTime;
 		var seoul = DateTime.local().setZone("Asia/Seoul");

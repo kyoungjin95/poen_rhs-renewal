@@ -122,9 +122,9 @@ async function 출하정보_시작(is재제조 = 0) {
 			break;
 	} 
 
-	count(출하정보, { 관리번호 : _management_id.value });
+	find(출하정보, _management_id.value);
 	await delay();
-	if(출하정보_cnt > 0) {
+	if(출하정보_v != null) {
 		console.log('관리번호:', 관리번호);
 
 		find(출하정보, _management_id.value);
@@ -145,7 +145,7 @@ async function 출하정보_시작(is재제조 = 0) {
 
 		//_납품처.value = 출하정보_v.납품처;
 		_검사일.value = 출하정보_v.검사일;
-		if(_검사자.value == '') _검사자.value = 출하정보_v.검사자;
+		if(_검사자.value == '' || _검사자.value == undefined) _검사자.value = 계정_stat.이름;
 		_기초보고서_작성확인.value = 출하정보_v.기초보고서_작성확인;
 		_완료보고서_작성확인.value = 출하정보_v.완료보고서_작성확인;
 		_클린상태.value =  출하정보_v.클린상태;
@@ -230,7 +230,7 @@ async function 출하정보_시작(is재제조 = 0) {
 		//_출하일.value = '0000-00-00T00:00:00';
 		//_납품처.value = '';
 		_검사일.value = '0000-00-00T00:00:00';
-		//_검사자.value = '';
+		_검사자.value = 계정_stat.이름;
 		_기초보고서_작성확인.value = '';
 		_완료보고서_작성확인.value = '';
 		_클린상태.value = '';

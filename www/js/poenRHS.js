@@ -2942,7 +2942,7 @@ socket.on('disconnect', function() {
 	walker = '';
 	const _login_btn = document.getElementById('login_btn');
 	_login_btn.innerHTML = '로그인';
-	socket = io();
+	//socket = io();
 });
 
 function reset_result() {
