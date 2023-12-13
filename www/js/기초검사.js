@@ -191,7 +191,7 @@ async function 기초검사_시작(is재제조 = 0) {
 		_요청사항.value = '';
 		_비고.value = '';
 		_센터진단내용.value = '';
-		_검사자.value = worker;
+		_검사자.value = 계정_stat.이름;
 
 		var DateTime = luxon.DateTime;
 		var seoul = DateTime.local().setZone("Asia/Seoul");

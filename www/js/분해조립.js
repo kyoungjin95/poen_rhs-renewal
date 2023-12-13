@@ -671,7 +671,7 @@ async function 분해조립_시작(is재제조 = 0) {
 		_Busbars.value = "";
 		_ETC.value = "";
 		_공정완료일.value = "0000-00-00T00:00";
-		_작업자.value = worker;
+		_작업자.value = 계정_stat.이름;
 
 		var DateTime = luxon.DateTime;
 		var seoul = DateTime.local().setZone("Asia/Seoul");

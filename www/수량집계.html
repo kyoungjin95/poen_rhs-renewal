@@ -70,17 +70,45 @@
         </div>
         <div id="grid_자재집계"></div>
       </div>
-      <div class="process">
-        <div class="process__tit">
-          <label for="grid_부품집계">품번별 부재료 집계</label>
-        </div>
-        <div id="grid_부품집계"></div>
+      <div class="gather-filter">
+	      <select id="new_filter-field">
+		      <option></option>
+		      <option value="품번">품번</option>
+		      <option value="품명">품명</option>
+		      <option value="차종">차종</option>
+		      <option value="입고수">입고수</option>
+		      <option value="출고수">출고수</option>
+		      <option value="합계">합계</option>
+	      </select>
+
+	      <select id="new_filter-type">
+		      <option value="=">=</option>
+		      <option value="<"><</option>
+		      <option value="<="><=</option>
+		      <option value=">">></option>
+		      <option value=">=">>=</option>
+		      <option value="!=">!=</option>
+		      <option value="like">like</option>
+	      </select>
+
+	      <input
+			      id="new_filter-value"
+			      type="text"
+			      placeholder="value to filter"
+			      />
+
+	      <button id="new_filter-clear">Clear Filter</button>
       </div>
       <div class="process">
-        <div class="process__tit">
-          <label for="grid_차종집계">차종별 부재료 집계</label>
-        </div>
-        <div id="grid_차종집계"></div>
+	      <div class="process__tit">
+		      <label for="grid_부품집계">부재료 집계</label>
+	      </div>
+	      <div id="grid_부품집계"></div>
+      </div>
+      <div class="data__btn">
+	      <button onClick="부품집계_export_to_excel();" class="down__excel">
+		      Export To Excel
+	      </button>
       </div>
     </section>
   </body>

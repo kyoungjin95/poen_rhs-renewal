@@ -901,9 +901,12 @@ async function processStep() {
 	}
 }
 
-function func_고품정보등록() {
+async function func_고품정보등록() {
 	if (worker == "") return;
 	if (_management_id.value.length == 0) return;
+	관리번호 = _management_id.value;
+	await sleep(1);
+
 	loadPage("base/고품정보.html");
 }
 
