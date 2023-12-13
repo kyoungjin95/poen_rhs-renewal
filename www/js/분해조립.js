@@ -984,14 +984,15 @@ async function 분해조립_save() {
 	var seoul = DateTime.local().setZone("Asia/Seoul");
 	var now = seoul.toString().slice(0, 19);
 
-	if(level != '관리자') _공정완료일.value = now;
+	if(_공정입고일.value == '') _공정입고일.value = now;
+	_공정완료일.value = now;
 
 	var doc = JSON.parse(JSON.stringify(분해조립_doc));
 
 	console.log("분해조립 init SAVE:", doc);
 
 	doc.관리번호 = _management_id.value.trim().toUpperCase();
-	if(분해조립_v == null) doc.공정입고일 = _공정입고일.value;
+	doc.공정입고일 = _공정입고일.value;
 	if(level == '관리자') doc.공정입고일 = _공정입고일.value;
 	for (var i = 1; i <= BMU_count; i++)
 		eval(
@@ -1224,7 +1225,7 @@ async function 분해조립_save() {
 	doc.Busbars = _Busbars.value;
 	doc.Busbars_2 = _Busbars_2.value;
 	doc.ETC = _ETC.value;
-	doc.공정완료일 = now;//_공정완료일.value;
+	doc.공정완료일 = _공정완료일.value;
 	if(level == '관리자') doc.공정완료일 = _공정완료일.value;
 	doc.작업자 = _작업자.value;
 

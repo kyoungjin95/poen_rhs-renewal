@@ -111,22 +111,19 @@ async function 성능검사_save() {
 	var seoul = DateTime.local().setZone("Asia/Seoul");
 	var now = seoul.toString().slice(0, 19);
 
-	if(level != '관리자') _공정완료일.value = now;
-
-	find(성능검사, _management_id.value);
-	await delay();
+	if(_공정입고일.value == '') _공정입고일.value = now;
+	_공정완료일.value = now;
 
 	var doc = JSON.parse(JSON.stringify(성능검사_doc));
 	doc.관리번호 = _management_id.value.trim().toUpperCase();
-	if(성능검사_v == null) doc.공정입고일 = _공정입고일.value;
-	if(level == '관리자') doc.공정입고일 = _공정입고일.value;
+	doc.공정입고일 = _공정입고일.value;
 	doc.용량평가 = _용량평가.value;
 	doc.SOC60Percent = _SOC60Percent.value;
 	doc.DCIR = _DCIR.value;
 	doc.DCIR_Charge = _DCIR_Charge.value;
 	doc.DCIR_Discharge = _DCIR_Discharge.value;
 	doc.분해조립_재의뢰사유 = _분해조립_재의뢰사유.value;
-	doc.공정완료일 = now; //_공정완료일.value;
+	doc.공정완료일 = _공정완료일.value;
 	if(level == '관리자') doc.공정완료일 = _공정완료일.value;
 	doc.검사자 = _검사자.value;
 	

@@ -213,15 +213,13 @@ async function EOL_SAVE() {
 	var seoul = DateTime.local().setZone("Asia/Seoul");
 	var now = seoul.toString().slice(0, 19);
 
-	if(level != '관리자') _공정완료일.value = now;
-	find(EOL, _management_id.value);
-	await delay();
+	if(_공정입고일.value == '') _공정입고일.value = now;
+	_공정완료일.value = now;
 
 	var doc = JSON.parse(JSON.stringify(EOL_doc));
 	console.log('new doc:', doc);
 	doc.관리번호 = _management_id.value.trim().toUpperCase();
-	if(EOL_v == null) doc.공정입고일 = _공정입고일.value;
-	if(level == '관리자') doc.공정입고일 = _공정입고일.value;
+	doc.공정입고일 = _공정입고일.value;
 	doc.UPR_C조립 = _UPR_C조립.value;
 	doc.기밀검사_케이스 = _기밀검사_케이스.value;
 	doc.기밀검사_케이스_특이사항 = _기밀검사_케이스_특이사항.value;
@@ -301,8 +299,7 @@ async function EOL_SAVE() {
 	doc.통신검사_셀전압편차 = _통신검사_셀전압편차.value
 	doc.통신검사_릴레이구동 = _통신검사_릴레이구동.value;
 	doc.통신검사_릴레이구동_특이사항 = _통신검사_릴레이구동_특이사항.value;
-	doc.공정완료일 = now; //_공정완료일.value;
-	if(level == '관리자') doc.공정완료일 = _공정완료일.value;
+	doc.공정완료일 = _공정완료일.value;
 	doc.비고 = _비고.value;
 	doc.QR = _QR.value;
 	doc.검사자 = _검사자.value;
