@@ -63,15 +63,13 @@ button {
   align-items: center;
   text-align: center;
 }
-.product {
+button.product {
   width: 80%;
-  padding: 0 10px;
+  padding: 10px;
   line-height: 40px;
   display: inline-block;
   text-align: center;
   border-radius: 4px;
-}
-p.product {
   background: #b4c7e7;
   border: 1px solid #2f528f;
   margin: 0 0 5px;
@@ -110,78 +108,114 @@ p.product {
   width: 27%;
   font-size: 0.9vw;
 }
-
-/* ---------------- .con first  ----------------*/
-.con__first .upper_con,
-.con__first .middle_con,
-.con__first .bottom_con {
-  width: 100%;
+/* ---------------- con first ---------------- */
+.con__first .layout {
   display: grid;
-  grid-template-columns: 10% 1fr 10%;
-  margin-bottom: 20px;
-}
-.con__first .middle_con {
-  gap: 20px;
-}
-.con__first .middle_section {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-}
-.con__first .smiddle_section {
-  display: grid;
-  grid-template-columns: repeat(8, 1fr);
+  grid-template-columns: 10% 8% 40% 8% 20% 10%;
   gap: 10px;
-}
-.con__first p.product:nth-child(4n) {
-  margin-bottom: 0;
-}
-/* ================ lay1 */
-.con__first .upper_con .btn__orange {
-  height: 30%;
-}
-.con__first .upper_con .btn__navy,
-.con__first .bottom_con .btn__navy {
-  height: 67%;
-}
-.con__first .bottom_con .navy2 {
-  height: 100%;
-}
-.con__first .bottom_con .btn__black {
-  height: 30%;
-  padding: 0;
-  margin-top: 5px;
+  text-align: center;
 }
 
-.con__first .upper_con .btn__navy,
-.con__first .bottom_con .btn__black {
-  margin-bottom: 0;
+.con__first button {
+  margin-top: 5px;
+  padding-left: 0;
+  padding-right: 0;
 }
-.con__first .upper_con .btn__green {
-  height: 50%;
+.con__first button:nth-child(1) {
+  margin-top: 0;
 }
-.con__first .upper_con .btn__orange:nth-child(1),
-.con__first .upper_con .btn__green:nth-child(1) {
-  margin-bottom: 10px;
+/* frist_con */
+.con__first .first_con {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
-/* ================ lay2 */
-.con__first .middle_con .btn-box button {
-  display: inline-block;
-  padding: 0;
+.con__first .first_con button {
+  padding: 10px 0;
 }
-.con__first .middle_con .btn__gray {
-  margin-bottom: 5px;
-  height: 30px;
-  padding: 0 7px;
+.con__first .first_con .btn__navy {
+  padding: 50px 0;
 }
-.con__first .middle_con .btn__orange {
+.con__first .first_con .navy2 {
+  padding: 40px 0;
+}
+/* second_con */
+.con__first .second_con button,
+.con__first .fouth_con button {
+  padding: 15px 0;
+}
+/* third_con */
+.con__first .third_con {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.con__first .third_con .product {
+  width: 100%;
+  padding: 65px 0;
+}
+
+.con__first .third_con .up-btn {
+  right: 2%;
+}
+/* fourth_con */
+.con__first .fourth_con {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.con__first .fourth_con button {
+  height: 15%;
+}
+/* fifth_con */
+.con__first .fifth_con {
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+  height: 100%;
+  position: relative;
+}
+.con__first .fifth_con .box {
   height: 100%;
 }
-/* ================ lay3 */
-.bottom_con .btn {
-  padding: 5px 35px;
+.con__first .fifth_con .product {
+  width: 90%;
+  height: 100%;
+  padding: 10px;
+  position: relative;
 }
-.bottom_con .btn__navy {
-  padding: 45px 0;
+
+.con__first .fifth_con .product span {
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.con__first .fifth_con .middle-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40%;
+  padding: 20px;
+}
+
+.con__first .fifth_con .up-btn {
+  width: 60%;
+  right: 10%;
+  bottom: 4%;
+}
+/* stxth_con */
+.con__first .sixth_con {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.con__first .sixth_con button {
+  padding: 20px 0;
 }
 
 /* ---------------- .con second  ---------------- */
@@ -234,112 +268,84 @@ p.product {
 .con__second .bottom_con .btn-box button {
   padding: 20px 0;
 }
-/* ---------------- con third ---------------- */
-.con__third .layout {
+/* ---------------- .con third  ----------------*/
+.con__third .upper_con,
+.con__third .middle_con,
+.con__third .bottom_con {
+  width: 100%;
   display: grid;
-  grid-template-columns: 10% 8% 40% 8% 20% 10%;
+  grid-template-columns: 10% 1fr 10%;
+  margin-bottom: 20px;
+}
+.con__third .middle_con {
+  gap: 20px;
+}
+.con__third .middle_section {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+.con__third .smiddle_section {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
   gap: 10px;
-  text-align: center;
 }
-
-.con__third button {
+.con__third p.product:nth-child(4n) {
+  margin-bottom: 0;
+}
+/* ================ lay1 */
+.con__third .upper_con .btn__orange {
+  height: 30%;
+}
+.con__third .upper_con .btn__navy,
+.con__third .bottom_con .btn__navy {
+  height: 67%;
+}
+.con__third .bottom_con .navy2 {
+  height: 100%;
+}
+.con__third .bottom_con .btn__black {
+  height: 30%;
+  padding: 0;
   margin-top: 5px;
-  padding-left: 0;
-  padding-right: 0;
-}
-.con__third button:nth-child(1) {
-  margin-top: 0;
-}
-/* frist_con */
-.con__third .first_con {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.con__third .first_con button {
-  padding: 10px 0;
-}
-.con__third .first_con .btn__navy {
-  padding: 50px 0;
-}
-.con__third .first_con .navy2 {
-  padding: 40px 0;
-}
-/* second_con */
-.con__third .second_con button,
-.con__third .fouth_con button {
-  padding: 15px 0;
-}
-/* third_con */
-.con__third .third_con {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-}
-.con__third .third_con p {
-  width: 100%;
-  padding: 65px 0;
 }
 
-.con__third .third_con .up-btn {
-  right: 2%;
+.con__third .upper_con .btn__navy,
+.con__third .bottom_con .btn__black {
+  margin-bottom: 0;
 }
-/* fourth_con */
-.con__third .fourth_con {
+.con__third .upper_con .btn__green {
+  height: 50%;
+}
+.con__third .upper_con .btn__orange:nth-child(1),
+.con__third .upper_con .btn__green:nth-child(1) {
+  margin-bottom: 10px;
+}
+/* ================ lay2 */
+.con__third .middle_con .btn-box button {
+  display: inline-block;
+  padding: 0;
+}
+.con__third .middle_con .btn__gray {
+  margin-bottom: 5px;
+  height: 30px;
+  padding: 0 7px;
+}
+.con__third .middle_con .btn__orange {
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
 }
-.con__third .fourth_con button {
-  height: 15%;
+/* ================ lay3 */
+.bottom_con .btn {
+  padding: 5px 35px;
 }
-/*  */
-.con__third .fifth_con {
-  display: grid;
-  grid-template-columns: repeat(2, 50%);
-  height: 100%;
-  position: relative;
-}
-.con__third .fifth_con .box {
-  height: 100%;
-}
-.con__third .fifth_con p {
-  width: 90%;
-  height: 100%;
-  padding: 10px;
-}
-.con__third .fifth_con .middle-btn {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 40%;
-  padding: 20px;
+.bottom_con .btn__navy {
+  padding: 45px 0;
 }
 
-.con__third .fifth_con .up-btn {
-  width: 60%;
-  right: 10%;
-  bottom: 4%;
-}
-/* stxth_con */
-.con__third .sixth_con {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-.con__third .sixth_con button {
-  padding: 20px 0;
-}
 /* ---------------- con__fourth ---------------- */
 .fourth {
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
-  display: flex;
+  display: flex !important;
   gap: 30px;
 }
 .fourth .layout {
