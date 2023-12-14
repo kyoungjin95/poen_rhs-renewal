@@ -352,6 +352,9 @@ button.product {
   width: 100%;
   display: flex;
 }
+.fourth .module_con {
+  width: 50%;
+}
 .con__fourth h4 {
   margin: 5px 0 15px;
   font-size: 1.7vw;
