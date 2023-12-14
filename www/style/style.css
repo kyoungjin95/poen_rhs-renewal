@@ -70,9 +70,9 @@ button {
   font-size: clamp(8px, 1vw, 18px);
   outline: none;
   border: none;
-  border-radius: 0.5vw;
   padding: 0.5vw 1vw;
   cursor: pointer;
+  border-radius: 0.5vw;
   user-select: none;
   text-align: center;
   white-space: nowrap;
@@ -81,6 +81,7 @@ button {
 button:hover {
   background-color: #12b566;
 }
+
 .buttons {
   display: flex;
   flex-wrap: wrap;
