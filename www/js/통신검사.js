@@ -27,11 +27,11 @@ async function 통신검사_시작() {
 }
 
 async function 통신검사_조회(is재제조번호 = false) {
-  if(is재제조번호 == true) {
-    count(BSA재제조, { 재제조번호 : _재제조번호.value});
+  if (is재제조번호 == true) {
+    count(BSA재제조, { 재제조번호: _재제조번호.value });
     await delay();
 
-    if(BSA재제조_cnt > 0) {
+    if (BSA재제조_cnt > 0) {
       find_BSA재제조(BSA재제조, { 재제조번호: _재제조번호.value });
       await delay();
 

@@ -3,20 +3,20 @@ let S_PLUG = '';
 let 접지 = '';
 
 async function 출하정보_시작(is재제조 = 0) {
-	if(worker == '') return;
-	while(_management_id == undefined) {
+	if (worker == '') return;
+	while (_management_id == undefined) {
 		await sleep(DELAY);
 	}
 
-	if(flag_출하 == true) await 출하정보_list();
-	flag_출하 =  false;
+	if (flag_출하 == true) await 출하정보_list();
+	flag_출하 = false;
 
-	if(is재제조 == 0) {
-		if(_management_id.value.length == 0) return;
+	if (is재제조 == 0) {
+		if (_management_id.value.length == 0) return;
 
 		find(BSA재제조, _management_id.value);
 		await delay();
-		if(BSA재제조_v != null) {
+		if (BSA재제조_v != null) {
 			_재제조번호.value = BSA재제조_v.재제조번호;
 			_RO_no.value = BSA재제조_v.RO_no;
 			_차종.value = BSA재제조_v.차종;
@@ -27,13 +27,13 @@ async function 출하정보_시작(is재제조 = 0) {
 			_차종.value = '';
 			_품번.value = '';
 		}
-	} else if(is재제조 == 1) {
-		if(_재제조번호.value.length == 0) return;
+	} else if (is재제조 == 1) {
+		if (_재제조번호.value.length == 0) return;
 
-		findOne_BSA재제조(BSA재제조, { 재제조번호 : _재제조번호.value});
+		findOne_BSA재제조(BSA재제조, { 재제조번호: _재제조번호.value });
 		await delay();
 
-		if(BSA재제조_v != null) {
+		if (BSA재제조_v != null) {
 			_management_id.value = BSA재제조_v.관리번호;
 			_RO_no.value = BSA재제조_v.RO_no;
 			_차종.value = BSA재제조_v.차종;
@@ -44,13 +44,13 @@ async function 출하정보_시작(is재제조 = 0) {
 			_차종.value = '';
 			_품번.value = '';
 		}
-	} else if(is재제조 == 2) {
-		if(_RO_no.value.length == 0) return;
+	} else if (is재제조 == 2) {
+		if (_RO_no.value.length == 0) return;
 
-		findOne_BSA재제조(BSA재제조, { RO_no : _RO_no.value});
+		findOne_BSA재제조(BSA재제조, { RO_no: _RO_no.value });
 		await delay();
 
-		if(BSA재제조_v != null) {
+		if (BSA재제조_v != null) {
 			_management_id.value = BSA재제조_v.관리번호;
 			_재제조번호.value = BSA재제조_v.재제조번호;
 			_차종.value = BSA재제조_v.차종;
@@ -70,7 +70,7 @@ async function 출하정보_시작(is재제조 = 0) {
 	s_plug_show.disabled = false;
 	s_plug_show_비고.disabled = false;
 
-	switch(_차종.value) {
+	switch (_차종.value) {
 		case 'DE':
 		case 'DE_EV':
 		case 'OS':
@@ -120,11 +120,11 @@ async function 출하정보_시작(is재제조 = 0) {
 		default:
 			//alert('차종 정보를 확인해주세요');
 			break;
-	} 
+	}
 
 	find(출하정보, _management_id.value);
 	await delay();
-	if(출하정보_v != null) {
+	if (출하정보_v != null) {
 		console.log('관리번호:', 관리번호);
 
 		find(출하정보, _management_id.value);
@@ -134,21 +134,21 @@ async function 출하정보_시작(is재제조 = 0) {
 		//_출하일.value = 출하정보_v.출하일;
 		_출하코드.value = 출하정보_v.출하코드;
 
-		if(_출하코드.value == '') {
+		if (_출하코드.value == '') {
 			find(EOL, _management_id.value);
 			await delay();
 
-			if(EOL_v != null) {
+			if (EOL_v != null) {
 				_출하코드.value = EOL_v.QR;
 			}
 		}
 
 		//_납품처.value = 출하정보_v.납품처;
 		_검사일.value = 출하정보_v.검사일;
-		if(_검사자.value == '' || _검사자.value == undefined) _검사자.value = 계정_stat.이름;
+		if (_검사자.value == '' || _검사자.value == undefined) _검사자.value = 계정_stat.이름;
 		_기초보고서_작성확인.value = 출하정보_v.기초보고서_작성확인;
 		_완료보고서_작성확인.value = 출하정보_v.완료보고서_작성확인;
-		_클린상태.value =  출하정보_v.클린상태;
+		_클린상태.value = 출하정보_v.클린상태;
 		_팔레트_적정위치.value = 출하정보_v.팔레트_적정위치;
 		_포장랩상태.value = 출하정보_v.포장랩상태;
 		_UPR_QR.value = 출하정보_v.UPR_QR;
@@ -156,11 +156,11 @@ async function 출하정보_시작(is재제조 = 0) {
 		_HKMC_스티커_URP.value = 출하정보_v.HKMC_스티커_URP;
 		_냉각유로_커버.value = 출하정보_v.냉각유로_커버;
 		//_브라켓.value = 출하정보_v.브라켓;
-		_브라켓_비고 .value = 출하정보_v.브라켓_비고;
+		_브라켓_비고.value = 출하정보_v.브라켓_비고;
 		//_S_PLUG .value = 출하정보_v.S_PLUG;
-		_S_PLUG_비고 .value = 출하정보_v.S_PLUG_비고;
+		_S_PLUG_비고.value = 출하정보_v.S_PLUG_비고;
 		//_접지 .value = 출하정보_v.접지;
-		_접지_비고 .value = 출하정보_v.접지_비고
+		_접지_비고.value = 출하정보_v.접지_비고
 		_DTC.value = 출하정보_v.DTC;
 		_DTC_현재.value = 출하정보_v.DTC_현재;
 		_DTC_과거.value = 출하정보_v.DTC_과거;
@@ -172,7 +172,7 @@ async function 출하정보_시작(is재제조 = 0) {
 		_배터리팩_측정값.value = 출하정보_v.배터리팩_측정값;
 		_배터리모듈온도.value = 출하정보_v.배터리모듈온도;
 		_배터리모듈온도_최대.value = 출하정보_v.배터리모듈온도_최대;
-		_배터리모듈온도_최소:1, 출하정보_v.배터리모듈온도_최소;
+		_배터리모듈온도_최소: 1, 출하정보_v.배터리모듈온도_최소;
 		_배터리셀전압.value = 출하정보_v.배터리셀전압;
 		_배터리셀전압_최대.value = 출하정보_v.배터리셀전압_최대;
 		_배터리셀전압_최소.value = 출하정보_v.배터리셀전압_최소;
@@ -183,45 +183,45 @@ async function 출하정보_시작(is재제조 = 0) {
 		_SOH.value = 출하정보_v.SOH;
 		_릴레이_강제구동.value = 출하정보_v.릴레이_강제구동;
 		_커넥터_체결검사.value = 출하정보_v.커넥터_체결검사;
-		
+
 		브라켓 = 출하정보_v.브라켓;
 		S_PLUG = 출하정보_v.S_PLUG;
 		접지 = 출하정보_v.접지;
-		
-		if(String(_출하코드.value).trim() == '') {
+
+		if (String(_출하코드.value).trim() == '') {
 			find(EOL, _management_id.value);
 			await delay();
 
-			if(EOL_v != null) {
+			if (EOL_v != null) {
 				_출하코드.value = EOL_v.QR;
 			}
 		}
 
-		if(브라켓 == 'OK') {
+		if (브라켓 == 'OK') {
 			_bracket.options[1].selected = true;
-		} else if(브라켓 == 'NG') {
+		} else if (브라켓 == 'NG') {
 			_bracket.options[2].selected = true;
 		} else {
 			_bracket.options.selected = true;
 		}
 
-		if(S_PLUG == 'OK') {
+		if (S_PLUG == 'OK') {
 			_S_PLUG.options[1].selected = true;
-		} else if(S_PLUG == 'NG') {
+		} else if (S_PLUG == 'NG') {
 			_S_PLUG.options[2].selected = true;
 		} else {
 			_S_PLUG.options.selected = true;
 		}
 
-		if(접지 == 'OK') {
+		if (접지 == 'OK') {
 			_접지.options[1].selected = true;
-		} else if(접지 == 'NG') {
+		} else if (접지 == 'NG') {
 			_접지.options[2].selected = true;
 		} else {
 			_접지.options.selected = true;
 		}
 	} else {
-		if(is재제조 == false) {
+		if (is재제조 == false) {
 			_management_id = document.getElementById('_management_id');
 		} else {
 			_재제조번호 = document.getElementById('_재제조번호');
@@ -273,14 +273,14 @@ async function 출하정보_시작(is재제조 = 0) {
 }
 
 async function 출하정보_save() {
-	if(worker == '') return;
-	if(_management_id.value.length == 0) return;
+	if (worker == '') return;
+	if (_management_id.value.length == 0) return;
 	console.log('save: ', _management_id.value);
 
 	find(BSA재제조, _management_id.value);
 	await delay();
 
-	if(BSA재제조_v == null) {
+	if (BSA재제조_v == null) {
 		var _doc = JSON.parse(JSON.stringify(BSA재제조_doc));
 		_doc.관리번호 = _management_id.value.trim().toUpperCase();
 		_doc.출하검사 = _검사일.value.substr(0, 16);
@@ -289,8 +289,8 @@ async function 출하정보_save() {
 		await delay();
 	} else {
 		var _doc = {
-			관리번호 : _management_id.value.toUpperCase(),
-			출하검사 : _검사일.value.substr(0, 16),
+			관리번호: _management_id.value.toUpperCase(),
+			출하검사: _검사일.value.substr(0, 16),
 		}
 		update(BSA재제조, _doc);
 		await delay();
@@ -302,7 +302,7 @@ async function 출하정보_save() {
 	console.log(insert_count);
 
 	var doc = JSON.parse(JSON.stringify(출하정보_doc));
-	
+
 	doc.관리번호 = _management_id.value.trim().toUpperCase();
 	//doc.출하일 = _출하일.value;
 	doc.출하코드 = _출하코드.value;
@@ -310,42 +310,42 @@ async function 출하정보_save() {
 	doc.검사일 = _검사일.value;
 	doc.검사자 = _검사자.value;
 	doc.기초보고서_작성확인 = _기초보고서_작성확인.value;
-        doc.완료보고서_작성확인 = _완료보고서_작성확인.value;
-        doc.클린상태 =  _클린상태.value;
-        doc.팔레트_적정위치 = _팔레트_적정위치.value;
-        doc.포장랩상태 = _포장랩상태.value;
-        doc.UPR_QR = _UPR_QR.value;
-        doc.LWR_QR = _LWR_QR.value;
-        doc.HKMC_스티커_URP = _HKMC_스티커_URP.value;
-        doc.냉각유로_커버 = _냉각유로_커버.value;
+	doc.완료보고서_작성확인 = _완료보고서_작성확인.value;
+	doc.클린상태 = _클린상태.value;
+	doc.팔레트_적정위치 = _팔레트_적정위치.value;
+	doc.포장랩상태 = _포장랩상태.value;
+	doc.UPR_QR = _UPR_QR.value;
+	doc.LWR_QR = _LWR_QR.value;
+	doc.HKMC_스티커_URP = _HKMC_스티커_URP.value;
+	doc.냉각유로_커버 = _냉각유로_커버.value;
 	doc.브라켓 = 브라켓;
 	doc.브라켓_비고 = _브라켓_비고.value;
 	doc.S_PLUG = S_PLUG;
-	doc.S_PLUG_비고  = _S_PLUG_비고.value;
+	doc.S_PLUG_비고 = _S_PLUG_비고.value;
 	doc.접지 = 접지;
 	doc.접지_비고 = _접지_비고.value;
-        doc.DTC = _DTC.value;
-        doc.DTC_현재 = _DTC_현재.value;
-        doc.DTC_과거 = _DTC_과거.value;
+	doc.DTC = _DTC.value;
+	doc.DTC_현재 = _DTC_현재.value;
+	doc.DTC_과거 = _DTC_과거.value;
 	doc.배터리충전상태 = _배터리충전상태.value;
 	doc.배터리충전상태_측정값 = _배터리충전상태_측정값.value;
-        doc.BMS고장NO = _BMS고장NO.value;
-        doc.BMS융착NO = _BMS융착NO.value;
+	doc.BMS고장NO = _BMS고장NO.value;
+	doc.BMS융착NO = _BMS융착NO.value;
 	doc.배터리팩전압 = _배터리팩전압.value;
-	doc.배터리팩_측정값 = _배터리팩_측정값.value; 
-        doc.배터리모듈온도 = _배터리모듈온도.value; 
-        doc.배터리모듈온도_최대 = _배터리모듈온도_최대.value;
-        doc.배터리모듈온도_최소 = _배터리모듈온도_최소.value;
+	doc.배터리팩_측정값 = _배터리팩_측정값.value;
+	doc.배터리모듈온도 = _배터리모듈온도.value;
+	doc.배터리모듈온도_최대 = _배터리모듈온도_최대.value;
+	doc.배터리모듈온도_최소 = _배터리모듈온도_최소.value;
 	doc.배터리셀전압 = _배터리셀전압.value;
 	doc.배터리셀전압_최대 = _배터리셀전압_최대.value;
 	doc.배터리셀전압_최소 = _배터리셀전압_최소.value;
-        doc.셀전압편차 = _셀전압편차.value;
-        doc.셀전압편차_측정값 = _셀전압편차_측정값.value;
-        doc.절연저항 = _절연저항.value;
-        doc.절연저항_측정값 = _절연저항_측정값.value;
-        doc.SOH = _SOH.value;
-        doc.릴레이_강제구동 = _릴레이_강제구동.value; 
-        doc.커넥터_체결검사 = _커넥터_체결검사.value;
+	doc.셀전압편차 = _셀전압편차.value;
+	doc.셀전압편차_측정값 = _셀전압편차_측정값.value;
+	doc.절연저항 = _절연저항.value;
+	doc.절연저항_측정값 = _절연저항_측정값.value;
+	doc.SOH = _SOH.value;
+	doc.릴레이_강제구동 = _릴레이_강제구동.value;
+	doc.커넥터_체결검사 = _커넥터_체결검사.value;
 
 	update(출하정보, doc);
 	await delay();
@@ -353,11 +353,11 @@ async function 출하정보_save() {
 	console.log(update_count);
 	console.log(insert_count);
 
-	if(update_count > 0) {
+	if (update_count > 0) {
 		alert('업데이트 되었습니다');
 	}
 
-	if(insert_count > 0) {
+	if (insert_count > 0) {
 		alert('저장 되었습니다');
 	}
 
@@ -511,35 +511,35 @@ function _커넥터_체결검사_콤보박스(e) {
 }
 
 function 출하정보_updateFilter() {
-  var fieldEl = document.getElementById("filter-field");
-  var typeEl = document.getElementById("filter-type");
-  var valueEl = document.getElementById("filter-value");
+	var fieldEl = document.getElementById("filter-field");
+	var typeEl = document.getElementById("filter-type");
+	var valueEl = document.getElementById("filter-value");
 
-  var filterVal = fieldEl.options[fieldEl.selectedIndex].value;
-  var typeVal = typeEl.options[typeEl.selectedIndex].value;
+	var filterVal = fieldEl.options[fieldEl.selectedIndex].value;
+	var typeVal = typeEl.options[typeEl.selectedIndex].value;
 
-  var filter = filterVal == "function" ? customFilter : filterVal;
+	var filter = filterVal == "function" ? customFilter : filterVal;
 
-  if (filterVal == "function") {
-    typeEl.disabled = true;
-    valueEl.disabled = true;
-  } else {
-    typeEl.disabled = false;
-    valueEl.disabled = false;
-  }
+	if (filterVal == "function") {
+		typeEl.disabled = true;
+		valueEl.disabled = true;
+	} else {
+		typeEl.disabled = false;
+		valueEl.disabled = false;
+	}
 
-  if (filterVal) {
-    출하정보_list_table.setFilter(filter, typeVal, valueEl.value);
-  }
+	if (filterVal) {
+		출하정보_list_table.setFilter(filter, typeVal, valueEl.value);
+	}
 }
 
 var 출하정보_list_table;
 async function 출하정보_list() {
-	findOne_BSA재제조(BSA재제조, { 공정단계 : { $ne : '출하' }, 성능검사 : { $ne : '' }, EOL : { $ne : '' } ,  소재지 : { $nin : ['공정대기', '품질대기'] }, 완전분해 : { $eq : ''}, 폐기 : { $eq : '' }, 출하검사 : { $eq : '' }, 출하 : { $eq : '' }, 구분 : { $nin: ['일반기타', '보증기타']} });
+	findOne_BSA재제조(BSA재제조, { 공정단계: { $ne: '출하' }, 성능검사: { $ne: '' }, EOL: { $ne: '' }, 소재지: { $nin: ['공정대기', '품질대기'] }, 완전분해: { $eq: '' }, 폐기: { $eq: '' }, 출하검사: { $eq: '' }, 출하: { $eq: '' }, 구분: { $nin: ['일반기타', '보증기타'] } });
 	await delay();
 
-	if(BSA재제조_v != null) {
-		find_BSA재제조(BSA재제조, { 공정단계 : { $ne : '출하' }, 성능검사 : { $ne : '' }, EOL : { $ne : '' } ,  소재지 : { $nin : ['공정대기', '품질대기'] }, 완전분해 : { $eq : ''}, 폐기 : { $eq : '' }, 출하검사 : { $eq : '' }, 출하 : { $eq : '' }, 구분 : { $nin: ['일반기타', '보증기타']} });
+	if (BSA재제조_v != null) {
+		find_BSA재제조(BSA재제조, { 공정단계: { $ne: '출하' }, 성능검사: { $ne: '' }, EOL: { $ne: '' }, 소재지: { $nin: ['공정대기', '품질대기'] }, 완전분해: { $eq: '' }, 폐기: { $eq: '' }, 출하검사: { $eq: '' }, 출하: { $eq: '' }, 구분: { $nin: ['일반기타', '보증기타'] } });
 		await delay();
 	}
 
@@ -673,7 +673,7 @@ async function 출하정보_list() {
 			{ title: "렉번호", field: "렉번호", sorter: "string", width: "180" },
 		],
 	});
-	
+
 	출하정보_list_table.on("rowClick", async function (e, row) {
 		console.log("selected 관리번호: ", row.getData().관리번호);
 
@@ -682,7 +682,7 @@ async function 출하정보_list() {
 		await sleep(1);
 
 		var yes = confirm('선택한 bsa로 세척 공정 정보입력을 시작하시겠습니까?');
-		if(yes != true) return;
+		if (yes != true) return;
 
 		출하정보_시작();
 	});

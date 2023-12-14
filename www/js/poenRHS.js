@@ -1,5 +1,5 @@
-const DELAY = 1; 
-const DELAY_SYS = 5000; 
+const DELAY = 1;
+const DELAY_SYS = 5000;
 const 계정 = '계정';
 const BSA재제조 = 'BSA재제조';
 const 입고 = '입고';
@@ -147,8 +147,8 @@ var level = '';
 var flag_loaded = false;
 
 const 계정_doc = {
-	id: '', 
-	passwd: '', 
+	id: '',
+	passwd: '',
 	level: '',
 	이름: '',
 	기본정보: '',
@@ -164,38 +164,38 @@ const 계정_doc = {
 };
 
 const 구자료_doc = {
-	품번 : '',
-	품명 : '',
-	수량 : '',
-	공급가액 : '',
-	부가세 : '',
-	합계 : '',
-	평균단가 : ''
+	품번: '',
+	품명: '',
+	수량: '',
+	공급가액: '',
+	부가세: '',
+	합계: '',
+	평균단가: ''
 }
 
 const BSA재제조_doc = {
-	관리번호: '', 
+	관리번호: '',
 	재제조번호: '',
 	구분: '',
-	차종: '', 
-	품번: '', 
-	RO_no: '', 
-	공정단계: '', 
-	적재No: '', 
-	입고: '', 
-	제조투입: '', 
+	차종: '',
+	품번: '',
+	RO_no: '',
+	공정단계: '',
+	적재No: '',
+	입고: '',
+	제조투입: '',
 	세척투입일: '',
-	세척: '', 
+	세척: '',
 	기초검사투입일: '',
-	기초검사: '', 
+	기초검사: '',
 	분해조립투입일: '',
-	분해조립: '', 
+	분해조립: '',
 	성능검사투입일: '',
-	성능검사: '', 
+	성능검사: '',
 	EOL투입일: '',
 	EOL: '',
 	QR_Label: '',
-	출하검사: '', 
+	출하검사: '',
 	납품처: '',
 	출하: '',
 	소재지: '',
@@ -211,17 +211,17 @@ const BSA재제조_doc = {
 };
 
 const 입고_doc = {
-	관리번호: '', 
-	입고일 : '',
-	입고처 : '',
-	구분 : '',
-	차종: '', 
-	품번: '', 
-	RO_no : ''
+	관리번호: '',
+	입고일: '',
+	입고처: '',
+	구분: '',
+	차종: '',
+	품번: '',
+	RO_no: ''
 };
 
 const 세척_doc = {
-	관리번호: '', 
+	관리번호: '',
 	재제조번호: '',
 	공정입고일: '',
 	공정완료일: '',
@@ -234,7 +234,7 @@ const 세척_doc = {
 const 기초검사_doc = {
 	관리번호: '',
 	공정입고일: '',
-	RO_no: '', 
+	RO_no: '',
 	VIN: '',
 	랙번호: '',
 	QRCode: '',
@@ -288,139 +288,139 @@ const 분해조립_doc = {
 	BMU8: '',
 	BMU9: '',
 	BMU10: '',
-	CMU1 : '',
-	CMU2 : '',
-	CMU3 : '',
-	CMU4 : '',
-	CMU5 : '',
-	CMU6 : '',
-	CMU7 : '',
-	CMU8 : '',
-	CMU9 : '',
-	CMU10 : '',
-	PRA1 : '',
-	PRA2 : '',
-	PRA3 : '',
-	PRA4 : '',
-	PRA5 : '',
-	PRA6 : '',
-	PRA7 : '',
-	PRA8 : '',
-	PRA9 : '',
-	PRA10:  '',
-	SPA1 : '',
-	SPA2 : '',
-	SPA3 : '',
-	SPA4 : '',
-	SPA5 : '',
-	SPA6 : '',
-	SPA7 : '',
-	SPA8 : '',
-	SPA9 : '',
-	SPA10 : '',
-	LWR_C1 : '',
-	LWR_C2 : '',
-	LWR_C3 : '',
-	LWR_C4 : '',
-	LWR_C5 : '',
-	LWR_C6 : '',
-	LWR_C7 : '',
-	LWR_C8 : '',
-	LWR_C9 : '',
-	LWR_C10 : '',
-	UPR_C1 : '',
-	UPR_C2 : '',
-	UPR_C3 : '',
-	UPR_C4 : '',
-	UPR_C5 : '',
-	UPR_C6 : '',
-	UPR_C7 : '',
-	UPR_C8 : '',
-	UPR_C9 : '',
-	UPR_C10 : '',
-	PBE : '',
-	Gasket : '',
-	Relay1 : '',
-	Relay2 : '',
-	Relay3 : '',
-	Relay4 : '',
-	Relay5 : '',
-	Relay6 : '',
-	Relay7 : '',
-	Relay8 : '',
-	Relay9 : '',
-	Relay10 : '',
-	HV_CNTR1 : '',
-	HV_CNTR2 : '',
-	HV_CNTR3 : '',
-	HV_CNTR4 : '',
-	HV_CNTR5 : '',
-	HV_CNTR6 : '',
-	HV_CNTR7 : '',
-	HV_CNTR8 : '',
-	HV_CNTR9 : '',
-	HV_CNTR10 : '',
-	Heating_CNTR1 : '',
-	Heating_CNTR2 : '',
-	Heating_CNTR3 : '',
-	Heating_CNTR4 : '',
-	Heating_CNTR5 : '',
-	Heating_CNTR6 : '',
-	Heating_CNTR7 : '',
-	Heating_CNTR8 : '',
-	Heating_CNTR9 : '',
-	Heating_CNTR10 : '',
-	FuseBox1 : '',
-	FuseBox2 : '',
-	FuseBox3 : '',
-	FuseBox4 : '',
-	FuseBox5 : '',
-	FuseBox6 : '',
-	FuseBox7 : '',
-	FuseBox8 : '',
-	FuseBox9 : '',
-	FuseBox10 : '',
-	LV_W_H1 : '',
-	LV_W_H2 : '',
-	LV_W_H3 : '',
-	LV_W_H4 : '',
-	LV_W_H5 : '',
-	LV_W_H6 : '',
-	LV_W_H7 : '',
-	LV_W_H8 : '',
-	LV_W_H9 : '',
-	LV_W_H10 : '',
-	HV_W_H1 : '',
-	HV_W_H2 : '',
-	HV_W_H3 : '',
-	HV_W_H4 : '',
-	HV_W_H5 : '',
-	HV_W_H6 : '',
-	HV_W_H7 : '',
-	HV_W_H8 : '',
-	HV_W_H9 : '',
-	HV_W_H10 : '',
-	온도센서1 : '',
-	온도센서2 : '',
-	온도센서3 : '',
-	온도센서4 : '',
-	온도센서5 : '',
-	온도센서6 : '',
-	온도센서7 : '',
-	온도센서8 : '',
-	온도센서9 : '',
-	온도센서10 : '',
-	Busbars : '',
-	BMA1  : '',
-	BMA2 : '',
-	BMA3 : '',
-	BMA4 : '',
-	BMA5 : '',
-	BMA6 : '',
-	BMA7 : '',
-	BMA8 : '',
-	BMA9 : '',
-	BMA10 : '',
+	CMU1: '',
+	CMU2: '',
+	CMU3: '',
+	CMU4: '',
+	CMU5: '',
+	CMU6: '',
+	CMU7: '',
+	CMU8: '',
+	CMU9: '',
+	CMU10: '',
+	PRA1: '',
+	PRA2: '',
+	PRA3: '',
+	PRA4: '',
+	PRA5: '',
+	PRA6: '',
+	PRA7: '',
+	PRA8: '',
+	PRA9: '',
+	PRA10: '',
+	SPA1: '',
+	SPA2: '',
+	SPA3: '',
+	SPA4: '',
+	SPA5: '',
+	SPA6: '',
+	SPA7: '',
+	SPA8: '',
+	SPA9: '',
+	SPA10: '',
+	LWR_C1: '',
+	LWR_C2: '',
+	LWR_C3: '',
+	LWR_C4: '',
+	LWR_C5: '',
+	LWR_C6: '',
+	LWR_C7: '',
+	LWR_C8: '',
+	LWR_C9: '',
+	LWR_C10: '',
+	UPR_C1: '',
+	UPR_C2: '',
+	UPR_C3: '',
+	UPR_C4: '',
+	UPR_C5: '',
+	UPR_C6: '',
+	UPR_C7: '',
+	UPR_C8: '',
+	UPR_C9: '',
+	UPR_C10: '',
+	PBE: '',
+	Gasket: '',
+	Relay1: '',
+	Relay2: '',
+	Relay3: '',
+	Relay4: '',
+	Relay5: '',
+	Relay6: '',
+	Relay7: '',
+	Relay8: '',
+	Relay9: '',
+	Relay10: '',
+	HV_CNTR1: '',
+	HV_CNTR2: '',
+	HV_CNTR3: '',
+	HV_CNTR4: '',
+	HV_CNTR5: '',
+	HV_CNTR6: '',
+	HV_CNTR7: '',
+	HV_CNTR8: '',
+	HV_CNTR9: '',
+	HV_CNTR10: '',
+	Heating_CNTR1: '',
+	Heating_CNTR2: '',
+	Heating_CNTR3: '',
+	Heating_CNTR4: '',
+	Heating_CNTR5: '',
+	Heating_CNTR6: '',
+	Heating_CNTR7: '',
+	Heating_CNTR8: '',
+	Heating_CNTR9: '',
+	Heating_CNTR10: '',
+	FuseBox1: '',
+	FuseBox2: '',
+	FuseBox3: '',
+	FuseBox4: '',
+	FuseBox5: '',
+	FuseBox6: '',
+	FuseBox7: '',
+	FuseBox8: '',
+	FuseBox9: '',
+	FuseBox10: '',
+	LV_W_H1: '',
+	LV_W_H2: '',
+	LV_W_H3: '',
+	LV_W_H4: '',
+	LV_W_H5: '',
+	LV_W_H6: '',
+	LV_W_H7: '',
+	LV_W_H8: '',
+	LV_W_H9: '',
+	LV_W_H10: '',
+	HV_W_H1: '',
+	HV_W_H2: '',
+	HV_W_H3: '',
+	HV_W_H4: '',
+	HV_W_H5: '',
+	HV_W_H6: '',
+	HV_W_H7: '',
+	HV_W_H8: '',
+	HV_W_H9: '',
+	HV_W_H10: '',
+	온도센서1: '',
+	온도센서2: '',
+	온도센서3: '',
+	온도센서4: '',
+	온도센서5: '',
+	온도센서6: '',
+	온도센서7: '',
+	온도센서8: '',
+	온도센서9: '',
+	온도센서10: '',
+	Busbars: '',
+	BMA1: '',
+	BMA2: '',
+	BMA3: '',
+	BMA4: '',
+	BMA5: '',
+	BMA6: '',
+	BMA7: '',
+	BMA8: '',
+	BMA9: '',
+	BMA10: '',
 	BMU1_2: '',
 	BMU2_2: '',
 	BMU3_2: '',
@@ -632,11 +632,11 @@ const 고품정보_doc = {
 	폐기여부: '',
 	사용여부: '',
 	사용_관리번호: '',
-	등록일 : '',
-	사용일 : '',
-	등록_작업자 : '',
-	사용_작업자 : '',
-	폐기품출고 : ''
+	등록일: '',
+	사용일: '',
+	등록_작업자: '',
+	사용_작업자: '',
+	폐기품출고: ''
 }
 
 const 출하정보_doc = {
@@ -646,7 +646,7 @@ const 출하정보_doc = {
 	검사자: '',
 	기초보고서_작성확인: '',
 	완료보고서_작성확인: '',
-	클린상태: '', 
+	클린상태: '',
 	팔레트_적정위치: '',
 	포장랩상태: '',
 	UPR_QR: '',
@@ -654,11 +654,11 @@ const 출하정보_doc = {
 	HKMC_스티커_URP: '',
 	냉각유로_커버: '',
 	브라켓: '',
-	브라켓_비고 : '',
-	S_PLUG : '',
-	S_PLUG_비고 : '',
-	접지 : '',
-	접지_비고 : '',
+	브라켓_비고: '',
+	S_PLUG: '',
+	S_PLUG_비고: '',
+	접지: '',
+	접지_비고: '',
 	DTC: '',
 	DTC_현재: '',
 	DTC_과거: '',
@@ -670,7 +670,7 @@ const 출하정보_doc = {
 	배터리팩_측정값: '',
 	배터리모듈온도: '',
 	배터리모듈온도_최대: '',
-	배터리모듈온도_최소:'',
+	배터리모듈온도_최소: '',
 	배터리셀전압: '',
 	배터리셀전압_최대: '',
 	배터리셀전압_최소: '',
@@ -704,546 +704,546 @@ const 교체부품상세_doc = {
 
 
 const 구장재고_doc = {
-	입고일 : '',
-	입고처 : '',
-	관리번호 : '',
-	재제조번호 : '',
-	RO번호 : '',
-	부품번호 : '',
-	생산연도 : '',
-	ROM_ID : '',
-	보관위치 : '',
-	출고일 : '',
-	출고처 : '',
-	비고 : ''
+	입고일: '',
+	입고처: '',
+	관리번호: '',
+	재제조번호: '',
+	RO번호: '',
+	부품번호: '',
+	생산연도: '',
+	ROM_ID: '',
+	보관위치: '',
+	출고일: '',
+	출고처: '',
+	비고: ''
 }
 
 const 입고_pic_doc = {
-	관리번호 : '',
-	pic1 : '',
-	pic2 : '',
-	pic3 : '',
-	pic4 : '',
-	pic5 : '',
-	pic6 : '',
-	pic7 : '',
-	pic8 : '',
-	pic9 : '',
-	pic10 : '',
-	pic11 : '',
-	pic12 : '',
-	pic13 : '',
-	pic14 : '',
-	pic15 : '',
+	관리번호: '',
+	pic1: '',
+	pic2: '',
+	pic3: '',
+	pic4: '',
+	pic5: '',
+	pic6: '',
+	pic7: '',
+	pic8: '',
+	pic9: '',
+	pic10: '',
+	pic11: '',
+	pic12: '',
+	pic13: '',
+	pic14: '',
+	pic15: '',
 };
 
 const 세척_pic_doc = {
-	관리번호 : '',
-	pic1 : '',
-	pic2 : '',
-	pic3 : '',
-	pic4 : '',
-	pic5 : '',
-	pic6 : '',
-	pic7 : '',
-	pic8 : '',
-	pic9 : '',
-	pic10 : '',
-	pic11 : '',
-	pic12 : '',
-	pic13 : '',
-	pic14 : '',
-	pic15 : '',
+	관리번호: '',
+	pic1: '',
+	pic2: '',
+	pic3: '',
+	pic4: '',
+	pic5: '',
+	pic6: '',
+	pic7: '',
+	pic8: '',
+	pic9: '',
+	pic10: '',
+	pic11: '',
+	pic12: '',
+	pic13: '',
+	pic14: '',
+	pic15: '',
 };
 
 const 기초검사_pic_doc = {
-	관리번호 : '',
-	pic1 : '',
-	pic2 : '',
-	pic3 : '',
-	pic4 : '',
-	pic5 : '',
-	pic6 : '',
-	pic7 : '',
-	pic8 : '',
-	pic9 : '',
-	pic10 : '',
-	pic11 : '',
-	pic12 : '',
-	pic13 : '',
-	pic14 : '',
-	pic15 : '',
+	관리번호: '',
+	pic1: '',
+	pic2: '',
+	pic3: '',
+	pic4: '',
+	pic5: '',
+	pic6: '',
+	pic7: '',
+	pic8: '',
+	pic9: '',
+	pic10: '',
+	pic11: '',
+	pic12: '',
+	pic13: '',
+	pic14: '',
+	pic15: '',
 };
 
 const 분해조립_pic_doc = {
-	관리번호 : '',
-	pic1 : '',
-	pic2 : '',
-	pic3 : '',
-	pic4 : '',
-	pic5 : '',
-	pic6 : '',
-	pic7 : '',
-	pic8 : '',
-	pic9 : '',
-	pic10 : '',
-	pic11 : '',
-	pic12 : '',
-	pic13 : '',
-	pic14 : '',
-	pic15 : '',
+	관리번호: '',
+	pic1: '',
+	pic2: '',
+	pic3: '',
+	pic4: '',
+	pic5: '',
+	pic6: '',
+	pic7: '',
+	pic8: '',
+	pic9: '',
+	pic10: '',
+	pic11: '',
+	pic12: '',
+	pic13: '',
+	pic14: '',
+	pic15: '',
 };
 
 const 성능검사_pic_doc = {
-	관리번호 : '',
-	pic1 : '',
-	pic2 : '',
-	pic3 : '',
-	pic4 : '',
-	pic5 : '',
-	pic6 : '',
-	pic7 : '',
-	pic8 : '',
-	pic9 : '',
-	pic10 : '',
-	pic11 : '',
-	pic12 : '',
-	pic13 : '',
-	pic14 : '',
-	pic15 : '',
+	관리번호: '',
+	pic1: '',
+	pic2: '',
+	pic3: '',
+	pic4: '',
+	pic5: '',
+	pic6: '',
+	pic7: '',
+	pic8: '',
+	pic9: '',
+	pic10: '',
+	pic11: '',
+	pic12: '',
+	pic13: '',
+	pic14: '',
+	pic15: '',
 };
 
 const EOL_pic_doc = {
-	관리번호 : '',
-	pic1 : '',
-	pic2 : '',
-	pic3 : '',
-	pic4 : '',
-	pic5 : '',
-	pic6 : '',
-	pic7 : '',
-	pic8 : '',
-	pic9 : '',
-	pic10 : '',
-	pic11 : '',
-	pic12 : '',
-	pic13 : '',
-	pic14 : '',
-	pic15 : '',
+	관리번호: '',
+	pic1: '',
+	pic2: '',
+	pic3: '',
+	pic4: '',
+	pic5: '',
+	pic6: '',
+	pic7: '',
+	pic8: '',
+	pic9: '',
+	pic10: '',
+	pic11: '',
+	pic12: '',
+	pic13: '',
+	pic14: '',
+	pic15: '',
 };
 
 const 특이사항_pic_doc = {
-	관리번호 : '',
-	pic1 : '',
-	pic2 : '',
-	pic3 : '',
-	pic4 : '',
-	pic5 : '',
-	pic6 : '',
-	pic7 : '',
-	pic8 : '',
-	pic9 : '',
-	pic10 : '',
-	pic11 : '',
-	pic12 : '',
-	pic13 : '',
-	pic14 : '',
-	pic15 : '',
+	관리번호: '',
+	pic1: '',
+	pic2: '',
+	pic3: '',
+	pic4: '',
+	pic5: '',
+	pic6: '',
+	pic7: '',
+	pic8: '',
+	pic9: '',
+	pic10: '',
+	pic11: '',
+	pic12: '',
+	pic13: '',
+	pic14: '',
+	pic15: '',
 };
 
 const 출하_pic_doc = {
-	관리번호 : '',
-	pic1 : '',
-	pic2 : '',
-	pic3 : '',
-	pic4 : '',
-	pic5 : '',
-	pic6 : '',
-	pic7 : '',
-	pic8 : '',
-	pic9 : '',
-	pic10 : '',
-	pic11 : '',
-	pic12 : '',
-	pic13 : '',
-	pic14 : '',
-	pic15 : '',
+	관리번호: '',
+	pic1: '',
+	pic2: '',
+	pic3: '',
+	pic4: '',
+	pic5: '',
+	pic6: '',
+	pic7: '',
+	pic8: '',
+	pic9: '',
+	pic10: '',
+	pic11: '',
+	pic12: '',
+	pic13: '',
+	pic14: '',
+	pic15: '',
 };
 
 const 반품입고_pic_doc = {
-	관리번호 : '',
-	pic1 : '',
-	pic2 : '',
-	pic3 : '',
-	pic4 : '',
-	pic5 : '',
-	pic6 : '',
-	pic7 : '',
-	pic8 : '',
-	pic9 : '',
-	pic10 : '',
-	pic11 : '',
-	pic12 : '',
-	pic13 : '',
-	pic14 : '',
-	pic15 : '',
+	관리번호: '',
+	pic1: '',
+	pic2: '',
+	pic3: '',
+	pic4: '',
+	pic5: '',
+	pic6: '',
+	pic7: '',
+	pic8: '',
+	pic9: '',
+	pic10: '',
+	pic11: '',
+	pic12: '',
+	pic13: '',
+	pic14: '',
+	pic15: '',
 };
 
 const 재출하_pic_doc = {
-	관리번호 : '',
-	pic1 : '',
-	pic2 : '',
-	pic3 : '',
-	pic4 : '',
-	pic5 : '',
-	pic6 : '',
-	pic7 : '',
-	pic8 : '',
-	pic9 : '',
-	pic10 : '',
-	pic11 : '',
-	pic12 : '',
-	pic13 : '',
-	pic14 : '',
-	pic15 : '',
+	관리번호: '',
+	pic1: '',
+	pic2: '',
+	pic3: '',
+	pic4: '',
+	pic5: '',
+	pic6: '',
+	pic7: '',
+	pic8: '',
+	pic9: '',
+	pic10: '',
+	pic11: '',
+	pic12: '',
+	pic13: '',
+	pic14: '',
+	pic15: '',
 };
 
 const 완전분해_pic_doc = {
-	관리번호 : '',
-	pic1 : '',
-	pic2 : '',
-	pic3 : '',
-	pic4 : '',
-	pic5 : '',
-	pic6 : '',
-	pic7 : '',
-	pic8 : '',
-	pic9 : '',
-	pic10 : '',
-	pic11 : '',
-	pic12 : '',
-	pic13 : '',
-	pic14 : '',
-	pic15 : '',
+	관리번호: '',
+	pic1: '',
+	pic2: '',
+	pic3: '',
+	pic4: '',
+	pic5: '',
+	pic6: '',
+	pic7: '',
+	pic8: '',
+	pic9: '',
+	pic10: '',
+	pic11: '',
+	pic12: '',
+	pic13: '',
+	pic14: '',
+	pic15: '',
 };
 
 const 폐기_pic_doc = {
-	관리번호 : '',
-	pic1 : '',
-	pic2 : '',
-	pic3 : '',
-	pic4 : '',
-	pic5 : '',
-	pic6 : '',
-	pic7 : '',
-	pic8 : '',
-	pic9 : '',
-	pic10 : '',
-	pic11 : '',
-	pic12 : '',
-	pic13 : '',
-	pic14 : '',
-	pic15 : '',
+	관리번호: '',
+	pic1: '',
+	pic2: '',
+	pic3: '',
+	pic4: '',
+	pic5: '',
+	pic6: '',
+	pic7: '',
+	pic8: '',
+	pic9: '',
+	pic10: '',
+	pic11: '',
+	pic12: '',
+	pic13: '',
+	pic14: '',
+	pic15: '',
 };
 
 const 자재입출고_doc = {
-	QR : '',
-	날짜 : '',
-	구분 : '',
-	차종 : '',
-	품명 : '',
-	품번 : '',
-	단가 : '',
-	수량 : '',
-	LotNo : '',
-	비고 : '',
-	사용관리번호 : ''
+	QR: '',
+	날짜: '',
+	구분: '',
+	차종: '',
+	품명: '',
+	품번: '',
+	단가: '',
+	수량: '',
+	LotNo: '',
+	비고: '',
+	사용관리번호: ''
 };
 
 const 기초보고서_doc = {
-	level : '',
-	기초보고서 : '',
-	육안검사외부 : '',
-	육안검사외부상세 : '',
-	육안검사내부 : '',
-	육안검사내부상세 : '',
-	기밀검사 : ''
+	level: '',
+	기초보고서: '',
+	육안검사외부: '',
+	육안검사외부상세: '',
+	육안검사내부: '',
+	육안검사내부상세: '',
+	기밀검사: ''
 };
 
 const 완료보고서_doc = {
-	level : '',
-	완료보고서 : '',
-	육안검사외부 : '',
-	육안검사외부상세 : '',
-	육안검사내부 : '',
-	육안검사내부상세 : '',
-	기밀검사 : ''
+	level: '',
+	완료보고서: '',
+	육안검사외부: '',
+	육안검사외부상세: '',
+	육안검사내부: '',
+	육안검사내부상세: '',
+	기밀검사: ''
 };
 
 const 부품정보_list_doc = {
-	관리번호 : '',
-	A_UPR_CASE_QR : '',      
-	A_LWR_CASE_QR : '',      
-	A_S_PLUG_QR : '',        
-	A_SPA_QR : '',           
-	A_HT_CNTR_QR : '',       
-	A_HV_CNTR_QR : '',       
-	A_PRA_QR : '',           
-	A_LV_W_H_QR : '',        
-	A_HV_W_H_1_QR : '',      
-	A_HV_W_H_2_QR : '',      
-	A_HV_W_H_3_QR : '',      
-	A_HV_W_H_4_QR : '',      
-	A_HV_W_H_5_QR : '',      
-	A_BMU_QR : '',           
-	A_CMU_1_QR : '',         
-	A_CMU_2_QR : '',         
-	A_CMU_3_QR : '',         
-	A_CMU_4_QR : '',         
-	A_CMU_5_QR : '',         
-	A_MODULE_1_QR : '',      
-	A_MODULE_2_QR : '',      
-	A_MODULE_3_QR : '',      
-	A_MODULE_4_QR : '',      
-	A_MODULE_5_QR : '',      
-	B_UPR_CASE_QR : '',      
-	B_LWR_CASE_QR : '',      
-	B_HV_CNTR_QR : '',       
-	B_HT_CNTR_QR : '',       
-	B_PRA_QR : '',           
-	B_FUSE_QR : '',          
-	B_HV_W_H_1_QR : '',      
-	B_HV_W_H_2_QR : '',      
-	B_LV_W_H_QR : '',        
-	B_BMU_QR : '',           
-	B_CMU_1_QR : '',         
-	B_CMU_2_QR : '',         
-	B_CMU_3_QR : '',         
-	B_CMU_4_QR : '',         
-	B_CMU_5_QR : '',         
-	B_MODULE_1_QR : '',      
-	B_MODULE_2_QR : '',      
-	B_MODULE_3_QR : '',      
-	B_MODULE_4_QR : '',      
-	B_MODULE_5_QR : '',      
-	B_MODULE_6_QR : '',      
-	B_MODULE_7_QR : '',      
-	B_MODULE_8_QR : '',      
-	B_MODULE_9_QR : '',      
-	B_MODULE_10_QR : '',     
-	C_UPR_CASE_QR : '',      
-	C_LWR_CASE_QR : '',      
-	C_HV_CNTR_1_QR : '',     
-	C_HV_CNTR_2_QR : '',     
-	C_HT_CNTR_QR : '',       
-	C_PRA_QR : '',           
-	C_FUSE_QR : '',          
-	C_LV_W_H_QR : '',        
-	C_HV_W_H_1_QR : '',      
-	C_HV_W_H_2_QR : '',      
-	C_HV_W_H_3_QR : '',      
-	C_HV_W_H_4_QR : '',      
-	C_HV_W_H_5_QR : '',      
-	C_HV_W_H_6_QR : '',      
-	C_HV_W_H_7_QR : '',      
-	C_HV_W_H_8_QR : '',      
-	C_BMU_QR : '',           
-	C_CMU_1_QR : '',         
-	C_CMU_2_QR : '',         
-	C_CMU_3_QR : '',         
-	C_CMU_4_QR : '',         
-	C_CMU_5_QR : '',         
-	C_CMU_6_QR : '',         
-	C_CMU_7_QR : '',         
-	C_CMU_8_QR : '',         
-	C_MODULE_1_QR : '',      
-	C_MODULE_2_QR : '',      
-	C_MODULE_3_QR : '',      
-	C_MODULE_4_QR : '',      
-	C_MODULE_5_QR : '',      
-	C_MODULE_6_QR : '',      
-	C_MODULE_7_QR : '',      
-	C_MODULE_8_QR : '',      
-	C_MODULE_9_QR : '',      
-	C_MODULE_10_QR : '',     
-	C_MODULE_11_QR : '',     
-	C_MODULE_12_QR : '',     
-	C_MODULE_13_QR : '',     
-	C_MODULE_14_QR : '',     
-	C_MODULE_15_QR : '',     
-	C_MODULE_16_QR : '',     
-	C_MODULE_2_1_QR : '',    
-	C_MODULE_2_2_QR : '',    
-	C_MODULE_2_3_QR : '',    
-	C_MODULE_2_4_QR : '',    
-	C_MODULE_2_5_QR : '',    
-	C_MODULE_2_6_QR : '',    
-	C_MODULE_2_7_QR : '',    
-	C_MODULE_2_8_QR : '',    
-	C_MODULE_2_9_QR : '',    
-	C_MODULE_2_10_QR : '',   
-	C_MODULE_2_11_QR : '',   
-	C_MODULE_2_12_QR : '',   
-	C_MODULE_2_13_QR : '',   
-	C_MODULE_2_14_QR : '',   
-	C_MODULE_2_15_QR : '',   
-	C_MODULE_2_16_QR : '',   
-	D_UPR_CASE_QR : '',      
-	D_LWR_CASE_QR : '',      
-	D_HV_CNTR_1_QR : '',     
-	D_HV_CNTR_2_QR : '',     
-	D_RELAY_QR : '',         
-	D_LV_W_H_QR : '',        
-	D_HV_W_H_1_QR : '',      
-	D_HV_W_H_2_QR : '',      
-	D_BMU_QR : '',           
-	D_CMU_1_QR : '',         
-	D_MODULE_1_QR : '',      
-	D_MODULE_2_QR : '',      
-	D2_HV_W_H_1_QR : '',     
-	D2_CMU_1_QR : '',        
-	D2_RELAY_QR : '',        
-	D2_BMU_QR : '',          
-	D2_HV_CNTR_1_QR : '',    
-	D2_HV_CNTR_2_QR : '',    
-	D2_LWR_CASE_QR : '',     
-	D2_UPR_CASE_QR : '',     
-	D2_LV_W_H_QR : '',       
-	D2_MODULE_1_QR : '',     
-	A_UPR_CASE_품번 : '',    
-	A_LWR_CASE_품번 : '',    
-	A_S_PLUG_품번 : '',      
-	A_SPA_품번 : '',         
-	A_HT_CNTR_품번 : '',     
-	A_HV_CNTR_품번 : '',     
-	A_PRA_품번 : '',         
-	A_LV_W_H_품번 : '',      
-	A_HV_W_H_1_품번 : '',    
-	A_HV_W_H_2_품번 : '',    
-	A_HV_W_H_3_품번 : '',    
-	A_HV_W_H_4_품번 : '',    
-	A_HV_W_H_5_품번 : '',    
-	A_BMU_품번 : '',         
-	A_CMU_1_품번 : '',       
-	A_CMU_2_품번 : '',       
-	A_CMU_3_품번 : '',       
-	A_CMU_4_품번 : '',       
-	A_CMU_5_품번 : '',       
-	A_MODULE_1_품번 : '',    
-	A_MODULE_2_품번 : '',    
-	A_MODULE_3_품번 : '',    
-	A_MODULE_4_품번 : '',    
-	A_MODULE_5_품번 : '',    
-	B_UPR_CASE_품번 : '',    
-	B_LWR_CASE_품번 : '',    
-	B_HV_CNTR_품번 : '',     
-	B_HT_CNTR_품번 : '',     
-	B_PRA_품번 : '',         
-	B_FUSE_품번 : '',        
-	B_HV_W_H_1_품번 : '',    
-	B_HV_W_H_2_품번 : '',    
-	B_LV_W_H_품번 : '',      
-	B_BMU_품번 : '',         
-	B_CMU_1_품번 : '',       
-	B_CMU_2_품번 : '',       
-	B_CMU_3_품번 : '',       
-	B_CMU_4_품번 : '',       
-	B_CMU_5_품번 : '',       
-	B_MODULE_1_품번 : '',    
-	B_MODULE_2_품번 : '',    
-	B_MODULE_3_품번 : '',    
-	B_MODULE_4_품번 : '',    
-	B_MODULE_5_품번 : '',    
-	B_MODULE_6_품번 : '',    
-	B_MODULE_7_품번 : '',    
-	B_MODULE_8_품번 : '',    
-	B_MODULE_9_품번 : '',    
-	B_MODULE_10_품번 : '',   
-	C_UPR_CASE_품번 : '',    
-	C_LWR_CASE_품번 : '',    
-	C_HV_CNTR_1_품번 : '',   
-	C_HV_CNTR_2_품번 : '',   
-	C_HT_CNTR_품번 : '',     
-	C_PRA_품번 : '',         
-	C_FUSE_품번 : '',        
-	C_LV_W_H_품번 : '',      
-	C_HV_W_H_1_품번 : '',    
-	C_HV_W_H_2_품번 : '',    
-	C_HV_W_H_3_품번 : '',    
-	C_HV_W_H_4_품번 : '',    
-	C_HV_W_H_5_품번 : '',    
-	C_HV_W_H_6_품번 : '',    
-	C_HV_W_H_7_품번 : '',    
-	C_HV_W_H_8_품번 : '',    
-	C_BMU_품번 : '',         
-	C_CMU_1_품번 : '',       
-	C_CMU_2_품번 : '',       
-	C_CMU_3_품번 : '',       
-	C_CMU_4_품번 : '',       
-	C_CMU_5_품번 : '',       
-	C_CMU_6_품번 : '',       
-	C_CMU_7_품번 : '',       
-	C_CMU_8_품번 : '',       
-	C_MODULE_1_품번 : '',    
-	C_MODULE_2_품번 : '',    
-	C_MODULE_3_품번 : '',    
-	C_MODULE_4_품번 : '',    
-	C_MODULE_5_품번 : '',    
-	C_MODULE_6_품번 : '',    
-	C_MODULE_7_품번 : '',    
-	C_MODULE_8_품번 : '',    
-	C_MODULE_9_품번 : '',    
-	C_MODULE_10_품번 : '',   
-	C_MODULE_11_품번 : '',   
-	C_MODULE_12_품번 : '',   
-	C_MODULE_13_품번 : '',   
-	C_MODULE_14_품번 : '',   
-	C_MODULE_15_품번 : '',   
-	C_MODULE_16_품번 : '',   
-	C_MODULE_2_1_품번 : '',  
-	C_MODULE_2_2_품번 : '',  
-	C_MODULE_2_3_품번 : '',  
-	C_MODULE_2_4_품번 : '',  
-	C_MODULE_2_5_품번 : '',  
-	C_MODULE_2_6_품번 : '',  
-	C_MODULE_2_7_품번 : '',  
-	C_MODULE_2_8_품번 : '',  
-	C_MODULE_2_9_품번 : '',  
-	C_MODULE_2_10_품번 : '', 
-	C_MODULE_2_11_품번 : '', 
-	C_MODULE_2_12_품번 : '', 
-	C_MODULE_2_13_품번 : '', 
-	C_MODULE_2_14_품번 : '', 
-	C_MODULE_2_15_품번 : '', 
-	C_MODULE_2_16_품번 : '', 
-	D_UPR_CASE_품번 : '',    
-	D_LWR_CASE_품번 : '',    
-	D_HV_CNTR_1_품번 : '',   
-	D_HV_CNTR_2_품번 : '',   
-	D_RELAY_품번 : '',       
-	D_LV_W_H_품번 : '',      
-	D_HV_W_H_1_품번 : '',    
-	D_HV_W_H_2_품번 : '',    
-	D_BMU_품번 : '',         
-	D_CMU_1_품번 : '',       
-	D_MODULE_1_품번 : '',    
-	D_MODULE_2_품번 : '',    
-	D2_HV_W_H_1_품번 : '',   
-	D2_CMU_1_품번 : '',      
-	D2_RELAY_품번 : '',      
-	D2_BMU_품번 : '',        
-	D2_HV_CNTR_1_품번 : '',  
-	D2_HV_CNTR_2_품번 : '',  
-	D2_LWR_CASE_품번 : '',   
-	D2_UPR_CASE_품번 : '',   
-	D2_LV_W_H_품번 : '',     
-	D2_MODULE_1_품번 : '',   
+	관리번호: '',
+	A_UPR_CASE_QR: '',
+	A_LWR_CASE_QR: '',
+	A_S_PLUG_QR: '',
+	A_SPA_QR: '',
+	A_HT_CNTR_QR: '',
+	A_HV_CNTR_QR: '',
+	A_PRA_QR: '',
+	A_LV_W_H_QR: '',
+	A_HV_W_H_1_QR: '',
+	A_HV_W_H_2_QR: '',
+	A_HV_W_H_3_QR: '',
+	A_HV_W_H_4_QR: '',
+	A_HV_W_H_5_QR: '',
+	A_BMU_QR: '',
+	A_CMU_1_QR: '',
+	A_CMU_2_QR: '',
+	A_CMU_3_QR: '',
+	A_CMU_4_QR: '',
+	A_CMU_5_QR: '',
+	A_MODULE_1_QR: '',
+	A_MODULE_2_QR: '',
+	A_MODULE_3_QR: '',
+	A_MODULE_4_QR: '',
+	A_MODULE_5_QR: '',
+	B_UPR_CASE_QR: '',
+	B_LWR_CASE_QR: '',
+	B_HV_CNTR_QR: '',
+	B_HT_CNTR_QR: '',
+	B_PRA_QR: '',
+	B_FUSE_QR: '',
+	B_HV_W_H_1_QR: '',
+	B_HV_W_H_2_QR: '',
+	B_LV_W_H_QR: '',
+	B_BMU_QR: '',
+	B_CMU_1_QR: '',
+	B_CMU_2_QR: '',
+	B_CMU_3_QR: '',
+	B_CMU_4_QR: '',
+	B_CMU_5_QR: '',
+	B_MODULE_1_QR: '',
+	B_MODULE_2_QR: '',
+	B_MODULE_3_QR: '',
+	B_MODULE_4_QR: '',
+	B_MODULE_5_QR: '',
+	B_MODULE_6_QR: '',
+	B_MODULE_7_QR: '',
+	B_MODULE_8_QR: '',
+	B_MODULE_9_QR: '',
+	B_MODULE_10_QR: '',
+	C_UPR_CASE_QR: '',
+	C_LWR_CASE_QR: '',
+	C_HV_CNTR_1_QR: '',
+	C_HV_CNTR_2_QR: '',
+	C_HT_CNTR_QR: '',
+	C_PRA_QR: '',
+	C_FUSE_QR: '',
+	C_LV_W_H_QR: '',
+	C_HV_W_H_1_QR: '',
+	C_HV_W_H_2_QR: '',
+	C_HV_W_H_3_QR: '',
+	C_HV_W_H_4_QR: '',
+	C_HV_W_H_5_QR: '',
+	C_HV_W_H_6_QR: '',
+	C_HV_W_H_7_QR: '',
+	C_HV_W_H_8_QR: '',
+	C_BMU_QR: '',
+	C_CMU_1_QR: '',
+	C_CMU_2_QR: '',
+	C_CMU_3_QR: '',
+	C_CMU_4_QR: '',
+	C_CMU_5_QR: '',
+	C_CMU_6_QR: '',
+	C_CMU_7_QR: '',
+	C_CMU_8_QR: '',
+	C_MODULE_1_QR: '',
+	C_MODULE_2_QR: '',
+	C_MODULE_3_QR: '',
+	C_MODULE_4_QR: '',
+	C_MODULE_5_QR: '',
+	C_MODULE_6_QR: '',
+	C_MODULE_7_QR: '',
+	C_MODULE_8_QR: '',
+	C_MODULE_9_QR: '',
+	C_MODULE_10_QR: '',
+	C_MODULE_11_QR: '',
+	C_MODULE_12_QR: '',
+	C_MODULE_13_QR: '',
+	C_MODULE_14_QR: '',
+	C_MODULE_15_QR: '',
+	C_MODULE_16_QR: '',
+	C_MODULE_2_1_QR: '',
+	C_MODULE_2_2_QR: '',
+	C_MODULE_2_3_QR: '',
+	C_MODULE_2_4_QR: '',
+	C_MODULE_2_5_QR: '',
+	C_MODULE_2_6_QR: '',
+	C_MODULE_2_7_QR: '',
+	C_MODULE_2_8_QR: '',
+	C_MODULE_2_9_QR: '',
+	C_MODULE_2_10_QR: '',
+	C_MODULE_2_11_QR: '',
+	C_MODULE_2_12_QR: '',
+	C_MODULE_2_13_QR: '',
+	C_MODULE_2_14_QR: '',
+	C_MODULE_2_15_QR: '',
+	C_MODULE_2_16_QR: '',
+	D_UPR_CASE_QR: '',
+	D_LWR_CASE_QR: '',
+	D_HV_CNTR_1_QR: '',
+	D_HV_CNTR_2_QR: '',
+	D_RELAY_QR: '',
+	D_LV_W_H_QR: '',
+	D_HV_W_H_1_QR: '',
+	D_HV_W_H_2_QR: '',
+	D_BMU_QR: '',
+	D_CMU_1_QR: '',
+	D_MODULE_1_QR: '',
+	D_MODULE_2_QR: '',
+	D2_HV_W_H_1_QR: '',
+	D2_CMU_1_QR: '',
+	D2_RELAY_QR: '',
+	D2_BMU_QR: '',
+	D2_HV_CNTR_1_QR: '',
+	D2_HV_CNTR_2_QR: '',
+	D2_LWR_CASE_QR: '',
+	D2_UPR_CASE_QR: '',
+	D2_LV_W_H_QR: '',
+	D2_MODULE_1_QR: '',
+	A_UPR_CASE_품번: '',
+	A_LWR_CASE_품번: '',
+	A_S_PLUG_품번: '',
+	A_SPA_품번: '',
+	A_HT_CNTR_품번: '',
+	A_HV_CNTR_품번: '',
+	A_PRA_품번: '',
+	A_LV_W_H_품번: '',
+	A_HV_W_H_1_품번: '',
+	A_HV_W_H_2_품번: '',
+	A_HV_W_H_3_품번: '',
+	A_HV_W_H_4_품번: '',
+	A_HV_W_H_5_품번: '',
+	A_BMU_품번: '',
+	A_CMU_1_품번: '',
+	A_CMU_2_품번: '',
+	A_CMU_3_품번: '',
+	A_CMU_4_품번: '',
+	A_CMU_5_품번: '',
+	A_MODULE_1_품번: '',
+	A_MODULE_2_품번: '',
+	A_MODULE_3_품번: '',
+	A_MODULE_4_품번: '',
+	A_MODULE_5_품번: '',
+	B_UPR_CASE_품번: '',
+	B_LWR_CASE_품번: '',
+	B_HV_CNTR_품번: '',
+	B_HT_CNTR_품번: '',
+	B_PRA_품번: '',
+	B_FUSE_품번: '',
+	B_HV_W_H_1_품번: '',
+	B_HV_W_H_2_품번: '',
+	B_LV_W_H_품번: '',
+	B_BMU_품번: '',
+	B_CMU_1_품번: '',
+	B_CMU_2_품번: '',
+	B_CMU_3_품번: '',
+	B_CMU_4_품번: '',
+	B_CMU_5_품번: '',
+	B_MODULE_1_품번: '',
+	B_MODULE_2_품번: '',
+	B_MODULE_3_품번: '',
+	B_MODULE_4_품번: '',
+	B_MODULE_5_품번: '',
+	B_MODULE_6_품번: '',
+	B_MODULE_7_품번: '',
+	B_MODULE_8_품번: '',
+	B_MODULE_9_품번: '',
+	B_MODULE_10_품번: '',
+	C_UPR_CASE_품번: '',
+	C_LWR_CASE_품번: '',
+	C_HV_CNTR_1_품번: '',
+	C_HV_CNTR_2_품번: '',
+	C_HT_CNTR_품번: '',
+	C_PRA_품번: '',
+	C_FUSE_품번: '',
+	C_LV_W_H_품번: '',
+	C_HV_W_H_1_품번: '',
+	C_HV_W_H_2_품번: '',
+	C_HV_W_H_3_품번: '',
+	C_HV_W_H_4_품번: '',
+	C_HV_W_H_5_품번: '',
+	C_HV_W_H_6_품번: '',
+	C_HV_W_H_7_품번: '',
+	C_HV_W_H_8_품번: '',
+	C_BMU_품번: '',
+	C_CMU_1_품번: '',
+	C_CMU_2_품번: '',
+	C_CMU_3_품번: '',
+	C_CMU_4_품번: '',
+	C_CMU_5_품번: '',
+	C_CMU_6_품번: '',
+	C_CMU_7_품번: '',
+	C_CMU_8_품번: '',
+	C_MODULE_1_품번: '',
+	C_MODULE_2_품번: '',
+	C_MODULE_3_품번: '',
+	C_MODULE_4_품번: '',
+	C_MODULE_5_품번: '',
+	C_MODULE_6_품번: '',
+	C_MODULE_7_품번: '',
+	C_MODULE_8_품번: '',
+	C_MODULE_9_품번: '',
+	C_MODULE_10_품번: '',
+	C_MODULE_11_품번: '',
+	C_MODULE_12_품번: '',
+	C_MODULE_13_품번: '',
+	C_MODULE_14_품번: '',
+	C_MODULE_15_품번: '',
+	C_MODULE_16_품번: '',
+	C_MODULE_2_1_품번: '',
+	C_MODULE_2_2_품번: '',
+	C_MODULE_2_3_품번: '',
+	C_MODULE_2_4_품번: '',
+	C_MODULE_2_5_품번: '',
+	C_MODULE_2_6_품번: '',
+	C_MODULE_2_7_품번: '',
+	C_MODULE_2_8_품번: '',
+	C_MODULE_2_9_품번: '',
+	C_MODULE_2_10_품번: '',
+	C_MODULE_2_11_품번: '',
+	C_MODULE_2_12_품번: '',
+	C_MODULE_2_13_품번: '',
+	C_MODULE_2_14_품번: '',
+	C_MODULE_2_15_품번: '',
+	C_MODULE_2_16_품번: '',
+	D_UPR_CASE_품번: '',
+	D_LWR_CASE_품번: '',
+	D_HV_CNTR_1_품번: '',
+	D_HV_CNTR_2_품번: '',
+	D_RELAY_품번: '',
+	D_LV_W_H_품번: '',
+	D_HV_W_H_1_품번: '',
+	D_HV_W_H_2_품번: '',
+	D_BMU_품번: '',
+	D_CMU_1_품번: '',
+	D_MODULE_1_품번: '',
+	D_MODULE_2_품번: '',
+	D2_HV_W_H_1_품번: '',
+	D2_CMU_1_품번: '',
+	D2_RELAY_품번: '',
+	D2_BMU_품번: '',
+	D2_HV_CNTR_1_품번: '',
+	D2_HV_CNTR_2_품번: '',
+	D2_LWR_CASE_품번: '',
+	D2_UPR_CASE_품번: '',
+	D2_LV_W_H_품번: '',
+	D2_MODULE_1_품번: '',
 };
 
 const 계정_ = {
-	_id : 0,
-	id: 1, 
-	passwd: 1, 
+	_id: 0,
+	id: 1,
+	passwd: 1,
 	level: 1,
 	이름: 1,
 	기본정보: 1,
@@ -1259,41 +1259,41 @@ const 계정_ = {
 };
 
 const 구자료_ = {
-	품번 : 1,
-	품명 : 1,
-	수량 : 1,
-	공급가액 : 1,
-	부가세 : 1,
-	합계 : 1,
-	평균단가 : 1
+	품번: 1,
+	품명: 1,
+	수량: 1,
+	공급가액: 1,
+	부가세: 1,
+	합계: 1,
+	평균단가: 1
 }
 
 const BSA재제조_ = {
-	_id : 1,
-	관리번호: 1, 
+	_id: 1,
+	관리번호: 1,
 	재제조번호: 1,
 	구분: 1,
-	차종: 1, 
-	품번: 1, 
-	RO_no: 1, 
-	공정단계: 1, 
-	적재No: 1, 
-	입고: 1, 
-	제조투입: 1, 
+	차종: 1,
+	품번: 1,
+	RO_no: 1,
+	공정단계: 1,
+	적재No: 1,
+	입고: 1,
+	제조투입: 1,
 	세척투입일: 1,
-	세척: 1, 
+	세척: 1,
 	기초검사투입일: 1,
-	기초검사: 1, 
+	기초검사: 1,
 	분해조립투입일: 1,
-	분해조립: 1, 
+	분해조립: 1,
 	성능검사투입일: 1,
-	성능검사: 1, 
+	성능검사: 1,
 	EOL투입일: 1,
-	EOL: 1, 
+	EOL: 1,
 	QR_Label: 1,
-	출하검사: 1, 
-	납품처: 1, 
-	출하: 1, 
+	출하검사: 1,
+	납품처: 1,
+	출하: 1,
 	소재지: 1,
 	마지막충전일: 1,
 	반품입고: 1,
@@ -1307,19 +1307,19 @@ const BSA재제조_ = {
 };
 
 const 입고_ = {
-	_id : 0,
-	관리번호: 1, 
-	입고일 : 1,
-	입고처 : 1,
-	구분 : 1,
-	차종: 1, 
-	품번: 1, 
-	RO_no : 1
+	_id: 0,
+	관리번호: 1,
+	입고일: 1,
+	입고처: 1,
+	구분: 1,
+	차종: 1,
+	품번: 1,
+	RO_no: 1
 };
 
 const 세척_ = {
-	_id : 0,
-	관리번호: 1, 
+	_id: 0,
+	관리번호: 1,
 	재제조번호: 1,
 	공정입고일: 1,
 	공정완료일: 1,
@@ -1330,10 +1330,10 @@ const 세척_ = {
 };
 
 const 기초검사_ = {
-	_id : 0,
+	_id: 0,
 	관리번호: 1,
 	공정입고일: 1,
-	RO_no: 1, 
+	RO_no: 1,
 	VIN: 1,
 	랙번호: 1,
 	QRcode: 1,
@@ -1375,7 +1375,7 @@ const 기초검사_ = {
 };
 
 const 분해조립_ = {
-	_id : 0,
+	_id: 0,
 	관리번호: 1,
 	공정입고일: 1,
 	BMU1: 1,
@@ -1671,7 +1671,7 @@ const 분해조립_ = {
 };
 
 const EOL_ = {
-	_id : 0,
+	_id: 0,
 	관리번호: 1,
 	공정입고일: 1,
 	UPR_C조립: 1,
@@ -1715,7 +1715,7 @@ const EOL_ = {
 };
 
 const 성능검사_ = {
-	_id : 0,
+	_id: 0,
 	관리번호: 1,
 	공정입고일: 1,
 	용량평가: 1,
@@ -1730,7 +1730,7 @@ const 성능검사_ = {
 };
 
 const 고품정보_ = {
-	_id : 0,
+	_id: 0,
 	관리번호: 1,
 	품명: 1,
 	구분: 1,
@@ -1740,22 +1740,22 @@ const 고품정보_ = {
 	폐기여부: 1,
 	사용여부: 1,
 	사용_관리번호: 1,
-	등록일 : 1,
-	사용일 : 1,
-	등록_작업자 : 1,
-	사용_작업자 : 1,
-	폐기품출고 : 1
+	등록일: 1,
+	사용일: 1,
+	등록_작업자: 1,
+	사용_작업자: 1,
+	폐기품출고: 1
 }
 
 const 출하정보_ = {
-	_id : 0,
+	_id: 0,
 	관리번호: 1,
 	출하코드: 1,
 	검사일: 1,
 	검사자: 1,
 	기초보고서_작성확인: 1,
 	완료보고서_작성확인: 1,
-	클린상태: 1, 
+	클린상태: 1,
 	팔레트_적정위치: 1,
 	포장랩상태: 1,
 	UPR_QR: 1,
@@ -1763,11 +1763,11 @@ const 출하정보_ = {
 	HKMC_스티커_URP: 1,
 	냉각유로_커버: 1,
 	브라켓: 1,
-	브라켓_비고 : 1,
-	S_PLUG : 1,
-	S_PLUG_비고 : 1,
-	접지 : 1,
-	접지_비고 : 1,
+	브라켓_비고: 1,
+	S_PLUG: 1,
+	S_PLUG_비고: 1,
+	접지: 1,
+	접지_비고: 1,
 	DTC: 1,
 	DTC_현재: 1,
 	DTC_과거: 1,
@@ -1779,7 +1779,7 @@ const 출하정보_ = {
 	배터리팩_측정값: 1,
 	배터리모듈온도: 1,
 	배터리모듈온도_최대: 1,
-	배터리모듈온도_최소:1,
+	배터리모듈온도_최소: 1,
 	배터리셀전압: 1,
 	배터리셀전압_최대: 1,
 	배터리셀전압_최소: 1,
@@ -1793,16 +1793,16 @@ const 출하정보_ = {
 };
 
 const 특이사항_ = {
-	_id : 0,
+	_id: 0,
 	관리번호: 1,
 	특이사항: 1
 };
 
 const 교체부품상세_ = {
-	_id : 0,
+	_id: 0,
 	관리번호: 1,
 	공정입고일: 1,
-	ORIGIN_관리번호 : 1,
+	ORIGIN_관리번호: 1,
 	교체전_품명: 1,
 	교체전_품번: 1,
 	교체전_QR: 1,
@@ -1815,557 +1815,557 @@ const 교체부품상세_ = {
 };
 
 const 구장재고_ = {
-	_id : 0,
-	입고일 : 1,
-	입고처 : 1,
-	관리번호 : 1,
-	재제조번호 : 1,
-	RO번호 : 1,
-	부품번호 : 1,
-	생산연도 : 1,
-	ROM_ID : 1,
-	보관위치 : 1,
-	출고일 : 1,
-	출고처 : 1,
-	비고 : 1
+	_id: 0,
+	입고일: 1,
+	입고처: 1,
+	관리번호: 1,
+	재제조번호: 1,
+	RO번호: 1,
+	부품번호: 1,
+	생산연도: 1,
+	ROM_ID: 1,
+	보관위치: 1,
+	출고일: 1,
+	출고처: 1,
+	비고: 1
 }
 
 const 입고_pic_ = {
-	_id : 0,
-	관리번호 : 1,
-	pic1 : 1,
-	pic2 : 1,
-	pic3 : 1,
-	pic4 : 1,
-	pic5 : 1,
-	pic6 : 1,
-	pic7 : 1,
-	pic8 : 1,
-	pic9 : 1,
-	pic10 : 1,
-	pic11 : 1,
-	pic12 : 1,
-	pic13 : 1,
-	pic14 : 1,
-	pic15 : 1,
+	_id: 0,
+	관리번호: 1,
+	pic1: 1,
+	pic2: 1,
+	pic3: 1,
+	pic4: 1,
+	pic5: 1,
+	pic6: 1,
+	pic7: 1,
+	pic8: 1,
+	pic9: 1,
+	pic10: 1,
+	pic11: 1,
+	pic12: 1,
+	pic13: 1,
+	pic14: 1,
+	pic15: 1,
 };
 
 const 세척_pic_ = {
-	_id : 0,
-	관리번호 : 1,
-	pic1 : 1,
-	pic2 : 1,
-	pic3 : 1,
-	pic4 : 1,
-	pic5 : 1,
-	pic6 : 1,
-	pic7 : 1,
-	pic8 : 1,
-	pic9 : 1,
-	pic10 : 1,
-	pic11 : 1,
-	pic12 : 1,
-	pic13 : 1,
-	pic14 : 1,
-	pic15 : 1,
+	_id: 0,
+	관리번호: 1,
+	pic1: 1,
+	pic2: 1,
+	pic3: 1,
+	pic4: 1,
+	pic5: 1,
+	pic6: 1,
+	pic7: 1,
+	pic8: 1,
+	pic9: 1,
+	pic10: 1,
+	pic11: 1,
+	pic12: 1,
+	pic13: 1,
+	pic14: 1,
+	pic15: 1,
 };
 
 const 기초검사_pic_ = {
-	_id : 0,
-	관리번호 : 1,
-	pic1 : 1,
-	pic2 : 1,
-	pic3 : 1,
-	pic4 : 1,
-	pic5 : 1,
-	pic6 : 1,
-	pic7 : 1,
-	pic8 : 1,
-	pic9 : 1,
-	pic10 : 1,
-	pic11 : 1,
-	pic12 : 1,
-	pic13 : 1,
-	pic14 : 1,
-	pic15 : 1,
+	_id: 0,
+	관리번호: 1,
+	pic1: 1,
+	pic2: 1,
+	pic3: 1,
+	pic4: 1,
+	pic5: 1,
+	pic6: 1,
+	pic7: 1,
+	pic8: 1,
+	pic9: 1,
+	pic10: 1,
+	pic11: 1,
+	pic12: 1,
+	pic13: 1,
+	pic14: 1,
+	pic15: 1,
 };
 
 const 분해조립_pic_ = {
-	_id : 0,
-	관리번호 : 1,
-	pic1 : 1,
-	pic2 : 1,
-	pic3 : 1,
-	pic4 : 1,
-	pic5 : 1,
-	pic6 : 1,
-	pic7 : 1,
-	pic8 : 1,
-	pic9 : 1,
-	pic10 : 1,
-	pic11 : 1,
-	pic12 : 1,
-	pic13 : 1,
-	pic14 : 1,
-	pic15 : 1,
+	_id: 0,
+	관리번호: 1,
+	pic1: 1,
+	pic2: 1,
+	pic3: 1,
+	pic4: 1,
+	pic5: 1,
+	pic6: 1,
+	pic7: 1,
+	pic8: 1,
+	pic9: 1,
+	pic10: 1,
+	pic11: 1,
+	pic12: 1,
+	pic13: 1,
+	pic14: 1,
+	pic15: 1,
 };
 
 const 성능검사_pic_ = {
-	_id : 0,
-	관리번호 : 1,
-	pic1 : 1,
-	pic2 : 1,
-	pic3 : 1,
-	pic4 : 1,
-	pic5 : 1,
-	pic6 : 1,
-	pic7 : 1,
-	pic8 : 1,
-	pic9 : 1,
-	pic10 : 1,
-	pic11 : 1,
-	pic12 : 1,
-	pic13 : 1,
-	pic14 : 1,
-	pic15 : 1,
+	_id: 0,
+	관리번호: 1,
+	pic1: 1,
+	pic2: 1,
+	pic3: 1,
+	pic4: 1,
+	pic5: 1,
+	pic6: 1,
+	pic7: 1,
+	pic8: 1,
+	pic9: 1,
+	pic10: 1,
+	pic11: 1,
+	pic12: 1,
+	pic13: 1,
+	pic14: 1,
+	pic15: 1,
 };
 
 const EOL_pic_ = {
-	_id : 0,
-	관리번호 : 1,
-	pic1 : 1,
-	pic2 : 1,
-	pic3 : 1,
-	pic4 : 1,
-	pic5 : 1,
-	pic6 : 1,
-	pic7 : 1,
-	pic8 : 1,
-	pic9 : 1,
-	pic10 : 1,
-	pic11 : 1,
-	pic12 : 1,
-	pic13 : 1,
-	pic14 : 1,
-	pic15 : 1,
+	_id: 0,
+	관리번호: 1,
+	pic1: 1,
+	pic2: 1,
+	pic3: 1,
+	pic4: 1,
+	pic5: 1,
+	pic6: 1,
+	pic7: 1,
+	pic8: 1,
+	pic9: 1,
+	pic10: 1,
+	pic11: 1,
+	pic12: 1,
+	pic13: 1,
+	pic14: 1,
+	pic15: 1,
 };
 
 const 특이사항_pic_ = {
-	_id : 0,
-	관리번호 : 1,
-	pic1 : 1,
-	pic2 : 1,
-	pic3 : 1,
-	pic4 : 1,
-	pic5 : 1,
-	pic6 : 1,
-	pic7 : 1,
-	pic8 : 1,
-	pic9 : 1,
-	pic10 : 1,
-	pic11 : 1,
-	pic12 : 1,
-	pic13 : 1,
-	pic14 : 1,
-	pic15 : 1,
+	_id: 0,
+	관리번호: 1,
+	pic1: 1,
+	pic2: 1,
+	pic3: 1,
+	pic4: 1,
+	pic5: 1,
+	pic6: 1,
+	pic7: 1,
+	pic8: 1,
+	pic9: 1,
+	pic10: 1,
+	pic11: 1,
+	pic12: 1,
+	pic13: 1,
+	pic14: 1,
+	pic15: 1,
 };
 
 const 출하_pic_ = {
-	_id : 0,
-	관리번호 : 1,
-	pic1 : 1,
-	pic2 : 1,
-	pic3 : 1,
-	pic4 : 1,
-	pic5 : 1,
-	pic6 : 1,
-	pic7 : 1,
-	pic8 : 1,
-	pic9 : 1,
-	pic10 : 1,
-	pic11 : 1,
-	pic12 : 1,
-	pic13 : 1,
-	pic14 : 1,
-	pic15 : 1,
+	_id: 0,
+	관리번호: 1,
+	pic1: 1,
+	pic2: 1,
+	pic3: 1,
+	pic4: 1,
+	pic5: 1,
+	pic6: 1,
+	pic7: 1,
+	pic8: 1,
+	pic9: 1,
+	pic10: 1,
+	pic11: 1,
+	pic12: 1,
+	pic13: 1,
+	pic14: 1,
+	pic15: 1,
 };
 
 const 반품입고_pic_ = {
-	_id : 0,
-	관리번호 : 1,
-	pic1 : 1,
-	pic2 : 1,
-	pic3 : 1,
-	pic4 : 1,
-	pic5 : 1,
-	pic6 : 1,
-	pic7 : 1,
-	pic8 : 1,
-	pic9 : 1,
-	pic10 : 1,
-	pic11 : 1,
-	pic12 : 1,
-	pic13 : 1,
-	pic14 : 1,
-	pic15 : 1,
+	_id: 0,
+	관리번호: 1,
+	pic1: 1,
+	pic2: 1,
+	pic3: 1,
+	pic4: 1,
+	pic5: 1,
+	pic6: 1,
+	pic7: 1,
+	pic8: 1,
+	pic9: 1,
+	pic10: 1,
+	pic11: 1,
+	pic12: 1,
+	pic13: 1,
+	pic14: 1,
+	pic15: 1,
 };
 
 const 재출하_pic_ = {
-	_id : 0,
-	관리번호 : 1,
-	pic1 : 1,
-	pic2 : 1,
-	pic3 : 1,
-	pic4 : 1,
-	pic5 : 1,
-	pic6 : 1,
-	pic7 : 1,
-	pic8 : 1,
-	pic9 : 1,
-	pic10 : 1,
-	pic11 : 1,
-	pic12 : 1,
-	pic13 : 1,
-	pic14 : 1,
-	pic15 : 1,
+	_id: 0,
+	관리번호: 1,
+	pic1: 1,
+	pic2: 1,
+	pic3: 1,
+	pic4: 1,
+	pic5: 1,
+	pic6: 1,
+	pic7: 1,
+	pic8: 1,
+	pic9: 1,
+	pic10: 1,
+	pic11: 1,
+	pic12: 1,
+	pic13: 1,
+	pic14: 1,
+	pic15: 1,
 };
 
 const 완전분해_pic_ = {
-	_id : 0,
-	관리번호 : 1,
-	pic1 : 1,
-	pic2 : 1,
-	pic3 : 1,
-	pic4 : 1,
-	pic5 : 1,
-	pic6 : 1,
-	pic7 : 1,
-	pic8 : 1,
-	pic9 : 1,
-	pic10 : 1,
-	pic11 : 1,
-	pic12 : 1,
-	pic13 : 1,
-	pic14 : 1,
-	pic15 : 1,
+	_id: 0,
+	관리번호: 1,
+	pic1: 1,
+	pic2: 1,
+	pic3: 1,
+	pic4: 1,
+	pic5: 1,
+	pic6: 1,
+	pic7: 1,
+	pic8: 1,
+	pic9: 1,
+	pic10: 1,
+	pic11: 1,
+	pic12: 1,
+	pic13: 1,
+	pic14: 1,
+	pic15: 1,
 };
 
 const 폐기_pic_ = {
-	_id : 0,
-	관리번호 : 1,
-	pic1 : 1,
-	pic2 : 1,
-	pic3 : 1,
-	pic4 : 1,
-	pic5 : 1,
-	pic6 : 1,
-	pic7 : 1,
-	pic8 : 1,
-	pic9 : 1,
-	pic10 : 1,
-	pic11 : 1,
-	pic12 : 1,
-	pic13 : 1,
-	pic14 : 1,
-	pic15 : 1,
+	_id: 0,
+	관리번호: 1,
+	pic1: 1,
+	pic2: 1,
+	pic3: 1,
+	pic4: 1,
+	pic5: 1,
+	pic6: 1,
+	pic7: 1,
+	pic8: 1,
+	pic9: 1,
+	pic10: 1,
+	pic11: 1,
+	pic12: 1,
+	pic13: 1,
+	pic14: 1,
+	pic15: 1,
 };
 
 const 자재입출고_ = {
-	_id : 0,
-	QR : 1,
-	날짜 : 1,
-	구분 : 1,
-	차종 : 1,
-	품명 : 1,
-	품번 : 1,
-	단가 : 1,
-	수량 : 1,
-	LotNo : 1,
-	비고 : 1,
-	사용관리번호 : 1
+	_id: 0,
+	QR: 1,
+	날짜: 1,
+	구분: 1,
+	차종: 1,
+	품명: 1,
+	품번: 1,
+	단가: 1,
+	수량: 1,
+	LotNo: 1,
+	비고: 1,
+	사용관리번호: 1
 };
 
 const 기초보고서_ = {
-	_id : 0,
-	level : 1,
-	기초보고서 : 1,
-	육안검사외부 : 1,
-	육안검사외부상세 : 1,
-	육안검사내부 : 1,
-	육안검사내부상세 : 1,
-	기밀검사 : 1
+	_id: 0,
+	level: 1,
+	기초보고서: 1,
+	육안검사외부: 1,
+	육안검사외부상세: 1,
+	육안검사내부: 1,
+	육안검사내부상세: 1,
+	기밀검사: 1
 };
 
 const 완료보고서_ = {
-	_id : 0,
-	level : 1,
-	완료보고서 : 1,
-	육안검사외부 : 1,
-	육안검사외부상세 : 1,
-	육안검사내부 : 1,
-	육안검사내부상세 : 1,
-	기밀검사 : 1
+	_id: 0,
+	level: 1,
+	완료보고서: 1,
+	육안검사외부: 1,
+	육안검사외부상세: 1,
+	육안검사내부: 1,
+	육안검사내부상세: 1,
+	기밀검사: 1
 };
 
 const 부품정보_list_ = {
-	_id :0,
-	관리번호 : 1,
-	A_UPR_CASE_QR : 1,      
-	A_LWR_CASE_QR : 1,      
-	A_S_PLUG_QR : 1,        
-	A_SPA_QR : 1,           
-	A_HT_CNTR_QR : 1,       
-	A_HV_CNTR_QR : 1,       
-	A_PRA_QR : 1,           
-	A_LV_W_H_QR : 1,        
-	A_HV_W_H_1_QR : 1,      
-	A_HV_W_H_2_QR : 1,      
-	A_HV_W_H_3_QR : 1,      
-	A_HV_W_H_4_QR : 1,      
-	A_HV_W_H_5_QR : 1,      
-	A_BMU_QR : 1,           
-	A_CMU_1_QR : 1,         
-	A_CMU_2_QR : 1,         
-	A_CMU_3_QR : 1,         
-	A_CMU_4_QR : 1,         
-	A_CMU_5_QR : 1,         
-	A_MODULE_1_QR : 1,      
-	A_MODULE_2_QR : 1,      
-	A_MODULE_3_QR : 1,      
-	A_MODULE_4_QR : 1,      
-	A_MODULE_5_QR : 1,      
-	B_UPR_CASE_QR : 1,      
-	B_LWR_CASE_QR : 1,      
-	B_HV_CNTR_QR : 1,       
-	B_HT_CNTR_QR : 1,       
-	B_PRA_QR : 1,           
-	B_FUSE_QR : 1,          
-	B_HV_W_H_1_QR : 1,      
-	B_HV_W_H_2_QR : 1,      
-	B_LV_W_H_QR : 1,        
-	B_BMU_QR : 1,           
-	B_CMU_1_QR : 1,         
-	B_CMU_2_QR : 1,         
-	B_CMU_3_QR : 1,         
-	B_CMU_4_QR : 1,         
-	B_CMU_5_QR : 1,         
-	B_MODULE_1_QR : 1,      
-	B_MODULE_2_QR : 1,      
-	B_MODULE_3_QR : 1,      
-	B_MODULE_4_QR : 1,      
-	B_MODULE_5_QR : 1,      
-	B_MODULE_6_QR : 1,      
-	B_MODULE_7_QR : 1,      
-	B_MODULE_8_QR : 1,      
-	B_MODULE_9_QR : 1,      
-	B_MODULE_10_QR : 1,     
-	C_UPR_CASE_QR : 1,      
-	C_LWR_CASE_QR : 1,      
-	C_HV_CNTR_1_QR : 1,     
-	C_HV_CNTR_2_QR : 1,     
-	C_HT_CNTR_QR : 1,       
-	C_PRA_QR : 1,           
-	C_FUSE_QR : 1,          
-	C_LV_W_H_QR : 1,        
-	C_HV_W_H_1_QR : 1,      
-	C_HV_W_H_2_QR : 1,      
-	C_HV_W_H_3_QR : 1,      
-	C_HV_W_H_4_QR : 1,      
-	C_HV_W_H_5_QR : 1,      
-	C_HV_W_H_6_QR : 1,      
-	C_HV_W_H_7_QR : 1,      
-	C_HV_W_H_8_QR : 1,      
-	C_BMU_QR : 1,           
-	C_CMU_1_QR : 1,         
-	C_CMU_2_QR : 1,         
-	C_CMU_3_QR : 1,         
-	C_CMU_4_QR : 1,         
-	C_CMU_5_QR : 1,         
-	C_CMU_6_QR : 1,         
-	C_CMU_7_QR : 1,         
-	C_CMU_8_QR : 1,         
-	C_MODULE_1_QR : 1,      
-	C_MODULE_2_QR : 1,      
-	C_MODULE_3_QR : 1,      
-	C_MODULE_4_QR : 1,      
-	C_MODULE_5_QR : 1,      
-	C_MODULE_6_QR : 1,      
-	C_MODULE_7_QR : 1,      
-	C_MODULE_8_QR : 1,      
-	C_MODULE_9_QR : 1,      
-	C_MODULE_10_QR : 1,     
-	C_MODULE_11_QR : 1,     
-	C_MODULE_12_QR : 1,     
-	C_MODULE_13_QR : 1,     
-	C_MODULE_14_QR : 1,     
-	C_MODULE_15_QR : 1,     
-	C_MODULE_16_QR : 1,     
-	C_MODULE_2_1_QR : 1,    
-	C_MODULE_2_2_QR : 1,    
-	C_MODULE_2_3_QR : 1,    
-	C_MODULE_2_4_QR : 1,    
-	C_MODULE_2_5_QR : 1,    
-	C_MODULE_2_6_QR : 1,    
-	C_MODULE_2_7_QR : 1,    
-	C_MODULE_2_8_QR : 1,    
-	C_MODULE_2_9_QR : 1,    
-	C_MODULE_2_10_QR : 1,   
-	C_MODULE_2_11_QR : 1,   
-	C_MODULE_2_12_QR : 1,   
-	C_MODULE_2_13_QR : 1,   
-	C_MODULE_2_14_QR : 1,   
-	C_MODULE_2_15_QR : 1,   
-	C_MODULE_2_16_QR : 1,   
-	D_UPR_CASE_QR : 1,      
-	D_LWR_CASE_QR : 1,      
-	D_HV_CNTR_1_QR : 1,     
-	D_HV_CNTR_2_QR : 1,     
-	D_RELAY_QR : 1,         
-	D_LV_W_H_QR : 1,        
-	D_HV_W_H_1_QR : 1,      
-	D_HV_W_H_2_QR : 1,      
-	D_BMU_QR : 1,           
-	D_CMU_1_QR : 1,         
-	D_MODULE_1_QR : 1,      
-	D_MODULE_2_QR : 1,      
-	D2_HV_W_H_1_QR : 1,     
-	D2_CMU_1_QR : 1,        
-	D2_RELAY_QR : 1,        
-	D2_BMU_QR : 1,          
-	D2_HV_CNTR_1_QR : 1,    
-	D2_HV_CNTR_2_QR : 1,    
-	D2_LWR_CASE_QR : 1,     
-	D2_UPR_CASE_QR : 1,     
-	D2_LV_W_H_QR : 1,       
-	D2_MODULE_1_QR : 1,     
-	A_UPR_CASE_품번 : 1,    
-	A_LWR_CASE_품번 : 1,    
-	A_S_PLUG_품번 : 1,      
-	A_SPA_품번 : 1,         
-	A_HT_CNTR_품번 : 1,     
-	A_HV_CNTR_품번 : 1,     
-	A_PRA_품번 : 1,         
-	A_LV_W_H_품번 : 1,      
-	A_HV_W_H_1_품번 : 1,    
-	A_HV_W_H_2_품번 : 1,    
-	A_HV_W_H_3_품번 : 1,    
-	A_HV_W_H_4_품번 : 1,    
-	A_HV_W_H_5_품번 : 1,    
-	A_BMU_품번 : 1,         
-	A_CMU_1_품번 : 1,       
-	A_CMU_2_품번 : 1,       
-	A_CMU_3_품번 : 1,       
-	A_CMU_4_품번 : 1,       
-	A_CMU_5_품번 : 1,       
-	A_MODULE_1_품번 : 1,    
-	A_MODULE_2_품번 : 1,    
-	A_MODULE_3_품번 : 1,    
-	A_MODULE_4_품번 : 1,    
-	A_MODULE_5_품번 : 1,    
-	B_UPR_CASE_품번 : 1,    
-	B_LWR_CASE_품번 : 1,    
-	B_HV_CNTR_품번 : 1,     
-	B_HT_CNTR_품번 : 1,     
-	B_PRA_품번 : 1,         
-	B_FUSE_품번 : 1,        
-	B_HV_W_H_1_품번 : 1,    
-	B_HV_W_H_2_품번 : 1,    
-	B_LV_W_H_품번 : 1,      
-	B_BMU_품번 : 1,         
-	B_CMU_1_품번 : 1,       
-	B_CMU_2_품번 : 1,       
-	B_CMU_3_품번 : 1,       
-	B_CMU_4_품번 : 1,       
-	B_CMU_5_품번 : 1,       
-	B_MODULE_1_품번 : 1,    
-	B_MODULE_2_품번 : 1,    
-	B_MODULE_3_품번 : 1,    
-	B_MODULE_4_품번 : 1,    
-	B_MODULE_5_품번 : 1,    
-	B_MODULE_6_품번 : 1,    
-	B_MODULE_7_품번 : 1,    
-	B_MODULE_8_품번 : 1,    
-	B_MODULE_9_품번 : 1,    
-	B_MODULE_10_품번 : 1,   
-	C_UPR_CASE_품번 : 1,    
-	C_LWR_CASE_품번 : 1,    
-	C_HV_CNTR_1_품번 : 1,   
-	C_HV_CNTR_2_품번 : 1,   
-	C_HT_CNTR_품번 : 1,     
-	C_PRA_품번 : 1,         
-	C_FUSE_품번 : 1,        
-	C_LV_W_H_품번 : 1,      
-	C_HV_W_H_1_품번 : 1,    
-	C_HV_W_H_2_품번 : 1,    
-	C_HV_W_H_3_품번 : 1,    
-	C_HV_W_H_4_품번 : 1,    
-	C_HV_W_H_5_품번 : 1,    
-	C_HV_W_H_6_품번 : 1,    
-	C_HV_W_H_7_품번 : 1,    
-	C_HV_W_H_8_품번 : 1,    
-	C_BMU_품번 : 1,         
-	C_CMU_1_품번 : 1,       
-	C_CMU_2_품번 : 1,       
-	C_CMU_3_품번 : 1,       
-	C_CMU_4_품번 : 1,       
-	C_CMU_5_품번 : 1,       
-	C_CMU_6_품번 : 1,       
-	C_CMU_7_품번 : 1,       
-	C_CMU_8_품번 : 1,       
-	C_MODULE_1_품번 : 1,    
-	C_MODULE_2_품번 : 1,    
-	C_MODULE_3_품번 : 1,    
-	C_MODULE_4_품번 : 1,    
-	C_MODULE_5_품번 : 1,    
-	C_MODULE_6_품번 : 1,    
-	C_MODULE_7_품번 : 1,    
-	C_MODULE_8_품번 : 1,    
-	C_MODULE_9_품번 : 1,    
-	C_MODULE_10_품번 : 1,   
-	C_MODULE_11_품번 : 1,   
-	C_MODULE_12_품번 : 1,   
-	C_MODULE_13_품번 : 1,   
-	C_MODULE_14_품번 : 1,   
-	C_MODULE_15_품번 : 1,   
-	C_MODULE_16_품번 : 1,   
-	C_MODULE_2_1_품번 : 1,  
-	C_MODULE_2_2_품번 : 1,  
-	C_MODULE_2_3_품번 : 1,  
-	C_MODULE_2_4_품번 : 1,  
-	C_MODULE_2_5_품번 : 1,  
-	C_MODULE_2_6_품번 : 1,  
-	C_MODULE_2_7_품번 : 1,  
-	C_MODULE_2_8_품번 : 1,  
-	C_MODULE_2_9_품번 : 1,  
-	C_MODULE_2_10_품번 : 1, 
-	C_MODULE_2_11_품번 : 1, 
-	C_MODULE_2_12_품번 : 1, 
-	C_MODULE_2_13_품번 : 1, 
-	C_MODULE_2_14_품번 : 1, 
-	C_MODULE_2_15_품번 : 1, 
-	C_MODULE_2_16_품번 : 1, 
-	D_UPR_CASE_품번 : 1,    
-	D_LWR_CASE_품번 : 1,    
-	D_HV_CNTR_1_품번 : 1,   
-	D_HV_CNTR_2_품번 : 1,   
-	D_RELAY_품번 : 1,       
-	D_LV_W_H_품번 : 1,      
-	D_HV_W_H_1_품번 : 1,    
-	D_HV_W_H_2_품번 : 1,    
-	D_BMU_품번 : 1,         
-	D_CMU_1_품번 : 1,       
-	D_MODULE_1_품번 : 1,    
-	D_MODULE_2_품번 : 1,    
-	D2_HV_W_H_1_품번 : 1,   
-	D2_CMU_1_품번 : 1,      
-	D2_RELAY_품번 : 1,      
-	D2_BMU_품번 : 1,        
-	D2_HV_CNTR_1_품번 : 1,  
-	D2_HV_CNTR_2_품번 : 1,  
-	D2_LWR_CASE_품번 : 1,   
-	D2_UPR_CASE_품번 : 1,   
-	D2_LV_W_H_품번 : 1,     
-	D2_MODULE_1_품번 : 1,   
+	_id: 0,
+	관리번호: 1,
+	A_UPR_CASE_QR: 1,
+	A_LWR_CASE_QR: 1,
+	A_S_PLUG_QR: 1,
+	A_SPA_QR: 1,
+	A_HT_CNTR_QR: 1,
+	A_HV_CNTR_QR: 1,
+	A_PRA_QR: 1,
+	A_LV_W_H_QR: 1,
+	A_HV_W_H_1_QR: 1,
+	A_HV_W_H_2_QR: 1,
+	A_HV_W_H_3_QR: 1,
+	A_HV_W_H_4_QR: 1,
+	A_HV_W_H_5_QR: 1,
+	A_BMU_QR: 1,
+	A_CMU_1_QR: 1,
+	A_CMU_2_QR: 1,
+	A_CMU_3_QR: 1,
+	A_CMU_4_QR: 1,
+	A_CMU_5_QR: 1,
+	A_MODULE_1_QR: 1,
+	A_MODULE_2_QR: 1,
+	A_MODULE_3_QR: 1,
+	A_MODULE_4_QR: 1,
+	A_MODULE_5_QR: 1,
+	B_UPR_CASE_QR: 1,
+	B_LWR_CASE_QR: 1,
+	B_HV_CNTR_QR: 1,
+	B_HT_CNTR_QR: 1,
+	B_PRA_QR: 1,
+	B_FUSE_QR: 1,
+	B_HV_W_H_1_QR: 1,
+	B_HV_W_H_2_QR: 1,
+	B_LV_W_H_QR: 1,
+	B_BMU_QR: 1,
+	B_CMU_1_QR: 1,
+	B_CMU_2_QR: 1,
+	B_CMU_3_QR: 1,
+	B_CMU_4_QR: 1,
+	B_CMU_5_QR: 1,
+	B_MODULE_1_QR: 1,
+	B_MODULE_2_QR: 1,
+	B_MODULE_3_QR: 1,
+	B_MODULE_4_QR: 1,
+	B_MODULE_5_QR: 1,
+	B_MODULE_6_QR: 1,
+	B_MODULE_7_QR: 1,
+	B_MODULE_8_QR: 1,
+	B_MODULE_9_QR: 1,
+	B_MODULE_10_QR: 1,
+	C_UPR_CASE_QR: 1,
+	C_LWR_CASE_QR: 1,
+	C_HV_CNTR_1_QR: 1,
+	C_HV_CNTR_2_QR: 1,
+	C_HT_CNTR_QR: 1,
+	C_PRA_QR: 1,
+	C_FUSE_QR: 1,
+	C_LV_W_H_QR: 1,
+	C_HV_W_H_1_QR: 1,
+	C_HV_W_H_2_QR: 1,
+	C_HV_W_H_3_QR: 1,
+	C_HV_W_H_4_QR: 1,
+	C_HV_W_H_5_QR: 1,
+	C_HV_W_H_6_QR: 1,
+	C_HV_W_H_7_QR: 1,
+	C_HV_W_H_8_QR: 1,
+	C_BMU_QR: 1,
+	C_CMU_1_QR: 1,
+	C_CMU_2_QR: 1,
+	C_CMU_3_QR: 1,
+	C_CMU_4_QR: 1,
+	C_CMU_5_QR: 1,
+	C_CMU_6_QR: 1,
+	C_CMU_7_QR: 1,
+	C_CMU_8_QR: 1,
+	C_MODULE_1_QR: 1,
+	C_MODULE_2_QR: 1,
+	C_MODULE_3_QR: 1,
+	C_MODULE_4_QR: 1,
+	C_MODULE_5_QR: 1,
+	C_MODULE_6_QR: 1,
+	C_MODULE_7_QR: 1,
+	C_MODULE_8_QR: 1,
+	C_MODULE_9_QR: 1,
+	C_MODULE_10_QR: 1,
+	C_MODULE_11_QR: 1,
+	C_MODULE_12_QR: 1,
+	C_MODULE_13_QR: 1,
+	C_MODULE_14_QR: 1,
+	C_MODULE_15_QR: 1,
+	C_MODULE_16_QR: 1,
+	C_MODULE_2_1_QR: 1,
+	C_MODULE_2_2_QR: 1,
+	C_MODULE_2_3_QR: 1,
+	C_MODULE_2_4_QR: 1,
+	C_MODULE_2_5_QR: 1,
+	C_MODULE_2_6_QR: 1,
+	C_MODULE_2_7_QR: 1,
+	C_MODULE_2_8_QR: 1,
+	C_MODULE_2_9_QR: 1,
+	C_MODULE_2_10_QR: 1,
+	C_MODULE_2_11_QR: 1,
+	C_MODULE_2_12_QR: 1,
+	C_MODULE_2_13_QR: 1,
+	C_MODULE_2_14_QR: 1,
+	C_MODULE_2_15_QR: 1,
+	C_MODULE_2_16_QR: 1,
+	D_UPR_CASE_QR: 1,
+	D_LWR_CASE_QR: 1,
+	D_HV_CNTR_1_QR: 1,
+	D_HV_CNTR_2_QR: 1,
+	D_RELAY_QR: 1,
+	D_LV_W_H_QR: 1,
+	D_HV_W_H_1_QR: 1,
+	D_HV_W_H_2_QR: 1,
+	D_BMU_QR: 1,
+	D_CMU_1_QR: 1,
+	D_MODULE_1_QR: 1,
+	D_MODULE_2_QR: 1,
+	D2_HV_W_H_1_QR: 1,
+	D2_CMU_1_QR: 1,
+	D2_RELAY_QR: 1,
+	D2_BMU_QR: 1,
+	D2_HV_CNTR_1_QR: 1,
+	D2_HV_CNTR_2_QR: 1,
+	D2_LWR_CASE_QR: 1,
+	D2_UPR_CASE_QR: 1,
+	D2_LV_W_H_QR: 1,
+	D2_MODULE_1_QR: 1,
+	A_UPR_CASE_품번: 1,
+	A_LWR_CASE_품번: 1,
+	A_S_PLUG_품번: 1,
+	A_SPA_품번: 1,
+	A_HT_CNTR_품번: 1,
+	A_HV_CNTR_품번: 1,
+	A_PRA_품번: 1,
+	A_LV_W_H_품번: 1,
+	A_HV_W_H_1_품번: 1,
+	A_HV_W_H_2_품번: 1,
+	A_HV_W_H_3_품번: 1,
+	A_HV_W_H_4_품번: 1,
+	A_HV_W_H_5_품번: 1,
+	A_BMU_품번: 1,
+	A_CMU_1_품번: 1,
+	A_CMU_2_품번: 1,
+	A_CMU_3_품번: 1,
+	A_CMU_4_품번: 1,
+	A_CMU_5_품번: 1,
+	A_MODULE_1_품번: 1,
+	A_MODULE_2_품번: 1,
+	A_MODULE_3_품번: 1,
+	A_MODULE_4_품번: 1,
+	A_MODULE_5_품번: 1,
+	B_UPR_CASE_품번: 1,
+	B_LWR_CASE_품번: 1,
+	B_HV_CNTR_품번: 1,
+	B_HT_CNTR_품번: 1,
+	B_PRA_품번: 1,
+	B_FUSE_품번: 1,
+	B_HV_W_H_1_품번: 1,
+	B_HV_W_H_2_품번: 1,
+	B_LV_W_H_품번: 1,
+	B_BMU_품번: 1,
+	B_CMU_1_품번: 1,
+	B_CMU_2_품번: 1,
+	B_CMU_3_품번: 1,
+	B_CMU_4_품번: 1,
+	B_CMU_5_품번: 1,
+	B_MODULE_1_품번: 1,
+	B_MODULE_2_품번: 1,
+	B_MODULE_3_품번: 1,
+	B_MODULE_4_품번: 1,
+	B_MODULE_5_품번: 1,
+	B_MODULE_6_품번: 1,
+	B_MODULE_7_품번: 1,
+	B_MODULE_8_품번: 1,
+	B_MODULE_9_품번: 1,
+	B_MODULE_10_품번: 1,
+	C_UPR_CASE_품번: 1,
+	C_LWR_CASE_품번: 1,
+	C_HV_CNTR_1_품번: 1,
+	C_HV_CNTR_2_품번: 1,
+	C_HT_CNTR_품번: 1,
+	C_PRA_품번: 1,
+	C_FUSE_품번: 1,
+	C_LV_W_H_품번: 1,
+	C_HV_W_H_1_품번: 1,
+	C_HV_W_H_2_품번: 1,
+	C_HV_W_H_3_품번: 1,
+	C_HV_W_H_4_품번: 1,
+	C_HV_W_H_5_품번: 1,
+	C_HV_W_H_6_품번: 1,
+	C_HV_W_H_7_품번: 1,
+	C_HV_W_H_8_품번: 1,
+	C_BMU_품번: 1,
+	C_CMU_1_품번: 1,
+	C_CMU_2_품번: 1,
+	C_CMU_3_품번: 1,
+	C_CMU_4_품번: 1,
+	C_CMU_5_품번: 1,
+	C_CMU_6_품번: 1,
+	C_CMU_7_품번: 1,
+	C_CMU_8_품번: 1,
+	C_MODULE_1_품번: 1,
+	C_MODULE_2_품번: 1,
+	C_MODULE_3_품번: 1,
+	C_MODULE_4_품번: 1,
+	C_MODULE_5_품번: 1,
+	C_MODULE_6_품번: 1,
+	C_MODULE_7_품번: 1,
+	C_MODULE_8_품번: 1,
+	C_MODULE_9_품번: 1,
+	C_MODULE_10_품번: 1,
+	C_MODULE_11_품번: 1,
+	C_MODULE_12_품번: 1,
+	C_MODULE_13_품번: 1,
+	C_MODULE_14_품번: 1,
+	C_MODULE_15_품번: 1,
+	C_MODULE_16_품번: 1,
+	C_MODULE_2_1_품번: 1,
+	C_MODULE_2_2_품번: 1,
+	C_MODULE_2_3_품번: 1,
+	C_MODULE_2_4_품번: 1,
+	C_MODULE_2_5_품번: 1,
+	C_MODULE_2_6_품번: 1,
+	C_MODULE_2_7_품번: 1,
+	C_MODULE_2_8_품번: 1,
+	C_MODULE_2_9_품번: 1,
+	C_MODULE_2_10_품번: 1,
+	C_MODULE_2_11_품번: 1,
+	C_MODULE_2_12_품번: 1,
+	C_MODULE_2_13_품번: 1,
+	C_MODULE_2_14_품번: 1,
+	C_MODULE_2_15_품번: 1,
+	C_MODULE_2_16_품번: 1,
+	D_UPR_CASE_품번: 1,
+	D_LWR_CASE_품번: 1,
+	D_HV_CNTR_1_품번: 1,
+	D_HV_CNTR_2_품번: 1,
+	D_RELAY_품번: 1,
+	D_LV_W_H_품번: 1,
+	D_HV_W_H_1_품번: 1,
+	D_HV_W_H_2_품번: 1,
+	D_BMU_품번: 1,
+	D_CMU_1_품번: 1,
+	D_MODULE_1_품번: 1,
+	D_MODULE_2_품번: 1,
+	D2_HV_W_H_1_품번: 1,
+	D2_CMU_1_품번: 1,
+	D2_RELAY_품번: 1,
+	D2_BMU_품번: 1,
+	D2_HV_CNTR_1_품번: 1,
+	D2_HV_CNTR_2_품번: 1,
+	D2_LWR_CASE_품번: 1,
+	D2_UPR_CASE_품번: 1,
+	D2_LV_W_H_품번: 1,
+	D2_MODULE_1_품번: 1,
 };
 
 var doc_count = 0;
@@ -2380,21 +2380,21 @@ var check = 0;
 var str = '';
 
 var socket = io();
-socket.on('connect', function() {
+socket.on('connect', function () {
 	console.log('connected');
 	loadPage('base/login.html');
 });
 
-socket.on('auto_backup_db_status', function(running) {
+socket.on('auto_backup_db_status', function (running) {
 	//console.log('auto backup status:', running);
-	if(running == true) str = '백업(O)';
+	if (running == true) str = '백업(O)';
 	else str = '백업(X)';
 	document.getElementById('auto_backup_db_status').innerHTML = str;
 });
 
-socket.on('qr_lebel_result', function(result) {
+socket.on('qr_lebel_result', function (result) {
 	//alert(result);
-	if(result == 'complete') {
+	if (result == 'complete') {
 		var a = document.createElement('a');
 		a.href = "/qr_label";
 		a.download = 'EOL_QR_LABEL';
@@ -2403,138 +2403,138 @@ socket.on('qr_lebel_result', function(result) {
 	}
 });
 
-socket.on('insert_result', async function(id) {
+socket.on('insert_result', async function (id) {
 	//console.log('insert id: ', id);
 	insert_id = id;
 	flag_arrivedMSG = true;
 });
 
-socket.on('count_result', async function(col, count, rcv_check, option = '') {
+socket.on('count_result', async function (col, count, rcv_check, option = '') {
 	reset_count();
 
-	if(rcv_check != check) return;
-	switch(col) {
-		case BSA재제조 :
+	if (rcv_check != check) return;
+	switch (col) {
+		case BSA재제조:
 			BSA재제조_cnt = 0;
 			BSA재제조_cnt = JSON.parse(JSON.stringify(count));
 			break;
 
-		case 입고 : 
+		case 입고:
 			입고_cnt = 0;
 			입고_cnt = JSON.parse(JSON.stringify(count));
 			break;
 
-		case 세척 :
+		case 세척:
 			세척_cnt = 0;
 			세척_cnt = JSON.parse(JSON.stringify(count));
 			break;
 
-		case 기초검사 :
+		case 기초검사:
 			기초검사_cnt = 0;
 			기초검사_cnt = JSON.parse(JSON.stringify(count));
 			break;
 
-		case 성능검사 :
+		case 성능검사:
 			성능검사_cnt = 0;
 			성능검사_cnt = JSON.parse(JSON.stringify(count));
 			break;
 
-		case EOL :
+		case EOL:
 			EOL_cnt = 0;
 			EOL_cnt = JSON.parse(JSON.stringify(count));
 			break;
 
-		case 출하정보 :
+		case 출하정보:
 			출하정보_cnt = 0;
 			출하정보_cnt = JSON.parse(JSON.stringify(count));
 			break;
 
-		case 분해조립 :
+		case 분해조립:
 			분해조립_cnt = 0;
 			분해조립_cnt = JSON.parse(JSON.stringify(count));
 			break;
 
-		case 신품정보 :
+		case 신품정보:
 			신품정보_cnt = 0;
 			신품정보_cnt = JSON.parse(JSON.stringify(count));
 			break;
 
-		case 고품정보 :
+		case 고품정보:
 			고품정보_cnt = 0;
 			고품정보_cnt = JSON.parse(JSON.stringify(count));
 			break;
 
-		case 특이사항 : 
+		case 특이사항:
 			특이사항_cnt = 0;
 			특이사항_cnt = JSON.parse(JSON.stringify(count));
 			break;
 
-		case 교체부품상세1 :
+		case 교체부품상세1:
 			교체부품상세1_cnt = 0;
 			교체부품상세1_cnt = JSON.parse(JSON.stringify(count));
 			break;
 
-		case 교체부품상세2 :
+		case 교체부품상세2:
 			교체부품상세2_cnt = 0;
 			교체부품상세2_cnt = JSON.parse(JSON.stringify(count));
 			break;
 
-		case 교체부품상세3 :
+		case 교체부품상세3:
 			교체부품상세3_cnt = 0;
 			교체부품상세3_cnt = JSON.parse(JSON.stringify(count));
 			break;
 
-		case 교체부품상세4 :
+		case 교체부품상세4:
 			교체부품상세4_cnt = 0;
 			교체부품상세4_cnt = JSON.parse(JSON.stringify(count));
 			break;
 
-		case 교체부품상세5 :
+		case 교체부품상세5:
 			교체부품상세5_cnt = 0;
 			교체부품상세5_cnt = JSON.parse(JSON.stringify(count));
 			break;
 
-		case 교체부품상세6 :
+		case 교체부품상세6:
 			교체부품상세6_cnt = 0;
 			교체부품상세6_cnt = JSON.parse(JSON.stringify(count));
 			break;
 
-		case 교체부품상세7 :
+		case 교체부품상세7:
 			교체부품상세7_cnt = 0;
 			교체부품상세7_cnt = JSON.parse(JSON.stringify(count));
 			break;
 
-		case 교체부품상세8 :
+		case 교체부품상세8:
 			교체부품상세8_cnt = 0;
 			교체부품상세8_cnt = JSON.parse(JSON.stringify(count));
 			break;
 
-		case 교체부품상세9 :
+		case 교체부품상세9:
 			교체부품상세9_cnt = 0;
 			교체부품상세9_cnt = JSON.parse(JSON.stringify(count));
 			break;
 
-		case 교체부품상세10 :
+		case 교체부품상세10:
 			교체부품상세10_cnt = 0;
 			교체부품상세10_cnt = JSON.parse(JSON.stringify(count));
 			break;
 
-		case 자재입출고 :
+		case 자재입출고:
 			자재입출고_cnt = 0;
 			자재입출고_cnt = JSON.parse(JSON.stringify(count));
 			break;
 
-		case 구장재고 :
+		case 구장재고:
 			구장재고_cnt = 0;
 			구장재고_cnt = JSON.parse(JSON.stringify(count));
 			break;
 
-		case 입고_pic :
+		case 입고_pic:
 			입고_pic_cnt = 0;
 			입고_pic_cnt = JSON.parse(JSON.stringify(count));
 			break;
 
-		case 세척_pic_cnt :
+		case 세척_pic_cnt:
 			세척_pic_cnt = 0;
 			세척_pic_cnt = JSON.parse(JSON.stringify(count));
 			break;
@@ -2544,12 +2544,12 @@ socket.on('count_result', async function(col, count, rcv_check, option = '') {
 			기초검사_pic_cnt = JSON.parse(JSON.stringify(count));
 			break;
 
-		case 분해조립_pic :
+		case 분해조립_pic:
 			분해조립_pic_cnt = 0;
 			분해조립_pic_cnt = JSON.parse(JSON.stringify(count));
 			break;
 
-		case 성능검사_pic :
+		case 성능검사_pic:
 			성능검사_pic_cnt = 0;
 			성능검사_pic_cnt = JSON.parse(JSON.stringify(count));
 			break;
@@ -2559,138 +2559,138 @@ socket.on('count_result', async function(col, count, rcv_check, option = '') {
 			EOL_pic_cnt = JSON.parse(JSON.stringify(count));
 			break;
 
-		case 특이사항 :
-			특이사항_pic_cnt =  0;
-			특이사항_pic_cnt =  JSON.parse(JSON.stringify(count));
+		case 특이사항:
+			특이사항_pic_cnt = 0;
+			특이사항_pic_cnt = JSON.parse(JSON.stringify(count));
 			break;
 
-		case 출하_pic :
+		case 출하_pic:
 			출하_pic_cnt = 0;
 			출하_pic_cnt = JSON.parse(JSON.stringify(count));
 			break;
 
-		case 반품입고_pic :
+		case 반품입고_pic:
 			반품입고_pic_cnt = 0;
 			반품입고_pic_cnt = JSON.parse(JSON.stringify(count));
 			break;
 
-		case 재출하_pic :
+		case 재출하_pic:
 			재출하_pic_cnt = 0;
 			재출하_pic_cnt = JSON.parse(JSON.stringify(count));
 			break;
 
-		case 완전분해_pic :
+		case 완전분해_pic:
 			완전분해_pic_cnt = 0;
 			완전분해_pic_cnt = JSON.parse(JSON.stringify(count));
 			break;
 
-		case 폐기_pic :
+		case 폐기_pic:
 			폐기_pic_cnt = 0;
 			폐기_pic_cnt = JSON.parse(JSON.stringify(count));
 			break;
 
-		case 기초보고서 :
+		case 기초보고서:
 			기초보고서_cnt = 0;
 			기초보고서_cnt = JSON.parse(JSON.stringify(count));
 			break;
 
-		case 완료보고서 :
+		case 완료보고서:
 			완료보고서_cnt = 0;
 			완료보고서_cnt = JSON.parse(JSON.stringify(count));
 			break;
 
-		case 계정 :
+		case 계정:
 			계정_cnt = 0;
 			계정_cnt = JSON.parse(JSON.stringify(count));
 
-		case 부품정보_list :
+		case 부품정보_list:
 			부품정보_list_cnt = 0;
 			부품정보_list_cnt = JSON.parse(JSON.stringify(count));
 
-		default : 
-			doc_count = 0; 
-			doc_count = JSON.parse(JSON.stringify(count)); 
+		default:
+			doc_count = 0;
+			doc_count = JSON.parse(JSON.stringify(count));
 			break;
 	}
 
-	switch(option) {
-		case '입고' : 
-			option_입고_cnt = JSON.parse(JSON.stringify(BSA재제조_cnt)); 
+	switch (option) {
+		case '입고':
+			option_입고_cnt = JSON.parse(JSON.stringify(BSA재제조_cnt));
 			BSA재제조_cnt = 0;
 			break;
 
-		case '세척' : 
-			option_세척_cnt = JSON.parse(JSON.stringify(BSA재제조_cnt)); 
+		case '세척':
+			option_세척_cnt = JSON.parse(JSON.stringify(BSA재제조_cnt));
 			BSA재제조_cnt = 0;
 			break;
 
-		case '기초검사' : 
-			option_기초검사_cnt = JSON.parse(JSON.stringify(BSA재제조_cnt)); 
+		case '기초검사':
+			option_기초검사_cnt = JSON.parse(JSON.stringify(BSA재제조_cnt));
 			BSA재제조_cnt = 0;
 			break;
 
-		case '분해조립' : 
-			option_분해조립_cnt = JSON.parse(JSON.stringify(BSA재제조_cnt)); 
+		case '분해조립':
+			option_분해조립_cnt = JSON.parse(JSON.stringify(BSA재제조_cnt));
 			BSA재제조_cnt = 0;
 			break;
 
-		case '성능검사' : 
-			option_성능검사_cnt = JSON.parse(JSON.stringify(BSA재제조_cnt)); 
+		case '성능검사':
+			option_성능검사_cnt = JSON.parse(JSON.stringify(BSA재제조_cnt));
 			BSA재제조_cnt = 0;
 			break;
 
-		case 'EOL' : 
-			option_EOL_cnt = JSON.parse(JSON.stringify(BSA재제조_cnt)); 
+		case 'EOL':
+			option_EOL_cnt = JSON.parse(JSON.stringify(BSA재제조_cnt));
 			BSA재제조_cnt = 0;
 			break;
 
-		case '출하정보' :
-			option_출하정보_cnt = JSON.parse(JSON.stringify(BSA재제조_cnt)); 
+		case '출하정보':
+			option_출하정보_cnt = JSON.parse(JSON.stringify(BSA재제조_cnt));
 			BSA재제조_cnt = 0;
 			break;
 
-		case '출하' :
-			option_출하_cnt = JSON.parse(JSON.stringify(BSA재제조_cnt)); 
+		case '출하':
+			option_출하_cnt = JSON.parse(JSON.stringify(BSA재제조_cnt));
 			BSA재제조_cnt = 0;
 			break;
 
-		case '입고당일' : 
-			option_입고당일_cnt = JSON.parse(JSON.stringify(BSA재제조_cnt)); 
+		case '입고당일':
+			option_입고당일_cnt = JSON.parse(JSON.stringify(BSA재제조_cnt));
 			BSA재제조_cnt = 0;
 			break;
 
-		case '세척당일' : 
-			option_세척당일_cnt = JSON.parse(JSON.stringify(BSA재제조_cnt)); 
+		case '세척당일':
+			option_세척당일_cnt = JSON.parse(JSON.stringify(BSA재제조_cnt));
 			BSA재제조_cnt = 0;
 			break;
 
-		case '기초검사당일' : 
-			option_기초검사당일_cnt = JSON.parse(JSON.stringify(BSA재제조_cnt)); 
+		case '기초검사당일':
+			option_기초검사당일_cnt = JSON.parse(JSON.stringify(BSA재제조_cnt));
 			BSA재제조_cnt = 0;
 			break;
 
-		case '분해조립당일' : 
-			option_분해조립당일_cnt = JSON.parse(JSON.stringify(BSA재제조_cnt)); 
+		case '분해조립당일':
+			option_분해조립당일_cnt = JSON.parse(JSON.stringify(BSA재제조_cnt));
 			BSA재제조_cnt = 0;
 			break;
 
-		case '성능검사당일' : 
-			option_성능검사당일_cnt = JSON.parse(JSON.stringify(BSA재제조_cnt)); 
+		case '성능검사당일':
+			option_성능검사당일_cnt = JSON.parse(JSON.stringify(BSA재제조_cnt));
 			BSA재제조_cnt = 0;
 			break;
 
-		case 'EOL당일' : 
-			option_EOL당일_cnt = JSON.parse(JSON.stringify(BSA재제조_cnt)); 
+		case 'EOL당일':
+			option_EOL당일_cnt = JSON.parse(JSON.stringify(BSA재제조_cnt));
 			BSA재제조_cnt = 0;
 			break;
 
-		case '출하정보당일' :
-			option_출하정보당일_cnt = JSON.parse(JSON.stringify(BSA재제조_cnt)); 
+		case '출하정보당일':
+			option_출하정보당일_cnt = JSON.parse(JSON.stringify(BSA재제조_cnt));
 			BSA재제조_cnt = 0;
 			break;
 
-		case '출하당일' :
-			option_출하당일_cnt = JSON.parse(JSON.stringify(BSA재제조_cnt)); 
+		case '출하당일':
+			option_출하당일_cnt = JSON.parse(JSON.stringify(BSA재제조_cnt));
 			BSA재제조_cnt = 0;
 			break;
 
@@ -2701,132 +2701,132 @@ socket.on('count_result', async function(col, count, rcv_check, option = '') {
 	flag_arrivedMSG = true;
 });
 
-socket.on('find_result', async function(col, result, rcv_check) {
+socket.on('find_result', async function (col, result, rcv_check) {
 	reset_result();
-	if(rcv_check != check) return;
+	if (rcv_check != check) return;
 
-	switch(col) {
-		case BSA재제조 :
+	switch (col) {
+		case BSA재제조:
 			BSA재제조_v = [];
 			BSA재제조_v = JSON.parse(JSON.stringify(result));
 			break;
 
-		case 입고 : 
+		case 입고:
 			입고_v = [];
 			입고_v = JSON.parse(JSON.stringify(result));
 			break;
 
-		case 세척 :
+		case 세척:
 			세척_v = [];
 			세척_v = JSON.parse(JSON.stringify(result));
 			break;
 
-		case 기초검사 :
+		case 기초검사:
 			기초검사_v = [];
 			기초검사_v = JSON.parse(JSON.stringify(result));
 			break;
 
-		case 성능검사 :
+		case 성능검사:
 			성능검사_v = [];
 			성능검사_v = JSON.parse(JSON.stringify(result));
 			break;
 
-		case EOL :
+		case EOL:
 			EOL_v = [];
 			EOL_v = JSON.parse(JSON.stringify(result));
 			break;
 
-		case 출하정보 :
+		case 출하정보:
 			출하정보_v = [];
 			출하정보_v = JSON.parse(JSON.stringify(result));
 			break;
 
-		case 분해조립 :
+		case 분해조립:
 			분해조립_v = [];
 			분해조립_v = JSON.parse(JSON.stringify(result));
 			break;
 
-		case 신품정보 :
+		case 신품정보:
 			신품정보_v = [];
 			신품정보_v = JSON.parse(JSON.stringify(result));
 			break;
 
-		case 고품정보 :
+		case 고품정보:
 			고품정보_v = [];
 			고품정보_v = JSON.parse(JSON.stringify(result));
 			break;
 
-		case 특이사항 : 
+		case 특이사항:
 			특이사항_v = [];
 			특이사항_v = JSON.parse(JSON.stringify(result));
 			break;
 
-		case 교체부품상세1 :
+		case 교체부품상세1:
 			교체부품상세1_v = [];
 			교체부품상세1_v = JSON.parse(JSON.stringify(result));
 			break;
 
-		case 교체부품상세2 :
+		case 교체부품상세2:
 			교체부품상세2_v = [];
 			교체부품상세2_v = JSON.parse(JSON.stringify(result));
 			break;
 
-		case 교체부품상세3 :
+		case 교체부품상세3:
 			교체부품상세3_v = [];
 			교체부품상세3_v = JSON.parse(JSON.stringify(result));
 			break;
 
-		case 교체부품상세4 :
+		case 교체부품상세4:
 			교체부품상세4_v = [];
 			교체부품상세4_v = JSON.parse(JSON.stringify(result));
 			break;
 
-		case 교체부품상세5 :
+		case 교체부품상세5:
 			교체부품상세5_v = [];
 			교체부품상세5_v = JSON.parse(JSON.stringify(result));
 			break;
 
-		case 교체부품상세6 :
+		case 교체부품상세6:
 			교체부품상세6_v = [];
 			교체부품상세6_v = JSON.parse(JSON.stringify(result));
 			break;
 
-		case 교체부품상세7 :
+		case 교체부품상세7:
 			교체부품상세7_v = [];
 			교체부품상세7_v = JSON.parse(JSON.stringify(result));
 			break;
 
-		case 교체부품상세8 :
+		case 교체부품상세8:
 			교체부품상세8_v = [];
 			교체부품상세8_v = JSON.parse(JSON.stringify(result));
 			break;
 
-		case 교체부품상세9 :
+		case 교체부품상세9:
 			교체부품상세9_v = [];
 			교체부품상세9_v = JSON.parse(JSON.stringify(result));
 			break;
 
-		case 교체부품상세10 :
+		case 교체부품상세10:
 			교체부품상세10_v = [];
 			교체부품상세10_v = JSON.parse(JSON.stringify(result));
 			break;
 
-		case 자재입출고 :
+		case 자재입출고:
 			자재입출고_v = [];
 			자재입출고_v = JSON.parse(JSON.stringify(result));
 			break;
 
-		case 구장재고 :
+		case 구장재고:
 			구장재고_v = [];
 			구장재고_v = JSON.parse(JSON.stringify(result));
 			break;
 
-		case 입고_pic :
+		case 입고_pic:
 			입고_pic_v = [];
 			입고_pic_v = JSON.parse(JSON.stringify(result));
 			break;
 
-		case 세척_pic_v :
+		case 세척_pic_v:
 			세척_pic_v = [];
 			세척_pic_v = JSON.parse(JSON.stringify(result));
 			break;
@@ -2836,12 +2836,12 @@ socket.on('find_result', async function(col, result, rcv_check) {
 			기초검사_pic_v = JSON.parse(JSON.stringify(result));
 			break;
 
-		case 분해조립_pic :
+		case 분해조립_pic:
 			분해조립_pic_v = [];
 			분해조립_pic_v = JSON.parse(JSON.stringify(result));
 			break;
 
-		case 성능검사_pic :
+		case 성능검사_pic:
 			성능검사_pic_v = [];
 			성능검사_pic_v = JSON.parse(JSON.stringify(result));
 			break;
@@ -2851,74 +2851,74 @@ socket.on('find_result', async function(col, result, rcv_check) {
 			EOL_pic_v = JSON.parse(JSON.stringify(result));
 			break;
 
-		case 특이사항 :
-			특이사항_pic_v =  [];
-			특이사항_pic_v =  JSON.parse(JSON.stringify(result));
+		case 특이사항:
+			특이사항_pic_v = [];
+			특이사항_pic_v = JSON.parse(JSON.stringify(result));
 			break;
 
-		case 출하_pic :
+		case 출하_pic:
 			출하_pic_v = [];
 			출하_pic_v = JSON.parse(JSON.stringify(result));
 			break;
 
-		case 반품입고_pic :
+		case 반품입고_pic:
 			반품입고_pic_v = [];
 			반품입고_pic_v = JSON.parse(JSON.stringify(result));
 			break;
 
-		case 재출하_pic :
+		case 재출하_pic:
 			재출하_pic_v = [];
 			재출하_pic_v = JSON.parse(JSON.stringify(result));
 			break;
 
-		case 완전분해_pic :
+		case 완전분해_pic:
 			완전분해_pic_v = [];
 			완전분해_pic_v = JSON.parse(JSON.stringify(result));
 			break;
 
-		case 폐기_pic :
+		case 폐기_pic:
 			폐기_pic_v = [];
 			폐기_pic_v = JSON.parse(JSON.stringify(result));
 			break;
 
-		case 기초보고서 :
+		case 기초보고서:
 			기초보고서_v = [];
 			기초보고서_v = JSON.parse(JSON.stringify(result));
 			break;
 
-		case 완료보고서 :
+		case 완료보고서:
 			완료보고서_v = [];
 			완료보고서_v = JSON.parse(JSON.stringify(result));
 			break;
 
-		case 계정 :
+		case 계정:
 			계정_v = [];
 			계정_v = JSON.parse(JSON.stringify(result));
 			break;
 
-		case 부품정보_list :
+		case 부품정보_list:
 			부품정보_list_v = [];
 			부품정보_list_v = JSON.parse(JSON.stringify(result));
 			break;
 
-		case 구자료 :
+		case 구자료:
 			구자료_v = [];
 			구자료_v = JSON.parse(JSON.stringify(result));
 			break;
 
-		default : 
-			find_array = []; 
-			find_array = JSON.parse(JSON.stringify(result)); 
+		default:
+			find_array = [];
+			find_array = JSON.parse(JSON.stringify(result));
 			break;
 	}
 
 	flag_arrivedMSG = true;
 });
 
-socket.on('update_result', async function(result) {
+socket.on('update_result', async function (result) {
 	update_count = 0;
 	insert_count = 0;
-	if(result == null) return;
+	if (result == null) return;
 	//console.log('update result count: ', result.modifiedCount);
 	//console.log('insert result count: ', result.upsertedCount);
 	update_count = result.modifiedCount;
@@ -2926,18 +2926,18 @@ socket.on('update_result', async function(result) {
 	flag_arrivedMSG = true;
 });
 
-socket.on('delete_result', async function(count) {
+socket.on('delete_result', async function (count) {
 	console.log('delete result count: ', count);
 	delete_count = count;
 	flag_arrivedMSG = true;
 });
 
-socket.on('drop_result', async function(result) {
+socket.on('drop_result', async function (result) {
 	console.log('drop result: ', result);
 	flag_arrivedMSG = true;
 });
 
-socket.on('disconnect', function() {
+socket.on('disconnect', function () {
 	console.log('disconnect');
 	walker = '';
 	const _login_btn = document.getElementById('login_btn');
@@ -3031,285 +3031,285 @@ function reset_count() {
 }
 
 async function make_qr_label(html_string) {
-	if(socket == undefined) return;
+	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	socket.emit('qr_label', html_string);
 }
 
 async function aggregate() {
-	if(socket == undefined) return;
+	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	socket.emit('aggregate', level);
 }
 
 async function count(col, query, option = '') {
-	if(socket == undefined) return
+	if (socket == undefined) return
 	flag_arrivedMSG = false;
 	check++;
-	if(check > 10) check = 0;
+	if (check > 10) check = 0;
 	socket.emit('count', level, col, query, check, option);
 }
 
 async function insert(col, doc) {
-	if(socket == undefined) return;
+	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	socket.emit('insert', worker, col, doc);
 }
 
 async function insertMany(col, doc) {
-	if(socket == undefined) return;
+	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	socket.emit('insertMany', worker, col, doc);
 }
 
 async function update(col, doc) {
-	if(socket == undefined) return;
+	if (socket == undefined) return;
 	flag_arrivedMSG = false;
-	socket.emit('update', worker, col, { 관리번호: doc.관리번호 }, {$set: doc});
+	socket.emit('update', worker, col, { 관리번호: doc.관리번호 }, { $set: doc });
 }
 
 async function update_자재입출고(col, doc) {
-	if(socket == undefined) return;
+	if (socket == undefined) return;
 	flag_arrivedMSG = false;
-	socket.emit('update', worker, col, { QR: doc.QR }, {$set: doc});
+	socket.emit('update', worker, col, { QR: doc.QR }, { $set: doc });
 }
 
 async function update_보고서(col, doc) {
-	if(socket == undefined) return;
+	if (socket == undefined) return;
 	flag_arrivedMSG = false;
-	socket.emit('update', worker, col, { level: doc.level }, {$set: doc});
+	socket.emit('update', worker, col, { level: doc.level }, { $set: doc });
 }
 
 async function update_재제조번호(col, doc) {
-	if(socket == undefined) return;
+	if (socket == undefined) return;
 	flag_arrivedMSG = false;
-	socket.emit('update', worker, col, { 재제조번호: doc.재제조번호 }, {$set: doc});
+	socket.emit('update', worker, col, { 재제조번호: doc.재제조번호 }, { $set: doc });
 }
 
 async function update_구자료(col, doc) {
-	if(socket == undefined) return;
+	if (socket == undefined) return;
 	flag_arrivedMSG = false;
-	socket.emit('update', worker, col, { 품번: doc.품번 }, {$set: doc});
+	socket.emit('update', worker, col, { 품번: doc.품번 }, { $set: doc });
 }
 
 async function update_계정(col, doc) {
-	if(socket == undefined) return;
+	if (socket == undefined) return;
 	flag_arrivedMSG = false;
-	socket.emit('update', worker, col, { id: doc.id }, {$set: doc});
+	socket.emit('update', worker, col, { id: doc.id }, { $set: doc });
 }
 
 async function update_신품정보(col, doc) {
-	if(socket == undefined) return;
-	if(doc.QR == '') return;
+	if (socket == undefined) return;
+	if (doc.QR == '') return;
 	flag_arrivedMSG = false;
-	socket.emit('update', worker, col, { QR: doc.QR }, {$set: doc});
+	socket.emit('update', worker, col, { QR: doc.QR }, { $set: doc });
 }
 
 async function update_고품정보(col, doc) {
-	if(socket == undefined) return;
+	if (socket == undefined) return;
 	flag_arrivedMSG = false;
-	socket.emit('update', worker, col, { QR: doc.QR }, {$set: doc});
+	socket.emit('update', worker, col, { QR: doc.QR }, { $set: doc });
 }
 
 async function deleteOne(col, management_id) {
-	if(socket == undefined) return;
+	if (socket == undefined) return;
 	flag_arrivedMSG = false;
-	socket.emit('delete', worker, col, { 관리번호: management_id});
+	socket.emit('delete', worker, col, { 관리번호: management_id });
 }
 
 async function deleteOneBSA(col, id) {
-	if(socket == undefined) return;
+	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	socket.emit('delete_by_id', worker, col, id);
 }
 
 
 async function deleteOne재제조번호(col, 재제조번호) {
-	if(socket == undefined) return;
+	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	socket.emit('delete', worker, col, { 재제조번호: 재제조번호 });
 }
 
 async function deleteOne_신품정보(col, QR) {
-	if(socket == undefined) return;
+	if (socket == undefined) return;
 	flag_arrivedMSG = false;
-	socket.emit('delete', worker, col, { QR: QR});
+	socket.emit('delete', worker, col, { QR: QR });
 }
 
 async function deleteOne_고품정보(col, QR) {
-	if(socket == undefined) return;
+	if (socket == undefined) return;
 	flag_arrivedMSG = false;
-	socket.emit('delete', worker, col, { QR: QR});
+	socket.emit('delete', worker, col, { QR: QR });
 }
 
 async function deleteOne_구장재고(col, 관리번호) {
-	if(socket == undefined) return;
+	if (socket == undefined) return;
 	flag_arrivedMSG = false;
-	socket.emit('delete', worker, col, { 관리번호: 관리번호});
+	socket.emit('delete', worker, col, { 관리번호: 관리번호 });
 }
 
 async function delete_계정(_id) {
-	if(socket == undefined) return;
+	if (socket == undefined) return;
 	flag_arrivedMSG = false;
-	socket.emit('delete', worker, 계정, { id: _id});
+	socket.emit('delete', worker, 계정, { id: _id });
 }
 
 async function drop(_col) {
-	if(socket == undefined) return;
+	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	socket.emit('drop', worker, _col);
 }
 
 async function find(col, management_id) {
-	if(socket == undefined) return;
+	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 
 	console.log('find:', col, management_id);
 	check++;
-	if(check > 10) check = 0;
+	if (check > 10) check = 0;
 
-	switch(col) {
-		case 'BSA재제조' :
-			socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: BSA재제조_}, check);
+	switch (col) {
+		case 'BSA재제조':
+			socket.emit('findOne', worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: BSA재제조_ }, check);
 			break;
 
-		case '입고' :
-			socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 입고_}, check);
+		case '입고':
+			socket.emit('findOne', worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 입고_ }, check);
 			break;
 
-		case '세척' :
-			socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 세척_}, check);
+		case '세척':
+			socket.emit('findOne', worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 세척_ }, check);
 			break;
 
-		case '기초검사' :
-			socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 기초검사_}, check);
+		case '기초검사':
+			socket.emit('findOne', worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 기초검사_ }, check);
 			break;
 
-		case '성능검사' :
-			socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 성능검사_}, check);
+		case '성능검사':
+			socket.emit('findOne', worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 성능검사_ }, check);
 			break;
 
-		case 'EOL' :
-			socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: EOL_}, check);
+		case 'EOL':
+			socket.emit('findOne', worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: EOL_ }, check);
 			break;
 
-		case '출하정보' :
-			socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 출하정보_}, check);
+		case '출하정보':
+			socket.emit('findOne', worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 출하정보_ }, check);
 			break;
 
-		case '분해조립' :
-			socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 분해조립_}, check);
+		case '분해조립':
+			socket.emit('findOne', worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 분해조립_ }, check);
 			break;
 
-		case '분해조립_부품정보' :
-			socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 분해조립_부품정보_}, check);
+		case '분해조립_부품정보':
+			socket.emit('findOne', worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 분해조립_부품정보_ }, check);
 			break;
 
-		case '고품정보' :
-			socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 고품정보_}, check);
+		case '고품정보':
+			socket.emit('findOne', worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 고품정보_ }, check);
 			break;
 
-		case '신품정보' :
-			socket.emit('findOne', worker, col, { QR: management_id}, { sort: { kind: 1}, projection: 신품정보_}, check);
+		case '신품정보':
+			socket.emit('findOne', worker, col, { QR: management_id }, { sort: { kind: 1 }, projection: 신품정보_ }, check);
 			break;
 
-		case '특이사항' :
-			socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 특이사항_},  check);
+		case '특이사항':
+			socket.emit('findOne', worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 특이사항_ }, check);
 			break;
 
-		case '교체부품상세1' :
-			socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 교체부품상세_}, check);
+		case '교체부품상세1':
+			socket.emit('findOne', worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 교체부품상세_ }, check);
 			break;
 
-		case '교체부품상세2' :
-			socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 교체부품상세_}, check);
+		case '교체부품상세2':
+			socket.emit('findOne', worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 교체부품상세_ }, check);
 			break;
 
-		case '교체부품상세3' :
-			socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 교체부품상세_}, check);
+		case '교체부품상세3':
+			socket.emit('findOne', worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 교체부품상세_ }, check);
 			break;
 
-		case '교체부품상세4' :
-			socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 교체부품상세_}, check);
+		case '교체부품상세4':
+			socket.emit('findOne', worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 교체부품상세_ }, check);
 			break;
 
-		case '교체부품상세5' :
-			socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 교체부품상세_}, check);
+		case '교체부품상세5':
+			socket.emit('findOne', worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 교체부품상세_ }, check);
 			break;
 
-		case '교체부품상세6' :
-			socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 교체부품상세_}, check);
+		case '교체부품상세6':
+			socket.emit('findOne', worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 교체부품상세_ }, check);
 			break;
 
-		case '교체부품상세7' :
-			socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 교체부품상세_}, check);
+		case '교체부품상세7':
+			socket.emit('findOne', worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 교체부품상세_ }, check);
 			break;
 
-		case '교체부품상세8' :
-			socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 교체부품상세_}, check);
+		case '교체부품상세8':
+			socket.emit('findOne', worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 교체부품상세_ }, check);
 			break;
 
-		case '교체부품상세9' :
-			socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 교체부품상세_}, check);
+		case '교체부품상세9':
+			socket.emit('findOne', worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 교체부품상세_ }, check);
 			break;
 
-		case '교체부품상세10' :
-			socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 교체부품상세_}, check);
+		case '교체부품상세10':
+			socket.emit('findOne', worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 교체부품상세_ }, check);
 			break;
 
-		case '입고_pic' :
-			socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 입고_pic_}, check);
+		case '입고_pic':
+			socket.emit('findOne', worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 입고_pic_ }, check);
 			break;
 
-		case '세척_pic' :
-			socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 세척_pic_}, check);
+		case '세척_pic':
+			socket.emit('findOne', worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 세척_pic_ }, check);
 			break;
 
-		case '기초검사_pic' :
-			socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 기초검사_pic_}, check);
+		case '기초검사_pic':
+			socket.emit('findOne', worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 기초검사_pic_ }, check);
 			break;
 
-		case '분해조립_pic' :
-			socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 분해조립_pic_}, check);
+		case '분해조립_pic':
+			socket.emit('findOne', worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 분해조립_pic_ }, check);
 			break;
 
-		case '성능검사_pic' :
-			socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 성능검사_pic_}, check);
+		case '성능검사_pic':
+			socket.emit('findOne', worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 성능검사_pic_ }, check);
 			break;
 
-		case  'EOL_pic' :
-			socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: EOL_pic_}, check);
+		case 'EOL_pic':
+			socket.emit('findOne', worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: EOL_pic_ }, check);
 			break;
 
-		case '특이사항_pic' :
-			socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 특이사항_pic_}, check);
+		case '특이사항_pic':
+			socket.emit('findOne', worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 특이사항_pic_ }, check);
 			break;
 
-		case '출하_pic' :
-			socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 출하_pic_}, check);
+		case '출하_pic':
+			socket.emit('findOne', worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 출하_pic_ }, check);
 			break;
 
-		case '반품입고_pic' :
-			socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 반품입고_pic_}, check);
+		case '반품입고_pic':
+			socket.emit('findOne', worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 반품입고_pic_ }, check);
 			break;
 
-		case '재출하_pic' :
-			socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 재출하_pic_}, check);
+		case '재출하_pic':
+			socket.emit('findOne', worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 재출하_pic_ }, check);
 			break;
 
-		case '완전분해_pic' :
-			socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 완전분해_pic_}, check);
+		case '완전분해_pic':
+			socket.emit('findOne', worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 완전분해_pic_ }, check);
 			break;
 
-		case '폐기_pic' :
-			socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 폐기_pic_}, check);
+		case '폐기_pic':
+			socket.emit('findOne', worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 폐기_pic_ }, check);
 			break;
 
-		case '부품정보_list' :
-			socket.emit('findOne', worker, col, { 관리번호: management_id}, { sort: { kind: 1}, projection: 부품정보_list_}, check);
+		case '부품정보_list':
+			socket.emit('findOne', worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 부품정보_list_ }, check);
 			break;
 
-		default: 
+		default:
 			console.log('collection name is not match');
 	}
 
@@ -3317,334 +3317,334 @@ async function find(col, management_id) {
 }
 
 async function findOne_구자료(col, query) {
-	if(socket == undefined) return;
+	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
-	if(check > 10) check = 0;
-	socket.emit('findOne', worker, col, query, { sort: { kind: 1}, projection: 구자료_ }, check);
+	if (check > 10) check = 0;
+	socket.emit('findOne', worker, col, query, { sort: { kind: 1 }, projection: 구자료_ }, check);
 }
 
 async function findOne_기초보고서(col, query) {
-	if(socket == undefined) return;
+	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
-	if(check > 10) check = 0;
-	socket.emit('findOne', worker, col, query, { sort: { kind: 1}, projection: 기초보고서_ }, check);
+	if (check > 10) check = 0;
+	socket.emit('findOne', worker, col, query, { sort: { kind: 1 }, projection: 기초보고서_ }, check);
 }
 
 async function findOne_완료보고서(col, query) {
-	if(socket == undefined) return;
+	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
-	if(check > 10) check = 0;
+	if (check > 10) check = 0;
 
-	socket.emit('findOne', worker, col, query, { sort: { kind: 1}, projection: 완료보고서_ }, check);
+	socket.emit('findOne', worker, col, query, { sort: { kind: 1 }, projection: 완료보고서_ }, check);
 }
 
 async function findOne_계정(col, query) {
-	if(socket == undefined) return;
+	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
-	if(check > 10) check = 0;
+	if (check > 10) check = 0;
 
-	socket.emit('findOne', worker, col, query, { sort: { kind: 1}, projection: 계정_ }, check);
+	socket.emit('findOne', worker, col, query, { sort: { kind: 1 }, projection: 계정_ }, check);
 }
 
 async function findOne_구장재고(col, query) {
-	if(socket == undefined) return;
+	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
-	if(check > 10) check = 0;
+	if (check > 10) check = 0;
 
-	socket.emit('findOne', worker, col, query, { sort: { kind: 1}, projection: 구장재고_ }, check);
+	socket.emit('findOne', worker, col, query, { sort: { kind: 1 }, projection: 구장재고_ }, check);
 }
 
 async function findOne_신품정보(col, query) {
-	if(socket == undefined) return;
+	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
-	if(check > 10) check = 0;
+	if (check > 10) check = 0;
 
-	socket.emit('findOne', worker, col, query, { sort: { kind: 1}, projection: 자재입출고_ }, check);
+	socket.emit('findOne', worker, col, query, { sort: { kind: 1 }, projection: 자재입출고_ }, check);
 }
 
 async function findOne_고품정보(col, query) {
-	if(socket == undefined) return;
+	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
-	if(check > 10) check = 0;
+	if (check > 10) check = 0;
 
-	socket.emit('findOne', worker, col, query, { sort: { kind: 1}, projection: 고품정보_ }, check);
+	socket.emit('findOne', worker, col, query, { sort: { kind: 1 }, projection: 고품정보_ }, check);
 }
 
 async function findOne_BSA재제조(col, query) {
-	if(socket == undefined) return;
+	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
-	if(check > 10) check = 0;
+	if (check > 10) check = 0;
 
-	socket.emit('findOne', worker, col, query, { sort: { kind: 1}, projection: BSA재제조_ }, check);
+	socket.emit('findOne', worker, col, query, { sort: { kind: 1 }, projection: BSA재제조_ }, check);
 }
 
 async function findOne_입고(col, query) {
-	if(socket == undefined) return;
+	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
-	if(check > 10) check = 0;
+	if (check > 10) check = 0;
 
-	socket.emit('findOne', worker, col, query, { sort: { kind: 1}, projection: 입고_ }, check);
+	socket.emit('findOne', worker, col, query, { sort: { kind: 1 }, projection: 입고_ }, check);
 }
 
 async function findOne_세척(col, query) {
-	if(socket == undefined) return;
+	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
-	if(check > 10) check = 0;
+	if (check > 10) check = 0;
 
-	socket.emit('findOne', worker, col, query, { sort: { kind: 1}, projection: 세척_ }, check);
+	socket.emit('findOne', worker, col, query, { sort: { kind: 1 }, projection: 세척_ }, check);
 }
 
 async function findOne_기초검사(col, query) {
-	if(socket == undefined) return;
+	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
-	if(check > 10) check = 0;
+	if (check > 10) check = 0;
 
-	socket.emit('findOne', worker, col, query, { sort: { kind: 1}, projection: 기초검사_ }, check);
+	socket.emit('findOne', worker, col, query, { sort: { kind: 1 }, projection: 기초검사_ }, check);
 }
 
 async function findOne_분해조립(col, query) {
-	if(socket == undefined) return;
+	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
-	if(check > 10) check = 0;
+	if (check > 10) check = 0;
 
-	socket.emit('findOne', worker, col, query, { sort: { kind: 1}, projection: 분해조립_ }, check);
+	socket.emit('findOne', worker, col, query, { sort: { kind: 1 }, projection: 분해조립_ }, check);
 }
 
 async function findOne_성능검사(col, query) {
-	if(socket == undefined) return;
+	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
-	if(check > 10) check = 0;
+	if (check > 10) check = 0;
 
-	socket.emit('findOne', worker, col, query, { sort: { kind: 1}, projection: 성능검사_ }, check);
+	socket.emit('findOne', worker, col, query, { sort: { kind: 1 }, projection: 성능검사_ }, check);
 }
 
 async function findOne_EOL(col, query) {
-	if(socket == undefined) return;
+	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
-	if(check > 10) check = 0;
+	if (check > 10) check = 0;
 
-	socket.emit('findOne', worker, col, query, { sort: { kind: 1}, projection: EOL_ }, check);
+	socket.emit('findOne', worker, col, query, { sort: { kind: 1 }, projection: EOL_ }, check);
 }
 
 async function findOne_출하정보(col, query) {
-	if(socket == undefined) return;
+	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
-	if(check > 10) check = 0;
+	if (check > 10) check = 0;
 
-	socket.emit('findOne', worker, col, query, { sort: { kind: 1}, projection: 출하정보_ }, check);
+	socket.emit('findOne', worker, col, query, { sort: { kind: 1 }, projection: 출하정보_ }, check);
 }
 
 async function findOne_특이사항(col, query) {
-	if(socket == undefined) return;
+	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
-	if(check > 10) check = 0;
+	if (check > 10) check = 0;
 
-	socket.emit('findOne', worker, col, query, { sort: { kind: 1}, projection: 특이사항_ }, check);
+	socket.emit('findOne', worker, col, query, { sort: { kind: 1 }, projection: 특이사항_ }, check);
 }
 
 async function findOne_교체부품상세(col, query) {
-	if(socket == undefined) return;
+	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
-	if(check > 10) check = 0;
+	if (check > 10) check = 0;
 
-	socket.emit('findOne', worker, col, query, { sort: { kind: 1}, projection: 교체부품상세_ }, check);
+	socket.emit('findOne', worker, col, query, { sort: { kind: 1 }, projection: 교체부품상세_ }, check);
 }
 
 async function findOne_자재입출고(col, query) {
-	if(socket == undefined) return;
+	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
-	if(check > 10) check = 0;
+	if (check > 10) check = 0;
 
-	socket.emit('findOne', worker, col, query, { sort: { kind: 1}, projection: 자재입출고_ }, check);
+	socket.emit('findOne', worker, col, query, { sort: { kind: 1 }, projection: 자재입출고_ }, check);
 }
 
 async function findOne_부품정보_list(col, query) {
-	if(socket == undefined) return;
+	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
-	if(check > 10) check = 0;
+	if (check > 10) check = 0;
 
-	socket.emit('findOne', worker, col, query, { sort: { kind: 1}, projection: 부품정보_list_ }, check);
+	socket.emit('findOne', worker, col, query, { sort: { kind: 1 }, projection: 부품정보_list_ }, check);
 }
 
 
 async function find_기초보고서(col, query) {
-	if(socket == undefined) return;
+	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
-	if(check > 10) check = 0;
-	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: 기초보고서_ }, check);
+	if (check > 10) check = 0;
+	socket.emit('find', worker, col, query, { sort: { kind: 1 }, projection: 기초보고서_ }, check);
 }
 
 async function find_완료보고서(col, query) {
-	if(socket == undefined) return;
+	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
-	if(check > 10) check = 0;
+	if (check > 10) check = 0;
 
-	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: 완료보고서_ }, check);
+	socket.emit('find', worker, col, query, { sort: { kind: 1 }, projection: 완료보고서_ }, check);
 }
 
 async function find_구자료(col, query) {
-	if(socket == undefined) return;
+	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
-	if(check > 10) check = 0;
+	if (check > 10) check = 0;
 
-	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: 구자료_ }, check);
+	socket.emit('find', worker, col, query, { sort: { kind: 1 }, projection: 구자료_ }, check);
 }
 
 async function find_계정(col, query) {
-	if(socket == undefined) return;
+	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
-	if(check > 10) check = 0;
+	if (check > 10) check = 0;
 
-	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: 계정_ }, check);
+	socket.emit('find', worker, col, query, { sort: { kind: 1 }, projection: 계정_ }, check);
 }
 
 async function find_구장재고(col, query) {
-	if(socket == undefined) return;
+	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
-	if(check > 10) check = 0;
+	if (check > 10) check = 0;
 
-	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: 구장재고_ }, check);
+	socket.emit('find', worker, col, query, { sort: { kind: 1 }, projection: 구장재고_ }, check);
 }
 
 async function find_신품정보(col, query) {
-	if(socket == undefined) return;
+	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
-	if(check > 10) check = 0;
+	if (check > 10) check = 0;
 
-	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: 자재입출고_ }, check);
+	socket.emit('find', worker, col, query, { sort: { kind: 1 }, projection: 자재입출고_ }, check);
 }
 
 async function find_고품정보(col, query) {
-	if(socket == undefined) return;
+	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
-	if(check > 10) check = 0;
+	if (check > 10) check = 0;
 
-	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: 고품정보_ }, check);
+	socket.emit('find', worker, col, query, { sort: { kind: 1 }, projection: 고품정보_ }, check);
 }
 
 async function find_BSA재제조(col, query) {
-	if(socket == undefined) return;
+	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
-	if(check > 10) check = 0;
+	if (check > 10) check = 0;
 
-	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: BSA재제조_ }, check);
+	socket.emit('find', worker, col, query, { sort: { kind: 1 }, projection: BSA재제조_ }, check);
 }
 
 async function find_입고(col, query) {
-	if(socket == undefined) return;
+	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
-	if(check > 10) check = 0;
+	if (check > 10) check = 0;
 
-	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: 입고_ }, check);
+	socket.emit('find', worker, col, query, { sort: { kind: 1 }, projection: 입고_ }, check);
 }
 
 async function find_세척(col, query) {
-	if(socket == undefined) return;
+	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
-	if(check > 10) check = 0;
+	if (check > 10) check = 0;
 
-	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: 세척_ }, check);
+	socket.emit('find', worker, col, query, { sort: { kind: 1 }, projection: 세척_ }, check);
 }
 
 async function find_기초검사(col, query) {
-	if(socket == undefined) return;
+	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
-	if(check > 10) check = 0;
+	if (check > 10) check = 0;
 
-	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: 기초검사_ }, check);
+	socket.emit('find', worker, col, query, { sort: { kind: 1 }, projection: 기초검사_ }, check);
 }
 
 async function find_분해조립(col, query) {
-	if(socket == undefined) return;
+	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
-	if(check > 10) check = 0;
+	if (check > 10) check = 0;
 
-	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: 분해조립_ }, check);
+	socket.emit('find', worker, col, query, { sort: { kind: 1 }, projection: 분해조립_ }, check);
 }
 
 async function find_성능검사(col, query) {
-	if(socket == undefined) return;
+	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
-	if(check > 10) check = 0;
+	if (check > 10) check = 0;
 
-	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: 성능검사_ }, check);
+	socket.emit('find', worker, col, query, { sort: { kind: 1 }, projection: 성능검사_ }, check);
 }
 
 async function find_EOL(col, query) {
-	if(socket == undefined) return;
+	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
-	if(check > 10) check = 0;
+	if (check > 10) check = 0;
 
-	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: EOL_ }, check);
+	socket.emit('find', worker, col, query, { sort: { kind: 1 }, projection: EOL_ }, check);
 }
 
 async function find_출하정보(col, query) {
-	if(socket == undefined) return;
+	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
-	if(check > 10) check = 0;
+	if (check > 10) check = 0;
 
-	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: 출하정보_ }, check);
+	socket.emit('find', worker, col, query, { sort: { kind: 1 }, projection: 출하정보_ }, check);
 }
 
 async function find_특이사항(col, query) {
-	if(socket == undefined) return;
+	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
-	if(check > 10) check = 0;
+	if (check > 10) check = 0;
 
-	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: 특이사항_ }, check);
+	socket.emit('find', worker, col, query, { sort: { kind: 1 }, projection: 특이사항_ }, check);
 }
 
 async function find_교체부품상세(col, query) {
-	if(socket == undefined) return;
+	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
-	if(check > 10) check = 0;
+	if (check > 10) check = 0;
 
-	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: 교체부품상세_ }, check);
+	socket.emit('find', worker, col, query, { sort: { kind: 1 }, projection: 교체부품상세_ }, check);
 }
 
 async function find_자재입출고(col, query) {
-	if(socket == undefined) return;
+	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	check++;
-	if(check > 10) check = 0;
+	if (check > 10) check = 0;
 
-	socket.emit('find', worker, col, query, { sort: { kind: 1}, projection: 자재입출고_ }, check);
+	socket.emit('find', worker, col, query, { sort: { kind: 1 }, projection: 자재입출고_ }, check);
 }
 
 function sleep(ms) {
@@ -3652,7 +3652,7 @@ function sleep(ms) {
 }
 
 async function delay() {
-	while(flag_arrivedMSG == false) {
+	while (flag_arrivedMSG == false) {
 		await sleep(1);
 	}
 
@@ -3662,62 +3662,62 @@ async function delay() {
 function 업체(code) {
 	let result = 'kia';
 
-	switch(code) {
-		case 'DE' :
-		case 'DEPBV' :
-		case 'CV' :
-		case 'MV' :
-		case 'PU' :
-		case 'SG2' :
-		case 'TAM' :
-		case 'PS' :
-		case 'SK3' :
-		case 'DE_EV' :
-		case 'DEPBV_EV' :
-		case 'CV_EV' :
-		case 'MV_EV' :
-		case 'PU_EV' :
-		case 'SG2_EV' :
-		case 'TAM_EV' :
-		case 'PS_EV' :
-		case 'SK3_EV' :
+	switch (code) {
+		case 'DE':
+		case 'DEPBV':
+		case 'CV':
+		case 'MV':
+		case 'PU':
+		case 'SG2':
+		case 'TAM':
+		case 'PS':
+		case 'SK3':
+		case 'DE_EV':
+		case 'DEPBV_EV':
+		case 'CV_EV':
+		case 'MV_EV':
+		case 'PU_EV':
+		case 'SG2_EV':
+		case 'TAM_EV':
+		case 'PS_EV':
+		case 'SK3_EV':
 			result = 'kia';
 			break;
 
-		case 'OS' :
-		case 'NE' :
-		case 'HR' :
-		case 'LK' :
-		case 'LM' :
-		case 'LKFC' :
-		case 'CS' :
-		case 'SX2' :
-		case 'AE' :
-		case 'CE' :
-		case 'ME' :
-		case 'FE' :
-		case 'RG3' :
-		case 'JW' :
-		case 'JK' :
-		case 'OS_EV' :
-		case 'NE_EV' :
-		case 'HR_EV' :
-		case 'LK_EV' :
-		case 'LM_EV' :
-		case 'LKFC_EV' :
-		case 'CS_EV' :
-		case 'SX2_EV' :
-		case 'AE_EV' :
-		case 'CE_EV' :
-		case 'ME_EV' :
-		case 'FE_EV' :
-		case 'RG3_EV' :
-		case 'JW_EV' :
-		case 'JX_EV' :
+		case 'OS':
+		case 'NE':
+		case 'HR':
+		case 'LK':
+		case 'LM':
+		case 'LKFC':
+		case 'CS':
+		case 'SX2':
+		case 'AE':
+		case 'CE':
+		case 'ME':
+		case 'FE':
+		case 'RG3':
+		case 'JW':
+		case 'JK':
+		case 'OS_EV':
+		case 'NE_EV':
+		case 'HR_EV':
+		case 'LK_EV':
+		case 'LM_EV':
+		case 'LKFC_EV':
+		case 'CS_EV':
+		case 'SX2_EV':
+		case 'AE_EV':
+		case 'CE_EV':
+		case 'ME_EV':
+		case 'FE_EV':
+		case 'RG3_EV':
+		case 'JW_EV':
+		case 'JX_EV':
 			result = 'hyundai';
 			break;
 
-		default :
+		default:
 			result = 'none';
 			break;
 	}
@@ -3799,29 +3799,29 @@ async function 공정단계찾기__(_관리번호) {
 }
 
 async function 공정단계자동입력(_관리번호, 단계 = '') {
-		findOne_BSA재제조(BSA재제조, { 관리번호 :  _관리번호,  공정단계 : { $ne : '출하' } });
-		await delay();
+	findOne_BSA재제조(BSA재제조, { 관리번호: _관리번호, 공정단계: { $ne: '출하' } });
+	await delay();
 
-		if(BSA재제조_v == null) return;
+	if (BSA재제조_v == null) return;
 
-		var _공정단계 = '입고';
-		if(BSA재제조_v.입고 != '') _공정단계 = '세척';
-		if(BSA재제조_v.세척 != '') _공정단계 = '기초검사';
-		if(BSA재제조_v.기초검사 != '') _공정단계 = '분해조립';
-		if(BSA재제조_v.분해조립 != '') _공정단계 = '성능검사';
-		if(BSA재제조_v.성능검사 != '') _공정단계 = 'EOL';
-		if(BSA재제조_v.EOL != '') _공정단계 = '제조완료';
-		if(BSA재제조_v.출하검사 != '') _공정단계 = '제조완료';
-		if(BSA재제조_v.출하 != '') _공정단계 = '출하';
-		if(단계 != '') _공정단계 = 단계;
+	var _공정단계 = '입고';
+	if (BSA재제조_v.입고 != '') _공정단계 = '세척';
+	if (BSA재제조_v.세척 != '') _공정단계 = '기초검사';
+	if (BSA재제조_v.기초검사 != '') _공정단계 = '분해조립';
+	if (BSA재제조_v.분해조립 != '') _공정단계 = '성능검사';
+	if (BSA재제조_v.성능검사 != '') _공정단계 = 'EOL';
+	if (BSA재제조_v.EOL != '') _공정단계 = '제조완료';
+	if (BSA재제조_v.출하검사 != '') _공정단계 = '제조완료';
+	if (BSA재제조_v.출하 != '') _공정단계 = '출하';
+	if (단계 != '') _공정단계 = 단계;
 
-		var doc = {
-			관리번호 : _관리번호,
-			공정단계 : _공정단계
-		}
+	var doc = {
+		관리번호: _관리번호,
+		공정단계: _공정단계
+	}
 
-		update(BSA재제조, doc);
-		await delay();
+	update(BSA재제조, doc);
+	await delay();
 }
 
 function back() {

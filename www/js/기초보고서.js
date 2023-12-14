@@ -2,67 +2,67 @@ async function 기초보고서_시작() {
 	loadPage("base/기초보고서.html");
 	await sleep(1);
 
-	if(level == '작업자' || level == '' || level == '관리자' || level == '부품관리자') _교체부품.style.display = 'block';
+	if (level == '작업자' || level == '' || level == '관리자' || level == '부품관리자') _교체부품.style.display = 'block';
 	else _교체부품.style.display = 'none';
 
 	_management_id.value = 관리번호;
 
-	count(기초보고서, { level: '작업자'});
+	count(기초보고서, { level: '작업자' });
 	await delay();
 
-	if(기초보고서_cnt > 0) {
+	if (기초보고서_cnt > 0) {
 		find_기초보고서(기초보고서, { level: '작업자' });
 		await delay();
-		
-		if(기초보고서_v.기초보고서 == true) {
+
+		if (기초보고서_v.기초보고서 == true) {
 			_기초보고서.style.display = 'block';
 			_cb기초보고서.checked = true;
-		} else if(level != '작업자' && level != '') {
+		} else if (level != '작업자' && level != '') {
 			_기초보고서.style.display = 'none';
 		} else {
 			_cb기초보고서.checked = false;
 		}
 
-		if(기초보고서_v.육안검사외부 == true) {
+		if (기초보고서_v.육안검사외부 == true) {
 			_육안검사외부1.style.display = 'block';
 			_cb육안검사외부.checked = true;
-		} else if(level != '작업자' && level != '') {
+		} else if (level != '작업자' && level != '') {
 			_육안검사외부1.style.display = 'none';
 		} else {
 			_cb육안검사외부.checked = false;
 		}
 
-		if(기초보고서_v.육안검사외부상세 == true) {
+		if (기초보고서_v.육안검사외부상세 == true) {
 			_육안검사외부2.style.display = 'block';
 			_cb육안검사외부상세.checked = true;
-		} else if(level != '작업자' && level != '')  {
+		} else if (level != '작업자' && level != '') {
 			_육안검사외부2.style.display = 'none';
 		} else {
 			_cb육안검사외부상세.checked = false;
 		}
 
-		if(기초보고서_v.육안검사내부 == true) {
+		if (기초보고서_v.육안검사내부 == true) {
 			_육안검사내부1.style.display = 'block';
 			_cb육안검사내부.checked = true;
-		} else if(level != '작업자' && level != '')  {
+		} else if (level != '작업자' && level != '') {
 			_육안검사내부1.style.display = 'none';
 		} else {
 			_cb육안검사내부.checked = false;
 		}
 
-		if(기초보고서_v.육안검사내부상세 == true) {
+		if (기초보고서_v.육안검사내부상세 == true) {
 			_육안검사내부2.style.display = 'block';
 			_cb육안검사내부상세.checked = true;
-		} else if(level != '작업자' && level != '')  {
+		} else if (level != '작업자' && level != '') {
 			_육안검사내부2.style.display = 'none';
 		} else {
 			_cb육안검사내부상세.checked = false;
 		}
 
-		if(기초보고서_v.기밀검사 == true) {
+		if (기초보고서_v.기밀검사 == true) {
 			_기밀검사.style.display = 'block';
 			_cb기밀검사.checked = true;
-		} else if(level != '작업자' && level != '')  {
+		} else if (level != '작업자' && level != '') {
 			_기밀검사.style.display = 'none';
 		} else {
 			_cb기밀검사.checked = false;
@@ -185,53 +185,53 @@ async function 기초보고서_조회(is재제조번호 = false) {
 
 		_외부점검.innerHTML =
 			기초검사_v.육안검사_외부 == undefined
-			? ""
-			: 기초검사_v.육안검사_외부;
+				? ""
+				: 기초검사_v.육안검사_외부;
 
 		_외부점검사유.innerHTML =
 			기초검사_v.육안검사_외부_특이사항 == undefined
-			? ""
-			: 기초검사_v.육안검사_외부_특이사항;
+				? ""
+				: 기초검사_v.육안검사_외부_특이사항;
 
 		_내부점검.innerHTML =
 			기초검사_v.육안검사_내부 == undefined
-			? ""
-			: 기초검사_v.육안검사_내부;
+				? ""
+				: 기초검사_v.육안검사_내부;
 
 		_내부점검사유.innerHTML =
 			기초검사_v.육안검사_내부_특이사항 == undefined
-			? ""
-			: 기초검사_v.육안검사_내부_특이사항;
+				? ""
+				: 기초검사_v.육안검사_내부_특이사항;
 
 		_PRA_P값.innerHTML =
 			기초검사_v.절연검사_Plus == undefined
-			? ""
-			: 기초검사_v.절연검사_Plus;
+				? ""
+				: 기초검사_v.절연검사_Plus;
 
 		_PRA_N값.innerHTML =
 			기초검사_v.절연검사_Minus == undefined
-			? ""
-			: 기초검사_v.절연검사_Minus;
+				? ""
+				: 기초검사_v.절연검사_Minus;
 
 		_HV커넥터_P값.innerHTML =
 			기초검사_v.절연검사_Plus == undefined
-			? ""
-			: 기초검사_v.절연검사_Plus;
+				? ""
+				: 기초검사_v.절연검사_Plus;
 
 		_HV커넥터_N값.innerHTML =
 			기초검사_v.절연검사_Minus == undefined
-			? ""
-			: 기초검사_v.절연검사_Minus;
+				? ""
+				: 기초검사_v.절연검사_Minus;
 
 		_HV_P값.innerHTML =
 			기초검사_v.절연검사_Plus == undefined
-			? ""
-			: 기초검사_v.절연검사_Plus;
+				? ""
+				: 기초검사_v.절연검사_Plus;
 
 		_HV_N값.innerHTML =
 			기초검사_v.절연검사_Minus == undefined
-			? ""
-			: 기초검사_v.절연검사_Minus;
+				? ""
+				: 기초검사_v.절연검사_Minus;
 
 		_고장코드.innerHTML = 기초검사_v.고장현상코드 == undefined ? "NG" : "OK";
 
@@ -254,20 +254,20 @@ async function 기초보고서_조회(is재제조번호 = false) {
 
 		_케이스.innerHTML =
 			EOL_v.기밀검사_케이스 == undefined
-			? ""
-			: EOL_v.기밀검사_케이스;
+				? ""
+				: EOL_v.기밀검사_케이스;
 		_케이스감압량.innerHTML =
 			EOL_v.기밀검사_케이스_특이사항 == undefined
-			? ""
-			: EOL_v.기밀검사_케이스_특이사항;
+				? ""
+				: EOL_v.기밀검사_케이스_특이사항;
 		_냉각유로.innerHTML =
 			EOL_v.기밀검사_냉각유로 == undefined
-			? ""
-			: EOL_v.기밀검사_냉각유로;
+				? ""
+				: EOL_v.기밀검사_냉각유로;
 		_냉각유로감압량.innerHTML =
 			EOL_v.기밀검사_냉각유로_특이사항 == undefined
-			? ""
-			: EOL_v.기밀검사_냉각유로_특이사항;
+				? ""
+				: EOL_v.기밀검사_냉각유로_특이사항;
 	} else {
 		_케이스.innerHTML = "";
 		_케이스감압량.innerHTML = "";
@@ -329,21 +329,21 @@ async function 기초보고서_조회(is재제조번호 = false) {
 
 		_팩전압값.innerHTML =
 			출하정보_v.배터리팩_측정값 == undefined
-			? ""
-			: 출하정보_v.배터리팩_측정값;
+				? ""
+				: 출하정보_v.배터리팩_측정값;
 
 		_셀전압편차.innerHTML =
 			출하정보_v.셀전압편차 == undefined ? "" : 출하정보_v.셀전압편차;
 
 		_셀전압편차값.innerHTML =
 			출하정보_v.셀전압편차_측정값 == undefined
-			? ""
-			: 출하정보_v.셀전압편차_측정값;
+				? ""
+				: 출하정보_v.셀전압편차_측정값;
 
 		_릴레이제어.innerHTML =
 			출하정보_v.릴레이_강제구동 == undefined
-			? ""
-			: 출하정보_v.릴레이_강제구동;
+				? ""
+				: 출하정보_v.릴레이_강제구동;
 	}
 }
 
@@ -352,7 +352,7 @@ async function 기초보고서_save(type = 0) {
 	var file_name = "기초보고서_" + _date + ".pdf";
 	var _width = 4200;
 	var _height = 2200;
-	
+
 	var doc = JSON.parse(JSON.stringify(기초보고서_doc));
 	doc.level = '작업자';
 	doc.기초보고서 = _cb기초보고서.checked;

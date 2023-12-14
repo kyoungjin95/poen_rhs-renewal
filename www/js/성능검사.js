@@ -1,21 +1,21 @@
 async function 성능검사_시작(is재제조 = 0) {
-	if(worker == '') return;
-	while(_management_id == undefined) {
+	if (worker == '') return;
+	while (_management_id == undefined) {
 		await sleep(DELAY);
 	}
-	
-	if(flag_성능검사 == true) await 성능검사_list();
+
+	if (flag_성능검사 == true) await 성능검사_list();
 	flag_성능검사 = false;
 
 	console.log('작업자:', 계정_stat.이름);
 	_검사자.value = 계정_stat.이름;;
 
-	if(is재제조 == 0) {
-		if(_management_id.value.length == 0) return;
+	if (is재제조 == 0) {
+		if (_management_id.value.length == 0) return;
 
 		find(BSA재제조, _management_id.value);
 		await delay();
-		if(BSA재제조_v != null) {
+		if (BSA재제조_v != null) {
 			_재제조번호.value = BSA재제조_v.재제조번호;
 			_구분.value = BSA재제조_v.구분;
 			_차종.value = BSA재제조_v.차종;
@@ -28,13 +28,13 @@ async function 성능검사_시작(is재제조 = 0) {
 			_품번.value = '';
 			_RO_no.value = '';
 		}
-	} else if(is재제조 == 1) {
-		if(_재제조번호.value.length == 0) return;
+	} else if (is재제조 == 1) {
+		if (_재제조번호.value.length == 0) return;
 
-		findOne_BSA재제조(BSA재제조, { 재제조번호 : _재제조번호.value});
+		findOne_BSA재제조(BSA재제조, { 재제조번호: _재제조번호.value });
 		await delay();
 
-		if(BSA재제조_v != null) {
+		if (BSA재제조_v != null) {
 			_management_id.value = BSA재제조_v.관리번호;
 			_구분.value = BSA재제조_v.구분;
 			_차종.value = BSA재제조_v.차종;
@@ -47,13 +47,13 @@ async function 성능검사_시작(is재제조 = 0) {
 			_품번.value = '';
 			_RO_no.value = '';
 		}
-	} else if(is재제조 == 2) {
-		if(_RO_no.value.length == 0) return;
+	} else if (is재제조 == 2) {
+		if (_RO_no.value.length == 0) return;
 
-		findOne_BSA재제조(BSA재제조, { RO_no : _RO_no.value});
+		findOne_BSA재제조(BSA재제조, { RO_no: _RO_no.value });
 		await delay();
 
-		if(BSA재제조_v != null) {
+		if (BSA재제조_v != null) {
 			_management_id.value = BSA재제조_v.관리번호;
 			_재제조번호.value = BSA재제조_v.재제조번호;
 			_구분.value = BSA재제조_v.구분;
@@ -71,13 +71,13 @@ async function 성능검사_시작(is재제조 = 0) {
 	find(성능검사, _management_id.value);
 	await delay();
 
-	if(성능검사_v != null) {
+	if (성능검사_v != null) {
 		_공정입고일.value = 성능검사_v.공정입고일;
 		_용량평가.value = 성능검사_v.용량평가;
 		_SOC60Percent.value = 성능검사_v.SOC60Percent;
 		_DCIR.value = 성능검사_v.DCIR;
-		_DCIR_Charge.value    = 성능검사_v.DCIR_Charge;
-		_DCIR_Discharge.value =	성능검사_v.DCIR_Discharge;
+		_DCIR_Charge.value = 성능검사_v.DCIR_Charge;
+		_DCIR_Discharge.value = 성능검사_v.DCIR_Discharge;
 		_분해조립_재의뢰사유.value = 성능검사_v.분해조립_재의뢰사유;
 		_공정완료일.value = 성능검사_v.공정완료일;
 		_검사자.value = 성능검사_v.검사자;
@@ -86,8 +86,8 @@ async function 성능검사_시작(is재제조 = 0) {
 		_용량평가.value = '';
 		_SOC60Percent.value = '';
 		_DCIR.value = '';
-		_DCIR_Charge.value    = '';
-		_DCIR_Discharge.value =	'';
+		_DCIR_Charge.value = '';
+		_DCIR_Discharge.value = '';
 		_분해조립_재의뢰사유.value = '';
 		_공정완료일.value = '0000-00-00T00:00';
 		_검사자.value = 계정_stat.이름;
@@ -96,23 +96,23 @@ async function 성능검사_시작(is재제조 = 0) {
 		var seoul = DateTime.local().setZone("Asia/Seoul");
 		var now = seoul.toString().slice(0, 19);
 
-		_공정입고일.value = now;	
+		_공정입고일.value = now;
 	}
 }
 
 async function 성능검사_save() {
-	if(worker == '') return;
-	while(_management_id == undefined) {
+	if (worker == '') return;
+	while (_management_id == undefined) {
 		await sleep(DELAY);
 	}
-	if(_management_id.value.length == 0) return;
+	if (_management_id.value.length == 0) return;
 	console.log('save: ', _management_id.value);
 
 	var DateTime = luxon.DateTime;
 	var seoul = DateTime.local().setZone("Asia/Seoul");
 	var now = seoul.toString().slice(0, 19);
 
-	if(_공정입고일.value == '') _공정입고일.value = now;
+	if (_공정입고일.value == '') _공정입고일.value = now;
 	_공정완료일.value = now;
 
 	var doc = JSON.parse(JSON.stringify(성능검사_doc));
@@ -125,52 +125,52 @@ async function 성능검사_save() {
 	doc.DCIR_Discharge = _DCIR_Discharge.value;
 	doc.분해조립_재의뢰사유 = _분해조립_재의뢰사유.value;
 	doc.공정완료일 = _공정완료일.value;
-	if(level == '관리자') doc.공정완료일 = _공정완료일.value;
+	if (level == '관리자') doc.공정완료일 = _공정완료일.value;
 	doc.검사자 = _검사자.value;
-	
+
 	update(성능검사, doc);
 	await delay();
-	
+
 	console.log(update_count);
 	console.log(insert_count);
 
-	if(update_count > 0) {
+	if (update_count > 0) {
 		alert('업데이트 되었습니다');
 	}
 
-	if(insert_count > 0) {
+	if (insert_count > 0) {
 		alert('저장 되었습니다');
 	}
 
-	find(BSA재제조, _management_id.value );
+	find(BSA재제조, _management_id.value);
 	await delay();
 
-	if(BSA재제조_v == null) {
+	if (BSA재제조_v == null) {
 		var _doc = JSON.parse(JSON.stringify(BSA재제조_doc));
 		_doc.관리번호 = _management_id.value.trim().toUpperCase();
-		_doc.성능검사투입일 ; _공정입고일.value;
-		if(_분해조립_재의뢰사유.value == '') {
+		_doc.성능검사투입일; _공정입고일.value;
+		if (_분해조립_재의뢰사유.value == '') {
 			_doc.성능검사 = _공정완료일.value;
 		} else {
 			_doc.분해조립 = '';
 			_doc.성능검사 = '';
 		}
-		
+
 		update(BSA재제조, _doc);
 		await delay();
 	} else {
-		if(_분해조립_재의뢰사유.value == '') {
+		if (_분해조립_재의뢰사유.value == '') {
 			var _doc = {
-				관리번호 : _management_id.value.toUpperCase(),
-				성능검사투입일 : _공정입고일.value,
-				성능검사 : _공정완료일.value
+				관리번호: _management_id.value.toUpperCase(),
+				성능검사투입일: _공정입고일.value,
+				성능검사: _공정완료일.value
 			}
 		} else {
 			var _doc = {
-				관리번호 : _management_id.value.toUpperCase(),
-				성능검사투입일 : _공정입고일.value,
-				분해조립 : '',
-				성능검사 : ''
+				관리번호: _management_id.value.toUpperCase(),
+				성능검사투입일: _공정입고일.value,
+				분해조립: '',
+				성능검사: ''
 			}
 		}
 
@@ -182,35 +182,35 @@ async function 성능검사_save() {
 }
 
 function 성능검사_updateFilter() {
-  var fieldEl = document.getElementById("filter-field");
-  var typeEl = document.getElementById("filter-type");
-  var valueEl = document.getElementById("filter-value");
+	var fieldEl = document.getElementById("filter-field");
+	var typeEl = document.getElementById("filter-type");
+	var valueEl = document.getElementById("filter-value");
 
-  var filterVal = fieldEl.options[fieldEl.selectedIndex].value;
-  var typeVal = typeEl.options[typeEl.selectedIndex].value;
+	var filterVal = fieldEl.options[fieldEl.selectedIndex].value;
+	var typeVal = typeEl.options[typeEl.selectedIndex].value;
 
-  var filter = filterVal == "function" ? customFilter : filterVal;
+	var filter = filterVal == "function" ? customFilter : filterVal;
 
-  if (filterVal == "function") {
-    typeEl.disabled = true;
-    valueEl.disabled = true;
-  } else {
-    typeEl.disabled = false;
-    valueEl.disabled = false;
-  }
+	if (filterVal == "function") {
+		typeEl.disabled = true;
+		valueEl.disabled = true;
+	} else {
+		typeEl.disabled = false;
+		valueEl.disabled = false;
+	}
 
-  if (filterVal) {
-    성능검사_list_table.setFilter(filter, typeVal, valueEl.value);
-  }
+	if (filterVal) {
+		성능검사_list_table.setFilter(filter, typeVal, valueEl.value);
+	}
 }
 
 var 성능검사_list_table;
 async function 성능검사_list() {
-	findOne_BSA재제조(BSA재제조, {공정단계 : { $ne : '출하' }, 분해조립 : { $ne : '' }, 성능검사 : { $eq : '' }, EOL : { $eq : '' } ,  소재지 : { $nin : ['공정대기', '품질대기'] }, 완전분해 : { $eq : ''}, 폐기 : { $eq : '' }, 출하 : { $eq : '' }, 구분 : { $nin: ['일반기타', '보증기타']} });
+	findOne_BSA재제조(BSA재제조, { 공정단계: { $ne: '출하' }, 분해조립: { $ne: '' }, 성능검사: { $eq: '' }, EOL: { $eq: '' }, 소재지: { $nin: ['공정대기', '품질대기'] }, 완전분해: { $eq: '' }, 폐기: { $eq: '' }, 출하: { $eq: '' }, 구분: { $nin: ['일반기타', '보증기타'] } });
 	await delay();
 
-	if(BSA재제조_v != null) {
-		find_BSA재제조(BSA재제조, { 공정단계 : { $ne : '출하' }, 분해조립 : { $ne : '' }, 성능검사 : { $eq : '' }, EOL : { $eq : '' } ,  소재지 : { $nin : ['공정대기', '품질대기'] }, 완전분해 : { $eq : ''}, 폐기 : { $eq : '' }, 출하 : { $eq : '' }, 구분 : { $nin: ['일반기타', '보증기타']} });
+	if (BSA재제조_v != null) {
+		find_BSA재제조(BSA재제조, { 공정단계: { $ne: '출하' }, 분해조립: { $ne: '' }, 성능검사: { $eq: '' }, EOL: { $eq: '' }, 소재지: { $nin: ['공정대기', '품질대기'] }, 완전분해: { $eq: '' }, 폐기: { $eq: '' }, 출하: { $eq: '' }, 구분: { $nin: ['일반기타', '보증기타'] } });
 		await delay();
 	}
 
@@ -344,7 +344,7 @@ async function 성능검사_list() {
 			{ title: "렉번호", field: "렉번호", sorter: "string", width: "180" },
 		],
 	});
-	
+
 	성능검사_list_table.on("rowClick", async function (e, row) {
 		console.log("selected 관리번호: ", row.getData().관리번호);
 
@@ -353,7 +353,7 @@ async function 성능검사_list() {
 		await sleep(1);
 
 		var yes = confirm('선택한 BSA로 성능검사 공정 정보입력을 시작하시겠습니까?');
-		if(yes != true) return;
+		if (yes != true) return;
 
 		성능검사_시작();
 	});

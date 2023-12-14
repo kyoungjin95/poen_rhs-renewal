@@ -1,17 +1,17 @@
 async function 세척_시작(is재제조 = 0) {
-	while(_management_id == undefined) {
+	while (_management_id == undefined) {
 		await sleep(DELAY);
 	}
-	if(flag_세척 == true) await 세척_list();
+	if (flag_세척 == true) await 세척_list();
 	flag_세척 = false;
 
-	if(is재제조 == 0) {
-		if(_management_id.value.length == 0) return;
+	if (is재제조 == 0) {
+		if (_management_id.value.length == 0) return;
 
 		find(BSA재제조, _management_id.value);
 		await delay();
 
-		if(BSA재제조_v != null) {
+		if (BSA재제조_v != null) {
 			_재제조번호.value = BSA재제조_v.재제조번호;
 			_구분.value = BSA재제조_v.구분;
 			_차종.value = BSA재제조_v.차종;
@@ -24,13 +24,13 @@ async function 세척_시작(is재제조 = 0) {
 			_품번.value = '';
 			_RO_no.value = '';
 		}
-	} else if(is재제조 == 1) {
-		if(_재제조번호.value.length == 0) return;
+	} else if (is재제조 == 1) {
+		if (_재제조번호.value.length == 0) return;
 
-		findOne_BSA재제조(BSA재제조, { 재제조번호 : _재제조번호.value });
+		findOne_BSA재제조(BSA재제조, { 재제조번호: _재제조번호.value });
 		await delay();
 
-		if(BSA재제조_v != null) {
+		if (BSA재제조_v != null) {
 			_management_id.value = BSA재제조_v.관리번호;
 			_구분.value = BSA재제조_v.구분;
 			_차종.value = BSA재제조_v.차종;
@@ -43,13 +43,13 @@ async function 세척_시작(is재제조 = 0) {
 			_품번.value = '';
 			_RO_no.value = '';
 		}
-	} else if(is재제조 == 2) {
-		if(_RO_no.value.length == 0) return;
+	} else if (is재제조 == 2) {
+		if (_RO_no.value.length == 0) return;
 
-		findOne_BSA재제조(BSA재제조, { RO_no : _RO_no.value });
+		findOne_BSA재제조(BSA재제조, { RO_no: _RO_no.value });
 		await delay();
 
-		if(BSA재제조_v != null) {
+		if (BSA재제조_v != null) {
 			_management_id.value = BSA재제조_v.관리번호;
 			_재제조번호.value = BSA재제조_v.재제조번호;
 			_구분.value = BSA재제조_v.구분;
@@ -65,13 +65,13 @@ async function 세척_시작(is재제조 = 0) {
 	}
 
 	console.log('load: ', _management_id.value);
-	
+
 	관리번호 = _management_id.value;
 
 	find(세척, _management_id.value);
 	await delay();
 
-	if(세척_v != null) {
+	if (세척_v != null) {
 		_공정입고일.value = 세척_v.공정입고일;
 		_공정완료일.value = 세척_v.공정완료일;
 		_어퍼케이스재사용가능.value = 세척_v.어퍼케이스재사용가능;
@@ -95,7 +95,7 @@ async function 세척_시작(is재제조 = 0) {
 }
 
 async function 세척_save() {
-	if(_management_id.value.length == 0) return;
+	if (_management_id.value.length == 0) return;
 	console.log('save: ', _management_id.value);
 
 	var doc = JSON.parse(JSON.stringify(세척_doc));
@@ -103,8 +103,8 @@ async function 세척_save() {
 	var DateTime = luxon.DateTime;
 	var seoul = DateTime.local().setZone("Asia/Seoul");
 	var now = seoul.toString().slice(0, 19);
-	
-	if(_공정입고일.value == '') _공정입고일.value = now;
+
+	if (_공정입고일.value == '') _공정입고일.value = now;
 	_공정완료일.value = now;
 
 	doc.관리번호 = _management_id.value.trim().toUpperCase();
@@ -115,25 +115,25 @@ async function 세척_save() {
 	doc.기밀검사_케이스 = _기밀검사_케이스.value;
 	doc.기밀검사_케이스_특이사항 = _기밀검사_케이스_특이사항.value;
 	doc.특이사항 = _특이사항.value;
-	
+
 	update(세척, doc);
 	await delay();
-	
+
 	console.log(update_count);
 	console.log(insert_count);
 
-	if(update_count > 0) {
+	if (update_count > 0) {
 		alert('업데이트 되었습니다');
 	}
 
-	if(insert_count > 0) {
+	if (insert_count > 0) {
 		alert('저장 되었습니다');
 	}
 
-	find(BSA재제조, _management_id.value );
+	find(BSA재제조, _management_id.value);
 	await delay();
 
-	if(BSA재제조_v == null) {
+	if (BSA재제조_v == null) {
 		var _doc = JSON.parse(JSON.stringify(BSA재제조_doc));
 		_doc.관리번호 = _management_id.value.trim().toUpperCase();
 		_doc.재제조번호 = _재제조번호.value;
@@ -144,10 +144,10 @@ async function 세척_save() {
 		await delay();
 	} else {
 		var _doc = {
-			관리번호 : _management_id.value.toUpperCase(),
-			재제조번호 : _재제조번호.value,
-			세척투입일 : _공정입고일.value,
-			세척 : _공정완료일.value,
+			관리번호: _management_id.value.toUpperCase(),
+			재제조번호: _재제조번호.value,
+			세척투입일: _공정입고일.value,
+			세척: _공정완료일.value,
 		}
 
 		update(BSA재제조, _doc);
@@ -161,53 +161,53 @@ async function 세척_save() {
 function _어퍼케이스재사용가능_콤보박스(e) {
 	const value = e.value;
 
-  	document.getElementById('_어퍼케이스재사용가능').value = value;
+	document.getElementById('_어퍼케이스재사용가능').value = value;
 }
 
 function _기밀검사_케이스_콤보박스(e) {
 	const value = e.value;
 
-  	document.getElementById('_기밀검사_케이스').value = value;
+	document.getElementById('_기밀검사_케이스').value = value;
 }
 
 async function 세척_카메라시작() {
-	if(관리번호 =='') return;
+	if (관리번호 == '') return;
 	await 세척_save();
-	
+
 	세척_사진촬영(관리번호);
 }
 
 function 세척_updateFilter() {
-  var fieldEl = document.getElementById("filter-field");
-  var typeEl = document.getElementById("filter-type");
-  var valueEl = document.getElementById("filter-value");
+	var fieldEl = document.getElementById("filter-field");
+	var typeEl = document.getElementById("filter-type");
+	var valueEl = document.getElementById("filter-value");
 
-  var filterVal = fieldEl.options[fieldEl.selectedIndex].value;
-  var typeVal = typeEl.options[typeEl.selectedIndex].value;
+	var filterVal = fieldEl.options[fieldEl.selectedIndex].value;
+	var typeVal = typeEl.options[typeEl.selectedIndex].value;
 
-  var filter = filterVal == "function" ? customFilter : filterVal;
+	var filter = filterVal == "function" ? customFilter : filterVal;
 
-  if (filterVal == "function") {
-    typeEl.disabled = true;
-    valueEl.disabled = true;
-  } else {
-    typeEl.disabled = false;
-    valueEl.disabled = false;
-  }
+	if (filterVal == "function") {
+		typeEl.disabled = true;
+		valueEl.disabled = true;
+	} else {
+		typeEl.disabled = false;
+		valueEl.disabled = false;
+	}
 
-  if (filterVal) {
-    세척_list_table.setFilter(filter, typeVal, valueEl.value);
-  }
+	if (filterVal) {
+		세척_list_table.setFilter(filter, typeVal, valueEl.value);
+	}
 }
 
 var 세척_list_table;
 
 async function 세척_list() {
-	findOne_BSA재제조(BSA재제조, { 공정단계 : { $ne : '출하' }, 입고 : { $ne : ''}, 세척 : { $eq : '' }, 기초검사 : { $eq : '' }, 분해조립 : { $eq : '' }, 성능검사 : { $eq : '' }, EOL : { $eq : '' } ,  소재지 : { $nin : ['공정대기', '품질대기'] }, 완전분해 : { $eq : ''}, 폐기 : { $eq : '' }, 출하 : { $eq : '' }, 구분 : { $nin: ['일반기타', '보증기타']} });
+	findOne_BSA재제조(BSA재제조, { 공정단계: { $ne: '출하' }, 입고: { $ne: '' }, 세척: { $eq: '' }, 기초검사: { $eq: '' }, 분해조립: { $eq: '' }, 성능검사: { $eq: '' }, EOL: { $eq: '' }, 소재지: { $nin: ['공정대기', '품질대기'] }, 완전분해: { $eq: '' }, 폐기: { $eq: '' }, 출하: { $eq: '' }, 구분: { $nin: ['일반기타', '보증기타'] } });
 	await delay();
 
-	if(BSA재제조_v != null) {
-		find_BSA재제조(BSA재제조, { 공정단계 : { $ne : '출하' }, 입고 : { $ne : ''}, 세척 : { $eq : '' }, 기초검사 : { $eq : '' }, 분해조립 : { $eq : '' }, 성능검사 : { $eq : '' }, EOL : { $eq : '' } ,  소재지 : { $nin : ['공정대기', '품질대기'] }, 완전분해 : { $eq : ''}, 폐기 : { $eq : '' }, 출하 : { $eq : '' }, 구분 : { $nin: ['일반기타', '보증기타']} });
+	if (BSA재제조_v != null) {
+		find_BSA재제조(BSA재제조, { 공정단계: { $ne: '출하' }, 입고: { $ne: '' }, 세척: { $eq: '' }, 기초검사: { $eq: '' }, 분해조립: { $eq: '' }, 성능검사: { $eq: '' }, EOL: { $eq: '' }, 소재지: { $nin: ['공정대기', '품질대기'] }, 완전분해: { $eq: '' }, 폐기: { $eq: '' }, 출하: { $eq: '' }, 구분: { $nin: ['일반기타', '보증기타'] } });
 		await delay();
 
 	}
@@ -341,7 +341,7 @@ async function 세척_list() {
 			{ title: "렉번호", field: "렉번호", sorter: "string", width: "180" },
 		],
 	});
-	
+
 	세척_list_table.on("rowClick", async function (e, row) {
 		console.log("selected 관리번호: ", row.getData().관리번호);
 
@@ -350,7 +350,7 @@ async function 세척_list() {
 		await sleep(1);
 
 		var yes = confirm('선택한 BSA로 세척 공정 정보입력을 시작하시겠습니까?');
-		if(yes != true) return;
+		if (yes != true) return;
 
 		세척_시작();
 	});

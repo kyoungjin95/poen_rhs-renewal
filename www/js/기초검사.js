@@ -1,11 +1,11 @@
 var 기초검사_DTC_count = 0;
 
 async function 기초검사_시작(is재제조 = 0) {
-	while(_management_id == undefined) {
+	while (_management_id == undefined) {
 		await sleep(DELAY);
 	}
 
-	if(flag_기초검사 == true) await 기초검사_list();
+	if (flag_기초검사 == true) await 기초검사_list();
 	flag_기초검사 = false;
 
 
@@ -14,12 +14,12 @@ async function 기초검사_시작(is재제조 = 0) {
 	_기초검사_delete_all();
 	기초검사_DTC_count = 0;
 
-	if(is재제조 == 0) {
-		if(_management_id.value.length == 0) return;
+	if (is재제조 == 0) {
+		if (_management_id.value.length == 0) return;
 
 		find(BSA재제조, _management_id.value);
 		await delay();
-		if(BSA재제조_v != null) {
+		if (BSA재제조_v != null) {
 			_재제조번호.value = BSA재제조_v.재제조번호;
 			_구분.value = BSA재제조_v.구분;
 			_차종.value = BSA재제조_v.차종;
@@ -37,13 +37,13 @@ async function 기초검사_시작(is재제조 = 0) {
 
 			차종 = '';
 		}
-	} else if(is재제조 == 1) {
-		if(_재제조번호.value.length == 0) return;
+	} else if (is재제조 == 1) {
+		if (_재제조번호.value.length == 0) return;
 
-		findOne_BSA재제조(BSA재제조, { 재제조번호 : _재제조번호.value});
+		findOne_BSA재제조(BSA재제조, { 재제조번호: _재제조번호.value });
 		await delay();
 
-		if(BSA재제조_v != null) {
+		if (BSA재제조_v != null) {
 			_management_id.value = BSA재제조_v.관리번호;
 			_구분.value = BSA재제조_v.구분;
 			_차종.value = BSA재제조_v.차종;
@@ -61,13 +61,13 @@ async function 기초검사_시작(is재제조 = 0) {
 
 			차종 = '';
 		}
-	} else if(is재제조 == 2) {
-		if(_RO_no.value.length == 0) return;
+	} else if (is재제조 == 2) {
+		if (_RO_no.value.length == 0) return;
 
-		findOne_BSA재제조(BSA재제조, { RO_no : _RO_no.value});
+		findOne_BSA재제조(BSA재제조, { RO_no: _RO_no.value });
 		await delay();
 
-		if(BSA재제조_v != null) {
+		if (BSA재제조_v != null) {
 			_management_id.value = BSA재제조_v.관리번호;
 			_재제조번호.value = BSA재제조_v.재제조번호;
 			_구분.value = BSA재제조_v.구분;
@@ -91,7 +91,7 @@ async function 기초검사_시작(is재제조 = 0) {
 
 	find(기초검사, _management_id.value);
 	await delay();
-	if(기초검사_v != null) {
+	if (기초검사_v != null) {
 		_공정입고일.value = 기초검사_v.공정입고일;
 		_RO_no.value = 기초검사_v.RO_no;
 		_VIN.value = 기초검사_v.VIN;
@@ -109,37 +109,37 @@ async function 기초검사_시작(is재제조 = 0) {
 		_통신검사_DTC코드1.value = 기초검사_v.통신검사_DTC코드1;
 		_통신검사_DTC코드2.value = 기초검사_v.통신검사_DTC코드2;
 		_통신검사_DTC코드3.value = 기초검사_v.통신검사_DTC코드3;
-		if(기초검사_v.통신검사_DTC코드4 != '') {
+		if (기초검사_v.통신검사_DTC코드4 != '') {
 			_기초검사_add_DTC_Code();
 			_통신검사_DTC코드4.value = 기초검사_v.통신검사_DTC코드4;
 		}
 
-		if(기초검사_v.통신검사_DTC코드5 != '') {
+		if (기초검사_v.통신검사_DTC코드5 != '') {
 			_기초검사_add_DTC_Code();
 			_통신검사_DTC코드5.value = 기초검사_v.통신검사_DTC코드5;
 		}
 
-		if(기초검사_v.통신검사_DTC코드6 != '') {
+		if (기초검사_v.통신검사_DTC코드6 != '') {
 			_기초검사_add_DTC_Code();
 			_통신검사_DTC코드6.value = 기초검사_v.통신검사_DTC코드6;
 		}
 
-		if(기초검사_v.통신검사_DTC코드7 != '') {
+		if (기초검사_v.통신검사_DTC코드7 != '') {
 			_기초검사_add_DTC_Code();
 			_통신검사_DTC코드7.value = 기초검사_v.통신검사_DTC코드7;
 		}
 
-		if(기초검사_v.통신검사_DTC코드8 != '') {
+		if (기초검사_v.통신검사_DTC코드8 != '') {
 			_기초검사_add_DTC_Code();
 			_통신검사_DTC코드8.value = 기초검사_v.통신검사_DTC코드8;
 		}
 
-		if(기초검사_v.통신검사_DTC코드9 != '') {
+		if (기초검사_v.통신검사_DTC코드9 != '') {
 			_기초검사_add_DTC_Code();
 			_통신검사_DTC코드9.value = 기초검사_v.통신검사_DTC코드9;
 		}
 
-		if(기초검사_v.통신검사_DTC코드10 != '') {
+		if (기초검사_v.통신검사_DTC코드10 != '') {
 			_기초검사_add_DTC_Code();
 			_통신검사_DTC코드10.value = 기초검사_v.통신검사_DTC코드10;
 		}
@@ -208,32 +208,32 @@ function 기초검사_save() {
 }
 
 async function 기초검사_SAVE() {
-	if(_management_id.value.length == 0) return;
+	if (_management_id.value.length == 0) return;
 	console.log('save: ', _management_id.value);
 
 	관리번호 = _management_id.value.trim().toUpperCase();
 
-	if(_RO_no.value.length != 17 && _RO_no.value.length != 0) {
+	if (_RO_no.value.length != 17 && _RO_no.value.length != 0) {
 		var cnt = (_RO_no.value.match(/-/g) || []).length;
-		if((_RO_no.value.length - cnt) != 17) {
+		if ((_RO_no.value.length - cnt) != 17) {
 			alert('Ro 번호 자릴수가 다릅니다.(17)');
 			return;
 		}
 	}
 
-	if(_RO_no.value.length == 0) {
+	if (_RO_no.value.length == 0) {
 		alert('RO 번호가 입력되지 않았습니다.');
 	}
 
-	if(_VIN.value.length != 17 && _VIN.value.length != 0) {
+	if (_VIN.value.length != 17 && _VIN.value.length != 0) {
 		var cnt = (_VIN.value.match(/-/g) || []).length;
-		if((_VIN.value.length - cnt) != 17) {
+		if ((_VIN.value.length - cnt) != 17) {
 			alert('VIN이 자릿수가 다릅니다.(17)');
 			return;
 		}
 	}
 
-	if(_VIN.value.length == 0) {
+	if (_VIN.value.length == 0) {
 		alert('VIN 번호가 입력되지 않았습니다.');
 	}
 
@@ -241,7 +241,7 @@ async function 기초검사_SAVE() {
 	var seoul = DateTime.local().setZone("Asia/Seoul");
 	var now = seoul.toString().slice(0, 19);
 
-	if(_공정입고일.value == '') _공정입고일.value = now;
+	if (_공정입고일.value == '') _공정입고일.value = now;
 	_공정완료일.value = now;
 
 	var doc = JSON.parse(JSON.stringify(기초검사_doc));
@@ -251,7 +251,7 @@ async function 기초검사_SAVE() {
 	doc.VIN = _VIN.value;
 	doc.QRcode = _QRCode.value;
 	doc.주행거리 = _주행거리.value;
-	doc.차량번호 = _차량번호.value; 
+	doc.차량번호 = _차량번호.value;
 	doc.육안검사_외부 = _육안검사_외부.value;
 	doc.육안검사_외부_특이사항 = _육안검사_외부_특이사항.value;
 	doc.육안검사_내부 = _육안검사_내부.value;
@@ -270,7 +270,7 @@ async function 기초검사_SAVE() {
 	console.log('save rowIcnt:', rowIcnt);
 	console.log('save code_no:', code_no);
 
-	if(code_no == 10) {
+	if (code_no == 10) {
 		doc.통신검사_DTC코드4 = _통신검사_DTC코드4.value;
 		doc.통신검사_DTC코드5 = _통신검사_DTC코드5.value;
 		doc.통신검사_DTC코드6 = _통신검사_DTC코드6.value;
@@ -278,7 +278,7 @@ async function 기초검사_SAVE() {
 		doc.통신검사_DTC코드8 = _통신검사_DTC코드8.value;
 		doc.통신검사_DTC코드9 = _통신검사_DTC코드9.value;
 		doc.통신검사_DTC코드10 = _통신검사_DTC코드10.value;
-	} else if(code_no == 9) {
+	} else if (code_no == 9) {
 		doc.통신검사_DTC코드4 = _통신검사_DTC코드4.value;
 		doc.통신검사_DTC코드5 = _통신검사_DTC코드5.value;
 		doc.통신검사_DTC코드6 = _통신검사_DTC코드6.value;
@@ -286,7 +286,7 @@ async function 기초검사_SAVE() {
 		doc.통신검사_DTC코드8 = _통신검사_DTC코드8.value;
 		doc.통신검사_DTC코드9 = _통신검사_DTC코드9.value;
 		doc.통신검사_DTC코드10 = '';
-	} else if(code_no == 8) {
+	} else if (code_no == 8) {
 		doc.통신검사_DTC코드4 = _통신검사_DTC코드4.value;
 		doc.통신검사_DTC코드5 = _통신검사_DTC코드5.value;
 		doc.통신검사_DTC코드6 = _통신검사_DTC코드6.value;
@@ -294,7 +294,7 @@ async function 기초검사_SAVE() {
 		doc.통신검사_DTC코드8 = _통신검사_DTC코드8.value;
 		doc.통신검사_DTC코드9 = '';
 		doc.통신검사_DTC코드10 = '';
-	} else if(code_no == 7) {
+	} else if (code_no == 7) {
 		doc.통신검사_DTC코드4 = _통신검사_DTC코드4.value;
 		doc.통신검사_DTC코드5 = _통신검사_DTC코드5.value;
 		doc.통신검사_DTC코드6 = _통신검사_DTC코드6.value;
@@ -302,7 +302,7 @@ async function 기초검사_SAVE() {
 		doc.통신검사_DTC코드8 = '';;
 		doc.통신검사_DTC코드9 = '';
 		doc.통신검사_DTC코드10 = '';
-	} else if(code_no == 6) {
+	} else if (code_no == 6) {
 		doc.통신검사_DTC코드4 = _통신검사_DTC코드4.value;
 		doc.통신검사_DTC코드5 = _통신검사_DTC코드5.value;
 		doc.통신검사_DTC코드6 = _통신검사_DTC코드6.value;
@@ -310,7 +310,7 @@ async function 기초검사_SAVE() {
 		doc.통신검사_DTC코드8 = '';
 		doc.통신검사_DTC코드9 = '';
 		doc.통신검사_DTC코드10 = '';
-	} else if(code_no == 5) {
+	} else if (code_no == 5) {
 		doc.통신검사_DTC코드4 = _통신검사_DTC코드4.value;
 		doc.통신검사_DTC코드5 = _통신검사_DTC코드5.value;
 		doc.통신검사_DTC코드6 = '';
@@ -318,7 +318,7 @@ async function 기초검사_SAVE() {
 		doc.통신검사_DTC코드8 = '';
 		doc.통신검사_DTC코드9 = '';
 		doc.통신검사_DTC코드10 = '';
-	} else if(code_no == 4) {
+	} else if (code_no == 4) {
 		doc.통신검사_DTC코드4 = _통신검사_DTC코드4.value;
 		doc.통신검사_DTC코드5 = '';
 		doc.통신검사_DTC코드6 = '';
@@ -339,7 +339,7 @@ async function 기초검사_SAVE() {
 	//doc.문제BMA_No = _문제BMA_No.value;
 	//doc.문제BMA_cnt = _문제BMA_cnt.value; 
 	doc.공정완료일 = _공정완료일.value;
-	if(level == '관리자') doc.공정완료일 = _공정완료일.value;
+	if (level == '관리자') doc.공정완료일 = _공정완료일.value;
 	doc.요청사항 = _요청사항.value;
 	doc.비고 = _비고.value;
 	doc.센터진단내용 = _센터진단내용.value;
@@ -352,18 +352,18 @@ async function 기초검사_SAVE() {
 	console.log(update_count);
 	console.log(insert_count);
 
-	if(update_count > 0) {
+	if (update_count > 0) {
 		alert('업데이트 되었습니다');
 	}
 
-	if(insert_count > 0) {
+	if (insert_count > 0) {
 		alert('저장 되었습니다');
 	}
 
 	find(BSA재제조, _management_id.value);
 	await delay();
 
-	if(BSA재제조_v == null) {
+	if (BSA재제조_v == null) {
 		var _doc = JSON.parse(JSON.stringify(BSA재제조_doc));
 		_doc.관리번호 = _management_id.value.trim().toUpperCase();
 		_doc.기초검사투입일 = _공정입고일.value;
@@ -374,10 +374,10 @@ async function 기초검사_SAVE() {
 		await delay();
 	} else {
 		var _doc = {
-			관리번호 : _management_id.value.toUpperCase(),
-			기초검사투입일 : _공정입고일.value,
-			기초검사 : _공정완료일.value,
-			RO_no : _RO_no.value
+			관리번호: _management_id.value.toUpperCase(),
+			기초검사투입일: _공정입고일.value,
+			기초검사: _공정완료일.value,
+			RO_no: _RO_no.value
 		}
 
 		update(BSA재제조, _doc);
@@ -419,8 +419,8 @@ function _기초검사_add_DTC_Code() {
 	var code_no = rowIcnt - 18;
 	console.log('row count:', rowIcnt);
 	console.log('code No:', code_no);
-	if(rowIcnt > 31) return false;
-	if(code_no > 10) return false;
+	if (rowIcnt > 31) return false;
+	if (code_no > 10) return false;
 
 	oCurrentRow = tb.insertRow(rowIcnt);
 	var insert_string = "<td><label for=\"_통신검사_DTC코드\"" + code_no + "><b>통신검사 DTC코드 " + code_no + "</b></label></td><td><input type=\"text\" id=\"_통신검사_DTC코드" + code_no + "\" size=\"40\" required></td><td><button onClick=\"_기초검사_delete_row(" + rowIcnt + ");\">삭제</button></td>";
@@ -434,11 +434,11 @@ function _기초검사_delete_row(index) {
 	var rowIcnt = tb.rows.length - 17;
 
 	console.log('index:', index, 'rowIcnt:', rowIcnt);
-	if(index == rowIcnt) tb.deleteRow(index);
+	if (index == rowIcnt) tb.deleteRow(index);
 }
 
 function _기초검사_delete_all() {
-	while(기초검사_DTC_count > 0) {
+	while (기초검사_DTC_count > 0) {
 		var tb = document.getElementById('tb');
 		var rowIcnt = tb.rows.length - 15;
 
@@ -448,7 +448,7 @@ function _기초검사_delete_all() {
 }
 
 async function 기초검사_카메라시작() {
-	if(_management_id.value == '') rturn;
+	if (_management_id.value == '') rturn;
 
 	기초검사_SAVE();
 
@@ -456,35 +456,35 @@ async function 기초검사_카메라시작() {
 }
 
 function 기초검사_updateFilter() {
-  var fieldEl = document.getElementById("filter-field");
-  var typeEl = document.getElementById("filter-type");
-  var valueEl = document.getElementById("filter-value");
+	var fieldEl = document.getElementById("filter-field");
+	var typeEl = document.getElementById("filter-type");
+	var valueEl = document.getElementById("filter-value");
 
-  var filterVal = fieldEl.options[fieldEl.selectedIndex].value;
-  var typeVal = typeEl.options[typeEl.selectedIndex].value;
+	var filterVal = fieldEl.options[fieldEl.selectedIndex].value;
+	var typeVal = typeEl.options[typeEl.selectedIndex].value;
 
-  var filter = filterVal == "function" ? customFilter : filterVal;
+	var filter = filterVal == "function" ? customFilter : filterVal;
 
-  if (filterVal == "function") {
-    typeEl.disabled = true;
-    valueEl.disabled = true;
-  } else {
-    typeEl.disabled = false;
-    valueEl.disabled = false;
-  }
+	if (filterVal == "function") {
+		typeEl.disabled = true;
+		valueEl.disabled = true;
+	} else {
+		typeEl.disabled = false;
+		valueEl.disabled = false;
+	}
 
-  if (filterVal) {
-    기초검사_list_table.setFilter(filter, typeVal, valueEl.value);
-  }
+	if (filterVal) {
+		기초검사_list_table.setFilter(filter, typeVal, valueEl.value);
+	}
 }
 
 var 기초검사_list_table;
 async function 기초검사_list() {
-	findOne_BSA재제조(BSA재제조, { 공정단계 : { $ne : '출하' }, 세척 : { $ne : '' }, 기초검사 : { $eq : '' }, 분해조립 : { $eq : '' }, 성능검사 : { $eq : '' }, EOL : { $eq : '' } ,  소재지 : { $nin : ['공정대기', '품질대기'] }, 완전분해 : { $eq : ''}, 폐기 : { $eq : '' }, 출하 : { $eq : '' }, 구분 : { $nin: ['일반기타', '보증기타']} });
+	findOne_BSA재제조(BSA재제조, { 공정단계: { $ne: '출하' }, 세척: { $ne: '' }, 기초검사: { $eq: '' }, 분해조립: { $eq: '' }, 성능검사: { $eq: '' }, EOL: { $eq: '' }, 소재지: { $nin: ['공정대기', '품질대기'] }, 완전분해: { $eq: '' }, 폐기: { $eq: '' }, 출하: { $eq: '' }, 구분: { $nin: ['일반기타', '보증기타'] } });
 	await delay();
 
-	if(BSA재제조_v != null) {
-		find_BSA재제조(BSA재제조, { 공정단계 : { $ne : '출하' }, 세척 : { $ne : '' }, 기초검사 : { $eq : '' }, 분해조립 : { $eq : '' }, 성능검사 : { $eq : '' }, EOL : { $eq : '' } ,  소재지 : { $nin : ['공정대기', '품질대기'] }, 완전분해 : { $eq : ''}, 폐기 : { $eq : '' }, 출하 : { $eq : '' }, 구분 : { $nin: ['일반기타', '보증기타']} });
+	if (BSA재제조_v != null) {
+		find_BSA재제조(BSA재제조, { 공정단계: { $ne: '출하' }, 세척: { $ne: '' }, 기초검사: { $eq: '' }, 분해조립: { $eq: '' }, 성능검사: { $eq: '' }, EOL: { $eq: '' }, 소재지: { $nin: ['공정대기', '품질대기'] }, 완전분해: { $eq: '' }, 폐기: { $eq: '' }, 출하: { $eq: '' }, 구분: { $nin: ['일반기타', '보증기타'] } });
 		await delay();
 	}
 
@@ -627,7 +627,7 @@ async function 기초검사_list() {
 		await sleep(1);
 
 		var yes = confirm('선택한 BSA로 기초검사 공정 정보입력을 시작하시겠습니까?');
-		if(yes != true) return;
+		if (yes != true) return;
 
 		기초검사_시작();
 	});

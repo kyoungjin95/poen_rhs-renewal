@@ -683,7 +683,7 @@ async function 재제조현황_조회() {
 }
 
 async function delete_bsa_중복정보() {
-  if(계정_stat.관리번호 != 'o') return;
+  if (계정_stat.관리번호 != 'o') return;
   console.log("delete : ", _id);
   var ok = window.confirm("BSA기본정보에서만 지워집니다. 계속하겠습니까?");
   if (ok == false) return;
@@ -889,7 +889,7 @@ async function grid_입고(m_id = "") {
   if (m_id == "") {
     find_입고(입고, { 관리번호: { $exists: true } });
     await delay();
-  	
+
     tabledata_입고 = JSON.parse(JSON.stringify(입고_v));
   } else {
     find(입고, m_id);
@@ -897,7 +897,7 @@ async function grid_입고(m_id = "") {
 
     tabledata_입고.push(JSON.parse(JSON.stringify(입고_v)));
   }
- 
+
   table_입고 = new Tabulator("#grid_입고정보", {
     layout: "resizableColumnFit",
     height: "300px",
@@ -913,7 +913,7 @@ async function grid_입고(m_id = "") {
     ],
   });
 
-  find(입고_pic, m_id );
+  find(입고_pic, m_id);
   await delay();
   if (입고_pic_v != null) {
     pic1.src = "data:image/;base64," + 입고_pic_v.pic1;
@@ -973,7 +973,7 @@ async function grid_세척(m_id = "") {
   if (m_id == "") {
     find_세척(세척, { 관리번호: { $exists: true } });
     await delay();
-	  
+
     tabledata_세척 = JSON.parse(JSON.stringify(세척_v));
   } else {
     find(세척, m_id);
@@ -1074,7 +1074,7 @@ async function grid_기초검사(m_id = "") {
   if (m_id == "") {
     find_기초검사(기초검사, { 관리번호: { $exists: true } });
     await delay();
-  
+
     tabledata_기초검사 = JSON.parse(JSON.stringify(기초검사_v));
   } else {
     find(기초검사, m_id);
@@ -1214,7 +1214,7 @@ async function grid_기초검사(m_id = "") {
   find(기초검사_pic, m_id);
   await delay();
 
-  if(기초검사_pic_v != null) {
+  if (기초검사_pic_v != null) {
     pic1.src = "data:image/;base64," + 기초검사_pic_v.pic1;
     pic2.src = "data:image/;base64," + 기초검사_pic_v.pic2;
     pic3.src = "data:image/;base64," + 기초검사_pic_v.pic3;
@@ -1272,7 +1272,7 @@ async function grid_분해조립(m_id = "") {
   if (m_id == "") {
     find_분해조립(분해조립, { 관리번호: { $exists: true } });
     await delay();
-  
+
     tabledata_분해조립 = JSON.parse(JSON.stringify(분해조립_v));
   } else {
     find(분해조립, m_id);
@@ -1619,7 +1619,7 @@ async function grid_성능검사(m_id = "") {
   if (m_id == "") {
     find_성능검사(성능검사, { 관리번호: { $exists: true } });
     await delay();
-  	
+
     tabledata_성능검사 = JSON.parse(JSON.stringify(성능검사_v));
   } else {
     find(성능검사, m_id);
@@ -1943,12 +1943,12 @@ async function grid_출하정보(m_id = "") {
   if (m_id == "") {
     find_출하정보(출하정보, { 관리번호: { $exists: true } });
     await delay();
-	  
+
     tabledata_출하정보 = JSON.parse(JSON.stringify(출하정보_v));
   } else {
     find(출하정보, m_id);
     await delay();
-  
+
     tabledata_출하정보.push(JSON.parse(JSON.stringify(출하정보_v)));
   }
 
@@ -2232,7 +2232,7 @@ async function grid_특이사항(m_id = "") {
   if (m_id == "") {
     find_특이사항(특이사항, { 관리번호: { $exists: true } });
     await delay();
-    
+
     tabledata_특이사항 = JSON.parse(JSON.stringify(특이사항_v));
   } else {
     find(특이사항, m_id);

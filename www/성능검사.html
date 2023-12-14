@@ -1,235 +1,224 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>성능검사</title>
-    <link rel="stylesheet" href="base/style/공정.css" />
-  </head>
-  <body>
-    <section>
-      <div class="gather-filter">
-        <select id="filter-field">
-          <option></option>
-          <option value="관리번호">관리번호</option>
-          <option value="재제조번호">재제조번호</option>
-          <option value="구분">구분</option>
-          <option value="차종">차종</option>
-          <option value="품번">품번</option>
-          <option value="RO_no">RO_no</option>
-          <option value="공정단계">공정단계</option>
-          <option value="적재No">적재No</option>
-          <option value="입고">입고</option>
-          <option value="제조투입">제조투입</option>
-          <option value="세척투입일">세척투입일</option>
-          <option value="세척">세척</option>
-          <option value="기초검사투입">기초검사투입</option>
-          <option value="기초검사">기초검사</option>
-          <option value="분해조립투입">분해조립투입</option>
-          <option value="분해조립">분해조립</option>
-          <option value="성능검사투입">성능검사투입</option>
-          <option value="성능검사">성능검사</option>
-          <option value="EOL투입일">EOL투입일</option>
-          <option value="EOL">EOL</option>
-          <option value="출하검사">출하검사</option>
-          <option value="납품처">납품처</option>
-          <option value="출하">출하</option>
-          <option value="소재지">소재지</option>
-          <option value="반품입고">반품입고</option>
-          <option value="재출하">재출하</option>
-          <option value="완전분해">완전분해</option>
-          <option value="폐기">폐기</option>
-          <option value="마지막충전일">마지막충전일</option>
-        </select>
 
-        <select id="filter-type">
-          <option value="=">=</option>
-          <option value="<"><</option>
-          <option value="<="><=</option>
-          <option value=">">></option>
-          <option value=">=">>=</option>
-          <option value="!=">!=</option>
-          <option value="like">like</option>
-        </select>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>성능검사</title>
+  <link rel="stylesheet" href="base/style/공정.css" />
+</head>
 
-        <input id="filter-value" type="text" placeholder="value to filter" />
+<body>
+  <section>
+    <div class="gather-filter">
+      <select id="filter-field">
+        <option></option>
+        <option value="관리번호">관리번호</option>
+        <option value="재제조번호">재제조번호</option>
+        <option value="구분">구분</option>
+        <option value="차종">차종</option>
+        <option value="품번">품번</option>
+        <option value="RO_no">RO_no</option>
+        <option value="공정단계">공정단계</option>
+        <option value="적재No">적재No</option>
+        <option value="입고">입고</option>
+        <option value="제조투입">제조투입</option>
+        <option value="세척투입일">세척투입일</option>
+        <option value="세척">세척</option>
+        <option value="기초검사투입">기초검사투입</option>
+        <option value="기초검사">기초검사</option>
+        <option value="분해조립투입">분해조립투입</option>
+        <option value="분해조립">분해조립</option>
+        <option value="성능검사투입">성능검사투입</option>
+        <option value="성능검사">성능검사</option>
+        <option value="EOL투입일">EOL투입일</option>
+        <option value="EOL">EOL</option>
+        <option value="출하검사">출하검사</option>
+        <option value="납품처">납품처</option>
+        <option value="출하">출하</option>
+        <option value="소재지">소재지</option>
+        <option value="반품입고">반품입고</option>
+        <option value="재출하">재출하</option>
+        <option value="완전분해">완전분해</option>
+        <option value="폐기">폐기</option>
+        <option value="마지막충전일">마지막충전일</option>
+      </select>
 
-        <button id="filter-clear">Clear Filter</button>
+      <select id="filter-type">
+        <option value="=">=</option>
+        <option value="<">
+          << /option>
+        <option value="<=">
+          <=< /option>
+        <option value=">">></option>
+        <option value=">=">>=</option>
+        <option value="!=">!=</option>
+        <option value="like">like</option>
+      </select>
+
+      <input id="filter-value" type="text" placeholder="value to filter" />
+
+      <button id="filter-clear">Clear Filter</button>
+    </div>
+    <button onClick="성능검사_list();">LIST</button>
+    <div id="grid_list"></div>
+  </section>
+  <section class="성능검사">
+    <div class="input-group">
+      <div class="process__tit">
+        <h2>성능검사</h2>
       </div>
-      <button onClick="성능검사_list();">LIST</button>
-      <div id="grid_list"></div>
-    </section>
-    <section class="성능검사">
+      <div class="input-group process-step">
+        <table class="tb">
+          <colgroup>
+            <col class="col_1" width="30%" />
+            <col class="col_2" width="70%" />
+          </colgroup>
+          <tr>
+            <td>
+              <label for="management_id"><b>관리번호</b></label>
+            </td>
+            <td>
+              <input type="text" id="_management_id" value="" size="40" required />
+              <button onClick="성능검사_시작(0);">조 회</button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_재제조번호"><b>재제조번호</b></label>
+            </td>
+            <td>
+              <input type="text" id="_재제조번호" size="40" required />
+              <button onClick="성능검사_시작(1);">조 회</button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_RO_no"><b>RO no.</b></label>
+            </td>
+            <td>
+              <input type="text" id="_RO_no" size="40" required />
+              <button onClick="성능검사_시작(2);">조 회</button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_구분"><b>구분</b></label>
+            </td>
+            <td>
+              <input type="text" id="_구분" size="40" readonly required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_차종"><b>차종</b></label>
+            </td>
+            <td>
+              <input type="text" id="_차종" size="40" readonly required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_품번"><b>품번</b></label>
+            </td>
+            <td>
+              <input type="text" id="_품번" size="40" readonly required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_공정입고일"><b>공정 입고일</b></label>
+            </td>
+            <td>
+              <input type="datetime-local" id="_공정입고일" value="0000-00-00T00:00" required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_용량평가"><b>용량평가</b></label>
+            </td>
+            <td>
+              <input type="text" id="_용량평가" size="40" required /> (Ah, KWh)
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_SOC60Percent"><b>SOC60Percent</b></label>
+            </td>
+            <td>
+              <input type="text" id="_SOC60Percent" size="40" required /> (V)
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_DCIR"><b>DCIR</b></label>
+            </td>
+            <td>
+              <input type="text" id="_DCIR" size="40" required /> (mΩ)
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_DCIR_Charge"><b>DCIR(Charge)</b></label>
+            </td>
+            <td>
+              <input type="text" id="_DCIR_Charge" size="40" required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_DCIR_Discharge"><b>DCIR(Discharge)</b></label>
+            </td>
+            <td>
+              <input type="text" id="_DCIR_Discharge" size="40" required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_분해조립_재의뢰사유"><b>분해조립 재의뢰 사유</b></label>
+            </td>
+            <td>
+              <input type="text" id="_분해조립_재의뢰사유" size="40" required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_공정완료일"><b>공정 완료일</b></label>
+            </td>
+            <td>
+              <input type="datetime-local" id="_공정완료일" value="0000-00-00T00:00" required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_검사자"><b>검사자</b></label>
+            </td>
+            <td>
+              <input type="text" id="_검사자" size="40" required />
+            </td>
+          </tr>
+        </table>
+      </div>
       <div class="input-group">
-        <div class="process__tit">
-          <h2>성능검사</h2>
-        </div>
-        <div class="input-group process-step">
-          <table class="tb">
-            <colgroup>
-              <col class="col_1" width="30%" />
-              <col class="col_2" width="70%" />
-            </colgroup>
-            <tr>
-              <td>
-                <label for="management_id"><b>관리번호</b></label>
-              </td>
-              <td>
-                <input
-                  type="text"
-                  id="_management_id"
-                  value=""
-                  size="40"
-                  required
-                />
-                <button onClick="성능검사_시작(0);">조 회</button>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label for="_재제조번호"><b>재제조번호</b></label>
-              </td>
-              <td>
-                <input type="text" id="_재제조번호" size="40" required />
-                <button onClick="성능검사_시작(1);">조 회</button>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label for="_RO_no"><b>RO no.</b></label>
-              </td>
-              <td>
-                <input type="text" id="_RO_no" size="40" required />
-                <button onClick="성능검사_시작(2);">조 회</button>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label for="_구분"><b>구분</b></label>
-              </td>
-              <td>
-                <input type="text" id="_구분" size="40" readonly required />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label for="_차종"><b>차종</b></label>
-              </td>
-              <td>
-                <input type="text" id="_차종" size="40" readonly required />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label for="_품번"><b>품번</b></label>
-              </td>
-              <td>
-                <input type="text" id="_품번" size="40" readonly required />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label for="_공정입고일"><b>공정 입고일</b></label>
-              </td>
-              <td>
-                <input
-                  type="datetime-local"
-                  id="_공정입고일"
-                  value="0000-00-00T00:00"
-                  required
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label for="_용량평가"><b>용량평가</b></label>
-              </td>
-              <td>
-                <input type="text" id="_용량평가" size="40" required /> (Ah, KWh)
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label for="_SOC60Percent"><b>SOC60Percent</b></label>
-              </td>
-              <td>
-                <input type="text" id="_SOC60Percent" size="40" required /> (V)
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label for="_DCIR"><b>DCIR</b></label>
-              </td>
-              <td>
-                <input type="text" id="_DCIR" size="40" required /> (mΩ)
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label for="_DCIR_Charge"><b>DCIR(Charge)</b></label>
-              </td>
-              <td>
-                <input type="text" id="_DCIR_Charge" size="40" required />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label for="_DCIR_Discharge"><b>DCIR(Discharge)</b></label>
-              </td>
-              <td>
-                <input type="text" id="_DCIR_Discharge" size="40" required />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label for="_분해조립_재의뢰사유"><b>분해조립 재의뢰 사유</b></label>
-              </td>
-              <td>
-                <input type="text" id="_분해조립_재의뢰사유" size="40" required />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label for="_공정완료일"><b>공정 완료일</b></label>
-              </td>
-              <td>
-                <input
-                  type="datetime-local"
-                  id="_공정완료일"
-                  value="0000-00-00T00:00"
-                  required
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label for="_검사자"><b>검사자</b></label>
-              </td>
-              <td>
-                <input type="text" id="_검사자" size="40" required />
-              </td>
-            </tr>
-          </table>
-        </div>
-        <div class="input-group">
-          <div class="input-btn-group">
-            <button onClick="성능검사_save();">저장</button>
-            <button onClick="이전페이지();">이전페이지</button>
-          </div>
+        <div class="input-btn-group">
+          <button onClick="성능검사_save();">저장</button>
+          <button onClick="이전페이지();">이전페이지</button>
         </div>
       </div>
-    </section>
-    <script>
-      const _management_id = document.getElementById("_management_id");
-      const _재제조번호 = document.getElementById("_재제조번호");
-      const _용량평가 = document.getElementById("_용량평가");
-      const _SOC40Percent = document.getElementById("_SOC40Percent");
-      const _DCIR = document.getElementById("_DCIR");
-      const _DCIR_Charge = document.getElementById("_DCIR_Charge");
-      const _DCIR_Discharge = document.getElementById("_DCIR_Discharge");
-      const _분해조립_재의뢰사유 = document.getElementById("_분해조립_재의뢰사유");
-      const _완료일 = document.getElementById("_완료일");
-      const _검사자 = document.getElementById("_검사자");
-    </script>
-  </body>
+    </div>
+  </section>
+  <script>
+    const _management_id = document.getElementById("_management_id");
+    const _재제조번호 = document.getElementById("_재제조번호");
+    const _용량평가 = document.getElementById("_용량평가");
+    const _SOC40Percent = document.getElementById("_SOC40Percent");
+    const _DCIR = document.getElementById("_DCIR");
+    const _DCIR_Charge = document.getElementById("_DCIR_Charge");
+    const _DCIR_Discharge = document.getElementById("_DCIR_Discharge");
+    const _분해조립_재의뢰사유 = document.getElementById("_분해조립_재의뢰사유");
+    const _완료일 = document.getElementById("_완료일");
+    const _검사자 = document.getElementById("_검사자");
+  </script>
+</body>
+
 </html>

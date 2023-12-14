@@ -26,14 +26,14 @@ async function 출하검사성적서_조회(is재제조번호 = false) {
   find(BSA재제조, _management_id.value);
   await delay();
 
-  if(BSA재제조_v != null) {
+  if (BSA재제조_v != null) {
     _재제조번호.innerHTML = BSA재제조_v.재제조번호;
   }
 
   find(입고, _management_id.value);
   await delay();
 
-  if(입고_v != 0) {
+  if (입고_v != 0) {
     _차종.innerHTML = 입고_v.차종;
     _품번.innerHTML = 입고_v.품번;
   }
@@ -41,7 +41,7 @@ async function 출하검사성적서_조회(is재제조번호 = false) {
   find(기초검사, _management_id.value);
   await delay();
 
-  if(기초검사_v != null) {
+  if (기초검사_v != null) {
     _RO.innerHTML = 기초검사_v.RO_no;
   }
 
@@ -53,12 +53,12 @@ async function 출하검사성적서_조회(is재제조번호 = false) {
     _납품처.innerHTML = 출하정보_v.납품처;
     _검사일.innerHTML = 출하정보_v.검사일;
     _검사자.innerHTML = 출하정보_v.검사자;
-    _기초보고서_OK.innerHTML = 출하정보_v.기초보고서_작성확인 == 'OK'? 'OK' : '';
-    _기초보고서_NG.innerHTML = 출하정보_v.기초보고서_작성확인 == 'NG'? 'NG' : '';
-    _완료보고서_OK.innerHTML = 출하정보_v.기초보고서_작성확인 == 'OK'? 'OK' : '';
-    _완료보고서_NG.innerHTML = 출하정보_v.기초보고서_작성확인 == 'NG'? 'NG' : '';
-    _릴레이동시구동_OK.innerHTML = 출하정보_v.릴레이_강제구동 == 'OK'? 'OK' : '';
-    _릴레이동시구동_NG.innerHTML = 출하정보_v.릴레이_강제구동 == 'NG'? 'NG' : '';
+    _기초보고서_OK.innerHTML = 출하정보_v.기초보고서_작성확인 == 'OK' ? 'OK' : '';
+    _기초보고서_NG.innerHTML = 출하정보_v.기초보고서_작성확인 == 'NG' ? 'NG' : '';
+    _완료보고서_OK.innerHTML = 출하정보_v.기초보고서_작성확인 == 'OK' ? 'OK' : '';
+    _완료보고서_NG.innerHTML = 출하정보_v.기초보고서_작성확인 == 'NG' ? 'NG' : '';
+    _릴레이동시구동_OK.innerHTML = 출하정보_v.릴레이_강제구동 == 'OK' ? 'OK' : '';
+    _릴레이동시구동_NG.innerHTML = 출하정보_v.릴레이_강제구동 == 'NG' ? 'NG' : '';
     //_SOC전압_OK.innerHTML = 출하정보_v.SOC == 'OK' ? 'OK' : '';
     //_SOC전압_NG.innerHTML = 출하정보_v.SOC == 'NG' ? 'NG' : '';
     _팩전압.innerHTML = 출하정보_v.배터리팩전압;

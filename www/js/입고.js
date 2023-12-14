@@ -62,7 +62,7 @@ async function 입고_save() {
 	var seoul = DateTime.local().setZone("Asia/Seoul");
 	var now = seoul.toString().slice(0, 19);
 
-	if(_입고일.value == '') _입고일.value = now;
+	if (_입고일.value == '') _입고일.value = now;
 
 	doc.관리번호 = _management_id.value.trim().toUpperCase();
 	doc.입고일 = _입고일.value;
@@ -72,15 +72,15 @@ async function 입고_save() {
 	doc.품번 = _품번.value;
 	doc.RO_no = _RO_no.value;
 
-	if(_RO_no.value.length != 17 && _RO_no.value.length != 0) {
+	if (_RO_no.value.length != 17 && _RO_no.value.length != 0) {
 		var cnt = (_RO_no.value.match(/-/g) || []).length;
-		if((_RO_no.value.length - cnt) != 17) {
+		if ((_RO_no.value.length - cnt) != 17) {
 			alert('Ro 번호 자릴수가 다릅니다.(17)');
 			return;
 		}
 	}
 
-	if(_RO_no.value.length == 0) {
+	if (_RO_no.value.length == 0) {
 		alert('RO 번호가 입력되지 않았습니다.');
 	}
 	update(입고, doc);
@@ -97,7 +97,7 @@ async function 입고_save() {
 		alert("저장 되었습니다");
 	}
 
-	find(BSA재제조, _management_id.value );
+	find(BSA재제조, _management_id.value);
 	await delay();
 
 	if (BSA재제조_v == null) {

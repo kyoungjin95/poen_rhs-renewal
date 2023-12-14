@@ -3,24 +3,24 @@ async function passwd_change() {
 	var _passwd1 = document.getElementById('_passwd1');
 	var _passwd2 = document.getElementById('_passwd2');
 
-	if(_passwd1.value != _passwd2.value) {
+	if (_passwd1.value != _passwd2.value) {
 		alert('패스워드가 서로 다름니다.');
 		return;
 	}
 
-	const hash_old = CryptoJS.MD5(_old_passwd.value); 	
+	const hash_old = CryptoJS.MD5(_old_passwd.value);
 
 	findOne_계정(계정, { id: worker, passwd: hash_old.toString() });
 	await delay();
 
 	console.log(계정_v);
 
-	if(계정_v != null) {
-		const hash = CryptoJS.MD5(_passwd1.value.trim()); 	
+	if (계정_v != null) {
+		const hash = CryptoJS.MD5(_passwd1.value.trim());
 
 		var doc = {
-			id : worker,
-			passwd : hash.toString()
+			id: worker,
+			passwd: hash.toString()
 		}
 
 		console.log('hash:', hash.toString());
@@ -31,11 +31,11 @@ async function passwd_change() {
 		console.log(update_count);
 		console.log(insert_count);
 
-		if(update_count > 0) {
+		if (update_count > 0) {
 			alert('업데이트 되었습니다');
 		}
 
-		if(insert_count > 0) {
+		if (insert_count > 0) {
 			alert('저장 되었습니다');
 		}
 	} else {

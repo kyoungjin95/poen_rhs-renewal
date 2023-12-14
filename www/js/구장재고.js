@@ -1,14 +1,14 @@
 async function 구장재고_시작() {
-	while(_비고 == undefined) {
+	while (_비고 == undefined) {
 		await sleep(DELAY);
 	}
 	flag_구장재고 = false;
-	
+
 	구장재고_조회(false);
 }
 
 function 구장재고_관리번호_조회() {
-	구장재고_조회(false);	
+	구장재고_조회(false);
 }
 
 function 구장재고_재제조번호_조회() {
@@ -18,28 +18,28 @@ function 구장재고_재제조번호_조회() {
 
 async function 구장재고_조회(is재제조 = false) {
 	var flag_empty = false;
-	if(is재제조 == false) {
+	if (is재제조 == false) {
 		_management_id.value = _management_id.value.trim().toUpperCase();
-		if(_management_id.value == '조회를 누르세요') _management_id.value = 관리번호;
-		if(_management_id.value.length == 0) return;
+		if (_management_id.value == '조회를 누르세요') _management_id.value = 관리번호;
+		if (_management_id.value.length == 0) return;
 		관리번호 = _management_id.value.trim().toUpperCase();
 		console.log('관리번호:', 관리번호);
 
-		findOne_구장재고(구장재고, { 관리번호 : _management_id.value });
+		findOne_구장재고(구장재고, { 관리번호: _management_id.value });
 		await delay();
-		
-		if(구장재고_v == null) flag_empty = true;
+
+		if (구장재고_v == null) flag_empty = true;
 	} else {
 		_재제조번호.value = _재제조번호.value.trim();
-		if(_재제조번호.value.length == 0) return;
+		if (_재제조번호.value.length == 0) return;
 
-		findOne_구장재고(구장재고, { 재제조번호 : _재제조번호.value });
+		findOne_구장재고(구장재고, { 재제조번호: _재제조번호.value });
 		await delay();
 
-		if(구장재고_v == null) flag_empty = true;
+		if (구장재고_v == null) flag_empty = true;
 	}
-	
-	if(flag_empty == false) {
+
+	if (flag_empty == false) {
 		_management_id.value = 구장재고_v.관리번호;
 		_재제조번호.value = 구장재고_v.재제조번호;
 		_입고일.value = 구장재고_v.입고일;
@@ -53,7 +53,7 @@ async function 구장재고_조회(is재제조 = false) {
 		_출고처.value = 구장재고_v.출고처;
 		_비고.value = 구장재고_v.비고;
 	} else {
-		if(is재제조 == false) _재제조번호.value = '';
+		if (is재제조 == false) _재제조번호.value = '';
 		else _management_id.value = '';
 
 		_입고일.value = '';
@@ -70,7 +70,7 @@ async function 구장재고_조회(is재제조 = false) {
 }
 
 async function 구장재고_save() {
-	if(_management_id.value.length == 0) return;
+	if (_management_id.value.length == 0) return;
 
 	var doc = 구장재고_doc;
 	doc.관리번호 = _management_id.value.trim().toUpperCase();
@@ -89,11 +89,11 @@ async function 구장재고_save() {
 	update(구장재고, doc);
 	await delay();
 
-	if(update_count > 0) {
+	if (update_count > 0) {
 		alert('업데이트 되었습니다');
 	}
 
-	if(insert_count > 0) {
+	if (insert_count > 0) {
 		alert('신규 항목이 저장 되었습니다');
 	}
 }

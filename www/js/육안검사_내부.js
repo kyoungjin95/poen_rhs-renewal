@@ -21,21 +21,21 @@ async function 육안검사내부_시작() {
     internalInspection.style.display = "none";
     internalInspectionImg.style.display = "block";
   });
-  
+
   _management_id.value = 관리번호;
   육안검사내부_조회();
 }
 
 async function 육안검사내부_조회(is재제조번호 = false) {
-  if(is재제조번호 == true) {
-    count(BSA재제조, { 재제조번호 : _재제조번호.value});
+  if (is재제조번호 == true) {
+    count(BSA재제조, { 재제조번호: _재제조번호.value });
     await delay();
 
-    if(BSA재제조_cnt > 0) {
-    	find_BSA재제조(BSA재제조, { 재제조번호 : _재제조번호.value});
-    	await delay();
+    if (BSA재제조_cnt > 0) {
+      find_BSA재제조(BSA재제조, { 재제조번호: _재제조번호.value });
+      await delay();
 
-    	_management_id.value = BSA재제조_v.관리번호;
+      _management_id.value = BSA재제조_v.관리번호;
     }
   }
 
@@ -44,10 +44,10 @@ async function 육안검사내부_조회(is재제조번호 = false) {
   console.log("load: ", _management_id.value);
   if (_management_id.value.length == 0) return;
 
-  count(입고_pic, { 관리번호 : _management_id.value });
+  count(입고_pic, { 관리번호: _management_id.value });
   await delay();
 
-  if(입고_pic_cnt == 0) return;
+  if (입고_pic_cnt == 0) return;
 
   find(입고_pic, _management_id.value);
   await delay();

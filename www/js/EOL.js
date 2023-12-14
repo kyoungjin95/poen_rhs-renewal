@@ -5,12 +5,12 @@ function EOL_재제조번호_시작() {
 var EOL_DTC_count = 0;
 
 async function EOL_시작(is재제조 = 0) {
-	if(worker == '') return;
-	while(_management_id == undefined) {
+	if (worker == '') return;
+	while (_management_id == undefined) {
 		await sleep(DELAY);
 	}
 
-	if(flag_EOL == true) await EOL_list();
+	if (flag_EOL == true) await EOL_list();
 	flag_EOL = false;
 
 	_eol_delete_all();
@@ -27,38 +27,38 @@ async function EOL_시작(is재제조 = 0) {
 	document.getElementById('_통신검사_셀전압편차_label').innerHTML = '통신검사_셀전압편차 특이사항';
 	document.getElementById('_통신검사_릴레이구동_label').innerHTML = '통신검사_릴레이구동 특이사항';
 
-	if(is재제조 == 0) {
-		if(_management_id.value.length == 0) return;
+	if (is재제조 == 0) {
+		if (_management_id.value.length == 0) return;
 
 		find(BSA재제조, _management_id.value);
 		await delay();
-		if(BSA재제조_v != null) {
+		if (BSA재제조_v != null) {
 			_재제조번호.value = BSA재제조_v.재제조번호;
 			_RO_no.value = BSA재제조_v.RO_no;
 		} else {
 			_재제조번호.value = '';
 			_RO_no.value = '';
 		}
-	} else if(is재제조 == 1) {
-		if(_재제조번호.value.length == 0) return;
+	} else if (is재제조 == 1) {
+		if (_재제조번호.value.length == 0) return;
 
-		findOne_BSA재제조(BSA재제조, { 재제조번호 : _재제조번호.value});
+		findOne_BSA재제조(BSA재제조, { 재제조번호: _재제조번호.value });
 		await delay();
 
-		if(BSA재제조_v != null) {
+		if (BSA재제조_v != null) {
 			_management_id.value = BSA재제조_v.관리번호;
 			_RO_no.value = BSA재제조_v.RO_no;
 		} else {
 			_management_id.value = '';
 			_RO_no.value = '';
 		}
-	} else if(is재제조 == 2) {
-		if(_RO_no.value.length == 0) return;
+	} else if (is재제조 == 2) {
+		if (_RO_no.value.length == 0) return;
 
-		findOne_BSA재제조(BSA재제조, { RO_no : _RO_no.value});
+		findOne_BSA재제조(BSA재제조, { RO_no: _RO_no.value });
 		await delay();
 
-		if(BSA재제조_v != null) {
+		if (BSA재제조_v != null) {
 			_management_id.value = BSA재제조_v.관리번호;
 			_재제조번호.value = BSA재제조_v.재제조번호;
 		} else {
@@ -71,112 +71,112 @@ async function EOL_시작(is재제조 = 0) {
 	find(EOL, _management_id.value);
 	await delay();
 
-	if(EOL_v != null) {
-			_공정입고일.value = EOL_v.공정입고일; 
-			_UPR_C조립.value = EOL_v.UPR_C조립; 
-			if(_UPR_C조립.value == 'OK') {
-				document.getElementById('_UPR_C조립_label').innerHTML = 'UPR_C조립 입력값';
-			} else {
-				document.getElementById('_UPR_C조립_label').innerHTML = 'UPR_C조립 특이사항';
-			}
-			_기밀검사_케이스.value = EOL_v.기밀검사_케이스;
-			if(_기밀검사_케이스.value == 'OK') {
-				document.getElementById('_기밀검사_케이스_label').innerHTML = '기밀검사 케이스 입력값';
-			} else {
-				document.getElementById('_기밀검사_케이스_label').innerHTML = '기밀검사 케이스 특이사항';
-			}
-			_기밀검사_케이스_특이사항.value = EOL_v.기밀검사_케이스_특이사항;
-			_기밀검사_냉각유로.value = EOL_v.기밀검사_냉각유로;
-			if(_기밀검사_냉각유로.value == 'OK') {
-				document.getElementById('_기밀검사_냉각유로_label').innerHTML = '기밀검사 냉각유로 입력값';
-			} else {
-				document.getElementById('_기밀검사_냉각유로_label').innerHTML = '기밀검사 냉각유로 특이사항';
-			}
-			_기밀검사_냉각유로_특이사항.value = EOL_v.기밀검사_냉각유로_특이사항;
-			_절연검사P.value = EOL_v.절연검사_Plus;
-			if(_절연검사P.value == 'OK') {
-				document.getElementById('_절연검사P_label').innerHTML = '절연검사+ 입력값';
-			} else {
-				document.getElementById('_절연검사P_label').innerHTML = '절연검사+ 특이사항';
-			}
-			_절연검사M.value = EOL_v.절연검사_Minus;
-			if(_절연검사M.value == 'OK') {
-				document.getElementById('_절연검사M_label').innerHTML = '절연검사- 입력값';
-			} else {
-				document.getElementById('_절연검사M_label').innerHTML = '절연검사- 특이사항';
-			}
-			_절연저항HVP.value = EOL_v.절연저항_HVP;
-			if(_절연저항HVP.value == 'OK') {
-				document.getElementById('_절연저항HVP_label').innerHTML = '절연저항HV+ 입력값';
-			} else {
-				document.getElementById('_절연저항HVP_label').innerHTML = '절연저항HV+ 특이사항';
-			}
-			_절연저항HVN.value = EOL_v.절연저항_HVN;
-			if(_절연저항HVN.value == 'OK') {
-				document.getElementById('_절연저항HVN_label').innerHTML = '절연저항HV- 입력값';
-			} else {
-				document.getElementById('_절연저항HVN_label').innerHTML = '절연저항HV- 특이사항';
-			}
-			_통신검사_DTC코드1.value = EOL_v.통신검사_DTC코드1;
-			_통신검사_DTC코드2.value = EOL_v.통신검사_DTC코드2;
-			_통신검사_DTC코드3.value = EOL_v.통신검사_DTC코드3;
-			if(EOL_v.통신검사_DTC코드4 != '' && EOL_v.통신검사_DTC코드4 != undefined) {
-				_EOL_add_DTC_Code();
-				_통신검사_DTC코드4.value = EOL_v.통신검사_DTC코드4;
-			}
+	if (EOL_v != null) {
+		_공정입고일.value = EOL_v.공정입고일;
+		_UPR_C조립.value = EOL_v.UPR_C조립;
+		if (_UPR_C조립.value == 'OK') {
+			document.getElementById('_UPR_C조립_label').innerHTML = 'UPR_C조립 입력값';
+		} else {
+			document.getElementById('_UPR_C조립_label').innerHTML = 'UPR_C조립 특이사항';
+		}
+		_기밀검사_케이스.value = EOL_v.기밀검사_케이스;
+		if (_기밀검사_케이스.value == 'OK') {
+			document.getElementById('_기밀검사_케이스_label').innerHTML = '기밀검사 케이스 입력값';
+		} else {
+			document.getElementById('_기밀검사_케이스_label').innerHTML = '기밀검사 케이스 특이사항';
+		}
+		_기밀검사_케이스_특이사항.value = EOL_v.기밀검사_케이스_특이사항;
+		_기밀검사_냉각유로.value = EOL_v.기밀검사_냉각유로;
+		if (_기밀검사_냉각유로.value == 'OK') {
+			document.getElementById('_기밀검사_냉각유로_label').innerHTML = '기밀검사 냉각유로 입력값';
+		} else {
+			document.getElementById('_기밀검사_냉각유로_label').innerHTML = '기밀검사 냉각유로 특이사항';
+		}
+		_기밀검사_냉각유로_특이사항.value = EOL_v.기밀검사_냉각유로_특이사항;
+		_절연검사P.value = EOL_v.절연검사_Plus;
+		if (_절연검사P.value == 'OK') {
+			document.getElementById('_절연검사P_label').innerHTML = '절연검사+ 입력값';
+		} else {
+			document.getElementById('_절연검사P_label').innerHTML = '절연검사+ 특이사항';
+		}
+		_절연검사M.value = EOL_v.절연검사_Minus;
+		if (_절연검사M.value == 'OK') {
+			document.getElementById('_절연검사M_label').innerHTML = '절연검사- 입력값';
+		} else {
+			document.getElementById('_절연검사M_label').innerHTML = '절연검사- 특이사항';
+		}
+		_절연저항HVP.value = EOL_v.절연저항_HVP;
+		if (_절연저항HVP.value == 'OK') {
+			document.getElementById('_절연저항HVP_label').innerHTML = '절연저항HV+ 입력값';
+		} else {
+			document.getElementById('_절연저항HVP_label').innerHTML = '절연저항HV+ 특이사항';
+		}
+		_절연저항HVN.value = EOL_v.절연저항_HVN;
+		if (_절연저항HVN.value == 'OK') {
+			document.getElementById('_절연저항HVN_label').innerHTML = '절연저항HV- 입력값';
+		} else {
+			document.getElementById('_절연저항HVN_label').innerHTML = '절연저항HV- 특이사항';
+		}
+		_통신검사_DTC코드1.value = EOL_v.통신검사_DTC코드1;
+		_통신검사_DTC코드2.value = EOL_v.통신검사_DTC코드2;
+		_통신검사_DTC코드3.value = EOL_v.통신검사_DTC코드3;
+		if (EOL_v.통신검사_DTC코드4 != '' && EOL_v.통신검사_DTC코드4 != undefined) {
+			_EOL_add_DTC_Code();
+			_통신검사_DTC코드4.value = EOL_v.통신검사_DTC코드4;
+		}
 
-			if(EOL_v.통신검사_DTC코드5 != '' && EOL_v.통신검사_DTC코드5 != undefined) {
-				_EOL_add_DTC_Code();
-				_통신검사_DTC코드5.value = EOL_v.통신검사_DTC코드5;
-			}
+		if (EOL_v.통신검사_DTC코드5 != '' && EOL_v.통신검사_DTC코드5 != undefined) {
+			_EOL_add_DTC_Code();
+			_통신검사_DTC코드5.value = EOL_v.통신검사_DTC코드5;
+		}
 
-			if(EOL_v.통신검사_DTC코드6 != '' && EOL_v.통신검사_DTC코드6 != undefined) {
-				_EOL_add_DTC_Code();
-				_통신검사_DTC코드6.value = EOL_v.통신검사_DTC코드6;
-			}
+		if (EOL_v.통신검사_DTC코드6 != '' && EOL_v.통신검사_DTC코드6 != undefined) {
+			_EOL_add_DTC_Code();
+			_통신검사_DTC코드6.value = EOL_v.통신검사_DTC코드6;
+		}
 
-			if(EOL_v.통신검사_DTC코드7 != '' && EOL_v.통신검사_DTC코드7 != undefined) {
-				_EOL_add_DTC_Code();
-				_통신검사_DTC코드7.value = EOL_v.통신검사_DTC코드7;
-			}
+		if (EOL_v.통신검사_DTC코드7 != '' && EOL_v.통신검사_DTC코드7 != undefined) {
+			_EOL_add_DTC_Code();
+			_통신검사_DTC코드7.value = EOL_v.통신검사_DTC코드7;
+		}
 
-			if(EOL_v.통신검사_DTC코드8 != '' && EOL_v.통신검사_DTC코드8 != undefined) {
-				_EOL_add_DTC_Code();
-				_통신검사_DTC코드8.value = EOL_v.통신검사_DTC코드8;
-			}
+		if (EOL_v.통신검사_DTC코드8 != '' && EOL_v.통신검사_DTC코드8 != undefined) {
+			_EOL_add_DTC_Code();
+			_통신검사_DTC코드8.value = EOL_v.통신검사_DTC코드8;
+		}
 
-			if(EOL_v.통신검사_DTC코드9 != '' && EOL_v.통신검사_DTC코드9 != undefined) {
-				_EOL_add_DTC_Code();
-				_통신검사_DTC코드9.value = EOL_v.통신검사_DTC코드9;
-			}
+		if (EOL_v.통신검사_DTC코드9 != '' && EOL_v.통신검사_DTC코드9 != undefined) {
+			_EOL_add_DTC_Code();
+			_통신검사_DTC코드9.value = EOL_v.통신검사_DTC코드9;
+		}
 
-			if(EOL_v.통신검사_DTC코드10 != '' && EOL_v.통신검사_DTC코드10 != undefined ) {
-				_EOL_add_DTC_Code();
-				_통신검사_DTC코드10.value = EOL_v.통신검사_DTC코드10;
-			}
+		if (EOL_v.통신검사_DTC코드10 != '' && EOL_v.통신검사_DTC코드10 != undefined) {
+			_EOL_add_DTC_Code();
+			_통신검사_DTC코드10.value = EOL_v.통신검사_DTC코드10;
+		}
 
-			_통신검사_팩전압.value = EOL_v.통신검사_팩전압;
-			if(_통신검사_팩전압.value == 'OK') {
-				document.getElementById('_통신검사_팩전압_label').innerHTML = '통신검사_팩전압 입력값';
-			} else {
-				document.getElementById('_통신검사_팩전압_label').innerHTML = '통신검사_팩전압 특이사항';
-			}
-			_통신검사_셀전압편차.value = EOL_v.통신검사_셀전압편차;
-			if(_통신검사_셀전압편차.value == 'OK') {
-				document.getElementById('_통신검사_셀전압편차_label').innerHTML = '통신검사_셀전압편차 입력값';
-			} else  {
-				document.getElementById('_통신검사_셀전압편차_label').innerHTML = '통신검사_셀전압편차 특이사항';
-			}
-			_통신검사_릴레이구동.value = EOL_v.통신검사_릴레이구동;
-			if(_통신검사_릴레이구동.value == 'OK') {
-				document.getElementById('_통신검사_릴레이구동_label').innerHTML = '통신검사_릴레이구동 입력값';
-			} else {
-				document.getElementById('_통신검사_릴레이구동_label').innerHTML = '통신검사_릴레이구동 특이사항';
-			}
-			_공정완료일.value = EOL_v.공정완료일;
-			_비고.value = EOL_v.비고;
-			_QR.value = EOL_v.QR;
-			_검사자.value = EOL_v.검사자;
+		_통신검사_팩전압.value = EOL_v.통신검사_팩전압;
+		if (_통신검사_팩전압.value == 'OK') {
+			document.getElementById('_통신검사_팩전압_label').innerHTML = '통신검사_팩전압 입력값';
+		} else {
+			document.getElementById('_통신검사_팩전압_label').innerHTML = '통신검사_팩전압 특이사항';
+		}
+		_통신검사_셀전압편차.value = EOL_v.통신검사_셀전압편차;
+		if (_통신검사_셀전압편차.value == 'OK') {
+			document.getElementById('_통신검사_셀전압편차_label').innerHTML = '통신검사_셀전압편차 입력값';
+		} else {
+			document.getElementById('_통신검사_셀전압편차_label').innerHTML = '통신검사_셀전압편차 특이사항';
+		}
+		_통신검사_릴레이구동.value = EOL_v.통신검사_릴레이구동;
+		if (_통신검사_릴레이구동.value == 'OK') {
+			document.getElementById('_통신검사_릴레이구동_label').innerHTML = '통신검사_릴레이구동 입력값';
+		} else {
+			document.getElementById('_통신검사_릴레이구동_label').innerHTML = '통신검사_릴레이구동 특이사항';
+		}
+		_공정완료일.value = EOL_v.공정완료일;
+		_비고.value = EOL_v.비고;
+		_QR.value = EOL_v.QR;
+		_검사자.value = EOL_v.검사자;
 	} else {
 		init_EOL();
 
@@ -189,7 +189,7 @@ async function EOL_시작(is재제조 = 0) {
 
 	find(BSA재제조, _management_id.value);
 	await delay();
-	if(BSA재제조_v != null) {
+	if (BSA재제조_v != null) {
 		_구분.value = BSA재제조_v.구분;
 		_차종.value = BSA재제조_v.차종;
 		_품번.value = BSA재제조_v.품번;
@@ -199,21 +199,21 @@ async function EOL_시작(is재제조 = 0) {
 	find(BSA재제조, _management_id.value);
 	await delay();
 
-	if(BSA재제조_v != null) {
-		if(BSA재제조_v.재제조번호 != undefined) _재제조번호.value = BSA재제조_v.재제조번호;
+	if (BSA재제조_v != null) {
+		if (BSA재제조_v.재제조번호 != undefined) _재제조번호.value = BSA재제조_v.재제조번호;
 	}
 }
 
 async function EOL_SAVE() {
-	if(worker == '') return;
-	if(_management_id.value.length == 0) return;
+	if (worker == '') return;
+	if (_management_id.value.length == 0) return;
 	console.log('save: ', _management_id.value);
 
 	var DateTime = luxon.DateTime;
 	var seoul = DateTime.local().setZone("Asia/Seoul");
 	var now = seoul.toString().slice(0, 19);
 
-	if(_공정입고일.value == '') _공정입고일.value = now;
+	if (_공정입고일.value == '') _공정입고일.value = now;
 	_공정완료일.value = now;
 
 	var doc = JSON.parse(JSON.stringify(EOL_doc));
@@ -229,15 +229,15 @@ async function EOL_SAVE() {
 	doc.절연검사_Minus = _절연검사M.value;
 	doc.절연저항_HVP = _절연저항HVP.value;
 	doc.절연저항_HVN = _절연저항HVN.value;
-	doc.통신검사_DTC코드1 =  _통신검사_DTC코드1.value;
-	doc.통신검사_DTC코드2 =  _통신검사_DTC코드2.value;
-	doc.통신검사_DTC코드3 =  _통신검사_DTC코드3.value;
+	doc.통신검사_DTC코드1 = _통신검사_DTC코드1.value;
+	doc.통신검사_DTC코드2 = _통신검사_DTC코드2.value;
+	doc.통신검사_DTC코드3 = _통신검사_DTC코드3.value;
 	var tb = document.getElementById('tb');
 	var rowIcnt = tb.rows.length - 9;
 	var code_no = rowIcnt - 18;
 	console.log('rowIcnt:', rowIcnt, 'code_no:', code_no);
 
-	if(code_no == 10) {
+	if (code_no == 10) {
 		doc.통신검사_DTC코드4 = _통신검사_DTC코드4.value;
 		doc.통신검사_DTC코드5 = _통신검사_DTC코드5.value;
 		doc.통신검사_DTC코드6 = _통신검사_DTC코드6.value;
@@ -245,7 +245,7 @@ async function EOL_SAVE() {
 		doc.통신검사_DTC코드8 = _통신검사_DTC코드8.value;
 		doc.통신검사_DTC코드9 = _통신검사_DTC코드9.value;
 		doc.통신검사_DTC코드10 = _통신검사_DTC코드10.value;
-	} else if(code_no == 9) {
+	} else if (code_no == 9) {
 		doc.통신검사_DTC코드4 = _통신검사_DTC코드4.value;
 		doc.통신검사_DTC코드5 = _통신검사_DTC코드5.value;
 		doc.통신검사_DTC코드6 = _통신검사_DTC코드6.value;
@@ -253,7 +253,7 @@ async function EOL_SAVE() {
 		doc.통신검사_DTC코드8 = _통신검사_DTC코드8.value;
 		doc.통신검사_DTC코드9 = _통신검사_DTC코드9.value;
 		doc.통신검사_DTC코드10 = '';
-	} else if(code_no == 8) {
+	} else if (code_no == 8) {
 		doc.통신검사_DTC코드4 = _통신검사_DTC코드4.value;
 		doc.통신검사_DTC코드5 = _통신검사_DTC코드5.value;
 		doc.통신검사_DTC코드6 = _통신검사_DTC코드6.value;
@@ -261,7 +261,7 @@ async function EOL_SAVE() {
 		doc.통신검사_DTC코드8 = _통신검사_DTC코드8.value;
 		doc.통신검사_DTC코드9 = '';
 		doc.통신검사_DTC코드10 = '';
-	} else if(code_no == 7) {
+	} else if (code_no == 7) {
 		doc.통신검사_DTC코드4 = _통신검사_DTC코드4.value;
 		doc.통신검사_DTC코드5 = _통신검사_DTC코드5.value;
 		doc.통신검사_DTC코드6 = _통신검사_DTC코드6.value;
@@ -269,7 +269,7 @@ async function EOL_SAVE() {
 		doc.통신검사_DTC코드8 = '';;
 		doc.통신검사_DTC코드9 = '';
 		doc.통신검사_DTC코드10 = '';
-	} else if(code_no == 6) {
+	} else if (code_no == 6) {
 		doc.통신검사_DTC코드4 = _통신검사_DTC코드4.value;
 		doc.통신검사_DTC코드5 = _통신검사_DTC코드5.value;
 		doc.통신검사_DTC코드6 = _통신검사_DTC코드6.value;
@@ -277,7 +277,7 @@ async function EOL_SAVE() {
 		doc.통신검사_DTC코드8 = '';
 		doc.통신검사_DTC코드9 = '';
 		doc.통신검사_DTC코드10 = '';
-	} else if(code_no == 5) {
+	} else if (code_no == 5) {
 		doc.통신검사_DTC코드4 = _통신검사_DTC코드4.value;
 		doc.통신검사_DTC코드5 = _통신검사_DTC코드5.value;
 		doc.통신검사_DTC코드6 = '';
@@ -285,7 +285,7 @@ async function EOL_SAVE() {
 		doc.통신검사_DTC코드8 = '';
 		doc.통신검사_DTC코드9 = '';
 		doc.통신검사_DTC코드10 = '';
-	} else if(code_no == 4) {
+	} else if (code_no == 4) {
 		doc.통신검사_DTC코드4 = _통신검사_DTC코드4.value;
 		doc.통신검사_DTC코드5 = '';
 		doc.통신검사_DTC코드6 = '';
@@ -310,18 +310,18 @@ async function EOL_SAVE() {
 	console.log(update_count);
 	console.log(insert_count);
 
-	if(update_count > 0) {
+	if (update_count > 0) {
 		alert('업데이트 되었습니다');
 	}
 
-	if(insert_count > 0) {
+	if (insert_count > 0) {
 		alert('저장 되었습니다');
 	}
 
 	find(BSA재제조, _management_id.value);
 	await delay();
 
-	if(BSA재제조_v == null) {
+	if (BSA재제조_v == null) {
 		var _doc = JSON.parse(JSON.stringify(BSA재제조_doc));
 		_doc.관리번호 = _management_id.value.trim().toUpperCase();
 		_doc.EOL투입일 = _공정입고일.value;
@@ -332,10 +332,10 @@ async function EOL_SAVE() {
 		await delay();
 	} else {
 		var _doc = {
-			관리번호 : _management_id.value.toUpperCase(),
-			EOL투입일 : _공정입고일.value,
-			EOL : _공정완료일.value,
-			마지막충전일 : _공정완료일.value
+			관리번호: _management_id.value.toUpperCase(),
+			EOL투입일: _공정입고일.value,
+			EOL: _공정완료일.value,
+			마지막충전일: _공정완료일.value
 		}
 
 		update(BSA재제조, _doc);
@@ -347,7 +347,7 @@ async function EOL_SAVE() {
 	find(출하정보, _management_id.value);
 	await delay();
 
-	if(출하정보_v == null) {
+	if (출하정보_v == null) {
 		var _doc = JSON.parse(JSON.stringify(출하정보_doc));
 		_doc.관리번호 = _management_id.value;
 		_doc.출하코드 = _QR.value;
@@ -356,8 +356,8 @@ async function EOL_SAVE() {
 		await delay();
 	} else {
 		var _doc = {
-			관리번호 : _management_id.value,
-			출하코드 : _QR.value
+			관리번호: _management_id.value,
+			출하코드: _QR.value
 		}
 
 		update(출하정보, _doc);
@@ -387,9 +387,9 @@ function _UPR_C조립_콤보박스(e) {
 	const value = e.value;
 
 	document.getElementById('_UPR_C조립').value = value;
-	if(value == 'OK') {
+	if (value == 'OK') {
 		document.getElementById('_UPR_C조립_label').innerHTML = 'UPR_C조립 입력값';
-	} else if(value == '미실시') {
+	} else if (value == '미실시') {
 		document.getElementById('_UPR_C조립_label').innerHTML = 'UPR_C조립 특이사항';
 	}
 }
@@ -398,9 +398,9 @@ function _절연검사p_콤보박스(e) {
 	const value = e.value;
 
 	document.getElementById('_절연검사P').value = value;
-	if(value == 'OK') {
+	if (value == 'OK') {
 		document.getElementById('_절연검사P_label').innerHTML = '절연검사+ 입력값';
-	} else if(value == '미실시') {
+	} else if (value == '미실시') {
 		document.getElementById('_절연검사P_label').innerHTML = '절연검사+ 특이사항';
 	}
 }
@@ -409,9 +409,9 @@ function _절연검사M_콤보박스(e) {
 	const value = e.value;
 
 	document.getElementById('_절연검사M').value = value;
-	if(value == 'OK') {
+	if (value == 'OK') {
 		document.getElementById('_절연검사M_label').innerHTML = '절연검사- 입력값';
-	} else if(value == '미실시') {
+	} else if (value == '미실시') {
 		document.getElementById('_절연검사M_label').innerHTML = '절연검사- 특이사항';
 	}
 }
@@ -420,9 +420,9 @@ function _절연저항HVP_콤보박스(e) {
 	const value = e.value;
 
 	document.getElementById('_절연저항HVP').value = value;
-	if(value == 'OK') {
+	if (value == 'OK') {
 		document.getElementById('_절연저항HVP_label').innerHTML = '절연저항HV+ 입력값';
-	} else if(value == '미실시') {
+	} else if (value == '미실시') {
 		document.getElementById('_절연저항HVP_label').innerHTML = '절연저항HV+ 특이사항';
 	}
 }
@@ -431,9 +431,9 @@ function _절연저항HVN_콤보박스(e) {
 	const value = e.value;
 
 	document.getElementById('_절연저항HVN').value = value;
-	if(value == 'OK') {
+	if (value == 'OK') {
 		document.getElementById('_절연저항HVN_label').innerHTML = '절연저항HV- 입력값';
-	} else if(value == '미실시') {
+	} else if (value == '미실시') {
 		document.getElementById('_절연저항HVN_label').innerHTML = '절연저항HV- 특이사항';
 	}
 }
@@ -442,9 +442,9 @@ function _통신검사_팩전압_콤보박스(e) {
 	const value = e.value;
 
 	document.getElementById('_통신검사_팩전압').value = value;
-	if(value == 'OK') {
+	if (value == 'OK') {
 		document.getElementById('_통신검사_팩전압_label').innerHTML = '통신검사 팩전압 입력값';
-	} else if(value == '미실시') {
+	} else if (value == '미실시') {
 		document.getElementById('_통신검사_팩전압_label').innerHTML = '통신검사 팩전압 특이사항';
 	}
 }
@@ -453,9 +453,9 @@ function _통신검사_셀전압편차_콤보박스(e) {
 	const value = e.value;
 
 	document.getElementById('_통신검사_셀전압편차').value = value;
-	if(value == 'OK') {
+	if (value == 'OK') {
 		document.getElementById('_통신검사_셀전압편차_label').innerHTML = '통신검사 셀전압편차 입력값';
-	} else if(value == '미실시') {
+	} else if (value == '미실시') {
 		document.getElementById('_통신검사_셀전압편차_label').innerHTML = '통신검사 셀전압편차 특이사항';
 	}
 }
@@ -464,11 +464,11 @@ function _통신검사_릴레이구동_콤보박스(e) {
 	const value = e.value;
 
 	document.getElementById('_통신검사_릴레이구동').value = value;
-	if(value == 'OK') {
+	if (value == 'OK') {
 		document.getElementById('_통신검사_릴레이구동_label').innerHTML = '통신검사 릴레이구동 입력값';
-	} else if(value == 'NG') {
+	} else if (value == 'NG') {
 		document.getElementById('_통신검사_릴레이구동_label').innerHTML = '통신검사 릴레이구동 특이사항';
-	} else if(value == '통신불가') {
+	} else if (value == '통신불가') {
 		document.getElementById('_통신검사_릴레이구동_label').innerHTML = '통신검사 릴레이구동 특이사항';
 	}
 }
@@ -479,26 +479,26 @@ function _EOL_add_DTC_Code() {
 	var rowIcnt = tb.rows.length - 11;
 	var code_no = rowIcnt - 26;
 	console.log('rosw count:', rowIcnt);
-	if(rowIcnt > 37) return false;
+	if (rowIcnt > 37) return false;
 	oCurrentRow = tb.insertRow(rowIcnt);
 	var insert_string = "<td><label for=\"_통신검사_DTC코드\"" + code_no + "><b>통신검사 DTC코드 " + code_no + "</b></label></td><td><input type=\"text\" id=\"_통신검사_DTC코드" + code_no + "\" size=\"40\" required></td><td><button onClick=\"_eol_delete_row(" + rowIcnt + ");\">삭제</button></td>";
 	console.log(insert_string);
 	oCurrentRow.innerHTML = insert_string;
 	EOL_DTC_count++;
-} 
+}
 
 function _eol_delete_row(index) {
 	var tb = document.getElementById('tb');
 	var rowIcnt = tb.rows.length - 11;
 	console.log('index:', index, 'rowIcnt:', rowIcnt);
-	if(index == rowIcnt) tb.deleteRow(index);
+	if (index == rowIcnt) tb.deleteRow(index);
 	EOL_DTC_count--;
 }
 
 function _eol_delete_all() {
 	var tb = document.getElementById('tb');
 
-	while(EOL_DTC_count > 0) {
+	while (EOL_DTC_count > 0) {
 		var rowIcnt = tb.rows.length - 12;
 		tb.deleteRow(rowIcnt);
 		EOL_DTC_count--;
@@ -507,13 +507,13 @@ function _eol_delete_all() {
 
 async function EOL_QR_Label() {
 	let hyundai_logo;
-	convertImageToBase64('base/img/hyundai.jpg', async function(logo) {
+	convertImageToBase64('base/img/hyundai.jpg', async function (logo) {
 		hyundai_logo = logo;
 	});
 
 	let qrcode;
 	let pumbeon1 = '';
-	let pumbeon2 = ''; 
+	let pumbeon2 = '';
 	let sn = '';
 	let html_string = '';
 
@@ -534,31 +534,31 @@ async function EOL_QR_Label() {
 	});
 
 	var 배터리팩_제조번호 = prompt('배터리팩 제조번호를 입력하세요');
-	qrcode.makeCode(배터리팩_제조번호 + ' '+ sn);
+	qrcode.makeCode(배터리팩_제조번호 + ' ' + sn);
 	let qrcode_base64 = qrcode._oDrawing._elCanvas.toDataURL("image/png");
 	console.log(qrcode_base64);
 
-	document.getElementById('_QR_Label').innerHTML = '<div class=\'HHB\' align=\'left\' width=\'264\'><h5>배터리 시스템 어셈블리</h5></div><div class=\'HHB\'><h6>(Battery System Assembly)</h6></div><div><br/></div><div class=\'HHB\' align=\'left\'><h5>R' + BSA재제조_v.품번 + '</h5></div><div align=\'center\' width=\'264\'><img src=\'' + qrcode_base64 + '\'></center></div><div><br/></div><div class=\'HHM\' align=\'center\'><h5>' + BSA재제조_v.재제조번호  + '</h5></div><div align=\'right\'><img src=\'' + hyundai_logo  + '\'></div>';
-	
+	document.getElementById('_QR_Label').innerHTML = '<div class=\'HHB\' align=\'left\' width=\'264\'><h5>배터리 시스템 어셈블리</h5></div><div class=\'HHB\'><h6>(Battery System Assembly)</h6></div><div><br/></div><div class=\'HHB\' align=\'left\'><h5>R' + BSA재제조_v.품번 + '</h5></div><div align=\'center\' width=\'264\'><img src=\'' + qrcode_base64 + '\'></center></div><div><br/></div><div class=\'HHM\' align=\'center\'><h5>' + BSA재제조_v.재제조번호 + '</h5></div><div align=\'right\'><img src=\'' + hyundai_logo + '\'></div>';
+
 	pdf();
 }
 
-function saveAs(uri, filename) { 
-	var link = document.createElement('a'); 
-	if (typeof link.download === 'string') { 
-		link.href = uri; 
-		link.download = filename; 
-		document.body.appendChild(link); 
-		link.click(); 
-		document.body.removeChild(link); 
-	} else { 
-		window.open(uri); 
-	} 
+function saveAs(uri, filename) {
+	var link = document.createElement('a');
+	if (typeof link.download === 'string') {
+		link.href = uri;
+		link.download = filename;
+		document.body.appendChild(link);
+		link.click();
+		document.body.removeChild(link);
+	} else {
+		window.open(uri);
+	}
 };
 
 function convertImageToBase64(imgUrl, callback) {
 	const image = new Image();
-	image.crossOrigin='anonymous';
+	image.crossOrigin = 'anonymous';
 	image.onload = () => {
 		const canvas = document.createElement('canvas');
 		const ctx = canvas.getContext('2d');
@@ -572,7 +572,7 @@ function convertImageToBase64(imgUrl, callback) {
 }
 
 function EOL_카메라시작() {
-	if(_management_id.value == '') return;
+	if (_management_id.value == '') return;
 	EOL_SAVE();
 
 	EOL_사진촬영(_management_id.value);
@@ -610,10 +610,10 @@ function pdf() {
 			],
 			pageSize: {
 				width: 2.75591 * 72,
-				height : 3.14961 * 72
+				height: 3.14961 * 72
 			},
 			pageOrientation: "portrait",
-			pageMargins: [ 0, 0, 0, 0 ],
+			pageMargins: [0, 0, 0, 0],
 		};
 		pdfMake.createPdf(docDefinition).download("거래확인서.pdf");
 	});
@@ -621,35 +621,35 @@ function pdf() {
 }
 
 function EOL_updateFilter() {
-  var fieldEl = document.getElementById("filter-field");
-  var typeEl = document.getElementById("filter-type");
-  var valueEl = document.getElementById("filter-value");
+	var fieldEl = document.getElementById("filter-field");
+	var typeEl = document.getElementById("filter-type");
+	var valueEl = document.getElementById("filter-value");
 
-  var filterVal = fieldEl.options[fieldEl.selectedIndex].value;
-  var typeVal = typeEl.options[typeEl.selectedIndex].value;
+	var filterVal = fieldEl.options[fieldEl.selectedIndex].value;
+	var typeVal = typeEl.options[typeEl.selectedIndex].value;
 
-  var filter = filterVal == "function" ? customFilter : filterVal;
+	var filter = filterVal == "function" ? customFilter : filterVal;
 
-  if (filterVal == "function") {
-    typeEl.disabled = true;
-    valueEl.disabled = true;
-  } else {
-    typeEl.disabled = false;
-    valueEl.disabled = false;
-  }
+	if (filterVal == "function") {
+		typeEl.disabled = true;
+		valueEl.disabled = true;
+	} else {
+		typeEl.disabled = false;
+		valueEl.disabled = false;
+	}
 
-  if (filterVal) {
-    EOL_list_table.setFilter(filter, typeVal, valueEl.value);
-  }
+	if (filterVal) {
+		EOL_list_table.setFilter(filter, typeVal, valueEl.value);
+	}
 }
 
 var EOL_list_table;
 async function EOL_list() {
-	findOne_BSA재제조(BSA재제조, { 공정단계 : { $ne : '출하' }, 성능검사 : { $ne : '' }, EOL : { $eq : '' } ,  소재지 : { $nin : ['공정대기', '품질대기'] }, 완전분해 : { $eq : ''}, 폐기 : { $eq : '' }, 출하 : { $eq : '' }, 구분 : { $nin: ['일반기타', '보증기타']} });
+	findOne_BSA재제조(BSA재제조, { 공정단계: { $ne: '출하' }, 성능검사: { $ne: '' }, EOL: { $eq: '' }, 소재지: { $nin: ['공정대기', '품질대기'] }, 완전분해: { $eq: '' }, 폐기: { $eq: '' }, 출하: { $eq: '' }, 구분: { $nin: ['일반기타', '보증기타'] } });
 	await delay();
 
-	if(BSA재제조_v != null) {
-		find_BSA재제조(BSA재제조, { 공정단계 : { $ne : '출하' }, 성능검사 : { $ne : '' }, EOL : { $eq : '' } ,  소재지 : { $nin : ['공정대기', '품질대기'] }, 완전분해 : { $eq : ''}, 폐기 : { $eq : '' }, 출하 : { $eq : '' }, 구분 : { $nin: ['일반기타', '보증기타']} });
+	if (BSA재제조_v != null) {
+		find_BSA재제조(BSA재제조, { 공정단계: { $ne: '출하' }, 성능검사: { $ne: '' }, EOL: { $eq: '' }, 소재지: { $nin: ['공정대기', '품질대기'] }, 완전분해: { $eq: '' }, 폐기: { $eq: '' }, 출하: { $eq: '' }, 구분: { $nin: ['일반기타', '보증기타'] } });
 		await delay();
 	}
 
@@ -783,7 +783,7 @@ async function EOL_list() {
 			{ title: "렉번호", field: "렉번호", sorter: "string", width: "180" },
 		],
 	});
-	
+
 	EOL_list_table.on("rowClick", async function (e, row) {
 		console.log("selected 관리번호: ", row.getData().관리번호);
 
@@ -792,11 +792,11 @@ async function EOL_list() {
 		await sleep(1);
 
 		var yes = confirm('선택한 BSA로 EOL 공정 정보입력을 시작하시겠습니까?');
-		if(yes != true) return;
+		if (yes != true) return;
 
 		EOL_시작();
 	});
-	
+
 	//Update filters on value change
 	document
 		.getElementById("filter-field")
@@ -824,36 +824,36 @@ async function EOL_list() {
 }
 
 function init_EOL() {
-		_재제조번호.value = '';
-		_구분.value = '';
-		_차종.value = '';
-		_품번.value = '';
-		_RO_no.value = '';
-		_공정입고일.value = '';
-		_UPR_C조립.value = '';
-		_UPR_C조립_특이사항.value = '';
-		_기밀검사_케이스.value = '';
-		_기밀검사_케이스_특이사항.value = '';
-		_기밀검사_냉각유로.value = '';
-		_기밀검사_냉각유로_특이사항.value = '';
-		_절연저항HVP.value = '';
-		_절연저항HVN.value = '';
-		_절연검사P.value = '';
-		_절연검사P.value = '';
-		_절연검사P_특이사항.value = '';
-		_절연검사M.value = '';
-		_절연검사M_특이사항.value = '';
-		_통신검사_DTC코드1.value = '';
-		_통신검사_DTC코드2.value = '';
-		_통신검사_DTC코드3.value = '';
-		_통신검사_팩전압.value = '';
-		_통신검사_팩전압_특이사항.value = '';
-		_통신검사_셀전압편차.value = ''; 
-		_통신검사_셀전압편차_특이사항.value = ''; 
-		_통신검사_릴레이구동.value = ''; 
-		_통신검사_릴레이구동_특이사항.value = ''; 
-		_공정완료일.value = '';
-		_비고.value = '';
-		_QR.value = '';
-		_검사자.value = 계정_stat.이름;
+	_재제조번호.value = '';
+	_구분.value = '';
+	_차종.value = '';
+	_품번.value = '';
+	_RO_no.value = '';
+	_공정입고일.value = '';
+	_UPR_C조립.value = '';
+	_UPR_C조립_특이사항.value = '';
+	_기밀검사_케이스.value = '';
+	_기밀검사_케이스_특이사항.value = '';
+	_기밀검사_냉각유로.value = '';
+	_기밀검사_냉각유로_특이사항.value = '';
+	_절연저항HVP.value = '';
+	_절연저항HVN.value = '';
+	_절연검사P.value = '';
+	_절연검사P.value = '';
+	_절연검사P_특이사항.value = '';
+	_절연검사M.value = '';
+	_절연검사M_특이사항.value = '';
+	_통신검사_DTC코드1.value = '';
+	_통신검사_DTC코드2.value = '';
+	_통신검사_DTC코드3.value = '';
+	_통신검사_팩전압.value = '';
+	_통신검사_팩전압_특이사항.value = '';
+	_통신검사_셀전압편차.value = '';
+	_통신검사_셀전압편차_특이사항.value = '';
+	_통신검사_릴레이구동.value = '';
+	_통신검사_릴레이구동_특이사항.value = '';
+	_공정완료일.value = '';
+	_비고.value = '';
+	_QR.value = '';
+	_검사자.value = 계정_stat.이름;
 }

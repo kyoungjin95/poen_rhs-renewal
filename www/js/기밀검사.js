@@ -7,11 +7,11 @@ async function 기밀검사_시작() {
 }
 
 async function 기밀검사_조회(is재제조번호 = false) {
-  if(is재제조번호 == true) {
-    count(BSA재제조, { 재제조번호 : _재제조번호.value});
+  if (is재제조번호 == true) {
+    count(BSA재제조, { 재제조번호: _재제조번호.value });
     await delay();
 
-    if(BSA재제조_cnt > 0) {
+    if (BSA재제조_cnt > 0) {
       find_BSA재제조(BSA재제조, { 재제조번호: _재제조번호.value });
       await delay();
 
@@ -35,10 +35,10 @@ async function 기밀검사_조회(is재제조번호 = false) {
     _냉각유로.innerHTML = EOL_v.기밀검사_냉각유로;
   }
 
-  count(입고_pic, { 관리번호 : _management_id.value });
+  count(입고_pic, { 관리번호: _management_id.value });
   await delay();
 
-  if(입고_pic_cnt > 0) {
+  if (입고_pic_cnt > 0) {
     find(입고_pic, _management_id.value);
     await delay();
 

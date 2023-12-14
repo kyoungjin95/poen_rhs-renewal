@@ -1,24 +1,24 @@
-function 신품_updateFilter(){
-  var fieldEl = document.getElementById("new_filter-field");
-  var typeEl = document.getElementById("new_filter-type");
-  var valueEl = document.getElementById("new_filter-value");
+function 신품_updateFilter() {
+	var fieldEl = document.getElementById("new_filter-field");
+	var typeEl = document.getElementById("new_filter-type");
+	var valueEl = document.getElementById("new_filter-value");
 
-  var filterVal = fieldEl.options[fieldEl.selectedIndex].value;
-  var typeVal = typeEl.options[typeEl.selectedIndex].value;
+	var filterVal = fieldEl.options[fieldEl.selectedIndex].value;
+	var typeVal = typeEl.options[typeEl.selectedIndex].value;
 
-  var filter = filterVal == "function" ? customFilter : filterVal;
+	var filter = filterVal == "function" ? customFilter : filterVal;
 
-  if(filterVal == "function" ){
-    typeEl.disabled = true;
-    valueEl.disabled = true;
-  }else{
-    typeEl.disabled = false;
-    valueEl.disabled = false;
-  }
+	if (filterVal == "function") {
+		typeEl.disabled = true;
+		valueEl.disabled = true;
+	} else {
+		typeEl.disabled = false;
+		valueEl.disabled = false;
+	}
 
-  if(filterVal){
-    table_부품집계.setFilter(filter, typeVal, valueEl.value);
-  }
+	if (filterVal) {
+		table_부품집계.setFilter(filter, typeVal, valueEl.value);
+	}
 }
 
 async function 수량집계_시작() {
@@ -26,7 +26,7 @@ async function 수량집계_시작() {
 	if (worker == '') return;
 
 	const grid_부품집계 = document.getElementById('grid_부품집계');
-	while( grid_부품집계 == undefined) {
+	while (grid_부품집계 == undefined) {
 		await sleep(DELAY);
 	}
 
@@ -36,7 +36,7 @@ async function 수량집계_시작() {
 	document.getElementById("new_filter-value").addEventListener("keyup", 신품_updateFilter);
 
 	//Clear filters on "Clear Filters" button click
-	document.getElementById("new_filter-clear").addEventListener("click", function(){
+	document.getElementById("new_filter-clear").addEventListener("click", function () {
 		var fieldEl = document.getElementById("new_filter-field");
 		var typeEl = document.getElementById("new_filter-type");
 		var valueEl = document.getElementById("new_filter-value");
@@ -51,41 +51,41 @@ async function 수량집계_시작() {
 }
 
 function 수량집계_year() {
-		var DateTime = luxon.DateTime;
-		var seoul = DateTime.local().setZone("Asia/Seoul");
-		var now = seoul.toString();
-		var s_day = now.slice(0, 5) + '01-01';
-		var e_day = now.slice(0, 5) + '12-31';
+	var DateTime = luxon.DateTime;
+	var seoul = DateTime.local().setZone("Asia/Seoul");
+	var now = seoul.toString();
+	var s_day = now.slice(0, 5) + '01-01';
+	var e_day = now.slice(0, 5) + '12-31';
 
-		document.getElementById('_검색일_from').value = s_day;
-		document.getElementById('_검색일_to').value = e_day;
+	document.getElementById('_검색일_from').value = s_day;
+	document.getElementById('_검색일_to').value = e_day;
 }
 
 function 수량집계_month() {
-		var DateTime = luxon.DateTime;
-		var seoul = DateTime.local().setZone("Asia/Seoul");
-		var now = seoul.toString();
-		var s_day = now.slice(0, 8) + '01';
-		var e_day;
-		if(now.slice(5, 2) in ['01', '03', '05', '07', '08', '10', '12']) e_day = now.slice(0, 8) + '31';
-		else if(now.slice(5, 2) == '02') e_day = now.slice(0, 8) + '28';
-		else e_day = now.slice(0, 8) + '30';
+	var DateTime = luxon.DateTime;
+	var seoul = DateTime.local().setZone("Asia/Seoul");
+	var now = seoul.toString();
+	var s_day = now.slice(0, 8) + '01';
+	var e_day;
+	if (now.slice(5, 2) in ['01', '03', '05', '07', '08', '10', '12']) e_day = now.slice(0, 8) + '31';
+	else if (now.slice(5, 2) == '02') e_day = now.slice(0, 8) + '28';
+	else e_day = now.slice(0, 8) + '30';
 
-		document.getElementById('_검색일_from').value = s_day;
-		document.getElementById('_검색일_to').value = e_day;
+	document.getElementById('_검색일_from').value = s_day;
+	document.getElementById('_검색일_to').value = e_day;
 }
 
 function 수량집계_기간조회() {
 	var 집계_today_begin = document.getElementById('_검색일_from').value + 'T00:00:000Z';;
 	var 집계_today_end = document.getElementById('_검색일_to').value + 'T23:59:000Z';;
- 	var 구분 = '';
+	var 구분 = '';
 
-	if(document.getElementById('_검색일_from').value == '') 집계_today_begin = '';
-	if(document.getElementById('_검색일_to').value == '') 집계_today_end = '';
-	
-	if(document.getElementById('_일반').checked == true) 구분 = '일반';
-	if(document.getElementById('_보증').checked == true) 구분 = '보증';
-	if(document.getElementById('_all').checked == true) 구분 = '';
+	if (document.getElementById('_검색일_from').value == '') 집계_today_begin = '';
+	if (document.getElementById('_검색일_to').value == '') 집계_today_end = '';
+
+	if (document.getElementById('_일반').checked == true) 구분 = '일반';
+	if (document.getElementById('_보증').checked == true) 구분 = '보증';
+	if (document.getElementById('_all').checked == true) 구분 = '';
 
 	수량집계_조회(집계_today_begin, 집계_today_end, 구분);
 }
@@ -110,11 +110,11 @@ async function BSA_info(begin = '', end = '', 구분 = 'all') {
 		find_BSA재제조(BSA재제조, { 품번: { $exists: true } });
 		await delay();
 	} else {
-		find_BSA재제조(BSA재제조, { 품번: { $exists: true }, 입고: { $gte: begin, $lte: end }, 구분 : { $eq : 구분 }});
+		find_BSA재제조(BSA재제조, { 품번: { $exists: true }, 입고: { $gte: begin, $lte: end }, 구분: { $eq: 구분 } });
 		await delay();
 	}
 
-	if (BSA재제조_v == null)  return;
+	if (BSA재제조_v == null) return;
 
 	BSA재제조_v.forEach(function (info) {
 		if (types_list.indexOf(info.품번) < 0) {
@@ -195,10 +195,10 @@ async function BMA_info(begin = '', end = '', 구분 = 'all') {
 	var types_list = [];
 
 	if (begin == '' || end == '' || 구분 == 'all') {
-		find_고품정보(고품정보, { 품명: 'BMA', 폐기여부 : '폐기' });
+		find_고품정보(고품정보, { 품명: 'BMA', 폐기여부: '폐기' });
 		await delay();
 	} else {
-		find_고품정보(고품정보, { 품명: 'BMA', 폐기여부 : '폐기' , 등록일: { $gte: begin, $lte: end }, 구분 : 구분 });
+		find_고품정보(고품정보, { 품명: 'BMA', 폐기여부: '폐기', 등록일: { $gte: begin, $lte: end }, 구분: 구분 });
 		await delay();
 	}
 
@@ -247,7 +247,7 @@ async function 자재재료_info(begin = '', end = '', 구분 = 'all') {
 		find_고품정보(고품정보, { 폐기여부: '자재' });
 		await delay();
 	} else {
-		find_고품정보(고품정보, { 폐기여부 : '자재', 등록일: { $gte: begin, $lte: end }, 구분 : 구분 });
+		find_고품정보(고품정보, { 폐기여부: '자재', 등록일: { $gte: begin, $lte: end }, 구분: 구분 });
 		await delay();
 	}
 
@@ -292,7 +292,7 @@ async function 부품_info(begin = '', end = '', 구분 = 'all') {
 		find_신품정보(자재입출고, { QR: { $exists: true } });
 		await delay();
 	} else {
-		find_신품정보(자재입출고, { QR: { $exists: true }, 날짜: { $gte: begin, $lte: end }});
+		find_신품정보(자재입출고, { QR: { $exists: true }, 날짜: { $gte: begin, $lte: end } });
 		await delay();
 	}
 
@@ -307,7 +307,7 @@ async function 부품_info(begin = '', end = '', 구분 = 'all') {
 		var 수량 = parseInt(info.수량);
 		if (types_list.indexOf(info.품번) < 0) {
 			types_list.push(info.품번);
-			
+
 			차종.push(info.차종);
 			품명.push(info.품명);
 			var count = {
@@ -327,10 +327,10 @@ async function 부품_info(begin = '', end = '', 구분 = 'all') {
 	});
 
 	var 부품정보 = {
-		차종 : 차종,
-		품명 : 품명,
-		품번 : types_list,
-		counts : counts,
+		차종: 차종,
+		품명: 품명,
+		품번: types_list,
+		counts: counts,
 	}
 
 	부품재고(부품정보);
@@ -351,7 +351,7 @@ function BSA재고(품번_list, datas) {
 		}
 		BSA집계_datas.push(_datas);
 	}
-	
+
 	table_BSA = new Tabulator("#grid_BSA집계", {
 		layout: "resizableColumnFit",
 		data: BSA집계_datas,
@@ -476,19 +476,19 @@ function 부품재고(부품정보) {
 
 function 수량집계_export_to_excel() {
 	var sheets = {
-		'BSA집계' : true,
-		'BSA집계' : table_BSA,
-		'BMA집계' : table_BMA,
-		'자재집계' : table_자재재고,
+		'BSA집계': true,
+		'BSA집계': table_BSA,
+		'BMA집계': table_BMA,
+		'자재집계': table_자재재고,
 	};
-	table_BSA.download("xlsx", "RHMS_수량집계.xlsx", {sheets:sheets});
-	
+	table_BSA.download("xlsx", "RHMS_수량집계.xlsx", { sheets: sheets });
+
 }
 
 function 부품집계_export_to_excel() {
 	var sheets = {
-		'부품집계' : true,
-		'부품집계' : table_부품집계,
+		'부품집계': true,
+		'부품집계': table_부품집계,
 	};
-	table_BSA.download("xlsx", "RHMS_부품수량집계.xlsx", {sheets:sheets});
+	table_BSA.download("xlsx", "RHMS_부품수량집계.xlsx", { sheets: sheets });
 }

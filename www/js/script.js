@@ -1,8 +1,8 @@
 function loadPage(url) {
   const content = document.getElementById('content');
 
-  if(대기수량Timer != undefined) clearInterval(대기수량Timer);
-  if(dashboardTimer != undefined) clearInterval(dashboardTimer);
+  if (대기수량Timer != undefined) clearInterval(대기수량Timer);
+  if (dashboardTimer != undefined) clearInterval(dashboardTimer);
 
   fetch(url)
     .then((response) => {

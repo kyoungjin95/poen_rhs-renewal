@@ -1,19 +1,19 @@
 async function 특이사항_시작() {
-	if(worker == '') return;
-	while(_management_id == undefined) {
+	if (worker == '') return;
+	while (_management_id == undefined) {
 		await sleep(DELAY);
 	}
-	
-	_management_id.value =  관리번호;
 
-	if(_management_id.value.length == 0) return;
+	_management_id.value = 관리번호;
+
+	if (_management_id.value.length == 0) return;
 	console.log('load: ', _management_id.value);
-	if(_management_id.value == '' | _management_id.value == 'none') return;
+	if (_management_id.value == '' | _management_id.value == 'none') return;
 
 	find(특이사항, _management_id.value);
 	await delay();
 
-	if(특이사항_v != null) {
+	if (특이사항_v != null) {
 		_특이사항.value = 특이사항_v.특이사항;
 	} else {
 		_특이사항.value = '';
@@ -21,25 +21,25 @@ async function 특이사항_시작() {
 }
 
 async function 특이사항_save() {
-	if(worker == '') return;
-	if(_management_id.value.length == 0) return;
+	if (worker == '') return;
+	if (_management_id.value.length == 0) return;
 	console.log('save: ', _management_id.value);
 
 	var doc = 특이사항_doc;
 	doc.관리번호 = _management_id.value.trim().toUpperCase();
 	doc.특이사항 = _특이사항.value;
-	
+
 	update(특이사항, doc);
 	await delay();
-	
+
 	console.log(update_count);
 	console.log(insert_count);
 
-	if(update_count > 0) {
+	if (update_count > 0) {
 		alert('업데이트 되었습니다');
 	}
 
-	if(insert_count > 0) {
+	if (insert_count > 0) {
 		alert('저장 되었습니다');
 	}
 

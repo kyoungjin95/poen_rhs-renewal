@@ -6,20 +6,20 @@ async function 신품정보_시작() {
 }
 
 async function 신품정보등록_조회() {
-	if(worker == '') return;
-	while(_QR == undefined) {
+	if (worker == '') return;
+	while (_QR == undefined) {
 		await sleep(DELAY);
 	}
 
-	if(_QR.value.length == 0) return;
+	if (_QR.value.length == 0) return;
 	console.log('load: ', _QR.value);
-	if(_QR.value == '' | _QR.value == 'none') return;
+	if (_QR.value == '' | _QR.value == 'none') return;
 
-	findOne_자재입출고(자재입출고, { QR : _QR.value });
+	findOne_자재입출고(자재입출고, { QR: _QR.value });
 	await delay();
 
-	if(자재입출고_v != null) {
-		_QR.value   = 자재입출고_v.QR;
+	if (자재입출고_v != null) {
+		_QR.value = 자재입출고_v.QR;
 		_날짜.value = 자재입출고_v.날짜;
 		_구분.value = 자재입출고_v.구분;
 		_차종.value = 자재입출고_v.차종;
@@ -27,8 +27,8 @@ async function 신품정보등록_조회() {
 		_품번.value = 자재입출고_v.품번;
 		_단가.value = 자재입출고_v.단가;
 		_수량.value = 자재입출고_v.수량;
-                _LotNo.value = 자재입출고_v.LotNo;
-                _비고.value = 자재입출고_v.비고;
+		_LotNo.value = 자재입출고_v.LotNo;
+		_비고.value = 자재입출고_v.비고;
 	} else {
 		_QR.value = '';
 		_날짜.value = '';
@@ -38,14 +38,14 @@ async function 신품정보등록_조회() {
 		_품번.value = '';
 		_단가.value = '';
 		_수량.value = '';
-                _LotNo.value = '';
-                _비고.value = '';
+		_LotNo.value = '';
+		_비고.value = '';
 	}
 }
 
 async function 신품정보_save() {
-	if(worker == '') 
-	if(_QR.value.length == 0) return;
+	if (worker == '')
+		if (_QR.value.length == 0) return;
 	console.log('save: ', _QR.value);
 
 	var doc = 자재입출고_doc;
@@ -62,15 +62,15 @@ async function 신품정보_save() {
 
 	update_신품정보(자재입출고, doc);
 	await delay();
-	
+
 	console.log(update_count);
 	console.log(insert_count);
 
-	if(update_count > 0) {
+	if (update_count > 0) {
 		alert('업데이트 되었습니다');
 	}
 
-	if(insert_count > 0) {
+	if (insert_count > 0) {
 		alert('저장 되었습니다');
 	}
 }
@@ -78,52 +78,52 @@ async function 신품정보_save() {
 function _구분_콤보박스(e) {
 	const value = e.value;
 
-  	document.getElementById('_구분').value = value;
+	document.getElementById('_구분').value = value;
 }
 
 function _품명_콤보박스(e) {
 	const value = e.value;
 
-  	document.getElementById('_품명').value = value;
+	document.getElementById('_품명').value = value;
 }
 
 function _사용여부_콤보박스(e) {
 	const value = e.value;
 
-  	document.getElementById('_사용여부').value = value;
+	document.getElementById('_사용여부').value = value;
 }
 
 var flag_신품정보_엑셀 = false;
 function 구자료_read_신품정보_func_csv() {
-	_재고관리_csv.addEventListener('input', function(event) {
+	_재고관리_csv.addEventListener('input', function (event) {
 		const target = event.target;
 		const files = target.files;
 		const file = files[0];
 
 		const reader = new FileReader();
-		reader.addEventListener('load', async function() {
-			if(flag_신품정보_엑셀 == true) return;
+		reader.addEventListener('load', async function () {
+			if (flag_신품정보_엑셀 == true) return;
 			flag_신품정보_엑셀 = true;
 
 			const res = d3.csvParse(reader.result);
 			var docs = [];
-			
+
 			drop(구자료);
 			await delay();
 
-			for(var i = 0; i < res.length; i++) {
-				if(res[i].품번 != '') docs.push(res[i]);
+			for (var i = 0; i < res.length; i++) {
+				if (res[i].품번 != '') docs.push(res[i]);
 				console.log('docs count: ', docs.length);
-				if((i > 0 && (i % 2000) == 0) || i == (res.length - 1)) {
+				if ((i > 0 && (i % 2000) == 0) || i == (res.length - 1)) {
 					insertMany(구자료, docs);
 					await delay();
 
 					console.log('processing:', i, docs.length);
-					
+
 					docs = [];
 
 					await sleep(1);
-				} 
+				}
 			};
 			console.log('complete:', res.length);
 			alert('업로드가 완료되었습니다. 새로고침후 다시 로그인하세요');
@@ -133,35 +133,35 @@ function 구자료_read_신품정보_func_csv() {
 	});
 }
 function read_신품정보_func_csv() {
-	_재고관리_csv.addEventListener('input', function(event) {
+	_재고관리_csv.addEventListener('input', function (event) {
 		const target = event.target;
 		const files = target.files;
 		const file = files[0];
 
 		const reader = new FileReader();
-		reader.addEventListener('load', async function() {
-			if(flag_신품정보_엑셀 == true) return;
+		reader.addEventListener('load', async function () {
+			if (flag_신품정보_엑셀 == true) return;
 			flag_신품정보_엑셀 = true;
 
 			const res = d3.csvParse(reader.result);
 			var docs = [];
-			
+
 			drop(자재입출고);
 			await delay();
 
-			for(var i = 0; i < res.length; i++) {
-				if(res[i].QR != '') docs.push(res[i]);
+			for (var i = 0; i < res.length; i++) {
+				if (res[i].QR != '') docs.push(res[i]);
 				console.log('docs count: ', docs.length);
-				if((i > 0 && (i % 2000) == 0) || i == (res.length - 1)) {
+				if ((i > 0 && (i % 2000) == 0) || i == (res.length - 1)) {
 					insertMany(자재입출고, docs);
 					await delay();
 
 					console.log('processing:', i, docs.length);
-					
+
 					docs = [];
 
 					await sleep(1);
-				} 
+				}
 			};
 			console.log('complete:', res.length);
 			alert('업로드가 완료되었습니다. 새로고침후 다시 로그인하세요');
@@ -181,9 +181,9 @@ async function 신품정보_insert(val) {
 	doc.품명 = val.품명;
 	doc.품번 = val.품번;
 	doc.수량 = val.수량;
-	doc.LotNo = val.LotNo; 
-	doc.비고 = val.비고; 
-	doc.사용관리번호 = ''; 
+	doc.LotNo = val.LotNo;
+	doc.비고 = val.비고;
+	doc.사용관리번호 = '';
 	update_신품정보(자재입출고, doc);
 	await delay();
 

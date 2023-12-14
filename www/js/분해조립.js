@@ -499,7 +499,7 @@ async function 분해조립_시작(is재제조 = 0) {
 		find(성능검사, _management_id.value);
 		await delay();
 
-		if(성능검사_v != null) {
+		if (성능검사_v != null) {
 			_분해조립_재의뢰사유.value = 성능검사_v.분해조립_재의뢰사유;
 		}
 	} else {
@@ -677,7 +677,7 @@ async function 분해조립_시작(is재제조 = 0) {
 		var seoul = DateTime.local().setZone("Asia/Seoul");
 		var now = seoul.toString().substr(0, 19);
 
-		_공정입고일.value = now;	
+		_공정입고일.value = now;
 	}
 
 	const tbody = document.querySelector("#_tb tbody");
@@ -984,7 +984,7 @@ async function 분해조립_save() {
 	var seoul = DateTime.local().setZone("Asia/Seoul");
 	var now = seoul.toString().slice(0, 19);
 
-	if(_공정입고일.value == '') _공정입고일.value = now;
+	if (_공정입고일.value == '') _공정입고일.value = now;
 	_공정완료일.value = now;
 
 	var doc = JSON.parse(JSON.stringify(분해조립_doc));
@@ -993,7 +993,7 @@ async function 분해조립_save() {
 
 	doc.관리번호 = _management_id.value.trim().toUpperCase();
 	doc.공정입고일 = _공정입고일.value;
-	if(level == '관리자') doc.공정입고일 = _공정입고일.value;
+	if (level == '관리자') doc.공정입고일 = _공정입고일.value;
 	for (var i = 1; i <= BMU_count; i++)
 		eval(
 			"var item = document.getElementById('_BMU" +
@@ -1226,7 +1226,7 @@ async function 분해조립_save() {
 	doc.Busbars_2 = _Busbars_2.value;
 	doc.ETC = _ETC.value;
 	doc.공정완료일 = _공정완료일.value;
-	if(level == '관리자') doc.공정완료일 = _공정완료일.value;
+	if (level == '관리자') doc.공정완료일 = _공정완료일.value;
 	doc.작업자 = _작업자.value;
 
 	console.log(신품_docs);
@@ -1562,26 +1562,26 @@ function _delete_all() {
 }
 
 function 분해조립_updateFilter() {
-  var fieldEl = document.getElementById("filter-field");
-  var typeEl = document.getElementById("filter-type");
-  var valueEl = document.getElementById("filter-value");
+	var fieldEl = document.getElementById("filter-field");
+	var typeEl = document.getElementById("filter-type");
+	var valueEl = document.getElementById("filter-value");
 
-  var filterVal = fieldEl.options[fieldEl.selectedIndex].value;
-  var typeVal = typeEl.options[typeEl.selectedIndex].value;
+	var filterVal = fieldEl.options[fieldEl.selectedIndex].value;
+	var typeVal = typeEl.options[typeEl.selectedIndex].value;
 
-  var filter = filterVal == "function" ? customFilter : filterVal;
+	var filter = filterVal == "function" ? customFilter : filterVal;
 
-  if (filterVal == "function") {
-    typeEl.disabled = true;
-    valueEl.disabled = true;
-  } else {
-    typeEl.disabled = false;
-    valueEl.disabled = false;
-  }
+	if (filterVal == "function") {
+		typeEl.disabled = true;
+		valueEl.disabled = true;
+	} else {
+		typeEl.disabled = false;
+		valueEl.disabled = false;
+	}
 
-  if (filterVal) {
-    분해조립_list_table.setFilter(filter, typeVal, valueEl.value);
-  }
+	if (filterVal) {
+		분해조립_list_table.setFilter(filter, typeVal, valueEl.value);
+	}
 }
 
 var 분해조립_list_table;
@@ -1757,7 +1757,7 @@ async function 분해조립_list() {
 		await sleep(1);
 
 		var yes = confirm('선택한 BSA로 분해조립 공정 정보입력을 시작하시겠습니까?');
-		if(yes != true) return;
+		if (yes != true) return;
 
 
 		분해조립_시작(0);

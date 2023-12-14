@@ -5,59 +5,59 @@ var table_고품재고;
 var tabledata_신품재고 = [];
 var tabledata_고품재고 = [];
 
-function 신품재고_updateFilter(){
-  var fieldEl = document.getElementById("new_filter-field");
-  var typeEl = document.getElementById("new_filter-type");
-  var valueEl = document.getElementById("new_filter-value");
+function 신품재고_updateFilter() {
+	var fieldEl = document.getElementById("new_filter-field");
+	var typeEl = document.getElementById("new_filter-type");
+	var valueEl = document.getElementById("new_filter-value");
 
-  var filterVal = fieldEl.options[fieldEl.selectedIndex].value;
-  var typeVal = typeEl.options[typeEl.selectedIndex].value;
+	var filterVal = fieldEl.options[fieldEl.selectedIndex].value;
+	var typeVal = typeEl.options[typeEl.selectedIndex].value;
 
-  var filter = filterVal == "function" ? customFilter : filterVal;
+	var filter = filterVal == "function" ? customFilter : filterVal;
 
-  if(filterVal == "function" ){
-    typeEl.disabled = true;
-    valueEl.disabled = true;
-  }else{
-    typeEl.disabled = false;
-    valueEl.disabled = false;
-  }
+	if (filterVal == "function") {
+		typeEl.disabled = true;
+		valueEl.disabled = true;
+	} else {
+		typeEl.disabled = false;
+		valueEl.disabled = false;
+	}
 
-  if(filterVal){
-    console.log('in setFilter:', filter, typeVal, valueEl.value);
+	if (filterVal) {
+		console.log('in setFilter:', filter, typeVal, valueEl.value);
 
-    table_신품재고.setFilter(filter, typeVal, valueEl.value);
-  }
+		table_신품재고.setFilter(filter, typeVal, valueEl.value);
+	}
 }
 
-function 고품재고_updateFilter(){
-  var fieldEl = document.getElementById("old_filter-field");
-  var typeEl = document.getElementById("old_filter-type");
-  var valueEl = document.getElementById("old_filter-value");
+function 고품재고_updateFilter() {
+	var fieldEl = document.getElementById("old_filter-field");
+	var typeEl = document.getElementById("old_filter-type");
+	var valueEl = document.getElementById("old_filter-value");
 
-  var filterVal = fieldEl.options[fieldEl.selectedIndex].value;
-  var typeVal = typeEl.options[typeEl.selectedIndex].value;
+	var filterVal = fieldEl.options[fieldEl.selectedIndex].value;
+	var typeVal = typeEl.options[typeEl.selectedIndex].value;
 
-  var filter = filterVal == "function" ? customFilter : filterVal;
+	var filter = filterVal == "function" ? customFilter : filterVal;
 
-  if(filterVal == "function" ) {
-    typeEl.disabled = true;
-    valueEl.disabled = true;
-  } else{
-    typeEl.disabled = false;
-    valueEl.disabled = false;
-  }
+	if (filterVal == "function") {
+		typeEl.disabled = true;
+		valueEl.disabled = true;
+	} else {
+		typeEl.disabled = false;
+		valueEl.disabled = false;
+	}
 
-  if(filterVal){
-    table_고품재고.setFilter(filter,typeVal, valueEl.value);
-  }
+	if (filterVal) {
+		table_고품재고.setFilter(filter, typeVal, valueEl.value);
+	}
 }
 
 async function 부품재고_시작() {
 	flag_부품재고 = false;
-	if(worker == '') return;
+	if (worker == '') return;
 	var _loaded = document.getElementById('grid_고품재고');
-	while(_loaded == undefined) {
+	while (_loaded == undefined) {
 		await sleep(DELAY);
 	}
 
@@ -70,7 +70,7 @@ async function 신품정보_삭제() {
 	deleteOne_신품정보(자재입출고, 신품_QR);
 	await delay();
 
-	if(delete_count > 0) {
+	if (delete_count > 0) {
 		alert('삭제 되었습니다.');
 		부품재고_시작();
 	}
@@ -82,7 +82,7 @@ async function 고품정보_삭제() {
 	deleteOne_고품정보(고품정보, 고품_QR);
 	await delay();
 
-	if(delete_count > 0) {
+	if (delete_count > 0) {
 		alert('삭제 되었습니다.');
 		부품재고_시작();
 	}
@@ -96,40 +96,40 @@ async function 폐기품출고() {
 	var now = seoul.toString();
 
 	var doc = {
-		QR : 고품_QR,
-		폐기품출고 : now.substr(0, 19)
+		QR: 고품_QR,
+		폐기품출고: now.substr(0, 19)
 	}
 
 	update_고품정보(고품정보, doc);
 	await delay();
 
-	if(update_count > 0) {
+	if (update_count > 0) {
 		부품재고_시작();
 	}
 }
 
 async function 폐기품출고취소() {
 	var doc = {
-		QR : 고품_QR,
-		폐기품출고 : ''
+		QR: 고품_QR,
+		폐기품출고: ''
 	}
 
 	update_고품정보(고품정보, doc);
 	await delay();
 
-	if(update_count > 0) {
+	if (update_count > 0) {
 		부품재고_시작();
 	}
 }
 
 async function 신품재고() {
-	findOne_자재입출고(자재입출고, { QR : { $exists : true }});
+	findOne_자재입출고(자재입출고, { QR: { $exists: true } });
 	await delay();
 
-	if(자재입출고_v != null) {
-		find_자재입출고(자재입출고, { QR : { $exists : true }});
+	if (자재입출고_v != null) {
+		find_자재입출고(자재입출고, { QR: { $exists: true } });
 		await delay();
-		
+
 		tabledata_신품재고 = JSON.parse(JSON.stringify(자재입출고_v));
 	} else {
 		return;
@@ -137,25 +137,25 @@ async function 신품재고() {
 
 	table_신품재고 = new Tabulator("#grid_신품재고", {
 		layout: "resizableColumnFit",
-		height:'700px',
-		data: tabledata_신품재고, 
+		height: '700px',
+		data: tabledata_신품재고,
 
 		columns: [
-			{title:"QR", field:"QR", sorter:"string", width:'180'},
-			{title:"날짜", field:"날짜", sorter:"string", width:'180'},
-			{title:"구분", field:"구분", sorter:"string", width:'180'},
-			{title:"차종", field:"차종", sorter:"string", width:'180'},
-			{title:"품명", field:"품명", sorter:"string", width:'180'},
-			{title:"품번", field:"품번", sorter:"string", width:'180'},
-			{title:"단가", field:"단가", sorter:"string", width:'180'},
-			{title:"수량", field:"수량", sorter:"string", width:'180'},
-			{title:"LotNo", field:"LotNo", sorter:"string", width:'180'},
-			{title:"비고", field:"비고", sorter:"string", width:'180'},
-			{title:"사용관리번호", field:"사용관리번호", sorter:"string", width:'180'},
+			{ title: "QR", field: "QR", sorter: "string", width: '180' },
+			{ title: "날짜", field: "날짜", sorter: "string", width: '180' },
+			{ title: "구분", field: "구분", sorter: "string", width: '180' },
+			{ title: "차종", field: "차종", sorter: "string", width: '180' },
+			{ title: "품명", field: "품명", sorter: "string", width: '180' },
+			{ title: "품번", field: "품번", sorter: "string", width: '180' },
+			{ title: "단가", field: "단가", sorter: "string", width: '180' },
+			{ title: "수량", field: "수량", sorter: "string", width: '180' },
+			{ title: "LotNo", field: "LotNo", sorter: "string", width: '180' },
+			{ title: "비고", field: "비고", sorter: "string", width: '180' },
+			{ title: "사용관리번호", field: "사용관리번호", sorter: "string", width: '180' },
 		],
-	});	
+	});
 
-	table_신품재고.on("rowClick", async function(e, row){
+	table_신품재고.on("rowClick", async function (e, row) {
 		console.log('selected QR: ', row.getData().QR);
 		신품_QR = row.getData().QR;
 
@@ -168,7 +168,7 @@ async function 신품재고() {
 	document.getElementById("new_filter-value").addEventListener("keyup", 신품재고_updateFilter);
 
 	//Clear filters on "Clear Filters" button click
-	document.getElementById("new_filter-clear").addEventListener("click", function(){
+	document.getElementById("new_filter-clear").addEventListener("click", function () {
 		var fieldEl = document.getElementById("new_filter-field");
 		var typeEl = document.getElementById("new_filter-type");
 		var valueEl = document.getElementById("new_filter-value");
@@ -188,13 +188,13 @@ async function 품번단가평균() {
 
 	findOne_자재입출고(자재입출고, { QR: { $exists: true } });
 	await delay();
-	
-	if(자재입출고_v != null) {
+
+	if (자재입출고_v != null) {
 		find_자재입출고(자재입출고, { QR: { $exists: true } });
 		await delay();
 
 		var infos = 자재입출고_v;
-		for(var i = 0; i < infos.length; i++) {
+		for (var i = 0; i < infos.length; i++) {
 			var date_start = new Date('2023-12-1');
 			var date_date = new Date(infos.날짜);
 
@@ -204,7 +204,7 @@ async function 품번단가평균() {
 				품번.push(infos[i].품번);
 				수량.push(Number(infos[i].수량));
 
-				if(infos[i].단가 != undefined && infos[i].단가 != '' && typeof Number(infos[i].단가) == 'number') { 
+				if (infos[i].단가 != undefined && infos[i].단가 != '' && typeof Number(infos[i].단가) == 'number') {
 					단가합.push(Number(infos[i].단가));
 					count.push(1);
 				} else {
@@ -213,7 +213,7 @@ async function 품번단가평균() {
 				}
 			} else {
 				var no = 품번.indexOf(infos[i].품번);
-				if(infos[i].단가 != undefined && infos[i].단가 != '' && typeof Number(infos[i].단가) == 'number') { 
+				if (infos[i].단가 != undefined && infos[i].단가 != '' && typeof Number(infos[i].단가) == 'number') {
 					단가합[no] = Number(infos[i].단가);
 					count[no]++;
 				}
@@ -222,13 +222,13 @@ async function 품번단가평균() {
 		}
 	}
 
-	find_구자료(구자료, { 품번 : {$exists : true }});
+	find_구자료(구자료, { 품번: { $exists: true } });
 	await delay();
 
-	if(구자료_v != null) {
-		구자료_v.forEach(function(infos) {
+	if (구자료_v != null) {
+		구자료_v.forEach(function (infos) {
 			var no = 품번.indexOf(infos.품번);
-			if(no >= 0) {
+			if (no >= 0) {
 				console.log(typeof infos.평균단가, infos.평균단가);
 				단가합[no] += Number(infos.평균단가);
 				count[no]++;
@@ -237,41 +237,41 @@ async function 품번단가평균() {
 	}
 
 	var list = [];
-	for(var i = 0; i < 품번.length; i++) {
-		if(Number(count[i]) == 0) continue;
+	for (var i = 0; i < 품번.length; i++) {
+		if (Number(count[i]) == 0) continue;
 
 		var item = {
-			품번 : 품번[i],
-			수량 : 수량[i],
-			평균단가 : (Number(단가합[i]) / Number(count[i])).toFixed().toLocaleString('ko-KR'),
-			합계 : (Number(단가합[i]) / Number(count[i]) * Number(수량[i])).toFixed().toLocaleString('ko-KR'),
+			품번: 품번[i],
+			수량: 수량[i],
+			평균단가: (Number(단가합[i]) / Number(count[i])).toFixed().toLocaleString('ko-KR'),
+			합계: (Number(단가합[i]) / Number(count[i]) * Number(수량[i])).toFixed().toLocaleString('ko-KR'),
 		};
 
 		list.push(item);
 	}
 
-	if(list == undefined) return;
+	if (list == undefined) return;
 
 	var table_평균단가 = new Tabulator("#grid_품번별단가평균", {
 		layout: "resizableColumnFit",
-		height:'700px',
-		data: list, 
+		height: '700px',
+		data: list,
 
 		columns: [
-			{title:"품번", field:"품번", sorter:"string", width:'180'},
-			{title:"수량", field:"수량", sorter:"string", width:'180'},
-			{title:"평균단가", field:"평균단가", sorter:"string", width:'180'},
-			{title:"합계", field:"합계", sorter:"string", width:'180'},
+			{ title: "품번", field: "품번", sorter: "string", width: '180' },
+			{ title: "수량", field: "수량", sorter: "string", width: '180' },
+			{ title: "평균단가", field: "평균단가", sorter: "string", width: '180' },
+			{ title: "합계", field: "합계", sorter: "string", width: '180' },
 		],
 	});
 }
 
 async function 고품재고() {
-	findOne_고품정보(고품정보, { 관리번호 : { $exists : true }});
+	findOne_고품정보(고품정보, { 관리번호: { $exists: true } });
 	await delay();
 
-	if(고품정보_v != null) {
-		find_고품정보(고품정보, { 관리번호 : { $exists : true }});
+	if (고품정보_v != null) {
+		find_고품정보(고품정보, { 관리번호: { $exists: true } });
 		await delay();
 
 		tabledata_고품재고 = JSON.parse(JSON.stringify(고품정보_v));
@@ -282,29 +282,29 @@ async function 고품재고() {
 	table_고품재고 = new Tabulator("#grid_고품재고", {
 		layout: "resizableColumnFit",
 		height: '700px',
-		data:tabledata_고품재고, 
-		
+		data: tabledata_고품재고,
+
 		columns: [
-			{title:"QR", field:"QR", sorter:"string", width:'180'},
-			{title:"관리번호", field:"관리번호", sorter:"string", width:'180'},
-			{title:"품명", field:"품명", sorter:"string", width:'180'},
-			{title:"구분", field:"구", sorter:"string", width:'180'},
-			{title:"번호", field:"번호", sorter:"string", width:'180'},
-			{title:"폐기여부", field:"폐기여부", sorter:"string", width:'180'},
-			{title:"사용여부", field:"사용여부", sorter:"string", width:'180'},
-			{title:"사용 관리번호", field:"사용_관리번호", sorter:"string", width:'180'},
-			{title:"등록 작업자", field:"등록_작업자", sorter:"string", width:'180'},
-			{title:"사용 작업자", field:"사용_작업자", sorter:"string", width:'180'},
-			{title:"등록일", field:"등록일", sorter:"string", width:'180'},
-			{title:"사용일", field:"사용일", sorter:"string", width:'180'},
-			{title:"폐기품출고", field:"폐기품출고", sorter:"string", width:'180'},
+			{ title: "QR", field: "QR", sorter: "string", width: '180' },
+			{ title: "관리번호", field: "관리번호", sorter: "string", width: '180' },
+			{ title: "품명", field: "품명", sorter: "string", width: '180' },
+			{ title: "구분", field: "구", sorter: "string", width: '180' },
+			{ title: "번호", field: "번호", sorter: "string", width: '180' },
+			{ title: "폐기여부", field: "폐기여부", sorter: "string", width: '180' },
+			{ title: "사용여부", field: "사용여부", sorter: "string", width: '180' },
+			{ title: "사용 관리번호", field: "사용_관리번호", sorter: "string", width: '180' },
+			{ title: "등록 작업자", field: "등록_작업자", sorter: "string", width: '180' },
+			{ title: "사용 작업자", field: "사용_작업자", sorter: "string", width: '180' },
+			{ title: "등록일", field: "등록일", sorter: "string", width: '180' },
+			{ title: "사용일", field: "사용일", sorter: "string", width: '180' },
+			{ title: "폐기품출고", field: "폐기품출고", sorter: "string", width: '180' },
 		],
-		
+
 	});
 
-	
-	
-	table_고품재고.on("rowClick", async function(e, row){
+
+
+	table_고품재고.on("rowClick", async function (e, row) {
 		console.log('selected QR: ', row.getData().QR);
 		고품_QR = row.getData().QR;
 
@@ -317,7 +317,7 @@ async function 고품재고() {
 	document.getElementById("old_filter-value").addEventListener("keyup", 고품재고_updateFilter);
 
 	//Clear filters on "Clear Filters" button click
-	document.getElementById("old_filter-clear").addEventListener("click", function(){
+	document.getElementById("old_filter-clear").addEventListener("click", function () {
 		var fieldEl = document.getElementById("old_filter-field");
 		var typeEl = document.getElementById("old_filter-type");
 		var valueEl = document.getElementById("old_filter-value");

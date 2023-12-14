@@ -8,7 +8,7 @@ async function 구장재고조회_시작() {
 	document.getElementById("filter-value").addEventListener("keyup", 구장재고updateFilter);
 
 	//Clear filters on "Clear Filters" button click
-	document.getElementById("filter-clear").addEventListener("click", function(){
+	document.getElementById("filter-clear").addEventListener("click", function () {
 		var fieldEl = document.getElementById("filter-field");
 		var typeEl = document.getElementById("filter-type");
 		var valueEl = document.getElementById("filter-value");
@@ -19,11 +19,11 @@ async function 구장재고조회_시작() {
 		구장창고_table.clearFilter();
 	});
 
-	count(구장재고, { 관리번호 : { $exists : true } }); 
+	count(구장재고, { 관리번호: { $exists: true } });
 	await delay();
-	
-	if(구장재고_cnt > 0) {
-		find_구장재고(구장재고, { 관리번호 : { $exists : true } });
+
+	if (구장재고_cnt > 0) {
+		find_구장재고(구장재고, { 관리번호: { $exists: true } });
 		await delay();
 
 		구장창고조회(구장재고_v);
@@ -37,45 +37,45 @@ async function 구장재고조회_시작() {
 }
 
 function 구장_수량집계_year() {
-		var DateTime = luxon.DateTime;
-		var seoul = DateTime.local().setZone("Asia/Seoul");
-		var now = seoul.toString();
-		var s_day = now.slice(0, 5) + '01-01';
-		var e_day = now.slice(0, 5) + '12-31';
+	var DateTime = luxon.DateTime;
+	var seoul = DateTime.local().setZone("Asia/Seoul");
+	var now = seoul.toString();
+	var s_day = now.slice(0, 5) + '01-01';
+	var e_day = now.slice(0, 5) + '12-31';
 
-		document.getElementById('_검색일_from').value = s_day;
-		document.getElementById('_검색일_to').value = e_day;
+	document.getElementById('_검색일_from').value = s_day;
+	document.getElementById('_검색일_to').value = e_day;
 }
 
 function 구장_수량집계_month() {
-		var DateTime = luxon.DateTime;
-		var seoul = DateTime.local().setZone("Asia/Seoul");
-		var now = seoul.toString();
-		var s_day = now.slice(0, 8) + '01';
-		var e_day;
-		if(now.slice(5, 2) in ['01', '03', '05', '07', '08', '10', '12']) e_day = now.slice(0, 8) + '31';
-		else if(now.slice(5, 2) == '02') e_day = now.slice(0, 8) + '28';
-		else e_day = now.slice(0, 8) + '30';
+	var DateTime = luxon.DateTime;
+	var seoul = DateTime.local().setZone("Asia/Seoul");
+	var now = seoul.toString();
+	var s_day = now.slice(0, 8) + '01';
+	var e_day;
+	if (now.slice(5, 2) in ['01', '03', '05', '07', '08', '10', '12']) e_day = now.slice(0, 8) + '31';
+	else if (now.slice(5, 2) == '02') e_day = now.slice(0, 8) + '28';
+	else e_day = now.slice(0, 8) + '30';
 
-		document.getElementById('_검색일_from').value = s_day;
-		document.getElementById('_검색일_to').value = e_day;
+	document.getElementById('_검색일_from').value = s_day;
+	document.getElementById('_검색일_to').value = e_day;
 }
 
 async function 구장_수량집계_기간조회() {
 	var 집계_today_begin = document.getElementById('_검색일_from').value + 'T00:00:000Z';;
 	var 집계_today_end = document.getElementById('_검색일_to').value + 'T23:59:000Z';;
- 	var 구분 = '';
+	var 구분 = '';
 
-	if(document.getElementById('_검색일_from').value == '') 집계_today_begin = '';
-	if(document.getElementById('_검색일_to').value == '') 집계_today_end = '';
-	
+	if (document.getElementById('_검색일_from').value == '') 집계_today_begin = '';
+	if (document.getElementById('_검색일_to').value == '') 집계_today_end = '';
+
 	console.log('begin:', 집계_today_begin, 'end:', 집계_today_end);
-	
-	count(구장재고, { 관리번호 : { $exists : true }, 입고일 : { $gte : 집계_today_begin, $lte : 집계_today_end }}); 
+
+	count(구장재고, { 관리번호: { $exists: true }, 입고일: { $gte: 집계_today_begin, $lte: 집계_today_end } });
 	await delay();
-	
-	if(구장재고_cnt > 0) {
-		find_구장재고(구장재고, { 관리번호 : { $exists : true }, 입고일 : { $gte : 집계_today_begin, $lte : 집계_today_end }});
+
+	if (구장재고_cnt > 0) {
+		find_구장재고(구장재고, { 관리번호: { $exists: true }, 입고일: { $gte: 집계_today_begin, $lte: 집계_today_end } });
 		await delay();
 
 		구장창고조회(구장재고_v);
@@ -92,7 +92,7 @@ async function 구장_수량집계_기간조회() {
 function 구장창고조회(data) {
 	var datas = [];
 	var cnt = 0;
-	data.forEach(function(v) {
+	data.forEach(function (v) {
 		cnt++;
 		v.No = cnt;
 		datas.push(v);
@@ -100,61 +100,61 @@ function 구장창고조회(data) {
 
 	구장창고_table = new Tabulator("#grid_BSA", {
 		layout: "resizableColumnFit",
-                data:datas,
+		data: datas,
 		height: '700px',
-		
-		columns:[
-			{title:"No", field:"No", sorter:"string", width:'180'},
-			{title:"일반/보증", field:"구분", sorter:"string", width:'180'},
-			{title:"입고일", field:"입고일", sorter:"string", width:'180'},
-			{title:"입고처", field:"입고처", sorter:"string", width:'180'},
-			{title:"부품번호", field:"부품번호", sorter:"string", width:'180'},
-			{title:"관리번호", field:"관리번호", sorter:"string", width:'180'},
-			{title:"재제조번호", field:"재제조번호", sorter:"string", width:'180'},
-			{title:"RO번호", field:"RO번호", sorter:"string", width:'180'},
-			{title:"생산연도", field:"생산연도", sorter:"string", width:'180'},
-			{title:"ROM ID", field:"ROM_ID", sorter:"string", width:'180'},
-			{title:"비고", field:"비고", sorter:"string", width:'180'},
-			{title:"보관위치", field:"보관위치", sorter:"string", width:'180'},
-			{title:"출고일", field:"출고일", sorter:"string", width:'180'},
-			{title:"출고처", field:"출고처", sorter:"string", width:'180'},
+
+		columns: [
+			{ title: "No", field: "No", sorter: "string", width: '180' },
+			{ title: "일반/보증", field: "구분", sorter: "string", width: '180' },
+			{ title: "입고일", field: "입고일", sorter: "string", width: '180' },
+			{ title: "입고처", field: "입고처", sorter: "string", width: '180' },
+			{ title: "부품번호", field: "부품번호", sorter: "string", width: '180' },
+			{ title: "관리번호", field: "관리번호", sorter: "string", width: '180' },
+			{ title: "재제조번호", field: "재제조번호", sorter: "string", width: '180' },
+			{ title: "RO번호", field: "RO번호", sorter: "string", width: '180' },
+			{ title: "생산연도", field: "생산연도", sorter: "string", width: '180' },
+			{ title: "ROM ID", field: "ROM_ID", sorter: "string", width: '180' },
+			{ title: "비고", field: "비고", sorter: "string", width: '180' },
+			{ title: "보관위치", field: "보관위치", sorter: "string", width: '180' },
+			{ title: "출고일", field: "출고일", sorter: "string", width: '180' },
+			{ title: "출고처", field: "출고처", sorter: "string", width: '180' },
 		],
 	});
 
-	구장창고_table.on("rowClick", async function(e, row) {
-		console.log('selected 관리번호: ',  row.getData().관리번호);
+	구장창고_table.on("rowClick", async function (e, row) {
+		console.log('selected 관리번호: ', row.getData().관리번호);
 		document.getElementById('select_bsa').innerHTML = row.getData().관리번호;
 	});
 }
 
 function 창고_export_excel() {
 	var sheets = {
-		'구장창고재고' : true,
+		'구장창고재고': true,
 	};
-	구장창고_table.download("xlsx", "창고재고.xlsx", {sheets:sheets});
+	구장창고_table.download("xlsx", "창고재고.xlsx", { sheets: sheets });
 }
 
-function 구장재고updateFilter(){
-  var fieldEl = document.getElementById("filter-field");
-  var typeEl = document.getElementById("filter-type");
-  var valueEl = document.getElementById("filter-value");
+function 구장재고updateFilter() {
+	var fieldEl = document.getElementById("filter-field");
+	var typeEl = document.getElementById("filter-type");
+	var valueEl = document.getElementById("filter-value");
 
-  var filterVal = fieldEl.options[fieldEl.selectedIndex].value;
-  var typeVal = typeEl.options[typeEl.selectedIndex].value;
+	var filterVal = fieldEl.options[fieldEl.selectedIndex].value;
+	var typeVal = typeEl.options[typeEl.selectedIndex].value;
 
-  var filter = filterVal == "function" ? customFilter : filterVal;
+	var filter = filterVal == "function" ? customFilter : filterVal;
 
-  if(filterVal == "function") {
-    typeEl.disabled = true;
-    valueEl.disabled = true;
-  }else{
-    typeEl.disabled = false;
-    valueEl.disabled = false;
-  }
+	if (filterVal == "function") {
+		typeEl.disabled = true;
+		valueEl.disabled = true;
+	} else {
+		typeEl.disabled = false;
+		valueEl.disabled = false;
+	}
 
-  if(filterVal){
-    구장창고_table.setFilter(filter, typeVal, valueEl.value);
-  }
+	if (filterVal) {
+		구장창고_table.setFilter(filter, typeVal, valueEl.value);
+	}
 }
 
 async function delete_구장재고_bsa() {
@@ -163,7 +163,7 @@ async function delete_구장재고_bsa() {
 	deleteOne_구장재고(구장재고, select_관리번호);
 	await delay();
 
-	find_구장재고(구장재고, { 관리번호 : { $exists : true } });
+	find_구장재고(구장재고, { 관리번호: { $exists: true } });
 	await delay();
 
 	구장창고조회(구장재고_v);
@@ -186,13 +186,13 @@ function 품번별_수량집계(data) {
 	var datas = [];
 
 	var cnt_index = 0;
-	품번.forEach(function(item) {
+	품번.forEach(function (item) {
 		var v = {
-			No : cnt_index + 1,
-			부품번호 : item,
-			수량 : count[cnt_index]
+			No: cnt_index + 1,
+			부품번호: item,
+			수량: count[cnt_index]
 		}
-		
+
 		datas.push(v);
 
 		cnt_index++;
@@ -200,13 +200,13 @@ function 품번별_수량집계(data) {
 
 	품번_수량집계_table = new Tabulator("#grid_품번_수량집계", {
 		layout: "resizableColumnFit",
-                data:datas,
+		data: datas,
 		height: '700px',
-		
-		columns:[
-			{title:"No", field:"No", sorter:"string", width:'180'},
-			{title:"부품번호", field:"부품번호", sorter:"string", width:'180'},
-			{title:"수량", field:"수량", sorter:"string", width:'180'},
+
+		columns: [
+			{ title: "No", field: "No", sorter: "string", width: '180' },
+			{ title: "부품번호", field: "부품번호", sorter: "string", width: '180' },
+			{ title: "수량", field: "수량", sorter: "string", width: '180' },
 		],
 	});
 }
@@ -228,13 +228,13 @@ function 입고처별_수량집계(data) {
 	var datas = [];
 
 	var cnt_index = 0;
-	입고처.forEach(function(item) {
+	입고처.forEach(function (item) {
 		var v = {
-			No : cnt_index + 1,
-			입고처 : item,
-			수량 : count[cnt_index]
+			No: cnt_index + 1,
+			입고처: item,
+			수량: count[cnt_index]
 		}
-		
+
 		datas.push(v);
 
 		cnt_index++;
@@ -242,13 +242,13 @@ function 입고처별_수량집계(data) {
 
 	입고처_수량집계_table = new Tabulator("#grid_입고처_수량집계", {
 		layout: "resizableColumnFit",
-                data:datas,
+		data: datas,
 		height: '700px',
-		
-		columns:[
-			{title:"No", field:"No", sorter:"string", width:'180'},
-			{title:"입고처", field:"입고처", sorter:"string", width:'180'},
-			{title:"수량", field:"수량", sorter:"string", width:'180'},
+
+		columns: [
+			{ title: "No", field: "No", sorter: "string", width: '180' },
+			{ title: "입고처", field: "입고처", sorter: "string", width: '180' },
+			{ title: "수량", field: "수량", sorter: "string", width: '180' },
 		],
 	});
 }
@@ -270,13 +270,13 @@ function 출고처별_수량집계(data) {
 	var datas = [];
 
 	var cnt_index = 0;
-	출고처.forEach(function(item) {
+	출고처.forEach(function (item) {
 		var v = {
-			No : cnt_index + 1,
-			출고처 : item,
-			수량 : count[cnt_index]
+			No: cnt_index + 1,
+			출고처: item,
+			수량: count[cnt_index]
 		}
-		
+
 		datas.push(v);
 
 		cnt_index++;
@@ -284,19 +284,19 @@ function 출고처별_수량집계(data) {
 
 	출고처_수량집계_table = new Tabulator("#grid_출고처_수량집계", {
 		layout: "resizableColumnFit",
-                data:datas,
+		data: datas,
 		height: '700px',
-		
-		columns:[
-			{title:"No", field:"No", sorter:"string", width:'180'},
-			{title:"출고처", field:"출고처", sorter:"string", width:'180'},
-			{title:"수량", field:"수량", sorter:"string", width:'180'},
+
+		columns: [
+			{ title: "No", field: "No", sorter: "string", width: '180' },
+			{ title: "출고처", field: "출고처", sorter: "string", width: '180' },
+			{ title: "수량", field: "수량", sorter: "string", width: '180' },
 		],
 	});
 }
 
 function 출하처_콤보박스(e) {
-  const value = e.value;
+	const value = e.value;
 
-  _출고처.value = value;
+	_출고처.value = value;
 }
