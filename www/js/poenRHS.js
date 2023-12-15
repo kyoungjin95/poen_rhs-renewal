@@ -1254,6 +1254,7 @@ const 변수_doc = {
 var 품번_ = {
 	번호 : '',
 	차종 : '',
+	품번 : '',
 	LWR_CASE : '',
 	UPR_CASE : '',
 	S_PLUG : '',
@@ -2402,6 +2403,7 @@ const 부품정보_list_ = {
 var 품번_ = {
 	번호 : 1,
 	차종 : 1,
+	품번 : 1,
 	LWR_CASE : 1,
 	UPR_CASE : 1,
 	S_PLUG : 1,

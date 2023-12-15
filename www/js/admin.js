@@ -219,3 +219,57 @@ async function _doo() {
 	};
 	table.download("xlsx", "EOLvs출하검사_bsa.xlsx", { sheets: sheets });
 }
+
+function read_품번_func_csv() {
+	_품번_csv.addEventListener('input', function (event) {
+		const target = event.target;
+		const files = target.files;
+		const file = files[0];
+
+		const reader = new FileReader();
+		reader.addEventListener('load', async function () {
+			const res = d3.csvParse(reader.result);
+			var docs = [];
+
+			drop(품번);
+			await delay();
+
+			for (var i = 0; i < res.length; i++) {
+				if (res[i].차종 != '') docs.push(res[i]);
+				if ((i > 0 && (i % 2000) == 0) || i == (res.length - 1)) {
+					insertMany(품번, docs);
+					await delay();
+
+					console.log('processing:', i, docs.length);
+
+					docs = [];
+
+					await sleep(1);
+				}
+			};
+			console.log('complete:', res.length);
+			alert('업로드가 완료되었습니다. 새로고침후 다시 로그인하세요');
+		});
+		console.log(file);
+		reader.readAsText(file);
+	});
+}
+
+async function 신품정보_insert(val) {
+	var doc = 자재입출고_doc;
+
+	doc.QR = val.QR.trim();
+	doc.날짜 = val.날짜;
+	doc.구분 = val.구분;
+	doc.차종 = val.차종;
+	doc.품명 = val.품명;
+	doc.품번 = val.품번;
+	doc.수량 = val.수량;
+	doc.LotNo = val.LotNo;
+	doc.비고 = val.비고;
+	doc.사용관리번호 = '';
+	update_신품정보(자재입출고, doc);
+	await delay();
+
+	console.log('+');
+}
