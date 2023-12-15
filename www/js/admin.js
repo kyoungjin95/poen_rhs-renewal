@@ -167,29 +167,7 @@ async function doo() {
 	console.log('complete');
 }
 
-async function doo() {
-	find_BSA재제조(BSA재제조, { 차종: { $exists: true } });
-	await delay();
-
-	BSA재제조_v.forEach(async function (bsa_info) {
-		var tmp = bsa_info.차종;
-		bsa_info.차종 = bsa_info.차종.replace('-', '_');
-
-		if (tmp != bsa_info.차종) {
-			doc = {
-				관리번호: bsa_info.관리번호,
-				차종: bsa_info.차종
-			}
-
-			update(BSA재제조, doc);
-			await delay();
-		}
-	});
-
-	console.log('complete');
-}
-
-async function doo_2() {
+async function _doo() {
 	find_BSA재제조(BSA재제조, { EOL: { $ne: '' }, 출하검사: { $eq: '' } });
 	await delay();
 

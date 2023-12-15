@@ -1,3 +1,4 @@
+const luxon = require('luxon');
 const ipfilter = require('express-ipfilter').IpFilter;
 const http = require('http');
 const mongo = require('mongodb');
@@ -22,6 +23,7 @@ var _old_client_ip;
 var _same_ip_cnt = 0;
 var _start_time;
 var _end_time;
+var _lastest_제제조번호 = '';
 var _black_ip_list = [];
 
 const 계정_ = {
@@ -149,6 +151,7 @@ io.on('connection', async function(socket) {
 	});
 
 	socket.on('findOne', async function(worker, col, query, options, check) {
+		init_product_no();
 		if(_old_client_ip != client_ip) {
 			_start_time = new Date().getTime();
 			_old_client_ip = client_ip;
@@ -271,7 +274,6 @@ io.on('connection', async function(socket) {
 var flag_autobackup_db = false;
 
 setInterval(function() {
-
 	ps.lookup({ command: 'bash' }, (err, resultList) => {
 		if (err) {
 			console.log('Error getting list:', err);
@@ -292,6 +294,16 @@ setInterval(function() {
 		}
 	});
 }, 10000);
+
+setInterval(function() {
+	var DateTime = luxon.DateTime;
+	var seoul = DateTime.local().setZone("Asia/Seoul");
+	var now = seoul.toString().substr(8, 2);
+	if(old_day != '0' && old_day != now) {
+		init_product_no();
+	}
+	old_day = now;
+}, 1000 * 60);
 
 async function distinct(col, query, field_name) {
 	try {
@@ -470,4 +482,29 @@ async function deleteOne(col, query) {
 
 function sleep(ms) {
 	return new Promise((resolve) => setTimeout(resolve, ms))
+}
+
+async function init_product_no() {
+	var doc = {
+		구분 : 'mado_product_no',
+		값 : 0,
+	}
+
+	await update(변수, {구분: doc.구분}, doc);
+
+	var doc = {
+		구분 : 'hs_product_no',
+		값 : 0,
+	}
+
+	await update(변수, {구분: doc.구분}, doc);
+
+	var doc = {
+		구분 : 'jj_product_no',
+		값 : 0,
+	}
+
+	await update(변수, {구분: doc.구분}, doc);
+
+	console.log('mado_product_no_complete');
 }

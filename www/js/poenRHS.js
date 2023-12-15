@@ -40,6 +40,8 @@ const 기초보고서 = '기초보고서';
 const 완료보고서 = '완료보고서';
 const 부품정보_list = '부품정보_list';
 const 구자료 = '구자료';
+const 변수 = '변수';
+const 품번 = '품번';
 
 var 구자료_v = [];
 var BSA재제조_v = [];
@@ -81,6 +83,8 @@ var 기초보고서_v = [];
 var 완료보고서_v = [];
 var 계정_v = [];
 var 부품정보_list_v = [];
+var 변수_v = [];
+var 품번_v = [];
 
 var BSA재제조_cnt = 0;
 var 입고_cnt = 0;
@@ -122,6 +126,8 @@ var 완료보고서_cnt = 0;
 var 계정_cnt = 0;
 var 부품정보_list_cnt = 0;
 var 구자료_cnt = 0;
+var 변수_cnt = 0;
+var 품번_cnt = 0;
 
 var option_입고_cnt = 0;
 var option_세척_cnt = 0;
@@ -1239,6 +1245,31 @@ const 부품정보_list_doc = {
 	D2_LV_W_H_품번: '',
 	D2_MODULE_1_품번: '',
 };
+
+const 변수_doc = {
+	구분: '',
+	값 : ''
+};
+
+var 품번_ = {
+	번호 : '',
+	차종 : '',
+	LWR_CASE : '',
+	UPR_CASE : '',
+	S_PLUG : '',
+	SPA : '',
+	HV_CNTR : '',
+	H_T_CNTR : '',
+	PRA : '',
+	FUSE : '',
+	RELAY : '',
+	LV_W_H : '',
+	HV_W_H : '',
+	BMU : '',
+	온도센서 : '',
+	CMU : '',
+	BMA : ''
+}
 
 const 계정_ = {
 	_id: 0,
@@ -2368,6 +2399,32 @@ const 부품정보_list_ = {
 	D2_MODULE_1_품번: 1,
 };
 
+var 품번_ = {
+	번호 : 1,
+	차종 : 1,
+	LWR_CASE : 1,
+	UPR_CASE : 1,
+	S_PLUG : 1,
+	SPA : 1,
+	HV_CNTR : 1,
+	H_T_CNTR : 1,
+	PRA : 1,
+	FUSE : 1,
+	RELAY : 1,
+	LV_W_H : 1,
+	HV_W_H : 1,
+	BMU : 1,
+	온도센서 : 1,
+	CMU : 1,
+	BMA : 1
+}
+
+const 변수_ = {
+	_id : 0,
+	구분: 1,
+	값 : 1
+};
+
 var doc_count = 0;
 var update_count = 0;
 var insert_count = 0;
@@ -2606,6 +2663,14 @@ socket.on('count_result', async function (col, count, rcv_check, option = '') {
 		case 부품정보_list:
 			부품정보_list_cnt = 0;
 			부품정보_list_cnt = JSON.parse(JSON.stringify(count));
+
+		case 변수:
+			변수_cnt = 0;
+			변수_cnt = JSON.parse(JSON.stringify(count));
+
+		case 품번:
+			품번_cnt = 0;
+			품번_cnt = JSON.parse(JSON.stringify(count));
 
 		default:
 			doc_count = 0;
@@ -2906,6 +2971,16 @@ socket.on('find_result', async function (col, result, rcv_check) {
 			구자료_v = JSON.parse(JSON.stringify(result));
 			break;
 
+		case 변수:
+			변수_v = [];
+			변수_v = JSON.parse(JSON.stringify(result));
+			break;
+
+		case 품번:
+			품번_v = [];
+			품번_v = JSON.parse(JSON.stringify(result));
+			break;
+
 		default:
 			find_array = [];
 			find_array = JSON.parse(JSON.stringify(result));
@@ -2986,6 +3061,8 @@ function reset_result() {
 	부품정보_list_v = [];
 	구자료_v = [];
 	find_array = []
+	변수_v = [];
+	품번_v = [];
 }
 
 function reset_count() {
@@ -3027,6 +3104,8 @@ function reset_count() {
 	기초보고서_cnt = 0;
 	완료보고서_cnt = 0;
 	부품정보_list_cnt = 0;
+	변수_cnt = 0;
+	품번_cnt = 0;
 	doc_count = 0;
 }
 
@@ -3109,6 +3188,12 @@ async function update_고품정보(col, doc) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	socket.emit('update', worker, col, { QR: doc.QR }, { $set: doc });
+}
+
+async function update_품번(col, doc) {
+	if (socket == undefined) return;
+	flag_arrivedMSG = false;
+	socket.emit('update', worker, col, { 번호: doc.번호 }, { $set: doc });
 }
 
 async function deleteOne(col, management_id) {
@@ -3307,6 +3392,14 @@ async function find(col, management_id) {
 
 		case '부품정보_list':
 			socket.emit('findOne', worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 부품정보_list_ }, check);
+			break;
+
+		case '변수':
+			socket.emit('findOne', worker, col, { 구분: management_id }, { sort: { kind: 1 }, projection: 변수_ }, check);
+			break;
+
+		case '품번':
+			socket.emit('findOne', worker, col, { 차종: management_id }, { sort: { kind: 1 }, projection: 품번_ }, check);
 			break;
 
 		default:
@@ -3647,6 +3740,24 @@ async function find_자재입출고(col, query) {
 	socket.emit('find', worker, col, query, { sort: { kind: 1 }, projection: 자재입출고_ }, check);
 }
 
+async function find_변수(col, query) {
+	if (socket == undefined) return;
+	flag_arrivedMSG = false;
+	check++;
+	if (check > 10) check = 0;
+
+	socket.emit('find', worker, col, query, { sort: { kind: 1 }, projection: 변수_ }, check);
+}
+
+async function find_품번(col, query) {
+	if (socket == undefined) return;
+	flag_arrivedMSG = false;
+	check++;
+	if (check > 10) check = 0;
+
+	socket.emit('find', worker, col, query, { sort: { kind: 1 }, projection: 품번_ }, check);
+}
+
 function sleep(ms) {
 	return new Promise((resolve) => setTimeout(resolve, ms))
 }
@@ -3828,4 +3939,46 @@ function back() {
 	loadPage("base/item-details.html");
 	flag_상세입력 = true;
 	first_분해조립 = true;
+}
+
+function make_hs_product_no(count) {
+	var product_no = '#S';
+	
+	var DateTime = luxon.DateTime;
+	var seoul = DateTime.local().setZone("Asia/Seoul");
+	var now = seoul.toString().substr(2, 2);
+	now += seoul.toString().substr(5, 2); 
+	now += seoul.toString().substr(8, 2); 
+	console.log(now);
+	product_no += now + '-' + 'HS' + count.padStart(3, '0');
+
+	return product_no;
+}
+
+function make_md_product_no(count) {
+	var product_no = '#S';
+	
+	var DateTime = luxon.DateTime;
+	var seoul = DateTime.local().setZone("Asia/Seoul");
+	var now = seoul.toString().substr(2, 2);
+	now += seoul.toString().substr(5, 2); 
+	now += seoul.toString().substr(8, 2); 
+	console.log(now);
+	product_no += now + '-' + 'MD' + count.padStart(3, '0');
+
+	return product_no;
+}
+
+function make_jj_product_no(count) {
+	var product_no = '#S';
+	
+	var DateTime = luxon.DateTime;
+	var seoul = DateTime.local().setZone("Asia/Seoul");
+	var now = seoul.toString().substr(2, 2);
+	now += seoul.toString().substr(5, 2); 
+	now += seoul.toString().substr(8, 2); 
+	console.log(now);
+	product_no += now + '-' + 'JJ' + count.padStart(3, '0');
+
+	return product_no;
 }

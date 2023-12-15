@@ -92,7 +92,7 @@ var flag_출하 = false;
 var flag_구장재고 = false;
 var flag_구장재고조회 = false;
 var flag_부품정보_list = false;
-
+var old_day = '0';
 var interval = setInterval(function () {
 	if (flag_재제조현황 == true) { stop_repeat(); 재제조현황_시작(); }
 	if (flag_상세입력 == true) { stop_repeat(); 상세입력_시작(); }
@@ -122,12 +122,6 @@ var interval = setInterval(function () {
 
 	if (flag_부품정보_list == true) { stop_repeat(); 부품정보_list_시작(); }
 }, 1000);
-
-//var intervalRepeat = setInterval(function() {
-//if(flag_repeat_생산현황 == true) 생산현황_시작();
-//	if(flag_repeat_대시보드 == true) 대시보드_시작();
-//	if(flag_repeat_대기수량_현황 == true) 대기수량_현황_조회();
-//}, 1000 * 30);
 
 function stop_repeat() {
 	console.log('stop repeat');
