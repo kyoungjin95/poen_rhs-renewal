@@ -1,18 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap");
+
 .module_con {
-  width: 80%;
-  height: 100%;
+  width: 100%;
+  /* height: 100%; */
   background-color: #d4d4d4;
   padding: 20px;
   box-sizing: border-box;
-  margin: 0 auto;
   position: relative;
-  font-family: var(--en-font);
+  font-family: "Poppins", sans-serif;
 }
 button {
   outline: none;
   border: none;
   cursor: pointer;
-  font-size: 20px;
   text-transform: uppercase;
 }
 
@@ -23,6 +23,7 @@ button {
   width: 100%;
   text-align: center;
   font-size: 1vw;
+  white-space: wrap;
 }
 .btn:nth-child(2) {
   margin-bottom: 0;
@@ -64,8 +65,8 @@ button {
   text-align: center;
 }
 button.product {
-  width: 80%;
-  padding: 10px;
+  width: 100%;
+  padding: 5px;
   line-height: 40px;
   display: inline-block;
   text-align: center;
@@ -103,16 +104,16 @@ button.product {
 .up-btn {
   position: absolute;
   bottom: 15%;
-  right: 5%;
+  right: 3%;
   padding: 5px 0;
-  width: 27%;
+  width: 30%;
   font-size: 0.9vw;
 }
 /* ---------------- con first ---------------- */
 .con__first .layout {
   display: grid;
   grid-template-columns: 10% 8% 40% 8% 20% 10%;
-  gap: 10px;
+  gap: 5px;
   text-align: center;
 }
 
@@ -135,10 +136,10 @@ button.product {
   padding: 10px 0;
 }
 .con__first .first_con .btn__navy {
-  padding: 50px 0;
+  padding: 40px 0;
 }
 .con__first .first_con .navy2 {
-  padding: 40px 0;
+  padding: 30px 0;
 }
 /* second_con */
 .con__first .second_con button,
@@ -154,7 +155,7 @@ button.product {
 }
 .con__first .third_con .product {
   width: 100%;
-  padding: 65px 0;
+  padding: 45px 0;
 }
 
 .con__first .third_con .up-btn {
@@ -165,7 +166,7 @@ button.product {
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
 .con__first .fourth_con button {
   height: 15%;
@@ -192,6 +193,7 @@ button.product {
   top: 30px;
   left: 50%;
   transform: translateX(-50%);
+  white-space: wrap;
 }
 .con__first .fifth_con .middle-btn {
   position: absolute;
@@ -199,7 +201,7 @@ button.product {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 40%;
-  padding: 20px;
+  padding: 20px 0;
 }
 
 .con__first .fifth_con .up-btn {
@@ -229,10 +231,10 @@ button.product {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   margin-bottom: 10px;
-  gap: 30px;
+  gap: 20px;
 }
 .con__second .middle_section .product {
-  padding: 50px 0;
+  padding: 45px 0;
 }
 
 .con__second .upper_con .btn-box button,
@@ -241,7 +243,7 @@ button.product {
 }
 .con__second .upper_con .left_section .product,
 .con__second .upper_con .right_section .product,
-.con__second .middle_con .left_section .product,
+.con__second .left_section .product,
 .con__second .middle_con .right_section .product {
   margin-bottom: 10px;
 }
@@ -266,7 +268,7 @@ button.product {
   grid-template-columns: repeat(3, 1fr);
 }
 .con__second .bottom_con .btn-box button {
-  padding: 20px 0;
+  padding: 10px 0;
 }
 /* ---------------- .con third  ----------------*/
 .con__third .upper_con,
@@ -276,18 +278,17 @@ button.product {
   display: grid;
   grid-template-columns: 10% 1fr 10%;
   margin-bottom: 20px;
-}
-.con__third .middle_con {
-  gap: 20px;
+  gap: 10px;
 }
 .con__third .middle_section {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
 }
 .con__third .smiddle_section {
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(20px, 1fr));
+  gap: 5px;
 }
 .con__third p.product:nth-child(4n) {
   margin-bottom: 0;
@@ -308,7 +309,6 @@ button.product {
   padding: 0;
   margin-top: 5px;
 }
-
 .con__third .upper_con .btn__navy,
 .con__third .bottom_con .btn__black {
   margin-bottom: 0;
@@ -321,17 +321,23 @@ button.product {
   margin-bottom: 10px;
 }
 /* ================ lay2 */
-.con__third .middle_con .btn-box button {
+.con__third .middle_con .smiddle_section > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 4px;
+}
+.con__third .middle_con .smiddle_section button {
   display: inline-block;
-  padding: 0;
+  font-size: 0.8vw;
+  padding: 5px 0;
 }
 .con__third .middle_con .btn__gray {
-  margin-bottom: 5px;
-  height: 30px;
-  padding: 0 7px;
+  white-space: nowrap;
 }
 .con__third .middle_con .btn__orange {
   height: 100%;
+  padding: 0;
 }
 /* ================ lay3 */
 .bottom_con .btn {
@@ -340,20 +346,17 @@ button.product {
 .bottom_con .btn__navy {
   padding: 45px 0;
 }
-
 /* ---------------- con__fourth ---------------- */
 .fourth {
-  width: 90%;
-  margin: 0 auto;
-  display: flex !important;
-  gap: 30px;
+  width: 100%;
 }
 .fourth .layout {
   width: 100%;
   display: flex;
 }
 .fourth .module_con {
-  width: 50%;
+  width: 70%;
+  margin: 0 auto 40px;
 }
 .con__fourth h4 {
   margin: 5px 0 15px;
@@ -392,12 +395,52 @@ button.product {
   width: 100%;
   grid-template-columns: 1fr 1fr 20%;
 }
-
 .con__fourth .bottom_con .btn {
-  padding: 5px 0;
+  padding: 7px 0;
 }
-
 /* con__fourth 2번째 - slave1 */
 .con__fourth:nth-child(2) .upper_con .product {
   padding: 104px 0;
+}
+/* 미디어쿼리 */
+@media (min-width: 768px) and (max-width: 992px) {
+  .con__first .third_con .product {
+    padding: 30px 0;
+  }
+  .con__second .product {
+    padding: 10px 0;
+  }
+  .con__second .middle_section .product {
+    padding: 20px 0;
+  }
+  .con__second .upper_con .btn-box button,
+  .con__second .middle_con .btn-box button {
+    padding: 10px 0;
+  }
+}
+@media (max-width: 767px) {
+  .con__first .first_con .btn__navy {
+    padding: 20px 0;
+  }
+  .con__first .first_con .navy2 {
+    padding: 15px 0;
+  }
+  .con__first .third_con .product {
+    padding: 20px 0;
+  }
+  .con__second .upper_con,
+  .con__second .middle_con,
+  .con__second .bottom_con {
+    margin-bottom: 0;
+  }
+  .con__second .product {
+    padding: 10px 0;
+  }
+  .con__second .middle_section .product {
+    padding: 20px 0;
+  }
+
+  .con__second .bottom_con .btn-box button {
+    padding: 5px 0;
+  }
 }
