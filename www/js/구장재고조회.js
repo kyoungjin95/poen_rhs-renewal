@@ -116,6 +116,7 @@ function 구장창고조회(data) {
 			{ title: "ROM ID", field: "ROM_ID", sorter: "string", width: '180' },
 			{ title: "비고", field: "비고", sorter: "string", width: '180' },
 			{ title: "보관위치", field: "보관위치", sorter: "string", width: '180' },
+			{ title: "제조완료", field: "제조완료", sorter: "string", width: '180' },
 			{ title: "출고일", field: "출고일", sorter: "string", width: '180' },
 			{ title: "출고처", field: "출고처", sorter: "string", width: '180' },
 		],

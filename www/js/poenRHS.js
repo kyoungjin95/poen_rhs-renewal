@@ -718,6 +718,7 @@ const 구장재고_doc = {
 	생산연도: '',
 	ROM_ID: '',
 	보관위치: '',
+	제조완료: '',
 	출고일: '',
 	출고처: '',
 	비고: ''
@@ -733,6 +734,7 @@ const 군포재고_doc = {
 	생산연도: '',
 	ROM_ID: '',
 	보관위치: '',
+	제조완료: '',
 	출고일: '',
 	출고처: '',
 	비고: ''
@@ -748,6 +750,7 @@ const 제주재고_doc = {
 	생산연도: '',
 	ROM_ID: '',
 	보관위치: '',
+	제조완료: '',
 	출고일: '',
 	출고처: '',
 	비고: ''
@@ -1859,6 +1862,7 @@ const 구장재고_ = {
 	생산연도: 1,
 	ROM_ID: 1,
 	보관위치: 1,
+	제조완료: 1,
 	출고일: 1,
 	출고처: 1,
 	비고: 1
@@ -1875,6 +1879,7 @@ const 군포재고_ = {
 	생산연도: 1,
 	ROM_ID: 1,
 	보관위치: 1,
+	제조완료: 1,
 	출고일: 1,
 	출고처: 1,
 	비고: 1
@@ -1891,6 +1896,7 @@ const 제주재고_ = {
 	생산연도: 1,
 	ROM_ID: 1,
 	보관위치: 1,
+	제조완료: 1,
 	출고일: 1,
 	출고처: 1,
 	비고: 1
@@ -3405,6 +3411,18 @@ async function find(col, management_id) {
 
 		case '폐기_pic':
 			socket.emit('findOne', worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 폐기_pic_ }, check);
+			break;
+
+		case '구장재고':
+			socket.emit('findOne', worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 구장재고_ }, check);
+			break;
+
+		case '군포재고':
+			socket.emit('findOne', worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 군포재고_ }, check);
+			break;
+
+		case '제주재고':
+			socket.emit('findOne', worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 제주재고_ }, check);
 			break;
 
 		case '부품정보_list':

@@ -74,6 +74,7 @@ var flag_대시보드 = false;
 var flag_대기수량_현황 = false;
 var flag_부품재고 = false;
 var flag_수량집계 = false;
+var flag_창고수량집계 = false;
 var flag_신품정보 = false;
 var flag_재충전정보 = false;
 var flag_camera = false;
@@ -107,6 +108,7 @@ var interval = setInterval(function () {
 	if (flag_camera == true) { stop_repeat(); }
 	if (flag_부품재고 == true) { stop_repeat(); 부품재고_시작(); }
 	if (flag_수량집계 == true) { stop_repeat(); 수량집계_시작(); }
+	if (flag_수량집계 == true) { stop_repeat(); 창고수량집계_시작(); }
 	if (flag_신품정보 == true) { 신품정보_시작(); }
 
 	if (flag_구장재고 == true) { stop_repeat(); 구장재고_시작(); }
