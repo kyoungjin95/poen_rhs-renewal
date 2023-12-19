@@ -70,12 +70,10 @@ async function login() {
 }
 
 async function change_label() {
-	}
 	await sleep(10);
 	const _label = document.getElementById("login_label");
 	const _login_btn = document.getElementById("login_btn");
 	const _login_info = document.getElementById("login_info");
-	_label.innerHTML = "Login";
 
 	if (_login_btn.innerHTML == "로그아웃") {
 		sessionStorage.clear();
