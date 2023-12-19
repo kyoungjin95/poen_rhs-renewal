@@ -24,6 +24,8 @@ const 교체부품상세9 = '교체부품상세9';
 const 교체부품상세10 = '교체부품상세10';
 const 자재입출고 = '자재입출고';
 const 구장재고 = '구장재고';
+const 군포재고 = '군포재고';
+const 제주재고 = '제주재고';
 const 입고_pic = '입고_pic';
 const 세척_pic = '세척_pic';
 const 기초검사_pic = '기초검사_pic';
@@ -65,6 +67,8 @@ var 교체부품상세9_v = [];
 var 교체부품상세10_v = [];
 var 자재입출고_v = [];
 var 구장재고_v = [];
+var 군포재고_v = [];
+var 제주재고_v = [];
 var 입고_pic_v = [];
 var 세척_pic_v = [];
 var 기초검사_pic_v = [];
@@ -105,6 +109,8 @@ var 교체부품상세9_cnt = 0;
 var 교체부품상세10_cnt = 0;
 var 자재입출고_cnt = 0;
 var 구장재고_cnt = 0;
+var 군포재고_cnt = 0;
+var 제주재고_cnt = 0;
 var 입고_pic_cnt = 0;
 var 세척_pic_cnt = 0;
 var 기초검사_pic_cnt = 0;
@@ -702,7 +708,6 @@ const 교체부품상세_doc = {
 	교체사유: ''
 };
 
-
 const 구장재고_doc = {
 	입고일: '',
 	입고처: '',
@@ -713,11 +718,43 @@ const 구장재고_doc = {
 	생산연도: '',
 	ROM_ID: '',
 	보관위치: '',
+	제조완료: '',
 	출고일: '',
 	출고처: '',
 	비고: ''
 }
 
+const 군포재고_doc = {
+	입고일: '',
+	입고처: '',
+	관리번호: '',
+	재제조번호: '',
+	RO번호: '',
+	부품번호: '',
+	생산연도: '',
+	ROM_ID: '',
+	보관위치: '',
+	제조완료: '',
+	출고일: '',
+	출고처: '',
+	비고: ''
+}
+
+const 제주재고_doc = {
+	입고일: '',
+	입고처: '',
+	관리번호: '',
+	재제조번호: '',
+	RO번호: '',
+	부품번호: '',
+	생산연도: '',
+	ROM_ID: '',
+	보관위치: '',
+	제조완료: '',
+	출고일: '',
+	출고처: '',
+	비고: ''
+}
 const 입고_pic_doc = {
 	관리번호: '',
 	pic1: '',
@@ -1825,6 +1862,41 @@ const 구장재고_ = {
 	생산연도: 1,
 	ROM_ID: 1,
 	보관위치: 1,
+	제조완료: 1,
+	출고일: 1,
+	출고처: 1,
+	비고: 1
+}
+
+const 군포재고_ = {
+	_id: 0,
+	입고일: 1,
+	입고처: 1,
+	관리번호: 1,
+	재제조번호: 1,
+	RO번호: 1,
+	부품번호: 1,
+	생산연도: 1,
+	ROM_ID: 1,
+	보관위치: 1,
+	제조완료: 1,
+	출고일: 1,
+	출고처: 1,
+	비고: 1
+}
+
+const 제주재고_ = {
+	_id: 0,
+	입고일: 1,
+	입고처: 1,
+	관리번호: 1,
+	재제조번호: 1,
+	RO번호: 1,
+	부품번호: 1,
+	생산연도: 1,
+	ROM_ID: 1,
+	보관위치: 1,
+	제조완료: 1,
 	출고일: 1,
 	출고처: 1,
 	비고: 1
@@ -2529,6 +2601,16 @@ socket.on('count_result', async function (col, count, rcv_check, option = '') {
 			구장재고_cnt = JSON.parse(JSON.stringify(count));
 			break;
 
+		case 군포재고:
+			군포재고_cnt = 0;
+			군포재고_cnt = JSON.parse(JSON.stringify(count));
+			break;
+
+		case 제주재고:
+			제주재고_cnt = 0;
+			제주재고_cnt = JSON.parse(JSON.stringify(count));
+			break;
+
 		case 입고_pic:
 			입고_pic_cnt = 0;
 			입고_pic_cnt = JSON.parse(JSON.stringify(count));
@@ -2821,6 +2903,16 @@ socket.on('find_result', async function (col, result, rcv_check) {
 			구장재고_v = JSON.parse(JSON.stringify(result));
 			break;
 
+		case 군포재고:
+			군포재고_v = [];
+			군포재고_v = JSON.parse(JSON.stringify(result));
+			break;
+
+		case 제주재고:
+			제주재고_v = [];
+			제주재고_v = JSON.parse(JSON.stringify(result));
+			break;
+
 		case 입고_pic:
 			입고_pic_v = [];
 			입고_pic_v = JSON.parse(JSON.stringify(result));
@@ -2969,6 +3061,8 @@ function reset_result() {
 	교체부품상세10_v = [];
 	자재입출고_v = [];
 	구장재고_v = [];
+	군포재고_v = [];
+	제주재고_v = [];
 	입고_pic_v = [];
 	세척_pic_v = [];
 	기초검사_pic_v = [];
@@ -3012,6 +3106,8 @@ function reset_count() {
 	교체부품상세10_cnt = 0;
 	자재입출고_cnt = 0;
 	구장재고_cnt = 0;
+	군포재고_cnt = 0;
+	제주재고_cnt = 0;
 	입고_pic_cnt = 0;
 	세척_pic_cnt = 0;
 	기초검사_pic_cnt = 0;
@@ -3143,6 +3239,18 @@ async function deleteOne_고품정보(col, QR) {
 }
 
 async function deleteOne_구장재고(col, 관리번호) {
+	if (socket == undefined) return;
+	flag_arrivedMSG = false;
+	socket.emit('delete', worker, col, { 관리번호: 관리번호 });
+}
+
+async function deleteOne_군포재고(col, 관리번호) {
+	if (socket == undefined) return;
+	flag_arrivedMSG = false;
+	socket.emit('delete', worker, col, { 관리번호: 관리번호 });
+}
+
+async function deleteOne_제주재고(col, 관리번호) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	socket.emit('delete', worker, col, { 관리번호: 관리번호 });
@@ -3305,6 +3413,18 @@ async function find(col, management_id) {
 			socket.emit('findOne', worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 폐기_pic_ }, check);
 			break;
 
+		case '구장재고':
+			socket.emit('findOne', worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 구장재고_ }, check);
+			break;
+
+		case '군포재고':
+			socket.emit('findOne', worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 군포재고_ }, check);
+			break;
+
+		case '제주재고':
+			socket.emit('findOne', worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 제주재고_ }, check);
+			break;
+
 		case '부품정보_list':
 			socket.emit('findOne', worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 부품정보_list_ }, check);
 			break;
@@ -3357,6 +3477,24 @@ async function findOne_구장재고(col, query) {
 	if (check > 10) check = 0;
 
 	socket.emit('findOne', worker, col, query, { sort: { kind: 1 }, projection: 구장재고_ }, check);
+}
+
+async function findOne_군포재고(col, query) {
+	if (socket == undefined) return;
+	flag_arrivedMSG = false;
+	check++;
+	if (check > 10) check = 0;
+
+	socket.emit('findOne', worker, col, query, { sort: { kind: 1 }, projection: 군포재고_ }, check);
+}
+
+async function findOne_제주재고(col, query) {
+	if (socket == undefined) return;
+	flag_arrivedMSG = false;
+	check++;
+	if (check > 10) check = 0;
+
+	socket.emit('findOne', worker, col, query, { sort: { kind: 1 }, projection: 제주재고_ }, check);
 }
 
 async function findOne_신품정보(col, query) {
@@ -3528,6 +3666,24 @@ async function find_구장재고(col, query) {
 	if (check > 10) check = 0;
 
 	socket.emit('find', worker, col, query, { sort: { kind: 1 }, projection: 구장재고_ }, check);
+}
+
+async function find_군포재고(col, query) {
+	if (socket == undefined) return;
+	flag_arrivedMSG = false;
+	check++;
+	if (check > 10) check = 0;
+
+	socket.emit('find', worker, col, query, { sort: { kind: 1 }, projection: 군포재고_ }, check);
+}
+
+async function find_제주재고(col, query) {
+	if (socket == undefined) return;
+	flag_arrivedMSG = false;
+	check++;
+	if (check > 10) check = 0;
+
+	socket.emit('find', worker, col, query, { sort: { kind: 1 }, projection: 제주재고_ }, check);
 }
 
 async function find_신품정보(col, query) {

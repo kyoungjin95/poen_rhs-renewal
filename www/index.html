@@ -22,7 +22,7 @@
       <h1>RHMS</h1>
       <p class="version" style="font: italic bold 0.3em/1em Georgia, serif">
         (Remanufacturing History Management System) Ver.
-        <span>Code sky 0.29</span>
+        <span>Code sky 0.30</span>
       </p>
     </div>
     <br />
@@ -64,6 +64,21 @@
             </li>
             <li>
               <button class="menu-btn" onclick="pre_관리번호 = ''; loadPage('base/구장재고조회.html'); flag_구장재고조회 = true;">
+                창고재고 조회(구장)
+              </button>
+            </li>
+            <li>
+              <button class="menu-btn" onclick="pre_관리번호 = ''; loadPage('base/군포재고조회.html'); flag_군포재고조회 = true;">
+                창고재고 조회(군포)
+              </button>
+            </li>
+            <li>
+              <button class="menu-btn" onclick="pre_관리번호 = ''; loadPage('base/제주재고조회.html'); flag_제주재고조회 = true;">
+                창고재고 조회(제주)
+              </button>
+            </li>
+            <li>
+              <button class="menu-btn" onclick="pre_관리번호 = ''; loadPage('base/창고재고조회.html'); flag_창고재고조회 = true;">
                 창고재고 조회
               </button>
             </li>
@@ -86,7 +101,17 @@
             </li>
             <li>
               <button class="menu-btn" onclick="pre_관리번호 = ''; loadPage('base/구장재고.html'); flag_구장재고 = true;">
-                창고재고 입력
+                창고재고 입력(구장)
+              </button>
+            </li>
+            <li>
+              <button class="menu-btn" onclick="pre_관리번호 = ''; loadPage('base/군포재고.html'); flag_군포재고 = true;">
+                창고재고 입력(군포)
+              </button>
+            </li>
+            <li>
+              <button class="menu-btn" onclick="pre_관리번호 = ''; loadPage('base/제주재고.html'); flag_제주재고 = true;">
+                창고재고 입력(제주)
               </button>
             </li>
           </ul>
@@ -191,7 +216,12 @@
   <script src="base/js/공정제외.js"></script>
   <script src="base/js/수량집계.js"></script>
   <script src="base/js/구장재고.js"></script>
+  <script src="base/js/군포재고.js"></script>
+  <script src="base/js/제주재고.js"></script>
   <script src="base/js/구장재고조회.js"></script>
+  <script src="base/js/군포재고조회.js"></script>
+  <script src="base/js/제주재고조회.js"></script>
+  <script src="base/js/창고재고조회.js"></script>
   <script src="base/js/agreement.js"></script>
   <script src="base/js/부품정보_list.js"></script>
   <script src="base/js/login.js"></script>
