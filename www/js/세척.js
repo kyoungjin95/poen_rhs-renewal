@@ -1,5 +1,3 @@
-var count = 0;
-var 입력재제조번호 = '';
 async function 세척_시작(is재제조 = 0) {
 	while (_management_id == undefined) {
 		await sleep(DELAY);
@@ -70,27 +68,6 @@ async function 세척_시작(is재제조 = 0) {
 
 	관리번호 = _management_id.value;
 
-	if(_재제조번호.value == '') {
-		console.log('make product key');
-
-		find(변수, 'mado_product_no');
-		await delay();
-
-		if(변수_v == null) {
-			count = String(1);
-		} else {
-			count = Number(변수_v.값) + 1;
-			count = count.toString();
-		}
-
-		var product_no = make_md_product_no(count);
-
-		console.log('product no:', product_no);
-
-		_재제조번호.value = product_no;
-		입력재제조번호 = product_no;
-	}
-
 	find(세척, _management_id.value);
 	await delay();
 
@@ -150,16 +127,6 @@ async function 세척_save() {
 	}
 
 	if (insert_count > 0) {
-		if(입력재제조번호 == _재제조번호.value) {
-			var doc = {
-				구분 : 'mado_product_no',
-				값 : count,
-			}
-
-			update(변수, doc);
-			await delay();
-		}
-
 		alert('저장 되었습니다');
 	}
 
@@ -188,52 +155,6 @@ async function 세척_save() {
 	}
 
 	await 공정단계자동입력(_management_id.value);
-
-	find(부품정보_list, _management_id.value);
-	await delay();
-
-	if (부품정보_list_v == null) {
-		var doc = 부품정보_list_doc;
-		doc.관리번호 = _management_id.value;
-
-		doc.A_UPR_CASE_QR = _UPR_C_QR.value;
-		doc.B_UPR_CASE_QR = _UPR_C_QR.value;
-		doc.C_UPR_CASE_QR = _UPR_C_QR.value;
-		doc.D_UPR_CASE_QR = _UPR_C_QR.value;
-		doc.D2_UPR_CASE_QR = _UPR_C_QR.value;
-		doc.A_UPR_CASE_품번 = _UPR_C_품번.value;
-		doc.B_UPR_CASE_품번 = _UPR_C_품번.value;
-		doc.C_UPR_CASE_품번 = _UPR_C_품번.value;
-		doc.D_UPR_CASE_품번 = _UPR_C_품번.value;
-		doc.D2_UPR_CASE_품번 = _UPR_C_품번.value;
-
-		update(부품정보_list, doc);
-		await delay();
-
-		console.log(update_count);
-		console.log(insert_count);
-	} else {
-		doc = {
-			관리번호 : _management_id.value,
-			A_UPR_CASE_QR : _UPR_C_QR.value,
-			B_UPR_CASE_QR : _UPR_C_QR.value,
-			C_UPR_CASE_QR : _UPR_C_QR.value,
-			D_UPR_CASE_QR : _UPR_C_QR.value,
-			D2_UPR_CASE_QR : _UPR_C_QR.value,
-			A_UPR_CASE_품번 : _UPR_C_품번.value,
-			B_UPR_CASE_품번 : _UPR_C_품번.value,
-			C_UPR_CASE_품번 : _UPR_C_품번.value,
-			D_UPR_CASE_품번 : _UPR_C_품번.value,
-			D2_UPR_CASE_품번 : _UPR_C_품번.value,
-		}
-
-		update(부품정보_list, doc);
-		await delay();
-
-		console.log(update_count);
-		console.log(insert_count);
-	}
-
 	//이전페이지();
 }
 

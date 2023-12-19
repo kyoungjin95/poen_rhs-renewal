@@ -24,6 +24,8 @@ const 교체부품상세9 = '교체부품상세9';
 const 교체부품상세10 = '교체부품상세10';
 const 자재입출고 = '자재입출고';
 const 구장재고 = '구장재고';
+const 군포재고 = '군포재고';
+const 제주재고 = '제주재고';
 const 입고_pic = '입고_pic';
 const 세척_pic = '세척_pic';
 const 기초검사_pic = '기초검사_pic';
@@ -40,8 +42,6 @@ const 기초보고서 = '기초보고서';
 const 완료보고서 = '완료보고서';
 const 부품정보_list = '부품정보_list';
 const 구자료 = '구자료';
-const 변수 = '변수';
-const 품번 = '품번';
 
 var 구자료_v = [];
 var BSA재제조_v = [];
@@ -67,6 +67,8 @@ var 교체부품상세9_v = [];
 var 교체부품상세10_v = [];
 var 자재입출고_v = [];
 var 구장재고_v = [];
+var 군포재고_v = [];
+var 제주재고_v = [];
 var 입고_pic_v = [];
 var 세척_pic_v = [];
 var 기초검사_pic_v = [];
@@ -83,8 +85,6 @@ var 기초보고서_v = [];
 var 완료보고서_v = [];
 var 계정_v = [];
 var 부품정보_list_v = [];
-var 변수_v = [];
-var 품번_v = [];
 
 var BSA재제조_cnt = 0;
 var 입고_cnt = 0;
@@ -109,6 +109,8 @@ var 교체부품상세9_cnt = 0;
 var 교체부품상세10_cnt = 0;
 var 자재입출고_cnt = 0;
 var 구장재고_cnt = 0;
+var 군포재고_cnt = 0;
+var 제주재고_cnt = 0;
 var 입고_pic_cnt = 0;
 var 세척_pic_cnt = 0;
 var 기초검사_pic_cnt = 0;
@@ -126,8 +128,6 @@ var 완료보고서_cnt = 0;
 var 계정_cnt = 0;
 var 부품정보_list_cnt = 0;
 var 구자료_cnt = 0;
-var 변수_cnt = 0;
-var 품번_cnt = 0;
 
 var option_입고_cnt = 0;
 var option_세척_cnt = 0;
@@ -708,7 +708,6 @@ const 교체부품상세_doc = {
 	교체사유: ''
 };
 
-
 const 구장재고_doc = {
 	입고일: '',
 	입고처: '',
@@ -724,6 +723,35 @@ const 구장재고_doc = {
 	비고: ''
 }
 
+const 군포재고_doc = {
+	입고일: '',
+	입고처: '',
+	관리번호: '',
+	재제조번호: '',
+	RO번호: '',
+	부품번호: '',
+	생산연도: '',
+	ROM_ID: '',
+	보관위치: '',
+	출고일: '',
+	출고처: '',
+	비고: ''
+}
+
+const 제주재고_doc = {
+	입고일: '',
+	입고처: '',
+	관리번호: '',
+	재제조번호: '',
+	RO번호: '',
+	부품번호: '',
+	생산연도: '',
+	ROM_ID: '',
+	보관위치: '',
+	출고일: '',
+	출고처: '',
+	비고: ''
+}
 const 입고_pic_doc = {
 	관리번호: '',
 	pic1: '',
@@ -1245,32 +1273,6 @@ const 부품정보_list_doc = {
 	D2_LV_W_H_품번: '',
 	D2_MODULE_1_품번: '',
 };
-
-const 변수_doc = {
-	구분: '',
-	값 : ''
-};
-
-var 품번_ = {
-	번호 : '',
-	차종 : '',
-	품번 : '',
-	LWR_CASE : '',
-	UPR_CASE : '',
-	S_PLUG : '',
-	SPA : '',
-	HV_CNTR : '',
-	H_T_CNTR : '',
-	PRA : '',
-	FUSE : '',
-	RELAY : '',
-	LV_W_H : '',
-	HV_W_H : '',
-	BMU : '',
-	온도센서 : '',
-	CMU : '',
-	BMA : ''
-}
 
 const 계정_ = {
 	_id: 0,
@@ -1862,6 +1864,38 @@ const 구장재고_ = {
 	비고: 1
 }
 
+const 군포재고_ = {
+	_id: 0,
+	입고일: 1,
+	입고처: 1,
+	관리번호: 1,
+	재제조번호: 1,
+	RO번호: 1,
+	부품번호: 1,
+	생산연도: 1,
+	ROM_ID: 1,
+	보관위치: 1,
+	출고일: 1,
+	출고처: 1,
+	비고: 1
+}
+
+const 제주재고_ = {
+	_id: 0,
+	입고일: 1,
+	입고처: 1,
+	관리번호: 1,
+	재제조번호: 1,
+	RO번호: 1,
+	부품번호: 1,
+	생산연도: 1,
+	ROM_ID: 1,
+	보관위치: 1,
+	출고일: 1,
+	출고처: 1,
+	비고: 1
+}
+
 const 입고_pic_ = {
 	_id: 0,
 	관리번호: 1,
@@ -2400,33 +2434,6 @@ const 부품정보_list_ = {
 	D2_MODULE_1_품번: 1,
 };
 
-var 품번_ = {
-	번호 : 1,
-	차종 : 1,
-	품번 : 1,
-	LWR_CASE : 1,
-	UPR_CASE : 1,
-	S_PLUG : 1,
-	SPA : 1,
-	HV_CNTR : 1,
-	H_T_CNTR : 1,
-	PRA : 1,
-	FUSE : 1,
-	RELAY : 1,
-	LV_W_H : 1,
-	HV_W_H : 1,
-	BMU : 1,
-	온도센서 : 1,
-	CMU : 1,
-	BMA : 1
-}
-
-const 변수_ = {
-	_id : 0,
-	구분: 1,
-	값 : 1
-};
-
 var doc_count = 0;
 var update_count = 0;
 var insert_count = 0;
@@ -2588,6 +2595,16 @@ socket.on('count_result', async function (col, count, rcv_check, option = '') {
 			구장재고_cnt = JSON.parse(JSON.stringify(count));
 			break;
 
+		case 군포재고:
+			군포재고_cnt = 0;
+			군포재고_cnt = JSON.parse(JSON.stringify(count));
+			break;
+
+		case 제주재고:
+			제주재고_cnt = 0;
+			제주재고_cnt = JSON.parse(JSON.stringify(count));
+			break;
+
 		case 입고_pic:
 			입고_pic_cnt = 0;
 			입고_pic_cnt = JSON.parse(JSON.stringify(count));
@@ -2665,14 +2682,6 @@ socket.on('count_result', async function (col, count, rcv_check, option = '') {
 		case 부품정보_list:
 			부품정보_list_cnt = 0;
 			부품정보_list_cnt = JSON.parse(JSON.stringify(count));
-
-		case 변수:
-			변수_cnt = 0;
-			변수_cnt = JSON.parse(JSON.stringify(count));
-
-		case 품번:
-			품번_cnt = 0;
-			품번_cnt = JSON.parse(JSON.stringify(count));
 
 		default:
 			doc_count = 0;
@@ -2888,6 +2897,16 @@ socket.on('find_result', async function (col, result, rcv_check) {
 			구장재고_v = JSON.parse(JSON.stringify(result));
 			break;
 
+		case 군포재고:
+			군포재고_v = [];
+			군포재고_v = JSON.parse(JSON.stringify(result));
+			break;
+
+		case 제주재고:
+			제주재고_v = [];
+			제주재고_v = JSON.parse(JSON.stringify(result));
+			break;
+
 		case 입고_pic:
 			입고_pic_v = [];
 			입고_pic_v = JSON.parse(JSON.stringify(result));
@@ -2973,16 +2992,6 @@ socket.on('find_result', async function (col, result, rcv_check) {
 			구자료_v = JSON.parse(JSON.stringify(result));
 			break;
 
-		case 변수:
-			변수_v = [];
-			변수_v = JSON.parse(JSON.stringify(result));
-			break;
-
-		case 품번:
-			품번_v = [];
-			품번_v = JSON.parse(JSON.stringify(result));
-			break;
-
 		default:
 			find_array = [];
 			find_array = JSON.parse(JSON.stringify(result));
@@ -3046,6 +3055,8 @@ function reset_result() {
 	교체부품상세10_v = [];
 	자재입출고_v = [];
 	구장재고_v = [];
+	군포재고_v = [];
+	제주재고_v = [];
 	입고_pic_v = [];
 	세척_pic_v = [];
 	기초검사_pic_v = [];
@@ -3063,8 +3074,6 @@ function reset_result() {
 	부품정보_list_v = [];
 	구자료_v = [];
 	find_array = []
-	변수_v = [];
-	품번_v = [];
 }
 
 function reset_count() {
@@ -3091,6 +3100,8 @@ function reset_count() {
 	교체부품상세10_cnt = 0;
 	자재입출고_cnt = 0;
 	구장재고_cnt = 0;
+	군포재고_cnt = 0;
+	제주재고_cnt = 0;
 	입고_pic_cnt = 0;
 	세척_pic_cnt = 0;
 	기초검사_pic_cnt = 0;
@@ -3106,8 +3117,6 @@ function reset_count() {
 	기초보고서_cnt = 0;
 	완료보고서_cnt = 0;
 	부품정보_list_cnt = 0;
-	변수_cnt = 0;
-	품번_cnt = 0;
 	doc_count = 0;
 }
 
@@ -3192,12 +3201,6 @@ async function update_고품정보(col, doc) {
 	socket.emit('update', worker, col, { QR: doc.QR }, { $set: doc });
 }
 
-async function update_품번(col, doc) {
-	if (socket == undefined) return;
-	flag_arrivedMSG = false;
-	socket.emit('update', worker, col, { 번호: doc.번호 }, { $set: doc });
-}
-
 async function deleteOne(col, management_id) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
@@ -3230,6 +3233,18 @@ async function deleteOne_고품정보(col, QR) {
 }
 
 async function deleteOne_구장재고(col, 관리번호) {
+	if (socket == undefined) return;
+	flag_arrivedMSG = false;
+	socket.emit('delete', worker, col, { 관리번호: 관리번호 });
+}
+
+async function deleteOne_군포재고(col, 관리번호) {
+	if (socket == undefined) return;
+	flag_arrivedMSG = false;
+	socket.emit('delete', worker, col, { 관리번호: 관리번호 });
+}
+
+async function deleteOne_제주재고(col, 관리번호) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	socket.emit('delete', worker, col, { 관리번호: 관리번호 });
@@ -3396,14 +3411,6 @@ async function find(col, management_id) {
 			socket.emit('findOne', worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 부품정보_list_ }, check);
 			break;
 
-		case '변수':
-			socket.emit('findOne', worker, col, { 구분: management_id }, { sort: { kind: 1 }, projection: 변수_ }, check);
-			break;
-
-		case '품번':
-			socket.emit('findOne', worker, col, { 차종: management_id }, { sort: { kind: 1 }, projection: 품번_ }, check);
-			break;
-
 		default:
 			console.log('collection name is not match');
 	}
@@ -3452,6 +3459,24 @@ async function findOne_구장재고(col, query) {
 	if (check > 10) check = 0;
 
 	socket.emit('findOne', worker, col, query, { sort: { kind: 1 }, projection: 구장재고_ }, check);
+}
+
+async function findOne_군포재고(col, query) {
+	if (socket == undefined) return;
+	flag_arrivedMSG = false;
+	check++;
+	if (check > 10) check = 0;
+
+	socket.emit('findOne', worker, col, query, { sort: { kind: 1 }, projection: 군포재고_ }, check);
+}
+
+async function findOne_제주재고(col, query) {
+	if (socket == undefined) return;
+	flag_arrivedMSG = false;
+	check++;
+	if (check > 10) check = 0;
+
+	socket.emit('findOne', worker, col, query, { sort: { kind: 1 }, projection: 제주재고_ }, check);
 }
 
 async function findOne_신품정보(col, query) {
@@ -3625,6 +3650,24 @@ async function find_구장재고(col, query) {
 	socket.emit('find', worker, col, query, { sort: { kind: 1 }, projection: 구장재고_ }, check);
 }
 
+async function find_군포재고(col, query) {
+	if (socket == undefined) return;
+	flag_arrivedMSG = false;
+	check++;
+	if (check > 10) check = 0;
+
+	socket.emit('find', worker, col, query, { sort: { kind: 1 }, projection: 군포재고_ }, check);
+}
+
+async function find_제주재고(col, query) {
+	if (socket == undefined) return;
+	flag_arrivedMSG = false;
+	check++;
+	if (check > 10) check = 0;
+
+	socket.emit('find', worker, col, query, { sort: { kind: 1 }, projection: 제주재고_ }, check);
+}
+
 async function find_신품정보(col, query) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
@@ -3740,24 +3783,6 @@ async function find_자재입출고(col, query) {
 	if (check > 10) check = 0;
 
 	socket.emit('find', worker, col, query, { sort: { kind: 1 }, projection: 자재입출고_ }, check);
-}
-
-async function find_변수(col, query) {
-	if (socket == undefined) return;
-	flag_arrivedMSG = false;
-	check++;
-	if (check > 10) check = 0;
-
-	socket.emit('find', worker, col, query, { sort: { kind: 1 }, projection: 변수_ }, check);
-}
-
-async function find_품번(col, query) {
-	if (socket == undefined) return;
-	flag_arrivedMSG = false;
-	check++;
-	if (check > 10) check = 0;
-
-	socket.emit('find', worker, col, query, { sort: { kind: 1 }, projection: 품번_ }, check);
 }
 
 function sleep(ms) {
@@ -3941,46 +3966,4 @@ function back() {
 	loadPage("base/item-details.html");
 	flag_상세입력 = true;
 	first_분해조립 = true;
-}
-
-function make_hs_product_no(count) {
-	var product_no = '#S';
-	
-	var DateTime = luxon.DateTime;
-	var seoul = DateTime.local().setZone("Asia/Seoul");
-	var now = seoul.toString().substr(2, 2);
-	now += seoul.toString().substr(5, 2); 
-	now += seoul.toString().substr(8, 2); 
-	console.log(now);
-	product_no += now + '-' + 'HS' + count.padStart(3, '0');
-
-	return product_no;
-}
-
-function make_md_product_no(count) {
-	var product_no = '#S';
-	
-	var DateTime = luxon.DateTime;
-	var seoul = DateTime.local().setZone("Asia/Seoul");
-	var now = seoul.toString().substr(2, 2);
-	now += seoul.toString().substr(5, 2); 
-	now += seoul.toString().substr(8, 2); 
-	console.log(now);
-	product_no += now + '-' + 'MD' + count.padStart(3, '0');
-
-	return product_no;
-}
-
-function make_jj_product_no(count) {
-	var product_no = '#S';
-	
-	var DateTime = luxon.DateTime;
-	var seoul = DateTime.local().setZone("Asia/Seoul");
-	var now = seoul.toString().substr(2, 2);
-	now += seoul.toString().substr(5, 2); 
-	now += seoul.toString().substr(8, 2); 
-	console.log(now);
-	product_no += now + '-' + 'JJ' + count.padStart(3, '0');
-
-	return product_no;
 }

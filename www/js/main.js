@@ -90,9 +90,13 @@ var flag_성능검사 = false;
 var flag_EOL = false;
 var flag_출하 = false;
 var flag_구장재고 = false;
+var flag_군포재고 = false;
+var flag_제주재고 = false;
 var flag_구장재고조회 = false;
+var flag_군포재고조회 = false;
+var flag_제주재고조회 = false;
 var flag_부품정보_list = false;
-var old_day = '0';
+
 var interval = setInterval(function () {
 	if (flag_재제조현황 == true) { stop_repeat(); 재제조현황_시작(); }
 	if (flag_상세입력 == true) { stop_repeat(); 상세입력_시작(); }
@@ -106,7 +110,11 @@ var interval = setInterval(function () {
 	if (flag_신품정보 == true) { 신품정보_시작(); }
 
 	if (flag_구장재고 == true) { stop_repeat(); 구장재고_시작(); }
+	if (flag_군포재고 == true) { stop_repeat(); 군포재고_시작(); }
+	if (flag_제주재고 == true) { stop_repeat(); 제주재고_시작(); }
 	if (flag_구장재고조회 == true) { stop_repeat(); 구장재고조회_시작(); }
+	if (flag_군포재고조회 == true) { stop_repeat(); 군포재고조회_시작(); }
+	if (flag_제주재고조회 == true) { stop_repeat(); 제주재고조회_시작(); }
 	if (flag_생산현황 == true) { stop_repeat(); 생산현황_시작(); }
 	if (flag_대시보드 == true) { 날짜지정조회 = false; stop_repeat(); start_repeat_대시보드(); 대시보드_시작(); }
 	if (flag_대기수량_현황 == true) { stop_repeat(); start_repeat_대기수량_현황(); 대기수량_현황_시작(); }
@@ -122,6 +130,12 @@ var interval = setInterval(function () {
 
 	if (flag_부품정보_list == true) { stop_repeat(); 부품정보_list_시작(); }
 }, 1000);
+
+//var intervalRepeat = setInterval(function() {
+//if(flag_repeat_생산현황 == true) 생산현황_시작();
+//	if(flag_repeat_대시보드 == true) 대시보드_시작();
+//	if(flag_repeat_대기수량_현황 == true) 대기수량_현황_조회();
+//}, 1000 * 30);
 
 function stop_repeat() {
 	console.log('stop repeat');
