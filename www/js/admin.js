@@ -3,7 +3,7 @@ var _passwd;
 var _passwd2;
 var _set_level;
 var _csv;
-var _신품정보_csv;
+var _품번_csv;
 
 async function 관리자_시작() {
 	flag_관리자 = false;
@@ -22,6 +22,8 @@ async function 관리자_시작() {
 	_출하검사 = document.getElementById('_출하검사');
 	_부품재고 = document.getElementById('_부품재고');
 	_관리번호 = document.getElementById('_관리번호');
+	_품번_csv = document.getElementById('_품번_csv');
+	read_품번_func_csv();
 
 	find_계정(계정, { id: { $exists: true } })
 	await delay();
@@ -240,4 +242,40 @@ async function doo_2() {
 		'EOLvs출하검사': true,
 	};
 	table.download("xlsx", "EOLvs출하검사_bsa.xlsx", { sheets: sheets });
+}
+
+function read_품번_func_csv() {
+	_품번_csv.addEventListener('input', function (event) {
+		console.log('file finded');
+		const target = event.target;
+		const files = target.files;
+		const file = files[0];
+
+		const reader = new FileReader();
+		reader.addEventListener('load', async function () {
+			const res = d3.csvParse(reader.result);
+			var docs = [];
+
+			drop(품번);
+			await delay();
+
+			for (var i = 0; i < res.length; i++) {
+				if (res[i].차종 != '') docs.push(res[i]);
+				if ((i > 0 && (i % 2000) == 0) || i == (res.length - 1)) {
+					insertMany(품번, docs);
+					await delay();
+
+					console.log('processing:', i, docs.length);
+
+					docs = [];
+
+					await sleep(1);
+				}
+			};
+			console.log('complete:', res.length);
+			alert('업로드가 완료되었습니다. 새로고침후 다시 로그인하세요');
+		});
+		console.log(file);
+		reader.readAsText(file);
+	});
 }

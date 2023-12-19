@@ -3034,6 +3034,7 @@ socket.on('disconnect', function () {
 	walker = '';
 	const _login_btn = document.getElementById('login_btn');
 	_login_btn.innerHTML = '로그인';
+	_login_btn.style.coler = 'red';
 	//socket = io();
 });
 
