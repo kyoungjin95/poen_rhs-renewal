@@ -1,667 +1,2118 @@
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>배터리팩 재제조 현황</title>
+    <link rel="stylesheet" href="base/style/공정.css" />
+    <link rel="stylesheet" href="base/style/camera.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BSA 재제조 현황</title>
-  <link rel="stylesheet" href="base/style/공정.css" />
-  <link rel="stylesheet" href="base/style/camera.css" />
-</head>
-
-<body>
-  <div class="loding-bar">
-    <span>Loading..</span>
-    <progress id="progress" value="0" max="100"></progress>
-  </div>
-  <div class="process__tit change-tit">
-    <label for="grid_BSA">재제조 BSA 현황</label>
-  </div>
-  <section class="BSA 재제조 현황 bsa-info">
-    <div class="gather-filter">
-      <select id="filter-field">
-        <option></option>
-        <option value="관리번호">관리번호</option>
-        <option value="재제조번호">재제조번호</option>
-        <option value="구분">구분</option>
-        <option value="차종">차종</option>
-        <option value="품번">품번</option>
-        <option value="RO_no">RO_no</option>
-        <option value="공정단계">공정단계</option>
-        <option value="적재No">적재No</option>
-        <option value="입고">입고</option>
-        <option value="제조투입">제조투입</option>
-        <option value="세척투입일">세척투입일</option>
-        <option value="세척">세척</option>
-        <option value="기초검사투입">기초검사투입</option>
-        <option value="기초검사">기초검사</option>
-        <option value="분해조립투입">분해조립투입</option>
-        <option value="분해조립">분해조립</option>
-        <option value="성능검사투입">성능검사투입</option>
-        <option value="성능검사">성능검사</option>
-        <option value="EOL투입일">EOL투입일</option>
-        <option value="EOL">EOL</option>
-        <option value="출하검사">출하검사</option>
-        <option value="납품처">납품처</option>
-        <option value="출하">출하</option>
-        <option value="소재지">소재지</option>
-        <option value="반품입고">반품입고</option>
-        <option value="재출하">재출하</option>
-        <option value="완전분해">완전분해</option>
-        <option value="폐기">폐기</option>
-        <option value="마지막충전일">마지막충전일</option>
-      </select>
-
-      <select id="filter-type">
-        <option value="=">=</option>
-        <option value="<">
-          << /option>
-        <option value="<=">
-          <=< /option>
-        <option value=">">></option>
-        <option value=">=">>=</option>
-        <option value="!=">!=</option>
-        <option value="like">like</option>
-      </select>
-
-      <input id="filter-value" type="text" placeholder="value to filter" />
-
-      <button id="filter-clear">Clear Filter</button>
+  <body>
+    <div class="loding-bar">
+      <span>Loading..</span>
+      <progress id="progress" value="0" max="100"></progress>
     </div>
-    <div class="process p-pb">
-      <div id="grid_BSA"></div>
+    <div class="process__tit change-tit">
+      <label for="grid_BSA">재제조 배터리팩 현황</label>
     </div>
-    <div class="pb">
-      <p id="m_id" class="id__name"></p>
-      <div class="process__btn">
-        <div class="process__btns">
-          <input id="new_관리번호" type="text" placeholder="변경후 관리번호" />
-          <button onClick="if(계정_stat.관리번호 == 'o') 관리번호_변경();">변경</button>
-          <input id="copy_관리번호" type="text" placeholder="To 관리번호" />
-          <button onClick="if(계정_stat.관리번호 == 'o') copy();">복사</button>
+    <section class="BSA 재제조 현황 bsa-info">
+      <div class="gather-filter">
+        <select id="filter-field">
+          <option></option>
+          <option value="관리번호">관리번호</option>
+          <option value="재제조번호">재제조번호</option>
+          <option value="구분">구분</option>
+          <option value="차종">차종</option>
+          <option value="품번">품번</option>
+          <option value="RO_no">RO_no</option>
+          <option value="공정단계">공정단계</option>
+          <option value="적재No">적재No</option>
+          <option value="입고">입고</option>
+          <option value="제조투입">제조투입</option>
+          <option value="세척투입일">세척투입일</option>
+          <option value="세척">세척</option>
+          <option value="기초검사투입">기초검사투입</option>
+          <option value="기초검사">기초검사</option>
+          <option value="분해조립투입">분해조립투입</option>
+          <option value="분해조립">분해조립</option>
+          <option value="성능검사투입">성능검사투입</option>
+          <option value="성능검사">성능검사</option>
+          <option value="EOL투입일">EOL투입일</option>
+          <option value="EOL">EOL</option>
+          <option value="출하검사">출하검사</option>
+          <option value="납품처">납품처</option>
+          <option value="출하">출하</option>
+          <option value="소재지">소재지</option>
+          <option value="반품입고">반품입고</option>
+          <option value="재출하">재출하</option>
+          <option value="완전분해">완전분해</option>
+          <option value="폐기">폐기</option>
+          <option value="마지막충전일">마지막충전일</option>
+        </select>
+
+        <select id="filter-type">
+          <option value="=">=</option>
+          <option value="<"><< /option></option>
+
+          <option value="<="><=< /option></option>
+
+          <option value=">">></option>
+          <option value=">=">>=</option>
+          <option value="!=">!=</option>
+          <option value="like">like</option>
+        </select>
+
+        <input id="filter-value" type="text" placeholder="value to filter" />
+
+        <button id="filter-clear">Clear Filter</button>
+      </div>
+      <div class="process p-pb">
+        <div id="grid_BSA"></div>
+      </div>
+      <div class="pb">
+        <p id="m_id" class="id__name"></p>
+        <div class="process__btn">
+          <div class="process__btns">
+            <input
+              id="new_관리번호"
+              type="text"
+              placeholder="변경후 관리번호"
+            />
+            <button onClick="if(계정_stat.관리번호 == 'o') 관리번호_변경();">
+              변경
+            </button>
+            <input id="copy_관리번호" type="text" placeholder="To 관리번호" />
+            <button onClick="if(계정_stat.관리번호 == 'o') copy();">
+              복사
+            </button>
+          </div>
+          <div class="process__btns">
+            <button
+              onClick="if(계정_stat.관리번호 == 'o') delete_bsa();"
+              class="delete__bsa"
+            >
+              삭제
+            </button>
+            <button onClick="export_excel();" class="down__excel">
+              배터리팩 정보 Data Excel
+            </button>
+          </div>
         </div>
-        <div class="process__btns">
-          <button onClick="if(계정_stat.관리번호 == 'o') delete_bsa();" class="delete__bsa">삭제</button>
-          <button onClick="export_excel();" class="down__excel">
-            BSA 정보 Data Excel
+      </div>
+
+      <div class="process">
+        <div class="process__tit">
+          <label for="grid_입고정보">입고 정보</label>
+          <button onClick="toggle1();">
+            <i class="fa-solid fa-image"></i>
+          </button>
+        </div>
+        <div id="grid_입고정보"></div>
+        <div id="pic_1" class="pic">
+          <img
+            id="입고정보_pic1"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="입고정보_pic2"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="입고정보_pic3"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="입고정보_pic4"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="입고정보_pic5"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="입고정보_pic6"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="입고정보_pic7"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="입고정보_pic8"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="입고정보_pic9"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="입고정보_pic10"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="입고정보_pic11"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="입고정보_pic12"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="입고정보_pic13"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="입고정보_pic14"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="입고정보_pic15"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+        </div>
+      </div>
+
+      <div class="process">
+        <div class="process__tit">
+          <label for="grid_세척정보">세척 정보</label>
+          <button onClick="toggle2();">
+            <i class="fa-solid fa-image"></i>
+          </button>
+        </div>
+        <div id="grid_세척정보"></div>
+        <div id="pic_2" class="pic">
+          <img
+            id="세척_pic1"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="세척_pic2"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="세척_pic3"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="세척_pic4"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="세척_pic5"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="세척_pic6"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="세척_pic7"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="세척_pic8"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="세척_pic9"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="세척_pic10"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="세척_pic11"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="세척_pic12"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="세척_pic13"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="세척_pic14"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="세척_pic15"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+        </div>
+      </div>
+
+      <div class="process">
+        <div class="process__tit">
+          <label for="grid_기초검사">기초 검사</label>
+          <button onClick="toggle3();">
+            <i class="fa-solid fa-image"></i>
+          </button>
+        </div>
+        <div id="grid_기초검사"></div>
+        <div id="pic_3" class="pic">
+          <img
+            id="기초검사_pic1"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="기초검사_pic2"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="기초검사_pic3"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="기초검사_pic4"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="기초검사_pic5"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="기초검사_pic6"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="기초검사_pic7"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="기초검사_pic8"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="기초검사_pic9"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="기초검사_pic10"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="기초검사_pic11"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="기초검사_pic12"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="기초검사_pic13"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="기초검사_pic14"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="기초검사_pic15"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+        </div>
+      </div>
+
+      <div class="process">
+        <div class="process__tit">
+          <label for="grid_분해조립">분해 조립</label>
+          <button onClick="toggle4();">
+            <i class="fa-solid fa-image"></i>
+          </button>
+        </div>
+        <div id="grid_분해조립"></div>
+        <div id="pic_4" class="pic">
+          <img
+            id="분해조립_pic1"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="분해조립_pic2"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="분해조립_pic3"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="분해조립_pic4"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="분해조립_pic5"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="분해조립_pic6"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="분해조립_pic7"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="분해조립_pic8"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="분해조립_pic9"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="분해조립_pic10"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="분해조립_pic11"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="분해조립_pic12"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="분해조립_pic13"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="분해조립_pic14"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="분해조립_pic15"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+        </div>
+      </div>
+
+      <div class="process">
+        <div class="process__tit">
+          <label for="grid_성능검사">성능 검사</label>
+          <button onClick="toggle5();">
+            <i class="fa-solid fa-image"></i>
+          </button>
+        </div>
+        <div id="grid_성능검사"></div>
+        <div id="pic_5" class="pic">
+          <img
+            id="성능검사_pic1"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="성능검사_pic2"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="성능검사_pic3"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="성능검사_pic4"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="성능검사_pic5"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="성능검사_pic6"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="성능검사_pic7"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="성능검사_pic8"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="성능검사_pic9"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="성능검사_pic10"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="성능검사_pic11"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="성능검사_pic12"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="성능검사_pic13"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="성능검사_pic14"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="성능검사_pic15"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+        </div>
+      </div>
+
+      <div class="process">
+        <div class="process__tit">
+          <label for="grid_EOL">EOL</label>
+          <button onClick="toggle6();">
+            <i class="fa-solid fa-image"></i>
+          </button>
+        </div>
+        <div id="grid_EOL"></div>
+        <div id="pic_6" class="pic">
+          <img
+            id="EOL_pic1"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="EOL_pic2"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="EOL_pic3"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="EOL_pic4"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="EOL_pic5"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="EOL_pic6"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="EOL_pic7"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="EOL_pic8"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="EOL_pic9"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="EOL_pic10"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="EOL_pic11"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="EOL_pic12"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="EOL_pic13"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="EOL_pic14"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="EOL_pic15"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+        </div>
+      </div>
+
+      <div class="process">
+        <div class="process__tit">
+          <label for="grid_출하정보">출하 정보</label>
+          <button onClick="toggle7();">
+            <i class="fa-solid fa-image"></i>
+          </button>
+        </div>
+        <div id="grid_출하정보"></div>
+        <div id="pic_7" class="pic">
+          <img
+            id="출하정보_pic1"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="출하정보_pic2"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="출하정보_pic3"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="출하정보_pic4"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="출하정보_pic5"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="출하정보_pic6"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="출하정보_pic7"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="출하정보_pic8"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="출하정보_pic9"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="출하정보_pic10"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="출하정보_pic11"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="출하정보_pic12"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="출하정보_pic13"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="출하정보_pic14"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="출하정보_pic15"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+        </div>
+      </div>
+
+      <div class="process">
+        <div class="process__tit">
+          <label for="grid_특이사항">특이사항</label>
+          <button onClick="toggle8();">
+            <i class="fa-solid fa-image"></i>
+          </button>
+        </div>
+        <div id="grid_특이사항"></div>
+        <div id="pic_8" class="pic">
+          <img
+            id="특이사항_pic1"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="특이사항_pic2"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="특이사항_pic3"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="특이사항_pic4"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="특이사항_pic5"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="특이사항_pic6"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="특이사항_pic7"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="특이사항_pic8"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="특이사항_pic9"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="특이사항_pic10"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="특이사항_pic11"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="특이사항_pic12"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="특이사항_pic13"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="특이사항_pic14"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+          <img
+            id="특이사항_pic15"
+            class="camera"
+            width="10px"
+            height="10px"
+            onmouseenter="zoomIn(event)"
+            onmouseleave="zoomOut(event)"
+            onerror="this.src='base/img/battery.png'"
+            src="base/img/battery.png"
+          />
+        </div>
+      </div>
+
+      <div class="process">
+        <div class="process__tit">
+          <label for="grid_교체부품상세1">교체부품상세1</label>
+        </div>
+        <div id="grid_교체부품상세1"></div>
+      </div>
+
+      <div class="process">
+        <div class="process__tit">
+          <label for="grid_교체부품상세2">교체부품상세2</label>
+        </div>
+        <div id="grid_교체부품상세2"></div>
+      </div>
+
+      <div class="process">
+        <div class="process__tit">
+          <label for="grid_교체부품상세3">교체부품상세3</label>
+        </div>
+        <div id="grid_교체부품상세3"></div>
+      </div>
+
+      <div class="process">
+        <div class="process__tit">
+          <label for="grid_교체부품상세4">교체부품상세4</label>
+        </div>
+        <div id="grid_교체부품상세4"></div>
+      </div>
+
+      <div class="process">
+        <div class="process__tit">
+          <label for="grid_교체부품상세5">교체부품상세5</label>
+        </div>
+        <div id="grid_교체부품상세5"></div>
+      </div>
+
+      <div class="process">
+        <div class="process__tit">
+          <label for="grid_교체부품상세6">교체부품상세6</label>
+        </div>
+        <div id="grid_교체부품상세6"></div>
+      </div>
+
+      <div class="process">
+        <div class="process__tit">
+          <label for="grid_교체부품상세7">교체부품상세7</label>
+        </div>
+        <div id="grid_교체부품상세7"></div>
+      </div>
+
+      <div class="process">
+        <div class="process__tit">
+          <label for="grid_교체부품상세8">교체부품상세8</label>
+        </div>
+        <div id="grid_교체부품상세8"></div>
+      </div>
+
+      <div class="process">
+        <div class="process__tit">
+          <label for="grid_교체부품상세9">교체부품상세9</label>
+        </div>
+        <div id="grid_교체부품상세9"></div>
+      </div>
+
+      <div class="process">
+        <div class="process__tit">
+          <label for="grid_교체부품상세10">교체부품상세10</label>
+        </div>
+        <div id="grid_교체부품상세10"></div>
+      </div>
+
+      <div class="process">
+        <div class="process__tit">
+          <label>반품입고 사진</label>
+          <button onClick="toggle9();">
+            <i class="fa-solid fa-image"></i>
           </button>
         </div>
       </div>
-    </div>
+      <div id="pic_9" class="pic">
+        <img
+          id="반품입고_pic1"
+          class="camera"
+          width="10px"
+          height="10px"
+          onmouseenter="zoomIn(event)"
+          onmouseleave="zoomOut(event)"
+          onerror="this.src='base/img/battery.png'"
+          src="base/img/battery.png"
+        />
+        <img
+          id="반품입고_pic2"
+          class="camera"
+          width="10px"
+          height="10px"
+          onmouseenter="zoomIn(event)"
+          onmouseleave="zoomOut(event)"
+          onerror="this.src='base/img/battery.png'"
+          src="base/img/battery.png"
+        />
+        <img
+          id="반품입고_pic3"
+          class="camera"
+          width="10px"
+          height="10px"
+          onmouseenter="zoomIn(event)"
+          onmouseleave="zoomOut(event)"
+          onerror="this.src='base/img/battery.png'"
+          src="base/img/battery.png"
+        />
+        <img
+          id="반품입고_pic4"
+          class="camera"
+          width="10px"
+          height="10px"
+          onmouseenter="zoomIn(event)"
+          onmouseleave="zoomOut(event)"
+          onerror="this.src='base/img/battery.png'"
+          src="base/img/battery.png"
+        />
+        <img
+          id="반품입고_pic5"
+          class="camera"
+          width="10px"
+          height="10px"
+          onmouseenter="zoomIn(event)"
+          onmouseleave="zoomOut(event)"
+          onerror="this.src='base/img/battery.png'"
+          src="base/img/battery.png"
+        />
+        <img
+          id="반품입고_pic6"
+          class="camera"
+          width="10px"
+          height="10px"
+          onmouseenter="zoomIn(event)"
+          onmouseleave="zoomOut(event)"
+          onerror="this.src='base/img/battery.png'"
+          src="base/img/battery.png"
+        />
+        <img
+          id="반품입고_pic7"
+          class="camera"
+          width="10px"
+          height="10px"
+          onmouseenter="zoomIn(event)"
+          onmouseleave="zoomOut(event)"
+          onerror="this.src='base/img/battery.png'"
+          src="base/img/battery.png"
+        />
+        <img
+          id="반품입고_pic8"
+          class="camera"
+          width="10px"
+          height="10px"
+          onmouseenter="zoomIn(event)"
+          onmouseleave="zoomOut(event)"
+          onerror="this.src='base/img/battery.png'"
+          src="base/img/battery.png"
+        />
+        <img
+          id="반품입고_pic9"
+          class="camera"
+          width="10px"
+          height="10px"
+          onmouseenter="zoomIn(event)"
+          onmouseleave="zoomOut(event)"
+          onerror="this.src='base/img/battery.png'"
+          src="base/img/battery.png"
+        />
+        <img
+          id="반품입고_pic10"
+          class="camera"
+          width="10px"
+          height="10px"
+          onmouseenter="zoomIn(event)"
+          onmouseleave="zoomOut(event)"
+          onerror="this.src='base/img/battery.png'"
+          src="base/img/battery.png"
+        />
+        <img
+          id="반품입고_pic11"
+          class="camera"
+          width="10px"
+          height="10px"
+          onmouseenter="zoomIn(event)"
+          onmouseleave="zoomOut(event)"
+          onerror="this.src='base/img/battery.png'"
+          src="base/img/battery.png"
+        />
+        <img
+          id="반품입고_pic12"
+          class="camera"
+          width="10px"
+          height="10px"
+          onmouseenter="zoomIn(event)"
+          onmouseleave="zoomOut(event)"
+          onerror="this.src='base/img/battery.png'"
+          src="base/img/battery.png"
+        />
+        <img
+          id="반품입고_pic13"
+          class="camera"
+          width="10px"
+          height="10px"
+          onmouseenter="zoomIn(event)"
+          onmouseleave="zoomOut(event)"
+          onerror="this.src='base/img/battery.png'"
+          src="base/img/battery.png"
+        />
+        <img
+          id="반품입고_pic14"
+          class="camera"
+          width="10px"
+          height="10px"
+          onmouseenter="zoomIn(event)"
+          onmouseleave="zoomOut(event)"
+          onerror="this.src='base/img/battery.png'"
+          src="base/img/battery.png"
+        />
+        <img
+          id="반품입고_pic15"
+          class="camera"
+          width="10px"
+          height="10px"
+          onmouseenter="zoomIn(event)"
+          onmouseleave="zoomOut(event)"
+          onerror="this.src='base/img/battery.png'"
+          src="base/img/battery.png"
+        />
+      </div>
 
-    <div class="process">
-      <div class="process__tit">
-        <label for="grid_입고정보">입고 정보</label>
-        <button onClick="toggle1();">
-          <i class="fa-solid fa-image"></i>
-        </button>
+      <div class="process">
+        <div class="process__tit">
+          <label>재출하 사진</label>
+          <button onClick="toggle10();">
+            <i class="fa-solid fa-image"></i>
+          </button>
+        </div>
       </div>
-      <div id="grid_입고정보"></div>
-      <div id="pic_1" class="pic">
-        <img id="입고정보_pic1" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="입고정보_pic2" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="입고정보_pic3" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="입고정보_pic4" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="입고정보_pic5" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="입고정보_pic6" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="입고정보_pic7" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="입고정보_pic8" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="입고정보_pic9" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="입고정보_pic10" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="입고정보_pic11" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="입고정보_pic12" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="입고정보_pic13" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="입고정보_pic14" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="입고정보_pic15" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
+      <div id="pic_10" class="pic">
+        <img
+          id="재출하_pic1"
+          class="camera"
+          width="10px"
+          height="10px"
+          onmouseenter="zoomIn(event)"
+          onmouseleave="zoomOut(event)"
+          onerror="this.src='base/img/battery.png'"
+          src="base/img/battery.png"
+        />
+        <img
+          id="재출하_pic2"
+          class="camera"
+          width="10px"
+          height="10px"
+          onmouseenter="zoomIn(event)"
+          onmouseleave="zoomOut(event)"
+          onerror="this.src='base/img/battery.png'"
+          src="base/img/battery.png"
+        />
+        <img
+          id="재출하_pic3"
+          class="camera"
+          width="10px"
+          height="10px"
+          onmouseenter="zoomIn(event)"
+          onmouseleave="zoomOut(event)"
+          onerror="this.src='base/img/battery.png'"
+          src="base/img/battery.png"
+        />
+        <img
+          id="재출하_pic4"
+          class="camera"
+          width="10px"
+          height="10px"
+          onmouseenter="zoomIn(event)"
+          onmouseleave="zoomOut(event)"
+          onerror="this.src='base/img/battery.png'"
+          src="base/img/battery.png"
+        />
+        <img
+          id="재출하_pic5"
+          class="camera"
+          width="10px"
+          height="10px"
+          onmouseenter="zoomIn(event)"
+          onmouseleave="zoomOut(event)"
+          onerror="this.src='base/img/battery.png'"
+          src="base/img/battery.png"
+        />
+        <img
+          id="재출하_pic6"
+          class="camera"
+          width="10px"
+          height="10px"
+          onmouseenter="zoomIn(event)"
+          onmouseleave="zoomOut(event)"
+          onerror="this.src='base/img/battery.png'"
+          src="base/img/battery.png"
+        />
+        <img
+          id="재출하_pic7"
+          class="camera"
+          width="10px"
+          height="10px"
+          onmouseenter="zoomIn(event)"
+          onmouseleave="zoomOut(event)"
+          onerror="this.src='base/img/battery.png'"
+          src="base/img/battery.png"
+        />
+        <img
+          id="재출하_pic8"
+          class="camera"
+          width="10px"
+          height="10px"
+          onmouseenter="zoomIn(event)"
+          onmouseleave="zoomOut(event)"
+          onerror="this.src='base/img/battery.png'"
+          src="base/img/battery.png"
+        />
+        <img
+          id="재출하_pic9"
+          class="camera"
+          width="10px"
+          height="10px"
+          onmouseenter="zoomIn(event)"
+          onmouseleave="zoomOut(event)"
+          onerror="this.src='base/img/battery.png'"
+          src="base/img/battery.png"
+        />
+        <img
+          id="재출하_pic10"
+          class="camera"
+          width="10px"
+          height="10px"
+          onmouseenter="zoomIn(event)"
+          onmouseleave="zoomOut(event)"
+          onerror="this.src='base/img/battery.png'"
+          src="base/img/battery.png"
+        />
+        <img
+          id="재출하_pic11"
+          class="camera"
+          width="10px"
+          height="10px"
+          onmouseenter="zoomIn(event)"
+          onmouseleave="zoomOut(event)"
+          onerror="this.src='base/img/battery.png'"
+          src="base/img/battery.png"
+        />
+        <img
+          id="재출하_pic12"
+          class="camera"
+          width="10px"
+          height="10px"
+          onmouseenter="zoomIn(event)"
+          onmouseleave="zoomOut(event)"
+          onerror="this.src='base/img/battery.png'"
+          src="base/img/battery.png"
+        />
+        <img
+          id="재출하_pic13"
+          class="camera"
+          width="10px"
+          height="10px"
+          onmouseenter="zoomIn(event)"
+          onmouseleave="zoomOut(event)"
+          onerror="this.src='base/img/battery.png'"
+          src="base/img/battery.png"
+        />
+        <img
+          id="재출하_pic14"
+          class="camera"
+          width="10px"
+          height="10px"
+          onmouseenter="zoomIn(event)"
+          onmouseleave="zoomOut(event)"
+          onerror="this.src='base/img/battery.png'"
+          src="base/img/battery.png"
+        />
+        <img
+          id="재출하_pic15"
+          class="camera"
+          width="10px"
+          height="10px"
+          onmouseenter="zoomIn(event)"
+          onmouseleave="zoomOut(event)"
+          onerror="this.src='base/img/battery.png'"
+          src="base/img/battery.png"
+        />
       </div>
-    </div>
 
-    <div class="process">
-      <div class="process__tit">
-        <label for="grid_세척정보">세척 정보</label>
-        <button onClick="toggle2();">
-          <i class="fa-solid fa-image"></i>
-        </button>
+      <div class="process">
+        <div class="process__tit">
+          <label>완전분해 사진</label>
+          <button onClick="toggle11();">
+            <i class="fa-solid fa-image"></i>
+          </button>
+        </div>
       </div>
-      <div id="grid_세척정보"></div>
-      <div id="pic_2" class="pic">
-        <img id="세척_pic1" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="세척_pic2" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="세척_pic3" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="세척_pic4" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="세척_pic5" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="세척_pic6" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="세척_pic7" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="세척_pic8" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="세척_pic9" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="세척_pic10" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="세척_pic11" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="세척_pic12" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="세척_pic13" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="세척_pic14" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="세척_pic15" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
+      <div id="pic_11" class="pic">
+        <img
+          id="완전분해_pic1"
+          class="camera"
+          width="10px"
+          height="10px"
+          onmouseenter="zoomIn(event)"
+          onmouseleave="zoomOut(event)"
+          onerror="this.src='base/img/battery.png'"
+          src="base/img/battery.png"
+        />
+        <img
+          id="완전분해_pic2"
+          class="camera"
+          width="10px"
+          height="10px"
+          onmouseenter="zoomIn(event)"
+          onmouseleave="zoomOut(event)"
+          onerror="this.src='base/img/battery.png'"
+          src="base/img/battery.png"
+        />
+        <img
+          id="완전분해_pic3"
+          class="camera"
+          width="10px"
+          height="10px"
+          onmouseenter="zoomIn(event)"
+          onmouseleave="zoomOut(event)"
+          onerror="this.src='base/img/battery.png'"
+          src="base/img/battery.png"
+        />
+        <img
+          id="완전분해_pic4"
+          class="camera"
+          width="10px"
+          height="10px"
+          onmouseenter="zoomIn(event)"
+          onmouseleave="zoomOut(event)"
+          onerror="this.src='base/img/battery.png'"
+          src="base/img/battery.png"
+        />
+        <img
+          id="완전분해_pic5"
+          class="camera"
+          width="10px"
+          height="10px"
+          onmouseenter="zoomIn(event)"
+          onmouseleave="zoomOut(event)"
+          onerror="this.src='base/img/battery.png'"
+          src="base/img/battery.png"
+        />
+        <img
+          id="완전분해_pic6"
+          class="camera"
+          width="10px"
+          height="10px"
+          onmouseenter="zoomIn(event)"
+          onmouseleave="zoomOut(event)"
+          onerror="this.src='base/img/battery.png'"
+          src="base/img/battery.png"
+        />
+        <img
+          id="완전분해_pic7"
+          class="camera"
+          width="10px"
+          height="10px"
+          onmouseenter="zoomIn(event)"
+          onmouseleave="zoomOut(event)"
+          onerror="this.src='base/img/battery.png'"
+          src="base/img/battery.png"
+        />
+        <img
+          id="완전분해_pic8"
+          class="camera"
+          width="10px"
+          height="10px"
+          onmouseenter="zoomIn(event)"
+          onmouseleave="zoomOut(event)"
+          onerror="this.src='base/img/battery.png'"
+          src="base/img/battery.png"
+        />
+        <img
+          id="완전분해_pic9"
+          class="camera"
+          width="10px"
+          height="10px"
+          onmouseenter="zoomIn(event)"
+          onmouseleave="zoomOut(event)"
+          onerror="this.src='base/img/battery.png'"
+          src="base/img/battery.png"
+        />
+        <img
+          id="완전분해_pic10"
+          class="camera"
+          width="10px"
+          height="10px"
+          onmouseenter="zoomIn(event)"
+          onmouseleave="zoomOut(event)"
+          onerror="this.src='base/img/battery.png'"
+          src="base/img/battery.png"
+        />
+        <img
+          id="완전분해_pic11"
+          class="camera"
+          width="10px"
+          height="10px"
+          onmouseenter="zoomIn(event)"
+          onmouseleave="zoomOut(event)"
+          onerror="this.src='base/img/battery.png'"
+          src="base/img/battery.png"
+        />
+        <img
+          id="완전분해_pic12"
+          class="camera"
+          width="10px"
+          height="10px"
+          onmouseenter="zoomIn(event)"
+          onmouseleave="zoomOut(event)"
+          onerror="this.src='base/img/battery.png'"
+          src="base/img/battery.png"
+        />
+        <img
+          id="완전분해_pic13"
+          class="camera"
+          width="10px"
+          height="10px"
+          onmouseenter="zoomIn(event)"
+          onmouseleave="zoomOut(event)"
+          onerror="this.src='base/img/battery.png'"
+          src="base/img/battery.png"
+        />
+        <img
+          id="완전분해_pic14"
+          class="camera"
+          width="10px"
+          height="10px"
+          onmouseenter="zoomIn(event)"
+          onmouseleave="zoomOut(event)"
+          onerror="this.src='base/img/battery.png'"
+          src="base/img/battery.png"
+        />
+        <img
+          id="완전분해_pic15"
+          class="camera"
+          width="10px"
+          height="10px"
+          onmouseenter="zoomIn(event)"
+          onmouseleave="zoomOut(event)"
+          onerror="this.src='base/img/battery.png'"
+          src="base/img/battery.png"
+        />
       </div>
-    </div>
 
-    <div class="process">
-      <div class="process__tit">
-        <label for="grid_기초검사">기초 검사</label>
-        <button onClick="toggle3();">
-          <i class="fa-solid fa-image"></i>
-        </button>
+      <div class="process">
+        <div class="process__tit">
+          <label>폐기 사진</label>
+          <button onClick="toggle12();">
+            <i class="fa-solid fa-image"></i>
+          </button>
+        </div>
       </div>
-      <div id="grid_기초검사"></div>
-      <div id="pic_3" class="pic">
-        <img id="기초검사_pic1" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="기초검사_pic2" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="기초검사_pic3" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="기초검사_pic4" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="기초검사_pic5" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="기초검사_pic6" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="기초검사_pic7" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="기초검사_pic8" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="기초검사_pic9" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="기초검사_pic10" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="기초검사_pic11" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="기초검사_pic12" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="기초검사_pic13" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="기초검사_pic14" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="기초검사_pic15" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
+      <div id="pic_12" class="pic">
+        <img
+          id="폐기_pic1"
+          class="camera"
+          width="10px"
+          height="10px"
+          onmouseenter="zoomIn(event)"
+          onmouseleave="zoomOut(event)"
+          onerror="this.src='base/img/battery.png'"
+          src="base/img/battery.png"
+        />
+        <img
+          id="폐기_pic2"
+          class="camera"
+          width="10px"
+          height="10px"
+          onmouseenter="zoomIn(event)"
+          onmouseleave="zoomOut(event)"
+          onerror="this.src='base/img/battery.png'"
+          src="base/img/battery.png"
+        />
+        <img
+          id="폐기_pic3"
+          class="camera"
+          width="10px"
+          height="10px"
+          onmouseenter="zoomIn(event)"
+          onmouseleave="zoomOut(event)"
+          onerror="this.src='base/img/battery.png'"
+          src="base/img/battery.png"
+        />
+        <img
+          id="폐기_pic4"
+          class="camera"
+          width="10px"
+          height="10px"
+          onmouseenter="zoomIn(event)"
+          onmouseleave="zoomOut(event)"
+          onerror="this.src='base/img/battery.png'"
+          src="base/img/battery.png"
+        />
+        <img
+          id="폐기_pic5"
+          class="camera"
+          width="10px"
+          height="10px"
+          onmouseenter="zoomIn(event)"
+          onmouseleave="zoomOut(event)"
+          onerror="this.src='base/img/battery.png'"
+          src="base/img/battery.png"
+        />
+        <img
+          id="폐기_pic6"
+          class="camera"
+          width="10px"
+          height="10px"
+          onmouseenter="zoomIn(event)"
+          onmouseleave="zoomOut(event)"
+          onerror="this.src='base/img/battery.png'"
+          src="base/img/battery.png"
+        />
+        <img
+          id="폐기_pic7"
+          class="camera"
+          width="10px"
+          height="10px"
+          onmouseenter="zoomIn(event)"
+          onmouseleave="zoomOut(event)"
+          onerror="this.src='base/img/battery.png'"
+          src="base/img/battery.png"
+        />
+        <img
+          id="폐기_pic8"
+          class="camera"
+          width="10px"
+          height="10px"
+          onmouseenter="zoomIn(event)"
+          onmouseleave="zoomOut(event)"
+          onerror="this.src='base/img/battery.png'"
+          src="base/img/battery.png"
+        />
+        <img
+          id="폐기_pic9"
+          class="camera"
+          width="10px"
+          height="10px"
+          onmouseenter="zoomIn(event)"
+          onmouseleave="zoomOut(event)"
+          onerror="this.src='base/img/battery.png'"
+          src="base/img/battery.png"
+        />
+        <img
+          id="폐기_pic10"
+          class="camera"
+          width="10px"
+          height="10px"
+          onmouseenter="zoomIn(event)"
+          onmouseleave="zoomOut(event)"
+          onerror="this.src='base/img/battery.png'"
+          src="base/img/battery.png"
+        />
+        <img
+          id="폐기_pic11"
+          class="camera"
+          width="10px"
+          height="10px"
+          onmouseenter="zoomIn(event)"
+          onmouseleave="zoomOut(event)"
+          onerror="this.src='base/img/battery.png'"
+          src="base/img/battery.png"
+        />
+        <img
+          id="폐기_pic12"
+          class="camera"
+          width="10px"
+          height="10px"
+          onmouseenter="zoomIn(event)"
+          onmouseleave="zoomOut(event)"
+          onerror="this.src='base/img/battery.png'"
+          src="base/img/battery.png"
+        />
+        <img
+          id="폐기_pic13"
+          class="camera"
+          width="10px"
+          height="10px"
+          onmouseenter="zoomIn(event)"
+          onmouseleave="zoomOut(event)"
+          onerror="this.src='base/img/battery.png'"
+          src="base/img/battery.png"
+        />
+        <img
+          id="폐기_pic14"
+          class="camera"
+          width="10px"
+          height="10px"
+          onmouseenter="zoomIn(event)"
+          onmouseleave="zoomOut(event)"
+          onerror="this.src='base/img/battery.png'"
+          src="base/img/battery.png"
+        />
+        <img
+          id="폐기_pic15"
+          class="camera"
+          width="10px"
+          height="10px"
+          onmouseenter="zoomIn(event)"
+          onmouseleave="zoomOut(event)"
+          onerror="this.src='base/img/battery.png'"
+          src="base/img/battery.png"
+        />
       </div>
-    </div>
-
-    <div class="process">
-      <div class="process__tit">
-        <label for="grid_분해조립">분해 조립</label>
-        <button onClick="toggle4();">
-          <i class="fa-solid fa-image"></i>
-        </button>
-      </div>
-      <div id="grid_분해조립"></div>
-      <div id="pic_4" class="pic">
-        <img id="분해조립_pic1" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="분해조립_pic2" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="분해조립_pic3" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="분해조립_pic4" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="분해조립_pic5" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="분해조립_pic6" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="분해조립_pic7" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="분해조립_pic8" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="분해조립_pic9" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="분해조립_pic10" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="분해조립_pic11" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="분해조립_pic12" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="분해조립_pic13" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="분해조립_pic14" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="분해조립_pic15" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-      </div>
-    </div>
-
-    <div class="process">
-      <div class="process__tit">
-        <label for="grid_성능검사">성능 검사</label>
-        <button onClick="toggle5();">
-          <i class="fa-solid fa-image"></i>
-        </button>
-      </div>
-      <div id="grid_성능검사"></div>
-      <div id="pic_5" class="pic">
-        <img id="성능검사_pic1" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="성능검사_pic2" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="성능검사_pic3" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="성능검사_pic4" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="성능검사_pic5" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="성능검사_pic6" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="성능검사_pic7" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="성능검사_pic8" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="성능검사_pic9" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="성능검사_pic10" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="성능검사_pic11" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="성능검사_pic12" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="성능검사_pic13" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="성능검사_pic14" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="성능검사_pic15" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-      </div>
-    </div>
-
-    <div class="process">
-      <div class="process__tit">
-        <label for="grid_EOL">EOL</label>
-        <button onClick="toggle6();">
-          <i class="fa-solid fa-image"></i>
-        </button>
-      </div>
-      <div id="grid_EOL"></div>
-      <div id="pic_6" class="pic">
-        <img id="EOL_pic1" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="EOL_pic2" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="EOL_pic3" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="EOL_pic4" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="EOL_pic5" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="EOL_pic6" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="EOL_pic7" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="EOL_pic8" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="EOL_pic9" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="EOL_pic10" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="EOL_pic11" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="EOL_pic12" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="EOL_pic13" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="EOL_pic14" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="EOL_pic15" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-      </div>
-    </div>
-
-    <div class="process">
-      <div class="process__tit">
-        <label for="grid_출하정보">출하 정보</label>
-        <button onClick="toggle7();">
-          <i class="fa-solid fa-image"></i>
-        </button>
-      </div>
-      <div id="grid_출하정보"></div>
-      <div id="pic_7" class="pic">
-        <img id="출하정보_pic1" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="출하정보_pic2" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="출하정보_pic3" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="출하정보_pic4" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="출하정보_pic5" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="출하정보_pic6" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="출하정보_pic7" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="출하정보_pic8" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="출하정보_pic9" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="출하정보_pic10" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="출하정보_pic11" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="출하정보_pic12" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="출하정보_pic13" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="출하정보_pic14" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="출하정보_pic15" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-      </div>
-    </div>
-
-    <div class="process">
-      <div class="process__tit">
-        <label for="grid_특이사항">특이사항</label>
-        <button onClick="toggle8();">
-          <i class="fa-solid fa-image"></i>
-        </button>
-      </div>
-      <div id="grid_특이사항"></div>
-      <div id="pic_8" class="pic">
-        <img id="특이사항_pic1" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="특이사항_pic2" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="특이사항_pic3" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="특이사항_pic4" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="특이사항_pic5" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="특이사항_pic6" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="특이사항_pic7" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="특이사항_pic8" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="특이사항_pic9" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="특이사항_pic10" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="특이사항_pic11" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="특이사항_pic12" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="특이사항_pic13" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="특이사항_pic14" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-        <img id="특이사항_pic15" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-          onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-      </div>
-    </div>
-
-    <div class="process">
-      <div class="process__tit">
-        <label for="grid_교체부품상세1">교체부품상세1</label>
-      </div>
-      <div id="grid_교체부품상세1"></div>
-    </div>
-
-    <div class="process">
-      <div class="process__tit">
-        <label for="grid_교체부품상세2">교체부품상세2</label>
-      </div>
-      <div id="grid_교체부품상세2"></div>
-    </div>
-
-    <div class="process">
-      <div class="process__tit">
-        <label for="grid_교체부품상세3">교체부품상세3</label>
-      </div>
-      <div id="grid_교체부품상세3"></div>
-    </div>
-
-    <div class="process">
-      <div class="process__tit">
-        <label for="grid_교체부품상세4">교체부품상세4</label>
-      </div>
-      <div id="grid_교체부품상세4"></div>
-    </div>
-
-    <div class="process">
-      <div class="process__tit">
-        <label for="grid_교체부품상세5">교체부품상세5</label>
-      </div>
-      <div id="grid_교체부품상세5"></div>
-    </div>
-
-    <div class="process">
-      <div class="process__tit">
-        <label for="grid_교체부품상세6">교체부품상세6</label>
-      </div>
-      <div id="grid_교체부품상세6"></div>
-    </div>
-
-    <div class="process">
-      <div class="process__tit">
-        <label for="grid_교체부품상세7">교체부품상세7</label>
-      </div>
-      <div id="grid_교체부품상세7"></div>
-    </div>
-
-    <div class="process">
-      <div class="process__tit">
-        <label for="grid_교체부품상세8">교체부품상세8</label>
-      </div>
-      <div id="grid_교체부품상세8"></div>
-    </div>
-
-    <div class="process">
-      <div class="process__tit">
-        <label for="grid_교체부품상세9">교체부품상세9</label>
-      </div>
-      <div id="grid_교체부품상세9"></div>
-    </div>
-
-    <div class="process">
-      <div class="process__tit">
-        <label for="grid_교체부품상세10">교체부품상세10</label>
-      </div>
-      <div id="grid_교체부품상세10"></div>
-    </div>
-
-    <div class="process">
-      <div class="process__tit">
-        <label>반품입고 사진</label>
-        <button onClick="toggle9();">
-          <i class="fa-solid fa-image"></i>
-        </button>
-      </div>
-    </div>
-    <div id="pic_9" class="pic">
-      <img id="반품입고_pic1" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-        onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-      <img id="반품입고_pic2" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-        onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-      <img id="반품입고_pic3" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-        onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-      <img id="반품입고_pic4" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-        onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-      <img id="반품입고_pic5" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-        onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-      <img id="반품입고_pic6" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-        onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-      <img id="반품입고_pic7" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-        onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-      <img id="반품입고_pic8" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-        onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-      <img id="반품입고_pic9" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-        onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-      <img id="반품입고_pic10" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-        onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-      <img id="반품입고_pic11" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-        onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-      <img id="반품입고_pic12" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-        onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-      <img id="반품입고_pic13" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-        onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-      <img id="반품입고_pic14" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-        onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-      <img id="반품입고_pic15" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-        onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-    </div>
-
-    <div class="process">
-      <div class="process__tit">
-        <label>재출하 사진</label>
-        <button onClick="toggle10();">
-          <i class="fa-solid fa-image"></i>
-        </button>
-      </div>
-    </div>
-    <div id="pic_10" class="pic">
-      <img id="재출하_pic1" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-        onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-      <img id="재출하_pic2" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-        onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-      <img id="재출하_pic3" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-        onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-      <img id="재출하_pic4" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-        onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-      <img id="재출하_pic5" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-        onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-      <img id="재출하_pic6" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-        onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-      <img id="재출하_pic7" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-        onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-      <img id="재출하_pic8" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-        onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-      <img id="재출하_pic9" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-        onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-      <img id="재출하_pic10" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-        onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-      <img id="재출하_pic11" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-        onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-      <img id="재출하_pic12" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-        onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-      <img id="재출하_pic13" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-        onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-      <img id="재출하_pic14" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-        onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-      <img id="재출하_pic15" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-        onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-    </div>
-
-    <div class="process">
-      <div class="process__tit">
-        <label>완전분해 사진</label>
-        <button onClick="toggle11();">
-          <i class="fa-solid fa-image"></i>
-        </button>
-      </div>
-    </div>
-    <div id="pic_11" class="pic">
-      <img id="완전분해_pic1" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-        onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-      <img id="완전분해_pic2" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-        onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-      <img id="완전분해_pic3" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-        onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-      <img id="완전분해_pic4" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-        onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-      <img id="완전분해_pic5" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-        onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-      <img id="완전분해_pic6" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-        onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-      <img id="완전분해_pic7" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-        onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-      <img id="완전분해_pic8" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-        onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-      <img id="완전분해_pic9" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-        onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-      <img id="완전분해_pic10" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-        onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-      <img id="완전분해_pic11" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-        onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-      <img id="완전분해_pic12" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-        onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-      <img id="완전분해_pic13" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-        onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-      <img id="완전분해_pic14" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-        onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-      <img id="완전분해_pic15" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-        onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-    </div>
-
-    <div class="process">
-      <div class="process__tit">
-        <label>폐기 사진</label>
-        <button onClick="toggle12();">
-          <i class="fa-solid fa-image"></i>
-        </button>
-      </div>
-    </div>
-    <div id="pic_12" class="pic">
-      <img id="폐기_pic1" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-        onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-      <img id="폐기_pic2" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-        onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-      <img id="폐기_pic3" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-        onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-      <img id="폐기_pic4" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-        onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-      <img id="폐기_pic5" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-        onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-      <img id="폐기_pic6" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-        onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-      <img id="폐기_pic7" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-        onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-      <img id="폐기_pic8" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-        onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-      <img id="폐기_pic9" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-        onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-      <img id="폐기_pic10" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-        onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-      <img id="폐기_pic11" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-        onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-      <img id="폐기_pic12" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-        onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-      <img id="폐기_pic13" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-        onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-      <img id="폐기_pic14" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-        onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-      <img id="폐기_pic15" class="camera" width="10px" height="10px" onmouseenter="zoomIn(event)"
-        onmouseleave="zoomOut(event)" onerror="this.src='base/img/battery.png'" src="base/img/battery.png" />
-    </div>
-  </section>
-  <script>
-    var _management_id = document.getElementById("_management_id");
-    var _재제조번호 = document.getElementById("_재제조번호");
-  </script>
-</body>
-
+    </section>
+    <script>
+      var _management_id = document.getElementById("_management_id");
+      var _재제조번호 = document.getElementById("_재제조번호");
+    </script>
+  </body>
 </html>
