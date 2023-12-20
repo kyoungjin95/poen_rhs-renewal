@@ -408,6 +408,9 @@ td.process__btn {
   font-size: 1vw;
   padding: 0.5vw 0.7vw;
 }
+.parts__information .process-step table td select {
+  width: 100%;
+}
 /* ========================================
   수량집계 */
 .data {

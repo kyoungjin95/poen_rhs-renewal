@@ -48,8 +48,9 @@ button {
   background: #ff9900;
 }
 .btn:hover {
-  background: #2d2d2d;
+  background: #303030;
 }
+
 .module_con h3 {
   font-size: 1.4vw;
   color: #686868;
