@@ -108,9 +108,12 @@ async function 입고_save() {
 		_doc.차종 = _차종.value;
 		_doc.품번 = _품번.value;
 		_doc.RO_no = _RO_no.value;
+		_doc.렉번호 = select_pos;
 
 		update(BSA재제조, _doc);
 		await delay();
+
+		select_pos = '';
 	} else {
 		var _doc = {
 			관리번호: _management_id.value.toUpperCase(),
@@ -119,10 +122,13 @@ async function 입고_save() {
 			차종: _차종.value,
 			품번: _품번.value,
 			RO_no: _RO_no.value,
+			렉번호: select_pos
 		};
 
 		update(BSA재제조, _doc);
 		await delay();
+
+		select_pos = '';
 	}
 
 	await 공정단계자동입력(_management_id.value);

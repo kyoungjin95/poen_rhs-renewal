@@ -97,6 +97,7 @@ var flag_구장재고조회 = false;
 var flag_군포재고조회 = false;
 var flag_제주재고조회 = false;
 var flag_부품정보_list = false;
+var flag_racks = false;
 
 var interval = setInterval(function () {
 	if (flag_재제조현황 == true) { stop_repeat(); 재제조현황_시작(); }
@@ -129,6 +130,7 @@ var interval = setInterval(function () {
 	if (flag_성능검사 == true) { stop_repeat(); 성능검사_시작(); }
 	if (flag_EOL == true) { stop_repeat(); EOL_시작(); }
 	if (flag_출하 == true) { stop_repeat(); 출하정보_시작(); }
+	if (flag_racks == true) { stop_repeat(); racks_시작(); }
 
 	if (flag_부품정보_list == true) { stop_repeat(); 부품정보_list_시작(); }
 }, 1000);

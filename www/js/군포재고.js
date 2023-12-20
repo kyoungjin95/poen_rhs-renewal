@@ -1,5 +1,5 @@
 async function 군포재고_시작() {
-	while (_비고 == undefined) {
+	while (typeof _비고 == 'undefined') {
 		await sleep(DELAY);
 	}
 	flag_군포재고 = false;
@@ -48,7 +48,7 @@ async function 군포재고_조회(is재제조 = false) {
 		_부품번호.value = 군포재고_v.부품번호;
 		_생산연도.value = 군포재고_v.생산연도.value;
 		_ROM_ID.value = 군포재고_v.ROM_ID;
-		_보관위치.value = 군포재고_v.보관위치;
+		_보관위치.value = select_pos;
 		_제조완료.value = 군포재고_v.제조완료;
 		_출고일.value = 군포재고_v.출고일;
 		_출고처.value = 군포재고_v.출고처;
@@ -63,7 +63,7 @@ async function 군포재고_조회(is재제조 = false) {
 		_부품번호.value = '';
 		_생산연도.value = '0000-00-00T00:00:00';
 		_ROM_ID.value = '';
-		_보관위치.value = '';
+		_보관위치.value = select_pos;
 		_제조완료.value = '';
 		_출고일.value = '0000-00-00T00:00:00';
 		_출고처.value = '';
