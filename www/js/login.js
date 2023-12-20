@@ -97,11 +97,9 @@ async function change_label() {
 		worker = "";
 		level = "";
 		admin_btn.style.display = "none";
-		_label.innerHTML = "로그인";
 		_login_btn.innerHTML = "로그인";
 		_login_info.innerHTML = "";
 	} else {
-		_label.innerHTML = "로그인";
 		_login_btn.innerHTML = "로그아웃";
 		_login_btn.style.color = "black";
 		_login_info.innerHTML = worker;

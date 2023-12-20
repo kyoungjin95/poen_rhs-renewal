@@ -42,6 +42,7 @@ const 기초보고서 = '기초보고서';
 const 완료보고서 = '완료보고서';
 const 부품정보_list = '부품정보_list';
 const 구자료 = '구자료';
+const 창고이동 = '창고이동';
 
 var 구자료_v = [];
 var BSA재제조_v = [];
@@ -69,6 +70,7 @@ var 자재입출고_v = [];
 var 구장재고_v = [];
 var 군포재고_v = [];
 var 제주재고_v = [];
+var 창고이동_v = [];
 var 입고_pic_v = [];
 var 세척_pic_v = [];
 var 기초검사_pic_v = [];
@@ -128,6 +130,7 @@ var 완료보고서_cnt = 0;
 var 계정_cnt = 0;
 var 부품정보_list_cnt = 0;
 var 구자료_cnt = 0;
+var 창고이동_cnt = 0;
 
 var option_입고_cnt = 0;
 var option_세척_cnt = 0;
@@ -755,6 +758,13 @@ const 제주재고_doc = {
 	출고처: '',
 	비고: ''
 }
+
+const 창고이동_doc = {
+	관리번호: '',
+	재제조번호: '',
+	이동경로: '',
+}
+
 const 입고_pic_doc = {
 	관리번호: '',
 	pic1: '',
@@ -1900,6 +1910,13 @@ const 제주재고_ = {
 	출고일: 1,
 	출고처: 1,
 	비고: 1
+}
+
+const 창고이동_ = {
+	_id: 0,
+	관리번호: 1,
+	재제조번호: 1,
+	이동경로: 1,
 }
 
 const 입고_pic_ = {
@@ -3426,6 +3443,10 @@ async function find(col, management_id) {
 			socket.emit('findOne', worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 제주재고_ }, check);
 			break;
 
+		case '창고이동':
+			socket.emit('findOne', worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 창고이동_ }, check);
+			break;
+
 		case '부품정보_list':
 			socket.emit('findOne', worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 부품정보_list_ }, check);
 			break;
@@ -3496,6 +3517,15 @@ async function findOne_제주재고(col, query) {
 	if (check > 10) check = 0;
 
 	socket.emit('findOne', worker, col, query, { sort: { kind: 1 }, projection: 제주재고_ }, check);
+}
+
+async function findOne_창고이동(col, query) {
+	if (socket == undefined) return;
+	flag_arrivedMSG = false;
+	check++;
+	if (check > 10) check = 0;
+
+	socket.emit('findOne', worker, col, query, { sort: { kind: 1 }, projection: 창고이동_ }, check);
 }
 
 async function findOne_신품정보(col, query) {
@@ -3687,6 +3717,14 @@ async function find_제주재고(col, query) {
 	socket.emit('find', worker, col, query, { sort: { kind: 1 }, projection: 제주재고_ }, check);
 }
 
+async function find_창고이동(col, query) {
+	if (socket == undefined) return;
+	flag_arrivedMSG = false;
+	check++;
+	if (check > 10) check = 0;
+
+	socket.emit('find', worker, col, query, { sort: { kind: 1 }, projection: 창고이동_ }, check);
+}
 async function find_신품정보(col, query) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
