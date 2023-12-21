@@ -243,9 +243,12 @@ async function doo_2() {
 	table.download("xlsx", "EOLvs출하검사_bsa.xlsx", { sheets: sheets });
 }
 
+var flag_품번_excel = false;
 function read_품번_func_csv() {
 	var _품번_csv = document.getElementById('_csv');
 	_품번_csv.addEventListener('input', function (event) {
+		if(flag_품번_excel == true) return;
+		flag_품번_excel = true;
 		console.log('file finded');
 		const target = event.target;
 		const files = target.files;

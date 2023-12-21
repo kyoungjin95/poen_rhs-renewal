@@ -1,3 +1,168 @@
+var DE_SK3_LWR_CASE = [];
+var OS_LWR_CASE = [];
+var HR_PU_LWR_CASE = [];
+var CV_LWR_CASE = [];
+var NE_LWR_CASE = [];
+var JW_LWR_CASE = [];
+var CS_LWR_CASE = [];
+var LK_LWR_CASE = [];
+var LK_FC_LWR_CASE = [];
+var LM_LWR_CASE = [];
+
+var DE_SK3_UPR_CASE = [];
+var OS_UPR_CASE = [];
+var HR_PU_UPR_CASE = [];
+var CV_UPR_CASE = [];
+var NE_UPR_CASE = [];
+var JW_UPR_CASE = [];
+var CS_UPR_CASE = [];
+var LK_UPR_CASE = [];
+var LK_FC_UPR_CASE = [];
+var LM_UPR_CASE = [];
+
+var DE_SK3_S_PLUG = [];
+var OS_S_PLUG = [];
+var HR_PU_S_PLUG = [];
+var CV_S_PLUG = [];
+var NE_S_PLUG = [];
+var JW_S_PLUG = [];
+var CS_S_PLUG = [];
+var LK_S_PLUG = [];
+var LK_FC_S_PLUG = [];
+var LM_S_PLUG = [];
+
+var DE_SK3_SPA  = [];
+var OS_SPA  = [];
+var HR_PU_SPA  = [];
+var CV_SPA  = [];
+var NE_SPA  = [];
+var JW_SPA  = [];
+var CS_SPA  = [];
+var LK_SPA  = [];
+var LK_FC_SPA  = [];
+var LM_SPA  = [];
+
+var DE_SK3_HV_CNTR = [];
+var OS_HV_CNTR = [];
+var HR_PU_HV_CNTR = [];
+var CV_HV_CNTR = [];
+var NE_HV_CNTR = [];
+var JW_HV_CNTR = [];
+var CS_HV_CNTR = [];
+var LK_HV_CNTR = [];
+var LK_FC_HV_CNTR = [];
+var LM_HV_CNTR = [];
+
+var DE_SK3_HT_CNTR = [];
+var OS_HT_CNTR = [];
+var HR_PU_HT_CNTR = [];
+var CV_HT_CNTR = [];
+var NE_HT_CNTR = [];
+var JW_HT_CNTR = [];
+var CS_HT_CNTR = [];
+var LK_HT_CNTR = [];
+var LK_FC_HT_CNTR = [];
+var LM_HT_CNTR = [];
+
+var DE_SK3_PRA = [];
+var OS_PRA = [];
+var HR_PU_PRA = [];
+var CV_PRA = [];
+var NE_PRA = [];
+var JW_PRA = [];
+var CS_PRA = [];
+var LK_PRA = [];
+var LK_FC_PRA = [];
+var LM_PRA = [];
+
+var DE_SK3_FUSE = [];
+var OS_FUSE = [];
+var HR_PU_FUSE = [];
+var CV_FUSE = [];
+var NE_FUSE = [];
+var JW_FUSE = [];
+var CS_FUSE = [];
+var LK_FUSE = [];
+var LK_FC_FUSE = [];
+var LM_FUSE = [];
+
+var DE_SK3_RELAY = [];
+var OS_RELAY = [];
+var HR_PU_RELAY = [];
+var CV_RELAY = [];
+var NE_RELAY = [];
+var JW_RELAY = [];
+var CS_RELAY = [];
+var LK_RELAY = [];
+var LK_FC_RELAY = [];
+var LM_RELAY = [];
+
+var DE_SK3_LV_W_H = [];
+var OS_LV_W_H = [];
+var HR_PU_LV_W_H = [];
+var CV_LV_W_H = [];
+var NE_LV_W_H = [];
+var JW_LV_W_H = [];
+var CS_LV_W_H = [];
+var LK_LV_W_H = [];
+var LK_FC_LV_W_H = [];
+var LM_LV_W_H = [];
+
+var DE_SK3_HV_W_H  = [];
+var OS_HV_W_H  = [];
+var HR_PU_HV_W_H  = [];
+var CV_HV_W_H  = [];
+var NE_HV_W_H  = [];
+var JW_HV_W_H  = [];
+var CS_HV_W_H  = [];
+var LK_HV_W_H  = [];
+var LK_FC_HV_W_H  = [];
+var LM_HV_W_H  = [];
+
+var DE_SK3_BMU  = [];
+var OS_BMU  = [];
+var HR_PU_BMU  = [];
+var CV_BMU  = [];
+var NE_BMU  = [];
+var JW_BMU  = [];
+var CS_BMU  = [];
+var LK_BMU  = [];
+var LK_FC_BMU  = [];
+var LM_BMU  = [];
+
+var DE_SK3_온도센서 = [];
+var OS_온도센서 = [];
+var HR_PU_온도센서 = [];
+var CV_온도센서 = [];
+var NE_온도센서 = [];
+var JW_온도센서 = [];
+var CS_온도센서 = [];
+var LK_온도센서 = [];
+var LK_FC_온도센서 = [];
+var LM_온도센서 = [];
+
+var DE_SK3_CMU = [];
+var OS_CMU = [];
+var HR_PU_CMU = [];
+var CV_CMU = [];
+var NE_CMU = [];
+var JW_CMU = [];
+var CS_CMU = [];
+var LK_CMU = [];
+var LK_FC_CMU = [];
+var LM_CMU = [];
+
+var DE_SK_BMA = [];
+var OS_BMA = [];
+var HR_PU_BMA = [];
+var CV_BMA = [];
+var NE_BMA = [];
+var JW_BMA = [];
+var CS_BMA = [];
+var LK_BMA = [];
+var LK_FC_BMA = [];
+var LM_BMA = [];
+
 async function 부품정보_list_시작() {
 	while (typeof _D == 'undefined') {
 		await sleep(100);
@@ -111,367 +276,369 @@ async function 부품정보_list_시작() {
 	}
 
 	await 부품정보_list_load();
+	await 품번_list();
 }
 
 async function 품번_list() {
-	var DE_SK3_LWR_CASE = [];
-	var OS_LWR_CASE = [];
-	var HR_PU_LWR_CASE = [];
-	var CV_LWR_CASE = [];
-	var NE_LWR_CASE = [];
-	var JW_LWR_CASE = [];
-	var CS_LWR_CASE = [];
-	var LK_LWR_CASE = [];
-	var LK_FC_LWR_CASE = [];
-	var LM_LWR_CASE = [];
+	DE_SK3_LWR_CASE = [];
+	OS_LWR_CASE = [];
+	HR_PU_LWR_CASE = [];
+	CV_LWR_CASE = [];
+	NE_LWR_CASE = [];
+	JW_LWR_CASE = [];
+	CS_LWR_CASE = [];
+	LK_LWR_CASE = [];
+	LKFC_LWR_CASE = [];
+	LM_LWR_CASE = [];
 
-	var DE_SK3_UPR_CASE = [];
-	var OS_UPR_CASE = [];
-	var HR_PU_UPR_CASE = [];
-	var CV_UPR_CASE = [];
-	var NE_UPR_CASE = [];
-	var JW_UPR_CASE = [];
-	var CS_UPR_CASE = [];
-	var LK_UPR_CASE = [];
-	var LK_FC_UPR_CASE = [];
-	var LM_UPR_CASE = [];
+	DE_SK3_UPR_CASE = [];
+	OS_UPR_CASE = [];
+	HR_PU_UPR_CASE = [];
+	CV_UPR_CASE = [];
+	NE_UPR_CASE = [];
+	JW_UPR_CASE = [];
+	CS_UPR_CASE = [];
+	LK_UPR_CASE = [];
+	LKFC_UPR_CASE = [];
+	LM_UPR_CASE = [];
 
-	var DE_SK3_S_PLUG = [];
-	var OS_S_PLUG = [];
-	var HR_PU_S_PLUG = [];
-	var CV_S_PLUG = [];
-	var NE_S_PLUG = [];
-	var JW_S_PLUG = [];
-	var CS_S_PLUG = [];
-	var LK_S_PLUG = [];
-	var LK_FC_S_PLUG = [];
-	var LM_S_PLUG = [];
+	DE_SK3_S_PLUG = [];
+	OS_S_PLUG = [];
+	HR_PU_S_PLUG = [];
+	CV_S_PLUG = [];
+	NE_S_PLUG = [];
+	JW_S_PLUG = [];
+	CS_S_PLUG = [];
+	LK_S_PLUG = [];
+	LKFC_S_PLUG = [];
+	LM_S_PLUG = [];
 
-	var DE_SK3_SPA  = [];
-	var OS_SPA  = [];
-	var HR_PU_SPA  = [];
-	var CV_SPA  = [];
-	var NE_SPA  = [];
-	var JW_SPA  = [];
-	var CS_SPA  = [];
-	var LK_SPA  = [];
-	var LK_FC_SPA  = [];
-	var LM_SPA  = [];
+	DE_SK3_SPA  = [];
+	OS_SPA  = [];
+	HR_PU_SPA  = [];
+	CV_SPA  = [];
+	NE_SPA  = [];
+	JW_SPA  = [];
+	CS_SPA  = [];
+	LK_SPA  = [];
+	LKFC_SPA  = [];
+	LM_SPA  = [];
 
-	var DE_SK3_HV_CNTR = [];
-	var OS_HV_CNTR = [];
-	var HR_PU_HV_CNTR = [];
-	var CV_HV_CNTR = [];
-	var NE_HV_CNTR = [];
-	var JW_HV_CNTR = [];
-	var CS_HV_CNTR = [];
-	var LK_HV_CNTR = [];
-	var LK_FC_HV_CNTR = [];
-	var LM_HV_CNTR = [];
+	DE_SK3_HV_CNTR = [];
+	OS_HV_CNTR = [];
+	HR_PU_HV_CNTR = [];
+	CV_HV_CNTR = [];
+	NE_HV_CNTR = [];
+	JW_HV_CNTR = [];
+	CS_HV_CNTR = [];
+	LK_HV_CNTR = [];
+	LKFC_HV_CNTR = [];
+	LM_HV_CNTR = [];
 
-	var DE_SK3_HT_CNTR = [];
-	var OS_HT_CNTR = [];
-	var HR_PU_HT_CNTR = [];
-	var CV_HT_CNTR = [];
-	var NE_HT_CNTR = [];
-	var JW_HT_CNTR = [];
-	var CS_HT_CNTR = [];
-	var LK_HT_CNTR = [];
-	var LK_FC_HT_CNTR = [];
-	var LM_HT_CNTR = [];
+	DE_SK3_HT_CNTR = [];
+	OS_HT_CNTR = [];
+	HR_PU_HT_CNTR = [];
+	CV_HT_CNTR = [];
+	NE_HT_CNTR = [];
+	JW_HT_CNTR = [];
+	CS_HT_CNTR = [];
+	LK_HT_CNTR = [];
+	LKFC_HT_CNTR = [];
+	LM_HT_CNTR = [];
 
-	var DE_SK3_PRA = [];
-	var OS_PRA = [];
-	var HR_PU_PRA = [];
-	var CV_PRA = [];
-	var NE_PRA = [];
-	var JW_PRA = [];
-	var CS_PRA = [];
-	var LK_PRA = [];
-	var LK_FC_PRA = [];
-	var LM_PRA = [];
+	DE_SK3_PRA = [];
+	OS_PRA = [];
+	HR_PU_PRA = [];
+	CV_PRA = [];
+	NE_PRA = [];
+	JW_PRA = [];
+	CS_PRA = [];
+	LK_PRA = [];
+	LKFC_PRA = [];
+	LM_PRA = [];
 
-	var DE_SK3_FUSE = [];
-	var OS_FUSE = [];
-	var HR_PU_FUSE = [];
-	var CV_FUSE = [];
-	var NE_FUSE = [];
-	var JW_FUSE = [];
-	var CS_FUSE = [];
-	var LK_FUSE = [];
-	var LK_FC_FUSE = [];
-	var LM_FUSE = [];
+	DE_SK3_FUSE = [];
+	OS_FUSE = [];
+	HR_PU_FUSE = [];
+	CV_FUSE = [];
+	NE_FUSE = [];
+	JW_FUSE = [];
+	CS_FUSE = [];
+	LK_FUSE = [];
+	LKFC_FUSE = [];
+	LM_FUSE = [];
 
-	var DE_SK3_RELAY = [];
-	var OS_RELAY = [];
-	var HR_PU_RELAY = [];
-	var CV_RELAY = [];
-	var NE_RELAY = [];
-	var JW_RELAY = [];
-	var CS_RELAY = [];
-	var LK_RELAY = [];
-	var LK_FC_RELAY = [];
-	var LM_RELAY = [];
+	DE_SK3_RELAY = [];
+	OS_RELAY = [];
+	HR_PU_RELAY = [];
+	CV_RELAY = [];
+	NE_RELAY = [];
+	JW_RELAY = [];
+	CS_RELAY = [];
+	LK_RELAY = [];
+	LKFC_RELAY = [];
+	LM_RELAY = [];
 
-	var DE_SK3_LV_W_H = [];
-	var OS_LV_W_H = [];
-	var HR_PU_LV_W_H = [];
-	var CV_LV_W_H = [];
-	var NE_LV_W_H = [];
-	var JW_LV_W_H = [];
-	var CS_LV_W_H = [];
-	var LK_LV_W_H = [];
-	var LK_FC_LV_W_H = [];
-	var LM_LV_W_H = [];
+	DE_SK3_LV_W_H = [];
+	OS_LV_W_H = [];
+	HR_PU_LV_W_H = [];
+	CV_LV_W_H = [];
+	NE_LV_W_H = [];
+	JW_LV_W_H = [];
+	CS_LV_W_H = [];
+	LK_LV_W_H = [];
+	LKFC_LV_W_H = [];
+	LM_LV_W_H = [];
 
-	var DE_SK3_HV_W_H  = [];
-	var OS_HV_W_H  = [];
-	var HR_PU_HV_W_H  = [];
-	var CV_HV_W_H  = [];
-	var NE_HV_W_H  = [];
-	var JW_HV_W_H  = [];
-	var CS_HV_W_H  = [];
-	var LK_HV_W_H  = [];
-	var LK_FC_HV_W_H  = [];
-	var LM_HV_W_H  = [];
+	DE_SK3_HV_W_H  = [];
+	OS_HV_W_H  = [];
+	HR_PU_HV_W_H  = [];
+	CV_HV_W_H  = [];
+	NE_HV_W_H  = [];
+	JW_HV_W_H  = [];
+	CS_HV_W_H  = [];
+	LK_HV_W_H  = [];
+	LKFC_HV_W_H  = [];
+	LM_HV_W_H  = [];
 
-	var DE_SK3_BMU  = [];
-	var OS_BMU  = [];
-	var HR_PU_BMU  = [];
-	var CV_BMU  = [];
-	var NE_BMU  = [];
-	var JW_BMU  = [];
-	var CS_BMU  = [];
-	var LK_BMU  = [];
-	var LK_FC_BMU  = [];
-	var LM_BMU  = [];
+	DE_SK3_BMU  = [];
+	OS_BMU  = [];
+	HR_PU_BMU  = [];
+	CV_BMU  = [];
+	NE_BMU  = [];
+	JW_BMU  = [];
+	CS_BMU  = [];
+	LK_BMU  = [];
+	LKFC_BMU  = [];
+	LM_BMU  = [];
 
-	var DE_SK3_온도센서 = [];
-	var OS_온도센서 = [];
-	var HR_PU_온도센서 = [];
-	var CV_온도센서 = [];
-	var NE_온도센서 = [];
-	var JW_온도센서 = [];
-	var CS_온도센서 = [];
-	var LK_온도센서 = [];
-	var LK_FC_온도센서 = [];
-	var LM_온도센서 = [];
+	DE_SK3_온도센서 = [];
+	OS_온도센서 = [];
+	HR_PU_온도센서 = [];
+	CV_온도센서 = [];
+	NE_온도센서 = [];
+	JW_온도센서 = [];
+	CS_온도센서 = [];
+	LK_온도센서 = [];
+	LKFC_온도센서 = [];
+	LM_온도센서 = [];
 
-	var DE_SK3_CMU = [];
-	var OS_CMU = [];
-	var HR_PU_CMU = [];
-	var CV_CMU = [];
-	var NE_CMU = [];
-	var JW_CMU = [];
-	var CS_CMU = [];
-	var LK_CMU = [];
-	var LK_FC_CMU = [];
-	var LM_CMU = [];
+	DE_SK3_CMU = [];
+	OS_CMU = [];
+	HR_PU_CMU = [];
+	CV_CMU = [];
+	NE_CMU = [];
+	JW_CMU = [];
+	CS_CMU = [];
+	LK_CMU = [];
+	LKFC_CMU = [];
+	LM_CMU = [];
 
-	var DE_SK_BMA = [];
-	var OS_BMA = [];
-	var HR_PU_BMA = [];
-	var CV_BMA = [];
-	var NE_BMA = [];
-	var JW_BMA = [];
-	var CS_BMA = [];
-	var LK_BMA = [];
-	var LK_FC_BMA = [];
-	var LM_BMA = [];
+	DE_SK3_BMA = [];
+	OS_BMA = [];
+	HR_PU_BMA = [];
+	CV_BMA = [];
+	NE_BMA = [];
+	JW_BMA = [];
+	CS_BMA = [];
+	LK_BMA = [];
+	LKFC_BMA = [];
+	LM_BMA = [];
 
 	find_품번(품번, { 번호 : { $exists : true }});
 	await delay();
 
 	if(품번_v != null) {
+		console.log(품번_v);
 		품번_v.forEach(function(품번) {
 			switch(품번.차종) {
 				case 'DE/SK3' :
-					DE_SK3.LWR_CASE.push(품번.LWR_CASE);
-					DE_SK3.UPR_CASE.push(품번.UPR_CASE);
-					DE_SK3.S_PLUG.push(품번.S_PLUG);
-					DE_SK3.SPA.push(품번.SPA);
-					DE_SK3.HV_CNTR.push(품번.HV_CNTR);
-					DE_SK3.HT_CNTR.push(품번.HT_CNTR);
-					DE_SK3.PRA.push(품번.PRA);
-					DE_SK3.FUSE.push(품번.FUSE);
-					DE_SK3.RELAY.push(품번.RELAY);
-					DE_SK3.LV_W_H.push(품번.LV_W_H);
-					DE_SK3.HV_W_H.push(품번.HV_W_H);
-					DE_SK3.BMU.push(품번.BMU);
-					DE_SK3.온도센서.push(품번.온도센서);
-					DE_SK3.CMU.push(품번.CMU);
-					DE_SK3.BMA.push(품번.BMA);
+					DE_SK3_LWR_CASE.push(품번.LWR_CASE);
+					DE_SK3_UPR_CASE.push(품번.UPR_CASE);
+					DE_SK3_S_PLUG.push(품번.S_PLUG);
+					DE_SK3_SPA.push(품번.SPA);
+					DE_SK3_HV_CNTR.push(품번.HV_CNTR);
+					DE_SK3_HT_CNTR.push(품번.HT_CNTR);
+					DE_SK3_PRA.push(품번.PRA);
+					DE_SK3_FUSE.push(품번.FUSE);
+					DE_SK3_RELAY.push(품번.RELAY);
+					DE_SK3_LV_W_H.push(품번.LV_W_H);
+					DE_SK3_HV_W_H.push(품번.HV_W_H);
+					DE_SK3_BMU.push(품번.BMU);
+					DE_SK3_온도센서.push(품번.온도센서);
+					DE_SK3_CMU.push(품번.CMU);
+					DE_SK3_BMA.push(품번.BMA);
 
 					break;
 
 				case 'OS' :
-					OS.LWR_CASE.push(품번.LWR_CASE);
-					OS.UPR_CASE.push(품번.UPR_CASE);
-					OS.S_PLUG.push(품번.S_PLUG);
-					OS.SPA.push(품번.SPA);
-					OS.HV_CNTR.push(품번.HV_CNTR);
-					OS.HT_CNTR.push(품번.HT_CNTR);
-					OS.PRA.push(품번.PRA);
-					OS.FUSE.push(품번.FUSE);
-					OS.RELAY.push(품번.RELAY);
-					OS.LV_W_H.push(품번.LV_W_H);
-					OS.HV_W_H.push(품번.HV_W_H);
-					OS.BMU.push(품번.BMU);
-					OS.온도센서.push(품번.온도센서);
-					OS.CMU.push(품번.CMU);
-					OS.BMA.push(품번.BMA);
+					OS_LWR_CASE.push(품번.LWR_CASE);
+					OS_UPR_CASE.push(품번.UPR_CASE);
+					OS_S_PLUG.push(품번.S_PLUG);
+					OS_SPA.push(품번.SPA);
+					OS_HV_CNTR.push(품번.HV_CNTR);
+					OS_HT_CNTR.push(품번.HT_CNTR);
+					OS_PRA.push(품번.PRA);
+					OS_FUSE.push(품번.FUSE);
+					OS_RELAY.push(품번.RELAY);
+					OS_LV_W_H.push(품번.LV_W_H);
+					OS_HV_W_H.push(품번.HV_W_H);
+					OS_BMU.push(품번.BMU);
+					OS_온도센서.push(품번.온도센서);
+					OS_CMU.push(품번.CMU);
+					OS_BMA.push(품번.BMA);
 
 					break;
 
 				case 'HR/PU' :
-					HR_PU.LWR_CASE.push(품번.LWR_CASE);
-					HR_PU.UPR_CASE.push(품번.UPR_CASE);
-					HR_PU.S_PLUG.push(품번.S_PLUG);
-					HR_PU.SPA.push(품번.SPA);
-					HR_PU.HV_CNTR.push(품번.HV_CNTR);
-					HR_PU.HT_CNTR.push(품번.HT_CNTR);
-					HR_PU.PRA.push(품번.PRA);
-					HR_PU.FUSE.push(품번.FUSE);
-					HR_PU.RELAY.push(품번.RELAY);
-					HR_PU.LV_W_H.push(품번.LV_W_H);
-					HR_PU.HV_W_H.push(품번.HV_W_H);
-					HR_PU.BMU.push(품번.BMU);
-					HR_PU.온도센서.push(품번.온도센서);
-					HR_PU.CMU.push(품번.CMU);
-					HR_PU.BMA.push(품번.BMA);
+					HR_PU_LWR_CASE.push(품번.LWR_CASE);
+					HR_PU_UPR_CASE.push(품번.UPR_CASE);
+					HR_PU_S_PLUG.push(품번.S_PLUG);
+					HR_PU_SPA.push(품번.SPA);
+					HR_PU_HV_CNTR.push(품번.HV_CNTR);
+					HR_PU_HT_CNTR.push(품번.HT_CNTR);
+					HR_PU_PRA.push(품번.PRA);
+					HR_PU_FUSE.push(품번.FUSE);
+					HR_PU_RELAY.push(품번.RELAY);
+					HR_PU_LV_W_H.push(품번.LV_W_H);
+					HR_PU_HV_W_H.push(품번.HV_W_H);
+					HR_PU_BMU.push(품번.BMU);
+					HR_PU_온도센서.push(품번.온도센서);
+					HR_PU_CMU.push(품번.CMU);
+					HR_PU_BMA.push(품번.BMA);
 
 					break;
 
 				case 'CV' :
-					CV.LWR_CASE.push(품번.LWR_CASE);
-					CV.UPR_CASE.push(품번.UPR_CASE);
-					CV.S_PLUG.push(품번.S_PLUG);
-					CV.SPA.push(품번.SPA);
-					CV.HV_CNTR.push(품번.HV_CNTR);
-					CV.HT_CNTR.push(품번.HT_CNTR);
-					CV.PRA.push(품번.PRA);
-					CV.FUSE.push(품번.FUSE);
-					CV.RELAY.push(품번.RELAY);
-					CV.LV_W_H.push(품번.LV_W_H);
-					CV.HV_W_H.push(품번.HV_W_H);
-					CV.BMU.push(품번.BMU);
-					CV.온도센서.push(품번.온도센서);
-					CV.CMU.push(품번.CMU);
-					CV.BMA.push(품번.BMA);
+					CV_LWR_CASE.push(품번.LWR_CASE);
+					CV_UPR_CASE.push(품번.UPR_CASE);
+					CV_S_PLUG.push(품번.S_PLUG);
+					CV_SPA.push(품번.SPA);
+					CV_HV_CNTR.push(품번.HV_CNTR);
+					CV_HT_CNTR.push(품번.HT_CNTR);
+					CV_PRA.push(품번.PRA);
+					CV_FUSE.push(품번.FUSE);
+					CV_RELAY.push(품번.RELAY);
+					CV_LV_W_H.push(품번.LV_W_H);
+					CV_HV_W_H.push(품번.HV_W_H);
+					CV_BMU.push(품번.BMU);
+					CV_온도센서.push(품번.온도센서);
+					CV_CMU.push(품번.CMU);
+					CV_BMA.push(품번.BMA);
 
 					break;
 			
 				case 'NE' :
-					NE.LWR_CASE.push(품번.LWR_CASE);
-					NE.UPR_CASE.push(품번.UPR_CASE);
-					NE.S_PLUG.push(품번.S_PLUG);
-					NE.SPA.push(품번.SPA);
-					NE.HV_CNTR.push(품번.HV_CNTR);
-					NE.HT_CNTR.push(품번.HT_CNTR);
-					NE.PRA.push(품번.PRA);
-					NE.FUSE.push(품번.FUSE);
-					NE.RELAY.push(품번.RELAY);
-					NE.LV_W_H.push(품번.LV_W_H);
-					NE.HV_W_H.push(품번.HV_W_H);
-					NE.BMU.push(품번.BMU);
-					NE.온도센서.push(품번.온도센서);
-					NE.CMU.push(품번.CMU);
-					NE.BMA.push(품번.BMA);
+					NE_LWR_CASE.push(품번.LWR_CASE);
+					NE_UPR_CASE.push(품번.UPR_CASE);
+					NE_S_PLUG.push(품번.S_PLUG);
+					NE_SPA.push(품번.SPA);
+					NE_HV_CNTR.push(품번.HV_CNTR);
+					NE_HT_CNTR.push(품번.HT_CNTR);
+					NE_PRA.push(품번.PRA);
+					NE_FUSE.push(품번.FUSE);
+					NE_RELAY.push(품번.RELAY);
+					NE_LV_W_H.push(품번.LV_W_H);
+					NE_HV_W_H.push(품번.HV_W_H);
+					NE_BMU.push(품번.BMU);
+					NE_온도센서.push(품번.온도센서);
+					NE_CMU.push(품번.CMU);
+					NE_BMA.push(품번.BMA);
 
 					break;
 			
 				case 'JW' :
-					JW.LWR_CASE.push(품번.LWR_CASE);
-					JW.UPR_CASE.push(품번.UPR_CASE);
-					JW.S_PLUG.push(품번.S_PLUG);
-					JW.SPA.push(품번.SPA);
-					JW.HV_CNTR.push(품번.HV_CNTR);
-					JW.HT_CNTR.push(품번.HT_CNTR);
-					JW.PRA.push(품번.PRA);
-					JW.FUSE.push(품번.FUSE);
-					JW.RELAY.push(품번.RELAY);
-					JW.LV_W_H.push(품번.LV_W_H);
-					JW.HV_W_H.push(품번.HV_W_H);
-					JW.BMU.push(품번.BMU);
-					JW.온도센서.push(품번.온도센서);
-					JW.CMU.push(품번.CMU);
-					JW.BMA.push(품번.BMA);
+					JW_LWR_CASE.push(품번.LWR_CASE);
+					JW_UPR_CASE.push(품번.UPR_CASE);
+					JW_S_PLUG.push(품번.S_PLUG);
+					JW_SPA.push(품번.SPA);
+					JW_HV_CNTR.push(품번.HV_CNTR);
+					JW_HT_CNTR.push(품번.HT_CNTR);
+					JW_PRA.push(품번.PRA);
+					JW_FUSE.push(품번.FUSE);
+					JW_RELAY.push(품번.RELAY);
+					JW_LV_W_H.push(품번.LV_W_H);
+					JW_HV_W_H.push(품번.HV_W_H);
+					JW_BMU.push(품번.BMU);
+					JW_온도센서.push(품번.온도센서);
+					JW_CMU.push(품번.CMU);
+					JW_BMA.push(품번.BMA);
 
 					break;
 			
 				case 'CS' :
-					CS.LWR_CASE.push(품번.LWR_CASE);
-					CS.UPR_CASE.push(품번.UPR_CASE);
-					CS.S_PLUG.push(품번.S_PLUG);
-					CS.SPA.push(품번.SPA);
-					CS.HV_CNTR.push(품번.HV_CNTR);
-					CS.HT_CNTR.push(품번.HT_CNTR);
-					CS.PRA.push(품번.PRA);
-					CS.FUSE.push(품번.FUSE);
-					CS.RELAY.push(품번.RELAY);
-					CS.LV_W_H.push(품번.LV_W_H);
-					CS.HV_W_H.push(품번.HV_W_H);
-					CS.BMU.push(품번.BMU);
-					CS.온도센서.push(품번.온도센서);
-					CS.CMU.push(품번.CMU);
-					CS.BMA.push(품번.BMA);
+					CS_LWR_CASE.push(품번.LWR_CASE);
+					CS_UPR_CASE.push(품번.UPR_CASE);
+					CS_S_PLUG.push(품번.S_PLUG);
+					CS_SPA.push(품번.SPA);
+					CS_HV_CNTR.push(품번.HV_CNTR);
+					CS_HT_CNTR.push(품번.HT_CNTR);
+					CS_PRA.push(품번.PRA);
+					CS_FUSE.push(품번.FUSE);
+					CS_RELAY.push(품번.RELAY);
+					CS_LV_W_H.push(품번.LV_W_H);
+					CS_HV_W_H.push(품번.HV_W_H);
+					CS_BMU.push(품번.BMU);
+					CS_온도센서.push(품번.온도센서);
+					CS_CMU.push(품번.CMU);
+					CS_BMA.push(품번.BMA);
 
 					break;
 			
 				case 'LK' :
-					LK.LWR_CASE.push(품번.LWR_CASE);
-					LK.UPR_CASE.push(품번.UPR_CASE);
-					LK.S_PLUG.push(품번.S_PLUG);
-					LK.SPA.push(품번.SPA);
-					LK.HV_CNTR.push(품번.HV_CNTR);
-					LK.HT_CNTR.push(품번.HT_CNTR);
-					LK.PRA.push(품번.PRA);
-					LK.FUSE.push(품번.FUSE);
-					LK.RELAY.push(품번.RELAY);
-					LK.LV_W_H.push(품번.LV_W_H);
-					LK.HV_W_H.push(품번.HV_W_H);
-					LK.BMU.push(품번.BMU);
-					LK.온도센서.push(품번.온도센서);
-					LK.CMU.push(품번.CMU);
-					LK.BMA.push(품번.BMA);
+					LK_LWR_CASE.push(품번.LWR_CASE);
+					LK_UPR_CASE.push(품번.UPR_CASE);
+					LK_S_PLUG.push(품번.S_PLUG);
+					LK_SPA.push(품번.SPA);
+					LK_HV_CNTR.push(품번.HV_CNTR);
+					LK_HT_CNTR.push(품번.HT_CNTR);
+					LK_PRA.push(품번.PRA);
+					LK_FUSE.push(품번.FUSE);
+					LK_RELAY.push(품번.RELAY);
+					LK_LV_W_H.push(품번.LV_W_H);
+					LK_HV_W_H.push(품번.HV_W_H);
+					LK_BMU.push(품번.BMU);
+					LK_온도센서.push(품번.온도센서);
+					LK_CMU.push(품번.CMU);
+					LK_BMA.push(품번.BMA);
 
 					break;
 			
 				case 'LKFC' :
-					LKFC.LWR_CASE.push(품번.LWR_CASE);
-					LKFC.UPR_CASE.push(품번.UPR_CASE);
-					LKFC.S_PLUG.push(품번.S_PLUG);
-					LKFC.SPA.push(품번.SPA);
-					LKFC.HV_CNTR.push(품번.HV_CNTR);
-					LKFC.HT_CNTR.push(품번.HT_CNTR);
-					LKFC.PRA.push(품번.PRA);
-					LKFC.FUSE.push(품번.FUSE);
-					LKFC.RELAY.push(품번.RELAY);
-					LKFC.LV_W_H.push(품번.LV_W_H);
-					LKFC.HV_W_H.push(품번.HV_W_H);
-					LKFC.BMU.push(품번.BMU);
-					LKFC.온도센서.push(품번.온도센서);
-					LKFC.CMU.push(품번.CMU);
-					LKFC.BMA.push(품번.BMA);
+					LKFC_LWR_CASE.push(품번.LWR_CASE);
+					LKFC_UPR_CASE.push(품번.UPR_CASE);
+					LKFC_S_PLUG.push(품번.S_PLUG);
+					LKFC_SPA.push(품번.SPA);
+					LKFC_HV_CNTR.push(품번.HV_CNTR);
+					LKFC_HT_CNTR.push(품번.HT_CNTR);
+					LKFC_PRA.push(품번.PRA);
+					LKFC_FUSE.push(품번.FUSE);
+					LKFC_RELAY.push(품번.RELAY);
+					LKFC_LV_W_H.push(품번.LV_W_H);
+					LKFC_HV_W_H.push(품번.HV_W_H);
+					LKFC_BMU.push(품번.BMU);
+					LKFC_온도센서.push(품번.온도센서);
+					LKFC_CMU.push(품번.CMU);
+					LKFC_BMA.push(품번.BMA);
 
 					break;
 			
 				case 'LM' :
-					LM.LWR_CASE.push(품번.LWR_CASE);
-					LM.UPR_CASE.push(품번.UPR_CASE);
-					LM.S_PLUG.push(품번.S_PLUG);
-					LM.SPA.push(품번.SPA);
-					LM.HV_CNTR.push(품번.HV_CNTR);
-					LM.HT_CNTR.push(품번.HT_CNTR);
-					LM.PRA.push(품번.PRA);
-					LM.FUSE.push(품번.FUSE);
-					LM.RELAY.push(품번.RELAY);
-					LM.LV_W_H.push(품번.LV_W_H);
-					LM.HV_W_H.push(품번.HV_W_H);
-					LM.BMU.push(품번.BMU);
-					LM.온도센서.push(품번.온도센서);
-					LM.CMU.push(품번.CMU);
-					LM.BMA.push(품번.BMA);
+					LM_LWR_CASE.push(품번.LWR_CASE);
+					LM_UPR_CASE.push(품번.UPR_CASE);
+					LM_S_PLUG.push(품번.S_PLUG);
+					LM_SPA.push(품번.SPA);
+					LM_HV_CNTR.push(품번.HV_CNTR);
+					LM_HT_CNTR.push(품번.HT_CNTR);
+					LM_PRA.push(품번.PRA);
+					LM_FUSE.push(품번.FUSE);
+					LM_RELAY.push(품번.RELAY);
+					LM_LV_W_H.push(품번.LV_W_H);
+					LM_HV_W_H.push(품번.HV_W_H);
+					LM_BMU.push(품번.BMU);
+					LM_온도센서.push(품번.온도센서);
+					LM_CMU.push(품번.CMU);
+					LM_BMA.push(품번.BMA);
 
 					break;
 
@@ -480,7 +647,647 @@ async function 품번_list() {
 			}
 		});
 	}
+	console.log(LM_BMA);
+
+	select_box_set();
 }
+
+function select_box_set_A() {
+        //os/ed/sk3/lk
+	//
+	switch (차종) {
+		case "DE":
+		case "DE_EV":
+		case "SK3":
+		case "SK3_EV":
+			DE_SK3_LWR_CASE.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_A_LWR_CASE_SEL.appendChild(option);
+			}
+
+			DE_SK3_UPR_CASE.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_A_UPR_CASE_SEL.appendChild(option);
+			}
+
+			DE_SK3_S_PLUG.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_A_S_PLUG_SEL.appendChild(option); 
+			}
+
+			DE_SK3_SPA.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_A_SPA_SEL.appendChild(option);   
+			}
+
+			DE_SK3_HV_CNTR.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_A_HV_CNTR_SEL.appendChild(option);  
+			}
+
+			DE_SK3_HT_CNTR.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_A_HT_CNTR_SEL.appendChild(option); 
+			}
+
+			DE_SK3_PRA.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_A_PRA_SEL.appendChild(option);   
+			}
+
+			DE_SK3_LV_W_H.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_A_LV_W_H_SEL.appendChild(option); 
+			}
+
+			DE_SK3_HV_W_H.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_A_HV_W_H_1_SEL.appendChild(option);
+				_A_HV_W_H_2_SEL.appendChild(option); 
+				_A_HV_W_H_3_SEL.appendChild(option); 
+				_A_HV_W_H_4_SEL.appendChild(option); 
+				_A_HV_W_H_5_SEL.appendChild(option); 
+			}
+
+			DE_SK3_BMU.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_A_BMU_SEL.appendChild(option); 
+			}
+
+			DE_SK3_CMU.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_A_CMU_1_SEL.appendChild(option);
+				_A_CMU_2_SEL.appendChild(option);
+				_A_CMU_3_SEL.appendChild(option);
+				_A_CMU_4_SEL.appendChild(option);
+				_A_CMU_5_SEL.appendChild(option);
+			}
+
+			break;
+
+		case "OS":
+		case "OS_EV":
+			OS_LWR_CASE.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_A_LWR_CASE_SEL.appendChild(option);
+			}
+
+			OS_UPR_CASE.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_A_UPR_CASE_SEL.appendChild(option);
+			}
+
+			OS_S_PLUG.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_A_S_PLUG_SEL.appendChild(option); 
+			}
+
+			OS_SPA.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_A_SPA_SEL.appendChild(option);   
+			}
+
+			OS_HV_CNTR.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_A_HV_CNTR_SEL.appendChild(option);  
+			}
+
+			OS_HT_CNTR.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_A_HT_CNTR_SEL.appendChild(option); 
+			}
+
+			OS_PRA.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_A_PRA_SEL.appendChild(option);   
+			}
+
+			OS_LV_W_H.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_A_LV_W_H_SEL.appendChild(option); 
+			}
+
+			OS_HV_W_H.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_A_HV_W_H_1_SEL.appendChild(option);
+				_A_HV_W_H_2_SEL.appendChild(option); 
+				_A_HV_W_H_3_SEL.appendChild(option); 
+				_A_HV_W_H_4_SEL.appendChild(option); 
+				_A_HV_W_H_5_SEL.appendChild(option); 
+			}
+
+			OS_BMU.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_A_BMU_SEL.appendChild(option); 
+			}
+
+			OS_CMU.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_A_CMU_1_SEL.appendChild(option);
+				_A_CMU_2_SEL.appendChild(option);
+				_A_CMU_3_SEL.appendChild(option);
+				_A_CMU_4_SEL.appendChild(option);
+				_A_CMU_5_SEL.appendChild(option);
+			}
+
+			break;
+
+		case "LK":
+		case "LK_EV":
+			LK_LWR_CASE.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_A_LWR_CASE_SEL.appendChild(option);
+			}
+
+			LK_UPR_CASE.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_A_UPR_CASE_SEL.appendChild(option);
+			}
+
+			LK_S_PLUG.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_A_S_PLUG_SEL.appendChild(option); 
+			}
+
+			LK_SPA.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_A_SPA_SEL.appendChild(option);   
+			}
+
+			LK_HV_CNTR.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_A_HV_CNTR_SEL.appendChild(option);  
+			}
+
+			LK_HT_CNTR.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_A_HT_CNTR_SEL.appendChild(option); 
+			}
+
+			LK_PRA.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_A_PRA_SEL.appendChild(option);   
+			}
+
+			LK_LV_W_H.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_A_LV_W_H_SEL.appendChild(option); 
+			}
+
+			LK_HV_W_H.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_A_HV_W_H_1_SEL.appendChild(option);
+				_A_HV_W_H_2_SEL.appendChild(option); 
+				_A_HV_W_H_3_SEL.appendChild(option); 
+				_A_HV_W_H_4_SEL.appendChild(option); 
+				_A_HV_W_H_5_SEL.appendChild(option); 
+			}
+
+			LK_BMU.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_A_BMU_SEL.appendChild(option); 
+			}
+
+			LK_CMU.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_A_CMU_1_SEL.appendChild(option);
+				_A_CMU_2_SEL.appendChild(option);
+				_A_CMU_3_SEL.appendChild(option);
+				_A_CMU_4_SEL.appendChild(option);
+				_A_CMU_5_SEL.appendChild(option);
+			}
+
+			break;
+
+		case 'LKFC' :
+			LKFC_LWR_CASE.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_A_LWR_CASE_SEL.appendChild(option);
+			}
+
+			LKFC_UPR_CASE.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_A_UPR_CASE_SEL.appendChild(option);
+			}
+
+			LKFC_S_PLUG.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_A_S_PLUG_SEL.appendChild(option); 
+			}
+
+			LKFC_SPA.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_A_SPA_SEL.appendChild(option);   
+			}
+
+			LKFC_HV_CNTR.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_A_HV_CNTR_SEL.appendChild(option);  
+			}
+
+			LKFC_HT_CNTR.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_A_HT_CNTR_SEL.appendChild(option); 
+			}
+
+			LKFC_PRA.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_A_PRA_SEL.appendChild(option);   
+			}
+
+			LKFC_LV_W_H.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_A_LV_W_H_SEL.appendChild(option); 
+			}
+
+			LKFC_HV_W_H.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_A_HV_W_H_1_SEL.appendChild(option);
+				_A_HV_W_H_2_SEL.appendChild(option); 
+				_A_HV_W_H_3_SEL.appendChild(option); 
+				_A_HV_W_H_4_SEL.appendChild(option); 
+				_A_HV_W_H_5_SEL.appendChild(option); 
+			}
+
+			LKFC_BMU.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_A_BMU_SEL.appendChild(option); 
+			}
+
+			LKFC_CMU.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_A_CMU_1_SEL.appendChild(option);
+				_A_CMU_2_SEL.appendChild(option);
+				_A_CMU_3_SEL.appendChild(option);
+				_A_CMU_4_SEL.appendChild(option);
+				_A_CMU_5_SEL.appendChild(option);
+			}
+
+			break;
+
+		case 'CV' :
+			CV_LWR_CASE.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_A_LWR_CASE_SEL.appendChild(option);
+			}
+
+			CV_UPR_CASE.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_A_UPR_CASE_SEL.appendChild(option);
+			}
+
+			CV_S_PLUG.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_A_S_PLUG_SEL.appendChild(option); 
+			}
+
+			CV_SPA.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_A_SPA_SEL.appendChild(option);   
+			}
+
+			CV_HV_CNTR.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_A_LV_W_H_SEL.appendChild(option); 
+			}
+
+			CV_HT_CNTR.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_A_HV_W_H_1_SEL.appendChild(option);
+				_A_HV_W_H_2_SEL.appendChild(option); 
+				_A_HV_W_H_3_SEL.appendChild(option); 
+				_A_HV_W_H_4_SEL.appendChild(option); 
+				_A_HV_W_H_5_SEL.appendChild(option); 
+			}
+
+			CV_PRA.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_A_PRA_SEL.appendChild(option);   
+			}
+
+			CV_LV_W_H.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_A_LV_W_H_SEL.appendChild(option); 
+			}
+
+			CV_HV_W_H.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_A_HV_W_H_1_SEL.appendChild(option);
+				_A_HV_W_H_2_SEL.appendChild(option); 
+				_A_HV_W_H_3_SEL.appendChild(option); 
+				_A_HV_W_H_4_SEL.appendChild(option); 
+				_A_HV_W_H_5_SEL.appendChild(option); 
+			}
+
+			CV_BMU.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_A_BMU_SEL.appendChild(option); 
+			}
+
+			CV_CMU.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_A_CMU_1_SEL.appendChild(option);
+				_A_CMU_2_SEL.appendChild(option);
+				_A_CMU_3_SEL.appendChild(option);
+				_A_CMU_4_SEL.appendChild(option);
+				_A_CMU_5_SEL.appendChild(option);
+			}
+
+			break;
+	}
+}
+
+function select_box_set_B() {
+        //HR / PU
+	
+	switch (차종) {
+		case 'HR/PU' :
+			HR_PU_LWR_CASE.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_B_LWR_CASE_SEL.appendChild(option);
+			}
+
+			HR_PU_UPR_CASE.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_B_UPR_CASE_SEL.appendChild(option);
+			}
+
+			HR_PU_HV_CNTR.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_B_LV_W_H_SEL.appendChild(option); 
+			}
+
+			HR_PU_HT_CNTR.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_B_HT_CNTR_SEL.appendChild(option); 
+			}
+
+			HR_PU_PRA.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_B_PRA_SEL.appendChild(option);   
+			}
+
+			HR_PU_FUSE.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_B_FUSE_SEL.appendChild(option);   
+			}
+
+			HR_PU_LV_W_H.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_B_LV_W_H_SEL.appendChild(option);   
+			}
+
+			HR_PU_HV_W_H.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_B_HV_W_H_1_SEL.appendChild(option);   
+				_B_HV_W_H_2_SEL.appendChild(option);   
+			}
+
+			HR_PU_BMU.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_B_BMU_SEL.appendChild(option);   
+			}
+
+			HR_PU_CMU.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_B_CMU_1_SEL.appendChild(option);   
+				_B_CMU_2_SEL.appendChild(option);   _B_CMU_3_SEL.appendChild(option);   
+				_B_CMU_4_SEL.appendChild(option);   
+				_B_CMU_5_SEL.appendChild(option);   
+			}
+
+			break;
+	}
+}
+
+function select_box_set_C() {
+        //NE/CV/JW1/LM
+
+	switch (차종) {
+		case 'CV' :
+			CV_LWR_CASE.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_C_LWR_CASE_SEL.appendChild(option);
+			}
+
+			CV_UPR_CASE.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_C_UPR_CASE_SEL.appendChild(option);
+			}
+
+			CV_HV_CNTR.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_C_HV_CNTR_1_SEL.appendChild(option);
+				_C_HV_CNTR_2_SEL.appendChild(option);
+			}
+
+			CV_HT_CNTR
+			CV_PRA
+			CV_FUSE
+			CV_LV_W_H
+			CV_HV_W_H
+			CV_BMU
+			CV_CMU
+
+			break;
+
+		case 'NE' :
+			NE_LWR_CASE
+			NE_UPR_CASE
+			NE_HV_CNTR
+			NE_HT_CNTR
+			NE_PRA
+			NE_FUSE
+			NE_LV_W_H
+			NE_HV_W_H
+			NE_BMU
+			NE_CMU
+
+			break;
+
+		case 'JW' :
+			JW_LWR_CASE
+			JW_UPR_CASE
+			JW_HV_CNTR
+			JW_HT_CNTR
+			JW_PRA
+			JW_FUSE
+			JW_LV_W_H
+			JW_HV_W_H
+			JW_BMU
+			JW_CMU
+
+			break;
+
+		case 'LM' :
+			LM_LWR_CASE
+			LM_UPR_CASE
+			LM_HV_CNTR
+			LM_HT_CNTR
+			LM_PRA
+			LM_FUSE
+			LM_LV_W_H
+			LM_HV_W_H
+			LM_BMU
+			LM_CMU
+
+			break;
+	}
+}
+
+function select_box_set_D() {
+	//cs
+	
+	switch (차종) {
+		case 'CS' :
+			CS_LWR_CASE
+			CS_UPR_CASE
+			CS_HV_CNTR.push(품번.HV_CNTR);
+			CS_HT_CNTR.push(품번.HT_CNTR);
+			CS_RELAY.push(품번.RELAY);
+			CS_LV_W_H.push(품번.LV_W_H);
+			CS_HV_W_H.push(품번.HV_W_H);
+			CS_BMU.push(품번.BMU);
+			CS_CMU.push(품번.CMU);
+
+			break;
+	}
 
 async function 부품정보_list_load() {
 	if (_management_id.value == "") return;
