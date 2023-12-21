@@ -88,7 +88,7 @@ var 기초보고서_v = [];
 var 완료보고서_v = [];
 var 계정_v = [];
 var 부품정보_list_v = [];
-var 품번 = [];
+var 품번_v = [];
 
 var BSA재제조_cnt = 0;
 var 입고_cnt = 0;

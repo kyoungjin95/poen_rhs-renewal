@@ -3,7 +3,6 @@ var _passwd;
 var _passwd2;
 var _set_level;
 var _csv;
-var _품번_csv;
 
 async function 관리자_시작() {
 	flag_관리자 = false;
@@ -71,7 +70,7 @@ async function 관리자_시작() {
 			_관리번호.value = row.getData().관리번호;
 		}
 	});
-	_csv = document.getElementById('_csv');
+	read_품번_func_csv();
 }
 
 async function add_user() {
@@ -245,6 +244,7 @@ async function doo_2() {
 }
 
 function read_품번_func_csv() {
+	var _품번_csv = document.getElementById('_csv');
 	_품번_csv.addEventListener('input', function (event) {
 		console.log('file finded');
 		const target = event.target;
