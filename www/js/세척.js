@@ -1,3 +1,4 @@
+var 입력재제조번호 = '';
 async function 세척_시작(is재제조 = 0) {
 	while (_management_id == undefined) {
 		await sleep(DELAY);
@@ -67,6 +68,28 @@ async function 세척_시작(is재제조 = 0) {
 	console.log('load: ', _management_id.value);
 
 	관리번호 = _management_id.value;
+
+	if(_재제조번호.value == '') {
+		var today_count;
+		console.log('make product key');
+
+		find(변수, 'mado_product_no');
+		await delay();
+
+		if(변수_v == null) {
+			today_count = String(1);
+		} else {
+			today_count = Number(변수_v.값) + 1;
+			today_count = today_count.toString();
+		}
+
+		var product_no = make_md_product_no(today_count);
+
+		console.log('product no:', product_no);
+
+		_재제조번호.value = product_no;
+		입력재제조번호 = product_no;
+	}
 
 	find(세척, _management_id.value);
 	await delay();
