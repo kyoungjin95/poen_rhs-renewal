@@ -151,7 +151,6 @@ io.on('connection', async function(socket) {
 	});
 
 	socket.on('findOne', async function(worker, col, query, options, check) {
-		init_product_no();
 		if(_old_client_ip != client_ip) {
 			_start_time = new Date().getTime();
 			_old_client_ip = client_ip;

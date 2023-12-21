@@ -113,6 +113,9 @@ async function 부품정보_list_시작() {
 	await 부품정보_list_load();
 }
 
+async function 품번_list() {
+}
+
 async function 부품정보_list_load() {
 	if (_management_id.value == "") return;
 

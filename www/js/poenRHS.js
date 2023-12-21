@@ -42,6 +42,7 @@ const 기초보고서 = '기초보고서';
 const 완료보고서 = '완료보고서';
 const 부품정보_list = '부품정보_list';
 const 구자료 = '구자료';
+const 품번 = '품번';
 
 var 구자료_v = [];
 var BSA재제조_v = [];
@@ -85,6 +86,7 @@ var 기초보고서_v = [];
 var 완료보고서_v = [];
 var 계정_v = [];
 var 부품정보_list_v = [];
+var 품번 = [];
 
 var BSA재제조_cnt = 0;
 var 입고_cnt = 0;
@@ -128,6 +130,7 @@ var 완료보고서_cnt = 0;
 var 계정_cnt = 0;
 var 부품정보_list_cnt = 0;
 var 구자료_cnt = 0;
+var 품번_cnt = 0;
 
 var option_입고_cnt = 0;
 var option_세척_cnt = 0;
@@ -1277,6 +1280,27 @@ const 부품정보_list_doc = {
 	D2_LV_W_H_품번: '',
 	D2_MODULE_1_품번: '',
 };
+
+const 품번_doc = {
+	번호 : '',
+	차종 : '',
+	품번 : '',
+	LWR_CASE : '',
+	UPR_CASE : '',
+	S_PLUG : '',
+	SPA : '',
+	HV_CNTR : '',
+	HT_CNTR : '',
+	PRA : '',
+	FUSE : '',
+	RELAY : '',
+	LV_W_H : '',
+	HV_W_H : '',
+	BMU : '',
+	온도센서 : '',
+	CMU : '',
+	BMA : ''
+}
 
 const 계정_ = {
 	_id: 0,
@@ -2442,6 +2466,28 @@ const 부품정보_list_ = {
 	D2_MODULE_1_품번: 1,
 };
 
+const 품번_ = {
+	_id : 0,
+	번호 : 1,
+	차종 : 1,
+	품번 : 1,
+	LWR_CASE : 1,
+	UPR_CASE : 1,
+	S_PLUG : 1,
+	SPA : 1,
+	HV_CNTR : 1,
+	HT_CNTR : 1,
+	PRA : 1,
+	FUSE : 1,
+	RELAY : 1,
+	LV_W_H : 1,
+	HV_W_H : 1,
+	BMU : 1,
+	온도센서 : 1,
+	CMU : 1,
+	BMA : 1
+}
+
 var doc_count = 0;
 var update_count = 0;
 var insert_count = 0;
@@ -2691,6 +2737,10 @@ socket.on('count_result', async function (col, count, rcv_check, option = '') {
 			부품정보_list_cnt = 0;
 			부품정보_list_cnt = JSON.parse(JSON.stringify(count));
 
+		case 품번:
+			품번_cnt = 0;
+			부번_cnt = JSON.parse(JSON.stringify(count));
+			
 		default:
 			doc_count = 0;
 			doc_count = JSON.parse(JSON.stringify(count));
@@ -3000,6 +3050,11 @@ socket.on('find_result', async function (col, result, rcv_check) {
 			구자료_v = JSON.parse(JSON.stringify(result));
 			break;
 
+		case 품번:
+			품번_v = [];
+			품번_v = JSON.parse(JSON.stringify(result));
+			break;
+
 		default:
 			find_array = [];
 			find_array = JSON.parse(JSON.stringify(result));
@@ -3081,6 +3136,7 @@ function reset_result() {
 	완료보고서_v = [];
 	부품정보_list_v = [];
 	구자료_v = [];
+	품번_v = [];
 	find_array = []
 }
 
@@ -3125,6 +3181,7 @@ function reset_count() {
 	기초보고서_cnt = 0;
 	완료보고서_cnt = 0;
 	부품정보_list_cnt = 0;
+	품번_cnt = 0;
 	doc_count = 0;
 }
 
@@ -3194,6 +3251,12 @@ async function update_계정(col, doc) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	socket.emit('update', worker, col, { id: doc.id }, { $set: doc });
+}
+
+async function update_품번(col, doc) {
+	if (socket == undefined) return;
+	flag_arrivedMSG = false;
+	socket.emit('update', worker, col, { 번호: doc.번호 }, { $set: doc });
 }
 
 async function update_신품정보(col, doc) {
@@ -3431,11 +3494,23 @@ async function find(col, management_id) {
 			socket.emit('findOne', worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 부품정보_list_ }, check);
 			break;
 
+		case '품번':
+			socket.emit('findOne', worker, col, { 번호: management_id }, { sort: { kind: 1 }, projection: 품번_ }, check);
+			break;
+
 		default:
 			console.log('collection name is not match');
 	}
 
 
+}
+
+async function findOne_품번(col, query) {
+	if (socket == undefined) return;
+	flag_arrivedMSG = false;
+	check++;
+	if (check > 10) check = 0;
+	socket.emit('findOne', worker, col, query, { sort: { kind: 1 }, projection: 품번_ }, check);
 }
 
 async function findOne_구자료(col, query) {
@@ -3625,7 +3700,6 @@ async function findOne_부품정보_list(col, query) {
 	socket.emit('findOne', worker, col, query, { sort: { kind: 1 }, projection: 부품정보_list_ }, check);
 }
 
-
 async function find_기초보고서(col, query) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
@@ -3659,6 +3733,14 @@ async function find_계정(col, query) {
 	if (check > 10) check = 0;
 
 	socket.emit('find', worker, col, query, { sort: { kind: 1 }, projection: 계정_ }, check);
+}
+
+async function find_품번(col, query) {
+	if (socket == undefined) return;
+	flag_arrivedMSG = false;
+	check++;
+	if (check > 10) check = 0;
+	socket.emit('find', worker, col, query, { sort: { kind: 1 }, projection: 품번_ }, check);
 }
 
 async function find_구장재고(col, query) {
