@@ -114,6 +114,372 @@ async function 부품정보_list_시작() {
 }
 
 async function 품번_list() {
+	var DE_SK3_LWR_CASE = [];
+	var OS_LWR_CASE = [];
+	var HR_PU_LWR_CASE = [];
+	var CV_LWR_CASE = [];
+	var NE_LWR_CASE = [];
+	var JW_LWR_CASE = [];
+	var CS_LWR_CASE = [];
+	var LK_LWR_CASE = [];
+	var LK_FC_LWR_CASE = [];
+	var LM_LWR_CASE = [];
+
+	var DE_SK3_UPR_CASE = [];
+	var OS_UPR_CASE = [];
+	var HR_PU_UPR_CASE = [];
+	var CV_UPR_CASE = [];
+	var NE_UPR_CASE = [];
+	var JW_UPR_CASE = [];
+	var CS_UPR_CASE = [];
+	var LK_UPR_CASE = [];
+	var LK_FC_UPR_CASE = [];
+	var LM_UPR_CASE = [];
+
+	var DE_SK3_S_PLUG = [];
+	var OS_S_PLUG = [];
+	var HR_PU_S_PLUG = [];
+	var CV_S_PLUG = [];
+	var NE_S_PLUG = [];
+	var JW_S_PLUG = [];
+	var CS_S_PLUG = [];
+	var LK_S_PLUG = [];
+	var LK_FC_S_PLUG = [];
+	var LM_S_PLUG = [];
+
+	var DE_SK3_SPA  = [];
+	var OS_SPA  = [];
+	var HR_PU_SPA  = [];
+	var CV_SPA  = [];
+	var NE_SPA  = [];
+	var JW_SPA  = [];
+	var CS_SPA  = [];
+	var LK_SPA  = [];
+	var LK_FC_SPA  = [];
+	var LM_SPA  = [];
+
+	var DE_SK3_HV_CNTR = [];
+	var OS_HV_CNTR = [];
+	var HR_PU_HV_CNTR = [];
+	var CV_HV_CNTR = [];
+	var NE_HV_CNTR = [];
+	var JW_HV_CNTR = [];
+	var CS_HV_CNTR = [];
+	var LK_HV_CNTR = [];
+	var LK_FC_HV_CNTR = [];
+	var LM_HV_CNTR = [];
+
+	var DE_SK3_HT_CNTR = [];
+	var OS_HT_CNTR = [];
+	var HR_PU_HT_CNTR = [];
+	var CV_HT_CNTR = [];
+	var NE_HT_CNTR = [];
+	var JW_HT_CNTR = [];
+	var CS_HT_CNTR = [];
+	var LK_HT_CNTR = [];
+	var LK_FC_HT_CNTR = [];
+	var LM_HT_CNTR = [];
+
+	var DE_SK3_PRA = [];
+	var OS_PRA = [];
+	var HR_PU_PRA = [];
+	var CV_PRA = [];
+	var NE_PRA = [];
+	var JW_PRA = [];
+	var CS_PRA = [];
+	var LK_PRA = [];
+	var LK_FC_PRA = [];
+	var LM_PRA = [];
+
+	var DE_SK3_FUSE = [];
+	var OS_FUSE = [];
+	var HR_PU_FUSE = [];
+	var CV_FUSE = [];
+	var NE_FUSE = [];
+	var JW_FUSE = [];
+	var CS_FUSE = [];
+	var LK_FUSE = [];
+	var LK_FC_FUSE = [];
+	var LM_FUSE = [];
+
+	var DE_SK3_RELAY = [];
+	var OS_RELAY = [];
+	var HR_PU_RELAY = [];
+	var CV_RELAY = [];
+	var NE_RELAY = [];
+	var JW_RELAY = [];
+	var CS_RELAY = [];
+	var LK_RELAY = [];
+	var LK_FC_RELAY = [];
+	var LM_RELAY = [];
+
+	var DE_SK3_LV_W_H = [];
+	var OS_LV_W_H = [];
+	var HR_PU_LV_W_H = [];
+	var CV_LV_W_H = [];
+	var NE_LV_W_H = [];
+	var JW_LV_W_H = [];
+	var CS_LV_W_H = [];
+	var LK_LV_W_H = [];
+	var LK_FC_LV_W_H = [];
+	var LM_LV_W_H = [];
+
+	var DE_SK3_HV_W_H  = [];
+	var OS_HV_W_H  = [];
+	var HR_PU_HV_W_H  = [];
+	var CV_HV_W_H  = [];
+	var NE_HV_W_H  = [];
+	var JW_HV_W_H  = [];
+	var CS_HV_W_H  = [];
+	var LK_HV_W_H  = [];
+	var LK_FC_HV_W_H  = [];
+	var LM_HV_W_H  = [];
+
+	var DE_SK3_BMU  = [];
+	var OS_BMU  = [];
+	var HR_PU_BMU  = [];
+	var CV_BMU  = [];
+	var NE_BMU  = [];
+	var JW_BMU  = [];
+	var CS_BMU  = [];
+	var LK_BMU  = [];
+	var LK_FC_BMU  = [];
+	var LM_BMU  = [];
+
+	var DE_SK3_온도센서 = [];
+	var OS_온도센서 = [];
+	var HR_PU_온도센서 = [];
+	var CV_온도센서 = [];
+	var NE_온도센서 = [];
+	var JW_온도센서 = [];
+	var CS_온도센서 = [];
+	var LK_온도센서 = [];
+	var LK_FC_온도센서 = [];
+	var LM_온도센서 = [];
+
+	var DE_SK3_CMU = [];
+	var OS_CMU = [];
+	var HR_PU_CMU = [];
+	var CV_CMU = [];
+	var NE_CMU = [];
+	var JW_CMU = [];
+	var CS_CMU = [];
+	var LK_CMU = [];
+	var LK_FC_CMU = [];
+	var LM_CMU = [];
+
+	var DE_SK_BMA = [];
+	var OS_BMA = [];
+	var HR_PU_BMA = [];
+	var CV_BMA = [];
+	var NE_BMA = [];
+	var JW_BMA = [];
+	var CS_BMA = [];
+	var LK_BMA = [];
+	var LK_FC_BMA = [];
+	var LM_BMA = [];
+
+	find_품번(품번, { 번호 : { $exists : true }});
+	await delay();
+
+	if(품번_v != null) {
+		품번_v.forEach(function(품번) {
+			switch(품번.차종) {
+				case 'DE/SK3' :
+					DE_SK3.LWR_CASE.push(품번.LWR_CASE);
+					DE_SK3.UPR_CASE.push(품번.UPR_CASE);
+					DE_SK3.S_PLUG.push(품번.S_PLUG);
+					DE_SK3.SPA.push(품번.SPA);
+					DE_SK3.HV_CNTR.push(품번.HV_CNTR);
+					DE_SK3.HT_CNTR.push(품번.HT_CNTR);
+					DE_SK3.PRA.push(품번.PRA);
+					DE_SK3.FUSE.push(품번.FUSE);
+					DE_SK3.RELAY.push(품번.RELAY);
+					DE_SK3.LV_W_H.push(품번.LV_W_H);
+					DE_SK3.HV_W_H.push(품번.HV_W_H);
+					DE_SK3.BMU.push(품번.BMU);
+					DE_SK3.온도센서.push(품번.온도센서);
+					DE_SK3.CMU.push(품번.CMU);
+					DE_SK3.BMA.push(품번.BMA);
+
+					break;
+
+				case 'OS' :
+					OS.LWR_CASE.push(품번.LWR_CASE);
+					OS.UPR_CASE.push(품번.UPR_CASE);
+					OS.S_PLUG.push(품번.S_PLUG);
+					OS.SPA.push(품번.SPA);
+					OS.HV_CNTR.push(품번.HV_CNTR);
+					OS.HT_CNTR.push(품번.HT_CNTR);
+					OS.PRA.push(품번.PRA);
+					OS.FUSE.push(품번.FUSE);
+					OS.RELAY.push(품번.RELAY);
+					OS.LV_W_H.push(품번.LV_W_H);
+					OS.HV_W_H.push(품번.HV_W_H);
+					OS.BMU.push(품번.BMU);
+					OS.온도센서.push(품번.온도센서);
+					OS.CMU.push(품번.CMU);
+					OS.BMA.push(품번.BMA);
+
+					break;
+
+				case 'HR/PU' :
+					HR_PU.LWR_CASE.push(품번.LWR_CASE);
+					HR_PU.UPR_CASE.push(품번.UPR_CASE);
+					HR_PU.S_PLUG.push(품번.S_PLUG);
+					HR_PU.SPA.push(품번.SPA);
+					HR_PU.HV_CNTR.push(품번.HV_CNTR);
+					HR_PU.HT_CNTR.push(품번.HT_CNTR);
+					HR_PU.PRA.push(품번.PRA);
+					HR_PU.FUSE.push(품번.FUSE);
+					HR_PU.RELAY.push(품번.RELAY);
+					HR_PU.LV_W_H.push(품번.LV_W_H);
+					HR_PU.HV_W_H.push(품번.HV_W_H);
+					HR_PU.BMU.push(품번.BMU);
+					HR_PU.온도센서.push(품번.온도센서);
+					HR_PU.CMU.push(품번.CMU);
+					HR_PU.BMA.push(품번.BMA);
+
+					break;
+
+				case 'CV' :
+					CV.LWR_CASE.push(품번.LWR_CASE);
+					CV.UPR_CASE.push(품번.UPR_CASE);
+					CV.S_PLUG.push(품번.S_PLUG);
+					CV.SPA.push(품번.SPA);
+					CV.HV_CNTR.push(품번.HV_CNTR);
+					CV.HT_CNTR.push(품번.HT_CNTR);
+					CV.PRA.push(품번.PRA);
+					CV.FUSE.push(품번.FUSE);
+					CV.RELAY.push(품번.RELAY);
+					CV.LV_W_H.push(품번.LV_W_H);
+					CV.HV_W_H.push(품번.HV_W_H);
+					CV.BMU.push(품번.BMU);
+					CV.온도센서.push(품번.온도센서);
+					CV.CMU.push(품번.CMU);
+					CV.BMA.push(품번.BMA);
+
+					break;
+			
+				case 'NE' :
+					NE.LWR_CASE.push(품번.LWR_CASE);
+					NE.UPR_CASE.push(품번.UPR_CASE);
+					NE.S_PLUG.push(품번.S_PLUG);
+					NE.SPA.push(품번.SPA);
+					NE.HV_CNTR.push(품번.HV_CNTR);
+					NE.HT_CNTR.push(품번.HT_CNTR);
+					NE.PRA.push(품번.PRA);
+					NE.FUSE.push(품번.FUSE);
+					NE.RELAY.push(품번.RELAY);
+					NE.LV_W_H.push(품번.LV_W_H);
+					NE.HV_W_H.push(품번.HV_W_H);
+					NE.BMU.push(품번.BMU);
+					NE.온도센서.push(품번.온도센서);
+					NE.CMU.push(품번.CMU);
+					NE.BMA.push(품번.BMA);
+
+					break;
+			
+				case 'JW' :
+					JW.LWR_CASE.push(품번.LWR_CASE);
+					JW.UPR_CASE.push(품번.UPR_CASE);
+					JW.S_PLUG.push(품번.S_PLUG);
+					JW.SPA.push(품번.SPA);
+					JW.HV_CNTR.push(품번.HV_CNTR);
+					JW.HT_CNTR.push(품번.HT_CNTR);
+					JW.PRA.push(품번.PRA);
+					JW.FUSE.push(품번.FUSE);
+					JW.RELAY.push(품번.RELAY);
+					JW.LV_W_H.push(품번.LV_W_H);
+					JW.HV_W_H.push(품번.HV_W_H);
+					JW.BMU.push(품번.BMU);
+					JW.온도센서.push(품번.온도센서);
+					JW.CMU.push(품번.CMU);
+					JW.BMA.push(품번.BMA);
+
+					break;
+			
+				case 'CS' :
+					CS.LWR_CASE.push(품번.LWR_CASE);
+					CS.UPR_CASE.push(품번.UPR_CASE);
+					CS.S_PLUG.push(품번.S_PLUG);
+					CS.SPA.push(품번.SPA);
+					CS.HV_CNTR.push(품번.HV_CNTR);
+					CS.HT_CNTR.push(품번.HT_CNTR);
+					CS.PRA.push(품번.PRA);
+					CS.FUSE.push(품번.FUSE);
+					CS.RELAY.push(품번.RELAY);
+					CS.LV_W_H.push(품번.LV_W_H);
+					CS.HV_W_H.push(품번.HV_W_H);
+					CS.BMU.push(품번.BMU);
+					CS.온도센서.push(품번.온도센서);
+					CS.CMU.push(품번.CMU);
+					CS.BMA.push(품번.BMA);
+
+					break;
+			
+				case 'LK' :
+					LK.LWR_CASE.push(품번.LWR_CASE);
+					LK.UPR_CASE.push(품번.UPR_CASE);
+					LK.S_PLUG.push(품번.S_PLUG);
+					LK.SPA.push(품번.SPA);
+					LK.HV_CNTR.push(품번.HV_CNTR);
+					LK.HT_CNTR.push(품번.HT_CNTR);
+					LK.PRA.push(품번.PRA);
+					LK.FUSE.push(품번.FUSE);
+					LK.RELAY.push(품번.RELAY);
+					LK.LV_W_H.push(품번.LV_W_H);
+					LK.HV_W_H.push(품번.HV_W_H);
+					LK.BMU.push(품번.BMU);
+					LK.온도센서.push(품번.온도센서);
+					LK.CMU.push(품번.CMU);
+					LK.BMA.push(품번.BMA);
+
+					break;
+			
+				case 'LKFC' :
+					LKFC.LWR_CASE.push(품번.LWR_CASE);
+					LKFC.UPR_CASE.push(품번.UPR_CASE);
+					LKFC.S_PLUG.push(품번.S_PLUG);
+					LKFC.SPA.push(품번.SPA);
+					LKFC.HV_CNTR.push(품번.HV_CNTR);
+					LKFC.HT_CNTR.push(품번.HT_CNTR);
+					LKFC.PRA.push(품번.PRA);
+					LKFC.FUSE.push(품번.FUSE);
+					LKFC.RELAY.push(품번.RELAY);
+					LKFC.LV_W_H.push(품번.LV_W_H);
+					LKFC.HV_W_H.push(품번.HV_W_H);
+					LKFC.BMU.push(품번.BMU);
+					LKFC.온도센서.push(품번.온도센서);
+					LKFC.CMU.push(품번.CMU);
+					LKFC.BMA.push(품번.BMA);
+
+					break;
+			
+				case 'LM' :
+					LM.LWR_CASE.push(품번.LWR_CASE);
+					LM.UPR_CASE.push(품번.UPR_CASE);
+					LM.S_PLUG.push(품번.S_PLUG);
+					LM.SPA.push(품번.SPA);
+					LM.HV_CNTR.push(품번.HV_CNTR);
+					LM.HT_CNTR.push(품번.HT_CNTR);
+					LM.PRA.push(품번.PRA);
+					LM.FUSE.push(품번.FUSE);
+					LM.RELAY.push(품번.RELAY);
+					LM.LV_W_H.push(품번.LV_W_H);
+					LM.HV_W_H.push(품번.HV_W_H);
+					LM.BMU.push(품번.BMU);
+					LM.온도센서.push(품번.온도센서);
+					LM.CMU.push(품번.CMU);
+					LM.BMA.push(품번.BMA);
+
+					break;
+
+				default : 
+					console.log('품번 data의 차종을 확인하세요');
+			}
+		});
+	}
 }
 
 async function 부품정보_list_load() {
