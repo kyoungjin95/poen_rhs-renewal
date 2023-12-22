@@ -10,7 +10,7 @@ var LK_FC_LWR_CASE = [];
 var LM_LWR_CASE = [];
 
 var DE_SK3_UPR_CASE = [];
-var OS_UPR_CASE = [];
+var OS_UPR_CASE = []
 var HR_PU_UPR_CASE = [];
 var CV_UPR_CASE = [];
 var NE_UPR_CASE = [];
@@ -173,8 +173,12 @@ async function 부품정보_list_시작() {
 	_management_id.value = 관리번호;
 	_차종.value = 차종;
 
+	var sels = document.querySelectorAll('.select_box');
+	sels.forEach((sel) => {
+	    sel.addEventListener('change', get_sel_value);
+	});
 	auto_focus();
-
+	
 	_A.style.display = "none";
 	_B.style.display = "none";
 	_C.style.display = "none";
@@ -186,6 +190,9 @@ async function 부품정보_list_시작() {
 	_img_3.style.display = "none";
 	_img_4.style.display = "none";
 	_img_5.style.display = "none";
+
+	await 부품정보_list_load();
+	await 품번_list();
 
 	switch (차종) {
 		case "DE":
@@ -209,6 +216,7 @@ async function 부품정보_list_시작() {
 			_img_5.style.display = "none";
 
 			_A_UPR_CASE_QR.focus();
+			select_box_set_A();
 			break;
 
 		case "PU":
@@ -228,6 +236,7 @@ async function 부품정보_list_시작() {
 			_img_5.style.display = "none";
 
 			_B_UPR_CASE_QR.focus();
+			select_box_set_B();
 			break;
 
 		case "CV":
@@ -249,6 +258,7 @@ async function 부품정보_list_시작() {
 			_img_5.style.display = "none";
 
 			_C_UPR_CASE_QR.focus();
+			select_box_set_C();
 			break;
 
 		case "CS":
@@ -266,6 +276,7 @@ async function 부품정보_list_시작() {
 			_img_5.style.display = "block";
 
 			_D_UPR_CASE_QR.focus();
+			select_box_set_D();
 			break;
 
 		default:
@@ -274,9 +285,6 @@ async function 부품정보_list_시작() {
 			return;
 			break;
 	}
-
-	await 부품정보_list_load();
-	await 품번_list();
 }
 
 async function 품번_list() {
@@ -647,12 +655,11 @@ async function 품번_list() {
 			}
 		});
 	}
-	console.log(LM_BMA);
-
-	select_box_set();
 }
 
+
 function select_box_set_A() {
+	var option;
         //os/ed/sk3/lk
 	//
 	switch (차종) {
@@ -660,63 +667,121 @@ function select_box_set_A() {
 		case "DE_EV":
 		case "SK3":
 		case "SK3_EV":
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_A_LWR_CASE_SEL.appendChild(option);
+
 			DE_SK3_LWR_CASE.forEach(function(v) {
+				if(v == '') return;
 				var option = document.createElement('option');
 				option.value = v;
 				option.text = v;
 				_A_LWR_CASE_SEL.appendChild(option);
-			}
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_A_UPR_CASE_SEL.appendChild(option);
 
 			DE_SK3_UPR_CASE.forEach(function(v) {
+				if(v == '') return;
 				var option = document.createElement('option');
 				option.value = v;
 				option.text = v;
 				_A_UPR_CASE_SEL.appendChild(option);
-			}
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_A_S_PLUG_SEL.appendChild(option);
 
 			DE_SK3_S_PLUG.forEach(function(v) {
+				if(v == '') return;
 				var option = document.createElement('option');
 				option.value = v;
 				option.text = v;
 				_A_S_PLUG_SEL.appendChild(option); 
-			}
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_A_SPA_SEL.appendChild(option);
 
 			DE_SK3_SPA.forEach(function(v) {
+				if(v == '') return;
 				var option = document.createElement('option');
 				option.value = v;
 				option.text = v;
 				_A_SPA_SEL.appendChild(option);   
-			}
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_A_HV_CNTR_SEL.appendChild(option);
 
 			DE_SK3_HV_CNTR.forEach(function(v) {
+				if(v == '') return;
 				var option = document.createElement('option');
 				option.value = v;
 				option.text = v;
 				_A_HV_CNTR_SEL.appendChild(option);  
-			}
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_A_HT_CNTR_SEL.appendChild(option);
 
 			DE_SK3_HT_CNTR.forEach(function(v) {
+				if(v == '') return;
 				var option = document.createElement('option');
 				option.value = v;
 				option.text = v;
 				_A_HT_CNTR_SEL.appendChild(option); 
-			}
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_A_PRA_SEL.appendChild(option);
 
 			DE_SK3_PRA.forEach(function(v) {
+				if(v == '') return;
 				var option = document.createElement('option');
 				option.value = v;
 				option.text = v;
 				_A_PRA_SEL.appendChild(option);   
-			}
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_A_LV_W_H_SEL.appendChild(option); 
 
 			DE_SK3_LV_W_H.forEach(function(v) {
+				if(v == '') return;
 				var option = document.createElement('option');
 				option.value = v;
 				option.text = v;
 				_A_LV_W_H_SEL.appendChild(option); 
-			}
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_A_HV_W_H_1_SEL.appendChild(option);
+			_A_HV_W_H_2_SEL.appendChild(option); 
+			_A_HV_W_H_3_SEL.appendChild(option); 
+			_A_HV_W_H_4_SEL.appendChild(option); 
+			_A_HV_W_H_5_SEL.appendChild(option); 
 
 			DE_SK3_HV_W_H.forEach(function(v) {
+				if(v == '') return;
 				var option = document.createElement('option');
 				option.value = v;
 				option.text = v;
@@ -725,16 +790,32 @@ function select_box_set_A() {
 				_A_HV_W_H_3_SEL.appendChild(option); 
 				_A_HV_W_H_4_SEL.appendChild(option); 
 				_A_HV_W_H_5_SEL.appendChild(option); 
-			}
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_A_BMU_SEL.appendChild(option); 
 
 			DE_SK3_BMU.forEach(function(v) {
+				if(v == '') return;
 				var option = document.createElement('option');
 				option.value = v;
 				option.text = v;
 				_A_BMU_SEL.appendChild(option); 
-			}
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_A_CMU_1_SEL.appendChild(option);
+			_A_CMU_2_SEL.appendChild(option);
+			_A_CMU_3_SEL.appendChild(option);
+			_A_CMU_4_SEL.appendChild(option);
+			_A_CMU_5_SEL.appendChild(option);
 
 			DE_SK3_CMU.forEach(function(v) {
+				if(v == '') return;
 				var option = document.createElement('option');
 				option.value = v;
 				option.text = v;
@@ -743,69 +824,127 @@ function select_box_set_A() {
 				_A_CMU_3_SEL.appendChild(option);
 				_A_CMU_4_SEL.appendChild(option);
 				_A_CMU_5_SEL.appendChild(option);
-			}
+			});
 
 			break;
 
 		case "OS":
 		case "OS_EV":
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_A_LWR_CASE_SEL.appendChild(option);
+
 			OS_LWR_CASE.forEach(function(v) {
+				if(v == '') return;
 				var option = document.createElement('option');
 				option.value = v;
 				option.text = v;
 				_A_LWR_CASE_SEL.appendChild(option);
-			}
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_A_UPR_CASE_SEL.appendChild(option);
 
 			OS_UPR_CASE.forEach(function(v) {
+				if(v == '') return;
 				var option = document.createElement('option');
 				option.value = v;
 				option.text = v;
 				_A_UPR_CASE_SEL.appendChild(option);
-			}
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_A_S_PLUG_SEL.appendChild(option); 
 
 			OS_S_PLUG.forEach(function(v) {
+				if(v == '') return;
 				var option = document.createElement('option');
 				option.value = v;
 				option.text = v;
 				_A_S_PLUG_SEL.appendChild(option); 
-			}
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_A_SPA_SEL.appendChild(option);   
 
 			OS_SPA.forEach(function(v) {
+				if(v == '') return;
 				var option = document.createElement('option');
 				option.value = v;
 				option.text = v;
 				_A_SPA_SEL.appendChild(option);   
-			}
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_A_HV_CNTR_SEL.appendChild(option);  
 
 			OS_HV_CNTR.forEach(function(v) {
+				if(v == '') return;
 				var option = document.createElement('option');
 				option.value = v;
 				option.text = v;
 				_A_HV_CNTR_SEL.appendChild(option);  
-			}
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_A_HT_CNTR_SEL.appendChild(option); 
 
 			OS_HT_CNTR.forEach(function(v) {
+				if(v == '') return;
 				var option = document.createElement('option');
 				option.value = v;
 				option.text = v;
 				_A_HT_CNTR_SEL.appendChild(option); 
-			}
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_A_PRA_SEL.appendChild(option);   
 
 			OS_PRA.forEach(function(v) {
+				if(v == '') return;
 				var option = document.createElement('option');
 				option.value = v;
 				option.text = v;
 				_A_PRA_SEL.appendChild(option);   
-			}
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_A_LV_W_H_SEL.appendChild(option); 
 
 			OS_LV_W_H.forEach(function(v) {
+				if(v == '') return;
 				var option = document.createElement('option');
 				option.value = v;
 				option.text = v;
 				_A_LV_W_H_SEL.appendChild(option); 
-			}
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_A_HV_W_H_1_SEL.appendChild(option);
+			_A_HV_W_H_2_SEL.appendChild(option); 
+			_A_HV_W_H_3_SEL.appendChild(option); 
+			_A_HV_W_H_4_SEL.appendChild(option); 
+			_A_HV_W_H_5_SEL.appendChild(option); 
 
 			OS_HV_W_H.forEach(function(v) {
+				if(v == '') return;
 				var option = document.createElement('option');
 				option.value = v;
 				option.text = v;
@@ -814,16 +953,32 @@ function select_box_set_A() {
 				_A_HV_W_H_3_SEL.appendChild(option); 
 				_A_HV_W_H_4_SEL.appendChild(option); 
 				_A_HV_W_H_5_SEL.appendChild(option); 
-			}
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_A_BMU_SEL.appendChild(option); 
 
 			OS_BMU.forEach(function(v) {
+				if(v == '') return;
 				var option = document.createElement('option');
 				option.value = v;
 				option.text = v;
 				_A_BMU_SEL.appendChild(option); 
-			}
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_A_CMU_1_SEL.appendChild(option);
+			_A_CMU_2_SEL.appendChild(option);
+			_A_CMU_3_SEL.appendChild(option);
+			_A_CMU_4_SEL.appendChild(option);
+			_A_CMU_5_SEL.appendChild(option);
 
 			OS_CMU.forEach(function(v) {
+				if(v == '') return;
 				var option = document.createElement('option');
 				option.value = v;
 				option.text = v;
@@ -832,69 +987,127 @@ function select_box_set_A() {
 				_A_CMU_3_SEL.appendChild(option);
 				_A_CMU_4_SEL.appendChild(option);
 				_A_CMU_5_SEL.appendChild(option);
-			}
+			});
 
 			break;
 
 		case "LK":
 		case "LK_EV":
+			 option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_A_LWR_CASE_SEL.appendChild(option);
+
 			LK_LWR_CASE.forEach(function(v) {
+				if(v == '') return;
 				var option = document.createElement('option');
 				option.value = v;
 				option.text = v;
 				_A_LWR_CASE_SEL.appendChild(option);
-			}
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_A_UPR_CASE_SEL.appendChild(option);
 
 			LK_UPR_CASE.forEach(function(v) {
+				if(v == '') return;
 				var option = document.createElement('option');
 				option.value = v;
 				option.text = v;
 				_A_UPR_CASE_SEL.appendChild(option);
-			}
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_A_S_PLUG_SEL.appendChild(option);
 
 			LK_S_PLUG.forEach(function(v) {
+				if(v == '') return;
 				var option = document.createElement('option');
 				option.value = v;
 				option.text = v;
 				_A_S_PLUG_SEL.appendChild(option); 
-			}
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_A_SPA_SEL.appendChild(option);   
 
 			LK_SPA.forEach(function(v) {
+				if(v == '') return;
 				var option = document.createElement('option');
 				option.value = v;
 				option.text = v;
 				_A_SPA_SEL.appendChild(option);   
-			}
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_A_HV_CNTR_SEL.appendChild(option);  
 
 			LK_HV_CNTR.forEach(function(v) {
+				if(v == '') return;
 				var option = document.createElement('option');
 				option.value = v;
 				option.text = v;
 				_A_HV_CNTR_SEL.appendChild(option);  
-			}
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_A_HT_CNTR_SEL.appendChild(option); 
 
 			LK_HT_CNTR.forEach(function(v) {
+				if(v == '') return;
 				var option = document.createElement('option');
 				option.value = v;
 				option.text = v;
 				_A_HT_CNTR_SEL.appendChild(option); 
-			}
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_A_PRA_SEL.appendChild(option);   
 
 			LK_PRA.forEach(function(v) {
+				if(v == '') return;
 				var option = document.createElement('option');
 				option.value = v;
 				option.text = v;
 				_A_PRA_SEL.appendChild(option);   
-			}
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_A_LV_W_H_SEL.appendChild(option); 
 
 			LK_LV_W_H.forEach(function(v) {
+				if(v == '') return;
 				var option = document.createElement('option');
 				option.value = v;
 				option.text = v;
 				_A_LV_W_H_SEL.appendChild(option); 
-			}
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_A_HV_W_H_1_SEL.appendChild(option);
+			_A_HV_W_H_2_SEL.appendChild(option); 
+			_A_HV_W_H_3_SEL.appendChild(option); 
+			_A_HV_W_H_4_SEL.appendChild(option); 
+			_A_HV_W_H_5_SEL.appendChild(option); 
 
 			LK_HV_W_H.forEach(function(v) {
+				if(v == '') return;
 				var option = document.createElement('option');
 				option.value = v;
 				option.text = v;
@@ -903,16 +1116,32 @@ function select_box_set_A() {
 				_A_HV_W_H_3_SEL.appendChild(option); 
 				_A_HV_W_H_4_SEL.appendChild(option); 
 				_A_HV_W_H_5_SEL.appendChild(option); 
-			}
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_A_BMU_SEL.appendChild(option); 
 
 			LK_BMU.forEach(function(v) {
+				if(v == '') return;
 				var option = document.createElement('option');
 				option.value = v;
 				option.text = v;
 				_A_BMU_SEL.appendChild(option); 
-			}
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_A_CMU_1_SEL.appendChild(option);
+			_A_CMU_2_SEL.appendChild(option);
+			_A_CMU_3_SEL.appendChild(option);
+			_A_CMU_4_SEL.appendChild(option);
+			_A_CMU_5_SEL.appendChild(option);
 
 			LK_CMU.forEach(function(v) {
+				if(v == '') return;
 				var option = document.createElement('option');
 				option.value = v;
 				option.text = v;
@@ -921,68 +1150,126 @@ function select_box_set_A() {
 				_A_CMU_3_SEL.appendChild(option);
 				_A_CMU_4_SEL.appendChild(option);
 				_A_CMU_5_SEL.appendChild(option);
-			}
+			});
 
 			break;
 
 		case 'LKFC' :
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_A_LWR_CASE_SEL.appendChild(option);
+
 			LKFC_LWR_CASE.forEach(function(v) {
+				if(v == '') return;
 				var option = document.createElement('option');
 				option.value = v;
 				option.text = v;
 				_A_LWR_CASE_SEL.appendChild(option);
-			}
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_A_UPR_CASE_SEL.appendChild(option);
 
 			LKFC_UPR_CASE.forEach(function(v) {
+				if(v == '') return;
 				var option = document.createElement('option');
 				option.value = v;
 				option.text = v;
 				_A_UPR_CASE_SEL.appendChild(option);
-			}
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_A_S_PLUG_SEL.appendChild(option); 
 
 			LKFC_S_PLUG.forEach(function(v) {
+				if(v == '') return;
 				var option = document.createElement('option');
 				option.value = v;
 				option.text = v;
 				_A_S_PLUG_SEL.appendChild(option); 
-			}
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_A_SPA_SEL.appendChild(option);   
 
 			LKFC_SPA.forEach(function(v) {
+				if(v == '') return;
 				var option = document.createElement('option');
 				option.value = v;
 				option.text = v;
 				_A_SPA_SEL.appendChild(option);   
-			}
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_A_HV_CNTR_SEL.appendChild(option);  
 
 			LKFC_HV_CNTR.forEach(function(v) {
+				if(v == '') return;
 				var option = document.createElement('option');
 				option.value = v;
 				option.text = v;
 				_A_HV_CNTR_SEL.appendChild(option);  
-			}
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_A_HT_CNTR_SEL.appendChild(option); 
 
 			LKFC_HT_CNTR.forEach(function(v) {
+				if(v == '') return;
 				var option = document.createElement('option');
 				option.value = v;
 				option.text = v;
 				_A_HT_CNTR_SEL.appendChild(option); 
-			}
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_A_PRA_SEL.appendChild(option);   
 
 			LKFC_PRA.forEach(function(v) {
+				if(v == '') return;
 				var option = document.createElement('option');
 				option.value = v;
 				option.text = v;
 				_A_PRA_SEL.appendChild(option);   
-			}
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_A_LV_W_H_SEL.appendChild(option); 
 
 			LKFC_LV_W_H.forEach(function(v) {
+				if(v == '') return;
 				var option = document.createElement('option');
 				option.value = v;
 				option.text = v;
 				_A_LV_W_H_SEL.appendChild(option); 
-			}
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_A_HV_W_H_1_SEL.appendChild(option);
+			_A_HV_W_H_2_SEL.appendChild(option); 
+			_A_HV_W_H_3_SEL.appendChild(option); 
+			_A_HV_W_H_4_SEL.appendChild(option); 
+			_A_HV_W_H_5_SEL.appendChild(option); 
 
 			LKFC_HV_W_H.forEach(function(v) {
+				if(v == '') return;
 				var option = document.createElement('option');
 				option.value = v;
 				option.text = v;
@@ -991,16 +1278,32 @@ function select_box_set_A() {
 				_A_HV_W_H_3_SEL.appendChild(option); 
 				_A_HV_W_H_4_SEL.appendChild(option); 
 				_A_HV_W_H_5_SEL.appendChild(option); 
-			}
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_A_BMU_SEL.appendChild(option); 
 
 			LKFC_BMU.forEach(function(v) {
+				if(v == '') return;
 				var option = document.createElement('option');
 				option.value = v;
 				option.text = v;
 				_A_BMU_SEL.appendChild(option); 
-			}
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_A_CMU_1_SEL.appendChild(option);
+			_A_CMU_2_SEL.appendChild(option);
+			_A_CMU_3_SEL.appendChild(option);
+			_A_CMU_4_SEL.appendChild(option);
+			_A_CMU_5_SEL.appendChild(option);
 
 			LKFC_CMU.forEach(function(v) {
+				if(v == '') return;
 				var option = document.createElement('option');
 				option.value = v;
 				option.text = v;
@@ -1009,99 +1312,7 @@ function select_box_set_A() {
 				_A_CMU_3_SEL.appendChild(option);
 				_A_CMU_4_SEL.appendChild(option);
 				_A_CMU_5_SEL.appendChild(option);
-			}
-
-			break;
-
-		case 'CV' :
-			CV_LWR_CASE.forEach(function(v) {
-				var option = document.createElement('option');
-				option.value = v;
-				option.text = v;
-				_A_LWR_CASE_SEL.appendChild(option);
-			}
-
-			CV_UPR_CASE.forEach(function(v) {
-				var option = document.createElement('option');
-				option.value = v;
-				option.text = v;
-				_A_UPR_CASE_SEL.appendChild(option);
-			}
-
-			CV_S_PLUG.forEach(function(v) {
-				var option = document.createElement('option');
-				option.value = v;
-				option.text = v;
-				_A_S_PLUG_SEL.appendChild(option); 
-			}
-
-			CV_SPA.forEach(function(v) {
-				var option = document.createElement('option');
-				option.value = v;
-				option.text = v;
-				_A_SPA_SEL.appendChild(option);   
-			}
-
-			CV_HV_CNTR.forEach(function(v) {
-				var option = document.createElement('option');
-				option.value = v;
-				option.text = v;
-				_A_LV_W_H_SEL.appendChild(option); 
-			}
-
-			CV_HT_CNTR.forEach(function(v) {
-				var option = document.createElement('option');
-				option.value = v;
-				option.text = v;
-				_A_HV_W_H_1_SEL.appendChild(option);
-				_A_HV_W_H_2_SEL.appendChild(option); 
-				_A_HV_W_H_3_SEL.appendChild(option); 
-				_A_HV_W_H_4_SEL.appendChild(option); 
-				_A_HV_W_H_5_SEL.appendChild(option); 
-			}
-
-			CV_PRA.forEach(function(v) {
-				var option = document.createElement('option');
-				option.value = v;
-				option.text = v;
-				_A_PRA_SEL.appendChild(option);   
-			}
-
-			CV_LV_W_H.forEach(function(v) {
-				var option = document.createElement('option');
-				option.value = v;
-				option.text = v;
-				_A_LV_W_H_SEL.appendChild(option); 
-			}
-
-			CV_HV_W_H.forEach(function(v) {
-				var option = document.createElement('option');
-				option.value = v;
-				option.text = v;
-				_A_HV_W_H_1_SEL.appendChild(option);
-				_A_HV_W_H_2_SEL.appendChild(option); 
-				_A_HV_W_H_3_SEL.appendChild(option); 
-				_A_HV_W_H_4_SEL.appendChild(option); 
-				_A_HV_W_H_5_SEL.appendChild(option); 
-			}
-
-			CV_BMU.forEach(function(v) {
-				var option = document.createElement('option');
-				option.value = v;
-				option.text = v;
-				_A_BMU_SEL.appendChild(option); 
-			}
-
-			CV_CMU.forEach(function(v) {
-				var option = document.createElement('option');
-				option.value = v;
-				option.text = v;
-				_A_CMU_1_SEL.appendChild(option);
-				_A_CMU_2_SEL.appendChild(option);
-				_A_CMU_3_SEL.appendChild(option);
-				_A_CMU_4_SEL.appendChild(option);
-				_A_CMU_5_SEL.appendChild(option);
-			}
+			});
 
 			break;
 	}
@@ -1111,80 +1322,149 @@ function select_box_set_B() {
         //HR / PU
 	
 	switch (차종) {
-		case 'HR/PU' :
+		case 'HR' :
+		case 'HR_EV' :
+		case 'PU' :
+		case 'PU_EV' :
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_B_LWR_CASE_SEL.appendChild(option);
+
 			HR_PU_LWR_CASE.forEach(function(v) {
+				if(v == '') return;
 				var option = document.createElement('option');
 				option.value = v;
 				option.text = v;
 				_B_LWR_CASE_SEL.appendChild(option);
-			}
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_B_UPR_CASE_SEL.appendChild(option);
 
 			HR_PU_UPR_CASE.forEach(function(v) {
+				if(v == '') return;
 				var option = document.createElement('option');
 				option.value = v;
 				option.text = v;
 				_B_UPR_CASE_SEL.appendChild(option);
-			}
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_B_LV_W_H_SEL.appendChild(option); 
 
 			HR_PU_HV_CNTR.forEach(function(v) {
+				if(v == '') return;
 				var option = document.createElement('option');
 				option.value = v;
 				option.text = v;
 				_B_LV_W_H_SEL.appendChild(option); 
-			}
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_B_HT_CNTR_SEL.appendChild(option); 
 
 			HR_PU_HT_CNTR.forEach(function(v) {
+				if(v == '') return;
 				var option = document.createElement('option');
 				option.value = v;
 				option.text = v;
 				_B_HT_CNTR_SEL.appendChild(option); 
-			}
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_B_PRA_SEL.appendChild(option);   
 
 			HR_PU_PRA.forEach(function(v) {
+				if(v == '') return;
 				var option = document.createElement('option');
 				option.value = v;
 				option.text = v;
 				_B_PRA_SEL.appendChild(option);   
-			}
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_B_FUSE_SEL.appendChild(option);   
 
 			HR_PU_FUSE.forEach(function(v) {
+				if(v == '') return;
 				var option = document.createElement('option');
 				option.value = v;
 				option.text = v;
 				_B_FUSE_SEL.appendChild(option);   
-			}
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_B_LV_W_H_SEL.appendChild(option);   
 
 			HR_PU_LV_W_H.forEach(function(v) {
+				if(v == '') return;
 				var option = document.createElement('option');
 				option.value = v;
 				option.text = v;
 				_B_LV_W_H_SEL.appendChild(option);   
-			}
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_B_HV_W_H_1_SEL.appendChild(option);   
+			_B_HV_W_H_2_SEL.appendChild(option);   
 
 			HR_PU_HV_W_H.forEach(function(v) {
+				if(v == '') return;
 				var option = document.createElement('option');
 				option.value = v;
 				option.text = v;
 				_B_HV_W_H_1_SEL.appendChild(option);   
 				_B_HV_W_H_2_SEL.appendChild(option);   
-			}
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_B_BMU_SEL.appendChild(option);   
 
 			HR_PU_BMU.forEach(function(v) {
+				if(v == '') return;
 				var option = document.createElement('option');
 				option.value = v;
 				option.text = v;
 				_B_BMU_SEL.appendChild(option);   
-			}
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_B_CMU_1_SEL.appendChild(option);   
+			_B_CMU_2_SEL.appendChild(option);   
+			_B_CMU_3_SEL.appendChild(option);   
+			_B_CMU_4_SEL.appendChild(option);   
+			_B_CMU_5_SEL.appendChild(option);   
 
 			HR_PU_CMU.forEach(function(v) {
+				if(v == '') return;
 				var option = document.createElement('option');
 				option.value = v;
 				option.text = v;
 				_B_CMU_1_SEL.appendChild(option);   
-				_B_CMU_2_SEL.appendChild(option);   _B_CMU_3_SEL.appendChild(option);   
+				_B_CMU_2_SEL.appendChild(option);   
+				_B_CMU_3_SEL.appendChild(option);   
 				_B_CMU_4_SEL.appendChild(option);   
 				_B_CMU_5_SEL.appendChild(option);   
-			}
+			});
 
 			break;
 	}
@@ -1195,77 +1475,658 @@ function select_box_set_C() {
 
 	switch (차종) {
 		case 'CV' :
+		case 'CV_EV' :
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_C_LWR_CASE_SEL.appendChild(option);
+
 			CV_LWR_CASE.forEach(function(v) {
+				if(v == '') return;
 				var option = document.createElement('option');
 				option.value = v;
 				option.text = v;
 				_C_LWR_CASE_SEL.appendChild(option);
-			}
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_C_UPR_CASE_SEL.appendChild(option);
 
 			CV_UPR_CASE.forEach(function(v) {
+				if(v == '') return;
 				var option = document.createElement('option');
 				option.value = v;
 				option.text = v;
 				_C_UPR_CASE_SEL.appendChild(option);
-			}
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_C_HV_CNTR_1_SEL.appendChild(option);
+			_C_HV_CNTR_2_SEL.appendChild(option);
 
 			CV_HV_CNTR.forEach(function(v) {
+				if(v == '') return;
 				var option = document.createElement('option');
 				option.value = v;
 				option.text = v;
 				_C_HV_CNTR_1_SEL.appendChild(option);
 				_C_HV_CNTR_2_SEL.appendChild(option);
-			}
+			});
 
-			CV_HT_CNTR
-			CV_PRA
-			CV_FUSE
-			CV_LV_W_H
-			CV_HV_W_H
-			CV_BMU
-			CV_CMU
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_C_HT_CNTR_SEL.appendChild(option);
+
+			CV_HT_CNTR.forEach(function(v) {
+				if(v == '') return;
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_C_HT_CNTR_SEL.appendChild(option);
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_C_PRA_SEL.appendChild(option);
+
+			CV_PRA.forEach(function(v) {
+				if(v == '') return;
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_C_PRA_SEL.appendChild(option);
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_C_FUSE_SEL.appendChild(option);
+
+			CV_FUSE.forEach(function(v) {
+				if(v == '') return;
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_C_FUSE_SEL.appendChild(option);
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_C_LV_W_H_SEL.appendChild(option);
+
+			CV_LV_W_H.forEach(function(v) {
+				if(v == '') return;
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_C_LV_W_H_SEL.appendChild(option);
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_C_HV_W_H_1_SEL.appendChild(option);
+			_C_HV_W_H_2_SEL.appendChild(option);
+			_C_HV_W_H_3_SEL.appendChild(option);
+			_C_HV_W_H_4_SEL.appendChild(option);
+			_C_HV_W_H_5_SEL.appendChild(option);
+			_C_HV_W_H_6_SEL.appendChild(option);
+			_C_HV_W_H_7_SEL.appendChild(option);
+			_C_HV_W_H_8_SEL.appendChild(option);
+
+			CV_HV_W_H.forEach(function(v) {
+				if(v == '') return;
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_C_HV_W_H_1_SEL.appendChild(option);
+				_C_HV_W_H_2_SEL.appendChild(option);
+				_C_HV_W_H_3_SEL.appendChild(option);
+				_C_HV_W_H_4_SEL.appendChild(option);
+				_C_HV_W_H_5_SEL.appendChild(option);
+				_C_HV_W_H_6_SEL.appendChild(option);
+				_C_HV_W_H_7_SEL.appendChild(option);
+				_C_HV_W_H_8_SEL.appendChild(option);
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_C_BMU_SEL.appendChild(option);
+
+			CV_BMU.forEach(function(v) {
+				if(v == '') return;
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_C_BMU_SEL.appendChild(option);
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_C_CMU_1_SEL.appendChild(option);
+			_C_CMU_2_SEL.appendChild(option);
+			_C_CMU_3_SEL.appendChild(option);
+			_C_CMU_4_SEL.appendChild(option);
+			_C_CMU_5_SEL.appendChild(option);
+			_C_CMU_6_SEL.appendChild(option);
+			_C_CMU_7_SEL.appendChild(option);
+			_C_CMU_8_SEL.appendChild(option);
+
+			CV_CMU.forEach(function(v) {
+				if(v == '') return;
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_C_CMU_1_SEL.appendChild(option);
+				_C_CMU_2_SEL.appendChild(option);
+				_C_CMU_3_SEL.appendChild(option);
+				_C_CMU_4_SEL.appendChild(option);
+				_C_CMU_5_SEL.appendChild(option);
+				_C_CMU_6_SEL.appendChild(option);
+				_C_CMU_7_SEL.appendChild(option);
+				_C_CMU_8_SEL.appendChild(option);
+			});
 
 			break;
 
 		case 'NE' :
-			NE_LWR_CASE
-			NE_UPR_CASE
-			NE_HV_CNTR
-			NE_HT_CNTR
-			NE_PRA
-			NE_FUSE
-			NE_LV_W_H
-			NE_HV_W_H
-			NE_BMU
-			NE_CMU
+		case 'NE_EV' :
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_C_LWR_CASE_SEL.appendChild(option);
+
+			NE_LWR_CASE.forEach(function(v) {
+				if(v == '') return;
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_C_LWR_CASE_SEL.appendChild(option);
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_C_UPR_CASE_SEL.appendChild(option);
+
+			NE_UPR_CASE.forEach(function(v) {
+				if(v == '') return;
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_C_UPR_CASE_SEL.appendChild(option);
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_C_HV_CNTR_1_SEL.appendChild(option);
+			_C_HV_CNTR_2_SEL.appendChild(option);
+
+			NE_HV_CNTR.forEach(function(v) {
+				if(v == '') return;
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_C_HV_CNTR_1_SEL.appendChild(option);
+				_C_HV_CNTR_2_SEL.appendChild(option);
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_C_HT_CNTR_SEL.appendChild(option);
+
+			NE_HT_CNTR.forEach(function(v) {
+				if(v == '') return;
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_C_HT_CNTR_SEL.appendChild(option);
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_C_PRA_SEL.appendChild(option);
+
+			NE_PRA.forEach(function(v) {
+				if(v == '') return;
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_C_PRA_SEL.appendChild(option);
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_C_FUSE_SEL.appendChild(option);
+
+			NE_FUSE.forEach(function(v) {
+				if(v == '') return;
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_C_FUSE_SEL.appendChild(option);
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_C_LV_W_H_SEL.appendChild(option);
+
+			NE_LV_W_H.forEach(function(v) {
+				if(v == '') return;
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_C_LV_W_H_SEL.appendChild(option);
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_C_HV_W_H_1_SEL.appendChild(option);
+			_C_HV_W_H_2_SEL.appendChild(option);
+			_C_HV_W_H_3_SEL.appendChild(option);
+			_C_HV_W_H_4_SEL.appendChild(option);
+			_C_HV_W_H_5_SEL.appendChild(option);
+			_C_HV_W_H_6_SEL.appendChild(option);
+			_C_HV_W_H_7_SEL.appendChild(option);
+			_C_HV_W_H_8_SEL.appendChild(option);
+
+			NE_HV_W_H.forEach(function(v) {
+				if(v == '') return;
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_C_HV_W_H_1_SEL.appendChild(option);
+				_C_HV_W_H_2_SEL.appendChild(option);
+				_C_HV_W_H_3_SEL.appendChild(option);
+				_C_HV_W_H_4_SEL.appendChild(option);
+				_C_HV_W_H_5_SEL.appendChild(option);
+				_C_HV_W_H_6_SEL.appendChild(option);
+				_C_HV_W_H_7_SEL.appendChild(option);
+				_C_HV_W_H_8_SEL.appendChild(option);
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_C_BMU_SEL.appendChild(option);
+
+			NE_BMU.forEach(function(v) {
+				if(v == '') return;
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_C_BMU_SEL.appendChild(option);
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_C_CMU_1_SEL.appendChild(option);
+			_C_CMU_2_SEL.appendChild(option);
+			_C_CMU_3_SEL.appendChild(option);
+			_C_CMU_4_SEL.appendChild(option);
+			_C_CMU_5_SEL.appendChild(option);
+			_C_CMU_6_SEL.appendChild(option);
+			_C_CMU_7_SEL.appendChild(option);
+			_C_CMU_8_SEL.appendChild(option);
+
+			NE_CMU.forEach(function(v) {
+				if(v == '') return;
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_C_CMU_1_SEL.appendChild(option);
+				_C_CMU_2_SEL.appendChild(option);
+				_C_CMU_3_SEL.appendChild(option);
+				_C_CMU_4_SEL.appendChild(option);
+				_C_CMU_5_SEL.appendChild(option);
+				_C_CMU_6_SEL.appendChild(option);
+				_C_CMU_7_SEL.appendChild(option);
+				_C_CMU_8_SEL.appendChild(option);
+			});
 
 			break;
 
 		case 'JW' :
-			JW_LWR_CASE
-			JW_UPR_CASE
-			JW_HV_CNTR
-			JW_HT_CNTR
-			JW_PRA
-			JW_FUSE
-			JW_LV_W_H
-			JW_HV_W_H
-			JW_BMU
-			JW_CMU
+		case 'JW_EV' :
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_C_LWR_CASE_SEL.appendChild(option);
+
+			JW_LWR_CASE.forEach(function(v) {
+				if(v == '') return;
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_C_LWR_CASE_SEL.appendChild(option);
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_C_UPR_CASE_SEL.appendChild(option);
+
+			JW_UPR_CASE.forEach(function(v) {
+				if(v == '') return;
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_C_UPR_CASE_SEL.appendChild(option);
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_C_HV_CNTR_1_SEL.appendChild(option);
+			_C_HV_CNTR_2_SEL.appendChild(option);
+
+			JW_HV_CNTR.forEach(function(v) {
+				if(v == '') return;
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_C_HV_CNTR_1_SEL.appendChild(option);
+				_C_HV_CNTR_2_SEL.appendChild(option);
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_C_HT_CNTR_SEL.appendChild(option);
+
+			JW_HT_CNTR.forEach(function(v) {
+				if(v == '') return;
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_C_HT_CNTR_SEL.appendChild(option);
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_C_PRA_SEL.appendChild(option);
+
+			JW_PRA.forEach(function(v) {
+				if(v == '') return;
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_C_PRA_SEL.appendChild(option);
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_C_FUSE_SEL.appendChild(option);
+
+			JW_FUSE.forEach(function(v) {
+				if(v == '') return;
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_C_FUSE_SEL.appendChild(option);
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_C_LV_W_H_SEL.appendChild(option);
+
+			JW_LV_W_H.forEach(function(v) {
+				if(v == '') return;
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_C_LV_W_H_SEL.appendChild(option);
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_C_HV_W_H_1_SEL.appendChild(option);
+			_C_HV_W_H_2_SEL.appendChild(option);
+			_C_HV_W_H_3_SEL.appendChild(option);
+			_C_HV_W_H_4_SEL.appendChild(option);
+			_C_HV_W_H_5_SEL.appendChild(option);
+			_C_HV_W_H_6_SEL.appendChild(option);
+			_C_HV_W_H_7_SEL.appendChild(option);
+			_C_HV_W_H_8_SEL.appendChild(option);
+
+			JW_HV_W_H.forEach(function(v) {
+				if(v == '') return;
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_C_HV_W_H_1_SEL.appendChild(option);
+				_C_HV_W_H_2_SEL.appendChild(option);
+				_C_HV_W_H_3_SEL.appendChild(option);
+				_C_HV_W_H_4_SEL.appendChild(option);
+				_C_HV_W_H_5_SEL.appendChild(option);
+				_C_HV_W_H_6_SEL.appendChild(option);
+				_C_HV_W_H_7_SEL.appendChild(option);
+				_C_HV_W_H_8_SEL.appendChild(option);
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_C_BMU_SEL.appendChild(option);
+
+			JW_BMU.forEach(function(v) {
+				if(v == '') return;
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_C_BMU_SEL.appendChild(option);
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_C_CMU_1_SEL.appendChild(option);
+			_C_CMU_2_SEL.appendChild(option);
+			_C_CMU_3_SEL.appendChild(option);
+			_C_CMU_4_SEL.appendChild(option);
+			_C_CMU_5_SEL.appendChild(option);
+			_C_CMU_6_SEL.appendChild(option);
+			_C_CMU_7_SEL.appendChild(option);
+			_C_CMU_8_SEL.appendChild(option);
+
+			JW_CMU.forEach(function(v) {
+				if(v == '') return;
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_C_CMU_1_SEL.appendChild(option);
+				_C_CMU_2_SEL.appendChild(option);
+				_C_CMU_3_SEL.appendChild(option);
+				_C_CMU_4_SEL.appendChild(option);
+				_C_CMU_5_SEL.appendChild(option);
+				_C_CMU_6_SEL.appendChild(option);
+				_C_CMU_7_SEL.appendChild(option);
+				_C_CMU_8_SEL.appendChild(option);
+			});
 
 			break;
 
 		case 'LM' :
-			LM_LWR_CASE
-			LM_UPR_CASE
-			LM_HV_CNTR
-			LM_HT_CNTR
-			LM_PRA
-			LM_FUSE
-			LM_LV_W_H
-			LM_HV_W_H
-			LM_BMU
-			LM_CMU
+		case 'LM_EV' :
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_C_LWR_CASE_SEL.appendChild(option);
+
+			LM_LWR_CASE.forEach(function(v) {
+				if(v == '') return;
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_C_LWR_CASE_SEL.appendChild(option);
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_C_UPR_CASE_SEL.appendChild(option);
+
+			LM_UPR_CASE.forEach(function(v) {
+				if(v == '') return;
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_C_UPR_CASE_SEL.appendChild(option);
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_C_HV_CNTR_1_SEL.appendChild(option);
+			_C_HV_CNTR_2_SEL.appendChild(option);
+
+			LM_HV_CNTR.forEach(function(v) {
+				if(v == '') return;
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_C_HV_CNTR_1_SEL.appendChild(option);
+				_C_HV_CNTR_2_SEL.appendChild(option);
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_C_HT_CNTR_SEL.appendChild(option);
+
+			LM_HT_CNTR.forEach(function(v) {
+				if(v == '') return;
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_C_HT_CNTR_SEL.appendChild(option);
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_C_PRA_SEL.appendChild(option);
+
+			LM_PRA.forEach(function(v) {
+				if(v == '') return;
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_C_PRA_SEL.appendChild(option);
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_C_FUSE_SEL.appendChild(option);
+
+			LM_FUSE.forEach(function(v) {
+				if(v == '') return;
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_C_FUSE_SEL.appendChild(option);
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_C_LV_W_H_SEL.appendChild(option);
+
+			LM_LV_W_H.forEach(function(v) {
+				if(v == '') return;
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_C_LV_W_H_SEL.appendChild(option);
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_C_HV_W_H_1_SEL.appendChild(option);
+			_C_HV_W_H_2_SEL.appendChild(option);
+			_C_HV_W_H_3_SEL.appendChild(option);
+			_C_HV_W_H_4_SEL.appendChild(option);
+			_C_HV_W_H_5_SEL.appendChild(option);
+			_C_HV_W_H_6_SEL.appendChild(option);
+			_C_HV_W_H_7_SEL.appendChild(option);
+			_C_HV_W_H_8_SEL.appendChild(option);
+
+			LM_HV_W_H.forEach(function(v) {
+				if(v == '') return;
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_C_HV_W_H_1_SEL.appendChild(option);
+				_C_HV_W_H_2_SEL.appendChild(option);
+				_C_HV_W_H_3_SEL.appendChild(option);
+				_C_HV_W_H_4_SEL.appendChild(option);
+				_C_HV_W_H_5_SEL.appendChild(option);
+				_C_HV_W_H_6_SEL.appendChild(option);
+				_C_HV_W_H_7_SEL.appendChild(option);
+				_C_HV_W_H_8_SEL.appendChild(option);
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_C_BMU_SEL.appendChild(option);
+
+			LM_BMU.forEach(function(v) {
+				if(v == '') return;
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_C_BMU_SEL.appendChild(option);
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_C_CMU_1_SEL.appendChild(option);
+			_C_CMU_2_SEL.appendChild(option);
+			_C_CMU_3_SEL.appendChild(option);
+			_C_CMU_4_SEL.appendChild(option);
+			_C_CMU_5_SEL.appendChild(option);
+			_C_CMU_6_SEL.appendChild(option);
+			_C_CMU_7_SEL.appendChild(option);
+			_C_CMU_8_SEL.appendChild(option);
+
+			LM_CMU.forEach(function(v) {
+				if(v == '') return;
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_C_CMU_1_SEL.appendChild(option);
+				_C_CMU_2_SEL.appendChild(option);
+				_C_CMU_3_SEL.appendChild(option);
+				_C_CMU_4_SEL.appendChild(option);
+				_C_CMU_5_SEL.appendChild(option);
+				_C_CMU_6_SEL.appendChild(option);
+				_C_CMU_7_SEL.appendChild(option);
+				_C_CMU_8_SEL.appendChild(option);
+			});
 
 			break;
 	}
@@ -1276,18 +2137,128 @@ function select_box_set_D() {
 	
 	switch (차종) {
 		case 'CS' :
-			CS_LWR_CASE
-			CS_UPR_CASE
-			CS_HV_CNTR.push(품번.HV_CNTR);
-			CS_HT_CNTR.push(품번.HT_CNTR);
-			CS_RELAY.push(품번.RELAY);
-			CS_LV_W_H.push(품번.LV_W_H);
-			CS_HV_W_H.push(품번.HV_W_H);
-			CS_BMU.push(품번.BMU);
-			CS_CMU.push(품번.CMU);
+		case 'CS_EV' :
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_D_LWR_CASE_SEL.appendChild(option);
+			_D2_LWR_CASE_SEL.appendChild(option);
+
+			CS_LWR_CASE.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_D_LWR_CASE_SEL.appendChild(option);
+				_D2_LWR_CASE_SEL.appendChild(option);
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_D_UPR_CASE_SEL.appendChild(option);
+			_D2_UPR_CASE_SEL.appendChild(option);
+
+			CS_UPR_CASE.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_D_UPR_CASE_SEL.appendChild(option);
+				_D2_UPR_CASE_SEL.appendChild(option);
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_D_HV_CNTR_1_SEL.appendChild(option);
+			_D_HV_CNTR_2_SEL.appendChild(option);
+			_D2_HV_CNTR_1_SEL.appendChild(option);
+			_D2_HV_CNTR_2_SEL.appendChild(option);
+
+			CS_HV_CNTR.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_D_HV_CNTR_1_SEL.appendChild(option);
+				_D_HV_CNTR_2_SEL.appendChild(option);
+				_D2_HV_CNTR_1_SEL.appendChild(option);
+				_D2_HV_CNTR_2_SEL.appendChild(option);
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_D_LV_W_H_SEL.appendChild(option);
+			_D2_LV_W_H_SEL.appendChild(option);
+
+			CS_LV_W_H.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_D_LV_W_H_SEL.appendChild(option);
+				_D2_LV_W_H_SEL.appendChild(option);
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_D_HV_W_H_1_SEL.appendChild(option);
+			_D_HV_W_H_2_SEL.appendChild(option);
+			_D2_HV_W_H_1_SEL.appendChild(option);
+
+			CS_HV_W_H.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_D_HV_W_H_1_SEL.appendChild(option);
+				_D_HV_W_H_2_SEL.appendChild(option);
+				_D2_HV_W_H_1_SEL.appendChild(option);
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_D_BMU_SEL.appendChild(option);
+			_D2_BMU_SEL.appendChild(option);
+
+			CS_BMU.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_D_BMU_SEL.appendChild(option);
+				_D2_BMU_SEL.appendChild(option);
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_D_CMU_1_SEL.appendChild(option);
+			_D2_CMU_1_SEL.appendChild(option);
+
+			CS_CMU.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_D_CMU_1_SEL.appendChild(option);
+				_D2_CMU_1_SEL.appendChild(option);
+			});
+
+			option = document.createElement('option');
+			option.value = '';
+			option.text = '---';
+			_D_RELAY_SEL.appendChild(option);
+			_D2_RELAY_SEL.appendChild(option);
+
+			CS_RELAY.forEach(function(v) {
+				var option = document.createElement('option');
+				option.value = v;
+				option.text = v;
+				_D_RELAY_SEL.appendChild(option);
+				_D2_RELAY_SEL.appendChild(option);
+			});
 
 			break;
 	}
+}
 
 async function 부품정보_list_load() {
 	if (_management_id.value == "") return;
@@ -1556,6 +2527,11 @@ async function 부품정보_list_load() {
 async function 부품정보_list_save() {
 	if (_management_id.value == "") return;
 
+	new_type = 'none';
+	new_reply = false;
+
+	compare_품번();
+
 	var doc = 부품정보_list_doc;
 	doc.관리번호 = _management_id.value;
 
@@ -1823,12 +2799,18 @@ async function 부품정보_list_save() {
 	console.log(insert_count);
 
 	if (update_count > 0) {
-		alert("업데이트 되었습니다");
+		alert("부품정보가 업데이트 되었습니다");
+            	flag_부품정보_list = true; 
+		loadPage('base/부품정보_list.html');
 	}
 
 	if (insert_count > 0) {
-		alert("저장 되었습니다");
+		alert("부품정보가 저장 되었습니다");
+            	flag_부품정보_list = true; 
+		loadPage('base/부품정보_list.html');
 	}
+
+
 }
 
 function auto_focus() {
@@ -3514,7 +4496,7 @@ function auto_focus() {
 	_C_MODULE_11_품번.onkeydown = function (event) {
 		if(event.keyCode == 13) _C_MODULE_12_QR.focus();
 		if(_C_MODULE_11_QR.value != '' && _C_MODULE_11_품번.value != '') { 
-			_C_MODULE_11.style.backgroundColor = 'salmon';
+			gg_C_MODULE_11.style.backgroundColor = 'salmon';
 			_C_MODULE_11.style.color = 'white';
 		}
 	}
@@ -3861,6 +4843,279 @@ function auto_focus() {
 			_D2_MODULE_1.style.color = 'white';
 		}
 	}
-	//_D2_LV_W_H_품번.onkeydown = function(event) {  
-	//}
+}
+
+function get_sel_value(event) {
+	const button = event.target;
+	const id = button.id;
+
+	var selectbox = document.getElementById(id);
+	var value = selectbox.options[selectbox.selectedIndex].value;
+	var _품번_box = id.slice(0, -4) + '_품번';
+
+	document.getElementById(_품번_box).value = value;
+}
+
+async function compare_품번() {
+	switch(차종) {
+		case 'DE' :
+		case 'DE_EV' :
+		case 'SK3' :
+		case 'SK3_EV' :
+			if(DE_SK3_LWR_CASE.indexOf(_A_LWR_CASE_품번.value.toUpperCase()) == -1) save_품번('DE/SK3', 'LWR_CASE', _A_LWR_CASE_품번.value.toUpperCase());
+			if(DE_SK3_UPR_CASE.indexOf(_A_UPR_CASE_품번.value.toUpperCase()) == -1) save_품번('DE/SK3', 'UPR_CASE', _A_UPR_CASE_품번.value.toUpperCase());
+			if(DE_SK3_S_PLUG.indexOf(_A_S_PLUG_품번.value.toUpperCase()) == -1) save_품번('DE/SK3', 'S_PLUG', _A_S_PLUG_품번.value.toUpperCase());
+			if(DE_SK3_SPA.indexOf(_A_SPA_품번.value.toUpperCase()) == -1) save_품번('DE/SK3', 'SPA', _A_SPA_품번.value.toUpperCase());
+			if(DE_SK3_HV_CNTR.indexOf(_A_HV_CNTR_품번.value.toUpperCase()) == -1) save_품번('DE/SK3', 'HV_CNTR', _A_HV_CNTR_품번.value.toUpperCase());
+			if(DE_SK3_HT_CNTR.indexOf(_A_HT_CNTR_품번.value.toUpperCase()) == -1) save_품번('DE/SK3', 'HT_CNTR', _A_HT_CNTR_품번.value.toUpperCase());
+			if(DE_SK3_PRA.indexOf(_A_PRA_품번.value.toUpperCase()) == -1) save_품번('DE/SK3', 'PRA', _A_PRA_품번.value.toUpperCase());
+			if(DE_SK3_LV_W_H.indexOf(_A_LV_W_H_품번.value.toUpperCase()) == -1) save_품번('DE/SK3', 'LV_W_H', _A_LV_W_H_품번.value.toUpperCase());
+			if(DE_SK3_HV_W_H.indexOf(_A_HV_W_H_1_품번.value.toUpperCase()) == -1) save_품번('DE/SK3', 'HV_W_H', _A_HV_W_H_1_품번.value.toUpperCase());
+			if(DE_SK3_HV_W_H.indexOf(_A_HV_W_H_2_품번.value.toUpperCase()) == -1) save_품번('DE/SK3', 'HV_W_H', _A_HV_W_H_2_품번.value.toUpperCase());
+			if(DE_SK3_HV_W_H.indexOf(_A_HV_W_H_3_품번.value.toUpperCase()) == -1) save_품번('DE/SK3', 'HV_W_H', _A_HV_W_H_3_품번.value.toUpperCase());
+			if(DE_SK3_HV_W_H.indexOf(_A_HV_W_H_4_품번.value.toUpperCase()) == -1) save_품번('DE/SK3', 'HV_W_H', _A_HV_W_H_4_품번.value.toUpperCase());
+			if(DE_SK3_HV_W_H.indexOf(_A_HV_W_H_5_품번.value.toUpperCase()) == -1) save_품번('DE/SK3', 'HV_W_H', _A_HV_W_H_5_품번.value.toUpperCase());
+			if(DE_SK3_BMU.indexOf(_A_BMU_품번.value.toUpperCase()) == -1) save_품번('DE/SK3', 'BMU', _A_BMU_품번.value.toUpperCase());
+			if(DE_SK3_CMU.indexOf(_A_CMU_1_품번.value.toUpperCase()) == -1) save_품번('DE/SK3', 'CMU', _A_CMU_1_품번.value.toUpperCase());
+			if(DE_SK3_CMU.indexOf(_A_CMU_2_품번.value.toUpperCase()) == -1) save_품번('DE/SK3', 'CMU', _A_CMU_2_품번.value.toUpperCase());
+			if(DE_SK3_CMU.indexOf(_A_CMU_3_품번.value.toUpperCase()) == -1) save_품번('DE/SK3', 'CMU', _A_CMU_3_품번.value.toUpperCase());
+			if(DE_SK3_CMU.indexOf(_A_CMU_4_품번.value.toUpperCase()) == -1) save_품번('DE/SK3', 'CMU', _A_CMU_4_품번.value.toUpperCase());
+			if(DE_SK3_CMU.indexOf(_A_CMU_5_품번.value.toUpperCase()) == -1) save_품번('DE/SK3', 'CMU', _A_CMU_5_품번.value.toUpperCase());
+
+			break;
+
+		case 'OS' :
+		case 'OS_EV' :
+			if(OS_LWR_CASE.indexOf(_A_LWR_CASE_품번.value.toUpperCase()) == -1) save_품번('OS', 'LWR_CASE', _A_LWR_CASE_품번.value.toUpperCase());
+			if(OS_UPR_CASE.indexOf(_A_UPR_CASE_품번.value.toUpperCase()) == -1) save_품번('OS', 'UPR_CASE', _A_UPR_CASE_품번.value.toUpperCase());
+			if(OS_S_PLUG.indexOf(_A_PLUG_품번.value.toUpperCase()) == -1) save_품번('OS', 'S_PLUG', _A_S_PLUG_품번.value.toUpperCase());
+			if(OS_SPA.indexOf(_A_SPA_품번.value.toUpperCase()) == -1) save_품번('OS', 'SPA', _A_SPA_품번.value.toUpperCase());
+			if(OS_HV_CNTR.indexOf(_A_HV_CNTR_품번.value.toUpperCase()) == -1) save_품번('OS', 'HV_CNTR', _A_HV_CNTR_품번.value.toUpperCase());
+			if(OS_HT_CNTR.indexOf(_A_HT_CNTR_품번.value.toUpperCase()) == -1) save_품번('OS', 'HT_CNTR', _A_HT_CNTR_품번.value.toUpperCase());
+			if(OS_PRA.indexOf(_A_PRA_품번.value.toUpperCase()) == -1) save_품번('OS', 'PRA', _A_PRA_품번.value.toUpperCase());
+			if(OS_FUSE.indexOf(_A_FUSE_품번.value.toUpperCase()) == -1) save_품번('OS', 'FUSE', _A_FUSE_품번.value.toUpperCase());
+			if(OS_RELAY.indexOf(_A_RELAY_품번.value.toUpperCase()) == -1) save_품번('OS', 'RELAY', _A_RELAY_품번.value.toUpperCase());
+			if(OS_LV_W_H.indexOf(_A_LV_W_H_품번.value.toUpperCase()) == -1) save_품번('OS', 'LV_W_H', _A_LV_W_H_품번.value.toUpperCase());
+			if(OS_HV_W_H.indexOf(_A_HV_W_H_1_품번.value.toUpperCase()) == -1) save_품번('OS', 'HV_W_H', _A_HV_W_H_1_품번.value.toUpperCase());
+			if(OS_HV_W_H.indexOf(_A_HV_W_H_2_품번.value.toUpperCase()) == -1) save_품번('OS', 'HV_W_H', _A_HV_W_H_2_품번.value.toUpperCase());
+			if(OS_HV_W_H.indexOf(_A_HV_W_H_3_품번.value.toUpperCase()) == -1) save_품번('OS', 'HV_W_H', _A_HV_W_H_3_품번.value.toUpperCase());
+			if(OS_HV_W_H.indexOf(_A_HV_W_H_4_품번.value.toUpperCase()) == -1) save_품번('OS', 'HV_W_H', _A_HV_W_H_4_품번.value.toUpperCase());
+			if(OS_HV_W_H.indexOf(_A_HV_W_H_5_품번.value.toUpperCase()) == -1) save_품번('OS', 'HV_W_H', _A_HV_W_H_5_품번.value.toUpperCase());
+			if(OS_BMU.indexOf(_A_BMU_품번.value.toUpperCase()) == -1) save_품번('OS', 'BMU', _A_BMU_품번.value.toUpperCase());
+			if(OS_CMU.indexOf(_A_CMU_1_품번.value.toUpperCase()) == -1) save_품번('OS', 'CMU', _A_CMU_1_품번.value.toUpperCase());
+			if(OS_CMU.indexOf(_A_CMU_2_품번.value.toUpperCase()) == -1) save_품번('OS', 'CMU', _A_CMU_2_품번.value.toUpperCase());
+			if(OS_CMU.indexOf(_A_CMU_3_품번.value.toUpperCase()) == -1) save_품번('OS', 'CMU', _A_CMU_3_품번.value.toUpperCase());
+			if(OS_CMU.indexOf(_A_CMU_4_품번.value.toUpperCase()) == -1) save_품번('OS', 'CMU', _A_CMU_4_품번.value.toUpperCase());
+			if(OS_CMU.indexOf(_A_CMU_5_품번.value.toUpperCase()) == -1) save_품번('OS', 'CMU', _A_CMU_5_품번.value.toUpperCase());
+
+			break;
+
+		case 'HR' :
+		case 'HR_EV' :
+		case 'PU' :
+		case 'PU_EV' :
+			if(HR_PU_LWR_CASE.indexOf(_B_LWR_CASE_품번.value.toUpperCase()) == -1) save_품번('HR/PU', 'LWR_CASE', _B_LWR_CASE_품번.value.toUpperCase());
+			if(HR_PU_UPR_CASE.indexOf(_B_UPR_CASE_품번.value.toUpperCase()) == -1) save_품번('HR/PU', 'UPR_CASE', _B_UPR_CASE_품번.value.toUpperCase());
+			if(HR_PU_S_PLUG.indexOf(_B_S_PLUG_품번.value.toUpperCase()) == -1) save_품번('HR/PU', 'S_PLUG', _B_S_PLUG_품번.value.toUpperCase());
+			if(HR_PU_SPA.indexOf(_B_SPA_품번.value.toUpperCase()) == -1) save_품번('LHR/PUM', 'SPA', _B_SPA_품번.value.toUpperCase());
+			if(HR_PU_HV_CNTR.indexOf(_B_HV_CNTR_품번.value.toUpperCase()) == -1) save_품번('HR/PU', 'HV_CNTR', _B_HV_CNTR_품번.value.toUpperCase());
+			if(HR_PU_HT_CNTR.indexOf(_B_HT_CNTR_품번.value.toUpperCase()) == -1) save_품번('HR/PU', 'HT_CNTR', _B_HT_CNTR_품번.value.toUpperCase());
+			if(HR_PU_PRA.indexOf(_B_PRA_품번.value.toUpperCase()) == -1) save_품번('HR/PU', 'PRA', _B_PRA_품번.value.toUpperCase());
+			if(HR_PU_FUSE.indexOf(_B_FUSE_품번.value.toUpperCase()) == -1) save_품번('HR/PU', 'FUSE', _B_FUSE_품번.value.toUpperCase());
+			if(HR_PU_RELAY.indexOf(_B_RELAY_품번.value.toUpperCase()) == -1) save_품번('HR/PU', 'RELAY', _B_RELAY_품번.value.toUpperCase());
+			if(HR_PU_LV_W_H.indexOf(_B_LV_W_H_품번.value.toUpperCase()) == -1) save_품번('HR/PU', 'LV_W_H', _B_LV_W_H_품번.value.toUpperCase());
+			if(HR_PU_HV_W_H.indexOf(_B_HV_W_H_품번.value.toUpperCase()) == -1) save_품번('HR/PU', 'HV_W_H', _B_HV_W_H_품번.value.toUpperCase());
+			if(HR_PU_BMU.indexOf(_B_BMU_품번.value.toUpperCase()) == -1) save_품번('HR/PU', 'BMU', _B_BMU_품번.value.toUpperCase());
+			if(HR_PU_CMU.indexOf(_B_CMU_품번.value.toUpperCase()) == -1) save_품번('HR/PU', 'CMU', _B_CMU_품번.value.toUpperCase());
+			if(HR_PU_BMA.indexOf(_B_BMA_품번.value.toUpperCase()) == -1) save_품번('HR/PU', 'BMA', _B_BMA_품번.value.toUpperCase());
+
+			break;
+
+		case 'CV' :
+			if(CV_LWR_CASE.indexOf(_C_LWR_CASE_품번.value.toUpperCase()) == -1) save_품번('CV', 'LWR_CASE', _A_LWR_CASE_품번.value.toUpperCase());
+			if(CV_UPR_CASE.indexOf(_C_UPR_CASE_품번.value.toUpperCase()) == -1) save_품번('CV', 'UPR_CASE', _A_UPR_CASE_품번.value.toUpperCase());
+			if(CV_S_PLUG.indexOf(_C_S_PLUG_품번.value.toUpperCase()) == -1) save_품번('CV', 'S_PLUG', _C_S_PLUG_품번.value.toUpperCase());
+			if(CV_SPA.indexOf(_C_SPA_품번.value.toUpperCase()) == -1) save_품번('CV', 'SPA', _C_SPA_품번.value.toUpperCase());
+			if(CV_HV_CNTR.indexOf(_C_HV_CNTR_품번.value.toUpperCase()) == -1) save_품번('CV', 'HV_CNTR', _C_HV_CNTR_품번.value.toUpperCase());
+			if(CV_HT_CNTR.indexOf(_C_HT_CNTR_품번.value.toUpperCase()) == -1) save_품번('CV', 'HT_CNTR', _C_HT_CNTR_품번.value.toUpperCase());
+			if(CV_PRA.indexOf(_C_PRA_품번.value.toUpperCase()) == -1) save_품번('CV', 'PRA', _C_PRA_품번.value.toUpperCase());
+			if(CV_FUSE.indexOf(_C_FUSE_품번.value.toUpperCase()) == -1) save_품번('CV', 'FUSE', _C_FUSE_품번.value.toUpperCase());
+			if(CV_RELAY.indexOf(_C_RELAY_품번.value.toUpperCase()) == -1) save_품번('CV', 'RELAY', _C_RELAY_품번.value.toUpperCase());
+			if(CV_LV_W_H.indexOf(_C_LV_W_H_품번.value.toUpperCase()) == -1) save_품번('CV', 'LV_W_H', _C_LV_W_H_품번.value.toUpperCase());
+			if(CV_HV_W_H.indexOf(_C_HV_W_H_품번.value.toUpperCase()) == -1) save_품번('CV', 'HV_W_H', _C_HV_W_H_품번.value.toUpperCase());
+			if(CV_BMU.indexOf(_C_BMU_품번.value.toUpperCase()) == -1) save_품번('CV', 'BMU', _C_BMU_품번.value.toUpperCase());
+			if(CV_CMU.indexOf(_C_CMU_품번.value.toUpperCase()) == -1) save_품번('CV', 'CMU', _C_CMU_품번.value.toUpperCase());
+			if(CV_BMA.indexOf(_C_BMA_품번.value.toUpperCase()) == -1) save_품번('CV', 'BMA', _C_BMA_품번.value.toUpperCase());
+
+			break;
+
+		case 'NE' :
+			if(NE_LWR_CASE.indexOf(_C_LWR_CASE_품번.value.toUpperCase()) == -1) save_품번('NE', 'LWR_CASE', _C_LWR_CASE_품번.value.toUpperCase());
+			if(NE_UPR_CASE.indexOf(_C_UPR_CASE_품번.value.toUpperCase()) == -1) save_품번('NE', 'UPR_CASE', _C_UPR_CASE_품번.value.toUpperCase());
+			if(NE_S_PLUG.indexOf(_C_S_PLUG_품번.value.toUpperCase()) == -1) save_품번('NE', 'S_PLUG', _C_S_PLUG_품번.value.toUpperCase());
+			if(NE_SPA.indexOf(_C_SPA_품번.value.toUpperCase()) == -1) save_품번('NE', 'SPA', _C_SPA_품번.value.toUpperCase());
+			if(NE_HV_CNTR.indexOf(_C_HV_CNTR_품번.value.toUpperCase()) == -1) save_품번('NE', 'HV_CNTR', _C_HV_CNTR_품번.value.toUpperCase());
+			if(NE_HT_CNTR.indexOf(_C_HT_CNTR_품번.value.toUpperCase()) == -1) save_품번('NE', 'HT_CNTR', _C_HT_CNTR_품번.value.toUpperCase());
+			if(NE_PRA.indexOf(_C_PRA_품번.value.toUpperCase()) == -1) save_품번('NE', 'PRA', _C_PRA_품번.value.toUpperCase());
+			if(NE_FUSE.indexOf(_C_FUSE_품번.value.toUpperCase()) == -1) save_품번('NE', 'FUSE', _C_FUSE_품번.value.toUpperCase());
+			if(NE_RELAY.indexOf(_C_RELAY_품번.value.toUpperCase()) == -1) save_품번('NE', 'RELAY', _C_RELAY_품번.value.toUpperCase());
+			if(NE_LV_W_H.indexOf(_C_LV_W_H_품번.value.toUpperCase()) == -1) save_품번('NE', 'LV_W_H', _C_LV_W_H_품번.value.toUpperCase());
+			if(NE_HV_W_H.indexOf(_C_HV_W_H_품번.value.toUpperCase()) == -1) save_품번('NE', 'HV_W_H', _C_HV_W_H_품번.value.toUpperCase());
+			if(NE_BMU.indexOf(_C_BMU_품번.value.toUpperCase()) == -1) save_품번('NE', 'BMU', _C_BMU_품번.value.toUpperCase());
+			if(NE_CMU.indexOf(_C_CMU_품번.value.toUpperCase()) == -1) save_품번('NE', 'CMU', _C_CMU_품번.value.toUpperCase());
+			if(NE_BMA.indexOf(_C_BMA_품번.value.toUpperCase()) == -1) save_품번('NE', 'BMA', _C_BMA_품번.value.toUpperCase());
+
+			break;
+
+		case 'JW' :
+			if(JW_LWR_CASE.indexOf(_C_LWR_CASE_품번.value.toUpperCase()) == -1) save_품번('JW', 'LWR_CASE', _C_LWR_CASE_품번.value.toUpperCase());
+			if(JW_UPR_CASE.indexOf(_C_UPR_CASE_품번.value.toUpperCase()) == -1) save_품번('JW', 'UPR_CASE', _C_UPR_CASE_품번.value.toUpperCase());
+			if(JW_S_PLUG.indexOf(_C_S_PLUG_품번.value.toUpperCase()) == -1) save_품번('JW', 'S_PLUG', _C_S_PLUG_품번.value.toUpperCase());
+			if(JW_SPA.indexOf(_C_SPA_품번.value.toUpperCase()) == -1) save_품번('JW', 'SPA', _C_SPA_품번.value.toUpperCase());
+			if(JW_HV_CNTR.indexOf(_C_HV_CNTR_품번.value.toUpperCase()) == -1) save_품번('JW', 'HV_CNTR', _C_HV_CNTR_품번.value.toUpperCase());
+			if(JW_HT_CNTR.indexOf(_C_HT_CNTR_품번.value.toUpperCase()) == -1) save_품번('JW', 'HT_CNTR', _C_HT_CNTR_품번.value.toUpperCase());
+			if(JW_PRA.indexOf(_C_PRA_품번.value.toUpperCase()) == -1) save_품번('JW', 'PRA', _C_PRA_품번.value.toUpperCase());
+			if(JW_FUSE.indexOf(_C_FUSE_품번.value.toUpperCase()) == -1) save_품번('JW', 'FUSE', _C_FUSE_품번.value.toUpperCase());
+			if(JW_RELAY.indexOf(_C_RELAY_품번.value.toUpperCase()) == -1) save_품번('JW', 'RELAY', _C_RELAY_품번.value.toUpperCase());
+			if(JW_LV_W_H.indexOf(_C_LV_W_H_품번.value.toUpperCase()) == -1) save_품번('JW', 'LV_W_H', _C_LV_W_H_품번.value.toUpperCase());
+			if(JW_HV_W_H.indexOf(_C_HV_W_H_품번.value.toUpperCase()) == -1) save_품번('JW', 'HV_W_H', _C_HV_W_H_품번.value.toUpperCase());
+			if(JW_BMU.indexOf(_C_BMU_품번.value.toUpperCase()) == -1) save_품번('JW', 'BMU', _C_BMU_품번.value.toUpperCase());
+			if(JW_CMU.indexOf(_C_CMU_품번.value.toUpperCase()) == -1) save_품번('JW', 'CMU', _C_CMU_품번.value.toUpperCase());
+			if(JW_BMA.indexOf(_C_BMA_품번.value.toUpperCase()) == -1) save_품번('JW', 'BMA', _C_BMA_품번.value.toUpperCase());
+
+			break;
+
+		case 'CS' :
+			if(CS_LWR_CASE.indexOf(_D_LWR_CASE_품번.value.toUpperCase()) == -1) save_품번('CS', 'LWR_CASE', _D_LWR_CASE_품번.value.toUpperCase());
+			if(CS_UPR_CASE.indexOf(_D_UPR_CASE_품번.value.toUpperCase()) == -1) save_품번('CS', 'UPR_CASE', _D_UPR_CASE_품번.value.toUpperCase());
+			if(CS_S_PLUG.indexOf(_D_S_PLUG_품번.value.toUpperCase()) == -1) save_품번('CS', 'S_PLUG', _D_S_PLUG_품번.value.toUpperCase());
+			if(CS_SPA.indexOf(_D_SPA_품번.value.toUpperCase()) == -1) save_품번('CS', 'SPA', _D_SPA_품번.value.toUpperCase());
+			if(CS_HV_CNTR.indexOf(_D_HV_CNTR_품번.value.toUpperCase()) == -1) save_품번('CS', 'HV_CNTR', _D_HV_CNTR_품번.value.toUpperCase());
+			if(CS_HT_CNTR.indexOf(_D_HT_CNTR_품번.value.toUpperCase()) == -1) save_품번('CS', 'HT_CNTR', _D_HT_CNTR_품번.value.toUpperCase());
+			if(CS_PRA.indexOf(_D_PRA_품번.value.toUpperCase()) == -1) save_품번('CS', 'PRA', _D_PRA_품번.value.toUpperCase());
+			if(CS_FUSE.indexOf(_D_FUSE_품번.value.toUpperCase()) == -1) save_품번('CS', 'FUSE', _D_FUSE_품번.value.toUpperCase());
+			if(CS_RELAY.indexOf(_D_RELAY_품번.value.toUpperCase()) == -1) save_품번('CS', 'RELAY', _D_RELAY_품번.value.toUpperCase());
+			if(CS_LV_W_H.indexOf(_D_LV_W_H_품번.value.toUpperCase()) == -1) save_품번('CS', 'LV_W_H', _D_LV_W_H_품번.value.toUpperCase());
+			if(CS_HV_W_H.indexOf(_D_HV_W_H_품번.value.toUpperCase()) == -1) save_품번('CS', 'HV_W_H', _D_HV_W_H_품번.value.toUpperCase());
+			if(CS_BMU.indexOf(_D_BMU_품번.value.toUpperCase()) == -1) save_품번('CS', 'BMU', _D_BMU_품번.value.toUpperCase());
+			if(CS_CMU.indexOf(_D_CMU_품번.value.toUpperCase()) == -1) save_품번('CS', 'CMU', _D_CMU_품번.value.toUpperCase());
+			if(CS_BMA.indexOf(_D_BMA_품번.value.toUpperCase()) == -1) save_품번('CS', 'BMA', _D_BMA_품번.value.toUpperCase());
+
+			if(CS_LWR_CASE.indexOf(_D2_LWR_CASE_품번.value.toUpperCase()) == -1) save_품번('CS', 'LWR_CASE', _D2_LWR_CASE_품번.value.toUpperCase());
+			if(CS_UPR_CASE.indexOf(_D2_UPR_CASE_품번.value.toUpperCase()) == -1) save_품번('CS', 'UPR_CASE', _D2_UPR_CASE_품번.value.toUpperCase());
+			if(CS_S_PLUG.indexOf(_D2_S_PLUG_품번.value.toUpperCase()) == -1) save_품번('CS', 'S_PLUG', _D2_S_PLUG_품번.value.toUpperCase());
+			if(CS_SPA.indexOf(_D2_SPA_품번.value.toUpperCase()) == -1) save_품번('CS', 'SPA', _D2_SPA_품번.value.toUpperCase());
+			if(CS_HV_CNTR.indexOf(_D2_HV_CNTR_품번.value.toUpperCase()) == -1) save_품번('CS', 'HV_CNTR', _D2_HV_CNTR_품번.value.toUpperCase());
+			if(CS_HT_CNTR.indexOf(_D2_HT_CNTR_품번.value.toUpperCase()) == -1) save_품번('CS', 'HT_CNTR', _D2_HT_CNTR_품번.value.toUpperCase());
+			if(CS_PRA.indexOf(_D2_PRA_품번.value.toUpperCase()) == -1) save_품번('CS', 'PRA', _D2_PRA_품번.value.toUpperCase());
+			if(CS_FUSE.indexOf(_D2_FUSE_품번.value.toUpperCase()) == -1) save_품번('CS', 'FUSE', _D2_FUSE_품번.value.toUpperCase());
+			if(CS_RELAY.indexOf(_D2_RELAY_품번.value.toUpperCase()) == -1) save_품번('CS', 'RELAY', _D2_RELAY_품번.value.toUpperCase());
+			if(CS_LV_W_H.indexOf(_D2_LV_W_H_품번.value.toUpperCase()) == -1) save_품번('CS', 'LV_W_H', _D2_LV_W_H_품번.value.toUpperCase());
+			if(CS_HV_W_H.indexOf(_D2_HV_W_H_품번.value.toUpperCase()) == -1) save_품번('CS', 'HV_W_H', _D2_HV_W_H_품번.value.toUpperCase());
+			if(CS_BMU.indexOf(_D2_BMU_품번.value.toUpperCase()) == -1) save_품번('CS', 'BMU', _D2_BMU_품번.value.toUpperCase());
+			if(CS_CMU.indexOf(_D2_CMU_품번.value.toUpperCase()) == -1) save_품번('CS', 'CMU', _D2_CMU_품번.value.toUpperCase());
+			if(CS_BMA.indexOf(_D2_BMA_품번.value.toUpperCase()) == -1) save_품번('CS', 'BMA', _D2_BMA_품번.value.toUpperCase());
+
+			break;
+
+		case 'LK' :
+			if(LK_LWR_CASE.indexOf(_A_LWR_CASE_품번.value.toUpperCase()) == -1) save_품번('LK', 'LWR_CASE', _A_LWR_CASE_품번.value.toUpperCase());
+			if(LK_UPR_CASE.indexOf(_A_UPR_CASE_품번.value.toUpperCase()) == -1) save_품번('LK', 'UPR_CASE', _A_UPR_CASE_품번.value.toUpperCase());
+			if(LK_S_PLUG.indexOf(_A_S_PLUG_품번.value.toUpperCase()) == -1) save_품번('LK', 'S_PLUG', _A_S_PLUG_품번.value.toUpperCase());
+			if(LK_SPA.indexOf(_A_SPA_품번.value.toUpperCase()) == -1) save_품번('LK', 'SPA', _A_SPA_품번.value.toUpperCase());
+			if(LK_HV_CNTR.indexOf(_A_HV_CNTR_품번.value.toUpperCase()) == -1) save_품번('LK', 'HV_CNTR', _A_HV_CNTR_품번.value.toUpperCase());
+			if(LK_HT_CNTR.indexOf(_A_HV_CNTR_품번.value.toUpperCase()) == -1) save_품번('LK', 'HT_CNTR', _A_HT_CNTR_품번.value.toUpperCase());
+			if(LK_PRA.indexOf(_A_PRA_품번.value.toUpperCase()) == -1) save_품번('LK', 'PRA', _A_PRA_품번.value.toUpperCase());
+			if(LK_FUSE.indexOf(_A_FUSE_품번.value.toUpperCase()) == -1) save_품번('LK', 'FUSE', _A_FUSE_품번.value.toUpperCase());
+			if(LK_RELAY.indexOf(_A_RELAY_품번.value.toUpperCase()) == -1) save_품번('LK', 'RELAY', _A_RELAY_품번.value.toUpperCase());
+			if(LK_LV_W_H.indexOf(_A_LV_W_H_품번.value.toUpperCase()) == -1) save_품번('LK', 'LV_W_H', _A_LV_W_H_품번.value.toUpperCase());
+			if(LK_HV_W_H.indexOf(_A_HV_W_H_품번.value.toUpperCase()) == -1) save_품번('LK', 'HV_W_H', _A_HV_W_H_품번.value.toUpperCase());
+			if(LK_BMU.indexOf(_A_BMU_품번.value.toUpperCase()) == -1) save_품번('LK', 'BMU', _A_BMU_품번.value.toUpperCase());
+			if(LK_CMU.indexOf(_A_CMU_품번.value.toUpperCase()) == -1) save_품번('LK', 'CMU', _A_CMU_품번.value.toUpperCase());
+			if(LK_BMA.indexOf(_A_BMA_품번.value.toUpperCase()) == -1) save_품번('LK', 'BMA', _A_BMA_품번.value.toUpperCase());
+
+			break;
+
+		case 'LKFC' :
+			if(LKFC_LWR_CASE.indexOf(_A_LWR_CASE_품번.value.toUpperCase()) == -1) save_품번('LKFC', 'LWR_CASE', _A_LWR_CASE_품번.value.toUpperCase());
+			if(LKFC_UPR_CASE.indexOf(_A_UPR_CASE_품번.value.toUpperCase()) == -1) save_품번('LKFC', 'UPR_CASE', _A_UPR_CASE_품번.value.toUpperCase());
+			if(LKFC_S_PLUG.indexOf(_A_S_PLUG_품번.value.toUpperCase()) == -1) save_품번('LKFC', 'S_PLUG', _A_S_PLUG_품번.value.toUpperCase());
+			if(LKFC_SPA.indexOf(_A_SPA_품번.value.toUpperCase()) == -1) save_품번('LKFC', 'SPA', _A_SPA_품번.value.toUpperCase());
+			if(LKFC_HV_CNTR.indexOf(_A_HV_CNTR_품번.value.toUpperCase()) == -1) save_품번('LKFC', 'HV_CNTR', _A_HV_CNTR_품번.value.toUpperCase());
+			if(LKFC_HT_CNTR.indexOf(_A_HT_CNTR_품번.value.toUpperCase()) == -1) save_품번('LKFC', 'HT_CNTR', _A_HT_CNTR_품번.value.toUpperCase());
+			if(LKFC_PRA.indexOf(_A_PRA_품번.value.toUpperCase()) == -1) save_품번('LKFC', 'PRA', _A_PRA_품번.value.toUpperCase());
+			if(LKFC_FUSE.indexOf(_A_FUSE_품번.value.toUpperCase()) == -1) save_품번('LKFC', 'FUSE', _A_FUSE_품번.value.toUpperCase());
+			if(LKFC_RELAY.indexOf(_A_RELAY_품번.value.toUpperCase()) == -1) save_품번('LKFC', 'RELAY', _A_RELAY_품번.value.toUpperCase());
+			if(LKFC_LV_W_H.indexOf(_A_LV_W_H_품번.value.toUpperCase()) == -1) save_품번('LKFC', 'LV_W_H', _A_LV_W_H_품번.value.toUpperCase());
+			if(LKFC_HV_W_H.indexOf(_A_HV_W_H_품번.value.toUpperCase()) == -1) save_품번('LKFC', 'HV_W_H', _A_HV_W_H_품번.value.toUpperCase());
+			if(LKFC_BMU.indexOf(_A_BMU_품번.value.toUpperCase()) == -1) save_품번('LKFC', 'BMU', _A_BMU_품번.value.toUpperCase());
+			if(LKFC_CMU.indexOf(_A_CMU_품번.value.toUpperCase()) == -1) save_품번('LKFC', 'CMU', _A_CMU_품번.value.toUpperCase());
+			if(LKFC_BMA.indexOf(_A_BMA_품번.value.toUpperCase()) == -1) save_품번('LKFC', 'BMA', _A_BMA_품번.value.toUpperCase());
+
+			break;
+
+		case 'LM' :
+			if(LM_LWR_CASE.indexOf(_C_LWR_CASE_품번.value.toUpperCase()) == -1) save_품번('LM', 'LWR_CASE', _C_LWR_CASE_품번.value.toUpperCase());
+			if(LM_UPR_CASE.indexOf(_C_UPR_CASE_품번.value.toUpperCase()) == -1) save_품번('LM', 'UPR_CASE', _C_UPR_CASE_품번.value.toUpperCase());
+			if(LM_S_PLUG.indexOf(_C_PLUG_품번.value.toUpperCase()) == -1) save_품번('LM', 'S_PLUG', _C_S_PLUG_품번.value.toUpperCase());
+			if(LM_SPA.indexOf(_C_SPA_품번.value.toUpperCase()) == -1) save_품번('LM', 'SPA', _C_SPA_품번.value.toUpperCase());
+			if(LM_HV_CNTR.indexOf(_C_HV_CNTR_품번.value.toUpperCase()) == -1) save_품번('LM', 'HV_CNTR', _C_HV_CNTR_품번.value.toUpperCase());
+			if(LM_HT_CNTR.indexOf(_C_HV_CNTR_품번.value.toUpperCase()) == -1) save_품번('LM', 'HT_CNTR', _C_HT_CNTR_품번.value.toUpperCase());
+			if(LM_PRA.indexOf(_C_PRA_품번.value.toUpperCase()) == -1) save_품번('LM', 'PRA', _C_PRA_품번.value.toUpperCase());
+			if(LM_FUSE.indexOf(_C_FUSE_품번.value.toUpperCase()) == -1) save_품번('LM', 'FUSE', _C_FUSE_품번.value.toUpperCase());
+			if(LM_RELAY.indexOf(_C_RELAY_품번.value.toUpperCase()) == -1) save_품번('LM', 'RELAY', _C_RELAY_품번.value.toUpperCase());
+			if(LM_LV_W_H.indexOf(_C_LV_W_H_품번.value.toUpperCase()) == -1) save_품번('LM', 'LV_W_H', _C_LV_W_H_품번.value.toUpperCase());
+			if(LM_HV_W_H.indexOf(_C_HV_W_H_품번.value.toUpperCase()) == -1) save_품번('LM', 'HV_W_H', _C_HV_W_H_품번.value.toUpperCase());
+			if(LM_BMU.indexOf(_C_BMU_품번.value.toUpperCase()) == -1) save_품번('LM', 'BMU', _C_BMU_품번.value.toUpperCase());
+			if(LM_CMU.indexOf(_C_CMU_품번.value.toUpperCase()) == -1) save_품번('LM', 'CMU', _C_CMU_품번.value.toUpperCase());
+			if(LM_BMA.indexOf(_C_BMA_품번.value.toUpperCase()) == -1) save_품번('LM', 'BMA', _C_BMA_품번.value.toUpperCase());
+
+			break;
+
+		default : 
+			console.log('품번 data의 차종을 확인하세요');
+	}
+}
+
+var new_type = 'none';
+var new_reply = false;
+async function save_품번(_차종, _종류, _품번) {
+	if(new_type == false) return;
+	if(_품번 == '') return;
+	console.log('새로운 품번 발생!');
+
+	if(new_type != true) new_type = confirm('새로운 품번을 등록하시겠습니까?');
+	if(new_type == false) return;
+
+	_품번 = _품번.toUpperCase();
+
+	count(품번, { 번호 : { $exists : true }});
+	await delay();
+
+	var no = 품번_cnt + 1;
+	console.log('no:', no);
+
+	var doc = JSON.parse(JSON.stringify(품번_doc));
+	doc.번호 = no.toString();
+	doc.차종 = _차종;
+	var str = 'doc.' + _종류 + ' = \'' + _품번 + '\';';
+	console.log(str)
+	eval(str);
+	
+	console.log(doc);
+	update_품번(품번, doc);
+	await delay();
+
+	if(new_reply == false) {
+		if (update_count > 0) {
+			new_reply = true;
+			alert("품번정보가 업데이트 되었습니다");
+		}
+
+		if (insert_count > 0) {
+			new_reply = true;
+			alert("품번정보가 저장 되었습니다");
+		}
+	}
+
 }

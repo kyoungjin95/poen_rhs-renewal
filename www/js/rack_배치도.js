@@ -6,7 +6,6 @@ function racks_시작() {
 
 	var buttons = document.querySelectorAll('.rack');
 	buttons.forEach((button) => {
-	    console.log('-');
 	    button.addEventListener('click', getButtonValue);
 	});
 

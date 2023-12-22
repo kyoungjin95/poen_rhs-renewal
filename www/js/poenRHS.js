@@ -2756,7 +2756,7 @@ socket.on('count_result', async function (col, count, rcv_check, option = '') {
 
 		case 품번:
 			품번_cnt = 0;
-			부번_cnt = JSON.parse(JSON.stringify(count));
+			품번_cnt = JSON.parse(JSON.stringify(count));
 			
 		default:
 			doc_count = 0;

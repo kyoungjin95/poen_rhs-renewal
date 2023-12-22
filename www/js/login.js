@@ -19,7 +19,7 @@ async function login() {
       findOne_계정(계정, { id: _id.value });
       await delay();
       계정_stat = 계정_v;
-      console.log(계정_stat);
+      //console.log(계정_stat);
 
       //sessionStorage.setItem('worker',  worker);
       sessionStorage.setItem("level", 계정_stat.level);
