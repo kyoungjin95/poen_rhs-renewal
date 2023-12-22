@@ -4161,28 +4161,33 @@ function back() {
 }
 
 async function init_변수() {
-	var doc = {
-		구분 : 'mado_product_no',
-		값 : 855,
-	}
+	var doc = 변수_doc;
+	doc.구분 = 'mado_product_no';
+	doc.값 = '855';
 
-	update(변수, doc);
+	update_변수(변수, doc);
 	await delay();
 
-	var doc = {
-		구분 : 'hs_product_no',
-		값 : 0,
+	if (update_count > 0) {
+		alert('업데이트 되었습니다');
 	}
 
-	update(변수, doc);
+	if (insert_count > 0) {
+		alert('저장 되었습니다');
+	}
+
+	doc = 변수_doc;
+	doc.구분 = 'hs_product_no';
+	doc.값 = '855';
+
+	update_변수(변수, doc);
 	await delay();
 
-	var doc = {
-		구분 : 'jj_product_no',
-		값 : 0,
-	}
+	doc = 변수_doc;
+	doc.구분 = 'jj_product_no';
+	doc.값 = '0';
 
-	update(변수, doc);
+	update_변수(변수, doc);
 	await delay();
 
 	console.log('mado_product_no_complete');

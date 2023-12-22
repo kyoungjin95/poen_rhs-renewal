@@ -74,9 +74,10 @@ async function 세척_시작(is재제조 = 0) {
 	if(_재제조번호.value == '') {
 		console.log('make product key');
 
-		find(변수, 'mado_product_no');
+		findOne_변수(변수, { 구분 : 'mado_product_no' });
 		await delay();
-
+		
+		console.log('변수:', 변수_v);
 		if(변수_v == null) {
 			today_count = String(1);
 		} else {
