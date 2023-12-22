@@ -4163,7 +4163,7 @@ function back() {
 async function init_변수() {
 	var doc = {
 		구분 : 'mado_product_no',
-		값 : 0,
+		값 : 855,
 	}
 
 	update(변수, doc);
@@ -4194,13 +4194,6 @@ async function make_md_product_no(today_count) {
 	var now = seoul.toString().substr(2, 2);
 
 	var no = '#RS' + now + '-MD' + (today_count).toString().padStart(4, '0');
-
-	var doc = 변수_doc;
-	doc.구분 = 'mado_product_no';
-	doc.값 = today_count;
-	
-	update(변수, doc);
-	await delay();
 
 	return no;
 }

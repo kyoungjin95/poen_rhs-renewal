@@ -1,4 +1,6 @@
 var 입력재제조번호 = '';
+var today_count = 0;
+
 async function 세척_시작(is재제조 = 0) {
 	while (_management_id == undefined) {
 		await sleep(DELAY);
@@ -70,7 +72,6 @@ async function 세척_시작(is재제조 = 0) {
 	관리번호 = _management_id.value;
 
 	if(_재제조번호.value == '') {
-		var today_count;
 		console.log('make product key');
 
 		find(변수, 'mado_product_no');
@@ -147,10 +148,12 @@ async function 세척_save() {
 
 	if (update_count > 0) {
 		alert('업데이트 되었습니다');
+		변수저장(today_count);
 	}
 
 	if (insert_count > 0) {
 		alert('저장 되었습니다');
+		변수저장(today_count);
 	}
 
 	find(BSA재제조, _management_id.value);
@@ -402,4 +405,13 @@ async function 세척_list() {
 
 			세척_list_table.clearFilter();
 		});
+}
+
+async function 변수저장(today_count) {
+	var doc = 변수_doc;
+	doc.구분 = 'mado_product_no';
+	doc.값 = today_count;
+	
+	update(변수, doc);
+	await delay();
 }
