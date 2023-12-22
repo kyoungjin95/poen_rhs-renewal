@@ -25,6 +25,7 @@ var _start_time;
 var _end_time;
 var _lastest_제제조번호 = '';
 var _black_ip_list = [];
+var _old_year = '2023';
 
 const 계정_ = {
 	_id : 0,
@@ -294,15 +295,18 @@ setInterval(function() {
 	});
 }, 10000);
 
+var init_done = false;
 setInterval(function() {
 	var DateTime = luxon.DateTime;
 	var seoul = DateTime.local().setZone("Asia/Seoul");
-	var now = seoul.toString().substr(8, 2);
-	if(old_day != '0' && old_day != now) {
+	var now = seoul.toString().substr(0, 4);
+	if(now != old_year && init_done == false) {
 		init_product_no();
+		init_done = true;
+		old_year = now;
+		console.log('init done');
 	}
-	old_day = now;
-}, 1000 * 60);
+}, 1000 * 60 * 10);
 
 async function distinct(col, query, field_name) {
 	try {
@@ -489,21 +493,21 @@ async function init_product_no() {
 		값 : 0,
 	}
 
-	await update(변수, {구분: doc.구분}, doc);
+	await update('변수', {구분: doc.구분}, { $set: doc });
 
 	var doc = {
 		구분 : 'hs_product_no',
 		값 : 0,
 	}
 
-	await update(변수, {구분: doc.구분}, doc);
+	await update('변수', {구분: doc.구분}, { $set: doc });
 
 	var doc = {
 		구분 : 'jj_product_no',
 		값 : 0,
 	}
 
-	await update(변수, {구분: doc.구분}, doc);
+	await update('변수', {구분: doc.구분}, { $set: doc });
 
 	console.log('mado_product_no_complete');
 }

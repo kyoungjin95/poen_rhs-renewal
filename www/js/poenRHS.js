@@ -44,6 +44,7 @@ const 부품정보_list = '부품정보_list';
 const 구자료 = '구자료';
 const 품번 = '품번';
 const 창고이동 = '창고이동';
+const 변수 = '변수';
 
 var 구자료_v = [];
 var BSA재제조_v = [];
@@ -89,6 +90,7 @@ var 완료보고서_v = [];
 var 계정_v = [];
 var 부품정보_list_v = [];
 var 품번_v = [];
+var 변수_v = [];
 
 var BSA재제조_cnt = 0;
 var 입고_cnt = 0;
@@ -134,6 +136,7 @@ var 부품정보_list_cnt = 0;
 var 구자료_cnt = 0;
 var 품번_cnt = 0;
 var 창고이동_cnt = 0;
+var 변수_cnt = 0;
 
 var option_입고_cnt = 0;
 var option_세척_cnt = 0;
@@ -1310,6 +1313,11 @@ const 품번_doc = {
 	온도센서 : '',
 	CMU : '',
 	BMA : ''
+}
+
+const 변수_doc = {
+	구분 : '',
+	값 : ''
 }
 
 const 계정_ = {
@@ -2505,6 +2513,12 @@ const 품번_ = {
 	BMA : 1
 }
 
+const 변수_ = {
+	_id : 0,
+	구분 : 1,
+	값 : 1
+}
+
 var doc_count = 0;
 var update_count = 0;
 var insert_count = 0;
@@ -2527,6 +2541,10 @@ socket.on('auto_backup_db_status', function (running) {
 	if (running == true) str = '백업(O)';
 	else str = '백업(X)';
 	document.getElementById('auto_backup_db_status').innerHTML = str;
+});
+
+socket.on('init_product_no', function() {
+	init_product_no();
 });
 
 socket.on('qr_lebel_result', function (result) {
@@ -2757,7 +2775,11 @@ socket.on('count_result', async function (col, count, rcv_check, option = '') {
 		case 품번:
 			품번_cnt = 0;
 			품번_cnt = JSON.parse(JSON.stringify(count));
-			
+
+		case 변수:
+			변수_cnt = 0;
+			변수_cnt = JSON.parse(JSON.stringify(count));
+
 		default:
 			doc_count = 0;
 			doc_count = JSON.parse(JSON.stringify(count));
@@ -3072,6 +3094,11 @@ socket.on('find_result', async function (col, result, rcv_check) {
 			품번_v = JSON.parse(JSON.stringify(result));
 			break;
 
+		case 변수:
+			변수_v = [];
+			변수_v = JSON.parse(JSON.stringify(result));
+			break;
+
 		default:
 			find_array = [];
 			find_array = JSON.parse(JSON.stringify(result));
@@ -3275,6 +3302,12 @@ async function update_품번(col, doc) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	socket.emit('update', worker, col, { 번호: doc.번호 }, { $set: doc });
+}
+
+async function update_변수(col, doc) {
+	if (socket == undefined) return;
+	flag_arrivedMSG = false;
+	socket.emit('update', worker, col, { 구분: doc.구분 }, { $set: doc });
 }
 
 async function update_신품정보(col, doc) {
@@ -3520,11 +3553,23 @@ async function find(col, management_id) {
 			socket.emit('findOne', worker, col, { 번호: management_id }, { sort: { kind: 1 }, projection: 품번_ }, check);
 			break;
 
+		case '변수':
+			socket.emit('findOne', worker, col, { 구분: management_id }, { sort: { kind: 1 }, projection: 변수_ }, check);
+			break;
+
 		default:
 			console.log('collection name is not match');
 	}
 
 
+}
+
+async function findOne_변수(col, query) {
+	if (socket == undefined) return;
+	flag_arrivedMSG = false;
+	check++;
+	if (check > 10) check = 0;
+	socket.emit('findOne', worker, col, query, { sort: { kind: 1 }, projection: 변수_ }, check);
 }
 
 async function findOne_품번(col, query) {
@@ -3908,6 +3953,12 @@ async function find_특이사항(col, query) {
 	socket.emit('find', worker, col, query, { sort: { kind: 1 }, projection: 특이사항_ }, check);
 }
 
+function init_변수() {
+	if (socket == undefined) return;
+
+	socket.emit('init_변수');
+}
+
 async function find_교체부품상세(col, query) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
@@ -4107,4 +4158,49 @@ function back() {
 	loadPage("base/item-details.html");
 	flag_상세입력 = true;
 	first_분해조립 = true;
+}
+
+async function init_변수() {
+	var doc = {
+		구분 : 'mado_product_no',
+		값 : 0,
+	}
+
+	update(변수, doc);
+	await delay();
+
+	var doc = {
+		구분 : 'hs_product_no',
+		값 : 0,
+	}
+
+	update(변수, doc);
+	await delay();
+
+	var doc = {
+		구분 : 'jj_product_no',
+		값 : 0,
+	}
+
+	update(변수, doc);
+	await delay();
+
+	console.log('mado_product_no_complete');
+}
+
+async function make_md_product_no(today_count) {
+	var DateTime = luxon.DateTime;
+	var seoul = DateTime.local().setZone("Asia/Seoul");
+	var now = seoul.toString().substr(2, 2);
+
+	var no = '#RS' + now + '-MD' + (today_count).toString().padStart(4, '0');
+
+	var doc = 변수_doc;
+	doc.구분 = 'mado_product_no';
+	doc.값 = today_count;
+	
+	update(변수, doc);
+	await delay();
+
+	return no;
 }

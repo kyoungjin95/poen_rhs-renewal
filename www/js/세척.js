@@ -82,8 +82,8 @@ async function 세척_시작(is재제조 = 0) {
 			today_count = Number(변수_v.값) + 1;
 			today_count = today_count.toString();
 		}
-
-		var product_no = make_md_product_no(today_count);
+		var product_no;
+		product_no = await make_md_product_no(today_count);
 
 		console.log('product no:', product_no);
 
