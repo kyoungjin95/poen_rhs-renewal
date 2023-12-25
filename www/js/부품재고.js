@@ -202,10 +202,10 @@ async function 품번단가평균() {
 
 			if (품번.indexOf(infos[i].품번) < 0) {
 				품번.push(infos[i].품번);
-				수량.push(Number(infos[i].수량));
+				수량.push(Number(infos[i].수량.replace(',', '')));
 
 				if (infos[i].단가 != undefined && infos[i].단가 != '' && typeof Number(infos[i].단가) == 'number') {
-					단가합.push(Number(infos[i].단가));
+					단가합.push(Number(infos[i].단가.replace(',', '')));
 					count.push(1);
 				} else {
 					단가합.push(0);
@@ -214,10 +214,10 @@ async function 품번단가평균() {
 			} else {
 				var no = 품번.indexOf(infos[i].품번);
 				if (infos[i].단가 != undefined && infos[i].단가 != '' && typeof Number(infos[i].단가) == 'number') {
-					단가합[no] = Number(infos[i].단가);
+					단가합[no] = Number(infos[i].단가.replace(',', ''));
 					count[no]++;
 				}
-				수량[no] += Number(infos[i].수량);
+				수량[no] += Number(infos[i].수량.replace(',', ''));
 			}
 		}
 	}
@@ -230,7 +230,7 @@ async function 품번단가평균() {
 			var no = 품번.indexOf(infos.품번);
 			if (no >= 0) {
 				console.log(typeof infos.평균단가, infos.평균단가);
-				단가합[no] += Number(infos.평균단가);
+				단가합[no] += Number(infos.평균단가.replace(',', ''));
 				count[no]++;
 			}
 		});
