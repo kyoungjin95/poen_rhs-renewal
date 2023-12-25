@@ -243,8 +243,8 @@ async function 품번단가평균() {
 		var item = {
 			품번: 품번[i],
 			수량: 수량[i],
-			평균단가: (Number(단가합[i]) / Number(count[i])).toFixed().toLocaleString('ko-KR'),
-			합계: (Number(단가합[i]) / Number(count[i]) * Number(수량[i])).toFixed().toLocaleString('ko-KR'),
+			평균단가: (Number(단가합[i]) / Number(count[i])).toLocaleString('ko-KR'),
+			합계: (Number(단가합[i]) / Number(count[i]) * Number(수량[i])).toLocaleString('ko-KR'),
 		};
 
 		list.push(item);
