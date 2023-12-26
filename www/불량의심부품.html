@@ -1,0 +1,149 @@
+function 불량의심부품_시작() {
+	flag_불량의심선택 = false;
+	console.log('불량의심부품 start');
+
+	var buttons = document.querySelectorAll('.module__group');
+	buttons.forEach((button) => {
+	    button.addEventListener('click', getButtonValue);
+	});
+
+	
+}
+
+      _A_UPR_CASE
+      _A_LWR_CASE
+      _A_S_PLUG
+      _A_SPA
+      _A_HT_CNTR
+      _A_HV_CNTR
+      _A_PRA
+      _A_LV_W_H
+      _A_HV_W_H_1
+      _A_HV_W_H_2
+      _A_HV_W_H_3
+      _A_HV_W_H_4
+      _A_HV_W_H_5
+      _A_BMU
+      _A_CMU_1
+      _A_CMU_2
+      _A_CMU_3
+      _A_CMU_4
+      _A_CMU_5
+      _A_MODULE_1
+      _A_MODULE_2
+      _A_MODULE_3
+      _A_MODULE_4
+      _A_MODULE_5
+      _B_UPR_CASE
+      _B_LWR_CASE
+      _B_HV_CNTR
+      _B_HT_CNTR
+      _B_PRA
+      _B_FUSE
+      _B_HV_W_H_1
+      _B_HV_W_H_2
+      _B_LV_W_H
+      _B_BMU
+      _B_CMU_1
+      _B_CMU_2
+      _B_CMU_3
+      _B_CMU_4
+      _B_CMU_5
+      _B_MODULE_1
+      _B_MODULE_2
+      _B_MODULE_3
+      _B_MODULE_4
+      _B_MODULE_5
+      _B_MODULE_6
+      _B_MODULE_7
+      _B_MODULE_8
+      _B_MODULE_9
+      _B_MODULE_10
+      _C_UPR_CASE
+      _C_LWR_CASE
+      _C_HV_CNTR_1
+      _C_HV_CNTR_2
+      _C_HT_CNTR
+      _C_PRA
+      _C_FUSE
+      _C_LV_W_H
+      _C_HV_W_H_1
+      _C_HV_W_H_2
+      _C_HV_W_H_3
+      _C_HV_W_H_4 
+      _C_HV_W_H_5
+      _C_HV_W_H_6
+      _C_HV_W_H_7
+      _C_HV_W_H_8
+      _C_BMU
+      _C_CMU_1
+      _C_CMU_2
+      _C_CMU_3
+      _C_CMU_4
+      _C_CMU_5
+      _C_CMU_6
+      _C_CMU_7
+      _C_CMU_8
+      _C_MODULE_1
+      _C_MODULE_2
+      _C_MODULE_3
+      _C_MODULE_4
+      _C_MODULE_5
+      _C_MODULE_6
+      _C_MODULE_7
+      _C_MODULE_8
+      _C_MODULE_9
+      _C_MODULE_10
+      _C_MODULE_11
+      _C_MODULE_12
+      _C_MODULE_13
+      _C_MODULE_14
+      _C_MODULE_15
+      _C_MODULE_16
+      _C_MODULE_2_1
+      _C_MODULE_2_2
+      _C_MODULE_2_3
+      _C_MODULE_2_4
+      _C_MODULE_2_5
+      _C_MODULE_2_6
+      _C_MODULE_2_7
+      _C_MODULE_2_8
+      _C_MODULE_2_9
+      _C_MODULE_2_10
+      _C_MODULE_2_11
+      _C_MODULE_2_12
+      _C_MODULE_2_13
+      _C_MODULE_2_14
+      _C_MODULE_2_15
+      _C_MODULE_2_16
+      _D_UPR_CASE
+      _D_LWR_CASE
+      _D_HV_CNTR_1
+      _D_HV_CNTR_2
+      _D_RELAY
+      _D_LV_W_H
+      _D_HV_W_H_1
+      _D_HV_W_H_2
+      _D_BMU
+      _D_CMU_1
+      _D_MODULE_1
+      _D_MODULE_2
+      _D2_HV_W_H_1
+      _D2_CMU_1
+      _D2_RELAY
+      _D2_BMU
+      _D2_HV_CNTR_1
+      _D2_HV_CNTR_2
+      _D2_LWR_CASE
+      _D2_UPR_CASE
+      _D2_LV_W_H
+      _D2_MODULE_1
+
+function getButtonValue(event) {
+	const button = event.target;
+	const value = button.value;
+	console.log(value);
+
+	var str = value + '.backgroundColor = \'salmon\';';
+	eval(str);
+}
