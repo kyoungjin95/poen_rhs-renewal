@@ -98,8 +98,9 @@ var flag_군포재고조회 = false;
 var flag_제주재고조회 = false;
 var flag_부품정보_list = false;
 var flag_racks = false;
+var flag_불량의심부품 = false;
 
-var interval = setInterval(function () { console.log();
+var interval = setInterval(function () {
 	if (flag_재제조현황 == true) { console.log('재제조현황'); stop_repeat(); 재제조현황_시작(); }
 	//if (flag_상세입력 == true) { console.log('상세입력'); stop_repeat(); 상세입력_시작(); }
 	if (flag_년간현황 == true) { console.log('년간현황'); stop_repeat(); 년간현황_시작(); }
@@ -131,7 +132,7 @@ var interval = setInterval(function () { console.log();
 	if (flag_EOL == true) { console.log('EOL'); stop_repeat(); EOL_시작(); }
 	if (flag_출하 == true) { console.log('출하'); stop_repeat(); 출하정보_시작(); }
 	if (flag_racks == true) { console.log('racks'); stop_repeat(); racks_시작(); }
-
+	if (flag_불량의심부품 == true) { console.log('불량의심부품'); stop_repeat(); 불량의심부품_시작(); }
 	if (flag_부품정보_list == true) { console.log('부품정보'); stop_repeat(); 부품정보_list_시작(); }
 }, 1000);
 
