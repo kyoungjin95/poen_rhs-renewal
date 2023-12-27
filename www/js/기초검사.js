@@ -385,6 +385,9 @@ async function 기초검사_SAVE() {
 	}
 
 	await 공정단계자동입력(_management_id.value);
+	
+	flag_불량의심부품 = true;
+	loadPage('base/불량의심부품.html');
 }
 
 function _육안검사외부_콤보박스(e) {
