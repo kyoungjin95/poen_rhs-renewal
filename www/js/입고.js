@@ -1,5 +1,5 @@
 async function 입고_시작() {
-	while (_management_id == undefined) {
+	while (typeof _management_id == 'undefined') {
 		await sleep(DELAY);
 	}
 

@@ -41,7 +41,7 @@ function getButtonValue(event) {
 	const value = button.value;
 	console.log(value);
 
-	var yes = confirm('입고 정보 입력창으로 넘어 가시겠습니까?');
+	var yes = confirm('선택 Rack 번호: ' + value + '\n입고 정보를 입력하시겠습니까?');
 	if(yes == true) {
 		select_pos = value;
 
