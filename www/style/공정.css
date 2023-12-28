@@ -371,13 +371,13 @@ td.process__btn {
   height: 100%;
 }
 .parts__information .module__group {
-  width: 60%;
+  width: 51%;
   height: 100%;
   position: sticky;
   top: 8%;
 }
 .parts__information .input-group {
-  width: 38%;
+  width: 48%;
 }
 .parts__information .process-step table {
   width: 100%;
@@ -402,7 +402,7 @@ td.process__btn {
   margin: 0;
   border-radius: 0;
   background: #fff;
-  font-size: 0.9vw;
+  font-size: 0.8vw;
 }
 .parts__information .process-step button {
   font-size: 1vw;
@@ -410,6 +410,7 @@ td.process__btn {
 }
 .parts__information .process-step table td select {
   width: 100%;
+  font-size: 0.7vw;
 }
 /* ========================================
   수량집계 */

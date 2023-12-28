@@ -1,0 +1,152 @@
+/* font */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap");
+@import url("//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css");
+/* root */
+:root {
+  --en-font: "Poppins", sans-serif;
+  --ko-font: "Spoqa Han Sans Neo", "sans-serif";
+
+  --bg-black: #242222;
+  --bg-white: #eee;
+  --color-white: #fff;
+  --color-black: #141414;
+  --color-blue: #189cc4;
+  --color-green: #66cc00;
+}
+/* common */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: var(--ko-font);
+  background-color: var(--color-bg);
+  color: var(--color-black);
+  font-size: 1rem;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  overflow: hidden;
+  touch-action: none;
+}
+li {
+  list-style: none;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a {
+  margin: 0;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+  color: var(--color-black);
+}
+button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+label {
+  cursor: pointer;
+}
+/* main page */
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  background-color: #fff;
+}
+#content {
+  width: 100%;
+  /* height: calc(100vh - 300px); */
+}
+/* ===================================
+============================== login  */
+.content__box {
+  display: grid;
+  place-items: center;
+}
+.content__box li {
+  padding: 10px 0;
+}
+.content__box li:nth-child(2) {
+  position: relative;
+}
+.content__box li h3 {
+  text-align: left;
+  font-size: 0.9rem;
+  padding-bottom: 5px;
+  font-weight: normal;
+}
+.content__box input {
+  padding: 15px 20px;
+  box-sizing: border-box;
+  border: 1px solid #eae7e7;
+  display: inline-block;
+}
+.login__btn {
+  background: var(--color-black);
+  color: #fff;
+  position: relative;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: block;
+  margin-top: 20px;
+  width: 10rem;
+  padding: 15px;
+  line-height: 1;
+  color: #fff;
+  background: #242222;
+  font-size: 1rem;
+  border-radius: 15px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 500ms ease;
+}
+.login__btn:hover:enabled {
+  background-color: #a3a2a2;
+}
+.login__btn:disabled {
+  opacity: 0.2;
+  cursor: not-allowed;
+}
+/* carinfo */
+/* ===================================
+==============================header */
+header {
+  width: 100%;
+  height: 70px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--bg-black);
+}
+header .logo {
+  width: 108px;
+  height: 36px;
+}
+header .logo img {
+  width: 100%;
+  height: 100%;
+}
+.carinfo__btn i {
+  display: inline-block;
+  font-size: 1rem;
+}
+footer {
+  width: 100%;
+  /* height: 300px; */
+  background: #dadada;
+  color: var(--color-white);
+}
+/* c__login */
+.c__login {
+  padding: 50px 0;
+}

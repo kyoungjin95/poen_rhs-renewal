@@ -32,14 +32,14 @@ button {
   display: flex;
   flex-direction: column-reverse;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-evenly;
   margin-top: 20px;
 }
 .rack__con .floor span {
   font-size: 1vw;
   display: block;
-  height: 50px;
-  line-height: 3;
+  height: 30px;
+  line-height: 3.5;
 }
 .contents {
   width: 100%;
@@ -208,9 +208,7 @@ button {
 ._제주B동 {
   padding-bottom: 30px;
 }
-._제주B동 .rack__con .floor {
-  margin-top: 10px;
-}
+
 ._제주B동 .all-rack {
   width: 100%;
   position: relative;
@@ -225,6 +223,14 @@ button {
 }
 ._제주B동 .exit {
   width: 20%;
+}
+._제주B동 .rack__con .floor {
+  justify-content: space-around;
+  margin-top: 10px;
+}
+._제주B동 .rack__con .floor span {
+  line-height: 1;
+  height: 30px;
 }
 .all__rack__container {
   padding: 30px 0 0;
