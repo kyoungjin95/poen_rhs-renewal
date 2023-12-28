@@ -177,6 +177,7 @@ async function 부품정보_list_시작() {
 	sels.forEach((sel) => {
 		sel.addEventListener('change', get_sel_value);
 	});
+
 	auto_focus();
 
 	_A.style.display = "none";
@@ -192,6 +193,7 @@ async function 부품정보_list_시작() {
 	_img_5.style.display = "none";
 
 	await 부품정보_list_load();
+
 	await 품번_list();
 
 	switch (차종) {
