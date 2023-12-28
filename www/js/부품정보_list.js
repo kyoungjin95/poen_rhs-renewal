@@ -177,6 +177,7 @@ async function 부품정보_list_시작() {
 	sels.forEach((sel) => {
 	    sel.addEventListener('change', get_sel_value);
 	});
+
 	auto_focus();
 	
 	_A.style.display = "none";
@@ -192,6 +193,7 @@ async function 부품정보_list_시작() {
 	_img_5.style.display = "none";
 
 	await 부품정보_list_load();
+
 	await 품번_list();
 
 	switch (차종) {
@@ -3257,6 +3259,8 @@ async function 부품정보_list_load() {
 	_D2_UPR_CASE_품번.value = 부품정보_list_v.D2_UPR_CASE_품번;
 	_D2_LV_W_H_품번.value = 부품정보_list_v.D2_LV_W_H_품번;
 	_D2_MODULE_1_품번.value = 부품정보_list_v.D2_MODULE_1_품번;
+
+	check_empty();
 }
 
 async function 부품정보_list_save() {
@@ -3539,6 +3543,643 @@ async function 부품정보_list_save() {
 
 	if (insert_count > 0) {
 		alert("부품정보가 저장 되었습니다");
+	}
+}
+
+function check_empty() {
+	if(_A_UPR_CASE_QR.value != '' && _A_UPR_CASE_품번.value != '') { 
+		_A_UPR_CASE.style.backgroundColor = 'salmon';
+		_A_UPR_CASE.style.color = 'white';
+	}
+
+	if(_A_LWR_CASE_QR.value != '' && _A_LWR_CASE_품번.value != '') { 
+		_A_LWR_CASE.style.backgroundColor = 'salmon';
+		_A_LWR_CASE.style.color = 'white';
+	}
+
+	if(_A_S_PLUG_QR.value != '' && _A_S_PLUG_품번.value != '') { 
+		_A_S_PLUG.style.backgroundColor = 'salmon';
+		_A_S_PLUG.style.color = 'white';
+	}
+
+	if(_A_SPA_QR.value != '' && _A_SPA_품번.value != '') { 
+		_A_SPA.style.backgroundColor = 'salmon';
+		_A_SPA.style.color = 'white';
+	}
+
+	if(_A_HT_CNTR_QR.value != '' && _A_HT_CNTR_품번.value != '') { 
+		_A_HT_CNTR.style.backgroundColor = 'salmon';
+		_A_HT_CNTR.style.color = 'white';
+	}
+
+	if(_A_HV_CNTR_QR.value != '' && _A_HV_CNTR_품번.value != '') { 
+		_A_HV_CNTR.style.backgroundColor = 'salmon';
+		_A_HV_CNTR.style.color = 'white';
+	}
+
+	if(_A_PRA_QR.value != '' && _A_PRA_품번.value != '') { 
+		_A_PRA.style.backgroundColor = 'salmon';
+		_A_PRA.style.color = 'white';
+	}
+
+	if(_A_LV_W_H_QR.value != '' && _A_LV_W_H_품번.value != '') { 
+		_A_LV_W_H.style.backgroundColor = 'salmon';
+		_A_LV_W_H.style.color = 'white';
+	}
+
+	if(_A_HV_W_H_1_QR.value != '' && _A_HV_W_H_1_품번.value != '') { 
+		_A_HV_W_H_1.style.backgroundColor = 'salmon';
+		_A_HV_W_H_1.style.color = 'white';
+	}
+
+	if(_A_HV_W_H_2_QR.value != '' && _A_HV_W_H_2_품번.value != '') { 
+		_A_HV_W_H_2.style.backgroundColor = 'salmon';
+		_A_HV_W_H_2.style.color = 'white';
+	}
+
+	if(_A_HV_W_H_3_QR.value != '' && _A_HV_W_H_3_품번.value != '') { 
+		_A_HV_W_H_3.style.backgroundColor = 'salmon';
+		_A_HV_W_H_3.style.color = 'white';
+	}
+
+	if(_A_HV_W_H_4_QR.value != '' && _A_HV_W_H_4_품번.value != '') { 
+		_A_HV_W_H_4.style.backgroundColor = 'salmon';
+		_A_HV_W_H_4.style.color = 'white';
+	}
+
+	if(_A_HV_W_H_5_QR.value != '' && _A_HV_W_H_5_품번.value != '') { 
+		_A_HV_W_H_5.style.backgroundColor = 'salmon';
+		_A_HV_W_H_5.style.color = 'white';
+	}
+
+	if(_A_BMU_QR.value != '' && _A_BMU_품번.value != '') { 
+		_A_BMU.style.backgroundColor = 'salmon';
+		_A_BMU.style.color = 'white';
+	}
+
+	if(_A_CMU_1_QR.value != '' && _A_CMU_1_품번.value != '') { 
+		_A_CMU_1.style.backgroundColor = 'salmon';
+		_A_CMU_1.style.color = 'white';
+	}
+
+	if(_A_CMU_2_QR.value != '' && _A_CMU_2_품번.value != '') { 
+		_A_CMU_2.style.backgroundColor = 'salmon';
+		_A_CMU_2.style.color = 'white';
+	}
+
+	if(_A_CMU_3_QR.value != '' && _A_CMU_3_품번.value != '') { 
+		_A_CMU_3.style.backgroundColor = 'salmon';
+		_A_CMU_3.style.color = 'white';
+	}
+
+	if(_A_CMU_4_QR.value != '' && _A_CMU_4_품번.value != '') { 
+		_A_CMU_4.style.backgroundColor = 'salmon';
+		_A_CMU_4.style.color = 'white';
+	}
+
+	if(_A_CMU_5_QR.value != '' && _A_CMU_5_품번.value != '') { 
+		_A_CMU_5.style.backgroundColor = 'salmon';
+		_A_CMU_5.style.color = 'white';
+	}
+
+	if(_A_MODULE_1_QR.value != '' && _A_MODULE_1_품번.value != '') { 
+		_A_MODULE_1.style.backgroundColor = 'salmon';
+		_A_MODULE_1.style.color = 'white';
+	}
+
+	if(_A_MODULE_2_QR.value != '' && _A_MODULE_2_품번.value != '') { 
+		_A_MODULE_2.style.backgroundColor = 'salmon';
+		_A_MODULE_2.style.color = 'white';
+	}
+
+	if(_A_MODULE_3_QR.value != '' && _A_MODULE_3_품번.value != '') { 
+		_A_MODULE_3.style.backgroundColor = 'salmon';
+		_A_MODULE_3.style.color = 'white';
+	}
+
+	if(_A_MODULE_4_QR.value != '' && _A_MODULE_4_품번.value != '') { 
+		_A_MODULE_4.style.backgroundColor = 'salmon';
+		_A_MODULE_4.style.color = 'white';
+	}
+
+	if(_A_MODULE_5_QR.value != '' && _A_MODULE_5_품번.value != '') { 
+		_A_MODULE_5.style.backgroundColor = 'salmon';
+		_A_MODULE_5.style.color = 'white';
+	}
+
+	if(_B_UPR_CASE_QR.value != '' && _B_UPR_CASE_품번.value != '') { 
+		_B_UPR_CASE.style.backgroundColor = 'salmon';
+		_B_UPR_CASE.style.color = 'white';
+	}
+
+	if(_B_LWR_CASE_QR.value != '' && _B_LWR_CASE_품번.value != '') { 
+		_B_LWR_CASE.style.backgroundColor = 'salmon';
+		_B_LWR_CASE.style.color = 'white';
+	}
+
+	if(_B_HV_CNTR_QR.value != '' && _B_HV_CNTR_품번.value != '') { 
+		_B_HV_CNTR.style.backgroundColor = 'salmon';
+		_B_HV_CNTR.style.color = 'white';
+	}
+
+	if(_B_HT_CNTR_QR.value != '' && _B_HT_CNTR_품번.value != '') { 
+		_B_HT_CNTR.style.backgroundColor = 'salmon';
+		_B_HT_CNTR.style.color = 'white';
+	}
+
+	if(_B_PRA_QR.value != '' && _B_PRA_품번.value != '') { 
+		_B_PRA.style.backgroundColor = 'salmon';
+		_B_PRA.style.color = 'white';
+	}
+
+	if(_B_HV_W_H_1_QR.value != '' && _B_HV_W_H_1_품번.value != '') { 
+		_B_HV_W_H_1.style.backgroundColor = 'salmon';
+		_B_HV_W_H_1.style.color = 'white';
+	}
+
+	if(_B_HV_W_H_2_QR.value != '' && _B_HV_W_H_2_품번.value != '') { 
+		_B_HV_W_H_2.style.backgroundColor = 'salmon';
+		_B_HV_W_H_2.style.color = 'white';
+	}
+
+	if(_B_LV_W_H_QR.value != '' && _B_LV_W_H_품번.value != '') { 
+		_B_LV_W_H.style.backgroundColor = 'salmon';
+		_B_LV_W_H.style.color = 'white';
+	}
+
+	if(_B_BMU_QR.value != '' && _B_BMU_품번.value != '') { 
+		_B_BMU.style.backgroundColor = 'salmon';
+		_B_BMU.style.color = 'white';
+	}
+
+	if(_B_CMU_1_QR.value != '' && _B_CMU_1_품번.value != '') { 
+		_B_CMU_1.style.backgroundColor = 'salmon';
+		_B_CMU_1.style.color = 'white';
+	}
+
+	if(_B_CMU_2_QR.value != '' && _B_CMU_2_품번.value != '') { 
+		_B_CMU_2.style.backgroundColor = 'salmon';
+		_B_CMU_2.style.color = 'white';
+	}
+
+	if(_B_CMU_3_QR.value != '' && _B_CMU_3_품번.value != '') { 
+		_B_CMU_3.style.backgroundColor = 'salmon';
+		_B_CMU_3.style.color = 'white';
+	}
+
+	if(_B_CMU_4_QR.value != '' && _B_CMU_4_품번.value != '') { 
+		_B_CMU_4.style.backgroundColor = 'salmon';
+		_B_CMU_4.style.color = 'white';
+	}
+
+	if(_B_CMU_5_QR.value != '' && _B_CMU_5_품번.value != '') { 
+		_B_CMU_5.style.backgroundColor = 'salmon';
+		_B_CMU_5.style.color = 'white';
+	}
+
+	if(_B_MODULE_1_QR.value != '' && _B_MODULE_1_품번.value != '') { 
+		_B_MODULE_1.style.backgroundColor = 'salmon';
+		_B_MODULE_1.style.color = 'white';
+	}
+
+	if(_B_MODULE_2_QR.value != '' && _B_MODULE_2_품번.value != '') { 
+		_B_MODULE_2.style.backgroundColor = 'salmon';
+		_B_MODULE_2.style.color = 'white';
+	}
+
+	if(_B_MODULE_3_QR.value != '' && _B_MODULE_3_품번.value != '') { 
+		_B_MODULE_3.style.backgroundColor = 'salmon';
+		_B_MODULE_3.style.color = 'white';
+	}
+
+	if(_B_MODULE_4_QR.value != '' && _B_MODULE_4_품번.value != '') { 
+		_B_MODULE_4.style.backgroundColor = 'salmon';
+		_B_MODULE_4.style.color = 'white';
+	}
+
+	if(_B_MODULE_5_QR.value != '' && _B_MODULE_5_품번.value != '') { 
+		_B_MODULE_5.style.backgroundColor = 'salmon';
+		_B_MODULE_5.style.color = 'white';
+	}
+
+	if(_B_MODULE_6_QR.value != '' && _B_MODULE_6_품번.value != '') { 
+		_B_MODULE_6.style.backgroundColor = 'salmon';
+		_B_MODULE_6.style.color = 'white';
+	}
+
+	if(_B_MODULE_7_QR.value != '' && _B_MODULE_7_품번.value != '') { 
+		_B_MODULE_7.style.backgroundColor = 'salmon';
+		_B_MODULE_7.style.color = 'white';
+	}
+
+	if(_B_MODULE_8_QR.value != '' && _B_MODULE_8_품번.value != '') { 
+		_B_MODULE_8.style.backgroundColor = 'salmon';
+		_B_MODULE_8.style.color = 'white';
+	}
+
+	if(_B_MODULE_9_QR.value != '' && _B_MODULE_9_품번.value != '') { 
+		_B_MODULE_9.style.backgroundColor = 'salmon';
+		_B_MODULE_9.style.color = 'white';
+	}
+
+	if(_B_MODULE_10_QR.value != '' && _B_MODULE_10_품번.value != '') { 
+		_B_MODULE_10.style.backgroundColor = 'salmon';
+		_B_MODULE_10.style.color = 'white';
+	}
+
+	if(_C_UPR_CASE_QR.value != '' && _C_UPR_CASE_품번.value != '') { 
+		_C_UPR_CASE.style.backgroundColor = 'salmon';
+		_C_UPR_CASE.style.color = 'white';
+	}
+
+	if(_C_LWR_CASE_QR.value != '' && _C_LWR_CASE_품번.value != '') { 
+		_C_LWR_CASE.style.backgroundColor = 'salmon';
+		_C_LWR_CASE.style.color = 'white';
+	}
+
+	if(_C_HV_CNTR_1_QR.value != '' && _C_HV_CNTR_1_품번.value != '') { 
+		_C_HV_CNTR_1.style.backgroundColor = 'salmon';
+		_C_HV_CNTR_1.style.color = 'white';
+	}
+
+	if(_C_HV_CNTR_2_QR.value != '' && _C_HV_CNTR_2_품번.value != '') { 
+		_C_HV_CNTR_2.style.backgroundColor = 'salmon';
+		_C_HV_CNTR_2.style.color = 'white';
+	}
+
+	if(_C_HT_CNTR_QR.value != '' && _C_HT_CNTR_품번.value != '') { 
+		_C_HT_CNTR.style.backgroundColor = 'salmon';
+		_C_HT_CNTR.style.color = 'white';
+	}
+
+	if(_C_PRA_QR.value != '' && _C_PRA_품번.value != '') { 
+		_C_PRA.style.backgroundColor = 'salmon';
+		_C_PRA.style.color = 'white';
+	}
+
+	if(_C_FUSE_QR.value != '' && _C_FUSE_품번.value != '') { 
+		_C_FUSE.style.backgroundColor = 'salmon';
+		_C_FUSE.style.color = 'white';
+	}
+
+	if(_C_LV_W_H_QR.value != '' && _C_LV_W_H_품번.value != '') { 
+		_C_LV_W_H.style.backgroundColor = 'salmon';
+		_C_LV_W_H.style.color = 'white';
+	}
+
+	if(_C_HV_W_H_1_QR.value != '' && _C_HV_W_H_1_품번.value != '') { 
+		_C_HV_W_H_1.style.backgroundColor = 'salmon';
+		_C_HV_W_H_1.style.color = 'white';
+	}
+
+	if(_C_HV_W_H_2_QR.value != '' && _C_HV_W_H_2_품번.value != '') { 
+		_C_HV_W_H_2.style.backgroundColor = 'salmon';
+		_C_HV_W_H_2.style.color = 'white';
+	}
+
+	if(_C_HV_W_H_3_QR.value != '' && _C_HV_W_H_3_품번.value != '') { 
+		_C_HV_W_H_3.style.backgroundColor = 'salmon';
+		_C_HV_W_H_3.style.color = 'white';
+	}
+
+	if(_C_HV_W_H_4_QR.value != '' && _C_HV_W_H_4_품번.value != '') { 
+		_C_HV_W_H_4.style.backgroundColor = 'salmon';
+		_C_HV_W_H_4.style.color = 'white';
+	}
+
+	if(_C_HV_W_H_5_QR.value != '' && _C_HV_W_H_5_품번.value != '') { 
+		_C_HV_W_H_5.style.backgroundColor = 'salmon';
+		_C_HV_W_H_5.style.color = 'white';
+	}
+
+	if(_C_HV_W_H_6_QR.value != '' && _C_HV_W_H_6_품번.value != '') { 
+		_C_HV_W_H_6.style.backgroundColor = 'salmon';
+		_C_HV_W_H_6.style.color = 'white';
+	}
+
+	if(_C_HV_W_H_7_QR.value != '' && _C_HV_W_H_7_품번.value != '') { 
+		_C_HV_W_H_7.style.backgroundColor = 'salmon';
+		_C_HV_W_H_7.style.color = 'white';
+	}
+
+	if(_C_HV_W_H_8_QR.value != '' && _C_HV_W_H_8_품번.value != '') { 
+		_C_HV_W_H_8.style.backgroundColor = 'salmon';
+		_C_HV_W_H_8.style.color = 'white';
+	}
+
+	if(_C_BMU_QR.value != '' && _C_BMU_품번.value != '') { 
+		_C_BMU.style.backgroundColor = 'salmon';
+		_C_BMU.style.color = 'white';
+	}
+
+	if(_C_CMU_1_QR.value != '' && _C_CMU_1_품번.value != '') { 
+		_C_CMU_1.style.backgroundColor = 'salmon';
+		_C_CMU_1.style.color = 'white';
+	}
+
+	if(_C_CMU_2_QR.value != '' && _C_CMU_2_품번.value != '') { 
+		_C_CMU_2.style.backgroundColor = 'salmon';
+		_C_CMU_2.style.color = 'white';
+	}
+
+	if(_C_CMU_3_QR.value != '' && _C_CMU_3_품번.value != '') { 
+		_C_CMU_3.style.backgroundColor = 'salmon';
+		_C_CMU_3.style.color = 'white';
+	}
+
+	if(_C_CMU_4_QR.value != '' && _C_CMU_4_품번.value != '') { 
+		_C_CMU_4.style.backgroundColor = 'salmon';
+		_C_CMU_4.style.color = 'white';
+	}
+
+	if(_C_CMU_5_QR.value != '' && _C_CMU_5_품번.value != '') { 
+		_C_CMU_5.style.backgroundColor = 'salmon';
+		_C_CMU_5.style.color = 'white';
+	}
+
+	if(_C_CMU_6_QR.value != '' && _C_CMU_6_품번.value != '') { 
+		_C_CMU_6.style.backgroundColor = 'salmon';
+		_C_CMU_6.style.color = 'white';
+	}
+
+	if(_C_CMU_7_QR.value != '' && _C_CMU_7_품번.value != '') { 
+		_C_CMU_7.style.backgroundColor = 'salmon';
+		_C_CMU_7.style.color = 'white';
+	}
+
+	if(_C_CMU_8_QR.value != '' && _C_CMU_8_품번.value != '') { 
+		_C_CMU_8.style.backgroundColor = 'salmon';
+		_C_CMU_8.style.color = 'white';
+	}
+
+	if(_C_MODULE_1_QR.value != '' && _C_MODULE_1_품번.value != '') { 
+		_C_MODULE_1.style.backgroundColor = 'salmon';
+		_C_MODULE_1.style.color = 'white';
+	}
+
+	if(_C_MODULE_2_QR.value != '' && _C_MODULE_2_품번.value != '') { 
+		_C_MODULE_2.style.backgroundColor = 'salmon';
+		_C_MODULE_2.style.color = 'white';
+	}
+
+	if(_C_MODULE_3_QR.value != '' && _C_MODULE_3_품번.value != '') { 
+		_C_MODULE_3.style.backgroundColor = 'salmon';
+		_C_MODULE_3.style.color = 'white';
+	}
+
+	if(_C_MODULE_4_QR.value != '' && _C_MODULE_4_품번.value != '') { 
+		_C_MODULE_4.style.backgroundColor = 'salmon';
+		_C_MODULE_4.style.color = 'white';
+	}
+
+	if(_C_MODULE_5_QR.value != '' && _C_MODULE_5_품번.value != '') { 
+		_C_MODULE_5.style.backgroundColor = 'salmon';
+		_C_MODULE_5.style.color = 'white';
+	}
+
+	if(_C_MODULE_6_QR.value != '' && _C_MODULE_6_품번.value != '') { 
+		_C_MODULE_6.style.backgroundColor = 'salmon';
+		_C_MODULE_6.style.color = 'white';
+	}
+
+	if(_C_MODULE_7_QR.value != '' && _C_MODULE_7_품번.value != '') { 
+		_C_MODULE_7.style.backgroundColor = 'salmon';
+		_C_MODULE_7.style.color = 'white';
+	}
+
+	if(_C_MODULE_8_QR.value != '' && _C_MODULE_8_품번.value != '') { 
+		_C_MODULE_8.style.backgroundColor = 'salmon';
+		_C_MODULE_8.style.color = 'white';
+	}
+
+	if(_C_MODULE_9_QR.value != '' && _C_MODULE_9_품번.value != '') { 
+		_C_MODULE_9.style.backgroundColor = 'salmon';
+		_C_MODULE_9.style.color = 'white';
+	}
+
+	if(_C_MODULE_10_QR.value != '' && _C_MODULE_10_품번.value != '') { 
+		_C_MODULE_10.style.backgroundColor = 'salmon';
+		_C_MODULE_10.style.color = 'white';
+	}
+
+	if(_C_MODULE_11_QR.value != '' && _C_MODULE_11_품번.value != '') { 
+		_C_MODULE_11.style.backgroundColor = 'salmon';
+		_C_MODULE_11.style.color = 'white';
+	}
+
+	if(_C_MODULE_12_QR.value != '' && _C_MODULE_12_품번.value != '') { 
+		_C_MODULE_12.style.backgroundColor = 'salmon';
+		_C_MODULE_12.style.color = 'white';
+	}
+
+	if(_C_MODULE_13_QR.value != '' && _C_MODULE_13_품번.value != '') { 
+		_C_MODULE_13.style.backgroundColor = 'salmon';
+		_C_MODULE_13.style.color = 'white';
+	}
+
+	if(_C_MODULE_14_QR.value != '' && _C_MODULE_14_품번.value != '') { 
+		_C_MODULE_14.style.backgroundColor = 'salmon';
+		_C_MODULE_14.style.color = 'white';
+	}
+
+	if(_C_MODULE_15_QR.value != '' && _C_MODULE_15_품번.value != '') { 
+		_C_MODULE_15.style.backgroundColor = 'salmon';
+		_C_MODULE_15.style.color = 'white';
+	}
+
+	if(_C_MODULE_16_QR.value != '' && _C_MODULE_16_품번.value != '') { 
+		_C_MODULE_16.style.backgroundColor = 'salmon';
+		_C_MODULE_16.style.color = 'white';
+	}
+
+	if(_C_MODULE_2_1_QR.value != '' && _C_MODULE_2_1_품번.value != '') { 
+		_C_MODULE_2_1.style.backgroundColor = 'salmon';
+		_C_MODULE_2_1.style.color = 'white';
+	}
+
+	if(_C_MODULE_2_2_QR.value != '' && _C_MODULE_2_2_품번.value != '') { 
+		_C_MODULE_2_2.style.backgroundColor = 'salmon';
+		_C_MODULE_2_2.style.color = 'white';
+	}
+
+	if(_C_MODULE_2_3_QR.value != '' && _C_MODULE_2_3_품번.value != '') { 
+		_C_MODULE_2_3.style.backgroundColor = 'salmon';
+		_C_MODULE_2_3.style.color = 'white';
+	}
+
+	if(_C_MODULE_2_4_QR.value != '' && _C_MODULE_2_4_품번.value != '') { 
+		_C_MODULE_2_4.style.backgroundColor = 'salmon';
+		_C_MODULE_2_4.style.color = 'white';
+	}
+
+	if(_C_MODULE_2_5_QR.value != '' && _C_MODULE_2_5_품번.value != '') { 
+		_C_MODULE_2_5.style.backgroundColor = 'salmon';
+		_C_MODULE_2_5.style.color = 'white';
+	}
+
+	if(_C_MODULE_2_6_QR.value != '' && _C_MODULE_2_6_품번.value != '') { 
+		_C_MODULE_2_6.style.backgroundColor = 'salmon';
+		_C_MODULE_2_6.style.color = 'white';
+	}
+
+	if(_C_MODULE_2_7_QR.value != '' && _C_MODULE_2_7_품번.value != '') { 
+		_C_MODULE_2_7.style.backgroundColor = 'salmon';
+		_C_MODULE_2_7.style.color = 'white';
+	}
+
+	if(_C_MODULE_2_8_QR.value != '' && _C_MODULE_2_8_품번.value != '') { 
+		_C_MODULE_2_8.style.backgroundColor = 'salmon';
+		_C_MODULE_2_8.style.color = 'white';
+	}
+
+	if(_C_MODULE_2_9_QR.value != '' && _C_MODULE_2_9_품번.value != '') { 
+		_C_MODULE_2_9.style.backgroundColor = 'salmon';
+		_C_MODULE_2_9.style.color = 'white';
+	}
+
+	if(_C_MODULE_2_10_QR.value != '' && _C_MODULE_2_10_품번.value != '') { 
+		_C_MODULE_2_10.style.backgroundColor = 'salmon';
+		_C_MODULE_2_10.style.color = 'white';
+	}
+
+	if(_C_MODULE_2_11_QR.value != '' && _C_MODULE_2_11_품번.value != '') { 
+		_C_MODULE_2_11.style.backgroundColor = 'salmon';
+		_C_MODULE_2_11.style.color = 'white';
+	}
+
+	if(_C_MODULE_2_12_QR.value != '' && _C_MODULE_2_12_품번.value != '') { 
+		_C_MODULE_2_12.style.backgroundColor = 'salmon';
+		_C_MODULE_2_12.style.color = 'white';
+	}
+
+	if(_C_MODULE_2_13_QR.value != '' && _C_MODULE_2_13_품번.value != '') { 
+		_C_MODULE_2_13.style.backgroundColor = 'salmon';
+		_C_MODULE_2_13.style.color = 'white';
+	}
+
+	if(_C_MODULE_2_14_QR.value != '' && _C_MODULE_2_14_품번.value != '') { 
+		_C_MODULE_2_14.style.backgroundColor = 'salmon';
+		_C_MODULE_2_14.style.color = 'white';
+	}
+
+	if(_C_MODULE_2_15_QR.value != '' && _C_MODULE_2_15_품번.value != '') { 
+		_C_MODULE_2_15.style.backgroundColor = 'salmon';
+		_C_MODULE_2_15.style.color = 'white';
+	}
+
+	if(_C_MODULE_2_16_QR.value != '' && _C_MODULE_2_16_품번.value != '') { 
+		_C_MODULE_2_16.style.backgroundColor = 'salmon';
+		_C_MODULE_2_16.style.color = 'white';
+	}
+
+	if(_D_UPR_CASE_QR.value != '' && _D_UPR_CASE_품번.value != '') { 
+		_D_UPR_CASE.style.backgroundColor = 'salmon';
+		_D_UPR_CASE.style.color = 'white';
+	}
+
+	if(_D_LWR_CASE_QR.value != '' && _D_LWR_CASE_품번.value != '') { 
+		_D_LWR_CASE.style.backgroundColor = 'salmon';
+		_D_LWR_CASE.style.color = 'white';
+	}
+
+	if(_D_HV_CNTR_1_QR.value != '' && _D_HV_CNTR_1_품번.value != '') { 
+		_D_HV_CNTR_1.style.backgroundColor = 'salmon';
+		_D_HV_CNTR_1.style.color = 'white';
+	}
+
+	if(_D_HV_CNTR_2_QR.value != '' && _D_HV_CNTR_2_품번.value != '') { 
+		_D_HV_CNTR_2.style.backgroundColor = 'salmon';
+		_D_HV_CNTR_2.style.color = 'white';
+	}
+
+	if(_D_RELAY_QR.value != '' && _D_RELAY_품번.value != '') { 
+		_D_RELAY.style.backgroundColor = 'salmon';
+		_D_RELAY.style.color = 'white';
+	}
+
+	if(_D_LV_W_H_QR.value != '' && _D_LV_W_H_품번.value != '') { 
+		_D_LV_W_H.style.backgroundColor = 'salmon';
+		_D_LV_W_H.style.color = 'white';
+	}
+
+	if(_D_HV_W_H_1_QR.value != '' && _D_HV_W_H_1_품번.value != '') { 
+		_D_HV_W_H_1.style.backgroundColor = 'salmon';
+		_D_HV_W_H_1.style.color = 'white';
+	}
+
+	if(_D_HV_W_H_2_QR.value != '' && _D_HV_W_H_2_품번.value != '') { 
+		_D_HV_W_H_2.style.backgroundColor = 'salmon';
+		_D_HV_W_H_2.style.color = 'white';
+	}
+
+	if(_D_BMU_QR.value != '' && _D_BMU_품번.value != '') { 
+		_D_BMU.style.backgroundColor = 'salmon';
+		_D_BMU.style.color = 'white';
+	}
+
+	if(_D_CMU_1_QR.value != '' && _D_CMU_1_품번.value != '') { 
+		_D_CMU_1.style.backgroundColor = 'salmon';
+		_D_CMU_1.style.color = 'white';
+	}
+
+	if(_D_MODULE_1_QR.value != '' && _D_MODULE_1_품번.value != '') { 
+		_D_MODULE_1.style.backgroundColor = 'salmon';
+		_D_MODULE_1.style.color = 'white';
+	}
+
+	if(_D_MODULE_2_QR.value != '' && _D_MODULE_2_품번.value != '') { 
+		_D_MODULE_2.style.backgroundColor = 'salmon';
+		_D_MODULE_2.style.color = 'white';
+	}
+
+	if(_D2_HV_W_H_1_QR.value != '' && _D2_HV_W_H_1_품번.value != '') { 
+		_D2_HV_W_H_1.style.backgroundColor = 'salmon';
+		_D2_HV_W_H_1.style.color = 'white';
+	}
+
+	if(_D2_CMU_1_QR.value != '' && _D2_CMU_1_품번.value != '') { 
+		_D2_CMU_1.style.backgroundColor = 'salmon';
+		_D2_CMU_1.style.color = 'white';
+	}
+
+	if(_D2_RELAY_QR.value != '' && _D2_RELAY_품번.value != '') { 
+		_D2_RELAY.style.backgroundColor = 'salmon';
+		_D2_RELAY.style.color = 'white';
+	}
+
+	if(_D2_BMU_QR.value != '' && _D2_BMU_품번.value != '') { 
+		_D2_BMU.style.backgroundColor = 'salmon';
+		_D2_BMU.style.color = 'white';
+	}
+
+	if(_D2_HV_CNTR_1_QR.value != '' && _D2_HV_CNTR_1_품번.value != '') { 
+		_D2_HV_CNTR_1.style.backgroundColor = 'salmon';
+		_D2_HV_CNTR_1.style.color = 'white';
+	}
+
+	if(_D2_HV_CNTR_2_QR.value != '' && _D2_HV_CNTR_2_품번.value != '') { 
+		_D2_HV_CNTR_2.style.backgroundColor = 'salmon';
+		_D2_HV_CNTR_2.style.color = 'white';
+	}
+
+	if(_D2_LWR_CASE_QR.value != '' && _D2_LWR_CASE_품번.value != '') { 
+		_D2_LWR_CASE.style.backgroundColor = 'salmon';
+		_D2_LWR_CASE.style.color = 'white';
+	}
+
+	if(_D2_UPR_CASE_QR.value != '' && _D2_UPR_CASE_품번.value != '') { 
+		_D2_UPR_CASE.style.backgroundColor = 'salmon';
+		_D2_UPR_CASE.style.color = 'white';
+	}
+
+	if(_D2_LV_W_H_QR.value != '' && _D2_LV_W_H_품번.value != '') { 
+		_D2_LV_W_H.style.backgroundColor = 'salmon';
+		_D2_LV_W_H.style.color = 'white';
+	}
+
+	if(_D2_MODULE_1_QR.value != '' && _D2_MODULE_1_품번.value != '') { 
+		_D2_MODULE_1.style.backgroundColor = 'salmon';
+		_D2_MODULE_1.style.color = 'white';
 	}
 }
 
