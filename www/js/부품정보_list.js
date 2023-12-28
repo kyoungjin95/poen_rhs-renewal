@@ -31,16 +31,16 @@ var LK_S_PLUG = [];
 var LK_FC_S_PLUG = [];
 var LM_S_PLUG = [];
 
-var DE_SK3_SPA  = [];
-var OS_SPA  = [];
-var HR_PU_SPA  = [];
-var CV_SPA  = [];
-var NE_SPA  = [];
-var JW_SPA  = [];
-var CS_SPA  = [];
-var LK_SPA  = [];
-var LK_FC_SPA  = [];
-var LM_SPA  = [];
+var DE_SK3_SPA = [];
+var OS_SPA = [];
+var HR_PU_SPA = [];
+var CV_SPA = [];
+var NE_SPA = [];
+var JW_SPA = [];
+var CS_SPA = [];
+var LK_SPA = [];
+var LK_FC_SPA = [];
+var LM_SPA = [];
 
 var DE_SK3_HV_CNTR = [];
 var OS_HV_CNTR = [];
@@ -175,10 +175,10 @@ async function 부품정보_list_시작() {
 
 	var sels = document.querySelectorAll('.select_box');
 	sels.forEach((sel) => {
-	    sel.addEventListener('change', get_sel_value);
+		sel.addEventListener('change', get_sel_value);
 	});
 	auto_focus();
-	
+
 	_A.style.display = "none";
 	_B.style.display = "none";
 	_C.style.display = "none";
@@ -535,7 +535,7 @@ async function 품번_list() {
 					CV_BMA.push(품번.BMA);
 
 					break;
-			
+
 				case 'NE' :
 					NE_LWR_CASE.push(품번.LWR_CASE);
 					NE_UPR_CASE.push(품번.UPR_CASE);
@@ -554,7 +554,7 @@ async function 품번_list() {
 					NE_BMA.push(품번.BMA);
 
 					break;
-			
+
 				case 'JW' :
 					JW_LWR_CASE.push(품번.LWR_CASE);
 					JW_UPR_CASE.push(품번.UPR_CASE);
@@ -573,7 +573,7 @@ async function 품번_list() {
 					JW_BMA.push(품번.BMA);
 
 					break;
-			
+
 				case 'CS' :
 					CS_LWR_CASE.push(품번.LWR_CASE);
 					CS_UPR_CASE.push(품번.UPR_CASE);
@@ -592,7 +592,7 @@ async function 품번_list() {
 					CS_BMA.push(품번.BMA);
 
 					break;
-			
+
 				case 'LK' :
 					LK_LWR_CASE.push(품번.LWR_CASE);
 					LK_UPR_CASE.push(품번.UPR_CASE);
@@ -611,7 +611,7 @@ async function 품번_list() {
 					LK_BMA.push(품번.BMA);
 
 					break;
-			
+
 				case 'LKFC' :
 					LKFC_LWR_CASE.push(품번.LWR_CASE);
 					LKFC_UPR_CASE.push(품번.UPR_CASE);
@@ -630,7 +630,7 @@ async function 품번_list() {
 					LKFC_BMA.push(품번.BMA);
 
 					break;
-			
+
 				case 'LM' :
 					LM_LWR_CASE.push(품번.LWR_CASE);
 					LM_UPR_CASE.push(품번.UPR_CASE);
@@ -666,7 +666,7 @@ function select_box_set_A() {
 	var option_4;
 	var option_5;
 
-        //os/ed/sk3/lk
+	//os/ed/sk3/lk
 	//
 	switch (차종) {
 		case "DE":
@@ -1116,7 +1116,7 @@ function select_box_set_A() {
 
 		case "LK":
 		case "LK_EV":
-			 option = document.createElement('option');
+			option = document.createElement('option');
 			option.value = '';
 			option.text = '---';
 			_A_LWR_CASE_SEL.appendChild(option);
@@ -1562,14 +1562,14 @@ function select_box_set_A() {
 }
 
 function select_box_set_B() {
-        //HR / PU
+	//HR / PU
 	var option;
 	var option_1;
 	var option_2;
 	var option_3;
 	var option_4;
 	var option_5;
-	
+
 	switch (차종) {
 		case 'HR' :
 		case 'HR_EV' :
@@ -1759,7 +1759,7 @@ function select_box_set_B() {
 }
 
 function select_box_set_C() {
-        //NE/CV/JW1/LM
+	//NE/CV/JW1/LM
 	var option;
 	var option_1;
 	var option_2;
@@ -2803,7 +2803,7 @@ function select_box_set_D() {
 	var option_3;
 	var option_4;
 	var option_5;
-	
+
 	switch (차종) {
 		case 'CS' :
 		case 'CS_EV' :
@@ -3003,260 +3003,300 @@ async function 부품정보_list_load() {
 
 	if (부품정보_list_v == null) return;
 
-	_A_UPR_CASE_QR.value = 부품정보_list_v.A_UPR_CASE_QR;
-	_A_LWR_CASE_QR.value = 부품정보_list_v.A_LWR_CASE_QR;
-	_A_S_PLUG_QR.value = 부품정보_list_v.A_S_PLUG_QR;
-	_A_SPA_QR.value = 부품정보_list_v.A_SPA_QR;
-	_A_HT_CNTR_QR.value = 부품정보_list_v.A_HT_CNTR_QR;
-	_A_HV_CNTR_QR.value = 부품정보_list_v.A_HV_CNTR_QR;
-	_A_PRA_QR.value = 부품정보_list_v.A_PRA_QR;
-	_A_LV_W_H_QR.value = 부품정보_list_v.A_LV_W_H_QR;
-	_A_HV_W_H_1_QR.value = 부품정보_list_v.A_HV_W_H_1_QR;
-	_A_HV_W_H_2_QR.value = 부품정보_list_v.A_HV_W_H_2_QR;
-	_A_HV_W_H_3_QR.value = 부품정보_list_v.A_HV_W_H_3_QR;
-	_A_HV_W_H_4_QR.value = 부품정보_list_v.A_HV_W_H_4_QR;
-	_A_HV_W_H_5_QR.value = 부품정보_list_v.A_HV_W_H_5_QR;
-	_A_BMU_QR.value = 부품정보_list_v.A_BMU_QR;
-	_A_CMU_1_QR.value = 부품정보_list_v.A_CMU_1_QR;
-	_A_CMU_2_QR.value = 부품정보_list_v.A_CMU_2_QR;
-	_A_CMU_3_QR.value = 부품정보_list_v.A_CMU_3_QR;
-	_A_CMU_4_QR.value = 부품정보_list_v.A_CMU_4_QR;
-	_A_CMU_5_QR.value = 부품정보_list_v.A_CMU_5_QR;
-	_A_MODULE_1_QR.value = 부품정보_list_v.A_MODULE_1_QR;
-	_A_MODULE_2_QR.value = 부품정보_list_v.A_MODULE_2_QR;
-	_A_MODULE_3_QR.value = 부품정보_list_v.A_MODULE_3_QR;
-	_A_MODULE_4_QR.value = 부품정보_list_v.A_MODULE_4_QR;
-	_A_MODULE_5_QR.value = 부품정보_list_v.A_MODULE_5_QR;
-	_B_UPR_CASE_QR.value = 부품정보_list_v.B_UPR_CASE_QR;
-	_B_LWR_CASE_QR.value = 부품정보_list_v.B_LWR_CASE_QR;
-	_B_HV_CNTR_QR.value = 부품정보_list_v.B_HV_CNTR_QR;
-	_B_HT_CNTR_QR.value = 부품정보_list_v.B_HT_CNTR_QR;
-	_B_PRA_QR.value = 부품정보_list_v.B_PRA_QR;
-	_B_HV_W_H_1_QR.value = 부품정보_list_v.B_HV_W_H_1_QR;
-	_B_HV_W_H_2_QR.value = 부품정보_list_v.B_HV_W_H_2_QR;
-	_B_LV_W_H_QR.value = 부품정보_list_v.B_LV_W_H_QR;
-	_B_BMU_QR.value = 부품정보_list_v.B_BMU_QR;
-	_B_CMU_1_QR.value = 부품정보_list_v.B_CMU_1_QR;
-	_B_CMU_2_QR.value = 부품정보_list_v.B_CMU_2_QR;
-	_B_CMU_3_QR.value = 부품정보_list_v.B_CMU_3_QR;
-	_B_CMU_4_QR.value = 부품정보_list_v.B_CMU_4_QR;
-	_B_CMU_5_QR.value = 부품정보_list_v.B_CMU_5_QR;
-	_B_MODULE_1_QR.value = 부품정보_list_v.B_MODULE_1_QR;
-	_B_MODULE_2_QR.value = 부품정보_list_v.B_MODULE_2_QR;
-	_B_MODULE_3_QR.value = 부품정보_list_v.B_MODULE_3_QR;
-	_B_MODULE_4_QR.value = 부품정보_list_v.B_MODULE_4_QR;
-	_B_MODULE_5_QR.value = 부품정보_list_v.B_MODULE_5_QR;
-	_B_MODULE_6_QR.value = 부품정보_list_v.B_MODULE_6_QR;
-	_B_MODULE_7_QR.value = 부품정보_list_v.B_MODULE_7_QR;
-	_B_MODULE_8_QR.value = 부품정보_list_v.B_MODULE_8_QR;
-	_B_MODULE_9_QR.value = 부품정보_list_v.B_MODULE_9_QR;
-	_B_MODULE_10_QR.value = 부품정보_list_v.B_MODULE_10_QR;
-	_C_UPR_CASE_QR.value = 부품정보_list_v.C_UPR_CASE_QR;
-	_C_LWR_CASE_QR.value = 부품정보_list_v.C_LWR_CASE_QR;
-	_C_HV_CNTR_1_QR.value = 부품정보_list_v.C_HV_CNTR_1_QR;
-	_C_HV_CNTR_2_QR.value = 부품정보_list_v.C_HV_CNTR_2_QR;
-	_C_HT_CNTR_QR.value = 부품정보_list_v.C_HT_CNTR_QR;
-	_C_PRA_QR.value = 부품정보_list_v.C_PRA_QR;
-	_C_FUSE_QR.value = 부품정보_list_v.C_FUSE_QR;
-	_C_LV_W_H_QR.value = 부품정보_list_v.C_LV_W_H_QR;
-	_C_HV_W_H_1_QR.value = 부품정보_list_v.C_HV_W_H_1_QR;
-	_C_HV_W_H_2_QR.value = 부품정보_list_v.C_HV_W_H_2_QR;
-	_C_HV_W_H_3_QR.value = 부품정보_list_v.C_HV_W_H_3_QR;
-	_C_HV_W_H_4_QR.value = 부품정보_list_v.C_HV_W_H_4_QR;
-	_C_HV_W_H_5_QR.value = 부품정보_list_v.C_HV_W_H_5_QR;
-	_C_HV_W_H_6_QR.value = 부품정보_list_v.C_HV_W_H_6_QR;
-	_C_HV_W_H_7_QR.value = 부품정보_list_v.C_HV_W_H_7_QR;
-	_C_HV_W_H_8_QR.value = 부품정보_list_v.C_HV_W_H_8_QR;
-	_C_BMU_QR.value = 부품정보_list_v.C_BMU_QR;
-	_C_CMU_1_QR.value = 부품정보_list_v.C_CMU_1_QR;
-	_C_CMU_2_QR.value = 부품정보_list_v.C_CMU_2_QR;
-	_C_CMU_3_QR.value = 부품정보_list_v.C_CMU_3_QR;
-	_C_CMU_4_QR.value = 부품정보_list_v.C_CMU_4_QR;
-	_C_CMU_5_QR.value = 부품정보_list_v.C_CMU_5_QR;
-	_C_CMU_6_QR.value = 부품정보_list_v.C_CMU_6_QR;
-	_C_CMU_7_QR.value = 부품정보_list_v.C_CMU_7_QR;
-	_C_CMU_8_QR.value = 부품정보_list_v.C_CMU_8_QR;
-	_C_MODULE_1_QR.value = 부품정보_list_v.C_MODULE_1_QR;
-	_C_MODULE_2_QR.value = 부품정보_list_v.C_MODULE_2_QR;
-	_C_MODULE_3_QR.value = 부품정보_list_v.C_MODULE_3_QR;
-	_C_MODULE_4_QR.value = 부품정보_list_v.C_MODULE_4_QR;
-	_C_MODULE_5_QR.value = 부품정보_list_v.C_MODULE_5_QR;
-	_C_MODULE_6_QR.value = 부품정보_list_v.C_MODULE_6_QR;
-	_C_MODULE_7_QR.value = 부품정보_list_v.C_MODULE_7_QR;
-	_C_MODULE_8_QR.value = 부품정보_list_v.C_MODULE_8_QR;
-	_C_MODULE_9_QR.value = 부품정보_list_v.C_MODULE_9_QR;
-	_C_MODULE_10_QR.value = 부품정보_list_v.C_MODULE_10_QR;
-	_C_MODULE_11_QR.value = 부품정보_list_v.C_MODULE_11_QR;
-	_C_MODULE_12_QR.value = 부품정보_list_v.C_MODULE_12_QR;
-	_C_MODULE_13_QR.value = 부품정보_list_v.C_MODULE_13_QR;
-	_C_MODULE_14_QR.value = 부품정보_list_v.C_MODULE_14_QR;
-	_C_MODULE_15_QR.value = 부품정보_list_v.C_MODULE_15_QR;
-	_C_MODULE_16_QR.value = 부품정보_list_v.C_MODULE_16_QR;
-	_C_MODULE_2_1_QR.value = 부품정보_list_v.C_MODULE_2_1_QR;
-	_C_MODULE_2_2_QR.value = 부품정보_list_v.C_MODULE_2_2_QR;
-	_C_MODULE_2_3_QR.value = 부품정보_list_v.C_MODULE_2_3_QR;
-	_C_MODULE_2_4_QR.value = 부품정보_list_v.C_MODULE_2_4_QR;
-	_C_MODULE_2_5_QR.value = 부품정보_list_v.C_MODULE_2_5_QR;
-	_C_MODULE_2_6_QR.value = 부품정보_list_v.C_MODULE_2_6_QR;
-	_C_MODULE_2_7_QR.value = 부품정보_list_v.C_MODULE_2_7_QR;
-	_C_MODULE_2_8_QR.value = 부품정보_list_v.C_MODULE_2_8_QR;
-	_C_MODULE_2_9_QR.value = 부품정보_list_v.C_MODULE_2_9_QR;
-	_C_MODULE_2_10_QR.value = 부품정보_list_v.C_MODULE_2_10_QR;
-	_C_MODULE_2_11_QR.value = 부품정보_list_v.C_MODULE_2_11_QR;
-	_C_MODULE_2_12_QR.value = 부품정보_list_v.C_MODULE_2_12_QR;
-	_C_MODULE_2_13_QR.value = 부품정보_list_v.C_MODULE_2_13_QR;
-	_C_MODULE_2_14_QR.value = 부품정보_list_v.C_MODULE_2_14_QR;
-	_C_MODULE_2_15_QR.value = 부품정보_list_v.C_MODULE_2_15_QR;
-	_C_MODULE_2_16_QR.value = 부품정보_list_v.C_MODULE_2_16_QR;
-	_D_UPR_CASE_QR.value = 부품정보_list_v.D_UPR_CASE_QR;
-	_D_LWR_CASE_QR.value = 부품정보_list_v.D_LWR_CASE_QR;
-	_D_HV_CNTR_1_QR.value = 부품정보_list_v.D_HV_CNTR_1_QR;
-	_D_HV_CNTR_2_QR.value = 부품정보_list_v.D_HV_CNTR_2_QR;
-	_D_RELAY_QR.value = 부품정보_list_v.D_RELAY_QR;
-	_D_LV_W_H_QR.value = 부품정보_list_v.D_LV_W_H_QR;
-	_D_HV_W_H_1_QR.value = 부품정보_list_v.D_HV_W_H_1_QR;
-	_D_HV_W_H_2_QR.value = 부품정보_list_v.D_HV_W_H_2_QR;
-	_D_BMU_QR.value = 부품정보_list_v.D_BMU_QR;
-	_D_CMU_1_QR.value = 부품정보_list_v.D_CMU_1_QR;
-	_D_MODULE_1_QR.value = 부품정보_list_v.D_MODULE_1_QR;
-	_D_MODULE_2_QR.value = 부품정보_list_v.D_MODULE_2_QR;
-	_D2_HV_W_H_1_QR.value = 부품정보_list_v.D2_HV_W_H_1_QR;
-	_D2_CMU_1_QR.value = 부품정보_list_v.D2_CMU_1_QR;
-	_D2_RELAY_QR.value = 부품정보_list_v.D2_RELAY_QR;
-	_D2_BMU_QR.value = 부품정보_list_v.D2_BMU_QR;
-	_D2_HV_CNTR_1_QR.value = 부품정보_list_v.D2_HV_CNTR_1_QR;
-	_D2_HV_CNTR_2_QR.value = 부품정보_list_v.D2_HV_CNTR_2_QR;
-	_D2_LWR_CASE_QR.value = 부품정보_list_v.D2_LWR_CASE_QR;
-	_D2_UPR_CASE_QR.value = 부품정보_list_v.D2_UPR_CASE_QR;
-	_D2_LV_W_H_QR.value = 부품정보_list_v.D2_LV_W_H_QR;
-	_D2_MODULE_1_QR.value = 부품정보_list_v.D2_MODULE_1_QR;
-	_A_UPR_CASE_품번.value = 부품정보_list_v.A_UPR_CASE_품번;
-	_A_LWR_CASE_품번.value = 부품정보_list_v.A_LWR_CASE_품번;
-	_A_S_PLUG_품번.value = 부품정보_list_v.A_S_PLUG_품번;
-	_A_SPA_품번.value = 부품정보_list_v.A_SPA_품번;
-	_A_HT_CNTR_품번.value = 부품정보_list_v.A_HT_CNTR_품번;
-	_A_HV_CNTR_품번.value = 부품정보_list_v.A_HV_CNTR_품번;
-	_A_PRA_품번.value = 부품정보_list_v.A_PRA_품번;
-	_A_LV_W_H_품번.value = 부품정보_list_v.A_LV_W_H_품번;
-	_A_HV_W_H_1_품번.value = 부품정보_list_v.A_HV_W_H_1_품번;
-	_A_HV_W_H_2_품번.value = 부품정보_list_v.A_HV_W_H_2_품번;
-	_A_HV_W_H_3_품번.value = 부품정보_list_v.A_HV_W_H_3_품번;
-	_A_HV_W_H_4_품번.value = 부품정보_list_v.A_HV_W_H_4_품번;
-	_A_HV_W_H_5_품번.value = 부품정보_list_v.A_HV_W_H_5_품번;
-	_A_BMU_품번.value = 부품정보_list_v.A_BMU_품번;
-	_A_CMU_1_품번.value = 부품정보_list_v.A_CMU_1_품번;
-	_A_CMU_2_품번.value = 부품정보_list_v.A_CMU_2_품번;
-	_A_CMU_3_품번.value = 부품정보_list_v.A_CMU_3_품번;
-	_A_CMU_4_품번.value = 부품정보_list_v.A_CMU_4_품번;
-	_A_CMU_5_품번.value = 부품정보_list_v.A_CMU_5_품번;
-	_A_MODULE_1_품번.value = 부품정보_list_v.A_MODULE_1_품번;
-	_A_MODULE_2_품번.value = 부품정보_list_v.A_MODULE_2_품번;
-	_A_MODULE_3_품번.value = 부품정보_list_v.A_MODULE_3_품번;
-	_A_MODULE_4_품번.value = 부품정보_list_v.A_MODULE_4_품번;
-	_A_MODULE_5_품번.value = 부품정보_list_v.A_MODULE_5_품번;
-	_B_UPR_CASE_품번.value = 부품정보_list_v.B_UPR_CASE_품번;
-	_B_LWR_CASE_품번.value = 부품정보_list_v.B_LWR_CASE_품번;
-	_B_HV_CNTR_품번.value = 부품정보_list_v.B_HV_CNTR_품번;
-	_B_HT_CNTR_품번.value = 부품정보_list_v.B_HT_CNTR_품번;
-	_B_PRA_품번.value = 부품정보_list_v.B_PRA_품번;
-	_B_HV_W_H_1_품번.value = 부품정보_list_v.B_HV_W_H_1_품번;
-	_B_HV_W_H_2_품번.value = 부품정보_list_v.B_HV_W_H_2_품번;
-	_B_LV_W_H_품번.value = 부품정보_list_v.B_LV_W_H_품번;
-	_B_BMU_품번.value = 부품정보_list_v.B_BMU_품번;
-	_B_CMU_1_품번.value = 부품정보_list_v.B_CMU_1_품번;
-	_B_CMU_2_품번.value = 부품정보_list_v.B_CMU_2_품번;
-	_B_CMU_3_품번.value = 부품정보_list_v.B_CMU_3_품번;
-	_B_CMU_4_품번.value = 부품정보_list_v.B_CMU_4_품번;
-	_B_CMU_5_품번.value = 부품정보_list_v.B_CMU_5_품번;
-	_B_MODULE_1_품번.value = 부품정보_list_v.B_MODULE_1_품번;
-	_B_MODULE_2_품번.value = 부품정보_list_v.B_MODULE_2_품번;
-	_B_MODULE_3_품번.value = 부품정보_list_v.B_MODULE_3_품번;
-	_B_MODULE_4_품번.value = 부품정보_list_v.B_MODULE_4_품번;
-	_B_MODULE_5_품번.value = 부품정보_list_v.B_MODULE_5_품번;
-	_B_MODULE_6_품번.value = 부품정보_list_v.B_MODULE_6_품번;
-	_B_MODULE_7_품번.value = 부품정보_list_v.B_MODULE_7_품번;
-	_B_MODULE_8_품번.value = 부품정보_list_v.B_MODULE_8_품번;
-	_B_MODULE_9_품번.value = 부품정보_list_v.B_MODULE_9_품번;
-	_B_MODULE_10_품번.value = 부품정보_list_v.B_MODULE_10_품번;
-	_C_UPR_CASE_품번.value = 부품정보_list_v.C_UPR_CASE_품번;
-	_C_LWR_CASE_품번.value = 부품정보_list_v.C_LWR_CASE_품번;
-	_C_HV_CNTR_1_품번.value = 부품정보_list_v.C_HV_CNTR_1_품번;
-	_C_HV_CNTR_2_품번.value = 부품정보_list_v.C_HV_CNTR_2_품번;
-	_C_HT_CNTR_품번.value = 부품정보_list_v.C_HT_CNTR_품번;
-	_C_PRA_품번.value = 부품정보_list_v.C_PRA_품번;
-	_C_FUSE_품번.value = 부품정보_list_v.C_FUSE_품번;
-	_C_LV_W_H_품번.value = 부품정보_list_v.C_LV_W_H_품번;
-	_C_HV_W_H_1_품번.value = 부품정보_list_v.C_HV_W_H_1_품번;
-	_C_HV_W_H_2_품번.value = 부품정보_list_v.C_HV_W_H_2_품번;
-	_C_HV_W_H_3_품번.value = 부품정보_list_v.C_HV_W_H_3_품번;
-	_C_HV_W_H_4_품번.value = 부품정보_list_v.C_HV_W_H_4_품번;
-	_C_HV_W_H_5_품번.value = 부품정보_list_v.C_HV_W_H_5_품번;
-	_C_HV_W_H_6_품번.value = 부품정보_list_v.C_HV_W_H_6_품번;
-	_C_HV_W_H_7_품번.value = 부품정보_list_v.C_HV_W_H_7_품번;
-	_C_HV_W_H_8_품번.value = 부품정보_list_v.C_HV_W_H_8_품번;
-	_C_BMU_품번.value = 부품정보_list_v.C_BMU_품번;
-	_C_CMU_1_품번.value = 부품정보_list_v.C_CMU_1_품번;
-	_C_CMU_2_품번.value = 부품정보_list_v.C_CMU_2_품번;
-	_C_CMU_3_품번.value = 부품정보_list_v.C_CMU_3_품번;
-	_C_CMU_4_품번.value = 부품정보_list_v.C_CMU_4_품번;
-	_C_CMU_5_품번.value = 부품정보_list_v.C_CMU_5_품번;
-	_C_CMU_6_품번.value = 부품정보_list_v.C_CMU_6_품번;
-	_C_CMU_7_품번.value = 부품정보_list_v.C_CMU_7_품번;
-	_C_CMU_8_품번.value = 부품정보_list_v.C_CMU_8_품번;
-	_C_MODULE_1_품번.value = 부품정보_list_v.C_MODULE_1_품번;
-	_C_MODULE_2_품번.value = 부품정보_list_v.C_MODULE_2_품번;
-	_C_MODULE_3_품번.value = 부품정보_list_v.C_MODULE_3_품번;
-	_C_MODULE_4_품번.value = 부품정보_list_v.C_MODULE_4_품번;
-	_C_MODULE_5_품번.value = 부품정보_list_v.C_MODULE_5_품번;
-	_C_MODULE_6_품번.value = 부품정보_list_v.C_MODULE_6_품번;
-	_C_MODULE_7_품번.value = 부품정보_list_v.C_MODULE_7_품번;
-	_C_MODULE_8_품번.value = 부품정보_list_v.C_MODULE_8_품번;
-	_C_MODULE_9_품번.value = 부품정보_list_v.C_MODULE_9_품번;
-	_C_MODULE_10_품번.value = 부품정보_list_v.C_MODULE_10_품번;
-	_C_MODULE_11_품번.value = 부품정보_list_v.C_MODULE_11_품번;
-	_C_MODULE_12_품번.value = 부품정보_list_v.C_MODULE_12_품번;
-	_C_MODULE_13_품번.value = 부품정보_list_v.C_MODULE_13_품번;
-	_C_MODULE_14_품번.value = 부품정보_list_v.C_MODULE_14_품번;
-	_C_MODULE_15_품번.value = 부품정보_list_v.C_MODULE_15_품번;
-	_C_MODULE_16_품번.value = 부품정보_list_v.C_MODULE_16_품번;
-	_C_MODULE_2_1_품번.value = 부품정보_list_v.C_MODULE_2_1_품번;
-	_C_MODULE_2_2_품번.value = 부품정보_list_v.C_MODULE_2_2_품번;
-	_C_MODULE_2_3_품번.value = 부품정보_list_v.C_MODULE_2_3_품번;
-	_C_MODULE_2_4_품번.value = 부품정보_list_v.C_MODULE_2_4_품번;
-	_C_MODULE_2_5_품번.value = 부품정보_list_v.C_MODULE_2_5_품번;
-	_C_MODULE_2_6_품번.value = 부품정보_list_v.C_MODULE_2_6_품번;
-	_C_MODULE_2_7_품번.value = 부품정보_list_v.C_MODULE_2_7_품번;
-	_C_MODULE_2_8_품번.value = 부품정보_list_v.C_MODULE_2_8_품번;
-	_C_MODULE_2_9_품번.value = 부품정보_list_v.C_MODULE_2_9_품번;
-	_C_MODULE_2_10_품번.value = 부품정보_list_v.C_MODULE_2_10_품번;
-	_C_MODULE_2_11_품번.value = 부품정보_list_v.C_MODULE_2_11_품번;
-	_C_MODULE_2_12_품번.value = 부품정보_list_v.C_MODULE_2_12_품번;
-	_C_MODULE_2_13_품번.value = 부품정보_list_v.C_MODULE_2_13_품번;
-	_C_MODULE_2_14_품번.value = 부품정보_list_v.C_MODULE_2_14_품번;
-	_C_MODULE_2_15_품번.value = 부품정보_list_v.C_MODULE_2_15_품번;
-	_C_MODULE_2_16_품번.value = 부품정보_list_v.C_MODULE_2_16_품번;
-	_D_UPR_CASE_품번.value = 부품정보_list_v.D_UPR_CASE_품번;
-	_D_LWR_CASE_품번.value = 부품정보_list_v.D_LWR_CASE_품번;
-	_D_HV_CNTR_1_품번.value = 부품정보_list_v.D_HV_CNTR_1_품번;
-	_D_HV_CNTR_2_품번.value = 부품정보_list_v.D_HV_CNTR_2_품번;
-	_D_RELAY_품번.value = 부품정보_list_v.D_RELAY_품번;
-	_D_LV_W_H_품번.value = 부품정보_list_v.D_LV_W_H_품번;
-	_D_HV_W_H_1_품번.value = 부품정보_list_v.D_HV_W_H_1_품번;
-	_D_HV_W_H_2_품번.value = 부품정보_list_v.D_HV_W_H_2_품번;
-	_D_BMU_품번.value = 부품정보_list_v.D_BMU_품번;
-	_D_CMU_1_품번.value = 부품정보_list_v.D_CMU_1_품번;
-	_D_MODULE_1_품번.value = 부품정보_list_v.D_MODULE_1_품번;
-	_D_MODULE_2_품번.value = 부품정보_list_v.D_MODULE_2_품번;
-	_D2_HV_W_H_1_품번.value = 부품정보_list_v.D2_HV_W_H_1_품번;
-	_D2_CMU_1_품번.value = 부품정보_list_v.D2_CMU_1_품번;
-	_D2_RELAY_품번.value = 부품정보_list_v.D2_RELAY_품번;
-	_D2_BMU_품번.value = 부품정보_list_v.D2_BMU_품번;
-	_D2_HV_CNTR_1_품번.value = 부품정보_list_v.D2_HV_CNTR_1_품번;
-	_D2_HV_CNTR_2_품번.value = 부품정보_list_v.D2_HV_CNTR_2_품번;
-	_D2_LWR_CASE_품번.value = 부품정보_list_v.D2_LWR_CASE_품번;
-	_D2_UPR_CASE_품번.value = 부품정보_list_v.D2_UPR_CASE_품번;
-	_D2_LV_W_H_품번.value = 부품정보_list_v.D2_LV_W_H_품번;
-	_D2_MODULE_1_품번.value = 부품정보_list_v.D2_MODULE_1_품번;
+	switch (차종) {
+		case "DE":
+		case "DE_EV":
+		case "OS":
+		case "OS_EV":
+		case "SK3":
+		case "SK3_EV":
+		case "LK":
+		case "LK_EV":
+			_A_UPR_CASE_QR.value = 부품정보_list_v.A_UPR_CASE_QR;
+			_A_LWR_CASE_QR.value = 부품정보_list_v.A_LWR_CASE_QR;
+			_A_S_PLUG_QR.value = 부품정보_list_v.A_S_PLUG_QR;
+			_A_SPA_QR.value = 부품정보_list_v.A_SPA_QR;
+			_A_HT_CNTR_QR.value = 부품정보_list_v.A_HT_CNTR_QR;
+			_A_HV_CNTR_QR.value = 부품정보_list_v.A_HV_CNTR_QR;
+			_A_PRA_QR.value = 부품정보_list_v.A_PRA_QR;
+			_A_LV_W_H_QR.value = 부품정보_list_v.A_LV_W_H_QR;
+			_A_HV_W_H_1_QR.value = 부품정보_list_v.A_HV_W_H_1_QR;
+			_A_HV_W_H_2_QR.value = 부품정보_list_v.A_HV_W_H_2_QR;
+			_A_HV_W_H_3_QR.value = 부품정보_list_v.A_HV_W_H_3_QR;
+			_A_HV_W_H_4_QR.value = 부품정보_list_v.A_HV_W_H_4_QR;
+			_A_HV_W_H_5_QR.value = 부품정보_list_v.A_HV_W_H_5_QR;
+			_A_BMU_QR.value = 부품정보_list_v.A_BMU_QR;
+			_A_CMU_1_QR.value = 부품정보_list_v.A_CMU_1_QR;
+			_A_CMU_2_QR.value = 부품정보_list_v.A_CMU_2_QR;
+			_A_CMU_3_QR.value = 부품정보_list_v.A_CMU_3_QR;
+			_A_CMU_4_QR.value = 부품정보_list_v.A_CMU_4_QR;
+			_A_CMU_5_QR.value = 부품정보_list_v.A_CMU_5_QR;
+			_A_MODULE_1_QR.value = 부품정보_list_v.A_MODULE_1_QR;
+			_A_MODULE_2_QR.value = 부품정보_list_v.A_MODULE_2_QR;
+			_A_MODULE_3_QR.value = 부품정보_list_v.A_MODULE_3_QR;
+			_A_MODULE_4_QR.value = 부품정보_list_v.A_MODULE_4_QR;
+			_A_MODULE_5_QR.value = 부품정보_list_v.A_MODULE_5_QR;
+			_A_UPR_CASE_품번.value = 부품정보_list_v.A_UPR_CASE_품번;
+			_A_LWR_CASE_품번.value = 부품정보_list_v.A_LWR_CASE_품번;
+			_A_S_PLUG_품번.value = 부품정보_list_v.A_S_PLUG_품번;
+			_A_SPA_품번.value = 부품정보_list_v.A_SPA_품번;
+			_A_HT_CNTR_품번.value = 부품정보_list_v.A_HT_CNTR_품번;
+			_A_HV_CNTR_품번.value = 부품정보_list_v.A_HV_CNTR_품번;
+			_A_PRA_품번.value = 부품정보_list_v.A_PRA_품번;
+			_A_LV_W_H_품번.value = 부품정보_list_v.A_LV_W_H_품번;
+			_A_HV_W_H_1_품번.value = 부품정보_list_v.A_HV_W_H_1_품번;
+			_A_HV_W_H_2_품번.value = 부품정보_list_v.A_HV_W_H_2_품번;
+			_A_HV_W_H_3_품번.value = 부품정보_list_v.A_HV_W_H_3_품번;
+			_A_HV_W_H_4_품번.value = 부품정보_list_v.A_HV_W_H_4_품번;
+			_A_HV_W_H_5_품번.value = 부품정보_list_v.A_HV_W_H_5_품번;
+			_A_BMU_품번.value = 부품정보_list_v.A_BMU_품번;
+			_A_CMU_1_품번.value = 부품정보_list_v.A_CMU_1_품번;
+			_A_CMU_2_품번.value = 부품정보_list_v.A_CMU_2_품번;
+			_A_CMU_3_품번.value = 부품정보_list_v.A_CMU_3_품번;
+			_A_CMU_4_품번.value = 부품정보_list_v.A_CMU_4_품번;
+			_A_CMU_5_품번.value = 부품정보_list_v.A_CMU_5_품번;
+			_A_MODULE_1_품번.value = 부품정보_list_v.A_MODULE_1_품번;
+			_A_MODULE_2_품번.value = 부품정보_list_v.A_MODULE_2_품번;
+			_A_MODULE_3_품번.value = 부품정보_list_v.A_MODULE_3_품번;
+			_A_MODULE_4_품번.value = 부품정보_list_v.A_MODULE_4_품번;
+			_A_MODULE_5_품번.value = 부품정보_list_v.A_MODULE_5_품번;
+
+			break;
+
+		case "PU":
+		case "PU_EV":
+		case "HR":
+		case "HR_EV":
+			_B_UPR_CASE_QR.value = 부품정보_list_v.B_UPR_CASE_QR;
+			_B_LWR_CASE_QR.value = 부품정보_list_v.B_LWR_CASE_QR;
+			_B_HV_CNTR_QR.value = 부품정보_list_v.B_HV_CNTR_QR;
+			_B_HT_CNTR_QR.value = 부품정보_list_v.B_HT_CNTR_QR;
+			_B_PRA_QR.value = 부품정보_list_v.B_PRA_QR;
+			_B_HV_W_H_1_QR.value = 부품정보_list_v.B_HV_W_H_1_QR;
+			_B_HV_W_H_2_QR.value = 부품정보_list_v.B_HV_W_H_2_QR;
+			_B_LV_W_H_QR.value = 부품정보_list_v.B_LV_W_H_QR;
+			_B_BMU_QR.value = 부품정보_list_v.B_BMU_QR;
+			_B_CMU_1_QR.value = 부품정보_list_v.B_CMU_1_QR;
+			_B_CMU_2_QR.value = 부품정보_list_v.B_CMU_2_QR;
+			_B_CMU_3_QR.value = 부품정보_list_v.B_CMU_3_QR;
+			_B_CMU_4_QR.value = 부품정보_list_v.B_CMU_4_QR;
+			_B_CMU_5_QR.value = 부품정보_list_v.B_CMU_5_QR;
+			_B_MODULE_1_QR.value = 부품정보_list_v.B_MODULE_1_QR;
+			_B_MODULE_2_QR.value = 부품정보_list_v.B_MODULE_2_QR;
+			_B_MODULE_3_QR.value = 부품정보_list_v.B_MODULE_3_QR;
+			_B_MODULE_4_QR.value = 부품정보_list_v.B_MODULE_4_QR;
+			_B_MODULE_5_QR.value = 부품정보_list_v.B_MODULE_5_QR;
+			_B_MODULE_6_QR.value = 부품정보_list_v.B_MODULE_6_QR;
+			_B_MODULE_7_QR.value = 부품정보_list_v.B_MODULE_7_QR;
+			_B_MODULE_8_QR.value = 부품정보_list_v.B_MODULE_8_QR;
+			_B_MODULE_9_QR.value = 부품정보_list_v.B_MODULE_9_QR;
+			_B_MODULE_10_QR.value = 부품정보_list_v.B_MODULE_10_QR;
+			_B_UPR_CASE_품번.value = 부품정보_list_v.B_UPR_CASE_품번;
+			_B_LWR_CASE_품번.value = 부품정보_list_v.B_LWR_CASE_품번;
+			_B_HV_CNTR_품번.value = 부품정보_list_v.B_HV_CNTR_품번;
+			_B_HT_CNTR_품번.value = 부품정보_list_v.B_HT_CNTR_품번;
+			_B_PRA_품번.value = 부품정보_list_v.B_PRA_품번;
+			_B_HV_W_H_1_품번.value = 부품정보_list_v.B_HV_W_H_1_품번;
+			_B_HV_W_H_2_품번.value = 부품정보_list_v.B_HV_W_H_2_품번;
+			_B_LV_W_H_품번.value = 부품정보_list_v.B_LV_W_H_품번;
+			_B_BMU_품번.value = 부품정보_list_v.B_BMU_품번;
+			_B_CMU_1_품번.value = 부품정보_list_v.B_CMU_1_품번;
+			_B_CMU_2_품번.value = 부품정보_list_v.B_CMU_2_품번;
+			_B_CMU_3_품번.value = 부품정보_list_v.B_CMU_3_품번;
+			_B_CMU_4_품번.value = 부품정보_list_v.B_CMU_4_품번;
+			_B_CMU_5_품번.value = 부품정보_list_v.B_CMU_5_품번;
+			_B_MODULE_1_품번.value = 부품정보_list_v.B_MODULE_1_품번;
+			_B_MODULE_2_품번.value = 부품정보_list_v.B_MODULE_2_품번;
+			_B_MODULE_3_품번.value = 부품정보_list_v.B_MODULE_3_품번;
+			_B_MODULE_4_품번.value = 부품정보_list_v.B_MODULE_4_품번;
+			_B_MODULE_5_품번.value = 부품정보_list_v.B_MODULE_5_품번;
+			_B_MODULE_6_품번.value = 부품정보_list_v.B_MODULE_6_품번;
+			_B_MODULE_7_품번.value = 부품정보_list_v.B_MODULE_7_품번;
+			_B_MODULE_8_품번.value = 부품정보_list_v.B_MODULE_8_품번;
+			_B_MODULE_9_품번.value = 부품정보_list_v.B_MODULE_9_품번;
+			_B_MODULE_10_품번.value = 부품정보_list_v.B_MODULE_10_품번;
+
+			break;
+
+		case "CV":
+		case "CV_EV":
+		case "NE":
+		case "NE_EV":
+		case "LM":
+		case "LM_EV":
+			_C_UPR_CASE_QR.value = 부품정보_list_v.C_UPR_CASE_QR;
+			_C_LWR_CASE_QR.value = 부품정보_list_v.C_LWR_CASE_QR;
+			_C_HV_CNTR_1_QR.value = 부품정보_list_v.C_HV_CNTR_1_QR;
+			_C_HV_CNTR_2_QR.value = 부품정보_list_v.C_HV_CNTR_2_QR;
+			_C_HT_CNTR_QR.value = 부품정보_list_v.C_HT_CNTR_QR;
+			_C_PRA_QR.value = 부품정보_list_v.C_PRA_QR;
+			_C_FUSE_QR.value = 부품정보_list_v.C_FUSE_QR;
+			_C_LV_W_H_QR.value = 부품정보_list_v.C_LV_W_H_QR;
+			_C_HV_W_H_1_QR.value = 부품정보_list_v.C_HV_W_H_1_QR;
+			_C_HV_W_H_2_QR.value = 부품정보_list_v.C_HV_W_H_2_QR;
+			_C_HV_W_H_3_QR.value = 부품정보_list_v.C_HV_W_H_3_QR;
+			_C_HV_W_H_4_QR.value = 부품정보_list_v.C_HV_W_H_4_QR;
+			_C_HV_W_H_5_QR.value = 부품정보_list_v.C_HV_W_H_5_QR;
+			_C_HV_W_H_6_QR.value = 부품정보_list_v.C_HV_W_H_6_QR;
+			_C_HV_W_H_7_QR.value = 부품정보_list_v.C_HV_W_H_7_QR;
+			_C_HV_W_H_8_QR.value = 부품정보_list_v.C_HV_W_H_8_QR;
+			_C_BMU_QR.value = 부품정보_list_v.C_BMU_QR;
+			_C_CMU_1_QR.value = 부품정보_list_v.C_CMU_1_QR;
+			_C_CMU_2_QR.value = 부품정보_list_v.C_CMU_2_QR;
+			_C_CMU_3_QR.value = 부품정보_list_v.C_CMU_3_QR;
+			_C_CMU_4_QR.value = 부품정보_list_v.C_CMU_4_QR;
+			_C_CMU_5_QR.value = 부품정보_list_v.C_CMU_5_QR;
+			_C_CMU_6_QR.value = 부품정보_list_v.C_CMU_6_QR;
+			_C_CMU_7_QR.value = 부품정보_list_v.C_CMU_7_QR;
+			_C_CMU_8_QR.value = 부품정보_list_v.C_CMU_8_QR;
+			_C_MODULE_1_QR.value = 부품정보_list_v.C_MODULE_1_QR;
+			_C_MODULE_2_QR.value = 부품정보_list_v.C_MODULE_2_QR;
+			_C_MODULE_3_QR.value = 부품정보_list_v.C_MODULE_3_QR;
+			_C_MODULE_4_QR.value = 부품정보_list_v.C_MODULE_4_QR;
+			_C_MODULE_5_QR.value = 부품정보_list_v.C_MODULE_5_QR;
+			_C_MODULE_6_QR.value = 부품정보_list_v.C_MODULE_6_QR;
+			_C_MODULE_7_QR.value = 부품정보_list_v.C_MODULE_7_QR;
+			_C_MODULE_8_QR.value = 부품정보_list_v.C_MODULE_8_QR;
+			_C_MODULE_9_QR.value = 부품정보_list_v.C_MODULE_9_QR;
+			_C_MODULE_10_QR.value = 부품정보_list_v.C_MODULE_10_QR;
+			_C_MODULE_11_QR.value = 부품정보_list_v.C_MODULE_11_QR;
+			_C_MODULE_12_QR.value = 부품정보_list_v.C_MODULE_12_QR;
+			_C_MODULE_13_QR.value = 부품정보_list_v.C_MODULE_13_QR;
+			_C_MODULE_14_QR.value = 부품정보_list_v.C_MODULE_14_QR;
+			_C_MODULE_15_QR.value = 부품정보_list_v.C_MODULE_15_QR;
+			_C_MODULE_16_QR.value = 부품정보_list_v.C_MODULE_16_QR;
+			_C_MODULE_2_1_QR.value = 부품정보_list_v.C_MODULE_2_1_QR;
+			_C_MODULE_2_2_QR.value = 부품정보_list_v.C_MODULE_2_2_QR;
+			_C_MODULE_2_3_QR.value = 부품정보_list_v.C_MODULE_2_3_QR;
+			_C_MODULE_2_4_QR.value = 부품정보_list_v.C_MODULE_2_4_QR;
+			_C_MODULE_2_5_QR.value = 부품정보_list_v.C_MODULE_2_5_QR;
+			_C_MODULE_2_6_QR.value = 부품정보_list_v.C_MODULE_2_6_QR;
+			_C_MODULE_2_7_QR.value = 부품정보_list_v.C_MODULE_2_7_QR;
+			_C_MODULE_2_8_QR.value = 부품정보_list_v.C_MODULE_2_8_QR;
+			_C_MODULE_2_9_QR.value = 부품정보_list_v.C_MODULE_2_9_QR;
+			_C_MODULE_2_10_QR.value = 부품정보_list_v.C_MODULE_2_10_QR;
+			_C_MODULE_2_11_QR.value = 부품정보_list_v.C_MODULE_2_11_QR;
+			_C_MODULE_2_12_QR.value = 부품정보_list_v.C_MODULE_2_12_QR;
+			_C_MODULE_2_13_QR.value = 부품정보_list_v.C_MODULE_2_13_QR;
+			_C_MODULE_2_14_QR.value = 부품정보_list_v.C_MODULE_2_14_QR;
+			_C_MODULE_2_15_QR.value = 부품정보_list_v.C_MODULE_2_15_QR;
+			_C_MODULE_2_16_QR.value = 부품정보_list_v.C_MODULE_2_16_QR;
+			_C_UPR_CASE_품번.value = 부품정보_list_v.C_UPR_CASE_품번;
+			_C_LWR_CASE_품번.value = 부품정보_list_v.C_LWR_CASE_품번;
+			_C_HV_CNTR_1_품번.value = 부품정보_list_v.C_HV_CNTR_1_품번;
+			_C_HV_CNTR_2_품번.value = 부품정보_list_v.C_HV_CNTR_2_품번;
+			_C_HT_CNTR_품번.value = 부품정보_list_v.C_HT_CNTR_품번;
+			_C_PRA_품번.value = 부품정보_list_v.C_PRA_품번;
+			_C_FUSE_품번.value = 부품정보_list_v.C_FUSE_품번;
+			_C_LV_W_H_품번.value = 부품정보_list_v.C_LV_W_H_품번;
+			_C_HV_W_H_1_품번.value = 부품정보_list_v.C_HV_W_H_1_품번;
+			_C_HV_W_H_2_품번.value = 부품정보_list_v.C_HV_W_H_2_품번;
+			_C_HV_W_H_3_품번.value = 부품정보_list_v.C_HV_W_H_3_품번;
+			_C_HV_W_H_4_품번.value = 부품정보_list_v.C_HV_W_H_4_품번;
+			_C_HV_W_H_5_품번.value = 부품정보_list_v.C_HV_W_H_5_품번;
+			_C_HV_W_H_6_품번.value = 부품정보_list_v.C_HV_W_H_6_품번;
+			_C_HV_W_H_7_품번.value = 부품정보_list_v.C_HV_W_H_7_품번;
+			_C_HV_W_H_8_품번.value = 부품정보_list_v.C_HV_W_H_8_품번;
+			_C_BMU_품번.value = 부품정보_list_v.C_BMU_품번;
+			_C_CMU_1_품번.value = 부품정보_list_v.C_CMU_1_품번;
+			_C_CMU_2_품번.value = 부품정보_list_v.C_CMU_2_품번;
+			_C_CMU_3_품번.value = 부품정보_list_v.C_CMU_3_품번;
+			_C_CMU_4_품번.value = 부품정보_list_v.C_CMU_4_품번;
+			_C_CMU_5_품번.value = 부품정보_list_v.C_CMU_5_품번;
+			_C_CMU_6_품번.value = 부품정보_list_v.C_CMU_6_품번;
+			_C_CMU_7_품번.value = 부품정보_list_v.C_CMU_7_품번;
+			_C_CMU_8_품번.value = 부품정보_list_v.C_CMU_8_품번;
+			_C_MODULE_1_품번.value = 부품정보_list_v.C_MODULE_1_품번;
+			_C_MODULE_2_품번.value = 부품정보_list_v.C_MODULE_2_품번;
+			_C_MODULE_3_품번.value = 부품정보_list_v.C_MODULE_3_품번;
+			_C_MODULE_4_품번.value = 부품정보_list_v.C_MODULE_4_품번;
+			_C_MODULE_5_품번.value = 부품정보_list_v.C_MODULE_5_품번;
+			_C_MODULE_6_품번.value = 부품정보_list_v.C_MODULE_6_품번;
+			_C_MODULE_7_품번.value = 부품정보_list_v.C_MODULE_7_품번;
+			_C_MODULE_8_품번.value = 부품정보_list_v.C_MODULE_8_품번;
+			_C_MODULE_9_품번.value = 부품정보_list_v.C_MODULE_9_품번;
+			_C_MODULE_10_품번.value = 부품정보_list_v.C_MODULE_10_품번;
+			_C_MODULE_11_품번.value = 부품정보_list_v.C_MODULE_11_품번;
+			_C_MODULE_12_품번.value = 부품정보_list_v.C_MODULE_12_품번;
+			_C_MODULE_13_품번.value = 부품정보_list_v.C_MODULE_13_품번;
+			_C_MODULE_14_품번.value = 부품정보_list_v.C_MODULE_14_품번;
+			_C_MODULE_15_품번.value = 부품정보_list_v.C_MODULE_15_품번;
+			_C_MODULE_16_품번.value = 부품정보_list_v.C_MODULE_16_품번;
+			_C_MODULE_2_1_품번.value = 부품정보_list_v.C_MODULE_2_1_품번;
+			_C_MODULE_2_2_품번.value = 부품정보_list_v.C_MODULE_2_2_품번;
+			_C_MODULE_2_3_품번.value = 부품정보_list_v.C_MODULE_2_3_품번;
+			_C_MODULE_2_4_품번.value = 부품정보_list_v.C_MODULE_2_4_품번;
+			_C_MODULE_2_5_품번.value = 부품정보_list_v.C_MODULE_2_5_품번;
+			_C_MODULE_2_6_품번.value = 부품정보_list_v.C_MODULE_2_6_품번;
+			_C_MODULE_2_7_품번.value = 부품정보_list_v.C_MODULE_2_7_품번;
+			_C_MODULE_2_8_품번.value = 부품정보_list_v.C_MODULE_2_8_품번;
+			_C_MODULE_2_9_품번.value = 부품정보_list_v.C_MODULE_2_9_품번;
+			_C_MODULE_2_10_품번.value = 부품정보_list_v.C_MODULE_2_10_품번;
+			_C_MODULE_2_11_품번.value = 부품정보_list_v.C_MODULE_2_11_품번;
+			_C_MODULE_2_12_품번.value = 부품정보_list_v.C_MODULE_2_12_품번;
+			_C_MODULE_2_13_품번.value = 부품정보_list_v.C_MODULE_2_13_품번;
+			_C_MODULE_2_14_품번.value = 부품정보_list_v.C_MODULE_2_14_품번;
+			_C_MODULE_2_15_품번.value = 부품정보_list_v.C_MODULE_2_15_품번;
+			_C_MODULE_2_16_품번.value = 부품정보_list_v.C_MODULE_2_16_품번;
+
+			break;
+
+		case "CS":
+		case "CS_EV":
+			_D_UPR_CASE_QR.value = 부품정보_list_v.D_UPR_CASE_QR;
+			_D_LWR_CASE_QR.value = 부품정보_list_v.D_LWR_CASE_QR;
+			_D_HV_CNTR_1_QR.value = 부품정보_list_v.D_HV_CNTR_1_QR;
+			_D_HV_CNTR_2_QR.value = 부품정보_list_v.D_HV_CNTR_2_QR;
+			_D_RELAY_QR.value = 부품정보_list_v.D_RELAY_QR;
+			_D_LV_W_H_QR.value = 부품정보_list_v.D_LV_W_H_QR;
+			_D_HV_W_H_1_QR.value = 부품정보_list_v.D_HV_W_H_1_QR;
+			_D_HV_W_H_2_QR.value = 부품정보_list_v.D_HV_W_H_2_QR;
+			_D_BMU_QR.value = 부품정보_list_v.D_BMU_QR;
+			_D_CMU_1_QR.value = 부품정보_list_v.D_CMU_1_QR;
+			_D_MODULE_1_QR.value = 부품정보_list_v.D_MODULE_1_QR;
+			_D_MODULE_2_QR.value = 부품정보_list_v.D_MODULE_2_QR;
+			_D2_HV_W_H_1_QR.value = 부품정보_list_v.D2_HV_W_H_1_QR;
+			_D2_CMU_1_QR.value = 부품정보_list_v.D2_CMU_1_QR;
+			_D2_RELAY_QR.value = 부품정보_list_v.D2_RELAY_QR;
+			_D2_BMU_QR.value = 부품정보_list_v.D2_BMU_QR;
+			_D2_HV_CNTR_1_QR.value = 부품정보_list_v.D2_HV_CNTR_1_QR;
+			_D2_HV_CNTR_2_QR.value = 부품정보_list_v.D2_HV_CNTR_2_QR;
+			_D2_LWR_CASE_QR.value = 부품정보_list_v.D2_LWR_CASE_QR;
+			_D2_UPR_CASE_QR.value = 부품정보_list_v.D2_UPR_CASE_QR;
+			_D2_LV_W_H_QR.value = 부품정보_list_v.D2_LV_W_H_QR;
+			_D2_MODULE_1_QR.value = 부품정보_list_v.D2_MODULE_1_QR;
+			_D_UPR_CASE_품번.value = 부품정보_list_v.D_UPR_CASE_품번;
+			_D_LWR_CASE_품번.value = 부품정보_list_v.D_LWR_CASE_품번;
+			_D_HV_CNTR_1_품번.value = 부품정보_list_v.D_HV_CNTR_1_품번;
+			_D_HV_CNTR_2_품번.value = 부품정보_list_v.D_HV_CNTR_2_품번;
+			_D_RELAY_품번.value = 부품정보_list_v.D_RELAY_품번;
+			_D_LV_W_H_품번.value = 부품정보_list_v.D_LV_W_H_품번;
+			_D_HV_W_H_1_품번.value = 부품정보_list_v.D_HV_W_H_1_품번;
+			_D_HV_W_H_2_품번.value = 부품정보_list_v.D_HV_W_H_2_품번;
+			_D_BMU_품번.value = 부품정보_list_v.D_BMU_품번;
+			_D_CMU_1_품번.value = 부품정보_list_v.D_CMU_1_품번;
+			_D_MODULE_1_품번.value = 부품정보_list_v.D_MODULE_1_품번;
+			_D_MODULE_2_품번.value = 부품정보_list_v.D_MODULE_2_품번;
+			_D2_HV_W_H_1_품번.value = 부품정보_list_v.D2_HV_W_H_1_품번;
+			_D2_CMU_1_품번.value = 부품정보_list_v.D2_CMU_1_품번;
+			_D2_RELAY_품번.value = 부품정보_list_v.D2_RELAY_품번;
+			_D2_BMU_품번.value = 부품정보_list_v.D2_BMU_품번;
+			_D2_HV_CNTR_1_품번.value = 부품정보_list_v.D2_HV_CNTR_1_품번;
+			_D2_HV_CNTR_2_품번.value = 부품정보_list_v.D2_HV_CNTR_2_품번;
+			_D2_LWR_CASE_품번.value = 부품정보_list_v.D2_LWR_CASE_품번;
+			_D2_UPR_CASE_품번.value = 부품정보_list_v.D2_UPR_CASE_품번;
+			_D2_LV_W_H_품번.value = 부품정보_list_v.D2_LV_W_H_품번;
+			_D2_MODULE_1_품번.value = 부품정보_list_v.D2_MODULE_1_품번;
+
+			break;
+
+		default: 
+			console.log('차종을 확인하세요');
+
+			break;
+	}
+
+	check_complete();
 }
 
 async function 부품정보_list_save() {
@@ -3270,262 +3310,299 @@ async function 부품정보_list_save() {
 	var doc = 부품정보_list_doc;
 	doc.관리번호 = _management_id.value;
 
-	doc.A_UPR_CASE_QR = _A_UPR_CASE_QR.value;
-	doc.A_LWR_CASE_QR = _A_LWR_CASE_QR.value;
-	doc.A_S_PLUG_QR = _A_S_PLUG_QR.value;
-	doc.A_SPA_QR = _A_SPA_QR.value;
-	doc.A_HT_CNTR_QR = _A_HT_CNTR_QR.value;
-	doc.A_HV_CNTR_QR = _A_HV_CNTR_QR.value;
-	doc.A_PRA_QR = _A_PRA_QR.value;
-	doc.A_LV_W_H_QR = _A_LV_W_H_QR.value;
-	doc.A_HV_W_H_1_QR = _A_HV_W_H_1_QR.value;
-	doc.A_HV_W_H_2_QR = _A_HV_W_H_2_QR.value;
-	doc.A_HV_W_H_3_QR = _A_HV_W_H_3_QR.value;
-	doc.A_HV_W_H_4_QR = _A_HV_W_H_4_QR.value;
-	doc.A_HV_W_H_5_QR = _A_HV_W_H_5_QR.value;
-	doc.A_BMU_QR = _A_BMU_QR.value;
-	doc.A_CMU_1_QR = _A_CMU_1_QR.value;
-	doc.A_CMU_2_QR = _A_CMU_2_QR.value;
-	doc.A_CMU_3_QR = _A_CMU_3_QR.value;
-	doc.A_CMU_4_QR = _A_CMU_4_QR.value;
-	doc.A_CMU_5_QR = _A_CMU_5_QR.value;
-	doc.A_MODULE_1_QR = _A_MODULE_1_QR.value;
-	doc.A_MODULE_2_QR = _A_MODULE_2_QR.value;
-	doc.A_MODULE_3_QR = _A_MODULE_3_QR.value;
-	doc.A_MODULE_4_QR = _A_MODULE_4_QR.value;
-	doc.A_MODULE_5_QR = _A_MODULE_5_QR.value;
-	doc.B_UPR_CASE_QR = _B_UPR_CASE_QR.value;
-	doc.B_LWR_CASE_QR = _B_LWR_CASE_QR.value;
-	doc.B_HV_CNTR_QR = _B_HV_CNTR_QR.value;
-	doc.B_HT_CNTR_QR = _B_HT_CNTR_QR.value;
-	doc.B_PRA_QR = _B_PRA_QR.value;
-	doc.B_FUSE_QR = _B_FUSE_QR.value;
-	doc.B_HV_W_H_1_QR = _B_HV_W_H_1_QR.value;
-	doc.B_HV_W_H_2_QR = _B_HV_W_H_2_QR.value;
-	doc.B_LV_W_H_QR = _B_LV_W_H_QR.value;
-	doc.B_BMU_QR = _B_BMU_QR.value;
-	doc.B_CMU_1_QR = _B_CMU_1_QR.value;
-	doc.B_CMU_2_QR = _B_CMU_2_QR.value;
-	doc.B_CMU_3_QR = _B_CMU_3_QR.value;
-	doc.B_CMU_4_QR = _B_CMU_4_QR.value;
-	doc.B_CMU_5_QR = _B_CMU_5_QR.value;
-	doc.B_MODULE_1_QR = _B_MODULE_1_QR.value;
-	doc.B_MODULE_2_QR = _B_MODULE_2_QR.value;
-	doc.B_MODULE_3_QR = _B_MODULE_3_QR.value;
-	doc.B_MODULE_4_QR = _B_MODULE_4_QR.value;
-	doc.B_MODULE_5_QR = _B_MODULE_5_QR.value;
-	doc.B_MODULE_6_QR = _B_MODULE_6_QR.value;
-	doc.B_MODULE_7_QR = _B_MODULE_7_QR.value;
-	doc.B_MODULE_8_QR = _B_MODULE_8_QR.value;
-	doc.B_MODULE_9_QR = _B_MODULE_9_QR.value;
-	doc.B_MODULE_10_QR = _B_MODULE_10_QR.value;
-	doc.C_UPR_CASE_QR = _C_UPR_CASE_QR.value;
-	doc.C_LWR_CASE_QR = _C_LWR_CASE_QR.value;
-	doc.C_HV_CNTR_1_QR = _C_HV_CNTR_1_QR.value;
-	doc.C_HV_CNTR_2_QR = _C_HV_CNTR_2_QR.value;
-	doc.C_HT_CNTR_QR = _C_HT_CNTR_QR.value;
-	doc.C_PRA_QR = _C_PRA_QR.value;
-	doc.C_FUSE_QR = _C_FUSE_QR.value;
-	doc.C_LV_W_H_QR = _C_LV_W_H_QR.value;
-	doc.C_HV_W_H_1_QR = _C_HV_W_H_1_QR.value;
-	doc.C_HV_W_H_2_QR = _C_HV_W_H_2_QR.value;
-	doc.C_HV_W_H_3_QR = _C_HV_W_H_3_QR.value;
-	doc.C_HV_W_H_4_QR = _C_HV_W_H_4_QR.value;
-	doc.C_HV_W_H_5_QR = _C_HV_W_H_5_QR.value;
-	doc.C_HV_W_H_6_QR = _C_HV_W_H_6_QR.value;
-	doc.C_HV_W_H_7_QR = _C_HV_W_H_7_QR.value;
-	doc.C_HV_W_H_8_QR = _C_HV_W_H_8_QR.value;
-	doc.C_BMU_QR = _C_BMU_QR.value;
-	doc.C_CMU_1_QR = _C_CMU_1_QR.value;
-	doc.C_CMU_2_QR = _C_CMU_2_QR.value;
-	doc.C_CMU_3_QR = _C_CMU_3_QR.value;
-	doc.C_CMU_4_QR = _C_CMU_4_QR.value;
-	doc.C_CMU_5_QR = _C_CMU_5_QR.value;
-	doc.C_CMU_6_QR = _C_CMU_6_QR.value;
-	doc.C_CMU_7_QR = _C_CMU_7_QR.value;
-	doc.C_CMU_8_QR = _C_CMU_8_QR.value;
-	doc.C_MODULE_1_QR = _C_MODULE_1_QR.value;
-	doc.C_MODULE_2_QR = _C_MODULE_2_QR.value;
-	doc.C_MODULE_3_QR = _C_MODULE_3_QR.value;
-	doc.C_MODULE_4_QR = _C_MODULE_4_QR.value;
-	doc.C_MODULE_5_QR = _C_MODULE_5_QR.value;
-	doc.C_MODULE_6_QR = _C_MODULE_6_QR.value;
-	doc.C_MODULE_7_QR = _C_MODULE_7_QR.value;
-	doc.C_MODULE_8_QR = _C_MODULE_8_QR.value;
-	doc.C_MODULE_9_QR = _C_MODULE_9_QR.value;
-	doc.C_MODULE_10_QR = _C_MODULE_10_QR.value;
-	doc.C_MODULE_11_QR = _C_MODULE_11_QR.value;
-	doc.C_MODULE_12_QR = _C_MODULE_12_QR.value;
-	doc.C_MODULE_13_QR = _C_MODULE_13_QR.value;
-	doc.C_MODULE_14_QR = _C_MODULE_14_QR.value;
-	doc.C_MODULE_15_QR = _C_MODULE_15_QR.value;
-	doc.C_MODULE_16_QR = _C_MODULE_16_QR.value;
-	doc.C_MODULE_2_1_QR = _C_MODULE_2_1_QR.value;
-	doc.C_MODULE_2_2_QR = _C_MODULE_2_2_QR.value;
-	doc.C_MODULE_2_3_QR = _C_MODULE_2_3_QR.value;
-	doc.C_MODULE_2_4_QR = _C_MODULE_2_4_QR.value;
-	doc.C_MODULE_2_5_QR = _C_MODULE_2_5_QR.value;
-	doc.C_MODULE_2_6_QR = _C_MODULE_2_6_QR.value;
-	doc.C_MODULE_2_7_QR = _C_MODULE_2_7_QR.value;
-	doc.C_MODULE_2_8_QR = _C_MODULE_2_8_QR.value;
-	doc.C_MODULE_2_9_QR = _C_MODULE_2_9_QR.value;
-	doc.C_MODULE_2_10_QR = _C_MODULE_2_10_QR.value;
-	doc.C_MODULE_2_11_QR = _C_MODULE_2_11_QR.value;
-	doc.C_MODULE_2_12_QR = _C_MODULE_2_12_QR.value;
-	doc.C_MODULE_2_13_QR = _C_MODULE_2_13_QR.value;
-	doc.C_MODULE_2_14_QR = _C_MODULE_2_14_QR.value;
-	doc.C_MODULE_2_15_QR = _C_MODULE_2_15_QR.value;
-	doc.C_MODULE_2_16_QR = _C_MODULE_2_16_QR.value;
-	doc.D_UPR_CASE_QR = _D_UPR_CASE_QR.value;
-	doc.D_LWR_CASE_QR = _D_LWR_CASE_QR.value;
-	doc.D_HV_CNTR_1_QR = _D_HV_CNTR_1_QR.value;
-	doc.D_HV_CNTR_2_QR = _D_HV_CNTR_2_QR.value;
-	doc.D_RELAY_QR = _D_RELAY_QR.value;
-	doc.D_LV_W_H_QR = _D_LV_W_H_QR.value;
-	doc.D_HV_W_H_1_QR = _D_HV_W_H_1_QR.value;
-	doc.D_HV_W_H_2_QR = _D_HV_W_H_2_QR.value;
-	doc.D_BMU_QR = _D_BMU_QR.value;
-	doc.D_CMU_1_QR = _D_CMU_1_QR.value;
-	doc.D_MODULE_1_QR = _D_MODULE_1_QR.value;
-	doc.D_MODULE_2_QR = _D_MODULE_2_QR.value;
-	doc.D2_HV_W_H_1_QR = _D2_HV_W_H_1_QR.value;
-	doc.D2_CMU_1_QR = _D2_CMU_1_QR.value;
-	doc.D2_RELAY_QR = _D2_RELAY_QR.value;
-	doc.D2_BMU_QR = _D2_BMU_QR.value;
-	doc.D2_HV_CNTR_1_QR = _D2_HV_CNTR_1_QR.value;
-	doc.D2_HV_CNTR_2_QR = _D2_HV_CNTR_2_QR.value;
-	doc.D2_LWR_CASE_QR = _D2_LWR_CASE_QR.value;
-	doc.D2_UPR_CASE_QR = _D2_UPR_CASE_QR.value;
-	doc.D2_LV_W_H_QR = _D2_LV_W_H_QR.value;
-	doc.D2_MODULE_1_QR = _D2_MODULE_1_QR.value;
-	doc.A_UPR_CASE_품번 = _A_UPR_CASE_품번.value;
-	doc.A_LWR_CASE_품번 = _A_LWR_CASE_품번.value;
-	doc.A_S_PLUG_품번 = _A_S_PLUG_품번.value;
-	doc.A_SPA_품번 = _A_SPA_품번.value;
-	doc.A_HT_CNTR_품번 = _A_HT_CNTR_품번.value;
-	doc.A_HV_CNTR_품번 = _A_HV_CNTR_품번.value;
-	doc.A_PRA_품번 = _A_PRA_품번.value;
-	doc.A_LV_W_H_품번 = _A_LV_W_H_품번.value;
-	doc.A_HV_W_H_1_품번 = _A_HV_W_H_1_품번.value;
-	doc.A_HV_W_H_2_품번 = _A_HV_W_H_2_품번.value;
-	doc.A_HV_W_H_3_품번 = _A_HV_W_H_3_품번.value;
-	doc.A_HV_W_H_4_품번 = _A_HV_W_H_4_품번.value;
-	doc.A_HV_W_H_5_품번 = _A_HV_W_H_5_품번.value;
-	doc.A_BMU_품번 = _A_BMU_품번.value;
-	doc.A_CMU_1_품번 = _A_CMU_1_품번.value;
-	doc.A_CMU_2_품번 = _A_CMU_2_품번.value;
-	doc.A_CMU_3_품번 = _A_CMU_3_품번.value;
-	doc.A_CMU_4_품번 = _A_CMU_4_품번.value;
-	doc.A_CMU_5_품번 = _A_CMU_5_품번.value;
-	doc.A_MODULE_1_품번 = _A_MODULE_1_품번.value;
-	doc.A_MODULE_2_품번 = _A_MODULE_2_품번.value;
-	doc.A_MODULE_3_품번 = _A_MODULE_3_품번.value;
-	doc.A_MODULE_4_품번 = _A_MODULE_4_품번.value;
-	doc.A_MODULE_5_품번 = _A_MODULE_5_품번.value;
-	doc.B_UPR_CASE_품번 = _B_UPR_CASE_품번.value;
-	doc.B_LWR_CASE_품번 = _B_LWR_CASE_품번.value;
-	doc.B_HV_CNTR_품번 = _B_HV_CNTR_품번.value;
-	doc.B_HT_CNTR_품번 = _B_HT_CNTR_품번.value;
-	doc.B_PRA_품번 = _B_PRA_품번.value;
-	doc.B_FUSE_품번 = _B_FUSE_품번.value;
-	doc.B_HV_W_H_1_품번 = _B_HV_W_H_1_품번.value;
-	doc.B_HV_W_H_2_품번 = _B_HV_W_H_2_품번.value;
-	doc.B_LV_W_H_품번 = _B_LV_W_H_품번.value;
-	doc.B_BMU_품번 = _B_BMU_품번.value;
-	doc.B_CMU_1_품번 = _B_CMU_1_품번.value;
-	doc.B_CMU_2_품번 = _B_CMU_2_품번.value;
-	doc.B_CMU_3_품번 = _B_CMU_3_품번.value;
-	doc.B_CMU_4_품번 = _B_CMU_4_품번.value;
-	doc.B_CMU_5_품번 = _B_CMU_5_품번.value;
-	doc.B_MODULE_1_품번 = _B_MODULE_1_품번.value;
-	doc.B_MODULE_2_품번 = _B_MODULE_2_품번.value;
-	doc.B_MODULE_3_품번 = _B_MODULE_3_품번.value;
-	doc.B_MODULE_4_품번 = _B_MODULE_4_품번.value;
-	doc.B_MODULE_5_품번 = _B_MODULE_5_품번.value;
-	doc.B_MODULE_6_품번 = _B_MODULE_6_품번.value;
-	doc.B_MODULE_7_품번 = _B_MODULE_7_품번.value;
-	doc.B_MODULE_8_품번 = _B_MODULE_8_품번.value;
-	doc.B_MODULE_9_품번 = _B_MODULE_9_품번.value;
-	doc.B_MODULE_10_품번 = _B_MODULE_10_품번.value;
-	doc.C_UPR_CASE_품번 = _C_UPR_CASE_품번.value;
-	doc.C_LWR_CASE_품번 = _C_LWR_CASE_품번.value;
-	doc.C_HV_CNTR_1_품번 = _C_HV_CNTR_1_품번.value;
-	doc.C_HV_CNTR_2_품번 = _C_HV_CNTR_2_품번.value;
-	doc.C_HT_CNTR_품번 = _C_HT_CNTR_품번.value;
-	doc.C_PRA_품번 = _C_PRA_품번.value;
-	doc.C_FUSE_품번 = _C_FUSE_품번.value;
-	doc.C_LV_W_H_품번 = _C_LV_W_H_품번.value;
-	doc.C_HV_W_H_1_품번 = _C_HV_W_H_1_품번.value;
-	doc.C_HV_W_H_2_품번 = _C_HV_W_H_2_품번.value;
-	doc.C_HV_W_H_3_품번 = _C_HV_W_H_3_품번.value;
-	doc.C_HV_W_H_4_품번 = _C_HV_W_H_4_품번.value;
-	doc.C_HV_W_H_5_품번 = _C_HV_W_H_5_품번.value;
-	doc.C_HV_W_H_6_품번 = _C_HV_W_H_6_품번.value;
-	doc.C_HV_W_H_7_품번 = _C_HV_W_H_7_품번.value;
-	doc.C_HV_W_H_8_품번 = _C_HV_W_H_8_품번.value;
-	doc.C_BMU_품번 = _C_BMU_품번.value;
-	doc.C_CMU_1_품번 = _C_CMU_1_품번.value;
-	doc.C_CMU_2_품번 = _C_CMU_2_품번.value;
-	doc.C_CMU_3_품번 = _C_CMU_3_품번.value;
-	doc.C_CMU_4_품번 = _C_CMU_4_품번.value;
-	doc.C_CMU_5_품번 = _C_CMU_5_품번.value;
-	doc.C_CMU_6_품번 = _C_CMU_6_품번.value;
-	doc.C_CMU_7_품번 = _C_CMU_7_품번.value;
-	doc.C_CMU_8_품번 = _C_CMU_8_품번.value;
-	doc.C_MODULE_1_품번 = _C_MODULE_1_품번.value;
-	doc.C_MODULE_2_품번 = _C_MODULE_2_품번.value;
-	doc.C_MODULE_3_품번 = _C_MODULE_3_품번.value;
-	doc.C_MODULE_4_품번 = _C_MODULE_4_품번.value;
-	doc.C_MODULE_5_품번 = _C_MODULE_5_품번.value;
-	doc.C_MODULE_6_품번 = _C_MODULE_6_품번.value;
-	doc.C_MODULE_7_품번 = _C_MODULE_7_품번.value;
-	doc.C_MODULE_8_품번 = _C_MODULE_8_품번.value;
-	doc.C_MODULE_9_품번 = _C_MODULE_9_품번.value;
-	doc.C_MODULE_10_품번 = _C_MODULE_10_품번.value;
-	doc.C_MODULE_11_품번 = _C_MODULE_11_품번.value;
-	doc.C_MODULE_12_품번 = _C_MODULE_12_품번.value;
-	doc.C_MODULE_13_품번 = _C_MODULE_13_품번.value;
-	doc.C_MODULE_14_품번 = _C_MODULE_14_품번.value;
-	doc.C_MODULE_15_품번 = _C_MODULE_15_품번.value;
-	doc.C_MODULE_16_품번 = _C_MODULE_16_품번.value;
-	doc.C_MODULE_2_1_품번 = _C_MODULE_2_1_품번.value;
-	doc.C_MODULE_2_2_품번 = _C_MODULE_2_2_품번.value;
-	doc.C_MODULE_2_3_품번 = _C_MODULE_2_3_품번.value;
-	doc.C_MODULE_2_4_품번 = _C_MODULE_2_4_품번.value;
-	doc.C_MODULE_2_5_품번 = _C_MODULE_2_5_품번.value;
-	doc.C_MODULE_2_6_품번 = _C_MODULE_2_6_품번.value;
-	doc.C_MODULE_2_7_품번 = _C_MODULE_2_7_품번.value;
-	doc.C_MODULE_2_8_품번 = _C_MODULE_2_8_품번.value;
-	doc.C_MODULE_2_9_품번 = _C_MODULE_2_9_품번.value;
-	doc.C_MODULE_2_10_품번 = _C_MODULE_2_10_품번.value;
-	doc.C_MODULE_2_11_품번 = _C_MODULE_2_11_품번.value;
-	doc.C_MODULE_2_12_품번 = _C_MODULE_2_12_품번.value;
-	doc.C_MODULE_2_13_품번 = _C_MODULE_2_13_품번.value;
-	doc.C_MODULE_2_14_품번 = _C_MODULE_2_14_품번.value;
-	doc.C_MODULE_2_15_품번 = _C_MODULE_2_15_품번.value;
-	doc.C_MODULE_2_16_품번 = _C_MODULE_2_16_품번.value;
-	doc.D_UPR_CASE_품번 = _D_UPR_CASE_품번.value;
-	doc.D_LWR_CASE_품번 = _D_LWR_CASE_품번.value;
-	doc.D_HV_CNTR_1_품번 = _D_HV_CNTR_1_품번.value;
-	doc.D_HV_CNTR_2_품번 = _D_HV_CNTR_2_품번.value;
-	doc.D_RELAY_품번 = _D_RELAY_품번.value;
-	doc.D_LV_W_H_품번 = _D_LV_W_H_품번.value;
-	doc.D_HV_W_H_1_품번 = _D_HV_W_H_1_품번.value;
-	doc.D_HV_W_H_2_품번 = _D_HV_W_H_2_품번.value;
-	doc.D_BMU_품번 = _D_BMU_품번.value;
-	doc.D_CMU_1_품번 = _D_CMU_1_품번.value;
-	doc.D_MODULE_1_품번 = _D_MODULE_1_품번.value;
-	doc.D_MODULE_2_품번 = _D_MODULE_2_품번.value;
-	doc.D2_HV_W_H_1_품번 = _D2_HV_W_H_1_품번.value;
-	doc.D2_CMU_1_품번 = _D2_CMU_1_품번.value;
-	doc.D2_RELAY_품번 = _D2_RELAY_품번.value;
-	doc.D2_BMU_품번 = _D2_BMU_품번.value;
-	doc.D2_HV_CNTR_1_품번 = _D2_HV_CNTR_1_품번.value;
-	doc.D2_HV_CNTR_2_품번 = _D2_HV_CNTR_2_품번.value;
-	doc.D2_LWR_CASE_품번 = _D2_LWR_CASE_품번.value;
-	doc.D2_UPR_CASE_품번 = _D2_UPR_CASE_품번.value;
-	doc.D2_LV_W_H_품번 = _D2_LV_W_H_품번.value;
-	doc.D2_MODULE_1_품번 = _D2_MODULE_1_품번.value;
+	switch (차종) {
+		case "DE":
+		case "DE_EV":
+		case "OS":
+		case "OS_EV":
+		case "SK3":
+		case "SK3_EV":
+		case "LK":
+		case "LK_EV":
+			doc.A_UPR_CASE_QR = _A_UPR_CASE_QR.value;
+			doc.A_LWR_CASE_QR = _A_LWR_CASE_QR.value;
+			doc.A_S_PLUG_QR = _A_S_PLUG_QR.value;
+			doc.A_SPA_QR = _A_SPA_QR.value;
+			doc.A_HT_CNTR_QR = _A_HT_CNTR_QR.value;
+			doc.A_HV_CNTR_QR = _A_HV_CNTR_QR.value;
+			doc.A_PRA_QR = _A_PRA_QR.value;
+			doc.A_LV_W_H_QR = _A_LV_W_H_QR.value;
+			doc.A_HV_W_H_1_QR = _A_HV_W_H_1_QR.value;
+			doc.A_HV_W_H_2_QR = _A_HV_W_H_2_QR.value;
+			doc.A_HV_W_H_3_QR = _A_HV_W_H_3_QR.value;
+			doc.A_HV_W_H_4_QR = _A_HV_W_H_4_QR.value;
+			doc.A_HV_W_H_5_QR = _A_HV_W_H_5_QR.value;
+			doc.A_BMU_QR = _A_BMU_QR.value;
+			doc.A_CMU_1_QR = _A_CMU_1_QR.value;
+			doc.A_CMU_2_QR = _A_CMU_2_QR.value;
+			doc.A_CMU_3_QR = _A_CMU_3_QR.value;
+			doc.A_CMU_4_QR = _A_CMU_4_QR.value;
+			doc.A_CMU_5_QR = _A_CMU_5_QR.value;
+			doc.A_MODULE_1_QR = _A_MODULE_1_QR.value;
+			doc.A_MODULE_2_QR = _A_MODULE_2_QR.value;
+			doc.A_MODULE_3_QR = _A_MODULE_3_QR.value;
+			doc.A_MODULE_4_QR = _A_MODULE_4_QR.value;
+			doc.A_MODULE_5_QR = _A_MODULE_5_QR.value;
+			doc.A_UPR_CASE_품번 = _A_UPR_CASE_품번.value;
+			doc.A_LWR_CASE_품번 = _A_LWR_CASE_품번.value;
+			doc.A_S_PLUG_품번 = _A_S_PLUG_품번.value;
+			doc.A_SPA_품번 = _A_SPA_품번.value;
+			doc.A_HT_CNTR_품번 = _A_HT_CNTR_품번.value;
+			doc.A_HV_CNTR_품번 = _A_HV_CNTR_품번.value;
+			doc.A_PRA_품번 = _A_PRA_품번.value;
+			doc.A_LV_W_H_품번 = _A_LV_W_H_품번.value;
+			doc.A_HV_W_H_1_품번 = _A_HV_W_H_1_품번.value;
+			doc.A_HV_W_H_2_품번 = _A_HV_W_H_2_품번.value;
+			doc.A_HV_W_H_3_품번 = _A_HV_W_H_3_품번.value;
+			doc.A_HV_W_H_4_품번 = _A_HV_W_H_4_품번.value;
+			doc.A_HV_W_H_5_품번 = _A_HV_W_H_5_품번.value;
+			doc.A_BMU_품번 = _A_BMU_품번.value;
+			doc.A_CMU_1_품번 = _A_CMU_1_품번.value;
+			doc.A_CMU_2_품번 = _A_CMU_2_품번.value;
+			doc.A_CMU_3_품번 = _A_CMU_3_품번.value;
+			doc.A_CMU_4_품번 = _A_CMU_4_품번.value;
+			doc.A_CMU_5_품번 = _A_CMU_5_품번.value;
+			doc.A_MODULE_1_품번 = _A_MODULE_1_품번.value;
+			doc.A_MODULE_2_품번 = _A_MODULE_2_품번.value;
+			doc.A_MODULE_3_품번 = _A_MODULE_3_품번.value;
+			doc.A_MODULE_4_품번 = _A_MODULE_4_품번.value;
+			doc.A_MODULE_5_품번 = _A_MODULE_5_품번.value;
+
+			break;
+
+		case "PU":
+		case "PU_EV":
+		case "HR":
+		case "HR_EV":
+			doc.B_UPR_CASE_QR = _B_UPR_CASE_QR.value;
+			doc.B_LWR_CASE_QR = _B_LWR_CASE_QR.value;
+			doc.B_HV_CNTR_QR = _B_HV_CNTR_QR.value;
+			doc.B_HT_CNTR_QR = _B_HT_CNTR_QR.value;
+			doc.B_PRA_QR = _B_PRA_QR.value;
+			doc.B_FUSE_QR = _B_FUSE_QR.value;
+			doc.B_HV_W_H_1_QR = _B_HV_W_H_1_QR.value;
+			doc.B_HV_W_H_2_QR = _B_HV_W_H_2_QR.value;
+			doc.B_LV_W_H_QR = _B_LV_W_H_QR.value;
+			doc.B_BMU_QR = _B_BMU_QR.value;
+			doc.B_CMU_1_QR = _B_CMU_1_QR.value;
+			doc.B_CMU_2_QR = _B_CMU_2_QR.value;
+			doc.B_CMU_3_QR = _B_CMU_3_QR.value;
+			doc.B_CMU_4_QR = _B_CMU_4_QR.value;
+			doc.B_CMU_5_QR = _B_CMU_5_QR.value;
+			doc.B_MODULE_1_QR = _B_MODULE_1_QR.value;
+			doc.B_MODULE_2_QR = _B_MODULE_2_QR.value;
+			doc.B_MODULE_3_QR = _B_MODULE_3_QR.value;
+			doc.B_MODULE_4_QR = _B_MODULE_4_QR.value;
+			doc.B_MODULE_5_QR = _B_MODULE_5_QR.value;
+			doc.B_MODULE_6_QR = _B_MODULE_6_QR.value;
+			doc.B_MODULE_7_QR = _B_MODULE_7_QR.value;
+			doc.B_MODULE_8_QR = _B_MODULE_8_QR.value;
+			doc.B_MODULE_9_QR = _B_MODULE_9_QR.value;
+			doc.B_MODULE_10_QR = _B_MODULE_10_QR.value;
+			doc.B_UPR_CASE_품번 = _B_UPR_CASE_품번.value;
+			doc.B_LWR_CASE_품번 = _B_LWR_CASE_품번.value;
+			doc.B_HV_CNTR_품번 = _B_HV_CNTR_품번.value;
+			doc.B_HT_CNTR_품번 = _B_HT_CNTR_품번.value;
+			doc.B_PRA_품번 = _B_PRA_품번.value;
+			doc.B_FUSE_품번 = _B_FUSE_품번.value;
+			doc.B_HV_W_H_1_품번 = _B_HV_W_H_1_품번.value;
+			doc.B_HV_W_H_2_품번 = _B_HV_W_H_2_품번.value;
+			doc.B_LV_W_H_품번 = _B_LV_W_H_품번.value;
+			doc.B_BMU_품번 = _B_BMU_품번.value;
+			doc.B_CMU_1_품번 = _B_CMU_1_품번.value;
+			doc.B_CMU_2_품번 = _B_CMU_2_품번.value;
+			doc.B_CMU_3_품번 = _B_CMU_3_품번.value;
+			doc.B_CMU_4_품번 = _B_CMU_4_품번.value;
+			doc.B_CMU_5_품번 = _B_CMU_5_품번.value;
+			doc.B_MODULE_1_품번 = _B_MODULE_1_품번.value;
+			doc.B_MODULE_2_품번 = _B_MODULE_2_품번.value;
+			doc.B_MODULE_3_품번 = _B_MODULE_3_품번.value;
+			doc.B_MODULE_4_품번 = _B_MODULE_4_품번.value;
+			doc.B_MODULE_5_품번 = _B_MODULE_5_품번.value;
+			doc.B_MODULE_6_품번 = _B_MODULE_6_품번.value;
+			doc.B_MODULE_7_품번 = _B_MODULE_7_품번.value;
+			doc.B_MODULE_8_품번 = _B_MODULE_8_품번.value;
+			doc.B_MODULE_9_품번 = _B_MODULE_9_품번.value;
+			doc.B_MODULE_10_품번 = _B_MODULE_10_품번.value;
+
+			break;
+
+		case "CV":
+		case "CV_EV":
+		case "NE":
+		case "NE_EV":
+		case "LM":
+		case "LM_EV":
+			doc.C_UPR_CASE_QR = _C_UPR_CASE_QR.value;
+			doc.C_LWR_CASE_QR = _C_LWR_CASE_QR.value;
+			doc.C_HV_CNTR_1_QR = _C_HV_CNTR_1_QR.value;
+			doc.C_HV_CNTR_2_QR = _C_HV_CNTR_2_QR.value;
+			doc.C_HT_CNTR_QR = _C_HT_CNTR_QR.value;
+			doc.C_PRA_QR = _C_PRA_QR.value;
+			doc.C_FUSE_QR = _C_FUSE_QR.value;
+			doc.C_LV_W_H_QR = _C_LV_W_H_QR.value;
+			doc.C_HV_W_H_1_QR = _C_HV_W_H_1_QR.value;
+			doc.C_HV_W_H_2_QR = _C_HV_W_H_2_QR.value;
+			doc.C_HV_W_H_3_QR = _C_HV_W_H_3_QR.value;
+			doc.C_HV_W_H_4_QR = _C_HV_W_H_4_QR.value;
+			doc.C_HV_W_H_5_QR = _C_HV_W_H_5_QR.value;
+			doc.C_HV_W_H_6_QR = _C_HV_W_H_6_QR.value;
+			doc.C_HV_W_H_7_QR = _C_HV_W_H_7_QR.value;
+			doc.C_HV_W_H_8_QR = _C_HV_W_H_8_QR.value;
+			doc.C_BMU_QR = _C_BMU_QR.value;
+			doc.C_CMU_1_QR = _C_CMU_1_QR.value;
+			doc.C_CMU_2_QR = _C_CMU_2_QR.value;
+			doc.C_CMU_3_QR = _C_CMU_3_QR.value;
+			doc.C_CMU_4_QR = _C_CMU_4_QR.value;
+			doc.C_CMU_5_QR = _C_CMU_5_QR.value;
+			doc.C_CMU_6_QR = _C_CMU_6_QR.value;
+			doc.C_CMU_7_QR = _C_CMU_7_QR.value;
+			doc.C_CMU_8_QR = _C_CMU_8_QR.value;
+			doc.C_MODULE_1_QR = _C_MODULE_1_QR.value;
+			doc.C_MODULE_2_QR = _C_MODULE_2_QR.value;
+			doc.C_MODULE_3_QR = _C_MODULE_3_QR.value;
+			doc.C_MODULE_4_QR = _C_MODULE_4_QR.value;
+			doc.C_MODULE_5_QR = _C_MODULE_5_QR.value;
+			doc.C_MODULE_6_QR = _C_MODULE_6_QR.value;
+			doc.C_MODULE_7_QR = _C_MODULE_7_QR.value;
+			doc.C_MODULE_8_QR = _C_MODULE_8_QR.value;
+			doc.C_MODULE_9_QR = _C_MODULE_9_QR.value;
+			doc.C_MODULE_10_QR = _C_MODULE_10_QR.value;
+			doc.C_MODULE_11_QR = _C_MODULE_11_QR.value;
+			doc.C_MODULE_12_QR = _C_MODULE_12_QR.value;
+			doc.C_MODULE_13_QR = _C_MODULE_13_QR.value;
+			doc.C_MODULE_14_QR = _C_MODULE_14_QR.value;
+			doc.C_MODULE_15_QR = _C_MODULE_15_QR.value;
+			doc.C_MODULE_16_QR = _C_MODULE_16_QR.value;
+			doc.C_MODULE_2_1_QR = _C_MODULE_2_1_QR.value;
+			doc.C_MODULE_2_2_QR = _C_MODULE_2_2_QR.value;
+			doc.C_MODULE_2_3_QR = _C_MODULE_2_3_QR.value;
+			doc.C_MODULE_2_4_QR = _C_MODULE_2_4_QR.value;
+			doc.C_MODULE_2_5_QR = _C_MODULE_2_5_QR.value;
+			doc.C_MODULE_2_6_QR = _C_MODULE_2_6_QR.value;
+			doc.C_MODULE_2_7_QR = _C_MODULE_2_7_QR.value;
+			doc.C_MODULE_2_8_QR = _C_MODULE_2_8_QR.value;
+			doc.C_MODULE_2_9_QR = _C_MODULE_2_9_QR.value;
+			doc.C_MODULE_2_10_QR = _C_MODULE_2_10_QR.value;
+			doc.C_MODULE_2_11_QR = _C_MODULE_2_11_QR.value;
+			doc.C_MODULE_2_12_QR = _C_MODULE_2_12_QR.value;
+			doc.C_MODULE_2_13_QR = _C_MODULE_2_13_QR.value;
+			doc.C_MODULE_2_14_QR = _C_MODULE_2_14_QR.value;
+			doc.C_MODULE_2_15_QR = _C_MODULE_2_15_QR.value;
+			doc.C_MODULE_2_16_QR = _C_MODULE_2_16_QR.value;
+			doc.C_UPR_CASE_품번 = _C_UPR_CASE_품번.value;
+			doc.C_LWR_CASE_품번 = _C_LWR_CASE_품번.value;
+			doc.C_HV_CNTR_1_품번 = _C_HV_CNTR_1_품번.value;
+			doc.C_HV_CNTR_2_품번 = _C_HV_CNTR_2_품번.value;
+			doc.C_HT_CNTR_품번 = _C_HT_CNTR_품번.value;
+			doc.C_PRA_품번 = _C_PRA_품번.value;
+			doc.C_FUSE_품번 = _C_FUSE_품번.value;
+			doc.C_LV_W_H_품번 = _C_LV_W_H_품번.value;
+			doc.C_HV_W_H_1_품번 = _C_HV_W_H_1_품번.value;
+			doc.C_HV_W_H_2_품번 = _C_HV_W_H_2_품번.value;
+			doc.C_HV_W_H_3_품번 = _C_HV_W_H_3_품번.value;
+			doc.C_HV_W_H_4_품번 = _C_HV_W_H_4_품번.value;
+			doc.C_HV_W_H_5_품번 = _C_HV_W_H_5_품번.value;
+			doc.C_HV_W_H_6_품번 = _C_HV_W_H_6_품번.value;
+			doc.C_HV_W_H_7_품번 = _C_HV_W_H_7_품번.value;
+			doc.C_HV_W_H_8_품번 = _C_HV_W_H_8_품번.value;
+			doc.C_BMU_품번 = _C_BMU_품번.value;
+			doc.C_CMU_1_품번 = _C_CMU_1_품번.value;
+			doc.C_CMU_2_품번 = _C_CMU_2_품번.value;
+			doc.C_CMU_3_품번 = _C_CMU_3_품번.value;
+			doc.C_CMU_4_품번 = _C_CMU_4_품번.value;
+			doc.C_CMU_5_품번 = _C_CMU_5_품번.value;
+			doc.C_CMU_6_품번 = _C_CMU_6_품번.value;
+			doc.C_CMU_7_품번 = _C_CMU_7_품번.value;
+			doc.C_CMU_8_품번 = _C_CMU_8_품번.value;
+			doc.C_MODULE_1_품번 = _C_MODULE_1_품번.value;
+			doc.C_MODULE_2_품번 = _C_MODULE_2_품번.value;
+			doc.C_MODULE_3_품번 = _C_MODULE_3_품번.value;
+			doc.C_MODULE_4_품번 = _C_MODULE_4_품번.value;
+			doc.C_MODULE_5_품번 = _C_MODULE_5_품번.value;
+			doc.C_MODULE_6_품번 = _C_MODULE_6_품번.value;
+			doc.C_MODULE_7_품번 = _C_MODULE_7_품번.value;
+			doc.C_MODULE_8_품번 = _C_MODULE_8_품번.value;
+			doc.C_MODULE_9_품번 = _C_MODULE_9_품번.value;
+			doc.C_MODULE_10_품번 = _C_MODULE_10_품번.value;
+			doc.C_MODULE_11_품번 = _C_MODULE_11_품번.value;
+			doc.C_MODULE_12_품번 = _C_MODULE_12_품번.value;
+			doc.C_MODULE_13_품번 = _C_MODULE_13_품번.value;
+			doc.C_MODULE_14_품번 = _C_MODULE_14_품번.value;
+			doc.C_MODULE_15_품번 = _C_MODULE_15_품번.value;
+			doc.C_MODULE_16_품번 = _C_MODULE_16_품번.value;
+			doc.C_MODULE_2_1_품번 = _C_MODULE_2_1_품번.value;
+			doc.C_MODULE_2_2_품번 = _C_MODULE_2_2_품번.value;
+			doc.C_MODULE_2_3_품번 = _C_MODULE_2_3_품번.value;
+			doc.C_MODULE_2_4_품번 = _C_MODULE_2_4_품번.value;
+			doc.C_MODULE_2_5_품번 = _C_MODULE_2_5_품번.value;
+			doc.C_MODULE_2_6_품번 = _C_MODULE_2_6_품번.value;
+			doc.C_MODULE_2_7_품번 = _C_MODULE_2_7_품번.value;
+			doc.C_MODULE_2_8_품번 = _C_MODULE_2_8_품번.value;
+			doc.C_MODULE_2_9_품번 = _C_MODULE_2_9_품번.value;
+			doc.C_MODULE_2_10_품번 = _C_MODULE_2_10_품번.value;
+			doc.C_MODULE_2_11_품번 = _C_MODULE_2_11_품번.value;
+			doc.C_MODULE_2_12_품번 = _C_MODULE_2_12_품번.value;
+			doc.C_MODULE_2_13_품번 = _C_MODULE_2_13_품번.value;
+			doc.C_MODULE_2_14_품번 = _C_MODULE_2_14_품번.value;
+			doc.C_MODULE_2_15_품번 = _C_MODULE_2_15_품번.value;
+			doc.C_MODULE_2_16_품번 = _C_MODULE_2_16_품번.value;
+
+			break;
+
+		case "CS":
+		case "CS_EV":
+			doc.D_UPR_CASE_QR = _D_UPR_CASE_QR.value;
+			doc.D_LWR_CASE_QR = _D_LWR_CASE_QR.value;
+			doc.D_HV_CNTR_1_QR = _D_HV_CNTR_1_QR.value;
+			doc.D_HV_CNTR_2_QR = _D_HV_CNTR_2_QR.value;
+			doc.D_RELAY_QR = _D_RELAY_QR.value;
+			doc.D_LV_W_H_QR = _D_LV_W_H_QR.value;
+			doc.D_HV_W_H_1_QR = _D_HV_W_H_1_QR.value;
+			doc.D_HV_W_H_2_QR = _D_HV_W_H_2_QR.value;
+			doc.D_BMU_QR = _D_BMU_QR.value;
+			doc.D_CMU_1_QR = _D_CMU_1_QR.value;
+			doc.D_MODULE_1_QR = _D_MODULE_1_QR.value;
+			doc.D_MODULE_2_QR = _D_MODULE_2_QR.value;
+			doc.D2_HV_W_H_1_QR = _D2_HV_W_H_1_QR.value;
+			doc.D2_CMU_1_QR = _D2_CMU_1_QR.value;
+			doc.D2_RELAY_QR = _D2_RELAY_QR.value;
+			doc.D2_BMU_QR = _D2_BMU_QR.value;
+			doc.D2_HV_CNTR_1_QR = _D2_HV_CNTR_1_QR.value;
+			doc.D2_HV_CNTR_2_QR = _D2_HV_CNTR_2_QR.value;
+			doc.D2_LWR_CASE_QR = _D2_LWR_CASE_QR.value;
+			doc.D2_UPR_CASE_QR = _D2_UPR_CASE_QR.value;
+			doc.D2_LV_W_H_QR = _D2_LV_W_H_QR.value;
+			doc.D2_MODULE_1_QR = _D2_MODULE_1_QR.value;
+			doc.D_UPR_CASE_품번 = _D_UPR_CASE_품번.value;
+			doc.D_LWR_CASE_품번 = _D_LWR_CASE_품번.value;
+			doc.D_HV_CNTR_1_품번 = _D_HV_CNTR_1_품번.value;
+			doc.D_HV_CNTR_2_품번 = _D_HV_CNTR_2_품번.value;
+			doc.D_RELAY_품번 = _D_RELAY_품번.value;
+			doc.D_LV_W_H_품번 = _D_LV_W_H_품번.value;
+			doc.D_HV_W_H_1_품번 = _D_HV_W_H_1_품번.value;
+			doc.D_HV_W_H_2_품번 = _D_HV_W_H_2_품번.value;
+			doc.D_BMU_품번 = _D_BMU_품번.value;
+			doc.D_CMU_1_품번 = _D_CMU_1_품번.value;
+			doc.D_MODULE_1_품번 = _D_MODULE_1_품번.value;
+			doc.D_MODULE_2_품번 = _D_MODULE_2_품번.value;
+			doc.D2_HV_W_H_1_품번 = _D2_HV_W_H_1_품번.value;
+			doc.D2_CMU_1_품번 = _D2_CMU_1_품번.value;
+			doc.D2_RELAY_품번 = _D2_RELAY_품번.value;
+			doc.D2_BMU_품번 = _D2_BMU_품번.value;
+			doc.D2_HV_CNTR_1_품번 = _D2_HV_CNTR_1_품번.value;
+			doc.D2_HV_CNTR_2_품번 = _D2_HV_CNTR_2_품번.value;
+			doc.D2_LWR_CASE_품번 = _D2_LWR_CASE_품번.value;
+			doc.D2_UPR_CASE_품번 = _D2_UPR_CASE_품번.value;
+			doc.D2_LV_W_H_품번 = _D2_LV_W_H_품번.value;
+			doc.D2_MODULE_1_품번 = _D2_MODULE_1_품번.value;
+
+			break;
+		default: 
+			console.log('차종을 확인하세요');
+
+			break;
+	}
 
 	update(부품정보_list, doc);
 	await delay();
@@ -5558,6 +5635,7 @@ function auto_focus() {
 		}
 	}
 
+
 	_D2_LV_W_H_품번.onkeydown = function (event) {
 		if(event.keyCode == 13) _D2_MODULE_1_QR.focus();
 		if(_D2_LV_W_H_QR.value != '' && _D2_LV_W_H_품번.value != '') { 
@@ -5842,6 +5920,8 @@ async function compare_품번() {
 
 		default : 
 			console.log('품번 data의 차종을 확인하세요');
+
+			break;
 	}
 }
 
@@ -5858,7 +5938,6 @@ async function save_품번(_차종, _종류, _품번) {
 	품번_list();
 
 	_품번 = _품번.toUpperCase();
-
 
 	find_품번(품번, { 번호 : { $exists : true }});
 	await delay();
@@ -5893,4 +5972,641 @@ async function save_품번(_차종, _종류, _품번) {
 	}
 
 	eval(str);
+}
+
+function check_complete() {
+	if(_A_UPR_CASE_QR.value != '' && _A_UPR_CASE_품번.value != '') { 
+		_A_UPR_CASE.style.backgroundColor = 'salmon';
+		_A_UPR_CASE.style.color = 'white';
+	}
+
+	if(_A_LWR_CASE_QR.value != '' && _A_LWR_CASE_품번.value != '') { 
+		_A_LWR_CASE.style.backgroundColor = 'salmon';
+		_A_LWR_CASE.style.color = 'white';
+	}
+
+	if(_A_S_PLUG_QR.value != '' && _A_S_PLUG_품번.value != '') { 
+		_A_S_PLUG.style.backgroundColor = 'salmon';
+		_A_S_PLUG.style.color = 'white';
+	}
+
+	if(_A_SPA_QR.value != '' && _A_SPA_품번.value != '') { 
+		_A_SPA.style.backgroundColor = 'salmon';
+		_A_SPA.style.color = 'white';
+	}
+
+	if(_A_HT_CNTR_QR.value != '' && _A_HT_CNTR_품번.value != '') { 
+		_A_HT_CNTR.style.backgroundColor = 'salmon';
+		_A_HT_CNTR.style.color = 'white';
+	}
+
+	if(_A_HV_CNTR_QR.value != '' && _A_HV_CNTR_품번.value != '') { 
+		_A_HV_CNTR.style.backgroundColor = 'salmon';
+		_A_HV_CNTR.style.color = 'white';
+	}
+
+	if(_A_PRA_QR.value != '' && _A_PRA_품번.value != '') { 
+		_A_PRA.style.backgroundColor = 'salmon';
+		_A_PRA.style.color = 'white';
+	}
+
+	if(_A_LV_W_H_QR.value != '' && _A_LV_W_H_품번.value != '') { 
+		_A_LV_W_H.style.backgroundColor = 'salmon';
+		_A_LV_W_H.style.color = 'white';
+	}
+
+	if(_A_HV_W_H_1_QR.value != '' && _A_HV_W_H_1_품번.value != '') { 
+		_A_HV_W_H_1.style.backgroundColor = 'salmon';
+		_A_HV_W_H_1.style.color = 'white';
+	}
+
+	if(_A_HV_W_H_2_QR.value != '' && _A_HV_W_H_2_품번.value != '') { 
+		_A_HV_W_H_2.style.backgroundColor = 'salmon';
+		_A_HV_W_H_2.style.color = 'white';
+	}
+
+	if(_A_HV_W_H_3_QR.value != '' && _A_HV_W_H_3_품번.value != '') { 
+		_A_HV_W_H_3.style.backgroundColor = 'salmon';
+		_A_HV_W_H_3.style.color = 'white';
+	}
+
+	if(_A_HV_W_H_4_QR.value != '' && _A_HV_W_H_4_품번.value != '') { 
+		_A_HV_W_H_4.style.backgroundColor = 'salmon';
+		_A_HV_W_H_4.style.color = 'white';
+	}
+
+	if(_A_HV_W_H_5_QR.value != '' && _A_HV_W_H_5_품번.value != '') { 
+		_A_HV_W_H_5.style.backgroundColor = 'salmon';
+		_A_HV_W_H_5.style.color = 'white';
+	}
+
+	if(_A_BMU_QR.value != '' && _A_BMU_품번.value != '') { 
+		_A_BMU.style.backgroundColor = 'salmon';
+		_A_BMU.style.color = 'white';
+	}
+
+	if(_A_CMU_1_QR.value != '' && _A_CMU_1_품번.value != '') { 
+		_A_CMU_1.style.backgroundColor = 'salmon';
+		_A_CMU_1.style.color = 'white';
+	}
+
+	if(_A_CMU_2_QR.value != '' && _A_CMU_2_품번.value != '') { 
+		_A_CMU_2.style.backgroundColor = 'salmon';
+		_A_CMU_2.style.color = 'white';
+	}
+
+	if(_A_CMU_3_QR.value != '' && _A_CMU_3_품번.value != '') { 
+		_A_CMU_3.style.backgroundColor = 'salmon';
+		_A_CMU_3.style.color = 'white';
+	}
+
+	if(_A_CMU_4_QR.value != '' && _A_CMU_4_품번.value != '') { 
+		_A_CMU_4.style.backgroundColor = 'salmon';
+		_A_CMU_4.style.color = 'white';
+	}
+
+	if(_A_CMU_5_QR.value != '' && _A_CMU_5_품번.value != '') { 
+		_A_CMU_5.style.backgroundColor = 'salmon';
+		_A_CMU_5.style.color = 'white';
+	}
+
+	if(_A_MODULE_1_QR.value != '' && _A_MODULE_1_품번.value != '') { 
+		_A_MODULE_1.style.backgroundColor = 'salmon';
+		_A_MODULE_1.style.color = 'white';
+	}
+
+	if(_A_MODULE_2_QR.value != '' && _A_MODULE_2_품번.value != '') { 
+		_A_MODULE_2.style.backgroundColor = 'salmon';
+		_A_MODULE_2.style.color = 'white';
+	}
+
+	if(_A_MODULE_3_QR.value != '' && _A_MODULE_3_품번.value != '') { 
+		_A_MODULE_3.style.backgroundColor = 'salmon';
+		_A_MODULE_3.style.color = 'white';
+	}
+
+	if(_A_MODULE_4_QR.value != '' && _A_MODULE_4_품번.value != '') { 
+		_A_MODULE_4.style.backgroundColor = 'salmon';
+		_A_MODULE_4.style.color = 'white';
+	}
+
+	if(_A_MODULE_5_QR.value != '' && _A_MODULE_5_품번.value != '') { 
+		_A_MODULE_5.style.backgroundColor = 'salmon';
+		_A_MODULE_5.style.color = 'white';
+	}
+
+	if(_B_UPR_CASE_QR.value != '' && _B_UPR_CASE_품번.value != '') { 
+		_B_UPR_CASE.style.backgroundColor = 'salmon';
+		_B_UPR_CASE.style.color = 'white';
+	}
+
+	if(_B_LWR_CASE_QR.value != '' && _B_LWR_CASE_품번.value != '') { 
+		_B_LWR_CASE.style.backgroundColor = 'salmon';
+		_B_LWR_CASE.style.color = 'white';
+	}
+
+	if(_B_HV_CNTR_QR.value != '' && _B_HV_CNTR_품번.value != '') { 
+		_B_HV_CNTR.style.backgroundColor = 'salmon';
+		_B_HV_CNTR.style.color = 'white';
+	}
+
+	if(_B_HT_CNTR_QR.value != '' && _B_HT_CNTR_품번.value != '') { 
+		_B_HT_CNTR.style.backgroundColor = 'salmon';
+		_B_HT_CNTR.style.color = 'white';
+	}
+
+	if(_B_PRA_QR.value != '' && _B_PRA_품번.value != '') { 
+		_B_PRA.style.backgroundColor = 'salmon';
+		_B_PRA.style.color = 'white';
+	}
+
+	if(_B_HV_W_H_1_QR.value != '' && _B_HV_W_H_1_품번.value != '') { 
+		_B_HV_W_H_1.style.backgroundColor = 'salmon';
+		_B_HV_W_H_1.style.color = 'white';
+	}
+
+	if(_B_HV_W_H_2_QR.value != '' && _B_HV_W_H_2_품번.value != '') { 
+		_B_HV_W_H_2.style.backgroundColor = 'salmon';
+		_B_HV_W_H_2.style.color = 'white';
+	}
+
+	if(_B_LV_W_H_QR.value != '' && _B_LV_W_H_품번.value != '') { 
+		_B_LV_W_H.style.backgroundColor = 'salmon';
+		_B_LV_W_H.style.color = 'white';
+	}
+
+	if(_B_BMU_QR.value != '' && _B_BMU_품번.value != '') { 
+		_B_BMU.style.backgroundColor = 'salmon';
+		_B_BMU.style.color = 'white';
+	}
+
+	if(_B_CMU_1_QR.value != '' && _B_CMU_1_품번.value != '') { 
+		_B_CMU_1.style.backgroundColor = 'salmon';
+		_B_CMU_1.style.color = 'white';
+	}
+
+	if(_B_CMU_2_QR.value != '' && _B_CMU_2_품번.value != '') { 
+		_B_CMU_2.style.backgroundColor = 'salmon';
+		_B_CMU_2.style.color = 'white';
+	}
+
+	if(_B_CMU_3_QR.value != '' && _B_CMU_3_품번.value != '') { 
+		_B_CMU_3.style.backgroundColor = 'salmon';
+		_B_CMU_3.style.color = 'white';
+	}
+
+	if(_B_CMU_4_QR.value != '' && _B_CMU_4_품번.value != '') { 
+		_B_CMU_4.style.backgroundColor = 'salmon';
+		_B_CMU_4.style.color = 'white';
+	}
+
+	if(_B_CMU_5_QR.value != '' && _B_CMU_5_품번.value != '') { 
+		_B_CMU_5.style.backgroundColor = 'salmon';
+		_B_CMU_5.style.color = 'white';
+	}
+
+	if(_B_MODULE_1_QR.value != '' && _B_MODULE_1_품번.value != '') { 
+		_B_MODULE_1.style.backgroundColor = 'salmon';
+		_B_MODULE_1.style.color = 'white';
+	}
+
+	if(_B_MODULE_2_QR.value != '' && _B_MODULE_2_품번.value != '') { 
+		_B_MODULE_2.style.backgroundColor = 'salmon';
+		_B_MODULE_2.style.color = 'white';
+	}
+
+	if(_B_MODULE_3_QR.value != '' && _B_MODULE_3_품번.value != '') { 
+		_B_MODULE_3.style.backgroundColor = 'salmon';
+		_B_MODULE_3.style.color = 'white';
+	}
+
+	if(_B_MODULE_4_QR.value != '' && _B_MODULE_4_품번.value != '') { 
+		_B_MODULE_4.style.backgroundColor = 'salmon';
+		_B_MODULE_4.style.color = 'white';
+	}
+
+	if(_B_MODULE_5_QR.value != '' && _B_MODULE_5_품번.value != '') { 
+		_B_MODULE_5.style.backgroundColor = 'salmon';
+		_B_MODULE_5.style.color = 'white';
+	}
+
+	if(_B_MODULE_6_QR.value != '' && _B_MODULE_6_품번.value != '') { 
+		_B_MODULE_6.style.backgroundColor = 'salmon';
+		_B_MODULE_6.style.color = 'white';
+	}
+
+	if(_B_MODULE_7_QR.value != '' && _B_MODULE_7_품번.value != '') { 
+		_B_MODULE_7.style.backgroundColor = 'salmon';
+		_B_MODULE_7.style.color = 'white';
+	}
+
+	if(_B_MODULE_8_QR.value != '' && _B_MODULE_8_품번.value != '') { 
+		_B_MODULE_8.style.backgroundColor = 'salmon';
+		_B_MODULE_8.style.color = 'white';
+	}
+
+	if(_B_MODULE_9_QR.value != '' && _B_MODULE_9_품번.value != '') { 
+		_B_MODULE_9.style.backgroundColor = 'salmon';
+		_B_MODULE_9.style.color = 'white';
+	}
+
+	if(_B_MODULE_10_QR.value != '' && _B_MODULE_10_품번.value != '') { 
+		_B_MODULE_10.style.backgroundColor = 'salmon';
+		_B_MODULE_10.style.color = 'white';
+	}
+
+	if(_C_UPR_CASE_QR.value != '' && _C_UPR_CASE_품번.value != '') { 
+		_C_UPR_CASE.style.backgroundColor = 'salmon';
+		_C_UPR_CASE.style.color = 'white';
+	}
+
+	if(_C_LWR_CASE_QR.value != '' && _C_LWR_CASE_품번.value != '') { 
+		_C_LWR_CASE.style.backgroundColor = 'salmon';
+		_C_LWR_CASE.style.color = 'white';
+	}
+
+	if(_C_HV_CNTR_1_QR.value != '' && _C_HV_CNTR_1_품번.value != '') { 
+		_C_HV_CNTR_1.style.backgroundColor = 'salmon';
+		_C_HV_CNTR_1.style.color = 'white';
+	}
+
+	if(_C_HV_CNTR_2_QR.value != '' && _C_HV_CNTR_2_품번.value != '') { 
+		_C_HV_CNTR_2.style.backgroundColor = 'salmon';
+		_C_HV_CNTR_2.style.color = 'white';
+	}
+
+	if(_C_HT_CNTR_QR.value != '' && _C_HT_CNTR_품번.value != '') { 
+		_C_HT_CNTR.style.backgroundColor = 'salmon';
+		_C_HT_CNTR.style.color = 'white';
+	}
+
+	if(_C_PRA_QR.value != '' && _C_PRA_품번.value != '') { 
+		_C_PRA.style.backgroundColor = 'salmon';
+		_C_PRA.style.color = 'white';
+	}
+
+	if(_C_FUSE_QR.value != '' && _C_FUSE_품번.value != '') { 
+		_C_FUSE.style.backgroundColor = 'salmon';
+		_C_FUSE.style.color = 'white';
+	}
+
+	if(_C_LV_W_H_QR.value != '' && _C_LV_W_H_품번.value != '') { 
+		_C_LV_W_H.style.backgroundColor = 'salmon';
+		_C_LV_W_H.style.color = 'white';
+	}
+
+	if(_C_HV_W_H_1_QR.value != '' && _C_HV_W_H_1_품번.value != '') { 
+		_C_HV_W_H_1.style.backgroundColor = 'salmon';
+		_C_HV_W_H_1.style.color = 'white';
+	}
+
+	if(_C_HV_W_H_2_QR.value != '' && _C_HV_W_H_2_품번.value != '') { 
+		_C_HV_W_H_2.style.backgroundColor = 'salmon';
+		_C_HV_W_H_2.style.color = 'white';
+	}
+
+	if(_C_HV_W_H_3_QR.value != '' && _C_HV_W_H_3_품번.value != '') { 
+		_C_HV_W_H_3.style.backgroundColor = 'salmon';
+		_C_HV_W_H_3.style.color = 'white';
+	}
+
+	if(_C_HV_W_H_4_QR.value != '' && _C_HV_W_H_4_품번.value != '') { 
+		_C_HV_W_H_4.style.backgroundColor = 'salmon';
+		_C_HV_W_H_4.style.color = 'white';
+	}
+
+	if(_C_HV_W_H_5_QR.value != '' && _C_HV_W_H_5_품번.value != '') { 
+		_C_HV_W_H_5.style.backgroundColor = 'salmon';
+		_C_HV_W_H_5.style.color = 'white';
+	}
+
+	if(_C_HV_W_H_6_QR.value != '' && _C_HV_W_H_6_품번.value != '') { 
+		_C_HV_W_H_6.style.backgroundColor = 'salmon';
+		_C_HV_W_H_6.style.color = 'white';
+	}
+
+	if(_C_HV_W_H_7_QR.value != '' && _C_HV_W_H_7_품번.value != '') { 
+		_C_HV_W_H_7.style.backgroundColor = 'salmon';
+		_C_HV_W_H_7.style.color = 'white';
+	}
+
+	if(_C_HV_W_H_8_QR.value != '' && _C_HV_W_H_8_품번.value != '') { 
+		_C_HV_W_H_8.style.backgroundColor = 'salmon';
+		_C_HV_W_H_8.style.color = 'white';
+	}
+
+	if(_C_BMU_QR.value != '' && _C_BMU_품번.value != '') { 
+		_C_BMU.style.backgroundColor = 'salmon';
+		_C_BMU.style.color = 'white';
+	}
+
+	if(_C_CMU_1_QR.value != '' && _C_CMU_1_품번.value != '') { 
+		_C_CMU_1.style.backgroundColor = 'salmon';
+		_C_CMU_1.style.color = 'white';
+	}
+
+	if(_C_CMU_2_QR.value != '' && _C_CMU_2_품번.value != '') { 
+		_C_CMU_2.style.backgroundColor = 'salmon';
+		_C_CMU_2.style.color = 'white';
+	}
+
+	if(_C_CMU_3_QR.value != '' && _C_CMU_3_품번.value != '') { 
+		_C_CMU_3.style.backgroundColor = 'salmon';
+		_C_CMU_3.style.color = 'white';
+	}
+
+	if(_C_CMU_4_QR.value != '' && _C_CMU_4_품번.value != '') { 
+		_C_CMU_4.style.backgroundColor = 'salmon';
+		_C_CMU_4.style.color = 'white';
+	}
+
+	if(_C_CMU_5_QR.value != '' && _C_CMU_5_품번.value != '') { 
+		_C_CMU_5.style.backgroundColor = 'salmon';
+		_C_CMU_5.style.color = 'white';
+	}
+
+	if(_C_CMU_6_QR.value != '' && _C_CMU_6_품번.value != '') { 
+		_C_CMU_6.style.backgroundColor = 'salmon';
+		_C_CMU_6.style.color = 'white';
+	}
+
+	if(_C_CMU_7_QR.value != '' && _C_CMU_7_품번.value != '') { 
+		_C_CMU_7.style.backgroundColor = 'salmon';
+		_C_CMU_7.style.color = 'white';
+	}
+
+	if(_C_CMU_8_QR.value != '' && _C_CMU_8_품번.value != '') { 
+		_C_CMU_8.style.backgroundColor = 'salmon';
+		_C_CMU_8.style.color = 'white';
+	}
+
+	if(_C_MODULE_1_QR.value != '' && _C_MODULE_1_품번.value != '') { 
+		_C_MODULE_1.style.backgroundColor = 'salmon';
+		_C_MODULE_1.style.color = 'white';
+	}
+
+	if(_C_MODULE_2_QR.value != '' && _C_MODULE_2_품번.value != '') { 
+		_C_MODULE_2.style.backgroundColor = 'salmon';
+		_C_MODULE_2.style.color = 'white';
+	}
+
+	if(_C_MODULE_3_QR.value != '' && _C_MODULE_3_품번.value != '') { 
+		_C_MODULE_3.style.backgroundColor = 'salmon';
+		_C_MODULE_3.style.color = 'white';
+	}
+
+	if(_C_MODULE_4_QR.value != '' && _C_MODULE_4_품번.value != '') { 
+		_C_MODULE_4.style.backgroundColor = 'salmon';
+		_C_MODULE_4.style.color = 'white';
+	}
+
+	if(_C_MODULE_5_QR.value != '' && _C_MODULE_5_품번.value != '') { 
+		_C_MODULE_5.style.backgroundColor = 'salmon';
+		_C_MODULE_5.style.color = 'white';
+	}
+
+	if(_C_MODULE_6_QR.value != '' && _C_MODULE_6_품번.value != '') { 
+		_C_MODULE_6.style.backgroundColor = 'salmon';
+		_C_MODULE_6.style.color = 'white';
+	}
+
+	if(_C_MODULE_7_QR.value != '' && _C_MODULE_7_품번.value != '') { 
+		_C_MODULE_7.style.backgroundColor = 'salmon';
+		_C_MODULE_7.style.color = 'white';
+	}
+
+	if(_C_MODULE_8_QR.value != '' && _C_MODULE_8_품번.value != '') { 
+		_C_MODULE_8.style.backgroundColor = 'salmon';
+		_C_MODULE_8.style.color = 'white';
+	}
+
+	if(_C_MODULE_9_QR.value != '' && _C_MODULE_9_품번.value != '') { 
+		_C_MODULE_9.style.backgroundColor = 'salmon';
+		_C_MODULE_9.style.color = 'white';
+	}
+
+	if(_C_MODULE_10_QR.value != '' && _C_MODULE_10_품번.value != '') { 
+		_C_MODULE_10.style.backgroundColor = 'salmon';
+		_C_MODULE_10.style.color = 'white';
+	}
+
+	if(_C_MODULE_11_QR.value != '' && _C_MODULE_11_품번.value != '') { 
+		_C_MODULE_11.style.backgroundColor = 'salmon';
+		_C_MODULE_11.style.color = 'white';
+	}
+
+	if(_C_MODULE_12_QR.value != '' && _C_MODULE_12_품번.value != '') { 
+		_C_MODULE_12.style.backgroundColor = 'salmon';
+		_C_MODULE_12.style.color = 'white';
+	}
+
+	if(_C_MODULE_13_QR.value != '' && _C_MODULE_13_품번.value != '') { 
+		_C_MODULE_13.style.backgroundColor = 'salmon';
+		_C_MODULE_13.style.color = 'white';
+	}
+
+	if(_C_MODULE_14_QR.value != '' && _C_MODULE_14_품번.value != '') { 
+		_C_MODULE_14.style.backgroundColor = 'salmon';
+		_C_MODULE_14.style.color = 'white';
+	}
+
+	if(_C_MODULE_15_QR.value != '' && _C_MODULE_15_품번.value != '') { 
+		_C_MODULE_15.style.backgroundColor = 'salmon';
+		_C_MODULE_15.style.color = 'white';
+	}
+
+	if(_C_MODULE_16_QR.value != '' && _C_MODULE_16_품번.value != '') { 
+		_C_MODULE_16.style.backgroundColor = 'salmon';
+		_C_MODULE_16.style.color = 'white';
+	}
+
+	if(_C_MODULE_2_1_QR.value != '' && _C_MODULE_2_1_품번.value != '') { 
+		_C_MODULE_2_1.style.backgroundColor = 'salmon';
+		_C_MODULE_2_1.style.color = 'white';
+	}
+
+	if(_C_MODULE_2_2_QR.value != '' && _C_MODULE_2_2_품번.value != '') { 
+		_C_MODULE_2_2.style.backgroundColor = 'salmon';
+		_C_MODULE_2_2.style.color = 'white';
+	}
+
+	if(_C_MODULE_2_3_QR.value != '' && _C_MODULE_2_3_품번.value != '') { 
+		_C_MODULE_2_3.style.backgroundColor = 'salmon';
+		_C_MODULE_2_3.style.color = 'white';
+	}
+
+	if(_C_MODULE_2_4_QR.value != '' && _C_MODULE_2_4_품번.value != '') { 
+		_C_MODULE_2_4.style.backgroundColor = 'salmon';
+		_C_MODULE_2_4.style.color = 'white';
+	}
+
+	if(_C_MODULE_2_5_QR.value != '' && _C_MODULE_2_5_품번.value != '') { 
+		_C_MODULE_2_5.style.backgroundColor = 'salmon';
+		_C_MODULE_2_5.style.color = 'white';
+	}
+
+	if(_C_MODULE_2_6_QR.value != '' && _C_MODULE_2_6_품번.value != '') { 
+		_C_MODULE_2_6.style.backgroundColor = 'salmon';
+		_C_MODULE_2_6.style.color = 'white';
+	}
+
+	if(_C_MODULE_2_7_QR.value != '' && _C_MODULE_2_7_품번.value != '') { 
+		_C_MODULE_2_7.style.backgroundColor = 'salmon';
+		_C_MODULE_2_7.style.color = 'white';
+	}
+
+	if(_C_MODULE_2_8_QR.value != '' && _C_MODULE_2_8_품번.value != '') { 
+		_C_MODULE_2_8.style.backgroundColor = 'salmon';
+		_C_MODULE_2_8.style.color = 'white';
+	}
+
+	if(_C_MODULE_2_9_QR.value != '' && _C_MODULE_2_9_품번.value != '') { 
+		_C_MODULE_2_9.style.backgroundColor = 'salmon';
+		_C_MODULE_2_9.style.color = 'white';
+	}
+
+	if(_C_MODULE_2_10_QR.value != '' && _C_MODULE_2_10_품번.value != '') { 
+		_C_MODULE_2_10.style.backgroundColor = 'salmon';
+		_C_MODULE_2_10.style.color = 'white';
+	}
+
+	if(_C_MODULE_2_11_QR.value != '' && _C_MODULE_2_11_품번.value != '') { 
+		_C_MODULE_2_11.style.backgroundColor = 'salmon';
+		_C_MODULE_2_11.style.color = 'white';
+	}
+
+	if(_C_MODULE_2_12_QR.value != '' && _C_MODULE_2_12_품번.value != '') { 
+		_C_MODULE_2_12.style.backgroundColor = 'salmon';
+		_C_MODULE_2_12.style.color = 'white';
+	}
+
+	if(_C_MODULE_2_13_QR.value != '' && _C_MODULE_2_13_품번.value != '') { 
+		_C_MODULE_2_13.style.backgroundColor = 'salmon';
+		_C_MODULE_2_13.style.color = 'white';
+	}
+
+	if(_C_MODULE_2_14_QR.value != '' && _C_MODULE_2_14_품번.value != '') { 
+		_C_MODULE_2_14.style.backgroundColor = 'salmon';
+		_C_MODULE_2_14.style.color = 'white';
+	}
+
+	if(_C_MODULE_2_15_QR.value != '' && _C_MODULE_2_15_품번.value != '') { 
+		_C_MODULE_2_15.style.backgroundColor = 'salmon';
+		_C_MODULE_2_15.style.color = 'white';
+	}
+
+	if(_C_MODULE_2_16_QR.value != '' && _C_MODULE_2_16_품번.value != '') { 
+		_C_MODULE_2_16.style.backgroundColor = 'salmon';
+		_C_MODULE_2_16.style.color = 'white';
+	}
+
+	if(_D_UPR_CASE_QR.value != '' && _D_UPR_CASE_품번.value != '') { 
+		_D_UPR_CASE.style.backgroundColor = 'salmon';
+		_D_UPR_CASE.style.color = 'white';
+	}
+
+	if(_D_LWR_CASE_QR.value != '' && _D_LWR_CASE_품번.value != '') { 
+		_D_LWR_CASE.style.backgroundColor = 'salmon';
+		_D_LWR_CASE.style.color = 'white';
+	}
+
+	if(_D_HV_CNTR_1_QR.value != '' && _D_HV_CNTR_1_품번.value != '') { 
+		_D_HV_CNTR_1.style.backgroundColor = 'salmon';
+		_D_HV_CNTR_1.style.color = 'white';
+	}
+
+	if(_D_HV_CNTR_2_QR.value != '' && _D_HV_CNTR_2_품번.value != '') { 
+		_D_HV_CNTR_2.style.backgroundColor = 'salmon';
+		_D_HV_CNTR_2.style.color = 'white';
+	}
+
+	if(_D_RELAY_QR.value != '' && _D_RELAY_품번.value != '') { 
+		_D_RELAY.style.backgroundColor = 'salmon';
+		_D_RELAY.style.color = 'white';
+	}
+
+	if(_D_LV_W_H_QR.value != '' && _D_LV_W_H_품번.value != '') { 
+		_D_LV_W_H.style.backgroundColor = 'salmon';
+		_D_LV_W_H.style.color = 'white';
+	}
+
+	if(_D_HV_W_H_1_QR.value != '' && _D_HV_W_H_1_품번.value != '') { 
+		_D_HV_W_H_1.style.backgroundColor = 'salmon';
+		_D_HV_W_H_1.style.color = 'white';
+	}
+
+	if(_D_HV_W_H_2_QR.value != '' && _D_HV_W_H_2_품번.value != '') { 
+		_D_HV_W_H_2.style.backgroundColor = 'salmon';
+		_D_HV_W_H_2.style.color = 'white';
+	}
+
+	if(_D_BMU_QR.value != '' && _D_BMU_품번.value != '') { 
+		_D_BMU.style.backgroundColor = 'salmon';
+		_D_BMU.style.color = 'white';
+	}
+
+	if(_D_CMU_1_QR.value != '' && _D_CMU_1_품번.value != '') { 
+		_D_CMU_1.style.backgroundColor = 'salmon';
+		_D_CMU_1.style.color = 'white';
+	}
+
+	if(_D_MODULE_1_QR.value != '' && _D_MODULE_1_품번.value != '') { 
+		_D_MODULE_1.style.backgroundColor = 'salmon';
+		_D_MODULE_1.style.color = 'white';
+	}
+
+	if(_D_MODULE_2_QR.value != '' && _D_MODULE_2_품번.value != '') { 
+		_D_MODULE_2.style.backgroundColor = 'salmon';
+		_D_MODULE_2.style.color = 'white';
+	}
+
+	if(_D2_HV_W_H_1_QR.value != '' && _D2_HV_W_H_1_품번.value != '') { 
+		_D2_HV_W_H_1.style.backgroundColor = 'salmon';
+		_D2_HV_W_H_1.style.color = 'white';
+	}
+
+	if(_D2_CMU_1_QR.value != '' && _D2_CMU_1_품번.value != '') { 
+		_D2_CMU_1.style.backgroundColor = 'salmon';
+		_D2_CMU_1.style.color = 'white';
+	}
+
+	if(_D2_RELAY_QR.value != '' && _D2_RELAY_품번.value != '') { 
+		_D2_RELAY.style.backgroundColor = 'salmon';
+		_D2_RELAY.style.color = 'white';
+	}
+
+	if(_D2_BMU_QR.value != '' && _D2_BMU_품번.value != '') { 
+		_D2_BMU.style.backgroundColor = 'salmon';
+		_D2_BMU.style.color = 'white';
+	}
+
+	if(_D2_HV_CNTR_1_QR.value != '' && _D2_HV_CNTR_1_품번.value != '') { 
+		_D2_HV_CNTR_1.style.backgroundColor = 'salmon';
+		_D2_HV_CNTR_1.style.color = 'white';
+	}
+
+	if(_D2_HV_CNTR_2_QR.value != '' && _D2_HV_CNTR_2_품번.value != '') { 
+		_D2_HV_CNTR_2.style.backgroundColor = 'salmon';
+		_D2_HV_CNTR_2.style.color = 'white';
+	}
+
+	if(_D2_LWR_CASE_QR.value != '' && _D2_LWR_CASE_품번.value != '') { 
+		_D2_LWR_CASE.style.backgroundColor = 'salmon';
+		_D2_LWR_CASE.style.color = 'white';
+	}
+
+	if(_D2_UPR_CASE_QR.value != '' && _D2_UPR_CASE_품번.value != '') { 
+		_D2_UPR_CASE.style.backgroundColor = 'salmon';
+		_D2_UPR_CASE.style.color = 'white';
+	}
+
+	if(_D2_LV_W_H_QR.value != '' && _D2_LV_W_H_품번.value != '') { 
+		_D2_LV_W_H.style.backgroundColor = 'salmon';
+		_D2_LV_W_H.style.color = 'white';
+	}
+
+	if(_D2_MODULE_1_QR.value != '' && _D2_MODULE_1_품번.value != '') { 
+		_D2_MODULE_1.style.backgroundColor = 'salmon';
+		_D2_MODULE_1.style.color = 'white';
+	}
 }

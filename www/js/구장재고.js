@@ -20,7 +20,7 @@ async function 구장재고_조회(is재제조 = false) {
 	var flag_empty = false;
 	if (is재제조 == false) {
 		_management_id.value = _management_id.value.trim().toUpperCase();
-		if (_management_id.value == '조회를 누르세요') _management_id.value = 관리번호;
+		//if (_management_id.value == '조회를 누르세요') _management_id.value = 관리번호;
 		if (_management_id.value.length == 0) return;
 		관리번호 = _management_id.value.trim().toUpperCase();
 		console.log('관리번호:', 관리번호);
