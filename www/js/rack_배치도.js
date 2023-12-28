@@ -54,7 +54,7 @@ function getButtonValue(event) {
 		} else if(창고 == '구장') {
 			flag_구장재고 = true;
 			loadPage('base/구장재고.html');
-		} else if(창고 == '군포') {
+		} else if(창고 == '제주') {
 			flag_제주재고 = true;
 			loadPage('base/제주재고.html');
 		}
