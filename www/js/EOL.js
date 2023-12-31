@@ -67,6 +67,7 @@ async function EOL_시작(is재제조 = 0) {
 		}
 	}
 
+	관리번호 = _management_id.value;
 	console.log('load: ', _management_id.value);
 	find(EOL, _management_id.value);
 	await delay();
@@ -615,9 +616,14 @@ function pdf() {
 			pageOrientation: "portrait",
 			pageMargins: [0, 0, 0, 0],
 		};
-		pdfMake.createPdf(docDefinition).download("거래확인서.pdf");
+
+		var DateTime = luxon.DateTime;
+		var seoul = DateTime.local().setZone("Asia/Seoul");
+		var now = seoul.toString().slice(0, 19);
+		var file_name = now + '_QR.pdf';
+		pdfMake.createPdf(docDefinition).download(file_name);
 	});
-	console.log("file name:", "거래확인서.pdf");
+	console.log("file name:", "QR.pdf");
 }
 
 function EOL_updateFilter() {
