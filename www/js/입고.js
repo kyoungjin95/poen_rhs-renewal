@@ -3,6 +3,8 @@ async function 입고_시작() {
 		await sleep(DELAY);
 	}
 
+	if (flag_입고 == true) await 입고_list();
+
 	const _입고기타 = document.getElementById("_입고_기타");
 	const _입고일반 = document.getElementById("_입고_일반");
 
@@ -146,3 +148,94 @@ function _차종_리스트_콤보박스(e) {
 
 	document.getElementById("_차종").value = value;
 }
+
+function 입고_updateFilter() {
+	var fieldEl = document.getElementById("filter-field");
+	var typeEl = document.getElementById("filter-type");
+	var valueEl = document.getElementById("filter-value");
+
+	var filterVal = fieldEl.options[fieldEl.selectedIndex].value;
+	var typeVal = typeEl.options[typeEl.selectedIndex].value;
+
+	var filter = filterVal == "function" ? customFilter : filterVal;
+
+	if (filterVal == "function") {
+		typeEl.disabled = true;
+		valueEl.disabled = true;
+	} else {
+		typeEl.disabled = false;
+		valueEl.disabled = false;
+	}
+
+	if (filterVal) {
+		입고_list_table.setFilter(filter, typeVal, valueEl.value);
+	}
+}
+
+var 입고_list_table;
+
+async function 입고_list() {
+	findOne_입고(입고, { 입고처: { $in : ['구장창고', '제주창고', '군포창고']}});
+	await delay();
+
+	if (입고_v != null) {
+		find_입고(입고, { 입고처: { $in : ['구장창고', '제주창고', '군포창고']}});
+		await delay();
+	}
+
+	입고_list_table = new Tabulator("#grid_list", {
+		layout: "resizableColumnFit",
+		data: 입고_v,
+		height: "400px",
+
+		columns: [
+			{ title: "ID", field: "_id", sorter: "string", width: "180" },
+			{ title: "관리번호", field: "관리번호", sorter: "string", width: "180" },
+			{ title: "입고일", field: "입고일", sorter: "string", width: "180" },
+			{ title: "입고처", field: "입고처", sorter: "string", width: "180" },
+			{ title: "구분", field: "구분", sorter: "string", width: "180" },
+			{ title: "차종", field: "차종", sorter: "string", width: "180" },
+			{ title: "품번", field: "품번", sorter: "string", width: "180" },
+			{ title: "Ro_no", field: "Ro_no", sorter: "string", width: "180" },
+		],
+	});
+
+	입고_list_table.on("rowClick", async function (e, row) {
+		console.log("selected 관리번호: ", row.getData().관리번호);
+
+		_management_id.value = row.getData().관리번호;
+
+		await sleep(1);
+
+		var yes = confirm('선택한 BSA로 세척 공정 정보입력을 시작하시겠습니까?');
+		if (yes != true) return;
+
+		입고_시작();
+	});
+
+	//Update filters on value change
+	document
+		.getElementById("filter-field")
+		.addEventListener("change", 세척_updateFilter);
+	document
+		.getElementById("filter-type")
+		.addEventListener("change", 세척_updateFilter);
+	document
+		.getElementById("filter-value")
+		.addEventListener("keyup", 세척_updateFilter);
+
+	//Clear filters on "Clear Filters" button click
+	document
+		.getElementById("filter-clear")
+		.addEventListener("click", function () {
+			var fieldEl = document.getElementById("filter-field");
+			var typeEl = document.getElementById("filter-type");
+			var valueEl = document.getElementById("filter-value");
+			fieldEl.value = "";
+			typeEl.value = "=";
+			valueEl.value = "";
+
+			입고_list_table.clearFilter();
+		});
+}
+

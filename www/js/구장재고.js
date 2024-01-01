@@ -104,15 +104,23 @@ async function 구장재고_save() {
 		var doc = JSON.parse(JSON.stringify(BSA재제조_doc));
 		doc.관리번호 = _management_id.value.trim().toUpperCase();
 		doc.재제조번호 = _재제조번호.value;
-		doc.입고일 = _출고.value;
-		doc.입고처 = '구장창고';
+		doc.입고일 = _출고일.value;
 		doc.RO번호 = _RO번호.value;
 		doc.품번 = _부품번호.value;
-		doc.출하 = _제조완료.value;
+		//doc.출하 = _제조완료.value;
 
 		update(BSA재제조, doc);
 		await delay();
 
+		var doc = JSON.parse(JSON.stringify(입고_doc));
+		doc.관리번호 = _management_id.value.trim().toUpperCase();
+		doc.입고일 = _출고일.value;
+		doc.입고처 = '구장창고';
+		doc.RO번호 = _RO번호.value;
+		doc.품번 = _부품번호.value;
+
+		update(입고, doc);
+		await delay();
 	} else if(_출고처.value == '군포') {
 		var doc = JSON.parse(JSON.stringify(군포재고));
 		doc.관리번호 = _management_id.value.trim().toUpperCase();
@@ -172,8 +180,8 @@ async function 구장재고_save() {
 	}
 }
 
-function 출고처_콤보박스(e) {
-	var value = e;
+function _구장출고처_콤보박스(e) {
+	var value = e.value;
 	
 	_출고처.value = value;
 }

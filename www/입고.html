@@ -8,6 +8,37 @@
   </head>
 
   <body>
+  <section>
+    <div class="gather-filter">
+      <select id="filter-field">
+        <option></option>
+        <option value="관리번호">관리번호</option>
+        <option value="입고일">입고일</option>
+        <option value="입고처">입고처</option>
+        <option value="차종">차종</option>
+        <option value="품번">품번</option>
+        <option value="RO_no">RO_no</option>
+      </select>
+
+      <select id="filter-type">
+        <option value="=">=</option>
+        <option value="<">
+          << /option>
+        <option value="<=">
+          <=< /option>
+        <option value=">">></option>
+        <option value=">=">>=</option>
+        <option value="!=">!=</option>
+        <option value="like">like</option>
+      </select>
+
+      <input id="filter-value" type="text" placeholder="value to filter" />
+
+      <button id="filter-clear">Clear Filter</button>
+    </div>
+    <button onClick="입고_list();">LIST</button>
+    <div id="grid_list"></div>
+  </section>
     <section class="입고">
       <div class="process__tit">
         <h2>배터리팩 등록(입고)</h2>
