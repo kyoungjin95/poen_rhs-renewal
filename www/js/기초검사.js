@@ -98,8 +98,6 @@ async function 기초검사_시작(is재제조 = 0) {
 		_QRCode.value = 기초검사_v.QRcode;
 		_주행거리.value = 기초검사_v.주행거리;
 		_차량번호.value = 기초검사_v.차량번호;
-		_육안검사_외부.value = 기초검사_v.육안검사_외부;
-		_육안검사_외부_특이사항.value = 기초검사_v.육안검사_외부_특이사항;
 		_육안검사_내부.value = 기초검사_v.육안검사_내부;
 		_육안검사_내부_특이사항.value = 기초검사_v.육안검사_내부_특이사항;
 		_기밀검사_냉각유로.value = 기초검사_v.기밀검사_냉각유로;
@@ -149,8 +147,8 @@ async function 기초검사_시작(is재제조 = 0) {
 		_통신검사_릴레이구동.value = 기초검사_v.통신검사_릴레이구동;
 		_BSA생산일자.value = 기초검사_v.BSA생산일자;
 		_BMA_ROM_ID.value = 기초검사_v.BMA_ROM_ID;
-		_고장현상코드.value = 기초검사_v.고장현상코드;
-		_고장현상명.value = 기초검사_v.고장현상명;
+		//_고장현상코드.value = 기초검사_v.고장현상코드;
+		//_고장현상명.value = 기초검사_v.고장현상명;
 		//_문제Cell_No.value = 기초검사_v.문제Cell_No;
 		//_문제BMA_No.value = 기초검사_v.문제BMA_No;
 		//_문제BMA_cnt.value = 기초검사_v.문제BMA_cnt;
@@ -165,8 +163,6 @@ async function 기초검사_시작(is재제조 = 0) {
 		_QRCode.value = '';
 		_주행거리.value = '';
 		_차량번호.value = '';
-		_육안검사_외부.value = '';
-		_육안검사_외부_특이사항.value = '';
 		_육안검사_내부.value = '';
 		_육안검사_내부_특이사항.value = '';
 		_기밀검사_냉각유로.value = '';
@@ -181,9 +177,8 @@ async function 기초검사_시작(is재제조 = 0) {
 		_통신검사_릴레이구동.value = '';
 		_BSA생산일자.value = '';
 		_BMA_ROM_ID.value = '';
-		_고장현상코드.value = '';
-		_고장현상코드.value = '';
-		_고장현상명.value = '';
+		//_고장현상코드.value = '';
+		//_고장현상명.value = '';
 		//_문제Cell_No.value = '';
 		//_문제BMA_No.value = '';
 		//_문제BMA_cnt.value = '';
@@ -252,8 +247,6 @@ async function 기초검사_SAVE() {
 	doc.QRcode = _QRCode.value;
 	doc.주행거리 = _주행거리.value;
 	doc.차량번호 = _차량번호.value;
-	doc.육안검사_외부 = _육안검사_외부.value;
-	doc.육안검사_외부_특이사항 = _육안검사_외부_특이사항.value;
 	doc.육안검사_내부 = _육안검사_내부.value;
 	doc.육안검사_내부_특이사항 = _육안검사_내부_특이사항.value;
 	doc.기밀검사_냉각유로 = _기밀검사_냉각유로.value;
@@ -333,8 +326,8 @@ async function 기초검사_SAVE() {
 	doc.통신검사_릴레이구동 = _통신검사_릴레이구동.value;
 	doc.BSA생산일자 = _BSA생산일자.value;
 	doc.BMA_ROM_ID = _BMA_ROM_ID.value;
-	doc.고장현상코드 = _고장현상코드.value;
-	doc.고장현상명 = _고장현상명.value;
+	//doc.고장현상코드 = _고장현상코드.value;
+	//doc.고장현상명 = _고장현상명.value;
 	//doc.문제Cell_No = _문제Cell_No.value;
 	//doc.문제BMA_No = _문제BMA_No.value;
 	//doc.문제BMA_cnt = _문제BMA_cnt.value; 
@@ -388,13 +381,6 @@ async function 기초검사_SAVE() {
 	
 	flag_불량의심부품 = true;
 	loadPage('base/불량의심부품.html');
-}
-
-function _육안검사외부_콤보박스(e) {
-
-	const value = e.value;
-
-	document.getElementById('_육안검사_외부').value = value;
 }
 
 function _육안검사내부_콤보박스(e) {

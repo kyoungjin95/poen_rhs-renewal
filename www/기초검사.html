@@ -176,34 +176,6 @@
           </tr>
           <tr>
             <td>
-              <label for="_육안검사_외부">육안검사 외부</label>
-            </td>
-            <td>
-              <input type="text" id="_육안검사_외부" size="40" required />
-              <select name="language" onchange="_육안검사외부_콤보박스(this);">
-                <option value="">---</option>
-                <option value="OK">OK</option>
-                <option value="NG">NG</option>
-              </select>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <label for="_육안검사_외부_특이사항"
-                >육안검사 외부 특이사항</label
-              >
-            </td>
-            <td>
-              <input
-                type="text"
-                id="_육안검사_외부_특이사항"
-                size="100"
-                required
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>
               <label for="_육안검사_내부">육안검사 내부</label>
             </td>
             <td>
@@ -357,7 +329,7 @@
               <input type="text" id="_BMA_ROM_ID" size="40" required />
             </td>
           </tr>
-
+	  <!--
           <tr>
             <td>
               <label for="_고장현상코드">고장현상 코드</label>
@@ -398,6 +370,7 @@
               <input type="text" id="_문제BMA_cnt" size="40" required />
             </td>
           </tr>
+	  -->
           <tr>
             <td>
               <label for="_공정완료일">공정 완료일</label>
@@ -467,8 +440,6 @@
       const _주행거리 = document.getElementById("_주행거리");
       const _차량번호 = document.getElementById("_차량번호");
       const _공정입고일 = document.getElementById("_공정입고일");
-      const _육안검사_외부 = document.getElementById("_육안검사_외부");
-      const _육안검사_외부_특이사항 = document.getElementById("_육안검사_외부");
       const _육안검사_내부 = document.getElementById("_육안검사_내부");
       const _육안검사_내부_특이사항 = document.getElementById("_육안검사_내부");
       const _기밀검사_케이스 = document.getElementById("_기밀검사_케이스");
@@ -501,9 +472,9 @@
       const _BMA_ROM_ID = document.getElementById("_BMA_ROM_ID");
       const _고장현상코드 = document.getElementById("_고장현상코드");
       const _고장현상명 = document.getElementById("_고장현상명");
-      const _문제Cell_No = document.getElementById("_문제Cell_No");
-      const _문제BMA_No = document.getElementById("_문제BMA_No");
-      const _문제BMA_cnt = document.getElementById("_문제BMA_cnt");
+      //const _문제Cell_No = document.getElementById("_문제Cell_No");
+      //const _문제BMA_No = document.getElementById("_문제BMA_No");
+      //const _문제BMA_cnt = document.getElementById("_문제BMA_cnt");
       const _공정완료일 = document.getElementById("_공정완료일");
       const _요청사항 = document.getElementById("_요청사항");
       const _비고 = document.getElementById("_비고");

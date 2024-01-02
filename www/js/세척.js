@@ -102,13 +102,24 @@ async function 세척_시작(is재제조 = 0) {
 		_어퍼케이스재사용가능.value = 세척_v.어퍼케이스재사용가능;
 		_기밀검사_케이스.value = 세척_v.기밀검사_케이스;
 		_기밀검사_케이스_특이사항.value = 세척_v.기밀검사_케이스_특이사항;
-		_특이사항.value = 세척_v.특이사항
+		_육안검사_외부.value = 세척_v.육안검사_외부;
+		_육안검사_외부_특이사항.value = 세척_v.육안검사_외부_특이사항;
+		_특이사항.value = 세척_v.특이사항;
+
+		find(세척_pic, _management_id.value);
+		await delay();
+
+		if(세척_pic_v != null) {
+			img1.src = 세척_pic_v.pic1;
+		}
 	} else {
 		_공정입고일.value = '0000-00-00T00:00';
 		_공정완료일.value = '0000-00-00T00:00';
 		_어퍼케이스재사용가능.value = '';
 		_기밀검사_케이스.value = '';
 		_기밀검사_케이스_특이사항.value = '';
+		_육안검사_외부.value = '';
+		_육안검사_외부_특이사항.value = '';
 		_특이사항.value = '';
 
 		var DateTime = luxon.DateTime;
@@ -117,6 +128,27 @@ async function 세척_시작(is재제조 = 0) {
 
 		_공정입고일.value = now;
 	}
+
+	_육안검사_외부_box.ondragover = _육안검사_외부_box.ondragenter = function(evt) {
+		console.log('on drag over');
+		evt.preventDefault();
+	};
+
+	_육안검사_외부_box.ondrop = async function(evt) {
+		var files = await Promise.all(evt.dataTransfer.files);
+		if(files.length > 0) {
+			console.log('drag & drop');
+			const reader = new FileReader();
+
+			reader.readAsDataURL(files[0]);
+
+			reader.onload = () => {
+				const dataURL = reader.result;
+				img1.src = dataURL;
+			}
+		}
+		evt.preventDefault();
+	};
 }
 
 async function 세척_save() {
@@ -139,6 +171,8 @@ async function 세척_save() {
 	doc.어퍼케이스재사용가능 = _어퍼케이스재사용가능.value;
 	doc.기밀검사_케이스 = _기밀검사_케이스.value;
 	doc.기밀검사_케이스_특이사항 = _기밀검사_케이스_특이사항.value;
+	doc.육안검사_외부 = _육안검사_외부.value;
+	doc.육안검사_외부_특이사항 = _육안검사_외부_특이사항.value;
 	doc.특이사항 = _특이사항.value;
 
 	update(세척, doc);
@@ -182,6 +216,16 @@ async function 세척_save() {
 	}
 
 	await 공정단계자동입력(_management_id.value);
+
+	var _pic_doc = JSON.parse(JSON.stringify(세척_pic_doc));
+	_pic_doc.관리번호 = _management_id.value;
+	_pic_doc.pic1 = img1.src;
+
+	update(세척_pic, _pic_doc);
+	await delay();
+
+	console.log('세척_pic_update:', update_count);
+	console.log('세척_pic_insert:', insert_count);
 	//이전페이지();
 }
 
@@ -416,3 +460,11 @@ async function 변수저장(today_count) {
 	update(변수, doc);
 	await delay();
 }
+
+function _육안검사외부_콤보박스(e) {
+
+	const value = e.value;
+
+	document.getElementById('_육안검사_외부').value = value;
+}
+

@@ -247,6 +247,8 @@ const 세척_doc = {
 	어퍼케이스재사용가능: '',
 	기밀검사_케이스: '',
 	기밀검사_케이스_특이사항: '',
+	육안검사_외부: '',
+	육안검사_외부_특이사항: '',
 	특이사항: ''
 };
 
@@ -259,8 +261,6 @@ const 기초검사_doc = {
 	QRCode: '',
 	주행거리: '',
 	차량번호: '',
-	육안검사_외부: '',
-	육안검사_외부_특이사항: '',
 	육안검사_내부: '',
 	육안검사_내부_특이사항: '',
 	기밀검사_냉각유로: '',
@@ -285,9 +285,9 @@ const 기초검사_doc = {
 	고장현상코드: '',
 	고장현상명: '',
 	문제Cell_No: '',
-	문제BMA_No: '',
-	문제BMA_cnt: '',
-	공정완료일: '',
+	문제BMA_No: '', //-
+	문제BMA_cnt: '', //-
+	공정완료일: '', //-
 	요청사항: '',
 	비고: '',
 	센터진단내용: '',
@@ -1542,6 +1542,8 @@ const 세척_ = {
 	어퍼케이스재사용가능: 1,
 	기밀검사_케이스: 1,
 	기밀검사_케이스_특이사항: 1,
+	육안검사_외부: 1,
+	육안검사_외부_특이사항: 1,
 	특이사항: 1
 };
 
@@ -1555,8 +1557,6 @@ const 기초검사_ = {
 	QRcode: 1,
 	주행거리: 1,
 	차량번호: 1,
-	육안검사_외부: 1,
-	육안검사_외부_특이사항: 1,
 	육안검사_내부: 1,
 	육안검사_내부_특이사항: 1,
 	기밀검사_냉각유로: 1,
@@ -3281,9 +3281,10 @@ socket.on('find_result', async function (col, result, rcv_check) {
 			입고_pic_v = JSON.parse(JSON.stringify(result));
 			break;
 
-		case 세척_pic_v:
+		case 세척_pic:
 			세척_pic_v = [];
 			세척_pic_v = JSON.parse(JSON.stringify(result));
+			console.log('resurt:', 세척_pic_v);
 			break;
 
 		case 기초검사_pic:
@@ -3764,6 +3765,7 @@ async function find(col, management_id) {
 			break;
 
 		case '세척_pic':
+			console.log('!!!!');
 			socket.emit('findOne', worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 세척_pic_ }, check);
 			break;
 
