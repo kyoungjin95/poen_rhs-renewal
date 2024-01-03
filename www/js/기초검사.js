@@ -216,12 +216,8 @@ async function 기초검사_시작(is재제조 = 0) {
 		img7.src = '';
 	}
 
-	_육안검사_내부_box.ondrop = async function(evt) {
-		evt.preventDefault();
-	};
-
-	_육안검사_내부_box.ondrop = async function(evt) {
-		var files = await Promise.all(evt.dataTransfer.files);
+	_육안검사_내부_box.ondrop = function(evt) {
+		var files = evt.dataTransfer?.files;
 		if(files.length > 0) {
 			console.log('drag & drop');
 			const reader = new FileReader();
@@ -236,8 +232,8 @@ async function 기초검사_시작(is재제조 = 0) {
 		evt.preventDefault();
 	};
 
-	_육안검사_내부_특이사항_box.ondrop = async function(evt) {
-		var files = await Promise.all(evt.dataTransfer.files);
+	_육안검사_내부_특이사항_box.ondrop = function(evt) {
+		var files = evt.dataTransfer?.files;
 		if(files.length > 0) {
 			console.log('drag & drop');
 			const reader = new FileReader();
@@ -252,8 +248,8 @@ async function 기초검사_시작(is재제조 = 0) {
 		evt.preventDefault();
 	};
 
-	_기밀검사_냉각유로_box.ondrop = async function(evt) {
-		var files = await Promise.all(evt.dataTransfer.files);
+	_기밀검사_냉각유로_box.ondrop = function(evt) {
+		var files = evt.dataTransfer?.files;
 		if(files.length > 0) {
 			console.log('drag & drop');
 			const reader = new FileReader();
@@ -268,8 +264,8 @@ async function 기초검사_시작(is재제조 = 0) {
 		evt.preventDefault();
 	};
 
-	_기밀검사_냉각유로_특이사항_box.ondrop = async function(evt) {
-		var files = await Promise.all(evt.dataTransfer.files);
+	_기밀검사_냉각유로_특이사항_box.ondrop = function(evt) {
+		var files = evt.dataTransfer?.files;
 		if(files.length > 0) {
 			console.log('drag & drop');
 			const reader = new FileReader();
@@ -284,8 +280,8 @@ async function 기초검사_시작(is재제조 = 0) {
 		evt.preventDefault();
 	};
 
-	_절연검사P_box.ondrop = async function(evt) {
-		var files = await Promise.all(evt.dataTransfer.files);
+	_절연검사P_box.ondrop = function(evt) {
+		var files = evt.dataTransfer?.files;
 		if(files.length > 0) {
 			console.log('drag & drop');
 			const reader = new FileReader();
@@ -300,8 +296,8 @@ async function 기초검사_시작(is재제조 = 0) {
 		evt.preventDefault();
 	};
 
-	_절연검사N_box.ondrop = async function(evt) {
-		var files = await Promise.all(evt.dataTransfer.files);
+	_절연검사N_box.ondrop = function(evt) {
+		var files = evt.dataTransfer?.files;
 		if(files.length > 0) {
 			console.log('drag & drop');
 			const reader = new FileReader();
@@ -316,8 +312,8 @@ async function 기초검사_시작(is재제조 = 0) {
 		evt.preventDefault();
 	};
 
-	_통신검사_DTC코드1_box.ondrop = async function(evt) {
-		var files = await Promise.all(evt.dataTransfer.files);
+	_통신검사_DTC코드1_box.ondrop = function(evt) {
+		var files = evt.dataTransfer?.files;
 		if(files.length > 0) {
 			console.log('drag & drop');
 			const reader = new FileReader();
@@ -329,6 +325,34 @@ async function 기초검사_시작(is재제조 = 0) {
 				img7.src = dataURL;
 			}
 		}
+		evt.preventDefault();
+	};
+
+	_육안검사_내부_box.ondragover = function(evt) {
+		evt.preventDefault();
+	};
+
+	_육안검사_내부_특이사항_box.ondragover = function(evt) {
+		evt.preventDefault();
+	};
+
+	_기밀검사_냉각유로_box.ondragover = function(evt) {
+		evt.preventDefault();
+	};
+
+	_기밀검사_냉각유로_특이사항_box.ondragover = function(evt) {
+		evt.preventDefault();
+	};
+
+	_절연검사P_box.ondragover = function(evt) {
+		evt.preventDefault();
+	};
+
+	_절연검사N_box.ondragover = function(evt) {
+		evt.preventDefault();
+	};
+
+	_통신검사_DTC코드1_box.ondragover = function(evt) {
 		evt.preventDefault();
 	};
 }
