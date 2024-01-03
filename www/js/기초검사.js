@@ -330,30 +330,37 @@ async function 기초검사_시작(is재제조 = 0) {
 
 	_육안검사_내부_box.ondragover = function(evt) {
 		evt.preventDefault();
+		console.log('over!');
 	};
 
 	_육안검사_내부_특이사항_box.ondragover = function(evt) {
 		evt.preventDefault();
+		console.log('over!');
 	};
 
 	_기밀검사_냉각유로_box.ondragover = function(evt) {
 		evt.preventDefault();
+		console.log('over!');
 	};
 
 	_기밀검사_냉각유로_특이사항_box.ondragover = function(evt) {
 		evt.preventDefault();
+		console.log('over!');
 	};
 
 	_절연검사P_box.ondragover = function(evt) {
 		evt.preventDefault();
+		console.log('over!');
 	};
 
 	_절연검사N_box.ondragover = function(evt) {
 		evt.preventDefault();
+		console.log('over!');
 	};
 
 	_통신검사_DTC코드1_box.ondragover = function(evt) {
 		evt.preventDefault();
+		console.log('over!');
 	};
 }
 
