@@ -44,10 +44,8 @@
 
       <select id="filter-type">
         <option value="=">=</option>
-        <option value="<"><< /option></option>
-
-        <option value="<="><=< /option></option>
-
+        <option value="<"><</option>
+        <option value="<="><=</option>
         <option value=">">></option>
         <option value=">=">>=</option>
         <option value="!=">!=</option>
@@ -70,7 +68,8 @@
         <table id="tb" class="tb">
           <colgroup>
             <col class="col_1" width="30%" />
-            <col class="col_2" width="70%" />
+            <col class="col_2" width="50%" />
+            <col class="col_3" width="20%" />
           </colgroup>
           <tr>
             <td>
@@ -174,7 +173,7 @@
               <input type="text" id="_차량번호" size="40" required />
             </td>
           </tr>
-          <tr id='_육안검사_내부_box'>
+          <tr id="_육안검사_내부_box">
             <td>
               <label for="_육안검사_내부">육안검사 내부</label>
             </td>
@@ -185,10 +184,12 @@
                 <option value="OK">OK</option>
                 <option value="NG">NG</option>
               </select>
-	      <img id='img1' width='100vw' height='100vw'>
+            </td>
+            <td class="process__img">
+              <img id="img1" width="100vw" height="100vw" />
             </td>
           </tr>
-          <tr id='_육안검사_내부_특이사항_box'>
+          <tr id="_육안검사_내부_특이사항_box">
             <td>
               <label for="_육안검사_내부_특이사항"
                 >육안검사 내부 특이사항</label
@@ -201,10 +202,12 @@
                 size="100"
                 required
               />
-	      <img id='img2' width='100vw' height='100vw'>
+            </td>
+            <td class="process__img">
+              <img id="img2" width="100vw" height="100vw" />
             </td>
           </tr>
-          <tr id='_기밀검사_냉각유로_box'>
+          <tr id="_기밀검사_냉각유로_box">
             <td>
               <label for="_기밀검사_냉각유로">기밀검사 냉각유로</label>
             </td>
@@ -218,10 +221,12 @@
                 <option value="OK">OK</option>
                 <option value="NG">NG</option>
               </select>
-	      <img id='img3' width='100vw' height='100vw'>
+            </td>
+            <td class="process__img">
+              <img id="img3" width="100vw" height="100vw" />
             </td>
           </tr>
-          <tr id='_기밀검사_냉각유로_특이사항_box'>
+          <tr id="_기밀검사_냉각유로_특이사항_box">
             <td>
               <label for="_기밀검사_냉각유로_특이사항"
                 >기밀검사 냉각유로 특이사항</label
@@ -234,34 +239,42 @@
                 size="100"
                 required
               />
-	      <img id='img4' width='100vw' height='100vw'>
+            </td>
+            <td class="process__img">
+              <img id="img4" width="100vw" height="100vw" />
             </td>
           </tr>
-          <tr id='_절연검사P_box'>
+          <tr id="_절연검사P_box">
             <td>
               <label for="_절연검사P">절연 검사 B(+)(MΩ)</label>
             </td>
             <td>
               <input type="text" id="_절연검사P" size="40" required />
-	      <img id='img5' width='100vw' height='100vw'>
+            </td>
+            <td class="process__img">
+              <img id="img5" width="100vw" height="100vw" />
             </td>
           </tr>
-          <tr id='_절연검사N_box'>
+          <tr id="_절연검사N_box">
             <td>
               <label for="_절연검사N">절연 검사 B(-)(MΩ)</label>
             </td>
             <td>
               <input type="text" id="_절연검사N" size="40" required />
-	      <img id='img6' width='100vw' height='100vw'>
+            </td>
+            <td class="process__img">
+              <img id="img6" width="100vw" height="100vw" />
             </td>
           </tr>
-          <tr id='_통신검사_DTC코드1_box'>
+          <tr id="_통신검사_DTC코드1_box">
             <td>
               <label for="_통신검사_DTC코드1">통신검사 DTC코드 1</label>
             </td>
             <td>
               <input type="text" id="_통신검사_DTC코드1" size="40" required />
-	      <img id='img7' width='100vw' height='100vw'>
+            </td>
+            <td class="process__img">
+              <img id="img7" width="100vw" height="100vw" />
             </td>
           </tr>
           <tr>
@@ -336,7 +349,7 @@
               <input type="text" id="_BMA_ROM_ID" size="40" required />
             </td>
           </tr>
-	  <!--
+          <!--
           <tr>
             <td>
               <label for="_고장현상코드">고장현상 코드</label>
@@ -489,12 +502,16 @@
       const _검사자 = document.getElementById("_검사자");
 
       const _육안검사_내부_box = document.getElementById("_육안검사_내부_box");
-      const _육안검사_내부_특이사항_box = document.getElementById("_육안검사_내부_box");
-      const _기밀검사_냉각유로_box = document.getElementById("_기밀검사_냉각유로_box");
-      const _기밀검사_냉각유로_특이사항_box = document.getElementById("_기밀검사_냉각유로_box");
+      const _육안검사_내부_특이사항_box =
+        document.getElementById("_육안검사_내부_box");
+      const _기밀검사_냉각유로_box =
+        document.getElementById("_기밀검사_냉각유로_box");
+      const _기밀검사_냉각유로_특이사항_box =
+        document.getElementById("_기밀검사_냉각유로_box");
       const _절연검사P_box = document.getElementById("_절연검사P_box");
       const _절연검사N_box = document.getElementById("_절연검사N_box");
-      const _통신검사_DTC코드1_box = document.getElementById("_통신검사_DTC코드1_box");
+      const _통신검사_DTC코드1_box =
+        document.getElementById("_통신검사_DTC코드1_box");
       const _기초검사 = document.getElementById("_기초검사");
     </script>
   </body>
