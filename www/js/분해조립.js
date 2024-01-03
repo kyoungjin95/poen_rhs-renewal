@@ -479,7 +479,7 @@ async function 분해조립_시작(is재제조 = 0) {
 				"_2 != '' && 분해조립_v.BMA" +
 				i +
 				"_2 != undefined)) " +
-				"{ BMA_count += 1; type_add('BMA', 'BMA', no_count, BMA_count); document.getElementById('_BMA" +
+				"{ BMA_count += 1; type_add('배터리모듈', 'BMA', no_count, BMA_count); document.getElementById('_BMA" +
 				i +
 				"').value = " +
 				"분해조립_v.BMA" +
@@ -784,10 +784,10 @@ async function 분해조립_시작(is재제조 = 0) {
 					type_add("온도센서", "온도센서", row_index, 온도센서_count);
 				}
 			}
-			if (str == "BMA 1") {
+			if (str == "배터리모듈 1") {
 				if (BMA_count != 10) {
 					BMA_count++;
-					type_add("BMA", "BMA", row_index, BMA_count);
+					type_add("배터리모듈", "BMA", row_index, BMA_count);
 				}
 			}
 		});
@@ -957,14 +957,14 @@ async function 분해조립_시작(is재제조 = 0) {
 					}
 				}
 			}
-			if (str == "BMA 1") {
+			if (str == "배터리모듈 1") {
 				if (BMA_count != 10) {
 					var cnt = prompt("#No를 입력하세요");
 					if (BMA_count >= cnt) return;
 
 					for (var i = BMA_count; i < cnt; i++) {
 						BMA_count++;
-						type_add("BMA", "BMA", row_index, BMA_count);
+						type_add("배터리모듈", "BMA", row_index, BMA_count);
 					}
 				}
 			}
