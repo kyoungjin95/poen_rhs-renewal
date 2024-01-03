@@ -228,6 +228,10 @@ table input {
   text-align: center;
   line-height: 1px;
 }
+
+.process-step table .process__img img {
+  border: 1px solid #0a723f;
+}
 /* item-detail 검사보고서 dropdwon menu Btn css */
 .select-menu {
   position: relative;
