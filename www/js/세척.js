@@ -139,8 +139,8 @@ async function 세척_시작(is재제조 = 0) {
 		_공정입고일.value = now;
 	}
 
-	_기밀검사_케이스_box.ondrop = async function(evt) {
-		var files = await Promise.all(evt.dataTransfer.files);
+	_기밀검사_케이스_box.ondrop = function(evt) {
+		var files = evt.dataTransfer?.files;
 		if(files.length > 0) {
 			console.log('drag & drop');
 			const reader = new FileReader();
@@ -155,8 +155,8 @@ async function 세척_시작(is재제조 = 0) {
 		evt.preventDefault();
 	};
 
-	_기밀검사_케이스_특이사항_box.ondrop = async function(evt) {
-		var files = await Promise.all(evt.dataTransfer.files);
+	_기밀검사_케이스_특이사항_box.ondrop = function(evt) {
+		var files = evt.dataTransfer?.files;
 		if(files.length > 0) {
 			console.log('drag & drop');
 			const reader = new FileReader();
@@ -171,8 +171,8 @@ async function 세척_시작(is재제조 = 0) {
 		evt.preventDefault();
 	};
 
-	_육안검사_외부_box.ondrop = async function(evt) {
-		var files = await Promise.all(evt.dataTransfer.files);
+	_육안검사_외부_box.ondrop = function(evt) {
+		var files = evt.dataTransfer?.files;
 		if(files.length > 0) {
 			console.log('drag & drop');
 			const reader = new FileReader();
@@ -187,8 +187,8 @@ async function 세척_시작(is재제조 = 0) {
 		evt.preventDefault();
 	};
 
-	_육안검사_외부_특이사항_box.ondrop = async function(evt) {
-		var files = await Promise.all(evt.dataTransfer.files);
+	_육안검사_외부_특이사항_box.ondrop = function(evt) {
+		var files = evt.dataTransfer?.files;
 		if(files.length > 0) {
 			console.log('drag & drop');
 			const reader = new FileReader();
@@ -203,8 +203,8 @@ async function 세척_시작(is재제조 = 0) {
 		evt.preventDefault();
 	};
 
-	_특이사항_box.ondrop = async function(evt) {
-		var files = await Promise.all(evt.dataTransfer.files);
+	_특이사항_box.ondrop = function(evt) {
+		var files = evt.dataTransfer?.files;
 		if(files.length > 0) {
 			console.log('drag & drop');
 			const reader = new FileReader();
@@ -216,6 +216,27 @@ async function 세척_시작(is재제조 = 0) {
 				img5.src = dataURL;
 			}
 		}
+		evt.preventDefault();
+	};
+	
+
+	_기밀검사_케이스_box.ondragover = function(evt) {
+		evt.preventDefault();
+	};
+
+	_기밀검사_케이스_특이사항_box.ondragover = function(evt) {
+		evt.preventDefault();
+	};
+
+	_육안검사_외부_box.ondragover = function(evt) {
+		evt.preventDefault();
+	};
+
+	_육안검사_외부_특이사항_box.ondragover = function(evt) {
+		evt.preventDefault();
+	};
+
+	_특이사항_box.ondragover = function(evt) {
 		evt.preventDefault();
 	};
 }
