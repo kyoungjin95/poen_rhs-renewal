@@ -3284,7 +3284,6 @@ socket.on('find_result', async function (col, result, rcv_check) {
 		case 세척_pic:
 			세척_pic_v = [];
 			세척_pic_v = JSON.parse(JSON.stringify(result));
-			console.log('resurt:', 세척_pic_v);
 			break;
 
 		case 기초검사_pic:
@@ -3765,7 +3764,6 @@ async function find(col, management_id) {
 			break;
 
 		case '세척_pic':
-			console.log('!!!!');
 			socket.emit('findOne', worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 세척_pic_ }, check);
 			break;
 

@@ -111,6 +111,10 @@ async function 세척_시작(is재제조 = 0) {
 
 		if(세척_pic_v != null) {
 			img1.src = 세척_pic_v.pic1;
+			img2.src = 세척_pic_v.pic2;
+			img3.src = 세척_pic_v.pic3;
+			img4.src = 세척_pic_v.pic4;
+			img5.src = 세척_pic_v.pic5;
 		}
 	} else {
 		_공정입고일.value = '0000-00-00T00:00';
@@ -122,6 +126,12 @@ async function 세척_시작(is재제조 = 0) {
 		_육안검사_외부_특이사항.value = '';
 		_특이사항.value = '';
 
+		img1.src = '';
+		img2.src = '';
+		img3.src = '';
+		img4.src = '';
+		img5.src = '';
+
 		var DateTime = luxon.DateTime;
 		var seoul = DateTime.local().setZone("Asia/Seoul");
 		var now = seoul.toString().slice(0, 19);
@@ -129,8 +139,35 @@ async function 세척_시작(is재제조 = 0) {
 		_공정입고일.value = now;
 	}
 
-	_육안검사_외부_box.ondragover = _육안검사_외부_box.ondragenter = function(evt) {
-		console.log('on drag over');
+	_기밀검사_케이스_box.ondrop = async function(evt) {
+		var files = await Promise.all(evt.dataTransfer.files);
+		if(files.length > 0) {
+			console.log('drag & drop');
+			const reader = new FileReader();
+
+			reader.readAsDataURL(files[0]);
+
+			reader.onload = () => {
+				const dataURL = reader.result;
+				img1.src = dataURL;
+			}
+		}
+		evt.preventDefault();
+	};
+
+	_기밀검사_케이스_특이사항_box.ondrop = async function(evt) {
+		var files = await Promise.all(evt.dataTransfer.files);
+		if(files.length > 0) {
+			console.log('drag & drop');
+			const reader = new FileReader();
+
+			reader.readAsDataURL(files[0]);
+
+			reader.onload = () => {
+				const dataURL = reader.result;
+				img2.src = dataURL;
+			}
+		}
 		evt.preventDefault();
 	};
 
@@ -144,7 +181,39 @@ async function 세척_시작(is재제조 = 0) {
 
 			reader.onload = () => {
 				const dataURL = reader.result;
-				img1.src = dataURL;
+				img3.src = dataURL;
+			}
+		}
+		evt.preventDefault();
+	};
+
+	_육안검사_외부_특이사항_box.ondrop = async function(evt) {
+		var files = await Promise.all(evt.dataTransfer.files);
+		if(files.length > 0) {
+			console.log('drag & drop');
+			const reader = new FileReader();
+
+			reader.readAsDataURL(files[0]);
+
+			reader.onload = () => {
+				const dataURL = reader.result;
+				img4.src = dataURL;
+			}
+		}
+		evt.preventDefault();
+	};
+
+	_특이사항_box.ondrop = async function(evt) {
+		var files = await Promise.all(evt.dataTransfer.files);
+		if(files.length > 0) {
+			console.log('drag & drop');
+			const reader = new FileReader();
+
+			reader.readAsDataURL(files[0]);
+
+			reader.onload = () => {
+				const dataURL = reader.result;
+				img5.src = dataURL;
 			}
 		}
 		evt.preventDefault();
@@ -218,8 +287,12 @@ async function 세척_save() {
 	await 공정단계자동입력(_management_id.value);
 
 	var _pic_doc = JSON.parse(JSON.stringify(세척_pic_doc));
-	_pic_doc.관리번호 = _management_id.value;
+	_pic_doc.관리번호 = _management_id.value.trim().toUpperCase();
 	_pic_doc.pic1 = img1.src;
+	_pic_doc.pic2 = img2.src;
+	_pic_doc.pic3 = img3.src;
+	_pic_doc.pic4 = img4.src;
+	_pic_doc.pic5 = img5.src;
 
 	update(세척_pic, _pic_doc);
 	await delay();

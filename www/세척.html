@@ -155,7 +155,7 @@
 							</select>
 						</td>
 					</tr>
-					<tr>
+					<tr id='_기밀검사_케이스_box'>
 						<td>
 							<label for="_기밀검사_케이스">기밀검사 케이스</label>
 						</td>
@@ -166,14 +166,16 @@
 								<option value="OK">OK</option>
 								<option value="NG">NG</option>
 							</select>
+							<img id='img1' width='100vw' height='100vw'>
 						</td>
 					</tr>
-					<tr>
+					<tr id='_기밀검사_케이스_특이사항_box'>
 						<td>
 							<label for="_기밀검사_케이스_특이사항">기밀검사 케이스 특이사항</label>
 						</td>
 						<td>
 							<input type="text" id="_기밀검사_케이스_특이사항" size="100" required />
+							<img id='img2' width='100vw' height='100vw'>
 						</td>
 					</tr>
 					<tr id='_육안검사_외부_box'>
@@ -187,7 +189,7 @@
 								<option value="OK">OK</option>
 								<option value="NG">NG</option>
 							</select>
-							<img id='img1' width='100vw' height='100vw'>
+							<img id='img3' width='100vw' height='100vw'>
 						</td>
 					</tr>
 					<tr id='_육안검사_외부_특이사항_box'>
@@ -196,14 +198,16 @@
 						</td>
 						<td>
 							<input type="text" id="_육안검사_외부_특이사항" size="100" required/>
+							<img id='img4' width='100vw' height='100vw'>
 						</td>
 					</tr>
-					<tr>
+					<tr id='_특이사항_box'>
 						<td>
 							<label for="_특이사항">특이사항</label>
 						</td>
 						<td>
 							<input type="text" id="_특이사항" size="100" required />
+							<img id='img5' width='100vw' height='100vw'>
 						</td>
 					</tr>
 				</table>
@@ -227,11 +231,19 @@
 			const _기밀검사_케이스_특이사항 = document.getElementById("_기밀검사_케이스_특이사항");
 			const _육안검사_외부 = document.getElementById("_육안검사_외부");
 			const _육안검사_외부_특이사항 = document.getElementById("_육안검사_외부_특이사항");
-			const _육안검사_외부_box = document.getElementById("_육안검사_외부_box");
-			const _육안검사_외부_특이사항_box = document.getElementById("_육안검사_외부_특이사항_box");
 			const _특이사항 = document.getElementById("_특이사항");
 
+			const _기밀검사_케이스_box = document.getElementById("_기밀검사_케이스_box");
+			const _기밀검사_케이스_특이사항_box = document.getElementById("_기밀검사_케이스_특이사항_box");
+			const _육안검사_외부_box = document.getElementById("_육안검사_외부_box");
+			const _육안검사_외부_특이사항_box = document.getElementById("_육안검사_외부_특이사항_box");
+			const _특이사항_box = document.getElementById("_특이사항_box");
+
 			const img1 = document.get.getElementById("img1");
+			const img2 = document.get.getElementById("img2");
+			const img3 = document.get.getElementById("img3");
+			const img4 = document.get.getElementById("img4");
+			const img5 = document.get.getElementById("img5");
 		</script>
 	</body>
 

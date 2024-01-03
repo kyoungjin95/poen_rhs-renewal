@@ -157,6 +157,19 @@ async function 기초검사_시작(is재제조 = 0) {
 		_비고.value = 기초검사_v.비고;
 		_센터진단내용.value = 기초검사_v.센터진단내용;
 		_검사자.value = 기초검사_v.검사자;
+
+		find(기초검사_pic, _management_id.value);
+		await delay();
+
+		if(기초검사_pic_v != null) {
+			img1.src = 기초검사_pic_v.pic1;
+			img2.src = 기초검사_pic_v.pic2;
+			img3.src = 기초검사_pic_v.pic3;
+			img4.src = 기초검사_pic_v.pic4;
+			img5.src = 기초검사_pic_v.pic5;
+			img6.src = 기초검사_pic_v.pic6;
+			img7.src = 기초검사_pic_v.pic7;
+		}
 	} else {
 		_공정입고일.value = '0000-00-00T00:00';
 		_VIN.value = '';
@@ -193,7 +206,131 @@ async function 기초검사_시작(is재제조 = 0) {
 		var now = seoul.toString().slice(0, 19);
 
 		_공정입고일.value = now;
+
+		img1.src = '';
+		img2.src = '';
+		img3.src = '';
+		img4.src = '';
+		img5.src = '';
+		img6.src = '';
+		img7.src = '';
 	}
+
+	_육안검사_내부_box.ondrop = async function(evt) {
+		evt.preventDefault();
+	};
+
+	_육안검사_내부_box.ondrop = async function(evt) {
+		var files = await Promise.all(evt.dataTransfer.files);
+		if(files.length > 0) {
+			console.log('drag & drop');
+			const reader = new FileReader();
+
+			reader.readAsDataURL(files[0]);
+
+			reader.onload = () => {
+				const dataURL = reader.result;
+				img1.src = dataURL;
+			}
+		}
+		evt.preventDefault();
+	};
+
+	_육안검사_내부_특이사항_box.ondrop = async function(evt) {
+		var files = await Promise.all(evt.dataTransfer.files);
+		if(files.length > 0) {
+			console.log('drag & drop');
+			const reader = new FileReader();
+
+			reader.readAsDataURL(files[0]);
+
+			reader.onload = () => {
+				const dataURL = reader.result;
+				img2.src = dataURL;
+			}
+		}
+		evt.preventDefault();
+	};
+
+	_기밀검사_냉각유로_box.ondrop = async function(evt) {
+		var files = await Promise.all(evt.dataTransfer.files);
+		if(files.length > 0) {
+			console.log('drag & drop');
+			const reader = new FileReader();
+
+			reader.readAsDataURL(files[0]);
+
+			reader.onload = () => {
+				const dataURL = reader.result;
+				img3.src = dataURL;
+			}
+		}
+		evt.preventDefault();
+	};
+
+	_기밀검사_냉각유로_특이사항_box.ondrop = async function(evt) {
+		var files = await Promise.all(evt.dataTransfer.files);
+		if(files.length > 0) {
+			console.log('drag & drop');
+			const reader = new FileReader();
+
+			reader.readAsDataURL(files[0]);
+
+			reader.onload = () => {
+				const dataURL = reader.result;
+				img4.src = dataURL;
+			}
+		}
+		evt.preventDefault();
+	};
+
+	_절연검사P_box.ondrop = async function(evt) {
+		var files = await Promise.all(evt.dataTransfer.files);
+		if(files.length > 0) {
+			console.log('drag & drop');
+			const reader = new FileReader();
+
+			reader.readAsDataURL(files[0]);
+
+			reader.onload = () => {
+				const dataURL = reader.result;
+				img5.src = dataURL;
+			}
+		}
+		evt.preventDefault();
+	};
+
+	_절연검사N_box.ondrop = async function(evt) {
+		var files = await Promise.all(evt.dataTransfer.files);
+		if(files.length > 0) {
+			console.log('drag & drop');
+			const reader = new FileReader();
+
+			reader.readAsDataURL(files[0]);
+
+			reader.onload = () => {
+				const dataURL = reader.result;
+				img6.src = dataURL;
+			}
+		}
+		evt.preventDefault();
+	};
+
+	_통신검사_DTC코드1_box.ondrop = async function(evt) {
+		var files = await Promise.all(evt.dataTransfer.files);
+		if(files.length > 0) {
+			console.log('drag & drop');
+			const reader = new FileReader();
+
+			reader.readAsDataURL(files[0]);
+
+			reader.onload = () => {
+				const dataURL = reader.result;
+				img7.src = dataURL;
+			}
+		}
+		evt.preventDefault();
+	};
 }
 
 function 기초검사_save() {
@@ -379,6 +516,21 @@ async function 기초검사_SAVE() {
 
 	await 공정단계자동입력(_management_id.value);
 	
+	var _pic_doc = JSON.parse(JSON.stringify(기초검사_pic_doc));
+	_pic_doc.관리번호 = _management_id.value.trim().toUpperCase();
+	_pic_doc.pic1 = img1.src;
+	_pic_doc.pic2 = img2.src;
+	_pic_doc.pic3 = img3.src;
+	_pic_doc.pic4 = img4.src;
+	_pic_doc.pic5 = img5.src;
+	_pic_doc.pic6 = img6.src;
+	_pic_doc.pic7 = img7.src;
+
+	update(기초검사_pic, _pic_doc);
+	await delay();
+
+	console.log('세척_pic_update:', update_count);
+	console.log('세척_pic_insert:', insert_count);
 	flag_불량의심부품 = true;
 	loadPage('base/불량의심부품.html');
 }
