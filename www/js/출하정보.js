@@ -122,16 +122,39 @@ async function 출하정보_시작(is재제조 = 0) {
 			break;
 	}
 
+	_bracket.options[0].selected = true;
+	_S_PLUG.options[0].selected = true;
+	_접지.options[0].selected = true;
+	s1.options[0].selected = true;
+	s2.options[0].selected = true;
+	s3.options[0].selected = true;
+	s4.options[0].selected = true;
+	s5.options[0].selected = true;
+	s6.options[0].selected = true;
+	s7.options[0].selected = true;
+	s8.options[0].selected = true;
+	s9.options[0].selected = true;
+	s10.options[0].selected = true;
+	s11.options[0].selected = true;
+	s12.options[0].selected = true;
+	s13.options[0].selected = true;
+	s14.options[0].selected = true;
+	s15.options[0].selected = true;
+	s16.options[0].selected = true;
+	s17.options[0].selected = true;
+	s18.options[0].selected = true;
+	s19.options[0].selected = true;
+	s20.options[0].selected = true;
+	s21.options[0].selected = true;
+
 	find(출하정보, _management_id.value);
 	await delay();
 	if (출하정보_v != null) {
 		console.log('관리번호:', 관리번호);
-
+		
 		find(출하정보, _management_id.value);
 		await delay();
 
-		_management_id.value = 출하정보_v.관리번호;
-		//_출하일.value = 출하정보_v.출하일;
 		_출하코드.value = 출하정보_v.출하코드;
 
 		if (_출하코드.value == '') {
@@ -143,9 +166,9 @@ async function 출하정보_시작(is재제조 = 0) {
 			}
 		}
 
-		//_납품처.value = 출하정보_v.납품처;
 		_검사일.value = 출하정보_v.검사일;
 		if (_검사자.value == '' || _검사자.value == undefined) _검사자.value = 계정_stat.이름;
+		_출하코드.value = 출하정보_v.출하코드;;
 		_기초보고서_작성확인.value = 출하정보_v.기초보고서_작성확인;
 		_완료보고서_작성확인.value = 출하정보_v.완료보고서_작성확인;
 		_클린상태.value = 출하정보_v.클린상태;
@@ -155,11 +178,8 @@ async function 출하정보_시작(is재제조 = 0) {
 		_LWR_QR.value = 출하정보_v.LWR_QR;
 		_HKMC_스티커_URP.value = 출하정보_v.HKMC_스티커_URP;
 		_냉각유로_커버.value = 출하정보_v.냉각유로_커버;
-		//_브라켓.value = 출하정보_v.브라켓;
 		_브라켓_비고.value = 출하정보_v.브라켓_비고;
-		//_S_PLUG .value = 출하정보_v.S_PLUG;
 		_S_PLUG_비고.value = 출하정보_v.S_PLUG_비고;
-		//_접지 .value = 출하정보_v.접지;
 		_접지_비고.value = 출하정보_v.접지_비고
 		_DTC.value = 출하정보_v.DTC;
 		_DTC_현재.value = 출하정보_v.DTC_현재;
@@ -172,7 +192,7 @@ async function 출하정보_시작(is재제조 = 0) {
 		_배터리팩_측정값.value = 출하정보_v.배터리팩_측정값;
 		_배터리모듈온도.value = 출하정보_v.배터리모듈온도;
 		_배터리모듈온도_최대.value = 출하정보_v.배터리모듈온도_최대;
-		_배터리모듈온도_최소: 1, 출하정보_v.배터리모듈온도_최소;
+		_배터리모듈온도_최소.value = 출하정보_v.배터리모듈온도_최소;
 		_배터리셀전압.value = 출하정보_v.배터리셀전압;
 		_배터리셀전압_최대.value = 출하정보_v.배터리셀전압_최대;
 		_배터리셀전압_최소.value = 출하정보_v.배터리셀전압_최소;
@@ -202,7 +222,7 @@ async function 출하정보_시작(is재제조 = 0) {
 		} else if (브라켓 == 'NG') {
 			_bracket.options[2].selected = true;
 		} else {
-			_bracket.options.selected = true;
+			_bracket.options[0].selected = true;
 		}
 
 		if (S_PLUG == 'OK') {
@@ -210,7 +230,7 @@ async function 출하정보_시작(is재제조 = 0) {
 		} else if (S_PLUG == 'NG') {
 			_S_PLUG.options[2].selected = true;
 		} else {
-			_S_PLUG.options.selected = true;
+			_S_PLUG.options[0].selected = true;
 		}
 
 		if (접지 == 'OK') {
@@ -218,7 +238,7 @@ async function 출하정보_시작(is재제조 = 0) {
 		} else if (접지 == 'NG') {
 			_접지.options[2].selected = true;
 		} else {
-			_접지.options.selected = true;
+			_접지.options[0].selected = true;
 		}
 	} else {
 		if (is재제조 == false) {
@@ -227,8 +247,6 @@ async function 출하정보_시작(is재제조 = 0) {
 			_재제조번호 = document.getElementById('_재제조번호');
 		}
 		_출하코드.value = '';
-		//_출하일.value = '0000-00-00T00:00:00';
-		//_납품처.value = '';
 		_검사일.value = '0000-00-00T00:00:00';
 		_검사자.value = 계정_stat.이름;
 		_기초보고서_작성확인.value = '';
@@ -265,10 +283,6 @@ async function 출하정보_시작(is재제조 = 0) {
 		_SOH.value = '';
 		_릴레이_강제구동.value = '';
 		_커넥터_체결검사.value = '';
-
-		_bracket.options.selected = true;
-		_S_PLUG.options.selected = true;
-		_접지.options.selected = true;
 	}
 }
 
@@ -304,9 +318,7 @@ async function 출하정보_save() {
 	var doc = JSON.parse(JSON.stringify(출하정보_doc));
 
 	doc.관리번호 = _management_id.value.trim().toUpperCase();
-	//doc.출하일 = _출하일.value;
 	doc.출하코드 = _출하코드.value;
-	//doc.납품처 = _납품처.value;
 	doc.검사일 = _검사일.value;
 	doc.검사자 = _검사자.value;
 	doc.기초보고서_작성확인 = _기초보고서_작성확인.value;
@@ -360,7 +372,7 @@ async function 출하정보_save() {
 	if (insert_count > 0) {
 		alert('저장 되었습니다');
 	}
-
+	console.log('=====>', doc.배터리팩_측정값);
 	//이전페이지();
 }
 
@@ -681,10 +693,10 @@ async function 출하정보_list() {
 
 		await sleep(1);
 
-		var yes = confirm('선택한 bsa로 세척 공정 정보입력을 시작하시겠습니까?');
+		var yes = confirm('선택한 bsa로 출하정보입력을 시작하시겠습니까?');
 		if (yes != true) return;
 
-		출하정보_시작();
+		flag_출하 = true;
 	});
 
 	//Update filters on value change
