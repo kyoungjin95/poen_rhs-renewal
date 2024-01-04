@@ -156,6 +156,9 @@
             <td>
               <input type="text" id="_QRCode" size="40" required />
             </td>
+            <td class="process__img">
+              <img id="img_1" width="100vw" height="100vw" />
+            </td>
           </tr>
           <tr>
             <td>
@@ -186,7 +189,14 @@
               </select>
             </td>
             <td class="process__img">
-              <img id="img1" width="100vw" height="100vw" />
+	      전체사진<br/>
+	      <img id="img2" width="100vw" height="100vw" /><br/>
+	      BMU<br/>
+	      <img id="img3" width="100vw" height="100vw" /><br/>
+	      CMU<br/>
+	      <img id="img4" width="100vw" height="100vw" /><br/>
+	      PRA
+	      <img id="img5" width="100vw" height="100vw" /><br/>
             </td>
           </tr>
           <tr id="_육안검사_내부_특이사항_box">
@@ -204,7 +214,10 @@
               />
             </td>
             <td class="process__img">
-              <img id="img2" width="100vw" height="100vw" />
+		    <img id="img6" width="100vw" height="100vw" /><br>
+		    <img id="img7" width="100vw" height="100vw" /><br>
+		    <img id="img8" width="100vw" height="100vw" /><br>
+		    <img id="img9" width="100vw" height="100vw" /><br>
             </td>
           </tr>
           <tr id="_기밀검사_냉각유로_box">
@@ -223,7 +236,7 @@
               </select>
             </td>
             <td class="process__img">
-              <img id="img3" width="100vw" height="100vw" />
+              <img id="img10" width="100vw" height="100vw" />
             </td>
           </tr>
           <tr id="_기밀검사_냉각유로_특이사항_box">
@@ -241,7 +254,7 @@
               />
             </td>
             <td class="process__img">
-              <img id="img4" width="100vw" height="100vw" />
+              <img id="img11" width="100vw" height="100vw" />
             </td>
           </tr>
           <tr id="_절연검사P_box">
@@ -252,7 +265,7 @@
               <input type="text" id="_절연검사P" size="40" required />
             </td>
             <td class="process__img">
-              <img id="img5" width="100vw" height="100vw" />
+              <img id="img12" width="100vw" height="100vw" />
             </td>
           </tr>
           <tr id="_절연검사N_box">
@@ -263,7 +276,7 @@
               <input type="text" id="_절연검사N" size="40" required />
             </td>
             <td class="process__img">
-              <img id="img6" width="100vw" height="100vw" />
+              <img id="img13" width="100vw" height="100vw" />
             </td>
           </tr>
           <tr id="_통신검사_DTC코드1_box">
@@ -274,7 +287,7 @@
               <input type="text" id="_통신검사_DTC코드1" size="40" required />
             </td>
             <td class="process__img">
-              <img id="img7" width="100vw" height="100vw" />
+              <img id="img14" width="100vw" height="100vw" />
             </td>
           </tr>
           <tr>
@@ -339,6 +352,22 @@
             </td>
             <td>
               <input type="text" id="_BSA생산일자" size="40" required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_BSA판매일자">배터리팩 판매일</label>
+            </td>
+            <td>
+              <input type="text" id="_BSA판매일자" size="40" required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_BSA수리일자">배터리팩 수리일</label>
+            </td>
+            <td>
+              <input type="text" id="_BSA수리일" size="40" required />
             </td>
           </tr>
           <tr>
@@ -448,6 +477,7 @@
           >
             부품정보
           </button>
+          <button onclick="기초보고서_시작();">기초보고서</button>
         </div>
       </div>
     </div>
