@@ -162,7 +162,7 @@
             <td>
               <label for="_어퍼케이스재사용가능">어퍼케이스 재사용가능</label>
             </td>
-            <td>
+            <td colspan="2">
               <input
                 type="text"
                 id="_어퍼케이스재사용가능"
@@ -195,7 +195,9 @@
               </select>
             </td>
             <td class="process__img">
-              <img id="img1" width="200vw" height="200vh" />
+              <div class="images">
+                <img id="img1" width="100vw" height="100vh" />
+              </div>
             </td>
           </tr>
           <tr id="_기밀검사_케이스_특이사항_box">
@@ -213,14 +215,16 @@
               />
             </td>
             <td class="process__img">
-              <img id="img2" width="200vw" height="200vh" />
+              <div class="images">
+                <img id="img2" width="100vw" height="100vh" />
+              </div>
             </td>
           </tr>
           <tr id="_육안검사_외부_box">
-            <td>
+            <td rowspan="2">
               <label for="_육안검사_외부">육안검사 외부</label>
             </td>
-            <td>
+            <td colspan="2">
               <input type="text" id="_육안검사_외부" size="40" required />
               <select name="language" onchange="_육안검사외부_콤보박스(this);">
                 <option value="">---</option>
@@ -228,17 +232,42 @@
                 <option value="NG">NG</option>
               </select>
             </td>
-            <td class="process__img">
-              <img id="img3" width="200vw" height="200vh" />
+          </tr>
+          <tr id="_육안검사_외부_img">
+            <td colspan="2" class="process__img img-box">
+              <div class="images">
+                <h3>top</h3>
+                <img id="img3" />
+              </div>
+              <div class="images">
+                <h3>front</h3>
+                <img id="img4" />
+              </div>
+              <div class="images">
+                <h3>left</h3>
+                <img id="img5" />
+              </div>
+              <div class="images">
+                <h3>bottom</h3>
+                <img id="img6" />
+              </div>
+              <div class="images">
+                <h3>rear</h3>
+                <img id="img7" />
+              </div>
+              <div class="images">
+                <h3>right</h3>
+                <img id="img8" />
+              </div>
             </td>
           </tr>
           <tr id="_육안검사_외부_특이사항_box">
-            <td>
+            <td rowspan="2">
               <label for="_육안검사_외부_특이사항"
                 >육안검사 외부 특이사항</label
               >
             </td>
-            <td>
+            <td colspan="2">
               <input
                 type="text"
                 id="_육안검사_외부_특이사항"
@@ -246,8 +275,21 @@
                 required
               />
             </td>
-            <td class="process__img">
-              <img id="img4" width="200vw" height="200vw" />
+          </tr>
+          <tr id="_육안검사_외부_특이사항_img">
+            <td colspan="2" class="process__img img-box">
+              <div class="images top">
+                <img id="img9" />
+              </div>
+              <div class="images top">
+                <img id="img10" />
+              </div>
+              <div class="images top">
+                <img id="img11" />
+              </div>
+              <div class="images top">
+                <img id="img12" />
+              </div>
             </td>
           </tr>
           <tr id="_특이사항_box">
@@ -258,7 +300,9 @@
               <input type="text" id="_특이사항" size="100" required />
             </td>
             <td class="process__img">
-              <img id="img5" width="200vw" height="200vw" />
+              <div class="images">
+                <img id="img13" width="100vw" height="100vh" />
+              </div>
             </td>
           </tr>
         </table>
@@ -277,30 +321,32 @@
       const _RO_no = document.getElementById("_RO_no");
       const _공정입고일 = document.getElementById("_공정입고일");
       const _공정완료일 = document.getElementById("_공정완료일");
-      const _어퍼케이스재사용가능 =
-        document.getElementById("_어퍼케이스재사용가능");
+      const _어퍼케이스재사용가능 = document.getElementById("_어퍼케이스재사용가능");
       const _기밀검사_케이스 = document.getElementById("_기밀검사_케이스");
-      const _기밀검사_케이스_특이사항 =
-        document.getElementById("_기밀검사_케이스_특이사항");
+      const _기밀검사_케이스_특이사항 = document.getElementById("_기밀검사_케이스_특이사항");
       const _육안검사_외부 = document.getElementById("_육안검사_외부");
-      const _육안검사_외부_특이사항 =
-        document.getElementById("_육안검사_외부_특이사항");
+      const _육안검사_외부_특이사항 =document.getElementById("_육안검사_외부_특이사항");
       const _특이사항 = document.getElementById("_특이사항");
-
-      const _기밀검사_케이스_box =
-        document.getElementById("_기밀검사_케이스_box");
-      const _기밀검사_케이스_특이사항_box =
-        document.getElementById("_기밀검사_케이스_특이사항_box");
+      const _기밀검사_케이스_box = document.getElementById("_기밀검사_케이스_box");
+      const _기밀검사_케이스_특이사항_box = document.getElementById("_기밀검사_케이스_특이사항_box");
       const _육안검사_외부_box = document.getElementById("_육안검사_외부_box");
-      const _육안검사_외부_특이사항_box =
-        document.getElementById("_육안검사_외부_특이사항_box");
+      const _육안검사_외부_특이사항_box = document.getElementById("_육안검사_외부_특이사항_box");
       const _특이사항_box = document.getElementById("_특이사항_box");
-
+      const _육안검사_외부_img = document.getElementById("_육안검사_외부_img");
+      const _육안검사_외부_특이사항_img = document.getElementById("_육안검사_외부_특이사항_img");
       const img1 = document.get.getElementById("img1");
       const img2 = document.get.getElementById("img2");
       const img3 = document.get.getElementById("img3");
       const img4 = document.get.getElementById("img4");
       const img5 = document.get.getElementById("img5");
+      const img6 = document.get.getElementById("img6");
+      const img7 = document.get.getElementById("img7");
+      const img8 = document.get.getElementById("img8");
+      const img9 = document.get.getElementById("img9");
+      const img10 = document.get.getElementById("img10");
+      const img11 = document.get.getElementById("img11");
+      const img12 = document.get.getElementById("img12");
+      const img13 = document.get.getElementById("img13");
     </script>
   </body>
 </html>

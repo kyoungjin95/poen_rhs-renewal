@@ -228,20 +228,81 @@ table input {
 .process-step table .process__img {
   text-align: center;
   line-height: 1px;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+/* .process-step table .process__img .images {
+  width: 100%;
+  height: 100%;
+} */
+.process-step table .process__img .images::after {
+  content: "\f302";
+  display: block;
+  font-family: "Font Awesome 5 Free";
+  font-size: 1.3vw;
+  color: #afafaf;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
 }
 .process-step table .process__img img {
   border: 2px solid #0a723f;
 }
+/* 기초보고서에 들어가는 img group table css */
+.process-step table td.img-box {
+  width: 100%;
+  display: flex;
+  gap: 20px;
+  flex-wrap: nowrap;
+  padding: 10px 20px !important;
+}
+.process-step table .img-box .images {
+  position: relative;
+}
+.process-step table .img-box .images h3 {
+  font-size: 0.8vw;
+  width: 100%;
+  line-height: 1;
+  padding-bottom: 5px;
+  text-transform: uppercase;
+  font-weight: normal;
+  font-family: var(--en-font);
+}
+.process-step table .img-box .images::after {
+  top: 60%;
+}
+.process-step table .img-box .top::after {
+  top: 50%;
+}
+.process-step table .img-box .images img {
+  width: 6vw;
+  height: 10vh;
+}
+/*  */
 @media screen and (max-width: 920px) {
+  .세척 .process-step table td.img-box {
+    flex-wrap: wrap;
+  }
   .process-step table .process__img img {
-    width: 25vw;
-    height: 16vh;
+    width: 8vw;
+    height: 5vh;
+  }
+  .process-step table .img-box .images img {
+    width: 7vw;
+    height: 5vh;
   }
 }
 @media screen and (max-width: 520px) {
   .process-step table .process__img img {
-    width: 20vw;
-    height: 8vh;
+    width: 8vw;
+    height: 4vh;
+  }
+  .process-step table .img-box .images img {
+    width: 7vw;
+    height: 4vh;
   }
 }
 /* item-detail 검사보고서 dropdwon menu Btn css */

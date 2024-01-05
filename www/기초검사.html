@@ -157,7 +157,9 @@
               <input type="text" id="_QRCode" size="40" required />
             </td>
             <td class="process__img">
-              <img id="img_1" width="100vw" height="100vw" />
+              <div class="images">
+                <img id="img1" width="100vw" height="100vh" />
+              </div>
             </td>
           </tr>
           <tr>
@@ -177,7 +179,7 @@
             </td>
           </tr>
           <tr id="_육안검사_내부_box">
-            <td>
+            <td rowspan="2">
               <label for="_육안검사_내부">육안검사 내부</label>
             </td>
             <td>
@@ -188,19 +190,29 @@
                 <option value="NG">NG</option>
               </select>
             </td>
-            <td class="process__img">
-	      전체사진<br/>
-	      <img id="img2" width="100vw" height="100vw" /><br/>
-	      BMU<br/>
-	      <img id="img3" width="100vw" height="100vw" /><br/>
-	      CMU<br/>
-	      <img id="img4" width="100vw" height="100vw" /><br/>
-	      PRA
-	      <img id="img5" width="100vw" height="100vw" /><br/>
+          </tr>
+          <tr id="_육안검사_내부_img">
+            <td colspan="2" class="process__img img-box">
+              <div class="images">
+                <h3>전체사진</h3>
+                <img id="img2" />
+              </div>
+              <div class="images">
+                <h3>BMU</h3>
+                <img id="img3" />
+              </div>
+              <div class="images">
+                <h3>CMU</h3>
+                <img id="img4" />
+              </div>
+              <div class="images">
+                <h3>PRA</h3>
+                <img id="img5" />
+              </div>
             </td>
           </tr>
           <tr id="_육안검사_내부_특이사항_box">
-            <td>
+            <td rowspan="2">
               <label for="_육안검사_내부_특이사항"
                 >육안검사 내부 특이사항</label
               >
@@ -213,11 +225,21 @@
                 required
               />
             </td>
-            <td class="process__img">
-		    <img id="img6" width="100vw" height="100vw" /><br>
-		    <img id="img7" width="100vw" height="100vw" /><br>
-		    <img id="img8" width="100vw" height="100vw" /><br>
-		    <img id="img9" width="100vw" height="100vw" /><br>
+          </tr>
+          <tr id="_육안검사_내부_특이사항_img">
+            <td colspan="2" class="process__img img-box">
+              <div class="images top">
+                <img id="img6" />
+              </div>
+              <div class="images top">
+                <img id="img7" />
+              </div>
+              <div class="images top">
+                <img id="img8" />
+              </div>
+              <div class="images top">
+                <img id="img9" />
+              </div>
             </td>
           </tr>
           <tr id="_기밀검사_냉각유로_box">
@@ -236,7 +258,9 @@
               </select>
             </td>
             <td class="process__img">
-              <img id="img10" width="100vw" height="100vw" />
+              <div class="images">
+                <img id="img10" width="100vw" height="100vh" />
+              </div>
             </td>
           </tr>
           <tr id="_기밀검사_냉각유로_특이사항_box">
@@ -254,7 +278,9 @@
               />
             </td>
             <td class="process__img">
-              <img id="img11" width="100vw" height="100vw" />
+              <div class="images">
+                <img id="img11" width="100vw" height="100vh" />
+              </div>
             </td>
           </tr>
           <tr id="_절연검사P_box">
@@ -265,7 +291,9 @@
               <input type="text" id="_절연검사P" size="40" required />
             </td>
             <td class="process__img">
-              <img id="img12" width="100vw" height="100vw" />
+              <div class="images">
+                <img id="img12" width="100vw" height="100vh" />
+              </div>
             </td>
           </tr>
           <tr id="_절연검사N_box">
@@ -276,7 +304,9 @@
               <input type="text" id="_절연검사N" size="40" required />
             </td>
             <td class="process__img">
-              <img id="img13" width="100vw" height="100vw" />
+              <div class="images">
+                <img id="img13" width="100vw" height="100vh" />
+              </div>
             </td>
           </tr>
           <tr id="_통신검사_DTC코드1_box">
@@ -287,7 +317,9 @@
               <input type="text" id="_통신검사_DTC코드1" size="40" required />
             </td>
             <td class="process__img">
-              <img id="img14" width="100vw" height="100vw" />
+              <div class="images">
+                <img id="img14" width="100vw" height="100vh" />
+              </div>
             </td>
           </tr>
           <tr>
@@ -493,11 +525,9 @@
       const _육안검사_내부 = document.getElementById("_육안검사_내부");
       const _육안검사_내부_특이사항 = document.getElementById("_육안검사_내부");
       const _기밀검사_케이스 = document.getElementById("_기밀검사_케이스");
-      const _기밀검사_케이스_특이사항 =
-        document.getElementById("_기밀검사_케이스");
+      const _기밀검사_케이스_특이사항 = document.getElementById("_기밀검사_케이스");
       const _기밀검사_냉각유로 = document.getElementById("_기밀검사_냉각유로");
-      const _기밀검사_냉각유로_특이사항 =
-        document.getElementById("_기밀검사_냉각유로");
+      const _기밀검사_냉각유로_특이사항 = document.getElementById("_기밀검사_냉각유로");
       const _절연검사P = document.getElementById("_절연검사P");
       const _절연검사N = document.getElementById("_절연검사N");
       const _토크검사_UPR_C = document.getElementById("_토크검사_UPR_C");
@@ -511,13 +541,10 @@
       const _통신검사_DTC코드7 = document.getElementById("_통신검사_DTC코드7");
       const _통신검사_DTC코드8 = document.getElementById("_통신검사_DTC코드8");
       const _통신검사_DTC코드9 = document.getElementById("_통신검사_DTC코드9");
-      const _통신검사_DTC코드10 =
-        document.getElementById("_통신검사_DTC코드10");
+      const _통신검사_DTC코드10 = document.getElementById("_통신검사_DTC코드10");
       const _통신검사_팩전압 = document.getElementById("_통신검사_팩전압");
-      const _통신검사_셀전압편차 =
-        document.getElementById("_통신검사_셀전압편차");
-      const _통신검사_릴레이구동 =
-        document.getElementById("_통신검사_릴레이구동");
+      const _통신검사_셀전압편차 = document.getElementById("_통신검사_셀전압편차");
+      const _통신검사_릴레이구동 = document.getElementById("_통신검사_릴레이구동");
       const _BSA생산일자 = document.getElementById("_BSA생산일자");
       const _BMA_ROM_ID = document.getElementById("_BMA_ROM_ID");
       const _고장현상코드 = document.getElementById("_고장현상코드");
@@ -530,19 +557,31 @@
       const _비고 = document.getElementById("_비고");
       const _센터진단내용 = document.getElementById("_센터진단내용");
       const _검사자 = document.getElementById("_검사자");
-
       const _육안검사_내부_box = document.getElementById("_육안검사_내부_box");
-      const _육안검사_내부_특이사항_box =
-        document.getElementById("_육안검사_내부_box");
-      const _기밀검사_냉각유로_box =
-        document.getElementById("_기밀검사_냉각유로_box");
-      const _기밀검사_냉각유로_특이사항_box =
-        document.getElementById("_기밀검사_냉각유로_box");
+      const _육안검사_내부_특이사항_box = document.getElementById("_육안검사_내부_box");
+      const _기밀검사_냉각유로_box = document.getElementById("_기밀검사_냉각유로_box");
+      const _기밀검사_냉각유로_특이사항_box = document.getElementById("_기밀검사_냉각유로_box");
       const _절연검사P_box = document.getElementById("_절연검사P_box");
       const _절연검사N_box = document.getElementById("_절연검사N_box");
-      const _통신검사_DTC코드1_box =
-        document.getElementById("_통신검사_DTC코드1_box");
+      const _통신검사_DTC코드1_box = document.getElementById("_통신검사_DTC코드1_box");
       const _기초검사 = document.getElementById("_기초검사");
+
+      const _육안검사_내부_img = document.getElementById("_육안검사_내부_img");
+      const _육안검사_내부_특이사항_img = document.getElementById("_육안검사_내부_특이사항_img");
+      const img1 = document.get.getElementById("img1");
+      const img2 = document.get.getElementById("img2");
+      const img3 = document.get.getElementById("img3");
+      const img4 = document.get.getElementById("img4");
+      const img5 = document.get.getElementById("img5");
+      const img6 = document.get.getElementById("img6");
+      const img7 = document.get.getElementById("img7");
+      const img8 = document.get.getElementById("img8");
+      const img9 = document.get.getElementById("img9");
+      const img10 = document.get.getElementById("img10");
+      const img11 = document.get.getElementById("img11");
+      const img12 = document.get.getElementById("img12");
+      const img13 = document.get.getElementById("img13");
+      const img14 = document.get.getElementById("img14");
     </script>
   </body>
 </html>
