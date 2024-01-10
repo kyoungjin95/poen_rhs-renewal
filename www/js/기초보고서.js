@@ -1,110 +1,35 @@
 async function 기초보고서_시작() {
-	loadPage("base/기초보고서.html");
-	await sleep(1);
-
-	if (level == '작업자' || level == '' || level == '관리자' || level == '부품관리자') _교체부품.style.display = 'block';
-	else _교체부품.style.display = 'none';
-
 	_management_id.value = 관리번호;
 
-	count(기초보고서, { level: '작업자' });
-	await delay();
-
-	if (기초보고서_cnt > 0) {
-		find_기초보고서(기초보고서, { level: '작업자' });
-		await delay();
-
-		if (기초보고서_v.기초보고서 == true) {
-			_기초보고서.style.display = 'block';
-			_cb기초보고서.checked = true;
-		} else if (level != '작업자' && level != '') {
-			_기초보고서.style.display = 'none';
-		} else {
-			_cb기초보고서.checked = false;
-		}
-
-		if (기초보고서_v.육안검사외부 == true) {
-			_육안검사외부1.style.display = 'block';
-			_cb육안검사외부.checked = true;
-		} else if (level != '작업자' && level != '') {
-			_육안검사외부1.style.display = 'none';
-		} else {
-			_cb육안검사외부.checked = false;
-		}
-
-		if (기초보고서_v.육안검사외부상세 == true) {
-			_육안검사외부2.style.display = 'block';
-			_cb육안검사외부상세.checked = true;
-		} else if (level != '작업자' && level != '') {
-			_육안검사외부2.style.display = 'none';
-		} else {
-			_cb육안검사외부상세.checked = false;
-		}
-
-		if (기초보고서_v.육안검사내부 == true) {
-			_육안검사내부1.style.display = 'block';
-			_cb육안검사내부.checked = true;
-		} else if (level != '작업자' && level != '') {
-			_육안검사내부1.style.display = 'none';
-		} else {
-			_cb육안검사내부.checked = false;
-		}
-
-		if (기초보고서_v.육안검사내부상세 == true) {
-			_육안검사내부2.style.display = 'block';
-			_cb육안검사내부상세.checked = true;
-		} else if (level != '작업자' && level != '') {
-			_육안검사내부2.style.display = 'none';
-		} else {
-			_cb육안검사내부상세.checked = false;
-		}
-
-		if (기초보고서_v.기밀검사 == true) {
-			_기밀검사.style.display = 'block';
-			_cb기밀검사.checked = true;
-		} else if (level != '작업자' && level != '') {
-			_기밀검사.style.display = 'none';
-		} else {
-			_cb기밀검사.checked = false;
-		}
-	}
-
-	await 기초보고서_조회();
-}
-
-async function 기초보고서_apply() {
-	_셀제조사사유.innerHTML = document.getElementById("_셀제조사사유_input").value;
-	_생산일.innerHTML = document.getElementById("_생산일_input").value;
-	_판매일.innerHTML = document.getElementById("_판매일_input").value;
-	_수리일.innerHTML = document.getElementById("_수리일_input").value;
-	_관리번호.innerHTML = _management_id.value.trim().toUpperCase();
-	_필드현상.innerHTML = document.getElementById("_필드현상_input").value;
-	_센터조치.innerHTML = document.getElementById("_센터조치_input").value;
-	_결과.innerHTML = document.getElementById("_결과_input").value;
+	await 기초보고서_조회(false, 차종);
 }
 
 async function 기초보고서_조회(is재제조번호 = false) {
 	if (is재제조번호 == true) {
-		count(BSA재제조, { 재제조번호: _재제조번호.value });
+		findOne(BSA재제조, { 재제조번호: _재제조번호.value });
 		await delay();
 
-		if (BSA재제조_cnt > 0) {
-			find_BSA재제조(BSA재제조, { 재제조번호: _재제조번호.value });
-			await delay();
-
+		if (BSA재제조_v != null) {
 			_management_id.value = BSA재제조_v.관리번호;
 		}
-	}
-
-	count(입고, { 관리번호: _management_id.value });
-	await delay();
-
-	if (입고_cnt > 0) {
-		_입고정보.innerHTML = "OK";
-		find(입고, _management_id.value);
+	} else {
+		findOne(BSA재제조, { 관리번호: _관리번호.value });
 		await delay();
 
+		if (BSA재제조_v != null) {
+			_재제조번호.value = BSA재제조_v.관리번호;
+		}
+
+	}
+
+	_재제조번호_HEAD
+
+	findOne_입고(입고, { 관리번호: _management_id.value });
+	await delay();
+
+	if (입고_v != null) {
 		_차종.innerHTML = 입고_v.차종;
+		_입고일.innerHTML = 입고_v.입고일;
 
 		switch (입고_v.차종) {
 			case "CS_EV":
@@ -149,202 +74,398 @@ async function 기초보고서_조회(is재제조번호 = false) {
 				alert("차종을 확인해 주세요");
 		}
 
-		function showTable(tableId) {
-			// 모든 테이블을 숨김
-			const tables = document.querySelectorAll(".tableAll");
-			for (let i = 0; i < tables.length; i++) {
-				tables[i].style.display = "none";
-			}
-			// 선택된 테이블만 표시
-			document.getElementById(tableId).style.display = "table";
-		}
-
-		_입고일.innerHTML = 입고_v.입고일;
 	} else {
-		_입고정보.innerHTML = "NG";
+		_차종.innerHTML = "";
 		_입고일.innerHTML = "";
 	}
 
-	count(기초검사, { 관리번호: _management_id.value });
+	find(입고_pic, _management_id.value);
 	await delay();
 
-	if (기초검사_cnt > 0) {
-		find(기초검사, _management_id.value);
-		await delay();
+	if(입고_pic_v != null) {
+		입고사진.src = 입고_pic_v.pic1;
+	}
 
-		var _VIN = document.getElementById("_VINNo");
-		_VIN.innerHTML = 기초검사_v.VIN == undefined ? "" : 기초검사_v.VIN;
-		var _RO = document.getElementById("_RONo");
-		_RO.innerHTML = 기초검사_v.RO_no == undefined ? "" : 기초검사_v.RO_no;
-		_주행거리.innerHTML = 기초검사_v.주행거리 == undefined ? "" : 기초검사_v.주행거리;
-		_차량번호.innerHTML = 기초검사_v.차량번호 == undefined ? "" : 기초검사_v.차량번호;
+	find(기초검사_pic, _management_id.value);
+	await delay();
 
-		_관리번호.value = _management_id.value.trim().toUpperCase();
+	if(기초검사_pic_v != null) {
+		_BSA_QR.src = 기초검사_pic_v.pic1;
+	}
 
+	var 외부검사 = '';
+	var 외부검사사유 = '';
+	var 케이스 = '';
+	var 부품정보유무 = 'NG';
+
+	findOne_부품정보(부품정보, { 관리번호 : _management_id.value });
+	await delay();
+
+	if(부품정보_v != null) {
+		부품정보유무 = 'OK';
+	}
+
+	find(세척, _management_id.value);
+	await delay();
+
+	if(세척_v != null) {
+		외부검사 = 세척_v.육안검사_외부;
+		외부검사사유 = 세척_v.육안검사_외부_특이사항;
+		케이스 = 세척_v.기밀검사_케이스;
+		케이스감압량 = 세척_v.기밀검사_케이스_특이사항;
+	}
+
+	findOne_기초검사(기초검사, { 관리번호: _management_id.value });
+	await delay();
+
+	if(기초검사_v != null) {
+		var 고장코드 = (기초검사_.통신검사_DTC코드1 == '' &&
+				기초검사_.통신검사_DTC코드2 == '' &&
+				기초검사_.통신검사_DTC코드3 == '' &&
+				기초검사_.통신검사_DTC코드4 == '' &&
+				기초검사_.통신검사_DTC코드5 == '' &&
+				기초검사_.통신검사_DTC코드6 == '' &&
+				기초검사_.통신검사_DTC코드7 == '' &&
+				기초검사_.통신검사_DTC코드8 == '' &&
+				기초검사_.통신검사_DTC코드9 == '' &&
+				기초검사_.통신검사_DTC코드10 == '') ? 'OK' : 'NG';
+		
+		var 고장사유 = (
+				기초검사_.통신검사_DTC코드1 + ' ' +
+                                기초검사_.통신검사_DTC코드2 + ' ' +
+                                기초검사_.통신검사_DTC코드3 + ' ' + 
+                                기초검사_.통신검사_DTC코드4 + ' ' + 
+                                기초검사_.통신검사_DTC코드5 + ' ' + 
+                                기초검사_.통신검사_DTC코드6 + ' ' + 
+                                기초검사_.통신검사_DTC코드7 + ' ' + 
+                                기초검사_.통신검사_DTC코드8 + ' ' + 
+                                기초검사_.통신검사_DTC코드9 + ' ' + 
+                                기초검사_.통신검사_DTC코드10);
+
+		//common
+		_VIN.innerHTML = 기초검사_v.VIN;
+		_RO.innerHTML = 기초검사_v.RO_no;
+		_주행거리.innerHTML = 기초검사_v.주행거리;
+		_차량번호.innerHTML = 기초검사_v.차량번호;
+		_생산일.innerHTML = 기초검사_v.BSA생산일자;
+		_판매일.innerHTML = 기초검사_v.BSA판매일자;
+		_수리일.innerHTML = 기초검사_v.BSA수리일자;
+		_관리번호.innerHTML = _management_id.value;
+		_필드현상.innerHTML = 기초검사_v.필드현상;
+		_센터진단.innerHTML = 기초검사_v.센터진단내용;
+		_센터조치.innerHTML = 기초검사_v.AS센터조치;
 		_작성자.innerHTML = worker;
+		_작성일.innerHTML = 기초검사_v.공정완료일;
 
-		_외부점검.innerHTML =
-			기초검사_v.육안검사_외부 == undefined
-				? ""
-				: 기초검사_v.육안검사_외부;
+		switch(차종) {
+			case 'CS' :
+			case 'CS_EV' :
+				_CS_외부점검.innerHTML = 외부검사;
+				_CS_외부점검사유.innerHTML = 외부검사사유;
+				_CS_내부점검.innerHTML = 기초검사_v.육안검사_내부;
+				_CS_내부점검사유.innerHTML = 기초검사_v.육안검사_내부_특이사항;
+				_CS_케이스.innerHTML = 케이스;
+				_CS_케이스감압량.innerHTML = 케이스감압량;
+				_CS_냉각유로.innerHTML = 기초검사_v.기밀검사_냉각유로;
+				_CS_냉각유로감압량.innerHTML = 기초검사_v.기밀검사_냉각유로_특이사항;
+				_CS_PRA_P.innerHTML = 기초검사_v.절연검사_Plus;
+				_CS_PRA_P값.innerHTML = 기초검사_v.절연검사_Plus판정;
+				_CS_PRA_N.innerHTML = 기초검사_v.절연검사_Minus;
+				_CS_PRA_N값.innerHTML = 기초검사_v.절연검사_Minus판정;
+				_CS_팩전압.innerHTML = 기초검사_v.통신검사_팩전압판정;
+			        _CS_팩전압값.innerHTML = 기초검사_v.통신검사_팩전압;
+			        _CS_셀전압편차.innerHTML = 기초검사_v.통신검사_셀전압편차판정;
+			        _CS_셀전압편차값.innerHTML = 기초검사_v.통신검사_셀전압편차;
+			        _CS_릴레이제어.innerHTML = 기초검사_v.통신검사_릴레이구동;
+			        _CS_릴레이제어사유.innerHTML = 기초검사_v.통신검사_릴레이구동사유;
+			        _CS_고장코드.innerHTML = 고장코드;
+			        _CS_고장코드사유.innerHTML = 고장사유;
+			        _CS_입고정보.innerHTML = 부품정보유무;
+			        _CS_입고정보사유.innerHTML = '';
+			        _CS_재제조이력.innerHTML = 'OK';
+			        _CS_재제조이력사유.innerHTML = '';
+				break;
 
-		_외부점검사유.innerHTML =
-			기초검사_v.육안검사_외부_특이사항 == undefined
-				? ""
-				: 기초검사_v.육안검사_외부_특이사항;
+			case "CV":
+			case "CV_EV":
+				_CV_외부점검.innerHTML = 외부검사;
+				_CV_외부점검사유.innerHTML = 외부검사사유;
+				_CV_내부점검.innerHTML = 기초검사_v.육안검사_내부;
+				_CV_내부점검사유.innerHTML = 기초검사_v.육안검사_내부_특이사항;
+				_CV_케이스.innerHTML = 케이스;
+				_CV_케이스감압량.innerHTML = 케이스감압량;
+				_CV_냉각유로.innerHTML = 기초검사_v.기밀검사_냉각유로;
+				_CV_냉각유로감압량.innerHTML = 기초검사_v.기밀검사_냉각유로_특이사항;
+				_CV_PRA_P.innerHTML = 기초검사_v.절연검사_Plus;
+				_CV_PRA_P값.innerHTML = 기초검사_v.절연검사_Plus판정;
+				_CV_PRA_N.innerHTML = 기초검사_v.절연검사_Minus;
+				_CV_PRA_N값.innerHTML = 기초검사_v.절연검사_Minus판정;
+				_CV_팩전압.innerHTML = 기초검사_v.통신검사_팩전압판정;
+			        _CV_팩전압값.innerHTML = 기초검사_v.통신검사_팩전압;
+			        _CV_셀전압편차.innerHTML = 기초검사_v.통신검사_셀전압편차판정;
+			        _CV_셀전압편차값.innerHTML = 기초검사_v.통신검사_셀전압편차;
+			        _CV_릴레이제어.innerHTML = 기초검사_v.통신검사_릴레이구동;
+			        _CV_릴레이제어사유.innerHTML = 기초검사_v.통신검사_릴레이구동사유;
+			        _CV_고장코드.innerHTML = 고장코드;
+			        _CV_고장코드사유.innerHTML = 고장사유;
+			        _CV_입고정보.innerHTML = 부품정보유무;
+			        _CV_입고정보사유.innerHTML = '';
+			        _CV_재제조이력.innerHTML = 'OK';
+			        _CV_재제조이력사유.innerHTML = '';
+				break;
 
-		_내부점검.innerHTML =
-			기초검사_v.육안검사_내부 == undefined
-				? ""
-				: 기초검사_v.육안검사_내부;
+			case "DE":
+			case "DE_EV":
+				_DE_외부점검.innerHTML = 외부검사;
+				_DE_외부점검사유.innerHTML = 외부검사사유;
+				_DE_내부점검.innerHTML = 기초검사_v.육안검사_내부;
+				_DE_내부점검사유.innerHTML = 기초검사_v.육안검사_내부_특이사항;
+				_DE_케이스.innerHTML = 케이스;
+				_DE_케이스감압량.innerHTML = 케이스감압량;
+				_DE_냉각유로.innerHTML = 기초검사_v.기밀검사_냉각유로;
+				_DE_냉각유로감압량.innerHTML = 기초검사_v.기밀검사_냉각유로_특이사항;
+				_DE_PRA_P.innerHTML = 기초검사_v.절연검사_Plus;
+				_DE_PRA_P값.innerHTML = 기초검사_v.절연검사_Plus판정;
+				_DE_PRA_N.innerHTML = 기초검사_v.절연검사_Minus;
+				_DE_PRA_N값.innerHTML = 기초검사_v.절연검사_Minus판정;
+				_DE_팩전압.innerHTML = 기초검사_v.통신검사_팩전압판정;
+			        _DE_팩전압값.innerHTML = 기초검사_v.통신검사_팩전압;
+			        _DE_셀전압편차.innerHTML = 기초검사_v.통신검사_셀전압편차판정;
+			        _DE_셀전압편차값.innerHTML = 기초검사_v.통신검사_셀전압편차;
+			        _DE_릴레이제어.innerHTML = 기초검사_v.통신검사_릴레이구동;
+			        _DE_릴레이제어사유.innerHTML = 기초검사_v.통신검사_릴레이구동사유;
+			        _DE_고장코드.innerHTML = 고장코드;
+			        _DE_고장코드사유.innerHTML = 고장사유;
+			        _DE_입고정보.innerHTML = 부품정보유무;
+			        _DE_입고정보사유.innerHTML = '';
+			        _DE_재제조이력.innerHTML = 'OK';
+			        _DE_재제조이력사유.innerHTML = '';
+				break;
 
-		_내부점검사유.innerHTML =
-			기초검사_v.육안검사_내부_특이사항 == undefined
-				? ""
-				: 기초검사_v.육안검사_내부_특이사항;
+			case "HR":
+			case "HR_EV":
+				_HR_외부점검.innerHTML = 외부검사;
+				_HR_외부점검사유.innerHTML = 외부검사사유;
+				_HR_내부점검.innerHTML = 기초검사_v.육안검사_내부;
+				_HR_내부점검사유.innerHTML = 기초검사_v.육안검사_내부_특이사항;
+				_HR_케이스.innerHTML = 케이스;
+				_HR_케이스감압량.innerHTML = 케이스감압량;
+				_HR_냉각유로.innerHTML = 기초검사_v.기밀검사_냉각유로;
+				_HR_냉각유로감압량.innerHTML = 기초검사_v.기밀검사_냉각유로_특이사항;
+				_HR_PRA_P.innerHTML = 기초검사_v.절연검사_Plus;
+				_HR_PRA_P값.innerHTML = 기초검사_v.절연검사_Plus판정;
+				_HR_PRA_N.innerHTML = 기초검사_v.절연검사_Minus;
+				_HR_PRA_N값.innerHTML = 기초검사_v.절연검사_Minus판정;
+				_HR_HV커넥터_P.innerHTML = 기초검사_v.절연검사_Minus판정;
+				_HR_팩전압.innerHTML = 기초검사_v.통신검사_팩전압판정;
+			        _HR_팩전압값.innerHTML = 기초검사_v.통신검사_팩전압;
+			        _HR_셀전압편차.innerHTML = 기초검사_v.통신검사_셀전압편차판정;
+			        _HR_셀전압편차값.innerHTML = 기초검사_v.통신검사_셀전압편차;
+			        _HR_릴레이제어.innerHTML = 기초검사_v.통신검사_릴레이구동;
+			        _HR_릴레이제어사유.innerHTML = 기초검사_v.통신검사_릴레이구동사유;
+			        _HR_고장코드.innerHTML = 고장코드;
+			        _HR_고장코드사유.innerHTML = 고장사유;
+			        _HR_입고정보.innerHTML = 부품정보유무;
+			        _HR_입고정보사유.innerHTML = '';
+			        _HR_재제조이력.innerHTML = 'OK';
+			        _HR_재제조이력사유.innerHTML = '';
+				break;
 
-		_PRA_P값.innerHTML =
-			기초검사_v.절연검사_Plus == undefined
-				? ""
-				: 기초검사_v.절연검사_Plus;
+			case "LK":
+			case "LK_EV":
+				_LK_외부점검.innerHTML = 외부검사;
+				_LK_외부점검사유.innerHTML = 외부검사사유;
+				_LK_내부점검.innerHTML = 기초검사_v.육안검사_내부;
+				_LK_내부점검사유.innerHTML = 기초검사_v.육안검사_내부_특이사항;
+				_LK_케이스.innerHTML = 케이스;
+				_LK_케이스감압량.innerHTML = 케이스감압량;
+				_LK_냉각유로.innerHTML = 기초검사_v.기밀검사_냉각유로;
+				_LK_냉각유로감압량.innerHTML = 기초검사_v.기밀검사_냉각유로_특이사항;
+				_LK_PRA_P.innerHTML = 기초검사_v.절연검사_Plus;
+				_LK_PRA_P값.innerHTML = 기초검사_v.절연검사_Plus판정;
+				_LK_PRA_N.innerHTML = 기초검사_v.절연검사_Minus;
+				_LK_PRA_N값.innerHTML = 기초검사_v.절연검사_Minus판정;
+				_LK_팩전압.innerHTML = 기초검사_v.통신검사_팩전압판정;
+			        _LK_팩전압값.innerHTML = 기초검사_v.통신검사_팩전압;
+			        _LK_셀전압편차.innerHTML = 기초검사_v.통신검사_셀전압편차판정;
+			        _LK_셀전압편차값.innerHTML = 기초검사_v.통신검사_셀전압편차;
+			        _LK_릴레이제어.innerHTML = 기초검사_v.통신검사_릴레이구동;
+			        _LK_릴레이제어사유.innerHTML = 기초검사_v.통신검사_릴레이구동사유;
+			        _LK_고장코드.innerHTML = 고장코드;
+			        _LK_고장코드사유.innerHTML = 고장사유;
+			        _LK_입고정보.innerHTML = 부품정보유무;
+			        _LK_입고정보사유.innerHTML = '';
+			        _LK_재제조이력.innerHTML = 'OK';
+			        _LK_재제조이력사유.innerHTML = '';
+				break;
 
-		_PRA_N값.innerHTML =
-			기초검사_v.절연검사_Minus == undefined
-				? ""
-				: 기초검사_v.절연검사_Minus;
+			case "LM":
+			case "LM_EV":
+				_LM_외부점검.innerHTML = 외부검사;
+				_LM_외부점검사유.innerHTML = 외부검사사유;
+				_LM_내부점검.innerHTML = 기초검사_v.육안검사_내부;
+				_LM_내부점검사유.innerHTML = 기초검사_v.육안검사_내부_특이사항;
+				_LM_케이스.innerHTML = 케이스;
+				_LM_케이스감압량.innerHTML = 케이스감압량;
+				_LM_냉각유로.innerHTML = 기초검사_v.기밀검사_냉각유로;
+				_LM_냉각유로감압량.innerHTML = 기초검사_v.기밀검사_냉각유로_특이사항;
+				_LM_PRA_P.innerHTML = 기초검사_v.절연검사_Plus;
+				_LM_PRA_P값.innerHTML = 기초검사_v.절연검사_Plus판정;
+				_LM_PRA_N.innerHTML = 기초검사_v.절연검사_Minus;
+				_LM_PRA_N값.innerHTML = 기초검사_v.절연검사_Minus판정;
+				_LM_팩전압.innerHTML = 기초검사_v.통신검사_팩전압판정;
+			        _LM_팩전압값.innerHTML = 기초검사_v.통신검사_팩전압;
+			        _LM_셀전압편차.innerHTML = 기초검사_v.통신검사_셀전압편차판정;
+			        _LM_셀전압편차값.innerHTML = 기초검사_v.통신검사_셀전압편차;
+			        _LM_릴레이제어.innerHTML = 기초검사_v.통신검사_릴레이구동;
+			        _LM_릴레이제어사유.innerHTML = 기초검사_v.통신검사_릴레이구동사유;
+			        _LM_고장코드.innerHTML = 고장코드;
+			        _LM_고장코드사유.innerHTML = 고장사유;
+			        _LM_입고정보.innerHTML = 부품정보유무;
+			        _LM_입고정보사유.innerHTML = '';
+			        _LM_재제조이력.innerHTML = 'OK';
+			        _LM_재제조이력사유.innerHTML = '';
+				break;
 
-		_HV커넥터_P값.innerHTML =
-			기초검사_v.절연검사_Plus == undefined
-				? ""
-				: 기초검사_v.절연검사_Plus;
+			case "NE":
+			case "NE_EV":
+				_NE_외부점검.innerHTML = 외부검사;
+				_NE_외부점검사유.innerHTML = 외부검사사유;
+				_NE_내부점검.innerHTML = 기초검사_v.육안검사_내부;
+				_NE_내부점검사유.innerHTML = 기초검사_v.육안검사_내부_특이사항;
+				_NE_케이스.innerHTML = 케이스;
+				_NE_케이스감압량.innerHTML = 케이스감압량;
+				_NE_냉각유로.innerHTML = 기초검사_v.기밀검사_냉각유로;
+				_NE_냉각유로감압량.innerHTML = 기초검사_v.기밀검사_냉각유로_특이사항;
+				_NE_PRA_P.innerHTML = 기초검사_v.절연검사_Plus;
+				_NE_PRA_P값.innerHTML = 기초검사_v.절연검사_Plus판정;
+				_NE_PRA_N.innerHTML = 기초검사_v.절연검사_Minus;
+				_NE_PRA_N값.innerHTML = 기초검사_v.절연검사_Minus판정;
+				_NE_팩전압.innerHTML = 기초검사_v.통신검사_팩전압판정;
+			        _NE_팩전압값.innerHTML = 기초검사_v.통신검사_팩전압;
+			        _NE_셀전압편차.innerHTML = 기초검사_v.통신검사_셀전압편차판정;
+			        _NE_셀전압편차값.innerHTML = 기초검사_v.통신검사_셀전압편차;
+			        _NE_릴레이제어.innerHTML = 기초검사_v.통신검사_릴레이구동;
+			        _NE_릴레이제어사유.innerHTML = 기초검사_v.통신검사_릴레이구동사유;
+			        _NE_고장코드.innerHTML = 고장코드;
+			        _NE_고장코드사유.innerHTML = 고장사유;
+			        _NE_입고정보.innerHTML = 부품정보유무;
+			        _NE_입고정보사유.innerHTML = '';
+			        _NE_재제조이력.innerHTML = 'OK';
+			        _NE_재제조이력사유.innerHTML = '';
+				break;
 
-		_HV커넥터_N값.innerHTML =
-			기초검사_v.절연검사_Minus == undefined
-				? ""
-				: 기초검사_v.절연검사_Minus;
+			case "OS":
+			case "OS_EV":
+			case "SK3":
+			case "SK3_EV":
+				_OS_SK3_외부점검.innerHTML = 외부검사;
+				_OS_SK3_외부점검사유.innerHTML = 외부검사사유;
+				_OS_SK3_내부점검.innerHTML = 기초검사_v.육안검사_내부;
+				_OS_SK3_내부점검사유.innerHTML = 기초검사_v.육안검사_내부_특이사항;
+				_OS_SK3_케이스.innerHTML = 케이스;
+				_OS_SK3_케이스감압량.innerHTML = 케이스감압량;
+				_OS_SK3_냉각유로.innerHTML = 기초검사_v.기밀검사_냉각유로;
+				_OS_SK3_냉각유로감압량.innerHTML = 기초검사_v.기밀검사_냉각유로_특이사항;
+				_OS_SK3_PRA_P.innerHTML = 기초검사_v.절연검사_Plus;
+				_OS_SK3_PRA_P값.innerHTML = 기초검사_v.절연검사_Plus판정;
+				_OS_SK3_PRA_N.innerHTML = 기초검사_v.절연검사_Minus;
+				_OS_SK3_PRA_N값.innerHTML = 기초검사_v.절연검사_Minus판정;
+				_OS_SK3_팩전압.innerHTML = 기초검사_v.통신검사_팩전압판정;
+			        _OS_SK3_팩전압값.innerHTML = 기초검사_v.통신검사_팩전압;
+			        _OS_SK3_셀전압편차.innerHTML = 기초검사_v.통신검사_셀전압편차판정;
+			        _OS_SK3_셀전압편차값.innerHTML = 기초검사_v.통신검사_셀전압편차;
+			        _OS_SK3_릴레이제어.innerHTML = 기초검사_v.통신검사_릴레이구동;
+			        _OS_SK3_릴레이제어사유.innerHTML = 기초검사_v.통신검사_릴레이구동사유;
+			        _OS_SK3_고장코드.innerHTML = 고장코드;
+			        _OS_SK3_고장코드사유.innerHTML = 고장사유;
+			        _OS_SK3_입고정보.innerHTML = 부품정보유무;
+			        _OS_SK3_입고정보사유.innerHTML = '';
+			        _OS_SK3_재제조이력.innerHTML = 'OK';
+			        _OS_SK3_재제조이력사유.innerHTML = '';
+				break;
 
-		_HV_P값.innerHTML =
-			기초검사_v.절연검사_Plus == undefined
-				? ""
-				: 기초검사_v.절연검사_Plus;
+			case "PU_EV":
+			case "PU":
+				_PU_외부점검.innerHTML = 외부검사;
+				_PU_외부점검사유.innerHTML = 외부검사사유;
+				_PU_내부점검.innerHTML = 기초검사_v.육안검사_내부;
+				_PU_내부점검사유.innerHTML = 기초검사_v.육안검사_내부_특이사항;
+				_PU_케이스.innerHTML = 케이스;
+				_PU_케이스감압량.innerHTML = 케이스감압량;
+				_PU_냉각유로.innerHTML = 기초검사_v.기밀검사_냉각유로;
+				_PU_냉각유로감압량.innerHTML = 기초검사_v.기밀검사_냉각유로_특이사항;
+				_PU_PRA_P.innerHTML = 기초검사_v.절연검사_Plus;
+				_PU_PRA_P값.innerHTML = 기초검사_v.절연검사_Plus판정;
+				_PU_PRA_N.innerHTML = 기초검사_v.절연검사_Minus;
+				_PU_PRA_N값.innerHTML = 기초검사_v.절연검사_Minus판정;
+				_PU_팩전압.innerHTML = 기초검사_v.통신검사_팩전압판정;
+			        _PU_팩전압값.innerHTML = 기초검사_v.통신검사_팩전압;
+			        _PU_셀전압편차.innerHTML = 기초검사_v.통신검사_셀전압편차판정;
+			        _PU_셀전압편차값.innerHTML = 기초검사_v.통신검사_셀전압편차;
+			        _PU_릴레이제어.innerHTML = 기초검사_v.통신검사_릴레이구동;
+			        _PU_릴레이제어사유.innerHTML = 기초검사_v.통신검사_릴레이구동사유;
+			        _PU_고장코드.innerHTML = 고장코드;
+			        _PU_고장코드사유.innerHTML = 고장사유;
+			        _PU_입고정보.innerHTML = 부품정보유무;
+			        _PU_입고정보사유.innerHTML = '';
+			        _PU_재제조이력.innerHTML = 'OK';
+			        _PU_재제조이력사유.innerHTML = '';
+				break;
 
-		_HV_N값.innerHTML =
-			기초검사_v.절연검사_Minus == undefined
-				? ""
-				: 기초검사_v.절연검사_Minus;
+			default:
+				alert("차종을 확인해 주세요");
+		}
+	} 
 
-		_고장코드.innerHTML = 기초검사_v.고장현상코드 == undefined ? "NG" : "OK";
-
-		_고장코드사유.innerHTML =
-			기초검사_v.고장현상명 == undefined ? "" : 기초검사_v.고장현상명;
-
-		_센터진단.innerHTML =
-			기초검사_v.센터진단내용 == undefined ? "" : 기초검사_v.센터진단내용;
-		_재제조이력.innerHTML = "OK";
-	} else {
-		_재제조이력.innerHTML = "NG";
-	}
-
-	count(EOL, { 관리번호: _management_id.value });
+	find(세척_pic, _management_id.value);
 	await delay();
 
-	if (EOL_cnt > 0) {
-		find(EOL, _management_id.value);
-		await delay();
+	if (세척_pic_v != null) {
+		//육안검사 외부1
+		_top_pic.src = 세척_pic_v.pic1;
+		_front_pic.src = 세척_pic_v.pic2;
+		_left_pic.src = 세척_pic_v.pic3;
+		_bottom_pic.src = 세척_pic_v.pic4;
+		_rear_pic.src = 세척_pic_v.pic5;
+		_right_pic.src = 세척_pic_v.pic6;
+		_육안검사_결과.innerHTML = 외부검사;
 
-		_케이스.innerHTML =
-			EOL_v.기밀검사_케이스 == undefined
-				? ""
-				: EOL_v.기밀검사_케이스;
-		_케이스감압량.innerHTML =
-			EOL_v.기밀검사_케이스_특이사항 == undefined
-				? ""
-				: EOL_v.기밀검사_케이스_특이사항;
-		_냉각유로.innerHTML =
-			EOL_v.기밀검사_냉각유로 == undefined
-				? ""
-				: EOL_v.기밀검사_냉각유로;
-		_냉각유로감압량.innerHTML =
-			EOL_v.기밀검사_냉각유로_특이사항 == undefined
-				? ""
-				: EOL_v.기밀검사_냉각유로_특이사항;
-	} else {
-		_케이스.innerHTML = "";
-		_케이스감압량.innerHTML = "";
-		_냉각유로.innerHTML = "";
-		_냉각유로감압량.innerHTML = "";
+		//육안검사 외부 2
+		_이상부위_외부1.src = 세척_pic_v.pic7;
+		_이상부위_외부2.src = 세척_pic_v.pic8;
+		_이상부위_외부3.src = 세척_pic_v.pic9;
+		_이상부위_외부4.src = 세척_pic_v.pic10;
+		_육안검사_결과2.innerHTML = 외부검사사유;
 	}
 
-	count(입고_pic, { 관리번호: _management_id.value });
+	find(기초검사_pic, _management_id.value);
 	await delay();
 
-	if (입고_pic_cnt > 0) {
-		find(입고_pic, _management_id.value);
-		await delay();
+	if(기초검사_pic_v != null) {
+		//육안검사 내부 1
+		_allImg.src = 기초검사_pic_v.pic1;
+		_BMU.src = 기초검사_pic_v.pic2;
+		_CMU.src = 기초검사_pic_v.pic3;
+		_PRA.src = 기초검사_pic_v.pic4;
+		_육안검사_내부_결과.innerHTML = 외부검사;
 
-		_top_pic.src = "data:image/;base64," + 입고_pic_v.pic1;
-		_front_pic.src = "data:image/;base64," + 입고_pic_v.pic2;
-		_left_pic.src = "data:image/;base64," + 입고_pic_v.pic3;
-		_bottom_pic.src = "data:image/;base64," + 입고_pic_v.pic4;
-		_rear_pic.src = "data:image/;base64," + 입고_pic_v.pic5;
-		_right_pic.src = "data:image/;base64," + 입고_pic_v.pic6;
-		_이상부위_외부1.src = "data:image/;base64," + 입고_pic_v.pic7;
-		_이상부위_외부2.src = "data:image/;base64," + 입고_pic_v.pic8;
-		_이상부위_외부3.src = "data:image/;base64," + 입고_pic_v.pic9;
-		_이상부위_외부4.src = "data:image/;base64," + 입고_pic_v.pic10;
-
-		_allImg.src = "data:image/;base64," + 입고_pic_v.pic2;
-		_BMU.src = "data:image/;base64," + 입고_pic_v.pic3;
-		_CMU.src = "data:image/;base64," + 입고_pic_v.pic4;
-		_PRA.src = "data:image/;base64," + 입고_pic_v.pic5;
-		_이상부위_내부1.src = "data:image/;base64," + 입고_pic_v.pic6;
-		_이상부위_내부2.src = "data:image/;base64," + 입고_pic_v.pic7;
-		_이상부위_내부3.src = "data:image/;base64," + 입고_pic_v.pic8;
-		_이상부위_내부4.src = "data:image/;base64," + 입고_pic_v.pic9;
-
-		_측정사진1.src = "data:image/;base64," + 입고_pic_v.pic1;
-		_측정사진2.src = "data:image/;base64," + 입고_pic_v.pic2;
-		_측정값사진1.src = "data:image/;base64," + 입고_pic_v.pic3;
-		_측정값사진2.src = "data:image/;base64," + 입고_pic_v.pic4;
-
-		_입고사진.src = "data:image/;base64," + 입고_pic_v.pic1;
-		_BSA_QR.src = "data:image/;base64," + 입고_pic_v.pic2;
+		//육안검사 내부 2
+		_이상부위_내부1.src = 기초검사_pic_v.pic5;
+		_이상부위_내부2.src = 기초검사_pic_v.pic6;
+		_이상부위_내부3.src = 기초검사_pic_v.pic7;
+		_이상부위_내부4.src = 기초검사_pic_v.pic8;
+		_육안검사_내부_결과2.innerHTML = 외부검사사유;
 	}
+}
 
-	var DateTime = luxon.DateTime;
-	var seoul = DateTime.local().setZone("Asia/Seoul");
-	var now = seoul.toString();
-
-	_작성일.innerHTML = now.substr(0, 10);
-
-	count(출하정보, { 관리번호: _management_id.value });
-	await delay();
-
-	if (출하정보_cnt > 0) {
-		find(출하정보, _management_id.value);
-		await delay();
-
-		_팩전압.innerHTML =
-			출하정보_v.배터리팩전압 == undefined ? "" : 출하정보_v.배터리팩전압;
-
-		_팩전압값.innerHTML =
-			출하정보_v.배터리팩_측정값 == undefined
-				? ""
-				: 출하정보_v.배터리팩_측정값;
-
-		_셀전압편차.innerHTML =
-			출하정보_v.셀전압편차 == undefined ? "" : 출하정보_v.셀전압편차;
-
-		_셀전압편차값.innerHTML =
-			출하정보_v.셀전압편차_측정값 == undefined
-				? ""
-				: 출하정보_v.셀전압편차_측정값;
-
-		_릴레이제어.innerHTML =
-			출하정보_v.릴레이_강제구동 == undefined
-				? ""
-				: 출하정보_v.릴레이_강제구동;
+function showTable(tableId) {
+	// 모든 테이블을 숨김
+	const tables = document.querySelectorAll(".tableAll");
+	for (let i = 0; i < tables.length; i++) {
+		tables[i].style.display = "none";
 	}
+	// 선택된 테이블만 표시
 }
 
 async function 기초보고서_save(type = 0) {

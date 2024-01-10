@@ -296,6 +296,19 @@
               </div>
             </td>
           </tr>
+          <tr id="_절연검사P_box">
+            <td>
+              <label for="_절연검사판정">절연 검사 B(+) 판정</label>
+            </td>
+            <td>
+              <input type="text" id="_절연검사P판정" size="40" required />
+            </td>
+            <td class="process__img">
+              <div class="images">
+                <img id="img13" width="100vw" height="100vh" />
+              </div>
+            </td>
+          </tr>
           <tr id="_절연검사N_box">
             <td>
               <label for="_절연검사N">절연 검사 B(-)(MΩ)</label>
@@ -305,7 +318,20 @@
             </td>
             <td class="process__img">
               <div class="images">
-                <img id="img13" width="100vw" height="100vh" />
+                <img id="img14" width="100vw" height="100vh" />
+              </div>
+            </td>
+          </tr>
+          <tr id="_절연검사N판정_box">
+            <td>
+              <label for="_절연검사N판정">절연 검사 B(-)판정</label>
+            </td>
+            <td>
+              <input type="text" id="_절연검사N판정" size="40" required />
+            </td>
+            <td class="process__img">
+              <div class="images">
+                <img id="img15" width="100vw" height="100vh" />
               </div>
             </td>
           </tr>
@@ -318,7 +344,7 @@
             </td>
             <td class="process__img">
               <div class="images">
-                <img id="img14" width="100vw" height="100vh" />
+                <img id="img16" width="100vw" height="100vh" />
               </div>
             </td>
           </tr>
@@ -329,6 +355,11 @@
             <td>
               <input type="text" id="_통신검사_DTC코드2" size="40" required />
             </td>
+            <td class="process__img">
+              <div class="images">
+                <img id="img17" width="100vw" height="100vh" />
+              </div>
+            </td>
           </tr>
           <tr>
             <td>
@@ -337,12 +368,33 @@
             <td>
               <input type="text" id="_통신검사_DTC코드3" size="40" required />
             </td>
+            <td class="process__img">
+              <div class="images">
+                <img id="img18" width="100vw" height="100vh" />
+              </div>
+            </td>
           </tr>
           <tr>
             <td colspan="2" style="text-align: center">
               <button onClick="_기초검사_add_DTC_Code();">
                 Add DTC Code(+)
               </button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_통신검사_팩전압판정">통신검사 팩전압 판정</label>
+            </td>
+            <td>
+              <input type="text" id="_통신검사_팩전압판정" size="40" required />
+              <select
+                name="language"
+                onchange="_통신검사_팩전압_콤보박스(this);"
+              >
+                <option value="">---</option>
+                <option value="OK">OK</option>
+                <option value="NG">NG</option>
+              </select>
             </td>
           </tr>
           <tr>
@@ -355,6 +407,22 @@
           </tr>
           <tr>
             <td>
+              <label for="_통신검사_셀전압편차판정">통신검사 셀전압 편차 판정</label>
+            </td>
+            <td>
+              <input type="text" id="_통신검사_셀전압편차판정" size="40" required />
+              <select
+                name="language"
+                onchange="_통신검사_셀전압편차_콤보박스(this);"
+              >
+                <option value="">---</option>
+                <option value="OK">OK</option>
+                <option value="NG">NG</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>
               <label for="_통신검사_셀전압편차">통신검사 셀전압 편차(mV)</label>
             </td>
             <td>
@@ -363,7 +431,7 @@
           </tr>
           <tr>
             <td>
-              <label for="_통신검사_릴레이구동">통신검사 릴레이 구동</label>
+              <label for="_통신검사_릴레이구동">통신검사 릴레이 구동 판정</label>
             </td>
             <td>
               <input type="text" id="_통신검사_릴레이구동" size="40" required />
@@ -376,6 +444,14 @@
                 <option value="OK">OK</option>
                 <option value="NG">NG</option>
               </select>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_통신검사_릴레이구동사유">통신검사 릴레이 구동 사유</label>
+            </td>
+            <td>
+              <input type="text" id="_통신검사_릴레이구동사유" size="40" required />
             </td>
           </tr>
           <tr>
@@ -483,10 +559,26 @@
           </tr>
           <tr>
             <td>
+              <label for="_필드현상">필드 현상</label>
+            </td>
+            <td>
+              <input type="text" id="_필드현상" size="40" required />
+            </td>
+          </tr>
+          <tr>
+            <td>
               <label for="_센터진단내용">센터 진단내용</label>
             </td>
             <td>
               <input type="text" id="_센터진단내용" size="40" required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_AS센터조치">센터 조치내용</label>
+            </td>
+            <td>
+              <input type="text" id="_AS센터조치" size="40" required />
             </td>
           </tr>
           <tr>
@@ -529,7 +621,9 @@
       const _기밀검사_냉각유로 = document.getElementById("_기밀검사_냉각유로");
       const _기밀검사_냉각유로_특이사항 = document.getElementById("_기밀검사_냉각유로");
       const _절연검사P = document.getElementById("_절연검사P");
+      const _절연검사P판정 = document.getElementById("_절연검사P판정");
       const _절연검사N = document.getElementById("_절연검사N");
+      const _절연검사N판정 = document.getElementById("_절연검사N판정");
       const _토크검사_UPR_C = document.getElementById("_토크검사_UPR_C");
       const _토크검사_버스바 = document.getElementById("_통신검사_버스바");
       const _통신검사_DTC코드1 = document.getElementById("_통신검사_DTC코드1");
@@ -543,8 +637,11 @@
       const _통신검사_DTC코드9 = document.getElementById("_통신검사_DTC코드9");
       const _통신검사_DTC코드10 = document.getElementById("_통신검사_DTC코드10");
       const _통신검사_팩전압 = document.getElementById("_통신검사_팩전압");
+      const _통신검사_팩전압판정 = document.getElementById("_통신검사_팩전압판정");
       const _통신검사_셀전압편차 = document.getElementById("_통신검사_셀전압편차");
+      const _통신검사_셀전압편차판정 = document.getElementById("_통신검사_셀전압편차판정");
       const _통신검사_릴레이구동 = document.getElementById("_통신검사_릴레이구동");
+      const _통신검사_릴레이구동사유 = document.getElementById("_통신검사_릴레이구동사유");
       const _BSA생산일자 = document.getElementById("_BSA생산일자");
       const _BMA_ROM_ID = document.getElementById("_BMA_ROM_ID");
       const _고장현상코드 = document.getElementById("_고장현상코드");
@@ -556,6 +653,8 @@
       const _요청사항 = document.getElementById("_요청사항");
       const _비고 = document.getElementById("_비고");
       const _센터진단내용 = document.getElementById("_센터진단내용");
+      const _필드현상 = document.getElementById("_필드현상");
+      const _AS센터조치 = document.getElementById("_AS센터조치");
       const _검사자 = document.getElementById("_검사자");
       const _육안검사_내부_box = document.getElementById("_육안검사_내부_box");
       const _육안검사_내부_특이사항_box = document.getElementById("_육안검사_내부_box");
@@ -582,6 +681,9 @@
       const img12 = document.get.getElementById("img12");
       const img13 = document.get.getElementById("img13");
       const img14 = document.get.getElementById("img14");
+      const img15 = document.get.getElementById("img15");
+      const img16 = document.get.getElementById("img16");
+      const img17 = document.get.getElementById("img17");
     </script>
   </body>
 </html>

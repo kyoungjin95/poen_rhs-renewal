@@ -102,7 +102,9 @@ async function 기초검사_시작(is재제조 = 0) {
     _기밀검사_냉각유로.value = 기초검사_v.기밀검사_냉각유로;
     _기밀검사_냉각유로_특이사항.value = 기초검사_v.기밀검사_냉각유로_특이사항;
     _절연검사P.value = 기초검사_v.절연검사_Plus;
+    _절연검사P판정.value = 기초검사_v.절연검사_Plus판정;
     _절연검사N.value = 기초검사_v.절연검사_Minus;
+    _절연검사N판정.value = 기초검사_v.절연검사_Minus판정;
     _통신검사_DTC코드1.value = 기초검사_v.통신검사_DTC코드1;
     _통신검사_DTC코드2.value = 기초검사_v.통신검사_DTC코드2;
     _통신검사_DTC코드3.value = 기초검사_v.통신검사_DTC코드3;
@@ -142,8 +144,11 @@ async function 기초검사_시작(is재제조 = 0) {
     }
 
     _통신검사_팩전압.value = 기초검사_v.통신검사_팩전압;
+    _통신검사_팩전압판정.value = 기초검사_v.통신검사_팩전압판정;
     _통신검사_셀전압편차.value = 기초검사_v.통신검사_셀전압편차;
+    _통신검사_셀전압편차판정.value = 기초검사_v.통신검사_셀전압편차판정;
     _통신검사_릴레이구동.value = 기초검사_v.통신검사_릴레이구동;
+    _통신검사_릴레이구동사유.value = 기초검사_v.통신검사_릴레이구동사유
     _BSA생산일자.value = 기초검사_v.BSA생산일자;
     _BSA판매일자.value = 기초검사_v.BSA판매일자;
     _BSA수리일자.value = 기초검사_v.BSA수리일자;
@@ -157,6 +162,8 @@ async function 기초검사_시작(is재제조 = 0) {
     _요청사항.value = 기초검사_v.요청사항;
     _비고.value = 기초검사_v.비고;
     _센터진단내용.value = 기초검사_v.센터진단내용;
+    _필드현상.value = 기초검사_v.필드현상;
+    _AS센터조치.value = 기초검사_v.AS센터조치;
     _검사자.value = 기초검사_v.검사자;
 
     find(기초검사_pic, _management_id.value);
@@ -194,8 +201,11 @@ async function 기초검사_시작(is재제조 = 0) {
     _통신검사_DTC코드2.value = "";
     _통신검사_DTC코드3.value = "";
     _통신검사_팩전압.value = "";
+    _통신검사_팩전압판정alue = "";
     _통신검사_셀전압편차.value = "";
+    _통신검사_셀전압편차판정alue = "";
     _통신검사_릴레이구동.value = "";
+    _통신검사_릴레이구동사유.value = "";
     _BSA생산일자.value = "";
     _BSA판매일자.value = "";
     _BSA수리일자.value = "";
@@ -430,7 +440,9 @@ async function 기초검사_SAVE() {
   doc.기밀검사_냉각유로 = _기밀검사_냉각유로.value;
   doc.기밀검사_냉각유로_특이사항 = _기밀검사_냉각유로_특이사항.value;
   doc.절연검사_Plus = _절연검사P.value;
+  doc.절연검사_Plus판정 = _절연검사P판정.value;
   doc.절연검사_Minus = _절연검사N.value;
+  doc.절연검사_Minus판정 = _절연검사N판정.value;
   doc.통신검사_DTC코드1 = _통신검사_DTC코드1.value;
   doc.통신검사_DTC코드2 = _통신검사_DTC코드2.value;
   doc.통신검사_DTC코드3 = _통신검사_DTC코드3.value;
@@ -499,9 +511,12 @@ async function 기초검사_SAVE() {
     doc.통신검사_DTC코드10 = "";
   }
 
+  doc.통신검사_팩전압판정 = _통신검사_팩전압판정.value;
   doc.통신검사_팩전압 = _통신검사_팩전압.value;
+  doc.통신검사_셀전압편차판정 = _통신검사_셀전압편차판정.value;
   doc.통신검사_셀전압편차 = _통신검사_셀전압편차.value;
   doc.통신검사_릴레이구동 = _통신검사_릴레이구동.value;
+  doc.통신검사_릴레이구동사유 = _통신검사_릴레이구동사유.value;
   doc.BSA생산일자 = _BSA생산일자.value;
   doc.BSA판매일자 = _BSA판매일자.value;
   doc.BSA수리일자 = _BSA수리일자.value;
@@ -516,6 +531,8 @@ async function 기초검사_SAVE() {
   doc.요청사항 = _요청사항.value;
   doc.비고 = _비고.value;
   doc.센터진단내용 = _센터진단내용.value;
+  doc.필드현상 = _필드.value;
+  doc.AS센터조치 = _AS센터조치.value;
   doc.검사자 = _검사자.value;
 
   console.log("save data:", doc);
@@ -594,6 +611,24 @@ function _기밀검사_냉각유로_콤보박스(e) {
   const value = e.value;
 
   document.getElementById("_기밀검사_냉각유로").value = value;
+}
+
+function _통신검사_팩전압_콤보박스(e) {
+  const value = e.value;
+
+  document.getElementById("_통시검사_팩전압판정").value = value;
+}
+
+function _통신검사_셀전압_콤보박스(e) {
+  const value = e.value;
+
+  document.getElementById("_통시검사_셀전압판정").value = value;
+}
+
+function _육안검사내부_콤보박스(e) {
+  const value = e.value;
+
+  document.getElementById("_육안검사_내부").value = value;
 }
 
 function _통신검사_릴레이구동_콤보박스(e) {
