@@ -171,18 +171,16 @@ io.on('connection', async function(socket) {
 			}
 		}
 
-		if(account.login == false && col == '계정') {
-			account.login = true;
-		} else if(account.login == true && col == '계정'){
-			account.login = false;
-		}
-
 		console.log('request findOne');
 		if(account.login == false && col != '계정') return;
-
 		const result_array = await findOne(col, query, options);
 		socket.emit('find_result', col, result_array, check);
 
+		if(account.login == false && col == '계정' && result_array != null) {
+			account.login = true;
+		} else if(account.login == true && col == '계정' && result_array == null){
+			account.login = false;
+		}
 		////logger.info('worker:'+ worker + ' find col:' + col +'query:'+ JSON.stringify(query));
 	});
 

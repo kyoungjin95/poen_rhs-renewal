@@ -271,15 +271,25 @@ const 기초검사_doc = {
   절연검사_Minus: "",
   절연검사_Minus판정: "",
   통신검사_DTC코드1: "",
+  통신검사_DTC코드1판정: "",
   통신검사_DTC코드2: "",
+  통신검사_DTC코드2판정: "",
   통신검사_DTC코드3: "",
+  통신검사_DTC코드3판정: "",
   통신검사_DTC코드4: "",
+  통신검사_DTC코드4판정: "",
   통신검사_DTC코드5: "",
+  통신검사_DTC코드5판정: "",
   통신검사_DTC코드6: "",
+  통신검사_DTC코드6판정: "",
   통신검사_DTC코드7: "",
+  통신검사_DTC코드7판정: "",
   통신검사_DTC코드8: "",
+  통신검사_DTC코드8판정: "",
   통신검사_DTC코드9: "",
+  통신검사_DTC코드9판정: "",
   통신검사_DTC코드10: "",
+  통신검사_DTC코드10판정: "",
   통신검사_팩전압: "",
   통신검사_팩전압판정: "",
   통신검사_셀전압편차: "",
@@ -802,6 +812,11 @@ const 입고_pic_doc = {
   pic13: "",
   pic14: "",
   pic15: "",
+  pic16: "",
+  pic17: "",
+  pic18: "",
+  pic19: "",
+  pic20: "",
 };
 
 const 세척_pic_doc = {
@@ -821,6 +836,11 @@ const 세척_pic_doc = {
   pic13: "",
   pic14: "",
   pic15: "",
+  pic16: "",
+  pic17: "",
+  pic18: "",
+  pic19: "",
+  pic20: "",
 };
 
 const 기초검사_pic_doc = {
@@ -840,6 +860,11 @@ const 기초검사_pic_doc = {
   pic13: "",
   pic14: "",
   pic15: "",
+  pic16: "",
+  pic17: "",
+  pic18: "",
+  pic19: "",
+  pic20: "",
 };
 
 const 분해조립_pic_doc = {
@@ -859,6 +884,11 @@ const 분해조립_pic_doc = {
   pic13: "",
   pic14: "",
   pic15: "",
+  pic16: "",
+  pic17: "",
+  pic18: "",
+  pic19: "",
+  pic20: "",
 };
 
 const 성능검사_pic_doc = {
@@ -878,6 +908,11 @@ const 성능검사_pic_doc = {
   pic13: "",
   pic14: "",
   pic15: "",
+  pic16: "",
+  pic17: "",
+  pic18: "",
+  pic19: "",
+  pic20: "",
 };
 
 const EOL_pic_doc = {
@@ -897,6 +932,11 @@ const EOL_pic_doc = {
   pic13: "",
   pic14: "",
   pic15: "",
+  pic16: "",
+  pic17: "",
+  pic18: "",
+  pic19: "",
+  pic20: "",
 };
 
 const 특이사항_pic_doc = {
@@ -916,6 +956,11 @@ const 특이사항_pic_doc = {
   pic13: "",
   pic14: "",
   pic15: "",
+  pic16: "",
+  pic17: "",
+  pic18: "",
+  pic19: "",
+  pic20: "",
 };
 
 const 출하_pic_doc = {
@@ -935,6 +980,11 @@ const 출하_pic_doc = {
   pic13: "",
   pic14: "",
   pic15: "",
+  pic16: "",
+  pic17: "",
+  pic18: "",
+  pic19: "",
+  pic20: "",
 };
 
 const 반품입고_pic_doc = {
@@ -954,6 +1004,11 @@ const 반품입고_pic_doc = {
   pic13: "",
   pic14: "",
   pic15: "",
+  pic16: "",
+  pic17: "",
+  pic18: "",
+  pic19: "",
+  pic20: "",
 };
 
 const 재출하_pic_doc = {
@@ -973,6 +1028,11 @@ const 재출하_pic_doc = {
   pic13: "",
   pic14: "",
   pic15: "",
+  pic16: "",
+  pic17: "",
+  pic18: "",
+  pic19: "",
+  pic20: "",
 };
 
 const 완전분해_pic_doc = {
@@ -992,6 +1052,11 @@ const 완전분해_pic_doc = {
   pic13: "",
   pic14: "",
   pic15: "",
+  pic16: "",
+  pic17: "",
+  pic18: "",
+  pic19: "",
+  pic20: "",
 };
 
 const 폐기_pic_doc = {
@@ -1011,6 +1076,11 @@ const 폐기_pic_doc = {
   pic13: "",
   pic14: "",
   pic15: "",
+  pic16: "",
+  pic17: "",
+  pic18: "",
+  pic19: "",
+  pic20: "",
 };
 
 const 자재입출고_doc = {
@@ -1577,15 +1647,25 @@ const 기초검사_ = {
   절연검사_Minus: 1,
   절연검사_Minus판정: 1,
   통신검사_DTC코드1: 1,
+  통신검사_DTC코드1판정: 1,
   통신검사_DTC코드2: 1,
+  통신검사_DTC코드2판정: 1,
   통신검사_DTC코드3: 1,
+  통신검사_DTC코드3판정: 1,
   통신검사_DTC코드4: 1,
+  통신검사_DTC코드4판정: 1,
   통신검사_DTC코드5: 1,
+  통신검사_DTC코드5판정: 1,
   통신검사_DTC코드6: 1,
+  통신검사_DTC코드6판정: 1,
   통신검사_DTC코드7: 1,
+  통신검사_DTC코드7판정: 1,
   통신검사_DTC코드8: 1,
+  통신검사_DTC코드8판정: 1,
   통신검사_DTC코드9: 1,
+  통신검사_DTC코드9판정: 1,
   통신검사_DTC코드10: 1,
+  통신검사_DTC코드10판정: 1,
   통신검사_팩전압: 1,
   통신검사_팩전압판정: 1,
   통신검사_셀전압편차: 1,
@@ -2126,6 +2206,11 @@ const 입고_pic_ = {
   pic13: 1,
   pic14: 1,
   pic15: 1,
+  pic16: 1,
+  pic17: 1,
+  pic18: 1,
+  pic19: 1,
+  pic20: 1,
 };
 
 const 세척_pic_ = {
@@ -2146,6 +2231,11 @@ const 세척_pic_ = {
   pic13: 1,
   pic14: 1,
   pic15: 1,
+  pic16: 1,
+  pic17: 1,
+  pic18: 1,
+  pic19: 1,
+  pic20: 1,
 };
 
 const 기초검사_pic_ = {
@@ -2166,6 +2256,11 @@ const 기초검사_pic_ = {
   pic13: 1,
   pic14: 1,
   pic15: 1,
+  pic16: 1,
+  pic17: 1,
+  pic18: 1,
+  pic19: 1,
+  pic20: 1,
 };
 
 const 분해조립_pic_ = {
@@ -2186,6 +2281,11 @@ const 분해조립_pic_ = {
   pic13: 1,
   pic14: 1,
   pic15: 1,
+  pic16: 1,
+  pic17: 1,
+  pic18: 1,
+  pic19: 1,
+  pic20: 1,
 };
 
 const 성능검사_pic_ = {
@@ -2206,6 +2306,11 @@ const 성능검사_pic_ = {
   pic13: 1,
   pic14: 1,
   pic15: 1,
+  pic16: 1,
+  pic17: 1,
+  pic18: 1,
+  pic19: 1,
+  pic20: 1,
 };
 
 const EOL_pic_ = {
@@ -2226,6 +2331,11 @@ const EOL_pic_ = {
   pic13: 1,
   pic14: 1,
   pic15: 1,
+  pic16: 1,
+  pic17: 1,
+  pic18: 1,
+  pic19: 1,
+  pic20: 1,
 };
 
 const 특이사항_pic_ = {
@@ -2246,6 +2356,11 @@ const 특이사항_pic_ = {
   pic13: 1,
   pic14: 1,
   pic15: 1,
+  pic16: 1,
+  pic17: 1,
+  pic18: 1,
+  pic19: 1,
+  pic20: 1,
 };
 
 const 출하_pic_ = {
@@ -2266,6 +2381,11 @@ const 출하_pic_ = {
   pic13: 1,
   pic14: 1,
   pic15: 1,
+  pic16: 1,
+  pic17: 1,
+  pic18: 1,
+  pic19: 1,
+  pic20: 1,
 };
 
 const 반품입고_pic_ = {
@@ -2286,6 +2406,11 @@ const 반품입고_pic_ = {
   pic13: 1,
   pic14: 1,
   pic15: 1,
+  pic16: 1,
+  pic17: 1,
+  pic18: 1,
+  pic19: 1,
+  pic20: 1,
 };
 
 const 재출하_pic_ = {
@@ -2306,6 +2431,11 @@ const 재출하_pic_ = {
   pic13: 1,
   pic14: 1,
   pic15: 1,
+  pic16: 1,
+  pic17: 1,
+  pic18: 1,
+  pic19: 1,
+  pic20: 1,
 };
 
 const 완전분해_pic_ = {
@@ -2326,6 +2456,11 @@ const 완전분해_pic_ = {
   pic13: 1,
   pic14: 1,
   pic15: 1,
+  pic16: 1,
+  pic17: 1,
+  pic18: 1,
+  pic19: 1,
+  pic20: 1,
 };
 
 const 폐기_pic_ = {
@@ -2346,6 +2481,11 @@ const 폐기_pic_ = {
   pic13: 1,
   pic14: 1,
   pic15: 1,
+  pic16: 1,
+  pic17: 1,
+  pic18: 1,
+  pic19: 1,
+  pic20: 1,
 };
 
 const 자재입출고_ = {

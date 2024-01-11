@@ -1,19 +1,20 @@
 async function 기초보고서_시작() {
+	await loadPage('base/기초보고서.html');
 	_management_id.value = 관리번호;
 
-	await 기초보고서_조회(false, 차종);
+	await 기초보고서_조회(false);
 }
 
 async function 기초보고서_조회(is재제조번호 = false) {
 	if (is재제조번호 == true) {
-		findOne(BSA재제조, { 재제조번호: _재제조번호.value });
+		findOne_BSA재제조(BSA재제조, { 재제조번호: _재제조번호.value });
 		await delay();
 
 		if (BSA재제조_v != null) {
 			_management_id.value = BSA재제조_v.관리번호;
 		}
 	} else {
-		findOne(BSA재제조, { 관리번호: _관리번호.value });
+		findOne_BSA재제조(BSA재제조, { 관리번호: _management_id.value });
 		await delay();
 
 		if (BSA재제조_v != null) {
@@ -21,8 +22,6 @@ async function 기초보고서_조회(is재제조번호 = false) {
 		}
 
 	}
-
-	_재제조번호_HEAD
 
 	findOne_입고(입고, { 관리번호: _management_id.value });
 	await delay();
@@ -74,10 +73,7 @@ async function 기초보고서_조회(is재제조번호 = false) {
 				alert("차종을 확인해 주세요");
 		}
 
-	} else {
-		_차종.innerHTML = "";
-		_입고일.innerHTML = "";
-	}
+	} 
 
 	find(입고_pic, _management_id.value);
 	await delay();
@@ -95,13 +91,22 @@ async function 기초보고서_조회(is재제조번호 = false) {
 
 	var 외부검사 = '';
 	var 외부검사사유 = '';
+	var 내부검사 = '';
+	var 내부검사사유 = '';
 	var 케이스 = '';
+	var 케이스감압량 = '';
+	var 냉각유로 = '';
+	var 냉각유로감압량 = '';
 	var 부품정보유무 = 'NG';
+	var 절연검사_B_P = '';
+	var 절연검사_B_N = '';
+	var 절연검사_B_P판정 = '';
+	var 절연검사_B_N판정 = '';
 
-	findOne_부품정보(부품정보, { 관리번호 : _management_id.value });
+	find(부품정보_list, _management_id.value);
 	await delay();
 
-	if(부품정보_v != null) {
+	if(부품정보_list_v != null) {
 		부품정보유무 = 'OK';
 	}
 
@@ -156,6 +161,17 @@ async function 기초보고서_조회(is재제조번호 = false) {
 		_센터조치.innerHTML = 기초검사_v.AS센터조치;
 		_작성자.innerHTML = worker;
 		_작성일.innerHTML = 기초검사_v.공정완료일;
+
+		내부검사 = 기초검사_v.육안검사_내부;
+		내부검사사유 = 기초검사_v.육안검사_내부_특이사항;
+
+		냉각유로 = 기초검사_v.기밀검사_냉각유로;
+		냉각유로감압량 = 기초검사_v.기밀검사_냉각유로_특이사항;
+
+		절연검사_B_P = 기초검사_v.절연검사_Plus;
+		절연검사_B_P판정 = 기초검사_v.절연검사_Plus판정;
+		절연검사_B_N = 기초검사_v.절연검사_Minus;
+		절연검사_B_N판정 = 기초검사_v.절연검사_Minus판정;
 
 		switch(차종) {
 			case 'CS' :
@@ -423,20 +439,24 @@ async function 기초보고서_조회(is재제조번호 = false) {
 
 	if (세척_pic_v != null) {
 		//육안검사 외부1
-		_top_pic.src = 세척_pic_v.pic1;
-		_front_pic.src = 세척_pic_v.pic2;
-		_left_pic.src = 세척_pic_v.pic3;
-		_bottom_pic.src = 세척_pic_v.pic4;
-		_rear_pic.src = 세척_pic_v.pic5;
-		_right_pic.src = 세척_pic_v.pic6;
+		_top_pic.src = 세척_pic_v.pic3;
+		_front_pic.src = 세척_pic_v.pic4;
+		_left_pic.src = 세척_pic_v.pic5;
+		_bottom_pic.src = 세척_pic_v.pic6;
+		_rear_pic.src = 세척_pic_v.pic7;
+		_right_pic.src = 세척_pic_v.pic8;
 		_육안검사_결과.innerHTML = 외부검사;
 
 		//육안검사 외부 2
-		_이상부위_외부1.src = 세척_pic_v.pic7;
-		_이상부위_외부2.src = 세척_pic_v.pic8;
-		_이상부위_외부3.src = 세척_pic_v.pic9;
-		_이상부위_외부4.src = 세척_pic_v.pic10;
+		_이상부위_외부1.src = 세척_pic_v.pic9;
+		_이상부위_외부2.src = 세척_pic_v.pic10;
+		_이상부위_외부3.src = 세척_pic_v.pic11;
+		_이상부위_외부4.src = 세척_pic_v.pic12;
 		_육안검사_결과2.innerHTML = 외부검사사유;
+
+		//기밀검사-케이스
+		_측정사진1.src = 세척_pic_v.pic1;
+		_측정값사진1.src = 세척_pic_v.pic2;
 	}
 
 	find(기초검사_pic, _management_id.value);
@@ -448,15 +468,38 @@ async function 기초보고서_조회(is재제조번호 = false) {
 		_BMU.src = 기초검사_pic_v.pic2;
 		_CMU.src = 기초검사_pic_v.pic3;
 		_PRA.src = 기초검사_pic_v.pic4;
-		_육안검사_내부_결과.innerHTML = 외부검사;
+		_육안검사_내부_결과.innerHTML = 내부검사;
 
 		//육안검사 내부 2
 		_이상부위_내부1.src = 기초검사_pic_v.pic5;
 		_이상부위_내부2.src = 기초검사_pic_v.pic6;
 		_이상부위_내부3.src = 기초검사_pic_v.pic7;
 		_이상부위_내부4.src = 기초검사_pic_v.pic8;
-		_육안검사_내부_결과2.innerHTML = 외부검사사유;
+		_육안검사_내부_결과2.innerHTML = 내부검사사유;
+
+		//기밀검사 -냉각유로
+		_측정사진2.src = 기초검사_pic_v.pic9;
+		_측정값사진2.src = 기초검사_pic_v.pic10;
+
+		//절연검사
+		_절연측정사진1.src = 기초검사_pic_v.pic11;
+		_절연측정값사진1.src = 기초검사_pic_v.pic12;
+		_절연측정사진2.src = 기초검사_pic_v.pic13;
+		_절연측정값사진2.src = 기초검사_pic_v.pic14;
+
+		//CAN통신검사
+		_CAN현재.src = 기초검사_pic_v.pic15;
+		_CAN진단.src = 기초검사_pic_v.pic16;
+		_CAN과거.src = 기초검사_pic_v.pic17;
 	}
+
+	//기밀검사 - 케이스
+	_케이스.innerHTML = 케이스 + '/' + 케이스감압량;
+	_냉각유로.innerHTML = 냉각유로 + '/' + 냉각유로감압량;
+
+	//절연저항검사
+	_절연PRA_P.innerHTML = 절연검사_B_P + '/' + 절연검사_B_P판정;
+	_절연PRA_N.innerHTML = 절연검사_B_N + '/' + 절연검사_B_N판정;
 }
 
 function showTable(tableId) {
@@ -482,6 +525,8 @@ async function 기초보고서_save(type = 0) {
 	doc.육안검사내부 = _cb육안검사내부.checked;
 	doc.육안검사내부상세 = _cb육안검사내부상세.checked;
 	doc.기밀검사 = _cb기밀검사.checked;
+	doc.절연저항검사 = _cb절연저항검사.checked;
+	doc.CAN통신검사 = _cbCAN통신검사.checked;
 
 	update_보고서(기초보고서, doc);
 	await delay();
@@ -519,6 +564,20 @@ async function 기초보고서_save(type = 0) {
 	if (type == "기밀") {
 		type = document.getElementById("_기밀검사");
 		file_name = "기초보고서_기밀검사" + _date + ".pdf";
+		_width = 4200;
+		_height = 2000;
+	}
+
+	if (type == "절연") {
+		type = document.getElementById("_절연저항검사");
+		file_name = "기초보고서_절연검사" + _date + ".pdf";
+		_width = 4200;
+		_height = 2000;
+	}
+
+	if (type == "CAN") {
+		type = document.getElementById("_CAN통신검사");
+		file_name = "기초보고서_CAN통신검사" + _date + ".pdf";
 		_width = 4200;
 		_height = 2000;
 	}

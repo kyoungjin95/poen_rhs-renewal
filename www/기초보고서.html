@@ -1505,6 +1505,154 @@
         </tr>
       </table>
     </div>
+    <div id="_절연저항검사" class="check-all">
+      <div class="report__tit">
+        <h3>▣ 절연 저항 검사</h3>
+        <input type="checkbox" id="_cb절연저항검사" checked />
+      </div>
+      <table border="2" class="all">
+        <!-- <caption>
+          절연검사
+        </caption> -->
+        <colgroup>
+          <col class="col_1" />
+          <col class="col_2" />
+          <col class="col_3" />
+          <col class="col_4" />
+        </colgroup>
+        <thead>
+          <tr class="title">
+            <th>항목</th>
+            <th colspan="4">절연 저항 검사</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">장비</th>
+            <td colspan="4">HIOKI ST5520</td>
+          </tr>
+          <tr>
+            <th scope="row">평가방법</th>
+            <td colspan="4" class="td1">
+              하부케이스 어스볼트부에(-) 연결, PRA측 배터리(+), (-) 절연저항 측정<br />
+              DC 500V인가, 30초 후 결과값 확인<br />
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">판정기준</th>
+            <td colspan="4" style="color: blue">
+              측정 결과 (+)100MΩ, (-)100MΩ 이상 합격
+            </td>
+          </tr>
+          <tr>
+            <th rowspan="3" scope="row">측정결과</th>
+	    <td colspan="2"> PRA (+) ~ 샤시</td>
+	    <td colspan="2"> PRA (-) ~ 샤시</td>
+	  </tr>
+	  <tr>
+            <td class="photoName">장비셋팅 <br />전체 사진</td>
+            <td class="photo">
+              <img id="_절연측정사진1" width="100%" height="100%" />
+            </td>
+            <td class="photoName">장비셋팅 <br />전체 사진</td>
+            <td class="photo">
+              <img id="_절연측정사진2" width="100%" height="100%" />
+            </td>
+          </tr>
+          <tr>
+            <td class="photoName">측정값 <br />확대 사진</td>
+            <td class="photo">
+              <img id="_절연측정값사진1" width="100%" height="100%" />
+            </td>
+            <td class="photoName">측정값 <br />확대 사진</td>
+            <td class="photo">
+              <img id="_절연측정값사진2" width="100%" height="100%" />
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">합부판정</th>
+            <td colspan="2" class="result" id="_절연PRA_P">
+              <span class="result-vlaue r1">OK</span>
+              <strong> &sol;</strong>
+              <span class="result-vlaue r2">NG</span>
+              <stdrong> &sol;</stdrong>
+              <span class="result-vlaue r3">미실시(이유:)</span>
+            </td>
+            <td colspan="2" class="result" id="_절연PRA_N">
+              <span class="result-vlaue r1">OK</span>
+              <strong> &sol;</strong>
+              <span class="result-vlaue r2">NG</span>
+              <strong> &sol;</strong>
+              <span class="result-vlaue r3">미실시(이유:)</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <table class="bottom" width="100%">
+        <tr>
+          <td class="bottom" align="left">FQ850-05</td>
+          <td class="bottom" align="center">A4(297x210mm)</td>
+          <td class="bottom" align="right">
+            Positive <font color="skyblue">En</font>ergy
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div id="_CAN통신검사" class="check-all">
+      <div class="report__tit">
+        <h3>▣ CAN 통신 검사 - G-SCAN 진단결과</h3>
+        <input type="checkbox" id="_cbCAN통신검사" checked />
+      </div>
+      <table border="2" class="all">
+        <!-- <caption>
+          CAN 통신 검사
+        </caption> -->
+        <colgroup>
+          <col class="col_1" />
+          <col class="col_2" />
+          <col class="col_3" />
+          <col class="col_4" />
+        </colgroup>
+        <thead>
+          <tr class="title">
+            <th>항목</th>
+            <th colspan="4">G-SCAN 진단</th>
+          </tr
+        </thead>
+        <tbody>
+          <tr>
+            <th rowspan="3" scope="row">진단결과</th>
+	    <td colspan="2"> 고장코드 진단</td>
+	    <td colspan="2"> 센서데이터 진단</td>
+	  </tr>
+	  <tr>
+            <td colspan="2" class="photo">
+              <img id="_CAN현재" width="100%" height="100%" />
+            </td>
+            <td colspan="2" rowspan="2" class="photo">
+              <img id="_CAN진단" width="100%" height="100%" />
+            </td>
+	  </tr>
+	  <tr>
+            <td colspan="2" class="photo">
+              <img id="_CAN과거" width="100%" height="100%" />
+            </td>
+          </tr>
+      </table>
+    </div>
+    <div>
+      <table class="bottom" width="100%">
+        <tr>
+          <td class="bottom" align="left">FQ850-05</td>
+          <td class="bottom" align="center">A4(297x210mm)</td>
+          <td class="bottom" align="right">
+            Positive <font color="skyblue">En</font>ergy
+          </td>
+        </tr>
+      </table>
+    </div>
     <div>
       <canvas id="_canvas"></canvas>
     </div>
@@ -1518,7 +1666,7 @@
             <input
               type="text"
               id="_management_id"
-              value="조회 버튼을 누르세요"
+              value=""
               size="40"
               required
             />
@@ -1533,7 +1681,7 @@
             <input
               type="text"
               id="_재제조번호"
-              value="조회 버튼을 누르세요"
+              value=""
               size="40"
               required
             />
@@ -1557,6 +1705,8 @@
       <button onClick="기초보고서_save('육내');">육안검사내부</button>
       <button onClick="기초보고서_save('육내상');">육안검사내부 상세</button>
       <button onClick="기초보고서_save('기밀');">기밀검사</button>
+      <button onClick="기초보고서_save('절연');">절연저항검사</button>
+      <button onClick="기초보고서_save('CAN');">CAN통신검사</button>
     </div>
     <script>
       var _차종 = document.getElementById("_차종");
@@ -1838,12 +1988,28 @@
       var _케이스 = document.getElementById('_케이스');
       var _냉각유로 = document.getElementById('_냉각유로');
 
+      //절연저항검사
+      var _절연측정사진1 = document.getElementById('_절연측정사진1');
+      var _절연측정사진2 = document.getElementById('_절연측정사진1');
+      var _절연측정값사진1 = document.getElementById('_절연측정값사진1');
+      var _절연측정값사진1 = document.getElementById('_절연측정값사진1');
+      var _절연PRA_P = document.getElementById('_절연PRA_P');
+      var _절연PRA_N = document.getElementById('_절연PRA_N');
+
+      //CAN통신검사
+      var _CAN현재 = document.getElementById('_CAN현재');
+      var _CAN진단 = document.getElementById('_CAN진단');
+      var _CAN과거 = document.getElementById('_CAN과거');
+
+      //checkbox
       var _cb기초보고서 = document.getElementById("_cb기초보고서");
       var _육안검사외부 = document.getElementById("_cb육안검사외부");
       var _육안검사외부상세 = document.getElementById("_cb육안검사외부상세");
       var _육안검사내부 = document.getElementById("_cb육안검사내부");
       var _육안검사내부상세 = document.getElementById("_cb육안검사내부상세");
       var _기밀검사 = document.getElementById("_cb기밀검사");
+      var _절연저항검사 = document.getElementById("_cb절연저항검사");
+      var _CAN통신검사 = document.getElementById("_cbCAN통신검사");
 
     </script>
   </body>
