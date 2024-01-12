@@ -106,6 +106,7 @@ async function 기초검사_시작(is재제조 = 0) {
     _절연검사N.value = 기초검사_v.절연검사_Minus;
     _절연검사N판정.value = 기초검사_v.절연검사_Minus판정;
     _통신검사_DTC코드1.value = 기초검사_v.통신검사_DTC코드1;
+    _통신검사_DTC코드1판정.value = 기초검사_v.통신검사_DTC코드1판정;
     _통신검사_DTC코드2.value = 기초검사_v.통신검사_DTC코드2;
     _통신검사_DTC코드3.value = 기초검사_v.통신검사_DTC코드3;
     if (기초검사_v.통신검사_DTC코드4 != "") {
@@ -203,6 +204,7 @@ async function 기초검사_시작(is재제조 = 0) {
     _절연검사P.value = "";
     _절연검사N.value = "";
     _통신검사_DTC코드1.value = "";
+    _통신검사_DTC코드1판정.value = "";
     _통신검사_DTC코드2.value = "";
     _통신검사_DTC코드3.value = "";
     _통신검사_팩전압.value = "";
@@ -454,6 +456,7 @@ async function 기초검사_SAVE() {
   doc.절연검사_Minus = _절연검사N.value;
   doc.절연검사_Minus판정 = _절연검사N판정.value;
   doc.통신검사_DTC코드1 = _통신검사_DTC코드1.value;
+  doc.통신검사_DTC코드1판정 = _통신검사_DTC코드1판정.value;
   doc.통신검사_DTC코드2 = _통신검사_DTC코드2.value;
   doc.통신검사_DTC코드3 = _통신검사_DTC코드3.value;
   var oCurrentRow;
