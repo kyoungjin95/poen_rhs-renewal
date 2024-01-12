@@ -148,7 +148,7 @@ async function 기초검사_시작(is재제조 = 0) {
     _통신검사_셀전압편차.value = 기초검사_v.통신검사_셀전압편차;
     _통신검사_셀전압편차판정.value = 기초검사_v.통신검사_셀전압편차판정;
     _통신검사_릴레이구동.value = 기초검사_v.통신검사_릴레이구동;
-    _통신검사_릴레이구동사유.value = 기초검사_v.통신검사_릴레이구동사유
+    _통신검사_릴레이구동사유.value = 기초검사_v.통신검사_릴레이구동사유;
     _BSA생산일자.value = 기초검사_v.BSA생산일자;
     _BSA판매일자.value = 기초검사_v.BSA판매일자;
     _BSA수리일자.value = 기초검사_v.BSA수리일자;
@@ -184,6 +184,11 @@ async function 기초검사_시작(is재제조 = 0) {
       img12.src = 기초검사_pic_v.pic12;
       img13.src = 기초검사_pic_v.pic13;
       img14.src = 기초검사_pic_v.pic14;
+      img15.src = 기초검사_pic_v.pic15;
+      img16.src = 기초검사_pic_v.pic16;
+      img17.src = 기초검사_pic_v.pic17;
+      img18.src = 기초검사_pic_v.pic18;
+      img19.src = 기초검사_pic_v.pic19;
     }
   } else {
     _공정입고일.value = "0000-00-00T00:00";
@@ -201,9 +206,9 @@ async function 기초검사_시작(is재제조 = 0) {
     _통신검사_DTC코드2.value = "";
     _통신검사_DTC코드3.value = "";
     _통신검사_팩전압.value = "";
-    _통신검사_팩전압판정alue = "";
+    _통신검사_팩전압판정.value = "";
     _통신검사_셀전압편차.value = "";
-    _통신검사_셀전압편차판정alue = "";
+    _통신검사_셀전압편차판정.value = "";
     _통신검사_릴레이구동.value = "";
     _통신검사_릴레이구동사유.value = "";
     _BSA생산일자.value = "";
@@ -241,6 +246,11 @@ async function 기초검사_시작(is재제조 = 0) {
     img12.src = "";
     img13.src = "";
     img14.src = "";
+    img15.src = "";
+    img16.src = "";
+    img17.src = "";
+    img18.src = "";
+    img19.src = "";
   }
 
   _육안검사_내부_img.ondrop = function (evt) {
@@ -613,16 +623,33 @@ function _기밀검사_냉각유로_콤보박스(e) {
   document.getElementById("_기밀검사_냉각유로").value = value;
 }
 
+function _절연검사P_콤보박스(e) {
+  const value = e.value;
+
+  document.getElementById("_절연검사P판정").value = value;
+}
+
+function _절연검사N_콤보박스(e) {
+  const value = e.value;
+
+  document.getElementById("_절연검사N판정").value = value;
+}
+function _통신검사_DTC코드1_콤보박스(e) {
+  const value = e.value;
+
+  document.getElementById("_통신검사_DTC코드1판정").value = value;
+}
+
 function _통신검사_팩전압_콤보박스(e) {
   const value = e.value;
 
-  document.getElementById("_통시검사_팩전압판정").value = value;
+  document.getElementById("_통신검사_팩전압판정").value = value;
 }
 
 function _통신검사_셀전압_콤보박스(e) {
   const value = e.value;
 
-  document.getElementById("_통시검사_셀전압판정").value = value;
+  document.getElementById("_통신검사_셀전압편차판정").value = value;
 }
 
 function _육안검사내부_콤보박스(e) {
@@ -648,16 +675,7 @@ function _기초검사_add_DTC_Code() {
   if (code_no > 10) return false;
 
   oCurrentRow = tb.insertRow(rowIcnt);
-  var insert_string =
-    '<td><label for="_통신검사_DTC코드"' +
-    code_no +
-    "><b>통신검사 DTC코드 " +
-    code_no +
-    '</b></label></td><td><input type="text" id="_통신검사_DTC코드' +
-    code_no +
-    '" size="40" required></td><td><button onClick="_기초검사_delete_row(' +
-    rowIcnt +
-    ');">삭제</button></td>';
+  var insert_string = '<td><label for="_통신검사_DTC코드"' + code_no + "><b>통신검사 DTC코드 " + code_no + '</b></label></td><td><input type="text" id="_통신검사_DTC코드' + code_no + '" size="40" required></td><td><button onClick="_기초검사_delete_row(' + rowIcnt + ');">삭제</button></td>';
   console.log(insert_string);
   oCurrentRow.innerHTML = insert_string;
   기초검사_DTC_count++;
@@ -754,36 +772,36 @@ async function 기초검사_list() {
     columns: [
       { title: "ID", field: "_id", sorter: "string", width: "180" },
       { title: "관리번호", field: "관리번호", sorter: "string", width: "180" },
-      { title: "재제조번호", field: "재제조번호", sorter: "string", width: "180", },
+      { title: "재제조번호", field: "재제조번호", sorter: "string", width: "180" },
       { title: "구분", field: "구분", sorter: "string", width: "180" },
       { title: "차종", field: "차종", sorter: "string", width: "180" },
       { title: "품번", field: "품번", sorter: "string", width: "180" },
       { title: "RO_no", field: "RO_no", sorter: "string", width: "180" },
       { title: "공정단계", field: "공정단계", sorter: "string", width: "180" },
       { title: "소재지", field: "소재지", sorter: "string", width: "180" },
-      { title: "적재No", field: "적재No", sorter: "string", visible: true, width: "180", },
-      { title: "입고", field: "입고", sorter: "string", visible: true, width: "180", },
-      { title: "제조투입", field: "제조투입", sorter: "string", visible: true, width: "180", },
-      { title: "세척투입일", field: "세척투입일", sorter: "string", width: "180", },
-      { title: "세척", field: "세척", sorter: "string", visible: true, width: "180", },
-      { title: "기초검사투입일", field: "기초검사투입일", sorter: "string", width: "180", },
-      { title: "기초검사", field: "기초검사", sorter: "string", visible: true, width: "180", },
-      { title: "분해조립투입일", field: "분해조립투입일", sorter: "string", width: "180", },
-      { title: "분해조립", field: "분해조립", sorter: "string", visible: true, width: "180", },
-      { title: "성능검사투입일", field: "성능검사투입일", sorter: "string", width: "180", },
-      { title: "성능검사", field: "성능검사", sorter: "string", visible: true, width: "180", },
-      { title: "EOL투입일", field: "EOL투입일", sorter: "string", width: "180", },
-      { title: "EOL", field: "EOL", sorter: "string", visible: true, width: "180", },
+      { title: "적재No", field: "적재No", sorter: "string", visible: true, width: "180" },
+      { title: "입고", field: "입고", sorter: "string", visible: true, width: "180" },
+      { title: "제조투입", field: "제조투입", sorter: "string", visible: true, width: "180" },
+      { title: "세척투입일", field: "세척투입일", sorter: "string", width: "180" },
+      { title: "세척", field: "세척", sorter: "string", visible: true, width: "180" },
+      { title: "기초검사투입일", field: "기초검사투입일", sorter: "string", width: "180" },
+      { title: "기초검사", field: "기초검사", sorter: "string", visible: true, width: "180" },
+      { title: "분해조립투입일", field: "분해조립투입일", sorter: "string", width: "180" },
+      { title: "분해조립", field: "분해조립", sorter: "string", visible: true, width: "180" },
+      { title: "성능검사투입일", field: "성능검사투입일", sorter: "string", width: "180" },
+      { title: "성능검사", field: "성능검사", sorter: "string", visible: true, width: "180" },
+      { title: "EOL투입일", field: "EOL투입일", sorter: "string", width: "180" },
+      { title: "EOL", field: "EOL", sorter: "string", visible: true, width: "180" },
       { title: "출하검사", field: "출하검사", sorter: "string", width: "180" },
       { title: "납품처", field: "납품처", sorter: "string", width: "180" },
       { title: "출하", field: "출하", sorter: "string", width: "180" },
       { title: "반품입고", field: "반품입고", sorter: "string", width: "180" },
       { title: "재출하", field: "재출하", sorter: "string", width: "180" },
       { title: "완전분해", field: "완전분해", sorter: "string", width: "180" },
-      { title: "완전분해사유", field: "완전분해사유", sorter: "string", width: "180", },
+      { title: "완전분해사유", field: "완전분해사유", sorter: "string", width: "180" },
       { title: "폐기", field: "폐기", sorter: "string", width: "180" },
       { title: "폐기사유", field: "폐기사유", sorter: "string", width: "180" },
-      { title: "마지막충전일", field: "마지막충전일", sorter: "string", width: "180", },
+      { title: "마지막충전일", field: "마지막충전일", sorter: "string", width: "180" },
       { title: "출하예약", field: "출하예약", sorter: "string", width: "180" },
       { title: "렉번호", field: "렉번호", sorter: "string", width: "180" },
     ],
@@ -796,36 +814,26 @@ async function 기초검사_list() {
 
     await sleep(1);
 
-    var yes = confirm(
-      "선택한 BSA로 기초검사 공정 정보입력을 시작하시겠습니까?"
-    );
+    var yes = confirm("선택한 BSA로 기초검사 공정 정보입력을 시작하시겠습니까?");
     if (yes != true) return;
 
     기초검사_시작();
   });
 
   //Update filters on value change
-  document
-    .getElementById("filter-field")
-    .addEventListener("change", 기초검사_updateFilter);
-  document
-    .getElementById("filter-type")
-    .addEventListener("change", 기초검사_updateFilter);
-  document
-    .getElementById("filter-value")
-    .addEventListener("keyup", 기초검사_updateFilter);
+  document.getElementById("filter-field").addEventListener("change", 기초검사_updateFilter);
+  document.getElementById("filter-type").addEventListener("change", 기초검사_updateFilter);
+  document.getElementById("filter-value").addEventListener("keyup", 기초검사_updateFilter);
 
   //Clear filters on "Clear Filters" button click
-  document
-    .getElementById("filter-clear")
-    .addEventListener("click", function () {
-      var fieldEl = document.getElementById("filter-field");
-      var typeEl = document.getElementById("filter-type");
-      var valueEl = document.getElementById("filter-value");
-      fieldEl.value = "";
-      typeEl.value = "=";
-      valueEl.value = "";
+  document.getElementById("filter-clear").addEventListener("click", function () {
+    var fieldEl = document.getElementById("filter-field");
+    var typeEl = document.getElementById("filter-type");
+    var valueEl = document.getElementById("filter-value");
+    fieldEl.value = "";
+    typeEl.value = "=";
+    valueEl.value = "";
 
-      기초검사_list_table.clearFilter();
-    });
+    기초검사_list_table.clearFilter();
+  });
 }

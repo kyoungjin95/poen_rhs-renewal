@@ -388,7 +388,18 @@ td.process__btn {
   border-bottom: none;
   border-left: 1px solid #ddd;
 }
-
+.기초검사 ._항목,
+.세척 ._항목 {
+  border-right: 1px solid #ddd;
+}
+.기초검사 .tb td,
+.세척 .tb td {
+  border-left: none;
+}
+.기초검사 .once,
+.세척 .once {
+  border-left: 1px solid #ddd !important;
+}
 .분해조립 .tb .plus,
 .분해조립 .tb .minus {
   text-align: center;

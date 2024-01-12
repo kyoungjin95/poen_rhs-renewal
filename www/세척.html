@@ -74,22 +74,16 @@
             <col class="col_3" width="10%" />
           </colgroup>
           <tr>
-            <td>
+            <td class="_항목">
               <label for="_management_id">관리번호</label>
             </td>
             <td>
-              <input
-                type="text"
-                id="_management_id"
-                value=""
-                size="40"
-                required
-              />
+              <input type="text" id="_management_id" value="" size="40" required />
               <button onClick="세척_시작(0);">조 회</button>
             </td>
           </tr>
           <tr>
-            <td>
+            <td class="_항목">
               <label for="_재제조번호">재제조번호</label>
             </td>
             <td>
@@ -98,7 +92,7 @@
             </td>
           </tr>
           <tr>
-            <td>
+            <td class="_항목">
               <label for="_RO_no">RO No.</label>
             </td>
             <td>
@@ -107,7 +101,7 @@
             </td>
           </tr>
           <tr>
-            <td>
+            <td class="_항목">
               <label for="_구분">구분</label>
             </td>
             <td>
@@ -115,7 +109,7 @@
             </td>
           </tr>
           <tr>
-            <td>
+            <td class="_항목">
               <label for="_차종">차종</label>
             </td>
             <td>
@@ -123,7 +117,7 @@
             </td>
           </tr>
           <tr>
-            <td>
+            <td class="_항목">
               <label for="_품번">품번</label>
             </td>
             <td>
@@ -131,48 +125,28 @@
             </td>
           </tr>
           <tr>
-            <td>
+            <td class="_항목">
               <label for="_공정입고일">공정 입고일</label>
             </td>
             <td>
-              <input
-                type="datetime-local"
-                id="_공정입고일"
-                value="0000-00-00T00:00"
-                size="40"
-                required
-              />
+              <input type="datetime-local" id="_공정입고일" value="0000-00-00T00:00" size="40" required />
             </td>
           </tr>
           <tr>
-            <td>
+            <td class="_항목">
               <label for="_공정완료일">공정 완료일</label>
             </td>
             <td>
-              <input
-                type="datetime-local"
-                id="_공정완료일"
-                value="0000-00-00T00:00"
-                size="40"
-                required
-              />
+              <input type="datetime-local" id="_공정완료일" value="0000-00-00T00:00" size="40" required />
             </td>
           </tr>
           <tr>
-            <td>
+            <td class="_항목">
               <label for="_어퍼케이스재사용가능">어퍼케이스 재사용가능</label>
             </td>
             <td colspan="2">
-              <input
-                type="text"
-                id="_어퍼케이스재사용가능"
-                size="40"
-                required
-              />
-              <select
-                name="language"
-                onchange="_어퍼케이스재사용가능_콤보박스(this);"
-              >
+              <input type="text" id="_어퍼케이스재사용가능" size="40" required />
+              <select name="language" onchange="_어퍼케이스재사용가능_콤보박스(this);">
                 <option value="">---</option>
                 <option value="OK">OK</option>
                 <option value="NG">NG</option>
@@ -180,48 +154,38 @@
             </td>
           </tr>
           <tr id="_기밀검사_케이스_box">
-            <td>
+            <td class="_항목">
               <label for="_기밀검사_케이스">기밀검사 케이스</label>
             </td>
             <td>
               <input type="text" id="_기밀검사_케이스" size="40" required />
-              <select
-                name="language"
-                onchange="_기밀검사_케이스_콤보박스(this);"
-              >
+              <select name="language" onchange="_기밀검사_케이스_콤보박스(this);">
                 <option value="">---</option>
                 <option value="OK">OK</option>
                 <option value="NG">NG</option>
               </select>
             </td>
-            <td class="process__img">
+            <td class="process__img once">
               <div class="images">
                 <img id="img1" width="100vw" height="100vh" />
               </div>
             </td>
           </tr>
           <tr id="_기밀검사_케이스_특이사항_box">
-            <td>
-              <label for="_기밀검사_케이스_특이사항"
-                >기밀검사 케이스 특이사항</label
-              >
+            <td class="_항목">
+              <label for="_기밀검사_케이스_특이사항">기밀검사 케이스 특이사항</label>
             </td>
             <td>
-              <input
-                type="text"
-                id="_기밀검사_케이스_특이사항"
-                size="100"
-                required
-              />
+              <input type="text" id="_기밀검사_케이스_특이사항" size="100" required />
             </td>
-            <td class="process__img">
+            <td class="process__img once">
               <div class="images">
                 <img id="img2" width="100vw" height="100vh" />
               </div>
             </td>
           </tr>
           <tr id="_육안검사_외부_box">
-            <td rowspan="2">
+            <td rowspan="2" class="_항목">
               <label for="_육안검사_외부">육안검사 외부</label>
             </td>
             <td colspan="2">
@@ -262,18 +226,11 @@
             </td>
           </tr>
           <tr id="_육안검사_외부_특이사항_box">
-            <td rowspan="2">
-              <label for="_육안검사_외부_특이사항"
-                >육안검사 외부 특이사항</label
-              >
+            <td rowspan="2" class="_항목">
+              <label for="_육안검사_외부_특이사항">육안검사 외부 특이사항</label>
             </td>
             <td colspan="2">
-              <input
-                type="text"
-                id="_육안검사_외부_특이사항"
-                size="100"
-                required
-              />
+              <input type="text" id="_육안검사_외부_특이사항" size="100" required />
             </td>
           </tr>
           <tr id="_육안검사_외부_특이사항_img">
@@ -293,13 +250,13 @@
             </td>
           </tr>
           <tr id="_특이사항_box">
-            <td>
+            <td class="_항목">
               <label for="_특이사항">특이사항</label>
             </td>
             <td>
               <input type="text" id="_특이사항" size="100" required />
             </td>
-            <td class="process__img">
+            <td class="process__img once">
               <div class="images">
                 <img id="img13" width="100vw" height="100vh" />
               </div>
@@ -325,7 +282,7 @@
       const _기밀검사_케이스 = document.getElementById("_기밀검사_케이스");
       const _기밀검사_케이스_특이사항 = document.getElementById("_기밀검사_케이스_특이사항");
       const _육안검사_외부 = document.getElementById("_육안검사_외부");
-      const _육안검사_외부_특이사항 =document.getElementById("_육안검사_외부_특이사항");
+      const _육안검사_외부_특이사항 = document.getElementById("_육안검사_외부_특이사항");
       const _특이사항 = document.getElementById("_특이사항");
       const _기밀검사_케이스_box = document.getElementById("_기밀검사_케이스_box");
       const _기밀검사_케이스_특이사항_box = document.getElementById("_기밀검사_케이스_특이사항_box");
