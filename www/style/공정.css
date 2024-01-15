@@ -217,6 +217,7 @@ table input {
 .process-step table label {
   font-size: clamp(10px, 2vw, 22px);
   margin-left: 0;
+  line-height: 1;
 }
 .process-step table td {
   padding: 0.5vw;
@@ -232,10 +233,6 @@ table input {
   width: 100%;
   height: 100%;
 }
-/* .process-step table .process__img .images {
-  width: 100%;
-  height: 100%;
-} */
 .process-step table .process__img .images::after {
   content: "\f302";
   display: block;
@@ -250,6 +247,13 @@ table input {
 }
 .process-step table .process__img img {
   border: 2px solid #0a723f;
+}
+.입고 .process-step table .process__img .images {
+  position: relative;
+  display: inline-block;
+}
+.process-step table .process__img {
+  text-align: left;
 }
 /* 기초보고서에 들어가는 img group table css */
 .process-step table td.img-box {
@@ -386,6 +390,7 @@ td.process__btn {
 }
 .tb td {
   border-bottom: none;
+  line-height: 1;
   border-left: 1px solid #ddd;
 }
 .기초검사 ._항목,

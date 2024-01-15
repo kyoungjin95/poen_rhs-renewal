@@ -52,13 +52,7 @@
               <label for="management_id">관리번호</label>
             </td>
             <td>
-              <input
-                type="text"
-                id="_management_id"
-                value=""
-                size="40"
-                required
-              />
+              <input type="text" id="_management_id" value="" size="40" required />
               <button onClick="입고_시작();">조 회</button>
             </td>
           </tr>
@@ -67,13 +61,7 @@
               <label for="_입고일">입고일</label>
             </td>
             <td>
-              <input
-                type="datetime-local"
-                id="_입고일"
-                size="40"
-                value="0000-00-00T00:00"
-                required
-              />
+              <input type="datetime-local" id="_입고일" size="40" value="0000-00-00T00:00" required />
             </td>
           </tr>
           <tr>
@@ -151,11 +139,17 @@
             </td>
             <td>
               <input type="text" id="_Rack_번호" size="40" required />
-              <button
-                onClick="입고_save(); 창고 = '마도'; flag_racks = true;"
-              >
-                Rack 배치도
-              </button>
+              <button onClick="입고_save(); 창고 = '마도'; flag_racks = true;">Rack 배치도</button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_입고사진">입고 사진</label>
+            </td>
+            <td class="process__img once">
+              <div class="images">
+                <img id="_img1" width="100vw" height="100vh" />
+              </div>
             </td>
           </tr>
         </table>
@@ -176,6 +170,7 @@
       const _품번 = document.getElementById("_품번");
       const _RO_no = document.getElementById("_RO_no");
       const _Rack_번호 = document.getElementById("_Rack_번호");
+      const _img1 = document.getElementById("_img1");
     </script>
   </body>
 </html>
