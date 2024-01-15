@@ -21,15 +21,13 @@ async function 입고_시작() {
 	flag_입고 = false;
 	select_pos = '';
 
-	//if (_management_id.value.trim() == "조회 버튼을 누르세요")
-	//	_management_id.value = 관리번호;
-	console.log("load: ", _management_id.value);
-	if (_management_id.value.length == 0) return;
-	if ((_management_id.value == "") | (_management_id.value == "none")) return;
-
 	if(보관위치 != '') {
 		_management_id.value = 관리번호;
 	}
+
+	console.log("load: ", _management_id.value);
+	if (_management_id.value.length == 0) return;
+	if ((_management_id.value == "") | (_management_id.value == "none")) return;
 
 	관리번호 = _management_id.value;
 

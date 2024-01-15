@@ -147,7 +147,7 @@
             </td>
             <td class="process__img once">
               <div class="images">
-                <img id="img1" width="100vw" height="100vh" />
+                <img id="_img1" width="100vw" height="100vh" />
               </div>
             </td>
           </tr>
@@ -184,19 +184,19 @@
             <td colspan="2" class="process__img img-box">
               <div class="images">
                 <h3>전체사진</h3>
-                <img id="img2" />
+                <img id="_img2" />
               </div>
               <div class="images">
                 <h3>BMU</h3>
-                <img id="img3" />
+                <img id="_img3" />
               </div>
               <div class="images">
                 <h3>CMU</h3>
-                <img id="img4" />
+                <img id="_img4" />
               </div>
               <div class="images">
                 <h3>PRA</h3>
-                <img id="img5" />
+                <img id="_img5" />
               </div>
             </td>
           </tr>
@@ -211,16 +211,16 @@
           <tr id="_육안검사_내부_특이사항_img">
             <td class="process__img img-box">
               <div class="images top">
-                <img id="img6" />
+                <img id="_img6" />
               </div>
               <div class="images top">
-                <img id="img7" />
+                <img id="_img7" />
               </div>
               <div class="images top">
-                <img id="img8" />
+                <img id="_img8" />
               </div>
               <div class="images top">
-                <img id="img9" />
+                <img id="_img9" />
               </div>
             </td>
           </tr>
@@ -241,11 +241,11 @@
             <td class="process__img img-box">
               <div class="images">
                 <h3>측정 전체</h3>
-                <img id="img10" />
+                <img id="_img10" />
               </div>
               <div class="images">
                 <h3>측정값 확대</h3>
-                <img id="img11" />
+                <img id="_img11" />
               </div>
             </td>
           </tr>
@@ -258,7 +258,7 @@
             </td>
             <td class="process__img once">
               <div class="images">
-                <img id="img12" width="100vw" height="100vh" />
+                <img id="_img12" width="100vw" height="100vh" />
               </div>
             </td>
           </tr>
@@ -280,11 +280,11 @@
             <td class="process__img img-box">
               <div class="images">
                 <h3>장비세팅 전체</h3>
-                <img id="img13" />
+                <img id="_img13" />
               </div>
               <div class="images">
                 <h3>측정값 확대</h3>
-                <img id="img14" />
+                <img id="_img14" />
               </div>
             </td>
           </tr>
@@ -306,11 +306,11 @@
             <td class="process__img img-box">
               <div class="images">
                 <h3>장비세팅 전체</h3>
-                <img id="img15" />
+                <img id="_img15" />
               </div>
               <div class="images">
                 <h3>측정값 확대</h3>
-                <img id="img16" />
+                <img id="_img16" />
               </div>
             </td>
           </tr>
@@ -331,13 +331,13 @@
           <tr id="_통신검사_DTC코드1_img">
             <td colspan="2" class="process__img img-box">
               <div class="images top">
-                <img id="img17" />
+                <img id="_img17" />
               </div>
               <div class="images top">
-                <img id="img18" />
+                <img id="_img18" />
               </div>
               <div class="images top">
-                <img id="img19" />
+                <img id="_img19" />
               </div>
             </td>
           </tr>
@@ -543,7 +543,7 @@
           <button onClick="이전페이지();">이전페이지</button>
           <button onClick="기초검사_카메라시작();">사진촬영</button>
           <button onClick="flag_부품정보_list = true; loadPage('base/부품정보_list.html')">부품정보</button>
-          <button onclick="기초보고서_시작();">기초보고서</button>
+          <button onclick="기초검사_save(); 기초보고서_load();">기초보고서</button>
         </div>
       </div>
     </div>
@@ -610,25 +610,25 @@
 
       const _육안검사_내부_img = document.getElementById("_육안검사_내부_img");
       const _육안검사_내부_특이사항_img = document.getElementById("_육안검사_내부_특이사항_img");
-      const img1 = document.get.getElementById("img1");
-      const img2 = document.get.getElementById("img2");
-      const img3 = document.get.getElementById("img3");
-      const img4 = document.get.getElementById("img4");
-      const img5 = document.get.getElementById("img5");
-      const img6 = document.get.getElementById("img6");
-      const img7 = document.get.getElementById("img7");
-      const img8 = document.get.getElementById("img8");
-      const img9 = document.get.getElementById("img9");
-      const img10 = document.get.getElementById("img10");
-      const img11 = document.get.getElementById("img11");
-      const img12 = document.get.getElementById("img12");
-      const img13 = document.get.getElementById("img13");
-      const img14 = document.get.getElementById("img14");
-      const img15 = document.get.getElementById("img15");
-      const img16 = document.get.getElementById("img16");
-      const img17 = document.get.getElementById("img17");
-      const img18 = document.get.getElementById("img18");
-      const img19 = document.get.getElementById("img19");
+      const _img1 = document.get.getElementById("_img1");
+      const _img2 = document.get.getElementById("_img2");
+      const _img3 = document.get.getElementById("_img3");
+      const _img4 = document.get.getElementById("_img4");
+      const _img5 = document.get.getElementById("_img5");
+      const _img6 = document.get.getElementById("_img6");
+      const _img7 = document.get.getElementById("_img7");
+      const _img8 = document.get.getElementById("_img8");
+      const _img9 = document.get.getElementById("_img9");
+      const _img10 = document.get.getElementById("_img10");
+      const _img11 = document.get.getElementById("_img11");
+      const _img12 = document.get.getElementById("_img12");
+      const _img13 = document.get.getElementById("_img13");
+      const _img14 = document.get.getElementById("_img14");
+      const _img15 = document.get.getElementById("_img15");
+      const _img16 = document.get.getElementById("_img16");
+      const _img17 = document.get.getElementById("_img17");
+      const _img18 = document.get.getElementById("_img18");
+      const _img19 = document.get.getElementById("_img19");
     </script>
   </body>
 </html>

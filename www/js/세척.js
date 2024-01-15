@@ -110,19 +110,19 @@ async function 세척_시작(is재제조 = 0) {
     await delay();
 
     if (세척_pic_v != null) {
-      img1.src = 세척_pic_v.pic1;
-      img2.src = 세척_pic_v.pic2;
-      img3.src = 세척_pic_v.pic3;
-      img4.src = 세척_pic_v.pic4;
-      img5.src = 세척_pic_v.pic5;
-      img6.src = 세척_pic_v.pic6;
-      img7.src = 세척_pic_v.pic7;
-      img8.src = 세척_pic_v.pic8;
-      img9.src = 세척_pic_v.pic9;
-      img10.src = 세척_pic_v.pic10;
-      img11.src = 세척_pic_v.pic11;
-      img12.src = 세척_pic_v.pic12;
-      img13.src = 세척_pic_v.pic13;
+     _img1.src = 세척_pic_v.pic1;
+     _img2.src = 세척_pic_v.pic2;
+     _img3.src = 세척_pic_v.pic3;
+     _img4.src = 세척_pic_v.pic4;
+     _img5.src = 세척_pic_v.pic5;
+     _img6.src = 세척_pic_v.pic6;
+     _img7.src = 세척_pic_v.pic7;
+     _img8.src = 세척_pic_v.pic8;
+     _img9.src = 세척_pic_v.pic9;
+     _img10.src = 세척_pic_v.pic10;
+     _img11.src = 세척_pic_v.pic11;
+     _img12.src = 세척_pic_v.pic12;
+     _img13.src = 세척_pic_v.pic13;
     }
   } else {
     _공정입고일.value = "0000-00-00T00:00";
@@ -134,19 +134,19 @@ async function 세척_시작(is재제조 = 0) {
     _육안검사_외부_특이사항.value = "";
     _특이사항.value = "";
 
-    img1.src = "";
-    img2.src = "";
-    img3.src = "";
-    img4.src = "";
-    img5.src = "";
-    img6.src = "";
-    img7.src = "";
-    img8.src = "";
-    img9.src = "";
-    img10.src = "";
-    img11.src = "";
-    img12.src = "";
-    img13.src = "";
+   _img1.src = "";
+   _img2.src = "";
+   _img3.src = "";
+   _img4.src = "";
+   _img5.src = "";
+   _img6.src = "";
+   _img7.src = "";
+   _img8.src = "";
+   _img9.src = "";
+   _img10.src = "";
+   _img11.src = "";
+   _img12.src = "";
+   _img13.src = "";
 
     var DateTime = luxon.DateTime;
     var seoul = DateTime.local().setZone("Asia/Seoul");
@@ -165,11 +165,11 @@ async function 세척_시작(is재제조 = 0) {
 
       reader.onload = () => {
         const dataURL = reader.result;
-        img1.src = dataURL;
+       _img1.src = dataURL;
       };
     }
     evt.preventDefault();
-  };
+ };
 
   _기밀검사_케이스_특이사항_box.ondrop = function (evt) {
     var files = evt.dataTransfer?.files;
@@ -181,13 +181,13 @@ async function 세척_시작(is재제조 = 0) {
 
       reader.onload = () => {
         const dataURL = reader.result;
-        img2.src = dataURL;
+       _img2.src = dataURL;
       };
     }
     evt.preventDefault();
   };
 
-  _육안검사_외부_img.ondrop = function (evt) {
+  _img3.ondrop = function (evt) {
     var files = evt.dataTransfer?.files;
     if (files.length > 0) {
       console.log("drag & drop");
@@ -197,13 +197,13 @@ async function 세척_시작(is재제조 = 0) {
 
       reader.onload = () => {
         const dataURL = reader.result;
-        img3.src = dataURL;
+        _img3.src = dataURL;
       };
     }
     evt.preventDefault();
   };
 
-  _육안검사_외부_특이사항_img.ondrop = function (evt) {
+  _img4.ondrop = function (evt) {
     var files = evt.dataTransfer?.files;
     if (files.length > 0) {
       console.log("drag & drop");
@@ -213,7 +213,135 @@ async function 세척_시작(is재제조 = 0) {
 
       reader.onload = () => {
         const dataURL = reader.result;
-        img9.src = dataURL;
+        _img4.src = dataURL;
+      };
+    }
+    evt.preventDefault();
+  };
+
+  _img5.ondrop = function (evt) {
+    var files = evt.dataTransfer?.files;
+    if (files.length > 0) {
+      console.log("drag & drop");
+      const reader = new FileReader();
+
+      reader.readAsDataURL(files[0]);
+
+      reader.onload = () => {
+        const dataURL = reader.result;
+        _img5.src = dataURL;
+      };
+    }
+    evt.preventDefault();
+  };
+
+  _img6.ondrop = function (evt) {
+    var files = evt.dataTransfer?.files;
+    if (files.length > 0) {
+      console.log("drag & drop");
+      const reader = new FileReader();
+
+      reader.readAsDataURL(files[0]);
+
+      reader.onload = () => {
+        const dataURL = reader.result;
+        _img6.src = dataURL;
+      };
+    }
+    evt.preventDefault();
+  };
+
+  _img7.ondrop = function (evt) {
+    var files = evt.dataTransfer?.files;
+    if (files.length > 0) {
+      console.log("drag & drop");
+      const reader = new FileReader();
+
+      reader.readAsDataURL(files[0]);
+
+      reader.onload = () => {
+        const dataURL = reader.result;
+        _img7.src = dataURL;
+      };
+    }
+    evt.preventDefault();
+  };
+
+  _img8.ondrop = function (evt) {
+    var files = evt.dataTransfer?.files;
+    if (files.length > 0) {
+      console.log("drag & drop");
+      const reader = new FileReader();
+
+      reader.readAsDataURL(files[0]);
+
+      reader.onload = () => {
+        const dataURL = reader.result;
+        _img8.src = dataURL;
+      };
+    }
+    evt.preventDefault();
+  };
+
+  _img9.ondrop = function (evt) {
+    var files = evt.dataTransfer?.files;
+    if (files.length > 0) {
+      console.log("drag & drop");
+      const reader = new FileReader();
+
+      reader.readAsDataURL(files[0]);
+
+      reader.onload = () => {
+        const dataURL = reader.result;
+        _img9.src = dataURL;
+      };
+    }
+    evt.preventDefault();
+  };
+
+  _img10.ondrop = function (evt) {
+    var files = evt.dataTransfer?.files;
+    if (files.length > 0) {
+      console.log("drag & drop");
+      const reader = new FileReader();
+
+      reader.readAsDataURL(files[0]);
+
+      reader.onload = () => {
+        const dataURL = reader.result;
+        _img10.src = dataURL;
+      };
+    }
+    evt.preventDefault();
+  };
+
+  _img11.ondrop = function (evt) {
+    var files = evt.dataTransfer?.files;
+    if (files.length > 0) {
+      console.log("drag & drop");
+      const reader = new FileReader();
+
+      reader.readAsDataURL(files[0]);
+
+      reader.onload = () => {
+        const dataURL = reader.result;
+        _img11.src = dataURL;
+      };
+    }
+    evt.preventDefault();
+  };
+
+  _img12.ondrop = function (evt) {
+    var files = evt.dataTransfer?.files;
+    if (files.length > 0) {
+      console.log("drag & drop");
+      const reader = new FileReader();
+
+      reader.readAsDataURL(files[0]);
+
+      reader.onload = () => {
+        const dataURL = reader.result;
+        _img12.src = dataURL;
       };
     }
     evt.preventDefault();
@@ -229,7 +357,7 @@ async function 세척_시작(is재제조 = 0) {
 
       reader.onload = () => {
         const dataURL = reader.result;
-        img13.src = dataURL;
+       _img13.src = dataURL;
       };
     }
     evt.preventDefault();
@@ -324,19 +452,19 @@ async function 세척_save() {
 
   var _pic_doc = JSON.parse(JSON.stringify(세척_pic_doc));
   _pic_doc.관리번호 = _management_id.value.trim().toUpperCase();
-  _pic_doc.pic1 = img1.src;
-  _pic_doc.pic2 = img2.src;
-  _pic_doc.pic3 = img3.src;
-  _pic_doc.pic4 = img4.src;
-  _pic_doc.pic5 = img5.src;
-  _pic_doc.pic6 = img6.src;
-  _pic_doc.pic7 = img7.src;
-  _pic_doc.pic8 = img8.src;
-  _pic_doc.pic9 = img9.src;
-  _pic_doc.pic10 = img10.src;
-  _pic_doc.pic11 = img11.src;
-  _pic_doc.pic12 = img12.src;
-  _pic_doc.pic13 = img13.src;
+  _pic_doc.pic1 = _img1.src;
+  _pic_doc.pic2 = _img2.src;
+  _pic_doc.pic3 = _img3.src;
+  _pic_doc.pic4 = _img4.src;
+  _pic_doc.pic5 = _img5.src;
+  _pic_doc.pic6 = _img6.src;
+  _pic_doc.pic7 = _img7.src;
+  _pic_doc.pic8 = _img8.src;
+  _pic_doc.pic9 = _img9.src;
+  _pic_doc.pic10 = _img10.src;
+  _pic_doc.pic11 = _img11.src;
+  _pic_doc.pic12 = _img12.src;
+  _pic_doc.pic13 = _img13.src;
 
   update(세척_pic, _pic_doc);
   await delay();

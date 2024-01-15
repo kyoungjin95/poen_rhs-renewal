@@ -1,11 +1,12 @@
 async function 기초보고서_시작() {
 	await loadPage('base/기초보고서.html');
-	_management_id.value = 관리번호;
 
 	await 기초보고서_조회(false);
 }
 
 async function 기초보고서_조회(is재제조번호 = false) {
+	_management_id.value = 관리번호;
+
 	if (is재제조번호 == true) {
 		findOne_BSA재제조(BSA재제조, { 재제조번호: _재제조번호.value });
 		await delay();
