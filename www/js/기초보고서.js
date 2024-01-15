@@ -1,5 +1,9 @@
 async function 기초보고서_시작() {
 	await loadPage('base/기초보고서.html');
+	
+	while(typeof _CAN통신검사 == 'undefined') {
+		await sleep(1);
+	}
 
 	await 기초보고서_조회(false);
 }
@@ -13,13 +17,15 @@ async function 기초보고서_조회(is재제조번호 = false) {
 
 		if (BSA재제조_v != null) {
 			_management_id.value = BSA재제조_v.관리번호;
+			_재제조번호.value = BSA재제조_v.재제조번호;
 		}
 	} else {
 		findOne_BSA재제조(BSA재제조, { 관리번호: _management_id.value });
 		await delay();
 
 		if (BSA재제조_v != null) {
-			_재제조번호.value = BSA재제조_v.관리번호;
+			_management_id.value = BSA재제조_v.관리번호;
+			_재제조번호.value = BSA재제조_v.재제조번호;
 		}
 
 	}
@@ -80,7 +86,7 @@ async function 기초보고서_조회(is재제조번호 = false) {
 	await delay();
 
 	if(입고_pic_v != null) {
-		입고사진.src = 입고_pic_v.pic1;
+		_입고사진.src = 입고_pic_v.pic1;
 	}
 
 	find(기초검사_pic, _management_id.value);
@@ -495,12 +501,12 @@ async function 기초보고서_조회(is재제조번호 = false) {
 	}
 
 	//기밀검사 - 케이스
-	_케이스.innerHTML = 케이스 + '/' + 케이스감압량;
-	_냉각유로.innerHTML = 냉각유로 + '/' + 냉각유로감압량;
+	_케이스.innerHTML = 케이스 + ' : ' + 케이스감압량;
+	_냉각유로.innerHTML = 냉각유로 + ' : ' + 냉각유로감압량;
 
 	//절연저항검사
-	_절연PRA_P.innerHTML = 절연검사_B_P + '/' + 절연검사_B_P판정;
-	_절연PRA_N.innerHTML = 절연검사_B_N + '/' + 절연검사_B_N판정;
+	_절연PRA_P.innerHTML = 절연검사_B_P + ' : ' + 절연검사_B_P판정;
+	_절연PRA_N.innerHTML = 절연검사_B_N + ' : ' + 절연검사_B_N판정;
 }
 
 function showTable(tableId) {

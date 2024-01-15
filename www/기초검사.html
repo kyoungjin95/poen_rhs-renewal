@@ -368,7 +368,7 @@
             </td>
             <td>
               <input type="text" id="_통신검사_팩전압판정" size="40" required />
-              <select name="language" onchange="_통신검사_팩전압_콤보박스(this);">
+              <select name="language" onchange="_기초검사_통신검사_팩전압_콤보박스(this);">
                 <option value="">---</option>
                 <option value="OK">OK</option>
                 <option value="NG">NG</option>
@@ -410,7 +410,7 @@
               <label for="_BSA생산일자">배터리팩 생산일자</label>
             </td>
             <td>
-              <input type="text" id="_BSA생산일자" size="40" required />
+              <input type="datetime-local" id="_BSA생산일자" value="0000-00-00T00:00" required />
             </td>
           </tr>
           <tr>
@@ -543,7 +543,7 @@
           <button onClick="이전페이지();">이전페이지</button>
           <button onClick="기초검사_카메라시작();">사진촬영</button>
           <button onClick="flag_부품정보_list = true; loadPage('base/부품정보_list.html')">부품정보</button>
-          <button onclick="기초검사_save(); 기초보고서_load();">기초보고서</button>
+          <button onclick="기초보고서_load();">기초보고서</button>
         </div>
       </div>
     </div>
@@ -580,7 +580,7 @@
       const _통신검사_DTC코드10 = document.getElementById("_통신검사_DTC드10");
       const _통신검사_DTC코드1판정 = document.getElementById("_통신검사_DTC코드1판정");
       const _통신검사_팩전압 = document.getElementById("_통신검사_팩전압");
-      const _통신검사_팩전압판정 = document.getElementById("_통신검사_팩전압");
+      const _통신검사_팩전압판정 = document.getElementById("_통신검사_팩전압판정");
       const _통신검사_셀전압편차 = document.getElementById("_통신검사_셀전압편차");
       const _통신검사_셀전압편차판정 = document.getElementById("_통신검사_셀전압편차판정");
       const _통신검사_릴레이구동 = document.getElementById("_통신검사_릴레이구동");

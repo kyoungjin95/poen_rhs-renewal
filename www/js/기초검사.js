@@ -1,7 +1,7 @@
 var 기초검사_DTC_count = 0;
 
 async function 기초검사_시작(is재제조 = 0) {
-  while (_management_id == undefined) {
+  while (typeof _img19 == 'undefined') {
     await sleep(DELAY);
   }
 
@@ -678,6 +678,7 @@ async function 기초검사_SAVE() {
   var now = seoul.toString().slice(0, 19);
 
   if (_공정입고일.value == "") _공정입고일.value = now;
+  var 공정입고일 = _공정입고일.value;
   _공정완료일.value = now;
 
   var doc = JSON.parse(JSON.stringify(기초검사_doc));
@@ -702,7 +703,7 @@ async function 기초검사_SAVE() {
   doc.통신검사_DTC코드3 = _통신검사_DTC코드3.value;
   var oCurrentRow;
   var tb = document.getElementById("tb");
-  var rowIcnt = tb.rows.length - 14;
+  var rowIcnt = tb.rows.length - 17;
   var code_no = rowIcnt - 21;
   console.log("save rowIcnt:", rowIcnt);
   console.log("save code_no:", code_no);
@@ -785,7 +786,7 @@ async function 기초검사_SAVE() {
   doc.요청사항 = _요청사항.value;
   doc.비고 = _비고.value;
   doc.센터진단내용 = _센터진단내용.value;
-  doc.필드현상 = _필드.value;
+  doc.필드현상 = _필드현상.value;
   doc.AS센터조치 = _AS센터조치.value;
   doc.검사자 = _검사자.value;
 
@@ -810,7 +811,7 @@ async function 기초검사_SAVE() {
   if (BSA재제조_v == null) {
     var _doc = JSON.parse(JSON.stringify(BSA재제조_doc));
     _doc.관리번호 = _management_id.value.trim().toUpperCase();
-    _doc.기초검사투입일 = _공정입고일.value;
+    _doc.기초검사투입일 = 공정입고일;
     _doc.기초검사 = _공정완료일.value;
     _doc.RO_no = _RO_no.value;
 
@@ -819,7 +820,7 @@ async function 기초검사_SAVE() {
   } else {
     var _doc = {
       관리번호: _management_id.value.toUpperCase(),
-      기초검사투입일: _공정입고일.value,
+      기초검사투입일: 공정입고일,
       기초검사: _공정완료일.value,
       RO_no: _RO_no.value,
     };
@@ -890,7 +891,7 @@ function _통신검사_DTC코드1_콤보박스(e) {
   document.getElementById("_통신검사_DTC코드1판정").value = value;
 }
 
-function _통신검사_팩전압_콤보박스(e) {
+function _기초검사_통신검사_팩전압_콤보박스(e) {
   const value = e.value;
 
   document.getElementById("_통신검사_팩전압판정").value = value;
@@ -917,11 +918,11 @@ function _통신검사_릴레이구동_콤보박스(e) {
 function _기초검사_add_DTC_Code() {
   var oCurrentRow;
   var tb = document.getElementById("tb");
-  var rowIcnt = tb.rows.length - 16;
-  var code_no = rowIcnt - 18;
+  var rowIcnt = tb.rows.length - 15;
+  var code_no = rowIcnt - 22;
   console.log("row count:", rowIcnt);
   console.log("code No:", code_no);
-  if (rowIcnt > 31) return false;
+  if (rowIcnt > 32) return false;
   if (code_no > 10) return false;
 
   oCurrentRow = tb.insertRow(rowIcnt);
@@ -1088,6 +1089,6 @@ async function 기초검사_list() {
   });
 }
 
-function 기초보고서_load() {
+async function 기초보고서_load() {
 	기초보고서_시작();
 }

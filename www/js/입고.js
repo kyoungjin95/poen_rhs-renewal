@@ -22,14 +22,35 @@ async function 입고_시작() {
 	select_pos = '';
 
 	if(보관위치 != '') {
-		_management_id.value = 관리번호;
+		_management_id.value = 관리번호.toUpperCase();
 	}
 
+	_img1.ondrop = function (evt) {
+		var files = evt.dataTransfer?.files;
+		if (files.length > 0) {
+			console.log("drag & drop");
+			const reader = new FileReader();
+
+			reader.readAsDataURL(files[0]);
+
+			reader.onload = () => {
+				const dataURL = reader.result;
+				_img1.src = dataURL;
+			};
+		}
+		evt.preventDefault();
+	};
+
+	_img1.ondragover = function (evt) {
+		evt.preventDefault();
+	};
 	console.log("load: ", _management_id.value);
 	if (_management_id.value.length == 0) return;
 	if ((_management_id.value == "") | (_management_id.value == "none")) return;
 
 	관리번호 = _management_id.value;
+
+	_management_id.value = _management_id.value.toUpperCase();
 
 	find(입고, _management_id.value);
 	await delay();
@@ -61,6 +82,15 @@ async function 입고_시작() {
 		var now = seoul.toString().slice(0, 19);
 
 		_입고일.value = now;
+	}
+
+	find(입고_pic, _management_id.value);
+	await delay();
+
+	if(입고_pic_v != null) {
+		_img1.src = 입고_pic_v.pic1;
+	} else {
+		_img1.src = '';
 	}
 }
 
@@ -102,12 +132,33 @@ async function 입고_save() {
 	console.log(update_count);
 	console.log(insert_count);
 
+	var out = false;
 	if (update_count > 0) {
+		out = true;
 		alert("업데이트 되었습니다");
 	}
 
 	if (insert_count > 0) {
+		out = true;
 		alert("저장 되었습니다");
+	}
+
+	var pic_doc = JSON.parse(JSON.stringify(입고_pic_doc));
+	pic_doc.관리번호 = _management_id.value;
+	pic_doc.pic1 = _img1.src;
+
+	update(입고_pic, pic_doc);
+	await delay();
+
+	console.log('save 입고 pic1');
+	if(out == false) {
+		if (update_count > 0) {
+			alert("업데이트 되었습니다");
+		}
+
+		if (insert_count > 0) {
+			alert("저장 되었습니다");
+		}
 	}
 
 	find(BSA재제조, _management_id.value);
