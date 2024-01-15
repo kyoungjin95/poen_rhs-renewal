@@ -5,7 +5,7 @@ async function 기초보고서_시작() {
 		await sleep(1);
 	}
 
-	await 기초보고서_조회(false);
+	기초보고서_조회(false);
 }
 
 async function 기초보고서_조회(is재제조번호 = false) {

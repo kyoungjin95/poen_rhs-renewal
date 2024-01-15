@@ -1,9 +1,9 @@
 var 기초검사_DTC_count = 0;
 
 async function 기초검사_시작(is재제조 = 0) {
-  while (typeof _img19 == 'undefined') {
-    await sleep(DELAY);
-  }
+  //while (typeof _management_id == 'undefined') {
+  //  await sleep(DELAY);
+  //}
 
   if (flag_기초검사 == true) await 기초검사_list();
   flag_기초검사 = false;

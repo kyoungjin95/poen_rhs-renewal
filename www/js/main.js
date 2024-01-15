@@ -169,5 +169,6 @@ function start_repeat_대기수량_현황() {
 }
 
 function 이전페이지() {
-	back();
+	flag_기초검사 = true;
+	loadPage('base/기초검사.html');
 }
