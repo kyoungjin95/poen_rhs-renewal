@@ -1,5 +1,5 @@
 table.all {
-  width: 100%;
+  width: 90%;
   border: none;
 }
 table.base {
@@ -22,7 +22,7 @@ table td.base2 {
   height: 3vw;
 }
 table td.base3 {
-  height: 4vw;
+  height: 100%;
 }
 table td.base_left {
   padding: 0.5vw;
@@ -54,17 +54,19 @@ table td.base_left {
 .base_header3 {
   background: #fff;
 }
+._기초보고서_결과 {
+  width: 90%;
+}
 table td.result_header {
   background-color: #92d050;
   color: black;
   font-size: 1.2vw;
   font-weight: bold;
   border: 1px solid black;
-  width: 10vw;
+  text-align: center;
 }
 table td.result,
-table.bottom,
-table td.bottom {
+table.bottom {
   font-size: 0.8vw;
   background-color: white;
   color: black;
@@ -74,22 +76,29 @@ table td.result {
   width: 100%;
   font-weight: bold;
 }
-table.bottom,
+
 table td.bottom {
   padding: 0.05vw;
   border: none;
 }
-table.bottom {
-  width: 100%;
+.bottom {
+  max-width: 90%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9vw;
 }
+
 /* ========================================
   검사 */
+.check-all {
+  padding-top: 50px;
+}
 .check-all table {
   border: 1px solid #000;
   font-size: 0.9em;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
   width: 100%;
-  max-width: 100%;
+  max-width: 90%;
   border-collapse: collapse;
   border-radius: 5px;
   table-layout: fixed;
@@ -102,9 +111,7 @@ table.bottom {
   margin-top: -2px;
   margin-bottom: 20px;
 } */
-.check-all h3 {
-  margin: 10px 0 20px;
-}
+
 .check-all thead {
   font-weight: bold;
   background: #92d050;
@@ -161,18 +168,7 @@ table.bottom {
 #_기밀검사 .col_4 {
   width: 8%;
 }
-#_기밀검사 .photo {
-  height: 20vh;
-}
 /* _CAN 통신검사 - G-SCAN 진단결과*/
-#_진단결과 .photo,
-#_통신검사 .photo {
-  height: 26vh;
-}
-/* _CAN 통신검사*/
-#_통신검사 .photo {
-  height: 500px;
-}
 #_통신검사 .s-table {
   margin-top: 20px;
 }
@@ -210,13 +206,29 @@ table.bottom {
   color: red;
   font-style: normal;
 }
-#_육안검사외부2 td,
-#_육안검사내부2 td {
-  height: 26vh;
-}
 #_육안검사외부2 img,
 #_육안검사내부2 img {
   border: none !important;
+}
+.imgName,
+.photo {
+  table-layout: fixed;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+}
+.photo img,
+.imgName img {
+  width: 50%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  object-position: center;
+}
+.widthImg img {
+  width: 20%;
+}
+.heightPhoto img {
+  width: 70%;
 }
 /* 출하검사성적서 */
 
@@ -280,15 +292,8 @@ table.bottom {
   }
 }
 @media screen and (max-width: 767px) {
-  #_통신검사 .photo {
-    height: 300px;
-  }
   #_통신검사 .s-table {
     margin-top: 5px;
-  }
-  #_통신검사 .photo img {
-    width: 100%;
-    height: 60% !important;
   }
   .options .option {
     height: 30px;

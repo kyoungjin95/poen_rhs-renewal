@@ -7,13 +7,14 @@
   </head>
 
   <body>
-    <section id="_기초보고서">
+    <div id="_기초보고서">
       <div class="report__tit">
         <h3>▣ 기초보고서 [<span id="_차종">CS_EV</span>]</h3>
-        <span id="_재제조번호_HEAD"></span
-        ><input type="checkbox" id="_cb기초보고서" checked />
+        <span id="_재제조번호_HEAD"></span><input type="checkbox" id="_cb기초보고서" checked />
       </div>
+
       <div id="line"></div>
+
       <div>
         <table class="all" border="2">
           <tr>
@@ -51,22 +52,22 @@
                 </tr>
                 <tr>
                   <td class="base_header3" colspan="2">입고사진</td>
-                  <td class="base_header3" colspan="2">
-                    배터리팩 QR 코드 사진
-                  </td>
+                  <td class="base_header3" colspan="2">배터리팩 QR 코드 사진</td>
                 </tr>
+                <!-- width, height 없앰 -->
                 <tr>
-                  <td class="base3" colspan="2" height="0">
-                    <div style="height: 100%">
-                      <img id="_입고사진" width="100%" height="100%" />
+                  <td class="base3" colspan="2">
+                    <div class="imgName widthImg">
+                      <img id="_입고사진" width="20%" />
                     </div>
                   </td>
-                  <td class="base3" colspan="2" height="0">
-                    <div style="height: 100%">
-                      <img id="_BSA_QR" width="100%" height="100%" />
+                  <td class="base3" colspan="2">
+                    <div class="imgName widthImg">
+                      <img id="_BSA_QR" width="20%" />
                     </div>
                   </td>
                 </tr>
+
                 <tr>
                   <td class="base_left" colspan="4">
                     1. 관리번호:
@@ -105,18 +106,14 @@
                   <td class="base">외부 점검</td>
                   <td class="base">배터리팩 상,하부 이물질 및 손상 확인</td>
                   <td class="base" id="_CS_외부점검">OK/NG</td>
-                  <td class="base" id="_CS_외부점검사유">
-                    NG 사유 및 특이사항 입력
-                  </td>
+                  <td class="base" id="_CS_외부점검사유">NG 사유 및 특이사항 입력</td>
                   <td class="base" rowspan="2"></td>
                 </tr>
                 <tr>
                   <td class="base">내부 점검</td>
                   <td class="base">배터리팩 내부 이물질 및 손상 확인</td>
                   <td class="base" id="_CS_내부점검">OK/NG</td>
-                  <td class="base" id="_CS_내부점검사유">
-                    NG 사유 및 특이사항 입력
-                  </td>
+                  <td class="base" id="_CS_내부점검사유">NG 사유 및 특이사항 입력</td>
                 </tr>
                 <tr>
                   <td class="base" rowspan="2">2</td>
@@ -182,17 +179,13 @@
                   <td class="base">릴레이 제어</td>
                   <td class="base">릴레이 제어 가능할 것</td>
                   <td class="base" id="_CS_릴레이제어">OK/NG</td>
-                  <td class="base" id="_CS_릴레이제어사유">
-                    릴레이 제어 가능 / 불가능 사유
-                  </td>
+                  <td class="base" id="_CS_릴레이제어사유">릴레이 제어 가능 / 불가능 사유</td>
                 </tr>
                 <tr>
                   <td class="base">고장코드</td>
                   <td class="base">고장코드 없을 것</td>
                   <td class="base" id="_CS_고장코드">OK/NG</td>
-                  <td class="base" id="_CS_고장코드사유">
-                    고장코드 없음 / (현재),(과거)구분
-                  </td>
+                  <td class="base" id="_CS_고장코드사유">고장코드 없음 / (현재),(과거)구분</td>
                 </tr>
                 <tr>
                   <td class="base" rowspan="2">5</td>
@@ -227,26 +220,20 @@
                   <td class="base">외부 점검</td>
                   <td class="base">배터리팩 상,하부 이물질 및 손상 확인</td>
                   <td class="base" id="_CV_외부점검">OK/NG</td>
-                  <td class="base" id="_CV_외부점검사유">
-                    NG 사유 및 특이사항 입력
-                  </td>
+                  <td class="base" id="_CV_외부점검사유">NG 사유 및 특이사항 입력</td>
                   <td class="base" rowspan="3"></td>
                 </tr>
                 <tr>
                   <td class="base">외부 점검</td>
                   <td class="base">하부 플라스틱 패널 상태 확인</td>
                   <td class="base" id="_CV_외부점검2">OK/NG</td>
-                  <td class="base" id="_CV_외부점검사유2">
-                    NG 사유 및 특이사항 입력
-                  </td>
+                  <td class="base" id="_CV_외부점검사유2">NG 사유 및 특이사항 입력</td>
                 </tr>
                 <tr>
                   <td class="base">내부 점검</td>
                   <td class="base">배터리팩 내부 이물질 및 손상 확인</td>
                   <td class="base" id="_CV_내부점검">OK/NG</td>
-                  <td class="base" id="_CV_내부점검사유">
-                    NG 사유 및 특이사항 입력
-                  </td>
+                  <td class="base" id="_CV_내부점검사유">NG 사유 및 특이사항 입력</td>
                 </tr>
                 <tr>
                   <td class="base" rowspan="2">2</td>
@@ -297,17 +284,13 @@
                   <td class="base">릴레이 제어</td>
                   <td class="base">릴레이 제어 가능할 것</td>
                   <td class="base" id="_CV_릴레이제어">OK/NG</td>
-                  <td class="base" id="_CV_릴레이제어사유">
-                    릴레이 제어 가능 / 불가능 사유
-                  </td>
+                  <td class="base" id="_CV_릴레이제어사유">릴레이 제어 가능 / 불가능 사유</td>
                 </tr>
                 <tr>
                   <td class="base">고장코드</td>
                   <td class="base">고장코드 없을 것</td>
                   <td class="base" id="_CV_고장코드">OK/NG</td>
-                  <td class="base" id="_CV_고장코드사유">
-                    고장코드 없음 / (현재),(과거)구분
-                  </td>
+                  <td class="base" id="_CV_고장코드사유">고장코드 없음 / (현재),(과거)구분</td>
                 </tr>
                 <tr>
                   <td class="base" rowspan="2">5</td>
@@ -342,18 +325,14 @@
                   <td class="base">외부 점검</td>
                   <td class="base">배터리팩 상,하부 이물질 및 손상 확인</td>
                   <td class="base" id="_DE_외부점검">OK/NG</td>
-                  <td class="base" id="_DE_외부점검사유">
-                    NG 사유 및 특이사항 입력
-                  </td>
+                  <td class="base" id="_DE_외부점검사유">NG 사유 및 특이사항 입력</td>
                   <td class="base" rowspan="2"></td>
                 </tr>
                 <tr>
                   <td class="base">내부 점검</td>
                   <td class="base">배터리팩 내부 이물질 및 손상 확인</td>
                   <td class="base" id="_DE_내부점검">OK/NG</td>
-                  <td class="base" id="_DE_내부점검사유">
-                    NG 사유 및 특이사항 입력
-                  </td>
+                  <td class="base" id="_DE_내부점검사유">NG 사유 및 특이사항 입력</td>
                 </tr>
                 <tr>
                   <td class="base" rowspan="2">2</td>
@@ -404,17 +383,13 @@
                   <td class="base">릴레이 제어</td>
                   <td class="base">릴레이 제어 가능할 것</td>
                   <td class="base" id="_DE_릴레이제어">OK/NG</td>
-                  <td class="base" id="_DE_릴레이제어사유">
-                    릴레이 제어 가능 / 불가능 사유
-                  </td>
+                  <td class="base" id="_DE_릴레이제어사유">릴레이 제어 가능 / 불가능 사유</td>
                 </tr>
                 <tr>
                   <td class="base">고장코드</td>
                   <td class="base">고장코드 없을 것</td>
                   <td class="base" id="_DE_고장코드">OK/NG</td>
-                  <td class="base" id="_DE_고장코드사유">
-                    고장코드 없음 / (현재),(과거)구분
-                  </td>
+                  <td class="base" id="_DE_고장코드사유">고장코드 없음 / (현재),(과거)구분</td>
                 </tr>
                 <tr>
                   <td class="base" rowspan="2">5</td>
@@ -449,26 +424,20 @@
                   <td class="base">외부 점검</td>
                   <td class="base">배터리팩 상,하부 이물질 및 손상 확인</td>
                   <td class="base" id="_HR_외부점검">OK/NG</td>
-                  <td class="base" id="_HR_외부점검사유">
-                    NG 사유 및 특이사항 입력
-                  </td>
+                  <td class="base" id="_HR_외부점검사유">NG 사유 및 특이사항 입력</td>
                   <td class="base" rowspan="3"></td>
                 </tr>
                 <tr>
                   <td class="base">내부 점검</td>
                   <td class="base">배터리팩 내부 이물질 및 손상 확인</td>
                   <td class="base" id="_HR_내부점검">OK/NG</td>
-                  <td class="base" id="_HR_내부점검사유">
-                    NG 사유 및 특이사항 입력
-                  </td>
+                  <td class="base" id="_HR_내부점검사유">NG 사유 및 특이사항 입력</td>
                 </tr>
                 <tr>
                   <td class="base">셀 제조사 확인</td>
                   <td class="base">-</td>
                   <td class="base">-</td>
-                  <td class="base" id="_HR_셀제조사사유">
-                    NG 사유 및 특이사항 입력
-                  </td>
+                  <td class="base" id="_HR_셀제조사사유">NG 사유 및 특이사항 입력</td>
                 </tr>
                 <tr>
                   <td class="base" rowspan="2">2</td>
@@ -531,17 +500,13 @@
                   <td class="base">릴레이 제어</td>
                   <td class="base">릴레이 제어 가능할 것</td>
                   <td class="base" id="_HR_릴레이제어">OK/NG</td>
-                  <td class="base" id="_HR_릴레이제어사유">
-                    릴레이 제어 가능 / 불가능 사유
-                  </td>
+                  <td class="base" id="_HR_릴레이제어사유">릴레이 제어 가능 / 불가능 사유</td>
                 </tr>
                 <tr>
                   <td class="base">고장코드</td>
                   <td class="base">고장코드 없을 것</td>
                   <td class="base" id="_HR_고장코드">OK/NG</td>
-                  <td class="base" id="_HR_고장코드사유">
-                    고장코드 없음 / (현재),(과거)구분
-                  </td>
+                  <td class="base" id="_HR_고장코드사유">고장코드 없음 / (현재),(과거)구분</td>
                 </tr>
                 <tr>
                   <td class="base">ROM ID</td>
@@ -582,18 +547,14 @@
                   <td class="base">외부 점검</td>
                   <td class="base">배터리팩 상,하부 이물질 및 손상 확인</td>
                   <td class="base" id="_LK_외부점검">OK/NG</td>
-                  <td class="base" id="_LK_외부점검사유">
-                    NG 사유 및 특이사항 입력
-                  </td>
+                  <td class="base" id="_LK_외부점검사유">NG 사유 및 특이사항 입력</td>
                   <td class="base" rowspan="2"></td>
                 </tr>
                 <tr>
                   <td class="base">내부 점검</td>
                   <td class="base">배터리팩 내부 이물질 및 손상 확인</td>
                   <td class="base" id="_LK_내부점검">OK/NG</td>
-                  <td class="base" id="_LK_내부점검사유">
-                    NG 사유 및 특이사항 입력
-                  </td>
+                  <td class="base" id="_LK_내부점검사유">NG 사유 및 특이사항 입력</td>
                 </tr>
                 <tr>
                   <td class="base" rowspan="2">2</td>
@@ -671,17 +632,13 @@
                   <td class="base">릴레이 제어</td>
                   <td class="base">릴레이 제어 가능할 것</td>
                   <td class="base" id="_LK_릴레이제어">OK/NG</td>
-                  <td class="base" id="_LK_릴레이제어사유">
-                    릴레이 제어 가능 / 불가능 사유
-                  </td>
+                  <td class="base" id="_LK_릴레이제어사유">릴레이 제어 가능 / 불가능 사유</td>
                 </tr>
                 <tr>
                   <td class="base">고장코드</td>
                   <td class="base">고장코드 없을 것</td>
                   <td class="base" id="_LK_고장코드">OK/NG</td>
-                  <td class="base" id="_LK_고장코드사유">
-                    고장코드 없음 / (현재),(과거)구분
-                  </td>
+                  <td class="base" id="_LK_고장코드사유">고장코드 없음 / (현재),(과거)구분</td>
                 </tr>
                 <tr>
                   <td class="base" rowspan="2">5</td>
@@ -716,18 +673,14 @@
                   <td class="base">외부 점검</td>
                   <td class="base">배터리팩 상,하부 이물질 및 손상 확인</td>
                   <td class="base" id="_LM_외부점검">OK/NG</td>
-                  <td class="base" id="_LM_외부점검사유">
-                    NG 사유 및 특이사항 입력
-                  </td>
+                  <td class="base" id="_LM_외부점검사유">NG 사유 및 특이사항 입력</td>
                   <td class="base" rowspan="2"></td>
                 </tr>
                 <tr>
                   <td class="base">내부 점검</td>
                   <td class="base">배터리팩 내부 이물질 및 손상 확인</td>
                   <td class="base" id="_LM_내부점검">OK/NG</td>
-                  <td class="base" id="_LM_내부점검사유">
-                    NG 사유 및 특이사항 입력
-                  </td>
+                  <td class="base" id="_LM_내부점검사유">NG 사유 및 특이사항 입력</td>
                 </tr>
                 <tr>
                   <td class="base" rowspan="2">2</td>
@@ -793,17 +746,13 @@
                   <td class="base">릴레이 제어</td>
                   <td class="base">릴레이 제어 가능할 것</td>
                   <td class="base" id="_LM_릴레이제어">OK/NG</td>
-                  <td class="base" id="_LM_릴레이제어사유">
-                    릴레이 제어 가능 / 불가능 사유
-                  </td>
+                  <td class="base" id="_LM_릴레이제어사유">릴레이 제어 가능 / 불가능 사유</td>
                 </tr>
                 <tr>
                   <td class="base">고장코드</td>
                   <td class="base">고장코드 없을 것</td>
                   <td class="base" id="_LM_고장코드">OK/NG</td>
-                  <td class="base" id="_LM_고장코드사유">
-                    고장코드 없음 / (현재),(과거)구분
-                  </td>
+                  <td class="base" id="_LM_고장코드사유">고장코드 없음 / (현재),(과거)구분</td>
                 </tr>
                 <tr>
                   <td class="base" rowspan="2">5</td>
@@ -838,18 +787,14 @@
                   <td class="base">외부 점검</td>
                   <td class="base">배터리팩 상,하부 이물질 및 손상 확인</td>
                   <td class="base" id="_NE_외부점검">OK/NG</td>
-                  <td class="base" id="_NE_외부점검사유">
-                    NG 사유 및 특이사항 입력
-                  </td>
+                  <td class="base" id="_NE_외부점검사유">NG 사유 및 특이사항 입력</td>
                   <td class="base" rowspan="2"></td>
                 </tr>
                 <tr>
                   <td class="base">내부 점검</td>
                   <td class="base">배터리팩 내부 이물질 및 손상 확인</td>
                   <td class="base" id="_NE_내부점검">OK/NG</td>
-                  <td class="base" id="_NE_내부점검사유">
-                    NG 사유 및 특이사항 입력
-                  </td>
+                  <td class="base" id="_NE_내부점검사유">NG 사유 및 특이사항 입력</td>
                 </tr>
                 <tr>
                   <td class="base" rowspan="2">2</td>
@@ -900,17 +845,13 @@
                   <td class="base">릴레이 제어</td>
                   <td class="base">릴레이 제어 가능할 것</td>
                   <td class="base" id="_NE_릴레이제어">OK/NG</td>
-                  <td class="base" id="_NE_릴레이제어사유">
-                    릴레이 제어 가능 / 불가능 사유
-                  </td>
+                  <td class="base" id="_NE_릴레이제어사유">릴레이 제어 가능 / 불가능 사유</td>
                 </tr>
                 <tr>
                   <td class="base">고장코드</td>
                   <td class="base">고장코드 없을 것</td>
                   <td class="base" id="_NE_고장코드">OK/NG</td>
-                  <td class="base" id="_NE_고장코드사유">
-                    고장코드 없음 / (현재),(과거)구분
-                  </td>
+                  <td class="base" id="_NE_고장코드사유">고장코드 없음 / (현재),(과거)구분</td>
                 </tr>
                 <tr>
                   <td class="base" rowspan="2">5</td>
@@ -930,11 +871,7 @@
                 </tr>
               </table>
 
-              <table
-                class="base tableAll"
-                id="_OS_SK3_EV"
-                style="display: none"
-              >
+              <table class="base tableAll" id="_OS_SK3_EV" style="display: none">
                 <tr>
                   <td class="base_header2">No</td>
                   <td class="base_header2" colspan="2">점검 항목</td>
@@ -949,18 +886,14 @@
                   <td class="base">외부 점검</td>
                   <td class="base">배터리팩 상,하부 이물질 및 손상 확인</td>
                   <td class="base" id="_OS_SK3_외부점검">OK/NG</td>
-                  <td class="base" id="_OS_SK3_외부점검사유">
-                    NG 사유 및 특이사항 입력
-                  </td>
+                  <td class="base" id="_OS_SK3_외부점검사유">NG 사유 및 특이사항 입력</td>
                   <td class="base" rowspan="2"></td>
                 </tr>
                 <tr>
                   <td class="base">내부 점검</td>
                   <td class="base">배터리팩 내부 이물질 및 손상 확인</td>
                   <td class="base" id="_OS_SK3_내부점검">OK/NG</td>
-                  <td class="base" id="_OS_SK3_내부점검사유">
-                    NG 사유 및 특이사항 입력
-                  </td>
+                  <td class="base" id="_OS_SK3_내부점검사유">NG 사유 및 특이사항 입력</td>
                 </tr>
                 <tr>
                   <td class="base" rowspan="2">2</td>
@@ -1011,17 +944,13 @@
                   <td class="base">릴레이 제어</td>
                   <td class="base">릴레이 제어 가능할 것</td>
                   <td class="base" id="_OS_SK3_릴레이제어">OK/NG</td>
-                  <td class="base" id="_OS_SK3_릴레이제어사유">
-                    릴레이 제어 가능 / 불가능 사유
-                  </td>
+                  <td class="base" id="_OS_SK3_릴레이제어사유">릴레이 제어 가능 / 불가능 사유</td>
                 </tr>
                 <tr>
                   <td class="base">고장코드</td>
                   <td class="base">고장코드 없을 것</td>
                   <td class="base" id="_OS_SK3_고장코드">OK/NG</td>
-                  <td class="base" id="_OS_SK3_고장코드사유">
-                    고장코드 없음 / (현재),(과거)구분
-                  </td>
+                  <td class="base" id="_OS_SK3_고장코드사유">고장코드 없음 / (현재),(과거)구분</td>
                 </tr>
                 <tr>
                   <td class="base" rowspan="2">5</td>
@@ -1056,18 +985,14 @@
                   <td class="base">외부 점검</td>
                   <td class="base">배터리팩 상,하부 이물질 및 손상 확인</td>
                   <td class="base" id="_PU_외부점검">OK/NG</td>
-                  <td class="base" id="_PU_외부점검사유">
-                    NG 사유 및 특이사항 입력
-                  </td>
+                  <td class="base" id="_PU_외부점검사유">NG 사유 및 특이사항 입력</td>
                   <td class="base" rowspan="2"></td>
                 </tr>
                 <tr>
                   <td class="base">내부 점검</td>
                   <td class="base">배터리팩 내부 이물질 및 손상 확인</td>
                   <td class="base" id="_PU_내부점검">OK/NG</td>
-                  <td class="base" id="_PU_내부점검사유">
-                    NG 사유 및 특이사항 입력
-                  </td>
+                  <td class="base" id="_PU_내부점검사유">NG 사유 및 특이사항 입력</td>
                 </tr>
                 <tr>
                   <td class="base" rowspan="2">2</td>
@@ -1118,17 +1043,13 @@
                   <td class="base">릴레이 제어</td>
                   <td class="base">릴레이 제어 가능할 것</td>
                   <td class="base" id="_PU_릴레이제어">OK/NG</td>
-                  <td class="base" id="_PU_릴레이제어사유">
-                    릴레이 제어 가능 / 불가능 사유
-                  </td>
+                  <td class="base" id="_PU_릴레이제어사유">릴레이 제어 가능 / 불가능 사유</td>
                 </tr>
                 <tr>
                   <td class="base">고장코드</td>
                   <td class="base">고장코드 없을 것</td>
                   <td class="base" id="_PU_고장코드">OK/NG</td>
-                  <td class="base" id="_PU_고장코드사유">
-                    고장코드 없음 / (현재),(과거)구분
-                  </td>
+                  <td class="base" id="_PU_고장코드사유">고장코드 없음 / (현재),(과거)구분</td>
                 </tr>
                 <tr>
                   <td class="base" rowspan="2">5</td>
@@ -1150,55 +1071,46 @@
             </td>
           </tr>
           <tr>
-            <table>
+            <table class="_기초보고서_결과">
+              <colgroup>
+                <col width="10%" />
+                <col />
+              </colgroup>
               <tr>
                 <td class="result_header">결 과</td>
                 <td class="result" id="_결과" style="line-height: 1.3">
                   1. 기초검사를 통해 찾아낸 현상과 필드현상 또는
-                  <span style="color: red"
-                    >A/S센터 진단의 원인과 분석 내용을 기재</span
-                  >
+                  <span style="color: red">A/S센터 진단의 원인과 분석 내용을 기재</span>
                   <br />
                   2. 기초검사 결과에 의한
                   <span style="color: red"> “필요교체부품 & 교체사유” </span>
                   적을 것.
-                  <span style="color: red">
-                    원인파악 불가 할 경우 입고 서비스센터 증상을 근거로 부품교체
-                    진행. </span
-                  ><br />
-                  ex. P0AA600(절연파괴) DTC로 입고되었으나 기초검사결과
-                  이상없음. 모듈 절연저항 정상. 고장예상원인 부품에 따라 BMU
-                  교체
+                  <span style="color: red"> 원인파악 불가 할 경우 입고 서비스센터 증상을 근거로 부품교체 진행. </span><br />
+                  ex. P0AA600(절연파괴) DTC로 입고되었으나 기초검사결과 이상없음. 모듈 절연저항 정상. 고장예상원인 부품에 따라 BMU 교체
                 </td>
               </tr>
             </table>
           </tr>
         </table>
+        <div class="bottom">
+          <p>FQ850-05</p>
+          <p>A4(297x210mm)</p>
+          <p>Positive</p>
+        </div>
       </div>
-      <div>
-        <table class="bottom">
-          <tr>
-            <td class="bottom" align="left">FQ850-05</td>
-            <td class="bottom" align="center">A4(297x210mm)</td>
-            <td class="bottom" align="right">
-              Positive <font color="skyblue">En</font>ergy
-            </td>
-          </tr>
-        </table>
-      </div>
-    </section>
+    </div>
+
     <div id="_육안검사외부1" class="check-all">
-      <h3 class="report__tit">▣ 육안 검사 - 외부</h3>
-      <input type="checkbox" id="_cb육안검사외부" checked />
+      <div class="report__tit">
+        <h3>▣ 육안 검사 - 외부</h3>
+        <input type="checkbox" id="_cb육안검사외부" checked />
+      </div>
       <div>
         <table class="all">
-          <!-- <caption>
-            육안검사 - 외부
-            </caption> -->
           <colgroup>
-            <col class="col_1" style="width: 33.3333%" />
-            <col class="col_2" />
-            <col class="col_3" />
+            <col width="33.3333%" />
+            <col width="33.3333%" />
+            <col width="33.3333%" />
           </colgroup>
           <tr>
             <td class="title">TOP</td>
@@ -1206,14 +1118,15 @@
             <td class="title">LEFT</td>
           </tr>
           <tr>
-            <td style="height: 23vh" class="imgName">
-              <img id="_top_pic" width="100%" height="100%" />
+            <td class="imgName">
+              <img id="_top_pic" />
             </td>
-            <td id="front_pic" style="height: 23vh" class="imgName">
-              <img id="_front_pic" width="100%" height="100%" />
+            <!-- id명 ??? img id명 ??? -->
+            <td id="front_pic" class="imgName">
+              <img id="_front_pic" />
             </td>
-            <td style="height: 23vh" class="imgName">
-              <img id="_left_pic" width="100%" height="100%" />
+            <td class="imgName">
+              <img id="_left_pic" />
             </td>
           </tr>
           <tr>
@@ -1222,23 +1135,29 @@
             <td class="title">RIGHT</td>
           </tr>
           <tr>
-            <td style="height: 23vh" class="imgName">
-              <img id="_bottom_pic" width="100%" height="100%" />
+            <td class="imgName">
+              <img id="_bottom_pic" />
             </td>
-            <td style="height: 23vh" class="imgName">
-              <img id="_rear_pic" width="100%" height="100%" />
+            <td class="imgName">
+              <img id="_rear_pic" />
             </td>
-            <td style="height: 23vh" class="imgName">
-              <img id="_right_pic" width="100%" height="100%" />
+            <td class="imgName">
+              <img id="_right_pic" />
             </td>
           </tr>
-	  <tr>
-                <td class="result_header">결과 :</td>
-                <td class="result" id="_육안검사_결과">
-	  </tr>
+          <tr>
+            <td class="result_header">결과 :</td>
+            <td class="result" colspan="2" id="_육안검사_결과"></td>
+          </tr>
         </table>
+        <div class="bottom">
+          <p>FQ850-05</p>
+          <p>A4(297x210mm)</p>
+          <p>Positive</p>
+        </div>
       </div>
     </div>
+
     <div id="_육안검사외부2" class="check-all">
       <div class="report__tit">
         <h3>▣ 육안검사 - 외부_<em>이상부위 상세사진</em></h3>
@@ -1246,28 +1165,25 @@
       </div>
 
       <table border="2" class="all">
-        <!-- <caption>
-          육안검사 - 외부_이상부위 상세사진
-          </caption> -->
         <colgroup>
-          <col class="col_1" style="width: 100%" />
-          <col class="col_2" />
+          <col width="50%" />
+          <col width="50%" />
         </colgroup>
         <tbody>
-          <tr>
+          <tr class="imgName">
             <td>
-              <img id="_이상부위_외부1" width="100%" height="100%" />
+              <img id="_이상부위_외부1" />
             </td>
-            <td>
-              <img id="_이상부위_외부2" width="100%" height="100%" />
+            <td class="imgName">
+              <img id="_이상부위_외부2" />
             </td>
           </tr>
           <tr>
-            <td>
-              <img id="_이상부위_외부3" width="100%" height="100%" />
+            <td class="imgName">
+              <img id="_이상부위_외부3" />
             </td>
-            <td>
-              <img id="_이상부위_외부4" width="100%" height="100%" />
+            <td class="imgName">
+              <img id="_이상부위_외부4" />
             </td>
           </tr>
         </tbody>
@@ -1279,91 +1195,88 @@
           </tr>
         </tfoot>
       </table>
+      <div class="bottom">
+        <p>FQ850-05</p>
+        <p>A4(297x210mm)</p>
+        <p>Positive</p>
+      </div>
     </div>
+
     <div id="_육안검사내부1" class="check-all">
       <div class="report__tit">
         <h3>▣ 육안검사 - 내부</h3>
         <input type="checkbox" id="_cb육안검사내부" checked />
       </div>
       <table border="2" class="all">
-        <!-- <caption>
-          육안검사 - 내부
-          </caption> -->
         <colgroup>
-          <col class="col_1" style="width: 20%" />
-          <col class="col_2" style="width: 100%" />
-          <col class="col_3" style="width: 100%" />
+          <col width="70%" />
+          <col width="100%" />
+          <col />
         </colgroup>
         <tbody>
           <tr>
-            <th scope="col" colspan="3" class="title">전체 사진</th>
-            <td rowspan="2" style="height: 20vh" class="imgName">
+            <th class="title" colspan="2">전체 사진</th>
+            <td rowspan="2" class="imgName">
               <p style="text-align: left">주요부품1(BMU)</p>
-              <img id="_BMU" width="90%" height="90%" />
+              <img id="_BMU" />
             </td>
           </tr>
           <tr>
-            <td rowspan="5" colspan="3" class="imgName" style="height: 55vh">
-              <img id="_allImg" width="100%" height="100%" />
+            <td rowspan="5" colspan="2" class="imgName heightPhoto">
+              <img id="_allImg" />
             </td>
           </tr>
           <tr>
-            <td rowspan="2" style="height: 20vh" class="imgName">
+            <td class="imgName">
               <p style="text-align: left">주요부품2 (CMU)</p>
-              <img id="_CMU" width="90%" height="90%" />
+              <img id="_CMU" />
             </td>
           </tr>
           <tr>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td rowspan="2" style="height: 20vh" class="imgName">
+            <td class="imgName">
               <p style="text-align: left">주요부품3 (PRA)</p>
-              <img id="_PRA" width="90%" height="90%" />
+              <img id="_PRA" />
             </td>
-          </tr>
-          <tr>
-            <td></td>
-            <td></td>
           </tr>
         </tbody>
         <tfoot>
           <tr>
             <th>결 과 :</th>
             <td class="result" id="_육안검사_내부_결과" colspan="3"></td>
-            <td></td>
           </tr>
         </tfoot>
       </table>
+      <div class="bottom">
+        <p>FQ850-05</p>
+        <p>A4(297x210mm)</p>
+        <p>Positive</p>
+      </div>
     </div>
+
     <div id="_육안검사내부2" class="check-all">
       <div class="report__tit">
         <h3>▣ 육안검사 - 내부_<em>이상부위 상세사진</em></h3>
         <input type="checkbox" id="_cb육안검사내부상세" checked />
       </div>
       <table border="2" class="all">
-        <!-- <caption>
-          육안검사 - 내부_이상부위 상세사진
-          </caption> -->
         <colgroup>
-          <col class="col_1" />
-          <col class="col_2" />
+          <col width="50%" />
+          <col width="50%" />
         </colgroup>
         <tbody>
           <tr>
-            <td>
-              <img id="_이상부위_내부1" width="100%" height="100%" />
+            <td class="imgName">
+              <img id="_이상부위_내부1" />
             </td>
-            <td>
-              <img id="_이상부위_내부2" width="100%" height="100%" />
+            <td class="imgName">
+              <img id="_이상부위_내부2" />
             </td>
           </tr>
           <tr>
-            <td>
-              <img id="_이상부위_내부3" width="100%" height="100%" />
+            <td class="imgName">
+              <img id="_이상부위_내부3" />
             </td>
-            <td>
+            <td class="imgName">
               <img id="_이상부위_내부4" width="100%" height="100%" />
             </td>
           </tr>
@@ -1376,32 +1289,24 @@
           </tr>
         </tfoot>
       </table>
+      <div class="bottom">
+        <p>FQ850-05</p>
+        <p>A4(297x210mm)</p>
+        <p>Positive</p>
+      </div>
     </div>
-    <div>
-      <table class="bottom" width="100%">
-        <tr>
-          <td class="bottom" align="left">FQ850-05</td>
-          <td class="bottom" align="center">A4(297x210mm)</td>
-          <td class="bottom" align="right">
-            Positive <font color="skyblue">En</font>ergy
-          </td>
-        </tr>
-      </table>
-    </div>
+
     <div id="_기밀검사" class="check-all">
       <div class="report__tit">
         <h3>▣ 기밀검사</h3>
         <input type="checkbox" id="_cb기밀검사" checked />
       </div>
       <table border="2" class="all">
-        <!-- <caption>
-          기밀검사
-        </caption> -->
         <colgroup>
-          <col class="col_1" />
-          <col class="col_2" />
-          <col class="col_3" />
-          <col class="col_4" />
+          <col />
+          <col width="8%" />
+          <col />
+          <col width="8%" />
         </colgroup>
         <thead>
           <tr class="title">
@@ -1447,21 +1352,21 @@
             <th rowspan="2" scope="row">장비품목</th>
             <td class="photoName">측정 <br />전체 사진</td>
             <td class="photo">
-              <img id="_측정사진1" width="100%" height="100%" />
+              <img id="_측정사진1" />
             </td>
             <td class="photoName">측정 <br />전체 사진</td>
             <td class="photo">
-              <img id="_측정사진2" width="100%" height="100%" />
+              <img id="_측정사진2" />
             </td>
           </tr>
           <tr>
             <td class="photoName">측정값 <br />확대 사진</td>
             <td class="photo">
-              <img id="_측정값사진1" width="100%" height="100%" />
+              <img id="_측정값사진1" />
             </td>
             <td class="photoName">측정값 <br />확대 사진</td>
             <td class="photo">
-              <img id="_측정값사진2" width="100%" height="100%" />
+              <img id="_측정값사진2" />
             </td>
           </tr>
           <tr>
@@ -1483,32 +1388,24 @@
           </tr>
         </tbody>
       </table>
+      <div class="bottom">
+        <p>FQ850-05</p>
+        <p>A4(297x210mm)</p>
+        <p>Positive</p>
+      </div>
     </div>
-    <div>
-      <table class="bottom" width="100%">
-        <tr>
-          <td class="bottom" align="left">FQ850-05</td>
-          <td class="bottom" align="center">A4(297x210mm)</td>
-          <td class="bottom" align="right">
-            Positive <font color="skyblue">En</font>ergy
-          </td>
-        </tr>
-      </table>
-    </div>
+
     <div id="_절연저항검사" class="check-all">
       <div class="report__tit">
         <h3>▣ 절연 저항 검사</h3>
         <input type="checkbox" id="_cb절연저항검사" checked />
       </div>
       <table border="2" class="all">
-        <!-- <caption>
-          절연검사
-        </caption> -->
         <colgroup>
-          <col class="col_1" />
-          <col class="col_2" />
-          <col class="col_3" />
-          <col class="col_4" />
+          <col />
+          <col width="8%" />
+          <col />
+          <col width="8%" />
         </colgroup>
         <thead>
           <tr class="title">
@@ -1530,33 +1427,31 @@
           </tr>
           <tr>
             <th scope="row">판정기준</th>
-            <td colspan="4" style="color: blue">
-              측정 결과 (+)100MΩ, (-)100MΩ 이상 합격
-            </td>
+            <td colspan="4" style="color: blue">측정 결과 (+)100MΩ, (-)100MΩ 이상 합격</td>
           </tr>
           <tr>
             <th rowspan="3" scope="row">측정결과</th>
-	    <td colspan="2"> PRA (+) ~ 샤시</td>
-	    <td colspan="2"> PRA (-) ~ 샤시</td>
-	  </tr>
-	  <tr>
+            <td colspan="2">PRA (+) ~ 샤시</td>
+            <td colspan="2">PRA (-) ~ 샤시</td>
+          </tr>
+          <tr>
             <td class="photoName">장비셋팅 <br />전체 사진</td>
             <td class="photo">
-              <img id="_절연측정사진1" width="100%" height="100%" />
+              <img id="_절연측정사진1" />
             </td>
             <td class="photoName">장비셋팅 <br />전체 사진</td>
             <td class="photo">
-              <img id="_절연측정사진2" width="100%" height="100%" />
+              <img id="_절연측정사진2" />
             </td>
           </tr>
           <tr>
             <td class="photoName">측정값 <br />확대 사진</td>
             <td class="photo">
-              <img id="_절연측정값사진1" width="100%" height="100%" />
+              <img id="_절연측정값사진1" />
             </td>
             <td class="photoName">측정값 <br />확대 사진</td>
             <td class="photo">
-              <img id="_절연측정값사진2" width="100%" height="100%" />
+              <img id="_절연측정값사진2" />
             </td>
           </tr>
           <tr>
@@ -1578,71 +1473,59 @@
           </tr>
         </tbody>
       </table>
+      <div class="bottom">
+        <p>FQ850-05</p>
+        <p>A4(297x210mm)</p>
+        <p>Positive</p>
+      </div>
     </div>
-    <div>
-      <table class="bottom" width="100%">
-        <tr>
-          <td class="bottom" align="left">FQ850-05</td>
-          <td class="bottom" align="center">A4(297x210mm)</td>
-          <td class="bottom" align="right">
-            Positive <font color="skyblue">En</font>ergy
-          </td>
-        </tr>
-      </table>
-    </div>
+
     <div id="_CAN통신검사" class="check-all">
       <div class="report__tit">
         <h3>▣ CAN 통신 검사 - G-SCAN 진단결과</h3>
         <input type="checkbox" id="_cbCAN통신검사" checked />
       </div>
       <table border="2" class="all">
-        <!-- <caption>
-          CAN 통신 검사
-        </caption> -->
         <colgroup>
-          <col class="col_1" />
-          <col class="col_2" />
-          <col class="col_3" />
-          <col class="col_4" />
+          <col />
+          <col />
+          <col />
+          <col />
         </colgroup>
         <thead>
           <tr class="title">
             <th>항목</th>
             <th colspan="4">G-SCAN 진단</th>
-          </tr
+          </tr>
         </thead>
         <tbody>
           <tr>
             <th rowspan="3" scope="row">진단결과</th>
-	    <td colspan="2"> 고장코드 진단</td>
-	    <td colspan="2"> 센서데이터 진단</td>
-	  </tr>
-	  <tr>
+            <td colspan="2">고장코드 진단</td>
+            <td colspan="2">센서데이터 진단</td>
+          </tr>
+          <tr>
             <td colspan="2" class="photo">
-              <img id="_CAN현재" width="100%" height="100%" />
+              <img id="_CAN현재" />
             </td>
             <td colspan="2" rowspan="2" class="photo">
-              <img id="_CAN진단" width="100%" height="100%" />
-            </td>
-	  </tr>
-	  <tr>
-            <td colspan="2" class="photo">
-              <img id="_CAN과거" width="100%" height="100%" />
+              <img id="_CAN진단" />
             </td>
           </tr>
+          <tr>
+            <td colspan="2" class="photo">
+              <img id="_CAN과거" />
+            </td>
+          </tr>
+        </tbody>
       </table>
+      <div class="bottom">
+        <p>FQ850-05</p>
+        <p>A4(297x210mm)</p>
+        <p>Positive</p>
+      </div>
     </div>
-    <div>
-      <table class="bottom" width="100%">
-        <tr>
-          <td class="bottom" align="left">FQ850-05</td>
-          <td class="bottom" align="center">A4(297x210mm)</td>
-          <td class="bottom" align="right">
-            Positive <font color="skyblue">En</font>ergy
-          </td>
-        </tr>
-      </table>
-    </div>
+
     <div>
       <canvas id="_canvas"></canvas>
     </div>
@@ -1653,13 +1536,7 @@
             <label for="management_id"><b>관리번호</b></label>
           </td>
           <td class="td-p">
-            <input
-              type="text"
-              id="_management_id"
-              value=""
-              size="40"
-              required
-            />
+            <input type="text" id="_management_id" value="" size="40" required />
             <button onClick="기초보고서_조회();">조 회</button>
           </td>
         </tr>
@@ -1668,13 +1545,7 @@
             <label for="_재제조번호">재제조번호</label>
           </td>
           <td class="td-p">
-            <input
-              type="text"
-              id="_재제조번호"
-              value=""
-              size="40"
-              required
-            />
+            <input type="text" id="_재제조번호" value="" size="40" required />
             <button onClick="기초보고서_조회(true);">조 회</button>
           </td>
         </tr>
@@ -1690,6 +1561,7 @@
       <button onClick="기초보고서_save('절연');">절연저항검사</button>
       <button onClick="기초보고서_save('CAN');">CAN통신검사</button>
     </div>
+
     <script>
       var _차종 = document.getElementById("_차종");
       var _재제조번호_HEAD = document.getElementById("_재제조번호_HEAD");
@@ -1963,25 +1835,25 @@
       var _육안검사_내부_결과2 = document.getElementById("_육안검사_내부_결과2");
 
       //기밀검사
-      var _측정사진1 = document.getElementById('_측정사진1');
-      var _측정사진2 = document.getElementById('_측정사진2');
-      var _측정값사진1 = document.getElementById('_측정값사진1');
-      var _측정값사진2 = document.getElementById('_측정값사진2');
-      var _케이스 = document.getElementById('_케이스');
-      var _냉각유로 = document.getElementById('_냉각유로');
+      var _측정사진1 = document.getElementById("_측정사진1");
+      var _측정사진2 = document.getElementById("_측정사진2");
+      var _측정값사진1 = document.getElementById("_측정값사진1");
+      var _측정값사진2 = document.getElementById("_측정값사진2");
+      var _케이스 = document.getElementById("_케이스");
+      var _냉각유로 = document.getElementById("_냉각유로");
 
       //절연저항검사
-      var _절연측정사진1 = document.getElementById('_절연측정사진1');
-      var _절연측정사진2 = document.getElementById('_절연측정사진1');
-      var _절연측정값사진1 = document.getElementById('_절연측정값사진1');
-      var _절연측정값사진1 = document.getElementById('_절연측정값사진1');
-      var _절연PRA_P = document.getElementById('_절연PRA_P');
-      var _절연PRA_N = document.getElementById('_절연PRA_N');
+      var _절연측정사진1 = document.getElementById("_절연측정사진1");
+      var _절연측정사진2 = document.getElementById("_절연측정사진1");
+      var _절연측정값사진1 = document.getElementById("_절연측정값사진1");
+      var _절연측정값사진1 = document.getElementById("_절연측정값사진1");
+      var _절연PRA_P = document.getElementById("_절연PRA_P");
+      var _절연PRA_N = document.getElementById("_절연PRA_N");
 
       //CAN통신검사
-      var _CAN현재 = document.getElementById('_CAN현재');
-      var _CAN진단 = document.getElementById('_CAN진단');
-      var _CAN과거 = document.getElementById('_CAN과거');
+      var _CAN현재 = document.getElementById("_CAN현재");
+      var _CAN진단 = document.getElementById("_CAN진단");
+      var _CAN과거 = document.getElementById("_CAN과거");
 
       //checkbox
       var _cb기초보고서 = document.getElementById("_cb기초보고서");
@@ -1992,7 +1864,6 @@
       var _기밀검사 = document.getElementById("_cb기밀검사");
       var _절연저항검사 = document.getElementById("_cb절연저항검사");
       var _CAN통신검사 = document.getElementById("_cbCAN통신검사");
-
     </script>
   </body>
 </html>
