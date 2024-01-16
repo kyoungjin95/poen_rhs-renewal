@@ -516,6 +516,8 @@ function showTable(tableId) {
 		tables[i].style.display = "none";
 	}
 	// 선택된 테이블만 표시
+	const table = document.getElementById(tableId);
+	table.style.display = 'block';
 }
 
 async function 기초보고서_save(type = 0) {
