@@ -27,13 +27,6 @@ var _lastest_제제조번호 = '';
 var _black_ip_list = [];
 var _old_year = '2023';
 
-const 계정_ = {
-	_id : 0,
-	id: 1, 
-	passwd: 1, 
-	level: 1
-};
-
 app.use(morgan('dev'))
 app.use('/', express.static(path.join(__dirname, '../')));
 app.use('/base', express.static(path.join(__dirname, '../www')));
@@ -86,19 +79,15 @@ server.listen(80, () => {
 
 io.on('connection', async function(socket) {
 	var client_ip = socket.request.connection.remoteAddress; 
-	var account = {
-		login : false,
-		level : ''
-	}
 	var idx = client_ip.lastIndexOf(':');
 	if (~idx && ~client_ip.indexOf('.'))
   	client_ip = client_ip.slice(idx + 1);
+
 	console.log('connected ip', client_ip);
 	app.use(ipfilter(_black_ip_list));
 
 	socket.on('insert', async function(worker, col, doc) {
 		console.log('request insert');
-		if(account.login == false) return;
 
 		const result = await insert(col, doc);
 		socket.emit('insert_result', result);
@@ -107,7 +96,6 @@ io.on('connection', async function(socket) {
 
 	socket.on('insertMany', async function(worker, col, doc) {
 		console.log('request insertMany');
-		if(account.login == false) return;
 
 		const result = await insertMany(col, doc);
 		socket.emit('insert_result', result);
@@ -135,7 +123,6 @@ io.on('connection', async function(socket) {
 		}
 
 		console.log('request count');
-		if(account.login == false) return;
 		console.log(col, query, client_ip);
 		const cnt = await count(col, query);
 		socket.emit('count_result', col, cnt, check, option);
@@ -145,7 +132,6 @@ io.on('connection', async function(socket) {
 
 	socket.on('find', async function(worker, col, query, options, check) {
 		console.log('request find');
-		if(account.login == false) return;
 		const result_array = await find(col, query, options);
 		socket.emit('find_result', col, result_array, check);
 		////logger.info('worker:'+ worker + ' find col:' + col +'query:'+ JSON.stringify(query));
@@ -172,21 +158,14 @@ io.on('connection', async function(socket) {
 		}
 
 		console.log('request findOne');
-		if(account.login == false && col != '계정') return;
 		const result_array = await findOne(col, query, options);
 		socket.emit('find_result', col, result_array, check);
 
-		if(account.login == false && col == '계정' && result_array != null) {
-			account.login = true;
-		} else if(account.login == true && col == '계정' && result_array == null){
-			account.login = false;
-		}
 		////logger.info('worker:'+ worker + ' find col:' + col +'query:'+ JSON.stringify(query));
 	});
 
 	socket.on('update', async function(worker, col, filter, doc) {
 		console.log('request update');
-		if(account.login == false && col != '계정') return;
 		logger.info('client ip:' + client_ip + ' worker:'+ worker + ' update col:' + col + 'doc:' + JSON.stringify(doc));
 
 		const result = await update(col, filter, doc);
@@ -195,7 +174,6 @@ io.on('connection', async function(socket) {
 
 	socket.on('delete', async function(worker, col, query) {
 		console.log('request delete');
-		if(account.login == false) return;
 		logger.info('worker:'+ worker + ' delete col:' + col + 'query:'+ JSON.stringify(query));
 		const result_count = await deleteOne(col, query);
 		socket.emit('delete_result', result_count);
@@ -208,11 +186,6 @@ io.on('connection', async function(socket) {
 		socket.emit('count_result', col, cnt, check, option);
 		//logger.info('worker:'+ worker + ' count col:' + col +'query:'+ JSON.stringify(query));
 		//
-		if(account.login == false && col == '계정' && cnt > 0) {
-			account.login = true;
-		} else if(account.login == true && col == '계정' && cnt < 1){
-			account.login = false;
-		}
 	});
 
 	socket.on('find_agree', async function(worker, col, query, options, check) {
@@ -250,7 +223,6 @@ io.on('connection', async function(socket) {
 
 	socket.on('delete_by_id', async function(worker, col, id) {
 		console.log('request delete by id');
-		if(account.login == false) return;
 		logger.info('worker:'+ worker + ' delete col:' + col);
 		console.log('delete:', id);
 		const result_count = await deleteOneById(col, id);
@@ -259,7 +231,6 @@ io.on('connection', async function(socket) {
 
 	socket.on('drop', async function(worker, col) {
 		console.log('request drop:', col);
-		if(account.login == false) return;
 		logger.info('worker:'+ worker + ' drop col:' + col);
 		const result = await drop(col);
 		socket.emit('drop_result', result);
