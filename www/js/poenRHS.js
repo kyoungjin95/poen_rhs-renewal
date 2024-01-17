@@ -2963,6 +2963,7 @@ var io_status = false;
 
 socket.on("connect", function () {
   io_status = true;
+  document.getElementById('connection_status').innerHTML = '(연결)';
   console.log("connected");
   //loadPage("base/login.html");
 });
@@ -3571,7 +3572,7 @@ socket.on("drop_result", async function (result) {
 
 socket.on("disconnect", function () {
   io_status = false;
-
+  document.getElementById('connection_status').innerHTML = '(연결끊김)';
   console.log("disconnect");
   //socket = io();
 });
