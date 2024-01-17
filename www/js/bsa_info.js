@@ -2035,11 +2035,6 @@ function export_excel() {
   table.download("xlsx", "재제조_bsa_data.xlsx", { sheets: sheets });
 }
 
-async function export_all_data_excel() {
-  aggregate();
-  await delay();
-}
-
 async function 관리번호_변경() {
   var new_관리번호 = document.getElementById("new_관리번호").value;
   if (new_관리번호 == "") {
