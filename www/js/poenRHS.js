@@ -2961,7 +2961,7 @@ var str = "";
 var socket = io();
 socket.on("connect", function () {
   console.log("connected");
-  loadPage("base/login.html");
+  //loadPage("base/login.html");
 });
 
 socket.on("auto_backup_db_status", function (running) {
