@@ -2959,7 +2959,10 @@ var check = 0;
 var str = "";
 
 var socket = io();
+var io_status = false;
+
 socket.on("connect", function () {
+  io_status = true;
   console.log("connected");
   //loadPage("base/login.html");
 });
@@ -3567,11 +3570,9 @@ socket.on("drop_result", async function (result) {
 });
 
 socket.on("disconnect", function () {
+  io_status = false;
+
   console.log("disconnect");
-  walker = "";
-  const _login_btn = document.getElementById("login_btn");
-  _login_btn.innerHTML = "로그인";
-  _login_btn.style.coler = "red";
   //socket = io();
 });
 
