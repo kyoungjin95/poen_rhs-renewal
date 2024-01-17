@@ -169,6 +169,10 @@ function start_repeat_대기수량_현황() {
 }
 
 function 이전페이지() {
+	loadPage('base/item-details.html');
+}
+
+function 기초검사_이전페이지() {
 	flag_기초검사 = true;
 	loadPage('base/기초검사.html');
 }

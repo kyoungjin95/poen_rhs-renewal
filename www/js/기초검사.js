@@ -11,8 +11,8 @@ async function 기초검사_시작(is재제조 = 0) {
   console.log("DTC count:", 기초검사_DTC_count);
 
   _기초검사_delete_all();
-  기초검사_DTC_count = 0;
 
+  if(_management_id.value.length == 0) _management_id.value = 관리번호;
   if (is재제조 == 0) {
     if (_management_id.value.length == 0) return;
 
@@ -101,10 +101,10 @@ async function 기초검사_시작(is재제조 = 0) {
     _육안검사_내부_특이사항.value = 기초검사_v.육안검사_내부_특이사항;
     _기밀검사_냉각유로.value = 기초검사_v.기밀검사_냉각유로;
     _기밀검사_냉각유로_특이사항.value = 기초검사_v.기밀검사_냉각유로_특이사항;
-    _절연검사P.value = 기초검사_v.절연검사_Plus;
-    _절연검사P판정.value = 기초검사_v.절연검사_Plus판정;
-    _절연검사N.value = 기초검사_v.절연검사_Minus;
-    _절연검사N판정.value = 기초검사_v.절연검사_Minus판정;
+    _절연검사P.value = 기초검사_v.절연검사_Plus판정;
+    _절연검사P판정.value = 기초검사_v.절연검사_Plus;
+    _절연검사N.value = 기초검사_v.절연검사_Minus판정;
+    _절연검사N판정.value = 기초검사_v.절연검사_Minus;
     _통신검사_DTC코드1.value = 기초검사_v.통신검사_DTC코드1;
     _통신검사_DTC코드1판정.value = 기초검사_v.통신검사_DTC코드1판정;
     _통신검사_DTC코드2.value = 기초검사_v.통신검사_DTC코드2;
@@ -201,7 +201,9 @@ async function 기초검사_시작(is재제조 = 0) {
     _육안검사_내부_특이사항.value = "";
     _기밀검사_냉각유로.value = "";
     _기밀검사_냉각유로_특이사항.value = "";
+    _절연검사P판정.value = "";
     _절연검사P.value = "";
+    _절연검사N판정.value = "";
     _절연검사N.value = "";
     _통신검사_DTC코드1.value = "";
     _통신검사_DTC코드1판정.value = "";
@@ -226,6 +228,8 @@ async function 기초검사_시작(is재제조 = 0) {
     _요청사항.value = "";
     _비고.value = "";
     _센터진단내용.value = "";
+    _필드현상.value = "";
+    _AS센터조치.value = "";
     _검사자.value = 계정_stat.이름;
 
     var DateTime = luxon.DateTime;
@@ -934,16 +938,19 @@ function _기초검사_add_DTC_Code() {
 
 function _기초검사_delete_row(index) {
   var tb = document.getElementById("tb");
-  var rowIcnt = tb.rows.length - 17;
+  var rowIcnt = tb.rows.length - 16;
 
   console.log("index:", index, "rowIcnt:", rowIcnt);
-  if (index == rowIcnt) tb.deleteRow(index);
+  if (index == rowIcnt) {
+	  tb.deleteRow(index);
+  	기초검사_DTC_count--;
+  }
 }
 
 function _기초검사_delete_all() {
   while (기초검사_DTC_count > 0) {
     var tb = document.getElementById("tb");
-    var rowIcnt = tb.rows.length - 15;
+    var rowIcnt = tb.rows.length - 16;
 
     tb.deleteRow(rowIcnt);
     기초검사_DTC_count--;

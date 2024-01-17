@@ -173,7 +173,6 @@ async function 입고_save() {
 		_doc.품번 = _품번.value;
 		_doc.RO_no = _RO_no.value;
 		_doc.보관위치 = _Rack_번호.value;
-
 		update(BSA재제조, _doc);
 		await delay();
 
@@ -186,12 +185,11 @@ async function 입고_save() {
 			차종: _차종.value,
 			품번: _품번.value,
 			RO_no: _RO_no.value,
-			보관위치: _Rack_번호.value
+			보관위치: _Rack_번호.value,
 		};
 
 		update(BSA재제조, _doc);
 		await delay();
-
 	}
 
 	await 공정단계자동입력(_management_id.value);
