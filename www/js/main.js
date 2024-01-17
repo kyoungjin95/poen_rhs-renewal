@@ -131,7 +131,7 @@ var interval = setInterval(function () {
 	if (flag_성능검사 == true) { console.log('성능검사'); stop_repeat(); 성능검사_시작(); }
 	if (flag_EOL == true) { console.log('EOL'); stop_repeat(); EOL_시작(); }
 	if (flag_출하 == true) { console.log('출하'); stop_repeat(); 출하정보_시작(); }
-	if (flag_racks == true) { console.log('racks'); stop_repeat(); racks_시작(); }
+	if (flag_racks == true) { console.log('racks'); stop_repeat(); loadPage('base/rack_배치도.html'); racks_시작(); }
 	if (flag_불량의심부품 == true) { console.log('불량의심부품'); stop_repeat(); 불량의심부품_시작(); }
 	if (flag_부품정보_list == true) { console.log('부품정보'); stop_repeat(); 부품정보_list_시작(); }
 }, 1000);
@@ -169,5 +169,10 @@ function start_repeat_대기수량_현황() {
 }
 
 function 이전페이지() {
-	back();
+	loadPage('base/item-details.html');
+}
+
+function 기초검사_이전페이지() {
+	flag_기초검사 = true;
+	loadPage('base/기초검사.html');
 }

@@ -1,0 +1,313 @@
+../기초보고서.html:10:    <section id="_기초보고서">
+../기초보고서.html:12:        <h3>▣ 기초보고서 [<span id="_차종">CS_EV</span>]</h3>
+../기초보고서.html:13:        <span id="_재제조번호_"></span
+../기초보고서.html:14:        ><input type="checkbox" id="_cb기초보고서" checked />
+../기초보고서.html:16:      <div id="line"></div>
+../기초보고서.html:32:                  <td class="base2" id="_VINNo"></td>
+../기초보고서.html:33:                  <td class="base2" id="_RONo"></td>
+../기초보고서.html:34:                  <td class="base2" id="_주행거리"></td>
+../기초보고서.html:35:                  <td class="base2" id="_차량번호"></td>
+../기초보고서.html:47:                  <td class="base" id="_생산일"></td>
+../기초보고서.html:48:                  <td class="base" id="_판매일"></td>
+../기초보고서.html:49:                  <td class="base" id="_수리일"></td>
+../기초보고서.html:50:                  <td class="base" id="_입고일"></td>
+../기초보고서.html:61:                      <img id="_입고사진" width="100%" height="100%" />
+../기초보고서.html:66:                      <img id="_BSA_QR" width="100%" height="100%" />
+../기초보고서.html:73:                    <p id="_관리번호"></p>
+../기초보고서.html:75:                    <p id="_필드현상"></p>
+../기초보고서.html:77:                    <p id="_센터진단"></p>
+../기초보고서.html:79:                    <p id="_센터조치"></p>
+../기초보고서.html:87:                  <td class="base" colspan="2" id="_작성자"></td>
+../기초보고서.html:88:                  <td class="base" colspan="2" id="_작성일"></td>
+../기초보고서.html:93:              <table class="base tableAll" id="_CS_EV" style="display: none">
+../기초보고서.html:107:                  <td class="base" id="_CS_외부점검">OK/NG</td>
+../기초보고서.html:108:                  <td class="base" id="_CS_외부점검사유">
+../기초보고서.html:116:                  <td class="base" id="_CS_내부점검">OK/NG</td>
+../기초보고서.html:117:                  <td class="base" id="_CS_내부점검사유">
+../기초보고서.html:126:                  <td class="base" id="_CS_케이스">OK/NG</td>
+../기초보고서.html:127:                  <td class="base" id="_CS_케이스감압량">감압 량(mbar):</td>
+../기초보고서.html:133:                  <td class="base" id="_CS_냉각유로">OK/NG</td>
+../기초보고서.html:134:                  <td class="base" id="_CS_냉각유로감압량">감압 량(mbar):</td>
+../기초보고서.html:144:                  <td class="base" id="_CS_토크검사">OK/NG</td>
+../기초보고서.html:145:                  <td class="base" id="_CS_토크검사사유">
+../기초보고서.html:156:                  <td class="base" id="_CS_PRA_P">OK/NG</td>
+../기초보고서.html:157:                  <td class="base" id="_CS_PRA_P값">0000 MΩ</td>
+../기초보고서.html:163:                  <td class="base" id="_CS_PRA_N">OK/NG</td>
+../기초보고서.html:164:                  <td class="base" id="_CS_PRA_N값">0000 MΩ</td>
+../기초보고서.html:171:                  <td class="base" id="_CS_팩전압">OK/NG</td>
+../기초보고서.html:172:                  <td class="base" id="_CS_팩전압값">팩 전압(V):</td>
+../기초보고서.html:178:                  <td class="base" id="_CS_셀전압편차">OK/NG</td>
+../기초보고서.html:179:                  <td class="base" id="_CS_셀전압편차값">셀 전압편차(mV):</td>
+../기초보고서.html:184:                  <td class="base" id="_CS_릴레이제어">OK/NG</td>
+../기초보고서.html:185:                  <td class="base" id="_CS_릴레이제어사유">
+../기초보고서.html:192:                  <td class="base" id="_CS_고장코드">OK/NG</td>
+../기초보고서.html:193:                  <td class="base" id="_CS_고장코드사유">
+../기초보고서.html:202:                  <td class="base" id="_CS_입고정보">OK/NG</td>
+../기초보고서.html:203:                  <td class="base" id="_CS_입고정보사유">데이터 누락 없음</td>
+../기초보고서.html:209:                  <td class="base" id="_CS_재제조이력">OK/NG</td>
+../기초보고서.html:210:                  <td class="base" id="_CS_재제조이력사유">데이터 누락 없음</td>
+../기초보고서.html:215:              <table class="base tableAll" id="_CV_EV" style="display: none">
+../기초보고서.html:229:                  <td class="base" id="_CV_외부점검">OK/NG</td>
+../기초보고서.html:230:                  <td class="base" id="_CV_외부점검사유">
+../기초보고서.html:238:                  <td class="base" id="_CV_외부점검2">OK/NG</td>
+../기초보고서.html:239:                  <td class="base" id="_CV_외부점검사유2">
+../기초보고서.html:246:                  <td class="base" id="_CV_내부점검">OK/NG</td>
+../기초보고서.html:247:                  <td class="base" id="_CV_내부점검사유">
+../기초보고서.html:256:                  <td class="base" id="_CV_케이스">OK/NG</td>
+../기초보고서.html:257:                  <td class="base" id="_CV_케이스감압량">감압 량(mbar):</td>
+../기초보고서.html:263:                  <td class="base" id="_CV_냉각유로">OK/NG</td>
+../기초보고서.html:264:                  <td class="base" id="_CV_냉각유로감압량">감압 량(mbar):</td>
+../기초보고서.html:271:                  <td class="base" id="_CV_PRA_P">OK/NG</td>
+../기초보고서.html:272:                  <td class="base" id="_CV_PRA_P값">0000 MΩ</td>
+../기초보고서.html:278:                  <td class="base" id="_CV_PRA_N">OK/NG</td>
+../기초보고서.html:279:                  <td class="base" id="_CV_PRA_N값">0000 MΩ</td>
+../기초보고서.html:286:                  <td class="base" id="_CV_팩전압">OK/NG</td>
+../기초보고서.html:287:                  <td class="base" id="_CV_팩전압값">팩 전압(V):</td>
+../기초보고서.html:293:                  <td class="base" id="_CV_셀전압편차">OK/NG</td>
+../기초보고서.html:294:                  <td class="base" id="_CV_셀전압편차값">셀 전압편차(mV):</td>
+../기초보고서.html:299:                  <td class="base" id="_CV_릴레이제어">OK/NG</td>
+../기초보고서.html:300:                  <td class="base" id="_CV_릴레이제어사유">
+../기초보고서.html:307:                  <td class="base" id="_CV_고장코드">OK/NG</td>
+../기초보고서.html:308:                  <td class="base" id="_CV_고장코드사유">
+../기초보고서.html:317:                  <td class="base" id="_CV_입고정보">OK/NG</td>
+../기초보고서.html:318:                  <td class="base" id="_CV_입고정보사유">데이터 누락 없음</td>
+../기초보고서.html:324:                  <td class="base" id="_CV_재제조이력">OK/NG</td>
+../기초보고서.html:325:                  <td class="base" id="_CV_재제조이력사유">데이터 누락 없음</td>
+../기초보고서.html:330:              <table class="base tableAll" id="_DE_EV" style="display: none">
+../기초보고서.html:344:                  <td class="base" id="_DE_외부점검">OK/NG</td>
+../기초보고서.html:345:                  <td class="base" id="_DE_외부점검사유">
+../기초보고서.html:353:                  <td class="base" id="_DE_내부점검">OK/NG</td>
+../기초보고서.html:354:                  <td class="base" id="_DE_내부점검사유">
+../기초보고서.html:363:                  <td class="base" id="_DE_케이스">OK/NG</td>
+../기초보고서.html:364:                  <td class="base" id="_DE_케이스감압량">감압 량(mbar):</td>
+../기초보고서.html:370:                  <td class="base" id="_DE_냉각유로">OK/NG</td>
+../기초보고서.html:371:                  <td class="base" id="_DE_냉각유로감압량">감압 량(mbar):</td>
+../기초보고서.html:378:                  <td class="base" id="_DE_PRA_P">OK/NG</td>
+../기초보고서.html:379:                  <td class="base" id="_DE_PRA_P값">0000 MΩ</td>
+../기초보고서.html:385:                  <td class="base" id="_DE_PRA_N">OK/NG</td>
+../기초보고서.html:386:                  <td class="base" id="_DE_PRA_N값">0000 MΩ</td>
+../기초보고서.html:393:                  <td class="base" id="_DE_팩전압">OK/NG</td>
+../기초보고서.html:394:                  <td class="base" id="_DE_팩전압값">팩 전압(V):</td>
+../기초보고서.html:400:                  <td class="base" id="_DE_셀전압편차">OK/NG</td>
+../기초보고서.html:401:                  <td class="base" id="_DE_셀전압편차값">셀 전압편차(mV):</td>
+../기초보고서.html:406:                  <td class="base" id="_DE_릴레이제어">OK/NG</td>
+../기초보고서.html:407:                  <td class="base" id="_DE_릴레이제어사유">
+../기초보고서.html:414:                  <td class="base" id="_DE_고장코드">OK/NG</td>
+../기초보고서.html:415:                  <td class="base" id="_DE_고장코드사유">
+../기초보고서.html:424:                  <td class="base" id="_DE_입고정보">OK/NG</td>
+../기초보고서.html:425:                  <td class="base" id="_DE_입고정보사유">데이터 누락 없음</td>
+../기초보고서.html:431:                  <td class="base" id="_DE_재제조이력">OK/NG</td>
+../기초보고서.html:432:                  <td class="base" id="_DE_재제조이력사유">데이터 누락 없음</td>
+../기초보고서.html:437:              <table class="base tableAll" id="_HR_EV" style="display: none">
+../기초보고서.html:451:                  <td class="base" id="_HR_외부점검">OK/NG</td>
+../기초보고서.html:452:                  <td class="base" id="_HR_외부점검사유">
+../기초보고서.html:460:                  <td class="base" id="_HR_내부점검">OK/NG</td>
+../기초보고서.html:461:                  <td class="base" id="_HR_내부점검사유">
+../기초보고서.html:469:                  <td class="base" id="_HR_셀제조사사유">
+../기초보고서.html:478:                  <td class="base" id="_HR_케이스">OK/NG</td>
+../기초보고서.html:479:                  <td class="base" id="_HR_케이스감압량">감압 량(mbar):</td>
+../기초보고서.html:485:                  <td class="base" id="_HR_냉각유로">OK/NG</td>
+../기초보고서.html:486:                  <td class="base" id="_HR_냉각유로감압량">감압 량(mbar):</td>
+../기초보고서.html:493:                  <td class="base" id="_HR_PRA_P">OK/NG</td>
+../기초보고서.html:494:                  <td class="base" id="_HR_PRA_P값">0000 MΩ</td>
+../기초보고서.html:500:                  <td class="base" id="_HR_PRA_N">OK/NG</td>
+../기초보고서.html:501:                  <td class="base" id="_HR_PRA_N값">0000 MΩ</td>
+../기초보고서.html:506:                  <td class="base" id="_HR_HV커넥터_P">OK/NG</td>
+../기초보고서.html:507:                  <td class="base" id="_HR_HV커넥터_P값  ">0000 MΩ</td>
+../기초보고서.html:512:                  <td class="base" id="_HR_HV커넥터_N">OK/NG</td>
+../기초보고서.html:513:                  <td class="base" id="_HR_HV커넥터_N값">0000 MΩ</td>
+../기초보고서.html:520:                  <td class="base" id="_HR_팩전압">OK/NG</td>
+../기초보고서.html:521:                  <td class="base" id="_HR_팩전압값">팩 전압(V):</td>
+../기초보고서.html:527:                  <td class="base" id="_HR_셀전압편차">OK/NG</td>
+../기초보고서.html:528:                  <td class="base" id="_HR_셀전압편차값">셀 전압편차(mV):</td>
+../기초보고서.html:533:                  <td class="base" id="_HR_릴레이제어">OK/NG</td>
+../기초보고서.html:534:                  <td class="base" id="_HR_릴레이제어사유">
+../기초보고서.html:541:                  <td class="base" id="_HR_고장코드">OK/NG</td>
+../기초보고서.html:542:                  <td class="base" id="_HR_고장코드사유">
+../기초보고서.html:557:                  <td class="base" id="_HR_입고정보">OK/NG</td>
+../기초보고서.html:558:                  <td class="base" id="_HR_입고정보사유">데이터 누락 없음</td>
+../기초보고서.html:564:                  <td class="base" id="_HR_재제조이력">OK/NG</td>
+../기초보고서.html:565:                  <td class="base" id="_HR_재제조이력사유">데이터 누락 없음</td>
+../기초보고서.html:570:              <table class="base tableAll" id="_LK_EV" style="display: none">
+../기초보고서.html:584:                  <td class="base" id="_LK_외부점검">OK/NG</td>
+../기초보고서.html:585:                  <td class="base" id="_LK_외부점검사유">
+../기초보고서.html:593:                  <td class="base" id="_LK_내부점검">OK/NG</td>
+../기초보고서.html:594:                  <td class="base" id="_LK_내부점검사유">
+../기초보고서.html:603:                  <td class="base" id="_LK_케이스">OK/NG</td>
+../기초보고서.html:604:                  <td class="base" id="_LK_케이스감압량">감압 량(mbar):</td>
+../기초보고서.html:610:                  <td class="base" id="_LK_냉각유로">OK/NG</td>
+../기초보고서.html:611:                  <td class="base" id="_LK_냉각유로감압량">감압 량(mbar):</td>
+../기초보고서.html:621:                  <td class="base" id="_LK_토크검사">OK/NG</td>
+../기초보고서.html:622:                  <td class="base" id="_LK_토크검사사유">
+../기초보고서.html:633:                  <td class="base" id="_LK_PRA_P">OK/NG</td>
+../기초보고서.html:634:                  <td class="base" id="_LK_PRA_P값">0000 MΩ</td>
+../기초보고서.html:640:                  <td class="base" id="_LK_PRA_N">OK/NG</td>
+../기초보고서.html:641:                  <td class="base" id="_LK_PRA_N값">0000 MΩ</td>
+../기초보고서.html:646:                  <td class="base" id="_LK_HV_P">OK/NG</td>
+../기초보고서.html:647:                  <td class="base" id="_LK_HV_P값">0000 MΩ</td>
+../기초보고서.html:652:                  <td class="base" id="_LK_HV_N">OK/NG</td>
+../기초보고서.html:653:                  <td class="base" id="_LK_HV_N값">0000 MΩ</td>
+../기초보고서.html:660:                  <td class="base" id="_LK_팩전압">OK/NG</td>
+../기초보고서.html:661:                  <td class="base" id="_LK_팩전압값">팩 전압(V):</td>
+../기초보고서.html:667:                  <td class="base" id="_LK_셀전압편차">OK/NG</td>
+../기초보고서.html:668:                  <td class="base" id="_LK_셀전압편차값">셀 전압편차(mV):</td>
+../기초보고서.html:673:                  <td class="base" id="_LK_릴레이제어">OK/NG</td>
+../기초보고서.html:674:                  <td class="base" id="_LK_릴레이제어사유">
+../기초보고서.html:681:                  <td class="base" id="_LK_고장코드">OK/NG</td>
+../기초보고서.html:682:                  <td class="base" id="_LK_고장코드사유">
+../기초보고서.html:691:                  <td class="base" id="_LK_입고정보">OK/NG</td>
+../기초보고서.html:692:                  <td class="base" id="_LK_입고정보사유">데이터 누락 없음</td>
+../기초보고서.html:698:                  <td class="base" id="_LK_재제조이력">OK/NG</td>
+../기초보고서.html:699:                  <td class="base" id="_LK_재제조이력사유">데이터 누락 없음</td>
+../기초보고서.html:704:              <table class="base tableAll" id="_LM_EV" style="display: none">
+../기초보고서.html:718:                  <td class="base" id="_LM_외부점검">OK/NG</td>
+../기초보고서.html:719:                  <td class="base" id="_LM_외부점검사유">
+../기초보고서.html:727:                  <td class="base" id="_LM_내부점검">OK/NG</td>
+../기초보고서.html:728:                  <td class="base" id="_LM_내부점검사유">
+../기초보고서.html:737:                  <td class="base" id="_LM_케이스">OK/NG</td>
+../기초보고서.html:738:                  <td class="base" id="_LM_케이스감압량">감압 량(mbar):</td>
+../기초보고서.html:744:                  <td class="base" id="_LM_냉각유로">OK/NG</td>
+../기초보고서.html:745:                  <td class="base" id="_LM_냉각유로감압량">감압 량(mbar):</td>
+../기초보고서.html:755:                  <td class="base" id="_LM_토크검사">OK/NG</td>
+../기초보고서.html:756:                  <td class="base" id="_LM_토크검사사유">
+../기초보고서.html:767:                  <td class="base" id="_LM_PRA_P">OK/NG</td>
+../기초보고서.html:768:                  <td class="base" id="_LM_PRA_P값">0000 MΩ</td>
+../기초보고서.html:774:                  <td class="base" id="_LM_PRA_N">OK/NG</td>
+../기초보고서.html:775:                  <td class="base" id="_LM_PRA_N값">0000 MΩ</td>
+../기초보고서.html:782:                  <td class="base" id="_LM_팩전압">OK/NG</td>
+../기초보고서.html:783:                  <td class="base" id="_LM_팩전압값">팩 전압(V):</td>
+../기초보고서.html:789:                  <td class="base" id="_LM_셀전압편차">OK/NG</td>
+../기초보고서.html:790:                  <td class="base" id="_LM_셀전압편차값">셀 전압편차(mV):</td>
+../기초보고서.html:795:                  <td class="base" id="_LM_릴레이제어">OK/NG</td>
+../기초보고서.html:796:                  <td class="base" id="_LM_릴레이제어사유">
+../기초보고서.html:803:                  <td class="base" id="_LM_고장코드">OK/NG</td>
+../기초보고서.html:804:                  <td class="base" id="_LM_고장코드사유">
+../기초보고서.html:813:                  <td class="base" id="_LM_입고정보">OK/NG</td>
+../기초보고서.html:814:                  <td class="base" id="_LM_입고정보사유">데이터 누락 없음</td>
+../기초보고서.html:820:                  <td class="base" id="_LM_재제조이력">OK/NG</td>
+../기초보고서.html:821:                  <td class="base" id="_LM_재제조이력사유">데이터 누락 없음</td>
+../기초보고서.html:826:              <table class="base tableAll" id="_NE_EV" style="display: none">
+../기초보고서.html:840:                  <td class="base" id="_NE_외부점검">OK/NG</td>
+../기초보고서.html:841:                  <td class="base" id="_NE_외부점검사유">
+../기초보고서.html:849:                  <td class="base" id="_NE_내부점검">OK/NG</td>
+../기초보고서.html:850:                  <td class="base" id="_NE_내부점검사유">
+../기초보고서.html:859:                  <td class="base" id="_NE_케이스">OK/NG</td>
+../기초보고서.html:860:                  <td class="base" id="_NE_케이스감압량">감압 량(mbar):</td>
+../기초보고서.html:866:                  <td class="base" id="_NE_냉각유로">OK/NG</td>
+../기초보고서.html:867:                  <td class="base" id="_NE_냉각유로감압량">감압 량(mbar):</td>
+../기초보고서.html:874:                  <td class="base" id="_NE_PRA_P">OK/NG</td>
+../기초보고서.html:875:                  <td class="base" id="_NE_PRA_P값">0000 MΩ</td>
+../기초보고서.html:881:                  <td class="base" id="_NE_PRA_N">OK/NG</td>
+../기초보고서.html:882:                  <td class="base" id="_NE_PRA_N값">0000 MΩ</td>
+../기초보고서.html:889:                  <td class="base" id="_NE_팩전압">OK/NG</td>
+../기초보고서.html:890:                  <td class="base" id="_NE_팩전압값">팩 전압(V):</td>
+../기초보고서.html:896:                  <td class="base" id="_NE_셀전압편차">OK/NG</td>
+../기초보고서.html:897:                  <td class="base" id="_NE_셀전압편차값">셀 전압편차(mV):</td>
+../기초보고서.html:902:                  <td class="base" id="_NE_릴레이제어">OK/NG</td>
+../기초보고서.html:903:                  <td class="base" id="_NE_릴레이제어사유">
+../기초보고서.html:910:                  <td class="base" id="_NE_고장코드">OK/NG</td>
+../기초보고서.html:911:                  <td class="base" id="_NE_고장코드사유">
+../기초보고서.html:920:                  <td class="base" id="_NE_입고정보">OK/NG</td>
+../기초보고서.html:921:                  <td class="base" id="_NE_입고정보사유">데이터 누락 없음</td>
+../기초보고서.html:927:                  <td class="base" id="_NE_재제조이력">OK/NG</td>
+../기초보고서.html:928:                  <td class="base" id="_NE_재제조이력사유">데이터 누락 없음</td>
+../기초보고서.html:935:                id="_OS_SK3_EV"
+../기초보고서.html:951:                  <td class="base" id="_OS_SK3_외부점검">OK/NG</td>
+../기초보고서.html:952:                  <td class="base" id="_OS_SK3_외부점검사유">
+../기초보고서.html:960:                  <td class="base" id="_OS_SK3_내부점검">OK/NG</td>
+../기초보고서.html:961:                  <td class="base" id="_OS_SK3_내부점검사유">
+../기초보고서.html:970:                  <td class="base" id="_OS_SK3_케이스">OK/NG</td>
+../기초보고서.html:971:                  <td class="base" id="_OS_SK3_케이스감압량">감압 량(mbar):</td>
+../기초보고서.html:977:                  <td class="base" id="_OS_SK3_냉각유로">OK/NG</td>
+../기초보고서.html:978:                  <td class="base" id="_OS_SK3_냉각유로감압량">감압 량(mbar):</td>
+../기초보고서.html:985:                  <td class="base" id="_OS_SK3_PRA_P">OK/NG</td>
+../기초보고서.html:986:                  <td class="base" id="_OS_SK3_PRA_P값">0000 MΩ</td>
+../기초보고서.html:992:                  <td class="base" id="_OS_SK3_PRA_N">OK/NG</td>
+../기초보고서.html:993:                  <td class="base" id="_OS_SK3_PRA_N값">0000 MΩ</td>
+../기초보고서.html:1000:                  <td class="base" id="_OS_SK3_팩전압">OK/NG</td>
+../기초보고서.html:1001:                  <td class="base" id="_OS_SK3_팩전압값">팩 전압(V):</td>
+../기초보고서.html:1007:                  <td class="base" id="_OS_SK3_셀전압편차">OK/NG</td>
+../기초보고서.html:1008:                  <td class="base" id="_OS_SK3_셀전압편차값">셀 전압편차(mV):</td>
+../기초보고서.html:1013:                  <td class="base" id="_OS_SK3_릴레이제어">OK/NG</td>
+../기초보고서.html:1014:                  <td class="base" id="_OS_SK3_릴레이제어사유">
+../기초보고서.html:1021:                  <td class="base" id="_OS_SK3_고장코드">OK/NG</td>
+../기초보고서.html:1022:                  <td class="base" id="_OS_SK3_고장코드사유">
+../기초보고서.html:1031:                  <td class="base" id="_OS_SK3_입고정보">OK/NG</td>
+../기초보고서.html:1032:                  <td class="base" id="_OS_SK3_입고정보사유">데이터 누락 없음</td>
+../기초보고서.html:1038:                  <td class="base" id="_OS_SK3_재제조이력">OK/NG</td>
+../기초보고서.html:1039:                  <td class="base" id="_OS_SK3_재제조이력사유">데이터 누락 없음</td>
+../기초보고서.html:1044:              <table class="base tableAll" id="_PU_EV" style="display: none">
+../기초보고서.html:1058:                  <td class="base" id="_PU_외부점검">OK/NG</td>
+../기초보고서.html:1059:                  <td class="base" id="_PU_외부점검사유">
+../기초보고서.html:1067:                  <td class="base" id="_PU_내부점검">OK/NG</td>
+../기초보고서.html:1068:                  <td class="base" id="_PU_내부점검사유">
+../기초보고서.html:1077:                  <td class="base" id="_PU_케이스">OK/NG</td>
+../기초보고서.html:1078:                  <td class="base" id="_PU_케이스감압량">감압 량(mbar):</td>
+../기초보고서.html:1084:                  <td class="base" id="_PU_냉각유로">OK/NG</td>
+../기초보고서.html:1085:                  <td class="base" id="_PU_냉각유로감압량">감압 량(mbar):</td>
+../기초보고서.html:1092:                  <td class="base" id="_PU_PRA_P">OK/NG</td>
+../기초보고서.html:1093:                  <td class="base" id="_PU_PRA_P값">0000 MΩ</td>
+../기초보고서.html:1099:                  <td class="base" id="_PU_PRA_N">OK/NG</td>
+../기초보고서.html:1100:                  <td class="base" id="_PU_PRA_N값">0000 MΩ</td>
+../기초보고서.html:1107:                  <td class="base" id="_PU_팩전압">OK/NG</td>
+../기초보고서.html:1108:                  <td class="base" id="_PU_팩전압값">팩 전압(V):</td>
+../기초보고서.html:1114:                  <td class="base" id="_PU_셀전압편차">OK/NG</td>
+../기초보고서.html:1115:                  <td class="base" id="_PU_셀전압편차값">셀 전압편차(mV):</td>
+../기초보고서.html:1120:                  <td class="base" id="_PU_릴레이제어">OK/NG</td>
+../기초보고서.html:1121:                  <td class="base" id="_PU_릴레이제어사유">
+../기초보고서.html:1128:                  <td class="base" id="_PU_고장코드">OK/NG</td>
+../기초보고서.html:1129:                  <td class="base" id="_PU_고장코드사유">
+../기초보고서.html:1138:                  <td class="base" id="_PU_입고정보">OK/NG</td>
+../기초보고서.html:1139:                  <td class="base" id="_PU_입고정보사유">데이터 누락 없음</td>
+../기초보고서.html:1145:                  <td class="base" id="_PU_재제조이력">OK/NG</td>
+../기초보고서.html:1146:                  <td class="base" id="_PU_재제조이력사유">데이터 누락 없음</td>
+../기초보고서.html:1156:                <td class="result" id="_결과" style="line-height: 1.3">
+../기초보고서.html:1178:              <tr id="_교체부품">
+../기초보고서.html:1180:                <td class="result" id="_교체부품내용" style="line-height: 1.3">
+../기초보고서.html:1200:    <div id="_육안검사외부1" class="check-all">
+../기초보고서.html:1202:      <input type="checkbox" id="_cb육안검사외부" checked />
+../기초보고서.html:1220:              <img id="_top_pic" width="100%" height="100%" />
+../기초보고서.html:1222:            <td id="front_pic" style="height: 23vh" class="imgName">
+../기초보고서.html:1223:              <img id="_front_pic" width="100%" height="100%" />
+../기초보고서.html:1226:              <img id="_left_pic" width="100%" height="100%" />
+../기초보고서.html:1236:              <img id="_bottom_pic" width="100%" height="100%" />
+../기초보고서.html:1239:              <img id="_rear_pic" width="100%" height="100%" />
+../기초보고서.html:1242:              <img id="_right_pic" width="100%" height="100%" />
+../기초보고서.html:1248:    <div id="_육안검사외부2" class="check-all">
+../기초보고서.html:1251:        <input type="checkbox" id="_cb육안검사외부상세" checked />
+../기초보고서.html:1265:              <img id="_이상부위_외부1" width="100%" height="100%" />
+../기초보고서.html:1268:              <img id="_이상부위_외부2" width="100%" height="100%" />
+../기초보고서.html:1273:              <img id="_이상부위_외부3" width="100%" height="100%" />
+../기초보고서.html:1276:              <img id="_이상부위_외부4" width="100%" height="100%" />
+../기초보고서.html:1282:    <div id="_육안검사내부1" class="check-all">
+../기초보고서.html:1285:        <input type="checkbox" id="_cb육안검사내부" checked />
+../기초보고서.html:1301:              <img id="_BMU" width="90%" height="90%" />
+../기초보고서.html:1306:              <img id="_allImg" width="100%" height="100%" />
+../기초보고서.html:1312:              <img id="_CMU" width="90%" height="90%" />
+../기초보고서.html:1322:              <img id="_PRA" width="90%" height="90%" />
+../기초보고서.html:1333:            <td class="result" id="_결과" colspan="3"></td>
+../기초보고서.html:1339:    <div id="_육안검사내부2" class="check-all">
+../기초보고서.html:1342:        <input type="checkbox" id="_cb육안검사내부상세" checked />
+../기초보고서.html:1355:              <img id="_이상부위_내부1" width="100%" height="100%" />
+../기초보고서.html:1358:              <img id="_이상부위_내부2" width="100%" height="100%" />
+../기초보고서.html:1363:              <img id="_이상부위_내부3" width="100%" height="100%" />
+../기초보고서.html:1366:              <img id="_이상부위_내부4" width="100%" height="100%" />
+../기초보고서.html:1383:    <div id="_기밀검사" class="check-all">
+../기초보고서.html:1386:        <input type="checkbox" id="_cb기밀검사" checked />
+../기초보고서.html:1442:              <img id="_측정사진1" width="100%" height="100%" />
+../기초보고서.html:1446:              <img id="_측정사진2" width="100%" height="100%" />
+../기초보고서.html:1452:              <img id="_측정값사진1" width="100%" height="100%" />
+../기초보고서.html:1456:              <img id="_측정값사진2" width="100%" height="100%" />
+../기초보고서.html:1461:            <td colspan="2" class="result" id="_케이스">
+../기초보고서.html:1468:            <td colspan="2" class="result" id="_냉각유로">
+../기초보고서.html:1491:      <canvas id="_canvas"></canvas>
+../기초보고서.html:1494:      <table id="tb" class="tb">
+../기초보고서.html:1502:              id="_management_id"
+../기초보고서.html:1517:              id="_재제조번호"
+../기초보고서.html:1530:            <input type="text" id="_셀제조사사유_input" size="40" required />
+../기초보고서.html:1538:            <input type="text" id="_생산일_input" size="40" required />
+../기초보고서.html:1546:            <input type="text" id="_판매일_input" size="40" required />
+../기초보고서.html:1554:            <input type="text" id="_수리일_input" size="40" required />
+../기초보고서.html:1562:            <input type="text" id="_필드현상_input" size="40" required />
+../기초보고서.html:1570:            <input type="text" id="_센터조치_input" size="40" required />
+../기초보고서.html:1578:            <input type="text" id="_결과_input" size="40" required />

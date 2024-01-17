@@ -1,8 +1,12 @@
 var select_pos ='';
 var 창고 = '';
-function racks_시작() {
+async function racks_시작() {
 	flag_racks = false;
 	console.log('racks start');
+
+	while(document.getElementById('_제주') == undefined) {
+		await sleep(1);
+	}
 
 	var buttons = document.querySelectorAll('.rack');
 	buttons.forEach((button) => {
