@@ -2,10 +2,6 @@ table.all {
   width: 90%;
   border: none;
 }
-table.base {
-  width: 100%;
-  border-collapse: collapse;
-}
 table td.base,
 table td.base2,
 table td.base3 {
@@ -17,6 +13,10 @@ table td.base3 {
   text-align: center;
   border-collapse: collapse;
   height: 2.4vw;
+}
+table.base {
+  width: 100%;
+  border-collapse: collapse;
 }
 table td.base2 {
   height: 3vw;
@@ -33,6 +33,9 @@ table td.base_left {
   border: 1px solid black;
   height: 1vh;
 }
+.tableAll {
+  width: 100%;
+}
 .base_header,
 .base_header2,
 .base_header3 {
@@ -42,7 +45,6 @@ table td.base_left {
   border: 1px solid black;
   text-align: center;
   font-weight: bold;
-  height: 1vw;
 }
 .base_header {
   background: #c8e7a7;
@@ -76,7 +78,6 @@ table td.result {
   width: 100%;
   font-weight: bold;
 }
-
 table td.bottom {
   padding: 0.05vw;
   border: none;
@@ -87,7 +88,6 @@ table td.bottom {
   justify-content: space-between;
   font-size: 0.9vw;
 }
-
 /* ========================================
   검사 */
 .check-all {
@@ -193,9 +193,7 @@ table td.bottom {
 #_육안검사내부1 p {
   padding-top: 3px;
 }
-#_육안검사내부1 img {
-  margin-top: 10px;
-}
+
 #_육안검사내부1 .result {
   border-left-color: transparent;
   background: #fff;
@@ -219,16 +217,22 @@ table td.bottom {
 }
 .photo img,
 .imgName img {
-  width: 50%;
-  aspect-ratio: 1/1;
+  width: 70%;
+  aspect-ratio: 4/3;
   object-fit: cover;
   object-position: center;
 }
-.widthImg img {
-  width: 20%;
+.widthImg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .heightPhoto img {
-  width: 70%;
+  width: 60%;
+  aspect-ratio: 3/4;
+}
+.changeWidth img {
+  width: 60%;
 }
 /* 출하검사성적서 */
 
