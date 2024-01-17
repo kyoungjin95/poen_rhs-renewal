@@ -52,9 +52,6 @@ async function 재제조현황_시작() {
   flag_재제조현황 = false;
 
   if (worker == "") return;
-  while (document.getElementById("폐기_pic4") == undefined) {
-    await sleep(1);
-  }
 
   //Update filters on value change
   document.getElementById("filter-field").addEventListener("change", updateFilter);
@@ -72,19 +69,6 @@ async function 재제조현황_시작() {
 
     table.clearFilter();
   });
-
-  toggle1();
-  toggle2();
-  toggle3();
-  toggle4();
-  toggle5();
-  toggle6();
-  toggle7();
-  toggle8();
-  toggle9();
-  toggle10();
-  toggle11();
-  toggle12();
 
   재제조현황_조회();
 }
@@ -398,11 +382,6 @@ async function 재제조현황_조회() {
     await grid_교체부품상세10(m_id);
     progress.value = (18 / 18) * 100;
 
-    await 반품입고_load_pic(m_id);
-    await 재출하_load_pic(m_id);
-    await 완전분해_load_pic(m_id);
-    await 폐기_load_pic(m_id);
-
     return;
   });
 
@@ -459,11 +438,6 @@ async function 재제조현황_조회() {
 
   await grid_교체부품상세10();
   progress.value = (18 / 18) * 100;
-
-  await 반품입고_load_pic();
-  await 재출하_load_pic();
-  await 완전분해_load_pic();
-  await 폐기_load_pic();
 
   alert("로딩이 완료되었습니다");
 }
@@ -621,21 +595,6 @@ async function delete_bsa() {
   await delay();
   progress.value = (26 / 18) * 100;
 
-  deleteOne(반품입고_pic, row_one_id);
-  await delay();
-  progress.value = (27 / 18) * 100;
-
-  deleteOne(재출하_pic, row_one_id);
-  await delay();
-  progress.value = (28 / 18) * 100;
-
-  deleteOne(완전분해_pic, row_one_id);
-  await delay();
-  progress.value = (29 / 18) * 100;
-
-  deleteOne(폐기_pic, row_one_id);
-  await delay();
-
   var fieldEl = document.getElementById("filter-field");
   var typeEl = document.getElementById("filter-type");
   var valueEl = document.getElementById("filter-value");
@@ -652,21 +611,6 @@ async function delete_bsa() {
 
 async function grid_입고(m_id = "") {
   if (worker == "") return;
-  var pic1 = document.getElementById("입고정보_pic1");
-  var pic2 = document.getElementById("입고정보_pic2");
-  var pic3 = document.getElementById("입고정보_pic3");
-  var pic4 = document.getElementById("입고정보_pic4");
-  var pic5 = document.getElementById("입고정보_pic5");
-  var pic6 = document.getElementById("입고정보_pic6");
-  var pic7 = document.getElementById("입고정보_pic7");
-  var pic8 = document.getElementById("입고정보_pic8");
-  var pic9 = document.getElementById("입고정보_pic9");
-  var pic10 = document.getElementById("입고정보_pic10");
-  var pic11 = document.getElementById("입고정보_pic11");
-  var pic12 = document.getElementById("입고정보_pic12");
-  var pic13 = document.getElementById("입고정보_pic13");
-  var pic14 = document.getElementById("입고정보_pic14");
-  var pic15 = document.getElementById("입고정보_pic15");
 
   var tabledata_입고 = [];
 
@@ -697,61 +641,10 @@ async function grid_입고(m_id = "") {
       { title: "보관위치", field: "보관위치", sorter: "string", width: "180" },
     ],
   });
-
-  find(입고_pic, m_id);
-  await delay();
-  if (입고_pic_v != null) {
-    pic1.src = "data:image/;base64," + 입고_pic_v.pic1;
-    pic2.src = "data:image/;base64," + 입고_pic_v.pic2;
-    pic3.src = "data:image/;base64," + 입고_pic_v.pic3;
-    pic4.src = "data:image/;base64," + 입고_pic_v.pic4;
-    pic5.src = "data:image/;base64," + 입고_pic_v.pic5;
-    pic6.src = "data:image/;base64," + 입고_pic_v.pic6;
-    pic7.src = "data:image/;base64," + 입고_pic_v.pic7;
-    pic8.src = "data:image/;base64," + 입고_pic_v.pic8;
-    pic9.src = "data:image/;base64," + 입고_pic_v.pic9;
-    pic10.src = "data:image/;base64," + 입고_pic_v.pic10;
-    pic11.src = "data:image/;base64," + 입고_pic_v.pic11;
-    pic12.src = "data:image/;base64," + 입고_pic_v.pic12;
-    pic13.src = "data:image/;base64," + 입고_pic_v.pic13;
-    pic14.src = "data:image/;base64," + 입고_pic_v.pic14;
-    pic15.src = "data:image/;base64," + 입고_pic_v.pic15;
-  } else {
-    pic1.src = "";
-    pic2.src = "";
-    pic3.src = "";
-    pic4.src = "";
-    pic5.src = "";
-    pic6.src = "";
-    pic7.src = "";
-    pic8.src = "";
-    pic9.src = "";
-    pic10.src = "";
-    pic11.src = "";
-    pic12.src = "";
-    pic13.src = "";
-    pic14.src = "";
-    pic15.src = "";
-  }
 }
 
 async function grid_세척(m_id = "") {
   if (worker == "") return;
-  var pic1 = document.getElementById("세척_pic1");
-  var pic2 = document.getElementById("세척_pic2");
-  var pic3 = document.getElementById("세척_pic3");
-  var pic4 = document.getElementById("세척_pic4");
-  var pic5 = document.getElementById("세척_pic5");
-  var pic6 = document.getElementById("세척_pic6");
-  var pic7 = document.getElementById("세척_pic7");
-  var pic8 = document.getElementById("세척_pic8");
-  var pic9 = document.getElementById("세척_pic9");
-  var pic10 = document.getElementById("세척_pic10");
-  var pic11 = document.getElementById("세척_pic11");
-  var pic12 = document.getElementById("세척_pic12");
-  var pic13 = document.getElementById("세척_pic13");
-  var pic14 = document.getElementById("세척_pic14");
-  var pic15 = document.getElementById("세척_pic15");
 
   var tabledata_세척 = [];
 
@@ -784,62 +677,10 @@ async function grid_세척(m_id = "") {
       { title: "특이사항", field: "특이사항", sorter: "string", width: "180" },
     ],
   });
-
-  find(세척_pic, m_id);
-  await delay();
-
-  if (세척_pic_v != null) {
-    pic1.src = "data:image/;base64," + 세척_pic_v.pic1;
-    pic2.src = "data:image/;base64," + 세척_pic_v.pic2;
-    pic3.src = "data:image/;base64," + 세척_pic_v.pic3;
-    pic4.src = "data:image/;base64," + 세척_pic_v.pic4;
-    pic5.src = "data:image/;base64," + 세척_pic_v.pic5;
-    pic6.src = "data:image/;base64," + 세척_pic_v.pic6;
-    pic7.src = "data:image/;base64," + 세척_pic_v.pic7;
-    pic8.src = "data:image/;base64," + 세척_pic_v.pic8;
-    pic9.src = "data:image/;base64," + 세척_pic_v.pic9;
-    pic10.src = "data:image/;base64," + 세척_pic_v.pic10;
-    pic11.src = "data:image/;base64," + 세척_pic_v.pic11;
-    pic12.src = "data:image/;base64," + 세척_pic_v.pic12;
-    pic13.src = "data:image/;base64," + 세척_pic_v.pic13;
-    pic14.src = "data:image/;base64," + 세척_pic_v.pic14;
-    pic15.src = "data:image/;base64," + 세척_pic_v.pic15;
-  } else {
-    pic1.src = "";
-    pic2.src = "";
-    pic3.src = "";
-    pic4.src = "";
-    pic5.src = "";
-    pic6.src = "";
-    pic7.src = "";
-    pic8.src = "";
-    pic9.src = "";
-    pic10.src = "";
-    pic11.src = "";
-    pic12.src = "";
-    pic13.src = "";
-    pic14.src = "";
-    pic15.src = "";
-  }
 }
 
 async function grid_기초검사(m_id = "") {
   if (worker == "") return;
-  var pic1 = document.getElementById("기초검사_pic1");
-  var pic2 = document.getElementById("기초검사_pic2");
-  var pic3 = document.getElementById("기초검사_pic3");
-  var pic4 = document.getElementById("기초검사_pic4");
-  var pic5 = document.getElementById("기초검사_pic5");
-  var pic6 = document.getElementById("기초검사_pic6");
-  var pic7 = document.getElementById("기초검사_pic7");
-  var pic8 = document.getElementById("기초검사_pic8");
-  var pic9 = document.getElementById("기초검사_pic9");
-  var pic10 = document.getElementById("기초검사_pic10");
-  var pic11 = document.getElementById("기초검사_pic11");
-  var pic12 = document.getElementById("기초검사_pic12");
-  var pic13 = document.getElementById("기초검사_pic13");
-  var pic14 = document.getElementById("기초검사_pic14");
-  var pic15 = document.getElementById("기초검사_pic15");
 
   tabledata_기초검사 = [];
 
@@ -899,62 +740,10 @@ async function grid_기초검사(m_id = "") {
       { title: "검사자", field: "검사자", sorter: "string", width: "180" },
     ],
   });
-
-  find(기초검사_pic, m_id);
-  await delay();
-
-  if (기초검사_pic_v != null) {
-    pic1.src = "data:image/;base64," + 기초검사_pic_v.pic1;
-    pic2.src = "data:image/;base64," + 기초검사_pic_v.pic2;
-    pic3.src = "data:image/;base64," + 기초검사_pic_v.pic3;
-    pic4.src = "data:image/;base64," + 기초검사_pic_v.pic4;
-    pic5.src = "data:image/;base64," + 기초검사_pic_v.pic5;
-    pic6.src = "data:image/;base64," + 기초검사_pic_v.pic6;
-    pic7.src = "data:image/;base64," + 기초검사_pic_v.pic7;
-    pic8.src = "data:image/;base64," + 기초검사_pic_v.pic8;
-    pic9.src = "data:image/;base64," + 기초검사_pic_v.pic9;
-    pic10.src = "data:image/;base64," + 기초검사_pic_v.pic10;
-    pic11.src = "data:image/;base64," + 기초검사_pic_v.pic11;
-    pic12.src = "data:image/;base64," + 기초검사_pic_v.pic12;
-    pic13.src = "data:image/;base64," + 기초검사_pic_v.pic13;
-    pic14.src = "data:image/;base64," + 기초검사_pic_v.pic14;
-    pic15.src = "data:image/;base64," + 기초검사_pic_v.pic15;
-  } else {
-    pic1.src = "";
-    pic2.src = "";
-    pic3.src = "";
-    pic4.src = "";
-    pic5.src = "";
-    pic6.src = "";
-    pic7.src = "";
-    pic8.src = "";
-    pic9.src = "";
-    pic10.src = "";
-    pic11.src = "";
-    pic12.src = "";
-    pic13.src = "";
-    pic14.src = "";
-    pic15.src = "";
-  }
 }
 
 async function grid_분해조립(m_id = "") {
   if (worker == "") return;
-  var pic1 = document.getElementById("분해조립_pic1");
-  var pic2 = document.getElementById("분해조립_pic2");
-  var pic3 = document.getElementById("분해조립_pic3");
-  var pic4 = document.getElementById("분해조립_pic4");
-  var pic5 = document.getElementById("분해조립_pic5");
-  var pic6 = document.getElementById("분해조립_pic6");
-  var pic7 = document.getElementById("분해조립_pic7");
-  var pic8 = document.getElementById("분해조립_pic8");
-  var pic9 = document.getElementById("분해조립_pic9");
-  var pic10 = document.getElementById("분해조립_pic10");
-  var pic11 = document.getElementById("분해조립_pic11");
-  var pic12 = document.getElementById("분해조립_pic12");
-  var pic13 = document.getElementById("분해조립_pic13");
-  var pic14 = document.getElementById("분해조립_pic14");
-  var pic15 = document.getElementById("분해조립_pic15");
 
   var tabledata_분해조립 = [];
 
@@ -1269,62 +1058,10 @@ async function grid_분해조립(m_id = "") {
       { title: "작업자", field: "작업자", sorter: "string", width: "180" },
     ],
   });
-
-  find(분해조립_pic, m_id);
-  await delay();
-
-  if (분해조립_pic_v != null) {
-    pic1.src = "data:image/;base64," + 분해조립_pic_v.pic1;
-    pic2.src = "data:image/;base64," + 분해조립_pic_v.pic2;
-    pic3.src = "data:image/;base64," + 분해조립_pic_v.pic3;
-    pic4.src = "data:image/;base64," + 분해조립_pic_v.pic4;
-    pic5.src = "data:image/;base64," + 분해조립_pic_v.pic5;
-    pic6.src = "data:image/;base64," + 분해조립_pic_v.pic6;
-    pic7.src = "data:image/;base64," + 분해조립_pic_v.pic7;
-    pic8.src = "data:image/;base64," + 분해조립_pic_v.pic8;
-    pic9.src = "data:image/;base64," + 분해조립_pic_v.pic9;
-    pic10.src = "data:image/;base64," + 분해조립_pic_v.pic10;
-    pic11.src = "data:image/;base64," + 분해조립_pic_v.pic11;
-    pic12.src = "data:image/;base64," + 분해조립_pic_v.pic12;
-    pic13.src = "data:image/;base64," + 분해조립_pic_v.pic13;
-    pic14.src = "data:image/;base64," + 분해조립_pic_v.pic14;
-    pic15.src = "data:image/;base64," + 분해조립_pic_v.pic15;
-  } else {
-    pic1.src = "";
-    pic2.src = "";
-    pic3.src = "";
-    pic4.src = "";
-    pic5.src = "";
-    pic6.src = "";
-    pic7.src = "";
-    pic8.src = "";
-    pic9.src = "";
-    pic10.src = "";
-    pic11.src = "";
-    pic12.src = "";
-    pic13.src = "";
-    pic14.src = "";
-    pic15.src = "";
-  }
 }
 
 async function grid_성능검사(m_id = "") {
   if (worker == "") return;
-  var pic1 = document.getElementById("성능검사_pic1");
-  var pic2 = document.getElementById("성능검사_pic2");
-  var pic3 = document.getElementById("성능검사_pic3");
-  var pic4 = document.getElementById("성능검사_pic4");
-  var pic5 = document.getElementById("성능검사_pic5");
-  var pic6 = document.getElementById("성능검사_pic6");
-  var pic7 = document.getElementById("성능검사_pic7");
-  var pic8 = document.getElementById("성능검사_pic8");
-  var pic9 = document.getElementById("성능검사_pic9");
-  var pic10 = document.getElementById("성능검사_pic10");
-  var pic11 = document.getElementById("성능검사_pic11");
-  var pic12 = document.getElementById("성능검사_pic12");
-  var pic13 = document.getElementById("성능검사_pic13");
-  var pic14 = document.getElementById("성능검사_pic14");
-  var pic15 = document.getElementById("성능검사_pic15");
 
   var tabledata_성능검사 = [];
 
@@ -1358,62 +1095,10 @@ async function grid_성능검사(m_id = "") {
       { title: "검사자", field: "검사자", sorter: "string", width: "180" },
     ],
   });
-
-  find(성능검사_pic, m_id);
-  await delay();
-
-  if (성능검사_pic_v != null) {
-    pic1.src = "data:image/;base64," + 성능검사_pic_v.pic1;
-    pic2.src = "data:image/;base64," + 성능검사_pic_v.pic2;
-    pic3.src = "data:image/;base64," + 성능검사_pic_v.pic3;
-    pic4.src = "data:image/;base64," + 성능검사_pic_v.pic4;
-    pic5.src = "data:image/;base64," + 성능검사_pic_v.pic5;
-    pic6.src = "data:image/;base64," + 성능검사_pic_v.pic6;
-    pic7.src = "data:image/;base64," + 성능검사_pic_v.pic7;
-    pic8.src = "data:image/;base64," + 성능검사_pic_v.pic8;
-    pic9.src = "data:image/;base64," + 성능검사_pic_v.pic9;
-    pic10.src = "data:image/;base64," + 성능검사_pic_v.pic10;
-    pic11.src = "data:image/;base64," + 성능검사_pic_v.pic11;
-    pic12.src = "data:image/;base64," + 성능검사_pic_v.pic12;
-    pic13.src = "data:image/;base64," + 성능검사_pic_v.pic13;
-    pic14.src = "data:image/;base64," + 성능검사_pic_v.pic14;
-    pic15.src = "data:image/;base64," + 성능검사_pic_v.pic15;
-  } else {
-    pic1.src = "";
-    pic2.src = "";
-    pic3.src = "";
-    pic4.src = "";
-    pic5.src = "";
-    pic6.src = "";
-    pic7.src = "";
-    pic8.src = "";
-    pic9.src = "";
-    pic10.src = "";
-    pic11.src = "";
-    pic12.src = "";
-    pic13.src = "";
-    pic14.src = "";
-    pic15.src = "";
-  }
 }
 
 async function grid_EOL(m_id = "") {
   if (worker == "") return;
-  var pic1 = document.getElementById("EOL_pic1");
-  var pic2 = document.getElementById("EOL_pic2");
-  var pic3 = document.getElementById("EOL_pic3");
-  var pic4 = document.getElementById("EOL_pic4");
-  var pic5 = document.getElementById("EOL_pic5");
-  var pic6 = document.getElementById("EOL_pic6");
-  var pic7 = document.getElementById("EOL_pic7");
-  var pic8 = document.getElementById("EOL_pic8");
-  var pic9 = document.getElementById("EOL_pic9");
-  var pic10 = document.getElementById("EOL_pic10");
-  var pic11 = document.getElementById("EOL_pic11");
-  var pic12 = document.getElementById("EOL_pic12");
-  var pic13 = document.getElementById("EOL_pic13");
-  var pic14 = document.getElementById("EOL_pic14");
-  var pic15 = document.getElementById("EOL_pic15");
 
   var tabledata_EOL = [];
   if (m_id == "") {
@@ -1466,63 +1151,12 @@ async function grid_EOL(m_id = "") {
       { title: "검사자", field: "검사자", sorter: "string", width: "180" },
     ],
   });
-
-  find(EOL_pic, m_id);
-  await delay();
-
-  if (EOL_pic_v != null) {
-    pic1.src = "data:image/;base64," + EOL_pic_v.pic1;
-    pic2.src = "data:image/;base64," + EOL_pic_v.pic2;
-    pic3.src = "data:image/;base64," + EOL_pic_v.pic3;
-    pic4.src = "data:image/;base64," + EOL_pic_v.pic4;
-    pic5.src = "data:image/;base64," + EOL_pic_v.pic5;
-    pic6.src = "data:image/;base64," + EOL_pic_v.pic6;
-    pic7.src = "data:image/;base64," + EOL_pic_v.pic7;
-    pic8.src = "data:image/;base64," + EOL_pic_v.pic8;
-    pic9.src = "data:image/;base64," + EOL_pic_v.pic9;
-    pic10.src = "data:image/;base64," + EOL_pic_v.pic10;
-    pic11.src = "data:image/;base64," + EOL_pic_v.pic11;
-    pic12.src = "data:image/;base64," + EOL_pic_v.pic12;
-    pic13.src = "data:image/;base64," + EOL_pic_v.pic13;
-    pic14.src = "data:image/;base64," + EOL_pic_v.pic14;
-    pic15.src = "data:image/;base64," + EOL_pic_v.pic15;
-  } else {
-    pic1.src = "";
-    pic2.src = "";
-    pic3.src = "";
-    pic4.src = "";
-    pic5.src = "";
-    pic6.src = "";
-    pic7.src = "";
-    pic8.src = "";
-    pic9.src = "";
-    pic10.src = "";
-    pic11.src = "";
-    pic12.src = "";
-    pic13.src = "";
-    pic14.src = "";
-    pic15.src = "";
-  }
 }
 
 async function grid_출하정보(m_id = "") {
   if (worker == "") return;
+
   var tabledata_출하정보 = [];
-  var pic1 = document.getElementById("출하정보_pic1");
-  var pic2 = document.getElementById("출하정보_pic2");
-  var pic3 = document.getElementById("출하정보_pic3");
-  var pic4 = document.getElementById("출하정보_pic4");
-  var pic5 = document.getElementById("출하정보_pic5");
-  var pic6 = document.getElementById("출하정보_pic6");
-  var pic7 = document.getElementById("출하정보_pic7");
-  var pic8 = document.getElementById("출하정보_pic8");
-  var pic9 = document.getElementById("출하정보_pic9");
-  var pic10 = document.getElementById("출하정보_pic10");
-  var pic11 = document.getElementById("출하정보_pic11");
-  var pic12 = document.getElementById("출하정보_pic12");
-  var pic13 = document.getElementById("출하정보_pic13");
-  var pic14 = document.getElementById("출하정보_pic14");
-  var pic15 = document.getElementById("출하정보_pic15");
 
   if (m_id == "") {
     find_출하정보(출하정보, { 관리번호: { $exists: true } });
@@ -1584,62 +1218,10 @@ async function grid_출하정보(m_id = "") {
       { title: "커넥터 체결검사", field: "커넥터_체결검사", sorter: "string", width: "180" },
     ],
   });
-
-  find(출하_pic, m_id);
-  await delay();
-
-  if (출하_pic_v != null) {
-    pic1.src = "data:image/;base64," + 출하_pic_v.pic1;
-    pic2.src = "data:image/;base64," + 출하_pic_v.pic2;
-    pic3.src = "data:image/;base64," + 출하_pic_v.pic3;
-    pic4.src = "data:image/;base64," + 출하_pic_v.pic4;
-    pic5.src = "data:image/;base64," + 출하_pic_v.pic5;
-    pic6.src = "data:image/;base64," + 출하_pic_v.pic6;
-    pic7.src = "data:image/;base64," + 출하_pic_v.pic7;
-    pic8.src = "data:image/;base64," + 출하_pic_v.pic8;
-    pic9.src = "data:image/;base64," + 출하_pic_v.pic9;
-    pic10.src = "data:image/;base64," + 출하_pic_v.pic10;
-    pic11.src = "data:image/;base64," + 출하_pic_v.pic11;
-    pic12.src = "data:image/;base64," + 출하_pic_v.pic12;
-    pic13.src = "data:image/;base64," + 출하_pic_v.pic13;
-    pic14.src = "data:image/;base64," + 출하_pic_v.pic14;
-    pic15.src = "data:image/;base64," + 출하_pic_v.pic15;
-  } else {
-    pic1.src = "";
-    pic2.src = "";
-    pic3.src = "";
-    pic4.src = "";
-    pic5.src = "";
-    pic6.src = "";
-    pic7.src = "";
-    pic8.src = "";
-    pic9.src = "";
-    pic10.src = "";
-    pic11.src = "";
-    pic12.src = "";
-    pic13.src = "";
-    pic14.src = "";
-    pic15.src = "";
-  }
 }
 
 async function grid_특이사항(m_id = "") {
   if (worker == "") return;
-  var pic1 = document.getElementById("특이사항_pic1");
-  var pic2 = document.getElementById("특이사항_pic2");
-  var pic3 = document.getElementById("특이사항_pic3");
-  var pic4 = document.getElementById("특이사항_pic4");
-  var pic5 = document.getElementById("특이사항_pic5");
-  var pic6 = document.getElementById("특이사항_pic6");
-  var pic7 = document.getElementById("특이사항_pic7");
-  var pic8 = document.getElementById("특이사항_pic8");
-  var pic9 = document.getElementById("특이사항_pic9");
-  var pic10 = document.getElementById("특이사항_pic10");
-  var pic11 = document.getElementById("특이사항_pic11");
-  var pic12 = document.getElementById("특이사항_pic12");
-  var pic13 = document.getElementById("특이사항_pic13");
-  var pic14 = document.getElementById("특이사항_pic14");
-  var pic15 = document.getElementById("특이사항_pic15");
 
   var tabledata_특이사항 = [];
 
@@ -1665,43 +1247,6 @@ async function grid_특이사항(m_id = "") {
       { title: "특이사항", field: "특이사항", sorter: "string", width: "180" },
     ],
   });
-
-  find(특이사항_pic, m_id);
-  await delay();
-
-  if (특이사항_pic_v != null) {
-    pic1.src = "data:image/;base64," + 특이사항_pic.pic1;
-    pic2.src = "data:image/;base64," + 특이사항_pic.pic2;
-    pic3.src = "data:image/;base64," + 특이사항_pic.pic3;
-    pic4.src = "data:image/;base64," + 특이사항_pic.pic4;
-    pic5.src = "data:image/;base64," + 특이사항_pic.pic5;
-    pic6.src = "data:image/;base64," + 특이사항_pic.pic6;
-    pic7.src = "data:image/;base64," + 특이사항_pic.pic7;
-    pic8.src = "data:image/;base64," + 특이사항_pic.pic8;
-    pic9.src = "data:image/;base64," + 특이사항_pic.pic9;
-    pic10.src = "data:image/;base64," + 특이사항_pic.pic10;
-    pic11.src = "data:image/;base64," + 특이사항_pic.pic11;
-    pic12.src = "data:image/;base64," + 특이사항_pic.pic12;
-    pic13.src = "data:image/;base64," + 특이사항_pic.pic13;
-    pic14.src = "data:image/;base64," + 특이사항_pic.pic14;
-    pic15.src = "data:image/;base64," + 특이사항_pic.pic15;
-  } else {
-    pic1.src = "";
-    pic2.src = "";
-    pic3.src = "";
-    pic4.src = "";
-    pic5.src = "";
-    pic6.src = "";
-    pic7.src = "";
-    pic8.src = "";
-    pic9.src = "";
-    pic10.src = "";
-    pic11.src = "";
-    pic12.src = "";
-    pic13.src = "";
-    pic14.src = "";
-    pic15.src = "";
-  }
 }
 
 async function grid_교체부품상세1(m_id = "") {
@@ -2465,234 +2010,6 @@ async function grid_교체부품상세10(m_id = "") {
   });
 }
 
-async function 반품입고_load_pic(m_id = "") {
-  var pic1 = document.getElementById("반품입고_pic1");
-  var pic2 = document.getElementById("반품입고_pic2");
-  var pic3 = document.getElementById("반품입고_pic3");
-  var pic4 = document.getElementById("반품입고_pic4");
-  var pic5 = document.getElementById("반품입고_pic5");
-  var pic6 = document.getElementById("반품입고_pic6");
-  var pic7 = document.getElementById("반품입고_pic7");
-  var pic8 = document.getElementById("반품입고_pic8");
-  var pic9 = document.getElementById("반품입고_pic9");
-  var pic10 = document.getElementById("반품입고_pic10");
-  var pic11 = document.getElementById("반품입고_pic11");
-  var pic12 = document.getElementById("반품입고_pic12");
-  var pic13 = document.getElementById("반품입고_pic13");
-  var pic14 = document.getElementById("반품입고_pic14");
-  var pic15 = document.getElementById("반품입고_pic15");
-
-  count(반품입고_pic, { 관리번호: m_id });
-  await delay();
-  if (반품입고_pic_cnt > 0) {
-    find(반품입고_pic, m_id);
-    await delay();
-    if (반품입고_v.length == 0) return;
-    pic1.src = "data:image/;base64," + 반품입고_v.pic1;
-    pic2.src = "data:image/;base64," + 반품입고_v.pic2;
-    pic3.src = "data:image/;base64," + 반품입고_v.pic3;
-    pic4.src = "data:image/;base64," + 반품입고_v.pic4;
-    pic5.src = "data:image/;base64," + 반품입고_v.pic5;
-    pic6.src = "data:image/;base64," + 반품입고_v.pic6;
-    pic7.src = "data:image/;base64," + 반품입고_v.pic7;
-    pic8.src = "data:image/;base64," + 반품입고_v.pic8;
-    pic9.src = "data:image/;base64," + 반품입고_v.pic9;
-    pic10.src = "data:image/;base64," + 반품입고_v.pic10;
-    pic11.src = "data:image/;base64," + 반품입고_v.pic11;
-    pic12.src = "data:image/;base64," + 반품입고_v.pic12;
-    pic13.src = "data:image/;base64," + 반품입고_v.pic13;
-    pic14.src = "data:image/;base64," + 반품입고_v.pic14;
-    pic15.src = "data:image/;base64," + 반품입고_v.pic15;
-  } else {
-    pic1.src = "";
-    pic2.src = "";
-    pic3.src = "";
-    pic4.src = "";
-    pic5.src = "";
-    pic6.src = "";
-    pic7.src = "";
-    pic8.src = "";
-    pic9.src = "";
-    pic10.src = "";
-    pic11.src = "";
-    pic12.src = "";
-    pic13.src = "";
-    pic14.src = "";
-    pic15.src = "";
-  }
-}
-
-async function 재출하_load_pic(m_id = "") {
-  var pic1 = document.getElementById("재출하_pic1");
-  var pic2 = document.getElementById("재출하_pic2");
-  var pic3 = document.getElementById("재출하_pic3");
-  var pic4 = document.getElementById("재출하_pic4");
-  var pic5 = document.getElementById("재출하_pic5");
-  var pic6 = document.getElementById("재출하_pic6");
-  var pic7 = document.getElementById("재출하_pic7");
-  var pic8 = document.getElementById("재출하_pic8");
-  var pic9 = document.getElementById("재출하_pic9");
-  var pic10 = document.getElementById("재출하_pic10");
-  var pic11 = document.getElementById("재출하_pic11");
-  var pic12 = document.getElementById("재출하_pic12");
-  var pic13 = document.getElementById("재출하_pic13");
-  var pic14 = document.getElementById("재출하_pic14");
-  var pic15 = document.getElementById("재출하_pic15");
-
-  count(재출하_pic, { 관리번호: m_id });
-  await delay();
-  if (재출하_pic_cnt > 0) {
-    find(재출하_pic, m_id);
-    await delay();
-    if (재출하_pic_v.length == 0) return;
-    pic1.src = "data:image/;base64," + 재출하_pic_v.pic1;
-    pic2.src = "data:image/;base64," + 재출하_pic_v.pic2;
-    pic3.src = "data:image/;base64," + 재출하_pic_v.pic3;
-    pic4.src = "data:image/;base64," + 재출하_pic_v.pic4;
-    pic5.src = "data:image/;base64," + 재출하_pic_v.pic5;
-    pic6.src = "data:image/;base64," + 재출하_pic_v.pic6;
-    pic7.src = "data:image/;base64," + 재출하_pic_v.pic7;
-    pic8.src = "data:image/;base64," + 재출하_pic_v.pic8;
-    pic9.src = "data:image/;base64," + 재출하_pic_v.pic9;
-    pic10.src = "data:image/;base64," + 재출하_pic_v.pic10;
-    pic11.src = "data:image/;base64," + 재출하_pic_v.pic11;
-    pic12.src = "data:image/;base64," + 재출하_pic_v.pic12;
-    pic13.src = "data:image/;base64," + 재출하_pic_v.pic13;
-    pic14.src = "data:image/;base64," + 재출하_pic_v.pic14;
-    pic15.src = "data:image/;base64," + 재출하_pic_v.pic15;
-  } else {
-    pic1.src = "";
-    pic2.src = "";
-    pic3.src = "";
-    pic4.src = "";
-    pic5.src = "";
-    pic6.src = "";
-    pic7.src = "";
-    pic8.src = "";
-    pic9.src = "";
-    pic10.src = "";
-    pic11.src = "";
-    pic12.src = "";
-    pic13.src = "";
-    pic14.src = "";
-    pic15.src = "";
-  }
-}
-
-async function 완전분해_load_pic(m_id = "") {
-  var pic1 = document.getElementById("완전분해_pic1");
-  var pic2 = document.getElementById("완전분해_pic2");
-  var pic3 = document.getElementById("완전분해_pic3");
-  var pic4 = document.getElementById("완전분해_pic4");
-  var pic5 = document.getElementById("완전분해_pic5");
-  var pic6 = document.getElementById("완전분해_pic6");
-  var pic7 = document.getElementById("완전분해_pic7");
-  var pic8 = document.getElementById("완전분해_pic8");
-  var pic9 = document.getElementById("완전분해_pic9");
-  var pic10 = document.getElementById("완전분해_pic10");
-  var pic11 = document.getElementById("완전분해_pic11");
-  var pic12 = document.getElementById("완전분해_pic12");
-  var pic13 = document.getElementById("완전분해_pic13");
-  var pic14 = document.getElementById("완전분해_pic14");
-  var pic15 = document.getElementById("완전분해_pic15");
-
-  count(완전분해_pic, { 관리번호: m_id });
-  await delay();
-  if (완전분해_pic_cnt > 0) {
-    find(완전분해_pic, m_id);
-    await delay();
-    if (완전분해_pic_v.length == 0) return;
-    pic1.src = "data:image/;base64," + 완전분해_pic_v.pic1;
-    pic2.src = "data:image/;base64," + 완전분해_pic_v.pic2;
-    pic3.src = "data:image/;base64," + 완전분해_pic_v.pic3;
-    pic4.src = "data:image/;base64," + 완전분해_pic_v.pic4;
-    pic5.src = "data:image/;base64," + 완전분해_pic_v.pic5;
-    pic6.src = "data:image/;base64," + 완전분해_pic_v.pic6;
-    pic7.src = "data:image/;base64," + 완전분해_pic_v.pic7;
-    pic8.src = "data:image/;base64," + 완전분해_pic_v.pic8;
-    pic9.src = "data:image/;base64," + 완전분해_pic_v.pic9;
-    pic10.src = "data:image/;base64," + 완전분해_pic_v.pic10;
-    pic11.src = "data:image/;base64," + 완전분해_pic_v.pic11;
-    pic12.src = "data:image/;base64," + 완전분해_pic_v.pic12;
-    pic13.src = "data:image/;base64," + 완전분해_pic_v.pic13;
-    pic14.src = "data:image/;base64," + 완전분해_pic_v.pic14;
-    pic15.src = "data:image/;base64," + 완전분해_pic_v.pic15;
-  } else {
-    pic1.src = "";
-    pic2.src = "";
-    pic3.src = "";
-    pic4.src = "";
-    pic5.src = "";
-    pic6.src = "";
-    pic7.src = "";
-    pic8.src = "";
-    pic9.src = "";
-    pic10.src = "";
-    pic11.src = "";
-    pic12.src = "";
-    pic13.src = "";
-    pic14.src = "";
-    pic15.src = "";
-  }
-}
-
-async function 폐기_load_pic(m_id = "") {
-  var pic1 = document.getElementById("폐기_pic1");
-  var pic2 = document.getElementById("폐기_pic2");
-  var pic3 = document.getElementById("폐기_pic3");
-  var pic4 = document.getElementById("폐기_pic4");
-  var pic5 = document.getElementById("폐기_pic5");
-  var pic6 = document.getElementById("폐기_pic6");
-  var pic7 = document.getElementById("폐기_pic7");
-  var pic8 = document.getElementById("폐기_pic8");
-  var pic9 = document.getElementById("폐기_pic9");
-  var pic10 = document.getElementById("폐기_pic10");
-  var pic11 = document.getElementById("폐기_pic11");
-  var pic12 = document.getElementById("폐기_pic12");
-  var pic13 = document.getElementById("폐기_pic13");
-  var pic14 = document.getElementById("폐기_pic14");
-  var pic15 = document.getElementById("폐기_pic15");
-
-  count(폐기_pic, { 관리번호: m_id });
-  await delay();
-  if (폐기_pic_cnt > 0) {
-    find(폐기_pic, m_id);
-    await delay();
-    if (폐기_pic_v.length == 0) return;
-    pic1.src = "data:image/;base64," + 폐기_pic_v.pic1;
-    pic2.src = "data:image/;base64," + 폐기_pic_v.pic2;
-    pic3.src = "data:image/;base64," + 폐기_pic_v.pic3;
-    pic4.src = "data:image/;base64," + 폐기_pic_v.pic4;
-    pic5.src = "data:image/;base64," + 폐기_pic_v.pic5;
-    pic6.src = "data:image/;base64," + 폐기_pic_v.pic6;
-    pic7.src = "data:image/;base64," + 폐기_pic_v.pic7;
-    pic8.src = "data:image/;base64," + 폐기_pic_v.pic8;
-    pic9.src = "data:image/;base64," + 폐기_pic_v.pic9;
-    pic10.src = "data:image/;base64," + 폐기_pic_v.pic10;
-    pic11.src = "data:image/;base64," + 폐기_pic_v.pic11;
-    pic12.src = "data:image/;base64," + 폐기_pic_v.pic12;
-    pic13.src = "data:image/;base64," + 폐기_pic_v.pic13;
-    pic14.src = "data:image/;base64," + 폐기_pic_v.pic14;
-    pic15.src = "data:image/;base64," + 폐기_pic_v.pic15;
-  } else {
-    pic1.src = "";
-    pic2.src = "";
-    pic3.src = "";
-    pic4.src = "";
-    pic5.src = "";
-    pic6.src = "";
-    pic7.src = "";
-    pic8.src = "";
-    pic9.src = "";
-    pic10.src = "";
-    pic11.src = "";
-    pic12.src = "";
-    pic13.src = "";
-    pic14.src = "";
-    pic15.src = "";
-  }
-}
-
 function export_excel() {
   var sheets = {
     BSA기본정보: true,
@@ -2721,126 +2038,6 @@ function export_excel() {
 async function export_all_data_excel() {
   aggregate();
   await delay();
-}
-
-function zoomIn(event) {
-  event.target.style.transform = "scale(1.5)";
-  event.target.style.zIndex = 1;
-  event.target.style.transition = "all 0.5s";
-}
-
-function zoomOut(event) {
-  event.target.style.transform = "scale(1)";
-  event.target.style.zIndex = 0;
-  event.target.style.transition = "all 0.5s";
-}
-
-function toggle1() {
-  var con = document.getElementById("pic_1");
-  if (con.style.display == "none") {
-    con.style.display = "block";
-  } else {
-    con.style.display = "none";
-  }
-}
-
-function toggle2() {
-  var con = document.getElementById("pic_2");
-  if (con.style.display == "none") {
-    con.style.display = "block";
-  } else {
-    con.style.display = "none";
-  }
-}
-
-function toggle3() {
-  var con = document.getElementById("pic_3");
-  if (con.style.display == "none") {
-    con.style.display = "block";
-  } else {
-    con.style.display = "none";
-  }
-}
-
-function toggle4() {
-  var con = document.getElementById("pic_4");
-  if (con.style.display == "none") {
-    con.style.display = "block";
-  } else {
-    con.style.display = "none";
-  }
-}
-
-function toggle5() {
-  var con = document.getElementById("pic_5");
-  if (con.style.display == "none") {
-    con.style.display = "block";
-  } else {
-    con.style.display = "none";
-  }
-}
-
-function toggle6() {
-  var con = document.getElementById("pic_6");
-  if (con.style.display == "none") {
-    con.style.display = "block";
-  } else {
-    con.style.display = "none";
-  }
-}
-
-function toggle7() {
-  var con = document.getElementById("pic_7");
-  if (con.style.display == "none") {
-    con.style.display = "block";
-  } else {
-    con.style.display = "none";
-  }
-}
-
-function toggle8() {
-  var con = document.getElementById("pic_8");
-  if (con.style.display == "none") {
-    con.style.display = "block";
-  } else {
-    con.style.display = "none";
-  }
-}
-
-function toggle9() {
-  var con = document.getElementById("pic_9");
-  if (con.style.display == "none") {
-    con.style.display = "block";
-  } else {
-    con.style.display = "none";
-  }
-}
-
-function toggle10() {
-  var con = document.getElementById("pic_10");
-  if (con.style.display == "none") {
-    con.style.display = "block";
-  } else {
-    con.style.display = "none";
-  }
-}
-
-function toggle11() {
-  var con = document.getElementById("pic_11");
-  if (con.style.display == "none") {
-    con.style.display = "block";
-  } else {
-    con.style.display = "none";
-  }
-}
-
-function toggle12() {
-  var con = document.getElementById("pic_12");
-  if (con.style.display == "none") {
-    con.style.display = "block";
-  } else {
-    con.style.display = "none";
-  }
 }
 
 async function 관리번호_변경() {
