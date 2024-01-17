@@ -204,7 +204,7 @@ async function 기초보고서_조회(is재제조번호 = false) {
 			        _CS_고장코드.innerHTML = 고장코드;
 			        _CS_고장코드사유.innerHTML = 고장사유;
 			        _CS_입고정보.innerHTML = 부품정보유무;
-			        _CS_입고정보사유.innerHTML = '';
+			        _CS_입고정보사유.innerHTML = (부품정보유무 == 'OK') ? '' : '부품정보 누락';
 			        _CS_재제조이력.innerHTML = 'OK';
 			        _CS_재제조이력사유.innerHTML = '';
 				break;
@@ -540,55 +540,60 @@ async function 기초보고서_save(type = 0) {
 	update_보고서(기초보고서, doc);
 	await delay();
 
-	if (type == 0) type = document.getElementById("_기초보고서");
+	if (type == 0) {
+		type = document.getElementById("_기초보고서");
+		file_name = "기초보고서_육안검사외부" + _date + ".pdf";
+		_width = 3900;
+		_height = 1800;
+	}
 
 	if (type == "육외") {
 		type = document.getElementById("_육안검사외부1");
 		file_name = "기초보고서_육안검사외부" + _date + ".pdf";
-		_width = 4200;
+		_width = 3900;
 		_height = 2100;
 	}
 
 	if (type == "육외상") {
 		type = document.getElementById("_육안검사외부2");
 		file_name = "기초보고서_육안검사외부_상세" + _date + ".pdf";
-		_width = 4200;
-		_height = 2100;
+		_width = 3900;
+		_height = 2400;
 	}
 
 	if (type == "육내") {
 		type = document.getElementById("_육안검사내부1");
 		file_name = "기초보고서_육안검사내부" + _date + ".pdf";
-		_width = 4200;
+		_width = 3800;
 		_height = 2700;
 	}
 
 	if (type == "육내상") {
 		type = document.getElementById("_육안검사내부2");
 		file_name = "기초보고서_육안검사내부_상세" + _date + ".pdf";
-		_width = 4200;
-		_height = 2100;
+		_width = 4000;
+		_height = 2300;
 	}
 
 	if (type == "기밀") {
 		type = document.getElementById("_기밀검사");
 		file_name = "기초보고서_기밀검사" + _date + ".pdf";
-		_width = 4200;
-		_height = 2000;
+		_width = 4000;
+		_height = 2400;
 	}
 
 	if (type == "절연") {
 		type = document.getElementById("_절연저항검사");
 		file_name = "기초보고서_절연검사" + _date + ".pdf";
-		_width = 4200;
-		_height = 2000;
+		_width = 4000;
+		_height = 2400;
 	}
 
 	if (type == "CAN") {
 		type = document.getElementById("_CAN통신검사");
 		file_name = "기초보고서_CAN통신검사" + _date + ".pdf";
-		_width = 4200;
-		_height = 2000;
+		_width = 3800;
+		_height = 2200;
 	}
 
 	html2canvas(type, {
