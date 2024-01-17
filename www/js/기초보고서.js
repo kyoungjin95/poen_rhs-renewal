@@ -1,9 +1,6 @@
 async function 기초보고서_시작() {
   await loadPage("base/기초보고서.html");
-
-  while (typeof _CAN통신검사 == "undefined") {
-    await sleep(1);
-  }
+  await sleep(3000);
 
   기초보고서_조회(false);
 }

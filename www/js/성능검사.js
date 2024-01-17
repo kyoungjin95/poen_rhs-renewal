@@ -152,6 +152,7 @@ async function 성능검사_save() {
 		if (_분해조립_재의뢰사유.value == '') {
 			_doc.성능검사 = _공정완료일.value;
 		} else {
+			alert('공정을 분해조립으로 되돌립니다!');
 			_doc.분해조립 = '';
 			_doc.성능검사 = '';
 		}
