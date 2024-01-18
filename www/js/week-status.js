@@ -2,13 +2,13 @@ var row_one_id = '';
 var chart;
 
 async function 주간현황_시작() {
-	flag_주간현황 = false;
-	if (worker == '') return;
-	while (_검색일 == undefined) {
+	if(typeof _검색일 == 'undefined') {
 		await sleep(DELAY);
+		return;
 	}
 
-	;
+	flag_주간현황 = false;
+	if (worker == '') return;
 
 	주간_조회();
 }

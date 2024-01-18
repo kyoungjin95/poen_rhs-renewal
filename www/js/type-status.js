@@ -7,11 +7,13 @@ function rand(min, max) {
 }
 
 async function 생산현황_시작() {
-	flag_생산현황 = false;
 	if (worker == '') return;
-	while (document.getElementById('_chart') == undefined) {
+	if(document.getElementById('_chart') == undefined) {
 		await sleep(DELAY);
+		return;
 	}
+
+	flag_생산현황 = false;
 
 	품번_조회();
 }

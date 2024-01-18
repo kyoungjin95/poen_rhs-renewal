@@ -1,6 +1,11 @@
 async function 기초보고서_시작() {
-  await loadPage("base/기초보고서.html");
-  await sleep(3000);
+  await sleep(100);
+  if(typeof _입고일 == 'undefined') {
+	  await sleep(1);
+	  return;
+  }
+  
+  flag_기초보고서 = false;	
 
   기초보고서_조회(false);
 }
@@ -82,13 +87,6 @@ async function 기초보고서_조회(is재제조번호 = false) {
 
   if (입고_pic_v != null) {
     _입고사진.src = 입고_pic_v.pic1;
-  }
-
-  find(기초검사_pic, _management_id.value);
-  await delay();
-
-  if (기초검사_pic_v != null) {
-    _BSA_QR.src = 기초검사_pic_v.pic1;
   }
 
   var 외부검사 = "";
@@ -473,42 +471,62 @@ async function 기초보고서_조회(is재제조번호 = false) {
     _측정값사진1.src = 세척_pic_v.pic2;
   }
 
-  find(기초검사_pic, _management_id.value);
+  find(기초검사_pic1, _management_id.value);
   await delay();
 
-  if (기초검사_pic_v != null) {
+  if (기초검사_pic1_v != null) {
     // qr code
-    _BSA_QR.src = 기초검사_pic_v.pic1;
+    _BSA_QR.src = 기초검사_pic1_v.pic1;
     //육안검사 내부 1
-    _allImg.src = 기초검사_pic_v.pic2;
-    _BMU.src = 기초검사_pic_v.pic3;
-    _CMU.src = 기초검사_pic_v.pic4;
-    _PRA.src = 기초검사_pic_v.pic5;
-    _육안검사_내부_결과.innerHTML = 내부검사;
+    _allImg.src = 기초검사_pic1_v.pic2;
+    _BMU.src = 기초검사_pic1_v.pic3;
+    _CMU.src = 기초검사_pic1_v.pic4;
+    _PRA.src = 기초검사_pic1_v.pic5;
+  }
 
+  _육안검사_내부_결과.innerHTML = 내부검사;
+  _육안검사_내부_결과2.innerHTML = 내부검사사유;
+
+  find(기초검사_pic2, _management_id.value);
+  await delay();
+
+  if (기초검사_pic2_v != null) {
     //육안검사 내부 2
-    _이상부위_내부1.src = 기초검사_pic_v.pic6;
-    _이상부위_내부2.src = 기초검사_pic_v.pic7;
-    _이상부위_내부3.src = 기초검사_pic_v.pic8;
-    _이상부위_내부4.src = 기초검사_pic_v.pic9;
-    _육안검사_내부_결과2.innerHTML = 내부검사사유;
+    _이상부위_내부1.src = 기초검사_pic2_v.pic1;
+    _이상부위_내부2.src = 기초검사_pic2_v.pic2;
+    _이상부위_내부3.src = 기초검사_pic2_v.pic3;
+    _이상부위_내부4.src = 기초검사_pic2_v.pic4;
 
     //기밀검사 -냉각유로
-    _측정사진2.src = 기초검사_pic_v.pic10;
-    _측정값사진2.src = 기초검사_pic_v.pic11;
+    _측정사진2.src = 기초검사_pic2_v.pic5;
+  }
+
+  find(기초검사_pic3, _management_id.value);
+  await delay();
+
+  if (기초검사_pic3_v != null) {
+    //기밀검사 -냉각유로
+    _측정값사진2.src = 기초검사_pic3_v.pic1;
 
     //절연검사
-    _절연측정사진1.src = 기초검사_pic_v.pic13;
-    _절연측정값사진1.src = 기초검사_pic_v.pic14;
-    _절연측정사진2.src = 기초검사_pic_v.pic15;
-    _절연측정값사진2.src = 기초검사_pic_v.pic16;
+    _절연측정사진1.src = 기초검사_pic3_v.pic3;
+    _절연측정값사진1.src = 기초검사_pic3_v.pic4;
+    _절연측정사진2.src = 기초검사_pic3_v.pic5;
+  }
+
+  find(기초검사_pic4, _management_id.value);
+  await delay();
+
+  if (기초검사_pic4_v != null) {
+    //절연검사
+    _절연측정값사진2.src = 기초검사_pic4_v.pic1;
 
     //CAN통신검사
-    _CAN현재.src = 기초검사_pic_v.pic17;
-    _CAN진단.src = 기초검사_pic_v.pic18;
-    _CAN과거.src = 기초검사_pic_v.pic19;
-    _PDS진단1.src = 기초검사_pic_v.pic20;
-    _PDS진단2.src = 기초검사_pic_v.pic21;
+    _CAN현재.src = 기초검사_pic4_v.pic2;
+    _CAN진단.src = 기초검사_pic4_v.pic3;
+    _CAN과거.src = 기초검사_pic4_v.pic4;
+    _PDS진단1.src = 기초검사_pic4_v.pic5;
+    _PDS진단2.src = 기초검사_pic4_v.pic6;
   }
 
   //기밀검사 - 케이스

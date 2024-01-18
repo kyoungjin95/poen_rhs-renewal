@@ -13,12 +13,14 @@ var 출하cnt = 0;
 var wait_start = false;
 var dashboardTimer;
 async function 대시보드_시작() {
-	flag_대시보드 = false;
-	if (worker == '') return;
-
-	while (document.getElementById('입고') == undefined) {
+	await sleep(100);
+	if(document.getElementById('입고') == undefined) {
 		await sleep(1);
+		return;
 	}
+
+	if (worker == '') return;
+	flag_대시보드 = false;
 
 	document.getElementById('입고').addEventListener("click", function () {
 		dash_입고_당일_get(today_begin, today_end);

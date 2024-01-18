@@ -26,8 +26,9 @@ async function 분해조립_재제조번호_시작() {
 async function 분해조립_시작(is재제조 = 0) {
 	//if(flag_loaded == true) return;
 	if (worker == "") return;
-	while (_management_id == undefined) {
+	if(typeof _management_id == 'undefined') {
 		await sleep(DELAY);
+		return;
 	}
 
 	if (flag_분해조립 == true) await 분해조립_list();

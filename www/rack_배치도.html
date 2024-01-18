@@ -12,7 +12,7 @@
   </head>
   <body>
     <section class="incomming__rack">
-      <div id="_마도" class="center">
+      <div id="_마도" class="center" style='display: none' >
         <h2 class="center-tit">적재위치선택</h2>
         <div class="rack__con">
           <div class="floor">
@@ -330,7 +330,7 @@
         </div>
       </div>
 
-      <div id="_구장">
+      <div id="_구장" style='display: none' >
         <div class="_구장입고랙 center">
           <h2 class="center-tit">구장 입고랙</h2>
           <div class="rack__container">
@@ -1701,7 +1701,7 @@
         </div>
       </div>
 
-      <div id="_제주" class="_제주B동 center">
+      <div id="_제주" class="_제주B동 center" style='display: none' >
         <h2 class="center-tit">제주 B동</h2>
         <div class="all-rack">
           <div>
@@ -2379,5 +2379,11 @@
         </div>
       </div>
     </section>
+    <script>
+	    var _마도 = document.getElementById('_마도');
+	    var _구장 = document.getElementById('_구장');
+	    var _제주 = document.getElementById('_마도');
+	    //var _군포 = document.getElementById('_군포');
+    </script>
   </body>
 </html>

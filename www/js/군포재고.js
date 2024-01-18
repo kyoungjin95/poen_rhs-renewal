@@ -1,6 +1,7 @@
 async function 군포재고_시작() {
-	while (typeof _비고 == 'undefined') {
+	if(typeof _비고 == 'undefined') {
 		await sleep(DELAY);
+		return;
 	}
 	flag_군포재고 = false;
 

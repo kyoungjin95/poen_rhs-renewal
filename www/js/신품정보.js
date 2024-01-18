@@ -7,10 +7,11 @@ async function 신품정보_시작() {
 
 async function 신품정보등록_조회() {
 	if (worker == '') return;
-	while (_QR == undefined) {
+	if(typeof _QR == 'undefined') {
 		await sleep(DELAY);
+		return;
 	}
-
+	flag_신품정보 = false;
 	if (_QR.value.length == 0) return;
 	console.log('load: ', _QR.value);
 	if (_QR.value == '' | _QR.value == 'none') return;

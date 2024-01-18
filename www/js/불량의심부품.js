@@ -257,9 +257,11 @@ var _D2_LV_W_H_COLOR = '';
 var _D2_MODULE_1_COLOR = '';
 
 async function 불량의심부품_시작() {
-	while(typeof _D2_MODULE_1 == 'undefined') {
+	if(typeof _D2_MODULE_1 == 'undefined') {
 		await sleep(1);
+		return;
 	}
+
 	flag_불량의심부품 = false;
 	console.log('불량의심부품 start');
 	_management_id.value = 관리번호;

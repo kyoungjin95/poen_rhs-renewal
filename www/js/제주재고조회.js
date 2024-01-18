@@ -19,13 +19,10 @@ async function 제주재고조회_시작() {
 		제주창고_table.clearFilter();
 	});
 
-	count(제주재고, { 관리번호: { $exists: true } });
+	find_제주재고(제주재고, { 관리번호: { $exists: true } });
 	await delay();
 
-	if (제주재고_cnt > 0) {
-		find_제주재고(제주재고, { 관리번호: { $exists: true } });
-		await delay();
-
+	if (제주재고_v != null) {
 		제주창고조회(제주재고_v);
 
 		품번별_수량집계(제주재고_v);

@@ -4,8 +4,9 @@ let 접지 = '';
 
 async function 출하정보_시작(is재제조 = 0) {
 	if (worker == '') return;
-	while (_management_id == undefined) {
+	if(typeof _management_id == 'undefined') {
 		await sleep(DELAY);
+		return;
 	}
 
 	if (flag_출하 == true) await 출하정보_list();

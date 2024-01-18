@@ -19,13 +19,10 @@ async function 군포재고조회_시작() {
 		군포창고_table.clearFilter();
 	});
 
-	count(군포재고, { 관리번호: { $exists: true } });
+	find_군포재고(군포재고, { 관리번호: { $exists: true } });
 	await delay();
 
-	if (군포재고_cnt > 0) {
-		find_군포재고(군포재고, { 관리번호: { $exists: true } });
-		await delay();
-
+	if (군포재고_v != null) {
 		군포창고조회(군포재고_v);
 
 		품번별_수량집계(군포재고_v);

@@ -5,13 +5,14 @@ function EOL_재제조번호_시작() {
 var EOL_DTC_count = 0;
 
 async function EOL_시작(is재제조 = 0) {
-	if (worker == '') return;
-	while (_management_id == undefined) {
+	if(typeof _management_id == 'undefined') {
 		await sleep(DELAY);
+		return;
 	}
 
 	if (flag_EOL == true) await EOL_list();
 	flag_EOL = false;
+	if (worker == '') return;
 
 	_eol_delete_all();
 	init_EOL();

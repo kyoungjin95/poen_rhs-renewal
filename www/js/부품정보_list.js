@@ -164,11 +164,14 @@ var LK_FC_BMA = [];
 var LM_BMA = [];
 
 async function 부품정보_list_시작() {
-	while (typeof _D == 'undefined') {
-		await sleep(100);
+	await sleep(100);
+	if(typeof _D == 'undefined') {
+		await sleep(1);
+		return;
 	}
-	console.log(관리번호, 차종);
 	flag_부품정보_list = false;
+
+	console.log(관리번호, 차종);
 
 	_management_id.value = 관리번호;
 	_차종.value = 차종;

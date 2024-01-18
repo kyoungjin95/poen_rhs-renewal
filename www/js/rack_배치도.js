@@ -1,12 +1,16 @@
 var select_pos ='';
 var 창고 = '';
 async function racks_시작() {
-	flag_racks = false;
 	console.log('racks start');
-
-	while(document.getElementById('_제주') == undefined) {
+	
+	await sleep(100);
+	if(typeof _제주 == 'undefined') {
+		console.log('racks check gui');
 		await sleep(1);
+		return;
 	}
+
+	flag_racks = false;
 
 	var buttons = document.querySelectorAll('.rack');
 	buttons.forEach((button) => {
@@ -18,25 +22,13 @@ async function racks_시작() {
 
 function 창고선택() {
 	if(창고 == '마도') {
-		document.getElementById('_마도').style.display = 'block';
-		document.getElementById('_구장').style.display = 'none';
-		//document.getElementById('_군포').style.display = 'none';
-		document.getElementById('_제주').style.display = 'none';
+		_마도.style.display = 'block';
 	} else if(창고 == '구장') {
-		document.getElementById('_마도').style.display = 'none';
-		document.getElementById('_구장').style.display = 'block';
-		//document.getElementById('_군포').style.display = 'none';
-		document.getElementById('_제주').style.display = 'none';
+		_구장.style.display = 'block';
 	} else if(창고 == '군포') {
-		document.getElementById('_마도').style.display = 'none';
-		document.getElementById('_구장').style.display = 'none';
-		//document.getElementById('_군포').style.display = 'block';
-		document.getElementById('_제주').style.display = 'none';
+		//_군포.style.display = 'block';
 	} else if(창고 == '제주') {
-		document.getElementById('_마도').style.display = 'none';
-		document.getElementById('_구장').style.display = 'none';
-		//document.getElementById('_군포').style.display = 'none';
-		document.getElementById('_제주').style.display = 'block';
+		_제주.style.display = 'block';
 	}
 }
 

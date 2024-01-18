@@ -77,7 +77,6 @@ var flag_수량집계 = false;
 var flag_창고수량집계 = false;
 var flag_신품정보 = false;
 var flag_재충전정보 = false;
-var flag_camera = false;
 var flag_관리자 = false;
 var flag_repeat_생산현황 = false;
 var flag_repeat_대시보드 = false;
@@ -99,6 +98,7 @@ var flag_제주재고조회 = false;
 var flag_부품정보_list = false;
 var flag_racks = false;
 var flag_불량의심부품 = false;
+var flag_기초보고서 = false;
 
 var interval = setInterval(function () {
 	if (flag_재제조현황 == true) { console.log('재제조현황'); stop_repeat(); 재제조현황_시작(); }
@@ -107,7 +107,6 @@ var interval = setInterval(function () {
 	if (flag_월간현황 == true) { console.log('월간현황'); stop_repeat(); 월간현황_시작(); }
 	if (flag_주간현황 == true) { console.log('주간현황'); stop_repeat(); 주간현황_시작(); }
 	if (flag_재충전정보 == true) { console.log('재충전정보'); stop_repeat(); 재충전정보_시작(); }
-	if (flag_camera == true) { console.log('카메라'); stop_repeat(); }
 	if (flag_부품재고 == true) { console.log('부품재고'); stop_repeat(); 부품재고_시작(); }
 	if (flag_수량집계 == true) { console.log('수량집계'); stop_repeat(); 수량집계_시작(); }
 	if (flag_창고수량집계 == true) { console.log('창고수량집계'); stop_repeat(); 창고수량집계_시작(); }
@@ -134,6 +133,7 @@ var interval = setInterval(function () {
 	if (flag_racks == true) { console.log('racks'); stop_repeat(); loadPage('base/rack_배치도.html'); racks_시작(); }
 	if (flag_불량의심부품 == true) { console.log('불량의심부품'); stop_repeat(); 불량의심부품_시작(); }
 	if (flag_부품정보_list == true) { console.log('부품정보'); stop_repeat(); 부품정보_list_시작(); }
+	if (flag_기초보고서 == true) { console.log('기초보고서'); stop_repeat(); 기초보고서_시작(); }
 }, 1000);
 
 //var intervalRepeat = setInterval(function() {

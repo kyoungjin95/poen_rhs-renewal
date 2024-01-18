@@ -1,6 +1,6 @@
 async function 특이사항_시작() {
 	if (worker == '') return;
-	while (_management_id == undefined) {
+	if(typeof _management_id == 'undefined') {
 		await sleep(DELAY);
 	}
 

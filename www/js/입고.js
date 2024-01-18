@@ -1,9 +1,11 @@
 async function 입고_시작() {
-	while (typeof _management_id == 'undefined') {
+	if(typeof _management_id == 'undefined') {
 		await sleep(DELAY);
+		return;
 	}
 
 	if (flag_입고 == true) await 입고_list();
+	flag_입고 = false;
 
 	const _입고기타 = document.getElementById("_입고_기타");
 	const _입고일반 = document.getElementById("_입고_일반");
@@ -18,7 +20,6 @@ async function 입고_시작() {
 
 	var 보관위치 = select_pos;
 
-	flag_입고 = false;
 	select_pos = '';
 
 	if(보관위치 != '') {

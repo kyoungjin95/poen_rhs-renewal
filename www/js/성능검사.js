@@ -1,11 +1,12 @@
 async function 성능검사_시작(is재제조 = 0) {
-	if (worker == '') return;
-	while (_management_id == undefined) {
+	if(typeof _management_id == 'undefined') {
 		await sleep(DELAY);
+		return;
 	}
 
 	if (flag_성능검사 == true) await 성능검사_list();
 	flag_성능검사 = false;
+	if (worker == '') return;
 
 	console.log('작업자:', 계정_stat.이름);
 	_검사자.value = 계정_stat.이름;;

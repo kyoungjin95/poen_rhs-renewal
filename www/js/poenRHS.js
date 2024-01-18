@@ -28,7 +28,10 @@ const 군포재고 = "군포재고";
 const 제주재고 = "제주재고";
 const 입고_pic = "입고_pic";
 const 세척_pic = "세척_pic";
-const 기초검사_pic = "기초검사_pic";
+const 기초검사_pic1 = "기초검사_pic1";
+const 기초검사_pic2 = "기초검사_pic2";
+const 기초검사_pic3 = "기초검사_pic3";
+const 기초검사_pic4 = "기초검사_pic4";
 const 분해조립_pic = "분해조립_pic";
 const 성능검사_pic = "성능검사_pic";
 const EOL_pic = "EOL_pic";
@@ -76,7 +79,10 @@ var 제주재고_v = [];
 var 창고이동_v = [];
 var 입고_pic_v = [];
 var 세척_pic_v = [];
-var 기초검사_pic_v = [];
+var 기초검사_pic1_v = [];
+var 기초검사_pic2_v = [];
+var 기초검사_pic3_v = [];
+var 기초검사_pic4_v = [];
 var 분해조립_pic_v = [];
 var 성능검사_pic_v = [];
 var EOL_pic_v = [];
@@ -121,7 +127,10 @@ var 군포재고_cnt = 0;
 var 제주재고_cnt = 0;
 var 입고_pic_cnt = 0;
 var 세척_pic_cnt = 0;
-var 기초검사_pic_cnt = 0;
+var 기초검사_pic1_cnt = 0;
+var 기초검사_pic2_cnt = 0;
+var 기초검사_pic3_cnt = 0;
+var 기초검사_pic4_cnt = 0;
 var 분해조립_pic_cnt = 0;
 var 성능검사_pic_cnt = 0;
 var EOL_pic_cnt = 0;
@@ -270,6 +279,8 @@ const 기초검사_doc = {
   절연검사_Plus판정: "",
   절연검사_Minus: "",
   절연검사_Minus판정: "",
+  센서데이터진단: "",
+  센서데이터진단_판정: "",
   통신검사_DTC코드1: "",
   통신검사_DTC코드1판정: "",
   통신검사_DTC코드2: "",
@@ -863,7 +874,7 @@ const 세척_pic_doc = {
   pic30: "",
 };
 
-const 기초검사_pic_doc = {
+const 기초검사_pic1_doc = {
   관리번호: "",
   pic1: "",
   pic2: "",
@@ -875,26 +886,48 @@ const 기초검사_pic_doc = {
   pic8: "",
   pic9: "",
   pic10: "",
-  pic11: "",
-  pic12: "",
-  pic13: "",
-  pic14: "",
-  pic15: "",
-  pic16: "",
-  pic17: "",
-  pic18: "",
-  pic19: "",
-  pic20: "",
-  pic21: "",
-  pic22: "",
-  pic23: "",
-  pic24: "",
-  pic25: "",
-  pic26: "",
-  pic27: "",
-  pic28: "",
-  pic29: "",
-  pic30: "",
+};
+
+const 기초검사_pic2_doc = {
+  관리번호: "",
+  pic1: "",
+  pic2: "",
+  pic3: "",
+  pic4: "",
+  pic5: "",
+  pic6: "",
+  pic7: "",
+  pic8: "",
+  pic9: "",
+  pic10: "",
+};
+
+const 기초검사_pic3_doc = {
+  관리번호: "",
+  pic1: "",
+  pic2: "",
+  pic3: "",
+  pic4: "",
+  pic5: "",
+  pic6: "",
+  pic7: "",
+  pic8: "",
+  pic9: "",
+  pic10: "",
+};
+
+const 기초검사_pic4_doc = {
+  관리번호: "",
+  pic1: "",
+  pic2: "",
+  pic3: "",
+  pic4: "",
+  pic5: "",
+  pic6: "",
+  pic7: "",
+  pic8: "",
+  pic9: "",
+  pic10: "",
 };
 
 const 분해조립_pic_doc = {
@@ -1766,6 +1799,8 @@ const 기초검사_ = {
   절연검사_Plus판정: 1,
   절연검사_Minus: 1,
   절연검사_Minus판정: 1,
+  센서데이터진단: 1,
+  센서데이터진단_판정: 1,
   통신검사_DTC코드1: 1,
   통신검사_DTC코드1판정: 1,
   통신검사_DTC코드2: 1,
@@ -2378,7 +2413,7 @@ const 세척_pic_ = {
   pic30: 1,
 };
 
-const 기초검사_pic_ = {
+const 기초검사_pic1_ = {
   _id: 0,
   관리번호: 1,
   pic1: 1,
@@ -2391,27 +2426,52 @@ const 기초검사_pic_ = {
   pic8: 1,
   pic9: 1,
   pic10: 1,
-  pic11: 1,
-  pic12: 1,
-  pic13: 1,
-  pic14: 1,
-  pic15: 1,
-  pic16: 1,
-  pic17: 1,
-  pic18: 1,
-  pic19: 1,
-  pic20: 1,
-  pic21: 1,
-  pic22: 1,
-  pic23: 1,
-  pic24: 1,
-  pic25: 1,
-  pic26: 1,
-  pic27: 1,
-  pic28: 1,
-  pic29: 1,
-  pic30: 1,
-};
+}
+
+const 기초검사_pic2_ = {
+  _id: 0,
+  관리번호: 1,
+  pic1: 1,
+  pic2: 1,
+  pic3: 1,
+  pic4: 1,
+  pic5: 1,
+  pic6: 1,
+  pic7: 1,
+  pic8: 1,
+  pic9: 1,
+  pic10: 1,
+}
+
+const 기초검사_pic3_ = {
+  _id: 0,
+  관리번호: 1,
+  pic1: 1,
+  pic2: 1,
+  pic3: 1,
+  pic4: 1,
+  pic5: 1,
+  pic6: 1,
+  pic7: 1,
+  pic8: 1,
+  pic9: 1,
+  pic10: 1,
+}
+
+const 기초검사_pic4_ = {
+  _id: 0,
+  관리번호: 1,
+  pic1: 1,
+  pic2: 1,
+  pic3: 1,
+  pic4: 1,
+  pic5: 1,
+  pic6: 1,
+  pic7: 1,
+  pic8: 1,
+  pic9: 1,
+  pic10: 1,
+}
 
 const 분해조립_pic_ = {
   _id: 0,
@@ -3376,9 +3436,24 @@ socket.on("count_result", async function (col, count, rcv_check, option = "") {
       세척_pic_cnt = JSON.parse(JSON.stringify(count));
       break;
 
-    case 기초검사_pic:
-      기초검사_pic_cnt = 0;
-      기초검사_pic_cnt = JSON.parse(JSON.stringify(count));
+    case 기초검사_pic1:
+      기초검사_pic1_cnt = 0;
+      기초검사_pic1_cnt = JSON.parse(JSON.stringify(count));
+      break;
+
+    case 기초검사_pic2:
+      기초검사_pic2_cnt = 0;
+      기초검사_pic2_cnt = JSON.parse(JSON.stringify(count));
+      break;
+
+    case 기초검사_pic3:
+      기초검사_pic3_cnt = 0;
+      기초검사_pic3_cnt = JSON.parse(JSON.stringify(count));
+      break;
+
+    case 기초검사_pic4:
+      기초검사_pic3_cnt = 0;
+      기초검사_pic3_cnt = JSON.parse(JSON.stringify(count));
       break;
 
     case 분해조립_pic:
@@ -3690,9 +3765,24 @@ socket.on("find_result", async function (col, result, rcv_check) {
       세척_pic_v = JSON.parse(JSON.stringify(result));
       break;
 
-    case 기초검사_pic:
-      기초검사_pic_v = [];
-      기초검사_pic_v = JSON.parse(JSON.stringify(result));
+    case 기초검사_pic1:
+      기초검사_pic1_v = [];
+      기초검사_pic1_v = JSON.parse(JSON.stringify(result));
+      break;
+
+    case 기초검사_pic2:
+      기초검사_pic2_v = [];
+      기초검사_pic2_v = JSON.parse(JSON.stringify(result));
+      break;
+
+    case 기초검사_pic3:
+      기초검사_pic3_v = [];
+      기초검사_pic3_v = JSON.parse(JSON.stringify(result));
+      break;
+
+    case 기초검사_pic4:
+      기초검사_pic4_v = [];
+      기초검사_pic4_v = JSON.parse(JSON.stringify(result));
       break;
 
     case 분해조립_pic:
@@ -3845,7 +3935,10 @@ function reset_result() {
   제주재고_v = [];
   입고_pic_v = [];
   세척_pic_v = [];
-  기초검사_pic_v = [];
+  기초검사_pic1_v = [];
+  기초검사_pic2_v = [];
+  기초검사_pic3_v = [];
+  기초검사_pic4_v = [];
   분해조립_pic_v = [];
   성능검사_pic_v = [];
   EOL_pic_v = [];
@@ -3892,7 +3985,10 @@ function reset_count() {
   제주재고_cnt = 0;
   입고_pic_cnt = 0;
   세척_pic_cnt = 0;
-  기초검사_pic_cnt = 0;
+  기초검사_pic1_cnt = 0;
+  기초검사_pic2_cnt = 0;
+  기초검사_pic3_cnt = 0;
+  기초검사_pic4_cnt = 0;
   분해조립_pic_cnt = 0;
   성능검사_pic_cnt = 0;
   EOL_pic_cnt = 0;
@@ -4168,8 +4264,20 @@ async function find(col, management_id) {
       socket.emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 세척_pic_ }, check);
       break;
 
-    case "기초검사_pic":
-      socket.emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 기초검사_pic_ }, check);
+    case "기초검사_pic1":
+      socket.emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 기초검사_pic1_ }, check);
+      break;
+
+    case "기초검사_pic2":
+      socket.emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 기초검사_pic2_ }, check);
+      break;
+
+    case "기초검사_pic3":
+      socket.emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 기초검사_pic3_ }, check);
+      break;
+
+    case "기초검사_pic4":
+      socket.emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 기초검사_pic4_ }, check);
       break;
 
     case "분해조립_pic":

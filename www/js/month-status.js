@@ -12,11 +12,13 @@ function monthOnChange(e) {
 }
 
 async function 월간현황_시작() {
+	if(document.getElementById('_검색일_year') == undefined) {
+		await sleep(DELAY);
+		return;
+	}
+
 	flag_월간현황 = false;
 	if (worker == '') return;
-	while (document.getElementById('_검색일_year') == undefined) {
-		await sleep(DELAY);
-	}
 
 	var DateTime = luxon.DateTime;
 	var seoul = DateTime.local().setZone("Asia/Seoul");
