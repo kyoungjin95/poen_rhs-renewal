@@ -316,7 +316,7 @@
           </tr>
           <tr id="_통신검사_DTC코드1_box">
             <td rowspan="2" class="_항목">
-              <label for="_통신검사_DTC코드1">통신검사 DTC코드 1</label>
+              <label for="_통신검사_DTC코드1">센서데이터 진단</label>
             </td>
             <td>
               <input type="text" id="_통신검사_DTC코드1판정" size="40" required />
@@ -330,14 +330,25 @@
           </tr>
           <tr id="_통신검사_DTC코드1_img">
             <td colspan="2" class="process__img img-box">
-              <div class="images top">
+              <div class="images">
+                <h3>고장코드-현재</h3>
                 <img id="_img17" />
               </div>
-              <div class="images top">
+              <div class="images">
+                <h3>고장코드-과거</h3>
                 <img id="_img18" />
               </div>
-              <div class="images top">
+              <div class="images">
+                <h3>센서데이터진단</h3>
                 <img id="_img19" />
+              </div>
+              <div class="images">
+                <h3>PDS진단1</h3>
+                <img id="_img20" />
+              </div>
+              <div class="images">
+                <h3>PDS진단2</h3>
+                <img id="_img21" />
               </div>
             </td>
           </tr>
@@ -629,6 +640,8 @@
       const _img17 = document.get.getElementById("_img17");
       const _img18 = document.get.getElementById("_img18");
       const _img19 = document.get.getElementById("_img19");
+      const _img20 = document.get.getElementById("_img20");
+      const _img21 = document.get.getElementById("_img21");
     </script>
   </body>
 </html>

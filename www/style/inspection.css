@@ -234,6 +234,14 @@ table td.bottom {
 .changeWidth img {
   width: 60%;
 }
+.heightPhoto #_CAN진단,
+.photo #_PDS진단1,
+.photo #_PDS진단2 {
+  width: 80%;
+}
+.photo #_PDS진단1 {
+  margin-bottom: 20px;
+}
 /* 출하검사성적서 */
 
 #_출하검사성적서 .subject {

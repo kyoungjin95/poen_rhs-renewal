@@ -1564,7 +1564,7 @@
 
     <div id="_CAN통신검사" class="check-all">
       <div class="report__tit">
-        <h3>▣ CAN 통신 검사 - G-SCAN 진단결과</h3>
+        <h3>▣ CAN 통신 검사</h3>
         <input type="checkbox" id="_cbCAN통신검사" checked />
       </div>
       <table border="2" class="all">
@@ -1572,30 +1572,38 @@
           <col width="8%" />
           <col />
           <col />
-          <col />
+          <col width="20%" />
         </colgroup>
         <thead>
           <tr class="title">
             <th>항목</th>
-            <th colspan="4">G-SCAN 진단</th>
+            <th colspan="3">통신검사</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <th rowspan="3" scope="row">진단결과</th>
-            <td colspan="2">고장코드 진단</td>
-            <td colspan="2">센서데이터 진단</td>
+            <th rowspan="4" scope="row">진단결과</th>
+            <td colspan="2" style="background: #eee">G-SACN 진단</td>
+            <td rowspan="2" style="background: #eee">PDS 진단</td>
           </tr>
           <tr>
-            <td colspan="2" class="photo">
+            <td style="padding: 0.5em">고장코드 진단</td>
+            <td style="padding: 0.5em">센서데이터 진단</td>
+          </tr>
+          <tr>
+            <td class="photo">
               <img id="_CAN현재" />
             </td>
-            <td colspan="2" rowspan="2" class="photo heightPhoto">
+            <td rowspan="2" class="photo heightPhoto">
               <img id="_CAN진단" />
+            </td>
+            <td rowspan="2" class="photo">
+              <img id="_PDS진단1" />
+              <img id="_PDS진단2" />
             </td>
           </tr>
           <tr>
-            <td colspan="2" class="photo">
+            <td class="photo">
               <img id="_CAN과거" />
             </td>
           </tr>
@@ -1643,9 +1651,8 @@
       <button onClick="기초보고서_save('절연');">절연저항검사</button>
       <button onClick="기초보고서_save('CAN');">CAN통신검사</button>
     </div>
-      <button onClick="기초검사_이전페이지();">이전페이지</button>
-    <div>
-    </div>
+    <button onClick="기초검사_이전페이지();">이전페이지</button>
+    <div></div>
 
     <script>
       var _차종 = document.getElementById("_차종");
@@ -1939,6 +1946,8 @@
       var _CAN현재 = document.getElementById("_CAN현재");
       var _CAN진단 = document.getElementById("_CAN진단");
       var _CAN과거 = document.getElementById("_CAN과거");
+      var _PDS진단1 = document.getElementById("_PDS진단1");
+      var _PDS진단2 = document.getElementById("_PDS진단2");
 
       //checkbox
       var _cb기초보고서 = document.getElementById("_cb기초보고서");

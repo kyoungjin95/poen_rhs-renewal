@@ -477,34 +477,38 @@ async function 기초보고서_조회(is재제조번호 = false) {
   await delay();
 
   if (기초검사_pic_v != null) {
+    // qr code
+    _BSA_QR.src = 기초검사_pic_v.pic1;
     //육안검사 내부 1
-    _allImg.src = 기초검사_pic_v.pic1;
-    _BMU.src = 기초검사_pic_v.pic2;
-    _CMU.src = 기초검사_pic_v.pic3;
-    _PRA.src = 기초검사_pic_v.pic4;
+    _allImg.src = 기초검사_pic_v.pic2;
+    _BMU.src = 기초검사_pic_v.pic3;
+    _CMU.src = 기초검사_pic_v.pic4;
+    _PRA.src = 기초검사_pic_v.pic5;
     _육안검사_내부_결과.innerHTML = 내부검사;
 
     //육안검사 내부 2
-    _이상부위_내부1.src = 기초검사_pic_v.pic5;
-    _이상부위_내부2.src = 기초검사_pic_v.pic6;
-    _이상부위_내부3.src = 기초검사_pic_v.pic7;
-    _이상부위_내부4.src = 기초검사_pic_v.pic8;
+    _이상부위_내부1.src = 기초검사_pic_v.pic6;
+    _이상부위_내부2.src = 기초검사_pic_v.pic7;
+    _이상부위_내부3.src = 기초검사_pic_v.pic8;
+    _이상부위_내부4.src = 기초검사_pic_v.pic9;
     _육안검사_내부_결과2.innerHTML = 내부검사사유;
 
     //기밀검사 -냉각유로
-    _측정사진2.src = 기초검사_pic_v.pic9;
-    _측정값사진2.src = 기초검사_pic_v.pic10;
+    _측정사진2.src = 기초검사_pic_v.pic10;
+    _측정값사진2.src = 기초검사_pic_v.pic11;
 
     //절연검사
-    _절연측정사진1.src = 기초검사_pic_v.pic11;
-    _절연측정값사진1.src = 기초검사_pic_v.pic12;
-    _절연측정사진2.src = 기초검사_pic_v.pic13;
-    _절연측정값사진2.src = 기초검사_pic_v.pic14;
+    _절연측정사진1.src = 기초검사_pic_v.pic13;
+    _절연측정값사진1.src = 기초검사_pic_v.pic14;
+    _절연측정사진2.src = 기초검사_pic_v.pic15;
+    _절연측정값사진2.src = 기초검사_pic_v.pic16;
 
     //CAN통신검사
-    _CAN현재.src = 기초검사_pic_v.pic15;
-    _CAN진단.src = 기초검사_pic_v.pic16;
-    _CAN과거.src = 기초검사_pic_v.pic17;
+    _CAN현재.src = 기초검사_pic_v.pic17;
+    _CAN진단.src = 기초검사_pic_v.pic18;
+    _CAN과거.src = 기초검사_pic_v.pic19;
+    _PDS진단1.src = 기초검사_pic_v.pic20;
+    _PDS진단2.src = 기초검사_pic_v.pic21;
   }
 
   //기밀검사 - 케이스

@@ -311,7 +311,7 @@ const 기초검사_doc = {
   센터진단내용: "",
   검사자: "",
   필드현상: "",
-  AS센터조치: '',
+  AS센터조치: "",
 };
 
 const 분해조립_doc = {
@@ -817,6 +817,16 @@ const 입고_pic_doc = {
   pic18: "",
   pic19: "",
   pic20: "",
+  pic21: "",
+  pic22: "",
+  pic23: "",
+  pic24: "",
+  pic25: "",
+  pic26: "",
+  pic27: "",
+  pic28: "",
+  pic29: "",
+  pic30: "",
 };
 
 const 세척_pic_doc = {
@@ -841,6 +851,16 @@ const 세척_pic_doc = {
   pic18: "",
   pic19: "",
   pic20: "",
+  pic21: "",
+  pic22: "",
+  pic23: "",
+  pic24: "",
+  pic25: "",
+  pic26: "",
+  pic27: "",
+  pic28: "",
+  pic29: "",
+  pic30: "",
 };
 
 const 기초검사_pic_doc = {
@@ -865,6 +885,16 @@ const 기초검사_pic_doc = {
   pic18: "",
   pic19: "",
   pic20: "",
+  pic21: "",
+  pic22: "",
+  pic23: "",
+  pic24: "",
+  pic25: "",
+  pic26: "",
+  pic27: "",
+  pic28: "",
+  pic29: "",
+  pic30: "",
 };
 
 const 분해조립_pic_doc = {
@@ -889,6 +919,16 @@ const 분해조립_pic_doc = {
   pic18: "",
   pic19: "",
   pic20: "",
+  pic21: "",
+  pic22: "",
+  pic23: "",
+  pic24: "",
+  pic25: "",
+  pic26: "",
+  pic27: "",
+  pic28: "",
+  pic29: "",
+  pic30: "",
 };
 
 const 성능검사_pic_doc = {
@@ -913,6 +953,16 @@ const 성능검사_pic_doc = {
   pic18: "",
   pic19: "",
   pic20: "",
+  pic21: "",
+  pic22: "",
+  pic23: "",
+  pic24: "",
+  pic25: "",
+  pic26: "",
+  pic27: "",
+  pic28: "",
+  pic29: "",
+  pic30: "",
 };
 
 const EOL_pic_doc = {
@@ -937,6 +987,16 @@ const EOL_pic_doc = {
   pic18: "",
   pic19: "",
   pic20: "",
+  pic21: "",
+  pic22: "",
+  pic23: "",
+  pic24: "",
+  pic25: "",
+  pic26: "",
+  pic27: "",
+  pic28: "",
+  pic29: "",
+  pic30: "",
 };
 
 const 특이사항_pic_doc = {
@@ -961,6 +1021,16 @@ const 특이사항_pic_doc = {
   pic18: "",
   pic19: "",
   pic20: "",
+  pic21: "",
+  pic22: "",
+  pic23: "",
+  pic24: "",
+  pic25: "",
+  pic26: "",
+  pic27: "",
+  pic28: "",
+  pic29: "",
+  pic30: "",
 };
 
 const 출하_pic_doc = {
@@ -985,6 +1055,16 @@ const 출하_pic_doc = {
   pic18: "",
   pic19: "",
   pic20: "",
+  pic21: "",
+  pic22: "",
+  pic23: "",
+  pic24: "",
+  pic25: "",
+  pic26: "",
+  pic27: "",
+  pic28: "",
+  pic29: "",
+  pic30: "",
 };
 
 const 반품입고_pic_doc = {
@@ -1009,6 +1089,16 @@ const 반품입고_pic_doc = {
   pic18: "",
   pic19: "",
   pic20: "",
+  pic21: "",
+  pic22: "",
+  pic23: "",
+  pic24: "",
+  pic25: "",
+  pic26: "",
+  pic27: "",
+  pic28: "",
+  pic29: "",
+  pic30: "",
 };
 
 const 재출하_pic_doc = {
@@ -1033,6 +1123,16 @@ const 재출하_pic_doc = {
   pic18: "",
   pic19: "",
   pic20: "",
+  pic21: "",
+  pic22: "",
+  pic23: "",
+  pic24: "",
+  pic25: "",
+  pic26: "",
+  pic27: "",
+  pic28: "",
+  pic29: "",
+  pic30: "",
 };
 
 const 완전분해_pic_doc = {
@@ -1057,6 +1157,16 @@ const 완전분해_pic_doc = {
   pic18: "",
   pic19: "",
   pic20: "",
+  pic21: "",
+  pic22: "",
+  pic23: "",
+  pic24: "",
+  pic25: "",
+  pic26: "",
+  pic27: "",
+  pic28: "",
+  pic29: "",
+  pic30: "",
 };
 
 const 폐기_pic_doc = {
@@ -1081,6 +1191,16 @@ const 폐기_pic_doc = {
   pic18: "",
   pic19: "",
   pic20: "",
+  pic21: "",
+  pic22: "",
+  pic23: "",
+  pic24: "",
+  pic25: "",
+  pic26: "",
+  pic27: "",
+  pic28: "",
+  pic29: "",
+  pic30: "",
 };
 
 const 자재입출고_doc = {
@@ -2211,6 +2331,16 @@ const 입고_pic_ = {
   pic18: 1,
   pic19: 1,
   pic20: 1,
+  pic21: 1,
+  pic22: 1,
+  pic23: 1,
+  pic24: 1,
+  pic25: 1,
+  pic26: 1,
+  pic27: 1,
+  pic28: 1,
+  pic29: 1,
+  pic30: 1,
 };
 
 const 세척_pic_ = {
@@ -2236,6 +2366,16 @@ const 세척_pic_ = {
   pic18: 1,
   pic19: 1,
   pic20: 1,
+  pic21: 1,
+  pic22: 1,
+  pic23: 1,
+  pic24: 1,
+  pic25: 1,
+  pic26: 1,
+  pic27: 1,
+  pic28: 1,
+  pic29: 1,
+  pic30: 1,
 };
 
 const 기초검사_pic_ = {
@@ -2261,6 +2401,16 @@ const 기초검사_pic_ = {
   pic18: 1,
   pic19: 1,
   pic20: 1,
+  pic21: 1,
+  pic22: 1,
+  pic23: 1,
+  pic24: 1,
+  pic25: 1,
+  pic26: 1,
+  pic27: 1,
+  pic28: 1,
+  pic29: 1,
+  pic30: 1,
 };
 
 const 분해조립_pic_ = {
@@ -2286,6 +2436,16 @@ const 분해조립_pic_ = {
   pic18: 1,
   pic19: 1,
   pic20: 1,
+  pic21: 1,
+  pic22: 1,
+  pic23: 1,
+  pic24: 1,
+  pic25: 1,
+  pic26: 1,
+  pic27: 1,
+  pic28: 1,
+  pic29: 1,
+  pic30: 1,
 };
 
 const 성능검사_pic_ = {
@@ -2311,6 +2471,16 @@ const 성능검사_pic_ = {
   pic18: 1,
   pic19: 1,
   pic20: 1,
+  pic21: 1,
+  pic22: 1,
+  pic23: 1,
+  pic24: 1,
+  pic25: 1,
+  pic26: 1,
+  pic27: 1,
+  pic28: 1,
+  pic29: 1,
+  pic30: 1,
 };
 
 const EOL_pic_ = {
@@ -2336,6 +2506,16 @@ const EOL_pic_ = {
   pic18: 1,
   pic19: 1,
   pic20: 1,
+  pic21: 1,
+  pic22: 1,
+  pic23: 1,
+  pic24: 1,
+  pic25: 1,
+  pic26: 1,
+  pic27: 1,
+  pic28: 1,
+  pic29: 1,
+  pic30: 1,
 };
 
 const 특이사항_pic_ = {
@@ -2361,6 +2541,16 @@ const 특이사항_pic_ = {
   pic18: 1,
   pic19: 1,
   pic20: 1,
+  pic21: 1,
+  pic22: 1,
+  pic23: 1,
+  pic24: 1,
+  pic25: 1,
+  pic26: 1,
+  pic27: 1,
+  pic28: 1,
+  pic29: 1,
+  pic30: 1,
 };
 
 const 출하_pic_ = {
@@ -2386,6 +2576,16 @@ const 출하_pic_ = {
   pic18: 1,
   pic19: 1,
   pic20: 1,
+  pic21: 1,
+  pic22: 1,
+  pic23: 1,
+  pic24: 1,
+  pic25: 1,
+  pic26: 1,
+  pic27: 1,
+  pic28: 1,
+  pic29: 1,
+  pic30: 1,
 };
 
 const 반품입고_pic_ = {
@@ -2411,6 +2611,16 @@ const 반품입고_pic_ = {
   pic18: 1,
   pic19: 1,
   pic20: 1,
+  pic21: 1,
+  pic22: 1,
+  pic23: 1,
+  pic24: 1,
+  pic25: 1,
+  pic26: 1,
+  pic27: 1,
+  pic28: 1,
+  pic29: 1,
+  pic30: 1,
 };
 
 const 재출하_pic_ = {
@@ -2436,6 +2646,16 @@ const 재출하_pic_ = {
   pic18: 1,
   pic19: 1,
   pic20: 1,
+  pic21: 1,
+  pic22: 1,
+  pic23: 1,
+  pic24: 1,
+  pic25: 1,
+  pic26: 1,
+  pic27: 1,
+  pic28: 1,
+  pic29: 1,
+  pic30: 1,
 };
 
 const 완전분해_pic_ = {
@@ -2461,6 +2681,16 @@ const 완전분해_pic_ = {
   pic18: 1,
   pic19: 1,
   pic20: 1,
+  pic21: 1,
+  pic22: 1,
+  pic23: 1,
+  pic24: 1,
+  pic25: 1,
+  pic26: 1,
+  pic27: 1,
+  pic28: 1,
+  pic29: 1,
+  pic30: 1,
 };
 
 const 폐기_pic_ = {
@@ -2486,6 +2716,16 @@ const 폐기_pic_ = {
   pic18: 1,
   pic19: 1,
   pic20: 1,
+  pic21: 1,
+  pic22: 1,
+  pic23: 1,
+  pic24: 1,
+  pic25: 1,
+  pic26: 1,
+  pic27: 1,
+  pic28: 1,
+  pic29: 1,
+  pic30: 1,
 };
 
 const 자재입출고_ = {
