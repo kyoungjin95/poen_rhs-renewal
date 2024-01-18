@@ -314,21 +314,21 @@
               </div>
             </td>
           </tr>
-          <tr id="_통신검사_DTC코드1_box">
+          <tr>
             <td rowspan="2" class="_항목">
-              <label for="_통신검사_DTC코드1">센서데이터 진단</label>
+              <label for="_센서데이터진단">센서데이터 진단</label>
             </td>
             <td>
-              <input type="text" id="_통신검사_DTC코드1판정" size="40" required />
-              <select name="language" onchange="_통신검사_DTC코드1_콤보박스(this);">
+              <input type="text" id="_센서데이터진단_판정" size="40" required />
+              <select name="language" onchange="_센서데이터진단_콤보박스(this);">
                 <option value="">---</option>
                 <option value="OK">OK</option>
                 <option value="NG">NG</option>
               </select>
-              <input type="text" id="_통신검사_DTC코드1" size="40" required />
+              <input type="text" id="_센서데이터진단" size="40" required />
             </td>
           </tr>
-          <tr id="_통신검사_DTC코드1_img">
+          <tr>
             <td colspan="2" class="process__img img-box">
               <div class="images">
                 <h3>고장코드-현재</h3>
@@ -350,22 +350,6 @@
                 <h3>PDS진단2</h3>
                 <img id="_img21" />
               </div>
-            </td>
-          </tr>
-          <tr>
-            <td class="_항목">
-              <label for="_통신검사_DTC코드2">통신검사 DTC코드 2</label>
-            </td>
-            <td>
-              <input type="text" id="_통신검사_DTC코드2" size="40" required />
-            </td>
-          </tr>
-          <tr>
-            <td class="_항목">
-              <label for="_통신검사_DTC코드3">통신검사 DTC코드 3</label>
-            </td>
-            <td>
-              <input type="text" id="_통신검사_DTC코드3" size="40" required />
             </td>
           </tr>
           <tr>
@@ -448,48 +432,6 @@
               <input type="text" id="_BMA_ROM_ID" size="40" required />
             </td>
           </tr>
-          <!--
-          <tr>
-            <td>
-              <label for="_고장현상코드">고장현상 코드</label>
-            </td>
-            <td>
-              <input type="text" id="_고장현상코드" size="40" required />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <label for="_고장현상명">고장현상명</label>
-            </td>
-            <td>
-              <input type="text" id="_고장현상명" size="40" required />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <label for="_문제Cell_No">문제 CELL No</label>
-            </td>
-            <td>
-              <input type="text" id="_문제Cell_No" size="40" required />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <label for="_문제BMA_No">문제 배터리모듈 No</label>
-            </td>
-            <td>
-              <input type="text" id="_문제BMA_No" size="40" required />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <label for="_문제BMA_cnt">문제 배터리모듈 수량</label>
-            </td>
-            <td>
-              <input type="text" id="_문제BMA_cnt" size="40" required />
-            </td>
-          </tr>
-	  -->
           <tr>
             <td class="_항목">
               <label for="_공정완료일">공정 완료일</label>
@@ -552,7 +494,6 @@
         <div class="input-btn-group">
           <button onClick="기초검사_save();">저장</button>
           <button onClick="이전페이지();">이전페이지</button>
-          <button onClick="기초검사_카메라시작();">사진촬영</button>
           <button onClick="flag_부품정보_list = true; loadPage('base/부품정보_list.html')">부품정보</button>
           <button onclick="기초보고서_load();">기초보고서</button>
         </div>
@@ -572,24 +513,15 @@
       const _기밀검사_케이스 = document.getElementById("_기밀검사_케이스");
       const _기밀검사_케이스_특이사항 = document.getElementById("_기밀검사_케이스");
       const _기밀검사_냉각유로 = document.getElementById("_기밀검사_냉각유로");
-      const _기밀검사_냉각유로_특이사항 = document.getElementById("_기밀검사_냉각유로");
+      const _기밀검사_냉각유로_특이사항 = document.getElementById("_기밀검사_냉각유로_특이사항");
       const _절연검사P = document.getElementById("_절연검사P");
       const _절연검사P판정 = document.getElementById("_절연검사P판정");
       const _절연검사N = document.getElementById("_절연검사N");
       const _절연검사N판정 = document.getElementById("_절연검사N판정");
       const _토크검사_UPR_C = document.getElementById("_토크검사_UPR_C");
       const _토크검사_버스바 = document.getElementById("_통신검사_버스바");
-      const _통신검사_DTC코드1 = document.getElementById("_통신검사_DTC코드1");
-      const _통신검사_DTC코드2 = document.getElementById("_통신검사_DTC코드2");
-      const _통신검사_DTC코드3 = document.getElementById("_통신검사_DTC코드3");
-      const _통신검사_DTC코드4 = document.getElementById("_통신검사_DTC코드4");
-      const _통신검사_DTC코드5 = document.getElementById("_통신검사_DTC코드5");
-      const _통신검사_DTC코드6 = document.getElementById("_통신검사_DTC코드6");
-      const _통신검사_DTC코드7 = document.getElementById("_통신검사_DTC코드7");
-      const _통신검사_DTC코드8 = document.getElementById("_통신검사_DTC코드8");
-      const _통신검사_DTC코드9 = document.getElementById("_통신검사_DTC코드9");
-      const _통신검사_DTC코드10 = document.getElementById("_통신검사_DTC드10");
-      const _통신검사_DTC코드1판정 = document.getElementById("_통신검사_DTC코드1판정");
+      const _센서데이터진단 = document.getElementById("_센서데이터진단");
+      const _센서데이터진단_판정 = document.getElementById("_센서데이터진단_판정");
       const _통신검사_팩전압 = document.getElementById("_통신검사_팩전압");
       const _통신검사_팩전압판정 = document.getElementById("_통신검사_팩전압판정");
       const _통신검사_셀전압편차 = document.getElementById("_통신검사_셀전압편차");
@@ -617,6 +549,16 @@
       const _절연검사P_box = document.getElementById("_절연검사P_box");
       const _절연검사N_box = document.getElementById("_절연검사N_box");
       const _통신검사_DTC코드1_box = document.getElementById("_통신검사_DTC코드1_box");
+      const _통신검사_DTC코드1;
+      const _통신검사_DTC코드2;
+      const _통신검사_DTC코드3;
+      const _통신검사_DTC코드4;
+      const _통신검사_DTC코드5;
+      const _통신검사_DTC코드6;
+      const _통신검사_DTC코드7;
+      const _통신검사_DTC코드8;
+      const _통신검사_DTC코드9;
+      const _통신검사_DTC코드10;
       const _기초검사 = document.getElementById("_기초검사");
 
       const _육안검사_내부_img = document.getElementById("_육안검사_내부_img");
