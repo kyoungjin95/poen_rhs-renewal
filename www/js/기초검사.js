@@ -13,6 +13,7 @@ async function 기초검사_시작(is재제조 = 0) {
 	console.log("DTC count:", 기초검사_DTC_count);
 
 	_기초검사_delete_all();
+	기초검사_DTC_count = 0;
 
 	if(_management_id.value.length == 0) _management_id.value = 관리번호;
 	if (is재제조 == 0) {

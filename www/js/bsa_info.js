@@ -500,7 +500,16 @@ async function delete_bsa() {
 
   progress.value = (6 / 18) * 100;
 
-  deleteOne(기초검사_pic, row_one_id);
+  deleteOne(기초검사_pic1, row_one_id);
+  await delay();
+
+  deleteOne(기초검사_pic2, row_one_id);
+  await delay();
+
+  deleteOne(기초검사_pic3, row_one_id);
+  await delay();
+
+  deleteOne(기초검사_pic4, row_one_id);
   await delay();
 
   progress.value = (7 / 18) * 100;
