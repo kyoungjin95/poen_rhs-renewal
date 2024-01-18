@@ -1,7 +1,9 @@
 async function 제주재고_시작() {
-	while (typeof _비고 == 'undefined') {
+	if(typeof _비고 == 'undefined') {
 		await sleep(DELAY);
+		return;
 	}
+
 	flag_제주재고 = false;
 
 	제주재고_조회(false);

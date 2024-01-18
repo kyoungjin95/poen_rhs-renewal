@@ -7,13 +7,13 @@ function yearOnChange(e) {
 }
 
 async function 년간현황_시작() {
-	flag_년간현황 = false;
-	if (worker == '') return;
-	while (document.getElementById('_검색일') == undefined) {
+	if(typeof document.getElementById('_검색일') == 'undefined') {
 		await sleep(DELAY);
+		return;
 	}
 
-	;
+	flag_년간현황 = false;
+	if (worker == '') return;
 
 	var DateTime = luxon.DateTime;
 	var seoul = DateTime.local().setZone("Asia/Seoul");

@@ -3,8 +3,9 @@ var 차종 = "";
 var flag_입고_complete = false;
 
 async function 상세입력_시작(is재제조번호 = false) {
-  while (typeof _폐기 == "undefined") {
+  if(typeof _폐기 == "undefined") {
     await sleep(DELAY);
+    return;
   }
 
   flag_상세입력 = false;

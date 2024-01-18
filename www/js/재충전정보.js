@@ -1,12 +1,12 @@
 async function 재충전정보_시작() {
-	flag_재충전정보 = false;
 	if (worker == '') return;
 	var _loaded = document.getElementById('grid_재충전정보');
-	while (_loaded == undefined) {
+	if(typeof _loaded == 'undefined') {
 		await sleep(DELAY);
+		return;
 	}
 
-	;
+	flag_재충전정보 = false;
 
 	var tabledata = [];
 	var DateTime = luxon.DateTime;

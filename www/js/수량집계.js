@@ -22,13 +22,15 @@ function 신품_updateFilter() {
 }
 
 async function 수량집계_시작() {
-	flag_수량집계 = false;
 	if (worker == '') return;
 
 	const grid_부품집계 = document.getElementById('grid_부품집계');
-	while (grid_부품집계 == undefined) {
+	if(typeof grid_부품집계 == 'undefined') {
 		await sleep(DELAY);
+		return;
 	}
+
+	flag_수량집계 = false;
 
 	//Update filters on value change
 	document.getElementById("new_filter-field").addEventListener("change", 신품_updateFilter);

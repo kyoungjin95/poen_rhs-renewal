@@ -2,8 +2,9 @@ var 입력재제조번호 = "";
 var today_count = 0;
 
 async function 세척_시작(is재제조 = 0) {
-  while (_management_id == undefined) {
+  if(typeof _management_id == undefined) {
     await sleep(DELAY);
+    return;
   }
   if (flag_세척 == true) await 세척_list();
   flag_세척 = false;

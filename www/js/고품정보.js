@@ -1,8 +1,9 @@
 var tabledata = [];
 async function 고품정보등록_시작() {
 	if (worker == '') return;
-	while (_management_id == undefined) {
+	if(typeof _management_id == 'undefined') {
 		await sleep(DELAY);
+		return;
 	}
 	_management_id.value = 관리번호;
 
