@@ -183,6 +183,7 @@ async function 기초검사_시작(is재제조 = 0) {
 		_AS센터조치.value = 기초검사_v.AS센터조치;
 		_검사자.value = 기초검사_v.검사자;
 
+		await sleep(10);
 		find(기초검사_pic1, _management_id.value);
 		await delay();
 
@@ -194,6 +195,7 @@ async function 기초검사_시작(is재제조 = 0) {
 			_img5.src = 기초검사_pic1_v.pic5;
 		}
 
+		await sleep(10);
 		find(기초검사_pic2, _management_id.value);
 		await delay();
 
@@ -205,6 +207,7 @@ async function 기초검사_시작(is재제조 = 0) {
 			_img10.src = 기초검사_pic2_v.pic5;
 		}
 
+		await sleep(10);
 		find(기초검사_pic3, _management_id.value);
 		await delay();
 
@@ -216,6 +219,7 @@ async function 기초검사_시작(is재제조 = 0) {
 			_img15.src = 기초검사_pic3_v.pic5;
 		}
 		
+		await sleep(10);
 		find(기초검사_pic4, _management_id.value);
 		await delay();
 
