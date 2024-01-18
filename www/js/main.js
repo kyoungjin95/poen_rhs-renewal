@@ -85,6 +85,7 @@ var flag_BSA_제외분류 = false;
 var flag_입고 = false;
 var flag_세척 = false;
 var flag_기초검사 = false;
+var flag_기초보고서 = false;
 var flag_분해조립 = false;
 var flag_성능검사 = false;
 var flag_EOL = false;
@@ -126,6 +127,7 @@ var interval = setInterval(function () {
 	if (flag_입고 == true) { console.log('입고'); stop_repeat(); 입고_시작(); }
 	if (flag_세척 == true) { console.log('세척'); stop_repeat(); 세척_시작(); }
 	if (flag_기초검사 == true) { console.log('기초검사'); stop_repeat(); 기초검사_시작(); }
+	if (flag_기초보고서 == true) { console.log('기초보고서'); stop_repeat(); 기초보고서_시작(); }
 	if (flag_분해조립 == true) { console.log('분해조립'); stop_repeat(); 분해조립_시작(); }
 	if (flag_성능검사 == true) { console.log('성능검사'); stop_repeat(); 성능검사_시작(); }
 	if (flag_EOL == true) { console.log('EOL'); stop_repeat(); EOL_시작(); }

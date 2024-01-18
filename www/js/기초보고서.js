@@ -1,13 +1,11 @@
 async function 기초보고서_시작() {
-  await sleep(100);
-  if(typeof _입고일 == 'undefined') {
+  while(_management_id == undefined) {
 	  await sleep(1);
-	  return;
   }
-  
   flag_기초보고서 = false;	
 
   기초보고서_조회(false);
+  console.log('->', 관리번호);
 }
 
 async function 기초보고서_조회(is재제조번호 = false) {
@@ -471,6 +469,7 @@ async function 기초보고서_조회(is재제조번호 = false) {
     _측정값사진1.src = 세척_pic_v.pic2;
   }
 
+  await sleep(10);
   find(기초검사_pic1, _management_id.value);
   await delay();
 
@@ -487,6 +486,7 @@ async function 기초보고서_조회(is재제조번호 = false) {
   _육안검사_내부_결과.innerHTML = 내부검사;
   _육안검사_내부_결과2.innerHTML = 내부검사사유;
 
+  await sleep(10);
   find(기초검사_pic2, _management_id.value);
   await delay();
 
@@ -501,6 +501,7 @@ async function 기초보고서_조회(is재제조번호 = false) {
     _측정사진2.src = 기초검사_pic2_v.pic5;
   }
 
+  await sleep(10);
   find(기초검사_pic3, _management_id.value);
   await delay();
 
@@ -514,6 +515,7 @@ async function 기초보고서_조회(is재제조번호 = false) {
     _절연측정사진2.src = 기초검사_pic3_v.pic5;
   }
 
+  await sleep(10);
   find(기초검사_pic4, _management_id.value);
   await delay();
 

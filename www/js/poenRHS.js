@@ -3900,10 +3900,10 @@ socket.on("drop_result", async function (result) {
   flag_arrivedMSG = true;
 });
 
-socket.on("disconnect", function () {
+socket.on("disconnect", function (reason) {
   io_status = false;
   document.getElementById('connection_status').innerHTML = '(연결끊김)';
-  console.log("disconnect");
+  console.log("disconnect:", reason);
   //socket = io();
 });
 

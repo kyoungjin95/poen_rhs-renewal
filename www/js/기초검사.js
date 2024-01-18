@@ -19,6 +19,7 @@ async function 기초검사_시작(is재제조 = 0) {
 	if (is재제조 == 0) {
 		if (_management_id.value.length == 0) return;
 
+		관리번호 = _management_id.value;
 		find(BSA재제조, _management_id.value);
 		await delay();
 		if (BSA재제조_v != null) {
@@ -194,7 +195,6 @@ async function 기초검사_시작(is재제조 = 0) {
 			_img4.src = 기초검사_pic1_v.pic4;
 			_img5.src = 기초검사_pic1_v.pic5;
 		}
-		await sleep(1);
 
 		find(기초검사_pic2, _management_id.value);
 		await delay();
@@ -206,7 +206,6 @@ async function 기초검사_시작(is재제조 = 0) {
 			_img9.src = 기초검사_pic2_v.pic4;
 			_img10.src = 기초검사_pic2_v.pic5;
 		}
-		await sleep(1);
 
 		find(기초검사_pic3, _management_id.value);
 		await delay();
@@ -218,7 +217,6 @@ async function 기초검사_시작(is재제조 = 0) {
 			_img14.src = 기초검사_pic3_v.pic4;
 			_img15.src = 기초검사_pic3_v.pic5;
 		}
-		await sleep(1);
 		
 		find(기초검사_pic4, _management_id.value);
 		await delay();
@@ -231,7 +229,6 @@ async function 기초검사_시작(is재제조 = 0) {
 			_img20.src = 기초검사_pic4_v.pic5;
 			_img21.src = 기초검사_pic4_v.pic6;
 		}
-		await sleep(1);
 	} else {
 		_공정입고일.value = "0000-00-00T00:00";
 		_VIN.value = "";
