@@ -110,52 +110,52 @@ async function 기초검사_시작(is재제조 = 0) {
 		_센서데이터진단.value = 기초검사_v.센서데이터진단;
 		_센서데이터진단_판정.value = 기초검사_v.센서데이터진단_판정;
 
-		if (기초검사_v.통신검사_DTC코드1 != "") {
+		if (기초검사_v.통신검사_DTC코드1 != "" && 기초검사_v.통신검사_DTC코드1 != 'udefined') {
 			_기초검사_add_DTC_Code();
 			_통신검사_DTC코드1.value = 기초검사_v.통신검사_DTC코드1;
 		}
 
-		if (기초검사_v.통신검사_DTC코드2 != "") {
+		if (기초검사_v.통신검사_DTC코드2 != "" && 기초검사_v.통신검사_DTC코드2 != 'udefined') {
 			_기초검사_add_DTC_Code();
 			_통신검사_DTC코드2.value = 기초검사_v.통신검사_DTC코드2;
 		}
 
-		if (기초검사_v.통신검사_DTC코드3 != "") {
+		if (기초검사_v.통신검사_DTC코드3 != "" && 기초검사_v.통신검사_DTC코드3 != 'udefined') {
 			_기초검사_add_DTC_Code();
 			_통신검사_DTC코드3.value = 기초검사_v.통신검사_DTC코드3;
 		}
 
-		if (기초검사_v.통신검사_DTC코드4 != "") {
+		if (기초검사_v.통신검사_DTC코드4 != "" && 기초검사_v.통신검사_DTC코드4 != 'udefined') {
 			_기초검사_add_DTC_Code();
 			_통신검사_DTC코드4.value = 기초검사_v.통신검사_DTC코드4;
 		}
 
-		if (기초검사_v.통신검사_DTC코드5 != "") {
+		if (기초검사_v.통신검사_DTC코드5 != "" && 기초검사_v.통신검사_DTC코드5 != 'udefined') {
 			_기초검사_add_DTC_Code();
 			_통신검사_DTC코드5.value = 기초검사_v.통신검사_DTC코드5;
 		}
 
-		if (기초검사_v.통신검사_DTC코드6 != "") {
+		if (기초검사_v.통신검사_DTC코드6 != "" && 기초검사_v.통신검사_DTC코드6 != 'udefined') {
 			_기초검사_add_DTC_Code();
 			_통신검사_DTC코드6.value = 기초검사_v.통신검사_DTC코드6;
 		}
 
-		if (기초검사_v.통신검사_DTC코드7 != "") {
+		if (기초검사_v.통신검사_DTC코드7 != "" && 기초검사_v.통신검사_DTC코드7 != 'udefined') {
 			_기초검사_add_DTC_Code();
 			_통신검사_DTC코드7.value = 기초검사_v.통신검사_DTC코드7;
 		}
 
-		if (기초검사_v.통신검사_DTC코드8 != "") {
+		if (기초검사_v.통신검사_DTC코드8 != "" && 기초검사_v.통신검사_DTC코드8 != 'udefined') {
 			_기초검사_add_DTC_Code();
 			_통신검사_DTC코드8.value = 기초검사_v.통신검사_DTC코드8;
 		}
 
-		if (기초검사_v.통신검사_DTC코드9 != "") {
+		if (기초검사_v.통신검사_DTC코드9 != "" && 기초검사_v.통신검사_DTC코드9 != 'udefined') {
 			_기초검사_add_DTC_Code();
 			_통신검사_DTC코드9.value = 기초검사_v.통신검사_DTC코드9;
 		}
 
-		if (기초검사_v.통신검사_DTC코드10 != "") {
+		if (기초검사_v.통신검사_DTC코드10 != "" && 기초검사_v.통신검사_DTC코드10 != 'udefined') {
 			_기초검사_add_DTC_Code();
 			_통신검사_DTC코드10.value = 기초검사_v.통신검사_DTC코드10;
 		}
@@ -1086,7 +1086,6 @@ function _기초검사_add_DTC_Code() {
 	var code_no = 기초검사_DTC_count;
 	console.log("row count:", rowIcnt);
 	console.log("code No:", code_no);
-	if (rowIcnt > 32) return false;
 	if (code_no > 10) return false;
 
 	oCurrentRow = tb.insertRow(rowIcnt);
