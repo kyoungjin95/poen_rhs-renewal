@@ -193,6 +193,7 @@ async function 기초검사_시작(is재제조 = 0) {
 			_img4.src = 기초검사_pic1_v.pic4;
 			_img5.src = 기초검사_pic1_v.pic5;
 		}
+		await sleep(1);
 
 		find(기초검사_pic2, _management_id.value);
 		await delay();
@@ -204,6 +205,7 @@ async function 기초검사_시작(is재제조 = 0) {
 			_img9.src = 기초검사_pic2_v.pic4;
 			_img10.src = 기초검사_pic2_v.pic5;
 		}
+		await sleep(1);
 
 		find(기초검사_pic3, _management_id.value);
 		await delay();
@@ -215,6 +217,7 @@ async function 기초검사_시작(is재제조 = 0) {
 			_img14.src = 기초검사_pic3_v.pic4;
 			_img15.src = 기초검사_pic3_v.pic5;
 		}
+		await sleep(1);
 		
 		find(기초검사_pic4, _management_id.value);
 		await delay();
@@ -227,6 +230,7 @@ async function 기초검사_시작(is재제조 = 0) {
 			_img20.src = 기초검사_pic4_v.pic5;
 			_img21.src = 기초검사_pic4_v.pic6;
 		}
+		await sleep(1);
 	} else {
 		_공정입고일.value = "0000-00-00T00:00";
 		_VIN.value = "";
@@ -241,10 +245,8 @@ async function 기초검사_시작(is재제조 = 0) {
 		_절연검사P.value = "";
 		_절연검사N판정.value = "";
 		_절연검사N.value = "";
-		_통신검사_DTC코드1.value = "";
-		_통신검사_DTC코드1판정.value = "";
-		_통신검사_DTC코드2.value = "";
-		_통신검사_DTC코드3.value = "";
+		_센서데이터진단.value = "";
+		_센서데이터진단_판정.value = "";
 		_통신검사_팩전압.value = "";
 		_통신검사_팩전압판정.value = "";
 		_통신검사_셀전압편차.value = "";
@@ -911,11 +913,6 @@ async function 기초검사_SAVE() {
 	doc.BSA판매일자 = _BSA판매일자.value;
 	doc.BSA수리일자 = _BSA수리일자.value;
 	doc.BMA_ROM_ID = _BMA_ROM_ID.value;
-	//doc.고장현상코드 = _고장현상코드.value;
-	//doc.고장현상명 = _고장현상명.value;
-	//doc.문제Cell_No = _문제Cell_No.value;
-	//doc.문제BMA_No = _문제BMA_No.value;
-	//doc.문제BMA_cnt = _문제BMA_cnt.value;
 	doc.공정완료일 = _공정완료일.value;
 	if (level == "관리자") doc.공정완료일 = _공정완료일.value;
 	doc.요청사항 = _요청사항.value;
@@ -981,6 +978,7 @@ async function 기초검사_SAVE() {
 	console.log("세척_pic1_insert:", insert_count);
 
 	var _pic2_doc = JSON.parse(JSON.stringify(기초검사_pic2_doc));
+	_pic2_doc.관리번호 = _management_id.value.trim().toUpperCase();
 	_pic2_doc.pic1 = _img6.src;
 	_pic2_doc.pic2 = _img7.src;
 	_pic2_doc.pic3 = _img8.src;
@@ -994,6 +992,7 @@ async function 기초검사_SAVE() {
 	console.log("세척_pic2_insert:", insert_count);
 
 	var _pic3_doc = JSON.parse(JSON.stringify(기초검사_pic3_doc));
+	_pic3_doc.관리번호 = _management_id.value.trim().toUpperCase();
 	_pic3_doc.pic1 = _img11.src;
 	_pic3_doc.pic2 = _img12.src;
 	_pic3_doc.pic3 = _img13.src;
@@ -1007,6 +1006,7 @@ async function 기초검사_SAVE() {
 	console.log("세척_pic3_insert:", insert_count);
 
 	var _pic4_doc = JSON.parse(JSON.stringify(기초검사_pic4_doc));
+	_pic4_doc.관리번호 = _management_id.value.trim().toUpperCase();
 	_pic4_doc.pic1 = _img16.src;
 	_pic4_doc.pic2 = _img17.src;
 	_pic4_doc.pic3 = _img18.src;
@@ -1047,10 +1047,10 @@ function _절연검사N_콤보박스(e) {
 
 	document.getElementById("_절연검사N판정").value = value;
 }
-function _통신검사_DTC코드1_콤보박스(e) {
+function _센서데이터진단_콤보박스(e) {
 	const value = e.value;
 
-	document.getElementById("_통신검사_DTC코드1판정").value = value;
+	document.getElementById("_센서데이터진단_판정").value = value;
 }
 
 function _기초검사_통신검사_팩전압_콤보박스(e) {
