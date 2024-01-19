@@ -62,7 +62,7 @@ table td.base_left {
 table td.result_header {
   background-color: #92d050;
   color: black;
-  font-size: 1.2vw;
+  font-size: 1vw;
   font-weight: bold;
   border: 1px solid black;
   text-align: center;
@@ -154,6 +154,14 @@ table td.bottom {
 .check-all .result-vlaue.r3 {
   color: black;
 }
+/* 기초보고서 분석결과 */
+#_분석결과값,
+#_재제조comment {
+  background: #fff;
+  border: 1px solid #000;
+  font-size: 1vw;
+  white-space: pre;
+}
 
 /* _기밀검사 */
 #_기밀검사 .td1 {
@@ -243,7 +251,6 @@ table td.bottom {
   margin-bottom: 20px;
 }
 /* 출하검사성적서 */
-
 #_출하검사성적서 .subject {
   display: flex;
   justify-content: space-between;

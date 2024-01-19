@@ -1159,17 +1159,15 @@
                 <col />
               </colgroup>
               <tr>
-                <td class="result_header">결 과</td>
-                <td class="result" id="_결과" style="line-height: 1.3">
-                  1. 기초검사를 통해 찾아낸 현상과 필드현상 또는
-                  <span style="color: red">A/S센터 진단의 원인과 분석 내용을 기재</span>
-                  <br />
-                  2. 기초검사 결과에 의한
-                  <span style="color: red"> “필요교체부품 & 교체사유” </span>
-                  적을 것.
-                  <span style="color: red"> 원인파악 불가 할 경우 입고 서비스센터 증상을 근거로 부품교체 진행. </span><br />
-                  ex. P0AA600(절연파괴) DTC로 입고되었으나 기초검사결과 이상없음. 모듈 절연저항 정상. 고장예상원인 부품에 따라 BMU 교체
+                <td class="result_header">분석결과</td>
+                <td id="_분석결과값"></td>
+              </tr>
+              <tr>
+                <td class="result_header">
+                  재제조<br />
+                  Com-ment
                 </td>
+                <td id="_재제조comment"></td>
               </tr>
             </table>
           </tr>
@@ -1677,6 +1675,8 @@
       var _센터조치 = document.getElementById("_센터조치");
       var _작성자 = document.getElementById("_작성자");
       var _작성일 = document.getElementById("_작성일");
+      var _분석결과값 = document.getElementById("_분석결과값");
+      var _재제조comment = document.getElementById("_재제조comment");
 
       var _CS_외부점검 = document.getElementById("_CS_외부점검");
       var _CS_외부점검사유 = document.getElementById("_CS_외부점검사유");

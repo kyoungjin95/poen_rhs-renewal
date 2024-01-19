@@ -317,7 +317,7 @@ const 기초검사_doc = {
   문제BMA_No: "", //-
   문제BMA_cnt: "", //-
   공정완료일: "", //-
-  요청사항: "",
+  분석결과: "",
   비고: "",
   센터진단내용: "",
   검사자: "",
@@ -1558,6 +1558,7 @@ const 변수_doc = {
 
 const 불량의심부품_doc = {
   관리번호: "",
+  재제조comment: "",
   A_UPR_CASE: "",
   A_LWR_CASE: "",
   A_S_PLUG: "",
@@ -1837,7 +1838,7 @@ const 기초검사_ = {
   문제BMA_No: 1,
   문제BMA_cnt: 1,
   공정완료일: 1,
-  요청사항: 1,
+  분석결과: 1,
   비고: 1,
   센터진단내용: 1,
   검사자: 1,
@@ -2426,7 +2427,7 @@ const 기초검사_pic1_ = {
   pic8: 1,
   pic9: 1,
   pic10: 1,
-}
+};
 
 const 기초검사_pic2_ = {
   _id: 0,
@@ -2441,7 +2442,7 @@ const 기초검사_pic2_ = {
   pic8: 1,
   pic9: 1,
   pic10: 1,
-}
+};
 
 const 기초검사_pic3_ = {
   _id: 0,
@@ -2456,7 +2457,7 @@ const 기초검사_pic3_ = {
   pic8: 1,
   pic9: 1,
   pic10: 1,
-}
+};
 
 const 기초검사_pic4_ = {
   _id: 0,
@@ -2471,7 +2472,7 @@ const 기초검사_pic4_ = {
   pic8: 1,
   pic9: 1,
   pic10: 1,
-}
+};
 
 const 분해조립_pic_ = {
   _id: 0,
@@ -3117,6 +3118,7 @@ const 변수_ = {
 const 불량의심부품_ = {
   _id: 0,
   관리번호: 1,
+  재제조comment: 1,
   A_UPR_CASE: 1,
   A_LWR_CASE: 1,
   A_S_PLUG: 1,
@@ -3263,7 +3265,7 @@ var io_status = false;
 
 socket.on("connect", function () {
   io_status = true;
-  document.getElementById('connection_status').innerHTML = '(연결)';
+  document.getElementById("connection_status").innerHTML = "(연결)";
   console.log("connected");
   //loadPage("base/login.html");
 });
@@ -3902,7 +3904,7 @@ socket.on("drop_result", async function (result) {
 
 socket.on("disconnect", function (reason) {
   io_status = false;
-  document.getElementById('connection_status').innerHTML = '(연결끊김)';
+  document.getElementById("connection_status").innerHTML = "(연결끊김)";
   console.log("disconnect:", reason);
   //socket = io();
 });

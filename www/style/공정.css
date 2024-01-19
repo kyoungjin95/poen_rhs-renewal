@@ -255,7 +255,28 @@ table input {
 .입고 .process-step table .process__img {
   text-align: left;
 }
-/* 기초보고서에 들어가는 img group table css */
+/* 기초보고서 분석결과 및 comment */
+#_분석결과,
+#_재제조comment {
+  border: 1px solid #000;
+  font-size: 1vw;
+  white-space: pre-line;
+  resize: none;
+  position: relative;
+  background: #fff;
+}
+
+#_분석결과::-webkit-scrollbar,
+#_재제조comment::-webkit-scrollbar {
+  display: none;
+}
+
+#_분석결과:focus,
+#_재제조comment:focus {
+  outline: none;
+}
+
+/* 기초보고서에 들어가는 img group table css  */
 .process-step table td.img-box {
   width: 100%;
   display: flex;
