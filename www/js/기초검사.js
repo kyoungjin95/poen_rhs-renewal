@@ -720,7 +720,6 @@ async function 기초검사_시작(is재제조 = 0) {
   _img21.ondragover = function (evt) {
     evt.preventDefault();
   };
->>>>>>> oversea
 }
 
 function 기초검사_save() {

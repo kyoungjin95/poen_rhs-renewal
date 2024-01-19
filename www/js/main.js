@@ -33,35 +33,35 @@ const _admin_btn = document.getElementById('admin_btn');
 const _부품재고_btn = document.getElementById('부품재고_btn');
 
 console.log('worker:', worker);
-if (worker == '' || worker == null) {
-	loadPage('base/login.html');
 
-	change_label();
+async function check_login() {
+	if (worker == '' || worker == null) {
+		loadPage('base/login.html');
+		await sleep(100);
+		change_label();
 
 
-	_login_info.innerHTML = '';
-	_admin_btn.style.display = 'none';
-	_부품재고_btn.style.display = 'none';
-} else {
-	const _login_btn = document.getElementById('login_btn');
-	const _login_info = document.getElementById('login_info');
+		_login_info.innerHTML = '';
+		_admin_btn.style.display = 'none';
+		_부품재고_btn.style.display = 'none';
 
-	_login_info.innerHTML = worker;
-	_login_btn.innerHTML = '로그아웃';
-
-	setTimeout(function () {
-		if (_level == '관리자') {
-			const _admin_btn = document.getElementById('admin_btn');
-			_admin_btn.style.display = 'block';
+  		const check_id = document.getElementById("_id");
+		const check_passwd = document.getElementById('_passwd');
+		check_id.onkeydown = function (event) {
+			if(event.keyCode == 13) {
+				check_passwd.focus();
+			}
 		}
-		if (_level == '부품관리자') {
-			const _부품재고_btn = document.getElementById('부품재고_btn');
-			_부품재고_btn.style.display = 'block';
+
+		check_passwd.onkeydown = function (event) {
+			if(event.keyCode == 13) {
+				login();
+			}
 		}
-		loadPage('base/dashboard.html');
-		flag_대시보드 = true;
-	}, 1);
+	}
 }
+
+check_login();
 
 //alert('#공지사항#\n사원번호로 로그인시 몇몇 계정은 비밀번호가 \'사원번호*\'로 초기화 되었으니 참고 바랍니다.\n\n(계정별 접근권한 부여  TEST를 위하여 초기화된 계정이 있습니다.)');
 var flag_재제조현황 = false;
