@@ -276,6 +276,19 @@ table input {
   outline: none;
 }
 
+textarea::-webkit-input-placeholder {
+  -webkit-transition: 0.5s;
+}
+textarea:-ms-input-placeholder {
+  -ms-transition: 0.5s;
+}
+textarea:focus::-webkit-input-placeholder {
+  color: transparent;
+}
+textarea:focus:-ms-input-placeholder {
+  color: transparent;
+} /* IE 10+ */
+
 /* 기초보고서에 들어가는 img group table css  */
 .process-step table td.img-box {
   width: 100%;

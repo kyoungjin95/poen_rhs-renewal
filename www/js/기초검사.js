@@ -300,6 +300,9 @@ async function 기초검사_시작(is재제조 = 0) {
     _img21.src = "";
   }
 
+  _img1.ondblclick = function (evt) {
+    _img1.src = "";
+  };
   _img1.ondrop = function (evt) {
     var files = evt.dataTransfer?.files;
     if (files.length > 0) {
@@ -316,6 +319,9 @@ async function 기초검사_시작(is재제조 = 0) {
     evt.preventDefault();
   };
 
+  _img2.ondblclick = function (evt) {
+    _img2.src = "";
+  };
   _img2.ondrop = function (evt) {
     var files = evt.dataTransfer?.files;
     if (files.length > 0) {
@@ -332,6 +338,9 @@ async function 기초검사_시작(is재제조 = 0) {
     evt.preventDefault();
   };
 
+  _img3.ondblclick = function (evt) {
+    _img3.src = "";
+  };
   _img3.ondrop = function (evt) {
     var files = evt.dataTransfer?.files;
     if (files.length > 0) {
@@ -348,6 +357,9 @@ async function 기초검사_시작(is재제조 = 0) {
     evt.preventDefault();
   };
 
+  _img4.ondblclick = function (evt) {
+    _img4.src = "";
+  };
   _img4.ondrop = function (evt) {
     var files = evt.dataTransfer?.files;
     if (files.length > 0) {
@@ -364,6 +376,9 @@ async function 기초검사_시작(is재제조 = 0) {
     evt.preventDefault();
   };
 
+  _img5.ondblclick = function (evt) {
+    _img5.src = "";
+  };
   _img5.ondrop = function (evt) {
     var files = evt.dataTransfer?.files;
     if (files.length > 0) {
@@ -380,6 +395,9 @@ async function 기초검사_시작(is재제조 = 0) {
     evt.preventDefault();
   };
 
+  _img6.ondblclick = function (evt) {
+    _img6.src = "";
+  };
   _img6.ondrop = function (evt) {
     var files = evt.dataTransfer?.files;
     if (files.length > 0) {
@@ -396,6 +414,9 @@ async function 기초검사_시작(is재제조 = 0) {
     evt.preventDefault();
   };
 
+  _img7.ondblclick = function (evt) {
+    _img7.src = "";
+  };
   _img7.ondrop = function (evt) {
     var files = evt.dataTransfer?.files;
     if (files.length > 0) {
@@ -412,6 +433,9 @@ async function 기초검사_시작(is재제조 = 0) {
     evt.preventDefault();
   };
 
+  _img8.ondblclick = function (evt) {
+    _img8.src = "";
+  };
   _img8.ondrop = function (evt) {
     var files = evt.dataTransfer?.files;
     if (files.length > 0) {
@@ -428,6 +452,9 @@ async function 기초검사_시작(is재제조 = 0) {
     evt.preventDefault();
   };
 
+  _img9.ondblclick = function (evt) {
+    _img9.src = "";
+  };
   _img9.ondrop = function (evt) {
     var files = evt.dataTransfer?.files;
     if (files.length > 0) {
@@ -444,6 +471,9 @@ async function 기초검사_시작(is재제조 = 0) {
     evt.preventDefault();
   };
 
+  _img10.ondblclick = function (evt) {
+    _img10.src = "";
+  };
   _img10.ondrop = function (evt) {
     var files = evt.dataTransfer?.files;
     if (files.length > 0) {
@@ -460,6 +490,9 @@ async function 기초검사_시작(is재제조 = 0) {
     evt.preventDefault();
   };
 
+  _img11.ondblclick = function (evt) {
+    _img11.src = "";
+  };
   _img11.ondrop = function (evt) {
     var files = evt.dataTransfer?.files;
     if (files.length > 0) {
@@ -476,6 +509,9 @@ async function 기초검사_시작(is재제조 = 0) {
     evt.preventDefault();
   };
 
+  _img12.ondblclick = function (evt) {
+    _img12.src = "";
+  };
   _img12.ondrop = function (evt) {
     var files = evt.dataTransfer?.files;
     if (files.length > 0) {
@@ -492,6 +528,9 @@ async function 기초검사_시작(is재제조 = 0) {
     evt.preventDefault();
   };
 
+  _img13.ondblclick = function (evt) {
+    _img13.src = "";
+  };
   _img13.ondrop = function (evt) {
     var files = evt.dataTransfer?.files;
     if (files.length > 0) {
@@ -508,6 +547,9 @@ async function 기초검사_시작(is재제조 = 0) {
     evt.preventDefault();
   };
 
+  _img14.ondblclick = function (evt) {
+    _img14.src = "";
+  };
   _img14.ondrop = function (evt) {
     var files = evt.dataTransfer?.files;
     if (files.length > 0) {
@@ -524,6 +566,9 @@ async function 기초검사_시작(is재제조 = 0) {
     evt.preventDefault();
   };
 
+  _img15.ondblclick = function (evt) {
+    _img15.src = "";
+  };
   _img15.ondrop = function (evt) {
     var files = evt.dataTransfer?.files;
     if (files.length > 0) {
@@ -540,6 +585,9 @@ async function 기초검사_시작(is재제조 = 0) {
     evt.preventDefault();
   };
 
+  _img16.ondblclick = function (evt) {
+    _img16.src = "";
+  };
   _img16.ondrop = function (evt) {
     var files = evt.dataTransfer?.files;
     if (files.length > 0) {
@@ -556,6 +604,9 @@ async function 기초검사_시작(is재제조 = 0) {
     evt.preventDefault();
   };
 
+  _img17.ondblclick = function (evt) {
+    _img17.src = "";
+  };
   _img17.ondrop = function (evt) {
     var files = evt.dataTransfer?.files;
     if (files.length > 0) {
@@ -572,6 +623,9 @@ async function 기초검사_시작(is재제조 = 0) {
     evt.preventDefault();
   };
 
+  _img18.ondblclick = function (evt) {
+    _img18.src = "";
+  };
   _img18.ondrop = function (evt) {
     var files = evt.dataTransfer?.files;
     if (files.length > 0) {
@@ -588,6 +642,9 @@ async function 기초검사_시작(is재제조 = 0) {
     evt.preventDefault();
   };
 
+  _img19.ondblclick = function (evt) {
+    _img19.src = "";
+  };
   _img19.ondrop = function (evt) {
     var files = evt.dataTransfer?.files;
     if (files.length > 0) {
@@ -604,6 +661,9 @@ async function 기초검사_시작(is재제조 = 0) {
     evt.preventDefault();
   };
 
+  _img20.ondblclick = function (evt) {
+    _img20.src = "";
+  };
   _img20.ondrop = function (evt) {
     var files = evt.dataTransfer?.files;
     if (files.length > 0) {
@@ -620,6 +680,9 @@ async function 기초검사_시작(is재제조 = 0) {
     evt.preventDefault();
   };
 
+  _img21.ondblclick = function (evt) {
+    _img21.src = "";
+  };
   _img21.ondrop = function (evt) {
     var files = evt.dataTransfer?.files;
     if (files.length > 0) {
