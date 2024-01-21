@@ -170,11 +170,6 @@ async function 기초검사_시작(is재제조 = 0) {
 		_BSA판매일자.value = 기초검사_v.BSA판매일자;
 		_BSA수리일자.value = 기초검사_v.BSA수리일자;
 		_BMA_ROM_ID.value = 기초검사_v.BMA_ROM_ID;
-		//_고장현상코드.value = 기초검사_v.고장현상코드;
-		//_고장현상명.value = 기초검사_v.고장현상명;
-		//_문제Cell_No.value = 기초검사_v.문제Cell_No;
-		//_문제BMA_No.value = 기초검사_v.문제BMA_No;
-		//_문제BMA_cnt.value = 기초검사_v.문제BMA_cnt;
 		_공정완료일.value = 기초검사_v.공정완료일;
 		_요청사항.value = 기초검사_v.요청사항;
 		_비고.value = 기초검사_v.비고;
@@ -183,7 +178,6 @@ async function 기초검사_시작(is재제조 = 0) {
 		_AS센터조치.value = 기초검사_v.AS센터조치;
 		_검사자.value = 기초검사_v.검사자;
 
-		await sleep(10);
 		find(기초검사_pic1, _management_id.value);
 		await delay();
 
@@ -193,43 +187,28 @@ async function 기초검사_시작(is재제조 = 0) {
 			_img3.src = 기초검사_pic1_v.pic3;
 			_img4.src = 기초검사_pic1_v.pic4;
 			_img5.src = 기초검사_pic1_v.pic5;
+			_img6.src = 기초검사_pic1_v.pic6;
+			_img7.src = 기초검사_pic1_v.pic7;
+			_img8.src = 기초검사_pic1_v.pic8;
+			_img9.src = 기초검사_pic1_v.pic9;
+			_img10.src = 기초검사_pic1_v.pic10;
 		}
 
-		await sleep(10);
 		find(기초검사_pic2, _management_id.value);
 		await delay();
 
 		if (기초검사_pic2_v != null) {
-			_img6.src = 기초검사_pic2_v.pic1;
-			_img7.src = 기초검사_pic2_v.pic2;
-			_img8.src = 기초검사_pic2_v.pic3;
-			_img9.src = 기초검사_pic2_v.pic4;
-			_img10.src = 기초검사_pic2_v.pic5;
-		}
-
-		await sleep(10);
-		find(기초검사_pic3, _management_id.value);
-		await delay();
-
-		if (기초검사_pic3_v != null) {
-			_img11.src = 기초검사_pic3_v.pic1;
-			_img12.src = 기초검사_pic3_v.pic2;
-			_img13.src = 기초검사_pic3_v.pic3;
-			_img14.src = 기초검사_pic3_v.pic4;
-			_img15.src = 기초검사_pic3_v.pic5;
-		}
-		
-		await sleep(10);
-		find(기초검사_pic4, _management_id.value);
-		await delay();
-
-		if (기초검사_pic4_v != null) {
-			_img16.src = 기초검사_pic4_v.pic1;
-			_img17.src = 기초검사_pic4_v.pic2;
-			_img18.src = 기초검사_pic4_v.pic3;
-			_img19.src = 기초검사_pic4_v.pic4;
-			_img20.src = 기초검사_pic4_v.pic5;
-			_img21.src = 기초검사_pic4_v.pic6;
+			_img11.src = 기초검사_pic2_v.pic1;
+			//_img12.src = 기초검사_pic2_v.pic11;
+			_img13.src = 기초검사_pic2_v.pic2;
+			_img14.src = 기초검사_pic2_v.pic3;
+			_img15.src = 기초검사_pic2_v.pic4;
+			_img16.src = 기초검사_pic2_v.pic5;
+			_img17.src = 기초검사_pic2_v.pic6;
+			_img18.src = 기초검사_pic2_v.pic7;
+			_img19.src = 기초검사_pic2_v.pic8;
+			_img20.src = 기초검사_pic2_v.pic9;
+			_img21.src = 기초검사_pic2_v.pic10;
 		}
 	} else {
 		_공정입고일.value = "0000-00-00T00:00";
@@ -287,7 +266,7 @@ async function 기초검사_시작(is재제조 = 0) {
 		_img9.src = "";
 		_img10.src = "";
 		_img11.src = "";
-		_img12.src = "";
+		//_img12.src = "";
 		_img13.src = "";
 		_img14.src = "";
 		_img15.src = "";
@@ -475,21 +454,21 @@ async function 기초검사_시작(is재제조 = 0) {
 		evt.preventDefault();
 	};
 
-	_img12.ondrop = function (evt) {
-		var files = evt.dataTransfer?.files;
-		if (files.length > 0) {
-			console.log("drag & drop");
-			const reader = new FileReader();
+	//_img12.ondrop = function (evt) {
+	//	var files = evt.dataTransfer?.files;
+	//	if (files.length > 0) {
+	//		console.log("drag & drop");
+	//		const reader = new FileReader();
 
-			reader.readAsDataURL(files[0]);
+	//		reader.readAsDataURL(files[0]);
 
-			reader.onload = () => {
-				const dataURL = reader.result;
-				_img12.src = dataURL;
-			};
-		}
-		evt.preventDefault();
-	};
+	//		reader.onload = () => {
+	//			const dataURL = reader.result;
+	//			_img12.src = dataURL;
+	//		};
+	//	}
+	//	evt.preventDefault();
+	//};
 
 	_img13.ondrop = function (evt) {
 		var files = evt.dataTransfer?.files;
@@ -680,9 +659,9 @@ async function 기초검사_시작(is재제조 = 0) {
 		evt.preventDefault();
 	};
 
-	_img12.ondragover = function (evt) {
-		evt.preventDefault();
-	};
+	//_img12.ondragover = function (evt) {
+	//	evt.preventDefault();
+	//};
 
 	_img13.ondragover = function (evt) {
 		evt.preventDefault();
@@ -970,6 +949,11 @@ async function 기초검사_SAVE() {
 	_pic1_doc.pic3 = _img3.src;
 	_pic1_doc.pic4 = _img4.src;
 	_pic1_doc.pic5 = _img5.src;
+	_pic1_doc.pic6 = _img6.src;
+	_pic1_doc.pic7 = _img7.src;
+	_pic1_doc.pic8 = _img8.src;
+	_pic1_doc.pic9 = _img9.src;
+	_pic1_doc.pic10 = _img10.src;
 
 	update(기초검사_pic1, _pic1_doc);
 	await delay();
@@ -979,46 +963,23 @@ async function 기초검사_SAVE() {
 
 	var _pic2_doc = JSON.parse(JSON.stringify(기초검사_pic2_doc));
 	_pic2_doc.관리번호 = _management_id.value.trim().toUpperCase();
-	_pic2_doc.pic1 = _img6.src;
-	_pic2_doc.pic2 = _img7.src;
-	_pic2_doc.pic3 = _img8.src;
-	_pic2_doc.pic4 = _img9.src;
-	_pic2_doc.pic5 = _img10.src;
+	_pic2_doc.pic1 = _img11.src;
+	_pic2_doc.pic2 = _img13.src;
+	_pic2_doc.pic3 = _img14.src;
+	_pic2_doc.pic4 = _img15.src;
+	_pic2_doc.pic5 = _img16.src;
+	_pic2_doc.pic6 = _img17.src;
+	_pic2_doc.pic7 = _img18.src;
+	_pic2_doc.pic8 = _img19.src;
+	_pic2_doc.pic9 = _img20.src;
+	_pic2_doc.pic10 = _img21.src;
+	//_pic2_doc.pic11 = _img12.src;
 
 	update(기초검사_pic2, _pic2_doc);
 	await delay();
 
 	console.log("세척_pic2_update:", update_count);
 	console.log("세척_pic2_insert:", insert_count);
-
-	var _pic3_doc = JSON.parse(JSON.stringify(기초검사_pic3_doc));
-	_pic3_doc.관리번호 = _management_id.value.trim().toUpperCase();
-	_pic3_doc.pic1 = _img11.src;
-	_pic3_doc.pic2 = _img12.src;
-	_pic3_doc.pic3 = _img13.src;
-	_pic3_doc.pic4 = _img14.src;
-	_pic3_doc.pic5 = _img15.src;
-
-	update(기초검사_pic3, _pic3_doc);
-	await delay();
-
-	console.log("세척_pic3_update:", update_count);
-	console.log("세척_pic3_insert:", insert_count);
-
-	var _pic4_doc = JSON.parse(JSON.stringify(기초검사_pic4_doc));
-	_pic4_doc.관리번호 = _management_id.value.trim().toUpperCase();
-	_pic4_doc.pic1 = _img16.src;
-	_pic4_doc.pic2 = _img17.src;
-	_pic4_doc.pic3 = _img18.src;
-	_pic4_doc.pic4 = _img19.src;
-	_pic4_doc.pic5 = _img20.src;
-	_pic4_doc.pic6 = _img21.src;
-
-	update(기초검사_pic4, _pic4_doc);
-	await delay();
-
-	console.log("세척_pic4_update:", update_count);
-	console.log("세척_pic4_insert:", insert_count);
 
 	flag_불량의심부품 = true;
 	loadPage("base/불량의심부품.html");

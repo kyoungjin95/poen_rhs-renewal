@@ -9,7 +9,11 @@ const fs = require('fs');
 const HTMLtoDOCX = require('./node_modules/html-to-docx/dist/html-to-docx.umd');
 const process = require('process');
 const server = http.createServer(app);
-const io = require('socket.io')(server, { maxHttpBufferSize : 1e+9, pingTimeout : 10000, pingInterval: 10000 });
+const io = require('socket.io')(server, { maxHttpBufferSize : 1e9, 
+	//transports: ["websocket"],
+        pingInterval: 60000,
+        pingTimeout: 60000,
+        upgradeTimeout: 30000});
 const { MongoClient } = require('mongodb')
 const morgan = require('morgan') //debug msg
 const logger = require('./winston');
