@@ -9,11 +9,7 @@ const fs = require('fs');
 const HTMLtoDOCX = require('./node_modules/html-to-docx/dist/html-to-docx.umd');
 const process = require('process');
 const server = http.createServer(app);
-const io = require('socket.io')(server, { maxHttpBufferSize : 1e9, 
-	//transports: ["websocket"],
-        pingInterval: 60000,
-        pingTimeout: 60000,
-        upgradeTimeout: 30000});
+const io = require('socket.io')(server, { maxHttpBufferSize : 1e+7, pingTimeout : 5000, pingInterval: 10000 });
 const { MongoClient } = require('mongodb')
 const morgan = require('morgan') //debug msg
 const logger = require('./winston');
@@ -270,18 +266,19 @@ setInterval(function() {
 	});
 }, 10000);
 
-var init_done = false;
-setInterval(function() {
-	var DateTime = luxon.DateTime;
-	var seoul = DateTime.local().setZone("Asia/Seoul");
-	var now = seoul.toString().substr(0, 4);
-	if(now != old_year && init_done == false) {
-		init_product_no();
-		init_done = true;
-		old_year = now;
-		console.log('init done');
-	}
-}, 1000 * 60 * 10);
+//var init_done = false;
+//setInterval(function() {
+//	var _old_year = '2023';
+//	var DateTime = luxon.DateTime;
+//	var seoul = DateTime.local().setZone("Asia/Seoul");
+//	var now = seoul.toString().substr(0, 4);
+//	if(now != old_year && init_done == false) {
+//		init_product_no();
+//		init_done = true;
+//		old_year = now;
+//		console.log('init done');
+//	}
+//}, 1000 * 60 * 10);
 
 async function distinct(col, query, field_name) {
 	try {
