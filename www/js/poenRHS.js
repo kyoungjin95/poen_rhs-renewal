@@ -3267,7 +3267,7 @@ socket.on("connect", function () {
   io_status = true;
   document.getElementById("connection_status").innerHTML = "(연결)";
   console.log("connected");
-  alert('서버와 연결됨');
+  //alert('서버와 연결됨');
   //loadPage("base/login.html");
 });
 
@@ -3907,7 +3907,7 @@ socket.on("disconnect", function (reason) {
   io_status = false;
   document.getElementById("connection_status").innerHTML = "(연결끊김)";
   console.log("disconnect:", reason);
-  alert('서버와 연결 끊김');
+  //alert('서버와 연결 끊김');
   //socket = io();
 });
 
