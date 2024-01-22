@@ -708,6 +708,7 @@ function 기초검사_save() {
 }
 
 async function 기초검사_SAVE() {
+	var progress = document.getElementById('progress');
 	if (_management_id.value.length == 0) return;
 	console.log("save: ", _management_id.value);
 
@@ -769,6 +770,8 @@ async function 기초검사_SAVE() {
 	var code_no = rowIcnt - 24;
 	console.log("save rowIcnt:", rowIcnt);
 	console.log("save code_no:", code_no);
+
+  	progress.value = 10;
 
 	if (code_no == 10) {
 		doc.통신검사_DTC코드1 = _통신검사_DTC코드1.value;
@@ -916,6 +919,8 @@ async function 기초검사_SAVE() {
 		alert("저장 되었습니다");
 	}
 
+  	progress.value = 30;
+
 	find(BSA재제조, _management_id.value);
 	await delay();
 
@@ -942,6 +947,8 @@ async function 기초검사_SAVE() {
 
 	await 공정단계자동입력(_management_id.value);
 
+  	progress.value = 50;
+
 	var _pic1_doc = JSON.parse(JSON.stringify(기초검사_pic1_doc));
 	_pic1_doc.관리번호 = _management_id.value.trim().toUpperCase();
 	_pic1_doc.pic1 = _img1.src;
@@ -957,6 +964,8 @@ async function 기초검사_SAVE() {
 
 	update(기초검사_pic1, _pic1_doc);
 	await delay();
+
+  	progress.value = 70;
 
 	console.log("세척_pic1_update:", update_count);
 	console.log("세척_pic1_insert:", insert_count);
@@ -978,10 +987,13 @@ async function 기초검사_SAVE() {
 	update(기초검사_pic2, _pic2_doc);
 	await delay();
 
+
 	console.log("세척_pic2_update:", update_count);
 	console.log("세척_pic2_insert:", insert_count);
 
 	flag_불량의심부품 = true;
+  	progress.value = 100;
+
 	loadPage("base/불량의심부품.html");
 }
 
