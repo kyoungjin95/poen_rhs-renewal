@@ -458,28 +458,3 @@ async function deleteOne(col, query) {
 function sleep(ms) {
 	return new Promise((resolve) => setTimeout(resolve, ms))
 }
-
-async function init_product_no() {
-	var doc = {
-		구분 : 'mado_product_no',
-		값 : 0,
-	}
-
-	await update('변수', {구분: doc.구분}, { $set: doc });
-
-	var doc = {
-		구분 : 'hs_product_no',
-		값 : 0,
-	}
-
-	await update('변수', {구분: doc.구분}, { $set: doc });
-
-	var doc = {
-		구분 : 'jj_product_no',
-		값 : 0,
-	}
-
-	await update('변수', {구분: doc.구분}, { $set: doc });
-
-	console.log('mado_product_no_complete');
-}
