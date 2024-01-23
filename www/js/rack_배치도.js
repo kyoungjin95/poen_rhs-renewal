@@ -1,59 +1,61 @@
-var select_pos ='';
-var 창고 = '';
+var select_pos = "";
+var 창고 = "";
 async function racks_시작() {
-	console.log('racks start');
-	
-	await sleep(100);
-	if(typeof _제주 == 'undefined') {
-		console.log('racks check gui');
-		await sleep(1);
-		return;
-	}
+  console.log("racks start");
 
-	flag_racks = false;
+  await sleep(100);
+  if (typeof _제주 == "undefined") {
+    console.log("racks check gui");
+    await sleep(1);
+    return;
+  }
 
-	var buttons = document.querySelectorAll('.rack');
-	buttons.forEach((button) => {
-	    button.addEventListener('click', getButtonValue);
-	});
+  flag_racks = false;
 
-	창고선택();
+  var buttons = document.querySelectorAll(".rack");
+  buttons.forEach((button) => {
+    button.addEventListener("click", getButtonValue);
+  });
+
+  창고선택();
 }
 
 function 창고선택() {
-	if(창고 == '마도') {
-		_마도.style.display = 'block';
-	} else if(창고 == '구장') {
-		_구장.style.display = 'block';
-	} else if(창고 == '군포') {
-		//_군포.style.display = 'block';
-	} else if(창고 == '제주') {
-		_제주.style.display = 'block';
-	}
+  if (창고 == "마도") {
+    _마도.style.display = "block";
+  } else if (창고 == "구장") {
+    _구장.style.display = "block";
+  } else if (창고 == "군포") {
+    //_군포.style.display = 'block';
+  } else if (창고 == "제주") {
+    _제주.style.display = "block";
+  } else if (창고 == "마도출고") {
+    _마도출고.style.display = "block";
+  }
 }
 
 function getButtonValue(event) {
-	const button = event.target;
-	const value = button.value;
-	console.log(value);
+  const button = event.target;
+  const value = button.value;
+  console.log(value);
 
-	var yes = confirm('선택 Rack 번호: ' + value + '\n입고 정보를 입력하시겠습니까?');
-	if(yes == true) {
-		select_pos = value;
+  var yes = confirm("선택 Rack 번호: " + value + "\n입고 정보를 입력하시겠습니까?");
+  if (yes == true) {
+    select_pos = value;
 
-		if(창고 == '마도') {
-			flag_입고 = true;
-			loadPage('base/입고.html');
-		} else if(창고 == '군포') {
-			//flag_군포재고 = true;
-			//loadPage('base/군포재고.html');
-		} else if(창고 == '구장') {
-			flag_구장재고 = true;
-			loadPage('base/구장재고.html');
-		} else if(창고 == '제주') {
-			flag_제주재고 = true;
-			loadPage('base/제주재고.html');
-		}
-		창고 = '';
-	}
+    if (창고 == "마도") {
+      flag_입고 = true;
+      loadPage("base/입고.html");
+    } else if (창고 == "군포") {
+      //flag_군포재고 = true;
+      //loadPage('base/군포재고.html');
+    } else if (창고 == "구장") {
+      flag_구장재고 = true;
+      loadPage("base/구장재고.html");
+    } else if (창고 == "제주") {
+      flag_제주재고 = true;
+      loadPage("base/제주재고.html");
+    }
+    창고 = "";
+  }
 }
