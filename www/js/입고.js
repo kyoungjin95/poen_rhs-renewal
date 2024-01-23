@@ -104,7 +104,7 @@ async function 입고_save() {
 	var seoul = DateTime.local().setZone("Asia/Seoul");
 	var now = seoul.toString().slice(0, 19);
 
-	if (_입고일.value == '') _입고일.value = now;
+	if (_입고일.value == '' && worker !='admin') _입고일.value = now;
 
 	doc.관리번호 = _management_id.value.trim().toUpperCase();
 	doc.입고일 = _입고일.value;

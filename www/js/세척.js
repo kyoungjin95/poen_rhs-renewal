@@ -434,7 +434,7 @@ async function 세척_save() {
   var now = seoul.toString().slice(0, 19);
 
   if (_공정입고일.value == "") _공정입고일.value = now;
-  _공정완료일.value = now;
+  if(worker != 'admin') _공정완료일.value = now;
 
   doc.관리번호 = _management_id.value.trim().toUpperCase();
   doc.재제조번호 = _재제조번호.value;
