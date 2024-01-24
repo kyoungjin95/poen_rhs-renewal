@@ -1,11 +1,11 @@
 async function 기초보고서_시작() {
-  while(_management_id == undefined) {
-	  await sleep(1);
+  while (_management_id == undefined) {
+    await sleep(1);
   }
-  flag_기초보고서 = false;	
+  flag_기초보고서 = false;
 
   기초보고서_조회(false);
-  console.log('->', 관리번호);
+  console.log("->", 관리번호);
 }
 
 async function 기초보고서_조회(is재제조번호 = false) {
@@ -118,6 +118,12 @@ async function 기초보고서_조회(is재제조번호 = false) {
     케이스감압량 = 세척_v.기밀검사_케이스_특이사항;
   }
 
+  findOne_불량의심부품(불량의심부품, { 관리번호: _management_id.value });
+  await delay();
+  if (불량의심부품_v != null) {
+    _재제조comment.innerHTML = 불량의심부품_v.재제조comment;
+  }
+
   findOne_기초검사(기초검사, { 관리번호: _management_id.value });
   await delay();
 
@@ -171,6 +177,7 @@ async function 기초보고서_조회(is재제조번호 = false) {
     _센터조치.innerHTML = 기초검사_v.AS센터조치;
     _작성자.innerHTML = worker;
     _작성일.innerHTML = 기초검사_v.공정완료일;
+    _분석결과값.innerHTML = 기초검사_v.분석결과;
 
     내부검사 = 기초검사_v.육안검사_내부;
     내부검사사유 = 기초검사_v.육안검사_내부_특이사항;
@@ -465,7 +472,6 @@ async function 기초보고서_조회(is재제조번호 = false) {
     _이상부위_외부2.src = 세척_pic_v.pic10;
     _이상부위_외부3.src = 세척_pic_v.pic11;
     _이상부위_외부4.src = 세척_pic_v.pic12;
-
   }
 
   _육안검사_결과.innerHTML = 외부검사;
