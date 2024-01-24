@@ -358,6 +358,14 @@ async function 상세입력_시작(is재제조번호 = false) {
 
     //item_detail_save(true);
   }
+
+  _완전분해.onchange = function(e) {
+	  _공정단계.value = '완전분해';
+  }
+
+  _폐기.onchange = function(e) {
+	  _공정단계.value = '폐기';
+  }
 }
 
 async function item_detail_save(flag_result = false) {

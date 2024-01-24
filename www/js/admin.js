@@ -190,6 +190,40 @@ async function doo() {
 	console.log('complete');
 }
 
+async function 대기공정처리_완전분해() {
+	find_BSA재제조(BSA재제조, { 완전분해: { $nin: ['', 'undefined'] } });
+	await delay();
+
+	BSA재제조_v.forEach(async function (bsa_info) {
+		doc = {
+			관리번호: bsa_info.관리번호,
+			공정단계: '완전분해'
+		}
+
+		update(BSA재제조, doc);
+		await delay();
+	});
+
+	console.log('complete 완전분해');
+}
+
+async function 대기공정처리_폐기() {
+	find_BSA재제조(BSA재제조, { 폐기: { $nin : ['', 'undefined'] } });
+	await delay();
+
+	BSA재제조_v.forEach(async function (bsa_info) {
+		doc = {
+			관리번호: bsa_info.관리번호,
+			공정단계: '폐기'
+		}
+
+		update(BSA재제조, doc);
+		await delay();
+	});
+
+	console.log('complete 폐기');
+}
+
 async function doo_2() {
 	find_BSA재제조(BSA재제조, { EOL: { $ne: '' }, 출하검사: { $eq: '' } });
 	await delay();

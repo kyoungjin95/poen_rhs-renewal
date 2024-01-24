@@ -3267,7 +3267,7 @@ socket.on("connect", function () {
   io_status = true;
   document.getElementById("connection_status").innerHTML = "(연결)";
   console.log("connected");
-  alert('서버와 연결됨');
+  //alert('서버와 연결됨');
   //loadPage("base/login.html");
 });
 
@@ -3907,7 +3907,7 @@ socket.on("disconnect", function (reason) {
   io_status = false;
   document.getElementById("connection_status").innerHTML = "(연결끊김)";
   console.log("disconnect:", reason);
-  alert('서버와 연결 끊김');
+  //alert('서버와 연결 끊김');
   //socket = io();
 });
 
@@ -4879,6 +4879,8 @@ async function 공정단계자동입력(_관리번호, 단계 = "") {
   if (BSA재제조_v.EOL != "") _공정단계 = "제조완료";
   if (BSA재제조_v.출하검사 != "") _공정단계 = "제조완료";
   if (BSA재제조_v.출하 != "") _공정단계 = "출하";
+  if (BSA재제조_v.완전분해 !="" && BSA재제조_v.완전분해 != "undefined") _공정단계 = "완전분해";
+  if (BSA재제조_v.폐기 !="" && BSA재제조_v.폐기 != "undefined") _공정단계 = "폐기";
   if (단계 != "") _공정단계 = 단계;
 
   var doc = {
@@ -4937,4 +4939,38 @@ async function make_md_product_no(today_count) {
   var no = "#RS" + now + "-MD" + today_count.toString().padStart(4, "0");
 
   return no;
+}
+
+async function init_product_no() {
+	var doc = JSON.parse(JSON.stringify(변수_doc));
+	doc.구분 = 'mado_product_no';
+	doc.값 = '0';
+
+	update('변수', doc);
+	await delay();
+
+	console.log(update_count);
+	console.log(insert_count);
+
+	doc = JSON.parse(JSON.stringify(변수_doc));
+	doc.구분 = 'hs_product_no';
+	doc.값 = '0';
+
+	update('변수', doc);
+	await delay();
+
+	console.log(update_count);
+	console.log(insert_count);
+
+	doc = JSON.parse(JSON.stringify(변수_doc));
+	doc.구분 = 'jj_product_no';
+	doc.값 = '0';
+
+	update('변수', doc);
+	await delay();
+
+	console.log(update_count);
+	console.log(insert_count);
+
+	console.log('mado_product_no_complete');
 }
