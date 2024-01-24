@@ -433,7 +433,6 @@ async function 세척_시작(is재제조 = 0) {
 }
 
 async function 세척_save() {
-<<<<<<< Updated upstream
   if (_management_id.value.length == 0) return;
   console.log("save: ", _management_id.value);
 
@@ -521,95 +520,6 @@ async function 세척_save() {
   console.log("세척_pic_update:", update_count);
   console.log("세척_pic_insert:", insert_count);
   //이전페이지();
-=======
-	if (_management_id.value.length == 0) return;
-	console.log("save: ", _management_id.value);
-
-	var doc = JSON.parse(JSON.stringify(세척_doc));
-
-	var DateTime = luxon.DateTime;
-	var seoul = DateTime.local().setZone("Asia/Seoul");
-	var now = seoul.toString().slice(0, 19);
-
-	if (_공정입고일.value == "") _공정입고일.value = now;
-	_공정완료일.value = now;
-
-	doc.관리번호 = _management_id.value.trim().toUpperCase();
-	doc.재제조번호 = _재제조번호.value;
-	doc.공정입고일 = _공정입고일.value;
-	doc.공정완료일 = _공정완료일.value;
-	doc.어퍼케이스재사용가능 = _어퍼케이스재사용가능.value;
-	doc.기밀검사_케이스 = _기밀검사_케이스.value;
-	doc.기밀검사_케이스_특이사항 = _기밀검사_케이스_특이사항.value;
-	doc.육안검사_외부 = _육안검사_외부.value;
-	doc.육안검사_외부_특이사항 = _육안검사_외부_특이사항.value;
-	doc.특이사항 = _특이사항.value;
-
-	update(세척, doc);
-	await delay();
-
-	console.log(update_count);
-	console.log(insert_count);
-
-	if (update_count > 0) {
-		alert("업데이트 되었습니다");
-		변수저장(today_count);
-	}
-
-	if (insert_count > 0) {
-		alert("저장 되었습니다");
-		변수저장(today_count);
-	}
-
-	find(BSA재제조, _management_id.value);
-	await delay();
-
-	if (BSA재제조_v == null) {
-		var _doc = JSON.parse(JSON.stringify(BSA재제조_doc));
-		_doc.관리번호 = _management_id.value.trim().toUpperCase();
-		_doc.재제조번호 = _재제조번호.value;
-		_doc.세척투입일 = _공정입고일.value;
-		_doc.세척 = _공정완료일.value;
-
-		update(BSA재제조, _doc);
-		await delay();
-	} else {
-		var _doc = {
-			관리번호: _management_id.value.toUpperCase(),
-			재제조번호: _재제조번호.value,
-			세척투입일: _공정입고일.value,
-			세척: _공정완료일.value,
-		};
-
-		update(BSA재제조, _doc);
-		await delay();
-	}
-
-	await 공정단계자동입력(_management_id.value);
-
-	var _pic_doc = JSON.parse(JSON.stringify(세척_pic_doc));
-	_pic_doc.관리번호 = _management_id.value.trim().toUpperCase();
-	_pic_doc.pic1 = _img1.src;
-	_pic_doc.pic2 = _img2.src;
-	_pic_doc.pic3 = _img3.src;
-	_pic_doc.pic4 = _img4.src;
-	_pic_doc.pic5 = _img5.src;
-	_pic_doc.pic6 = _img6.src;
-	_pic_doc.pic7 = _img7.src;
-	_pic_doc.pic8 = _img8.src;
-	_pic_doc.pic9 = _img9.src;
-	_pic_doc.pic10 = _img10.src;
-	_pic_doc.pic11 = _img11.src;
-	_pic_doc.pic12 = _img12.src;
-	_pic_doc.pic13 = _img13.src;
-
-	update(세척_pic, _pic_doc);
-	await delay();
-
-	console.log("세척_pic_update:", update_count);
-	console.log("세척_pic_insert:", insert_count);
-	//이전페이지();
->>>>>>> Stashed changes
 }
 
 function _어퍼케이스재사용가능_콤보박스(e) {
