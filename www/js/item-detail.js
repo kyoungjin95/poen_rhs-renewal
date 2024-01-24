@@ -240,7 +240,7 @@ async function 상세입력_시작(is재제조번호 = false) {
       _폐기.value = "";
       _완전분해사유.value = "";
       _폐기사유.value = "";
-      _렉번호.value = "":
+      _렉번호.value = "";
 
       if (level == "kia_일반") {
         findOne_BSA재제조(BSA재제조, {
