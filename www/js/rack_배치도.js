@@ -4,19 +4,19 @@ var flag_마도_출하보관렉 = false;
 
 async function racks_시작() {
 	console.log("racks start");
+	flag_racks = false;
 
 	while(document.getElementById('_제주') == undefined) {
 		await sleep(1);
 	}
 
-	var buttons_value_array = [];
 	var buttons = document.querySelectorAll('.rack');
 	buttons.forEach((button) => {
 		button.addEventListener('click', getButtonValue);
 	});
 
 	document.getElementById('_마도').style.display = 'none';
-	document.getElementById('_마도출하').style.display = 'none';
+	document.getElementById('_마도출고').style.display = 'none';
 	document.getElementById('_구장').style.display = 'none';
 	//document.getElementById('_군포').style.display = 'none';
 	document.getElementById('_제주').style.display = 'none';
@@ -28,11 +28,12 @@ async function racks_시작() {
 		find_BSA재제조(BSA재제조, { EOL : {$ne : ''}, 렉번호 :  {$ne : ''} });
 		await delay();
 
+		var 마도출고_button = document.querySelectorAll('.rack');
 		for(var i = 0; i < BSA재제조_v.length; i++) {
-			for(var j = 0; buttons.length; j++) {
-				if(BSA재제조_v[i].렉번호 == buttons[j].value) {
-					buttons.innerHTML = BSA재제조_v[i].관리번호 + '\n' + BSA재제조_v[i].RONo;
-					buttons.title = '차종: ' +  BSA재제조_v[i].차종 + '\n' + BSA재제조_v[i].품번;
+			for(var j = 0; 마도출고_buttons.length; j++) {
+				if(BSA재제조_v[i].렉번호 == 마도출고_buttons[j].value) {
+					마도출고_buttons[j].innerHTML = BSA재제조_v[i].관리번호 + '\n' + BSA재제조_v[i].RONo;
+					마도출고_buttons[j].title = '차종: ' +  BSA재제조_v[i].차종 + '\n' + BSA재제조_v[i].품번;
 				}
 			}
 		}
@@ -42,10 +43,10 @@ async function racks_시작() {
 function 창고선택() {
 	if(창고 == '마도') {
 		document.getElementById('_마도').style.display = 'block';
-	} else if(창고 == '마도출하') {
-		document.getElementById('_마도출하').style.display = 'block';
+	} else if(창고 == '마도출고') {
+		document.getElementById('_마도출고').style.display = 'block';
 	} else if(창고 == '마도') {
-		document.getElementById('_마도출하').style.display = 'block';
+		document.getElementById('_마도출고').style.display = 'block';
 	} else if(창고 == '구장') {
 		document.getElementById('_구장').style.display = 'block';
 	} else if(창고 == '군포') {
@@ -67,9 +68,9 @@ function getButtonValue(event) {
 		if(창고 == '마도') {
 			flag_입고 = true;
 			loadPage('base/입고.html');
-		} else if(창고 == '마도출하') {
-			flag_출하 = true;
-			loadPage('base/출하정보.html');
+		} else if(창고 == '마도출고') {
+			flag_상세입력 = true;
+			loadPage('base/품목상세입력.html');
 		} else if(창고 == '마도보관') {
 			flag_EOL = true;
 			loadPage('base/EOL.html');

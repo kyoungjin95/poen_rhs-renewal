@@ -103,7 +103,7 @@ var flag_기초보고서 = false;
 
 var interval = setInterval(function () {
 	if (flag_재제조현황 == true) { console.log('재제조현황'); stop_repeat(); 재제조현황_시작(); }
-	//if (flag_상세입력 == true) { console.log('상세입력'); stop_repeat(); 상세입력_시작(); }
+	if (flag_상세입력 == true) { console.log('상세입력'); stop_repeat(); 상세입력_시작(); }
 	if (flag_년간현황 == true) { console.log('년간현황'); stop_repeat(); 년간현황_시작(); }
 	if (flag_월간현황 == true) { console.log('월간현황'); stop_repeat(); 월간현황_시작(); }
 	if (flag_주간현황 == true) { console.log('주간현황'); stop_repeat(); 주간현황_시작(); }

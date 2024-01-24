@@ -329,7 +329,6 @@ async function EOL_SAVE() {
 		_doc.EOL투입일 = _공정입고일.value;
 		_doc.EOL = _공정완료일.value;
 		_doc.마지막충전일 = _공정완료일.value;
-		_doc.렉번호 = select_pos;
 		update(BSA재제조, _doc);
 		await delay();
 	} else {
@@ -338,7 +337,6 @@ async function EOL_SAVE() {
 			EOL투입일: _공정입고일.value,
 			EOL: _공정완료일.value,
 			마지막충전일: _공정완료일.value,
-			렉번호: select_pos
 		}
 
 		update(BSA재제조, _doc);

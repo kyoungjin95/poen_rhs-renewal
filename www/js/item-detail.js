@@ -7,7 +7,7 @@ async function 상세입력_시작(is재제조번호 = false) {
     await sleep(DELAY);
     return;
   }
-
+  
   flag_상세입력 = false;
   first_분해조립 = true;
 
@@ -30,6 +30,8 @@ async function 상세입력_시작(is재제조번호 = false) {
   온도센서_count = 1;
   Busbars_count = 1;
   BMA_count = 1;
+
+  _management_id.value = 관리번호;
 
   if (is재제조번호 == false) {
     _management_id.value = _management_id.value.trim().toUpperCase();
@@ -71,6 +73,7 @@ async function 상세입력_시작(is재제조번호 = false) {
     _폐기.value = "";
     _완전분해사유.value = "";
     _폐기사유.value = "";
+    _렉번호.value = "";
 
     if (level == "kia_일반") {
       findOne_BSA재제조(BSA재제조, {
@@ -237,6 +240,7 @@ async function 상세입력_시작(is재제조번호 = false) {
       _폐기.value = "";
       _완전분해사유.value = "";
       _폐기사유.value = "";
+      _렉번호.value = "":
 
       if (level == "kia_일반") {
         findOne_BSA재제조(BSA재제조, {
@@ -315,6 +319,7 @@ async function 상세입력_시작(is재제조번호 = false) {
     _폐기사유.value = BSA재제조_v.폐기사유;
     if (BSA재제조_v.출하예약 != undefined) _출하예약.value = BSA재제조_v.출하예약.substr(0, 16);
     if (BSA재제조_v.렉번호 != undefined) _렉번호.value = BSA재제조_v.렉번호.substr(0, 16);
+    if (select_pos != '') _렉번호.value = select_pos;
   } else {
     if (is재제조번호 == false) {
       _재제조번호.value = "";
