@@ -306,7 +306,7 @@ async function 부품_info(begin = '', end = '', 구분 = 'all') {
 	var counts = [];
 
 	자재입출고_v.forEach(async function (info) {
-		var 수량 = parseInt(info.수량);
+		var 수량 = parseInt(info.수량.replace(/,/g, ''));
 		if (types_list.indexOf(info.품번) < 0) {
 			types_list.push(info.품번);
 

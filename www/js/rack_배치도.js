@@ -1,61 +1,88 @@
-var select_pos = "";
-var 창고 = "";
+var select_pos ='';
+var 창고 = '';
+var flag_마도_출하보관렉 = false;
+
 async function racks_시작() {
-  console.log("racks start");
+	console.log("racks start");
 
-  await sleep(100);
-  if (typeof _제주 == "undefined") {
-    console.log("racks check gui");
-    await sleep(1);
-    return;
-  }
+	while(document.getElementById('_제주') == undefined) {
+		await sleep(1);
+	}
 
-  flag_racks = false;
+	var buttons_value_array = [];
+	var buttons = document.querySelectorAll('.rack');
+	buttons.forEach((button) => {
+		button.addEventListener('click', getButtonValue);
+	});
 
-  var buttons = document.querySelectorAll(".rack");
-  buttons.forEach((button) => {
-    button.addEventListener("click", getButtonValue);
-  });
+	document.getElementById('_마도').style.display = 'none';
+	document.getElementById('_마도출하').style.display = 'none';
+	document.getElementById('_구장').style.display = 'none';
+	//document.getElementById('_군포').style.display = 'none';
+	document.getElementById('_제주').style.display = 'none';
 
-  창고선택();
+	창고선택();
+
+	if(flag_마도_출하보관렉 == true) {
+		flag_마도_출하보관렉 = false;
+		find_BSA재제조(BSA재제조, { EOL : {$ne : ''}, 렉번호 :  {$ne : ''} });
+		await delay();
+
+		for(var i = 0; i < BSA재제조_v.length; i++) {
+			for(var j = 0; buttons.length; j++) {
+				if(BSA재제조_v[i].렉번호 == buttons[j].value) {
+					buttons.innerHTML = BSA재제조_v[i].관리번호 + '\n' + BSA재제조_v[i].RONo;
+					buttons.title = '차종: ' +  BSA재제조_v[i].차종 + '\n' + BSA재제조_v[i].품번;
+				}
+			}
+		}
+	}
 }
 
 function 창고선택() {
-  if (창고 == "마도") {
-    _마도.style.display = "block";
-  } else if (창고 == "구장") {
-    _구장.style.display = "block";
-  } else if (창고 == "군포") {
-    //_군포.style.display = 'block';
-  } else if (창고 == "제주") {
-    _제주.style.display = "block";
-  } else if (창고 == "마도출고") {
-    _마도출고.style.display = "block";
-  }
+	if(창고 == '마도') {
+		document.getElementById('_마도').style.display = 'block';
+	} else if(창고 == '마도출하') {
+		document.getElementById('_마도출하').style.display = 'block';
+	} else if(창고 == '마도') {
+		document.getElementById('_마도출하').style.display = 'block';
+	} else if(창고 == '구장') {
+		document.getElementById('_구장').style.display = 'block';
+	} else if(창고 == '군포') {
+		//document.getElementById('_군포').style.display = 'block';
+	} else if(창고 == '제주') {
+		document.getElementById('_제주').style.display = 'block';
+	}
 }
 
 function getButtonValue(event) {
-  const button = event.target;
-  const value = button.value;
-  console.log(value);
+	const button = event.target;
+	const value = button.value;
+	console.log(value);
 
-  var yes = confirm("선택 Rack 번호: " + value + "\n입고 정보를 입력하시겠습니까?");
-  if (yes == true) {
-    select_pos = value;
+	var yes = confirm("선택 Rack 번호: " + value + "\n입고 정보를 입력하시겠습니까?");
+	if (yes == true) {
+		select_pos = value;
 
-    if (창고 == "마도") {
-      flag_입고 = true;
-      loadPage("base/입고.html");
-    } else if (창고 == "군포") {
-      //flag_군포재고 = true;
-      //loadPage('base/군포재고.html');
-    } else if (창고 == "구장") {
-      flag_구장재고 = true;
-      loadPage("base/구장재고.html");
-    } else if (창고 == "제주") {
-      flag_제주재고 = true;
-      loadPage("base/제주재고.html");
-    }
-    창고 = "";
-  }
+		if(창고 == '마도') {
+			flag_입고 = true;
+			loadPage('base/입고.html');
+		} else if(창고 == '마도출하') {
+			flag_출하 = true;
+			loadPage('base/출하정보.html');
+		} else if(창고 == '마도보관') {
+			flag_EOL = true;
+			loadPage('base/EOL.html');
+		} else if(창고 == '군포') {
+			//flag_군포재고 = true;
+			//loadPage('base/군포재고.html');
+		} else if(창고 == '구장') {
+			flag_구장재고 = true;
+			loadPage('base/구장재고.html');
+		} else if(창고 == '제주') {
+			flag_제주재고 = true;
+			loadPage('base/제주재고.html');
+		}
+		창고 = '';
+	}
 }

@@ -329,7 +329,7 @@ async function EOL_SAVE() {
 		_doc.EOL투입일 = _공정입고일.value;
 		_doc.EOL = _공정완료일.value;
 		_doc.마지막충전일 = _공정완료일.value;
-
+		_doc.렉번호 = select_pos;
 		update(BSA재제조, _doc);
 		await delay();
 	} else {
@@ -337,13 +337,15 @@ async function EOL_SAVE() {
 			관리번호: _management_id.value.toUpperCase(),
 			EOL투입일: _공정입고일.value,
 			EOL: _공정완료일.value,
-			마지막충전일: _공정완료일.value
+			마지막충전일: _공정완료일.value,
+			렉번호: select_pos
 		}
 
 		update(BSA재제조, _doc);
 		await delay();
 	}
-
+	
+	select_pos = '';
 	await 공정단계자동입력(_management_id.value);
 
 	find(출하정보, _management_id.value);
