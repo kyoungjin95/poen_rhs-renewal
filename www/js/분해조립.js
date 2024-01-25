@@ -986,7 +986,7 @@ async function 분해조립_save() {
 	var now = seoul.toString().slice(0, 19);
 
 	if(_공정입고일.value == '') _공정입고일.value = now;
-	if(worker != 'admin') _공정완료일.value = now;
+        if(계정_stat.완료일수정 != 'o' || _공정완료일.value == "") _공정완료일.value = now;
 
 	var doc = JSON.parse(JSON.stringify(분해조립_doc));
 

@@ -28,7 +28,7 @@ async function racks_시작() {
 		find_BSA재제조(BSA재제조, { EOL : {$ne : ''}, 렉번호 :  {$ne : ''} });
 		await delay();
 
-		var 마도출고_button = document.querySelectorAll('.rack');
+		var 마도출고_buttons = document.querySelectorAll('.rack');
 		for(var i = 0; i < BSA재제조_v.length; i++) {
 			for(var j = 0; 마도출고_buttons.length; j++) {
 				if(BSA재제조_v[i].렉번호 == 마도출고_buttons[j].value) {

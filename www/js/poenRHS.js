@@ -187,6 +187,7 @@ const 계정_doc = {
   EOL: "",
   출하검사: "",
   부품재고: "",
+  완료일수정: "",
   관리번호: "",
 };
 
@@ -1704,6 +1705,7 @@ const 계정_ = {
   EOL: 1,
   출하검사: 1,
   부품재고: 1,
+  완료일수정: 1,
   관리번호: 1,
 };
 
@@ -4894,8 +4896,6 @@ async function 공정단계자동입력(_관리번호, 단계 = "") {
 
 function back() {
   loadPage("base/item-details.html");
-  flag_상세입력 = true;
-  first_분해조립 = true;
 }
 
 async function init_변수() {

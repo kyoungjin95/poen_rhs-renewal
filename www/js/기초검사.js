@@ -803,7 +803,7 @@ async function 기초검사_SAVE() {
 
   if (_공정입고일.value == "") _공정입고일.value = now;
   var 공정입고일 = _공정입고일.value;
-  if (worker != "admin") _공정완료일.value = now;
+  if (계정_stat.완료일수정 != 'o' || _공정완료일.value == "") _공정완료일.value = now;
 
   var doc = JSON.parse(JSON.stringify(기초검사_doc));
   doc.관리번호 = _management_id.value.trim().toUpperCase();
