@@ -20,6 +20,7 @@ async function 관리자_시작() {
 	_EOL = document.getElementById('_EOL');
 	_출하검사 = document.getElementById('_출하검사');
 	_부품재고 = document.getElementById('_부품재고');
+	_완료일수정 = document.getElementById('_완료일수정');
 	_관리번호 = document.getElementById('_관리번호');
 	_품번_csv = document.getElementById('_품번_csv');
 	read_품번_func_csv();
@@ -47,6 +48,7 @@ async function 관리자_시작() {
 				{ title: "EOL", field: "EOL", sorter: "string", width: '180' },
 				{ title: "출하검사", field: "출하검사", sorter: "string", width: '180' },
 				{ title: "부품재고", field: "부품재고", sorter: "string", width: '180' },
+				{ title: "완료일수정", field: "완료일수정", sorter: "string", width: '180' },
 				{ title: "관리번호", field: "관리번호", sorter: "string", width: '180' },
 			],
 		});
@@ -67,6 +69,7 @@ async function 관리자_시작() {
 			_EOL.value = row.getData().EOL;
 			_출하검사.value = row.getData().출하검사;
 			_부품재고.value = row.getData().부품재고;
+  			_완료일수정.value = row.getData().완료일수정;
 			_관리번호.value = row.getData().관리번호;
 		}
 	});
@@ -99,6 +102,7 @@ async function add_user() {
 	doc.EOL = _EOL.value;
 	doc.출하검사 = _출하검사.value;
 	doc.부품재고 = _부품재고.value;
+  	doc.완료일수정 = _완료일수정.value;
 	doc.관리번호 = _관리번호.value;
 
 	update_계정(계정, doc);
