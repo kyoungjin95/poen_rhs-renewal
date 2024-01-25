@@ -31,7 +31,7 @@ async function 상세입력_시작(is재제조번호 = false) {
   Busbars_count = 1;
   BMA_count = 1;
 
-  _management_id.value = 관리번호;
+  if(_management_id.value == '') _management_id.value = 관리번호;
 
   if (is재제조번호 == false) {
     _management_id.value = _management_id.value.trim().toUpperCase();
