@@ -980,19 +980,19 @@ async function 기초검사_SAVE() {
 
   progress.value = 30;
 
-  find(BSA재제조, _management_id.value);
-  await delay();
+  //find(BSA재제조, _management_id.value);
+  //await delay();
 
-  if (BSA재제조_v == null) {
-    var _doc = JSON.parse(JSON.stringify(BSA재제조_doc));
-    _doc.관리번호 = _management_id.value.trim().toUpperCase();
-    _doc.기초검사투입일 = 공정입고일;
-    _doc.기초검사 = _공정완료일.value;
-    _doc.RO_no = _RO_no.value;
+  //if (BSA재제조_v == null) {
+  //  var _doc = JSON.parse(JSON.stringify(BSA재제조_doc));
+  //  _doc.관리번호 = _management_id.value.trim().toUpperCase();
+  //  _doc.기초검사투입일 = 공정입고일;
+  //  _doc.기초검사 = _공정완료일.value;
+  //  _doc.RO_no = _RO_no.value;
 
-    update(BSA재제조, _doc);
-    await delay();
-  } else {
+  //  update(BSA재제조, _doc);
+  //  await delay();
+  //} else {
     var _doc = {
       관리번호: _management_id.value.toUpperCase(),
       기초검사투입일: 공정입고일,
@@ -1002,7 +1002,7 @@ async function 기초검사_SAVE() {
 
     update(BSA재제조, _doc);
     await delay();
-  }
+  //}
 
   await 공정단계자동입력(_management_id.value);
 

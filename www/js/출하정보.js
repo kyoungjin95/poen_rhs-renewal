@@ -292,24 +292,24 @@ async function 출하정보_save() {
 	if (_management_id.value.length == 0) return;
 	console.log('save: ', _management_id.value);
 
-	find(BSA재제조, _management_id.value);
-	await delay();
+	//find(BSA재제조, _management_id.value);
+	//await delay();
 
-	if (BSA재제조_v == null) {
-		var _doc = JSON.parse(JSON.stringify(BSA재제조_doc));
-		_doc.관리번호 = _management_id.value.trim().toUpperCase();
-		_doc.출하검사 = _검사일.value.substr(0, 16);
+	//if (BSA재제조_v == null) {
+	//	var _doc = JSON.parse(JSON.stringify(BSA재제조_doc));
+	//	_doc.관리번호 = _management_id.value.trim().toUpperCase();
+	//	_doc.출하검사 = _검사일.value.substr(0, 16);
 
-		update(BSA재제조, _doc);
-		await delay();
-	} else {
+	//	update(BSA재제조, _doc);
+	//	await delay();
+	//} else {
 		var _doc = {
 			관리번호: _management_id.value.toUpperCase(),
 			출하검사: _검사일.value.substr(0, 16),
 		}
 		update(BSA재제조, _doc);
 		await delay();
-	}
+	//}
 
 	await 공정단계자동입력(_management_id.value);
 
