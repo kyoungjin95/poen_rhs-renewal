@@ -4974,3 +4974,10 @@ async function init_product_no() {
 
 	console.log('mado_product_no_complete');
 }
+
+function resize_pic(file, img) {
+      ImageResizer.resizeImage(file, { maxWidth: 500, maxHeight: 500}, function(resultFile) {
+	        console.log(resultFile);
+		img.src = URL.createObjectURL(resultFile);
+      });
+}

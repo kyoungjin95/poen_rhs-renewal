@@ -171,14 +171,7 @@ async function 세척_시작(is재제조 = 0) {
 		var files = evt.dataTransfer?.files;
 		if (files.length > 0) {
 			console.log("drag & drop");
-			const reader = new FileReader();
-
-			reader.readAsDataURL(files[0]);
-
-			reader.onload = () => {
-				const dataURL = reader.result;
-				_img1.src = dataURL;
-			};
+			resize_pic(files[0], _img1);
 		}
 		evt.preventDefault();
 	};
@@ -190,14 +183,7 @@ async function 세척_시작(is재제조 = 0) {
 		var files = evt.dataTransfer?.files;
 		if (files.length > 0) {
 			console.log("drag & drop");
-			const reader = new FileReader();
-
-			reader.readAsDataURL(files[0]);
-
-			reader.onload = () => {
-				const dataURL = reader.result;
-				_img2.src = dataURL;
-			};
+			resize_pic(files[0], _img2);
 		}
 		evt.preventDefault();
 	};
@@ -209,14 +195,7 @@ async function 세척_시작(is재제조 = 0) {
 		var files = evt.dataTransfer?.files;
 		if (files.length > 0) {
 			console.log("drag & drop");
-			const reader = new FileReader();
-
-			reader.readAsDataURL(files[0]);
-
-			reader.onload = () => {
-				const dataURL = reader.result;
-				_img3.src = dataURL;
-			};
+			resize_pic(files[0], _img3);
 		}
 		evt.preventDefault();
 	};
@@ -228,14 +207,7 @@ async function 세척_시작(is재제조 = 0) {
 		var files = evt.dataTransfer?.files;
 		if (files.length > 0) {
 			console.log("drag & drop");
-			const reader = new FileReader();
-
-			reader.readAsDataURL(files[0]);
-
-			reader.onload = () => {
-				const dataURL = reader.result;
-				_img4.src = dataURL;
-			};
+			resize_pic(files[0], _img4);
 		}
 		evt.preventDefault();
 	};
@@ -247,14 +219,7 @@ async function 세척_시작(is재제조 = 0) {
 		var files = evt.dataTransfer?.files;
 		if (files.length > 0) {
 			console.log("drag & drop");
-			const reader = new FileReader();
-
-			reader.readAsDataURL(files[0]);
-
-			reader.onload = () => {
-				const dataURL = reader.result;
-				_img5.src = dataURL;
-			};
+			resize_pic(files[0], _img5);
 		}
 		evt.preventDefault();
 	};
@@ -266,14 +231,7 @@ async function 세척_시작(is재제조 = 0) {
 		var files = evt.dataTransfer?.files;
 		if (files.length > 0) {
 			console.log("drag & drop");
-			const reader = new FileReader();
-
-			reader.readAsDataURL(files[0]);
-
-			reader.onload = () => {
-				const dataURL = reader.result;
-				_img6.src = dataURL;
-			};
+			resize_pic(files[0], _img6);
 		}
 		evt.preventDefault();
 	};
@@ -285,14 +243,7 @@ async function 세척_시작(is재제조 = 0) {
 		var files = evt.dataTransfer?.files;
 		if (files.length > 0) {
 			console.log("drag & drop");
-			const reader = new FileReader();
-
-			reader.readAsDataURL(files[0]);
-
-			reader.onload = () => {
-				const dataURL = reader.result;
-				_img7.src = dataURL;
-			};
+			resize_pic(files[0], _img7);
 		}
 		evt.preventDefault();
 	};
@@ -304,14 +255,7 @@ async function 세척_시작(is재제조 = 0) {
 		var files = evt.dataTransfer?.files;
 		if (files.length > 0) {
 			console.log("drag & drop");
-			const reader = new FileReader();
-
-			reader.readAsDataURL(files[0]);
-
-			reader.onload = () => {
-				const dataURL = reader.result;
-				_img8.src = dataURL;
-			};
+			resize_pic(files[0], _img8);
 		}
 		evt.preventDefault();
 	};
@@ -323,14 +267,7 @@ async function 세척_시작(is재제조 = 0) {
 		var files = evt.dataTransfer?.files;
 		if (files.length > 0) {
 			console.log("drag & drop");
-			const reader = new FileReader();
-
-			reader.readAsDataURL(files[0]);
-
-			reader.onload = () => {
-				const dataURL = reader.result;
-				_img9.src = dataURL;
-			};
+			resize_pic(files[0], _img9);
 		}
 		evt.preventDefault();
 	};
@@ -342,14 +279,7 @@ async function 세척_시작(is재제조 = 0) {
 		var files = evt.dataTransfer?.files;
 		if (files.length > 0) {
 			console.log("drag & drop");
-			const reader = new FileReader();
-
-			reader.readAsDataURL(files[0]);
-
-			reader.onload = () => {
-				const dataURL = reader.result;
-				_img10.src = dataURL;
-			};
+			resize_pic(files[0], _img10);
 		}
 		evt.preventDefault();
 	};
@@ -361,14 +291,7 @@ async function 세척_시작(is재제조 = 0) {
 		var files = evt.dataTransfer?.files;
 		if (files.length > 0) {
 			console.log("drag & drop");
-			const reader = new FileReader();
-
-			reader.readAsDataURL(files[0]);
-
-			reader.onload = () => {
-				const dataURL = reader.result;
-				_img11.src = dataURL;
-			};
+			resize_pic(files[0], _img11);
 		}
 		evt.preventDefault();
 	};
@@ -380,14 +303,7 @@ async function 세척_시작(is재제조 = 0) {
 		var files = evt.dataTransfer?.files;
 		if (files.length > 0) {
 			console.log("drag & drop");
-			const reader = new FileReader();
-
-			reader.readAsDataURL(files[0]);
-
-			reader.onload = () => {
-				const dataURL = reader.result;
-				_img12.src = dataURL;
-			};
+			resize_pic(files[0], _img12);
 		}
 		evt.preventDefault();
 	};
@@ -399,14 +315,7 @@ async function 세척_시작(is재제조 = 0) {
 		var files = evt.dataTransfer?.files;
 		if (files.length > 0) {
 			console.log("drag & drop");
-			const reader = new FileReader();
-
-			reader.readAsDataURL(files[0]);
-
-			reader.onload = () => {
-				const dataURL = reader.result;
-				_img13.src = dataURL;
-			};
+			resize_pic(files[0], _img13);
 		}
 		evt.preventDefault();
 	};

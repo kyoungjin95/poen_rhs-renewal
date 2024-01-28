@@ -33,14 +33,7 @@ async function 입고_시작() {
     var files = evt.dataTransfer?.files;
     if (files.length > 0) {
       console.log("drag & drop");
-      const reader = new FileReader();
-
-      reader.readAsDataURL(files[0]);
-
-      reader.onload = () => {
-        const dataURL = reader.result;
-        _img1.src = dataURL;
-      };
+      resize_pic(files[0], _img1);
     }
     evt.preventDefault();
   };
