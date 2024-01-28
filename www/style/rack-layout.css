@@ -267,7 +267,40 @@ button {
   bottom: 28%;
   height: 250px;
 }
-
+/* 출하 ---> 마도출고 rack*/
+._마도출고랙 .rack__container {
+  width: 80%;
+}
+._마도출고랙 .rack__container h3 {
+  width: 30%;
+}
+._마도출고랙 .rack__con {
+  width: 100%;
+}
+.rack-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+._마도출고랙 .rack {
+  height: 80px;
+}
+._마도출고랙 .column {
+  padding: 9px;
+}
+._마도출고랙 .rack__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+._마도출고랙 .rack__container h3 {
+  font-size: 1.3vw;
+}
+._마도출고랙 .rack__con .floor {
+  justify-content: space-around;
+  margin-top: -10px;
+}
+._마도출고랙 .rack__con .floor span {
+  line-height: 2;
+}
 /* 미디어쿼리 */
 @media (max-width: 768px) {
   .rack {

@@ -1,11 +1,9 @@
 async function 입고_시작() {
-  if (typeof _management_id == "undefined") {
+  while (typeof _management_id == "undefined") {
     await sleep(DELAY);
-    return;
   }
 
   if (flag_입고 == true) await 입고_list();
-  flag_입고 = false;
 
   const _입고기타 = document.getElementById("_입고_기타");
   const _입고일반 = document.getElementById("_입고_일반");
@@ -20,6 +18,7 @@ async function 입고_시작() {
 
   var 보관위치 = select_pos;
 
+  flag_입고 = false;
   select_pos = "";
 
   if (보관위치 != "") {
@@ -109,7 +108,7 @@ async function 입고_save() {
   var seoul = DateTime.local().setZone("Asia/Seoul");
   var now = seoul.toString().slice(0, 19);
 
-  if (_입고일.value == "") _입고일.value = now;
+  if (_입고일.value == "" && worker != "admin") _입고일.value = now;
 
   doc.관리번호 = _management_id.value.trim().toUpperCase();
   doc.입고일 = _입고일.value;

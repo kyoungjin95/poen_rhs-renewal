@@ -796,7 +796,6 @@ async function 당일목록(공정, data) {
 		관리번호 = row.getData().관리번호;
 
 		pre_관리번호 = '';
-		flag_상세입력 = true;
 		loadPage('base/item-details.html');
 	});
 }

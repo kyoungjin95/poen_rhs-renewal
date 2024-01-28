@@ -216,7 +216,7 @@ async function EOL_SAVE() {
 	var now = seoul.toString().slice(0, 19);
 
 	if (_공정입고일.value == '') _공정입고일.value = now;
-	_공정완료일.value = now;
+        if (계정_stat.완료일수정 != 'o' || _공정완료일.value == "") _공정완료일.value = now;
 
 	var doc = JSON.parse(JSON.stringify(EOL_doc));
 	console.log('new doc:', doc);
@@ -320,31 +320,31 @@ async function EOL_SAVE() {
 		alert('저장 되었습니다');
 	}
 
-	find(BSA재제조, _management_id.value);
-	await delay();
+	//find(BSA재제조, _management_id.value.trim().toUpperCase());
+	//await delay();
 
-	if (BSA재제조_v == null) {
-		var _doc = JSON.parse(JSON.stringify(BSA재제조_doc));
-		_doc.관리번호 = _management_id.value.trim().toUpperCase();
-		_doc.EOL투입일 = _공정입고일.value;
-		_doc.EOL = _공정완료일.value;
-		_doc.마지막충전일 = _공정완료일.value;
-
-		update(BSA재제조, _doc);
-		await delay();
-	} else {
+	//if (BSA재제조_v == null) {
+	//	var _doc = JSON.parse(JSON.stringify(BSA재제조_doc));
+	//	_doc.관리번호 = _management_id.value.trim().toUpperCase();
+	//	_doc.EOL투입일 = _공정입고일.value;
+	//	_doc.EOL = _공정완료일.value;
+	//	_doc.마지막충전일 = _공정완료일.value;
+	//	update(BSA재제조, _doc);
+	//	await delay();
+	//} else {
 		var _doc = {
 			관리번호: _management_id.value.toUpperCase(),
 			EOL투입일: _공정입고일.value,
 			EOL: _공정완료일.value,
-			마지막충전일: _공정완료일.value
+			마지막충전일: _공정완료일.value,
 		}
 
 		update(BSA재제조, _doc);
 		await delay();
-	}
-
-	await 공정단계자동입력(_management_id.value);
+	//}
+	
+	select_pos = '';
+	await 공정단계자동입력(_management_id.value.trim().toUpperCase());
 
 	find(출하정보, _management_id.value);
 	await delay();

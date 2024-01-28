@@ -743,7 +743,7 @@ async function grid_기초검사(m_id = "") {
       //{ title: "문제BMA No", field: "문제BMA_No", sorter: "string", width: "180"},
       //{ title: "문제BMA 수량", field: "문제BMA_cnt", sorter: "string", width: "180"},
       { title: "공정완료일", field: "공정완료일", sorter: "string", width: "180" },
-      { title: "요청사항", field: "요청사항", sorter: "string", width: "180" },
+      { title: "분석결과", field: "분석결과", sorter: "string", width: "180" },
       { title: "비고", field: "비고", sorter: "string", width: "180" },
       { title: "센터 진단내용", field: "센터진단내용", sorter: "string", width: "180" },
       { title: "검사자", field: "검사자", sorter: "string", width: "180" },

@@ -89,16 +89,16 @@ io.on('connection', async function(socket) {
 	socket.on('insert', async function(worker, col, doc) {
 		console.log('request insert');
 
-		const result = await insert(col, doc);
-		socket.emit('insert_result', result);
+		//const result = await insert(col, doc);
+		//socket.emit('insert_result', result);
 		//logger.info('worker:'+ worker + ' insert col:' + col +'doc:'+ JSON.stringify(doc));
 	});
 
 	socket.on('insertMany', async function(worker, col, doc) {
 		console.log('request insertMany');
 
-		const result = await insertMany(col, doc);
-		socket.emit('insert_result', result);
+		//const result = await insertMany(col, doc);
+		//socket.emit('insert_result', result);
 		//logger.info('worker:'+ worker + ' insert col:' + col +'doc:'+ JSON.stringify(doc));
 	});
 
@@ -457,29 +457,4 @@ async function deleteOne(col, query) {
 
 function sleep(ms) {
 	return new Promise((resolve) => setTimeout(resolve, ms))
-}
-
-async function init_product_no() {
-	var doc = {
-		구분 : 'mado_product_no',
-		값 : 0,
-	}
-
-	await update('변수', {구분: doc.구분}, { $set: doc });
-
-	var doc = {
-		구분 : 'hs_product_no',
-		값 : 0,
-	}
-
-	await update('변수', {구분: doc.구분}, { $set: doc });
-
-	var doc = {
-		구분 : 'jj_product_no',
-		값 : 0,
-	}
-
-	await update('변수', {구분: doc.구분}, { $set: doc });
-
-	console.log('mado_product_no_complete');
 }
