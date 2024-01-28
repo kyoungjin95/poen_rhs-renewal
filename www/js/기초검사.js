@@ -182,7 +182,6 @@ async function 기초검사_시작(is재제조 = 0) {
     await delay();
 
     if (기초검사_pic1_v != null) {
-      console.log(기초검사_pic_v);
       _img1.src = 기초검사_pic1_v.pic1;
       _img2.src = 기초검사_pic1_v.pic2;
       _img3.src = 기초검사_pic1_v.pic3;

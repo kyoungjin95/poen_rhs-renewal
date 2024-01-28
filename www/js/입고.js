@@ -69,7 +69,6 @@ async function 입고_시작() {
 		await delay();
 
 		if (입고_pic_v != null) {
-			console.log(입고_pic_v);
 			_img1.src = 입고_pic_v.pic1;
 		} else {
 			_img1.src = "";
@@ -157,7 +156,7 @@ async function 입고_save() {
 			alert("저장 되었습니다");
 		}
 	}
-
+	console.log(_data_img1);
 	find(BSA재제조, _management_id.value);
 	await delay();
 
