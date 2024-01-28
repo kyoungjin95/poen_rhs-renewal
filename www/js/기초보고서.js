@@ -118,8 +118,9 @@ async function 기초보고서_조회(is재제조번호 = false) {
     케이스감압량 = 세척_v.기밀검사_케이스_특이사항;
   }
 
-  findOne_불량의심부품(불량의심부품, { 관리번호: _management_id.value });
+  find(불량의심부품, _management_id.value);
   await delay();
+
   if (불량의심부품_v != null) {
     _재제조comment.innerHTML = 불량의심부품_v.재제조comment;
   }
