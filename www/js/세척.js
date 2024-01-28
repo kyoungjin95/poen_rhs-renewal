@@ -117,8 +117,9 @@ async function 세척_시작(is재제조 = 0) {
 
 		find(세척_pic, _management_id.value);
 		await delay();
-
+	
 		if (세척_pic_v != null) {
+			console.log(세척_pic_v);
 			_img1.src = 세척_pic_v.pic1;
 			_img2.src = 세척_pic_v.pic2;
 			_img3.src = 세척_pic_v.pic3;
