@@ -63,7 +63,7 @@ async function check_login() {
 
 check_login();
 
-//alert('#공지사항#\n사원번호로 로그인시 몇몇 계정은 비밀번호가 \'사원번호*\'로 초기화 되었으니 참고 바랍니다.\n\n(계정별 접근권한 부여  TEST를 위하여 초기화된 계정이 있습니다.)');
+//alert('#공지사항#\nVersion update sky 0.38 -> 0.39\n1. 이미지 드래그앤 드롭시 해상도 자동 조절하여 저장.\n2. 기본정보 사라지는 버그 처리.\n3. 공정단계 버그 처리.\n');
 var flag_재제조현황 = false;
 var flag_상세입력 = false;
 var flag_년간현황 = false;
