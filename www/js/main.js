@@ -37,7 +37,7 @@ console.log('worker:', worker);
 async function check_login() {
 	if (worker == '' || worker == null) {
 		loadPage('base/login.html');
-		await sleep(100);
+		await sleep(200);
 		change_label();
 
 
@@ -63,7 +63,6 @@ async function check_login() {
 
 check_login();
 
-//alert('#공지사항#\nVersion update sky 0.38 -> 0.39\n1. 이미지 드래그앤 드롭시 해상도 자동 조절하여 저장.\n2. 기본정보 사라지는 버그 처리.\n3. 공정단계 버그 처리.\n');
 var flag_재제조현황 = false;
 var flag_상세입력 = false;
 var flag_년간현황 = false;
