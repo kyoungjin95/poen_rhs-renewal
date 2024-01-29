@@ -4823,16 +4823,16 @@ async function 공정단계자동입력(_관리번호, 단계 = "") {
   if (BSA재제조_v == null) return;
 
   var _공정단계 = "입고";
-  if (BSA재제조_v.입고 != "") _공정단계 = "세척";
-  if (BSA재제조_v.세척 != "") _공정단계 = "기초검사";
-  if (BSA재제조_v.기초검사 != "") _공정단계 = "분해조립";
-  if (BSA재제조_v.분해조립 != "") _공정단계 = "성능검사";
-  if (BSA재제조_v.성능검사 != "") _공정단계 = "EOL";
-  if (BSA재제조_v.EOL != "") _공정단계 = "제조완료";
-  if (BSA재제조_v.출하검사 != "") _공정단계 = "제조완료";
-  if (BSA재제조_v.출하 != "") _공정단계 = "출하";
-  if (BSA재제조_v.완전분해 !="" && BSA재제조_v.완전분해 != "undefined") _공정단계 = "완전분해";
-  if (BSA재제조_v.폐기 !="" && BSA재제조_v.폐기 != "undefined") _공정단계 = "폐기";
+  if (BSA재제조_v.입고 != "" && BSA재제조_v.입고 != undefined) _공정단계 = "세척";
+  if (BSA재제조_v.세척 != "" && BSA재제조_v.세척 != undefined) _공정단계 = "기초검사";
+  if (BSA재제조_v.기초검사 != "" && BSA재제조_v.기초검사 != undefined) _공정단계 = "분해조립";
+  if (BSA재제조_v.분해조립 != "" && BSA재제조_v.분해조립 != undefined) _공정단계 = "성능검사";
+  if (BSA재제조_v.성능검사 != "" && BSA재제조_v.성능검사 != undefined) _공정단계 = "EOL";
+  if (BSA재제조_v.EOL != "" && BSA재제조_v.EOL != undefined) _공정단계 = "제조완료";
+  if (BSA재제조_v.출하검사 != "" && BSA재제조_v.출하검사 != undefined) _공정단계 = "제조완료";
+  if (BSA재제조_v.출하 != "" && BSA재제조_v.출하 != undefined) _공정단계 = "출하";
+  if (BSA재제조_v.완전분해 !="" && BSA재제조_v.완전분해 != undefined) _공정단계 = "완전분해";
+  if (BSA재제조_v.폐기 !="" && BSA재제조_v.폐기 != undefined) _공정단계 = "폐기";
   if (단계 != "") _공정단계 = 단계;
 
   var doc = {

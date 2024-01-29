@@ -132,6 +132,7 @@ async function 세척_시작(is재제조 = 0) {
 			_img11.src = 세척_pic_v.pic11;
 			_img12.src = 세척_pic_v.pic12;
 			_img13.src = 세척_pic_v.pic13;
+			_img14.src = 세척_pic_v.pic13;
 		}
 	} else {
 		_공정입고일.value = "0000-00-00T00:00";
@@ -156,6 +157,7 @@ async function 세척_시작(is재제조 = 0) {
 		_img11.src = "";
 		_img12.src = "";
 		_img13.src = "";
+		_img14.src = "";
 
 		var DateTime = luxon.DateTime;
 		var seoul = DateTime.local().setZone("Asia/Seoul");
@@ -320,6 +322,18 @@ async function 세척_시작(is재제조 = 0) {
 		evt.preventDefault();
 	};
 
+	_img14.ondblclick = function (evt) {
+		_img14.src = "";
+	};
+	_img14.ondrop = function (evt) {
+		var files = evt.dataTransfer?.files;
+		if (files.length > 0) {
+			console.log("drag & drop");
+			resize_pic(files[0], _img14);
+		}
+		evt.preventDefault();
+	};
+
 	_기밀검사_케이스_box.ondragover = function (evt) {
 		evt.preventDefault();
 	};
@@ -421,6 +435,7 @@ async function 세척_save() {
   _pic_doc.pic11 = _img11.src;
   _pic_doc.pic12 = _img12.src;
   _pic_doc.pic13 = _img13.src;
+  _pic_doc.pic14 = _img14.src;
 
   update(세척_pic, _pic_doc);
   await delay();
