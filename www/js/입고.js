@@ -128,6 +128,17 @@ async function 입고_save() {
 	console.log(update_count);
 	console.log(insert_count);
 
+	var out = false;
+	if (update_count > 0) {
+		out = true;
+		alert("업데이트 되었습니다");
+	}
+
+	if (insert_count > 0) {
+		out = true;
+		alert("저장 되었습니다");
+	}
+
 	find(BSA재제조, _management_id.value);
 	await delay();
 
@@ -140,6 +151,7 @@ async function 입고_save() {
 		_doc.품번 = _품번.value;
 		_doc.RO_no = _RO_no.value;
 		_doc.보관위치 = _Rack_번호.value;
+
 		update(BSA재제조, _doc);
 		await delay();
 
@@ -157,17 +169,6 @@ async function 입고_save() {
 
 		update(BSA재제조, _doc);
 		await delay();
-	}
-
-	var out = false;
-	if (update_count > 0) {
-		out = true;
-		alert("업데이트 되었습니다");
-	}
-
-	if (insert_count > 0) {
-		out = true;
-		alert("저장 되었습니다");
 	}
 
 	var pic_doc = JSON.parse(JSON.stringify(입고_pic_doc));
