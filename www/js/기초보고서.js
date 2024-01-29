@@ -121,7 +121,7 @@ async function 기초보고서_조회(is재제조번호 = false) {
   find(불량의심부품, _management_id.value);
   await delay();
 
-  if (불량의심부품_v != null) {
+  if (불량의심부품_v != null &&) {
     _재제조comment.innerHTML = 불량의심부품_v.재제조comment;
   }
 
@@ -144,6 +144,7 @@ async function 기초보고서_조회(is재제조번호 = false) {
         : "NG";
 
     var 고장사유 = 기초검사_v.통신검사_DTC코드1;
+    console.log('고장코드 사유:', 고장사유);
 
     //common
     _VIN.innerHTML = 기초검사_v.VIN;
@@ -183,10 +184,10 @@ async function 기초보고서_조회(is재제조번호 = false) {
         _CS_케이스감압량.innerHTML = 케이스감압량;
         _CS_냉각유로.innerHTML = 기초검사_v.기밀검사_냉각유로;
         _CS_냉각유로감압량.innerHTML = 기초검사_v.기밀검사_냉각유로_특이사항;
-        _CS_PRA_P.innerHTML = 기초검사_v.절연검사_Plus;
-        _CS_PRA_P값.innerHTML = 기초검사_v.절연검사_Plus판정;
-        _CS_PRA_N.innerHTML = 기초검사_v.절연검사_Minus;
-        _CS_PRA_N값.innerHTML = 기초검사_v.절연검사_Minus판정;
+        _CS_PRA_P.innerHTML = 기초검사_v.절연검사_Plus판정;
+        _CS_PRA_P값.innerHTML = 기초검사_v.절연검사_Plus;
+        _CS_PRA_N.innerHTML = 기초검사_v.절연검사_Minus판정;
+        _CS_PRA_N값.innerHTML = 기초검사_v.절연검사_Minus;
         _CS_팩전압.innerHTML = 기초검사_v.통신검사_팩전압판정;
         _CS_팩전압값.innerHTML = 기초검사_v.통신검사_팩전압;
         _CS_셀전압편차.innerHTML = 기초검사_v.통신검사_셀전압편차판정;
