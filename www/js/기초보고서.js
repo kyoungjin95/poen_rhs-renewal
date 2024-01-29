@@ -121,7 +121,7 @@ async function 기초보고서_조회(is재제조번호 = false) {
   find(불량의심부품, _management_id.value);
   await delay();
 
-  if (불량의심부품_v != null &&) {
+  if (불량의심부품_v != null) {
     _재제조comment.innerHTML = 불량의심부품_v.재제조comment;
   }
 
