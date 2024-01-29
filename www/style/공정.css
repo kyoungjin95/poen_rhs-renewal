@@ -211,9 +211,9 @@ table input {
 .process-step table td:nth-child(1) {
   padding: 0 2vw;
 }
-.분해조립 .process-step table .t1-d {
+/* .분해조립 .process-step table .t1-d {
   padding: 0.5vw;
-}
+} */
 .process-step table label {
   font-size: clamp(10px, 2vw, 22px);
   margin-left: 0;
@@ -224,7 +224,7 @@ table input {
 }
 .process-step table input {
   padding: 0.3vw;
-  text-indent: 10px;
+  text-indent: 5px;
 }
 .process-step table .process__img {
   text-align: center;
@@ -439,10 +439,10 @@ td.process__btn {
 .세척 .once {
   border-left: 1px solid #ddd !important;
 }
-.분해조립 .tb .plus,
+/* .분해조립 .tb .plus,
 .분해조립 .tb .minus {
   text-align: center;
-}
+} */
 .출하정보 .tb {
   width: 90%;
 }
@@ -665,4 +665,138 @@ td.process__btn {
   font-size: 1.1vw;
   font-weight: bold;
   color: #0a3c72;
+}
+
+/* *** 분해조립 **** */
+.분해조립 ._분해조립_check {
+  display: flex;
+}
+.분해조립 #_기초보고서 {
+  width: 40%;
+}
+.분해조립 #_기초보고서 table td {
+  padding: 0.3vw;
+}
+.분해조립 #_기초보고서 table td.base,
+.분해조립 #_기초보고서 table td.base2,
+.분해조립 #_기초보고서 table td.base3 {
+  height: 5vh;
+}
+.분해조립 #_기초보고서 .base_header,
+.분해조립 #_기초보고서 .base_header2,
+.분해조립 #_기초보고서 .base_header3,
+.분해조립 #_기초보고서 table td.result_header {
+  font-size: 0.6vw;
+}
+.분해조립 {
+  padding-top: 50px;
+}
+.분해조립 .부품정보 {
+  width: 60%;
+}
+.분해조립 .process__tit,
+.분해조립 .부품_tit {
+  display: inline-flex;
+  padding: 5px 0;
+  color: #242222;
+  font-size: 1.5vw;
+}
+.분해조립 ._분해조립_tit {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 30px;
+}
+.분해조립 table.all,
+.분해조립 ._기초보고서_결과,
+.분해조립 .부품정보 .parts__information .module__group {
+  width: 100%;
+}
+.분해조립 .부품정보 .parts__information {
+  height: auto;
+}
+.분해조립 .부품정보 .parts__information .module__group,
+.분해조립 .부품정보 .parts__information .input-group {
+  width: 50%;
+}
+.분해조립 .부품정보 .parts__information .module__group .fourth .module_con {
+  width: 100%;
+}
+.분해조립 .부품정보 .module__group button {
+  padding: 5px 0;
+  font-size: 0.5vw;
+  line-height: 35px 0;
+}
+.분해조립 .부품정보 .con__second .upper_con,
+.분해조립 .부품정보 .con__second .upper_con .left_section .product,
+.분해조립 .부품정보 .con__second .upper_con .right_section .product,
+.분해조립 .부품정보 .con__second .left_section .product,
+.분해조립 .부품정보 .con__second .middle_con .right_section .product {
+  margin-bottom: 0;
+}
+.분해조립 .부품정보 .module__group .con__first .fifth_con .product span {
+  font-size: 0.4vw;
+}
+.분해조립 .부품정보 .module__group .con__fourth:nth-child(2) .upper_con .product {
+  padding: 40px 0;
+}
+.분해조립 .부품정보 .module__group .con__fourth .upper_con .product {
+  padding: 20px 0;
+}
+.분해조립 .부품정보 .parts__information .process-step table td:nth-child(1) {
+  text-align: center;
+}
+.product__reason {
+  padding: 50px 0;
+}
+.product__reason table {
+  border-collapse: collapse;
+  font-size: 1.2vw;
+  margin: 0 auto;
+  text-align: center;
+  border-color: #242222;
+  width: 95%;
+}
+.product__reason ._공정table {
+  width: 80%;
+}
+.product__reason table th {
+  padding: 10px 0;
+  background: #d9d9d9;
+}
+.product__reason table td {
+  padding: 5px;
+  height: 50px;
+  text-transform: uppercase;
+  border-color: #242222;
+}
+.product__reason table td input,
+.product__reason table td textarea {
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+  background: #fff;
+  border: none;
+  text-indent: 0;
+  margin: 0;
+  word-wrap: break-word;
+  border-radius: 0;
+  box-shadow: none;
+  resize: none;
+  font-size: 0.8vw;
+  padding: 0;
+}
+.product__reason table td input {
+  text-align: center;
+}
+.product__reason table td textarea {
+  padding: 0.6vw;
+}
+.disposeBtn {
+  padding: 1vw 1.5vw;
+  font-size: 1.1vw;
+  margin-bottom: 30px;
+  background-color: #c83312;
+}
+.disposeBtn:hover {
+  background-color: #ff380c;
 }
