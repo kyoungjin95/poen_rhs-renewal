@@ -128,35 +128,6 @@ async function 입고_save() {
 	console.log(update_count);
 	console.log(insert_count);
 
-	var out = false;
-	if (update_count > 0) {
-		out = true;
-		alert("업데이트 되었습니다");
-	}
-
-	if (insert_count > 0) {
-		out = true;
-		alert("저장 되었습니다");
-	}
-
-	var pic_doc = JSON.parse(JSON.stringify(입고_pic_doc));
-	pic_doc.관리번호 = _management_id.value;
-	pic_doc.pic1 = _img1.src;
-
-	update(입고_pic, pic_doc);
-	await delay();
-
-	console.log("save 입고 pic1");
-	if (out == false) {
-		if (update_count > 0) {
-			alert("업데이트 되었습니다");
-		}
-
-		if (insert_count > 0) {
-			alert("저장 되었습니다");
-		}
-	}
-	console.log(_data_img1);
 	find(BSA재제조, _management_id.value);
 	await delay();
 
@@ -188,6 +159,35 @@ async function 입고_save() {
 		await delay();
 	}
 
+	var out = false;
+	if (update_count > 0) {
+		out = true;
+		alert("업데이트 되었습니다");
+	}
+
+	if (insert_count > 0) {
+		out = true;
+		alert("저장 되었습니다");
+	}
+
+	var pic_doc = JSON.parse(JSON.stringify(입고_pic_doc));
+	pic_doc.관리번호 = _management_id.value;
+	pic_doc.pic1 = _img1.src;
+
+	update(입고_pic, pic_doc);
+	await delay();
+
+	console.log("save 입고 pic1");
+	if (out == false) {
+		if (update_count > 0) {
+			alert("업데이트 되었습니다");
+		}
+
+		if (insert_count > 0) {
+			alert("저장 되었습니다");
+		}
+	}
+	console.log(_data_img1);
 	await 공정단계자동입력(_management_id.value);
 	//이전페이지();
 }
