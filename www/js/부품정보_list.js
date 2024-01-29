@@ -5307,7 +5307,7 @@ function auto_focus() {
 	_C_MODULE_11_품번.onkeydown = function (event) {
 		if(event.keyCode == 13) _C_MODULE_12_QR.focus();
 		if(_C_MODULE_11_QR.value != '' && _C_MODULE_11_품번.value != '') { 
-			gg_C_MODULE_11.style.backgroundColor = 'salmon';
+			_C_MODULE_11.style.backgroundColor = 'salmon';
 			_C_MODULE_11.style.color = 'white';
 		}
 	}

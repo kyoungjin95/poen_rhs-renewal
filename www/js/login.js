@@ -55,7 +55,7 @@ async function login() {
           alert("재충전이 필요한 BSA가 있습니다.");
         }
       }, 1000);
-      alert('#공지사항#\nVersion update sky 0.38 -> 0.39\n1. 이미지 드래그앤 드롭시 해상도 자동 조절하여 저장.\n2. 기본정보 사라지는 버그 처리.\n');
+      alert('#공지사항#\nVersion update sky 0.39 -> 0.40\n1. 기초검사 DTC 추가 버그 고침\n2. 기초검사의 기초보고서 버튼 사용가능');
     } else if (worker == _id.value) {
       worker = "";
       level = "";

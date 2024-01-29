@@ -132,7 +132,7 @@ async function 세척_시작(is재제조 = 0) {
 			_img11.src = 세척_pic_v.pic11;
 			_img12.src = 세척_pic_v.pic12;
 			_img13.src = 세척_pic_v.pic13;
-			_img14.src = 세척_pic_v.pic13;
+			_img14.src = 세척_pic_v.pic14;
 		}
 	} else {
 		_공정입고일.value = "0000-00-00T00:00";
@@ -166,10 +166,10 @@ async function 세척_시작(is재제조 = 0) {
 		_공정입고일.value = now;
 	}
 
-	_기밀검사_케이스_box.ondblclick = function (evt) {
+	_img1.ondblclick = function (evt) {
 		_img1.src = "";
 	};
-	_기밀검사_케이스_box.ondrop = function (evt) {
+	_img1.ondrop = function (evt) {
 		var files = evt.dataTransfer?.files;
 		if (files.length > 0) {
 			console.log("drag & drop");
@@ -178,10 +178,10 @@ async function 세척_시작(is재제조 = 0) {
 		evt.preventDefault();
 	};
 
-	_기밀검사_케이스_특이사항_box.ondblclick = function (evt) {
+	_img2.ondblclick = function (evt) {
 		_img2.src = "";
 	};
-	_기밀검사_케이스_특이사항_box.ondrop = function (evt) {
+	_img2.ondrop = function (evt) {
 		var files = evt.dataTransfer?.files;
 		if (files.length > 0) {
 			console.log("drag & drop");
@@ -310,10 +310,10 @@ async function 세척_시작(is재제조 = 0) {
 		evt.preventDefault();
 	};
 
-	_특이사항_box.ondblclick = function (evt) {
+	_img13.ondblclick = function (evt) {
 		_특이사항_box.src = "";
 	};
-	_특이사항_box.ondrop = function (evt) {
+	_img13.ondrop = function (evt) {
 		var files = evt.dataTransfer?.files;
 		if (files.length > 0) {
 			console.log("drag & drop");
@@ -334,23 +334,59 @@ async function 세척_시작(is재제조 = 0) {
 		evt.preventDefault();
 	};
 
-	_기밀검사_케이스_box.ondragover = function (evt) {
+	_img1.ondragover = function (evt) {
 		evt.preventDefault();
 	};
 
-	_기밀검사_케이스_특이사항_box.ondragover = function (evt) {
+	_img2.ondragover = function (evt) {
 		evt.preventDefault();
 	};
 
-	_육안검사_외부_img.ondragover = function (evt) {
+	_img3.ondragover = function (evt) {
 		evt.preventDefault();
 	};
 
-	_육안검사_외부_특이사항_img.ondragover = function (evt) {
+	_img4.ondragover = function (evt) {
 		evt.preventDefault();
 	};
 
-	_특이사항_box.ondragover = function (evt) {
+	_img5.ondragover = function (evt) {
+		evt.preventDefault();
+	};
+
+	_img6.ondragover = function (evt) {
+		evt.preventDefault();
+	};
+
+	_img7.ondragover = function (evt) {
+		evt.preventDefault();
+	};
+
+	_img8.ondragover = function (evt) {
+		evt.preventDefault();
+	};
+
+	_img9.ondragover = function (evt) {
+		evt.preventDefault();
+	};
+
+	_img10.ondragover = function (evt) {
+		evt.preventDefault();
+	};
+
+	_img11.ondragover = function (evt) {
+		evt.preventDefault();
+	};
+
+	_img12.ondragover = function (evt) {
+		evt.preventDefault();
+	};
+
+	_img13.ondragover = function (evt) {
+		evt.preventDefault();
+	};
+
+	_img14.ondragover = function (evt) {
 		evt.preventDefault();
 	};
 }

@@ -679,7 +679,7 @@ async function 기초검사_SAVE() {
   var oCurrentRow;
   var tb = document.getElementById("tb");
   var rowIcnt = tb.rows.length - 17;
-  var code_no = rowIcnt - 24;
+  var code_no = rowIcnt - 22;
   console.log("save rowIcnt:", rowIcnt);
   console.log("save code_no:", code_no);
 
