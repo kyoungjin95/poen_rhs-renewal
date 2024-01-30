@@ -504,7 +504,7 @@ async function 불량의심부품_load() {
       console.log(str);
       eval(str);
 
-      str = "_" + key + ".style.backgroundColor = 'salmon';";
+      str = "_" + key + ".style.backgroundColor = 'red';";
       console.log(str);
       eval(str);
     }

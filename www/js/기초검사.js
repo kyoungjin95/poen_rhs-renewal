@@ -285,14 +285,7 @@ async function 기초검사_시작(is재제조 = 0) {
     var files = evt.dataTransfer?.files;
     if (files.length > 0) {
       console.log("drag & drop");
-      const reader = new FileReader();
-
-      reader.readAsDataURL(files[0]);
-
-      reader.onload = () => {
-        const dataURL = reader.result;
-        _img1.src = dataURL;
-      };
+      resize_pic(files[0], _img1);
     }
     evt.preventDefault();
   };
@@ -304,14 +297,7 @@ async function 기초검사_시작(is재제조 = 0) {
     var files = evt.dataTransfer?.files;
     if (files.length > 0) {
       console.log("drag & drop");
-      const reader = new FileReader();
-
-      reader.readAsDataURL(files[0]);
-
-      reader.onload = () => {
-        const dataURL = reader.result;
-        _img2.src = dataURL;
-      };
+      resize_pic(files[0], _img2);
     }
     evt.preventDefault();
   };
@@ -323,14 +309,7 @@ async function 기초검사_시작(is재제조 = 0) {
     var files = evt.dataTransfer?.files;
     if (files.length > 0) {
       console.log("drag & drop");
-      const reader = new FileReader();
-
-      reader.readAsDataURL(files[0]);
-
-      reader.onload = () => {
-        const dataURL = reader.result;
-        _img3.src = dataURL;
-      };
+      resize_pic(files[0], _img3);
     }
     evt.preventDefault();
   };
@@ -342,14 +321,7 @@ async function 기초검사_시작(is재제조 = 0) {
     var files = evt.dataTransfer?.files;
     if (files.length > 0) {
       console.log("drag & drop");
-      const reader = new FileReader();
-
-      reader.readAsDataURL(files[0]);
-
-      reader.onload = () => {
-        const dataURL = reader.result;
-        _img4.src = dataURL;
-      };
+      resize_pic(files[0], _img4);
     }
     evt.preventDefault();
   };
@@ -361,14 +333,7 @@ async function 기초검사_시작(is재제조 = 0) {
     var files = evt.dataTransfer?.files;
     if (files.length > 0) {
       console.log("drag & drop");
-      const reader = new FileReader();
-
-      reader.readAsDataURL(files[0]);
-
-      reader.onload = () => {
-        const dataURL = reader.result;
-        _img5.src = dataURL;
-      };
+      resize_pic(files[0], _img5);
     }
     evt.preventDefault();
   };
@@ -380,14 +345,7 @@ async function 기초검사_시작(is재제조 = 0) {
     var files = evt.dataTransfer?.files;
     if (files.length > 0) {
       console.log("drag & drop");
-      const reader = new FileReader();
-
-      reader.readAsDataURL(files[0]);
-
-      reader.onload = () => {
-        const dataURL = reader.result;
-        _img6.src = dataURL;
-      };
+      resize_pic(files[0], _img6);
     }
     evt.preventDefault();
   };
@@ -399,14 +357,7 @@ async function 기초검사_시작(is재제조 = 0) {
     var files = evt.dataTransfer?.files;
     if (files.length > 0) {
       console.log("drag & drop");
-      const reader = new FileReader();
-
-      reader.readAsDataURL(files[0]);
-
-      reader.onload = () => {
-        const dataURL = reader.result;
-        _img7.src = dataURL;
-      };
+      resize_pic(files[0], _img7);
     }
     evt.preventDefault();
   };
@@ -418,14 +369,7 @@ async function 기초검사_시작(is재제조 = 0) {
     var files = evt.dataTransfer?.files;
     if (files.length > 0) {
       console.log("drag & drop");
-      const reader = new FileReader();
-
-      reader.readAsDataURL(files[0]);
-
-      reader.onload = () => {
-        const dataURL = reader.result;
-        _img8.src = dataURL;
-      };
+      resize_pic(files[0], _img8);
     }
     evt.preventDefault();
   };
@@ -437,14 +381,7 @@ async function 기초검사_시작(is재제조 = 0) {
     var files = evt.dataTransfer?.files;
     if (files.length > 0) {
       console.log("drag & drop");
-      const reader = new FileReader();
-
-      reader.readAsDataURL(files[0]);
-
-      reader.onload = () => {
-        const dataURL = reader.result;
-        _img9.src = dataURL;
-      };
+      resize_pic(files[0], _img9);
     }
     evt.preventDefault();
   };
@@ -456,14 +393,7 @@ async function 기초검사_시작(is재제조 = 0) {
     var files = evt.dataTransfer?.files;
     if (files.length > 0) {
       console.log("drag & drop");
-      const reader = new FileReader();
-
-      reader.readAsDataURL(files[0]);
-
-      reader.onload = () => {
-        const dataURL = reader.result;
-        _img10.src = dataURL;
-      };
+      resize_pic(files[0], _img10);
     }
     evt.preventDefault();
   };
@@ -475,14 +405,7 @@ async function 기초검사_시작(is재제조 = 0) {
     var files = evt.dataTransfer?.files;
     if (files.length > 0) {
       console.log("drag & drop");
-      const reader = new FileReader();
-
-      reader.readAsDataURL(files[0]);
-
-      reader.onload = () => {
-        const dataURL = reader.result;
-        _img11.src = dataURL;
-      };
+      resize_pic(files[0], _img11);
     }
     evt.preventDefault();
   };
@@ -491,14 +414,7 @@ async function 기초검사_시작(is재제조 = 0) {
   //	var files = evt.dataTransfer?.files;
   //	if (files.length > 0) {
   //		console.log("drag & drop");
-  //		const reader = new FileReader();
-
-  //		reader.readAsDataURL(files[0]);
-
-  //		reader.onload = () => {
-  //			const dataURL = reader.result;
-  //			_img12.src = dataURL;
-  //		};
+  //            resize_pic(files[0], _img12);
   //	}
   //	evt.preventDefault();
   //};
@@ -510,14 +426,7 @@ async function 기초검사_시작(is재제조 = 0) {
     var files = evt.dataTransfer?.files;
     if (files.length > 0) {
       console.log("drag & drop");
-      const reader = new FileReader();
-
-      reader.readAsDataURL(files[0]);
-
-      reader.onload = () => {
-        const dataURL = reader.result;
-        _img13.src = dataURL;
-      };
+      resize_pic(files[0], _img13);
     }
     evt.preventDefault();
   };
@@ -529,14 +438,7 @@ async function 기초검사_시작(is재제조 = 0) {
     var files = evt.dataTransfer?.files;
     if (files.length > 0) {
       console.log("drag & drop");
-      const reader = new FileReader();
-
-      reader.readAsDataURL(files[0]);
-
-      reader.onload = () => {
-        const dataURL = reader.result;
-        _img14.src = dataURL;
-      };
+      resize_pic(files[0], _img14);
     }
     evt.preventDefault();
   };
@@ -548,14 +450,7 @@ async function 기초검사_시작(is재제조 = 0) {
     var files = evt.dataTransfer?.files;
     if (files.length > 0) {
       console.log("drag & drop");
-      const reader = new FileReader();
-
-      reader.readAsDataURL(files[0]);
-
-      reader.onload = () => {
-        const dataURL = reader.result;
-        _img15.src = dataURL;
-      };
+      resize_pic(files[0], _img15);
     }
     evt.preventDefault();
   };
@@ -567,14 +462,7 @@ async function 기초검사_시작(is재제조 = 0) {
     var files = evt.dataTransfer?.files;
     if (files.length > 0) {
       console.log("drag & drop");
-      const reader = new FileReader();
-
-      reader.readAsDataURL(files[0]);
-
-      reader.onload = () => {
-        const dataURL = reader.result;
-        _img16.src = dataURL;
-      };
+      resize_pic(files[0], _img16);
     }
     evt.preventDefault();
   };
@@ -586,14 +474,7 @@ async function 기초검사_시작(is재제조 = 0) {
     var files = evt.dataTransfer?.files;
     if (files.length > 0) {
       console.log("drag & drop");
-      const reader = new FileReader();
-
-      reader.readAsDataURL(files[0]);
-
-      reader.onload = () => {
-        const dataURL = reader.result;
-        _img17.src = dataURL;
-      };
+      resize_pic(files[0], _img17);
     }
     evt.preventDefault();
   };
@@ -605,14 +486,7 @@ async function 기초검사_시작(is재제조 = 0) {
     var files = evt.dataTransfer?.files;
     if (files.length > 0) {
       console.log("drag & drop");
-      const reader = new FileReader();
-
-      reader.readAsDataURL(files[0]);
-
-      reader.onload = () => {
-        const dataURL = reader.result;
-        _img18.src = dataURL;
-      };
+      resize_pic(files[0], _img18);
     }
     evt.preventDefault();
   };
@@ -624,14 +498,7 @@ async function 기초검사_시작(is재제조 = 0) {
     var files = evt.dataTransfer?.files;
     if (files.length > 0) {
       console.log("drag & drop");
-      const reader = new FileReader();
-
-      reader.readAsDataURL(files[0]);
-
-      reader.onload = () => {
-        const dataURL = reader.result;
-        _img19.src = dataURL;
-      };
+      resize_pic(files[0], _img19);
     }
     evt.preventDefault();
   };
@@ -643,14 +510,7 @@ async function 기초검사_시작(is재제조 = 0) {
     var files = evt.dataTransfer?.files;
     if (files.length > 0) {
       console.log("drag & drop");
-      const reader = new FileReader();
-
-      reader.readAsDataURL(files[0]);
-
-      reader.onload = () => {
-        const dataURL = reader.result;
-        _img20.src = dataURL;
-      };
+      resize_pic(files[0], _img20);
     }
     evt.preventDefault();
   };
@@ -662,14 +522,7 @@ async function 기초검사_시작(is재제조 = 0) {
     var files = evt.dataTransfer?.files;
     if (files.length > 0) {
       console.log("drag & drop");
-      const reader = new FileReader();
-
-      reader.readAsDataURL(files[0]);
-
-      reader.onload = () => {
-        const dataURL = reader.result;
-        _img21.src = dataURL;
-      };
+      resize_pic(files[0], _img21);
     }
     evt.preventDefault();
   };
@@ -826,7 +679,7 @@ async function 기초검사_SAVE() {
   var oCurrentRow;
   var tb = document.getElementById("tb");
   var rowIcnt = tb.rows.length - 17;
-  var code_no = rowIcnt - 24;
+  var code_no = rowIcnt - 22;
   console.log("save rowIcnt:", rowIcnt);
   console.log("save code_no:", code_no);
 
@@ -980,19 +833,19 @@ async function 기초검사_SAVE() {
 
   progress.value = 30;
 
-  find(BSA재제조, _management_id.value);
-  await delay();
+  //find(BSA재제조, _management_id.value);
+  //await delay();
 
-  if (BSA재제조_v == null) {
-    var _doc = JSON.parse(JSON.stringify(BSA재제조_doc));
-    _doc.관리번호 = _management_id.value.trim().toUpperCase();
-    _doc.기초검사투입일 = 공정입고일;
-    _doc.기초검사 = _공정완료일.value;
-    _doc.RO_no = _RO_no.value;
+  //if (BSA재제조_v == null) {
+  //  var _doc = JSON.parse(JSON.stringify(BSA재제조_doc));
+  //  _doc.관리번호 = _management_id.value.trim().toUpperCase();
+  //  _doc.기초검사투입일 = 공정입고일;
+  //  _doc.기초검사 = _공정완료일.value;
+  //  _doc.RO_no = _RO_no.value;
 
-    update(BSA재제조, _doc);
-    await delay();
-  } else {
+  //  update(BSA재제조, _doc);
+  //  await delay();
+  //} else {
     var _doc = {
       관리번호: _management_id.value.toUpperCase(),
       기초검사투입일: 공정입고일,
@@ -1002,7 +855,7 @@ async function 기초검사_SAVE() {
 
     update(BSA재제조, _doc);
     await delay();
-  }
+  //}
 
   await 공정단계자동입력(_management_id.value);
 

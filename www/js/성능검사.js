@@ -143,24 +143,24 @@ async function 성능검사_save() {
 		alert('저장 되었습니다');
 	}
 
-	find(BSA재제조, _management_id.value);
-	await delay();
+	//find(BSA재제조, _management_id.value);
+	//await delay();
 
-	if (BSA재제조_v == null) {
-		var _doc = JSON.parse(JSON.stringify(BSA재제조_doc));
-		_doc.관리번호 = _management_id.value.trim().toUpperCase();
-		_doc.성능검사투입일; _공정입고일.value;
-		if (_분해조립_재의뢰사유.value == '') {
-			_doc.성능검사 = _공정완료일.value;
-		} else {
-			alert('공정을 분해조립으로 되돌립니다!');
-			_doc.분해조립 = '';
-			_doc.성능검사 = '';
-		}
+	//if (BSA재제조_v == null) {
+	//	var _doc = JSON.parse(JSON.stringify(BSA재제조_doc));
+	//	_doc.관리번호 = _management_id.value.trim().toUpperCase();
+	//	_doc.성능검사투입일; _공정입고일.value;
+	//	if (_분해조립_재의뢰사유.value == '') {
+	//		_doc.성능검사 = _공정완료일.value;
+	//	} else {
+	//		alert('공정을 분해조립으로 되돌립니다!');
+	//		_doc.분해조립 = '';
+	//		_doc.성능검사 = '';
+	//	}
 
-		update(BSA재제조, _doc);
-		await delay();
-	} else {
+	//	update(BSA재제조, _doc);
+	//	await delay();
+	//} else {
 		if (_분해조립_재의뢰사유.value == '') {
 			var _doc = {
 				관리번호: _management_id.value.toUpperCase(),
@@ -178,7 +178,7 @@ async function 성능검사_save() {
 
 		update(BSA재제조, _doc);
 		await delay();
-	}
+	//}
 
 	//이전페이지();
 }

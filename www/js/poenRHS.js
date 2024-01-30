@@ -50,56 +50,6 @@ const 창고이동 = "창고이동";
 const 변수 = "변수";
 const 불량의심부품 = "불량의심부품";
 
-var 구자료_v = [];
-var BSA재제조_v = [];
-var 입고_v = [];
-var 세척_v = [];
-var 기초검사_v = [];
-var 성능검사_v = [];
-var EOL_v = [];
-var 출하정보_v = [];
-var 분해조립_v = [];
-var 신품정보_v = [];
-var 고품정보_v = [];
-var 특이사항_v = [];
-var 교체부품상세1_v = [];
-var 교체부품상세2_v = [];
-var 교체부품상세3_v = [];
-var 교체부품상세4_v = [];
-var 교체부품상세5_v = [];
-var 교체부품상세6_v = [];
-var 교체부품상세7_v = [];
-var 교체부품상세8_v = [];
-var 교체부품상세9_v = [];
-var 교체부품상세10_v = [];
-var 자재입출고_v = [];
-var 구장재고_v = [];
-var 군포재고_v = [];
-var 제주재고_v = [];
-var 창고이동_v = [];
-var 입고_pic_v = [];
-var 세척_pic_v = [];
-var 기초검사_pic1_v = [];
-var 기초검사_pic2_v = [];
-var 기초검사_pic3_v = [];
-var 기초검사_pic4_v = [];
-var 분해조립_pic_v = [];
-var 성능검사_pic_v = [];
-var EOL_pic_v = [];
-var 특이사항_pic_v = [];
-var 출하_pic_v = [];
-var 반품입고_pic_v = [];
-var 재출하_pic_v = [];
-var 완전분해_pic_v = [];
-var 폐기_pic_v = [];
-var 기초보고서_v = [];
-var 완료보고서_v = [];
-var 계정_v = [];
-var 부품정보_list_v = [];
-var 품번_v = [];
-var 변수_v = [];
-var 불량의심부품_v = [];
-
 var BSA재제조_cnt = 0;
 var 입고_cnt = 0;
 var 세척_cnt = 0;
@@ -4873,16 +4823,16 @@ async function 공정단계자동입력(_관리번호, 단계 = "") {
   if (BSA재제조_v == null) return;
 
   var _공정단계 = "입고";
-  if (BSA재제조_v.입고 != "") _공정단계 = "세척";
-  if (BSA재제조_v.세척 != "") _공정단계 = "기초검사";
-  if (BSA재제조_v.기초검사 != "") _공정단계 = "분해조립";
-  if (BSA재제조_v.분해조립 != "") _공정단계 = "성능검사";
-  if (BSA재제조_v.성능검사 != "") _공정단계 = "EOL";
-  if (BSA재제조_v.EOL != "") _공정단계 = "제조완료";
-  if (BSA재제조_v.출하검사 != "") _공정단계 = "제조완료";
-  if (BSA재제조_v.출하 != "") _공정단계 = "출하";
-  if (BSA재제조_v.완전분해 !="" && BSA재제조_v.완전분해 != "undefined") _공정단계 = "완전분해";
-  if (BSA재제조_v.폐기 !="" && BSA재제조_v.폐기 != "undefined") _공정단계 = "폐기";
+  if (BSA재제조_v.입고 != "" && BSA재제조_v.입고 != undefined) _공정단계 = "세척";
+  if (BSA재제조_v.세척 != "" && BSA재제조_v.세척 != undefined) _공정단계 = "기초검사";
+  if (BSA재제조_v.기초검사 != "" && BSA재제조_v.기초검사 != undefined) _공정단계 = "분해조립";
+  if (BSA재제조_v.분해조립 != "" && BSA재제조_v.분해조립 != undefined) _공정단계 = "성능검사";
+  if (BSA재제조_v.성능검사 != "" && BSA재제조_v.성능검사 != undefined) _공정단계 = "EOL";
+  if (BSA재제조_v.EOL != "" && BSA재제조_v.EOL != undefined) _공정단계 = "제조완료";
+  if (BSA재제조_v.출하검사 != "" && BSA재제조_v.출하검사 != undefined) _공정단계 = "제조완료";
+  if (BSA재제조_v.출하 != "" && BSA재제조_v.출하 != undefined) _공정단계 = "출하";
+  if (BSA재제조_v.완전분해 !="" && BSA재제조_v.완전분해 != undefined) _공정단계 = "완전분해";
+  if (BSA재제조_v.폐기 !="" && BSA재제조_v.폐기 != undefined) _공정단계 = "폐기";
   if (단계 != "") _공정단계 = 단계;
 
   var doc = {
@@ -4973,4 +4923,18 @@ async function init_product_no() {
 	console.log(insert_count);
 
 	console.log('mado_product_no_complete');
+}
+
+const toBase64 = file => new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = reject;
+});
+
+function resize_pic(file, img) {
+	ImageResizer.resizeImage(file, { maxWidth: 500, maxHeight: 500}, async function(resultFile) {
+		img.src = await toBase64(resultFile);
+		console.log(img.src);
+	});
 }

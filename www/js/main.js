@@ -37,7 +37,7 @@ console.log('worker:', worker);
 async function check_login() {
 	if (worker == '' || worker == null) {
 		loadPage('base/login.html');
-		await sleep(100);
+		await sleep(200);
 		change_label();
 
 
@@ -63,7 +63,6 @@ async function check_login() {
 
 check_login();
 
-//alert('#공지사항#\n사원번호로 로그인시 몇몇 계정은 비밀번호가 \'사원번호*\'로 초기화 되었으니 참고 바랍니다.\n\n(계정별 접근권한 부여  TEST를 위하여 초기화된 계정이 있습니다.)');
 var flag_재제조현황 = false;
 var flag_상세입력 = false;
 var flag_년간현황 = false;
