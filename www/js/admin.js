@@ -23,7 +23,6 @@ async function 관리자_시작() {
 	_완료일수정 = document.getElementById('_완료일수정');
 	_관리번호 = document.getElementById('_관리번호');
 	_품번_csv = document.getElementById('_품번_csv');
-	read_품번_func_csv();
 
 	find_계정(계정, { id: { $exists: true } })
 	await delay();
@@ -73,7 +72,6 @@ async function 관리자_시작() {
 			_관리번호.value = row.getData().관리번호;
 		}
 	});
-	read_품번_func_csv();
 }
 
 async function add_user() {
@@ -173,23 +171,14 @@ async function doo() {
 }
 
 async function doo() {
-	find_BSA재제조(BSA재제조, { 차종: { $exists: true } });
+	var doc = {
+		관리번호 : '#S240126-MD001',
+		기초검사투입일 : '',
+		기초검사 : ''
+	}
+
+	update(BSA재제조, doc);
 	await delay();
-
-	BSA재제조_v.forEach(async function (bsa_info) {
-		var tmp = bsa_info.차종;
-		bsa_info.차종 = bsa_info.차종.replace('-', '_');
-
-		if (tmp != bsa_info.차종) {
-			doc = {
-				관리번호: bsa_info.관리번호,
-				차종: bsa_info.차종
-			}
-
-			update(BSA재제조, doc);
-			await delay();
-		}
-	});
 
 	console.log('complete');
 }
