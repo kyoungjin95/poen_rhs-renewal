@@ -1474,7 +1474,48 @@
         <p>Positive</p>
       </div>
     </div>
-
+    <div id="_기밀검사2" class="check-all">
+      <div class="report__tit">
+        <h3>▣ 기밀검사 - 특이사항</h3>
+        <input type="checkbox" id="_cb기밀검사특이사항" checked />
+      </div>
+      <table border="2" class="all">
+        <colgroup>
+          <col width="50%" />
+          <col width="50%" />
+        </colgroup>
+        <tbody>
+          <tr>
+            <td class="imgName">
+              <img id="_기밀검사_특이사항1" />
+            </td>
+            <td class="imgName">
+              <img id="_기밀검사_특이사항2" />
+            </td>
+          </tr>
+          <tr>
+            <td class="imgName">
+              <img id="_기밀검사_특이사항3" />
+            </td>
+            <td class="imgName">
+              <img id="_기밀검사_특이사항4" />
+            </td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th>결 과 :</th>
+            <td class="result" id="_기밀검사_특이사항_결과" colspan="3"></td>
+            <td></td>
+          </tr>
+        </tfoot>
+      </table>
+      <div class="bottom">
+        <p>FQ850-05</p>
+        <p>A4(297x210mm)</p>
+        <p>Positive</p>
+      </div>
+    </div>
     <div id="_절연저항검사" class="check-all">
       <div class="report__tit">
         <h3>▣ 절연 저항 검사</h3>
@@ -1646,6 +1687,7 @@
       <button onClick="기초보고서_save('육내');">육안검사내부</button>
       <button onClick="기초보고서_save('육내상');">육안검사내부 상세</button>
       <button onClick="기초보고서_save('기밀');">기밀검사</button>
+      <button onClick="기초보고서_save('기밀특이')">기밀검사 특이사항</button>
       <button onClick="기초보고서_save('절연');">절연저항검사</button>
       <button onClick="기초보고서_save('CAN');">CAN통신검사</button>
     </div>
@@ -1934,6 +1976,12 @@
       var _케이스 = document.getElementById("_케이스");
       var _냉각유로 = document.getElementById("_냉각유로");
 
+      var _기밀검사_특이사항1 = document.getElementById("_기밀검사_특이사항1");
+      var _기밀검사_특이사항2 = document.getElementById("_기밀검사_특이사항2");
+      var _기밀검사_특이사항3 = document.getElementById("_기밀검사_특이사항3");
+      var _기밀검사_특이사항4 = document.getElementById("_기밀검사_특이사항4");
+      var _기밀검사_특이사항_결과 = document.getElementById("_기밀검사_특이사항_결과");
+
       //절연저항검사
       var _절연측정사진1 = document.getElementById("_절연측정사진1");
       var _절연측정사진2 = document.getElementById("_절연측정사진1");
@@ -1956,6 +2004,7 @@
       var _육안검사내부 = document.getElementById("_cb육안검사내부");
       var _육안검사내부상세 = document.getElementById("_cb육안검사내부상세");
       var _기밀검사 = document.getElementById("_cb기밀검사");
+      var _기밀검사_특이사항 = document.getElementById("_cb기밀검사특이사항");
       var _절연저항검사 = document.getElementById("_cb절연저항검사");
       var _CAN통신검사 = document.getElementById("_cbCAN통신검사");
     </script>

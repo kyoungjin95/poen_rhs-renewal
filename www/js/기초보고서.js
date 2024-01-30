@@ -458,20 +458,22 @@ async function 기초보고서_조회(is재제조번호 = false) {
     //기밀검사-케이스
     _측정사진1.src = 세척_pic_v.pic1;
     _측정값사진1.src = 세척_pic_v.pic2;
+    _기밀검사_특이사항1.src = 세척_pic_v.pic3;
+    _기밀검사_특이사항2.src = 세척_pic_v.pic4;
 
     //육안검사 외부1
-    _top_pic.src = 세척_pic_v.pic3;
-    _front_pic.src = 세척_pic_v.pic4;
-    _left_pic.src = 세척_pic_v.pic5;
-    _bottom_pic.src = 세척_pic_v.pic6;
-    _rear_pic.src = 세척_pic_v.pic7;
-    _right_pic.src = 세척_pic_v.pic8;
+    _top_pic.src = 세척_pic_v.pic5;
+    _front_pic.src = 세척_pic_v.pic6;
+    _left_pic.src = 세척_pic_v.pic7;
+    _bottom_pic.src = 세척_pic_v.pic8;
+    _rear_pic.src = 세척_pic_v.pic9;
+    _right_pic.src = 세척_pic_v.pic10;
 
     //육안검사 외부 2
-    _이상부위_외부1.src = 세척_pic_v.pic9;
-    _이상부위_외부2.src = 세척_pic_v.pic10;
-    _이상부위_외부3.src = 세척_pic_v.pic11;
-    _이상부위_외부4.src = 세척_pic_v.pic12;
+    _이상부위_외부1.src = 세척_pic_v.pic11;
+    _이상부위_외부2.src = 세척_pic_v.pic12;
+    _이상부위_외부3.src = 세척_pic_v.pic13;
+    _이상부위_외부4.src = 세척_pic_v.pic14;
   }
 
   _육안검사_결과.innerHTML = 외부검사;
@@ -604,6 +606,13 @@ async function 기초보고서_save(type = 0) {
   if (type == "기밀") {
     type = document.getElementById("_기밀검사");
     file_name = "기초보고서_기밀검사" + _date + ".pdf";
+    _width = 4000;
+    _height = 2400;
+  }
+
+  if (type == "기밀특이") {
+    type = document.getElementById("_기밀검사2");
+    file_name = "기초보고서_기밀검사_특이사항" + _date + ".pdf";
     _width = 4000;
     _height = 2400;
   }
