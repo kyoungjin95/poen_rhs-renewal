@@ -75,6 +75,8 @@ async function 재제조현황_시작() {
 
 async function 재제조현황_조회() {
   if (worker == "") return;
+  BSA재제조_v = [];
+
   if (level == "kia_일반") {
     count(BSA재제조, {
       차종: {
