@@ -100,6 +100,8 @@ var flag_racks = false;
 var flag_불량의심부품 = false;
 var flag_기초보고서 = false;
 var flag_분해조립_재제조 = false;
+var flag_분해조립_공정대기 = false;
+var flag_분해조립_폐기자재 = false;
 
 var interval = setInterval(function () {
 	if (flag_재제조현황 == true) { console.log('재제조현황'); stop_repeat(); 재제조현황_시작(); }
@@ -137,6 +139,8 @@ var interval = setInterval(function () {
 	if (flag_부품정보_list == true) { console.log('부품정보'); stop_repeat(); 부품정보_list_시작(); }
 	if (flag_기초보고서 == true) { console.log('기초보고서'); stop_repeat(); 기초보고서_시작(); }
 	if (flag_분해조립_재제조 == true) { console.log('분해조립 재제조'); stop_repeat(); 분해조립_재제조_시작(); }
+	if (flag_분해조립_공정대기 == true) { console.log('분해조립 공정대기'); stop_repeat(); 분해조립_공정대기_시작(); }
+	if (flag_분해조립_폐기자재 == true) { console.log('분해조립 폐기자재'); stop_repeat(); 분해조립_폐기자재_시작(); }
 }, 1000);
 
 //var intervalRepeat = setInterval(function() {

@@ -49,6 +49,9 @@ const 품번 = "품번";
 const 창고이동 = "창고이동";
 const 변수 = "변수";
 const 불량의심부품 = "불량의심부품";
+const 분해조립재제조 = "분해조립재제조";
+const 분해조립공정대기 = "분해조립공정대기";
+const 분해조립폐기자재 = "분해조립폐기자재";
 
 var BSA재제조_cnt = 0;
 var 입고_cnt = 0;
@@ -99,6 +102,9 @@ var 품번_cnt = 0;
 var 창고이동_cnt = 0;
 var 변수_cnt = 0;
 var 불량의심부품_cnt = 0;
+var 분해조립재제조_cnt = 0;
+var 분해조립공정대기_cnt = 0;
+var 분해조립폐기자재_cnt = 0;
 
 var option_입고_cnt = 0;
 var option_세척_cnt = 0;
@@ -569,6 +575,33 @@ const 분해조립_doc = {
   공정완료일: "",
   작업자: "",
 };
+
+const 분해조립재제조_doc = {
+	관리번호: "",
+	품명: "",
+	교체전품번: "",
+	교체전QR: "",
+	신품고품: "",
+	교체후품번: "",
+	교체후QR: "",
+	교체사유: ""
+}
+
+const 분해조립공정대기_doc = {
+	관리번호: "",
+	품명: "",
+	품번: "",
+	QR: "",
+	대기사유: ""
+}
+
+const 분해조립폐기자재_doc = {
+	관리번호: "",
+	품명: "",
+	품번: "",
+	QR: "",
+	폐기사유: ""
+}
 
 const 성능검사_doc = {
   관리번호: "",
@@ -2094,6 +2127,36 @@ const 분해조립_ = {
   작업자: 1,
 };
 
+const 분해조립재제조_ = {
+	_id: 0,
+	관리번호: 1,
+	품명: 1,
+	교체전품번: 1,
+	교체전QR: 1,
+	신품고품: 1,
+	교체후품번: 1,
+	교체후QR: 1,
+	교체사유: 1
+}
+
+const 분해조립공정대기_ = {
+	_id: 0,
+	관리번호: 1,
+	품명: 1,
+	품번: 1,
+	QR: 1,
+	대기사유: 1,
+}
+
+const 분해조립폐기자재_ = {
+	_id: 0,
+	관리번호: 1,
+	품명: 1,
+	품번: 1,
+	QR: 1,
+	폐기사유: 1,
+}
+
 const EOL_ = {
   _id: 0,
   관리번호: 1,
@@ -3486,6 +3549,18 @@ socket.on("count_result", async function (col, count, rcv_check, option = "") {
       불량의심부품_cnt = 0;
       불량의심부품_cnt = JSON.parse(JSON.stringify(count));
 
+    case 분해조립재제조:
+      분해조립재제조_cnt = 0;
+      분해조립재제조_cnt = JSON.parse(JSON.stringify(count));
+
+    case 분해조립공정대기:
+      분해조립공정대기_cnt = 0;
+      분해조립공정대기_cnt = JSON.parse(JSON.stringify(count));
+
+    case 분해조립폐기자재:
+      분해조립폐기자재_cnt = 0;
+      분해조립폐기자재_cnt = JSON.parse(JSON.stringify(count));
+
     default:
       doc_count = 0;
       doc_count = JSON.parse(JSON.stringify(count));
@@ -3824,6 +3899,21 @@ socket.on("find_result", async function (col, result, rcv_check) {
       불량의심부품_v = JSON.parse(JSON.stringify(result));
       break;
 
+    case 분해조립재제조:
+      분해조립재제조_v = [];
+      분해조립재제조_v = JSON.parse(JSON.stringify(result));
+      break;
+
+    case 분해조립공정대기:
+      분해조립공정대기_v = [];
+      분해조립공정대기_v = JSON.parse(JSON.stringify(result));
+      break;
+
+    case 분해조립폐기자재:
+      분해조립폐기자재_v = [];
+      분해조립폐기자재_v = JSON.parse(JSON.stringify(result));
+      break;
+
     default:
       find_array = [];
       find_array = JSON.parse(JSON.stringify(result));
@@ -3910,6 +4000,9 @@ function reset_result() {
   구자료_v = [];
   품번_v = [];
   불량의심부품_v = [];
+  분해조립재제조_v = [];
+  분해조립공정대기_v = [];
+  분해조립폐기자재_v = [];
   find_array = [];
 }
 
@@ -3959,6 +4052,9 @@ function reset_count() {
   부품정보_list_cnt = 0;
   품번_cnt = 0;
   불량의심부품_cnt = 0;
+  분해조립재제조_cnt = 0;
+  분해조립공정대기_cnt = 0;
+  분해조립폐기자재_cnt = 0;
   doc_count = 0;
 }
 
@@ -4055,6 +4151,24 @@ async function update_고품정보(col, doc) {
   socket.emit("update", worker, col, { QR: doc.QR }, { $set: doc });
 }
 
+async function update_분해조립재제조(col, doc) {
+  if (socket == undefined) return;
+  flag_arrivedMSG = false;
+  socket.emit("update", worker, col, { 교체전QR: doc.교체전QR }, { $set: doc });
+}
+
+async function update_분해조립공정대기(col, doc) {
+  if (socket == undefined) return;
+  flag_arrivedMSG = false;
+  socket.emit("update", worker, col, { QR: doc.QR }, { $set: doc });
+}
+
+async function update_분해조립폐기자재(col, doc) {
+  if (socket == undefined) return;
+  flag_arrivedMSG = false;
+  socket.emit("update", worker, col, { QR: doc.QR }, { $set: doc });
+}
+
 async function deleteOne(col, management_id) {
   if (socket == undefined) return;
   flag_arrivedMSG = false;
@@ -4101,6 +4215,42 @@ async function deleteOne_제주재고(col, 관리번호) {
   if (socket == undefined) return;
   flag_arrivedMSG = false;
   socket.emit("delete", worker, col, { 관리번호: 관리번호 });
+}
+
+async function deleteOne_분해조립재제조(col, 관리번호) {
+  if (socket == undefined) return;
+  flag_arrivedMSG = false;
+  socket.emit("delete", worker, col, { 관리번호: 관리번호 });
+}
+
+async function delete_분해조립재제조(col, 교체전QR) {
+  if (socket == undefined) return;
+  flag_arrivedMSG = false;
+  socket.emit("delete", worker, col, { 교체전QR: 교체전QR });
+}
+
+async function deleteOne_분해조립공정대기(col, 관리번호) {
+  if (socket == undefined) return;
+  flag_arrivedMSG = false;
+  socket.emit("delete", worker, col, { 관리번호: 관리번호 });
+}
+
+async function delete_분해조립공정대기(col, QR) {
+  if (socket == undefined) return;
+  flag_arrivedMSG = false;
+  socket.emit("delete", worker, col, { QR: QR });
+}
+
+async function deleteOne_분해조립폐기자재(col, 관리번호) {
+  if (socket == undefined) return;
+  flag_arrivedMSG = false;
+  socket.emit("delete", worker, col, { 관리번호: 관리번호 });
+}
+
+async function delete_분해조립폐기자재(col, QR) {
+  if (socket == undefined) return;
+  flag_arrivedMSG = false;
+  socket.emit("delete", worker, col, { QR: QR });
 }
 
 async function delete_계정(_id) {
@@ -4304,6 +4454,22 @@ async function find(col, management_id) {
       socket.emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 불량의심부품_ }, check);
       break;
 
+    case "불량의심부품":
+      socket.emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 불량의심부품_ }, check);
+      break;
+
+    case "분해조립재제조":
+      socket.emit("find", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 분해조립재제조_ }, check);
+      break;
+
+    case "분해조립공정대기":
+      socket.emit("find", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 분해조립공정대기_ }, check);
+      break;
+
+    case "분해조립폐기자재":
+      socket.emit("find", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 분해조립폐기자재_ }, check);
+      break;
+
     default:
       console.log("collection name is not match");
   }
@@ -4323,6 +4489,30 @@ async function findOne_불량의심부품(col, query) {
   check++;
   if (check > 10) check = 0;
   socket.emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 불량의심부품_ }, check);
+}
+
+async function findOne_분해조립재제조(col, query) {
+  if (socket == undefined) return;
+  flag_arrivedMSG = false;
+  check++;
+  if (check > 10) check = 0;
+  socket.emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 분해조립재제조_ }, check);
+}
+
+async function findOne_분해조립공정대기(col, query) {
+  if (socket == undefined) return;
+  flag_arrivedMSG = false;
+  check++;
+  if (check > 10) check = 0;
+  socket.emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 분해조립공정대기_ }, check);
+}
+
+async function findOne_분해조립폐기자재(col, query) {
+  if (socket == undefined) return;
+  flag_arrivedMSG = false;
+  check++;
+  if (check > 10) check = 0;
+  socket.emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 분해조립폐기자재_ }, check);
 }
 
 async function findOne_품번(col, query) {
@@ -4562,6 +4752,30 @@ async function find_계정(col, query) {
   if (check > 10) check = 0;
 
   socket.emit("find", worker, col, query, { sort: { kind: 1 }, projection: 계정_ }, check);
+}
+
+async function find_분해조립재제조(col, query) {
+  if (socket == undefined) return;
+  flag_arrivedMSG = false;
+  check++;
+  if (check > 10) check = 0;
+  socket.emit("find", worker, col, query, { sort: { kind: 1 }, projection: 분해조립재제조_ }, check);
+}
+
+async function find_분해조립공정대기(col, query) {
+  if (socket == undefined) return;
+  flag_arrivedMSG = false;
+  check++;
+  if (check > 10) check = 0;
+  socket.emit("find", worker, col, query, { sort: { kind: 1 }, projection: 분해조립공정대기_ }, check);
+}
+
+async function find_분해조립폐기자재(col, query) {
+  if (socket == undefined) return;
+  flag_arrivedMSG = false;
+  check++;
+  if (check > 10) check = 0;
+  socket.emit("find", worker, col, query, { sort: { kind: 1 }, projection: 분해조립폐기자재_ }, check);
 }
 
 async function find_불량의심부품(col, query) {

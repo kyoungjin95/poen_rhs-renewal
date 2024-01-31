@@ -56,7 +56,7 @@ async function login() {
         }
       }, 1000);
       await sleep(1);
-      alert('#공지사항#\nVersion update sky 0.41\n1. 공정완료일 수정가능');
+      //alert('#공지사항#\nVersion update sky 0.41\n1. 공정완료일 수정가능');
     } else if (worker == _id.value) {
       worker = "";
       level = "";
