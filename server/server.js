@@ -89,17 +89,17 @@ io.on('connection', async function(socket) {
 	socket.on('insert', async function(worker, col, doc) {
 		console.log('request insert');
 
-		//const result = await insert(col, doc);
-		//socket.emit('insert_result', result);
-		//logger.info('worker:'+ worker + ' insert col:' + col +'doc:'+ JSON.stringify(doc));
+		const result = await insert(col, doc);
+		socket.emit('insert_result', result);
+		logger.info('worker:'+ worker + ' insert col:' + col +'doc:'+ JSON.stringify(doc));
 	});
 
 	socket.on('insertMany', async function(worker, col, doc) {
 		console.log('request insertMany');
 
-		//const result = await insertMany(col, doc);
-		//socket.emit('insert_result', result);
-		//logger.info('worker:'+ worker + ' insert col:' + col +'doc:'+ JSON.stringify(doc));
+		const result = await insertMany(col, doc);
+		socket.emit('insert_result', result);
+		logger.info('worker:'+ worker + ' insert col:' + col +'doc:'+ JSON.stringify(doc));
 	});
 
 	socket.on('count', async function(level, col, query, check, option = '') {

@@ -168,6 +168,8 @@ async function 입고_save() {
 
   find(BSA재제조, _management_id.value);
   await delay();
+  
+  console.log('기본정보 유무 : ', BSA재제조_v);
 
   if (BSA재제조_v == null) {
     var _doc = JSON.parse(JSON.stringify(BSA재제조_doc));
