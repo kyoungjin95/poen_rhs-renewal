@@ -256,7 +256,7 @@ var _D2_UPR_CASE_COLOR = "";
 var _D2_LV_W_H_COLOR = "";
 var _D2_MODULE_1_COLOR = "";
 
-async function 불량의심부품_시작() {
+async function 불량의심부품_시작(내부 = true) {
   if (typeof _D2_MODULE_1 == "undefined") {
     await sleep(1);
     return;
@@ -350,10 +350,10 @@ async function 불량의심부품_시작() {
     });
   });
 
-  불량의심부품_load();
+  불량의심부품_load(내부);
 }
 
-async function 불량의심부품_load() {
+async function 불량의심부품_load(내부 = true) {
   if (_management_id.value == "") return;
 
   find(불량의심부품, _management_id.value);
@@ -362,7 +362,7 @@ async function 불량의심부품_load() {
   if (불량의심부품_v == null) return;
   console.log(불량의심부품_v);
 
-  _재제조comment.value = 불량의심부품_v.재제조comment;
+  if(내부 == true) _재제조comment.value = 불량의심부품_v.재제조comment;
 
   A_UPR_CASE = 불량의심부품_v.A_UPR_CASE;
   A_LWR_CASE = 불량의심부품_v.A_LWR_CASE;

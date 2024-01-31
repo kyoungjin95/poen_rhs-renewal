@@ -9,6 +9,15 @@ async function 분해조립_시작() {
 	if (flag_분해조립 == true) {
 		flag_분해조립 = false;
 		await 분해조립_list();
+
+		_management_id.value = 관리번호;
+		_차종.value = 차종;
+		_차종_title.value = 차종;
+
+		if(관리번호 != '' && 차종 != '') {
+			await 분해조립_기초보고서_조회();
+			await 불량의심부품_시작();
+		}
 	}
 }
 
@@ -185,7 +194,7 @@ async function 분해조립_기초보고서_조회() {
 
       default:
         showTable("_CS_EV");
-        alert("차종을 확인해 주세요");
+        //alert("차종을 확인해 주세요");
     }
   }
 

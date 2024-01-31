@@ -5745,7 +5745,6 @@ async function compare_품번() {
 		case 'CV_EV' :
 			if(CV_LWR_CASE.indexOf(_C_LWR_CASE_품번.value.toUpperCase()) == -1)  await save_품번('CV', 'LWR_CASE', _A_LWR_CASE_품번.value.toUpperCase());
 			if(CV_UPR_CASE.indexOf(_C_UPR_CASE_품번.value.toUpperCase()) == -1)  await save_품번('CV', 'UPR_CASE', _A_UPR_CASE_품번.value.toUpperCase());
-			if(CV_S_PLUG.indexOf(_C_S_PLUG_품번.value.toUpperCase()) == -1)  await save_품번('CV', 'S_PLUG', _C_S_PLUG_품번.value.toUpperCase());
 			if(CV_SPA.indexOf(_C_SPA_품번.value.toUpperCase()) == -1)  await save_품번('CV', 'SPA', _C_SPA_품번.value.toUpperCase());
 			if(CV_HV_CNTR.indexOf(_C_HV_CNTR_품번.value.toUpperCase()) == -1)  await save_품번('CV', 'HV_CNTR', _C_HV_CNTR_품번.value.toUpperCase());
 			if(CV_HT_CNTR.indexOf(_C_HT_CNTR_품번.value.toUpperCase()) == -1)  await save_품번('CV', 'HT_CNTR', _C_HT_CNTR_품번.value.toUpperCase());
