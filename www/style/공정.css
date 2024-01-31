@@ -667,29 +667,49 @@ td.process__btn {
   color: #0a3c72;
 }
 
-/* *** 분해조립 **** */
+/* **** 배터리팩 정보 입력 - 분해조립 **** */
+.분해조립 {
+  padding-top: 50px;
+}
 .분해조립 ._분해조립_check {
   display: flex;
 }
 .분해조립 #_기초보고서 {
   width: 40%;
 }
-.분해조립 #_기초보고서 table td {
-  padding: 0.3vw;
-}
-.분해조립 #_기초보고서 table td.base,
-.분해조립 #_기초보고서 table td.base2,
-.분해조립 #_기초보고서 table td.base3 {
-  height: 5vh;
+.분해조립 #_기초보고서 table.all {
+  border: 1px solid #000;
+  border-radius: 0;
 }
 .분해조립 #_기초보고서 .base_header,
 .분해조립 #_기초보고서 .base_header2,
 .분해조립 #_기초보고서 .base_header3,
 .분해조립 #_기초보고서 table td.result_header {
-  font-size: 0.6vw;
+  font-size: 0.5vw;
 }
-.분해조립 {
-  padding-top: 50px;
+.분해조립 #_기초보고서 table td.result_header {
+  padding: 0.3vw;
+}
+.분해조립 #_기초보고서 table.base,
+.분해조립 #_기초보고서 base.tableAll {
+  height: 100%;
+  border: none;
+}
+.분해조립 #_기초보고서 table td.base,
+.분해조립 #_기초보고서 table td.base2,
+.분해조립 #_기초보고서 table td.base3 {
+  font-size: 0.5vw;
+  height: 1.5vw;
+}
+.분해조립 #_기초보고서 table td.base_left,
+.분해조립 #_기초보고서 #_분석결과값,
+.분해조립 #_기초보고서 #_재제조comment {
+  font-size: 0.5vw;
+  word-break: keep-all;
+}
+.분해조립 #_기초보고서 .widthImg {
+  width: 80%;
+  align-items: stretch;
 }
 .분해조립 .부품정보 {
   width: 60%;
