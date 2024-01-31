@@ -6,9 +6,10 @@ async function 분해조립_시작() {
 		return;
 	}
 
-	if (flag_분해조립 == true) await 분해조립_list();
-
-	flag_분해조립 = false;
+	if (flag_분해조립 == true) {
+		flag_분해조립 = false;
+		await 분해조립_list();
+	}
 }
 
 async function 분해조립_list() {
@@ -89,15 +90,21 @@ async function 분해조립_list() {
 
 	분해조립_list_table.on("rowClick", async function (e, row) {
 		console.log("selected 관리번호: ", row.getData().관리번호);
+		console.log("selected 차종: ", row.getData().차종);
 
 		관리번호 = row.getData().관리번호;
+		차종 = row.getData().차종;
+		_management_id.value = 관리번호;
+		_차종.value = 차종;
+		_차종_title.value = 차종;
 
 		await sleep(1);
 
 		var yes = confirm('선택한 BSA로 분해조립 공정 정보입력을 시작하시겠습니까?');
 		if (yes != true) return;
 
-		분해조립_기초보고서_조회();
+		await 분해조립_기초보고서_조회();
+		await 불량의심부품_시작();
 	});
 
 	//Update filters on value change
@@ -131,7 +138,7 @@ function 분해조립_exit() {
 }
 
 async function 분해조립_기초보고서_조회() {
-  findOne_입고(입고, { 관리번호: 관리번호 });
+  find(입고, 관리번호);
   await delay();
 
   if (입고_v != null) {
@@ -546,37 +553,6 @@ async function 분해조립_기초보고서_조회() {
     }
   }
 
-  find(세척_pic, 관리번호);
-  await delay();
-
-  if (세척_pic_v != null) {
-    //기밀검사-케이스
-    _측정사진1.src = 세척_pic_v.pic1;
-    _측정값사진1.src = 세척_pic_v.pic2;
-    _기밀검사_특이사항1.src = 세척_pic_v.pic3;
-    _기밀검사_특이사항2.src = 세척_pic_v.pic4;
-
-    //육안검사 외부1
-    _top_pic.src = 세척_pic_v.pic5;
-    _front_pic.src = 세척_pic_v.pic6;
-    _left_pic.src = 세척_pic_v.pic7;
-    _bottom_pic.src = 세척_pic_v.pic8;
-    _rear_pic.src = 세척_pic_v.pic9;
-    _right_pic.src = 세척_pic_v.pic10;
-
-    //육안검사 외부 2
-    _이상부위_외부1.src = 세척_pic_v.pic11;
-    _이상부위_외부2.src = 세척_pic_v.pic12;
-    _이상부위_외부3.src = 세척_pic_v.pic13;
-    _이상부위_외부4.src = 세척_pic_v.pic14;
-  }
-
-  _육안검사_결과.innerHTML = 외부검사;
-  _육안검사_결과2.innerHTML = 외부검사사유;
-
-  _육안검사_내부_결과.innerHTML = 내부검사;
-  _육안검사_내부_결과2.innerHTML = 내부검사사유;
-
   find(기초검사_pic1, 관리번호);
   await delay();
 
@@ -584,4 +560,27 @@ async function 분해조립_기초보고서_조회() {
     // qr code
     _BSA_QR.src = 기초검사_pic1_v.pic1;
   }
+}
+
+function 분해조립_updateFilter() {
+	var fieldEl = document.getElementById("filter-field");
+	var typeEl = document.getElementById("filter-type");
+	var valueEl = document.getElementById("filter-value");
+
+	var filterVal = fieldEl.options[fieldEl.selectedIndex].value;
+	var typeVal = typeEl.options[typeEl.selectedIndex].value;
+
+	var filter = filterVal == "function" ? customFilter : filterVal;
+
+	if (filterVal == "function") {
+		typeEl.disabled = true;
+		valueEl.disabled = true;
+	} else {
+		typeEl.disabled = false;
+		valueEl.disabled = false;
+	}
+
+	if (filterVal) {
+		분해조립_list_table.setFilter(filter, typeVal, valueEl.value);
+	}
 }

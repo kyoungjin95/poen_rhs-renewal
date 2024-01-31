@@ -5,8 +5,10 @@ async function 세척_시작(is재제조 = 0) {
 	while (_management_id == undefined) {
 		await sleep(DELAY);
 	}
-	if (flag_세척 == true) await 세척_list();
-	flag_세척 = false;
+	if (flag_세척 == true) {
+		flag_세척 = false;
+		await 세척_list();
+	}
 
 	if (is재제조 == 0) {
 		if (_management_id.value.length == 0) return;
