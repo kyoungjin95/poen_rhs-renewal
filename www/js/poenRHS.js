@@ -4491,12 +4491,12 @@ async function findOne_불량의심부품(col, query) {
   socket.emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 불량의심부품_ }, check);
 }
 
-async function findOne_분해조립재제조(col, query) {
+async function find_분해조립재제조(col, query) {
   if (socket == undefined) return;
   flag_arrivedMSG = false;
   check++;
   if (check > 10) check = 0;
-  socket.emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 분해조립재제조_ }, check);
+  socket.emit("find", worker, col, query, { sort: { kind: 1 }, projection: 분해조립재제조_ }, check);
 }
 
 async function findOne_분해조립공정대기(col, query) {
@@ -4504,7 +4504,7 @@ async function findOne_분해조립공정대기(col, query) {
   flag_arrivedMSG = false;
   check++;
   if (check > 10) check = 0;
-  socket.emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 분해조립공정대기_ }, check);
+  socket.emit("find", worker, col, query, { sort: { kind: 1 }, projection: 분해조립공정대기_ }, check);
 }
 
 async function findOne_분해조립폐기자재(col, query) {
@@ -4512,7 +4512,7 @@ async function findOne_분해조립폐기자재(col, query) {
   flag_arrivedMSG = false;
   check++;
   if (check > 10) check = 0;
-  socket.emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 분해조립폐기자재_ }, check);
+  socket.emit("find", worker, col, query, { sort: { kind: 1 }, projection: 분해조립폐기자재_ }, check);
 }
 
 async function findOne_품번(col, query) {
