@@ -2502,6 +2502,34 @@
           </table>
         </div>
       </div>
+      <div>
+	      <table>
+		      <tr>
+			      <td>
+				      <label for="_공정입고일">공정입고일</label>
+			      </td>
+			      <td>
+              			      <input type="datetime-local" id="_공정입고일" size="40" value="0000-00-00T00:00" required />
+			      </td>
+		      </tr>
+		      <tr>
+			      <td>
+				      <label for="_공정완료일">공정완료일</label>
+			      </td>
+			      <td>
+              			      <input type="datetime-local" id="_공정완료일" size="40" value="0000-00-00T00:00" required />
+			      </td>
+		      </tr>
+		      <tr>
+			      <td>
+				      <label for="_작성자">작성자</label>
+			      </td>
+			      <td>
+              			      <input type="text" id="_작성자" size="40" required />
+			      </td>
+		      </tr>
+	      </table>
+      </div>
       <div id='grid_교체부품'>
       </div>
       <div class="input-group">
@@ -2514,7 +2542,9 @@
 
     <script>
       const _management_id = document.getElementById("_management_id");
-
+      const _공정입고일 = document.getElementById("_공정입고일");
+      const _공정완료일 = document.getElementById("_공정입고일");
+      const _작성자 = document.getElementById("_작성자");
       const _교체사유1 = document.getElementById("_교체사유1");
       const _교체사유2 = document.getElementById("_교체사유2");
       const _교체사유3 = document.getElementById("_교체사유3");

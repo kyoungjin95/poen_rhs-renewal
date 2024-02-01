@@ -36,10 +36,19 @@ async function 분해조립_재제조_시작() {
 	find(분해조립재제조, 관리번호);
 	await delay();
 
-	분해조립재제조_tabledata = JSON.parse(JSON.stringify(분해조립재제조_v));
-	await 교체부품_table(분해조립재제조_tabledata);
+	교체부품_tabledata = JSON.parse(JSON.stringify(분해조립재제조_v));
+	await 교체부품_table(교체부품_tabledata);
 
 	재제조_choisenButton();
+
+	var DateTime = luxon.DateTime;
+	var seoul = DateTime.local().setZone("Asia/Seoul");
+	var now = seoul.toString().slice(0, 19);
+
+	if (_공정입고일.value == "") _공정입고일.value = now;
+	if (_공정완료일.value == "") _공정완료일.value = now;
+
+	_작성자.value = worker;
 }
 
 var table_부품교환;
@@ -54,10 +63,13 @@ function 교체부품_table(tabledata) {
 			{ title: "품명", field: "품명", sorter: "string" },
 			{ title: "교체전 품번", field: "교체전품번", sorter: "string" },
 			{ title: "교체전 QR", field: "교체전QR", sorter: "string" },
-			{ title: "신품/고품", field: "신품고품", editor: "input"},
+			{ title: "신품/고품", field: "신품고품", editor: "select", editorParams: {values: { "신품":"신품", "고품":"고품"}}},
 			{ title: "교체후 품번", field: "교체후품번", editor: "input" },
 			{ title: "교체후 QR", field: "교체후QR", editor: "input" },
 			{ title: "교체사유", field: "교체사유", editor: "textarea" },
+			{ title: "공정입고일", field: "공정입고일", editor: "input" },
+			{ title: "공정완료일", field: "공정완료일", editor: "input" },
+			{ title: "작성자", field: "작성자", editor: "input" },
 			{
 				formatter: "buttonCross",
 				width: 40,
@@ -72,8 +84,6 @@ function 교체부품_table(tabledata) {
 
 					교체부품_tabledata.splice(row_index - 1, 1);
 					교체부품_table(교체부품_tabledata);
-
-
 				},
 			},
 		]
@@ -99,7 +109,10 @@ function 재제조_choisenButton() {
 				신품고품 : '',
 				교체후품번 : '',
 				교체후QR : '',
-				교체사유 : ''
+				교체사유 : '',
+				공정입고일 : _공정입고일.value,
+				공정완료일 : _공정완료일.value,
+				작성자: worker,
 			};
 
 			var 중복 = false;
