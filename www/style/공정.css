@@ -681,6 +681,9 @@ td.process__btn {
   border: 1px solid #000;
   border-radius: 0;
 }
+.분해조립 #_기초보고서 .base_header {
+  padding: 5px;
+}
 .분해조립 #_기초보고서 .base_header,
 .분해조립 #_기초보고서 .base_header2,
 .분해조립 #_기초보고서 .base_header3,
@@ -690,16 +693,23 @@ td.process__btn {
 .분해조립 #_기초보고서 table td.result_header {
   padding: 0.3vw;
 }
+.분해조립 #_기초보고서 .base_header2 {
+  padding: 3px;
+}
 .분해조립 #_기초보고서 table.base,
 .분해조립 #_기초보고서 base.tableAll {
   height: 100%;
+  display: inline-block;
   border: none;
+}
+.분해조립 #_기초보고서 table td.base {
+  padding: 3px;
+  height: 1vw;
 }
 .분해조립 #_기초보고서 table td.base,
 .분해조립 #_기초보고서 table td.base2,
 .분해조립 #_기초보고서 table td.base3 {
   font-size: 0.5vw;
-  height: 1.5vw;
 }
 .분해조립 #_기초보고서 table td.base_left,
 .분해조립 #_기초보고서 #_분석결과값,
@@ -708,8 +718,7 @@ td.process__btn {
   word-break: keep-all;
 }
 .분해조립 #_기초보고서 .widthImg {
-  width: 80%;
-  align-items: stretch;
+  width: 100%;
 }
 .분해조립 .부품정보 {
   width: 60%;

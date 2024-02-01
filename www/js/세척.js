@@ -2,475 +2,494 @@ var 입력재제조번호 = "";
 var today_count = 0;
 
 async function 세척_시작(is재제조 = 0) {
-	while (_management_id == undefined) {
-		await sleep(DELAY);
-	}
-	if (flag_세척 == true) {
-		flag_세척 = false;
-		await 세척_list();
-	}
+  while (_management_id == undefined) {
+    await sleep(DELAY);
+  }
+  if (flag_세척 == true) {
+    flag_세척 = false;
+    await 세척_list();
+  }
 
-	if (is재제조 == 0) {
-		if (_management_id.value.length == 0) return;
+  if (is재제조 == 0) {
+    if (_management_id.value.length == 0) return;
 
-		find(BSA재제조, _management_id.value);
-		await delay();
+    find(BSA재제조, _management_id.value);
+    await delay();
 
-		if (BSA재제조_v != null) {
-			_재제조번호.value = BSA재제조_v.재제조번호;
-			_구분.value = BSA재제조_v.구분;
-			_차종.value = BSA재제조_v.차종;
-			_품번.value = BSA재제조_v.품번;
-			_RO_no.value = BSA재제조_v.RO_no;
-		} else {
-			_재제조번호.value = "";
-			_구분.value = "";
-			_차종.value = "";
-			_품번.value = "";
-			_RO_no.value = "";
-		}
-	} else if (is재제조 == 1) {
-		if (_재제조번호.value.length == 0) return;
+    if (BSA재제조_v != null) {
+      _재제조번호.value = BSA재제조_v.재제조번호;
+      _구분.value = BSA재제조_v.구분;
+      _차종.value = BSA재제조_v.차종;
+      _품번.value = BSA재제조_v.품번;
+      _RO_no.value = BSA재제조_v.RO_no;
+    } else {
+      _재제조번호.value = "";
+      _구분.value = "";
+      _차종.value = "";
+      _품번.value = "";
+      _RO_no.value = "";
+    }
+  } else if (is재제조 == 1) {
+    if (_재제조번호.value.length == 0) return;
 
-		findOne_BSA재제조(BSA재제조, { 재제조번호: _재제조번호.value });
-		await delay();
+    findOne_BSA재제조(BSA재제조, { 재제조번호: _재제조번호.value });
+    await delay();
 
-		if (BSA재제조_v != null) {
-			_management_id.value = BSA재제조_v.관리번호;
-			_구분.value = BSA재제조_v.구분;
-			_차종.value = BSA재제조_v.차종;
-			_품번.value = BSA재제조_v.품번;
-			_RO_no.value = BSA재제조_v.RO_no;
-		} else {
-			_management_id.value = "";
-			_구분.value = "";
-			_차종.value = "";
-			_품번.value = "";
-			_RO_no.value = "";
-		}
-	} else if (is재제조 == 2) {
-		if (_RO_no.value.length == 0) return;
+    if (BSA재제조_v != null) {
+      _management_id.value = BSA재제조_v.관리번호;
+      _구분.value = BSA재제조_v.구분;
+      _차종.value = BSA재제조_v.차종;
+      _품번.value = BSA재제조_v.품번;
+      _RO_no.value = BSA재제조_v.RO_no;
+    } else {
+      _management_id.value = "";
+      _구분.value = "";
+      _차종.value = "";
+      _품번.value = "";
+      _RO_no.value = "";
+    }
+  } else if (is재제조 == 2) {
+    if (_RO_no.value.length == 0) return;
 
-		findOne_BSA재제조(BSA재제조, { RO_no: _RO_no.value });
-		await delay();
+    findOne_BSA재제조(BSA재제조, { RO_no: _RO_no.value });
+    await delay();
 
-		if (BSA재제조_v != null) {
-			_management_id.value = BSA재제조_v.관리번호;
-			_재제조번호.value = BSA재제조_v.재제조번호;
-			_구분.value = BSA재제조_v.구분;
-			_차종.value = BSA재제조_v.차종;
-			_품번.value = BSA재제조_v.품번;
-		} else {
-			_management_id.value = "";
-			_재제조번호.value = "";
-			_구분.value = "";
-			_차종.value = "";
-			_품번.value = "";
-		}
-	}
+    if (BSA재제조_v != null) {
+      _management_id.value = BSA재제조_v.관리번호;
+      _재제조번호.value = BSA재제조_v.재제조번호;
+      _구분.value = BSA재제조_v.구분;
+      _차종.value = BSA재제조_v.차종;
+      _품번.value = BSA재제조_v.품번;
+    } else {
+      _management_id.value = "";
+      _재제조번호.value = "";
+      _구분.value = "";
+      _차종.value = "";
+      _품번.value = "";
+    }
+  }
 
-	console.log("load: ", _management_id.value);
+  console.log("load: ", _management_id.value);
 
-	관리번호 = _management_id.value;
+  관리번호 = _management_id.value;
 
-	if (_재제조번호.value == "") {
-		console.log("make product key");
-		var DateTime = luxon.DateTime;
-		var seoul = DateTime.local().setZone("Asia/Seoul");
-		var change_year = seoul.toString().slice(5, 10);
-		console.log('01-01? :', change_year);
+  if (_재제조번호.value == "") {
+    console.log("make product key");
+    var DateTime = luxon.DateTime;
+    var seoul = DateTime.local().setZone("Asia/Seoul");
+    var change_year = seoul.toString().slice(5, 10);
+    console.log("01-01? :", change_year);
 
-		findOne_변수(변수, { 구분: "mado_product_no" });
-		await delay();
+    findOne_변수(변수, { 구분: "mado_product_no" });
+    await delay();
 
-		console.log("변수:", 변수_v);
-		if (변수_v == null) {
-			today_count = String(1);
-		} else {
-			today_count = Number(변수_v.값) + 1;
-			today_count = today_count.toString();
-		}
+    console.log("변수:", 변수_v);
+    if (변수_v == null) {
+      today_count = String(1);
+    } else {
+      today_count = Number(변수_v.값) + 1;
+      today_count = today_count.toString();
+    }
 
-		if(change_year == '01-01') {
-			today_count = String(1);
-		}
+    if (change_year == "01-01") {
+      today_count = String(1);
+    }
 
-		var product_no;
-		product_no = await make_md_product_no(today_count);
+    var product_no;
+    product_no = await make_md_product_no(today_count);
 
-		console.log("product no:", product_no);
+    console.log("product no:", product_no);
 
-		_재제조번호.value = product_no;
-		입력재제조번호 = product_no;
-	}
+    _재제조번호.value = product_no;
+    입력재제조번호 = product_no;
+  }
 
-	find(세척, _management_id.value);
-	await delay();
+  find(세척, _management_id.value);
+  await delay();
 
-	if (세척_v != null) {
-		_공정입고일.value = 세척_v.공정입고일;
-		_공정완료일.value = 세척_v.공정완료일;
-		_어퍼케이스재사용가능.value = 세척_v.어퍼케이스재사용가능;
-		_기밀검사_케이스.value = 세척_v.기밀검사_케이스;
-		_기밀검사_케이스_특이사항.value = 세척_v.기밀검사_케이스_특이사항;
-		_육안검사_외부.value = 세척_v.육안검사_외부;
-		_육안검사_외부_특이사항.value = 세척_v.육안검사_외부_특이사항;
-		_특이사항.value = 세척_v.특이사항;
+  if (세척_v != null) {
+    _공정입고일.value = 세척_v.공정입고일;
+    _공정완료일.value = 세척_v.공정완료일;
+    _어퍼케이스재사용가능.value = 세척_v.어퍼케이스재사용가능;
+    _기밀검사_케이스.value = 세척_v.기밀검사_케이스;
+    _기밀검사_케이스_특이사항.value = 세척_v.기밀검사_케이스_특이사항;
+    _육안검사_외부.value = 세척_v.육안검사_외부;
+    _육안검사_외부_특이사항.value = 세척_v.육안검사_외부_특이사항;
+    _특이사항.value = 세척_v.특이사항;
 
-		find(세척_pic, _management_id.value);
-		await delay();
+    find(세척_pic, _management_id.value);
+    await delay();
 
-		if (세척_pic_v != null) {
-			_img1.src = 세척_pic_v.pic1;
-			_img2.src = 세척_pic_v.pic2;
-			_img3.src = 세척_pic_v.pic3;
-			_img4.src = 세척_pic_v.pic4;
-			_img5.src = 세척_pic_v.pic5;
-			_img6.src = 세척_pic_v.pic6;
-			_img7.src = 세척_pic_v.pic7;
-			_img8.src = 세척_pic_v.pic8;
-			_img9.src = 세척_pic_v.pic9;
-			_img10.src = 세척_pic_v.pic10;
-			_img11.src = 세척_pic_v.pic11;
-			_img12.src = 세척_pic_v.pic12;
-			_img13.src = 세척_pic_v.pic13;
-			_img14.src = 세척_pic_v.pic14;
-		}
-	} else {
-		_공정입고일.value = "0000-00-00T00:00";
-		_공정완료일.value = "0000-00-00T00:00";
-		_어퍼케이스재사용가능.value = "";
-		_기밀검사_케이스.value = "";
-		_기밀검사_케이스_특이사항.value = "";
-		_육안검사_외부.value = "";
-		_육안검사_외부_특이사항.value = "";
-		_특이사항.value = "";
+    if (세척_pic_v != null) {
+      _img1.src = 세척_pic_v.pic1;
+      _img2.src = 세척_pic_v.pic2;
+      _img3.src = 세척_pic_v.pic3;
+      _img4.src = 세척_pic_v.pic4;
+      _img5.src = 세척_pic_v.pic5;
+      _img6.src = 세척_pic_v.pic6;
+      _img7.src = 세척_pic_v.pic7;
+      _img8.src = 세척_pic_v.pic8;
+      _img9.src = 세척_pic_v.pic9;
+      _img10.src = 세척_pic_v.pic10;
+      _img11.src = 세척_pic_v.pic11;
+      _img12.src = 세척_pic_v.pic12;
+      _img13.src = 세척_pic_v.pic13;
+      _img14.src = 세척_pic_v.pic14;
+      _img15.src = 세척_pic_v.pic15;
+    }
+  } else {
+    _공정입고일.value = "0000-00-00T00:00";
+    _공정완료일.value = "0000-00-00T00:00";
+    _어퍼케이스재사용가능.value = "";
+    _기밀검사_케이스.value = "";
+    _기밀검사_케이스_특이사항.value = "";
+    _육안검사_외부.value = "";
+    _육안검사_외부_특이사항.value = "";
+    _특이사항.value = "";
 
-		_img1.src = "";
-		_img2.src = "";
-		_img3.src = "";
-		_img4.src = "";
-		_img5.src = "";
-		_img6.src = "";
-		_img7.src = "";
-		_img8.src = "";
-		_img9.src = "";
-		_img10.src = "";
-		_img11.src = "";
-		_img12.src = "";
-		_img13.src = "";
-		_img14.src = "";
+    _img1.src = "";
+    _img2.src = "";
+    _img3.src = "";
+    _img4.src = "";
+    _img5.src = "";
+    _img6.src = "";
+    _img7.src = "";
+    _img8.src = "";
+    _img9.src = "";
+    _img10.src = "";
+    _img11.src = "";
+    _img12.src = "";
+    _img13.src = "";
+    _img14.src = "";
+    _img15.src = "";
 
-		var DateTime = luxon.DateTime;
-		var seoul = DateTime.local().setZone("Asia/Seoul");
-		var now = seoul.toString().slice(0, 19);
+    var DateTime = luxon.DateTime;
+    var seoul = DateTime.local().setZone("Asia/Seoul");
+    var now = seoul.toString().slice(0, 19);
 
-		_공정입고일.value = now;
-	}
+    _공정입고일.value = now;
+  }
 
-	_img1.ondblclick = function (evt) {
-		_img1.src = "";
-	};
-	_img1.ondrop = function (evt) {
-		var files = evt.dataTransfer?.files;
-		if (files.length > 0) {
-			console.log("drag & drop");
-			resize_pic(files[0], _img1);
-		}
-		evt.preventDefault();
-	};
+  _img1.ondblclick = function (evt) {
+    _img1.src = "";
+  };
+  _img1.ondrop = function (evt) {
+    var files = evt.dataTransfer?.files;
+    if (files.length > 0) {
+      console.log("drag & drop");
+      resize_pic(files[0], _img1);
+    }
+    evt.preventDefault();
+  };
 
-	_img2.ondblclick = function (evt) {
-		_img2.src = "";
-	};
-	_img2.ondrop = function (evt) {
-		var files = evt.dataTransfer?.files;
-		if (files.length > 0) {
-			console.log("drag & drop");
-			resize_pic(files[0], _img2);
-		}
-		evt.preventDefault();
-	};
+  _img2.ondblclick = function (evt) {
+    _img2.src = "";
+  };
+  _img2.ondrop = function (evt) {
+    var files = evt.dataTransfer?.files;
+    if (files.length > 0) {
+      console.log("drag & drop");
+      resize_pic(files[0], _img2);
+    }
+    evt.preventDefault();
+  };
 
-	_img3.ondblclick = function (evt) {
-		_img3.src = "";
-	};
-	_img3.ondrop = function (evt) {
-		var files = evt.dataTransfer?.files;
-		if (files.length > 0) {
-			console.log("drag & drop");
-			resize_pic(files[0], _img3);
-		}
-		evt.preventDefault();
-	};
+  _img3.ondblclick = function (evt) {
+    _img3.src = "";
+  };
+  _img3.ondrop = function (evt) {
+    var files = evt.dataTransfer?.files;
+    if (files.length > 0) {
+      console.log("drag & drop");
+      resize_pic(files[0], _img3);
+    }
+    evt.preventDefault();
+  };
 
-	_img4.ondblclick = function (evt) {
-		_img4.src = "";
-	};
-	_img4.ondrop = function (evt) {
-		var files = evt.dataTransfer?.files;
-		if (files.length > 0) {
-			console.log("drag & drop");
-			resize_pic(files[0], _img4);
-		}
-		evt.preventDefault();
-	};
+  _img4.ondblclick = function (evt) {
+    _img4.src = "";
+  };
+  _img4.ondrop = function (evt) {
+    var files = evt.dataTransfer?.files;
+    if (files.length > 0) {
+      console.log("drag & drop");
+      resize_pic(files[0], _img4);
+    }
+    evt.preventDefault();
+  };
 
-	_img5.ondblclick = function (evt) {
-		_img5.src = "";
-	};
-	_img5.ondrop = function (evt) {
-		var files = evt.dataTransfer?.files;
-		if (files.length > 0) {
-			console.log("drag & drop");
-			resize_pic(files[0], _img5);
-		}
-		evt.preventDefault();
-	};
+  _img5.ondblclick = function (evt) {
+    _img5.src = "";
+  };
+  _img5.ondrop = function (evt) {
+    var files = evt.dataTransfer?.files;
+    if (files.length > 0) {
+      console.log("drag & drop");
+      resize_pic(files[0], _img5);
+    }
+    evt.preventDefault();
+  };
 
-	_img6.ondblclick = function (evt) {
-		_img6.src = "";
-	};
-	_img6.ondrop = function (evt) {
-		var files = evt.dataTransfer?.files;
-		if (files.length > 0) {
-			console.log("drag & drop");
-			resize_pic(files[0], _img6);
-		}
-		evt.preventDefault();
-	};
+  _img6.ondblclick = function (evt) {
+    _img6.src = "";
+  };
+  _img6.ondrop = function (evt) {
+    var files = evt.dataTransfer?.files;
+    if (files.length > 0) {
+      console.log("drag & drop");
+      resize_pic(files[0], _img6);
+    }
+    evt.preventDefault();
+  };
 
-	_img7.ondblclick = function (evt) {
-		_img7.src = "";
-	};
-	_img7.ondrop = function (evt) {
-		var files = evt.dataTransfer?.files;
-		if (files.length > 0) {
-			console.log("drag & drop");
-			resize_pic(files[0], _img7);
-		}
-		evt.preventDefault();
-	};
+  _img7.ondblclick = function (evt) {
+    _img7.src = "";
+  };
+  _img7.ondrop = function (evt) {
+    var files = evt.dataTransfer?.files;
+    if (files.length > 0) {
+      console.log("drag & drop");
+      resize_pic(files[0], _img7);
+    }
+    evt.preventDefault();
+  };
 
-	_img8.ondblclick = function (evt) {
-		_img8.src = "";
-	};
-	_img8.ondrop = function (evt) {
-		var files = evt.dataTransfer?.files;
-		if (files.length > 0) {
-			console.log("drag & drop");
-			resize_pic(files[0], _img8);
-		}
-		evt.preventDefault();
-	};
+  _img8.ondblclick = function (evt) {
+    _img8.src = "";
+  };
+  _img8.ondrop = function (evt) {
+    var files = evt.dataTransfer?.files;
+    if (files.length > 0) {
+      console.log("drag & drop");
+      resize_pic(files[0], _img8);
+    }
+    evt.preventDefault();
+  };
 
-	_img9.ondblclick = function (evt) {
-		_img9.src = "";
-	};
-	_img9.ondrop = function (evt) {
-		var files = evt.dataTransfer?.files;
-		if (files.length > 0) {
-			console.log("drag & drop");
-			resize_pic(files[0], _img9);
-		}
-		evt.preventDefault();
-	};
+  _img9.ondblclick = function (evt) {
+    _img9.src = "";
+  };
+  _img9.ondrop = function (evt) {
+    var files = evt.dataTransfer?.files;
+    if (files.length > 0) {
+      console.log("drag & drop");
+      resize_pic(files[0], _img9);
+    }
+    evt.preventDefault();
+  };
 
-	_img10.ondblclick = function (evt) {
-		_img10.src = "";
-	};
-	_img10.ondrop = function (evt) {
-		var files = evt.dataTransfer?.files;
-		if (files.length > 0) {
-			console.log("drag & drop");
-			resize_pic(files[0], _img10);
-		}
-		evt.preventDefault();
-	};
+  _img10.ondblclick = function (evt) {
+    _img10.src = "";
+  };
+  _img10.ondrop = function (evt) {
+    var files = evt.dataTransfer?.files;
+    if (files.length > 0) {
+      console.log("drag & drop");
+      resize_pic(files[0], _img10);
+    }
+    evt.preventDefault();
+  };
 
-	_img11.ondblclick = function (evt) {
-		_img11.src = "";
-	};
-	_img11.ondrop = function (evt) {
-		var files = evt.dataTransfer?.files;
-		if (files.length > 0) {
-			console.log("drag & drop");
-			resize_pic(files[0], _img11);
-		}
-		evt.preventDefault();
-	};
+  _img11.ondblclick = function (evt) {
+    _img11.src = "";
+  };
+  _img11.ondrop = function (evt) {
+    var files = evt.dataTransfer?.files;
+    if (files.length > 0) {
+      console.log("drag & drop");
+      resize_pic(files[0], _img11);
+    }
+    evt.preventDefault();
+  };
 
-	_img12.ondblclick = function (evt) {
-		_img12.src = "";
-	};
-	_img12.ondrop = function (evt) {
-		var files = evt.dataTransfer?.files;
-		if (files.length > 0) {
-			console.log("drag & drop");
-			resize_pic(files[0], _img12);
-		}
-		evt.preventDefault();
-	};
+  _img12.ondblclick = function (evt) {
+    _img12.src = "";
+  };
+  _img12.ondrop = function (evt) {
+    var files = evt.dataTransfer?.files;
+    if (files.length > 0) {
+      console.log("drag & drop");
+      resize_pic(files[0], _img12);
+    }
+    evt.preventDefault();
+  };
 
-	_img13.ondblclick = function (evt) {
-		_특이사항_box.src = "";
-	};
-	_img13.ondrop = function (evt) {
-		var files = evt.dataTransfer?.files;
-		if (files.length > 0) {
-			console.log("drag & drop");
-			resize_pic(files[0], _img13);
-		}
-		evt.preventDefault();
-	};
+  _img13.ondblclick = function (evt) {
+    _특이사항_box.src = "";
+  };
+  _img13.ondrop = function (evt) {
+    var files = evt.dataTransfer?.files;
+    if (files.length > 0) {
+      console.log("drag & drop");
+      resize_pic(files[0], _img13);
+    }
+    evt.preventDefault();
+  };
 
-	_img14.ondblclick = function (evt) {
-		_img14.src = "";
-	};
-	_img14.ondrop = function (evt) {
-		var files = evt.dataTransfer?.files;
-		if (files.length > 0) {
-			console.log("drag & drop");
-			resize_pic(files[0], _img14);
-		}
-		evt.preventDefault();
-	};
+  _img14.ondblclick = function (evt) {
+    _img14.src = "";
+  };
+  _img14.ondrop = function (evt) {
+    var files = evt.dataTransfer?.files;
+    if (files.length > 0) {
+      console.log("drag & drop");
+      resize_pic(files[0], _img14);
+    }
+    evt.preventDefault();
+  };
 
-	_img1.ondragover = function (evt) {
-		evt.preventDefault();
-	};
+  _img15.ondblclick = function (evt) {
+    _img14.src = "";
+  };
+  _img15.ondrop = function (evt) {
+    var files = evt.dataTransfer?.files;
+    if (files.length > 0) {
+      console.log("drag & drop");
+      resize_pic(files[0], _img15);
+    }
+    evt.preventDefault();
+  };
 
-	_img2.ondragover = function (evt) {
-		evt.preventDefault();
-	};
+  _img1.ondragover = function (evt) {
+    evt.preventDefault();
+  };
 
-	_img3.ondragover = function (evt) {
-		evt.preventDefault();
-	};
+  _img2.ondragover = function (evt) {
+    evt.preventDefault();
+  };
 
-	_img4.ondragover = function (evt) {
-		evt.preventDefault();
-	};
+  _img3.ondragover = function (evt) {
+    evt.preventDefault();
+  };
 
-	_img5.ondragover = function (evt) {
-		evt.preventDefault();
-	};
+  _img4.ondragover = function (evt) {
+    evt.preventDefault();
+  };
 
-	_img6.ondragover = function (evt) {
-		evt.preventDefault();
-	};
+  _img5.ondragover = function (evt) {
+    evt.preventDefault();
+  };
 
-	_img7.ondragover = function (evt) {
-		evt.preventDefault();
-	};
+  _img6.ondragover = function (evt) {
+    evt.preventDefault();
+  };
 
-	_img8.ondragover = function (evt) {
-		evt.preventDefault();
-	};
+  _img7.ondragover = function (evt) {
+    evt.preventDefault();
+  };
 
-	_img9.ondragover = function (evt) {
-		evt.preventDefault();
-	};
+  _img8.ondragover = function (evt) {
+    evt.preventDefault();
+  };
 
-	_img10.ondragover = function (evt) {
-		evt.preventDefault();
-	};
+  _img9.ondragover = function (evt) {
+    evt.preventDefault();
+  };
 
-	_img11.ondragover = function (evt) {
-		evt.preventDefault();
-	};
+  _img10.ondragover = function (evt) {
+    evt.preventDefault();
+  };
 
-	_img12.ondragover = function (evt) {
-		evt.preventDefault();
-	};
+  _img11.ondragover = function (evt) {
+    evt.preventDefault();
+  };
 
-	_img13.ondragover = function (evt) {
-		evt.preventDefault();
-	};
+  _img12.ondragover = function (evt) {
+    evt.preventDefault();
+  };
 
-	_img14.ondragover = function (evt) {
-		evt.preventDefault();
-	};
+  _img13.ondragover = function (evt) {
+    evt.preventDefault();
+  };
+
+  _img14.ondragover = function (evt) {
+    evt.preventDefault();
+  };
+
+  _img15.ondragover = function (evt) {
+    evt.preventDefault();
+  };
 }
 
 async function 세척_save() {
-	if (_management_id.value.length == 0) return;
-	console.log("save: ", _management_id.value);
+  if (_management_id.value.length == 0) return;
+  console.log("save: ", _management_id.value);
 
-	var doc = JSON.parse(JSON.stringify(세척_doc));
+  var doc = JSON.parse(JSON.stringify(세척_doc));
 
-	var DateTime = luxon.DateTime;
-	var seoul = DateTime.local().setZone("Asia/Seoul");
-	var now = seoul.toString().slice(0, 19);
+  var DateTime = luxon.DateTime;
+  var seoul = DateTime.local().setZone("Asia/Seoul");
+  var now = seoul.toString().slice(0, 19);
 
-	if (_공정입고일.value == "") _공정입고일.value = now;
-	if (_공정완료일.value == "") _공정완료일.value = now;
-	//if (계정_stat.완료일수정 != 'o' || _공정완료일.value == "") _공정완료일.value = now;
-	doc.관리번호 = _management_id.value.trim().toUpperCase();
-	doc.재제조번호 = _재제조번호.value;
-	doc.공정입고일 = _공정입고일.value;
-	doc.공정완료일 = _공정완료일.value;
-	doc.어퍼케이스재사용가능 = _어퍼케이스재사용가능.value;
-	doc.기밀검사_케이스 = _기밀검사_케이스.value;
-	doc.기밀검사_케이스_특이사항 = _기밀검사_케이스_특이사항.value;
-	doc.육안검사_외부 = _육안검사_외부.value;
-	doc.육안검사_외부_특이사항 = _육안검사_외부_특이사항.value;
-	doc.특이사항 = _특이사항.value;
+  if (_공정입고일.value == "") _공정입고일.value = now;
+  if (_공정완료일.value == "") _공정완료일.value = now;
+  //if (계정_stat.완료일수정 != 'o' || _공정완료일.value == "") _공정완료일.value = now;
+  doc.관리번호 = _management_id.value.trim().toUpperCase();
+  doc.재제조번호 = _재제조번호.value;
+  doc.공정입고일 = _공정입고일.value;
+  doc.공정완료일 = _공정완료일.value;
+  doc.어퍼케이스재사용가능 = _어퍼케이스재사용가능.value;
+  doc.기밀검사_케이스 = _기밀검사_케이스.value;
+  doc.기밀검사_케이스_특이사항 = _기밀검사_케이스_특이사항.value;
+  doc.육안검사_외부 = _육안검사_외부.value;
+  doc.육안검사_외부_특이사항 = _육안검사_외부_특이사항.value;
+  doc.특이사항 = _특이사항.value;
 
-	update(세척, doc);
-	await delay();
+  update(세척, doc);
+  await delay();
 
-	console.log(update_count);
-	console.log(insert_count);
+  console.log(update_count);
+  console.log(insert_count);
 
-	if (update_count > 0) {
-		alert("업데이트 되었습니다");
-		변수저장(today_count);
-	}
+  if (update_count > 0) {
+    alert("업데이트 되었습니다");
+    변수저장(today_count);
+  }
 
-	if (insert_count > 0) {
-		alert("저장 되었습니다");
-		변수저장(today_count);
-	}
+  if (insert_count > 0) {
+    alert("저장 되었습니다");
+    변수저장(today_count);
+  }
 
-	find(BSA재제조, _management_id.value);
-	await delay();
+  find(BSA재제조, _management_id.value);
+  await delay();
 
-	var _doc = {
-		관리번호: _management_id.value.toUpperCase(),
-		재제조번호: _재제조번호.value,
-		세척투입일: _공정입고일.value,
-		세척: _공정완료일.value,
-	};
+  var _doc = {
+    관리번호: _management_id.value.toUpperCase(),
+    재제조번호: _재제조번호.value,
+    세척투입일: _공정입고일.value,
+    세척: _공정완료일.value,
+  };
 
-	update(BSA재제조, _doc);
-	await delay();
+  update(BSA재제조, _doc);
+  await delay();
 
-	await 공정단계자동입력(_management_id.value);
+  await 공정단계자동입력(_management_id.value);
 
-	var _pic_doc = JSON.parse(JSON.stringify(세척_pic_doc));
-	_pic_doc.관리번호 = _management_id.value.trim().toUpperCase();
-	_pic_doc.pic1 = _img1.src;
-	_pic_doc.pic2 = _img2.src;
-	_pic_doc.pic3 = _img3.src;
-	_pic_doc.pic4 = _img4.src;
-	_pic_doc.pic5 = _img5.src;
-	_pic_doc.pic6 = _img6.src;
-	_pic_doc.pic7 = _img7.src;
-	_pic_doc.pic8 = _img8.src;
-	_pic_doc.pic9 = _img9.src;
-	_pic_doc.pic10 = _img10.src;
-	_pic_doc.pic11 = _img11.src;
-	_pic_doc.pic12 = _img12.src;
-	_pic_doc.pic13 = _img13.src;
-	_pic_doc.pic14 = _img14.src;
+  var _pic_doc = JSON.parse(JSON.stringify(세척_pic_doc));
+  _pic_doc.관리번호 = _management_id.value.trim().toUpperCase();
+  _pic_doc.pic1 = _img1.src;
+  _pic_doc.pic2 = _img2.src;
+  _pic_doc.pic3 = _img3.src;
+  _pic_doc.pic4 = _img4.src;
+  _pic_doc.pic5 = _img5.src;
+  _pic_doc.pic6 = _img6.src;
+  _pic_doc.pic7 = _img7.src;
+  _pic_doc.pic8 = _img8.src;
+  _pic_doc.pic9 = _img9.src;
+  _pic_doc.pic10 = _img10.src;
+  _pic_doc.pic11 = _img11.src;
+  _pic_doc.pic12 = _img12.src;
+  _pic_doc.pic13 = _img13.src;
+  _pic_doc.pic14 = _img14.src;
+  _pic_doc.pic15 = _img15.src;
 
-	update(세척_pic, _pic_doc);
-	await delay();
+  update(세척_pic, _pic_doc);
+  await delay();
 
-	console.log("세척_pic_update:", update_count);
-	console.log("세척_pic_insert:", insert_count);
-	//이전페이지();
+  console.log("세척_pic_update:", update_count);
+  console.log("세척_pic_insert:", insert_count);
+  //이전페이지();
 }
 
 function _어퍼케이스재사용가능_콤보박스(e) {

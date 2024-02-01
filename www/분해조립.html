@@ -78,14 +78,20 @@
           </div>
           <div id="line"></div>
           <div>
-            <table class="all" border="2">
+            <table class="all" border="2" height="100%">
               <colgroup>
                 <col width="30%" />
                 <col width="70%" />
               </colgroup>
-              <tr width="100%">
-                <td class="base" style="border: none">
+              <tr>
+                <td class="base" style="border: none" width="40%">
                   <table class="base" height="100%">
+                    <colgroup>
+                      <col width="20%" />
+                      <col width="25%" />
+                      <col width="25%" />
+                      <col width="25%" />
+                    </colgroup>
                     <tr>
                       <td class="base_header" colspan="4">차량 정보</td>
                     </tr>
@@ -117,24 +123,23 @@
                       <td class="base" id="_입고일"></td>
                     </tr>
                     <tr>
-                      <td class="base_header3" colspan="2">입고사진</td>
-                      <td class="base_header3" colspan="2">배터리팩 QR 코드 사진</td>
+                      <td class="base_header3" colspan="2" style="padding: 3px">입고사진</td>
+                      <td class="base_header3" colspan="2" style="padding: 3px">배터리팩 QR 코드 사진</td>
                     </tr>
                     <tr>
                       <td class="base3" colspan="2">
-                        <div class="imgName widthImg">
+                        <div class="imgName">
                           <img id="_입고사진" />
                         </div>
                       </td>
                       <td class="base3" colspan="2">
-                        <div class="imgName widthImg">
+                        <div class="imgName">
                           <img id="_BSA_QR" />
                         </div>
                       </td>
                     </tr>
-
                     <tr>
-                      <td class="base_left" colspan="4" width="80%">
+                      <td class="base_left" colspan="4" width="80%" rowspan="5">
                         1. 관리번호:
                         <p id="_관리번호"></p>
                         2. 필드현상:
@@ -145,17 +150,23 @@
                         <p id="_센터조치"></p>
                       </td>
                     </tr>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr></tr>
                     <tr>
-                      <td class="base_header" colspan="2" width="50%">작성자</td>
-                      <td class="base_header" colspan="2" width="50%">작성일</td>
+                      <td class="base_header" colspan="2">작성자</td>
+                      <td class="base_header" colspan="2">작성일</td>
                     </tr>
+
                     <tr>
                       <td class="base" colspan="2" id="_작성자"></td>
                       <td class="base" colspan="2" id="_작성일"></td>
                     </tr>
                   </table>
                 </td>
-                <td class="base" style="border: none">
+                <td class="base" style="border: none" width="60%;">
                   <table class="base tableAll" id="_CS_EV" style="display: none">
                     <colgroup>
                       <col width="5%" />

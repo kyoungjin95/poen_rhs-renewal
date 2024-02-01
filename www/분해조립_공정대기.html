@@ -400,10 +400,66 @@
             </tr>
             <tr>
               <td>
+                <label for="_재제조번호">재제조번호</label>
+              </td>
+              <td colspan="2">
+                <input type="text" id="_재제조번호" value="" size="100" readonly required />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="_RO_no">_RO_no.</label>
+              </td>
+              <td colspan="2">
+                <input type="text" id="_RO_no" value="" size="100" readonly required />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="_구분">구분</label>
+              </td>
+              <td>
+                <input type="text" id="_구분" size="40" readonly required />
+              </td>
+            </tr>
+            <tr>
+              <td>
                 <label for="_차종">차종</label>
               </td>
               <td colspan="2">
                 <input type="text" id="_차종" size="40" readonly required />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="_품번">품번</label>
+              </td>
+              <td>
+                <input type="text" id="_품번" size="40" readonly required />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="_공정입고일">공정 입고일</label>
+              </td>
+              <td>
+                <input type="datetime-local" id="_공정입고일" value="0000-00-00T00:00" required />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="_VIN">VIN</label>
+              </td>
+              <td>
+                <input type="text" id="_VIN" size="40" required />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="_QRCode">QR</label>
+              </td>
+              <td>
+                <input type="text" id="_QRCode" size="40" required />
               </td>
             </tr>
           </table>
@@ -2502,8 +2558,7 @@
           </table>
         </div>
       </div>
-      <div id='grid_교체부품'>
-      </div>
+      <div id="grid_교체부품"></div>
       <div class="input-group">
         <div class="input-btn-group">
           <button onClick="분해조립공정대기_save();">SAVE</button>
@@ -2514,6 +2569,15 @@
 
     <script>
       const _management_id = document.getElementById("_management_id");
+      const _재제조번호 = document.getElementById("_재제조번호");
+      const _차종 = document.getElementById("_차종");
+      const _재제조번호_HEAD = document.getElementById("_재제조번호_HEAD");
+      const _RO_no_id = document.getElementById("_RO_no");
+      const _VIN = document.getElementById("_VIN");
+      const _QRCode = document.getElementById("_QRCode");
+      const _주행거리 = document.getElementById("_주행거리");
+      const _차량번호 = document.getElementById("_차량번호");
+      const _공정입고일 = document.getElementById("_공정입고일");
 
       const _교체사유1 = document.getElementById("_교체사유1");
       const _교체사유2 = document.getElementById("_교체사유2");

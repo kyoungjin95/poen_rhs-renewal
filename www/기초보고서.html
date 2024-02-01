@@ -14,7 +14,7 @@
       </div>
       <div id="line"></div>
       <div>
-        <table class="all" border="2">
+        <table class="all">
           <colgroup>
             <col width="30%" />
             <col width="70%" />
@@ -22,6 +22,12 @@
           <tr>
             <td class="base" width="40%">
               <table class="base" height="100%">
+                <colgroup>
+                  <col width="20%" />
+                  <col width="25%" />
+                  <col width="25%" />
+                  <col width="25%" />
+                </colgroup>
                 <tr>
                   <td class="base_header" colspan="4">차량 정보</td>
                 </tr>
@@ -59,12 +65,12 @@
                 <tr>
                   <td class="base3" colspan="2">
                     <div class="imgName widthImg">
-                      <img id="_입고사진" />
+                      <img id="_입고사진" style="max-width: 60%; height: auto; aspect-ratio: 4/3" />
                     </div>
                   </td>
                   <td class="base3" colspan="2">
                     <div class="imgName widthImg">
-                      <img id="_BSA_QR" />
+                      <img id="_BSA_QR" style="max-width: 60%; height: auto; aspect-ratio: 4/3" />
                     </div>
                   </td>
                 </tr>
@@ -91,7 +97,7 @@
                 </tr>
               </table>
             </td>
-            <td class="base" width="60%">
+            <td class="base" width="60%;" height="2vw">
               <table class="base tableAll" id="_CS_EV" style="display: none">
                 <colgroup>
                   <col width="5%" />
@@ -1298,7 +1304,7 @@
             <th class="title" colspan="2">전체 사진</th>
             <td rowspan="2" class="imgName changeWidth">
               <p style="text-align: left">주요부품1(BMU)</p>
-              <img id="_BMU" width="60%" />
+              <img id="_BMU" />
             </td>
           </tr>
           <tr>
@@ -1309,13 +1315,13 @@
           <tr>
             <td class="imgName changeWidth">
               <p style="text-align: left">주요부품2 (CMU)</p>
-              <img id="_CMU" width="60%" />
+              <img id="_CMU" />
             </td>
           </tr>
           <tr>
             <td class="imgName changeWidth">
               <p style="text-align: left">주요부품3 (PRA)</p>
-              <img id="_PRA" width="60%" />
+              <img id="_PRA" />
             </td>
           </tr>
         </tbody>
@@ -1357,7 +1363,7 @@
               <img id="_이상부위_내부3" />
             </td>
             <td class="imgName">
-              <img id="_이상부위_내부4" width="100%" height="100%" />
+              <img id="_이상부위_내부4" />
             </td>
           </tr>
         </tbody>
@@ -1634,11 +1640,11 @@
               <img id="_CAN현재" />
             </td>
             <td rowspan="2" class="photo heightPhoto">
-              <img id="_CAN진단" />
+              <img id="_CAN진단" width="100%" />
             </td>
             <td rowspan="2" class="photo">
-              <img id="_PDS진단1" />
-              <img id="_PDS진단2" />
+              <img id="_PDS진단1" style="aspect-ratio: 1" />
+              <img id="_PDS진단2" style="aspect-ratio: 1" />
             </td>
           </tr>
           <tr>
