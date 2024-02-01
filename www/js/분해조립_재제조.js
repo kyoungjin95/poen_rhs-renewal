@@ -1,3 +1,4 @@
+var 재제조_doc;
 async function 분해조립_재제조_시작() {
 	await sleep(100);
 	if(typeof _D == 'undefined') {
@@ -7,6 +8,23 @@ async function 분해조립_재제조_시작() {
 	flag_분해조립_재제조 = false;
 
 	console.log('분해조립 재제조 시작');
+
+	var DateTime = luxon.DateTime;
+	var seoul = DateTime.local().setZone("Asia/Seoul");
+	var now = seoul.toString().slice(0, 19);
+	
+	find(BSA재제조, 관리번호);
+	await delay();
+
+	if(BSA재제조_v != null) {
+		재제조_doc = {
+			관리번호 : 관리번호,
+			분해조립투입일 : BSA재제조_v.분해조립투입일,
+			분해조립 : BSA재제조_v.분해조립
+		}
+	}
+
+	if(재제조_doc.분해조립투입일 == '') 재제조_doc.분해조립투입일 = now;
 
 	flag_부품정보_list = true;
 	await 부품정보_list_시작();
@@ -21,11 +39,13 @@ async function 분해조립_재제조_시작() {
 	분해조립재제조_tabledata = JSON.parse(JSON.stringify(분해조립재제조_v));
 	await 교체부품_table(분해조립재제조_tabledata);
 
-	choisenButton();
+	재제조_choisenButton();
 }
 
+var table_부품교환;
+
 function 교체부품_table(tabledata) {
-	var table_부품교환 = new Tabulator("#grid_교체부품", {
+	table_부품교환 = new Tabulator("#grid_교체부품", {
 		layout: "resizableColumnFit",
 		height: 500,
 		data: tabledata,
@@ -61,7 +81,7 @@ function 교체부품_table(tabledata) {
 }
 
 var 교체부품_tabledata = [];
-function choisenButton() {
+function 재제조_choisenButton() {
 	var buttons = document.querySelectorAll("button");
 	buttons.forEach((button) => {
 		button.addEventListener("click", () => {
@@ -82,6 +102,12 @@ function choisenButton() {
 				교체사유 : ''
 			};
 
+			var 중복 = false;
+			교체부품_tabledata.forEach((v) => {
+				if(v.교체전QR == add_item.교체전QR) 중복 = true;
+			});
+			if(중복 == true) return;
+
 			교체부품_tabledata.push(add_item);
 			교체부품_table(교체부품_tabledata);
 		});
@@ -89,9 +115,11 @@ function choisenButton() {
 }
 
 async function 분해조립재제조_save() {
-	for(var i = 0; i < 교체부품_tabledata.length; i++) {
-		console.log(교체부품_tabledata[i]);
-		update_분해조립재제조(분해조립재제조, 교체부품_tabledata[i]);
+	var data = table_부품교환.getData();
+
+	for(var i = 0; i < data.length; i++) {
+		console.log(data[i]);
+		update_분해조립재제조(분해조립재제조, data[i]);
 		await delay();
 
 		console.log(update_count);
@@ -107,8 +135,13 @@ async function 분해조립재제조_save() {
 		alert("저장 되었습니다");
 	}
 
-	find_분해조립재제조(분해조립재제조, { 관리번호 : 관리번호 });
+	var DateTime = luxon.DateTime;
+	var seoul = DateTime.local().setZone("Asia/Seoul");
+	var now = seoul.toString().slice(0, 19);
+
+	if(재제조_doc.분해조립 == '') 재제조_doc.분해조립 = now;
+
+	update(BSA재제조, 재제조_doc);
 	await delay();
 
-	console.log(분해조립재제조_v);
 }

@@ -8,6 +8,14 @@ async function 분해조립_공정대기_시작() {
 
 	console.log('분해조립 공정대기 시작');
 
+	var doc = {
+		관리번호 : 관리번호,
+		소재지 : '공정대기'
+	}
+
+	update(BSA재제조, doc);
+	await delay();
+
 	flag_부품정보_list = true;
 	await 부품정보_list_시작();
 
@@ -21,11 +29,12 @@ async function 분해조립_공정대기_시작() {
 	분해조립공정대기_tabledata = JSON.parse(JSON.stringify(분해조립공정대기_v));
 	await 분해조립공정대기_table(분해조립공정대기_tabledata);
 
-	choisenButton();
+	공정대기_choisenButton();
 }
 
+var table_공정대기;
 function 분해조립공정대기_table(tabledata) {
-	var table_공정대기 = new Tabulator("#grid_교체부품", {
+	table_공정대기 = new Tabulator("#grid_교체부품", {
 		layout: "resizableColumnFit",
 		height: 500,
 		data: tabledata,
@@ -58,7 +67,7 @@ function 분해조립공정대기_table(tabledata) {
 }
 
 var 분해조립공정대기_tabledata = [];
-function choisenButton() {
+function 공정대기_choisenButton() {
 	var buttons = document.querySelectorAll("button");
 	buttons.forEach((button) => {
 		button.addEventListener("click", () => {
@@ -76,16 +85,23 @@ function choisenButton() {
 				대기사유 : ''
 			};
 
+			var 중복 = false;
+			분해조립공정대기_tabledata.forEach((v) => {
+				if(v.QR == add_item.QR) 중복 = true;
+			});
+			if(중복 == true) return;
+
 			분해조립공정대기_tabledata.push(add_item);
 			분해조립공정대기_table(분해조립공정대기_tabledata);
 		});
 	});
 }
 
-async function 분해조립재제조_save() {
-	for(var i = 0; i < 분해조립공정대기_tabledata.length; i++) {
-		console.log(분해조립공정대기_tabledata[i]);
-		update_분해조립공정대기(분해조립공정대기, 분해조립공정대기_tabledata[i]);
+async function 분해조립공정대기_save() {
+	var data = table_공정대기.getData();
+	for(var i = 0; i < data.length; i++) {
+		console.log(data[i]);
+		update_분해조립공정대기(분해조립공정대기, data[i]);
 		await delay();
 
 		console.log(update_count);

@@ -86,6 +86,7 @@ var flag_세척 = false;
 var flag_기초검사 = false;
 var flag_기초보고서 = false;
 var flag_분해조립 = false;
+var flag_old_분해조립 = false;
 var flag_성능검사 = false;
 var flag_EOL = false;
 var flag_출하 = false;
@@ -131,6 +132,7 @@ var interval = setInterval(function () {
 	if (flag_기초검사 == true) { console.log('기초검사'); stop_repeat(); 기초검사_시작(); }
 	if (flag_기초보고서 == true) { console.log('기초보고서'); stop_repeat(); 기초보고서_시작(); }
 	if (flag_분해조립 == true) { console.log('분해조립'); stop_repeat(); 분해조립_시작(); }
+	if (flag_old_분해조립 == true) { console.log('old 분해조립'); stop_repeat(); old_분해조립_시작(); }
 	if (flag_성능검사 == true) { console.log('성능검사'); stop_repeat(); 성능검사_시작(); }
 	if (flag_EOL == true) { console.log('EOL'); stop_repeat(); EOL_시작(); }
 	if (flag_출하 == true) { console.log('출하'); stop_repeat(); 출하정보_시작(); }

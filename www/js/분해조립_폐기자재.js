@@ -21,11 +21,17 @@ async function 분해조립_폐기자재_시작() {
 	분해조립폐기자재_tabledata = JSON.parse(JSON.stringify(분해조립폐기자재_v));
 	await 분해조립폐기자재_table(분해조립폐기자재_tabledata);
 
-	choisenButton();
+	폐기자재_choisenButton();
+
+	flag_폐기자재_all = false;
+	flag_all_폐기사유 = false;
+	check_items = [];
 }
 
+var table_폐기자재;
+var flag_all_폐기사유 = false;
 function 분해조립폐기자재_table(tabledata) {
-	var table_폐기자재 = new Tabulator("#grid_교체부품", {
+	table_폐기자재 = new Tabulator("#grid_교체부품", {
 		layout: "resizableColumnFit",
 		height: 500,
 		data: tabledata,
@@ -42,7 +48,7 @@ function 분해조립폐기자재_table(tabledata) {
 				cellClick: async function (e, cell) {
 					var row_index = cell.getRow()._row.position;
 					console.log(row_index);
-					
+
 					var del_QR = 분해조립폐기자재_tabledata[row_index - 1].QR;
 					delete_분해조립폐기자재(분해조립폐기자재, del_QR);
 					await delay();
@@ -55,17 +61,30 @@ function 분해조립폐기자재_table(tabledata) {
 			},
 		]
 	});
+
+	table_폐기자재.on("cellEdited", function(cell) {
+		if(flag_all_폐기사유 == false) {
+			flag_all_폐기사유 == true;
+			var data = cell.getRow().getData();
+			for(var i = 0; i < 분해조립폐기자재_tabledata.length; i++) {
+				분해조립폐기자재_tabledata[i].폐기사유 = data.폐기사유;
+			}
+			분해조립폐기자재_table(분해조립폐기자재_tabledata);
+		}
+	});
 }
 
+var check_items;
 var 분해조립폐기자재_tabledata = [];
-function choisenButton() {
+function 폐기자재_choisenButton() {
 	var buttons = document.querySelectorAll("button");
 	buttons.forEach((button) => {
 		button.addEventListener("click", () => {
 			const value = button.getAttribute("value");
 			if (value == null) return;
 			console.log("value:", value);
-
+			
+			check_items.push(value);
 			button.style.backgroundColor = 'red';
 
 			var add_item = {
@@ -76,16 +95,24 @@ function choisenButton() {
 				폐기사유 : ''
 			};
 
+			var 중복 = false;
+			분해조립폐기자재_tabledata.forEach((v) => {
+				if(v.QR == add_item.QR) 중복 = true;
+			});
+			if(중복 == true) return;
+
 			분해조립폐기자재_tabledata.push(add_item);
 			분해조립폐기자재_table(분해조립폐기자재_tabledata);
 		});
 	});
 }
 
-async function 분해조립재제조_save() {
-	for(var i = 0; i < 분해조립폐기자재_tabledata.length; i++) {
-		console.log(분해조립폐기자재_tabledata[i]);
-		update_분해조립폐기자재(분해조립폐기자재, 분해조립폐기자재_tabledata[i]);
+async function 분해조립폐기자재_save() {
+	var data = table_폐기자재.getData();
+
+	for(var i = 0; i < data.length; i++) {
+		console.log(data[i]);
+		update_분해조립폐기자재(분해조립폐기자재, data[i]);
 		await delay();
 
 		console.log(update_count);
@@ -101,8 +128,50 @@ async function 분해조립재제조_save() {
 		alert("저장 되었습니다");
 	}
 
-	find_분해조립폐기자재(분해조립폐기자재, { 관리번호 : 관리번호 });
-	await delay();
+	var buttons = document.querySelectorAll("button");
+	buttons.forEach(async (button) => {
+		const value = button.getAttribute("value");
+		if (value == null) return;
+		console.log("value:", value);
 
-	console.log(분해조립폐기자재_v);
+		if(check_items.indexOf(value) != -1) return;
+
+    		var _doc = JSON.parse(JSON.stringify(BSA재제조_doc));
+		_doc.관리번호  = 관리번호;
+		_doc.품명 = value.replace('_A_', '').replace('_B_', '').replace('_C_', '').replace('_D_', '').replace('_D2_', '').replace('_QR', '');
+		_doc.품번 = document.getElementById(value.replace('QR', '품번')).value;
+		_doc.QR = document.getElementById(value).value;
+
+		update_고품정보(고품정보, _doc);
+		await delay();
+
+		console.log(update_count);
+		console.log(insert_count);
+	});
+}
+
+var flag_폐기자재_all = false;
+async function 분해조립폐기자재_all() {
+	var buttons = document.querySelectorAll("button");
+	buttons.forEach((button) => {
+		const value = button.getAttribute("value");
+		if (value == null) return;
+		console.log("value:", value);
+
+		button.style.backgroundColor = 'red';
+
+		var add_item = {
+			관리번호 : 관리번호,
+			품명 : value.replace('_A_', '').replace('_B_', '').replace('_C_', '').replace('_D_', '').replace('_D2_', '').replace('_QR', ''),
+			품번 : document.getElementById(value.replace('QR', '품번')).value,
+			QR : document.getElementById(value).value,
+			폐기사유 : ''
+		};
+
+		분해조립폐기자재_tabledata.push(add_item);
+	});
+
+	분해조립폐기자재_table(분해조립폐기자재_tabledata);
+
+	flag_폐기자재_all = true;
 }
