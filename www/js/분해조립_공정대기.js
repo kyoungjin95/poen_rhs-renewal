@@ -30,6 +30,17 @@ async function 분해조립_공정대기_시작() {
 	await 분해조립공정대기_table(분해조립공정대기_tabledata);
 
 	공정대기_choisenButton();
+
+	find(BSA재제조, 관리번호);
+	await delay();
+
+	if(BSA재제조_v != null) {
+		_재제조번호.value = BSA재제조_v.재제조번호;
+		_RO_no.value = BSA재제조_v.RO_no;
+		_구분.value = BSA재제조_v.RO_no;
+		_품번.value = BSA재제조_v.품번;
+		_VIN.value = BSA재제조_v.VIN;
+	}
 }
 
 var table_공정대기;

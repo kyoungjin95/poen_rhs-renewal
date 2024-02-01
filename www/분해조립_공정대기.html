@@ -408,7 +408,7 @@
             </tr>
             <tr>
               <td>
-                <label for="_RO_no">_RO_no.</label>
+                <label for="_RO_no">RO no.</label>
               </td>
               <td colspan="2">
                 <input type="text" id="_RO_no" value="" size="100" readonly required />
@@ -440,26 +440,10 @@
             </tr>
             <tr>
               <td>
-                <label for="_공정입고일">공정 입고일</label>
-              </td>
-              <td>
-                <input type="datetime-local" id="_공정입고일" value="0000-00-00T00:00" required />
-              </td>
-            </tr>
-            <tr>
-              <td>
                 <label for="_VIN">VIN</label>
               </td>
               <td>
                 <input type="text" id="_VIN" size="40" required />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label for="_QRCode">QR</label>
-              </td>
-              <td>
-                <input type="text" id="_QRCode" size="40" required />
               </td>
             </tr>
           </table>
@@ -2572,7 +2556,9 @@
       const _재제조번호 = document.getElementById("_재제조번호");
       const _차종 = document.getElementById("_차종");
       const _재제조번호_HEAD = document.getElementById("_재제조번호_HEAD");
-      const _RO_no_id = document.getElementById("_RO_no");
+      const _RO_no = document.getElementById("_RO_no");
+      const _구분 = document.getElementById("_구분");
+      const _품번 = document.getElementById("_품번");
       const _VIN = document.getElementById("_VIN");
       const _QRCode = document.getElementById("_QRCode");
       const _주행거리 = document.getElementById("_주행거리");
