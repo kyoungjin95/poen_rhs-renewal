@@ -56,7 +56,7 @@ async function login() {
         }
       }, 1000);
       await sleep(1);
-      //alert('#공지사항#\nVersion update sky 0.41\n1. 공정완료일 수정가능');
+      alert('#공지사항#\nVersion update sky 0.42\n1. 기초보고서 사진 순서 수정\n2. 기초검사 버그 수정\n3. 배터리팩 현황 조회시 관리번호 및 입고일로 정렬\n4. 분해조립 리뉴얼: 상단에 이전 분해조립 모드 버튼');
     } else if (worker == _id.value) {
       worker = "";
       level = "";

@@ -156,6 +156,10 @@ async function 재제조현황_조회() {
   }
 
   table = new Tabulator("#grid_BSA", {
+    initialSort:[
+        {column:"관리번호", dir:"asc"}, //sort by this first
+        {column:"입고", dir:"desc"}, //then sort by this second
+    ],
     layout: "resizableColumnFit",
     data: BSA재제조_v,
     height: "700px",
@@ -176,7 +180,6 @@ async function 재제조현황_조회() {
       { title: "공정단계", field: "공정단계", sorter: "string", width: "180" },
       { title: "소재지", field: "소재지", sorter: "string", width: "180" },
       { title: "소재지사유", field: "소재지사유", sorter: "string", width: "180" },
-
       {
         title: "적재No",
         field: "적재No",
@@ -638,6 +641,10 @@ async function grid_입고(m_id = "") {
   }
 
   table_입고 = new Tabulator("#grid_입고정보", {
+    initialSort:[
+        {column:"관리번호", dir:"asc"}, //sort by this first
+        {column:"입고일", dir:"desc"}, //then sort by this second
+    ],
     layout: "resizableColumnFit",
     height: "300px",
     data: tabledata_입고,
@@ -672,15 +679,19 @@ async function grid_세척(m_id = "") {
   }
 
   table_세척 = new Tabulator("#grid_세척정보", {
+    initialSort:[
+        {column:"관리번호", dir:"asc"}, //sort by this first
+        {column:"공정입고일", dir:"desc"}, //then sort by this second
+    ],
     layout: "resizableColumnFit",
     height: 130,
     data: tabledata_세척,
     columns: [
       { title: "관리번호", field: "관리번호", sorter: "string", width: "180" },
       { title: "재제조번호", field: "재제조번호", sorter: "string", width: "180" },
-      { title: "입고일", field: "공정입고일", sorter: "string", width: "180" },
-      { title: "완료일", field: "공정완료일", sorter: "string", width: "180" },
-      { title: "어퍼케이스재사용가능", field: "어퍼케이스재사용가능", sirter: "string", width: "180" },
+      { title: "공정입고일", field: "공정입고일", sorter: "string", width: "180" },
+      { title: "공정완료일", field: "공정완료일", sorter: "string", width: "180" },
+      { title: "어퍼케이스재사용가능", field: "어퍼케이스재사용가능", sorter: "string", width: "180" },
       { title: "기밀검사 케이스", field: "기밀검사_케이스", sorter: "string", width: "180" },
       { title: "기밀검사 케이스 특이사항", field: "기밀검사_케이스_특이사항", sorter: "string", width: "180" },
       { title: "육안검사_외부", field: "육안검사_외부", sorter: "string", width: "180" },
@@ -708,6 +719,10 @@ async function grid_기초검사(m_id = "") {
   }
 
   table_기초검사 = new Tabulator("#grid_기초검사", {
+    initialSort:[
+        {column:"관리번호", dir:"asc"}, //sort by this first
+        {column:"공정입고일", dir:"desc"}, //then sort by this second
+    ],
     layout: "resizableColumnFit",
     height: 130,
     data: tabledata_기초검사,
@@ -772,6 +787,10 @@ async function grid_분해조립(m_id = "") {
   }
 
   table_분해조립 = new Tabulator("#grid_분해조립", {
+    initialSort:[
+        {column:"관리번호", dir:"asc"}, //sort by this first
+        {column:"공정입고일", dir:"desc"}, //then sort by this second
+    ],
     layout: "resizableColumnFit",
     height: 130,
     data: tabledata_분해조립,
@@ -1065,7 +1084,8 @@ async function grid_분해조립(m_id = "") {
       { title: "BMA 10(교환전)", field: "BMA10", sorter: "string", width: "180" },
       { title: "BMA 10(교환후)", field: "BMA10_2", sorter: "string", width: "180" },
       { title: "ETC", field: "ETC", sorter: "string", width: "180" },
-      { title: "완료일", field: "완료일", sorter: "string", width: "180" },
+      { title: "공정입고일", field: "공정입고일", sorter: "string", width: "180" },
+      { title: "공정완료일", field: "공정완료일", sorter: "string", width: "180" },
       { title: "작업자", field: "작업자", sorter: "string", width: "180" },
     ],
   });
@@ -1089,6 +1109,10 @@ async function grid_성능검사(m_id = "") {
   }
 
   table_성능검사 = new Tabulator("#grid_성능검사", {
+    initialSort:[
+        {column:"관리번호", dir:"asc"}, //sort by this first
+        {column:"공정입고일", dir:"desc"}, //then sort by this second
+    ],
     layout: "resizableColumnFit",
     height: 130,
     data: tabledata_성능검사,
@@ -1125,6 +1149,10 @@ async function grid_EOL(m_id = "") {
   }
 
   table_EOL = new Tabulator("#grid_EOL", {
+    initialSort:[
+        {column:"관리번호", dir:"asc"}, //sort by this first
+        {column:"공정입고일", dir:"desc"}, //then sort by this second
+    ],
     layout: "resizableColumnFit",
     height: 130,
     data: tabledata_EOL,
@@ -1182,6 +1210,10 @@ async function grid_출하정보(m_id = "") {
   }
 
   table_출하정보 = new Tabulator("#grid_출하정보", {
+    initialSort:[
+        {column:"관리번호", dir:"asc"}, //sort by this first
+        {column:"검사일", dir:"desc"}, //then sort by this second
+    ],
     layout: "resizableColumnFit",
     height: 130,
     data: tabledata_출하정보,
