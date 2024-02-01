@@ -5146,9 +5146,16 @@ const toBase64 = file => new Promise((resolve, reject) => {
     reader.onerror = reject;
 });
 
-function resize_pic(file, img) {
-	ImageResizer.resizeImage(file, { maxWidth: 500, maxHeight: 500}, async function(resultFile) {
-		img.src = await toBase64(resultFile);
-		console.log(img.src);
-	});
+function resize_pic(file, img, 예외 = false) {
+	if(예외 == false) {
+		ImageResizer.resizeImage(file, { maxWidth: 500, maxHeight: 500}, async function(resultFile) {
+			img.src = await toBase64(resultFile);
+			console.log(img.src);
+		});
+	} else {
+		ImageResizer.resizeImage(file, { maxWidth: 2000, maxHeight: 2000}, async function(resultFile) {
+			img.src = await toBase64(resultFile);
+			console.log(img.src);
+		});
+	}
 }

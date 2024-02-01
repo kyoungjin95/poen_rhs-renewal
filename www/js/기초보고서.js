@@ -232,10 +232,10 @@ async function 기초보고서_조회(is재제조번호 = false) {
         _CV_케이스감압량.innerHTML = 케이스감압량;
         _CV_냉각유로.innerHTML = 기초검사_v.기밀검사_냉각유로;
         _CV_냉각유로감압량.innerHTML = 기초검사_v.기밀검사_냉각유로_특이사항;
-        _CV_PRA_P.innerHTML = 기초검사_v.절연검사_Plus;
-        _CV_PRA_P값.innerHTML = 기초검사_v.절연검사_Plus판정;
-        _CV_PRA_N.innerHTML = 기초검사_v.절연검사_Minus;
-        _CV_PRA_N값.innerHTML = 기초검사_v.절연검사_Minus판정;
+        _CV_PRA_P.innerHTML = 기초검사_v.절연검사_Plus판정;
+        _CV_PRA_P값.innerHTML = 기초검사_v.절연검사_Plus;
+        _CV_PRA_N.innerHTML = 기초검사_v.절연검사_Minus판정;
+        _CV_PRA_N값.innerHTML = 기초검사_v.절연검사_Minus;
         _CV_팩전압.innerHTML = 기초검사_v.통신검사_팩전압판정;
         _CV_팩전압값.innerHTML = 기초검사_v.통신검사_팩전압;
         _CV_셀전압편차.innerHTML = 기초검사_v.통신검사_셀전압편차판정;
@@ -260,10 +260,10 @@ async function 기초보고서_조회(is재제조번호 = false) {
         _DE_케이스감압량.innerHTML = 케이스감압량;
         _DE_냉각유로.innerHTML = 기초검사_v.기밀검사_냉각유로;
         _DE_냉각유로감압량.innerHTML = 기초검사_v.기밀검사_냉각유로_특이사항;
-        _DE_PRA_P.innerHTML = 기초검사_v.절연검사_Plus;
-        _DE_PRA_P값.innerHTML = 기초검사_v.절연검사_Plus판정;
-        _DE_PRA_N.innerHTML = 기초검사_v.절연검사_Minus;
-        _DE_PRA_N값.innerHTML = 기초검사_v.절연검사_Minus판정;
+        _DE_PRA_P.innerHTML = 기초검사_v.절연검사_Plus판정;
+        _DE_PRA_P값.innerHTML = 기초검사_v.절연검사_Plus;
+        _DE_PRA_N.innerHTML = 기초검사_v.절연검사_Minus판정;
+        _DE_PRA_N값.innerHTML = 기초검사_v.절연검사_Minus;
         _DE_팩전압.innerHTML = 기초검사_v.통신검사_팩전압판정;
         _DE_팩전압값.innerHTML = 기초검사_v.통신검사_팩전압;
         _DE_셀전압편차.innerHTML = 기초검사_v.통신검사_셀전압편차판정;
@@ -288,10 +288,10 @@ async function 기초보고서_조회(is재제조번호 = false) {
         _HR_케이스감압량.innerHTML = 케이스감압량;
         _HR_냉각유로.innerHTML = 기초검사_v.기밀검사_냉각유로;
         _HR_냉각유로감압량.innerHTML = 기초검사_v.기밀검사_냉각유로_특이사항;
-        _HR_PRA_P.innerHTML = 기초검사_v.절연검사_Plus;
-        _HR_PRA_P값.innerHTML = 기초검사_v.절연검사_Plus판정;
-        _HR_PRA_N.innerHTML = 기초검사_v.절연검사_Minus;
-        _HR_PRA_N값.innerHTML = 기초검사_v.절연검사_Minus판정;
+        _HR_PRA_P.innerHTML = 기초검사_v.절연검사_Plus판정;
+        _HR_PRA_P값.innerHTML = 기초검사_v.절연검사_Plus;
+        _HR_PRA_N.innerHTML = 기초검사_v.절연검사_Minus판정;
+        _HR_PRA_N값.innerHTML = 기초검사_v.절연검사_Minus;
         _HR_HV커넥터_P.innerHTML = 기초검사_v.절연검사_Minus판정;
         _HR_팩전압.innerHTML = 기초검사_v.통신검사_팩전압판정;
         _HR_팩전압값.innerHTML = 기초검사_v.통신검사_팩전압;
@@ -317,10 +317,10 @@ async function 기초보고서_조회(is재제조번호 = false) {
         _LK_케이스감압량.innerHTML = 케이스감압량;
         _LK_냉각유로.innerHTML = 기초검사_v.기밀검사_냉각유로;
         _LK_냉각유로감압량.innerHTML = 기초검사_v.기밀검사_냉각유로_특이사항;
-        _LK_PRA_P.innerHTML = 기초검사_v.절연검사_Plus;
-        _LK_PRA_P값.innerHTML = 기초검사_v.절연검사_Plus판정;
-        _LK_PRA_N.innerHTML = 기초검사_v.절연검사_Minus;
-        _LK_PRA_N값.innerHTML = 기초검사_v.절연검사_Minus판정;
+        _LK_PRA_P.innerHTML = 기초검사_v.절연검사_Plus판정;
+        _LK_PRA_P값.innerHTML = 기초검사_v.절연검사_Plus;
+        _LK_PRA_N.innerHTML = 기초검사_v.절연검사_Minus판정;
+        _LK_PRA_N값.innerHTML = 기초검사_v.절연검사_Minus;
         _LK_팩전압.innerHTML = 기초검사_v.통신검사_팩전압판정;
         _LK_팩전압값.innerHTML = 기초검사_v.통신검사_팩전압;
         _LK_셀전압편차.innerHTML = 기초검사_v.통신검사_셀전압편차판정;
@@ -345,10 +345,10 @@ async function 기초보고서_조회(is재제조번호 = false) {
         _LM_케이스감압량.innerHTML = 케이스감압량;
         _LM_냉각유로.innerHTML = 기초검사_v.기밀검사_냉각유로;
         _LM_냉각유로감압량.innerHTML = 기초검사_v.기밀검사_냉각유로_특이사항;
-        _LM_PRA_P.innerHTML = 기초검사_v.절연검사_Plus;
-        _LM_PRA_P값.innerHTML = 기초검사_v.절연검사_Plus판정;
-        _LM_PRA_N.innerHTML = 기초검사_v.절연검사_Minus;
-        _LM_PRA_N값.innerHTML = 기초검사_v.절연검사_Minus판정;
+        _LM_PRA_P.innerHTML = 기초검사_v.절연검사_Plus판정;
+        _LM_PRA_P값.innerHTML = 기초검사_v.절연검사_Plus;
+        _LM_PRA_N.innerHTML = 기초검사_v.절연검사_Minus판정;
+        _LM_PRA_N값.innerHTML = 기초검사_v.절연검사_Minus;
         _LM_팩전압.innerHTML = 기초검사_v.통신검사_팩전압판정;
         _LM_팩전압값.innerHTML = 기초검사_v.통신검사_팩전압;
         _LM_셀전압편차.innerHTML = 기초검사_v.통신검사_셀전압편차판정;
@@ -373,10 +373,10 @@ async function 기초보고서_조회(is재제조번호 = false) {
         _NE_케이스감압량.innerHTML = 케이스감압량;
         _NE_냉각유로.innerHTML = 기초검사_v.기밀검사_냉각유로;
         _NE_냉각유로감압량.innerHTML = 기초검사_v.기밀검사_냉각유로_특이사항;
-        _NE_PRA_P.innerHTML = 기초검사_v.절연검사_Plus;
-        _NE_PRA_P값.innerHTML = 기초검사_v.절연검사_Plus판정;
-        _NE_PRA_N.innerHTML = 기초검사_v.절연검사_Minus;
-        _NE_PRA_N값.innerHTML = 기초검사_v.절연검사_Minus판정;
+        _NE_PRA_P.innerHTML = 기초검사_v.절연검사_Plus판정;
+        _NE_PRA_P값.innerHTML = 기초검사_v.절연검사_Plus;
+        _NE_PRA_N.innerHTML = 기초검사_v.절연검사_Minus판정;
+        _NE_PRA_N값.innerHTML = 기초검사_v.절연검사_Minus;
         _NE_팩전압.innerHTML = 기초검사_v.통신검사_팩전압판정;
         _NE_팩전압값.innerHTML = 기초검사_v.통신검사_팩전압;
         _NE_셀전압편차.innerHTML = 기초검사_v.통신검사_셀전압편차판정;
@@ -403,10 +403,10 @@ async function 기초보고서_조회(is재제조번호 = false) {
         _OS_SK3_케이스감압량.innerHTML = 케이스감압량;
         _OS_SK3_냉각유로.innerHTML = 기초검사_v.기밀검사_냉각유로;
         _OS_SK3_냉각유로감압량.innerHTML = 기초검사_v.기밀검사_냉각유로_특이사항;
-        _OS_SK3_PRA_P.innerHTML = 기초검사_v.절연검사_Plus;
-        _OS_SK3_PRA_P값.innerHTML = 기초검사_v.절연검사_Plus판정;
-        _OS_SK3_PRA_N.innerHTML = 기초검사_v.절연검사_Minus;
-        _OS_SK3_PRA_N값.innerHTML = 기초검사_v.절연검사_Minus판정;
+        _OS_SK3_PRA_P.innerHTML = 기초검사_v.절연검사_Plus판정;
+        _OS_SK3_PRA_P값.innerHTML = 기초검사_v.절연검사_Plus;
+        _OS_SK3_PRA_N.innerHTML = 기초검사_v.절연검사_Minus판정;
+        _OS_SK3_PRA_N값.innerHTML = 기초검사_v.절연검사_Minus;
         _OS_SK3_팩전압.innerHTML = 기초검사_v.통신검사_팩전압판정;
         _OS_SK3_팩전압값.innerHTML = 기초검사_v.통신검사_팩전압;
         _OS_SK3_셀전압편차.innerHTML = 기초검사_v.통신검사_셀전압편차판정;
@@ -431,10 +431,10 @@ async function 기초보고서_조회(is재제조번호 = false) {
         _PU_케이스감압량.innerHTML = 케이스감압량;
         _PU_냉각유로.innerHTML = 기초검사_v.기밀검사_냉각유로;
         _PU_냉각유로감압량.innerHTML = 기초검사_v.기밀검사_냉각유로_특이사항;
-        _PU_PRA_P.innerHTML = 기초검사_v.절연검사_Plus;
-        _PU_PRA_P값.innerHTML = 기초검사_v.절연검사_Plus판정;
-        _PU_PRA_N.innerHTML = 기초검사_v.절연검사_Minus;
-        _PU_PRA_N값.innerHTML = 기초검사_v.절연검사_Minus판정;
+        _PU_PRA_P.innerHTML = 기초검사_v.절연검사_Plus판정;
+        _PU_PRA_P값.innerHTML = 기초검사_v.절연검사_Plus;
+        _PU_PRA_N.innerHTML = 기초검사_v.절연검사_Minus판정;
+        _PU_PRA_N값.innerHTML = 기초검사_v.절연검사_Minus;
         _PU_팩전압.innerHTML = 기초검사_v.통신검사_팩전압판정;
         _PU_팩전압값.innerHTML = 기초검사_v.통신검사_팩전압;
         _PU_셀전압편차.innerHTML = 기초검사_v.통신검사_셀전압편차판정;
@@ -581,57 +581,57 @@ async function 기초보고서_save(type = 0) {
   if (type == "육외") {
     type = document.getElementById("_육안검사외부1");
     file_name = "기초보고서_육안검사외부" + _date + ".pdf";
-    _width = 3900;
-    _height = 2100;
+    _width = 3600;
+    _height = 2000;
   }
 
   if (type == "육외상") {
     type = document.getElementById("_육안검사외부2");
     file_name = "기초보고서_육안검사외부_상세" + _date + ".pdf";
-    _width = 3900;
+    _width = 3700;
     _height = 2400;
   }
 
   if (type == "육내") {
     type = document.getElementById("_육안검사내부1");
     file_name = "기초보고서_육안검사내부" + _date + ".pdf";
-    _width = 3800;
+    _width = 3650;
     _height = 2700;
   }
 
   if (type == "육내상") {
     type = document.getElementById("_육안검사내부2");
     file_name = "기초보고서_육안검사내부_상세" + _date + ".pdf";
-    _width = 4000;
+    _width = 3800;
     _height = 2300;
   }
 
   if (type == "기밀") {
     type = document.getElementById("_기밀검사");
     file_name = "기초보고서_기밀검사" + _date + ".pdf";
-    _width = 4000;
-    _height = 2400;
+    _width = 3400;
+    _height = 2600;
   }
 
   if (type == "기밀특이") {
     type = document.getElementById("_기밀검사2");
     file_name = "기초보고서_기밀검사_특이사항" + _date + ".pdf";
-    _width = 4000;
-    _height = 2400;
+    _width = 3600;
+    _height = 2300;
   }
 
   if (type == "절연") {
     type = document.getElementById("_절연저항검사");
     file_name = "기초보고서_절연검사" + _date + ".pdf";
-    _width = 4000;
-    _height = 2400;
+    _width = 3600;
+    _height = 2600;
   }
 
   if (type == "CAN") {
     type = document.getElementById("_CAN통신검사");
     file_name = "기초보고서_CAN통신검사" + _date + ".pdf";
-    _width = 3800;
-    _height = 2200;
+    _width = 3600;
+    _height = 2000;
   }
 
   html2canvas(type, {

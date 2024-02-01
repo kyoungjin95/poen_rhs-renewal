@@ -103,10 +103,10 @@ async function 기초검사_시작(is재제조 = 0) {
     _육안검사_내부_특이사항.value = 기초검사_v.육안검사_내부_특이사항;
     _기밀검사_냉각유로.value = 기초검사_v.기밀검사_냉각유로;
     _기밀검사_냉각유로_특이사항.value = 기초검사_v.기밀검사_냉각유로_특이사항;
-    _절연검사P.value = 기초검사_v.절연검사_Plus판정;
-    _절연검사P판정.value = 기초검사_v.절연검사_Plus;
-    _절연검사N.value = 기초검사_v.절연검사_Minus판정;
-    _절연검사N판정.value = 기초검사_v.절연검사_Minus;
+    _절연검사P판정.value = 기초검사_v.절연검사_Plus판정;
+    _절연검사P.value = 기초검사_v.절연검사_Plus;
+    _절연검사N판정.value = 기초검사_v.절연검사_Minus판정;
+    _절연검사N.value = 기초검사_v.절연검사_Minus;
     _센서데이터진단.value = 기초검사_v.센서데이터진단;
     _센서데이터진단_판정.value = 기초검사_v.센서데이터진단_판정;
 
@@ -498,7 +498,7 @@ async function 기초검사_시작(is재제조 = 0) {
     var files = evt.dataTransfer?.files;
     if (files.length > 0) {
       console.log("drag & drop");
-      resize_pic(files[0], _img19);
+      resize_pic(files[0], _img19, true);
     }
     evt.preventDefault();
   };
@@ -670,10 +670,10 @@ async function 기초검사_SAVE() {
   doc.육안검사_내부_특이사항 = _육안검사_내부_특이사항.value;
   doc.기밀검사_냉각유로 = _기밀검사_냉각유로.value;
   doc.기밀검사_냉각유로_특이사항 = _기밀검사_냉각유로_특이사항.value;
-  doc.절연검사_Plus = _절연검사P.value;
   doc.절연검사_Plus판정 = _절연검사P판정.value;
-  doc.절연검사_Minus = _절연검사N.value;
+  doc.절연검사_Plus = _절연검사P.value;
   doc.절연검사_Minus판정 = _절연검사N판정.value;
+  doc.절연검사_Minus = _절연검사N.value;
   doc.센서데이터진단 = _센서데이터진단.value;
   doc.센서데이터진단_판정 = _센서데이터진단_판정.value;
   var oCurrentRow;
