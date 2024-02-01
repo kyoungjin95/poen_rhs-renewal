@@ -5731,7 +5731,6 @@ async function compare_품번() {
 			if(HR_PU_HV_CNTR.indexOf(_B_HV_CNTR_품번.value.toUpperCase()) == -1)  await save_품번('HR/PU', 'HV_CNTR', _B_HV_CNTR_품번.value.toUpperCase());
 			if(HR_PU_HT_CNTR.indexOf(_B_HT_CNTR_품번.value.toUpperCase()) == -1)  await save_품번('HR/PU', 'HT_CNTR', _B_HT_CNTR_품번.value.toUpperCase());
 			if(HR_PU_PRA.indexOf(_B_PRA_품번.value.toUpperCase()) == -1)  await save_품번('HR/PU', 'PRA', _B_PRA_품번.value.toUpperCase());
-			if(HR_PU_FUSE.indexOf(_B_FUSE_품번.value.toUpperCase()) == -1)  await save_품번('HR/PU', 'FUSE', _B_FUSE_품번.value.toUpperCase());
 			if(HR_PU_RELAY.indexOf(_B_RELAY_품번.value.toUpperCase()) == -1)  await save_품번('HR/PU', 'RELAY', _B_RELAY_품번.value.toUpperCase());
 			if(HR_PU_LV_W_H.indexOf(_B_LV_W_H_품번.value.toUpperCase()) == -1)  await save_품번('HR/PU', 'LV_W_H', _B_LV_W_H_품번.value.toUpperCase());
 			if(HR_PU_HV_W_H.indexOf(_B_HV_W_H_품번.value.toUpperCase()) == -1)  await save_품번('HR/PU', 'HV_W_H', _B_HV_W_H_품번.value.toUpperCase());
