@@ -41,6 +41,8 @@ async function 분해조립_재제조_시작() {
 
 	재제조_choisenButton();
 
+	draw_color(교체부품_tabledata);
+
 	var DateTime = luxon.DateTime;
 	var seoul = DateTime.local().setZone("Asia/Seoul");
 	var now = seoul.toString().slice(0, 19);
@@ -78,10 +80,6 @@ function 교체부품_table(tabledata) {
 					var row_index = cell.getRow()._row.position;
 					console.log(row_index);
 					
-					var del_QR = 교체부품_tabledata[row_index - 1].교체전QR;
-					delete_분해조립재제조(분해조립재제조, del_QR);
-					await delay();
-
 					교체부품_tabledata.splice(row_index - 1, 1);
 					교체부품_table(교체부품_tabledata);
 				},
@@ -115,11 +113,15 @@ function 재제조_choisenButton() {
 				작성자: worker,
 			};
 
-			var 중복 = false;
-			교체부품_tabledata.forEach((v) => {
-				if(v.교체전QR == add_item.교체전QR) 중복 = true;
-			});
-			if(중복 == true) return;
+			for(var i = 0; i < 교체부품_tabledata.length; i++) {
+				if(교체부품_tabledata[i].교체전QR == add_item.교체전QR) {
+					document.getElementById(value.replace('_QR', '')).style.backgroundColor = 'salmon';
+
+					교체부품_tabledata.splice(i, 1);
+					교체부품_table(교체부품_tabledata);
+					return;
+				}
+			}
 
 			교체부품_tabledata.push(add_item);
 			교체부품_table(교체부품_tabledata);
@@ -129,6 +131,9 @@ function 재제조_choisenButton() {
 
 async function 분해조립재제조_save() {
 	var data = table_부품교환.getData();
+	
+	delete(분해조립재제조, 관리번호);
+	await delay();
 
 	for(var i = 0; i < data.length; i++) {
 		console.log(data[i]);
@@ -157,4 +162,54 @@ async function 분해조립재제조_save() {
 	update(BSA재제조, 재제조_doc);
 	await delay();
 
+}
+
+function draw_color(data) {
+	data.forEach((v) => {
+		var id = v.품명;
+		console.log(v);
+
+		switch (차종) {
+			case "DE":
+			case "DE_EV":
+			case "OS":
+			case "OS_EV":
+			case "SK3":
+			case "SK3_EV":
+			case "LK":
+			case "LK_EV":
+				id = '_A_' + id;
+				break;
+
+			case "PU":
+			case "PU_EV":
+			case "HR":
+			case "HR_EV":
+				id = '_B_' + id;
+				break;
+
+			case "CV":
+			case "CV_EV":
+			case "NE":
+			case "NE_EV":
+			case "LM":
+			case "LM_EV":
+				id = '_C_' + id;
+				break;
+
+				break;
+
+			case "CS":
+			case "CS_EV":
+				id = '_D_' + id;
+				break;
+
+			default:
+				alert("차종 정보를 확인해주세요");
+
+				return;
+				break;
+		}
+		document.getElementById(id).style.backgroundColor = 'red';
+	});
 }

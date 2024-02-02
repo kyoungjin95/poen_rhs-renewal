@@ -31,6 +31,8 @@ async function 분해조립_공정대기_시작() {
 
 	공정대기_choisenButton();
 
+	draw_color(분해조립공정대기_tabledata);
+
 	find(BSA재제조, 관리번호);
 	await delay();
 
@@ -96,12 +98,15 @@ function 공정대기_choisenButton() {
 				대기사유 : ''
 			};
 
-			var 중복 = false;
-			분해조립공정대기_tabledata.forEach((v) => {
-				if(v.QR == add_item.QR) 중복 = true;
-			});
-			if(중복 == true) return;
+			for(var i = 0; i < 분해조립공정대기_tabledata.length; i++) {
+				if(분해조립공정대기_tabledata[i].QR == add_item.QR) {
+					document.getElementById(value.replace('_QR', '')).style.backgroundColor = 'salmon';
 
+					분해조립공정대기_tabledata.splice(i, 1);
+					분해조립공정대기_table(분해조립공정대기_tabledata);
+					return;
+				}
+			}
 			분해조립공정대기_tabledata.push(add_item);
 			분해조립공정대기_table(분해조립공정대기_tabledata);
 		});
@@ -110,6 +115,10 @@ function 공정대기_choisenButton() {
 
 async function 분해조립공정대기_save() {
 	var data = table_공정대기.getData();
+
+	delete(분해조립공정대기, 관리번호);
+	await delay();
+
 	for(var i = 0; i < data.length; i++) {
 		console.log(data[i]);
 		update_분해조립공정대기(분해조립공정대기, data[i]);
@@ -127,9 +136,54 @@ async function 분해조립공정대기_save() {
 	if (insert_count > 0) {
 		alert("저장 되었습니다");
 	}
+}
 
-	find_분해조립공정대기(분해조립공정대기, { 관리번호 : 관리번호 });
-	await delay();
+function draw_color(data) {
+	data.forEach((v) => {
+		var id = v.품명;
+		console.log(v);
 
-	console.log(분해조립공정대기_v);
+		switch (차종) {
+			case "DE":
+			case "DE_EV":
+			case "OS":
+			case "OS_EV":
+			case "SK3":
+			case "SK3_EV":
+			case "LK":
+			case "LK_EV":
+				id = '_A_' + id;
+				break;
+
+			case "PU":
+			case "PU_EV":
+			case "HR":
+			case "HR_EV":
+				id = '_B_' + id;
+				break;
+
+			case "CV":
+			case "CV_EV":
+			case "NE":
+			case "NE_EV":
+			case "LM":
+			case "LM_EV":
+				id = '_C_' + id;
+				break;
+
+				break;
+
+			case "CS":
+			case "CS_EV":
+				id = '_D_' + id;
+				break;
+
+			default:
+				alert("차종 정보를 확인해주세요");
+
+				return;
+				break;
+		}
+		document.getElementById(id).style.backgroundColor = 'red';
+	});
 }

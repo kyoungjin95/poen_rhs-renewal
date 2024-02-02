@@ -19,11 +19,11 @@ var Busbars_count = 1;
 var BMA_count = 1;
 var first_분해조립 = true;
 
-async function old_분해조립_재제조번호_시작() {
-	old_분해조립_시작(true);
+async function 분해조립_재제조번호_시작() {
+	분해조립_시작(true);
 }
 
-async function old_분해조립_시작(is재제조 = 0) {
+async function 분해조립_시작(is재제조 = 0) {
 	//if(flag_loaded == true) return;
 	if (worker == "") return;
 	if(typeof _management_id == 'undefined') {
@@ -31,12 +31,12 @@ async function old_분해조립_시작(is재제조 = 0) {
 		return;
 	}
 
-	if (flag_old_분해조립 == true) await old_분해조립_list();
+	if (flag_분해조립 == true) await 분해조립_list();
 
-	flag_old_분해조립 = false;
+	flag_분해조립 = false;
 	flag_loaded = true;
 
-	old_분해조립_loading();
+	분해조립_loading();
 
 	if (is재제조 == 0) {
 		if (_management_id.value.length == 0) return;
@@ -973,7 +973,7 @@ async function old_분해조립_시작(is재제조 = 0) {
 	}
 }
 
-async function old_분해조립_save() {
+async function 분해조립_save() {
 	if (worker == "") return;
 	if (_management_id.value.length == 0) return;
 	console.log("save: ", _management_id.value);
@@ -986,7 +986,8 @@ async function old_분해조립_save() {
 	var now = seoul.toString().slice(0, 19);
 
 	if(_공정입고일.value == '') _공정입고일.value = now;
-	if(계정_stat.완료일수정 != 'o' || _공정완료일.value == "") _공정완료일.value = now;
+        if(_공정완료일.value == "") _공정완료일.value = now;
+        //if(계정_stat.완료일수정 != 'o' || _공정완료일.value == "") _공정완료일.value = now;
 
 	var doc = JSON.parse(JSON.stringify(분해조립_doc));
 
@@ -1263,14 +1264,27 @@ async function old_분해조립_save() {
 		alert("저장 되었습니다");
 	}
 
-	var _doc = {
-		관리번호: _management_id.value.toUpperCase(),
-		분해조립투입일: _공정입고일.value,
-		분해조립: _공정완료일.value,
-	};
+	//find(BSA재제조, _management_id.value);
+	//await delay();
 
-	update(BSA재제조, _doc);
-	await delay();
+	//if (BSA재제조_v == null) {
+	//	var _doc = JSON.parse(JSON.stringify(BSA재제조_doc));
+	//	_doc.관리번호 = _management_id.value.trim().toUpperCase();
+	//	_doc.분해조립투입일 = _공정입고일.value;
+	//	_doc.분해조립 = _공정완료일.value;
+
+	//	update(BSA재제조, _doc);
+	//	await delay();
+	//} else {
+		var _doc = {
+			관리번호: _management_id.value.toUpperCase(),
+			분해조립투입일: _공정입고일.value,
+			분해조립: _공정완료일.value,
+		};
+
+		update(BSA재제조, _doc);
+		await delay();
+	//}
 
 	await 공정단계자동입력(_management_id.value);
 	//이전페이지();
@@ -1455,7 +1469,7 @@ function _delete_row(index, no, type) {
 		온도센서_count = no - 1;
 	}
 
-	if (type == "BMA" && no == BMA_count) {
+	if (type == "배터리모듈" && no == BMA_count) {
 		_tb.deleteRow(index);
 		BMA_count = no - 1;
 	}
@@ -1549,7 +1563,7 @@ function _delete_all() {
 	}
 }
 
-function old_분해조립_updateFilter() {
+function 분해조립_updateFilter() {
 	var fieldEl = document.getElementById("filter-field");
 	var typeEl = document.getElementById("filter-type");
 	var valueEl = document.getElementById("filter-value");
@@ -1568,12 +1582,12 @@ function old_분해조립_updateFilter() {
 	}
 
 	if (filterVal) {
-		old_분해조립_list_table.setFilter(filter, typeVal, valueEl.value);
+		분해조립_list_table.setFilter(filter, typeVal, valueEl.value);
 	}
 }
 
-var old_분해조립_list_table;
-async function old_분해조립_list() {
+var 분해조립_list_table;
+async function 분해조립_list() {
 	findOne_BSA재제조(BSA재제조, {
 		공정단계: { $ne: "출하" },
 		기초검사: { $ne: "" },
@@ -1606,7 +1620,7 @@ async function old_분해조립_list() {
 
 	console.log(BSA재제조_v);
 
-	old_분해조립_list_table = new Tabulator("#grid_list", {
+	분해조립_list_table = new Tabulator("#grid_list", {
 		layout: "resizableColumnFit",
 		data: BSA재제조_v,
 		height: "400px",
@@ -1737,30 +1751,30 @@ async function old_분해조립_list() {
 		],
 	});
 
-	old_분해조립_list_table.on("rowClick", async function (e, row) {
+	분해조립_list_table.on("rowClick", async function (e, row) {
 		console.log("selected 관리번호: ", row.getData().관리번호);
 
 		_management_id.value = row.getData().관리번호;
 
 		await sleep(1);
 
-		var yes = confirm('선택한 BSA로 old_분해조립 공정 정보입력을 시작하시겠습니까?');
+		var yes = confirm('선택한 BSA로 분해조립 공정 정보입력을 시작하시겠습니까?');
 		if (yes != true) return;
 
 
-		old_분해조립_시작(0);
+		분해조립_시작(0);
 	});
 
 	//Update filters on value change
 	document
 		.getElementById("filter-field")
-		.addEventListener("change", old_분해조립_updateFilter);
+		.addEventListener("change", 분해조립_updateFilter);
 	document
 		.getElementById("filter-type")
-		.addEventListener("change", old_분해조립_updateFilter);
+		.addEventListener("change", 분해조립_updateFilter);
 	document
 		.getElementById("filter-value")
-		.addEventListener("keyup", old_분해조립_updateFilter);
+		.addEventListener("keyup", 분해조립_updateFilter);
 
 	//Clear filters on "Clear Filters" button click
 	document
@@ -1773,11 +1787,11 @@ async function old_분해조립_list() {
 			typeEl.value = "=";
 			valueEl.value = "";
 
-			old_분해조립_list_table.clearFilter();
+			분해조립_list_table.clearFilter();
 		});
 }
 
-function old_분해조립_loading() {
+function 분해조립_loading() {
 	for (var i = 1; i <= 10; i++)
 		eval("if(typeof _BMU" + i + " != 'undefined') _BMU" + i + ".value = '';");
 	for (var i = 1; i <= 10; i++)
@@ -1955,7 +1969,7 @@ function old_분해조립_loading() {
 
 }
 
-function old_분해조립_exit() {
+function 분해조립_exit() {
 	분해조립_loading();
 	back();
 }

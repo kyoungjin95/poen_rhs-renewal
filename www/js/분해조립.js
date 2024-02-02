@@ -1,14 +1,14 @@
-async function 분해조립_시작() {
+async function new_분해조립_시작() {
 	//if(flag_loaded == true) return;
 	if (worker == "") return;
 	if(typeof _management_id == 'undefined') {
 		await sleep(DELAY);
 		return;
 	}
-
-	if (flag_분해조립 == true) {
-		flag_분해조립 = false;
-		await 분해조립_list();
+	console.log('new 분해조립 start');
+	if (flag_new_분해조립 == true) {
+		flag_new_분해조립 = false;
+		await new_분해조립_list();
 
 		_management_id.value = 관리번호;
 		_차종.value = 차종;
@@ -21,7 +21,7 @@ async function 분해조립_시작() {
 	}
 }
 
-async function 분해조립_list() {
+async function new_분해조립_list() {
 	findOne_BSA재제조(BSA재제조, {
 		공정단계: { $ne: "출하" },
 		기초검사: { $ne: "" },
@@ -54,7 +54,7 @@ async function 분해조립_list() {
 
 	console.log(BSA재제조_v);
 
-	분해조립_list_table = new Tabulator("#grid_list", {
+	new_분해조립_list_table = new Tabulator("#grid_list", {
 		layout: "resizableColumnFit",
 		data: BSA재제조_v,
 		height: "400px",
@@ -97,7 +97,7 @@ async function 분해조립_list() {
 		],
 	});
 
-	분해조립_list_table.on("rowClick", async function (e, row) {
+	new_분해조립_list_table.on("rowClick", async function (e, row) {
 		console.log("selected 관리번호: ", row.getData().관리번호);
 		console.log("selected 차종: ", row.getData().차종);
 
@@ -119,13 +119,13 @@ async function 분해조립_list() {
 	//Update filters on value change
 	document
 		.getElementById("filter-field")
-		.addEventListener("change", 분해조립_updateFilter);
+		.addEventListener("change", new_분해조립_updateFilter);
 	document
 		.getElementById("filter-type")
-		.addEventListener("change", 분해조립_updateFilter);
+		.addEventListener("change", new_분해조립_updateFilter);
 	document
 		.getElementById("filter-value")
-		.addEventListener("keyup", 분해조립_updateFilter);
+		.addEventListener("keyup", new_분해조립_updateFilter);
 
 	//Clear filters on "Clear Filters" button click
 	document
@@ -138,11 +138,11 @@ async function 분해조립_list() {
 			typeEl.value = "=";
 			valueEl.value = "";
 
-			분해조립_list_table.clearFilter();
+			new_분해조립_list_table.clearFilter();
 		});
 }
 
-function 분해조립_exit() {
+function new_분해조립_exit() {
 	back();
 }
 
@@ -571,7 +571,7 @@ async function 분해조립_기초보고서_조회() {
   }
 }
 
-function 분해조립_updateFilter() {
+function new_분해조립_updateFilter() {
 	var fieldEl = document.getElementById("filter-field");
 	var typeEl = document.getElementById("filter-type");
 	var valueEl = document.getElementById("filter-value");
@@ -590,6 +590,6 @@ function 분해조립_updateFilter() {
 	}
 
 	if (filterVal) {
-		분해조립_list_table.setFilter(filter, typeVal, valueEl.value);
+		new_분해조립_list_table.setFilter(filter, typeVal, valueEl.value);
 	}
 }
