@@ -69,17 +69,16 @@ function 교체부품_table(tabledata) {
 			{ title: "교체후 품번", field: "교체후품번", editor: "input" },
 			{ title: "교체후 QR", field: "교체후QR", editor: "input" },
 			{ title: "교체사유", field: "교체사유", editor: "textarea" },
-			{ title: "공정입고일", field: "공정입고일", editor: "input" },
-			{ title: "공정완료일", field: "공정완료일", editor: "input" },
-			{ title: "작성자", field: "작성자", editor: "input" },
 			{
 				formatter: "buttonCross",
 				width: 40,
 				align: "center",
 				cellClick: async function (e, cell) {
 					var row_index = cell.getRow()._row.position;
-					console.log(row_index);
-					
+					console.log('delete:', 교체부품_tabledata[row_index -1].교체전QR);
+					delete_분해조립재제조(분해조립재제조, 교체부품_tabledata[row_index -1].교체전QR);
+					await delay();
+
 					교체부품_tabledata.splice(row_index - 1, 1);
 					교체부품_table(교체부품_tabledata);
 				},
@@ -131,7 +130,7 @@ function 재제조_choisenButton() {
 
 async function 분해조립재제조_save() {
 	var data = table_부품교환.getData();
-	
+	console.log(data);
 	delete(분해조립재제조, 관리번호);
 	await delay();
 
