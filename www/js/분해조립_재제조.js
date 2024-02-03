@@ -131,8 +131,10 @@ function 재제조_choisenButton() {
 async function 분해조립재제조_save() {
 	var data = table_부품교환.getData();
 	console.log(data);
-	delete(분해조립재제조, 관리번호);
-	await delay();
+	for(var i = 0; i < data.length; i++) {
+		delete_분해조립재제조(분해조립재제조, data[i].교체전QR);
+		await delay();
+	}
 
 	for(var i = 0; i < data.length; i++) {
 		console.log(data[i]);

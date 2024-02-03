@@ -4226,7 +4226,7 @@ async function deleteOne_제주재고(col, 관리번호) {
 async function deleteOne_분해조립재제조(col, 관리번호) {
   if (socket == undefined) return;
   flag_arrivedMSG = false;
-  socket.emit("delete", worker, col, { 관리번호: 관리번호 });
+  socket.emit("delete", worker, col, { 관리번호: {$eq : 관리번호 }});
 }
 
 async function delete_분해조립재제조(col, 교체전QR) {
