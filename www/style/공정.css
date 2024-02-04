@@ -211,17 +211,17 @@ table input {
 .process-step table td:nth-child(1) {
   padding: 0 2vw;
 }
-/* .분해조립 .process-step table .t1-d {
-  padding: 0.5vw;
-} */
+
 .process-step table label {
-  font-size: clamp(10px, 2vw, 22px);
+  font-size: clamp(10px, 4vw, 22px);
   margin-left: 0;
   line-height: 1;
 }
-.process-step table td {
+.process-step table td,
+.old_분해조립 .process-step table .t1-d {
   padding: 0.5vw;
 }
+
 .process-step table input {
   padding: 0.3vw;
   text-indent: 5px;
@@ -704,7 +704,6 @@ td.process__btn {
 }
 .분해조립 #_기초보고서 table td.base {
   padding: 3px;
-  height: 1vw;
 }
 .분해조립 #_기초보고서 table td.base,
 .분해조립 #_기초보고서 table td.base2,
@@ -773,6 +772,13 @@ td.process__btn {
 }
 .분해조립 .부품정보 .parts__information .process-step table td:nth-child(1) {
   text-align: center;
+}
+.old_분해조립 .process-step table .plus {
+  text-align: center;
+}
+.old_분해조립 .process__tit {
+  display: flex;
+  padding-bottom: 30px;
 }
 .product__reason {
   padding: 50px 0;
