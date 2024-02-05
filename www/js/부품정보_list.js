@@ -5632,29 +5632,29 @@ function auto_focus() {
 		}
 	}
 
-	_D2_UPR_CASE_품번.onkeydown = function (event) {
-		if(event.keyCode == 13) _D2_LV_W_H_QR.focus();
-		if(_D2_UPR_CASE_QR.value != '' && _D2_UPR_CASE_품번.value != '') { 
-			_D2_UPR_CASE.style.backgroundColor = 'salmon';
-			_D2_UPR_CASE.style.color = 'white';
-		}
+_D2_UPR_CASE_품번.onkeydown = function (event) {
+	if(event.keyCode == 13) _D2_LV_W_H_QR.focus();
+	if(_D2_UPR_CASE_QR.value != '' && _D2_UPR_CASE_품번.value != '') { 
+		_D2_UPR_CASE.style.backgroundColor = 'salmon';
+		_D2_UPR_CASE.style.color = 'white';
 	}
+}
 
 
-	_D2_LV_W_H_품번.onkeydown = function (event) {
-		if(event.keyCode == 13) _D2_MODULE_1_QR.focus();
-		if(_D2_LV_W_H_QR.value != '' && _D2_LV_W_H_품번.value != '') { 
-			_D2_LV_W_H.style.backgroundColor = 'salmon';
-			_D2_LV_W_H.style.color = 'white';
-		}
+_D2_LV_W_H_품번.onkeydown = function (event) {
+	if(event.keyCode == 13) _D2_MODULE_1_QR.focus();
+	if(_D2_LV_W_H_QR.value != '' && _D2_LV_W_H_품번.value != '') { 
+		_D2_LV_W_H.style.backgroundColor = 'salmon';
+		_D2_LV_W_H.style.color = 'white';
 	}
+}
 
-	_D2_MODULE_1_품번.onkeydown = function(event) {
-		if(_D2_MODULE_1_QR.value != '' && _D2_MODULE_1_품번.value != '') { 
-			_D2_MODULE_1.style.backgroundColor = 'salmon';
-			_D2_MODULE_1.style.color = 'white';
-		}
+_D2_MODULE_1_품번.onkeydown = function(event) {
+	if(_D2_MODULE_1_QR.value != '' && _D2_MODULE_1_품번.value != '') { 
+		_D2_MODULE_1.style.backgroundColor = 'salmon';
+		_D2_MODULE_1.style.color = 'white';
 	}
+}
 }
 
 function get_sel_value(event) {
@@ -6609,4 +6609,334 @@ function check_complete() {
 		_D2_MODULE_1.style.backgroundColor = 'salmon';
 		_D2_MODULE_1.style.color = 'white';
 	}
+}
+
+
+async function 부품정보_list_table() {
+	if (_management_id.value == "") return;
+
+	var items = [];
+	var item = { 품명 : '', QR : '', 품번 : ''}
+
+	switch (차종) {
+		case "DE":
+		case "DE_EV":
+		case "OS":
+		case "OS_EV":
+		case "SK3":
+		case "SK3_EV":
+		case "LK":
+		case "LK_EV":
+			item.품명 = 'UPR_CASE'; item.품번 = _A_UPR_CASE_품번.value; item.QR = _A_UPR_CASE_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'LWR_CASE'; item.품번 = _A_LWR_CASE_품번.value; item.QR  = _A_LWR_CASE_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'S_PLUG_Q'; item.품번 = _A_S_PLUG_품번.value; item.QR  = _A_S_PLUG_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'SPA_QR ='; item.품번 = _A_SPA_품번.value; item.QR  = _A_SPA_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'HT_CNTR_'; item.품번 = _A_HT_CNTR_품번.value; item.QR  = _A_HT_CNTR_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'HV_CNTR_'; item.품번 = _A_HV_CNTR_품번.value; item.QR  = _A_HV_CNTR_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'PRA_QR ='; item.품번 = _A_PRA_품번.value; item.QR  = _A_PRA_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'LV_W_H_Q'; item.품번 = _A_LV_W_H_품번.value; item.QR  = _A_LV_W_H_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'HV_W_H_1'; item.품번 = _A_HV_W_H_1_품번.value; item.QR  = _A_HV_W_H_1_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'HV_W_H_2'; item.품번 = _A_HV_W_H_2_품번.value; item.QR  = _A_HV_W_H_2_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'HV_W_H_3'; item.품번 = _A_HV_W_H_3_품번.value; item.QR  = _A_HV_W_H_3_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'HV_W_H_4'; item.품번 = _A_HV_W_H_4_품번.value; item.QR  = _A_HV_W_H_4_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'HV_W_H_5'; item.품번 = _A_HV_W_H_5_품번.value; item.QR  = _A_HV_W_H_5_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'BMU_QR ='; item.품번 = _A_BMU_품번.value; item.QR  = _A_BMU_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'CMU_1_QR'; item.품번 = _A_CMU_1_품번.value; item.QR  = _A_CMU_1_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'CMU_2_QR'; item.품번 = _A_CMU_2_품번.value; item.QR  = _A_CMU_2_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'CMU_3_QR'; item.품번 = _A_CMU_3_품번.value; item.QR  = _A_CMU_3_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'CMU_4_QR'; item.품번 = _A_CMU_4_품번.value; item.QR  = _A_CMU_4_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'CMU_5_QR'; item.품번 = _A_CMU_5_품번.value; item.QR  = _A_CMU_5_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'MODULE_1'; item.품번 = _A_MODULE_1_품번.value; item.QR  = _A_MODULE_1_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'MODULE_2'; item.품번 = _A_MODULE_2_품번.value; item.QR  = _A_MODULE_2_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'MODULE_3'; item.품번 = _A_MODULE_3_품번.value; item.QR  = _A_MODULE_3_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'MODULE_4'; item.품번 = _A_MODULE_4_품번.value; item.QR  = _A_MODULE_4_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'MODULE_5'; item.품번 = _A_MODULE_5_품번.value; item.QR  = _A_MODULE_5_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+
+			break;
+
+		case "PU":
+		case "PU_EV":
+		case "HR":
+		case "HR_EV":
+			item.품명 = 'UPR_CASE'; item.품번 = _B_UPR_CASE_품번.value; item.QR = _B_UPR_CASE_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'LWR_CASE'; item.품번 = _B_LWR_CASE_품번.value; item.QR = _B_LWR_CASE_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'HV_CNTR';  item.품번 = _B_HV_CNTR_품번.value; item.QR = _B_HV_CNTR_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'HT_CNTR';  item.품번 = _B_HT_CNTR_품번.value; item.QR = _B_HT_CNTR_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'PRA';      item.품번 = _B_PRA_품번.value; item.QR = _B_PRA_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'FUSE';     item.품번 = _B_FUSE_품번.value; item.QR = _B_FUSE_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'HV_W_H_1'; item.품번 = _B_HV_W_H_1_품번.value; item.QR = _B_HV_W_H_1_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'HV_W_H_2'; item.품번 = _B_HV_W_H_2_품번.value; item.QR = _B_HV_W_H_2_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'LV_W_H';   item.품번 = _B_LV_W_H_품번.value; item.QR = _B_LV_W_H_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'BMU';      item.품번 = _B_BMU_품번.value; item.QR = _B_BMU_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'CMU_1';    item.품번 = _B_CMU_1_품번.value; item.QR = _B_CMU_1_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'CMU_2';    item.품번 = _B_CMU_2_품번.value; item.QR = _B_CMU_2_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'CMU_3';    item.품번 = _B_CMU_3_품번.value; item.QR = _B_CMU_3_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'CMU_4';    item.품번 = _B_CMU_4_품번.value; item.QR = _B_CMU_4_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'CMU_5';    item.품번 = _B_CMU_5_품번.value; item.QR = _B_CMU_5_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'MODULE_1'; item.품번 = _B_MODULE_1_품번.value; item.QR = _B_MODULE_1_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'MODULE_2'; item.품번 = _B_MODULE_2_품번.value; item.QR = _B_MODULE_2_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'MODULE_3'; item.품번 = _B_MODULE_3_품번.value; item.QR = _B_MODULE_3_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'MODULE_4'; item.품번 = _B_MODULE_4_품번.value; item.QR = _B_MODULE_4_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'MODULE_5'; item.품번 = _B_MODULE_5_품번.value; item.QR = _B_MODULE_5_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'MODULE_6'; item.품번 = _B_MODULE_6_품번.value; item.QR = _B_MODULE_6_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'MODULE_7'; item.품번 = _B_MODULE_7_품번.value; item.QR = _B_MODULE_7_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'MODULE_8'; item.품번 = _B_MODULE_8_품번.value; item.QR = _B_MODULE_8_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'MODULE_9'; item.품번 = _B_MODULE_9_품번.value; item.QR = _B_MODULE_9_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'MODULE_10'; item.품번 = _B_MODULE_10_품번.value;; item.QR = _B_MODULE_10_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+
+			break;
+
+		case "CV":
+		case "CV_EV":
+		case "NE":
+		case "NE_EV":
+		case "LM":
+		case "LM_EV":
+			item.품명 = 'UPR_CASE';   item.품번 = _C_UPR_CASE_품번.value; item.QR = _C_UPR_CASE_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'LWR_CASE';   item.품번 = _C_LWR_CASE_품번.value; item.QR = _C_LWR_CASE_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'HV_CNTR_1';  item.품번 = _C_HV_CNTR_1_품번.value; item.QR = _C_HV_CNTR_1_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'HV_CNTR_2';  item.품번 = _C_HV_CNTR_2_품번.value; item.QR = _C_HV_CNTR_2_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'HT_CNTR';    item.품번 = _C_HT_CNTR_품번.value; item.QR = _C_HT_CNTR_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'PRA';        item.품번 = _C_PRA_품번.value; item.QR = _C_PRA_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'FUSE';       item.품번 = _C_FUSE_품번.value; item.QR = _C_FUSE_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'LV_W_H';     item.품번 = _C_LV_W_H_품번.value; item.QR = _C_LV_W_H_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'HV_W_H_1';   item.품번 = _C_HV_W_H_1_품번.value; item.QR = _C_HV_W_H_1_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'HV_W_H_2';   item.품번 = _C_HV_W_H_2_품번.value; item.QR = _C_HV_W_H_2_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'HV_W_H_3';   item.품번 = _C_HV_W_H_3_품번.value; item.QR = _C_HV_W_H_3_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'HV_W_H_4';   item.품번 = _C_HV_W_H_4_품번.value; item.QR = _C_HV_W_H_4_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'HV_W_H_5';   item.품번 = _C_HV_W_H_5_품번.value; item.QR = _C_HV_W_H_5_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'HV_W_H_6';   item.품번 = _C_HV_W_H_6_품번.value; item.QR = _C_HV_W_H_6_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'HV_W_H_7';   item.품번 = _C_HV_W_H_7_품번.value; item.QR = _C_HV_W_H_7_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'HV_W_H_8';   item.품번 = _C_HV_W_H_8_품번.value; item.QR = _C_HV_W_H_8_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'BMU';        item.품번 = _C_BMU_품번.value; item.QR = _C_BMU_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'CMU_1';      item.품번 = _C_CMU_1_품번.value; item.QR = _C_CMU_1_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'CMU_2';      item.품번 = _C_CMU_2_품번.value; item.QR = _C_CMU_2_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'CMU_3';      item.품번 = _C_CMU_3_품번.value; item.QR = _C_CMU_3_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'CMU_4';      item.품번 = _C_CMU_4_품번.value; item.QR = _C_CMU_4_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'CMU_5';      item.품번 = _C_CMU_5_품번.value; item.QR = _C_CMU_5_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'CMU_6';      item.품번 = _C_CMU_6_품번.value; item.QR = _C_CMU_6_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'CMU_7';      item.품번 = _C_CMU_7_품번.value; item.QR = _C_CMU_7_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'CMU_8';      item.품번 = _C_CMU_8_품번.value; item.QR = _C_CMU_8_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'MODULE_1';   item.품번 = _C_MODULE_1_품번.value; item.QR = _C_MODULE_1_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'MODULE_2';   item.품번 = _C_MODULE_2_품번.value; item.QR = _C_MODULE_2_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'MODULE_3';   item.품번 = _C_MODULE_3_품번.value; item.QR = _C_MODULE_3_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'MODULE_4';   item.품번 = _C_MODULE_4_품번.value; item.QR = _C_MODULE_4_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'MODULE_5';   item.품번 = _C_MODULE_5_품번.value; item.QR = _C_MODULE_5_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'MODULE_6';   item.품번 = _C_MODULE_6_품번.value; item.QR = _C_MODULE_6_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'MODULE_7';   item.품번 = _C_MODULE_7_품번.value; item.QR = _C_MODULE_7_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'MODULE_8';   item.품번 = _C_MODULE_8_품번.value; item.QR = _C_MODULE_8_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'MODULE_9';   item.품번 = _C_MODULE_9_품번.value; item.QR = _C_MODULE_9_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'MODULE_10';  item.품번 = _C_MODULE_10_품번.value; item.QR = _C_MODULE_10_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'MODULE_11';  item.품번 = _C_MODULE_11_품번.value; item.QR = _C_MODULE_11_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'MODULE_12';  item.품번 = _C_MODULE_12_품번.value; item.QR = _C_MODULE_12_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'MODULE_13';  item.품번 = _C_MODULE_13_품번.value; item.QR = _C_MODULE_13_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'MODULE_14';  item.품번 = _C_MODULE_14_품번.value; item.QR = _C_MODULE_14_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'MODULE_15';  item.품번 = _C_MODULE_15_품번.value; item.QR = _C_MODULE_15_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'MODULE_16';  item.품번 = _C_MODULE_16_품번.value; item.QR = _C_MODULE_16_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'MODULE_2_1'; item.품번 = _C_MODULE_2_1_품번.value; item.QR = _C_MODULE_2_1_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'MODULE_2_2'; item.품번 = _C_MODULE_2_2_품번.value; item.QR = _C_MODULE_2_2_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'MODULE_2_3'; item.품번 = _C_MODULE_2_3_품번.value; item.QR = _C_MODULE_2_3_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'MODULE_2_4'; item.품번 = _C_MODULE_2_4_품번.value; item.QR = _C_MODULE_2_4_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'MODULE_2_5'; item.품번 = _C_MODULE_2_5_품번.value; item.QR = _C_MODULE_2_5_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'MODULE_2_6'; item.품번 = _C_MODULE_2_6_품번.value; item.QR = _C_MODULE_2_6_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'MODULE_2_7'; item.품번 = _C_MODULE_2_7_품번.value; item.QR = _C_MODULE_2_7_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'MODULE_2_8'; item.품번 = _C_MODULE_2_8_품번.value; item.QR = _C_MODULE_2_8_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'MODULE_2_9'; item.품번 = _C_MODULE_2_9_품번.value; item.QR = _C_MODULE_2_9_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'MODULE_2_10';item.품번 = _C_MODULE_2_10_품번.value; item.QR = _C_MODULE_2_10_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'MODULE_2_11';item.품번 = _C_MODULE_2_11_품번.value; item.QR = _C_MODULE_2_11_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'MODULE_2_12';item.품번 = _C_MODULE_2_12_품번.value; item.QR = _C_MODULE_2_12_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'MODULE_2_13';item.품번 = _C_MODULE_2_13_품번.value; item.QR = _C_MODULE_2_13_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'MODULE_2_14';item.품번 = _C_MODULE_2_14_품번.value; item.QR = _C_MODULE_2_14_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'MODULE_2_15';item.품번 = _C_MODULE_2_15_품번.value; item.QR = _C_MODULE_2_15_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'MODULE_2_16';item.품번 = _C_MODULE_2_16_품번.value; item.QR = _C_MODULE_2_16_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+
+			break;
+
+		case "CS":
+		case "CS_EV":
+			item.품명 = 'UPR_CASE';  item.품번 = _D_UPR_CASE_품번.value;   item.QR = _D_UPR_CASE_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'LWR_CASE';  item.품번 = _D_LWR_CASE_품번.value;   item.QR = _D_LWR_CASE_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'HV_CNTR_1'; item.품번 = _D_HV_CNTR_1_품번.value;  item.QR = _D_HV_CNTR_1_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'HV_CNTR_2'; item.품번 = _D_HV_CNTR_2_품번.value;  item.QR = _D_HV_CNTR_2_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'RELAY';     item.품번 = _D_RELAY_품번.value;      item.QR = _D_RELAY_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'LV_W_H';    item.품번 = _D_LV_W_H_품번.value;     item.QR = _D_LV_W_H_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'HV_W_H_1';  item.품번 = _D_HV_W_H_1_품번.value;   item.QR = _D_HV_W_H_1_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'HV_W_H_2';  item.품번 = _D_HV_W_H_2_품번.value;   item.QR = _D_HV_W_H_2_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'BMU';       item.품번 = _D_BMU_품번.value;        item.QR = _D_BMU_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'CMU_1';     item.품번 = _D_CMU_1_품번.value;      item.QR = _D_CMU_1_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'MODULE_1';  item.품번 = _D_MODULE_1_품번.value;   item.QR = _D_MODULE_1_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'MODULE_2';  item.품번 = _D_MODULE_2_품번.value;   item.QR = _D_MODULE_2_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'HV_W_H_1';  item.품번 = _D2_HV_W_H_1_품번.value;  item.QR = _D2_HV_W_H_1_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'CMU_1';     item.품번 = _D2_CMU_1_품번.value;     item.QR = _D2_CMU_1_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'RELAY';     item.품번 = _D2_RELAY_품번.value;     item.QR = _D2_RELAY_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'BMU';       item.품번 = _D2_BMU_품번.value;       item.QR = _D2_BMU_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'HV_CNTR_1'; item.품번 = _D2_HV_CNTR_1_품번.value; item.QR = _D2_HV_CNTR_1_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'HV_CNTR_2'; item.품번 = _D2_HV_CNTR_2_품번.value; item.QR = _D2_HV_CNTR_2_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'LWR_CASE';  item.품번 = _D2_LWR_CASE_품번.value;  item.QR = _D2_LWR_CASE_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'UPR_CASE';  item.품번 = _D2_UPR_CASE_품번.value;  item.QR = _D2_UPR_CASE_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'LV_W_H';    item.품번 = _D2_LV_W_H_품번.value;    item.QR = _D2_LV_W_H_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+			item.품명 = 'MODULE_1';  item.품번 = _D2_MODULE_1_품번.value;  item.QR = _D2_MODULE_1_QR.value;
+			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
+
+			break;
+		default: 
+			console.log('차종을 확인하세요');
+			return;
+
+			break;
+	}
+
+	for(var i = 0; i < items.length; i++) {
+		items[i].관리번호 = 관리번호;
+		items[i].차종 = 차종;
+	}
+
+	var item_list_table = new Tabulator("#grid_item_list", {
+		layout: "resizableColumnFit",
+		height: 200,
+		data: items,
+
+		columns: [
+			{ title: "관리번호", field: "관리번호", sorter: "string", width: "180" },
+			{ title: "차종", field: "차종", sorter: "string", width: "180" },
+			{ title: "품명", field: "품명", sorter: "string", width: "180" },
+			{ title: "QR", field: "QR", sorter: "string", width: "180" },
+			{ title: "품번", field: "품번", sorter: "string", width: "180" },
+		],
+	});
+
+
+	await sleep(1);
+
+	var sheets = {
+		부품정보_리스트: true,
+	};
+	item_list_table.download("xlsx", "부품정보_리스트.xlsx", { sheets: sheets });
 }
