@@ -63,6 +63,7 @@ function 분해조립공정대기_table(tabledata) {
 				align: "center",
 				cellClick: async function (e, cell) {
 					var row_index = cell.getRow()._row.position;
+				        if(pushed.indexOf(교체부품_tabledata[index -1].QR) != -1) pushed.splice(pushed.indexOf(교체부품_tabledata[row_index -1].교체전QR), 1);
 					console.log(row_index);
 					
 					var del_QR = 분해조립공정대기_tabledata[row_index - 1].QR;
@@ -71,8 +72,6 @@ function 분해조립공정대기_table(tabledata) {
 
 					분해조립공정대기_tabledata.splice(row_index - 1, 1);
 					분해조립공정대기_table(분해조립공정대기_tabledata);
-
-
 				},
 			},
 		]
@@ -88,8 +87,6 @@ function 공정대기_choisenButton() {
 			if (value == null) return;
 			console.log("value:", value);
 
-			button.style.backgroundColor = 'red';
-
 			var add_item = {
 				관리번호 : 관리번호,
 				품명 : value.replace('_A_', '').replace('_B_', '').replace('_C_', '').replace('_D_', '').replace('_D2_', '').replace('_QR', ''),
@@ -98,15 +95,19 @@ function 공정대기_choisenButton() {
 				대기사유 : ''
 			};
 
-			for(var i = 0; i < 분해조립공정대기_tabledata.length; i++) {
-				if(분해조립공정대기_tabledata[i].QR == add_item.QR) {
-					document.getElementById(value.replace('_QR', '')).style.backgroundColor = 'salmon';
+			if(add_item.QR.trim() == '') return;
+			button.style.backgroundColor = 'red';
 
+			for(var i = 0; i < 분해조립공정대기_tabledata.length; i++) {
+				if((분해조립공정대기_tabledata[i].QR == add_item.QR) || pushed.indexOf(add_item.QR) != -1) {
+					document.getElementById(value.replace('_QR', '')).style.backgroundColor = 'salmon';
+				        if(pushed.indexOf(add_item.QR) != -1) pushed.splice(pushed.indexOf(add_item.QR), 1);
 					분해조립공정대기_tabledata.splice(i, 1);
 					분해조립공정대기_table(분해조립공정대기_tabledata);
 					return;
 				}
 			}
+
 			분해조립공정대기_tabledata.push(add_item);
 			분해조립공정대기_table(분해조립공정대기_tabledata);
 		});
@@ -116,8 +117,11 @@ function 공정대기_choisenButton() {
 async function 분해조립공정대기_save() {
 	var data = table_공정대기.getData();
 
-	delete(분해조립공정대기, 관리번호);
-	await delay();
+	for(var i = 0; i < data.length; i++) {
+		delete_분해조립공정대기(공정대기, data[i].QR);
+		await delay();
+	}
+
 
 	for(var i = 0; i < data.length; i++) {
 		console.log(data[i]);
@@ -138,6 +142,7 @@ async function 분해조립공정대기_save() {
 	}
 }
 
+var pushed = [];
 function draw_color(data) {
 	data.forEach((v) => {
 		var id = v.품명;
@@ -185,5 +190,6 @@ function draw_color(data) {
 				break;
 		}
 		document.getElementById(id).style.backgroundColor = 'red';
+		pushed.push(id);
 	});
 }

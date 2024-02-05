@@ -8,6 +8,8 @@ async function 분해조립_폐기자재_시작() {
 
 	console.log('분해조립 폐기자재 시작');
 
+	pushed = [];
+
 	flag_부품정보_list = true;
 	await 부품정보_list_시작();
 
@@ -22,6 +24,8 @@ async function 분해조립_폐기자재_시작() {
 	await 분해조립폐기자재_table(분해조립폐기자재_tabledata);
 
 	폐기자재_choisenButton();
+
+	draw_color(분해조립폐기자재_tabledata);
 
 	flag_폐기자재_all = false;
 	flag_all_폐기사유 = false;
@@ -49,6 +53,7 @@ function 분해조립폐기자재_table(tabledata) {
 					var row_index = cell.getRow()._row.position;
 					console.log(row_index);
 
+				        if(pushed.indexOf(분해조립폐기자재_tabledata[index -1].QR) != -1) pushed.splice(pushed.indexOf(분해조립폐기자재_tabledata[row_index -1].QR), 1);
 					var del_QR = 분해조립폐기자재_tabledata[row_index - 1].QR;
 					delete_분해조립폐기자재(분해조립폐기자재, del_QR);
 					await delay();
@@ -85,7 +90,6 @@ function 폐기자재_choisenButton() {
 			console.log("value:", value);
 			
 			check_items.push(value);
-			button.style.backgroundColor = 'red';
 
 			var add_item = {
 				관리번호 : 관리번호,
@@ -95,11 +99,19 @@ function 폐기자재_choisenButton() {
 				폐기사유 : ''
 			};
 
-			var 중복 = false;
-			분해조립폐기자재_tabledata.forEach((v) => {
-				if(v.QR == add_item.QR) 중복 = true;
-			});
-			if(중복 == true) return;
+			if(add_item.QR.trim() == '') return;
+			button.style.backgroundColor = 'red';
+
+			for(var i = 0; i < 분해조립폐기자재_tabledata.length; i++) {
+				if(분해조립폐기자재_tabledata[i].QR == add_item.QR || pushed.indexOf(add_item.QR) != -1) {
+					document.getElementById(value.replace('_QR', '')).style.backgroundColor = 'salmon';
+
+				        if(pushed.indexOf(add_item.QR) != -1) pushed.splice(pushed.indexOf(add_item.QR), 1);
+					분해조립폐기자재_tabledata.splice(i, 1);
+					분해조립폐기자재_table(분해조립폐기자재_tabledata);
+					return;
+				}
+			}
 
 			분해조립폐기자재_tabledata.push(add_item);
 			분해조립폐기자재_table(분해조립폐기자재_tabledata);
@@ -109,6 +121,11 @@ function 폐기자재_choisenButton() {
 
 async function 분해조립폐기자재_save() {
 	var data = table_폐기자재.getData();
+
+	for(var i = 0; i < data.length; i++) {
+		delete_분해조립폐기자재(분해조립폐기자재, data[i].QR);
+		await delay();
+	}
 
 	for(var i = 0; i < data.length; i++) {
 		console.log(data[i]);
@@ -174,4 +191,56 @@ async function 분해조립폐기자재_all() {
 	분해조립폐기자재_table(분해조립폐기자재_tabledata);
 
 	flag_폐기자재_all = true;
+}
+
+var pushed = [];
+function draw_color(data) {
+	data.forEach((v) => {
+		var id = v.품명;
+		console.log(v);
+
+		switch (차종) {
+			case "DE":
+			case "DE_EV":
+			case "OS":
+			case "OS_EV":
+			case "SK3":
+			case "SK3_EV":
+			case "LK":
+			case "LK_EV":
+				id = '_A_' + id;
+				break;
+
+			case "PU":
+			case "PU_EV":
+			case "HR":
+			case "HR_EV":
+				id = '_B_' + id;
+				break;
+
+			case "CV":
+			case "CV_EV":
+			case "NE":
+			case "NE_EV":
+			case "LM":
+			case "LM_EV":
+				id = '_C_' + id;
+				break;
+
+				break;
+
+			case "CS":
+			case "CS_EV":
+				id = '_D_' + id;
+				break;
+
+			default:
+				alert("차종 정보를 확인해주세요");
+
+				return;
+				break;
+		}
+		document.getElementById(id).style.backgroundColor = 'red';
+		pushed.push(id);
+	});
 }

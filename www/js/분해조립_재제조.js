@@ -9,6 +9,7 @@ async function 분해조립_재제조_시작() {
 
 	console.log('분해조립 재제조 시작');
 
+	pushed = [];
 	var DateTime = luxon.DateTime;
 	var seoul = DateTime.local().setZone("Asia/Seoul");
 	var now = seoul.toString().slice(0, 19);
@@ -75,8 +76,10 @@ function 교체부품_table(tabledata) {
 				align: "center",
 				cellClick: async function (e, cell) {
 					var row_index = cell.getRow()._row.position;
-					console.log('delete:', 교체부품_tabledata[row_index -1].교체전QR);
-					delete_분해조립재제조(분해조립재제조, 교체부품_tabledata[row_index -1].교체전QR);
+					var QR = 교체부품_tabledata[row_index -1].교체전QR;
+				        if(pushed.indexOf(QR) != -1) pushed.splice(pushed.indexOf(QR), 1);
+					console.log('delete:', QR);
+					delete_분해조립재제조(분해조립재제조, QR);
 					await delay();
 
 					교체부품_tabledata.splice(row_index - 1, 1);
@@ -96,7 +99,6 @@ function 재제조_choisenButton() {
 			if (value == null) return;
 			console.log("value:", value);
 
-			button.style.backgroundColor = 'red';
 
 			var add_item = {
 				관리번호 : 관리번호,
@@ -112,10 +114,14 @@ function 재제조_choisenButton() {
 				작성자: worker,
 			};
 
+			if(add_item.교체전QR.trim() == '') return;
+			button.style.backgroundColor = 'red';
+
 			for(var i = 0; i < 교체부품_tabledata.length; i++) {
-				if(교체부품_tabledata[i].교체전QR == add_item.교체전QR) {
+				if(교체부품_tabledata[i].교체전QR == add_item.교체전QR || pushed.indexOf(add_item.교체전QR) != -1) {
 					document.getElementById(value.replace('_QR', '')).style.backgroundColor = 'salmon';
 
+				        if(pushed.indexOf(add_item.QR) != -1) pushed.splice(pushed.indexOf(add_item.교체전QR), 1);
 					교체부품_tabledata.splice(i, 1);
 					교체부품_table(교체부품_tabledata);
 					return;
@@ -130,11 +136,18 @@ function 재제조_choisenButton() {
 
 async function 분해조립재제조_save() {
 	var data = table_부품교환.getData();
-	console.log(data);
+
+	var DateTime = luxon.DateTime;
+	var seoul = DateTime.local().setZone("Asia/Seoul");
+	var now = seoul.toString().slice(0, 19);
+
 	for(var i = 0; i < data.length; i++) {
 		delete_분해조립재제조(분해조립재제조, data[i].교체전QR);
 		await delay();
 	}
+
+	var update_cnt = 0;
+	var insert_cnt = 0;
 
 	for(var i = 0; i < data.length; i++) {
 		console.log(data[i]);
@@ -143,20 +156,33 @@ async function 분해조립재제조_save() {
 
 		console.log(update_count);
 		console.log(insert_count);
+		update_cnt += update_count;
+		insert_cnt += insert_count;
+
+		if(data[i].신품고품 != '고품') return;
+		var doc = {
+			QR : data[i].교체후QR,
+			사용여부 : '사용',
+			사용_관리번호 : 관리번호,
+			사용일 : now,
+			사용작업자 : worker
+		}
+
+		update_고품정보(고품정보, doc);
+		await delay();
+
+		console.log(update_count);
+		console.log(insert_count);
 	};
 
 
-	if (update_count > 0) {
+	if (update_cnt > 0) {
 		alert("업데이트 되었습니다");
 	}
 
-	if (insert_count > 0) {
+	if (insert_cnt > 0) {
 		alert("저장 되었습니다");
 	}
-
-	var DateTime = luxon.DateTime;
-	var seoul = DateTime.local().setZone("Asia/Seoul");
-	var now = seoul.toString().slice(0, 19);
 
 	if(재제조_doc.분해조립 == '') 재제조_doc.분해조립 = now;
 
@@ -165,6 +191,7 @@ async function 분해조립재제조_save() {
 
 }
 
+var pushed = [];
 function draw_color(data) {
 	data.forEach((v) => {
 		var id = v.품명;
@@ -212,5 +239,6 @@ function draw_color(data) {
 				break;
 		}
 		document.getElementById(id).style.backgroundColor = 'red';
+		pushed.push(id);
 	});
 }
