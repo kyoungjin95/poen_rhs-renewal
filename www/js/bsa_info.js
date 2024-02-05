@@ -695,7 +695,7 @@ async function grid_세척(m_id = "") {
 				tabledata_세척[i].구분 = table_data[j].구분;
 				tabledata_세척[i].차종 = table_data[j].차종;
 				tabledata_세척[i].품번 = table_data[j].품번;
-				tabledata_세척[i].Ro_no = table_data[j].RO_no;
+				tabledata_세척[i].RO_no = table_data[j].RO_no;
 				continue;
 			}
 		}
@@ -752,7 +752,7 @@ async function grid_기초검사(m_id = "") {
 				tabledata_기초검사[i].구분 = table_data[j].구분;
 				tabledata_기초검사[i].차종 = table_data[j].차종;
 				tabledata_기초검사[i].품번 = table_data[j].품번;
-				tabledata_기초검사[i].Ro_no = table_data[j].RO_no;
+				tabledata_기초검사[i].RO_no = table_data[j].RO_no;
 				continue;
 			}
 		}
@@ -837,7 +837,7 @@ async function grid_분해조립(m_id = "") {
 				tabledata_분해조립[i].구분 = table_data[j].구분;
 				tabledata_분해조립[i].차종 = table_data[j].차종;
 				tabledata_분해조립[i].품번 = table_data[j].품번;
-				tabledata_분해조립[i].Ro_no = table_data[j].RO_no;
+				tabledata_분해조립[i].RO_no = table_data[j].RO_no;
 				continue;
 			}
 		}
@@ -1178,7 +1178,7 @@ async function grid_분해조립new(m_id = "") {
 				tabledata_분해조립new[i].구분 = table_data[j].구분;
 				tabledata_분해조립new[i].차종 = table_data[j].차종;
 				tabledata_분해조립new[i].품번 = table_data[j].품번;
-				tabledata_분해조립new[i].Ro_no = table_data[j].RO_no;
+				tabledata_분해조립new[i].RO_no = table_data[j].RO_no;
 				continue;
 			}
 		}
@@ -1232,7 +1232,7 @@ async function grid_성능검사(m_id = "") {
 				tabledata_성능검사[i].구분 = table_data[j].구분;
 				tabledata_성능검사[i].차종 = table_data[j].차종;
 				tabledata_성능검사[i].품번 = table_data[j].품번;
-				tabledata_성능검사[i].Ro_no = table_data[j].RO_no;
+				tabledata_성능검사[i].RO_no = table_data[j].RO_no;
 				continue;
 			}
 		}
@@ -1290,7 +1290,7 @@ async function grid_EOL(m_id = "") {
 				tabledata_EOL[i].구분 = table_data[j].구분;
 				tabledata_EOL[i].차종 = table_data[j].차종;
 				tabledata_EOL[i].품번 = table_data[j].품번;
-				tabledata_EOL[i].Ro_no = table_data[j].RO_no;
+				tabledata_EOL[i].RO_no = table_data[j].RO_no;
 				continue;
 			}
 		}
@@ -1440,7 +1440,7 @@ async function grid_특이사항(m_id = "") {
 				tabledata_특이사항[i].구분 = table_data[j].구분;
 				tabledata_특이사항[i].차종 = table_data[j].차종;
 				tabledata_특이사항[i].품번 = table_data[j].품번;
-				tabledata_특이사항[i].Ro_no = table_data[j].RO_no;
+				tabledata_특이사항[i].RO_no = table_data[j].RO_no;
 				continue;
 			}
 		}
@@ -1486,7 +1486,7 @@ async function grid_교체부품상세1(m_id = "") {
 				tabledata_교체부품상세1[i].구분 = table_data[j].구분;
 				tabledata_교체부품상세1[i].차종 = table_data[j].차종;
 				tabledata_교체부품상세1[i].품번 = table_data[j].품번;
-				tabledata_교체부품상세1[i].Ro_no = table_data[j].RO_no;
+				tabledata_교체부품상세1[i].RO_no = table_data[j].RO_no;
 				continue;
 			}
 		}
@@ -1580,7 +1580,7 @@ async function grid_교체부품상세2(m_id = "") {
 				tabledata_교체부품상세2[i].구분 = table_data[j].구분;
 				tabledata_교체부품상세2[i].차종 = table_data[j].차종;
 				tabledata_교체부품상세2[i].품번 = table_data[j].품번;
-				tabledata_교체부품상세2[i].Ro_no = table_data[j].RO_no;
+				tabledata_교체부품상세2[i].RO_no = table_data[j].RO_no;
 				continue;
 			}
 		}
@@ -1674,7 +1674,7 @@ async function grid_교체부품상세3(m_id = "") {
 				tabledata_교체부품상세3[i].구분 = table_data[j].구분;
 				tabledata_교체부품상세3[i].차종 = table_data[j].차종;
 				tabledata_교체부품상세3[i].품번 = table_data[j].품번;
-				tabledata_교체부품상세3[i].Ro_no = table_data[j].RO_no;
+				tabledata_교체부품상세3[i].RO_no = table_data[j].RO_no;
 				continue;
 			}
 		}
@@ -1768,7 +1768,7 @@ async function grid_교체부품상세4(m_id = "") {
 				tabledata_교체부품상세4[i].구분 = table_data[j].구분;
 				tabledata_교체부품상세4[i].차종 = table_data[j].차종;
 				tabledata_교체부품상세4[i].품번 = table_data[j].품번;
-				tabledata_교체부품상세4[i].Ro_no = table_data[j].RO_no;
+				tabledata_교체부품상세4[i].RO_no = table_data[j].RO_no;
 				continue;
 			}
 		}
@@ -1861,7 +1861,7 @@ async function grid_교체부품상세5(m_id = "") {
 				tabledata_교체부품상세5[i].구분 = table_data[j].구분;
 				tabledata_교체부품상세5[i].차종 = table_data[j].차종;
 				tabledata_교체부품상세5[i].품번 = table_data[j].품번;
-				tabledata_교체부품상세5[i].Ro_no = table_data[j].RO_no;
+				tabledata_교체부품상세5[i].RO_no = table_data[j].RO_no;
 				continue;
 			}
 		}
@@ -1955,7 +1955,7 @@ async function grid_교체부품상세6(m_id = "") {
 				tabledata_교체부품상세6[i].구분 = table_data[j].구분;
 				tabledata_교체부품상세6[i].차종 = table_data[j].차종;
 				tabledata_교체부품상세6[i].품번 = table_data[j].품번;
-				tabledata_교체부품상세6[i].Ro_no = table_data[j].RO_no;
+				tabledata_교체부품상세6[i].RO_no = table_data[j].RO_no;
 				continue;
 			}
 		}
@@ -2048,7 +2048,7 @@ async function grid_교체부품상세7(m_id = "") {
 				tabledata_교체부품상세7[i].구분 = table_data[j].구분;
 				tabledata_교체부품상세7[i].차종 = table_data[j].차종;
 				tabledata_교체부품상세7[i].품번 = table_data[j].품번;
-				tabledata_교체부품상세7[i].Ro_no = table_data[j].RO_no;
+				tabledata_교체부품상세7[i].RO_no = table_data[j].RO_no;
 				continue;
 			}
 		}
@@ -2141,7 +2141,7 @@ async function grid_교체부품상세8(m_id = "") {
 				tabledata_교체부품상세8[i].구분 = table_data[j].구분;
 				tabledata_교체부품상세8[i].차종 = table_data[j].차종;
 				tabledata_교체부품상세8[i].품번 = table_data[j].품번;
-				tabledata_교체부품상세8[i].Ro_no = table_data[j].RO_no;
+				tabledata_교체부품상세8[i].RO_no = table_data[j].RO_no;
 				continue;
 			}
 		}
@@ -2234,7 +2234,7 @@ async function grid_교체부품상세9(m_id = "") {
 				tabledata_교체부품상세9[i].구분 = table_data[j].구분;
 				tabledata_교체부품상세9[i].차종 = table_data[j].차종;
 				tabledata_교체부품상세9[i].품번 = table_data[j].품번;
-				tabledata_교체부품상세9[i].Ro_no = table_data[j].RO_no;
+				tabledata_교체부품상세9[i].RO_no = table_data[j].RO_no;
 				continue;
 			}
 		}
@@ -2329,7 +2329,7 @@ async function grid_교체부품상세10(m_id = "") {
 				tabledata_교체부품상세10[i].구분 = table_data[j].구분;
 				tabledata_교체부품상세10[i].차종 = table_data[j].차종;
 				tabledata_교체부품상세10[i].품번 = table_data[j].품번;
-				tabledata_교체부품상세10[i].Ro_no = table_data[j].RO_no;
+				tabledata_교체부품상세10[i].RO_no = table_data[j].RO_no;
 				continue;
 			}
 		}
