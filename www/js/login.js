@@ -56,7 +56,7 @@ async function login() {
         }
       }, 1000);
       await sleep(1);
-      alert('#공지사항#\nVersion update sky 0.43\n 1. 기초보고서 사진 순서 수정\n 2. 배터리팩 현황 조회시 관리번호 및 입고일로 정렬\n 3. 분해조립 리뉴얼: 상단에 이전 분해조립 모드 버튼');
+      alert('#공지사항#\nVersion update sky 0.44\n1. data 조회시 각 공정별 출력물에 기본정보 포함시킴');
     } else if (worker == _id.value) {
       worker = "";
       level = "";
