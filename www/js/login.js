@@ -56,7 +56,7 @@ async function login() {
         }
       }, 1000);
       await sleep(1);
-      alert('#공지사항#\nVersion update sky 0.44\n1. data 조회시 각 공정별 출력물에 기본정보 포함시킴');
+      alert('#공지사항#\nVersion update sky 0.45\n1. 분해조립 bug fix.\n2. 부품정보 리스트 excel 버튼 추가');
     } else if (worker == _id.value) {
       worker = "";
       level = "";
