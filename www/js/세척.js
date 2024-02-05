@@ -339,7 +339,7 @@ async function 세척_시작(is재제조 = 0) {
   };
 
   _img15.ondblclick = function (evt) {
-    _img14.src = "";
+    _img15.src = "";
   };
   _img15.ondrop = function (evt) {
     var files = evt.dataTransfer?.files;

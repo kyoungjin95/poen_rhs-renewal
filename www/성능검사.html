@@ -71,20 +71,15 @@
           <table class="tb">
             <colgroup>
               <col class="col_1" width="30%" />
-              <col class="col_2" width="70%" />
+              <col class="col_2" width="50%" />
+              <col class="col_2" width="20%" />
             </colgroup>
             <tr>
               <td>
                 <label for="management_id"><b>관리번호</b></label>
               </td>
               <td>
-                <input
-                  type="text"
-                  id="_management_id"
-                  value=""
-                  size="40"
-                  required
-                />
+                <input type="text" id="_management_id" value="" size="40" required />
                 <button onClick="성능검사_시작(0);">조 회</button>
               </td>
             </tr>
@@ -135,15 +130,10 @@
                 <label for="_공정입고일"><b>공정 입고일</b></label>
               </td>
               <td>
-                <input
-                  type="datetime-local"
-                  id="_공정입고일"
-                  value="0000-00-00T00:00"
-                  required
-                />
+                <input type="datetime-local" id="_공정입고일" value="0000-00-00T00:00" required />
               </td>
             </tr>
-            <tr>
+            <tr id="_용량평가_files">
               <td>
                 <label for="_용량평가"><b>용량평가</b></label>
               </td>
@@ -151,8 +141,12 @@
                 <input type="text" id="_용량평가" size="40" required />
                 <span>(Ah, KWh)</span>
               </td>
+              <td class="process__file">
+                <input type="file" id="_file1" />
+                <input type="file" id="_file1" />
+              </td>
             </tr>
-            <tr>
+            <tr id="_SOC_files">
               <td>
                 <label for="_SOC60Percent"><b>SOC60Percent</b></label>
               </td>
@@ -160,45 +154,54 @@
                 <input type="text" id="_SOC60Percent" size="40" required />
                 <span> (V) </span>
               </td>
+              <td class="process__file">
+                <input type="file" id="_file3" />
+                <input type="file" id="_file4" />
+              </td>
             </tr>
-            <tr>
+            <tr id="_DCIR_files">
               <td>
-                <label for="_DCIR"><b>DCIR</b></label>
+                <label for="_DCIR"><b>DCIR(종합)</b></label>
               </td>
               <td>
                 <input type="text" id="_DCIR" size="40" required />
                 <span>(mΩ)</span>
               </td>
-            </tr>
-            <tr>
-              <td>
-                <label for="_DCIR_Charge"><b>DCIR(Charge)</b></label>
-              </td>
-              <td>
-                <input type="text" id="_DCIR_Charge" size="40" required />
+              <td class="process__file">
+                <input type="file" id="_file5" />
+                <input type="file" id="_file6" />
               </td>
             </tr>
             <tr>
               <td>
-                <label for="_DCIR_Discharge"><b>DCIR(Discharge)</b></label>
+                <label for="_DCIR_Charge1"><b>DCIR(0.5C)</b></label>
               </td>
               <td>
-                <input type="text" id="_DCIR_Discharge" size="40" required />
+                <input type="text" id="_DCIR_Charge1" size="40" required />
               </td>
             </tr>
             <tr>
               <td>
-                <label for="_분해조립_재의뢰사유"
-                  ><b>분해조립 재의뢰 사유</b></label
-                >
+                <label for="_DCIR_Charge2"><b>DCIR(0.7C)</b></label>
               </td>
               <td>
-                <input
-                  type="text"
-                  id="_분해조립_재의뢰사유"
-                  size="40"
-                  required
-                />
+                <input type="text" id="_DCIR_Charge2" size="40" required />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="_DCIR_Charge3"><b>DCIR(1.0C)</b></label>
+              </td>
+              <td>
+                <input type="text" id="_DCIR_Charge3" size="40" required />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="_분해조립_재의뢰사유"><b>분해조립 재의뢰 사유</b></label>
+              </td>
+              <td>
+                <input type="text" id="_분해조립_재의뢰사유" size="40" required />
               </td>
             </tr>
             <tr>
@@ -206,12 +209,7 @@
                 <label for="_공정완료일"><b>공정 완료일</b></label>
               </td>
               <td>
-                <input
-                  type="datetime-local"
-                  id="_공정완료일"
-                  value="0000-00-00T00:00"
-                  required
-                />
+                <input type="datetime-local" id="_공정완료일" value="0000-00-00T00:00" required />
               </td>
             </tr>
             <tr>
@@ -227,6 +225,7 @@
         <div class="input-group">
           <div class="input-btn-group">
             <button onClick="성능검사_save();">저장</button>
+            <button onClick="">분해조립재의뢰</button>
             <button onClick="이전페이지();">이전페이지</button>
           </div>
         </div>
@@ -238,12 +237,19 @@
       const _용량평가 = document.getElementById("_용량평가");
       const _SOC40Percent = document.getElementById("_SOC40Percent");
       const _DCIR = document.getElementById("_DCIR");
-      const _DCIR_Charge = document.getElementById("_DCIR_Charge");
-      const _DCIR_Discharge = document.getElementById("_DCIR_Discharge");
-      const _분해조립_재의뢰사유 =
-        document.getElementById("_분해조립_재의뢰사유");
+      const _DCIR_Charge1 = document.getElementById("_DCIR_Charge1");
+      const _DCIR_Charge2 = document.getElementById("_DCIR_Charge2");
+      const _DCIR_Charge3 = document.getElementById("_DCIR_Charge3");
+      const _분해조립_재의뢰사유 = document.getElementById("_분해조립_재의뢰사유");
       const _완료일 = document.getElementById("_완료일");
       const _검사자 = document.getElementById("_검사자");
+
+      const _file1 = document.get.getElementById("_file1");
+      const _file2 = document.get.getElementById("_file2");
+      const _file3 = document.get.getElementById("_file3");
+      const _file4 = document.get.getElementById("_file4");
+      const _file5 = document.get.getElementById("_file5");
+      const _file6 = document.get.getElementById("_file6");
     </script>
   </body>
 </html>

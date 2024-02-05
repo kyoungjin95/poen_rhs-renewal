@@ -289,7 +289,7 @@ textarea:focus:-ms-input-placeholder {
   color: transparent;
 } /* IE 10+ */
 
-/* 기초보고서에 들어가는 img group table css  */
+/* 마도센터 - 각 공정에 들어가는 img group table css  */
 .process-step table td.img-box {
   width: 100%;
   display: flex;
@@ -318,6 +318,13 @@ textarea:focus:-ms-input-placeholder {
 .process-step table .img-box .images img {
   width: 6vw;
   height: 10vh;
+}
+.process-step table .process__file input {
+  margin: 0;
+  width: 90%;
+  box-shadow: none;
+  background: transparent;
+  font-size: 14px;
 }
 /*  */
 @media screen and (max-width: 920px) {

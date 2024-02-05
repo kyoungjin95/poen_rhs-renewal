@@ -577,34 +577,34 @@ const 분해조립_doc = {
 };
 
 const 분해조립재제조_doc = {
-	관리번호: "",
-	품명: "",
-	교체전품번: "",
-	교체전QR: "",
-	신품고품: "",
-	교체후품번: "",
-	교체후QR: "",
-	교체사유: "",
-	공정입고일: "",
-	공정완료일: "",
-	작성자: ""
-}
+  관리번호: "",
+  품명: "",
+  교체전품번: "",
+  교체전QR: "",
+  신품고품: "",
+  교체후품번: "",
+  교체후QR: "",
+  교체사유: "",
+  공정입고일: "",
+  공정완료일: "",
+  작성자: "",
+};
 
 const 분해조립공정대기_doc = {
-	관리번호: "",
-	품명: "",
-	품번: "",
-	QR: "",
-	대기사유: ""
-}
+  관리번호: "",
+  품명: "",
+  품번: "",
+  QR: "",
+  대기사유: "",
+};
 
 const 분해조립폐기자재_doc = {
-	관리번호: "",
-	품명: "",
-	품번: "",
-	QR: "",
-	폐기사유: ""
-}
+  관리번호: "",
+  품명: "",
+  품번: "",
+  QR: "",
+  폐기사유: "",
+};
 
 const 성능검사_doc = {
   관리번호: "",
@@ -612,8 +612,9 @@ const 성능검사_doc = {
   용량평가: "",
   SOC60Percent: "",
   DCIR: "",
-  DCIR_Charge: "",
-  DCIR_Discharge: "",
+  DCIR_Charge1: "",
+  DCIR_Charge2: "",
+  DCIR_Charge3: "",
   분해조립_재의뢰사유: "",
   공정완료일: "",
   비고: "",
@@ -2131,37 +2132,37 @@ const 분해조립_ = {
 };
 
 const 분해조립재제조_ = {
-	_id: 0,
-	관리번호: 1,
-	품명: 1,
-	교체전품번: 1,
-	교체전QR: 1,
-	신품고품: 1,
-	교체후품번: 1,
-	교체후QR: 1,
-	교체사유: 1,
-	공정입고일: 1,
-	공정완료일: 1,
-	작성자: 1
-}
+  _id: 0,
+  관리번호: 1,
+  품명: 1,
+  교체전품번: 1,
+  교체전QR: 1,
+  신품고품: 1,
+  교체후품번: 1,
+  교체후QR: 1,
+  교체사유: 1,
+  공정입고일: 1,
+  공정완료일: 1,
+  작성자: 1,
+};
 
 const 분해조립공정대기_ = {
-	_id: 0,
-	관리번호: 1,
-	품명: 1,
-	품번: 1,
-	QR: 1,
-	대기사유: 1,
-}
+  _id: 0,
+  관리번호: 1,
+  품명: 1,
+  품번: 1,
+  QR: 1,
+  대기사유: 1,
+};
 
 const 분해조립폐기자재_ = {
-	_id: 0,
-	관리번호: 1,
-	품명: 1,
-	품번: 1,
-	QR: 1,
-	폐기사유: 1,
-}
+  _id: 0,
+  관리번호: 1,
+  품명: 1,
+  품번: 1,
+  QR: 1,
+  폐기사유: 1,
+};
 
 const EOL_ = {
   _id: 0,
@@ -2214,8 +2215,9 @@ const 성능검사_ = {
   용량평가: 1,
   SOC60Percent: 1,
   DCIR: 1,
-  DCIR_Charge: 1,
-  DCIR_Discharge: 1,
+  DCIR_Charge1: 1,
+  DCIR_Charge2: 1,
+  DCIR_Charge3: 1,
   분해조립_재의뢰사유: 1,
   공정완료일: 1,
   비고: 1,
@@ -4226,7 +4228,7 @@ async function deleteOne_제주재고(col, 관리번호) {
 async function deleteOne_분해조립재제조(col, 관리번호) {
   if (socket == undefined) return;
   flag_arrivedMSG = false;
-  socket.emit("delete", worker, col, { 관리번호: {$eq : 관리번호 }});
+  socket.emit("delete", worker, col, { 관리번호: { $eq: 관리번호 } });
 }
 
 async function delete_분해조립재제조(col, 교체전QR) {
@@ -5051,8 +5053,8 @@ async function 공정단계자동입력(_관리번호, 단계 = "") {
   if (BSA재제조_v.EOL != "" && BSA재제조_v.EOL != undefined) _공정단계 = "제조완료";
   if (BSA재제조_v.출하검사 != "" && BSA재제조_v.출하검사 != undefined) _공정단계 = "제조완료";
   if (BSA재제조_v.출하 != "" && BSA재제조_v.출하 != undefined) _공정단계 = "출하";
-  if (BSA재제조_v.완전분해 !="" && BSA재제조_v.완전분해 != undefined) _공정단계 = "완전분해";
-  if (BSA재제조_v.폐기 !="" && BSA재제조_v.폐기 != undefined) _공정단계 = "폐기";
+  if (BSA재제조_v.완전분해 != "" && BSA재제조_v.완전분해 != undefined) _공정단계 = "완전분해";
+  if (BSA재제조_v.폐기 != "" && BSA재제조_v.폐기 != undefined) _공정단계 = "폐기";
   if (단계 != "") _공정단계 = 단계;
 
   var doc = {
@@ -5112,56 +5114,57 @@ async function make_md_product_no(today_count) {
 }
 
 async function init_product_no() {
-	var doc = JSON.parse(JSON.stringify(변수_doc));
-	doc.구분 = 'mado_product_no';
-	doc.값 = '0';
+  var doc = JSON.parse(JSON.stringify(변수_doc));
+  doc.구분 = "mado_product_no";
+  doc.값 = "0";
 
-	update('변수', doc);
-	await delay();
+  update("변수", doc);
+  await delay();
 
-	console.log(update_count);
-	console.log(insert_count);
+  console.log(update_count);
+  console.log(insert_count);
 
-	doc = JSON.parse(JSON.stringify(변수_doc));
-	doc.구분 = 'hs_product_no';
-	doc.값 = '0';
+  doc = JSON.parse(JSON.stringify(변수_doc));
+  doc.구분 = "hs_product_no";
+  doc.값 = "0";
 
-	update('변수', doc);
-	await delay();
+  update("변수", doc);
+  await delay();
 
-	console.log(update_count);
-	console.log(insert_count);
+  console.log(update_count);
+  console.log(insert_count);
 
-	doc = JSON.parse(JSON.stringify(변수_doc));
-	doc.구분 = 'jj_product_no';
-	doc.값 = '0';
+  doc = JSON.parse(JSON.stringify(변수_doc));
+  doc.구분 = "jj_product_no";
+  doc.값 = "0";
 
-	update('변수', doc);
-	await delay();
+  update("변수", doc);
+  await delay();
 
-	console.log(update_count);
-	console.log(insert_count);
+  console.log(update_count);
+  console.log(insert_count);
 
-	console.log('mado_product_no_complete');
+  console.log("mado_product_no_complete");
 }
 
-const toBase64 = file => new Promise((resolve, reject) => {
+const toBase64 = (file) =>
+  new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = () => resolve(reader.result);
     reader.onerror = reject;
-});
+  });
 
 function resize_pic(file, img, 예외 = false) {
-	if(예외 == false) {
-		ImageResizer.resizeImage(file, { maxWidth: 500, maxHeight: 500}, async function(resultFile) {
-			img.src = await toBase64(resultFile);
-			console.log(img.src);
-		});
-	} else {
-		ImageResizer.resizeImage(file, { maxWidth: 2000, maxHeight: 2000}, async function(resultFile) {
-			img.src = await toBase64(resultFile);
-			console.log(img.src);
-		});
-	}
+  if (예외 == false) {
+    ImageResizer.resizeImage(file, { maxWidth: 500, maxHeight: 500 }, async function (resultFile) {
+      img.src = await toBase64(resultFile);
+      console.log(img.src);
+    });
+  } else {
+    ImageResizer.resizeImage(file, { maxWidth: 2000, maxHeight: 2000 }, async function (resultFile) {
+      img.src = await toBase64(resultFile);
+      console.log(img.src);
+    });
+  }
 }
