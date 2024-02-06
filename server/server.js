@@ -9,13 +9,29 @@ const fs = require('fs');
 const HTMLtoDOCX = require('./node_modules/html-to-docx/dist/html-to-docx.umd');
 const process = require('process');
 const server = http.createServer(app);
-const io = require('socket.io')(server, { maxHttpBufferSize : 1e+7, pingTimeout : 5000, pingInterval: 10000 });
+const io = require('socket.io')(server, { maxHttpBufferSize : 1e+7, pingTimeout : 3000, pingInterval: 4000 });
 const { MongoClient } = require('mongodb')
 const morgan = require('morgan') //debug msg
 const logger = require('./winston');
 const ps = require('ps-node');
+const multer = require('multer');
 const uri = 'mongodb://poen:poen4upoen4u@localhost:27017/poenDB';
 const db_name = 'poenDB';
+var no = 1;
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'excel/tmp');
+  },
+  filename: function (req, file, cb) {
+    if(no > 6) no = 1;
+    console.log('file No:', no);
+    cb(null, file.fieldname + no + '.csv');
+    no++;
+  }
+});
+
+const upload = multer({ storage: storage});
+
 var db;
 var 관리번호 = '';
 var client;
@@ -30,6 +46,9 @@ var _old_year = '2023';
 app.use(morgan('dev'))
 app.use('/', express.static(path.join(__dirname, '../')));
 app.use('/base', express.static(path.join(__dirname, '../www')));
+app.use(express.json());
+app.use(express.urlencoded());
+//app.use(multer({storage:storage}).single('excel_file'));
 
 app.get('/', (req, res) => {
 	res.sendFile(path.join(__dirname, '../www/index.html'));
@@ -71,6 +90,11 @@ app.get('/agreement_doc_search', (req, res) => {
 	res.sendFile(path.join(__dirname, '../www/제공동의서조회.html'));
 });
 
+app.post('/upload_excel', upload.array('excel', 6), (req, res, next) => {
+	console.log('upload excel OK');
+	res.send(200);
+});
+
 client = new MongoClient(uri);
 
 server.listen(80, () => {
@@ -85,6 +109,16 @@ io.on('connection', async function(socket) {
 
 	console.log('connected ip', client_ip);
 	app.use(ipfilter(_black_ip_list));
+
+	socket.on('file_list', async function(list) {
+		await sleep(1000);
+		console.log('file list');
+		
+		const result = file_list(list);
+		
+		socket.emit('file_list_result', result);
+		logger.info('file list:'+ JSON.stringify(list));
+	});
 
 	socket.on('insert', async function(worker, col, doc) {
 		console.log('request insert');
@@ -453,6 +487,87 @@ async function deleteOne(col, query) {
 		return 0;
 	} finally {
 	}
+}
+
+function file_list(list) {
+	no = 1;
+	try {
+		console.log(list);
+		if(list.관리번호 != '') {
+			var dir = 'excel/' + list.관리번호;
+
+			if(!fs.existsSync(dir)) {
+				fs.mkdirSync(dir);
+			}
+		}  else {
+			return false;
+		}
+		
+		var n = 1;
+		if(list.f1 != '') {
+			var old_path = 'excel/tmp/excel' + n + '.csv';
+			var new_path = 'excel/' + list.관리번호 + '/excel1.csv';
+			fs.rename(old_path, new_path, function(err) {
+				if(err) throw err;
+				console.log('successfully rename');
+			});
+			n++;
+		} 
+			
+		if(list.f2 != '') {
+			var old_path = 'excel/tmp/excel' + n + '.csv';
+			var new_path = 'excel/' + list.관리번호 + '/excel2.csv';
+			fs.rename(old_path, new_path, function(err) {
+				if(err) throw err;
+				console.log('successfully rename');
+			});
+			n++;
+		}
+
+		if(list.f3 != '') {
+			var old_path = 'excel/tmp/excel' + n + '.csv';
+			var new_path = 'excel/' + list.관리번호 + '/excel3.csv';
+			fs.rename(old_path, new_path, function(err) {
+				if(err) throw err;
+				console.log('successfully rename');
+			});
+			n++;
+		}
+
+		if(list.f4 != '') {
+			var old_path = 'excel/tmp/excel' + n + '.csv';
+			var new_path = 'excel/' + list.관리번호 + '/excel4.csv';
+			fs.rename(old_path, new_path, function(err) {
+				if(err) throw err;
+				console.log('successfully rename');
+			});
+			n++
+		}
+
+		if(list.f5 != '') {
+			var old_path = 'excel/tmp/excel' + n + '.csv';
+			var new_path = 'excel/' + list.관리번호 + '/excel5.csv';
+			fs.rename(old_path, new_path, function(err) {
+				if(err) throw err;
+				console.log('successfully rename');
+			});
+			n++;
+		}
+
+		if(list.f6 != '') {
+			var old_path = 'excel/tmp/excel' + n + '.csv';
+			var new_path = 'excel/' + list.관리번호 + '/excel6.csv';
+			fs.rename(old_path, new_path, function(err) {
+				if(err) throw err;
+				console.log('successfully rename');
+			});
+		}
+		return true;
+	} catch(err) {
+		return false;
+	} finally {
+	}
+
 }
 
 function sleep(ms) {
