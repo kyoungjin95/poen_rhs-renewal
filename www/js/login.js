@@ -56,7 +56,7 @@ async function login() {
         }
       }, 1000);
       await sleep(1);
-      alert('#공지사항#\nVersion update sky 0.45\n1. 분해조립 bug fix.\n2. 부품정보 리스트 excel 버튼 추가');
+      alert('#공지사항#\nVersion update sky 0.46\n1. 소재지 - 구장 : 대기목록에서 제외\n');
     } else if (worker == _id.value) {
       worker = "";
       level = "";
