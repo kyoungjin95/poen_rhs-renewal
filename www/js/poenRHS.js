@@ -3316,6 +3316,11 @@ socket.on("qr_lebel_result", function (result) {
   }
 });
 
+socket.on("file_list_result", async function (result) {
+  flag_arrivedMSG = true;
+  console.log(result);
+});
+
 socket.on("insert_result", async function (id) {
   //console.log('insert id: ', id);
   insert_id = id;
@@ -4064,6 +4069,12 @@ function reset_count() {
   분해조립공정대기_cnt = 0;
   분해조립폐기자재_cnt = 0;
   doc_count = 0;
+}
+
+async function send_list(file_list) {
+  if (socket == undefined) return;
+  flag_arrivedMSG = false;
+  socket.emit("file_list", file_list);
 }
 
 async function make_qr_label(html_string) {

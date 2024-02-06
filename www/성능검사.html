@@ -68,6 +68,7 @@
           <h2>성능검사</h2>
         </div>
         <div class="input-group process-step">
+	  <form id='_form' action="/upload_excel" method="post" enctype="multipart/form-data">
           <table class="tb">
             <colgroup>
               <col class="col_1" width="30%" />
@@ -142,8 +143,8 @@
                 <span>(Ah, KWh)</span>
               </td>
               <td class="process__file">
-                <input type="file" id="_file1" />
-                <input type="file" id="_file1" />
+                	<input type="file" id="_file1" name='excel'/>
+                	<input type="file" id="_file2" name='excel'/>
               </td>
             </tr>
             <tr id="_SOC_files">
@@ -155,8 +156,8 @@
                 <span> (V) </span>
               </td>
               <td class="process__file">
-                <input type="file" id="_file3" />
-                <input type="file" id="_file4" />
+                	<input type="file" id="_file3" name='excel'/>
+                	<input type="file" id="_file4" name='excel'/>
               </td>
             </tr>
             <tr id="_DCIR_files">
@@ -168,8 +169,8 @@
                 <span>(mΩ)</span>
               </td>
               <td class="process__file">
-                <input type="file" id="_file5" />
-                <input type="file" id="_file6" />
+                	<input type="file" id="_file5" name='excel'/>
+                	<input type="file" id="_file6" name='excel'/>
               </td>
             </tr>
             <tr>
@@ -221,10 +222,11 @@
               </td>
             </tr>
           </table>
+	  </form>
         </div>
         <div class="input-group">
           <div class="input-btn-group">
-            <button onClick="성능검사_save();">저장</button>
+            <button type='submit' onClick="성능검사_save();">저장</button>
             <button onClick="">분해조립재의뢰</button>
             <button onClick="이전페이지();">이전페이지</button>
           </div>
@@ -232,6 +234,7 @@
       </div>
     </section>
     <script>
+      const _form = document.getElementById("form");
       const _management_id = document.getElementById("_management_id");
       const _재제조번호 = document.getElementById("_재제조번호");
       const _용량평가 = document.getElementById("_용량평가");
