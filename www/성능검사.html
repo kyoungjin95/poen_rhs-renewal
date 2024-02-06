@@ -70,9 +70,9 @@
         <div class="input-group process-step">
           <table class="tb">
             <colgroup>
-              <col class="col_1" width="30%" />
-              <col class="col_2" width="50%" />
-              <col class="col_2" width="20%" />
+              <col width="30%" />
+              <col width="40%" />
+              <col width="30%" />
             </colgroup>
             <tr>
               <td>
@@ -133,7 +133,7 @@
                 <input type="datetime-local" id="_공정입고일" value="0000-00-00T00:00" required />
               </td>
             </tr>
-            <tr id="_용량평가_files">
+            <tr>
               <td>
                 <label for="_용량평가"><b>용량평가</b></label>
               </td>
@@ -141,12 +141,26 @@
                 <input type="text" id="_용량평가" size="40" required />
                 <span>(Ah, KWh)</span>
               </td>
-              <td class="process__file">
-                <input type="file" id="_file1" />
-                <input type="file" id="_file1" />
+              <td class="filesContainer">
+                <div class="files">
+                  <input type="file" class="file_upload" id="file_upload1" />
+                  <label for="file_upload1" class="upload_label">
+                    <i class="fa-regular fa-file"></i>
+                    &nbsp;파일 선택</label
+                  >
+                  <span class="delete_icon" style="display: none">❌</span>
+                </div>
+                <div class="files">
+                  <input type="file" class="file_upload" id="file_upload2" />
+                  <label for="file_upload2" class="upload_label">
+                    <i class="fa-regular fa-file"></i>
+                    &nbsp;파일 선택</label
+                  >
+                  <span class="delete_icon" style="display: none">❌</span>
+                </div>
               </td>
             </tr>
-            <tr id="_SOC_files">
+            <tr>
               <td>
                 <label for="_SOC60Percent"><b>SOC60Percent</b></label>
               </td>
@@ -154,12 +168,26 @@
                 <input type="text" id="_SOC60Percent" size="40" required />
                 <span> (V) </span>
               </td>
-              <td class="process__file">
-                <input type="file" id="_file3" />
-                <input type="file" id="_file4" />
+              <td class="filesContainer">
+                <div class="files">
+                  <input type="file" class="file_upload" id="file_upload3" />
+                  <label for="file_upload3" class="upload_label">
+                    <i class="fa-regular fa-file"></i>
+                    &nbsp;파일 선택</label
+                  >
+                  <span class="delete_icon" style="display: none">❌</span>
+                </div>
+                <div class="files">
+                  <input type="file" class="file_upload" id="file_upload4" />
+                  <label for="file_upload4" class="upload_label">
+                    <i class="fa-regular fa-file"></i>
+                    &nbsp;파일 선택</label
+                  >
+                  <span class="delete_icon" style="display: none">❌</span>
+                </div>
               </td>
             </tr>
-            <tr id="_DCIR_files">
+            <tr>
               <td>
                 <label for="_DCIR"><b>DCIR(종합)</b></label>
               </td>
@@ -167,11 +195,26 @@
                 <input type="text" id="_DCIR" size="40" required />
                 <span>(mΩ)</span>
               </td>
-              <td class="process__file">
-                <input type="file" id="_file5" />
-                <input type="file" id="_file6" />
+              <td class="filesContainer">
+                <div class="files">
+                  <input type="file" class="file_upload" id="file_upload5" />
+                  <label for="file_upload5" class="upload_label">
+                    <i class="fa-regular fa-file"></i>
+                    &nbsp;파일 선택</label
+                  >
+                  <span class="delete_icon" style="display: none">❌</span>
+                </div>
+                <div class="files">
+                  <input type="file" class="file_upload" id="file_upload6" />
+                  <label for="file_upload6" class="upload_label">
+                    <i class="fa-regular fa-file"></i>
+                    &nbsp;파일 선택</label
+                  >
+                  <span class="delete_icon" style="display: none">❌</span>
+                </div>
               </td>
             </tr>
+
             <tr>
               <td>
                 <label for="_DCIR_Charge1"><b>DCIR(0.5C)</b></label>
@@ -231,6 +274,7 @@
         </div>
       </div>
     </section>
+
     <script>
       const _management_id = document.getElementById("_management_id");
       const _재제조번호 = document.getElementById("_재제조번호");
@@ -244,12 +288,12 @@
       const _완료일 = document.getElementById("_완료일");
       const _검사자 = document.getElementById("_검사자");
 
-      const _file1 = document.get.getElementById("_file1");
-      const _file2 = document.get.getElementById("_file2");
-      const _file3 = document.get.getElementById("_file3");
-      const _file4 = document.get.getElementById("_file4");
-      const _file5 = document.get.getElementById("_file5");
-      const _file6 = document.get.getElementById("_file6");
+      const _file_upload1 = document.get.getElementById("file_upload1");
+      const _file_upload2 = document.get.getElementById("file_upload2");
+      const _file_upload3 = document.get.getElementById("file_upload3");
+      const _file_upload4 = document.get.getElementById("file_upload4");
+      const _file_upload5 = document.get.getElementById("file_upload5");
+      const _file_upload6 = document.get.getElementById("file_upload6");
     </script>
   </body>
 </html>

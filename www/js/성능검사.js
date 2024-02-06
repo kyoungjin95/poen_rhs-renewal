@@ -101,6 +101,8 @@ async function 성능검사_시작(is재제조 = 0) {
 
     _공정입고일.value = now;
   }
+
+  fileUpload();
 }
 
 async function 성능검사_save() {
@@ -165,7 +167,80 @@ async function 성능검사_save() {
   update(BSA재제조, _doc);
   await delay();
 
+  fileUpload();
+
   //이전페이지();
+}
+
+function fileUpload() {
+  var fileUploadSets = document.querySelectorAll(".files");
+
+  fileUploadSets.forEach(function (fileUploadSet) {
+    var fileInput = fileUploadSet.querySelector(".file_upload");
+    var deleteButton = fileUploadSet.querySelector(".delete_icon");
+    var uploadLabel = fileUploadSet.querySelector(".upload_label");
+    var fileIcon = fileUploadSet.querySelector(".fa-file");
+
+    function updateUpload() {
+      if (fileInput.files.length > 0) {
+        var fileNames = "";
+        for (var i = 0; i < fileInput.files.length; i++) {
+          fileNames += fileInput.files[i].name + ", ";
+        }
+        uploadLabel.textContent = fileNames.slice(0, -6);
+        uploadLabel.style.backgroundColor = "#11a85f";
+        uploadLabel.style.color = "white";
+        deleteButton.style.display = "inline";
+      } else {
+        // uploadLabel.textContent = "파일 선택";
+        uploadLabel.innerHTML = "<i class='fa-regular fa-file'></i>&nbsp; 파일 선택";
+        uploadLabel.style.backgroundColor = "initial";
+        uploadLabel.style.color = "#11a85f";
+      }
+    }
+
+    fileInput.addEventListener("change", function () {
+      updateUpload();
+    });
+
+    // 삭제 버튼(click) 이벤트 처리
+    deleteButton.addEventListener("click", function () {
+      fileInput.value = "";
+      updateUpload();
+      deleteButton.style.display = "none";
+    });
+
+    // 드래그 앤 드롭 이벤트 처리
+    fileUploadSet.addEventListener("dragover", function (event) {
+      event.preventDefault();
+      fileUploadSet.classList.add("dragover");
+    });
+
+    fileUploadSet.addEventListener("dragenter", function (event) {
+      event.preventDefault();
+      fileUploadSet.classList.add("dragover");
+    });
+
+    fileUploadSet.addEventListener("dragleave", function (event) {
+      event.preventDefault();
+      fileUploadSet.classList.remove("dragover");
+    });
+
+    fileUploadSet.addEventListener("drop", function (event) {
+      event.preventDefault();
+      fileUploadSet.classList.remove("dragover");
+
+      var files = event.dataTransfer.files;
+      if (files.length > 0) {
+        fileInput.files = files;
+        var fileNames = "";
+        for (var i = 0; i < files.length; i++) {
+          fileNames += files[i].name + ", ";
+        }
+        updateUpload();
+      }
+    });
+  });
 }
 
 function 성능검사_updateFilter() {
