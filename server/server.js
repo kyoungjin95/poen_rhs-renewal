@@ -9,7 +9,7 @@ const fs = require('fs');
 const HTMLtoDOCX = require('./node_modules/html-to-docx/dist/html-to-docx.umd');
 const process = require('process');
 const server = http.createServer(app);
-const io = require('socket.io')(server, { maxHttpBufferSize : 1e+7, pingTimeout : 5000, pingInterval: 10000 });
+const io = require('socket.io')(server, { maxHttpBufferSize : 1e+7, pingTimeout : 3000, pingInterval: 4000 });
 const { MongoClient } = require('mongodb')
 const morgan = require('morgan') //debug msg
 const logger = require('./winston');
@@ -23,10 +23,10 @@ const storage = multer.diskStorage({
     cb(null, 'excel/tmp');
   },
   filename: function (req, file, cb) {
-    console.log('file No:', no);
-    cb(null, file.fieldname + no + '.xlsx');
-    no++;
     if(no > 6) no = 1;
+    console.log('file No:', no);
+    cb(null, file.fieldname + no + '.csv');
+    no++;
   }
 });
 
@@ -92,6 +92,7 @@ app.get('/agreement_doc_search', (req, res) => {
 
 app.post('/upload_excel', upload.array('excel', 6), (req, res, next) => {
 	console.log('upload excel OK');
+	res.send(200);
 });
 
 client = new MongoClient(uri);
@@ -489,7 +490,9 @@ async function deleteOne(col, query) {
 }
 
 function file_list(list) {
+	no = 1;
 	try {
+		console.log(list);
 		if(list.관리번호 != '') {
 			var dir = 'excel/' + list.관리번호;
 
@@ -499,50 +502,61 @@ function file_list(list) {
 		}  else {
 			return false;
 		}
-
+		
+		var n = 1;
 		if(list.f1 != '') {
-			var old_path = 'excel/tmp/excel1.xlsx';
-			var new_path = 'excel/' + list.관리번호 + '/excel1.xlsx';
+			var old_path = 'excel/tmp/excel' + n + '.csv';
+			var new_path = 'excel/' + list.관리번호 + '/excel1.csv';
 			fs.rename(old_path, new_path, function(err) {
 				if(err) throw err;
 				console.log('successfully rename');
 			});
-		}
+			n++;
+		} 
+			
 		if(list.f2 != '') {
-			var old_path = 'excel/tmp/excel2.xlsx';
-			var new_path = 'excel/' + list.관리번호 + '/excel2.xlsx';
+			var old_path = 'excel/tmp/excel' + n + '.csv';
+			var new_path = 'excel/' + list.관리번호 + '/excel2.csv';
 			fs.rename(old_path, new_path, function(err) {
 				if(err) throw err;
 				console.log('successfully rename');
 			});
+			n++;
 		}
+
 		if(list.f3 != '') {
-			var old_path = 'excel/tmp/excel3.xlsx';
-			var new_path = 'excel/' + list.관리번호 + '/excel3.xlsx';
+			var old_path = 'excel/tmp/excel' + n + '.csv';
+			var new_path = 'excel/' + list.관리번호 + '/excel3.csv';
 			fs.rename(old_path, new_path, function(err) {
 				if(err) throw err;
 				console.log('successfully rename');
 			});
+			n++;
 		}
+
 		if(list.f4 != '') {
-			var old_path = 'excel/tmp/excel4.xlsx';
-			var new_path = 'excel/' + list.관리번호 + '/excel4.xlsx';
+			var old_path = 'excel/tmp/excel' + n + '.csv';
+			var new_path = 'excel/' + list.관리번호 + '/excel4.csv';
 			fs.rename(old_path, new_path, function(err) {
 				if(err) throw err;
 				console.log('successfully rename');
 			});
+			n++
 		}
+
 		if(list.f5 != '') {
-			var old_path = 'excel/tmp/excel5.xlsx';
-			var new_path = 'excel/' + list.관리번호 + '/excel5.xlsx';
+			var old_path = 'excel/tmp/excel' + n + '.csv';
+			var new_path = 'excel/' + list.관리번호 + '/excel5.csv';
 			fs.rename(old_path, new_path, function(err) {
 				if(err) throw err;
 				console.log('successfully rename');
 			});
+			n++;
 		}
+
 		if(list.f6 != '') {
-			var old_path = 'excel/tmp/excel6.xlsx';
-			var new_path = 'excel/' + list.관리번호 + '/excel6.xlsx';
+			var old_path = 'excel/tmp/excel' + n + '.csv';
+			var new_path = 'excel/' + list.관리번호 + '/excel6.csv';
 			fs.rename(old_path, new_path, function(err) {
 				if(err) throw err;
 				console.log('successfully rename');

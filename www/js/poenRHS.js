@@ -5179,3 +5179,7 @@ function resize_pic(file, img, 예외 = false) {
     });
   }
 }
+
+function socket_disconnec() {
+	socket.disconnect();
+}
