@@ -180,77 +180,6 @@ async function 성능검사_save() {
 	//이전페이지();
 }
 
-function fileUpload() {
-  var fileUploadSets = document.querySelectorAll(".files");
-
-  fileUploadSets.forEach(function (fileUploadSet) {
-    var fileInput = fileUploadSet.querySelector(".file_upload");
-    var deleteButton = fileUploadSet.querySelector(".delete_icon");
-    var uploadLabel = fileUploadSet.querySelector(".upload_label");
-    var fileIcon = fileUploadSet.querySelector(".fa-file");
-
-    function updateUpload() {
-      if (fileInput.files.length > 0) {
-        var fileNames = "";
-        for (var i = 0; i < fileInput.files.length; i++) {
-          fileNames += fileInput.files[i].name + ", ";
-        }
-        uploadLabel.textContent = fileNames.slice(0, -6);
-        uploadLabel.style.backgroundColor = "#11a85f";
-        uploadLabel.style.color = "white";
-        deleteButton.style.display = "inline";
-      } else {
-        // uploadLabel.textContent = "파일 선택";
-        uploadLabel.innerHTML = "<i class='fa-regular fa-file'></i>&nbsp; 파일 선택";
-        uploadLabel.style.backgroundColor = "initial";
-        uploadLabel.style.color = "#11a85f";
-      }
-    }
-
-    fileInput.addEventListener("change", function () {
-      updateUpload();
-    });
-
-    // 삭제 버튼(click) 이벤트 처리
-    deleteButton.addEventListener("click", function () {
-      fileInput.value = "";
-      updateUpload();
-      deleteButton.style.display = "none";
-    });
-
-    // 드래그 앤 드롭 이벤트 처리
-    fileUploadSet.addEventListener("dragover", function (event) {
-      event.preventDefault();
-      fileUploadSet.classList.add("dragover");
-    });
-
-    fileUploadSet.addEventListener("dragenter", function (event) {
-      event.preventDefault();
-      fileUploadSet.classList.add("dragover");
-    });
-
-    fileUploadSet.addEventListener("dragleave", function (event) {
-      event.preventDefault();
-      fileUploadSet.classList.remove("dragover");
-    });
-
-    fileUploadSet.addEventListener("drop", function (event) {
-      event.preventDefault();
-      fileUploadSet.classList.remove("dragover");
-
-      var files = event.dataTransfer.files;
-      if (files.length > 0) {
-        fileInput.files = files;
-        var fileNames = "";
-        for (var i = 0; i < files.length; i++) {
-          fileNames += files[i].name + ", ";
-        }
-        updateUpload();
-      }
-    });
-  });
-}
-
 function 성능검사_updateFilter() {
 	var fieldEl = document.getElementById("filter-field");
 	var typeEl = document.getElementById("filter-type");
@@ -475,18 +404,18 @@ async function send_filelist() {
 	var filelist = {
 		관리번호 : 관리번호,
 	}
-	if(_file_upload1.files[0] == undefined || _file_upload1.files[0] == null) filelist.f1 = '';
-	else filelist.f1 = _file_upload1.files[0].name;
-	if(_file_upload2.files[0] == undefined || _file_upload2.files[0] == null) filelist.f2 = '';
-	else filelist.f2 = _file_upload2.files[0].name;
-	if(_file_upload3.files[0] == undefined || _file_upload3.files[0] == null) filelist.f3 = '';
-	else filelist.f3 = _file_upload3.files[0].name;
-	if(_file_upload4.files[0] == undefined || _file_upload4.files[0] == null) filelist.f4 = '';
-	else filelist.f4 = _file_upload4.files[0].name;
-	if(_file_upload5.files[0] == undefined || _file_upload5.files[0] == null) filelist.f5 = '';
-	else filelist.f5 = _file_upload5.files[0].name;
-	if(_file_upload6.files[0] == undefined || _file_upload6.files[0] == null) filelist.f6 = '';
-	else filelist.f6 = _file_upload6.files[0].name;
+	if(_file1.files[0] == undefined || _file1.files[0] == null) filelist.f1 = '';
+	else filelist.f1 = _file1.files[0].name;
+	if(_file2.files[0] == undefined || _file2.files[0] == null) filelist.f2 = '';
+	else filelist.f2 = _file2.files[0].name;
+	if(_file3.files[0] == undefined || _file3.files[0] == null) filelist.f3 = '';
+	else filelist.f3 = _file3.files[0].name;
+	if(_file4.files[0] == undefined || _file4.files[0] == null) filelist.f4 = '';
+	else filelist.f4 = _file4.files[0].name;
+	if(_file5.files[0] == undefined || _file5.files[0] == null) filelist.f5 = '';
+	else filelist.f5 = _file5.files[0].name;
+	if(_file6.files[0] == undefined || _file6.files[0] == null) filelist.f6 = '';
+	else filelist.f6 = _file6.files[0].name;
 
 	console.log(filelist);
 	send_list(filelist);
