@@ -14,8 +14,22 @@ const { MongoClient } = require('mongodb')
 const morgan = require('morgan') //debug msg
 const logger = require('./winston');
 const ps = require('ps-node');
+const multer = require('multer');
 const uri = 'mongodb://poen:poen4upoen4u@localhost:27017/poenDB';
 const db_name = 'poenDB';
+const fileStorage = multer.diskStorage({
+	destination: (req, file, cb)=>{
+		cb(null, 'excel');
+	},
+	filename: (req, file, cb)=>{
+		cb(null, file.filename + '-' + file.originalname);
+	}
+});
+
+const fileFilter = (req, file, cb)=>{
+	
+};
+
 var db;
 var 관리번호 = '';
 var client;
