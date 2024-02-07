@@ -71,9 +71,9 @@
           <form id="_form" action="/upload_excel" method="post" enctype="multipart/form-data">
             <table class="tb">
               <colgroup>
-                <col class="col_1" width="30%" />
-                <col class="col_2" width="50%" />
-                <col class="col_2" width="20%" />
+                <col width="20%" />
+                <col width="45%" />
+                <col width="35%" />
               </colgroup>
               <tr>
                 <td>
@@ -134,15 +134,22 @@
                   <input type="datetime-local" id="_공정입고일" value="0000-00-00T00:00" required />
                 </td>
               </tr>
+
               <tr id="_용량평가_files">
-                <td>
+                <td rowspan="2">
                   <label for="_용량평가"><b>용량평가</b></label>
                 </td>
-                <td>
+                <td rowspan="2">
                   <input type="text" id="_용량평가" size="40" required />
                   <span>(Ah, KWh)</span>
                 </td>
-                <td class="process__file">
+
+                <td class="process__file t1-d">
+                  <div id="_inFile1" class="in-file" style="display: none">
+                    <button class="download-file">
+                      <i class="fas fa-arrow-down"></i>
+                    </button>
+                  </div>
                   <div class="files">
                     <input type="file" class="file_upload" id="_file1" name="excel" />
                     <label for="_file1" class="upload_label">
@@ -150,6 +157,16 @@
                       &nbsp;파일 선택</label
                     >
                     <span class="delete_icon" style="display: none">❌</span>
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="process__file t1-d">
+                  <div id="_inFile2" class="in-file" style="display: none">
+                    <button class="download-file">
+                      <i class="fas fa-arrow-down"></i>
+                    </button>
                   </div>
                   <div class="files">
                     <input type="file" class="file_upload" id="_file2" name="excel" />
@@ -161,15 +178,21 @@
                   </div>
                 </td>
               </tr>
+
               <tr id="_SOC_files">
-                <td>
+                <td rowspan="2">
                   <label for="_SOC60Percent"><b>SOC60Percent</b></label>
                 </td>
-                <td>
+                <td rowspan="2">
                   <input type="text" id="_SOC60Percent" size="40" required />
                   <span> (V) </span>
                 </td>
-                <td class="process__file">
+                <td class="process__file t1-d">
+                  <div id="_inFile3" class="in-file" style="display: none">
+                    <button class="download-file">
+                      <i class="fas fa-arrow-down"></i>
+                    </button>
+                  </div>
                   <div class="files">
                     <input type="file" class="file_upload" id="_file3" name="excel" />
                     <label for="_file3" class="upload_label">
@@ -177,6 +200,15 @@
                       &nbsp;파일 선택</label
                     >
                     <span class="delete_icon" style="display: none">❌</span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="process__file t1-d">
+                  <div id="_inFile4" class="in-file" style="display: none">
+                    <button class="download-file">
+                      <i class="fas fa-arrow-down"></i>
+                    </button>
                   </div>
                   <div class="files">
                     <input type="file" class="file_upload" id="_file4" name="excel" />
@@ -188,15 +220,21 @@
                   </div>
                 </td>
               </tr>
+
               <tr id="_DCIR_files">
-                <td>
+                <td rowspan="2">
                   <label for="_DCIR"><b>DCIR(종합)</b></label>
                 </td>
-                <td>
+                <td rowspan="2">
                   <input type="text" id="_DCIR" size="40" required />
                   <span>(mΩ)</span>
                 </td>
-                <td class="process__file">
+                <td class="process__file t1-d">
+                  <div id="_inFile5" class="in-file" style="display: none">
+                    <button class="download-file">
+                      <i class="fas fa-arrow-down"></i>
+                    </button>
+                  </div>
                   <div class="files">
                     <input type="file" class="file_upload" id="_file5" name="excel" />
                     <label for="_file5" class="upload_label">
@@ -204,6 +242,16 @@
                       &nbsp;파일 선택</label
                     >
                     <span class="delete_icon" style="display: none">❌</span>
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="process__file t1-d">
+                  <div id="_inFile6" class="in-file" style="display: none">
+                    <button class="download-file">
+                      <i class="fas fa-arrow-down"></i>
+                    </button>
                   </div>
                   <div class="files">
                     <input type="file" class="file_upload" id="_file6" name="excel" />
@@ -215,6 +263,7 @@
                   </div>
                 </td>
               </tr>
+
               <tr>
                 <td>
                   <label for="_DCIR_Charge1"><b>DCIR(0.5C)</b></label>
@@ -276,6 +325,7 @@
         </div>
       </div>
     </section>
+
     <script>
       const _form = document.getElementById("form");
       const _management_id = document.getElementById("_management_id");
@@ -296,6 +346,13 @@
       const _file4 = document.get.getElementById("_file4");
       const _file5 = document.get.getElementById("_file5");
       const _file6 = document.get.getElementById("_file6");
+
+      const _inFile1 = document.getElementById("_inFile1");
+      const _inFile2 = document.getElementById("_inFile2");
+      const _inFile3 = document.getElementById("_inFile3");
+      const _inFile4 = document.getElementById("_inFile4");
+      const _inFile5 = document.getElementById("_inFile5");
+      const _inFile6 = document.getElementById("_inFile6");
     </script>
   </body>
 </html>

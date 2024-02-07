@@ -319,13 +319,6 @@ textarea:focus:-ms-input-placeholder {
   width: 6vw;
   height: 10vh;
 }
-.process-step table .process__file input {
-  margin: 0;
-  width: 90%;
-  box-shadow: none;
-  background: transparent;
-  font-size: 14px;
-}
 /*  */
 @media screen and (max-width: 920px) {
   .세척 .process-step table td.img-box {
@@ -486,13 +479,19 @@ td.process__btn {
   border-left: none;
   text-align: center;
 }
-/* 성능검사 - span폰트 크기 줄이기 위함 */
+/* 성능검사 */
 .성능검사 .process-step table td span {
   font-size: 1vw;
 }
-.files {
+.성능검사 .process-step table .t1-d {
+  padding: 0.5vw;
+}
+.process__file {
   display: flex;
   align-items: center;
+}
+.files {
+  line-height: 1px;
 }
 .file_upload {
   width: 0.1px;
@@ -508,16 +507,41 @@ td.process__btn {
   color: #11a85f;
   /* 2b90d9; */
   border-radius: 1rem;
-  padding: 8px 17px 8px 17px;
+  padding: 8px 10px 8px 10px;
   font-weight: 500;
   box-shadow: 1px 2px 3px 0px #f2f2f2;
   outline: none;
+  font-size: clamp(10px, 1vw, 16px) !important;
+  margin: 0;
 }
 .file_upload:focus + label,
 .file_upload + label:hover {
   cursor: pointer;
 }
-</div>
+.성능검사 .process-step table td span.delete_icon {
+  font-size: 12px;
+  cursor: pointer;
+}
+.in-file {
+  position: relative;
+  margin: 0 10px;
+}
+.in-file button {
+  padding: 0.5vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background: #282b27;
+  box-shadow: 0 2px 8px -1px rgba(10, 22, 50, 0.24);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.in-file button:active {
+  transform: scale(0.9);
+  box-shadow: 0 1px 4px -1px rgba(10, 22, 50, 0.24);
+}
 /* 검사보고서 - 기초,완료보고서 하단 파일 저장 버튼 */
 .report__btns {
   margin-top: 2vh;
