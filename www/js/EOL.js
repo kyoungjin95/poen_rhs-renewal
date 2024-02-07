@@ -515,7 +515,7 @@ async function EOL_SAVE() {
   doc.통신검사_DTC코드3 = _통신검사_DTC코드3.value;
   var tb = document.getElementById("tb");
   var rowIcnt = tb.rows.length - 9;
-  var code_no = rowIcnt - 18;
+  var code_no = rowIcnt - 25;
   console.log("rowIcnt:", rowIcnt, "code_no:", code_no);
 
   if (code_no == 10) {
@@ -770,9 +770,9 @@ function _EOL_add_DTC_Code() {
   var oCurrentRow;
   var tb = document.getElementById("tb");
   var rowIcnt = tb.rows.length - 11;
-  var code_no = rowIcnt - 26;
+  var code_no = rowIcnt - 22;
   console.log("rosw count:", rowIcnt);
-  if (rowIcnt > 37) return false;
+  if (rowIcnt > 32) return false;
   oCurrentRow = tb.insertRow(rowIcnt);
   var insert_string = '<td><label for="_통신검사_DTC코드"' + code_no + "><b>통신검사 DTC코드 " + code_no + '</b></label></td><td><input type="text" id="_통신검사_DTC코드' + code_no + '" size="40" required></td><td><button onClick="_eol_delete_row(' + rowIcnt + ');">삭제</button></td>';
   console.log(insert_string);
@@ -782,7 +782,7 @@ function _EOL_add_DTC_Code() {
 
 function _eol_delete_row(index) {
   var tb = document.getElementById("tb");
-  var rowIcnt = tb.rows.length - 11;
+  var rowIcnt = tb.rows.length - 12;
   console.log("index:", index, "rowIcnt:", rowIcnt);
   if (index == rowIcnt) tb.deleteRow(index);
   EOL_DTC_count--;
