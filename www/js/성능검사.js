@@ -8,185 +8,206 @@ var uploaded_status = {
 }
 
 async function 성능검사_시작(is재제조 = 0) {
-	if (typeof _management_id == "undefined") {
-		await sleep(DELAY);
-		return;
-	}
+  if (typeof _management_id == "undefined") {
+    await sleep(DELAY);
+    return;
+  }
 
-	if (flag_성능검사 == true) await 성능검사_list();
-	flag_성능검사 = false;
-	if (worker == "") return;
+  if (flag_성능검사 == true) await 성능검사_list();
+  flag_성능검사 = false;
+  if (worker == "") return;
 
-	const form = document.querySelector('form');
-	//form.addEventListener('submit', handleSubmit);
-	console.log("작업자:", 계정_stat.이름);
-	_검사자.value = 계정_stat.이름;
+  const form = document.querySelector("form");
+  //form.addEventListener('submit', handleSubmit);
+  console.log("작업자:", 계정_stat.이름);
+  _검사자.value = 계정_stat.이름;
 
-	if (is재제조 == 0) {
-		if (_management_id.value.length == 0) return;
+  if (is재제조 == 0) {
+    if (_management_id.value.length == 0) return;
 
-		find(BSA재제조, _management_id.value);
-		await delay();
-		if (BSA재제조_v != null) {
-			_재제조번호.value = BSA재제조_v.재제조번호;
-			_구분.value = BSA재제조_v.구분;
-			_차종.value = BSA재제조_v.차종;
-			_품번.value = BSA재제조_v.품번;
-			_RO_no.value = BSA재제조_v.RO_no;
-		} else {
-			_재제조번호.value = "";
-			_구분.value = "";
-			_차종.value = "";
-			_품번.value = "";
-			_RO_no.value = "";
-		}
-	} else if (is재제조 == 1) {
-		if (_재제조번호.value.length == 0) return;
+    find(BSA재제조, _management_id.value);
+    await delay();
+    if (BSA재제조_v != null) {
+      _재제조번호.value = BSA재제조_v.재제조번호;
+      _구분.value = BSA재제조_v.구분;
+      _차종.value = BSA재제조_v.차종;
+      _품번.value = BSA재제조_v.품번;
+      _RO_no.value = BSA재제조_v.RO_no;
+    } else {
+      _재제조번호.value = "";
+      _구분.value = "";
+      _차종.value = "";
+      _품번.value = "";
+      _RO_no.value = "";
+    }
+  } else if (is재제조 == 1) {
+    if (_재제조번호.value.length == 0) return;
 
-		findOne_BSA재제조(BSA재제조, { 재제조번호: _재제조번호.value });
-		await delay();
+    findOne_BSA재제조(BSA재제조, { 재제조번호: _재제조번호.value });
+    await delay();
 
-		if (BSA재제조_v != null) {
-			_management_id.value = BSA재제조_v.관리번호;
-			_구분.value = BSA재제조_v.구분;
-			_차종.value = BSA재제조_v.차종;
-			_품번.value = BSA재제조_v.품번;
-			_RO_no.value = BSA재제조_v.RO_no;
-		} else {
-			_management_id.value = "";
-			_구분.value = "";
-			_차종.value = "";
-			_품번.value = "";
-			_RO_no.value = "";
-		}
-	} else if (is재제조 == 2) {
-		if (_RO_no.value.length == 0) return;
+    if (BSA재제조_v != null) {
+      _management_id.value = BSA재제조_v.관리번호;
+      _구분.value = BSA재제조_v.구분;
+      _차종.value = BSA재제조_v.차종;
+      _품번.value = BSA재제조_v.품번;
+      _RO_no.value = BSA재제조_v.RO_no;
+    } else {
+      _management_id.value = "";
+      _구분.value = "";
+      _차종.value = "";
+      _품번.value = "";
+      _RO_no.value = "";
+    }
+  } else if (is재제조 == 2) {
+    if (_RO_no.value.length == 0) return;
 
-		findOne_BSA재제조(BSA재제조, { RO_no: _RO_no.value });
-		await delay();
+    findOne_BSA재제조(BSA재제조, { RO_no: _RO_no.value });
+    await delay();
 
-		if (BSA재제조_v != null) {
-			_management_id.value = BSA재제조_v.관리번호;
-			_재제조번호.value = BSA재제조_v.재제조번호;
-			_구분.value = BSA재제조_v.구분;
-			_차종.value = BSA재제조_v.차종;
-			_품번.value = BSA재제조_v.품번;
-		} else {
-			_management_id.value = "";
-			_재제조번호.value = "";
-			_구분.value = "";
-			_차종.value = "";
-			_품번.value = "";
-		}
-	}
+    if (BSA재제조_v != null) {
+      _management_id.value = BSA재제조_v.관리번호;
+      _재제조번호.value = BSA재제조_v.재제조번호;
+      _구분.value = BSA재제조_v.구분;
+      _차종.value = BSA재제조_v.차종;
+      _품번.value = BSA재제조_v.품번;
+    } else {
+      _management_id.value = "";
+      _재제조번호.value = "";
+      _구분.value = "";
+      _차종.value = "";
+      _품번.value = "";
+    }
+  }
 
-	관리번호 = _management_id.value;
-	find(성능검사, _management_id.value);
-	await delay();
+  관리번호 = _management_id.value;
+  find(성능검사, _management_id.value);
+  await delay();
 
-	if (성능검사_v != null) {
-		_공정입고일.value = 성능검사_v.공정입고일;
-		_용량평가.value = 성능검사_v.용량평가;
-		_SOC60Percent.value = 성능검사_v.SOC60Percent;
-		_DCIR.value = 성능검사_v.DCIR;
-		_DCIR_Charge1.value = 성능검사_v.DCIR_Charge1;
-		_DCIR_Charge2.value = 성능검사_v.DCIR_Charge2;
-		_DCIR_Charge3.value = 성능검사_v.DCIR_Charge3;
-		_분해조립_재의뢰사유.value = 성능검사_v.분해조립_재의뢰사유;
-		_공정완료일.value = 성능검사_v.공정완료일;
-		_검사자.value = 성능검사_v.검사자;
-	} else {
-		_공정입고일.value = "0000-00-00T00:00";
-		_용량평가.value = "";
-		_SOC60Percent.value = "";
-		_DCIR.value = "";
-		_DCIR_Charge1.value = "";
-		_DCIR_Charge2.value = "";
-		_DCIR_Charge3.value = "";
-		_분해조립_재의뢰사유.value = "";
-		_공정완료일.value = "0000-00-00T00:00";
-		_검사자.value = 계정_stat.이름;
+  if (성능검사_v != null) {
+    console.log('성능검사:', 성능검사_v);
+    _공정입고일.value = 성능검사_v.공정입고일;
+    _용량평가.value = 성능검사_v.용량평가;
+    _SOC60Percent.value = 성능검사_v.SOC60Percent;
+    _DCIR.value = 성능검사_v.DCIR;
+    _DCIR_Charge1.value = 성능검사_v.DCIR_Charge1;
+    _DCIR_Charge2.value = 성능검사_v.DCIR_Charge2;
+    _DCIR_Charge3.value = 성능검사_v.DCIR_Charge3;
+    _분해조립_재의뢰사유.value = 성능검사_v.분해조립_재의뢰사유;
+    _공정완료일.value = 성능검사_v.공정완료일;
+    _검사자.value = 성능검사_v.검사자;
+    if(성능검사_v.f1 != '') _download1.style.display = 'block';
+    if(성능검사_v.f2 != '') _download2.style.display = 'block';
+    if(성능검사_v.f3 != '') _download3.style.display = 'block';
+    if(성능검사_v.f4 != '') _download4.style.display = 'block';
+    if(성능검사_v.f5 != '') _download5.style.display = 'block';
+    if(성능검사_v.f6 != '') _download6.style.display = 'block';
+    
+    uploaded_status.f1 = 성능검사_v.f1;
+    uploaded_status.f2 = 성능검사_v.f2;
+    uploaded_status.f3 = 성능검사_v.f3;
+    uploaded_status.f4 = 성능검사_v.f4;
+    uploaded_status.f5 = 성능검사_v.f5;
+    uploaded_status.f6 = 성능검사_v.f6;
 
-		var DateTime = luxon.DateTime;
-		var seoul = DateTime.local().setZone("Asia/Seoul");
-		var now = seoul.toString().slice(0, 19);
+  } else {
+    _공정입고일.value = "0000-00-00T00:00";
+    _용량평가.value = "";
+    _SOC60Percent.value = "";
+    _DCIR.value = "";
+    _DCIR_Charge1.value = "";
+    _DCIR_Charge2.value = "";
+    _DCIR_Charge3.value = "";
+    _분해조립_재의뢰사유.value = "";
+    _공정완료일.value = "0000-00-00T00:00";
+    _검사자.value = 계정_stat.이름;
+    _download1.style.display = 'none';
+    _download2.style.display = 'none'; 	  
+    _download3.style.display = 'none';
+    _download4.style.display = 'none';
+    _download5.style.display = 'none';
+    _download6.style.display = 'none';
 
-		_공정입고일.value = now;
-	}
+    var DateTime = luxon.DateTime;
+    var seoul = DateTime.local().setZone("Asia/Seoul");
+    var now = seoul.toString().slice(0, 19);
+
+    _공정입고일.value = now;
+  }
+  fileUploading();
 }
 
 async function 성능검사_save() {
-	if (worker == "") return;
-	while (_management_id == undefined) {
-		await sleep(DELAY);
-	}
-	if (_management_id.value.length == 0) return;
-	console.log("save: ", _management_id.value);
+  if (worker == "") return;
+  while (_management_id == undefined) {
+    await sleep(DELAY);
+  }
+  if (_management_id.value.length == 0) return;
+  console.log("save: ", _management_id.value);
 
-	var DateTime = luxon.DateTime;
-	var seoul = DateTime.local().setZone("Asia/Seoul");
-	var now = seoul.toString().slice(0, 19);
+  var DateTime = luxon.DateTime;
+  var seoul = DateTime.local().setZone("Asia/Seoul");
+  var now = seoul.toString().slice(0, 19);
 
-	if (_공정입고일.value == "") _공정입고일.value = now;
-	if (_공정완료일.value == "") _공정완료일.value = now;
-	//if (계정_stat.완료일수정 != 'o' || _공정완료일.value == "") _공정완료일.value = now;
+  if (_공정입고일.value == "") _공정입고일.value = now;
+  if (_공정완료일.value == "") _공정완료일.value = now;
+  //if (계정_stat.완료일수정 != 'o' || _공정완료일.value == "") _공정완료일.value = now;
 
-	var doc = JSON.parse(JSON.stringify(성능검사_doc));
-	doc.관리번호 = _management_id.value.trim().toUpperCase();
-	doc.공정입고일 = _공정입고일.value;
-	doc.용량평가 = _용량평가.value;
-	doc.SOC60Percent = _SOC60Percent.value;
-	doc.DCIR = _DCIR.value;
-	doc.DCIR_Charge1 = _DCIR_Charge1.value;
-	doc.DCIR_Charge2 = _DCIR_Charge2.value;
-	doc.DCIR_Charge3 = _DCIR_Charge3.value;
-	doc.분해조립_재의뢰사유 = _분해조립_재의뢰사유.value;
-	doc.공정완료일 = _공정완료일.value;
-	if (level == "관리자") doc.공정완료일 = _공정완료일.value;
-	doc.검사자 = _검사자.value;
+  var doc = {};
+  doc.관리번호 = _management_id.value.trim().toUpperCase();
+  doc.공정입고일 = _공정입고일.value;
+  doc.용량평가 = _용량평가.value;
+  doc.SOC60Percent = _SOC60Percent.value;
+  doc.DCIR = _DCIR.value;
+  doc.DCIR_Charge1 = _DCIR_Charge1.value;
+  doc.DCIR_Charge2 = _DCIR_Charge2.value;
+  doc.DCIR_Charge3 = _DCIR_Charge3.value;
+  doc.분해조립_재의뢰사유 = _분해조립_재의뢰사유.value;
+  doc.공정완료일 = _공정완료일.value;
+  if (level == "관리자") doc.공정완료일 = _공정완료일.value;
+  doc.검사자 = _검사자.value;
 
-	update(성능검사, doc);
-	await delay();
+  update(성능검사, doc);
+  await delay();
 
-	console.log(update_count);
-	console.log(insert_count);
+  console.log(update_count);
+  console.log(insert_count);
 
-	var update_cnt = update_count;
-	var insert_cnt = insert_count;
+  if (insert_count > 0) {
+    alert("저장 되었습니다");
+  } else if (update_count > 0) {
+    alert("업데이트 되었습니다");
+  }
 
-	if (_분해조립_재의뢰사유.value == "") {
-		var _doc = {
-			관리번호: _management_id.value.toUpperCase(),
-			성능검사투입일: _공정입고일.value,
-			성능검사: _공정완료일.value,
-		};
-	} else {
-		var _doc = {
-			관리번호: _management_id.value.toUpperCase(),
-			성능검사투입일: _공정입고일.value,
-			분해조립: "",
-			성능검사: "",
-		};
-	}
+  var update_cnt = update_count;
+  var insert_cnt = insert_count;
 
-	update(BSA재제조, _doc);
-	await delay();
+  if (_분해조립_재의뢰사유.value == "") {
+    var _doc = {
+      관리번호: _management_id.value.toUpperCase(),
+      성능검사투입일: _공정입고일.value,
+      성능검사: _공정완료일.value,
+    };
+  } else {
+    var _doc = {
+      관리번호: _management_id.value.toUpperCase(),
+      성능검사투입일: _공정입고일.value,
+      분해조립: "",
+      성능검사: "",
+    };
+  }
 
-	//_form.submit();
-	file_upload();
+  update(BSA재제조, _doc);
+  await delay();
 
-	send_filelist();
+  //이전페이지();
+}
 
-	//if (update_cnt > 0) {
-	//	alert("업데이트 되었습니다");
-	//}
+async function file_upload() {
+  //_form.submit();
+  _file_upload();
 
-	if (insert_cnt > 0) {
-		alert("저장 되었습니다");
-	} else {
-		alert("업데이트 되었습니다");
-	}
-	//이전페이지();
+  _send_filelist();
 }
 
 function 성능검사_updateFilter() {
