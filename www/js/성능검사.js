@@ -8,7 +8,7 @@ async function 성능검사_시작(is재제조 = 0) {
 	flag_성능검사 = false;
 	if (worker == "") return;
 
-	const form = document.querySelector('form');
+	const form = document.querySelector("form");
 	//form.addEventListener('submit', handleSubmit);
 	console.log("작업자:", 계정_stat.이름);
 	_검사자.value = 계정_stat.이름;
@@ -86,12 +86,6 @@ async function 성능검사_시작(is재제조 = 0) {
 		_분해조립_재의뢰사유.value = 성능검사_v.분해조립_재의뢰사유;
 		_공정완료일.value = 성능검사_v.공정완료일;
 		_검사자.value = 성능검사_v.검사자;
-		//_file1.value = 성능검사_v.file1;
-		//_file2.value = 성능검사_v.file2;
-		//_file3.value = 성능검사_v.file3;
-		//_file4.value = 성능검사_v.file4;
-		//_file5.value = 성능검사_v.file5;
-		//_file6.value = 성능검사_v.file6;
 	} else {
 		_공정입고일.value = "0000-00-00T00:00";
 		_용량평가.value = "";
@@ -103,12 +97,6 @@ async function 성능검사_시작(is재제조 = 0) {
 		_분해조립_재의뢰사유.value = "";
 		_공정완료일.value = "0000-00-00T00:00";
 		_검사자.value = 계정_stat.이름;
-		//_file1.value = '';
-		//_file2.value = '';
-		//_file3.value = '';
-		//_file4.value = '';
-		//_file5.value = '';
-		//_file6.value = '';
 
 		var DateTime = luxon.DateTime;
 		var seoul = DateTime.local().setZone("Asia/Seoul");
@@ -116,6 +104,7 @@ async function 성능검사_시작(is재제조 = 0) {
 
 		_공정입고일.value = now;
 	}
+	fileUploading();
 }
 
 async function 성능검사_save() {
@@ -187,7 +176,7 @@ async function 성능검사_save() {
 async function file_upload() {
 	//_form.submit();
 	_file_upload();
- 
+
 	var filelist = _send_filelist();
 
 	find(성능검사, 관리번호);
@@ -401,7 +390,7 @@ async function 성능검사_list() {
 	});
 }
 
-function _file_upload() {
+function file_upload() {
 	//console.log('submit event:', event);
 	//event.preventDefault();
 	//const form = event.currentTarget;
@@ -416,36 +405,104 @@ function _file_upload() {
 		timeout: 3000,
 		processData: false,
 		contentType: false,
-		enctype: 'multipart/form-data',
+		enctype: "multipart/form-data",
 		url: url,
 		data: formData,
-		dataType : "file",
-		success: function(data) {
-			console.log('success');
+		dataType: "file",
+		success: function (data) {
+			console.log("success");
 		},
 	});
 }
 
-async function _send_filelist() {
+function fileUploading() {
+	var fileUploadSets = document.querySelectorAll(".files");
+
+	fileUploadSets.forEach(function (fileUploadSet) {
+		var fileInput = fileUploadSet.querySelector(".file_upload");
+		var deleteButton = fileUploadSet.querySelector(".delete_icon");
+		var uploadLabel = fileUploadSet.querySelector(".upload_label");
+
+		function updateUpload() {
+			if (fileInput.files.length > 0) {
+				var fileNames = "";
+				for (var i = 0; i < fileInput.files.length; i++) {
+					fileNames += fileInput.files[i].name + ", ";
+				}
+				uploadLabel.textContent = fileNames.slice(0, -6);
+				uploadLabel.style.backgroundColor = "#11a85f";
+				uploadLabel.style.color = "white";
+				deleteButton.style.display = "inline";
+			} else {
+				// uploadLabel.textContent = "파일 선택";
+				uploadLabel.innerHTML = "<i class='fa-regular fa-file'></i>&nbsp; 파일 선택";
+				uploadLabel.style.backgroundColor = "initial";
+				uploadLabel.style.color = "#11a85f";
+			}
+		}
+
+		fileInput.addEventListener("change", function () {
+			updateUpload();
+		});
+
+		// 삭제 버튼(click) 이벤트 처리
+		deleteButton.addEventListener("click", function () {
+			fileInput.value = "";
+			updateUpload();
+			deleteButton.style.display = "none";
+		});
+
+		// 드래그 앤 드롭 이벤트 처리
+		fileUploadSet.addEventListener("dragover", function (event) {
+			event.preventDefault();
+			fileUploadSet.classList.add("dragover");
+		});
+
+		fileUploadSet.addEventListener("dragenter", function (event) {
+			event.preventDefault();
+			fileUploadSet.classList.add("dragover");
+		});
+
+		fileUploadSet.addEventListener("dragleave", function (event) {
+			event.preventDefault();
+			fileUploadSet.classList.remove("dragover");
+		});
+
+		fileUploadSet.addEventListener("drop", function (event) {
+			event.preventDefault();
+			fileUploadSet.classList.remove("dragover");
+
+			var files = event.dataTransfer.files;
+			if (files.length > 0) {
+				fileInput.files = files;
+				var fileNames = "";
+				for (var i = 0; i < files.length; i++) {
+					fileNames += files[i].name + ", ";
+				}
+				updateUpload();
+			}
+		});
+	});
+}
+
+async function send_filelist() {
 	var filelist = {
-		관리번호 : 관리번호,
-	}
-	if(_file1.files[0] == undefined || _file1.files[0] == null) filelist.f1 = '';
+		관리번호: 관리번호,
+	};
+	if (_file1.files[0] == undefined || _file1.files[0] == null) filelist.f1 = "";
 	else filelist.f1 = _file1.files[0].name;
-	if(_file2.files[0] == undefined || _file2.files[0] == null) filelist.f2 = '';
+	if (_file2.files[0] == undefined || _file2.files[0] == null) filelist.f2 = "";
 	else filelist.f2 = _file2.files[0].name;
-	if(_file3.files[0] == undefined || _file3.files[0] == null) filelist.f3 = '';
+	if (_file3.files[0] == undefined || _file3.files[0] == null) filelist.f3 = "";
 	else filelist.f3 = _file3.files[0].name;
-	if(_file4.files[0] == undefined || _file4.files[0] == null) filelist.f4 = '';
+	if (_file4.files[0] == undefined || _file4.files[0] == null) filelist.f4 = "";
 	else filelist.f4 = _file4.files[0].name;
-	if(_file5.files[0] == undefined || _file5.files[0] == null) filelist.f5 = '';
+	if (_file5.files[0] == undefined || _file5.files[0] == null) filelist.f5 = "";
 	else filelist.f5 = _file5.files[0].name;
-	if(_file6.files[0] == undefined || _file6.files[0] == null) filelist.f6 = '';
+	if (_file6.files[0] == undefined || _file6.files[0] == null) filelist.f6 = "";
 	else filelist.f6 = _file6.files[0].name;
 
 	console.log(filelist);
 	send_list(filelist);
 	await delay();
-
-	return filelist;
 }
