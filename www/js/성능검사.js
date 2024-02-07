@@ -1,3 +1,12 @@
+var uploaded_status = {
+	f1 : false,
+	f2 : false,
+	f3 : false,
+	f4 : false,
+	f5 : false,
+	f6 : false
+}
+
 async function 성능검사_시작(is재제조 = 0) {
 	if (typeof _management_id == "undefined") {
 		await sleep(DELAY);
