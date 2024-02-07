@@ -46,9 +46,9 @@ var _old_year = '2023';
 app.use(morgan('dev'))
 app.use('/', express.static(path.join(__dirname, '../')));
 app.use('/base', express.static(path.join(__dirname, '../www')));
+app.use('/excel', express.static(path.join(__dirname, './excel')));
 app.use(express.json());
 app.use(express.urlencoded());
-//app.use(multer({storage:storage}).single('excel_file'));
 
 app.get('/', (req, res) => {
 	res.sendFile(path.join(__dirname, '../www/index.html'));
@@ -111,7 +111,6 @@ io.on('connection', async function(socket) {
 	app.use(ipfilter(_black_ip_list));
 
 	socket.on('file_list', async function(list) {
-		await sleep(1000);
 		console.log('file list');
 		
 		const result = file_list(list);
@@ -568,6 +567,32 @@ function file_list(list) {
 	} finally {
 	}
 
+}
+
+function csvFileToJSON(path) {
+	const file_csv = fs.readFileSync(path);
+	const string_csv = file_csv.toString();
+	return csvToJSON(string_csv);
+}
+
+function csvToJSON(csv_string){
+    const rows = csv_string.split("\r\n");
+    const jsonArray = [];
+    const header = rows[0].split(",");
+
+    for(let i = 1; i < rows.length; i++){
+        let obj = {};
+        let row = rows[i].split(",");
+
+        for(let j=0; j < header.length; j++){
+            obj[header[j]] = row[j];
+        }
+  
+        jsonArray.push(obj);
+  
+    }
+    
+    return JSON.stringify(jsonArray);
 }
 
 function sleep(ms) {

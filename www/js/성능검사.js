@@ -86,6 +86,12 @@ async function 성능검사_시작(is재제조 = 0) {
 		_분해조립_재의뢰사유.value = 성능검사_v.분해조립_재의뢰사유;
 		_공정완료일.value = 성능검사_v.공정완료일;
 		_검사자.value = 성능검사_v.검사자;
+		//_file1.value = 성능검사_v.file1;
+		//_file2.value = 성능검사_v.file2;
+		//_file3.value = 성능검사_v.file3;
+		//_file4.value = 성능검사_v.file4;
+		//_file5.value = 성능검사_v.file5;
+		//_file6.value = 성능검사_v.file6;
 	} else {
 		_공정입고일.value = "0000-00-00T00:00";
 		_용량평가.value = "";
@@ -97,6 +103,12 @@ async function 성능검사_시작(is재제조 = 0) {
 		_분해조립_재의뢰사유.value = "";
 		_공정완료일.value = "0000-00-00T00:00";
 		_검사자.value = 계정_stat.이름;
+		//_file1.value = '';
+		//_file2.value = '';
+		//_file3.value = '';
+		//_file4.value = '';
+		//_file5.value = '';
+		//_file6.value = '';
 
 		var DateTime = luxon.DateTime;
 		var seoul = DateTime.local().setZone("Asia/Seoul");
@@ -142,6 +154,12 @@ async function 성능검사_save() {
 	console.log(update_count);
 	console.log(insert_count);
 
+	if (insert_count > 0) {
+		alert("저장 되었습니다");
+	} else if(update_count > 0) {
+		alert("업데이트 되었습니다");
+	}
+
 	var update_cnt = update_count;
 	var insert_cnt = insert_count;
 
@@ -163,21 +181,29 @@ async function 성능검사_save() {
 	update(BSA재제조, _doc);
 	await delay();
 
-	//_form.submit();
-	file_upload();
-
-	send_filelist();
-
-	//if (update_cnt > 0) {
-	//	alert("업데이트 되었습니다");
-	//}
-
-	if (insert_cnt > 0) {
-		alert("저장 되었습니다");
-	} else {
-		alert("업데이트 되었습니다");
-	}
 	//이전페이지();
+}
+
+async function file_upload() {
+	//_form.submit();
+	_file_upload();
+ 
+	var filelist = _send_filelist();
+
+	find(성능검사, 관리번호);
+	await delay();
+
+	if(성능검사_v == null) return;
+
+	if(성능검사_v.file1 == '' && filelist.f1 != '') 성능검사_v.file1 = true;
+	if(성능검사_v.file2 == '' && filelist.f2 != '') 성능검사_v.file2 = true;
+	if(성능검사_v.file3 == '' && filelist.f3 != '') 성능검사_v.file3 = true;
+	if(성능검사_v.file4 == '' && filelist.f4 != '') 성능검사_v.file4 = true;
+	if(성능검사_v.file5 == '' && filelist.f5 != '') 성능검사_v.file5 = true;
+	if(성능검사_v.file6 == '' && filelist.f6 != '') 성능검사_v.file6 = true;
+
+	update(성능검사, 성능검사_v);
+	await delay();
 }
 
 function 성능검사_updateFilter() {
@@ -375,7 +401,7 @@ async function 성능검사_list() {
 	});
 }
 
-function file_upload() {
+function _file_upload() {
 	//console.log('submit event:', event);
 	//event.preventDefault();
 	//const form = event.currentTarget;
@@ -400,7 +426,7 @@ function file_upload() {
 	});
 }
 
-async function send_filelist() {
+async function _send_filelist() {
 	var filelist = {
 		관리번호 : 관리번호,
 	}
@@ -420,4 +446,6 @@ async function send_filelist() {
 	console.log(filelist);
 	send_list(filelist);
 	await delay();
+
+	return filelist;
 }
