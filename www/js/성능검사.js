@@ -390,7 +390,7 @@ async function 성능검사_list() {
 	});
 }
 
-function file_upload() {
+function _file_upload() {
 	//console.log('submit event:', event);
 	//event.preventDefault();
 	//const form = event.currentTarget;
@@ -485,7 +485,7 @@ function fileUploading() {
 	});
 }
 
-async function send_filelist() {
+async function _send_filelist() {
 	var filelist = {
 		관리번호: 관리번호,
 	};
