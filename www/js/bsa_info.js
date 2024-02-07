@@ -337,6 +337,7 @@ async function 재제조현황_조회() {
 
 		document.getElementById("m_id").innerHTML = "관리번호: " + m_id;
 
+		await sleep(1);
 		await grid_입고(m_id);
 		progress.value = (1 / 19) * 100;
 
@@ -396,6 +397,8 @@ async function 재제조현황_조회() {
 
 		return;
 	});
+
+	await sleep(1);
 
 	await grid_입고();
 	progress.value = (1 / 19) * 100;
