@@ -3294,7 +3294,7 @@ var arregation_array = [];
 var flag_arrivedMSG = false;
 var check = 0;
 var str = "";
-
+var file_upload_result = false;
 var socket = io();
 var io_status = false;
 
@@ -3330,6 +3330,10 @@ socket.on("qr_lebel_result", function (result) {
 
 socket.on("file_list_result", async function (result) {
 	flag_arrivedMSG = true;
+	file_upload_result = result;
+	if(file_upload_result == true) {
+		alert('파일이 업로드 되었습니다');
+	}
 	console.log(result);
 });
 
@@ -4086,6 +4090,7 @@ function reset_count() {
 async function send_list(file_list) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
+	file_upload_result = false;
 	socket.emit("file_list", file_list);
 }
 
