@@ -86,6 +86,21 @@ async function 성능검사_시작(is재제조 = 0) {
     _분해조립_재의뢰사유.value = 성능검사_v.분해조립_재의뢰사유;
     _공정완료일.value = 성능검사_v.공정완료일;
     _검사자.value = 성능검사_v.검사자;
+
+    if(성능검사_v.f1 != '') _download1.style.display = 'block';
+    if(성능검사_v.f2 != '') _download2.style.display = 'block';
+    if(성능검사_v.f3 != '') _download3.style.display = 'block';
+    if(성능검사_v.f4 != '') _download4.style.display = 'block';
+    if(성능검사_v.f5 != '') _download5.style.display = 'block';
+    if(성능검사_v.f6 != '') _download6.style.display = 'block';
+    
+    uploaded_status.f1 = 성능검사_v.f1;
+    uploaded_status.f2 = 성능검사_v.f2;
+    uploaded_status.f3 = 성능검사_v.f3;
+    uploaded_status.f4 = 성능검사_v.f4;
+    uploaded_status.f5 = 성능검사_v.f5;
+    uploaded_status.f6 = 성능검사_v.f6;
+
   } else {
     _공정입고일.value = "0000-00-00T00:00";
     _용량평가.value = "";
@@ -97,6 +112,12 @@ async function 성능검사_시작(is재제조 = 0) {
     _분해조립_재의뢰사유.value = "";
     _공정완료일.value = "0000-00-00T00:00";
     _검사자.value = 계정_stat.이름;
+    _download1.style.display = 'none';
+    _download2.style.display = 'none'; 	  
+    _download3.style.display = 'none';
+    _download4.style.display = 'none';
+    _download5.style.display = 'none';
+    _download6.style.display = 'none';
 
     var DateTime = luxon.DateTime;
     var seoul = DateTime.local().setZone("Asia/Seoul");
