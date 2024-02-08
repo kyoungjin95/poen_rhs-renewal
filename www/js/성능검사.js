@@ -1,3 +1,12 @@
+var uploaded_status = {
+	f1 : false,
+	f2 : false,
+	f3 : false,
+	f4 : false,
+	f5 : false,
+	f6 : false
+}
+
 async function 성능검사_시작(is재제조 = 0) {
   if (typeof _management_id == "undefined") {
     await sleep(DELAY);
@@ -87,20 +96,19 @@ async function 성능검사_시작(is재제조 = 0) {
     _공정완료일.value = 성능검사_v.공정완료일;
     _검사자.value = 성능검사_v.검사자;
 
-    if(성능검사_v.f1 != '') _download1.style.display = 'block';
-    if(성능검사_v.f2 != '') _download2.style.display = 'block';
-    if(성능검사_v.f3 != '') _download3.style.display = 'block';
-    if(성능검사_v.f4 != '') _download4.style.display = 'block';
-    if(성능검사_v.f5 != '') _download5.style.display = 'block';
-    if(성능검사_v.f6 != '') _download6.style.display = 'block';
+    //if(성능검사_v.f1 != '') _download1.style.display = 'block';
+    //if(성능검사_v.f2 != '') _download2.style.display = 'block';
+    //if(성능검사_v.f3 != '') _download3.style.display = 'block';
+    //if(성능검사_v.f4 != '') _download4.style.display = 'block';
+    //if(성능검사_v.f5 != '') _download5.style.display = 'block';
+    //if(성능검사_v.f6 != '') _download6.style.display = 'block';
     
-    uploaded_status.f1 = 성능검사_v.f1;
-    uploaded_status.f2 = 성능검사_v.f2;
-    uploaded_status.f3 = 성능검사_v.f3;
-    uploaded_status.f4 = 성능검사_v.f4;
-    uploaded_status.f5 = 성능검사_v.f5;
-    uploaded_status.f6 = 성능검사_v.f6;
-
+    //uploaded_status.f1 = 성능검사_v.f1;
+    //uploaded_status.f2 = 성능검사_v.f2;
+    //uploaded_status.f3 = 성능검사_v.f3;
+    //uploaded_status.f4 = 성능검사_v.f4;
+    //uploaded_status.f5 = 성능검사_v.f5;
+    //uploaded_status.f6 = 성능검사_v.f6;
   } else {
     _공정입고일.value = "0000-00-00T00:00";
     _용량평가.value = "";
@@ -112,12 +120,12 @@ async function 성능검사_시작(is재제조 = 0) {
     _분해조립_재의뢰사유.value = "";
     _공정완료일.value = "0000-00-00T00:00";
     _검사자.value = 계정_stat.이름;
-    _download1.style.display = 'none';
-    _download2.style.display = 'none'; 	  
-    _download3.style.display = 'none';
-    _download4.style.display = 'none';
-    _download5.style.display = 'none';
-    _download6.style.display = 'none';
+    //_download1.style.display = 'none';
+    //_download2.style.display = 'none'; 	  
+    //_download3.style.display = 'none';
+    //_download4.style.display = 'none';
+    //_download5.style.display = 'none';
+    //_download6.style.display = 'none';
 
     var DateTime = luxon.DateTime;
     var seoul = DateTime.local().setZone("Asia/Seoul");
@@ -144,7 +152,7 @@ async function 성능검사_save() {
   if (_공정완료일.value == "") _공정완료일.value = now;
   //if (계정_stat.완료일수정 != 'o' || _공정완료일.value == "") _공정완료일.value = now;
 
-  var doc = JSON.parse(JSON.stringify(성능검사_doc));
+  var doc = {};
   doc.관리번호 = _management_id.value.trim().toUpperCase();
   doc.공정입고일 = _공정입고일.value;
   doc.용량평가 = _용량평가.value;
@@ -198,22 +206,7 @@ async function file_upload() {
   //_form.submit();
   _file_upload();
 
-  var filelist = _send_filelist();
-
-  find(성능검사, 관리번호);
-  await delay();
-
-  if (성능검사_v == null) return;
-
-  if (성능검사_v.file1 == "" && filelist.f1 != "") 성능검사_v.file1 = true;
-  if (성능검사_v.file2 == "" && filelist.f2 != "") 성능검사_v.file2 = true;
-  if (성능검사_v.file3 == "" && filelist.f3 != "") 성능검사_v.file3 = true;
-  if (성능검사_v.file4 == "" && filelist.f4 != "") 성능검사_v.file4 = true;
-  if (성능검사_v.file5 == "" && filelist.f5 != "") 성능검사_v.file5 = true;
-  if (성능검사_v.file6 == "" && filelist.f6 != "") 성능검사_v.file6 = true;
-
-  update(성능검사, 성능검사_v);
-  await delay();
+  _send_filelist();
 }
 
 function 성능검사_updateFilter() {
@@ -465,6 +458,8 @@ function fileUploading() {
       }
     }
 
+    downloadFileBtn.style.display = "block";
+
     fileInput.addEventListener("change", function () {
       updateUpload();
     });
@@ -474,7 +469,7 @@ function fileUploading() {
       fileInput.value = "";
       updateUpload();
       deleteButton.style.display = "none";
-      downloadFileBtn.style.display = "none";
+      //downloadFileBtn.style.display = "none";
     });
 
     // 드래그 앤 드롭 이벤트 처리
@@ -530,4 +525,47 @@ async function _send_filelist() {
   console.log(filelist);
   send_list(filelist);
   await delay();
+}
+
+function download1() {
+	console.log('download file 1');
+	const a = document.createElement('a');
+	a.download = 'file1.csv'
+	a.href = 'excel/' + 관리번호 + '/excel1.csv';
+	a.click();
+}
+
+function download2() {
+	const a = document.createElement('a');
+	a.download = 'file2.csv'
+	a.href = 'excel/' + 관리번호 + '/excel2.csv';
+	a.click();
+}
+
+function download3() {
+	const a = document.createElement('a');
+	a.download = 'file3.csv'
+	a.href = 'excel/' + 관리번호 + '/excel3.csv';
+	a.click();
+}
+
+function download4() {
+	const a = document.createElement('a');
+	a.download = 'file4.csv'
+	a.href = 'excel/' + 관리번호 + '/excel4.csv';
+	a.click();
+}
+
+function download5() {
+	const a = document.createElement('a');
+	a.download = 'file5.csv'
+	a.href = 'excel/' + 관리번호 + '/excel5.csv';
+	a.click();
+}
+
+function download6() {
+	const a = document.createElement('a');
+	a.download = 'file6.csv'
+	a.href = 'excel/' + 관리번호 + '/excel6.csv';
+	a.click();
 }

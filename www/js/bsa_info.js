@@ -337,6 +337,7 @@ async function 재제조현황_조회() {
 
 		document.getElementById("m_id").innerHTML = "관리번호: " + m_id;
 
+		await sleep(1);
 		await grid_입고(m_id);
 		progress.value = (1 / 19) * 100;
 
@@ -349,8 +350,8 @@ async function 재제조현황_조회() {
 		await grid_분해조립(m_id);
 		progress.value = (4 / 19) * 100;
 
-		await grid_분해조립new(m_id);
-		progress.value = (5 / 19) * 100;
+		//await grid_분해조립new(m_id);
+		//progress.value = (5 / 19) * 100;
 
 		await grid_성능검사(m_id);
 		progress.value = (6 / 19) * 100;
@@ -397,6 +398,8 @@ async function 재제조현황_조회() {
 		return;
 	});
 
+	await sleep(1);
+
 	await grid_입고();
 	progress.value = (1 / 19) * 100;
 
@@ -409,8 +412,8 @@ async function 재제조현황_조회() {
 	await grid_분해조립();
 	progress.value = (4 / 19) * 100;
 
-	await grid_분해조립new();
-	progress.value = (5 / 19) * 100;
+	//await grid_분해조립new();
+	//progress.value = (5 / 19) * 100;
 
 	await grid_성능검사();
 	progress.value = (6 / 19) * 100;
