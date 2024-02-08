@@ -181,24 +181,6 @@ async function 성능검사_save() {
   var update_cnt = update_count;
   var insert_cnt = insert_count;
 
-  if (_분해조립_재의뢰사유.value == "") {
-    var _doc = {
-      관리번호: _management_id.value.toUpperCase(),
-      성능검사투입일: _공정입고일.value,
-      성능검사: _공정완료일.value,
-    };
-  } else {
-    var _doc = {
-      관리번호: _management_id.value.toUpperCase(),
-      성능검사투입일: _공정입고일.value,
-      분해조립: "",
-      성능검사: "",
-    };
-  }
-
-  update(BSA재제조, _doc);
-  await delay();
-
   //이전페이지();
 }
 
@@ -568,4 +550,17 @@ function download6() {
 	a.download = 'file6.csv'
 	a.href = 'excel/' + 관리번호 + '/excel6.csv';
 	a.click();
+}
+
+async function 성능검사_분해조립재의뢰() {
+	doc = {
+		관리번호 : 관리번호,
+		분해조립 : '',
+		성능검사 : '',
+		공정단계 : '분해조립'
+	}
+	update(BSA재제조, doc)
+	await delay();
+
+	이전페이지();
 }

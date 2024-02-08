@@ -468,6 +468,14 @@
                 <input type="text" id="_비고" size="40" required />
               </td>
             </tr>
+              <tr>
+                <td>
+                  <label for="_분해조립_재의뢰사유"><b>분해조립 재의뢰 사유</b></label>
+                </td>
+                <td>
+                  <input type="text" id="_분해조립_재의뢰사유" size="40" required />
+                </td>
+              </tr>
             <tr>
               <td>
                 <label for="_QR">출하코드</label>
@@ -506,7 +514,7 @@
     <div class="input-group">
       <div class="input-btn-group">
         <button onClick="EOL_save();">저장</button>
-        <button onClick="">분해조립재의뢰</button>
+        <button onClick="EOL_분해조립재의뢰();">분해조립재의뢰</button>
         <button onClick="이전페이지();">이전페이지</button>
         <!-- <button onClick="EOL_QR_Label();">QR Label</button> -->
         <!-- <button onClick="EOL_save(); 창고='마도출하'; flag_racks=true;">보관렉 선택</button> -->
@@ -549,6 +557,7 @@
       const _통신검사_릴레이구동_특이사항 = document.getElementById("_통신검사_릴레이구동_특이사항");
       const _공정완료일 = document.getElementById("_공정완료일");
       const _비고 = document.getElementById("_비고");
+      const _분해조립재의뢰사유 = document.getElementById("_분해조립재의뢰사유");
       const _QR = document.getElementById("_QR");
       const _검사자 = document.getElementById("_검사자");
       const _보관렉 = document.getElementById("_보관렉");

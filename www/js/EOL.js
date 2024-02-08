@@ -178,6 +178,7 @@ async function EOL_시작(is재제조 = 0) {
     }
     _공정완료일.value = EOL_v.공정완료일;
     _비고.value = EOL_v.비고;
+    _분해조립_재의뢰사유.value = EOL_v.분해조립_재의뢰사유;
     _QR.value = EOL_v.QR;
     _검사자.value = EOL_v.검사자;
 
@@ -582,6 +583,7 @@ async function EOL_SAVE() {
   doc.통신검사_릴레이구동_특이사항 = _통신검사_릴레이구동_특이사항.value;
   doc.공정완료일 = _공정완료일.value;
   doc.비고 = _비고.value;
+  doc.분해조립_재의뢰사유 = _분해조립_재의뢰사유.value;
   doc.QR = _QR.value;
   doc.검사자 = _검사자.value;
 
@@ -1152,6 +1154,21 @@ function init_EOL() {
   _통신검사_릴레이구동_특이사항.value = "";
   _공정완료일.value = "";
   _비고.value = "";
+  _분해조립재의뢰.value ="";
   _QR.value = "";
   _검사자.value = 계정_stat.이름;
+}
+
+async function EOL_분해조립재의뢰() {
+	doc = {
+		관리번호 : 관리번호,
+		분해조립 : '',
+		성능검사 : '',
+		EOL : '',
+		공정단계 : '분해조립'
+	}
+	update(BSA재제조, doc)
+	await delay();
+
+	이전페이지();
 }
