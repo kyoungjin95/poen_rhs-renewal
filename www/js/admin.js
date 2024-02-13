@@ -142,6 +142,21 @@ var total_insert_count = 0;
 var total_update_count = 0;
 var fail_count = 0;
 
+async function test() {
+	find_BSA재제조(BSA재제조, { 관리번호: { $exists: true }, 공정단계: { $eq: '제조완료' }, 출하: { $ne : ''} });
+	await delay();
+
+	BSA재제조_v.forEach(async function(v) {
+		var doc = {
+			관리번호 : v.관리번호,
+			공정단계 : '출하'
+		}
+
+		update(BSA재제조, doc);
+		await delay();
+	}
+}
+
 async function doo() {
 	find_BSA재제조(BSA재제조, { 관리번호: { $exists: true }, 공정단계: { $ne: '출하' } });
 	await delay();
