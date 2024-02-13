@@ -68,171 +68,264 @@
           <h2>성능검사</h2>
         </div>
         <div class="input-group process-step">
-	  <form id='_form' action="/upload_excel" method="post" enctype="multipart/form-data">
-          <table class="tb">
-            <colgroup>
-              <col class="col_1" width="30%" />
-              <col class="col_2" width="50%" />
-              <col class="col_2" width="20%" />
-            </colgroup>
-            <tr>
-              <td>
-                <label for="management_id"><b>관리번호</b></label>
-              </td>
-              <td>
-                <input type="text" id="_management_id" value="" size="40" required />
-                <button onClick="성능검사_시작(0);">조 회</button>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label for="_재제조번호"><b>재제조번호</b></label>
-              </td>
-              <td>
-                <input type="text" id="_재제조번호" size="40" required />
-                <button onClick="성능검사_시작(1);">조 회</button>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label for="_RO_no"><b>RO no.</b></label>
-              </td>
-              <td>
-                <input type="text" id="_RO_no" size="40" required />
-                <button onClick="성능검사_시작(2);">조 회</button>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label for="_구분"><b>구분</b></label>
-              </td>
-              <td>
-                <input type="text" id="_구분" size="40" readonly required />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label for="_차종"><b>차종</b></label>
-              </td>
-              <td>
-                <input type="text" id="_차종" size="40" readonly required />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label for="_품번"><b>품번</b></label>
-              </td>
-              <td>
-                <input type="text" id="_품번" size="40" readonly required />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label for="_공정입고일"><b>공정 입고일</b></label>
-              </td>
-              <td>
-                <input type="datetime-local" id="_공정입고일" value="0000-00-00T00:00" required />
-              </td>
-            </tr>
-            <tr id="_용량평가_files">
-              <td>
-                <label for="_용량평가"><b>용량평가</b></label>
-              </td>
-              <td>
-                <input type="text" id="_용량평가" size="40" required />
-                <span>(Ah, KWh)</span>
-              </td>
-              <td class="process__file">
-                	<input type="file" id="_file1" name='excel'/>
-                	<input type="file" id="_file2" name='excel'/>
-              </td>
-            </tr>
-            <tr id="_SOC_files">
-              <td>
-                <label for="_SOC60Percent"><b>SOC60Percent</b></label>
-              </td>
-              <td>
-                <input type="text" id="_SOC60Percent" size="40" required />
-                <span> (V) </span>
-              </td>
-              <td class="process__file">
-                	<input type="file" id="_file3" name='excel'/>
-                	<input type="file" id="_file4" name='excel'/>
-              </td>
-            </tr>
-            <tr id="_DCIR_files">
-              <td>
-                <label for="_DCIR"><b>DCIR(종합)</b></label>
-              </td>
-              <td>
-                <input type="text" id="_DCIR" size="40" required />
-                <span>(mΩ)</span>
-              </td>
-              <td class="process__file">
-                	<input type="file" id="_file5" name='excel'/>
-                	<input type="file" id="_file6" name='excel'/>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label for="_DCIR_Charge1"><b>DCIR(0.5C)</b></label>
-              </td>
-              <td>
-                <input type="text" id="_DCIR_Charge1" size="40" required />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label for="_DCIR_Charge2"><b>DCIR(0.7C)</b></label>
-              </td>
-              <td>
-                <input type="text" id="_DCIR_Charge2" size="40" required />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label for="_DCIR_Charge3"><b>DCIR(1.0C)</b></label>
-              </td>
-              <td>
-                <input type="text" id="_DCIR_Charge3" size="40" required />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label for="_분해조립_재의뢰사유"><b>분해조립 재의뢰 사유</b></label>
-              </td>
-              <td>
-                <input type="text" id="_분해조립_재의뢰사유" size="40" required />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label for="_공정완료일"><b>공정 완료일</b></label>
-              </td>
-              <td>
-                <input type="datetime-local" id="_공정완료일" value="0000-00-00T00:00" required />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label for="_검사자"><b>검사자</b></label>
-              </td>
-              <td>
-                <input type="text" id="_검사자" size="40" required />
-              </td>
-            </tr>
-          </table>
-	  </form>
+          <form id="_form" action="/upload_excel" method="post" enctype="multipart/form-data">
+            <table class="tb">
+              <colgroup>
+                <col width="20%" />
+                <col width="45%" />
+                <col width="35%" />
+              </colgroup>
+              <tr>
+                <td>
+                  <label for="management_id"><b>관리번호</b></label>
+                </td>
+                <td>
+                  <input type="text" id="_management_id" value="" size="40" required />
+                  <button onClick="성능검사_시작(0);">조 회</button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label for="_재제조번호"><b>재제조번호</b></label>
+                </td>
+                <td>
+                  <input type="text" id="_재제조번호" size="40" required />
+                  <button onClick="성능검사_시작(1);">조 회</button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label for="_RO_no"><b>RO no.</b></label>
+                </td>
+                <td>
+                  <input type="text" id="_RO_no" size="40" required />
+                  <button onClick="성능검사_시작(2);">조 회</button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label for="_구분"><b>구분</b></label>
+                </td>
+                <td>
+                  <input type="text" id="_구분" size="40" readonly required />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label for="_차종"><b>차종</b></label>
+                </td>
+                <td>
+                  <input type="text" id="_차종" size="40" readonly required />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label for="_품번"><b>품번</b></label>
+                </td>
+                <td>
+                  <input type="text" id="_품번" size="40" readonly required />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label for="_공정입고일"><b>공정 입고일</b></label>
+                </td>
+                <td>
+                  <input type="datetime-local" id="_공정입고일" value="0000-00-00T00:00" required />
+                </td>
+              </tr>
+
+              <tr id="_용량평가_files">
+                <td rowspan="2">
+                  <label for="_용량평가"><b>용량평가</b></label>
+                </td>
+                <td rowspan="2">
+                  <input type="text" id="_용량평가" size="40" required />
+                  <span>(Ah, KWh)</span>
+                </td>
+
+                <td id='_file_exist1' class="process__file t1-d">
+                  <div id="_inFile1" class="in-file" style="display: none">
+                    <button class="download-file" onClick='download1();'>
+                      <i class="fas fa-arrow-down"></i>
+                    </button>
+                  </div>
+                  <div class="files">
+                    <input type="file" class="file_upload" id="_file1" name="excel" />
+                    <label for="_file1" class="upload_label">
+                      <i class="fa-regular fa-file"></i>
+                      &nbsp;파일 선택</label
+                    >
+                    <span class="delete_icon" style="display: none">❌</span>
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td id='_file_exist2' class="process__file t1-d">
+                  <div id="_inFile2" class="in-file" style="display: none">
+                    <button class="download-file" onClick='download2();'>
+                      <i class="fas fa-arrow-down"></i>
+                    </button>
+                  </div>
+                  <div class="files">
+                    <input type="file" class="file_upload" id="_file2" name="excel" />
+                    <label for="_file2" class="upload_label">
+                      <i class="fa-regular fa-file"></i>
+                      &nbsp;파일 선택</label
+                    >
+                    <span class="delete_icon" style="display: none">❌</span>
+                  </div>
+                </td>
+              </tr>
+
+              <tr id="_SOC_files">
+                <td rowspan="2">
+                  <label for="_SOC60Percent"><b>SOC60Percent</b></label>
+                </td>
+                <td rowspan="2">
+                  <input type="text" id="_SOC60Percent" size="40" required />
+                  <span> (V) </span>
+                </td>
+                <td id='_file_exist3'  class="process__file t1-d">
+                  <div id="_inFile3" class="in-file" style="display: none">
+                    <button class="download-file" onClick='download3();'>
+                      <i class="fas fa-arrow-down"></i>
+                    </button>
+                  </div>
+                  <div class="files">
+                    <input type="file" class="file_upload" id="_file3" name="excel" />
+                    <label for="_file3" class="upload_label">
+                      <i class="fa-regular fa-file"></i>
+                      &nbsp;파일 선택</label
+                    >
+                    <span class="delete_icon" style="display: none">❌</span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td id='_file_exist4' class="process__file t1-d">
+                  <div id="_inFile4" class="in-file" style="display: none">
+                    <button class="download-file" onClick='download4();'>
+                      <i class="fas fa-arrow-down"></i>
+                    </button>
+                  </div>
+                  <div class="files">
+                    <input type="file" class="file_upload" id="_file4" name="excel" />
+                    <label for="_file4" class="upload_label">
+                      <i class="fa-regular fa-file"></i>
+                      &nbsp;파일 선택</label
+                    >
+                    <span class="delete_icon" style="display: none">❌</span>
+                  </div>
+                </td>
+              </tr>
+
+              <tr id="_DCIR_files">
+                <td rowspan="2">
+                  <label for="_DCIR"><b>DCIR(종합)</b></label>
+                </td>
+                <td rowspan="2">
+                  <input type="text" id="_DCIR" size="40" required />
+                  <span>(mΩ)</span>
+                </td>
+                <td id='_file_exist5'  class="process__file t1-d">
+                  <div id="_inFile5" class="in-file" style="display: none">
+                    <button class="download-file" onClick='download5();'>
+                      <i class="fas fa-arrow-down"></i>
+                    </button>
+                  </div>
+                  <div class="files">
+                    <input type="file" class="file_upload" id="_file5" name="excel" />
+                    <label for="_file5" class="upload_label">
+                      <i class="fa-regular fa-file"></i>
+                      &nbsp;파일 선택</label
+                    >
+                    <span class="delete_icon" style="display: none">❌</span>
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td id='_file_exist6'  class="process__file t1-d">
+                  <div id="_inFile6" class="in-file" style="display: none">
+                    <button class="download-file" onClick='download6();'>
+                      <i class="fas fa-arrow-down"></i>
+                    </button>
+                  </div>
+                  <div class="files">
+                    <input type="file" class="file_upload" id="_file6" name="excel" />
+                    <label for="_file6" class="upload_label">
+                      <i class="fa-regular fa-file"></i>
+                      &nbsp;파일 선택</label
+                    >
+                    <span class="delete_icon" style="display: none">❌</span>
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <label for="_DCIR_Charge1"><b>DCIR(0.5C)</b></label>
+                </td>
+                <td>
+                  <input type="text" id="_DCIR_Charge1" size="40" required />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label for="_DCIR_Charge2"><b>DCIR(0.7C)</b></label>
+                </td>
+                <td>
+                  <input type="text" id="_DCIR_Charge2" size="40" required />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label for="_DCIR_Charge3"><b>DCIR(1.0C)</b></label>
+                </td>
+                <td>
+                  <input type="text" id="_DCIR_Charge3" size="40" required />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label for="_분해조립_재의뢰사유"><b>분해조립 재의뢰 사유</b></label>
+                </td>
+                <td>
+                  <input type="text" id="_분해조립_재의뢰사유" size="40" required />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label for="_공정완료일"><b>공정 완료일</b></label>
+                </td>
+                <td>
+                  <input type="datetime-local" id="_공정완료일" value="0000-00-00T00:00" required />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label for="_검사자"><b>검사자</b></label>
+                </td>
+                <td>
+                  <input type="text" id="_검사자" size="40" required />
+                </td>
+              </tr>
+            </table>
+          </form>
         </div>
         <div class="input-group">
           <div class="input-btn-group">
-            <button type='submit' onClick="성능검사_save();">저장</button>
-            <button onClick="">분해조립재의뢰</button>
+            <button onClick="성능검사_save();">저장</button>
+            <button onClick="file_upload();">파일 업로드</button>
+            <button onClick="성능검사_분해조립재의뢰();">분해조립재의뢰</button>
             <button onClick="이전페이지();">이전페이지</button>
           </div>
         </div>
       </div>
     </section>
+
     <script>
       const _form = document.getElementById("form");
       const _management_id = document.getElementById("_management_id");
@@ -253,6 +346,27 @@
       const _file4 = document.get.getElementById("_file4");
       const _file5 = document.get.getElementById("_file5");
       const _file6 = document.get.getElementById("_file6");
+
+      const _inFile1 = document.getElementById("_inFile1");
+      const _inFile2 = document.getElementById("_inFile2");
+      const _inFile3 = document.getElementById("_inFile3");
+      const _inFile4 = document.getElementById("_inFile4");
+      const _inFile5 = document.getElementById("_inFile5");
+      const _inFile6 = document.getElementById("_inFile6");
+
+      const _download1 = document.getElementById('_download1');
+      const _download2 = document.getElementById('_download2');
+      const _download3 = document.getElementById('_download3');
+      const _download4 = document.getElementById('_download4');
+      const _download5 = document.getElementById('_download5');
+      const _download6 = document.getElementById('_download6');
+
+      const _file_exist1 = document.getElementById("_file_exist1");
+      const _file_exist2 = document.getElementById("_file_exist2");
+      const _file_exist3 = document.getElementById("_file_exist3");
+      const _file_exist4 = document.getElementById("_file_exist4");
+      const _file_exist5 = document.getElementById("_file_exist5");
+      const _file_exist6 = document.getElementById("_file_exist6");
     </script>
   </body>
 </html>

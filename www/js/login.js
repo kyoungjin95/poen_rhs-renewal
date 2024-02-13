@@ -56,7 +56,7 @@ async function login() {
         }
       }, 1000);
       await sleep(1);
-      alert('#공지사항#\nVersion update sky 0.47\n1. EOL 저장 bug fix -\n');
+      //alert('#공지사항#\nVersion update sky 0.49\n');
     } else if (worker == _id.value) {
       worker = "";
       level = "";
