@@ -388,7 +388,6 @@ async function item_detail_save(flag_result = false) {
   doc.차종 = _차종.value;
   doc.품번 = _품번.value;
   doc.RO_no = _RO_no.value;
-  doc.공정단계 = _공정단계.value;
   doc.적재No = _적재No.value;
   doc.입고 = _입고.value;
   doc.제조투입 = _제조투입.value;
@@ -405,7 +404,7 @@ async function item_detail_save(flag_result = false) {
   doc.출하검사 = _출하검사.value;
   doc.출하 = _출하.value;
   if (_출하.value != "") _공정단계.value = "출하";
-  await sleep(1);
+  doc.공정단계 = _공정단계.value;
   doc.납품처 = _납품처.value;
   doc.소재지 = _소재지.value;
   doc.소재지사유 = _소재지사유.value;
@@ -432,8 +431,6 @@ async function item_detail_save(flag_result = false) {
   if (insert_count > 0) {
     alert("신규 항목이 저장 되었습니다");
   }
-
-  await 공정단계자동입력(_management_id.value);
 }
 
 async function processStep() {
