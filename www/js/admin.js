@@ -154,7 +154,7 @@ async function test() {
 
 		update(BSA재제조, doc);
 		await delay();
-	}
+	});
 }
 
 async function doo() {

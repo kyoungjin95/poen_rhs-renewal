@@ -56,7 +56,7 @@ async function login() {
         }
       }, 1000);
       await sleep(1);
-      //alert('#공지사항#\nVersion update sky 0.49\n');
+      alert('#공지사항#\nVersion update sky 0.50\n1. 기본정보 출하 버그 수정\n2. 출하 날짜가 있으면서 공정단계가 제조완료인 기록을 출하로 수정\n');
     } else if (worker == _id.value) {
       worker = "";
       level = "";
