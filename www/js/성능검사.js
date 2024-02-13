@@ -486,12 +486,12 @@ async function _send_filelist() {
 
   var doc = {};
   doc.관리번호 = 관리번호;
-  doc.f1 = filelist.f1;
-  doc.f2 = filelist.f2;
-  doc.f3 = filelist.f3;
-  doc.f4 = filelist.f4;
-  doc.f5 = filelist.f5;
-  doc.f6 = filelist.f6;
+  if(_file_exist1.style.background != 'yellow') doc.f1 = filelist.f1;
+  if(_file_exist2.style.background != 'yellow') doc.f2 = filelist.f2;
+  if(_file_exist3.style.background != 'yellow') doc.f3 = filelist.f3;
+  if(_file_exist4.style.background != 'yellow') doc.f4 = filelist.f4;
+  if(_file_exist5.style.background != 'yellow') doc.f5 = filelist.f5;
+  if(_file_exist6.style.background != 'yellow') doc.f6 = filelist.f6;
 
   update(성능검사, doc);
   await delay();
