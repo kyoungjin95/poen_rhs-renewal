@@ -37,7 +37,7 @@ const rations = {
   maxRequestsPerTimeFrame: 600,
   timeFrameInSeconds: 30,
   removeRecordsAfter: (1000 * 60 * 5),
-  dropConnections: false
+  dropConnections: true
 };
 ration.setRations(rations);
 app.use(ration.startRations);
