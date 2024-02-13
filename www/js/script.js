@@ -1,5 +1,6 @@
 function loadPage(url) {
   기초검사_DTC_count = 0;
+  EOL_DTC_count = 0;
   const content = document.getElementById('content');
 
   if (대기수량Timer != undefined) clearInterval(대기수량Timer);

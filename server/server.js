@@ -15,6 +15,7 @@ const morgan = require('morgan') //debug msg
 const logger = require('./winston');
 const ps = require('ps-node');
 const multer = require('multer');
+const ration = require('ration.js');
 const uri = 'mongodb://poen:poen4upoen4u@localhost:27017/poenDB';
 const db_name = 'poenDB';
 var no = 1;
@@ -31,6 +32,15 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({ storage: storage});
+
+const rations = {
+  maxRequestsPerTimeFrame: 600,
+  timeFrameInSeconds: 30,
+  removeRecordsAfter: (1000 * 60 * 5),
+  dropConnections: false
+};
+ration.setRations(rations);
+app.use(ration.startRations);
 
 var db;
 var 관리번호 = '';
