@@ -431,6 +431,8 @@ async function item_detail_save(flag_result = false) {
   if (insert_count > 0) {
     alert("신규 항목이 저장 되었습니다");
   }
+
+  await 공정단계자동입력(_management_id.value);
 }
 
 async function processStep() {
