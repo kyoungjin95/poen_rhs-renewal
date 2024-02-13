@@ -405,6 +405,7 @@ async function item_detail_save(flag_result = false) {
   doc.출하검사 = _출하검사.value;
   doc.출하 = _출하.value;
   if (_출하.value != "") _공정단계.value = "출하";
+  await sleep(1);
   doc.납품처 = _납품처.value;
   doc.소재지 = _소재지.value;
   doc.소재지사유 = _소재지사유.value;
