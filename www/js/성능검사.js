@@ -1,12 +1,3 @@
-var uploaded_status = {
-	f1 : false,
-	f2 : false,
-	f3 : false,
-	f4 : false,
-	f5 : false,
-	f6 : false
-}
-
 async function 성능검사_시작(is재제조 = 0) {
   if (typeof _management_id == "undefined") {
     await sleep(DELAY);
@@ -96,19 +87,8 @@ async function 성능검사_시작(is재제조 = 0) {
     _공정완료일.value = 성능검사_v.공정완료일;
     _검사자.value = 성능검사_v.검사자;
 
-    //if(성능검사_v.f1 != '') _download1.style.display = 'block';
-    //if(성능검사_v.f2 != '') _download2.style.display = 'block';
-    //if(성능검사_v.f3 != '') _download3.style.display = 'block';
-    //if(성능검사_v.f4 != '') _download4.style.display = 'block';
-    //if(성능검사_v.f5 != '') _download5.style.display = 'block';
-    //if(성능검사_v.f6 != '') _download6.style.display = 'block';
-    
-    //uploaded_status.f1 = 성능검사_v.f1;
-    //uploaded_status.f2 = 성능검사_v.f2;
-    //uploaded_status.f3 = 성능검사_v.f3;
-    //uploaded_status.f4 = 성능검사_v.f4;
-    //uploaded_status.f5 = 성능검사_v.f5;
-    //uploaded_status.f6 = 성능검사_v.f6;
+    check_file(성능검사_v);
+    console.log(성능검사_v);
   } else {
     _공정입고일.value = "0000-00-00T00:00";
     _용량평가.value = "";
@@ -120,12 +100,8 @@ async function 성능검사_시작(is재제조 = 0) {
     _분해조립_재의뢰사유.value = "";
     _공정완료일.value = "0000-00-00T00:00";
     _검사자.value = 계정_stat.이름;
-    //_download1.style.display = 'none';
-    //_download2.style.display = 'none'; 	  
-    //_download3.style.display = 'none';
-    //_download4.style.display = 'none';
-    //_download5.style.display = 'none';
-    //_download6.style.display = 'none';
+
+    check_file(성능검사_v);
 
     var DateTime = luxon.DateTime;
     var seoul = DateTime.local().setZone("Asia/Seoul");
@@ -507,6 +483,20 @@ async function _send_filelist() {
   console.log(filelist);
   send_list(filelist);
   await delay();
+
+  var doc = {};
+  doc.관리번호 = 관리번호;
+  doc.f1 = filelist.f1;
+  doc.f2 = filelist.f2;
+  doc.f3 = filelist.f3;
+  doc.f4 = filelist.f4;
+  doc.f5 = filelist.f5;
+  doc.f6 = filelist.f6;
+
+  update(성능검사, doc);
+  await delay();
+
+  check_file(doc);
 }
 
 function download1() {
@@ -563,4 +553,19 @@ async function 성능검사_분해조립재의뢰() {
 	await delay();
 
 	이전페이지();
+}
+
+function check_file(v) {
+    if(v.f1 != '' && v.f1 != undefined) _file_exist1.style.backgroundColor = 'yellow';
+    else _file_exist1.style.backgroundColor = 'white';
+    if(v.f2 != '' && v.f2 != undefined) _file_exist2.style.backgroundColor = 'yellow';
+    else _file_exist2.style.backgroundColor = 'white';
+    if(v.f3 != '' && v.f3 != undefined) _file_exist3.style.backgroundColor = 'yellow';
+    else _file_exist3.style.backgroundColor = 'white';
+    if(v.f4 != '' && v.f4 != undefined) _file_exist4.style.backgroundColor = 'yellow';
+    else _file_exist4.style.backgroundColor = 'white';
+    if(v.f5 != '' && v.f5 != undefined) _file_exist5.style.backgroundColor = 'yellow';
+    else _file_exist5.style.backgroundColor = 'white';
+    if(v.f6 != '' && v.f6 != undefined) _file_exist6.style.backgroundColor = 'yellow';
+    else _file_exist6.style.backgroundColor = 'white';
 }

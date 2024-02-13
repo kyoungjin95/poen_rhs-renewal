@@ -144,9 +144,9 @@
                   <span>(Ah, KWh)</span>
                 </td>
 
-                <td class="process__file t1-d">
+                <td id='_file_exist1' class="process__file t1-d">
                   <div id="_inFile1" class="in-file" style="display: none">
-                    <button id='_download1' class="download-file" onClick='download1();'>
+                    <button class="download-file" onClick='download1();'>
                       <i class="fas fa-arrow-down"></i>
                     </button>
                   </div>
@@ -162,9 +162,9 @@
               </tr>
 
               <tr>
-                <td class="process__file t1-d">
+                <td id='_file_exist2' class="process__file t1-d">
                   <div id="_inFile2" class="in-file" style="display: none">
-                    <button id='_download2' class="download-file" onClick='download2();'>
+                    <button class="download-file" onClick='download2();'>
                       <i class="fas fa-arrow-down"></i>
                     </button>
                   </div>
@@ -187,9 +187,9 @@
                   <input type="text" id="_SOC60Percent" size="40" required />
                   <span> (V) </span>
                 </td>
-                <td class="process__file t1-d">
+                <td id='_file_exist3'  class="process__file t1-d">
                   <div id="_inFile3" class="in-file" style="display: none">
-                    <button id='_download3'  class="download-file" onClick='download3();'>
+                    <button class="download-file" onClick='download3();'>
                       <i class="fas fa-arrow-down"></i>
                     </button>
                   </div>
@@ -204,9 +204,9 @@
                 </td>
               </tr>
               <tr>
-                <td class="process__file t1-d">
+                <td id='_file_exist4' class="process__file t1-d">
                   <div id="_inFile4" class="in-file" style="display: none">
-                    <button id='_download4'  class="download-file" onClick='download4();'>
+                    <button class="download-file" onClick='download4();'>
                       <i class="fas fa-arrow-down"></i>
                     </button>
                   </div>
@@ -229,9 +229,9 @@
                   <input type="text" id="_DCIR" size="40" required />
                   <span>(mΩ)</span>
                 </td>
-                <td class="process__file t1-d">
+                <td id='_file_exist5'  class="process__file t1-d">
                   <div id="_inFile5" class="in-file" style="display: none">
-                    <button id='_download5'  class="download-file" onClick='download5();'>
+                    <button class="download-file" onClick='download5();'>
                       <i class="fas fa-arrow-down"></i>
                     </button>
                   </div>
@@ -247,9 +247,9 @@
               </tr>
 
               <tr>
-                <td class="process__file t1-d">
+                <td id='_file_exist6'  class="process__file t1-d">
                   <div id="_inFile6" class="in-file" style="display: none">
-                    <button id='_download6'  class="download-file" onClick='download6();'>
+                    <button class="download-file" onClick='download6();'>
                       <i class="fas fa-arrow-down"></i>
                     </button>
                   </div>
@@ -360,6 +360,13 @@
       const _download4 = document.getElementById('_download4');
       const _download5 = document.getElementById('_download5');
       const _download6 = document.getElementById('_download6');
+
+      const _file_exist1 = document.getElementById("_file_exist1");
+      const _file_exist2 = document.getElementById("_file_exist2");
+      const _file_exist3 = document.getElementById("_file_exist3");
+      const _file_exist4 = document.getElementById("_file_exist4");
+      const _file_exist5 = document.getElementById("_file_exist5");
+      const _file_exist6 = document.getElementById("_file_exist6");
     </script>
   </body>
 </html>
