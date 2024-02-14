@@ -307,7 +307,7 @@ async function 상세입력_시작(is재제조번호 = false) {
     if (BSA재제조_v.출하검사 != undefined) _출하검사.value = BSA재제조_v.출하검사.substr(0, 16);
     _납품처.value = BSA재제조_v.납품처;
     _출하.value = BSA재제조_v.출하.substr(0, 16);
-    if (BSA재제조_v.출하.length > 5) _공정단계.value = "출하";
+    //if (BSA재제조_v.출하.length > 5) _공정단계.value = "출하";
     _소재지.value = BSA재제조_v.소재지.substr(0, 16);
     _소재지사유.value = BSA재제조_v.소재지사유;
     _마지막충전일.value = BSA재제조_v.마지막충전일.substr(0, 16);

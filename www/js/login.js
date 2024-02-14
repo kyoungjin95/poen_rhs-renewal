@@ -56,7 +56,7 @@ async function login() {
         }
       }, 1000);
       await sleep(1);
-      alert('#공지사항#\nVersion update sky 0.50\n1. 기본정보 출하 버그 수정\n2. 출하 날짜가 있으면서 공정단계가 제조완료인 기록을 출하로 수정\n');
+      alert('#공지사항#\nVersion update sky 0.51\n1. 기본정보 출하 버그 수정\n2. 출하 날짜가 있으면서 공정단계가 제조완료인 기록을 출하로 수정\n3. 기본정보에서 출하 일자 있을때 공정단계가 자동으로 출하로 표시되었던 기능 삭제');
     } else if (worker == _id.value) {
       worker = "";
       level = "";
