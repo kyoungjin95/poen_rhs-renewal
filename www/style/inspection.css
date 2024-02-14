@@ -28,13 +28,18 @@ table td.base_left {
   border: 1px solid black;
   height: 1vh;
 }
-#_기초보고서 table td {
+#_기초보고서 table td,
+#_완료보고서 table td {
   border: 1px solid #000;
 }
 .tableAll {
   width: 100%;
 }
-
+/* #line {
+  width: 90%;
+  height: 5px;
+  background: #00b050;
+} */
 .base_header,
 .base_header2,
 .base_header3 {
@@ -55,7 +60,8 @@ table td.base_left {
 .base_header3 {
   background: #fff;
 }
-._기초보고서_결과 {
+._기초보고서_결과,
+._완료보고서_결과 {
   width: 90%;
 }
 table td.result_header {
@@ -113,7 +119,7 @@ table td.bottom {
 
 .check-all thead {
   font-weight: bold;
-  background: #92d050;
+  background: #f2f2f2;
 }
 
 .check-all td,
@@ -136,9 +142,10 @@ table td.bottom {
   width: 10%;
 }
 .check-all .result {
-  background: #fcd770;
+  background: #ffffcc;
   text-align: center;
 }
+
 .check-all .result-vlaue {
   font-size: 1.5em;
   font-weight: bold;
@@ -152,8 +159,9 @@ table td.bottom {
 .check-all .result-vlaue.r3 {
   color: black;
 }
-/* 기초보고서 분석결과 */
+/* 기초보고서, 완료보고서 분석결과 */
 #_분석결과값,
+#_결과,
 #_재제조comment {
   background: #fff;
   border: 1px solid #000;
@@ -161,6 +169,12 @@ table td.bottom {
   white-space: pre;
 }
 
+[contenteditable="true"]:empty:before {
+  content: attr(placeholder);
+  color: gray;
+
+  white-space: pre;
+}
 /* _기밀검사 */
 #_기밀검사 .td1 {
   text-align: left;
@@ -194,17 +208,11 @@ table td.bottom {
 #_육안검사내부1 .title,
 #_육안검사외부1 .title {
   font-weight: bold;
-  background: #92d050;
+  background: #c8e7a7;
 }
 #_육안검사내부1 p {
   padding-top: 3px;
 }
-
-#_육안검사내부1 .result {
-  border-left-color: transparent;
-  background: #fff;
-}
-
 #_육안검사외부2 em,
 #_육안검사내부2 em {
   color: red;
@@ -292,8 +300,25 @@ table td.bottom {
 .color-blue {
   color: blue !important;
 }
+.color-red {
+  color: red !important;
+}
 .weight-bold {
   font-weight: bold;
+}
+td.bg-gray {
+  background: lightgray !important;
+}
+
+.status {
+  font-style: italic;
+}
+.graph-title {
+  background: #2c70af;
+}
+.graph-title th {
+  color: #fff;
+  padding: 5px;
 }
 /* media query */
 @media screen and (min-width: 2000px) {
