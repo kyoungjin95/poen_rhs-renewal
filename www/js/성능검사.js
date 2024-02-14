@@ -164,6 +164,8 @@ async function file_upload() {
   //_form.submit();
   _file_upload();
 
+  await sleep(3000);
+  
   _send_filelist();
 }
 
@@ -362,7 +364,7 @@ async function 성능검사_list() {
   });
 }
 
-function _file_upload() {
+async function _file_upload() {
   //console.log('submit event:', event);
   //event.preventDefault();
   //const form = event.currentTarget;
@@ -372,7 +374,7 @@ function _file_upload() {
 
   $.ajax({
     type: "POST",
-    async: false,
+    async: true,
     cache: false,
     timeout: 3000,
     processData: false,
@@ -568,4 +570,15 @@ function check_file(v) {
     else _file_exist5.style.backgroundColor = 'white';
     if(v.f6 != '' && v.f6 != undefined) _file_exist6.style.backgroundColor = 'yellow';
     else _file_exist6.style.backgroundColor = 'white';
+}
+
+async function read_용량평가() {
+	const path = 'excel/' + 관리번호 + '/excel1.csv';
+
+	용량평가(path);
+	await delay();
+	
+	_용량평가.value = 용량평가_result;
+
+	console.log('용량평가 result:', 용량평가_result);
 }

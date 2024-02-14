@@ -110,7 +110,44 @@ io.on('connection', async function(socket) {
 
 	console.log('connected ip', client_ip);
 
+	socket.on('용량평가', async function(path) {
+		console.log('용량평가 path:', path);
+
+		var data = 용량평가(path);
+		if(data == null || data == undefined) return;
+		
+		var old_type = '';
+		var old_dischargecap = 0.0;
+		data = data.replace(/\(Ah\)/g, '');
+		data = JSON.parse(data);
+		//console.log('read 용량평가:', data);
+		for(var i = 0; i < data.length; i++) {
+			console.log(data[i]);
+			if(data[i].StepType == 'REST' && old_type == 'DISCHARGE') {
+				break;
+			}
+			old_type = data[i].StepType;
+			old_dischargecap = data[i].DischargeCap;
+		};
+
+		console.log('용량평가:', old_dischargecap);
+		socket.emit('용량평가_result', old_dischargecap);
+	});
+
+	socket.on('SOC60Percent', async function(path) {
+		const data = SOC60Percent(path);
+
+		socket.emit('SOC60Percent_result', data);
+	});
+
+	socket.on('DCIR', async function(path) {
+		const data = DCIR(path);
+
+		socket.emit('DCIR_result', data);
+	});
+
 	socket.on('file_list', async function(list) {
+		no = 1;
 		console.log('file list');
 		
 		const result = file_list(list);
@@ -507,6 +544,21 @@ function file_list(list) {
 	} finally {
 	}
 
+}
+
+function 용량평가(path) {
+	var result = csvFileToJSON(path);
+	return result;
+}
+
+function SOC60Percent(path) {
+	var result = csvFileToJSON(path);
+	return result;
+}
+
+function DCIR(path) {
+	var result = csvFileToJSON(path);
+	return result;
 }
 
 function csvFileToJSON(path) {

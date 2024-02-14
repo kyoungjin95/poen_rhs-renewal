@@ -126,7 +126,11 @@ var 차종 = "";
 var 교체부품상세No = "교체부품상세1";
 var worker = "";
 var level = "";
-
+var 용량평가_result = 0;
+var SOC60Persent_result = 0;
+var DCIR1_result = 0;
+var DCIR2_result = 0;
+var DCIR3_result = 0;
 var flag_loaded = false;
 
 const 계정_doc = {
@@ -3339,6 +3343,12 @@ socket.on("file_list_result", async function (result) {
 	console.log(result);
 });
 
+socket.on("용량평가_result", async function (data) {
+	flag_arrivedMSG = true;
+	용량평가_result = data;
+	console.log(data);
+});
+
 socket.on("insert_result", async function (id) {
 	//console.log('insert id: ', id);
 	insert_id = id;
@@ -4988,6 +4998,12 @@ async function find_자재입출고(col, query) {
 	if (check > 10) check = 0;
 
 	socket.emit("find", worker, col, query, { sort: { kind: 1 }, projection: 자재입출고_ }, check);
+}
+
+async function 용량평가(path) {
+	if (socket == undefined) return;
+	flag_arrivedMSG = false;
+	socket.emit("용량평가", path);
 }
 
 function sleep(ms) {
