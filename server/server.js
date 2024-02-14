@@ -1,5 +1,4 @@
 const luxon = require('luxon');
-const ipfilter = require('express-ipfilter').IpFilter;
 const http = require('http');
 const mongo = require('mongodb');
 const express = require('express');
@@ -37,7 +36,7 @@ const rations = {
   maxRequestsPerTimeFrame: 600,
   timeFrameInSeconds: 30,
   removeRecordsAfter: (1000 * 60 * 5),
-  dropConnections: true
+  dropConnections: false
 };
 ration.setRations(rations);
 app.use(ration.startRations);
@@ -45,12 +44,7 @@ app.use(ration.startRations);
 var db;
 var 관리번호 = '';
 var client;
-var _old_client_ip;
-var _same_ip_cnt = 0;
-var _start_time;
-var _end_time;
 var _lastest_제제조번호 = '';
-var _black_ip_list = [];
 var _old_year = '2023';
 
 app.use(morgan('dev'))
@@ -113,12 +107,8 @@ server.listen(80, () => {
 
 io.on('connection', async function(socket) {
 	var client_ip = socket.request.connection.remoteAddress; 
-	var idx = client_ip.lastIndexOf(':');
-	if (~idx && ~client_ip.indexOf('.'))
-  	client_ip = client_ip.slice(idx + 1);
 
 	console.log('connected ip', client_ip);
-	app.use(ipfilter(_black_ip_list));
 
 	socket.on('file_list', async function(list) {
 		console.log('file list');
@@ -146,25 +136,6 @@ io.on('connection', async function(socket) {
 	});
 
 	socket.on('count', async function(level, col, query, check, option = '') {
-		if(_old_client_ip != client_ip) {
-			_start_time = new Date().getTime();
-			_old_client_ip = client_ip;
-			_same_ip_cnt = 0;
-		} else {
-			_same_ip_cnt++;
-			if(_same_ip_cnt > 100) _same_ip_cnt = 100;
-
-			if(_same_ip_cnt > 30) {
-				_end_time = new Date().getTime();
-				if((_end_time - _start_time) < 1000) {
-					console.log('reject:', client_ip);
-					logger.info('reject:', client_ip);
-					socket.disconnect(0);
-					_black_ip_list.push(client_ip);
-				}
-			}
-		}
-
 		console.log('request count');
 		console.log(col, query, client_ip);
 		const cnt = await count(col, query);
@@ -181,25 +152,6 @@ io.on('connection', async function(socket) {
 	});
 
 	socket.on('findOne', async function(worker, col, query, options, check) {
-		if(_old_client_ip != client_ip) {
-			_start_time = new Date().getTime();
-			_old_client_ip = client_ip;
-			_same_ip_cnt = 0;
-		} else {
-			_same_ip_cnt++;
-			if(_same_ip_cnt > 100) _same_ip_cnt = 100;
-
-			if(_same_ip_cnt > 50) {
-				_end_time = new Date().getTime();
-				if((_end_time - _start_time) < 1000) {
-					console.log('reject:', client_ip);
-					logger.info('reject:', client_ip);
-					socket.disconnect(0);
-					_black_ip_list.push(client_ip);
-				}
-			}
-		}
-
 		console.log('request findOne');
 		const result_array = await findOne(col, query, options);
 		socket.emit('find_result', col, result_array, check);
@@ -309,20 +261,6 @@ setInterval(function() {
 	});
 }, 10000);
 
-//var init_done = false;
-//setInterval(function() {
-//	var _old_year = '2023';
-//	var DateTime = luxon.DateTime;
-//	var seoul = DateTime.local().setZone("Asia/Seoul");
-//	var now = seoul.toString().substr(0, 4);
-//	if(now != old_year && init_done == false) {
-//		init_product_no();
-//		init_done = true;
-//		old_year = now;
-//		console.log('init done');
-//	}
-//}, 1000 * 60 * 10);
-
 async function distinct(col, query, field_name) {
 	try {
 		const database = client.db(db_name);
@@ -423,14 +361,6 @@ async function findOne(col, query, options) {
 	}
 }
 
-/**
- *  filter = { title: "Random Harvest" };
- *  const updateDoc = {
-      $set: {
-	plot: `A harvest of random numbers, such as: ${Math.random()}`
-      },
-    };
-    */
 async function drop(col) {
 	try {
 		const database = client.db(db_name);
