@@ -719,5 +719,5 @@ async function read_data() {
 	await delay();
 
 	chartDraw(성능검사_data_result);
-	console.log('get 성능검사 data result:', 성능검사_data_result);
+	//console.log('get 성능검사 data result:', 성능검사_data_result);
 }

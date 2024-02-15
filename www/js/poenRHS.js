@@ -133,6 +133,7 @@ var DCIR1_result = 0;
 var DCIR2_result = 0;
 var DCIR3_result = 0;
 var 성능검사_data_result = [];
+var delete_성능검사_data_result = false;;
 var flag_loaded = false;
 
 const 계정_doc = {
@@ -3368,6 +3369,11 @@ socket.on("DCIR_result", async function (data) {
 
 socket.on("성능검사_data_result", async function (data) {
 	성능검사_data_result = data;
+	flag_arrivedMSG = true;
+});
+
+socket.on("delete_성능검사_data_result", async function (data) {
+	delete_성능검사_data_result = data;
 	console.log(data);
 	flag_arrivedMSG = true;
 });
@@ -5045,6 +5051,16 @@ async function get_성능검사_data(path) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	socket.emit("성능검사_data", path);
+}
+
+async function delete_성능검사_data(관리번호) {
+	if (socket == undefined) return;
+	flag_arrivedMSG = false;
+
+	const tmp_name = 관리번호.replace('#', '');
+	const path = 'excel/' + tmp_name + '/excel1.csv';
+
+	socket.emit("delete_성능검사_data", path);
 }
 
 function sleep(ms) {
