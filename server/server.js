@@ -153,6 +153,7 @@ io.on('connection', async function(socket) {
 	socket.on('DCIR', async function(path) {
 		console.log('DCIR path:', path);
 		var data = DCIR(path);
+		//console.log(data);
 		if(data == null || data == undefined) return;
 		data = data.replace(/ȧ��\)/g, '');
 		data = JSON.parse(data);
@@ -182,6 +183,7 @@ io.on('connection', async function(socket) {
 			DCIR3 : DCIR3
 		};
 		socket.emit('DCIR_result', result);
+		console.log(result);
 	});
 
 	socket.on('성능검사_data', async function(path) {
@@ -195,22 +197,22 @@ io.on('connection', async function(socket) {
 		data = JSON.parse(data);
 
 		var data_point = [];
-		data.forEach(function(v) {
-			var totTime = Math.floor(Number(v.TotTime));
+		for(var i = 0; i < data.length; i++) {
+			var totTime = Math.floor(Number(data[i].TotTime));
 			var tmp = {
 				time : totTime,
-				volt : v.Volt,
-				curr : v.Curr,
-				cap : v.Cap
+				volt : data[i].Volt,
+				curr : data[i].Curr,
+				cap : data[i].Cap
 			}
 
 			if(tmp.time != undefined) {
 				data_point.push(tmp);
 			}
-		});
+		}
 
 		socket.emit('성능검사_data_result', data_point);
-		console.log(data_point);
+		//console.log(data_point);
 
 	});
 

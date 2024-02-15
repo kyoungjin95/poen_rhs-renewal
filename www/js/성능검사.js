@@ -649,7 +649,8 @@ async function chartDraw(data) {
 					borderColor: 'red',
 					backgroundColor: 'rgba(255, 99, 132, 0.2)',
 					yAxisID: 'y1',
-					borderWidth: 1
+					borderWidth: 1,
+					pointRadius: 0
 				},
 				{
 					label: 'Curr',
@@ -657,7 +658,8 @@ async function chartDraw(data) {
 					borderColor: 'green',
 					backgroundColor: 'rgba(54, 162, 235, 0.2)',
 					yAxisID: 'y2',
-					borderWidth: 1
+					borderWidth: 1,
+					pointRadius: 0
 				},
 				{
 					label: 'Cap',
@@ -665,7 +667,8 @@ async function chartDraw(data) {
 					borderColor: 'blue',
 					backgroundColor: 'rgba(255, 206, 86, 0.2)',
 					yAxisID: 'y3',
-					borderWidth: 1
+					borderWidth: 1,
+					pointRadius: 0
 				},
 			],
 		},
