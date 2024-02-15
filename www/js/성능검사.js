@@ -583,9 +583,13 @@ async function 성능검사_분해조립재의뢰() {
 }
 
 async function check_file(v) {
+	var flag_용량평가 = false;
+	var flag_SOC = false;
+	var flag_DCIR = false;
 	if(v.f1 != '' && v.f1 != undefined && v.f1 != null) {
 		_file_exist1.style.backgroundColor = 'yellow';
 		await read_용량평가();
+		flag_용량평가 = true;
 	} else {
 		_file_exist1.style.backgroundColor = 'white';
 	}
@@ -597,6 +601,7 @@ async function check_file(v) {
 	if(v.f3 != '' && v.f3 != undefined && v.f3 != null) {
 		_file_exist3.style.backgroundColor = 'yellow';
 		await read_SOC60Percent();
+		flag_SOC = true;
 	} else {
 		_file_exist3.style.backgroundColor = 'white';
 	}
@@ -608,6 +613,7 @@ async function check_file(v) {
 	if(v.f5 != '' && v.f5 != undefined && v.f5 != null) {
 		_file_exist5.style.backgroundColor = 'yellow';
 		await read_DCIR();
+		flag_DCIR = true;
 	} else {
 		_file_exist5.style.backgroundColor = 'white';
 	}
@@ -618,6 +624,10 @@ async function check_file(v) {
 	}
 
 	성능검사_save();
+
+	if(flag_용량평가 == true && flag_SOC == true && flag_DCIR == true) {
+		read_data();
+	}
 }
 
 async function chartDraw(data) {

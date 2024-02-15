@@ -1,6 +1,7 @@
 server/db/
 server/node_modules/
 server/logs/
+server/excel/
 server/nohup.out
 doc/all_data.csv
 doc/qr_label.docx
