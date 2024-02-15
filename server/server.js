@@ -122,12 +122,12 @@ io.on('connection', async function(socket) {
 		data = JSON.parse(data);
 		//console.log('read 용량평가:', data);
 		for(var i = 0; i < data.length; i++) {
-			console.log(data[i]);
+			//console.log(data[i]);
 			if(data[i].StepType == 'REST' && old_type == 'DISCHARGE') {
 				break;
 			}
 			old_type = data[i].StepType;
-			old_dischargecap = data[i].DischargeCap;
+			if(data[i].DischargeCap != undefined) old_dischargecap = data[i].DischargeCap;
 		};
 
 		console.log('용량평가:', old_dischargecap);
@@ -135,15 +135,53 @@ io.on('connection', async function(socket) {
 	});
 
 	socket.on('SOC60Percent', async function(path) {
-		const data = SOC60Percent(path);
+		console.log('SOC60Percent path:', path);
 
-		socket.emit('SOC60Percent_result', data);
+		var data = SOC60Percent(path);
+		if(data == null || data == undefined) return;
+		data = data.replace(/\(V\)/g, '');
+		data = JSON.parse(data);
+
+		var last = data[data.length - 2];
+		var last_volt = last.Volt;
+
+		console.log(last);
+		console.log(last_volt);
+		socket.emit('SOC60Percent_result', last_volt);
 	});
 
 	socket.on('DCIR', async function(path) {
-		const data = DCIR(path);
+		console.log('DCIR path:', path);
+		var data = DCIR(path);
+		if(data == null || data == undefined) return;
+		data = data.replace(/ȧ��\)/g, '');
+		data = JSON.parse(data);
 
-		socket.emit('DCIR_result', data);
+		var old_DCIR = 0;
+		var DCIR1 = 0;
+		var DCIR2 = 0;
+		var DCIR3 = 0;
+
+		for(var i = 0; i < data.length; i++) {
+			if(old_DCIR > 0 && data[i].DCIR == 0) {
+				if(DCIR1 == 0) DCIR1 = old_DCIR;
+				else if(DCIR2 == 0) DCIR2 = old_DCIR;
+				else if(DCIR3 == 0) DCIR3 = old_DCIR;
+
+				if(DCIR3 != 0) break;
+			}
+			old_DCIR = data[i].DCIR;
+			if(data[i].DCIR != 0) console.log(data[i].DCIR);
+		}
+
+		var DCIR_total = (Number(DCIR1) + Number(DCIR2) + Number(DCIR3)) / 3;
+		var result = {
+			DCIR : DCIR_total,
+			DCIR1 : DCIR1,
+			DCIR2 : DCIR2,
+			DCIR3 : DCIR3
+		};
+		socket.emit('DCIR_result', result);
 	});
 
 	socket.on('file_list', async function(list) {
@@ -468,6 +506,7 @@ async function deleteOne(col, query) {
 function file_list(list) {
 	no = 1;
 	try {
+		list.관리번호 = list.관리번호.replace('#', '');
 		console.log(list);
 		if(list.관리번호 != '') {
 			var dir = 'excel/' + list.관리번호;

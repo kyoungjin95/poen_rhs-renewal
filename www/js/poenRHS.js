@@ -128,6 +128,7 @@ var worker = "";
 var level = "";
 var 용량평가_result = 0;
 var SOC60Persent_result = 0;
+var DCIR_result = 0;
 var DCIR1_result = 0;
 var DCIR2_result = 0;
 var DCIR3_result = 0;
@@ -3344,9 +3345,24 @@ socket.on("file_list_result", async function (result) {
 });
 
 socket.on("용량평가_result", async function (data) {
-	flag_arrivedMSG = true;
 	용량평가_result = data;
 	console.log(data);
+	flag_arrivedMSG = true;
+});
+
+socket.on("SOC60Percent_result", async function (data) {
+	SOC60Percent_result = data;
+	console.log(data);
+	flag_arrivedMSG = true;
+});
+
+socket.on("DCIR_result", async function (data) {
+	DCIR_result = data.DCIR;
+	DCIR1_result = data.DCIR1;
+	DCIR2_result = data.DCIR2;
+	DCIR3_result = data.DCIR3;
+	console.log(data);
+	flag_arrivedMSG = true;
 });
 
 socket.on("insert_result", async function (id) {
@@ -5004,6 +5020,18 @@ async function 용량평가(path) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	socket.emit("용량평가", path);
+}
+
+async function SOC60Percent(path) {
+	if (socket == undefined) return;
+	flag_arrivedMSG = false;
+	socket.emit("SOC60Percent", path);
+}
+
+async function DCIR(path) {
+	if (socket == undefined) return;
+	flag_arrivedMSG = false;
+	socket.emit("DCIR", path);
 }
 
 function sleep(ms) {

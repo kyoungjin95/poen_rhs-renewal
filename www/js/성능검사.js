@@ -1,3 +1,4 @@
+var 성능검사_filelist = {};
 async function 성능검사_시작(is재제조 = 0) {
   if (typeof _management_id == "undefined") {
     await sleep(DELAY);
@@ -87,6 +88,13 @@ async function 성능검사_시작(is재제조 = 0) {
     _공정완료일.value = 성능검사_v.공정완료일;
     _검사자.value = 성능검사_v.검사자;
 
+    성능검사_filelist.f1 = 성능검사_v.f1;
+    성능검사_filelist.f2 = 성능검사_v.f2;
+    성능검사_filelist.f3 = 성능검사_v.f3;
+    성능검사_filelist.f4 = 성능검사_v.f4;
+    성능검사_filelist.f5 = 성능검사_v.f5;
+    성능검사_filelist.f6 = 성능검사_v.f6;
+
     check_file(성능검사_v);
     console.log(성능검사_v);
   } else {
@@ -108,6 +116,13 @@ async function 성능검사_시작(is재제조 = 0) {
     var now = seoul.toString().slice(0, 19);
 
     _공정입고일.value = now;
+
+    성능검사_filelist.f1 = '';
+    성능검사_filelist.f2 = '';
+    성능검사_filelist.f3 = '';
+    성능검사_filelist.f4 = '';
+    성능검사_filelist.f5 = '';
+    성능검사_filelist.f6 = '';
   }
   fileUploading();
 }
@@ -164,7 +179,7 @@ async function file_upload() {
   //_form.submit();
   _file_upload();
 
-  await sleep(3000);
+  await sleep(1000 * 4);
   
   _send_filelist();
 }
@@ -488,59 +503,69 @@ async function _send_filelist() {
 
   var doc = {};
   doc.관리번호 = 관리번호;
-  if(_file_exist1.style.background != 'yellow') doc.f1 = filelist.f1;
-  if(_file_exist2.style.background != 'yellow') doc.f2 = filelist.f2;
-  if(_file_exist3.style.background != 'yellow') doc.f3 = filelist.f3;
-  if(_file_exist4.style.background != 'yellow') doc.f4 = filelist.f4;
-  if(_file_exist5.style.background != 'yellow') doc.f5 = filelist.f5;
-  if(_file_exist6.style.background != 'yellow') doc.f6 = filelist.f6;
+  if(성능검사_filelist.f1 == '') doc.f1 = filelist.f1;
+  if(성능검사_filelist.f2 == '') doc.f2 = filelist.f2;
+  if(성능검사_filelist.f3 == '') doc.f3 = filelist.f3;
+  if(성능검사_filelist.f4 == '') doc.f4 = filelist.f4;
+  if(성능검사_filelist.f5 == '') doc.f5 = filelist.f5;
+  if(성능검사_filelist.f6 == '') doc.f6 = filelist.f6;
 
   update(성능검사, doc);
   await delay();
 
-  check_file(doc);
+  find(성능검사, 관리번호);
+  await delay();
+
+  check_file(성능검사_v);
 }
 
 function download1() {
 	console.log('download file 1');
 	const a = document.createElement('a');
 	a.download = 'file1.csv'
-	a.href = 'excel/' + 관리번호 + '/excel1.csv';
+	const tmp_name = 관리번호.replace('#', '');
+	a.href = 'excel/' + tmp_name + '/excel1.csv';
+	console.log(a.href);
 	a.click();
 }
 
 function download2() {
 	const a = document.createElement('a');
 	a.download = 'file2.csv'
-	a.href = 'excel/' + 관리번호 + '/excel2.csv';
+	const tmp_name = 관리번호.replace('#', '');
+	a.href = 'excel/' + tmp_name + '/excel2.csv';
 	a.click();
 }
 
 function download3() {
 	const a = document.createElement('a');
 	a.download = 'file3.csv'
-	a.href = 'excel/' + 관리번호 + '/excel3.csv';
+	const tmp_name = 관리번호.replace('#', '');
+	a.href = 'excel/' + tmp_name + '/excel3.csv';
 	a.click();
 }
 
 function download4() {
 	const a = document.createElement('a');
 	a.download = 'file4.csv'
-	a.href = 'excel/' + 관리번호 + '/excel4.csv';
+	const tmp_name = 관리번호.replace('#', '');
+	a.href = 'excel/' + tmp_name + '/excel4.csv';
 	a.click();
 }
 
 function download5() {
 	const a = document.createElement('a');
 	a.download = 'file5.csv'
-	a.href = 'excel/' + 관리번호 + '/excel5.csv';
+	const tmp_name = 관리번호.replace('#', '');
+	a.href = 'excel/' + tmp_name + '/excel5.csv';
 	a.click();
 }
 
 function download6() {
 	const a = document.createElement('a');
 	a.download = 'file6.csv'
-	a.href = 'excel/' + 관리번호 + '/excel6.csv';
+	const tmp_name = 관리번호.replace('#', '');
+	a.href = 'excel/' + tmp_name + '/excel6.csv';
 	a.click();
 }
 
@@ -557,23 +582,45 @@ async function 성능검사_분해조립재의뢰() {
 	이전페이지();
 }
 
-function check_file(v) {
-    if(v.f1 != '' && v.f1 != undefined) _file_exist1.style.backgroundColor = 'yellow';
-    else _file_exist1.style.backgroundColor = 'white';
-    if(v.f2 != '' && v.f2 != undefined) _file_exist2.style.backgroundColor = 'yellow';
-    else _file_exist2.style.backgroundColor = 'white';
-    if(v.f3 != '' && v.f3 != undefined) _file_exist3.style.backgroundColor = 'yellow';
-    else _file_exist3.style.backgroundColor = 'white';
-    if(v.f4 != '' && v.f4 != undefined) _file_exist4.style.backgroundColor = 'yellow';
-    else _file_exist4.style.backgroundColor = 'white';
-    if(v.f5 != '' && v.f5 != undefined) _file_exist5.style.backgroundColor = 'yellow';
-    else _file_exist5.style.backgroundColor = 'white';
-    if(v.f6 != '' && v.f6 != undefined) _file_exist6.style.backgroundColor = 'yellow';
-    else _file_exist6.style.backgroundColor = 'white';
+async function check_file(v) {
+    if(v.f1 != '' && v.f1 != undefined) {
+	    _file_exist1.style.backgroundColor = 'yellow';
+	    await read_용량평가();
+    } else {
+	    _file_exist1.style.backgroundColor = 'white';
+    }
+    if(v.f2 != '' && v.f2 != undefined) {
+	    _file_exist2.style.backgroundColor = 'yellow';
+    } else {
+	    _file_exist2.style.backgroundColor = 'white';
+    }
+    if(v.f3 != '' && v.f3 != undefined) {
+	    _file_exist3.style.backgroundColor = 'yellow';
+	    await read_SOC60Percent();
+    } else {
+	    _file_exist3.style.backgroundColor = 'white';
+    }
+    if(v.f4 != '' && v.f4 != undefined) {
+	    _file_exist4.style.backgroundColor = 'yellow';
+    } else {
+	    _file_exist4.style.backgroundColor = 'white';
+    }
+    if(v.f5 != '' && v.f5 != undefined) {
+	    _file_exist5.style.backgroundColor = 'yellow';
+	    await read_DCIR();
+    } else {
+	    _file_exist5.style.backgroundColor = 'white';
+    }
+    if(v.f6 != '' && v.f6 != undefined) {
+	    _file_exist6.style.backgroundColor = 'yellow';
+    } else {
+	    _file_exist6.style.backgroundColor = 'white';
+    }
 }
 
 async function read_용량평가() {
-	const path = 'excel/' + 관리번호 + '/excel1.csv';
+	const tmp_name = 관리번호.replace('#', '');
+	const path = 'excel/' + tmp_name + '/excel1.csv';
 
 	용량평가(path);
 	await delay();
@@ -581,4 +628,31 @@ async function read_용량평가() {
 	_용량평가.value = 용량평가_result;
 
 	console.log('용량평가 result:', 용량평가_result);
+}
+
+async function read_SOC60Percent() {
+	const tmp_name = 관리번호.replace('#', '');
+	const path = 'excel/' + tmp_name + '/excel3.csv';
+
+	SOC60Percent(path);
+	await delay();
+	
+	_SOC60Percent.value = SOC60Percent_result;
+
+	console.log('SOC60Percent result:', SOC60Percent_result);
+}
+
+async function read_DCIR() {
+	const tmp_name = 관리번호.replace('#', '');
+	const path = 'excel/' + tmp_name + '/excel5.csv';
+	
+	DCIR(path);
+	await delay();
+	
+	_DCIR.value = DCIR_result;
+	_DCIR_Charge1.value = DCIR1_result;
+	_DCIR_Charge2.value = DCIR2_result;
+	_DCIR_Charge3.value = DCIR3_result;
+
+	console.log('DCIR result:', DCIR_result, DCIR1_result, DCIR2_result, DCIR3_result);
 }
