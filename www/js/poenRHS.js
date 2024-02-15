@@ -132,6 +132,7 @@ var DCIR_result = 0;
 var DCIR1_result = 0;
 var DCIR2_result = 0;
 var DCIR3_result = 0;
+var 성능검사_data_result = [];
 var flag_loaded = false;
 
 const 계정_doc = {
@@ -3365,6 +3366,12 @@ socket.on("DCIR_result", async function (data) {
 	flag_arrivedMSG = true;
 });
 
+socket.on("성능검사_data_result", async function (data) {
+	성능검사_data_result = data;
+	console.log(data);
+	flag_arrivedMSG = true;
+});
+
 socket.on("insert_result", async function (id) {
 	//console.log('insert id: ', id);
 	insert_id = id;
@@ -5032,6 +5039,12 @@ async function DCIR(path) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	socket.emit("DCIR", path);
+}
+
+async function get_성능검사_data(path) {
+	if (socket == undefined) return;
+	flag_arrivedMSG = false;
+	socket.emit("성능검사_data", path);
 }
 
 function sleep(ms) {

@@ -184,6 +184,36 @@ io.on('connection', async function(socket) {
 		socket.emit('DCIR_result', result);
 	});
 
+	socket.on('성능검사_data', async function(path) {
+		console.log('성능검사 data path:', path);
+		var data = 용량평가(path);
+		if(data == null || data == undefined) return;
+		data = data.replace(/\(V\)/g, '');
+		data = data.replace(/\(A\)/g, '');
+		data = data.replace(/\(Ah\)/g, '');
+
+		data = JSON.parse(data);
+
+		var data_point = [];
+		data.forEach(function(v) {
+			var totTime = Math.floor(Number(v.TotTime));
+			var tmp = {
+				time : totTime,
+				volt : v.Volt,
+				curr : v.Curr,
+				cap : v.Cap
+			}
+
+			if(tmp.time != undefined) {
+				data_point.push(tmp);
+			}
+		});
+
+		socket.emit('성능검사_data_result', data_point);
+		console.log(data_point);
+
+	});
+
 	socket.on('file_list', async function(list) {
 		no = 1;
 		console.log('file list');
