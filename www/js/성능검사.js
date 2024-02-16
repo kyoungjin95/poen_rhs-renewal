@@ -1,4 +1,11 @@
-var 성능검사_filelist = {};
+var 성능검사_filelist = {
+	f1 : '',
+	f2 : '',
+	f3 : '',
+	f4 : '',
+	f5 : '',
+	f6 : ''
+};
 async function 성능검사_시작(is재제조 = 0) {
 	if (typeof _management_id == "undefined") {
 		await sleep(DELAY);
@@ -503,20 +510,18 @@ async function _send_filelist() {
 
 	var doc = {};
 	doc.관리번호 = 관리번호;
-	if(성능검사_filelist.f1 == '') doc.f1 = filelist.f1;
-	if(성능검사_filelist.f2 == '') doc.f2 = filelist.f2;
-	if(성능검사_filelist.f3 == '') doc.f3 = filelist.f3;
-	if(성능검사_filelist.f4 == '') doc.f4 = filelist.f4;
-	if(성능검사_filelist.f5 == '') doc.f5 = filelist.f5;
-	if(성능검사_filelist.f6 == '') doc.f6 = filelist.f6;
+	if(성능검사_filelist.f1 == '' || 성능검사_filelist.f1 == undefined) doc.f1 = filelist.f1;
+	if(성능검사_filelist.f2 == '' || 성능검사_filelist.f2 == undefined) doc.f2 = filelist.f2;
+	if(성능검사_filelist.f3 == '' || 성능검사_filelist.f3 == undefined) doc.f3 = filelist.f3;
+	if(성능검사_filelist.f4 == '' || 성능검사_filelist.f4 == undefined) doc.f4 = filelist.f4;
+	if(성능검사_filelist.f5 == '' || 성능검사_filelist.f5 == undefined) doc.f5 = filelist.f5;
+	if(성능검사_filelist.f6 == '' || 성능검사_filelist.f6 == undefined) doc.f6 = filelist.f6;
 
+	console.log('update 성능검사 doc:', doc);
 	update(성능검사, doc);
 	await delay();
 
-	find(성능검사, 관리번호);
-	await delay();
-
-	check_file(성능검사_v);
+	check_file();
 }
 
 function download1() {
@@ -582,7 +587,12 @@ async function 성능검사_분해조립재의뢰() {
 	이전페이지();
 }
 
-async function check_file(v) {
+async function check_file() {
+	find(성능검사, 관리번호);
+	await delay();
+
+	const v = 성능검사_v;
+	console.log('start check file:', v);
 	var flag_용량평가 = false;
 	var flag_SOC = false;
 	var flag_DCIR = false;

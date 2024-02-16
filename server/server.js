@@ -172,7 +172,7 @@ io.on('connection', async function(socket) {
 				if(DCIR3 != 0) break;
 			}
 			old_DCIR = data[i].DCIR;
-			if(data[i].DCIR != 0) console.log(data[i].DCIR);
+			if(i == (data.length - 1)) console.log(data[i].DCIR);
 		}
 
 		var DCIR_total = (Number(DCIR1) + Number(DCIR2) + Number(DCIR3)) / 3;
@@ -628,7 +628,7 @@ function SOC60Percent(path) {
 }
 
 function DCIR(path) {
-	var result = csvFileToJSON(path);
+	var result = DCIRcsvFileToJSON(path);
 	return result;
 }
 
@@ -638,12 +638,43 @@ function csvFileToJSON(path) {
 	return csvToJSON(string_csv);
 }
 
+function DCIRcsvFileToJSON(path) {
+	const file_csv = fs.readFileSync(path);
+	const string_csv = file_csv.toString();
+	return DCIRcsvToJSON(string_csv);
+}
+
 function csvToJSON(csv_string){
     const rows = csv_string.split("\r\n");
     const jsonArray = [];
-    //const header = rows[0].split(",");
-    const header = rows[0].replace(/DCIR(.|\n)*?\)/g, 'DCIR').split(",");
+    const header = rows[0].split(",");
+    console.log(header);   
+
+    for(let i = 1; i < rows.length; i++){
+        let obj = {};
+        let row = rows[i].split(",");
+
+        for(let j=0; j < header.length; j++){
+            obj[header[j]] = row[j];
+        }
+  
+        jsonArray.push(obj);
+  
+    }
     
+    return JSON.stringify(jsonArray);
+}
+
+function DCIRcsvToJSON(csv_string) {
+    const rows = csv_string.split("\r\n");
+    const jsonArray = [];
+    const header = [ "Time", "Channel", "EndReason", "LoopCount", "CycleNo",
+  		     "StepNo", "StepType", "StepTime", "TotTime", "Volt(V)",
+                     "Curr(A)", "Cap(Ah)", "TotalCap(Ah)", "ChargeCap(Ah)",
+                     "DischargeCap(Ah)", "Watt(W)", "WH(Wh)", "TotalWH(Wh)",
+                     "ChargeWH(Wh)", "DischargeWH", "DCIR",
+                     "AvgCur(A)"]
+    console.log(header);   
 
     for(let i = 1; i < rows.length; i++){
         let obj = {};
