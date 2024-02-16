@@ -155,7 +155,7 @@ io.on('connection', async function(socket) {
 		var data = DCIR(path);
 		//console.log(data);
 		if(data == null || data == undefined) return;
-		data = data.replace(/ȧ��\)/g, '');
+		//data = data.replace(/ȧ��\)/g, '');
 		data = JSON.parse(data);
 
 		var old_DCIR = 0;
@@ -641,7 +641,9 @@ function csvFileToJSON(path) {
 function csvToJSON(csv_string){
     const rows = csv_string.split("\r\n");
     const jsonArray = [];
-    const header = rows[0].split(",");
+    //const header = rows[0].split(",");
+    const header = rows[0].replace(/DCIR(.|\n)*?\)/g, 'DCIR').split(",");
+    
 
     for(let i = 1; i < rows.length; i++){
         let obj = {};
