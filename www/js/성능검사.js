@@ -625,7 +625,7 @@ async function check_file(v) {
 
 	성능검사_save();
 
-	if(flag_용량평가 == true && flag_SOC == true && flag_DCIR == true) {
+	if(flag_용량평가 == true) {
 		read_data();
 	}
 }
