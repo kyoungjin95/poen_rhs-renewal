@@ -16,6 +16,9 @@ async function 성능검사_시작(is재제조 = 0) {
 	flag_성능검사 = false;
 	if (worker == "") return;
 
+	fileUploading();
+	_btn_upload.disabled = false;
+
 	const form = document.querySelector("form");
 	//form.addEventListener('submit', handleSubmit);
 	console.log("작업자:", 계정_stat.이름);
@@ -102,7 +105,7 @@ async function 성능검사_시작(is재제조 = 0) {
 		성능검사_filelist.f5 = 성능검사_v.f5;
 		성능검사_filelist.f6 = 성능검사_v.f6;
 
-		check_file(성능검사_v);
+		check_file();
 		console.log(성능검사_v);
 	} else {
 		_공정입고일.value = "0000-00-00T00:00";
@@ -116,8 +119,6 @@ async function 성능검사_시작(is재제조 = 0) {
 		_공정완료일.value = "0000-00-00T00:00";
 		_검사자.value = 계정_stat.이름;
 
-		check_file(성능검사_v);
-
 		var DateTime = luxon.DateTime;
 		var seoul = DateTime.local().setZone("Asia/Seoul");
 		var now = seoul.toString().slice(0, 19);
@@ -130,8 +131,14 @@ async function 성능검사_시작(is재제조 = 0) {
 		성능검사_filelist.f4 = '';
 		성능검사_filelist.f5 = '';
 		성능검사_filelist.f6 = '';
+		
+		_file_exist1.style.backgroundColor = 'white';
+		_file_exist2.style.backgroundColor = 'white';
+		_file_exist3.style.backgroundColor = 'white';
+		_file_exist4.style.backgroundColor = 'white';
+		_file_exist5.style.backgroundColor = 'white';
+		_file_exist6.style.backgroundColor = 'white';
 	}
-	fileUploading();
 }
 
 async function 성능검사_save() {
@@ -183,12 +190,14 @@ async function 성능검사_save() {
 }
 
 async function file_upload() {
+	_btn_upload.disabled = true;
 	//_form.submit();
 	_file_upload();
 
 	await sleep(1000 * 4);
 
 	_send_filelist();
+	_btn_upload.disabled = false;
 }
 
 function 성능검사_updateFilter() {
@@ -592,13 +601,14 @@ async function check_file() {
 	await delay();
 
 	const v = 성능검사_v;
+	const yes = confirm('파일에서 DATA를 추출 하시겠습니까?');
 	console.log('start check file:', v);
 	var flag_용량평가 = false;
 	var flag_SOC = false;
 	var flag_DCIR = false;
 	if(v.f1 != '' && v.f1 != undefined && v.f1 != null) {
 		_file_exist1.style.backgroundColor = 'yellow';
-		await read_용량평가();
+		if(yes == true) await read_용량평가();
 		flag_용량평가 = true;
 	} else {
 		_file_exist1.style.backgroundColor = 'white';
@@ -610,7 +620,7 @@ async function check_file() {
 	}
 	if(v.f3 != '' && v.f3 != undefined && v.f3 != null) {
 		_file_exist3.style.backgroundColor = 'yellow';
-		await read_SOC60Percent();
+		if(yes == true) await read_SOC60Percent();
 		flag_SOC = true;
 	} else {
 		_file_exist3.style.backgroundColor = 'white';
@@ -622,7 +632,7 @@ async function check_file() {
 	}
 	if(v.f5 != '' && v.f5 != undefined && v.f5 != null) {
 		_file_exist5.style.backgroundColor = 'yellow';
-		await read_DCIR();
+		if(yes == true) await read_DCIR();
 		flag_DCIR = true;
 	} else {
 		_file_exist5.style.backgroundColor = 'white';
@@ -633,7 +643,7 @@ async function check_file() {
 		_file_exist6.style.backgroundColor = 'white';
 	}
 
-	성능검사_save();
+	//성능검사_save();
 
 	if(flag_용량평가 == true) {
 		read_data();
