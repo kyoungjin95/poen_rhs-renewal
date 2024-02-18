@@ -94,7 +94,7 @@ var 교체부품_tabledata = [];
 function 재제조_choisenButton() {
 	var buttons = document.querySelectorAll("button");
 	buttons.forEach((button) => {
-		button.addEventListener("click", () => {
+		button.addEventListener("click", async () => {
 			const value = button.getAttribute("value");
 			if (value == null) return;
 			console.log("value:", value);
@@ -121,9 +121,13 @@ function 재제조_choisenButton() {
 				if(교체부품_tabledata[i].교체전QR == add_item.교체전QR || pushed.indexOf(add_item.교체전QR) != -1) {
 					document.getElementById(value.replace('_QR', '')).style.backgroundColor = 'salmon';
 
-				        if(pushed.indexOf(add_item.QR) != -1) pushed.splice(pushed.indexOf(add_item.교체전QR), 1);
+				        if(pushed.indexOf(add_item.교체전QR) != -1) pushed.splice(pushed.indexOf(add_item.교체전QR), 1);
 					교체부품_tabledata.splice(i, 1);
 					교체부품_table(교체부품_tabledata);
+
+					delete_분해조립재제조(분해조립재제조, add_item.교체전QR);
+					await delay();
+
 					return;
 				}
 			}
@@ -136,7 +140,7 @@ function 재제조_choisenButton() {
 
 async function 분해조립재제조_save() {
 	var data = table_부품교환.getData();
-
+	console.log(data.length);
 	var DateTime = luxon.DateTime;
 	var seoul = DateTime.local().setZone("Asia/Seoul");
 	var now = seoul.toString().slice(0, 19);
@@ -146,20 +150,14 @@ async function 분해조립재제조_save() {
 		await delay();
 	}
 
-	var update_cnt = 0;
-	var insert_cnt = 0;
-
 	for(var i = 0; i < data.length; i++) {
-		console.log(data[i]);
 		update_분해조립재제조(분해조립재제조, data[i]);
 		await delay();
 
 		console.log(update_count);
 		console.log(insert_count);
-		update_cnt += update_count;
-		insert_cnt += insert_count;
 
-		if(data[i].신품고품 != '고품') return;
+		if(data[i].신품고품 != '고품') continue;
 		var doc = {
 			QR : data[i].교체후QR,
 			사용여부 : '사용',
@@ -175,19 +173,12 @@ async function 분해조립재제조_save() {
 		console.log(insert_count);
 	};
 
-
-	if (update_cnt > 0) {
-		alert("업데이트 되었습니다");
-	}
-
-	if (insert_cnt > 0) {
-		alert("저장 되었습니다");
-	}
-
 	if(재제조_doc.분해조립 == '') 재제조_doc.분해조립 = now;
 
 	update(BSA재제조, 재제조_doc);
 	await delay();
+
+	alert('업데이트 되었습니다');
 
 }
 

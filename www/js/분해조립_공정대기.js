@@ -82,7 +82,7 @@ var 분해조립공정대기_tabledata = [];
 function 공정대기_choisenButton() {
 	var buttons = document.querySelectorAll("button");
 	buttons.forEach((button) => {
-		button.addEventListener("click", () => {
+		button.addEventListener("click", async () => {
 			const value = button.getAttribute("value");
 			if (value == null) return;
 			console.log("value:", value);
@@ -104,6 +104,9 @@ function 공정대기_choisenButton() {
 				        if(pushed.indexOf(add_item.QR) != -1) pushed.splice(pushed.indexOf(add_item.QR), 1);
 					분해조립공정대기_tabledata.splice(i, 1);
 					분해조립공정대기_table(분해조립공정대기_tabledata);
+
+					delete_분해조립공정대기(분해조립공정대기, add_item.QR);
+					await delay();
 					return;
 				}
 			}

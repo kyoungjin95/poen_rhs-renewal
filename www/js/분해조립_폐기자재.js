@@ -84,7 +84,7 @@ var 분해조립폐기자재_tabledata = [];
 function 폐기자재_choisenButton() {
 	var buttons = document.querySelectorAll("button");
 	buttons.forEach((button) => {
-		button.addEventListener("click", () => {
+		button.addEventListener("click", async () => {
 			const value = button.getAttribute("value");
 			if (value == null) return;
 			console.log("value:", value);
@@ -109,6 +109,9 @@ function 폐기자재_choisenButton() {
 				        if(pushed.indexOf(add_item.QR) != -1) pushed.splice(pushed.indexOf(add_item.QR), 1);
 					분해조립폐기자재_tabledata.splice(i, 1);
 					분해조립폐기자재_table(분해조립폐기자재_tabledata);
+
+					delete_분해조립폐기자재(분해조립폐기자재, add_item.QR);
+					await delay();
 					return;
 				}
 			}
