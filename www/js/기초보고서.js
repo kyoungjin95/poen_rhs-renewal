@@ -573,7 +573,7 @@ async function 기초보고서_save(type = 0) {
 
   if (type == 0) {
     type = document.getElementById("_기초보고서");
-    file_name = "기초보고서_육안검사외부" + _date + ".pdf";
+    file_name = "기초보고서" + _date + ".pdf";
     _width = 3900;
     _height = 1800;
   }
