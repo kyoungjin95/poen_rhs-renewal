@@ -150,12 +150,18 @@ async function 분해조립재제조_save() {
 		await delay();
 	}
 
+	var flag_update = false;
+	var flag_insert = false;
+
 	for(var i = 0; i < data.length; i++) {
 		update_분해조립재제조(분해조립재제조, data[i]);
 		await delay();
 
 		console.log(update_count);
 		console.log(insert_count);
+
+		if(update_count > 0) flag_update = true;
+		if(insert_count > 0) flag_insert = true;
 
 		if(data[i].신품고품 != '고품') continue;
 		var doc = {
@@ -178,7 +184,8 @@ async function 분해조립재제조_save() {
 	update(BSA재제조, 재제조_doc);
 	await delay();
 
-	alert('업데이트 되었습니다');
+	if(flag_update) alert('업데이트 되었습니다');
+	if(flag_insert) alert('저장 되었습니다');
 
 }
 
