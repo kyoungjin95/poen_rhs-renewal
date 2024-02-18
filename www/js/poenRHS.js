@@ -3378,6 +3378,12 @@ socket.on("delete_성능검사_data_result", async function (data) {
 	flag_arrivedMSG = true;
 });
 
+socket.on("부품정보_result", async function (data) {
+	부품정보_result = data;
+	console.log(data);
+	flag_arrivedMSG = true;
+});
+
 socket.on("insert_result", async function (id) {
 	//console.log('insert id: ', id);
 	insert_id = id;
@@ -4340,6 +4346,12 @@ async function drop(_col) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	socket.emit("drop", worker, _col);
+}
+
+async function 부품정보처리(start, end) {
+	if (socket == undefined) return;
+	flag_arrivedMSG = false;
+	socket.emit("부품정보", start, end);
 }
 
 async function find(col, management_id) {

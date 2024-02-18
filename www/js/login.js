@@ -56,7 +56,7 @@ async function login() {
         }
       }, 1000);
       await sleep(1);
-      alert('#공지사항#\nVersion update sky 0.51\n1. 기본정보 출하 버그 수정\n2. 출하 날짜가 있으면서 공정단계가 제조완료인 기록을 출하로 수정\n3. 기본정보에서 출하 일자 있을때 공정단계가 자동으로 출하로 표시되었던 기능 삭제');
+      alert('#공지사항#\nVersion update sky 0.52\n1. 성능검사 파일 업로드시 그래프 만듬.\n2. 성능검사 파일 업로드시 자동 값 추출\n3.수량집계 부품정보 부분 서버에서 계산 후 결과만 사용자 화면에 보이도록 수정\n');
     } else if (worker == _id.value) {
       worker = "";
       level = "";

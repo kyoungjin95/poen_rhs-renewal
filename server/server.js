@@ -47,6 +47,21 @@ var client;
 var _lastest_제제조번호 = '';
 var _old_year = '2023';
 
+const 자재입출고_ = {
+	_id: 0,
+	QR: 1,
+	날짜: 1,
+	구분: 1,
+	차종: 1,
+	품명: 1,
+	품번: 1,
+	단가: 1,
+	수량: 1,
+	LotNo: 1,
+	비고: 1,
+	사용관리번호: 1,
+};
+
 app.use(morgan('dev'))
 app.use('/', express.static(path.join(__dirname, '../')));
 app.use('/base', express.static(path.join(__dirname, '../www')));
@@ -336,6 +351,12 @@ io.on('connection', async function(socket) {
 		logger.info('worker:'+ worker + ' drop col:' + col);
 		const result = await drop(col);
 		socket.emit('drop_result', result);
+	});
+
+	socket.on('부품정보', async function(start, end) {
+		console.log('request 부품정보:', start, end);
+		const result = await 부품_info(start, end);
+		socket.emit('부품정보_result', result);
 	});
 
 	process.on('exit', function(code) {
@@ -691,6 +712,53 @@ function DCIRcsvToJSON(csv_string) {
     return JSON.stringify(jsonArray);
 }
 
+async function 부품_info(begin = '', end = '', 구분 = 'all') {
+	var result_array;
+	if (begin == '' || end == '') {
+		result_array = await find('자재입출고', { QR: { $exists: true } }, { sort: { kind: 1 }, projection: 자재입출고_ });
+	} else {
+		result_array = await find('자재입출고', { QR: { $exists: true }, 날짜: { $gte: begin, $lte: end }}, { sort: { kind: 1 }, projection: 자재입출고_ });
+	}
+
+	if (result_array == null) return;
+
+	var types_list = [];
+	var 차종 = [];
+	var 품명 = [];
+	var counts = [];
+
+	result_array.forEach(async function (info) {
+		var 수량 = parseInt(info.수량.replace(/,/g, ''));
+		if (types_list.indexOf(info.품번) < 0) {
+			types_list.push(info.품번);
+
+			차종.push(info.차종);
+			품명.push(info.품명);
+			var count = {
+				입고: 0,
+				출고: 0
+			}
+
+			if (info.구분 == '입고') count.입고 = 수량;
+			if (info.구분 == '출고') count.출고 = 수량;
+
+			counts.push(count);
+		} else {
+			var no = types_list.indexOf(info.품번);
+			if (info.구분 == '입고') counts[no].입고 = parseInt(counts[no].입고) + 수량;
+			if (info.구분 == '출고') counts[no].출고 = parseInt(counts[no].출고) + 수량;
+		}
+	});
+
+	var 부품정보 = {
+		차종: 차종,
+		품명: 품명,
+		품번: types_list,
+		counts: counts,
+	}
+
+	return 부품정보;
+}
 function sleep(ms) {
 	return new Promise((resolve) => setTimeout(resolve, ms))
 }

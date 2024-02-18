@@ -290,54 +290,11 @@ async function 자재재료_info(begin = '', end = '', 구분 = 'all') {
 }
 
 async function 부품_info(begin = '', end = '', 구분 = 'all') {
-	if (begin == '' || end == '') {
-		find_신품정보(자재입출고, { QR: { $exists: true } });
-		await delay();
-	} else {
-		find_신품정보(자재입출고, { QR: { $exists: true }, 날짜: { $gte: begin, $lte: end } });
-		await delay();
-	}
+	부품정보처리(begin, end);
+	await delay();
 
-	if (자재입출고_v == null) return;
-
-	var types_list = [];
-	var 차종 = [];
-	var 품명 = [];
-	var counts = [];
-
-	자재입출고_v.forEach(async function (info) {
-		var 수량 = parseInt(info.수량.replace(/,/g, ''));
-		if (types_list.indexOf(info.품번) < 0) {
-			types_list.push(info.품번);
-
-			차종.push(info.차종);
-			품명.push(info.품명);
-			var count = {
-				입고: 0,
-				출고: 0
-			}
-
-			if (info.구분 == '입고') count.입고 = 수량;
-			if (info.구분 == '출고') count.출고 = 수량;
-
-			counts.push(count);
-		} else {
-			var no = types_list.indexOf(info.품번);
-			if (info.구분 == '입고') counts[no].입고 = parseInt(counts[no].입고) + 수량;
-			if (info.구분 == '출고') counts[no].출고 = parseInt(counts[no].출고) + 수량;
-		}
-	});
-
-	var 부품정보 = {
-		차종: 차종,
-		품명: 품명,
-		품번: types_list,
-		counts: counts,
-	}
-
-	부품재고(부품정보);
+	부품재고(부품정보_result);
 }
-
 
 var table_BSA;
 function BSA재고(품번_list, datas) {
