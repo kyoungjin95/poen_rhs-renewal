@@ -68,10 +68,7 @@ function 수량집계_month() {
 	var seoul = DateTime.local().setZone("Asia/Seoul");
 	var now = seoul.toString();
 	var s_day = now.slice(0, 8) + '01';
-	var e_day;
-	if (now.slice(5, 2) in ['01', '03', '05', '07', '08', '10', '12']) e_day = now.slice(0, 8) + '31';
-	else if (now.slice(5, 2) == '02') e_day = now.slice(0, 8) + '28';
-	else e_day = now.slice(0, 8) + '30';
+	var e_day = now.slice(0, 10);
 
 	document.getElementById('_검색일_from').value = s_day;
 	document.getElementById('_검색일_to').value = e_day;
