@@ -1642,9 +1642,6 @@
         <input type="checkbox" id="_cb기밀검사" checked />
       </div>
       <table border="2" class="all">
-        <!-- <caption>
-          기밀검사
-        </caption> -->
         <colgroup>
           <col width="8%" />
           <col width="8%" />
@@ -1717,14 +1714,10 @@
             <td colspan="2" class="result" id="_케이스">
               <span class="result-vlaue r1">OK</span>
               <strong> &sol;</strong>
-              <span class="result-vlaue r2">NG</span>
-              <stdrong> &sol;</stdrong>
               <span class="result-vlaue r3">미실시(이유:)</span>
             </td>
             <td colspan="2" class="result" id="_냉각유로">
               <span class="result-vlaue r1">OK</span>
-              <strong> &sol;</strong>
-              <span class="result-vlaue r2">NG</span>
               <strong> &sol;</strong>
               <span class="result-vlaue r3">미실시(이유:)</span>
             </td>
@@ -1802,16 +1795,12 @@
             <td colspan="2" class="result" id="_절연PRA_P">
               <span class="result-vlaue r1">OK</span>
               <strong> &sol;</strong>
-              <span class="result-vlaue r2">NG</span>
-              <stdrong> &sol;</stdrong>
-              <span class="result-vlaue r3">미실시(이유:)</span>
+              <span class="result-vlaue r3">미실시(이유:<span></span>)</span>
             </td>
             <td colspan="2" class="result" id="_절연PRA_N">
               <span class="result-vlaue r1">OK</span>
               <strong> &sol;</strong>
-              <span class="result-vlaue r2">NG</span>
-              <strong> &sol;</strong>
-              <span class="result-vlaue r3">미실시(이유:)</span>
+              <span class="result-vlaue r3">미실시(이유:<span></span>)</span>
             </td>
           </tr>
         </tbody>
@@ -1968,15 +1957,11 @@
               <span class="result-vlaue r1">OK</span>
               <strong> &sol;</strong>
               <span class="result-vlaue r2">NG</span>
-              <stdrong> &sol;</stdrong>
-              <span class="result-vlaue r3">미실시(이유:)</span>
             </td>
             <td class="result" id="_절연PRA_N">
               <span class="result-vlaue r1">OK</span>
               <strong> &sol;</strong>
               <span class="result-vlaue r2">NG</span>
-              <strong> &sol;</strong>
-              <span class="result-vlaue r3">미실시(이유:)</span>
             </td>
           </tr>
         </tbody>
@@ -1996,98 +1981,33 @@
       <table border="2" class="all">
         <colgroup>
           <col />
-          <col />
-          <col />
-          <col />
-          <col />
-          <col width="20%" />
-          <col width="20%" />
+          <col width="10%" />
         </colgroup>
-        <thead>
-          <tr class="graph-title">
-            <th>Step</th>
-            <th>C-rate</th>
-            <th>전류(A)</th>
-            <th>구분</th>
-            <th>상태</th>
-            <th>전압(V)</th>
-            <th>DC-IR<br />계산값(mΩ)</th>
-          </tr>
-        </thead>
         <tbody>
           <tr>
-            <th rowspan="4">1</th>
-            <td rowspan="4">0.5C</td>
-            <td rowspan="4">55.6</td>
-            <td class="color-blue" rowspan="2">Discharge</td>
-            <td class="bg-gray status" style="color: #838383">Before</td>
-            <td class="bg-gray"></td>
-            <td rowspan="2"></td>
-          </tr>
-          <tr>
-            <td class="status">After</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td rowspan="2" class="color-red">Charge</td>
-            <td class="bg-gray status" style="color: #838383">Before</td>
-            <td class="bg-gray"></td>
-          </tr>
-          <tr>
-            <td class="status">After</td>
-            <td></td>
-          </tr>
-          <tr>
-            <th rowspan="4">2</th>
-            <td rowspan="4">0.7C</td>
-            <td rowspan="4">77.84</td>
-            <td class="color-blue" rowspan="2">Discharge</td>
-            <td class="bg-gray status" style="color: #838383">Before</td>
-            <td class="bg-gray"></td>
-            <td rowspan="2"></td>
-          </tr>
-          <tr>
-            <td class="status">After</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td rowspan="2" class="color-red">Charge</td>
-            <td class="bg-gray status" style="color: #838383">Before</td>
-            <td class="bg-gray"></td>
-          </tr>
-          <tr>
-            <td class="status">After</td>
-            <td></td>
-          </tr>
-          <tr>
-            <th rowspan="4">3</th>
-            <td rowspan="4">1.0C</td>
-            <td rowspan="4">111.2</td>
-            <td class="color-blue" rowspan="2">Discharge</td>
-            <td class="bg-gray status" style="color: #838383">Before</td>
-            <td class="bg-gray"></td>
-            <td rowspan="2"></td>
-          </tr>
-          <tr>
-            <td class="status">After</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td rowspan="2" class="color-red">Charge</td>
-            <td class="bg-gray status" style="color: #838383">Before</td>
-            <td class="bg-gray"></td>
-          </tr>
-          <tr>
-            <td class="status">After</td>
-            <td></td>
+            <td class="_완료보고서__img" colspan="2">
+              <div class="images">
+                <img id="_img1" />
+              </div>
+            </td>
           </tr>
         </tbody>
         <tfoot>
           <tr>
-            <td style="text-align: left; font-weight: bold" colspan="7">
-              결과:
-
-              <p style="padding-left: 20px">DC-IR 평균값 : <span id="_DCIR검사_결과">000.000</span> mΩ</p>
+            <td style="text-align: left; font-weight: bold; border-right: none">
+              결과: <br />
+              DC-IR 평균값 : <input type="text" id="_DCIR검사_결과" class="dcir_용량_input" />
+            </td>
+            <td style="border-left: none">
+              <div id="_file_exist1" class="process__file t1-d">
+                <div class="files">
+                  <input type="file" class="file_upload" id="_file1" name="excel" />
+                  <label for="_file1" class="upload_label">
+                    <i class="fa-regular fa-file"></i>
+                    &nbsp;파일 선택</label
+                  >
+                </div>
+              </div>
             </td>
           </tr>
         </tfoot>
@@ -2105,12 +2025,35 @@
         <input type="checkbox" id="_cb용량평가" checked />
       </div>
       <table border="2" class="all">
-        <div class="_공백" style="width: 100%; height: 60vh"></div>
+        <colgroup>
+          <col />
+          <col width="10%" />
+        </colgroup>
+        <tbody>
+          <tr>
+            <td class="_완료보고서__img" colspan="2">
+              <div class="images">
+                <img id="_img2" />
+              </div>
+            </td>
+          </tr>
+        </tbody>
         <tfoot>
           <tr>
-            <td style="text-align: left; font-weight: bold" colspan="7">
-              결과:
-              <p style="padding-left: 20px"><span id="_용량평가1"> 000.000 </span> Ah / <span id="_용량평가2">000.000 </span> KWh</p>
+            <td style="text-align: left; font-weight: bold; border-right: none">
+              결과: <br />
+              <input type="text" id="_용량평가_결과" class="dcir_용량_input" />
+            </td>
+            <td style="border-left: none">
+              <div id="_file_exist1" class="process__file t1-d">
+                <div class="files">
+                  <input type="file" class="file_upload" id="_file2" name="excel" />
+                  <label for="_file2" class="upload_label">
+                    <i class="fa-regular fa-file"></i>
+                    &nbsp;파일 선택</label
+                  >
+                </div>
+              </div>
             </td>
           </tr>
         </tfoot>
@@ -2635,17 +2578,11 @@
       var _CELL전압_MIN = document.getElementById("_CELL전압_MIN");
 
       //DCIR검사, 용량평가
-      const _file1 = document.get.getElementById("_file1");
-      const _file2 = document.get.getElementById("_file2");
+      const _file1 = document.getElementById("_file1");
+      const _file2 = document.getElementById("_file2");
 
       const _inFile1 = document.getElementById("_inFile1");
       const _inFile2 = document.getElementById("_inFile2");
-
-      const _download1 = document.getElementById("_download1");
-      const _download2 = document.getElementById("_download2");
-
-      const _file_exist1 = document.getElementById("_file_exist1");
-      const _file_exist2 = document.getElementById("_file_exist2");
 
       //checkbox
       var _cb기초보고서 = document.getElementById("_cb기초보고서");

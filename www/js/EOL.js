@@ -200,6 +200,7 @@ async function EOL_시작(is재제조 = 0) {
       _img14.src = EOL_pic_v.pic14;
       _img15.src = EOL_pic_v.pic15;
       _img16.src = EOL_pic_v.pic16;
+      _img17.src = EOL_pic_v.pic17;
     }
   } else {
     init_EOL();
@@ -226,6 +227,7 @@ async function EOL_시작(is재제조 = 0) {
     _img14.src = "";
     _img15.src = "";
     _img16.src = "";
+    _img17.src = "";
   }
 
   _img1.ondblclick = function (evt) {
@@ -401,6 +403,17 @@ async function EOL_시작(is재제조 = 0) {
     }
     evt.preventDefault();
   };
+  _img17.ondblclick = function (evt) {
+    _img17.src = "";
+  };
+  _img17.ondrop = function (evt) {
+    var files = evt.dataTransfer?.files;
+    if (files.length > 0) {
+      console.log("drag & drop");
+      resize_pic(files[0], _img17);
+    }
+    evt.preventDefault();
+  };
 
   _img1.ondragover = function (evt) {
     evt.preventDefault();
@@ -464,6 +477,10 @@ async function EOL_시작(is재제조 = 0) {
   };
 
   _img16.ondragover = function (evt) {
+    evt.preventDefault();
+  };
+
+  _img17.ondragover = function (evt) {
     evt.preventDefault();
   };
 
@@ -630,6 +647,7 @@ async function EOL_SAVE() {
   _pic_doc.pic14 = _img14.src;
   _pic_doc.pic15 = _img15.src;
   _pic_doc.pic16 = _img16.src;
+  _pic_doc.pic17 = _img17.src;
 
   update(EOL_pic, _pic_doc);
   await delay();
