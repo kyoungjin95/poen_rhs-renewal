@@ -28,7 +28,7 @@ async function EOL_시작(is재제조 = 0) {
   document.getElementById("_통신검사_셀전압편차_label").innerHTML = "통신검사_셀전압편차 특이사항";
   document.getElementById("_통신검사_릴레이구동_label").innerHTML = "통신검사_릴레이구동 특이사항";
 
-  _management_id.value = _management_id.valeu.trim().toUpperCase();
+  _management_id.value = _management_id.value.trim().toUpperCase();
   if (is재제조 == 0) {
     if (_management_id.value.length == 0) return;
 

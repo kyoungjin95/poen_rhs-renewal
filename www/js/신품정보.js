@@ -113,7 +113,8 @@ function read_신품정보_func_csv() {
 			await delay();
 
 			for (var i = 0; i < res.length; i++) {
-				if (res[i].QR != '') docs.push(res[i]);
+				//if (res[i].QR != '') docs.push(res[i]);
+				docs.push(res[i]);
 				if ((i > 0 && (i % 2000) == 0) || i == (res.length - 1)) {
 					insertMany(자재입출고, docs);
 					await delay();
