@@ -87,8 +87,9 @@ function 수량집계_기간조회() {
 
 	if (document.getElementById('_일반').checked == true) 구분 = '일반';
 	if (document.getElementById('_보증').checked == true) 구분 = '보증';
-	if (document.getElementById('_all').checked == true) 구분 = '';
+	if (document.getElementById('_all').checked == true) 구분 = 'all';
 
+	console.log('수량집계 기간조회:', 집계_today_begin, 집계_today_end, 구분);
 	수량집계_조회(집계_today_begin, 집계_today_end, 구분);
 }
 
@@ -108,12 +109,22 @@ async function BSA_info(begin = '', end = '', 구분 = 'all') {
 	var counts = [];
 	var types_list = [];
 
-	if (begin == '' || end == '' || 구분 == 'all') {
-		find_BSA재제조(BSA재제조, { 품번: { $exists: true } });
-		await delay();
+	if (begin == '' || end == '') {
+		if(구분 == 'all') {
+			find_BSA재제조(BSA재제조, { 품번: { $exists: true } });
+			await delay();
+		} else {
+			find_BSA재제조(BSA재제조, { 품번: { $exists: true }, 구분 : { $eq : 구분} });
+			await delay();
+		}
 	} else {
-		find_BSA재제조(BSA재제조, { 품번: { $exists: true }, 입고: { $gte: begin, $lte: end }, 구분: { $eq: 구분 } });
-		await delay();
+		if(구분 == 'all') {
+			find_BSA재제조(BSA재제조, { 품번: { $exists: true }, 입고: { $gte: begin, $lte: end }});
+			await delay();
+		} else {
+			find_BSA재제조(BSA재제조, { 품번: { $exists: true }, 입고: { $gte: begin, $lte: end }, 구분: { $eq: 구분 } });
+			await delay();
+		}
 	}
 
 	if (BSA재제조_v == null) return;
@@ -196,12 +207,22 @@ async function BMA_info(begin = '', end = '', 구분 = 'all') {
 	var counts = [];
 	var types_list = [];
 
-	if (begin == '' || end == '' || 구분 == 'all') {
-		find_고품정보(고품정보, { 품명: 'BMA', 폐기여부: '폐기' });
-		await delay();
+	if (begin == '' || end == '') {
+		if(구분 == 'all') {
+			find_고품정보(고품정보, { 품명: 'BMA', 폐기여부: '폐기' });
+			await delay();
+		} else {
+			find_고품정보(고품정보, { 품명: 'BMA', 폐기여부: '폐기', 구분 : {$eq : 구분} });
+			await delay();
+		}
 	} else {
-		find_고품정보(고품정보, { 품명: 'BMA', 폐기여부: '폐기', 등록일: { $gte: begin, $lte: end }, 구분: 구분 });
-		await delay();
+		if(구분 == 'all') {
+			find_고품정보(고품정보, { 품명: 'BMA', 폐기여부: '폐기', 등록일: { $gte: begin, $lte: end }});
+			await delay();
+		} else {
+			find_고품정보(고품정보, { 품명: 'BMA', 폐기여부: '폐기', 등록일: { $gte: begin, $lte: end }, 구분: {$eq: 구분} });
+			await delay();
+		}
 	}
 
 	if (고품정보_v == null) return;
@@ -245,12 +266,22 @@ async function 자재재료_info(begin = '', end = '', 구분 = 'all') {
 	var types_list = [];
 	var 품명_list = [];
 
-	if (begin == '' || end == '' || 구분 == 'all') {
-		find_고품정보(고품정보, { 폐기여부: '자재' });
-		await delay();
+	if (begin == '' || end == '') {
+		if(구분 == 'all') {
+			find_고품정보(고품정보, { 폐기여부: '자재' });
+			await delay();
+		} else {
+			find_고품정보(고품정보, { 폐기여부: '자재', 구분 : { $eq : 구분}});
+			await delay();
+		}
 	} else {
-		find_고품정보(고품정보, { 폐기여부: '자재', 등록일: { $gte: begin, $lte: end }, 구분: 구분 });
-		await delay();
+		if(구분 == 'all') {
+			find_고품정보(고품정보, { 폐기여부: '자재', 등록일: { $gte: begin, $lte: end }});
+			await delay();
+		} else {
+			find_고품정보(고품정보, { 폐기여부: '자재', 등록일: { $gte: begin, $lte: end }, 구분: { $eq : 구분} });
+			await delay();
+		}
 	}
 
 	if (고품정보_v == null) return;
