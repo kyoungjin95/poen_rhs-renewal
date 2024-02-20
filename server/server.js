@@ -573,102 +573,84 @@ function file_list(list) {
 		
 		var n = 1;
 		if(list.f1 != '') {
-			try {
-				var old_path = 'excel/tmp/excel' + n + '.csv';
-				var new_path = 'excel/' + list.관리번호 + '/excel1.csv';
-				fs.rename(old_path, new_path, function(err) {
-					if(err) throw err;
-					console.log('successfully rename');
-				});
-				n++;
-			} catch(err) {
-				console.error(err);
-				logger.info(err);
-			} finally {
-			}
-
+			var old_path = 'excel/tmp/excel' + n + '.csv';
+			var new_path = 'excel/' + list.관리번호 + '/excel1.csv';
+			fs.rename(old_path, new_path, function(err) {
+				if(err) {
+					console.log(err);
+					console.log('fail rename');
+				}
+				console.log('successfully rename');
+			});
+			n++;
 		} 
 
 		if(list.f2 != '') {
-			try {
-				var old_path = 'excel/tmp/excel' + n + '.csv';
-				var new_path = 'excel/' + list.관리번호 + '/excel2.csv';
-				fs.rename(old_path, new_path, function(err) {
-					if(err) throw err;
-					console.log('successfully rename');
-				});
-				n++;
-			} catch(err) {
-				console.error(err);
-				logger.info(err);
-			} finally {
-			}
+			var old_path = 'excel/tmp/excel' + n + '.csv';
+			var new_path = 'excel/' + list.관리번호 + '/excel2.csv';
+			fs.rename(old_path, new_path, function(err) {
+				if(err) {
+					console.log(err);
+					console.log('fail rename');
+				}
+				console.log('successfully rename');
+			});
+			n++;
 		}
 
 		if(list.f3 != '') {
-			try {
-				var old_path = 'excel/tmp/excel' + n + '.csv';
-				var new_path = 'excel/' + list.관리번호 + '/excel3.csv';
-				fs.rename(old_path, new_path, function(err) {
-					if(err) throw err;
-					console.log('successfully rename');
-				});
-				n++;
-			} catch(err) {
-				console.error(err);
-				logger.info(err);
-			} finally {
-			}
+			var old_path = 'excel/tmp/excel' + n + '.csv';
+			var new_path = 'excel/' + list.관리번호 + '/excel3.csv';
+			fs.rename(old_path, new_path, function(err) {
+				if(err) {
+					console.log(err);
+					console.log('fail rename');
+				}
+				console.log('successfully rename');
+			});
+			n++;
 		}
 
 		if(list.f4 != '') {
-			try {
-				var old_path = 'excel/tmp/excel' + n + '.csv';
-				var new_path = 'excel/' + list.관리번호 + '/excel4.csv';
-				fs.rename(old_path, new_path, function(err) {
-					if(err) throw err;
-					console.log('successfully rename');
-				});
-				n++
-			} catch(err) {
-				console.error(err);
-				logger.info(err);
-			} finally {
-			}
+			var old_path = 'excel/tmp/excel' + n + '.csv';
+			var new_path = 'excel/' + list.관리번호 + '/excel4.csv';
+			fs.rename(old_path, new_path, function(err) {
+				if(err) {
+					console.log(err);
+					console.log('fail rename');
+				}
+				console.log('successfully rename');
+			});
+			n++
 		}
 
 		if(list.f5 != '') {
-			try {
-				var old_path = 'excel/tmp/excel' + n + '.csv';
-				var new_path = 'excel/' + list.관리번호 + '/excel5.csv';
-				fs.rename(old_path, new_path, function(err) {
-					if(err) throw err;
-					console.log('successfully rename');
-				});
-				n++;
-			} catch(err) {
-				console.error(err);
-				logger.info(err);
-			} finally {
-			}
+			var old_path = 'excel/tmp/excel' + n + '.csv';
+			var new_path = 'excel/' + list.관리번호 + '/excel5.csv';
+			fs.rename(old_path, new_path, function(err) {
+				if(err) {
+					console.log(err);
+					console.log('fail rename');
+				}
+				console.log('successfully rename');
+			});
+			n++;
 		}
 
 		if(list.f6 != '') {
-			try {
-				var old_path = 'excel/tmp/excel' + n + '.csv';
-				var new_path = 'excel/' + list.관리번호 + '/excel6.csv';
-				fs.rename(old_path, new_path, function(err) {
-					if(err) throw err;
-					console.log('successfully rename');
-				});
-			} catch(err) {
-				console.error(err);
-				logger.info(err);
-			} finally {
-			}
+			var old_path = 'excel/tmp/excel' + n + '.csv';
+			var new_path = 'excel/' + list.관리번호 + '/excel6.csv';
+			fs.rename(old_path, new_path, function(err) {
+				if(err) {
+					console.log(err);
+					console.log('fail rename');
+				}
+				console.log('successfully rename');
+			});
 		}
 		return true;
 	} catch(err) {
+		console.log(err);
 		return false;
 	} finally {
 	}

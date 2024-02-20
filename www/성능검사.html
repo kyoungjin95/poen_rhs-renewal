@@ -328,6 +328,11 @@
             </table>
           </form>
         </div>
+	<div>
+		<center>
+			<p id='_process'>파일 업로드 STATUS</p>
+		</center>
+	</div>
         <div class="input-group">
           <div class="input-btn-group">
             <button onClick="성능검사_save();">저장</button>
@@ -342,6 +347,7 @@
       </div>
     </section>
     <script>
+      const _process = document.getElementById('_process');
       const _bnt_upload = document.getElementById("_btn_upload");
       const _form = document.getElementById("form");
       const _management_id = document.getElementById("_management_id");

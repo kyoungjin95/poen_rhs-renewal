@@ -191,13 +191,18 @@ async function 성능검사_save() {
 
 async function file_upload() {
 	_btn_upload.disabled = true;
+	_process.style.color = 'red';
+	_process.innerHTML= '파일 업로드 중입니다.';
+
 	//_form.submit();
 	_file_upload();
 
-	await sleep(1000 * 4);
+	await sleep(1000 * 10);
 
 	_send_filelist();
 	_btn_upload.disabled = false;
+	_process.style.color = 'blue';
+	_process.innerHTML = '파일 업로드 완료하였습니다.';
 }
 
 function 성능검사_updateFilter() {

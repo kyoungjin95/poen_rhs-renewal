@@ -56,7 +56,7 @@ async function login() {
         }
       }, 1000);
       await sleep(1);
-      alert('#공지사항#\nVersion update sky 0.52\n1. 성능검사 파일 업로드시 그래프 만듬.\n2. 성능검사 파일 업로드시 자동 값 추출\n3.수량집계 버그 수정');
+      alert('#공지사항#\nVersion update sky 0.54\n1.구버전 분해조립 버그 수정\n2. EOL에 보관랙 지정 버튼 추가\n.3.공정입력 선택창에서 출하 버튼 기능 추가(보관렉에서 클릭시 해당 배터리팩 자동 출하처리)\n4. 신품엑셀 문서 등록기능에서 QR이 없어도 등록하도록 수정');
     } else if (worker == _id.value) {
       worker = "";
       level = "";

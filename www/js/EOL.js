@@ -492,7 +492,7 @@ async function EOL_SAVE() {
   await delay();
 
   select_pos = "";
-  await 공정단계자동입력(_management_id.value.trim().toUpperCase());
+  await 공정단계자동입력(관리번호);
 
   var _pic_doc = JSON.parse(JSON.stringify(EOL_pic_doc));
   _pic_doc.관리번호 = _management_id.value.trim().toUpperCase();

@@ -31,6 +31,8 @@ async function 분해조립_시작(is재제조 = 0) {
 		return;
 	}
 
+	await sleep(1);
+
 	if (flag_분해조립 == true) await 분해조립_list();
 
 	flag_분해조립 = false;
@@ -799,184 +801,6 @@ async function 분해조립_시작(is재제조 = 0) {
 				}
 			}
 		});
-
-		tbody.addEventListener("dblclick", function (e) {
-			const cell = e.target.closest("td");
-			if (!cell) return;
-			const row = cell.parentElement;
-			const row_index = row.rowIndex;
-			const cell_index = cell.cellIndex;
-			console.log("row:", row_index);
-			console.log("col:", cell_index);
-			if (row_index < 2 || cell_index != 2) return;
-			var str = row.children.innerText;
-			var type = str.slice(0, -2);
-			var no = str.slice(-2);
-			console.log("type:", type, "no:", no);
-			if (no != 1) {
-				_delete_row(row_index, no, type);
-			}
-
-			if (str == "BMU 1") {
-				if (BMU_count != 10) {
-					var cnt = prompt("#No를 입력하세요");
-					if (BMU_count >= cnt) return;
-
-					for (var i = BMU_count; i < cnt; i++) {
-						BMU_count++;
-						type_add("BMU", "BMU", row_index, BMU_count);
-					}
-				}
-			}
-			if (str == "CMU 1") {
-				if (CMU_count != 10) {
-					var cnt = prompt("#No를 입력하세요");
-					if (CMU_count >= cnt) return;
-
-					for (var i = CMU_count; i < cnt; i++) {
-						CMU_count++;
-						type_add("CMU", "CMU", row_index, CMU_count);
-					}
-				}
-			}
-			if (str == "PRA 1") {
-				if (PRA_count != 10) {
-					var cnt = prompt("#No를 입력하세요");
-					if (PRA_count >= cnt) return;
-
-					for (var i = PRA_count; i < cnt; i++) {
-						PRA_count++;
-						type_add("PRA", "PRA", row_index, PRA_count);
-					}
-				}
-			}
-			if (str == "SPA 1") {
-				if (SPA_count != 10) {
-					var cnt = prompt("#No를 입력하세요");
-					if (SPA_count >= cnt) return;
-
-					for (var i = SPA_count; i < cnt; i++) {
-						SPA_count++;
-						type_add("SPA", "SPA", row_index, SPA_count);
-					}
-				}
-			}
-			if (str == "LWR Case 1") {
-				if (LWR_C_count != 10) {
-					var cnt = prompt("#No를 입력하세요");
-					if (LWR_C_count >= cnt) return;
-
-					for (var i = LWR_C_count; i < cnt; i++) {
-						LWR_C_count++;
-						type_add("LWR Case", "LWR_C", row_index, LWR_C_count);
-					}
-				}
-			}
-			if (str == "UPR Case 1") {
-				if (UPR_C_count != 10) {
-					var cnt = prompt("#No를 입력하세요");
-					if (UPR_C_count >= cnt) return;
-
-					for (var i = UPR_C_count; i < cnt; i++) {
-						UPR_C_count++;
-						type_add("UPR Case", "UPR_C", row_index, UPR_C_count);
-					}
-				}
-			}
-			if (str == "Relay 1") {
-				if (Relay_count != 10) {
-					var cnt = prompt("#No를 입력하세요");
-					if (Relay_count >= cnt) return;
-
-					for (var i = Relay_count; i < cnt; i++) {
-						Relay_count++;
-						type_add("Relay", "Relay", row_index, Relay_count);
-					}
-				}
-			}
-			if (str == "HV CNTR 1") {
-				if (HV_CNTR_count != 10) {
-					var cnt = prompt("#No를 입력하세요");
-					if (HV_CNTR_count >= cnt) return;
-
-					for (var i = HV_CNTR_count; i < cnt; i++) {
-						HV_CNTR_count++;
-						type_add("HV CNTR", "HV_CNTR", row_index, HV_CNTR_count);
-					}
-				}
-			}
-			if (str == "Heating CNTR 1") {
-				if (Heating_CNTR_count != 10) {
-					var cnt = prompt("#No를 입력하세요");
-					if (Heating_CNTR_count >= cnt) return;
-
-					for (var i = Heating_CNTR_count; i < cnt; i++) {
-						Heating_CNTR_count++;
-						type_add(
-							"Heating CNTR",
-							"Heating_CNTR",
-							row_index,
-							Heating_CNTR_count
-						);
-					}
-				}
-			}
-			if (str == "FuseBox 1") {
-				if (FuseBox_count != 10) {
-					var cnt = prompt("#No를 입력하세요");
-					if (FuseBox_count >= cnt) return;
-
-					for (var i = FuseBox_count; i < cnt; i++) {
-						FuseBox_count++;
-						type_add("FuseBox", "FuseBox", row_index, FuseBox_count);
-					}
-				}
-			}
-			if (str == "LV W/H 1") {
-				if (LV_W_H_count != 10) {
-					var cnt = prompt("#No를 입력하세요");
-					if (LV_W_H_count >= cnt) return;
-
-					for (var i = LV_W_H_count; i < cnt; i++) {
-						LV_W_H_count++;
-						type_add("LV W/H", "LV_W_H", row_index, LV_W_H_count);
-					}
-				}
-			}
-			if (str == "HV W/H 1") {
-				if (HV_W_H_count != 10) {
-					var cnt = prompt("#No를 입력하세요");
-					if (HV_W_H_count >= cnt) return;
-
-					for (var i = HV_W_H_count; i < cnt; i++) {
-						HV_W_H_count++;
-						type_add("HV W/H", "HV_W_H", row_index, HV_W_H_count);
-					}
-				}
-			}
-			if (str == "온도센서 1") {
-				if (온도센서_count != 10) {
-					var cnt = prompt("#No를 입력하세요");
-					if (온도센서_count >= cnt) return;
-
-					for (var i = 온도센서_count; i < cnt; i++) {
-						온도센서_count++;
-						type_add("온도센서", "온도센서", row_index, 온도센서_count);
-					}
-				}
-			}
-			if (str == "배터리모듈 1") {
-				if (BMA_count != 10) {
-					var cnt = prompt("#No를 입력하세요");
-					if (BMA_count >= cnt) return;
-
-					for (var i = BMA_count; i < cnt; i++) {
-						BMA_count++;
-						type_add("배터리모듈", "BMA", row_index, BMA_count);
-					}
-				}
-			}
-		});
 	}
 }
 
@@ -1486,85 +1310,85 @@ function _delete_all() {
 	const _tb = document.getElementById("_tb");
 
 	while (BMA_count > 1) {
-		var index = _tb.rows.length - 4;
+		var index = _tb.rows.length - 5;
 		_tb.deleteRow(index);
 		BMA_count--;
 	}
 
 	while (온도센서_count > 1) {
-		var index = _tb.rows.length - 8;
+		var index = _tb.rows.length - 9;
 		_tb.deleteRow(index);
 		온도센서_count--;
 	}
 
 	while (HV_W_H_count > 1) {
-		var index = _tb.rows.length - 10;
+		var index = _tb.rows.length - 11;
 		_tb.deleteRow(index);
 		HV_W_H_count--;
 	}
 
 	while (LV_W_H_count > 1) {
-		var index = _tb.rows.length - 12;
+		var index = _tb.rows.length - 13;
 		_tb.deleteRow(index);
 		LV_W_H_count--;
 	}
 
 	while (FuseBox_count > 1) {
-		var index = _tb.rows.length - 14;
+		var index = _tb.rows.length - 15;
 		_tb.deleteRow(index);
 		FuseBox_count--;
 	}
 
 	while (Heating_CNTR_count > 1) {
-		var index = _tb.rows.length - 16;
+		var index = _tb.rows.length - 17;
 		_tb.deleteRow(index);
 		Heating_CNTR_count--;
 	}
 
 	while (HV_CNTR_count > 1) {
-		var index = _tb.rows.length - 18;
+		var index = _tb.rows.length - 19;
 		_tb.deleteRow(index);
 		HV_CNTR_count--;
 	}
 
 	while (Relay_count > 1) {
-		var index = _tb.rows.length - 20;
+		var index = _tb.rows.length - 21;
 		_tb.deleteRow(index);
 		Relay_count--;
 	}
 
 	while (UPR_C_count > 1) {
-		var index = _tb.rows.length - 26;
+		var index = _tb.rows.length - 27;
 		_tb.deleteRow(index);
 		UPR_C_count--;
 	}
 
 	while (LWR_C_count > 1) {
-		var index = _tb.rows.length - 28;
+		var index = _tb.rows.length - 29;
 		_tb.deleteRow(index);
 		LWR_C_count--;
 	}
 
 	while (SPA_count > 1) {
-		var index = _tb.rows.length - 30;
+		var index = _tb.rows.length - 31;
 		_tb.deleteRow(index);
 		SPA_count--;
 	}
 
 	while (PRA_count > 1) {
-		var index = _tb.rows.length - 32;
+		var index = _tb.rows.length - 33;
 		_tb.deleteRow(index);
 		PRA_count--;
 	}
 
 	while (CMU_count > 1) {
-		var index = _tb.rows.length - 34;
+		var index = _tb.rows.length - 35;
 		_tb.deleteRow(index);
 		CMU_count--;
 	}
 
 	while (BMU_count > 1) {
-		var index = _tb.rows.length - 36;
+		var index = _tb.rows.length - 37;
 		_tb.deleteRow(index);
 		BMU_count--;
 	}
