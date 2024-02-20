@@ -573,62 +573,99 @@ function file_list(list) {
 		
 		var n = 1;
 		if(list.f1 != '') {
-			var old_path = 'excel/tmp/excel' + n + '.csv';
-			var new_path = 'excel/' + list.관리번호 + '/excel1.csv';
-			fs.rename(old_path, new_path, function(err) {
-				if(err) throw err;
-				console.log('successfully rename');
-			});
-			n++;
+			try {
+				var old_path = 'excel/tmp/excel' + n + '.csv';
+				var new_path = 'excel/' + list.관리번호 + '/excel1.csv';
+				fs.rename(old_path, new_path, function(err) {
+					if(err) throw err;
+					console.log('successfully rename');
+				});
+				n++;
+			} catch(err) {
+				console.error(err);
+				logger.info(err);
+			} finally {
+			}
+
 		} 
-			
+
 		if(list.f2 != '') {
-			var old_path = 'excel/tmp/excel' + n + '.csv';
-			var new_path = 'excel/' + list.관리번호 + '/excel2.csv';
-			fs.rename(old_path, new_path, function(err) {
-				if(err) throw err;
-				console.log('successfully rename');
-			});
-			n++;
+			try {
+				var old_path = 'excel/tmp/excel' + n + '.csv';
+				var new_path = 'excel/' + list.관리번호 + '/excel2.csv';
+				fs.rename(old_path, new_path, function(err) {
+					if(err) throw err;
+					console.log('successfully rename');
+				});
+				n++;
+			} catch(err) {
+				console.error(err);
+				logger.info(err);
+			} finally {
+			}
 		}
 
 		if(list.f3 != '') {
-			var old_path = 'excel/tmp/excel' + n + '.csv';
-			var new_path = 'excel/' + list.관리번호 + '/excel3.csv';
-			fs.rename(old_path, new_path, function(err) {
-				if(err) throw err;
-				console.log('successfully rename');
-			});
-			n++;
+			try {
+				var old_path = 'excel/tmp/excel' + n + '.csv';
+				var new_path = 'excel/' + list.관리번호 + '/excel3.csv';
+				fs.rename(old_path, new_path, function(err) {
+					if(err) throw err;
+					console.log('successfully rename');
+				});
+				n++;
+			} catch(err) {
+				console.error(err);
+				logger.info(err);
+			} finally {
+			}
 		}
 
 		if(list.f4 != '') {
-			var old_path = 'excel/tmp/excel' + n + '.csv';
-			var new_path = 'excel/' + list.관리번호 + '/excel4.csv';
-			fs.rename(old_path, new_path, function(err) {
-				if(err) throw err;
-				console.log('successfully rename');
-			});
-			n++
+			try {
+				var old_path = 'excel/tmp/excel' + n + '.csv';
+				var new_path = 'excel/' + list.관리번호 + '/excel4.csv';
+				fs.rename(old_path, new_path, function(err) {
+					if(err) throw err;
+					console.log('successfully rename');
+				});
+				n++
+			} catch(err) {
+				console.error(err);
+				logger.info(err);
+			} finally {
+			}
 		}
 
 		if(list.f5 != '') {
-			var old_path = 'excel/tmp/excel' + n + '.csv';
-			var new_path = 'excel/' + list.관리번호 + '/excel5.csv';
-			fs.rename(old_path, new_path, function(err) {
-				if(err) throw err;
-				console.log('successfully rename');
-			});
-			n++;
+			try {
+				var old_path = 'excel/tmp/excel' + n + '.csv';
+				var new_path = 'excel/' + list.관리번호 + '/excel5.csv';
+				fs.rename(old_path, new_path, function(err) {
+					if(err) throw err;
+					console.log('successfully rename');
+				});
+				n++;
+			} catch(err) {
+				console.error(err);
+				logger.info(err);
+			} finally {
+			}
 		}
 
 		if(list.f6 != '') {
-			var old_path = 'excel/tmp/excel' + n + '.csv';
-			var new_path = 'excel/' + list.관리번호 + '/excel6.csv';
-			fs.rename(old_path, new_path, function(err) {
-				if(err) throw err;
-				console.log('successfully rename');
-			});
+			try {
+				var old_path = 'excel/tmp/excel' + n + '.csv';
+				var new_path = 'excel/' + list.관리번호 + '/excel6.csv';
+				fs.rename(old_path, new_path, function(err) {
+					if(err) throw err;
+					console.log('successfully rename');
+				});
+			} catch(err) {
+				console.error(err);
+				logger.info(err);
+			} finally {
+			}
 		}
 		return true;
 	} catch(err) {
@@ -666,50 +703,50 @@ function DCIRcsvFileToJSON(path) {
 }
 
 function csvToJSON(csv_string){
-    const rows = csv_string.split("\r\n");
-    const jsonArray = [];
-    const header = rows[0].split(",");
-    console.log(header);   
+	const rows = csv_string.split("\r\n");
+	const jsonArray = [];
+	const header = rows[0].split(",");
+	console.log(header);   
 
-    for(let i = 1; i < rows.length; i++){
-        let obj = {};
-        let row = rows[i].split(",");
+	for(let i = 1; i < rows.length; i++){
+		let obj = {};
+		let row = rows[i].split(",");
 
-        for(let j=0; j < header.length; j++){
-            obj[header[j]] = row[j];
-        }
-  
-        jsonArray.push(obj);
-  
-    }
-    
-    return JSON.stringify(jsonArray);
+		for(let j=0; j < header.length; j++){
+			obj[header[j]] = row[j];
+		}
+
+		jsonArray.push(obj);
+
+	}
+
+	return JSON.stringify(jsonArray);
 }
 
 function DCIRcsvToJSON(csv_string) {
-    const rows = csv_string.split("\r\n");
-    const jsonArray = [];
-    const header = [ "Time", "Channel", "EndReason", "LoopCount", "CycleNo",
-  		     "StepNo", "StepType", "StepTime", "TotTime", "Volt(V)",
-                     "Curr(A)", "Cap(Ah)", "TotalCap(Ah)", "ChargeCap(Ah)",
-                     "DischargeCap(Ah)", "Watt(W)", "WH(Wh)", "TotalWH(Wh)",
-                     "ChargeWH(Wh)", "DischargeWH", "DCIR",
-                     "AvgCur(A)"]
-    console.log(header);   
+	const rows = csv_string.split("\r\n");
+	const jsonArray = [];
+	const header = [ "Time", "Channel", "EndReason", "LoopCount", "CycleNo",
+		"StepNo", "StepType", "StepTime", "TotTime", "Volt(V)",
+		"Curr(A)", "Cap(Ah)", "TotalCap(Ah)", "ChargeCap(Ah)",
+		"DischargeCap(Ah)", "Watt(W)", "WH(Wh)", "TotalWH(Wh)",
+		"ChargeWH(Wh)", "DischargeWH", "DCIR",
+		"AvgCur(A)"]
+	console.log(header);   
 
-    for(let i = 1; i < rows.length; i++){
-        let obj = {};
-        let row = rows[i].split(",");
+	for(let i = 1; i < rows.length; i++){
+		let obj = {};
+		let row = rows[i].split(",");
 
-        for(let j=0; j < header.length; j++){
-            obj[header[j]] = row[j];
-        }
-  
-        jsonArray.push(obj);
-  
-    }
-    
-    return JSON.stringify(jsonArray);
+		for(let j=0; j < header.length; j++){
+			obj[header[j]] = row[j];
+		}
+
+		jsonArray.push(obj);
+
+	}
+
+	return JSON.stringify(jsonArray);
 }
 
 async function 부품_info(begin = '', end = '', 구분 = 'all') {

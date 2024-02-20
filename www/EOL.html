@@ -393,16 +393,12 @@
                 <label for="_고장코드유무">고장코드 유무</label>
               </td>
               <td>
-                <select name="language" onchange="">
+                <input type="text" id="_고장코드" size="40" value required />
+                <select id='고장코드유무' name="language" onchange="">
                   <option value="">---</option>
                   <option value="OK">OK</option>
                   <option value="미실시">미실시</option>
                 </select>
-              </td>
-            </tr>
-            <tr>
-              <td colspan="2" style="text-align: center">
-                <button onClick="_EOL_add_DTC_Code();">Add DTC Code(+)</button>
               </td>
             </tr>
             <tr>
@@ -611,24 +607,25 @@
       const _공정입고일 = document.getElementById("_공정입고일");
 
       const _육안검사_외부_box = document.getElementById("_육안검사_외부_box");
-      const _육안검사_외부_img = document.getElementById("_육안검사_외부_img");
+      const _육안검사_외부_img = document.getElementById("_육안검사_외부_img");//1
       const _육안검사_내부_box = document.getElementById("_육안검사_내부_box");
-      const _육안검사_내부_img = document.getElementById("_육안검사_내부_img");
+      const _육안검사_내부_img = document.getElementById("_육안검사_내부_img");//2
 
       const _기밀검사_케이스 = document.getElementById("_기밀검사_케이스");
-      const _기밀검사_케이스_img = document.getElementById("_기밀검사_케이스_img");
+      const _기밀검사_케이스_img = document.getElementById("_기밀검사_케이스_img");//3
       const _기밀검사_냉각유로 = document.getElementById("_기밀검사_냉각유로");
-      const _기밀검사_냉각유로_img = document.getElementById("_기밀검사_냉각유로_img");
+      const _기밀검사_냉각유로_img = document.getElementById("_기밀검사_냉각유로_img");//4
       const _절연검사P = document.getElementById("_절연검사P");
       const _절연검사M = document.getElementById("_절연검사M");
       const _절연저항HVP = document.getElementById("_절연저항HVP");
       const _절연저항HVN = document.getElementById("_절연저항HVN");
       const _UPR_C조립 = document.getElementById("_UPR_C조립");
       const _UPR_C조립_특이사항 = document.getElementById("_UPR_C조립_특이사항");
-      const _고장코드진단 = document.getElementById("_고장코드진단");
+      const _고장코드 = document.getElementById("_고장코드");
+      const _고장코드유무 = document.getElementById("_고장코드유무");
 
       const _통신검사_팩전압 = document.getElementById("_통신검사_팩전압");
-      const _통신검사_팩전압_img = document.getElementById("_통신검사_팩전압_img");
+      const _통신검사_팩전압_img = document.getElementById("_통신검사_팩전압_img");//5
       const _통신검사_셀전압편차 = document.getElementById("_통신검사_셀전압편차");
       const _셀전압MAX = document.getElementById("_셀전압MAX");
       const _셀전압MIN = document.getElementById("_셀전압MIN");
@@ -646,7 +643,6 @@
       const _공정흐름_이슈 = document.getElementById("_공정흐름_이슈");
       const _용량평가값 = document.getElementById("_용량평가값");
       const _검사자 = document.getElementById("_검사자");
-      const _QR_Code = document.getElementById("_QR_Code");
       const _canvas = document.getElementById("_canvas");
 
       const _img1 = document.get.getElementById("_img1");
