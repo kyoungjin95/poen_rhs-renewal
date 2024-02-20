@@ -186,6 +186,15 @@ async function 성능검사_save() {
 	var update_cnt = update_count;
 	var insert_cnt = insert_count;
 
+	var doc = {
+		관리번호 : 관리번호,
+		성능검사투입일 : _공정입고일.value,
+		성능검사 : _공정완료일.value
+	}
+	
+	update(BSA재제조, doc);
+	await delay();
+
 	//이전페이지();
 }
 

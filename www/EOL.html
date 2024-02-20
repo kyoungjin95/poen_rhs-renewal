@@ -170,27 +170,27 @@
               <td class="process__img img-box">
                 <div class="images">
                   <h3>top</h3>
-                  <img id="_img5" />
+                  <img id="_img1" />
                 </div>
                 <div class="images">
                   <h3>front</h3>
-                  <img id="_img6" />
+                  <img id="_img2" />
                 </div>
                 <div class="images">
                   <h3>left</h3>
-                  <img id="_img7" />
+                  <img id="_img3" />
                 </div>
                 <div class="images">
                   <h3>bottom</h3>
-                  <img id="_img8" />
+                  <img id="_img4" />
                 </div>
                 <div class="images">
                   <h3>rear</h3>
-                  <img id="_img9" />
+                  <img id="_img5" />
                 </div>
                 <div class="images">
                   <h3>right</h3>
-                  <img id="_img10" />
+                  <img id="_img6" />
                 </div>
               </td>
             </tr>
@@ -211,19 +211,19 @@
               <td colspan="2" class="process__img img-box">
                 <div class="images">
                   <h3>전체사진</h3>
-                  <img id="_img2" />
+                  <img id="_img7" />
                 </div>
                 <div class="images">
                   <h3>BMU</h3>
-                  <img id="_img3" />
+                  <img id="_img8" />
                 </div>
                 <div class="images">
                   <h3>CMU</h3>
-                  <img id="_img4" />
+                  <img id="_img9" />
                 </div>
                 <div class="images">
                   <h3>PRA</h3>
-                  <img id="_img5" />
+                  <img id="_img10" />
                 </div>
               </td>
             </tr>
@@ -244,11 +244,11 @@
               <td class="process__img img-box">
                 <div class="images">
                   <h3>전체</h3>
-                  <img id="_img1" />
+                  <img id="_img11" />
                 </div>
                 <div class="images">
                   <h3>확대</h3>
-                  <img id="_img2" />
+                  <img id="_img12" />
                 </div>
               </td>
             </tr>
@@ -270,11 +270,11 @@
               <td class="process__img img-box">
                 <div class="images">
                   <h3>전체</h3>
-                  <img id="_img3" />
+                  <img id="_img13" />
                 </div>
                 <div class="images">
                   <h3>확대</h3>
-                  <img id="_img4" />
+                  <img id="_img14" />
                 </div>
               </td>
             </tr>
@@ -298,11 +298,11 @@
               <td class="process__img img-box">
                 <div class="images">
                   <h3>전체</h3>
-                  <img id="_img5" />
+                  <img id="_img15" />
                 </div>
                 <div class="images">
                   <h3>확대</h3>
-                  <img id="_img6" />
+                  <img id="_img16" />
                 </div>
               </td>
             </tr>
@@ -325,10 +325,10 @@
             <tr id="_절연검사M_img">
               <td class="process__img img-box">
                 <div class="images top">
-                  <img id="_img7" />
+                  <img id="_img17" />
                 </div>
                 <div class="images top">
-                  <img id="_img8" />
+                  <img id="_img18" />
                 </div>
               </td>
             </tr>
@@ -346,7 +346,7 @@
               </td>
               <td class="process__img once">
                 <div class="images">
-                  <img id="_img9" width="100vw" height="100vh" />
+                  <img id="_img19" width="100vw" height="100vh" />
                 </div>
               </td>
             </tr>
@@ -364,7 +364,7 @@
               </td>
               <td class="process__img once">
                 <div class="images">
-                  <img id="_img10" width="100vw" height="100vh" />
+                  <img id="_img20" width="100vw" height="100vh" />
                 </div>
               </td>
             </tr>
@@ -375,15 +375,15 @@
               <td class="process__img img-box">
                 <div class="images">
                   <h3>고장코드 진단(현재)</h3>
-                  <img id="_img11" />
+                  <img id="_img21" />
                 </div>
                 <div class="images">
                   <h3>고장코드 진단(과거)</h3>
-                  <img id="_img12" />
+                  <img id="_img22" />
                 </div>
                 <div class="images">
                   <h3>센서데이터</h3>
-                  <img id="_img13" />
+                  <img id="_img23" />
                 </div>
               </td>
             </tr>
@@ -418,11 +418,11 @@
               <td class="process__img img-box">
                 <div class="images">
                   <h3>EOL 항목</h3>
-                  <img id="_img14" />
+                  <img id="_img24" />
                 </div>
                 <div class="images">
                   <h3>CELL 전압</h3>
-                  <img id="_img15" />
+                  <img id="_img25" />
                 </div>
               </td>
             </tr>
@@ -462,6 +462,7 @@
                 <label for="_통신검사_릴레이구동">통신검사 릴레이 구동</label>
               </td>
               <td>
+                <input type="text" id="_통신검사_릴레이구동" size="40" required />
                 <select name="language" onchange="_통신검사_릴레이구동_콤보박스(this);">
                   <option value="">---</option>
                   <option value="통신불가">통신불가</option>
@@ -604,6 +605,9 @@
       const _management_id = document.getElementById("_management_id");
       const _재제조번호 = document.getElementById("_재제조번호");
       const _RO_no = document.getElementById("_RO_no");
+      const _구분 = document.getElementById("_구분");
+      const _차종 = document.getElementById("_차종");
+      const _품번 = document.getElementById("_품번");
       const _공정입고일 = document.getElementById("_공정입고일");
 
       const _육안검사_외부_box = document.getElementById("_육안검사_외부_box");

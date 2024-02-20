@@ -22,9 +22,15 @@ async function EOL_시작(is재제조 = 0) {
     if (BSA재제조_v != null) {
       _재제조번호.value = BSA재제조_v.재제조번호;
       _RO_no.value = BSA재제조_v.RO_no;
+      _구분.value = BSA재제조_v.구분;
+      _차종.value = BSA재제조_v.차종;
+      _품번.value = BSA재제조_v.품번;
     } else {
       _재제조번호.value = "";
       _RO_no.value = "";
+      _구분.value = "";
+      _차종.value = "";
+      _품번.value = "";
     }
   } else if (is재제조 == 1) {
     if (_재제조번호.value.length == 0) return;
@@ -35,9 +41,15 @@ async function EOL_시작(is재제조 = 0) {
     if (BSA재제조_v != null) {
       _management_id.value = BSA재제조_v.관리번호;
       _RO_no.value = BSA재제조_v.RO_no;
+      _구분.value = BSA재제조_v.구분;
+      _차종.value = BSA재제조_v.차종;
+      _품번.value = BSA재제조_v.품번;
     } else {
       _management_id.value = "";
       _RO_no.value = "";
+      _구분.value = "";
+      _차종.value = "";
+      _품번.value = "";
     }
   } else if (is재제조 == 2) {
     if (_RO_no.value.length == 0) return;
@@ -48,9 +60,15 @@ async function EOL_시작(is재제조 = 0) {
     if (BSA재제조_v != null) {
       _management_id.value = BSA재제조_v.관리번호;
       _재제조번호.value = BSA재제조_v.재제조번호;
+      _구분.value = BSA재제조_v.구분;
+      _차종.value = BSA재제조_v.차종;
+      _품번.value = BSA재제조_v.품번;
     } else {
       _management_id.value = "";
       _재제조번호.value = "";
+      _구분.value = "";
+      _차종.value = "";
+      _품번.value = "";
     }
   }
 
@@ -107,6 +125,14 @@ async function EOL_시작(is재제조 = 0) {
       _img15.src = EOL_pic_v.pic15;
       _img16.src = EOL_pic_v.pic16;
       _img17.src = EOL_pic_v.pic17;
+      _img18.src = EOL_pic_v.pic18;
+      _img19.src = EOL_pic_v.pic19;
+      _img20.src = EOL_pic_v.pic20;
+      _img21.src = EOL_pic_v.pic21;
+      _img22.src = EOL_pic_v.pic22;
+      _img23.src = EOL_pic_v.pic23;
+      _img24.src = EOL_pic_v.pic24;
+      _img25.src = EOL_pic_v.pic25;
     }
   } else {
     var DateTime = luxon.DateTime;
@@ -154,6 +180,14 @@ async function EOL_시작(is재제조 = 0) {
     _img15.src = "";
     _img16.src = "";
     _img17.src = "";
+    _img18.src = "";
+    _img19.src = "";
+    _img20.src = "";
+    _img21.src = "";
+    _img22.src = "";
+    _img23.src = "";
+    _img24.src = "";
+    _img25.src = "";
   }
 
   _img1.ondblclick = function (evt) {
@@ -340,6 +374,94 @@ async function EOL_시작(is재제조 = 0) {
     }
     evt.preventDefault();
   };
+  _img18.ondblclick = function (evt) {
+    _img18.src = "";
+  };
+  _img18.ondrop = function (evt) {
+    var files = evt.dataTransfer?.files;
+    if (files.length > 0) {
+      console.log("drag & drop");
+      resize_pic(files[0], _img18);
+    }
+    evt.preventDefault();
+  };
+  _img19.ondblclick = function (evt) {
+    _img19.src = "";
+  };
+  _img19.ondrop = function (evt) {
+    var files = evt.dataTransfer?.files;
+    if (files.length > 0) {
+      console.log("drag & drop");
+      resize_pic(files[0], _img19);
+    }
+    evt.preventDefault();
+  };
+  _img20.ondblclick = function (evt) {
+    _img20.src = "";
+  };
+  _img20.ondrop = function (evt) {
+    var files = evt.dataTransfer?.files;
+    if (files.length > 0) {
+      console.log("drag & drop");
+      resize_pic(files[0], _img20);
+    }
+    evt.preventDefault();
+  };
+  _img21.ondblclick = function (evt) {
+    _img21.src = "";
+  };
+  _img21.ondrop = function (evt) {
+    var files = evt.dataTransfer?.files;
+    if (files.length > 0) {
+      console.log("drag & drop");
+      resize_pic(files[0], _img21);
+    }
+    evt.preventDefault();
+  };
+  _img22.ondblclick = function (evt) {
+    _img22.src = "";
+  };
+  _img22.ondrop = function (evt) {
+    var files = evt.dataTransfer?.files;
+    if (files.length > 0) {
+      console.log("drag & drop");
+      resize_pic(files[0], _img22);
+    }
+    evt.preventDefault();
+  };
+  _img23.ondblclick = function (evt) {
+    _img23.src = "";
+  };
+  _img23.ondrop = function (evt) {
+    var files = evt.dataTransfer?.files;
+    if (files.length > 0) {
+      console.log("drag & drop");
+      resize_pic(files[0], _img23);
+    }
+    evt.preventDefault();
+  };
+  _img24.ondblclick = function (evt) {
+    _img24.src = "";
+  };
+  _img24.ondrop = function (evt) {
+    var files = evt.dataTransfer?.files;
+    if (files.length > 0) {
+      console.log("drag & drop");
+      resize_pic(files[0], _img24);
+    }
+    evt.preventDefault();
+  };
+  _img25.ondblclick = function (evt) {
+    _img25.src = "";
+  };
+  _img25.ondrop = function (evt) {
+    var files = evt.dataTransfer?.files;
+    if (files.length > 0) {
+      console.log("drag & drop");
+      resize_pic(files[0], _img25);
+    }
+    evt.preventDefault();
+  };
 
   _img1.ondragover = function (evt) {
     evt.preventDefault();
@@ -410,6 +532,38 @@ async function EOL_시작(is재제조 = 0) {
     evt.preventDefault();
   };
 
+  _img18.ondragover = function (evt) {
+    evt.preventDefault();
+  };
+
+  _img19.ondragover = function (evt) {
+    evt.preventDefault();
+  };
+
+  _img20.ondragover = function (evt) {
+    evt.preventDefault();
+  };
+
+  _img21.ondragover = function (evt) {
+    evt.preventDefault();
+  };
+
+  _img22.ondragover = function (evt) {
+    evt.preventDefault();
+  };
+
+  _img23.ondragover = function (evt) {
+    evt.preventDefault();
+  };
+
+  _img24.ondragover = function (evt) {
+    evt.preventDefault();
+  };
+
+  _img25.ondragover = function (evt) {
+    evt.preventDefault();
+  };
+
   find(BSA재제조, _management_id.value);
   await delay();
   if (BSA재제조_v != null) {
@@ -445,7 +599,7 @@ async function EOL_SAVE() {
   doc.공정입고일 = _공정입고일.value;
   doc.공정완료일 = _공정완료일.value;
   doc.비고 = _비고.value;
-  doc.QR = _QR_Code.value;
+  doc.QR = _QR.value;
   doc.검사자 = _검사자.value;
   doc.기밀검사케이스 = _기밀검사_케이스.value;
   doc.기밀검사_냉각유로 = _기밀검사_냉각유로.value;
@@ -575,9 +729,7 @@ function _절연검사p_콤보박스(e) {
 
   document.getElementById("_절연검사P").value = value;
   if (value == "OK") {
-    document.getElementById("_절연검사P_label").innerHTML = "절연검사+ 입력값";
   } else if (value == "미실시") {
-    document.getElementById("_절연검사P_label").innerHTML = "절연검사+ 특이사항";
   }
 }
 
@@ -586,9 +738,7 @@ function _절연검사M_콤보박스(e) {
 
   document.getElementById("_절연검사M").value = value;
   if (value == "OK") {
-    document.getElementById("_절연검사M_label").innerHTML = "절연검사- 입력값";
   } else if (value == "미실시") {
-    document.getElementById("_절연검사M_label").innerHTML = "절연검사- 특이사항";
   }
 }
 
@@ -597,9 +747,7 @@ function _절연저항HVP_콤보박스(e) {
 
   document.getElementById("_절연저항HVP").value = value;
   if (value == "OK") {
-    document.getElementById("_절연저항HVP_label").innerHTML = "절연저항HV+ 입력값";
   } else if (value == "미실시") {
-    document.getElementById("_절연저항HVP_label").innerHTML = "절연저항HV+ 특이사항";
   }
 }
 
@@ -608,9 +756,7 @@ function _절연저항HVN_콤보박스(e) {
 
   document.getElementById("_절연저항HVN").value = value;
   if (value == "OK") {
-    document.getElementById("_절연저항HVN_label").innerHTML = "절연저항HV- 입력값";
   } else if (value == "미실시") {
-    document.getElementById("_절연저항HVN_label").innerHTML = "절연저항HV- 특이사항";
   }
 }
 
@@ -619,9 +765,7 @@ function _통신검사_팩전압_콤보박스(e) {
 
   document.getElementById("_통신검사_팩전압").value = value;
   if (value == "OK") {
-    document.getElementById("_통신검사_팩전압_label").innerHTML = "통신검사 팩전압 입력값";
   } else if (value == "미실시") {
-    document.getElementById("_통신검사_팩전압_label").innerHTML = "통신검사 팩전압 특이사항";
   }
 }
 
@@ -630,9 +774,7 @@ function _통신검사_셀전압편차_콤보박스(e) {
 
   document.getElementById("_통신검사_셀전압편차").value = value;
   if (value == "OK") {
-    document.getElementById("_통신검사_셀전압편차_label").innerHTML = "통신검사 셀전압편차 입력값";
   } else if (value == "미실시") {
-    document.getElementById("_통신검사_셀전압편차_label").innerHTML = "통신검사 셀전압편차 특이사항";
   }
 }
 
@@ -641,11 +783,8 @@ function _통신검사_릴레이구동_콤보박스(e) {
 
   document.getElementById("_통신검사_릴레이구동").value = value;
   if (value == "OK") {
-    document.getElementById("_통신검사_릴레이구동_label").innerHTML = "통신검사 릴레이구동 입력값";
   } else if (value == "NG") {
-    document.getElementById("_통신검사_릴레이구동_label").innerHTML = "통신검사 릴레이구동 특이사항";
   } else if (value == "통신불가") {
-    document.getElementById("_통신검사_릴레이구동_label").innerHTML = "통신검사 릴레이구동 특이사항";
   }
 }
 
@@ -672,7 +811,7 @@ async function EOL_QR_Label() {
 
   sn = BSA재제조_v.재제조번호;
 
-  qrcode = new QRCode(document.getElementById("_QR_Code"), {
+  qrcode = new QRCode(document.getElementById("_QR"), {
     width: 100,
     height: 100,
   });
