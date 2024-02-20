@@ -576,7 +576,10 @@ function file_list(list) {
 			var old_path = 'excel/tmp/excel' + n + '.csv';
 			var new_path = 'excel/' + list.관리번호 + '/excel1.csv';
 			fs.rename(old_path, new_path, function(err) {
-				if(err) throw err;
+				if(err) {
+					console.log(err);
+					console.log('fail rename');
+				}
 				console.log('successfully rename');
 			});
 			n++;
@@ -586,7 +589,10 @@ function file_list(list) {
 			var old_path = 'excel/tmp/excel' + n + '.csv';
 			var new_path = 'excel/' + list.관리번호 + '/excel2.csv';
 			fs.rename(old_path, new_path, function(err) {
-				if(err) throw err;
+				if(err) {
+					console.log(err);
+					console.log('fail rename');
+				}
 				console.log('successfully rename');
 			});
 			n++;
@@ -596,7 +602,10 @@ function file_list(list) {
 			var old_path = 'excel/tmp/excel' + n + '.csv';
 			var new_path = 'excel/' + list.관리번호 + '/excel3.csv';
 			fs.rename(old_path, new_path, function(err) {
-				if(err) throw err;
+				if(err) {
+					console.log(err);
+					console.log('fail rename');
+				}
 				console.log('successfully rename');
 			});
 			n++;
@@ -606,7 +615,10 @@ function file_list(list) {
 			var old_path = 'excel/tmp/excel' + n + '.csv';
 			var new_path = 'excel/' + list.관리번호 + '/excel4.csv';
 			fs.rename(old_path, new_path, function(err) {
-				if(err) throw err;
+				if(err) {
+					console.log(err);
+					console.log('fail rename');
+				}
 				console.log('successfully rename');
 			});
 			n++
@@ -616,7 +628,10 @@ function file_list(list) {
 			var old_path = 'excel/tmp/excel' + n + '.csv';
 			var new_path = 'excel/' + list.관리번호 + '/excel5.csv';
 			fs.rename(old_path, new_path, function(err) {
-				if(err) throw err;
+				if(err) {
+					console.log(err);
+					console.log('fail rename');
+				}
 				console.log('successfully rename');
 			});
 			n++;
@@ -626,12 +641,16 @@ function file_list(list) {
 			var old_path = 'excel/tmp/excel' + n + '.csv';
 			var new_path = 'excel/' + list.관리번호 + '/excel6.csv';
 			fs.rename(old_path, new_path, function(err) {
-				if(err) throw err;
+				if(err) {
+					console.log(err);
+					console.log('fail rename');
+				}
 				console.log('successfully rename');
 			});
 		}
 		return true;
 	} catch(err) {
+		console.log(err);
 		return false;
 	} finally {
 	}
