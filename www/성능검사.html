@@ -75,15 +75,17 @@
             <table class="tb">
               <colgroup>
                 <col width="20%" />
-                <col width="36%" />
                 <col width="5%" />
-                <col width="39%" />
+                <col width="20%" />
+                <col width="5%" />
+                <col width="25%" />
+                <col />
               </colgroup>
               <tr>
                 <td>
                   <label for="management_id"><b>관리번호</b></label>
                 </td>
-                <td>
+                <td colspan="3">
                   <input type="text" id="_management_id" value="" size="40" required />
                   <button onClick="성능검사_시작(0);">조 회</button>
                 </td>
@@ -92,7 +94,7 @@
                 <td>
                   <label for="_재제조번호"><b>재제조번호</b></label>
                 </td>
-                <td>
+                <td colspan="3">
                   <input type="text" id="_재제조번호" size="40" required />
                   <button onClick="성능검사_시작(1);">조 회</button>
                 </td>
@@ -101,7 +103,7 @@
                 <td>
                   <label for="_RO_no"><b>RO no.</b></label>
                 </td>
-                <td>
+                <td colspan="3">
                   <input type="text" id="_RO_no" size="40" required />
                   <button onClick="성능검사_시작(2);">조 회</button>
                 </td>
@@ -110,7 +112,7 @@
                 <td>
                   <label for="_구분"><b>구분</b></label>
                 </td>
-                <td>
+                <td colspan="3">
                   <input type="text" id="_구분" size="40" readonly required />
                 </td>
               </tr>
@@ -118,7 +120,7 @@
                 <td>
                   <label for="_차종"><b>차종</b></label>
                 </td>
-                <td>
+                <td colspan="3">
                   <input type="text" id="_차종" size="40" readonly required />
                 </td>
               </tr>
@@ -126,7 +128,7 @@
                 <td>
                   <label for="_품번"><b>품번</b></label>
                 </td>
-                <td>
+                <td colspan="3">
                   <input type="text" id="_품번" size="40" readonly required />
                 </td>
               </tr>
@@ -134,7 +136,7 @@
                 <td>
                   <label for="_공정입고일"><b>공정 입고일</b></label>
                 </td>
-                <td>
+                <td colspan="3">
                   <input type="datetime-local" id="_공정입고일" value="0000-00-00T00:00" required />
                 </td>
               </tr>
@@ -142,7 +144,7 @@
                 <td rowspan="2">
                   <label for="_용량평가"><b>용량평가</b></label>
                 </td>
-                <td rowspan="2">
+                <td rowspan="2" colspan="2">
                   <input type="text" id="_용량평가" size="40" required />
                   <span>(Ah, KWh)</span>
                 </td>
@@ -188,7 +190,7 @@
                 <td rowspan="2">
                   <label for="_SOC60Percent"><b>SOC60Percent</b></label>
                 </td>
-                <td rowspan="2">
+                <td rowspan="2" colspan="2">
                   <input type="text" id="_SOC60Percent" size="40" required />
                   <span> (V) </span>
                 </td>
@@ -233,7 +235,7 @@
                 <td rowspan="2">
                   <label for="_DCIR"><b>DCIR(종합)</b></label>
                 </td>
-                <td rowspan="2">
+                <td rowspan="2" colspan="2">
                   <input type="text" id="_DCIR" size="40" required />
                   <span>(mΩ)</span>
                 </td>
@@ -278,34 +280,55 @@
               </tr>
 
               <tr>
-                <td>
+                <td rowspan="2">
                   <label for="_DCIR_Charge1"><b>DCIR(0.5C)</b></label>
                 </td>
-                <td>
-                  <input type="text" id="_DCIR_Charge1" size="40" required />
+                <td style="padding: 0.3vw" class="file_name">방전</td>
+                <td style="padding: 0.3vw" colspan="2">
+                  <input type="text" id="_DCIR_Charge1" required />
                 </td>
               </tr>
               <tr>
-                <td>
+                <td style="padding: 0.3vw" class="file_name">충전</td>
+                <td style="padding: 0.3vw" colspan="2">
+                  <input type="text" id="_DCIR_Charge1" required />
+                </td>
+              </tr>
+              <tr>
+                <td rowspan="2">
                   <label for="_DCIR_Charge2"><b>DCIR(0.7C)</b></label>
                 </td>
-                <td>
-                  <input type="text" id="_DCIR_Charge2" size="40" required />
+                <td style="padding: 0.3vw" class="file_name">방전</td>
+                <td style="padding: 0.3vw" colspan="2">
+                  <input type="text" id="_DCIR_Charge2" required />
                 </td>
               </tr>
               <tr>
-                <td>
+                <td style="padding: 0.3vw" class="file_name">충전</td>
+                <td style="padding: 0.3vw" colspan="2">
+                  <input type="text" id="_DCIR_Charge2" required />
+                </td>
+              </tr>
+              <tr>
+                <td rowspan="2">
                   <label for="_DCIR_Charge3"><b>DCIR(1.0C)</b></label>
                 </td>
-                <td>
-                  <input type="text" id="_DCIR_Charge3" size="40" required />
+                <td style="padding: 0.3vw" class="file_name">방전</td>
+                <td style="padding: 0.3vw" colspan="2">
+                  <input type="text" id="_DCIR_Charge3" required />
+                </td>
+              </tr>
+              <tr>
+                <td style="padding: 0.3vw" class="file_name">충전</td>
+                <td style="padding: 0.3vw" colspan="2">
+                  <input type="text" id="_DCIR_Charge1" required />
                 </td>
               </tr>
               <tr>
                 <td>
                   <label for="_분해조립_재의뢰사유"><b>분해조립 재의뢰 사유</b></label>
                 </td>
-                <td>
+                <td colspan="3">
                   <input type="text" id="_분해조립_재의뢰사유" size="40" required />
                 </td>
               </tr>
@@ -313,7 +336,7 @@
                 <td>
                   <label for="_공정완료일"><b>공정 완료일</b></label>
                 </td>
-                <td>
+                <td colspan="3">
                   <input type="datetime-local" id="_공정완료일" value="0000-00-00T00:00" required />
                 </td>
               </tr>
@@ -321,22 +344,17 @@
                 <td>
                   <label for="_검사자"><b>검사자</b></label>
                 </td>
-                <td>
+                <td colspan="3">
                   <input type="text" id="_검사자" size="40" required />
                 </td>
               </tr>
             </table>
           </form>
         </div>
-	<div>
-		<center>
-			<p id='_process'>파일 업로드 STATUS</p>
-		</center>
-	</div>
         <div class="input-group">
           <div class="input-btn-group">
             <button onClick="성능검사_save();">저장</button>
-            <button id='_btn_upload' onClick="file_upload();">파일 업로드</button>
+            <button id="_btn_upload" onClick="file_upload();">파일 업로드</button>
             <!--<button onClick="read_용량평가();">용량평가</button>-->
             <!--<button onClick="read_SOC60Percent();">SOC60Percent</button>-->
             <!--<button onClick="read_DCIR();">DCIR</button>-->
@@ -347,7 +365,6 @@
       </div>
     </section>
     <script>
-      const _process = document.getElementById('_process');
       const _bnt_upload = document.getElementById("_btn_upload");
       const _form = document.getElementById("form");
       const _management_id = document.getElementById("_management_id");

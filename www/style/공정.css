@@ -485,7 +485,7 @@ td.process__btn {
 }
 /* 성능검사 */
 .성능검사 .process-step table td span {
-  font-size: 1vw;
+  font-size: 0.8vw;
 }
 .성능검사 .process-step table .t1-d {
   padding: 0.5vw;
