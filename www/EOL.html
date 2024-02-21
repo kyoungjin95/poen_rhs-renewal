@@ -393,8 +393,8 @@
                 <label for="_고장코드유무">고장코드 유무</label>
               </td>
               <td>
-                <input type="text" id="_고장코드" size="40" value required />
-                <select id='고장코드유무' name="language" onchange="">
+                <input type="text" id="_고장코드유무" size="40" value required />
+                <select name="language" onchange="_고장코드유무_콤보박스(this);">
                   <option value="">---</option>
                   <option value="OK">OK</option>
                   <option value="미실시">미실시</option>
@@ -467,23 +467,24 @@
                   <option value="">---</option>
                   <option value="통신불가">통신불가</option>
                   <option value="OK">OK</option>
-                  <option value="NG">NG</option>
+                  <option value="미실시">미실시</option>
                 </select>
               </td>
             </tr>
             <tr>
               <td class="_항목">
-                <label id="_EOL항목_검사" for="_EOL항목_검사"
+                <label for="_EOL항목검사"
                   >EOL 항목 검사
                   <br />
                   <span class="side__tit">(팩 전압, 릴레이 구동 여부 통합)</span>
                 </label>
               </td>
               <td>
-                <select name="language" onchange="">
+                <input type="text" id="_EOL항목검사" size="40" required />
+                <select name="language" onchange="_EOL항목검사_콤보박스(this);">
                   <option value="">---</option>
                   <option value="OK">OK</option>
-                  <option value="NG">NG</option>
+                  <option value="미실시">미실시</option>
                 </select>
               </td>
             </tr>
@@ -505,15 +506,10 @@
             </tr>
             <tr>
               <td class="_항목">
-                <label for="_QR">출하코드</label>
+                <label for="_QR">출하코드(QR)</label>
               </td>
               <td>
                 <input type="text" id="_QR" size="40" required />
-                <select name="language" onchange="">
-                  <option value="">---</option>
-                  <option value="OK">OK</option>
-                  <option value="NG">NG</option>
-                </select>
               </td>
             </tr>
             <tr>
@@ -521,11 +517,11 @@
                 <label for="_커버류">커버류</label>
               </td>
               <td style="display: flex; align-items: center">
-                <span style="font-size: 0.9vw; padding-right: 10px; width: 100px; text-align: center" id="_커버류">장착확인</span>
-                <select name="language" onchange="">
+                <input type="text" id="_커버류" size="40" required />
+                <select name="language" onchange="_커버류_콤보박스(this);">
                   <option value="">---</option>
-                  <option value="OK">OK</option>
-                  <option value="NG">NG</option>
+                  <option value="장착확인">장착확인</option>
+                  <option value="미확인">미확인</option>
                 </select>
               </td>
             </tr>
@@ -534,11 +530,11 @@
                 <label for="_브라켓">브라켓</label>
               </td>
               <td style="display: flex; align-items: center">
-                <span style="font-size: 0.9vw; padding-right: 10px; width: 100px; text-align: center" id="_브라켓">장착확인</span>
-                <select name="language" onchange="">
+                <input type="text" id="_브라켓" size="40" required />
+                <select name="language" onchange="_브라켓_콤보박스(this);">
                   <option value="">---</option>
-                  <option value="OK">OK</option>
-                  <option value="NG">NG</option>
+                  <option value="장착확인">장착확인</option>
+                  <option value="미확인">미확인</option>
                 </select>
               </td>
             </tr>
@@ -547,11 +543,11 @@
                 <label for="_ICUU">ICUU</label>
               </td>
               <td style="display: flex; align-items: center">
-                <span style="font-size: 0.9vw; padding-right: 10px; width: 100px; text-align: center" id="_ICUU">확인</span>
+                <input type="text" id="_ICUU" size="40" required />
                 <select name="language" onchange="">
                   <option value="">---</option>
-                  <option value="OK">OK</option>
-                  <option value="NG">NG</option>
+                  <option value="장착화긴">장착확인</option>
+                  <option value="미확인">미확인</option>
                 </select>
               </td>
             </tr>
@@ -611,8 +607,10 @@
       const _공정입고일 = document.getElementById("_공정입고일");
 
       const _육안검사_외부_box = document.getElementById("_육안검사_외부_box");
+      const _육안검사_외부 = document.getElementById("_육안검사_외부");
       const _육안검사_외부_img = document.getElementById("_육안검사_외부_img");//1
       const _육안검사_내부_box = document.getElementById("_육안검사_내부_box");
+      const _육안검사_내부 = document.getElementById("_육안검사_내부");
       const _육안검사_내부_img = document.getElementById("_육안검사_내부_img");//2
 
       const _기밀검사_케이스 = document.getElementById("_기밀검사_케이스");
@@ -625,7 +623,6 @@
       const _절연저항HVN = document.getElementById("_절연저항HVN");
       const _UPR_C조립 = document.getElementById("_UPR_C조립");
       const _UPR_C조립_특이사항 = document.getElementById("_UPR_C조립_특이사항");
-      const _고장코드 = document.getElementById("_고장코드");
       const _고장코드유무 = document.getElementById("_고장코드유무");
 
       const _통신검사_팩전압 = document.getElementById("_통신검사_팩전압");
@@ -666,6 +663,14 @@
       const _img15 = document.get.getElementById("_img15");
       const _img16 = document.get.getElementById("_img16");
       const _img17 = document.get.getElementById("_img17");
+      const _img18 = document.get.getElementById("_img18");
+      const _img19 = document.get.getElementById("_img19");
+      const _img20 = document.get.getElementById("_img20");
+      const _img21 = document.get.getElementById("_img21");
+      const _img22 = document.get.getElementById("_img22");
+      const _img23 = document.get.getElementById("_img23");
+      const _img24 = document.get.getElementById("_img24");
+      const _img25 = document.get.getElementById("_img25");
     </script>
   </body>
 </html>

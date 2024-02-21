@@ -88,22 +88,25 @@ async function EOL_시작(is재제조 = 0) {
     _기밀검사_냉각유로.value = EOL_v.기밀검사_냉각유로;
     _절연검사P.value = EOL_v.절연검사_Plus;
     _절연검사M.value = EOL_v.절연검사_Minus;
+    _절연저항HVP.value = EOL_v.절연저항_Plus;
+    _절연저항HVN.value = EOL_v.절연저항_Minus;;
     _UPR_C조립.value = EOL_v.UPR_C조립;
     _UPR_C조립_특이사항.value = EOL_v.UPR_C조립_특이사항;
-    //_고장코드유무.value = EOL_v.고장코드유무;
-    _고장코드.value = EOL_v.고장코드;
-    _통신검사_팩전압.value = EOL_V.통신검사_팩전압;
+    _고장코드유무.value = EOL_v.고장코드유무;
+    _통신검사_팩전압.value = EOL_v.통신검사_팩전압;
     _통신검사_셀전압편차.value = EOL_v.통신검사_셀전압편차;
     _셀전압MAX.value = EOL_v.통신검사_셀전압MAX;
     _셀전압MIN.value = EOL_v.통신검사_셀전압MIN;
     _통신검사_릴레이구동.value = EOL_v.통신검사_릴레이구동;
-    _EOL항목_검사.value = EOL_v.EOL항목_검사;
+    _EOL항목검사.value = EOL_v.EOL항목검사;
     _커버류.value = EOL_v.커버류;
     _브라켓.value = EOL_v.브라켓;
     _ICUU.value = EOL_v.ICUU;
     _교체부품명.value = EOL_v.교체부품명;
     _공정흐름_이슈.value = EOL_v.공정흐름_이슈;
     _용량평가값.value = EOL_v.용량평가값;
+    _육안검사_외부.value = EOL_v.육안검사_외부;
+    _육안검사_내부.value = EOL_v.육안검사_내부;
     
     find(EOL_pic, _management_id.value);
     await delay();
@@ -148,14 +151,13 @@ async function EOL_시작(is재제조 = 0) {
     _절연검사M.value = '';
     _UPR_C조립.value = '';
     _UPR_C조립_특이사항.value = '';
-    _고장코드.value = '';
-    //_고장코드유무.value = '';
+    _고장코드유무.value = '';
     _통신검사_팩전압.value = '';
     _통신검사_셀전압편차.value = '';
     _셀전압MAX.value = '';
     _셀전압MIN.value = '';
     _통신검사_릴레이구동.value = '';
-    _EOL항목_검사.value = '';
+    _EOL항목검사.value = '';
     _커버류.value = '';
     _브라켓.value = '';
     _ICUU.value = '';
@@ -601,25 +603,29 @@ async function EOL_SAVE() {
   doc.비고 = _비고.value;
   doc.QR = _QR.value;
   doc.검사자 = _검사자.value;
-  doc.기밀검사케이스 = _기밀검사_케이스.value;
+  doc.기밀검사_케이스 = _기밀검사_케이스.value;
   doc.기밀검사_냉각유로 = _기밀검사_냉각유로.value;
   doc.절연검사_Plus =  _절연검사P.value;
   doc.절연검사_Minus = _절연검사M.value;
+  doc.절연저항_Plus =  _절연저항HVP.value;
+  doc.절연저항_Minus = _절연저항HVN.value;
+  doc.고장코드유무 = _고장코드유무.value;
   doc.UPR_C조립 = _UPR_C조립.value;
   doc.UPR_C조립_특이사항 = _UPR_C조립_특이사항.value;
-  doc.고장코드진단 = _고장코드진단.value;
   doc.통신검사_팩전압 = _통신검사_팩전압.value;
   doc.통신검사_셀전압편차 = _통신검사_셀전압편차.value;
   doc.통신검사_셀전압MAX = _셀전압MAX.value;
   doc.통신검사_셀전압MIN = _셀전압MIN.value;
   doc.통신검사_릴레이구동 = _통신검사_릴레이구동.value;
-  doc.EOL항목_검사 = _EOL항목_검사.value;;
+  doc.EOL항목검사 = _EOL항목검사.value;;
   doc.커버류 = _커버류.value;
   doc.브라켓 = _브라켓.value;
   doc.ICUU  = _ICUU.value;
   doc.교체부품명 = _교체부품명.value;
   doc.공정흐름_이슈 = _공정흐름_이슈.value;
-  doc.용량평가값 =   _용량평가값.value;
+  doc.용량평가값 = _용량평가값.value;
+  doc.육안검사_외부 = _육안검사_외부.value;
+  doc.육안검사_내부 = _육안검사_내부.value;
 
   update(EOL, doc);
   await delay();
@@ -667,6 +673,14 @@ async function EOL_SAVE() {
   _pic_doc.pic15 = _img15.src;
   _pic_doc.pic16 = _img16.src;
   _pic_doc.pic17 = _img17.src;
+  _pic_doc.pic18 = _img18.src;
+  _pic_doc.pic19 = _img19.src;
+  _pic_doc.pic20 = _img20.src;
+  _pic_doc.pic21 = _img21.src;
+  _pic_doc.pic22 = _img22.src;
+  _pic_doc.pic23 = _img23.src;
+  _pic_doc.pic24 = _img24.src;
+  _pic_doc.pic25 = _img25.src;
 
   update(EOL_pic, _pic_doc);
   await delay();
@@ -782,10 +796,36 @@ function _통신검사_릴레이구동_콤보박스(e) {
   const value = e.value;
 
   document.getElementById("_통신검사_릴레이구동").value = value;
-  if (value == "OK") {
-  } else if (value == "NG") {
-  } else if (value == "통신불가") {
-  }
+}
+
+function _고장코드유무_콤보박스(e) {
+  const value = e.value;
+
+  document.getElementById("_고장코드유무").value = value;
+}
+
+function _EOL항목검사_콤보박스(e) {
+  const value = e.value;
+
+  document.getElementById("_EOL항목검사").value = value;
+}
+
+function _커버류_콤보박스(e) {
+  const value = e.value;
+
+  document.getElementById("_커버류").value = value;
+}
+
+function _브라켓_콤보박스(e) {
+  const value = e.value;
+
+  document.getElementById("_브라켓").value = value;
+}
+
+function _ICUU_콤보박스(e) {
+  const value = e.value;
+
+  document.getElementById("_ICUU").value = value;
 }
 
 async function EOL_QR_Label() {

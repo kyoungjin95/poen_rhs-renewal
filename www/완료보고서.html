@@ -225,6 +225,12 @@
                   <td class="base color-blue" id="_CS_브라켓정보">OK</td>
                   <td class="base color-blue" id="_CS_브라켓값">재고 부족 시 영업팀과 협의 요망</td>
                 </tr>
+                <tr>
+                  <td class="base">ICCU 퓨즈</td>
+                  <td class="base">퓨즈 장착되어 있을 것</td>
+                  <td class="base color-blue" id="_CS_ICCU">OK</td>
+                  <td class="base color-blue" id="_CS_ICCU값">퓨즈 장착 확인</td>
+                </tr>
               </table>
               <table class="base tableAll" id="_CV_EV" style="display: none">
                 <tr>
@@ -2064,82 +2070,16 @@
         <p>Positive Energy</p>
       </div>
     </div>
-
     <div>
       <canvas id="_canvas"></canvas>
     </div>
     <div>
-      <table id="tb" class="tb">
-        <colgroup>
-          <col class="col_1" witdh="50%" />
-          <col class="col_2" witdh="50%" />
-        </colgroup>
         <tr>
-          <td>
-            <label for="management_id">관리번호</label>
-          </td>
-          <td>
-            <input type="text" id="_management_id" value="조회 버튼을 누르세요" size="40" required />
-            <button onClick="완료보고서_조회();">조 회</button>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <label for="_재제조번호">재제조번호</label>
-          </td>
-          <td>
-            <input type="text" id="_재제조번호" value="조회 버튼을 누르세요" size="40" required />
-            <button onClick="완료보고서_조회(true);">조 회</button>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <label for="_생산일_input">생산일</label>
-          </td>
-          <td>
-            <input type="text" id="_생산일_input" size="40" required />
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <label for="_판매일_input">판매일</label>
-          </td>
-          <td>
-            <input type="text" id="_판매일_input" size="40" required />
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <label for="_수리일_input">수리일</label>
-          </td>
-          <td>
-            <input type="text" id="_수리일_input" size="40" required />
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <label for="_작성일_input">작성일</label>
-          </td>
-          <td>
-            <input type="text" id="_작성일_input" size="40" required />
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <label for="_결과_input">결과</label>
-          </td>
-          <td>
-            <input type="text" id="_결과_input" size="40" required />
-          </td>
-        </tr>
-        <tr>
-          <td></td>
           <td class="left-line-del">
             <button onClick="완료보고서_apply();" class="report__btn">적용</button>
             <button onClick="back();" class="report__btn">되돌아 가기</button>
           </td>
         </tr>
-      </table>
     </div>
     <div class="report__btns">
       <button onClick="완료보고서_save();">완료보고서</button>

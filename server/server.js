@@ -19,24 +19,24 @@ const uri = 'mongodb://poen:poen4upoen4u@localhost:27017/poenDB';
 const db_name = 'poenDB';
 var no = 1;
 const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, 'excel/tmp');
-  },
-  filename: function (req, file, cb) {
-    if(no > 6) no = 1;
-    console.log('file No:', no);
-    cb(null, file.fieldname + no + '.csv');
-    no++;
-  }
+	destination: function (req, file, cb) {
+		cb(null, 'excel/tmp');
+	},
+	filename: function (req, file, cb) {
+		if(no > 6) no = 1;
+		console.log('file No:', no);
+		cb(null, file.fieldname + no + '.csv');
+		no++;
+	}
 });
 
 const upload = multer({ storage: storage});
 
 const rations = {
-  maxRequestsPerTimeFrame: 600,
-  timeFrameInSeconds: 30,
-  removeRecordsAfter: (1000 * 60 * 5),
-  dropConnections: false
+	maxRequestsPerTimeFrame: 600,
+	timeFrameInSeconds: 30,
+	removeRecordsAfter: (1000 * 60 * 5),
+	dropConnections: false
 };
 ration.setRations(rations);
 app.use(ration.startRations);
@@ -123,14 +123,14 @@ server.listen(80, () => {
 io.on('connection', async function(socket) {
 	var client_ip = socket.request.connection.remoteAddress; 
 
-	console.log('connected ip', client_ip);
+console.log('connected ip', client_ip);
 
 	socket.on('용량평가', async function(path) {
 		console.log('용량평가 path:', path);
 
 		var data = 용량평가(path);
 		if(data == null || data == undefined) return;
-		
+
 		var old_type = '';
 		var old_dischargecap = 0.0;
 		data = data.replace(/\(Ah\)/g, '');
@@ -234,9 +234,9 @@ io.on('connection', async function(socket) {
 	socket.on('file_list', async function(list) {
 		no = 1;
 		console.log('file list');
-		
+
 		const result = file_list(list);
-		
+
 		socket.emit('file_list_result', result);
 		logger.info('file list:'+ JSON.stringify(list));
 	});
@@ -570,7 +570,7 @@ function file_list(list) {
 		}  else {
 			return false;
 		}
-		
+
 		var n = 1;
 		if(list.f1 != '') {
 			var old_path = 'excel/tmp/excel' + n + '.csv';
@@ -673,111 +673,137 @@ function DCIR(path) {
 }
 
 function csvFileToJSON(path) {
-	const file_csv = fs.readFileSync(path);
-	const string_csv = file_csv.toString();
-	return csvToJSON(string_csv);
+	try {
+		const file_csv = fs.readFileSync(path);
+		const string_csv = file_csv.toString();
+		return csvToJSON(string_csv);
+	} catch (err) {
+		console.log(err);
+	} finally {
+	}
 }
 
 function DCIRcsvFileToJSON(path) {
-	const file_csv = fs.readFileSync(path);
-	const string_csv = file_csv.toString();
-	return DCIRcsvToJSON(string_csv);
+	try{
+		const file_csv = fs.readFileSync(path);
+		const string_csv = file_csv.toString();
+		return DCIRcsvToJSON(string_csv);
+	} catch (err) {
+		console.log(err);
+	} finally {
+	}
 }
 
 function csvToJSON(csv_string){
-	const rows = csv_string.split("\r\n");
-	const jsonArray = [];
-	const header = rows[0].split(",");
-	console.log(header);   
+	try {
+		const rows = csv_string.split("\r\n");
+		const jsonArray = [];
+		const header = rows[0].split(",");
+		console.log(header);   
 
-	for(let i = 1; i < rows.length; i++){
-		let obj = {};
-		let row = rows[i].split(",");
+		for(let i = 1; i < rows.length; i++){
+			let obj = {};
+			let row = rows[i].split(",");
 
-		for(let j=0; j < header.length; j++){
-			obj[header[j]] = row[j];
+			for(let j=0; j < header.length; j++){
+				obj[header[j]] = row[j];
+			}
+
+			jsonArray.push(obj);
+
 		}
 
-		jsonArray.push(obj);
-
+		return JSON.stringify(jsonArray);
+	} catch (err) {
+		console.log(err);
+	} finally {
 	}
-
-	return JSON.stringify(jsonArray);
 }
 
 function DCIRcsvToJSON(csv_string) {
-	const rows = csv_string.split("\r\n");
-	const jsonArray = [];
-	const header = [ "Time", "Channel", "EndReason", "LoopCount", "CycleNo",
-		"StepNo", "StepType", "StepTime", "TotTime", "Volt(V)",
-		"Curr(A)", "Cap(Ah)", "TotalCap(Ah)", "ChargeCap(Ah)",
-		"DischargeCap(Ah)", "Watt(W)", "WH(Wh)", "TotalWH(Wh)",
-		"ChargeWH(Wh)", "DischargeWH", "DCIR",
-		"AvgCur(A)"]
-	console.log(header);   
+	try {
+		const rows = csv_string.split("\r\n");
+		const jsonArray = [];
+		const header = [ "Time", "Channel", "EndReason", "LoopCount", "CycleNo",
+			"StepNo", "StepType", "StepTime", "TotTime", "Volt(V)",
+			"Curr(A)", "Cap(Ah)", "TotalCap(Ah)", "ChargeCap(Ah)",
+			"DischargeCap(Ah)", "Watt(W)", "WH(Wh)", "TotalWH(Wh)",
+			"ChargeWH(Wh)", "DischargeWH", "DCIR",
+			"AvgCur(A)"]
+		console.log(header);   
 
-	for(let i = 1; i < rows.length; i++){
-		let obj = {};
-		let row = rows[i].split(",");
+		for(let i = 1; i < rows.length; i++){
+			let obj = {};
+			let row = rows[i].split(",");
 
-		for(let j=0; j < header.length; j++){
-			obj[header[j]] = row[j];
+			for(let j=0; j < header.length; j++){
+				obj[header[j]] = row[j];
+			}
+
+			jsonArray.push(obj);
+
 		}
 
-		jsonArray.push(obj);
-
+		return JSON.stringify(jsonArray);
+	} catch (err) {
+		console.log(err);
+	} finally {
 	}
-
-	return JSON.stringify(jsonArray);
 }
 
 async function 부품_info(begin = '', end = '', 구분 = 'all') {
-	var result_array;
-	if (begin == '' || end == '') {
-		result_array = await find('자재입출고', { QR: { $exists: true } }, { sort: { kind: 1 }, projection: 자재입출고_ });
-	} else {
-		result_array = await find('자재입출고', { QR: { $exists: true }, 날짜: { $gte: begin, $lte: end }}, { sort: { kind: 1 }, projection: 자재입출고_ });
-	}
-
-	if (result_array == null) return;
-
-	var types_list = [];
-	var 차종 = [];
-	var 품명 = [];
-	var counts = [];
-
-	result_array.forEach(async function (info) {
-		var 수량 = parseInt(info.수량.replace(/,/g, ''));
-		if (types_list.indexOf(info.품번) < 0) {
-			types_list.push(info.품번);
-
-			차종.push(info.차종);
-			품명.push(info.품명);
-			var count = {
-				입고: 0,
-				출고: 0
-			}
-
-			if (info.구분 == '입고') count.입고 = 수량;
-			if (info.구분 == '출고') count.출고 = 수량;
-
-			counts.push(count);
+	try {
+		var result_array;
+		if (begin == '' || end == '') {
+			result_array = await find('자재입출고', { QR: { $exists: true } }, { sort: { kind: 1 }, projection: 자재입출고_ });
 		} else {
-			var no = types_list.indexOf(info.품번);
-			if (info.구분 == '입고') counts[no].입고 = parseInt(counts[no].입고) + 수량;
-			if (info.구분 == '출고') counts[no].출고 = parseInt(counts[no].출고) + 수량;
+			result_array = await find('자재입출고', { QR: { $exists: true }, 날짜: { $gte: begin, $lte: end }}, { sort: { kind: 1 }, projection: 자재입출고_ });
 		}
-	});
 
-	var 부품정보 = {
-		차종: 차종,
-		품명: 품명,
-		품번: types_list,
-		counts: counts,
+		if (result_array == null) return;
+
+		var types_list = [];
+		var 차종 = [];
+		var 품명 = [];
+		var counts = [];
+
+		result_array.forEach(async function (info) {
+			var 수량 = parseInt(info.수량.replace(/,/g, ''));
+			if (types_list.indexOf(info.품번) < 0) {
+				types_list.push(info.품번);
+
+				차종.push(info.차종);
+				품명.push(info.품명);
+				var count = {
+					입고: 0,
+					출고: 0
+				}
+
+				if (info.구분 == '입고') count.입고 = 수량;
+				if (info.구분 == '출고') count.출고 = 수량;
+
+				counts.push(count);
+			} else {
+				var no = types_list.indexOf(info.품번);
+				if (info.구분 == '입고') counts[no].입고 = parseInt(counts[no].입고) + 수량;
+				if (info.구분 == '출고') counts[no].출고 = parseInt(counts[no].출고) + 수량;
+			}
+		});
+
+		var 부품정보 = {
+			차종: 차종,
+			품명: 품명,
+			품번: types_list,
+			counts: counts,
+		}
+
+		return 부품정보;
+	} catch (err) {
+		console.log(err);
+	} finally {
 	}
-
-	return 부품정보;
 }
+
 function sleep(ms) {
 	return new Promise((resolve) => setTimeout(resolve, ms))
 }
