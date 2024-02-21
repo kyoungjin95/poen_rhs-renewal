@@ -132,6 +132,9 @@ var DCIR_result = 0;
 var DCIR1_result = 0;
 var DCIR2_result = 0;
 var DCIR3_result = 0;
+var DCIR4_result = 0;
+var DCIR5_result = 0;
+var DCIR6_result = 0;
 var 성능검사_data_result = [];
 var delete_성능검사_data_result = false;;
 var flag_loaded = false;
@@ -622,6 +625,9 @@ const 성능검사_doc = {
 	DCIR_Charge1: "",
 	DCIR_Charge2: "",
 	DCIR_Charge3: "",
+	DCIR_Charge4: "",
+	DCIR_Charge5: "",
+	DCIR_Charge6: "",
 	분해조립_재의뢰사유: "",
 	공정완료일: "",
 	비고: "",
@@ -2266,6 +2272,9 @@ const 성능검사_ = {
 	DCIR_Charge1: 1,
 	DCIR_Charge2: 1,
 	DCIR_Charge3: 1,
+	DCIR_Charge4: 1,
+	DCIR_Charge5: 1,
+	DCIR_Charge6: 1,
 	분해조립_재의뢰사유: 1,
 	공정완료일: 1,
 	비고: 1,
@@ -3396,6 +3405,9 @@ socket.on("DCIR_result", async function (data) {
 	DCIR1_result = data.DCIR1;
 	DCIR2_result = data.DCIR2;
 	DCIR3_result = data.DCIR3;
+	DCIR4_result = data.DCIR4;
+	DCIR5_result = data.DCIR5;
+	DCIR6_result = data.DCIR6;
 	console.log(data);
 	flag_arrivedMSG = true;
 });
