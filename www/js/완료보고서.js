@@ -38,7 +38,7 @@ async function 완료보고서_조회(is재제조번호 = false) {
 	find(기초검사, 관리번호);
 	await delay();
 
-	기초_data = JSON.parse(JSON.stringify(기초_data));
+	기초_data = JSON.parse(JSON.stringify(기초검사_v));
 
 	find(성능검사, 관리번호);
 	await delay();
