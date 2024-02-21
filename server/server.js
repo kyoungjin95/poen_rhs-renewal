@@ -177,15 +177,27 @@ console.log('connected ip', client_ip);
 		var DCIR1 = 0;
 		var DCIR2 = 0;
 		var DCIR3 = 0;
+		var DCIR4 = 0;
+		var DCIR5 = 0;
+		var DCIR6 = 0;
 
 		for(var i = 0; i < data.length; i++) {
 			if(old_DCIR > 0 && data[i].DCIR == 0) {
-				if(DCIR1 == 0) DCIR1 = old_DCIR;
-				else if(DCIR2 == 0) DCIR2 = old_DCIR;
-				else if(DCIR3 == 0) DCIR3 = old_DCIR;
+				if(DCIR2 == 0) DCIR2 = old_DCIR;
+				else if(DCIR4 == 0) DCIR4 = old_DCIR;
+				else if(DCIR6 == 0) DCIR6 = old_DCIR;
 
-				if(DCIR3 != 0) break;
+				if(DCIR6 != 0) break;
 			}
+
+			if(old_DCIR < 0 && data[i].DCIR == 0) {
+				if(DCIR1 == 0) DCIR1 = old_DCIR;
+				else if(DCIR3 == 0) DCIR3 = old_DCIR;
+				else if(DCIR5 == 0) DCIR5 = old_DCIR;
+
+				if(DCIR6 != 0) break;
+			}
+
 			old_DCIR = data[i].DCIR;
 			if(i == (data.length - 1)) console.log(data[i].DCIR);
 		}
@@ -195,7 +207,10 @@ console.log('connected ip', client_ip);
 			DCIR : DCIR_total,
 			DCIR1 : DCIR1,
 			DCIR2 : DCIR2,
-			DCIR3 : DCIR3
+			DCIR3 : DCIR3,
+			DCIR4 : DCIR4,
+			DCIR5 : DCIR5,
+			DCIR6 : DCIR6,
 		};
 		socket.emit('DCIR_result', result);
 		console.log(result);

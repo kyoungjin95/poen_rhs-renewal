@@ -94,6 +94,9 @@ async function 성능검사_시작(is재제조 = 0) {
 		_DCIR_Charge1.value = 성능검사_v.DCIR_Charge1;
 		_DCIR_Charge2.value = 성능검사_v.DCIR_Charge2;
 		_DCIR_Charge3.value = 성능검사_v.DCIR_Charge3;
+		_DCIR_Charge4.value = 성능검사_v.DCIR_Charge4;
+		_DCIR_Charge5.value = 성능검사_v.DCIR_Charge5;
+		_DCIR_Charge6.value = 성능검사_v.DCIR_Charge6;
 		_분해조립_재의뢰사유.value = 성능검사_v.분해조립_재의뢰사유;
 		_공정완료일.value = 성능검사_v.공정완료일;
 		_검사자.value = 성능검사_v.검사자;
@@ -166,6 +169,9 @@ async function 성능검사_save() {
 	doc.DCIR_Charge1 = _DCIR_Charge1.value;
 	doc.DCIR_Charge2 = _DCIR_Charge2.value;
 	doc.DCIR_Charge3 = _DCIR_Charge3.value;
+	doc.DCIR_Charge4 = _DCIR_Charge4.value;
+	doc.DCIR_Charge5 = _DCIR_Charge5.value;
+	doc.DCIR_Charge6 = _DCIR_Charge6.value;
 	doc.분해조립_재의뢰사유 = _분해조립_재의뢰사유.value;
 	doc.공정완료일 = _공정완료일.value;
 	if (level == "관리자") doc.공정완료일 = _공정완료일.value;
@@ -185,6 +191,15 @@ async function 성능검사_save() {
 
 	var update_cnt = update_count;
 	var insert_cnt = insert_count;
+
+	var doc = {
+		관리번호 : 관리번호,
+		성능검사투입일 : _공정입고일.value,
+		성능검사 : _공정완료일.value
+	}
+	
+	update(BSA재제조, doc);
+	await delay();
 
 	//이전페이지();
 }
@@ -735,8 +750,11 @@ async function read_DCIR() {
 	_DCIR_Charge1.value = DCIR1_result;
 	_DCIR_Charge2.value = DCIR2_result;
 	_DCIR_Charge3.value = DCIR3_result;
+	_DCIR_Charge4.value = DCIR4_result;
+	_DCIR_Charge5.value = DCIR5_result;
+	_DCIR_Charge6.value = DCIR6_result;
 
-	console.log('DCIR result:', DCIR_result, DCIR1_result, DCIR2_result, DCIR3_result);
+	console.log('DCIR result:', DCIR_result, DCIR1_result, DCIR2_result, DCIR3_result, DCIR4_result, DCIR5_result, DCIR6_result);
 }
 
 async function read_data() {
