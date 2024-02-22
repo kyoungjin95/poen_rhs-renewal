@@ -10,7 +10,7 @@
     <section id="_완료보고서">
       <div class="report__tit">
         <h3>▣ 완료보고서 [<span id="_차종">CS_EV</span>]</h3>
-        <span id="_재제조번호_"></span>
+        <span id="_재제조번호_HEAD"></span>
       </div>
       <div>
         <table class="all">
@@ -2076,21 +2076,42 @@
     <div>
         <tr>
           <td class="left-line-del">
-            <button onClick="완료보고서_apply();" class="report__btn">적용</button>
+		  <label>관리번호</label>
+	  </td>
+	  <td>
+		  <input type='text' id='_management_id' size="100" required />
+	  </td>
+	  <td>
+		  <button onClick="완료보고서_조회();">조회</button>
+	  </td>
+	</tr>
+        <tr>
+          <td class="left-line-del">
+		  <label>재제조번호</label>
+	  </td>
+	  <td>
+		  <input type='text' id='_재제조번호' size="100" required />
+	  </td>
+	  <td>
+		  <button onClick="완료보고서_조회(true);">조회</button>
+	  </td>
+	<tr>
+	  <td>
+            <button onClick="완료보고서_save();" class="report__btn">저장</button>
             <button onClick="back();" class="report__btn">되돌아 가기</button>
           </td>
         </tr>
     </div>
     <div class="report__btns">
-      <button onClick="완료보고서_save();">완료보고서</button>
-      <button onClick="완료보고서_save('육외');">육안검사외부</button>
-      <button onClick="완료보고서_save('육내');">육안검사내부</button>
-      <button onClick="완료보고서_save('기밀');">기밀검사</button>
-      <button onClick="완료보고서_save('절연');">절연저항검사</button>
-      <button onClick="완료보고서_save('CAN');">CAN통신검사 G-SACN</button>
-      <button onClick="완료보고서_save('CAN2');">CAN통신검사</button>
-      <button onClick="완료보고서_save('DCIR');">DCIR검사</button>
-      <button onClick="완료보고서_save('용량');">용량평가</button>
+      <button onClick="완료보고서_save_pdf();">완료보고서</button>
+      <button onClick="완료보고서_save_pdf('육외');">육안검사외부</button>
+      <button onClick="완료보고서_save_pdf('육내');">육안검사내부</button>
+      <button onClick="완료보고서_save_pdf('기밀');">기밀검사</button>
+      <button onClick="완료보고서_save_pdf('절연');">절연저항검사</button>
+      <button onClick="완료보고서_save_pdf('CAN');">CAN통신검사 G-SACN</button>
+      <button onClick="완료보고서_save_pdf('CAN2');">CAN통신검사</button>
+      <button onClick="완료보고서_save_pdf('DCIR');">DCIR검사</button>
+      <button onClick="완료보고서_save_pdf('용량');">용량평가</button>
     </div>
     <script>
       var _차종 = document.getElementById("_차종");
@@ -2099,8 +2120,8 @@
       var _management_id = document.getElementById("_management_id");
       var _재제조번호 = document.getElementById("_재제조번호");
 
-      var _VIN = document.getElementById("_VINNo");
-      var _RO = document.getElementById("_RONo");
+      var _VINNo = document.getElementById("_VINNo");
+      var _RONo = document.getElementById("_RONo");
       var _주행거리 = document.getElementById("_주행거리");
       var _차량번호 = document.getElementById("_차량번호");
       var _생산일 = document.getElementById("_생산일");

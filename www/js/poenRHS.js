@@ -1284,16 +1284,6 @@ const 기초보고서_doc = {
 	기밀검사: "",
 };
 
-const 완료보고서_doc = {
-	level: "",
-	완료보고서: "",
-	육안검사외부: "",
-	육안검사외부상세: "",
-	육안검사내부: "",
-	육안검사내부상세: "",
-	기밀검사: "",
-};
-
 const 부품정보_list_doc = {
 	관리번호: "",
 	A_UPR_CASE_QR: "",
@@ -1712,6 +1702,14 @@ const 불량의심부품_doc = {
 	D2_LV_W_H: "",
 	D2_MODULE_1: "",
 };
+
+const 완료보고서_doc = {
+	관리번호: "",
+	pic1: "",
+	pic2: "",
+	DCIR_file: "",
+	용량평가_file: "",
+}
 
 const 계정_ = {
 	_id: 0,
@@ -2901,17 +2899,6 @@ const 기초보고서_ = {
 	기밀검사: 1,
 };
 
-const 완료보고서_ = {
-	_id: 0,
-	level: 1,
-	완료보고서: 1,
-	육안검사외부: 1,
-	육안검사외부상세: 1,
-	육안검사내부: 1,
-	육안검사내부상세: 1,
-	기밀검사: 1,
-};
-
 const 부품정보_list_ = {
 	_id: 0,
 	관리번호: 1,
@@ -3334,6 +3321,15 @@ const 불량의심부품_ = {
 	D2_LV_W_H: 1,
 	D2_MODULE_1: 1,
 };
+
+const 완료보고서_ = {
+	_id: 0,
+	관리번호: 1,
+	pic1: 1,
+	pic2: 1,
+	DCIR_file: 1,
+	용량평가_file: 1,
+}
 
 var doc_count = 0;
 var update_count = 0;
@@ -4602,6 +4598,10 @@ async function find(col, management_id) {
 
 		case "분해조립폐기자재":
 			socket.emit("find", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 분해조립폐기자재_ }, check);
+			break;
+
+		case "완료보고서":
+			socket.emit("find", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 완료보고서_ }, check);
 			break;
 
 		default:

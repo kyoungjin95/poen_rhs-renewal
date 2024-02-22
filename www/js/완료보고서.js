@@ -7,10 +7,11 @@ var EOL_pic_data;
 var flag_입고정보 = false;
 
 async function 완료보고서_시작() {
-	loadPage("base/완료보고서.html");
-	await sleep(1);
+	while (_management_id == undefined) {
+		await sleep(1);
+	}
+	flag_완료보고서 = false;
 
-	_management_id.value = 관리번호;
 	await 완료보고서_조회();
 }
 
@@ -20,7 +21,7 @@ async function 완료보고서_조회(is재제조번호 = false) {
 		await delay();
 
 		if (BSA재제조_v != null) {
-			_management_id.value = BSA재제조_v.관리번호;
+			관리번호 = BSA재제조_v.관리번호;
 		}
 	}
 
@@ -43,8 +44,8 @@ async function 완료보고서_조회(is재제조번호 = false) {
 	find(성능검사, 관리번호);
 	await delay();
 
-	성능_data = JSON.parse(JSON.stringify(성능_v));
-	
+	성능_data = JSON.parse(JSON.stringify(성능검사_v));
+
 	find(EOL, 관리번호);
 	await delay();
 
@@ -53,14 +54,20 @@ async function 완료보고서_조회(is재제조번호 = false) {
 	find(EOL_pic, 관리번호);
 	await delay();
 
-	EOL_pic_data = JSON.parse(JSON.stringify(EOL_v));
+	EOL_pic_data = JSON.parse(JSON.stringify(EOL_pic_v));
 
 	find(부품정보_list, 관리번호);
 	await delay();
-	
+
 	if(부품정보_list_v != null) {
 		flag_입고정보 = true;
 	}
+	
+	find(완료보고서, 관리번호);
+	await delay();
+
+	_img1.src = 완료보고서_v.pic1;
+	_img2.src = 완료보고서_v.pic2;
 
 	if (입고_data != null) {
 		_RONo.innerHTML = 입고_data.RONo;
@@ -112,17 +119,13 @@ async function 완료보고서_조회(is재제조번호 = false) {
 	}
 
 	if (기초_data != null) {
-		_VIN.innerHTML = 기초_data.VIN;
-		_RO.innerHTML = 기초_data.RO_no;
+		_VINNo.innerHTML = 기초_data.VIN;
+		_RONo.innerHTML = 기초_data.RO_no;
 		_주행거리.innerHTML = 기초_data.주행거리;
 		_차량번호.innerHTML = 기초_data.차량번호;
 		_생산일.innerHTML = 기초_data.BSA생산일자;
 		_판매일.innerHTML = 기초_data.BSA판매일자;
 		_수리일.innerHTML = 기초_data.BSA수리일자;
-		_관리번호.innerHTML = _management_id.value;
-		_필드현상.innerHTML = 기초_data.필드현상;
-		_센터진단.innerHTML = 기초_data.센터진단내용;
-		_센터조치.innerHTML = 기초_data.AS센터조치;
 		_작성자.innerHTML = worker;
 	}
 
@@ -158,7 +161,7 @@ async function 완료보고서_조회(is재제조번호 = false) {
 				//_CS_입고정보사유.innerHTML;
 				_CS_재제조이력.innerHTML = 'OK';
 				//_CS_재제조이력사유.innerHTML;
-				_CS_출하QR.innerHTML = (EOL_data.QR != '' && EOL_data.QR != undefiend) ? 'OK' : 'NG';
+				_CS_출하QR.innerHTML = (EOL_data.QR != '' && EOL_data.QR != undefined) ? 'OK' : 'NG';
 				_CS_커버류.innerHTML = EOL_data.커버류;
 				if(EOL_data.커버류 == 'OK') _CS_커버류확인.innerHTML = '커버 장착 확인';
 				else _CS_커버류확인.innerHTML = '커버 비장착';
@@ -422,6 +425,7 @@ async function 완료보고서_조회(is재제조번호 = false) {
 				break;
 
 			case "OS_EV":
+				console.log(EOL_data);
 				_OS_외부점검.innerHTML = EOL_data.육안검사_외부;
 				_OS_외부점검사유innerHTML = '';
 				_OS_내부점검.innerHTML = EOL_data.육안검사_내부;
@@ -446,14 +450,14 @@ async function 완료보고서_조회(is재제조번호 = false) {
 				//_OS_입고정보사유.innerHTML;
 				_OS_재제조이력.innerHTML = 'OK';
 				//_OS_재제조이력사유.innerHTML;
-				_OS_출하QR.innerHTML = (EOL_data.QR != '' && EOL_data.QR != undefiend) ? 'OK' : 'NG';
+				_OS_출하QR.innerHTML = (EOL_data.QR != '' && EOL_data.QR != undefined) ? 'OK' : 'NG';
 				_OS_커버류.innerHTML = EOL_data.커버류;
 				if(EOL_data.커버류 == 'OK') _OS_커버류확인.innerHTML = '커버 장착 확인';
 				else _OS_커버류확인.innerHTML = '커버 비장착';
 				_OS_브라켓정보.innerHTML = EOL_data.브라켓;
 				if(EOL_data.브라켓 == 'OK') _OS_브라켓값.innerHTML = '재고 부족 시 영업팀과 협의 요망';
 				else _OS_브라켓값.innerHTML = '재고 부족 영업팀과 협의 요망';
-				_OS_ICCU.innerHTML = EOL_data.ICCU;
+				//_OS_ICCU.innerHTML = EOL_data.ICCU;
 				//_OS_ICCU값.innerHTML;
 				break;
 
@@ -498,37 +502,64 @@ async function 완료보고서_조회(is재제조번호 = false) {
 		}
 	}
 
-	_top_pic = EOL_pic_data.pic1;
-	_front_pic = EOL_pic_data.pic1;
-	_left_pic = EOL_pic_data.pic1;
-	_bottom_pic = EOL_pic_data.pic1;
-	_rear_pic = EOL_pic_data.pic1;
-	_right_pic = EOL_pic_data.pic1;
-	_BMU = EOL_pic_data.pic1;
-	_CMU = EOL_pic_data.pic1;
-	_PRA = EOL_pic_data.pic1;
-	_측정사진1 = EOL_pic_data.pic1;
-	_측정사진2 = EOL_pic_data.pic1;
-	_측정값사진1 = EOL_pic_data.pic1;
-	_측정값사진2 = EOL_pic_data.pic1;
-	_절연측정사진1 = EOL_pic_data.pic1;
-	_절연측정사진2 = EOL_pic_data.pic1;
-	_절연측정값사진1 = EOL_pic_data.pic1;
-	_절연측정값사진2 = EOL_pic_data.pic1;
-	_CAN현재 = EOL_pic_data.pic1;
-	_CAN진단 = EOL_pic_data.pic1;
-	_PDS진단1 = EOL_pic_data.pic1;
-	_PDS진단2 = EOL_pic_data.pic1;
-	_CAN과거 = EOL_pic_data.pic1;
-	_EOL항목검사사진 = EOL_pic_data.pic1;
-	_EOL항목_릴레이제어 = EOL_pic_data.pic1;
-	_EOL항목_책전압 = EOL_pic_data.pic1;
-	_CELL전압검사사진 = EOL_pic_data.pic1;
-	_CELL전압_MAX = EOL_pic_data.pic1;
-	_CELL전압_편차 = EOL_pic_data.pic1;
-	_CELL전압_MIN = EOL_pic_data.pic1;
-	_img1 = EOL_pic_data.pic1;
-	_img2 = EOL_pic_data.pic1;
+	_top_pic.src = EOL_pic_data.pic1;
+	_front_pic.src = EOL_pic_data.pic2;
+	_left_pic.src = EOL_pic_data.pic3;
+	_bottom_pic.src = EOL_pic_data.pic4;
+	_rear_pic.src = EOL_pic_data.pic5;
+	_right_pic.src = EOL_pic_data.pic6;
+	_allImg.src = EOL_pic_data.pic7;
+	_BMU.src = EOL_pic_data.pic8;
+	_CMU.src = EOL_pic_data.pic9;
+	_PRA.src = EOL_pic_data.pic10;
+	_측정사진1.src = EOL_pic_data.pic11;
+	_측정값사진1.src = EOL_pic_data.pic12;
+	_측정사진2.src = EOL_pic_data.pic13;
+	_측정값사진2.src = EOL_pic_data.pic14;
+	_절연측정사진1.src = EOL_pic_data.pic15;
+	_절연측정값사진1.src = EOL_pic_data.pic16;
+	_절연측정사진2.src = EOL_pic_data.pic17;
+	_절연측정값사진2.src = EOL_pic_data.pic18;
+	_CAN현재.src = EOL_pic_data.pic21;
+	_CAN과거.src = EOL_pic_data.pic22;
+	_CAN진단.src = EOL_pic_data.pic23;
+	_PDS진단1.src = EOL_pic_data.pic24;
+	_PDS진단2.src = EOL_pic_data.pic25;
+	_EOL항목검사사진.src = EOL_pic_data.pic24;
+	_CELL전압검사사진.src = EOL_pic_data.pic25;
+
+	_img1.ondblclick = function (evt) {
+		_img1.src = "";
+	};
+	_img1.ondrop = function (evt) {
+		var files = evt.dataTransfer?.files;
+		if (files.length > 0) {
+			console.log("drag & drop");
+			resize_pic(files[0], _img1);
+		}
+		evt.preventDefault();
+	};
+
+	_img2.ondblclick = function (evt) {
+		_img2.src = "";
+	};
+	_img2.ondrop = function (evt) {
+		var files = evt.dataTransfer?.files;
+		if (files.length > 0) {
+			console.log("drag & drop");
+			resize_pic(files[0], _img2);
+		}
+		evt.preventDefault();
+	};
+
+	_img1.ondragover = function (evt) {
+		evt.preventDefault();
+		console.log("dragover!");
+	};
+
+	_img2.ondragover = function (evt) {
+		evt.preventDefault();
+	};
 
 }
 
@@ -542,7 +573,29 @@ function showTable(tableId) {
 	document.getElementById(tableId).style.display = "table";
 }
 
-async function 완료보고서_save(type = 0) {
+async function 완료보고서_save() {
+	var doc = {
+		관리번호 : 관리번호,
+		pic1 : _img1.src,
+		pic2 : _img2.src,
+	}
+
+	update(완료보고서, doc);
+	await delay();
+
+	console.log(update_count);
+	console.log(insert_count);
+
+	if (update_count > 0) {
+		alert("업데이트 되었습니다");
+	}
+
+	if (insert_count > 0) {
+		alert("저장 되었습니다");
+	}
+}
+
+async function 완료보고서_save_pdf(type = 0) {
 	var _date = new Date();
 	var file_name = "완료보고서" + _date + ".pdf";
 	var _width = 4200;
