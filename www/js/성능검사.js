@@ -754,7 +754,7 @@ async function read_DCIR() {
 	_DCIR_Charge5.value = DCIR5_result;
 	_DCIR_Charge6.value = DCIR6_result;
 
-	console.log('DCIR result:', DCIR_result, DCIR1_result, DCIR2_result, DCIR3_result, DCIR4_result, DCIR5_result, DCIR6_result));
+	console.log('DCIR result:', DCIR_result, DCIR1_result, DCIR2_result, DCIR3_result, DCIR4_result, DCIR5_result, DCIR6_result);
 }
 
 async function read_data() {
