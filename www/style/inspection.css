@@ -325,17 +325,7 @@ td.bg-gray {
   position: relative;
   display: inline-block;
 }
-._완료보고서__img .images::after {
-  content: "\f302";
-  display: block;
-  font-family: "Font Awesome 5 Free";
-  font-size: 100px;
-  color: #afafaf;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
+
 ._완료보고서__img .images img {
   width: 100%;
   height: 100%;
