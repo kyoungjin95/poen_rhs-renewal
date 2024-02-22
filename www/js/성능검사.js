@@ -746,7 +746,7 @@ async function read_DCIR() {
 	DCIR(path);
 	await delay();
 
-	_DCIR.value = DCIR_result;
+	_DCIR.value = Number(DCIR_result).toFixed(2);
 	_DCIR_Charge1.value = (Number(DCIR1_result) * (-1)).toFixed(2);
 	_DCIR_Charge2.value = Number(DCIR2_result).toFixed(2);
 	_DCIR_Charge3.value = (Number(DCIR3_result) * (-1)).toFixed(2);
