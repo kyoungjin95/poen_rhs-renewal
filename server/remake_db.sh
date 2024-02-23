@@ -6,5 +6,5 @@ sudo ./start_db.sh
 sudo ./start_server.sh
 sleep 3
 ./make_db.sh
-npm install
+bun install
 

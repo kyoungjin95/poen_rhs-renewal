@@ -428,21 +428,20 @@ td.process__btn {
   border-left: 1px solid #ddd;
 }
 .기초검사 ._항목,
-.세척 ._항목 {
+.세척 ._항목,
+.EOL ._항목 {
   border-right: 1px solid #ddd;
 }
 .기초검사 .tb td,
-.세척 .tb td {
+.세척 .tb td,
+.EOL .tb td {
   border-left: none;
 }
 .기초검사 .once,
-.세척 .once {
+.세척 .once,
+.EOL .once {
   border-left: 1px solid #ddd !important;
 }
-/* .분해조립 .tb .plus,
-.분해조립 .tb .minus {
-  text-align: center;
-} */
 .출하정보 .tb {
   width: 90%;
 }
@@ -452,6 +451,11 @@ td.process__btn {
 .고품정보 .tb .step-con {
   display: flex;
   align-items: center;
+}
+/* EOL */
+.side__tit {
+  font-weight: normal;
+  font-size: 0.8vw;
 }
 /* 분해조립, 출하정보 크기 줄이기위함*/
 .t1 td,
@@ -481,7 +485,7 @@ td.process__btn {
 }
 /* 성능검사 */
 .성능검사 .process-step table td span {
-  font-size: 1vw;
+  font-size: 0.8vw;
 }
 .성능검사 .process-step table .t1-d {
   padding: 0.5vw;
