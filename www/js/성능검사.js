@@ -722,7 +722,7 @@ async function read_용량평가() {
 	용량평가(path);
 	await delay();
 
-	_용량평가.value = 용량평가_result;
+	_용량평가.value = Number(용량평가_result).toFixed(2);
 
 	console.log('용량평가 result:', 용량평가_result);
 }
@@ -734,7 +734,7 @@ async function read_SOC60Percent() {
 	SOC60Percent(path);
 	await delay();
 
-	_SOC60Percent.value = SOC60Percent_result;
+	_SOC60Percent.value = Number(SOC60Percent_result).toFixed(2);
 
 	console.log('SOC60Percent result:', SOC60Percent_result);
 }

@@ -56,7 +56,7 @@ async function login() {
         }
       }, 1000);
       await sleep(1);
-      alert('#공지사항#\nVersion update sky 0.56\n1.성능검사 DCIR 방전 및 충전 모두 표시');
+      alert('#공지사항#\nVersion update sky 0.57\n1. 성능검사 DCIR표기 수정');
     } else if (worker == _id.value) {
       worker = "";
       level = "";

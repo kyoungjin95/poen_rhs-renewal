@@ -146,7 +146,7 @@ console.log('connected ip', client_ip);
 		};
 
 		console.log('용량평가:', old_dischargecap);
-		socket.emit('용량평가_result', old_dischargecap);
+		socket.emit('용량평가_result', Number(old_dischargecap));
 	});
 
 	socket.on('SOC60Percent', async function(path) {
@@ -202,7 +202,7 @@ console.log('connected ip', client_ip);
 			if(i == (data.length - 1)) console.log(data[i].DCIR);
 		}
 
-		var DCIR_total = (Number(DCIR1) + Number(DCIR2) + Number(DCIR3)) / 3;
+		var DCIR_total = (Math.abs(Number(DCIR1)) + Number(DCIR2) + Math.abs(Number(DCIR3))  + Number(DCIR4) + Math.abs(Number(DCIR5)) + Math.abs(Number(DCIR6))) / 6;
 		var result = {
 			DCIR : DCIR_total,
 			DCIR1 : DCIR1,
