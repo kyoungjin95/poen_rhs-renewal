@@ -45,25 +45,6 @@ function 분해조립폐기자재_table(tabledata) {
 			{ title: "품번", field: "품번", sorter: "string" },
 			{ title: "QR", field: "QR", sorter: "string" },
 			{ title: "폐기사유", field: "폐기사유", editor: "textarea"},
-			{
-				formatter: "buttonCross",
-				width: 40,
-				align: "center",
-				cellClick: async function (e, cell) {
-					var row_index = cell.getRow()._row.position;
-					console.log(row_index);
-
-				        if(pushed.indexOf(분해조립폐기자재_tabledata[index -1].QR) != -1) pushed.splice(pushed.indexOf(분해조립폐기자재_tabledata[row_index -1].QR), 1);
-					var del_QR = 분해조립폐기자재_tabledata[row_index - 1].QR;
-					delete_분해조립폐기자재(분해조립폐기자재, del_QR);
-					await delay();
-
-					분해조립폐기자재_tabledata.splice(row_index - 1, 1);
-					분해조립폐기자재_table(분해조립폐기자재_tabledata);
-
-
-				},
-			},
 		]
 	});
 
@@ -79,11 +60,30 @@ function 분해조립폐기자재_table(tabledata) {
 	});
 }
 
+var 고품 = [];
 var check_items;
 var 분해조립폐기자재_tabledata = [];
 function 폐기자재_choisenButton() {
+	고품 = [];
 	var buttons = document.querySelectorAll("button");
 	buttons.forEach((button) => {
+		const value = button.getAttribute("value");
+		if(value == null) return;
+
+		var DateTime = luxon.DateTime;
+		var seoul = DateTime.local().setZone("Asia/Seoul");
+		var now = seoul.toString().slice(0, 19);
+
+		var _tmp = JSON.parse(JSON.stringify(고품정보_doc));
+		_tmp.관리번호  = 관리번호;
+		_tmp.품명 = value.replace('_A_', '').replace('_B_', '').replace('_C_', '').replace('_D_', '').replace('_D2_', '').replace('_QR', '');
+		_tmp.품번 = document.getElementById(value.replace('QR', '품번')).value;
+		_tmp.QR = document.getElementById(value).value;
+		_tmp.폐기여부 = '자재';
+		_tmp.등록일 = now;
+		_tmp.등록작업자 = worker;
+		고품.push(_tmp);
+
 		button.addEventListener("click", async () => {
 			const value = button.getAttribute("value");
 			if (value == null) return;
@@ -124,6 +124,8 @@ function 폐기자재_choisenButton() {
 
 async function 분해조립폐기자재_save() {
 	var data = table_폐기자재.getData();
+	var update_cnt = 0;
+	var insert_cnt = 0;
 
 	for(var i = 0; i < data.length; i++) {
 		delete_분해조립폐기자재(분해조립폐기자재, data[i].QR);
@@ -135,39 +137,50 @@ async function 분해조립폐기자재_save() {
 		update_분해조립폐기자재(분해조립폐기자재, data[i]);
 		await delay();
 
+
 		console.log(update_count);
 		console.log(insert_count);
+		update_cnt = update_count;
+		inserte_cnt = insert_count;
 	};
 
+	console.log(고품);
+	for(var i = 0 ; i < 고품.length; i++) {
+		var DateTime = luxon.DateTime;
+		var seoul = DateTime.local().setZone("Asia/Seoul");
+		var now = seoul.toString().slice(0, 19);
 
-	if (update_count > 0) {
-		alert("업데이트 되었습니다");
-	}
-
-	if (insert_count > 0) {
-		alert("저장 되었습니다");
-	}
-
-	var buttons = document.querySelectorAll("button");
-	buttons.forEach(async (button) => {
-		const value = button.getAttribute("value");
-		if (value == null) return;
-		console.log("value:", value);
-
-		if(check_items.indexOf(value) != -1) return;
-
-    		var _doc = JSON.parse(JSON.stringify(BSA재제조_doc));
+    		var _doc = JSON.parse(JSON.stringify(고품정보_doc));
 		_doc.관리번호  = 관리번호;
-		_doc.품명 = value.replace('_A_', '').replace('_B_', '').replace('_C_', '').replace('_D_', '').replace('_D2_', '').replace('_QR', '');
-		_doc.품번 = document.getElementById(value.replace('QR', '품번')).value;
-		_doc.QR = document.getElementById(value).value;
+		_doc.품명 = 고품[i].품명;
+		_doc.품번 = 고품[i].품번;
+		_doc.QR = 고품[i].QR;
+		_doc.폐기여부 = '자재';
+		_doc.등록일 = now;
+		_doc.등록_작업자 = worker;
 
+		for(var j = 0; j < data.length; j++) {
+			if(data[j].QR == _doc.QR) {
+				_doc.폐기여부 = '폐기';
+			}
+		}
+
+		console.log(_doc);
 		update_고품정보(고품정보, _doc);
 		await delay();
 
-		console.log(update_count);
-		console.log(insert_count);
-	});
+		update_cnt += update_count;
+		insert_cnt += insert_count;
+	}
+
+	if (update_cnt > 0) {
+		alert("업데이트 되었습니다");
+	}
+
+	if (insert_cnt > 0) {
+		alert("저장 되었습니다");
+	}
+
 }
 
 var flag_폐기자재_all = false;

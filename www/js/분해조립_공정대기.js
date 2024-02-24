@@ -57,23 +57,6 @@ function 분해조립공정대기_table(tabledata) {
 			{ title: "품번", field: "품번", sorter: "string" },
 			{ title: "QR", field: "QR", sorter: "string" },
 			{ title: "대기사유", field: "대기사유", editor: "textarea"},
-			{
-				formatter: "buttonCross",
-				width: 40,
-				align: "center",
-				cellClick: async function (e, cell) {
-					var row_index = cell.getRow()._row.position;
-				        if(pushed.indexOf(교체부품_tabledata[index -1].QR) != -1) pushed.splice(pushed.indexOf(교체부품_tabledata[row_index -1].교체전QR), 1);
-					console.log(row_index);
-					
-					var del_QR = 분해조립공정대기_tabledata[row_index - 1].QR;
-					delete_분해조립공정대기(분해조립공정대기, del_QR);
-					await delay();
-
-					분해조립공정대기_tabledata.splice(row_index - 1, 1);
-					분해조립공정대기_table(분해조립공정대기_tabledata);
-				},
-			},
 		]
 	});
 }

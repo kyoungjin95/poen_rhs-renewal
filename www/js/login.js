@@ -16,6 +16,7 @@ async function login() {
   if (계정_v != null) {
     if (worker == "") {
       worker = _id.value;
+      console.log('작업자:', worker);
       findOne_계정(계정, { id: _id.value });
       await delay();
       계정_stat = 계정_v;

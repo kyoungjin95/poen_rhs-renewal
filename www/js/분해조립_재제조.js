@@ -163,13 +163,13 @@ async function 분해조립재제조_save() {
 		if(update_count > 0) flag_update = true;
 		if(insert_count > 0) flag_insert = true;
 
-		if(data[i].신품고품 != '고품') continue;
 		var doc = {
-			QR : data[i].교체후QR,
-			사용여부 : '사용',
-			사용_관리번호 : 관리번호,
-			사용일 : now,
-			사용작업자 : worker
+			관리번호 : 관리번호,
+			품명 : data[i].품명,
+			QR : data[i].교체전QR,
+			폐기여부 : '폐기',
+			등록일 : now,
+			등록_작업자 : worker
 		}
 
 		update_고품정보(고품정보, doc);
@@ -177,6 +177,28 @@ async function 분해조립재제조_save() {
 
 		console.log(update_count);
 		console.log(insert_count);
+
+		if(update_count > 0) flag_update = true;
+		if(insert_count > 0) flag_insert = true;
+
+		if(data[i].신품고품 != '고품') continue;
+
+		var doc = {
+			QR : data[i].교체후QR,
+			사용여부 : '사용',
+			사용_관리번호 : 관리번호,
+			사용일 : now,
+			사용_작업자 : worker
+		}
+
+		update_고품정보(고품정보, doc);
+		await delay();
+
+		console.log(update_count);
+		console.log(insert_count);
+
+		if(update_count > 0) flag_update = true;
+		if(insert_count > 0) flag_insert = true;
 	};
 
 	if(재제조_doc.분해조립 == '') 재제조_doc.분해조립 = now;
