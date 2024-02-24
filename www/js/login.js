@@ -57,7 +57,7 @@ async function login() {
         }
       }, 1000);
       await sleep(1);
-      alert('#공지사항#\nVersion update sky 0.57\n1. 성능검사 DCIR표기 수정');
+      alert('#공지사항#\nVersion update sky 0.58\n1. 분해조립 폐기 및 자재 처리\n2. 분해조립 재제조에서 고품 사용시 고품정보에 사용으로 정보 자동 변경');
     } else if (worker == _id.value) {
       worker = "";
       level = "";
