@@ -36,6 +36,9 @@ var table_폐기자재;
 var flag_all_폐기사유 = false;
 function 분해조립폐기자재_table(tabledata) {
 	table_폐기자재 = new Tabulator("#grid_교체부품", {
+		initialSort:[
+			{column:"품명", dir:"asc"}, //sort by this first
+		],
 		layout: "resizableColumnFit",
 		height: 500,
 		data: tabledata,
@@ -186,9 +189,49 @@ async function 분해조립폐기자재_save() {
 var flag_폐기자재_all = false;
 async function 분해조립폐기자재_all() {
 	var buttons = document.querySelectorAll("button");
+	switch (차종) {
+		case "DE":
+		case "DE_EV":
+		case "OS":
+		case "OS_EV":
+		case "SK3":
+		case "SK3_EV":
+		case "LK":
+		case "LK_EV":
+			id = '_A_';
+			break;
+
+		case "PU":
+		case "PU_EV":
+		case "HR":
+		case "HR_EV":
+			id = '_B_';
+			break;
+
+		case "CV":
+		case "CV_EV":
+		case "NE":
+		case "NE_EV":
+		case "LM":
+		case "LM_EV":
+			id = '_C_';
+			break;
+
+		case "CS":
+		case "CS_EV":
+			id = '_D_';
+			break;
+
+		default:
+			alert("차종 정보를 확인해주세요");
+
+			return;
+			break;
+	}
 	buttons.forEach((button) => {
 		const value = button.getAttribute("value");
 		if (value == null) return;
+		if (value.substr(0,3) != id) return;
 		console.log("value:", value);
 
 		button.style.backgroundColor = 'red';
