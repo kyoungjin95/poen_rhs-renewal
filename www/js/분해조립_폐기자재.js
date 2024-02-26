@@ -1,3 +1,4 @@
+var 분해조립투입일 = '';
 async function 분해조립_폐기자재_시작() {
 	await sleep(100);
 	if(typeof _D == 'undefined') {
@@ -30,6 +31,19 @@ async function 분해조립_폐기자재_시작() {
 	flag_폐기자재_all = false;
 	flag_all_폐기사유 = false;
 	check_items = [];
+
+	find(BSA재제조, 관리번호);
+	await delay();
+
+	분해조립투입일 = BSA재제조_v.분해조립투립일;
+	if(BSA재제조_v.분해조립투입일 == null || BSA재제조_v.분해조립투입일 == undefined) {
+		var DateTime = luxon.DateTime;
+		var seoul = DateTime.local().setZone("Asia/Seoul");
+		var now = seoul.toString().slice(0, 19);
+
+		분해조립투입일 = now;
+	}
+
 }
 
 var table_폐기자재;
@@ -140,9 +154,9 @@ async function 분해조립폐기자재_save() {
 		update_분해조립폐기자재(분해조립폐기자재, data[i]);
 		await delay();
 
-
 		console.log(update_count);
 		console.log(insert_count);
+
 		update_cnt = update_count;
 		inserte_cnt = insert_count;
 	};
@@ -167,6 +181,8 @@ async function 분해조립폐기자재_save() {
 				_doc.폐기여부 = '폐기';
 			}
 		}
+		
+		if(_doc.QR == '') continue;
 
 		console.log(_doc);
 		update_고품정보(고품정보, _doc);
@@ -176,6 +192,22 @@ async function 분해조립폐기자재_save() {
 		insert_cnt += insert_count;
 	}
 
+	var DateTime = luxon.DateTime;
+	var seoul = DateTime.local().setZone("Asia/Seoul");
+	var now = seoul.toString().slice(0, 19);
+
+	var _doc = {
+		관리번호 : 관리번호,
+		분해조립투입일 : 분해조립투입일,
+		분해조립 : now
+	}
+
+	update(BSA재제조, _doc);
+	await delay();
+
+	update_cnt += update_count;
+	insert_cnt += insert_count;
+
 	if (update_cnt > 0) {
 		alert("업데이트 되었습니다");
 	}
@@ -183,7 +215,6 @@ async function 분해조립폐기자재_save() {
 	if (insert_cnt > 0) {
 		alert("저장 되었습니다");
 	}
-
 }
 
 var flag_폐기자재_all = false;
