@@ -57,7 +57,7 @@ async function login() {
         }
       }, 1000);
       await sleep(1);
-      alert('#공지사항#\nVersion update sky 0.59\n1. 분해조립 전체 폐기시 버그 수정');
+      alert('#공지사항#\nVersion update sky 0.60\n1. 분해조립_폐기/자재 고품자재등록 버그 수정');
     } else if (worker == _id.value) {
       worker = "";
       level = "";
