@@ -508,26 +508,49 @@ async function 완료보고서_조회(is재제조번호 = false) {
 	_bottom_pic.src = EOL_pic_data.pic4;
 	_rear_pic.src = EOL_pic_data.pic5;
 	_right_pic.src = EOL_pic_data.pic6;
+
+	//육안검사 내부
 	_allImg.src = EOL_pic_data.pic7;
 	_BMU.src = EOL_pic_data.pic8;
 	_CMU.src = EOL_pic_data.pic9;
 	_PRA.src = EOL_pic_data.pic10;
+
+	//기밀검사
 	_측정사진1.src = EOL_pic_data.pic11;
 	_측정값사진1.src = EOL_pic_data.pic12;
 	_측정사진2.src = EOL_pic_data.pic13;
 	_측정값사진2.src = EOL_pic_data.pic14;
+	_케이스.innerHTML = EOL_data.기밀검사_케이스;
+	_냉각유로.innerHTML = EOL_data.기밀검사_냉각유로;
+
+	//절연 저항 검사
 	_절연측정사진1.src = EOL_pic_data.pic15;
 	_절연측정값사진1.src = EOL_pic_data.pic16;
 	_절연측정사진2.src = EOL_pic_data.pic17;
 	_절연측정값사진2.src = EOL_pic_data.pic18;
+	_절연PRA_P.innerHTML = EOL_data.절연검사_Plus;
+	_절연PRA_N.innerHTML = EOL_data.절연검사_Minus;
+
+	//CAN 통신 검사 - G-SCAN 진단결과
 	_CAN현재.src = EOL_pic_data.pic21;
 	_CAN과거.src = EOL_pic_data.pic22;
 	_CAN진단.src = EOL_pic_data.pic23;
-	_PDS진단1.src = EOL_pic_data.pic24;
-	_PDS진단2.src = EOL_pic_data.pic25;
+
+	//CAN 통신 검사
+	//_PDS진단1.src = EOL_pic_data.pic24;
+	//_PDS진단2.src = EOL_pic_data.pic25;
 	_EOL항목검사사진.src = EOL_pic_data.pic24;
 	_CELL전압검사사진.src = EOL_pic_data.pic25;
+	_EOL항목_릴레이제어.innerHTML = EOL_data.통신검사_릴레이구동;
+	_EOL항목_팩전압.innerHTML = EOL_data.통신검사_팩전압_특이사항;
+	_EOL항목검사.innerHTML = (EOL_data.통신검사_릴레이구동 == 'OK' && EOL_data.통신검사_팩전압 =='OK') ? 'OK' : 'NG';
 
+	_CELL전압_MAX.innerHTML = EOL_data.통신검사_셀전압MAX;
+        _CELL전압_MIN.innerHTML = EOL_data.통신검사_셀전압MIN;
+	_CELL전압_편차.innerHTML = EOL_data.통신검사_셀전압편차;
+	_CELL전압검사.innerHTML = (EOL_data.통신검사_셀전압MAX != '' && EOL_data.통신검사_셀전압MIN != '' && EOL_data.통신검사_CELL전압_편차 != '') ? 'OK' : 'NG';
+
+	//DCIR
 	_img1.ondblclick = function (evt) {
 		_img1.src = "";
 	};
@@ -540,6 +563,14 @@ async function 완료보고서_조회(is재제조번호 = false) {
 		evt.preventDefault();
 	};
 
+	_img1.ondragover = function (evt) {
+		evt.preventDefault();
+		console.log("dragover!");
+	};
+
+	_DCIR검사_결과.value = 성능검사_data.DCIR;
+
+	//용량평가
 	_img2.ondblclick = function (evt) {
 		_img2.src = "";
 	};
@@ -552,15 +583,10 @@ async function 완료보고서_조회(is재제조번호 = false) {
 		evt.preventDefault();
 	};
 
-	_img1.ondragover = function (evt) {
-		evt.preventDefault();
-		console.log("dragover!");
-	};
-
 	_img2.ondragover = function (evt) {
 		evt.preventDefault();
 	};
-
+	_용량평가_결과.value = 성능검사_data.용량평가;
 }
 
 function showTable(tableId) {

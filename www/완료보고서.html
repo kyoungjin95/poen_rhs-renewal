@@ -1959,12 +1959,12 @@
 
           <tr>
             <th scope="row">합 부<br />판 정</th>
-            <td class="result" id="_절연PRA_P">
+            <td class="result" id="_EOL항목검사">
               <span class="result-vlaue r1">OK</span>
               <strong> &sol;</strong>
               <span class="result-vlaue r2">NG</span>
             </td>
-            <td class="result" id="_절연PRA_N">
+            <td class="result" id="_CELL전압검사">
               <span class="result-vlaue r1">OK</span>
               <strong> &sol;</strong>
               <span class="result-vlaue r2">NG</span>
@@ -2537,6 +2537,8 @@
       var _CELL전압_MAX = document.getElementById("_CELL전압_MAX");
       var _CELL전압_편차 = document.getElementById("_CELL전압_편차");
       var _CELL전압_MIN = document.getElementById("_CELL전압_MIN");
+      var _EOL항목검사 = document.getElementById("_EOL항목검사");
+      var _CELL전압검사 = document.getElementById("_CELL전압검사");
 
       //DCIR검사, 용량평가
       const _file1 = document.getElementById("_file1");
