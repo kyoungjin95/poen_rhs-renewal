@@ -641,12 +641,13 @@ async function EOL_SAVE() {
     alert("저장 되었습니다");
   }
 
-  var _doc = {
-    관리번호: _management_id.value.toUpperCase(),
-    EOL투입일: _공정입고일.value,
-    EOL: _공정완료일.value,
-    마지막충전일: _공정완료일.value,
-  };
+  find(BSA재제조, 관리번호);
+  await delay();
+
+  var _doc = JSON.parse(JSON.stringify(BSA재제조_v));
+  _doc.EOL투입일 = _공정입고일.value;
+  _doc.EOL = _공정완료일.value;
+  _doc.마지막충전일 = _공정완료일.value;
 
   update(BSA재제조, _doc);
   await delay();

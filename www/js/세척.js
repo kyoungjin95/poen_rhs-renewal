@@ -451,9 +451,6 @@ async function 세척_save() {
     변수저장(today_count);
   }
 
-  find(BSA재제조, _management_id.value);
-  await delay();
-
   var _doc = {
     관리번호: _management_id.value.toUpperCase(),
     재제조번호: _재제조번호.value,

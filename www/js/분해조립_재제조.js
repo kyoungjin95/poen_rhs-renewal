@@ -18,11 +18,7 @@ async function 분해조립_재제조_시작() {
 	await delay();
 
 	if(BSA재제조_v != null) {
-		재제조_doc = {
-			관리번호 : 관리번호,
-			분해조립투입일 : BSA재제조_v.분해조립투입일,
-			분해조립 : BSA재제조_v.분해조립
-		}
+    		재제조_doc = JSON.parse(JSON.stringify(BSA재제조_v));
 	}
 
 	if(재제조_doc.분해조립투입일 == '') 재제조_doc.분해조립투입일 = now;
@@ -49,7 +45,7 @@ async function 분해조립_재제조_시작() {
 	var now = seoul.toString().slice(0, 19);
 
 	if (_공정입고일.value == "") _공정입고일.value = now;
-	if (_공정완료일.value == "") _공정완료일.value = now;
+	//if (_공정완료일.value == "") _공정완료일.value = now;
 
 	_작성자.value = worker;
 }
