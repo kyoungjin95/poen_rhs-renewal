@@ -57,7 +57,7 @@ async function login() {
         }
       }, 1000);
       await sleep(1);
-      alert('#공지사항#\nVersion update sky 0.60\n1. 분해조립_폐기/자재 고품자재등록 버그 수정');
+      alert('#공지사항#\nVersion update sky 0.61\n1. 부품정보 엑셀문서로 출력 오타 수정');
     } else if (worker == _id.value) {
       worker = "";
       level = "";
