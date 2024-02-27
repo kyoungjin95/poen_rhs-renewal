@@ -5307,6 +5307,32 @@ async function init_product_no() {
 	console.log("mado_product_no_complete");
 }
 
+async function undefined_check(BSA재제조_v) {
+	if(BSA재제조_v == null) return;
+	if(BSA재제조_v.입고 == undefined) BSA재제조_v.입고 = '';
+	if(BSA재제조_v.제조투입 == undefined) BSA재제조_v.제조투입 = '';
+	if(BSA재제조_v.세척투입일 == undefined) BSA재제조_v.세척투입일 = '';
+	if(BSA재제조_v.세척 == undefined) BSA재제조_v.세척 = '';
+	if(BSA재제조_v.기초검사투입일 == undefined) BSA재제조_v.기초검사투입일 = '';
+	if(BSA재제조_v.기초검사 == undefined) BSA재제조_v.기초검사 = '';
+	if(BSA재제조_v.분해조립투입일 == undefined) BSA재제조_v.분해조립투입일 = '';
+	if(BSA재제조_v.분해조립 == undefined) BSA재제조_v.분해조립 = '';
+	if(BSA재제조_v.성능검사투입일 == undefined) BSA재제조_v.성능검사투입일 = '';
+	if(BSA재제조_v.성능검사 == undefined) BSA재제조_v.성능검사 = '';
+	if(BSA재제조_v.EOL투입일 == undefined) BSA재제조_v.EOL투입일 = '';
+	if(BSA재제조_v.EOL == undefined) BSA재제조_v.EOL = '';
+	if BSA재제조_v.출하검사 == undefined) BSA재제조_v.출하검사 = '';
+	if(BSA재제조_v.출하 == undefined) BSA재제조_v.출하 = '';
+	if(BSA재제조_v.소재지 == undefined) BSA재제조_v.소재지 = '';
+	if(BSA재제조_v.마지막충전일 == undefined) BSA재제조_v.마지막충전일 = ''
+	if(BSA재제조_v.반품입고 == undefined) BSA재제조_v.반품입고 = '';
+	if(BSA재제조_v.재출하 == undefined) BSA재제조_v.재출하 = '';
+	if(BSA재제조_v.완전분해 == undefined) BSA재제조_v.완전분해 = '';
+	if(BSA재제조_v.폐기 == undefined) BSA재제조_v.폐기 = '';
+	if (BSA재제조_v.출하예약 == undefined) BSA재제조_v.출하예약 = '';
+	if (BSA재제조_v.렉번호 == undefined) BSA재제조_v.렉번호 = '';
+}
+
 const toBase64 = (file) =>
 	new Promise((resolve, reject) => {
 		const reader = new FileReader();

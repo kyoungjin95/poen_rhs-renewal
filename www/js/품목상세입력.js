@@ -296,11 +296,11 @@ async function 상세입력_시작(is재제조번호 = false) {
     if (BSA재제조_v.제조투입 != undefined) _제조투입.value = BSA재제조_v.제조투입.substr(0, 16);
     if(BSA재제조_v.세척투입일 != undefined) _세척투입일.value = BSA재제조_v.세척투입일.substr(0, 16);
     if(BSA재제조_v.세척 != undefined) _세척.value = BSA재제조_v.세척.substr(0, 16);
-    if(BSA재제조_v.기초검사투입일 != null) _기초검사투입일.value = BSA재제조_v.기초검사투입일.substr(0, 16);
+    if(BSA재제조_v.기초검사투입일 != undefined) _기초검사투입일.value = BSA재제조_v.기초검사투입일.substr(0, 16);
     if(BSA재제조_v.기초검사 != undefined) _기초검사.value = BSA재제조_v.기초검사.substr(0, 16);
     if(BSA재제조_v.분해조립투입일 != undefined) _분해조립투입일.value = BSA재제조_v.분해조립투입일.substr(0, 16);
     if(BSA재제조_v.분해조립 != undefined) _분해조립.value = BSA재제조_v.분해조립.substr(0, 16);
-    if(BSA재제조_v.성능검사투입일) _성능검사투입일.value = BSA재제조_v.성능검사투입일.substr(0, 16);
+    if(BSA재제조_v.성능검사투입일 != undefined) _성능검사투입일.value = BSA재제조_v.성능검사투입일.substr(0, 16);
     if( BSA재제조_v.성능검사 != undefined) _성능검사.value = BSA재제조_v.성능검사.substr(0, 16);
     if( BSA재제조_v.EOL투입일 != undefined) _EOL투입일.value = BSA재제조_v.EOL투입일.substr(0, 16);
     if( BSA재제조_v.EOL != undefined) _EOL.value = BSA재제조_v.EOL.substr(0, 16);
