@@ -1,4 +1,4 @@
-var 재제조_doc;
+var 분해조립투입일 = '';
 async function 분해조립_재제조_시작() {
 	await sleep(100);
 	if(typeof _D == 'undefined') {
@@ -18,10 +18,11 @@ async function 분해조립_재제조_시작() {
 	await delay();
 
 	if(BSA재제조_v != null) {
-    		재제조_doc = JSON.parse(JSON.stringify(BSA재제조_v));
+		if(BSA재제조_v.분해조립투입일 != '') 분해조립투입일 = BSA재제조_v.분해조립투입일;
+		else 분해조립투입일 = now;
+	} else {
+		분해조립투입일 = now;
 	}
-
-	if(재제조_doc.분해조립투입일 == '') 재제조_doc.분해조립투입일 = now;
 
 	flag_부품정보_list = true;
 	await 부품정보_list_시작();
@@ -197,13 +198,16 @@ async function 분해조립재제조_save() {
 		if(insert_count > 0) flag_insert = true;
 	};
 
-	if(재제조_doc.분해조립 == '') 재제조_doc.분해조립 = now;
-
-	update(BSA재제조, 재제조_doc);
-	await delay();
-
 	if(flag_update) alert('업데이트 되었습니다');
-	if(flag_insert) alert('저장 되었습니다');
+	else if(flag_insert) alert('저장 되었습니다');
+
+	var doc = {};
+	doc.관리번호 = 관리번호;
+	doc.분해조립투입일 = 분해조립투입일;
+	doc.분해조립 = now;
+
+	update(BSA재제조, doc);
+	await delay();
 
   	find(BSA재제조, _management_id.value);
   	await delay();
