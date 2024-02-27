@@ -6612,10 +6612,11 @@ function check_complete() {
 }
 
 
+var items = [];
 async function 부품정보_list_table() {
 	if (_management_id.value == "") return;
 
-	var items = [];
+	items = [];
 	var item = { 품명 : '', QR : '', 품번 : ''}
 
 	switch (차종) {
@@ -6631,17 +6632,17 @@ async function 부품정보_list_table() {
 			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
 			item.품명 = 'LWR_CASE'; item.품번 = _A_LWR_CASE_품번.value; item.QR  = _A_LWR_CASE_QR.value;
 			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
-			item.품명 = 'S_PLUG_Q'; item.품번 = _A_S_PLUG_품번.value; item.QR  = _A_S_PLUG_QR.value;
+			item.품명 = 'S_PLUG'; item.품번 = _A_S_PLUG_품번.value; item.QR  = _A_S_PLUG_QR.value;
 			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
-			item.품명 = 'SPA_QR ='; item.품번 = _A_SPA_품번.value; item.QR  = _A_SPA_QR.value;
+			item.품명 = 'SPA'; item.품번 = _A_SPA_품번.value; item.QR  = _A_SPA_QR.value;
 			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
-			item.품명 = 'HT_CNTR_'; item.품번 = _A_HT_CNTR_품번.value; item.QR  = _A_HT_CNTR_QR.value;
+			item.품명 = 'HT_CNTR'; item.품번 = _A_HT_CNTR_품번.value; item.QR  = _A_HT_CNTR_QR.value;
 			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
-			item.품명 = 'HV_CNTR_'; item.품번 = _A_HV_CNTR_품번.value; item.QR  = _A_HV_CNTR_QR.value;
+			item.품명 = 'HV_CNTR'; item.품번 = _A_HV_CNTR_품번.value; item.QR  = _A_HV_CNTR_QR.value;
 			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
-			item.품명 = 'PRA_QR ='; item.품번 = _A_PRA_품번.value; item.QR  = _A_PRA_QR.value;
+			item.품명 = 'PRA'; item.품번 = _A_PRA_품번.value; item.QR  = _A_PRA_QR.value;
 			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
-			item.품명 = 'LV_W_H_Q'; item.품번 = _A_LV_W_H_품번.value; item.QR  = _A_LV_W_H_QR.value;
+			item.품명 = 'LV_W_H'; item.품번 = _A_LV_W_H_품번.value; item.QR  = _A_LV_W_H_QR.value;
 			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
 			item.품명 = 'HV_W_H_1'; item.품번 = _A_HV_W_H_1_품번.value; item.QR  = _A_HV_W_H_1_QR.value;
 			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
@@ -6653,17 +6654,17 @@ async function 부품정보_list_table() {
 			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
 			item.품명 = 'HV_W_H_5'; item.품번 = _A_HV_W_H_5_품번.value; item.QR  = _A_HV_W_H_5_QR.value;
 			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
-			item.품명 = 'BMU_QR ='; item.품번 = _A_BMU_품번.value; item.QR  = _A_BMU_QR.value;
+			item.품명 = 'BMU ='; item.품번 = _A_BMU_품번.value; item.QR  = _A_BMU_QR.value;
 			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
-			item.품명 = 'CMU_1_QR'; item.품번 = _A_CMU_1_품번.value; item.QR  = _A_CMU_1_QR.value;
+			item.품명 = 'CMU_1'; item.품번 = _A_CMU_1_품번.value; item.QR  = _A_CMU_1_QR.value;
 			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
-			item.품명 = 'CMU_2_QR'; item.품번 = _A_CMU_2_품번.value; item.QR  = _A_CMU_2_QR.value;
+			item.품명 = 'CMU_2'; item.품번 = _A_CMU_2_품번.value; item.QR  = _A_CMU_2_QR.value;
 			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
-			item.품명 = 'CMU_3_QR'; item.품번 = _A_CMU_3_품번.value; item.QR  = _A_CMU_3_QR.value;
+			item.품명 = 'CMU_3'; item.품번 = _A_CMU_3_품번.value; item.QR  = _A_CMU_3_QR.value;
 			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
-			item.품명 = 'CMU_4_QR'; item.품번 = _A_CMU_4_품번.value; item.QR  = _A_CMU_4_QR.value;
+			item.품명 = 'CMU_4'; item.품번 = _A_CMU_4_품번.value; item.QR  = _A_CMU_4_QR.value;
 			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
-			item.품명 = 'CMU_5_QR'; item.품번 = _A_CMU_5_품번.value; item.QR  = _A_CMU_5_QR.value;
+			item.품명 = 'CMU_5'; item.품번 = _A_CMU_5_품번.value; item.QR  = _A_CMU_5_QR.value;
 			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
 			item.품명 = 'MODULE_1'; item.품번 = _A_MODULE_1_품번.value; item.QR  = _A_MODULE_1_QR.value;
 			items.push(item); item = { 품명 : '', QR : '', 품번 : ''}; 
