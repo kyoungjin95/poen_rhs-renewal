@@ -215,6 +215,13 @@ async function 분해조립폐기자재_save() {
 	if (insert_cnt > 0) {
 		alert("저장 되었습니다");
 	}
+
+	find(BSA재제조, _management_id.value);
+	await delay();
+
+	undefined_check(BSA재제조_v);
+
+	await 공정단계자동입력(_management_id.value);
 }
 
 var flag_폐기자재_all = false;

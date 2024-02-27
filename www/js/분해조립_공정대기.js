@@ -39,7 +39,7 @@ async function 분해조립_공정대기_시작() {
 	if(BSA재제조_v != null) {
 		_재제조번호.value = BSA재제조_v.재제조번호;
 		_RO_no.value = BSA재제조_v.RO_no;
-		_구분.value = BSA재제조_v.RO_no;
+		_구분.value = BSA재제조_v.구분;
 		_품번.value = BSA재제조_v.품번;
 		_VIN.value = BSA재제조_v.VIN;
 	}

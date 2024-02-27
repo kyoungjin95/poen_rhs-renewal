@@ -192,16 +192,18 @@ async function 성능검사_save() {
 	var update_cnt = update_count;
 	var insert_cnt = insert_count;
 
-	find(BSA재제조, 관리번호);
-	await delay();
-
-
-  	var doc = JSON.parse(JSON.stringify(BSA재제조_v));
+  	var doc = {};
+	doc.관리번호 = _management_id.value;
 	doc.성능검사투입일 = _공정입고일.value;
 	doc.성능검사 = _공정완료일.value;
 	
 	update(BSA재제조, doc);
 	await delay();
+
+  	find(BSA재제조, _management_id.value);
+  	await delay();
+
+  	undefined_check(BSA재제조_v);
 
   	await 공정단계자동입력(_management_id.value);
 	//이전페이지();

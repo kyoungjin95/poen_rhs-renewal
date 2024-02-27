@@ -25,6 +25,16 @@ async function 완료보고서_조회(is재제조번호 = false) {
 		}
 	}
 
+	if(_management_id.value == '') _management_id.value = 관리번호;
+	if(is재제조번호 == false) {
+		find(BSA재제조, 관리번호);
+		await delay();
+
+		if(BSA재제조_v != null) {
+			_재제조번호.value = BSA재제조_v.재제조번호;
+		}
+	}
+
 	find(입고, 관리번호);
 	await delay();
 
@@ -138,7 +148,7 @@ async function 완료보고서_조회(is재제조번호 = false) {
 		switch (입고_data.차종) {
 			case "CS_EV":
 				_CS_외부점검.innerHTML = EOL_data.육안검사_외부;
-				_CS_외부점검사유innerHTML = '';
+				_CS_외부점검사유.innerHTML = '';
 				_CS_내부점검.innerHTML = EOL_data.육안검사_내부;
 				_CS_내부점검사유.innerHTML = '';
 				_CS_케이스.innerHTML = EOL_data.기밀검사_케이스;
@@ -174,7 +184,7 @@ async function 완료보고서_조회(is재제조번호 = false) {
 
 			case "CV_EV":
 				_CV_외부점검.innerHTML = EOL_data.육안검사_외부;
-				_CV_외부점검사유innerHTML = '';
+				_CV_외부점검사유.innerHTML = '';
 				_CV_내부점검.innerHTML = EOL_data.육안검사_내부;
 				_CV_내부점검사유.innerHTML = '';
 				_CV_케이스.innerHTML = EOL_data.기밀검사_케이스;
@@ -210,7 +220,7 @@ async function 완료보고서_조회(is재제조번호 = false) {
 
 			case "DE_EV":
 				_DE_외부점검.innerHTML = EOL_data.육안검사_외부;
-				_DE_외부점검사유innerHTML = '';
+				_DE_외부점검사유.innerHTML = '';
 				_DE_내부점검.innerHTML = EOL_data.육안검사_내부;
 				_DE_내부점검사유.innerHTML = '';
 				_DE_케이스.innerHTML = EOL_data.기밀검사_케이스;
@@ -246,7 +256,7 @@ async function 완료보고서_조회(is재제조번호 = false) {
 
 			case "HR_EV":
 				_HR_외부점검.innerHTML = EOL_data.육안검사_외부;
-				_HR_외부점검사유innerHTML = '';
+				_HR_외부점검사유.innerHTML = '';
 				_HR_내부점검.innerHTML = EOL_data.육안검사_내부;
 				_HR_내부점검사유.innerHTML = '';
 				_HR_케이스.innerHTML = EOL_data.기밀검사_케이스;
@@ -282,7 +292,7 @@ async function 완료보고서_조회(is재제조번호 = false) {
 
 			case "PU_EV":
 				_PU_외부점검.innerHTML = EOL_data.육안검사_외부;
-				_PU_외부점검사유innerHTML = '';
+				_PU_외부점검사유.innerHTML = '';
 				_PU_내부점검.innerHTML = EOL_data.육안검사_내부;
 				_PU_내부점검사유.innerHTML = '';
 				_PU_케이스.innerHTML = EOL_data.기밀검사_케이스;
@@ -318,7 +328,7 @@ async function 완료보고서_조회(is재제조번호 = false) {
 
 			case "LK_EV":
 				_LK_FC_외부점검.innerHTML = EOL_data.육안검사_외부;
-				_LK_FC_외부점검사유innerHTML = '';
+				_LK_FC_외부점검사유.innerHTML = '';
 				_LK_FC_내부점검.innerHTML = EOL_data.육안검사_내부;
 				_LK_FC_내부점검사유.innerHTML = '';
 				_LK_FC_케이스.innerHTML = EOL_data.기밀검사_케이스;
@@ -354,7 +364,7 @@ async function 완료보고서_조회(is재제조번호 = false) {
 
 			case "LM_EV":
 				_LM_외부점검.innerHTML = EOL_data.육안검사_외부;
-				_LM_외부점검사유innerHTML = '';
+				_LM_외부점검사유.innerHTML = '';
 				_LM_내부점검.innerHTML = EOL_data.육안검사_내부;
 				_LM_내부점검사유.innerHTML = '';
 				_LM_케이스.innerHTML = EOL_data.기밀검사_케이스;
@@ -390,7 +400,7 @@ async function 완료보고서_조회(is재제조번호 = false) {
 
 			case "NE_EV":
 				_NE_외부점검.innerHTML = EOL_data.육안검사_외부;
-				_NE_외부점검사유innerHTML = '';
+				_NE_외부점검사유.innerHTML = '';
 				_NE_내부점검.innerHTML = EOL_data.육안검사_내부;
 				_NE_내부점검사유.innerHTML = '';
 				_NE_케이스.innerHTML = EOL_data.기밀검사_케이스;
@@ -427,7 +437,7 @@ async function 완료보고서_조회(is재제조번호 = false) {
 			case "OS_EV":
 				console.log(EOL_data);
 				_OS_외부점검.innerHTML = EOL_data.육안검사_외부;
-				_OS_외부점검사유innerHTML = '';
+				_OS_외부점검사유.innerHTML = '';
 				_OS_내부점검.innerHTML = EOL_data.육안검사_내부;
 				_OS_내부점검사유.innerHTML = '';
 				_OS_케이스.innerHTML = EOL_data.기밀검사_케이스;
@@ -463,7 +473,7 @@ async function 완료보고서_조회(is재제조번호 = false) {
 
 			case "SK3_EV":
 				_SK3_외부점검.innerHTML = EOL_data.육안검사_외부;
-				_SK3_외부점검사유innerHTML = '';
+				_SK3_외부점검사유.innerHTML = '';
 				_SK3_내부점검.innerHTML = EOL_data.육안검사_내부;
 				_SK3_내부점검사유.innerHTML = '';
 				_SK3_케이스.innerHTML = EOL_data.기밀검사_케이스;
@@ -537,8 +547,8 @@ async function 완료보고서_조회(is재제조번호 = false) {
 	_CAN진단.src = EOL_pic_data.pic23;
 
 	//CAN 통신 검사
-	//_PDS진단1.src = EOL_pic_data.pic24;
-	//_PDS진단2.src = EOL_pic_data.pic25;
+	_PDS진단1.src = EOL_pic_data.pic24;
+	_PDS진단2.src = EOL_pic_data.pic25;
 	_EOL항목검사사진.src = EOL_pic_data.pic24;
 	_CELL전압검사사진.src = EOL_pic_data.pic25;
 	_EOL항목_릴레이제어.innerHTML = EOL_data.통신검사_릴레이구동;
@@ -568,7 +578,7 @@ async function 완료보고서_조회(is재제조번호 = false) {
 		console.log("dragover!");
 	};
 
-	_DCIR검사_결과.value = 성능검사_data.DCIR;
+	_DCIR검사_결과.value = Number(성능_data.DCIR).toFixed(2);
 
 	//용량평가
 	_img2.ondblclick = function (evt) {
@@ -586,7 +596,7 @@ async function 완료보고서_조회(is재제조번호 = false) {
 	_img2.ondragover = function (evt) {
 		evt.preventDefault();
 	};
-	_용량평가_결과.value = 성능검사_data.용량평가;
+	_용량평가_결과.value = Number(성능_data.용량평가).toFixed(2);
 }
 
 function showTable(tableId) {

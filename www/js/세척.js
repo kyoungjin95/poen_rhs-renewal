@@ -461,6 +461,11 @@ async function 세척_save() {
   update(BSA재제조, _doc);
   await delay();
 
+  find(BSA재제조, _management_id.value);
+  await delay();
+
+  undefined_check(BSA재제조_v);
+
   await 공정단계자동입력(_management_id.value);
 
   var _pic_doc = JSON.parse(JSON.stringify(세척_pic_doc));

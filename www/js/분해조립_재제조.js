@@ -205,6 +205,11 @@ async function 분해조립재제조_save() {
 	if(flag_update) alert('업데이트 되었습니다');
 	if(flag_insert) alert('저장 되었습니다');
 
+  	find(BSA재제조, _management_id.value);
+  	await delay();
+
+  	undefined_check(BSA재제조_v);
+        await 공정단계자동입력(_management_id.value);
 }
 
 var pushed = [];

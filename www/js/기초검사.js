@@ -842,6 +842,11 @@ async function 기초검사_SAVE() {
   update(BSA재제조, _doc);
   await delay();
 
+  find(BSA재제조, _management_id.value);
+  await delay();
+
+  undefined_check(BSA재제조_v);
+
   await 공정단계자동입력(_management_id.value);
 
   progress.value = 50;

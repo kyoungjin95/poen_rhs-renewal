@@ -5321,7 +5321,7 @@ async function undefined_check(BSA재제조_v) {
 	if(BSA재제조_v.성능검사 == undefined) BSA재제조_v.성능검사 = '';
 	if(BSA재제조_v.EOL투입일 == undefined) BSA재제조_v.EOL투입일 = '';
 	if(BSA재제조_v.EOL == undefined) BSA재제조_v.EOL = '';
-	if BSA재제조_v.출하검사 == undefined) BSA재제조_v.출하검사 = '';
+	if(BSA재제조_v.출하검사 == undefined) BSA재제조_v.출하검사 = '';
 	if(BSA재제조_v.출하 == undefined) BSA재제조_v.출하 = '';
 	if(BSA재제조_v.소재지 == undefined) BSA재제조_v.소재지 = '';
 	if(BSA재제조_v.마지막충전일 == undefined) BSA재제조_v.마지막충전일 = ''
