@@ -4182,6 +4182,13 @@ async function send_list(file_list) {
 	socket.emit("file_list", file_list);
 }
 
+async function send_list2(file_list) {
+	if (socket == undefined) return;
+	flag_arrivedMSG = false;
+	file_upload_result = false;
+	socket.emit("file_list2", file_list);
+}
+
 async function make_qr_label(html_string) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
@@ -5353,6 +5360,11 @@ function resize_pic(file, img, 예외 = false) {
 			console.log(img.src);
 		});
 	}
+}
+
+async function pic_to_img(_data, _img) {
+	_img.src = _data;
+	console.log(_img.src);
 }
 
 function socket_disconnec() {

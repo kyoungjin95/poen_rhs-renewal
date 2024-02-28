@@ -123,7 +123,7 @@ server.listen(80, () => {
 io.on('connection', async function(socket) {
 	var client_ip = socket.request.connection.remoteAddress; 
 
-console.log('connected ip', client_ip);
+	console.log('connected ip', client_ip);
 
 	socket.on('용량평가', async function(path) {
 		console.log('용량평가 path:', path);
@@ -251,6 +251,16 @@ console.log('connected ip', client_ip);
 		console.log('file list');
 
 		const result = file_list(list);
+
+		socket.emit('file_list_result', result);
+		logger.info('file list:'+ JSON.stringify(list));
+	});
+
+	socket.on('file_list2', async function(list) {
+		no = 1;
+		console.log('file list');
+
+		const result = file_list2(list);
 
 		socket.emit('file_list_result', result);
 		logger.info('file list:'+ JSON.stringify(list));
@@ -594,8 +604,9 @@ function file_list(list) {
 				if(err) {
 					console.log(err);
 					console.log('fail rename');
+				} else {
+					console.log('successfully rename');
 				}
-				console.log('successfully rename');
 			});
 			n++;
 		} 
@@ -607,8 +618,9 @@ function file_list(list) {
 				if(err) {
 					console.log(err);
 					console.log('fail rename');
+				} else {
+					console.log('successfully rename');
 				}
-				console.log('successfully rename');
 			});
 			n++;
 		}
@@ -620,8 +632,9 @@ function file_list(list) {
 				if(err) {
 					console.log(err);
 					console.log('fail rename');
+				} else {
+					console.log('successfully rename');
 				}
-				console.log('successfully rename');
 			});
 			n++;
 		}
@@ -633,8 +646,9 @@ function file_list(list) {
 				if(err) {
 					console.log(err);
 					console.log('fail rename');
+				} else {
+					console.log('successfully rename');
 				}
-				console.log('successfully rename');
 			});
 			n++
 		}
@@ -646,8 +660,9 @@ function file_list(list) {
 				if(err) {
 					console.log(err);
 					console.log('fail rename');
+				} else {
+					console.log('successfully rename');
 				}
-				console.log('successfully rename');
 			});
 			n++;
 		}
@@ -659,17 +674,72 @@ function file_list(list) {
 				if(err) {
 					console.log(err);
 					console.log('fail rename');
+				} else {
+					console.log('successfully rename');
 				}
-				console.log('successfully rename');
 			});
 		}
+
+		n = 1;
+
 		return true;
 	} catch(err) {
 		console.log(err);
 		return false;
 	} finally {
 	}
+}
 
+function file_list2(list) {
+	no = 1;
+	try {
+		list.관리번호 = list.관리번호.replace('#', '');
+		console.log(list);
+		if(list.관리번호 != '') {
+			var dir = 'excel/' + list.관리번호;
+
+			if(!fs.existsSync(dir)) {
+				fs.mkdirSync(dir);
+			}
+		}  else {
+			return false;
+		}
+
+		var n = 1;
+		if(list.f1 != '') {
+			var old_path = 'excel/tmp/excel' + n + '.csv';
+			var new_path = 'excel/' + list.관리번호 + '/DCIR.csv';
+			fs.rename(old_path, new_path, function(err) {
+				if(err) {
+					console.log(err);
+					console.log('fail rename');
+				}
+				console.log('successfully rename');
+			});
+			n++;
+		} 
+
+		if(list.f2 != '') {
+			var old_path = 'excel/tmp/excel' + n + '.csv';
+			var new_path = 'excel/' + list.관리번호 + '/용량평가.csv';
+			fs.rename(old_path, new_path, function(err) {
+				if(err) {
+					console.log(err);
+					console.log('fail rename');
+				}
+				console.log('successfully rename');
+			});
+			n++;
+		}
+
+		n = 1;
+
+		return true;
+	} catch(err) {
+		console.log(err);
+		return false;
+	} finally {
+	}
 }
 
 function 용량평가(path) {

@@ -1,16 +1,28 @@
 var 입고_data;
+var 입고_pic_data;
 var 세척_date;
 var 기초_data;
+var 기초_pic_data;
 var 성능_data;
 var EOL_data;
 var EOL_pic_data;
+var 완료보고서_data;
+
 var flag_입고정보 = false;
+
+var 완료보고서_filelist = {
+	f1 : '',
+	f2 : '',
+};
 
 async function 완료보고서_시작() {
 	while (_management_id == undefined) {
 		await sleep(1);
 	}
 	flag_완료보고서 = false;
+	완료보고서_fileUploading();
+
+	init();
 
 	await 완료보고서_조회();
 }
@@ -40,6 +52,11 @@ async function 완료보고서_조회(is재제조번호 = false) {
 
 	입고_data = JSON.parse(JSON.stringify(입고_v));
 
+	find(입고_pic, 관리번호);
+	await delay();
+
+	입고_pic_data = JSON.parse(JSON.stringify(입고_pic_v));
+
 	find(세척, 관리번호);
 	await delay();
 
@@ -51,6 +68,10 @@ async function 완료보고서_조회(is재제조번호 = false) {
 
 	기초_data = JSON.parse(JSON.stringify(기초검사_v));
 
+	find(기초검사_pic1, 관리번호);
+	await delay();
+
+	기초_pic_data = JSON.parse(JSON.stringify(기초검사_pic1_v));
 	find(성능검사, 관리번호);
 	await delay();
 
@@ -66,6 +87,17 @@ async function 완료보고서_조회(is재제조번호 = false) {
 
 	EOL_pic_data = JSON.parse(JSON.stringify(EOL_pic_v));
 
+	find(완료보고서, 관리번호);
+	await delay();
+
+	완료보고서_data = await JSON.parse(JSON.stringify(완료보고서_v[0]));
+
+	pic_to_img(완료보고서_data.pic1, _img1);
+	pic_to_img(완료보고서_data.pic2, _img2);
+
+	완료보고서_filelist.f1 = 완료보고서_data.DCIR_file;
+	완료보고서_filelist.f2 = 완료보고서_data.용량평가_file;
+
 	find(부품정보_list, 관리번호);
 	await delay();
 
@@ -73,12 +105,6 @@ async function 완료보고서_조회(is재제조번호 = false) {
 		flag_입고정보 = true;
 	}
 	
-	find(완료보고서, 관리번호);
-	await delay();
-
-	_img1.src = 완료보고서_v.pic1;
-	_img2.src = 완료보고서_v.pic2;
-
 	if (입고_data != null) {
 		_RONo.innerHTML = 입고_data.RONo;
 		_입고일.innerHTML = 입고_data.입고일;
@@ -128,7 +154,12 @@ async function 완료보고서_조회(is재제조번호 = false) {
 		_입고일.innerHTML = "";
 	}
 
-	if (기초_data != null) {
+	if(입고_pic_data != null) {
+		_입고사진.src = 입고_pic_data.pic1;
+
+	}
+
+	if(기초_data != null) {
 		_VINNo.innerHTML = 기초_data.VIN;
 		_RONo.innerHTML = 기초_data.RO_no;
 		_주행거리.innerHTML = 기초_data.주행거리;
@@ -137,6 +168,10 @@ async function 완료보고서_조회(is재제조번호 = false) {
 		_판매일.innerHTML = 기초_data.BSA판매일자;
 		_수리일.innerHTML = 기초_data.BSA수리일자;
 		_작성자.innerHTML = worker;
+	}
+
+	if(기초_pic_data != null) {
+    		_BSA_QR.src = 기초_pic_data.pic1;
 	}
 
 	if(EOL_data != null) {
@@ -178,8 +213,6 @@ async function 완료보고서_조회(is재제조번호 = false) {
 				_CS_브라켓정보.innerHTML = EOL_data.브라켓;
 				if(EOL_data.브라켓 == 'OK') _CS_브라켓값.innerHTML = '재고 부족 시 영업팀과 협의 요망';
 				else _CS_브라켓값.innerHTML = '재고 부족 영업팀과 협의 요망';
-				_CS_ICCU.innerHTML = EOL_data.ICCU;
-				//_CS_ICCU값.innerHTML;
 				break;
 
 			case "CV_EV":
@@ -243,15 +276,13 @@ async function 완료보고서_조회(is재제조번호 = false) {
 				//_DE_입고정보사유.innerHTML;
 				_DE_재제조이력.innerHTML = 'OK';
 				//_DE_재제조이력사유.innerHTML;
-				_DE_출하QR.innerHTML = (EOL_data.QR != '' && EOL_data.QR != undefiend) ? 'OK' : 'NG';
+				_DE_출하QR.innerHTML = (EOL_data.QR != '' && EOL_data.QR != undefined) ? 'OK' : 'NG';
 				_DE_커버류.innerHTML = EOL_data.커버류;
 				if(EOL_data.커버류 == 'OK') _DE_커버류확인.innerHTML = '커버 장착 확인';
 				else _DE_커버류확인.innerHTML = '커버 비장착';
 				_DE_브라켓정보.innerHTML = EOL_data.브라켓;
 				if(EOL_data.브라켓 == 'OK') _DE_브라켓값.innerHTML = '재고 부족 시 영업팀과 협의 요망';
 				else _DE_브라켓값.innerHTML = '재고 부족 영업팀과 협의 요망';
-				_DE_ICCU.innerHTML = EOL_data.ICCU;
-				//_DE_ICCU값.innerHTML;
 				break;
 
 			case "HR_EV":
@@ -286,8 +317,6 @@ async function 완료보고서_조회(is재제조번호 = false) {
 				_HR_브라켓정보.innerHTML = EOL_data.브라켓;
 				if(EOL_data.브라켓 == 'OK') _HR_브라켓값.innerHTML = '재고 부족 시 영업팀과 협의 요망';
 				else _HR_브라켓값.innerHTML = '재고 부족 영업팀과 협의 요망';
-				_HR_ICCU.innerHTML = EOL_data.ICCU;
-				//_HR_ICCU값.innerHTML;
 				break;
 
 			case "PU_EV":
@@ -322,8 +351,6 @@ async function 완료보고서_조회(is재제조번호 = false) {
 				_PU_브라켓정보.innerHTML = EOL_data.브라켓;
 				if(EOL_data.브라켓 == 'OK') _PU_브라켓값.innerHTML = '재고 부족 시 영업팀과 협의 요망';
 				else _PU_브라켓값.innerHTML = '재고 부족 영업팀과 협의 요망';
-				_PU_ICCU.innerHTML = EOL_data.ICCU;
-				//_PU_ICCU값.innerHTML;
 				break;
 
 			case "LK_EV":
@@ -358,8 +385,6 @@ async function 완료보고서_조회(is재제조번호 = false) {
 				_LK_FC_브라켓정보.innerHTML = EOL_data.브라켓;
 				if(EOL_data.브라켓 == 'OK') _LK_FC_브라켓값.innerHTML = '재고 부족 시 영업팀과 협의 요망';
 				else _LK_FC_브라켓값.innerHTML = '재고 부족 영업팀과 협의 요망';
-				_LK_FC_ICCU.innerHTML = EOL_data.ICCU;
-				//_LK_FC_ICCU값.innerHTML;
 				break;
 
 			case "LM_EV":
@@ -394,8 +419,6 @@ async function 완료보고서_조회(is재제조번호 = false) {
 				_LM_브라켓정보.innerHTML = EOL_data.브라켓;
 				if(EOL_data.브라켓 == 'OK') _LM_브라켓값.innerHTML = '재고 부족 시 영업팀과 협의 요망';
 				else _LM_브라켓값.innerHTML = '재고 부족 영업팀과 협의 요망';
-				_LM_ICCU.innerHTML = EOL_data.ICCU;
-				//_LM_ICCU값.innerHTML;
 				break;
 
 			case "NE_EV":
@@ -430,8 +453,6 @@ async function 완료보고서_조회(is재제조번호 = false) {
 				_NE_브라켓정보.innerHTML = EOL_data.브라켓;
 				if(EOL_data.브라켓 == 'OK') _NE_브라켓값.innerHTML = '재고 부족 시 영업팀과 협의 요망';
 				else _NE_브라켓값.innerHTML = '재고 부족 영업팀과 협의 요망';
-				_NE_ICCU.innerHTML = EOL_data.ICCU;
-				//_NE_ICCU값.innerHTML;
 				break;
 
 			case "OS_EV":
@@ -467,8 +488,6 @@ async function 완료보고서_조회(is재제조번호 = false) {
 				_OS_브라켓정보.innerHTML = EOL_data.브라켓;
 				if(EOL_data.브라켓 == 'OK') _OS_브라켓값.innerHTML = '재고 부족 시 영업팀과 협의 요망';
 				else _OS_브라켓값.innerHTML = '재고 부족 영업팀과 협의 요망';
-				//_OS_ICCU.innerHTML = EOL_data.ICCU;
-				//_OS_ICCU값.innerHTML;
 				break;
 
 			case "SK3_EV":
@@ -503,8 +522,6 @@ async function 완료보고서_조회(is재제조번호 = false) {
 				_SK3_브라켓정보.innerHTML = EOL_data.브라켓;
 				if(EOL_data.브라켓 == 'OK') _SK3_브라켓값.innerHTML = '재고 부족 시 영업팀과 협의 요망';
 				else _SK3_브라켓값.innerHTML = '재고 부족 영업팀과 협의 요망';
-				_SK3_ICCU.innerHTML = EOL_data.ICCU;
-				//_SK3_ICCU값.innerHTML;
 				break;
 
 			default:
@@ -614,6 +631,8 @@ async function 완료보고서_save() {
 		관리번호 : 관리번호,
 		pic1 : _img1.src,
 		pic2 : _img2.src,
+		DCIR_file : 완료보고서_filelist.f1,
+		용량평가_file : 완료보고서_filelist.f2,
 	}
 
 	update(완료보고서, doc);
@@ -704,4 +723,196 @@ async function 완료보고서_save_pdf(type = 0) {
 		pdfMake.createPdf(docDefinition).download(file_name);
 	});
 	console.log("file name:", file_name);
+}
+
+async function 완료보고서_file1_upload() {
+	//console.log('submit event:', event);
+	//event.preventDefault();
+	//const form = event.currentTarget;
+	const url = new URL(_form1.action);
+	const formData = new FormData(_form1);
+	const searchParams = new URLSearchParams(formData);
+
+	$.ajax({
+		type: "POST",
+		async: true,
+		cache: false,
+		timeout: 3000,
+		processData: false,
+		contentType: false,
+		enctype: "multipart/form-data",
+		url: url,
+		data: formData,
+		dataType: "file",
+		success: function (data) {
+			console.log("success");
+		},
+	});
+}
+
+async function 완료보고서_file2_upload() {
+	//console.log('submit event:', event);
+	//event.preventDefault();
+	//const form = event.currentTarget;
+	const url = new URL(_form2.action);
+	const formData = new FormData(_form2);
+	const searchParams = new URLSearchParams(formData);
+
+	$.ajax({
+		type: "POST",
+		async: true,
+		cache: false,
+		timeout: 3000,
+		processData: false,
+		contentType: false,
+		enctype: "multipart/form-data",
+		url: url,
+		data: formData,
+		dataType: "file",
+		success: function (data) {
+			console.log("success");
+		},
+	});
+}
+
+function 완료보고서_fileUploading() {
+	var fileUploadSets = document.querySelectorAll(".process__file");
+
+	fileUploadSets.forEach(function (fileUploadSet) {
+		var downloadFileBtn = fileUploadSet.querySelector(".in-file");
+		var fileInput = fileUploadSet.querySelector(".file_upload");
+		var deleteButton = fileUploadSet.querySelector(".delete_icon");
+		var uploadLabel = fileUploadSet.querySelector(".upload_label");
+
+		function 완료보고서_updateUpload() {
+			if (fileInput.files.length > 0) {
+				var fileNames = "";
+				for (var i = 0; i < fileInput.files.length; i++) {
+					fileNames += fileInput.files[i].name + ", ";
+				}
+				uploadLabel.textContent = fileNames.slice(0, -6);
+				uploadLabel.style.backgroundColor = "#11a85f";
+				uploadLabel.style.color = "white";
+				deleteButton.style.display = "inline";
+				downloadFileBtn.style.display = "block";
+			} else {
+				// uploadLabel.textContent = "파일 선택";
+				uploadLabel.innerHTML = "<i class='fa-regular fa-file'></i>&nbsp; 파일 선택";
+				uploadLabel.style.backgroundColor = "initial";
+				uploadLabel.style.color = "#11a85f";
+				deleteButton.style.display = "none";
+			}
+		}
+
+		downloadFileBtn.style.display = "block";
+
+		fileInput.addEventListener("change", function () {
+			완료보고서_updateUpload();
+		});
+
+		// 삭제 버튼(click) 이벤트 처리
+		deleteButton.addEventListener("click", function () {
+			fileInput.value = "";
+			완료보고서_updateUpload();
+			deleteButton.style.display = "none";
+			//downloadFileBtn.style.display = "none";
+		});
+
+		// 드래그 앤 드롭 이벤트 처리
+		fileUploadSet.addEventListener("dragover", function (event) {
+			event.preventDefault();
+			fileUploadSet.classList.add("dragover");
+		});
+
+		fileUploadSet.addEventListener("dragenter", function (event) {
+			event.preventDefault();
+			fileUploadSet.classList.add("dragover");
+		});
+
+		fileUploadSet.addEventListener("dragleave", function (event) {
+			event.preventDefault();
+			fileUploadSet.classList.remove("dragover");
+		});
+
+		fileUploadSet.addEventListener("drop", function (event) {
+			event.preventDefault();
+			fileUploadSet.classList.remove("dragover");
+
+			var files = event.dataTransfer.files;
+			if (files.length > 0) {
+				fileInput.files = files;
+				var fileNames = "";
+				for (var i = 0; i < files.length; i++) {
+					fileNames += files[i].name + ", ";
+				}
+				완료보고서_updateUpload();
+			}
+		});
+	});
+}
+
+async function 완료보고서_file_upload() {
+	_btn_upload.disabled = true;
+	_process.style.color = 'red';
+	_process.innerHTML= '파일 업로드 중입니다.';
+
+	//_form.submit();
+	완료보고서_file1_upload();
+	//완료보고서_file2_upload();
+
+	await sleep(1000 * 10);
+
+	 완료보고서_send_filelist();
+	_btn_upload.disabled = false;
+	_process.style.color = 'blue';
+	_process.innerHTML = '파일 업로드 완료하였습니다.';
+}
+
+async function 완료보고서_send_filelist() {
+	var filelist = {
+		관리번호: 관리번호,
+	};
+	if (_file1.files[0] == undefined || _file1.files[0] == null) filelist.f1 = "";
+	else filelist.f1 = _file1.files[0].name;
+	if (_file2.files[0] == undefined || _file2.files[0] == null) filelist.f2 = "";
+	else filelist.f2 = _file2.files[0].name;
+
+	console.log(filelist);
+	send_list2(filelist);
+	await delay();
+
+	var doc = {};
+	doc.관리번호 = 관리번호;
+	if(완료보고서_filelist.f1 == '' || 완료보고서_filelist.f1 == undefined) doc.DCIR_file = filelist.f1;
+	if(완료보고서_filelist.f2 == '' || 완료보고서_filelist.f2 == undefined) doc.용량평가_file = filelist.f2;
+
+	console.log('update 완료보고서 doc:', doc);
+	update(완료보고서, doc);
+	await delay();
+}
+
+function handleSubmit(event) {
+  	event.preventDefault()
+}
+
+function init() {
+  	_form1.addEventListener('submit', handleSubmit)
+}
+
+function 완료보고서_download1() {
+	console.log('download file 1');
+	const a = document.createElement('a');
+	a.download = 'DCIR.csv'
+	const tmp_name = 관리번호.replace('#', '');
+	a.href = 'excel/' + tmp_name + '/DCIR.csv';
+	console.log(a.href);
+	a.click();
+}
+
+function 완료보고서_download2() {
+	const a = document.createElement('a');
+	a.download = '용량평가.csv'
+	const tmp_name = 관리번호.replace('#', '');
+	a.href = 'excel/' + tmp_name + '/용량평가.csv';
+	a.click();
 }
