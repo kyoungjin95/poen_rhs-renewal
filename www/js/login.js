@@ -57,7 +57,7 @@ async function login() {
         }
       }, 1000);
       await sleep(1);
-      alert('#공지사항#\nVersion update sky 0.61\n1. 부품정보 엑셀문서로 출력 오타 수정');
+      alert('#공지사항#\nVersion update sky 0.62\n1. 재제조 DATA 단일 배터리팩 선택시 공정별 조회 중간에 안되던 버그 수정\n');
     } else if (worker == _id.value) {
       worker = "";
       level = "";
