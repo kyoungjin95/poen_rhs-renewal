@@ -655,6 +655,8 @@ async function grid_입고(m_id = "") {
 		tabledata_입고.push(JSON.parse(JSON.stringify(입고_v)));
 	}
 
+	if(tabledata_입고 == null) return;
+
 	table_입고 = new Tabulator("#grid_입고정보", {
 		initialSort:[
 			{column:"관리번호", dir:"asc"}, //sort by this first
@@ -693,9 +695,10 @@ async function grid_세척(m_id = "") {
 		tabledata_세척.push(JSON.parse(JSON.stringify(세척_v)));
 	}
 
+	if(tabledata_세척 == null) return;
 	for(var i = 0; i < tabledata_세척.length; i++) {
 		for(var j = 0; j < table_data.length; j++) {
-			if(tabledata_세척[i].관리번호 == table_data[j].관리번호) {
+			if(tabledata_세척[i] != undefined && tabledata_세척[i].관리번호 == table_data[j].관리번호) {
 				tabledata_세척[i].재제조번호 = table_data[j].재제조번호;
 				tabledata_세척[i].구분 = table_data[j].구분;
 				tabledata_세척[i].차종 = table_data[j].차종;
@@ -750,9 +753,10 @@ async function grid_기초검사(m_id = "") {
 		tabledata_기초검사.push(JSON.parse(JSON.stringify(기초검사_v)));
 	}
 
+	if(tabledata_기초검사 == null) return;
 	for(var i = 0; i < tabledata_기초검사.length; i++) {
 		for(var j = 0; j < table_data.length; j++) {
-			if(tabledata_기초검사[i].관리번호 == table_data[j].관리번호) {
+			if(tabledata_기초검사[i] != undefined  && tabledata_기초검사[i].관리번호 == table_data[j].관리번호) {
 				tabledata_기초검사[i].재제조번호 = table_data[j].재제조번호;
 				tabledata_기초검사[i].구분 = table_data[j].구분;
 				tabledata_기초검사[i].차종 = table_data[j].차종;
@@ -791,14 +795,14 @@ async function grid_기초검사(m_id = "") {
 			{ title: "절연검사 B-", field: "절연검사_Minus", sorter: "string", width: "180" },
 			{ title: "통신검사 DTC코드1", field: "통신검사_DTC코드1", sorter: "string", width: "180" },
 			{ title: "통신검사 DTC코드2", field: "통신검사_DTC코드2", sorter: "string", width: "180" },
-			{ title: "통신검사 DTC코드3", field: "통신검사_DTC코드3", sorter: "string", width: "180" },
-			{ title: "통신검사 DTC코드4", field: "통신검사_DTC코드4", sorter: "string", width: "180" },
-			{ title: "통신검사 DTC코드5", field: "통신검사_DTC코드5", sorter: "string", width: "180" },
-			{ title: "통신검사 DTC코드6", field: "통신검사_DTC코드6", sorter: "string", width: "180" },
-			{ title: "통신검사 DTC코드7", field: "통신검사_DTC코드7", sorter: "string", width: "180" },
-			{ title: "통신검사 DTC코드8", field: "통신검사_DTC코드8", sorter: "string", width: "180" },
-			{ title: "통신검사 DTC코드9", field: "통신검사_DTC코드9", sorter: "string", width: "180" },
-			{ title: "통신검사 DTC코드10", field: "통신검사_DTC코드10", sorter: "string", width: "180" },
+			//{ title: "통신검사 DTC코드3", field: "통신검사_DTC코드3", sorter: "string", width: "180" },
+			//{ title: "통신검사 DTC코드4", field: "통신검사_DTC코드4", sorter: "string", width: "180" },
+			//{ title: "통신검사 DTC코드5", field: "통신검사_DTC코드5", sorter: "string", width: "180" },
+			//{ title: "통신검사 DTC코드6", field: "통신검사_DTC코드6", sorter: "string", width: "180" },
+			//{ title: "통신검사 DTC코드7", field: "통신검사_DTC코드7", sorter: "string", width: "180" },
+			//{ title: "통신검사 DTC코드8", field: "통신검사_DTC코드8", sorter: "string", width: "180" },
+			//{ title: "통신검사 DTC코드9", field: "통신검사_DTC코드9", sorter: "string", width: "180" },
+			//{ title: "통신검사 DTC코드10", field: "통신검사_DTC코드10", sorter: "string", width: "180" },
 			{ title: "통신검사 팩전압", field: "통신검사_팩전압", sorter: "string", width: "180" },
 			{ title: "통신검사 셀전압편차", field: "통신검사_셀전압편차", sorter: "string", width: "180" },
 			{ title: "통신검사 릴레이구동", field: "통신검사_릴레이구동", sorter: "string", width: "180" },
@@ -835,9 +839,10 @@ async function grid_분해조립(m_id = "") {
 		await delay();
 	}
 
+	if(tabledata_분해조립 == null) return;
 	for(var i = 0; i < tabledata_분해조립.length; i++) {
 		for(var j = 0; j < table_data.length; j++) {
-			if(tabledata_분해조립[i].관리번호 == table_data[j].관리번호) {
+			if(tabledata_분해조립[i] != undefined  && tabledata_분해조립[i].관리번호 == table_data[j].관리번호) {
 				tabledata_분해조립[i].재제조번호 = table_data[j].재제조번호;
 				tabledata_분해조립[i].구분 = table_data[j].구분;
 				tabledata_분해조립[i].차종 = table_data[j].차종;
@@ -868,22 +873,22 @@ async function grid_분해조립(m_id = "") {
 			{ title: "BMU 1(교환후)", field: "BMU1_2", sorter: "string", width: "180" },
 			{ title: "BMU 2(교환전)", field: "BMU2", sorter: "string", width: "180" },
 			{ title: "BMU 2(교환후)", field: "BMU2_2", sorter: "string", width: "180" },
-			{ title: "BMU 3(교환전)", field: "BMU3", sorter: "string", width: "180" },
-			{ title: "BMU 3(교환후)", field: "BMU3_2", sorter: "string", width: "180" },
-			{ title: "BMU 4(교환전)", field: "BMU4", sorter: "string", width: "180" },
-			{ title: "BMU 4(교환후)", field: "BMU4_2", sorter: "string", width: "180" },
-			{ title: "BMU 5(교환전)", field: "BMU5", sorter: "string", width: "180" },
-			{ title: "BMU 5(교환후)", field: "BMU5_2", sorter: "string", width: "180" },
-			{ title: "BMU 6(교환전)", field: "BMU6", sorter: "string", width: "180" },
-			{ title: "BMU 6(교환후)", field: "BMU6_2", sorter: "string", width: "180" },
-			{ title: "BMU 7(교환전)", field: "BMU7", sorter: "string", width: "180" },
-			{ title: "BMU 7(교환후)", field: "BMU7_2", sorter: "string", width: "180" },
-			{ title: "BMU 8(교환전)", field: "BMU8", sorter: "string", width: "180" },
-			{ title: "BMU 8(교환후)", field: "BMU8_2", sorter: "string", width: "180" },
-			{ title: "BMU 9(교환전)", field: "BMU9", sorter: "string", width: "180" },
-			{ title: "BMU 9(교환후)", field: "BMU9_2", sorter: "string", width: "180" },
-			{ title: "BMU 10(교환전)", field: "BMU10", sorter: "string", width: "180" },
-			{ title: "BMU 10(교환후)", field: "BMU10_2", sorter: "string", width: "180" },
+			//{ title: "BMU 3(교환전)", field: "BMU3", sorter: "string", width: "180" },
+			//{ title: "BMU 3(교환후)", field: "BMU3_2", sorter: "string", width: "180" },
+			//{ title: "BMU 4(교환전)", field: "BMU4", sorter: "string", width: "180" },
+			//{ title: "BMU 4(교환후)", field: "BMU4_2", sorter: "string", width: "180" },
+			//{ title: "BMU 5(교환전)", field: "BMU5", sorter: "string", width: "180" },
+			//{ title: "BMU 5(교환후)", field: "BMU5_2", sorter: "string", width: "180" },
+			//{ title: "BMU 6(교환전)", field: "BMU6", sorter: "string", width: "180" },
+			//{ title: "BMU 6(교환후)", field: "BMU6_2", sorter: "string", width: "180" },
+			//{ title: "BMU 7(교환전)", field: "BMU7", sorter: "string", width: "180" },
+			//{ title: "BMU 7(교환후)", field: "BMU7_2", sorter: "string", width: "180" },
+			//{ title: "BMU 8(교환전)", field: "BMU8", sorter: "string", width: "180" },
+			//{ title: "BMU 8(교환후)", field: "BMU8_2", sorter: "string", width: "180" },
+			//{ title: "BMU 9(교환전)", field: "BMU9", sorter: "string", width: "180" },
+			//{ title: "BMU 9(교환후)", field: "BMU9_2", sorter: "string", width: "180" },
+			//{ title: "BMU 10(교환전)", field: "BMU10", sorter: "string", width: "180" },
+			//{ title: "BMU 10(교환후)", field: "BMU10_2", sorter: "string", width: "180" },
 			{ title: "CMU 1(교환전)", field: "CMU1", sorter: "string", width: "180" },
 			{ title: "CMU 1(교환후)", field: "CMU1_2", sorter: "string", width: "180" },
 			{ title: "CMU 2(교환전)", field: "CMU2", sorter: "string", width: "180" },
@@ -908,82 +913,82 @@ async function grid_분해조립(m_id = "") {
 			{ title: "PRA 1(교환후)", field: "PRA1_2", sorter: "string", width: "180" },
 			{ title: "PRA 2(교환전)", field: "PRA2", sorter: "string", width: "180" },
 			{ title: "PRA 2(교환후)", field: "PRA2_2", sorter: "string", width: "180" },
-			{ title: "PRA 3(교환전)", field: "PRA3", sorter: "string", width: "180" },
-			{ title: "PRA 3(교환후)", field: "PRA3_2", sorter: "string", width: "180" },
-			{ title: "PRA 4(교환전)", field: "PRA4", sorter: "string", width: "180" },
-			{ title: "PRA 4(교환후)", field: "PRA4_2", sorter: "string", width: "180" },
-			{ title: "PRA 5(교환전)", field: "PRA5", sorter: "string", width: "180" },
-			{ title: "PRA 5(교환후)", field: "PRA5_2", sorter: "string", width: "180" },
-			{ title: "PRA 6(교환전)", field: "PRA6", sorter: "string", width: "180" },
-			{ title: "PRA 6(교환후)", field: "PRA6_2", sorter: "string", width: "180" },
-			{ title: "PRA 7(교환전)", field: "PRA7", sorter: "string", width: "180" },
-			{ title: "PRA 7(교환후)", field: "PRA7_2", sorter: "string", width: "180" },
-			{ title: "PRA 8(교환전)", field: "PRA8", sorter: "string", width: "180" },
-			{ title: "PRA 8(교환후)", field: "PRA8_2", sorter: "string", width: "180" },
-			{ title: "PRA 9(교환전)", field: "PRA9", sorter: "string", width: "180" },
-			{ title: "PRA 9(교환후)", field: "PRA9_2", sorter: "string", width: "180" },
-			{ title: "PRA 10(교환전)", field: "PRA10", sorter: "string", width: "180" },
-			{ title: "PRA 10(교환후)", field: "PRA10_2", sorter: "string", width: "180" },
+			//{ title: "PRA 3(교환전)", field: "PRA3", sorter: "string", width: "180" },
+			//{ title: "PRA 3(교환후)", field: "PRA3_2", sorter: "string", width: "180" },
+			//{ title: "PRA 4(교환전)", field: "PRA4", sorter: "string", width: "180" },
+			//{ title: "PRA 4(교환후)", field: "PRA4_2", sorter: "string", width: "180" },
+			//{ title: "PRA 5(교환전)", field: "PRA5", sorter: "string", width: "180" },
+			//{ title: "PRA 5(교환후)", field: "PRA5_2", sorter: "string", width: "180" },
+			//{ title: "PRA 6(교환전)", field: "PRA6", sorter: "string", width: "180" },
+			//{ title: "PRA 6(교환후)", field: "PRA6_2", sorter: "string", width: "180" },
+			//{ title: "PRA 7(교환전)", field: "PRA7", sorter: "string", width: "180" },
+			//{ title: "PRA 7(교환후)", field: "PRA7_2", sorter: "string", width: "180" },
+			//{ title: "PRA 8(교환전)", field: "PRA8", sorter: "string", width: "180" },
+			//{ title: "PRA 8(교환후)", field: "PRA8_2", sorter: "string", width: "180" },
+			//{ title: "PRA 9(교환전)", field: "PRA9", sorter: "string", width: "180" },
+			//{ title: "PRA 9(교환후)", field: "PRA9_2", sorter: "string", width: "180" },
+			//{ title: "PRA 10(교환전)", field: "PRA10", sorter: "string", width: "180" },
+			//{ title: "PRA 10(교환후)", field: "PRA10_2", sorter: "string", width: "180" },
 			{ title: "SPA 1(교환전)", field: "SPA1", sorter: "string", width: "180" },
 			{ title: "SPA 1(교환후)", field: "SPA1_2", sorter: "string", width: "180" },
 			{ title: "SPA 2(교환전)", field: "SPA2", sorter: "string", width: "180" },
 			{ title: "SPA 2(교환후)", field: "SPA2_2", sorter: "string", width: "180" },
-			{ title: "SPA 3(교환전)", field: "SPA3", sorter: "string", width: "180" },
-			{ title: "SPA 3(교환후)", field: "SPA3_2", sorter: "string", width: "180" },
-			{ title: "SPA 4(교환전)", field: "SPA4", sorter: "string", width: "180" },
-			{ title: "SPA 4(교환후)", field: "SPA4_2", sorter: "string", width: "180" },
-			{ title: "SPA 5(교환전)", field: "SPA5", sorter: "string", width: "180" },
-			{ title: "SPA 5(교환후)", field: "SPA5_2", sorter: "string", width: "180" },
-			{ title: "SPA 6(교환전)", field: "SPA6", sorter: "string", width: "180" },
-			{ title: "SPA 6(교환후)", field: "SPA6_2", sorter: "string", width: "180" },
-			{ title: "SPA 7(교환전)", field: "SPA7", sorter: "string", width: "180" },
-			{ title: "SPA 7(교환후)", field: "SPA7_2", sorter: "string", width: "180" },
-			{ title: "SPA 8(교환전)", field: "SPA8", sorter: "string", width: "180" },
-			{ title: "SPA 8(교환후)", field: "SPA8_2", sorter: "string", width: "180" },
-			{ title: "SPA 9(교환전)", field: "SPA9", sorter: "string", width: "180" },
-			{ title: "SPA 9(교환후)", field: "SPA9_2", sorter: "string", width: "180" },
-			{ title: "SPA 10(교환전)", field: "SPA10", sorter: "string", width: "180" },
-			{ title: "SPA 10(교환후)", field: "SPA10_2", sorter: "string", width: "180" },
+			//{ title: "SPA 3(교환전)", field: "SPA3", sorter: "string", width: "180" },
+			//{ title: "SPA 3(교환후)", field: "SPA3_2", sorter: "string", width: "180" },
+			//{ title: "SPA 4(교환전)", field: "SPA4", sorter: "string", width: "180" },
+			//{ title: "SPA 4(교환후)", field: "SPA4_2", sorter: "string", width: "180" },
+			//{ title: "SPA 5(교환전)", field: "SPA5", sorter: "string", width: "180" },
+			//{ title: "SPA 5(교환후)", field: "SPA5_2", sorter: "string", width: "180" },
+			//{ title: "SPA 6(교환전)", field: "SPA6", sorter: "string", width: "180" },
+			//{ title: "SPA 6(교환후)", field: "SPA6_2", sorter: "string", width: "180" },
+			//{ title: "SPA 7(교환전)", field: "SPA7", sorter: "string", width: "180" },
+			//{ title: "SPA 7(교환후)", field: "SPA7_2", sorter: "string", width: "180" },
+			//{ title: "SPA 8(교환전)", field: "SPA8", sorter: "string", width: "180" },
+			//{ title: "SPA 8(교환후)", field: "SPA8_2", sorter: "string", width: "180" },
+			//{ title: "SPA 9(교환전)", field: "SPA9", sorter: "string", width: "180" },
+			//{ title: "SPA 9(교환후)", field: "SPA9_2", sorter: "string", width: "180" },
+			//{ title: "SPA 10(교환전)", field: "SPA10", sorter: "string", width: "180" },
+			//{ title: "SPA 10(교환후)", field: "SPA10_2", sorter: "string", width: "180" },
 			{ title: "LWR Case 1(교환전)", field: "LWR_C1", sorter: "string", width: "180" },
 			{ title: "LWR Case 1(교환후)", field: "LWR_C1_2", sorter: "string", width: "180" },
 			{ title: "LWR Case 2(교환전)", field: "LWR_C2", sorter: "string", width: "180" },
 			{ title: "LWR Case 2(교환후)", field: "LWR_C2_2", sorter: "string", width: "180" },
-			{ title: "LWR Case 3(교환전)", field: "LWR_C3", sorter: "string", width: "180" },
-			{ title: "LWR Case 3(교환후)", field: "LWR_C3_2", sorter: "string", width: "180" },
-			{ title: "LWR Case 4(교환전)", field: "LWR_C4", sorter: "string", width: "180" },
-			{ title: "LWR Case 4(교환후)", field: "LWR_C4_2", sorter: "string", width: "180" },
-			{ title: "LWR Case 5(교환전)", field: "LWR_C5", sorter: "string", width: "180" },
-			{ title: "LWR Case 5(교환후)", field: "LWR_C5_2", sorter: "string", width: "180" },
-			{ title: "LWR Case 6(교환전)", field: "LWR_C6", sorter: "string", width: "180" },
-			{ title: "LWR Case 6(교환후)", field: "LWR_C6_2", sorter: "string", width: "180" },
-			{ title: "LWR Case 7(교환전)", field: "LWR_C7", sorter: "string", width: "180" },
-			{ title: "LWR Case 7(교환후)", field: "LWR_C7_2", sorter: "string", width: "180" },
-			{ title: "LWR Case 8(교환전)", field: "LWR_C8", sorter: "string", width: "180" },
-			{ title: "LWR Case 8(교환후)", field: "LWR_C8_2", sorter: "string", width: "180" },
-			{ title: "LWR Case 9(교환전)", field: "LWR_C9", sorter: "string", width: "180" },
-			{ title: "LWR Case 9(교환후)", field: "LWR_C9_2", sorter: "string", width: "180" },
-			{ title: "LWR Case 10(교환전)", field: "LWR_C10", sorter: "string", width: "180" },
-			{ title: "LWR Case 10(교환후)", field: "LWR_C10_2", sorter: "string", width: "180" },
+			//{ title: "LWR Case 3(교환전)", field: "LWR_C3", sorter: "string", width: "180" },
+			//{ title: "LWR Case 3(교환후)", field: "LWR_C3_2", sorter: "string", width: "180" },
+			//{ title: "LWR Case 4(교환전)", field: "LWR_C4", sorter: "string", width: "180" },
+			//{ title: "LWR Case 4(교환후)", field: "LWR_C4_2", sorter: "string", width: "180" },
+			//{ title: "LWR Case 5(교환전)", field: "LWR_C5", sorter: "string", width: "180" },
+			//{ title: "LWR Case 5(교환후)", field: "LWR_C5_2", sorter: "string", width: "180" },
+			//{ title: "LWR Case 6(교환전)", field: "LWR_C6", sorter: "string", width: "180" },
+			//{ title: "LWR Case 6(교환후)", field: "LWR_C6_2", sorter: "string", width: "180" },
+			//{ title: "LWR Case 7(교환전)", field: "LWR_C7", sorter: "string", width: "180" },
+			//{ title: "LWR Case 7(교환후)", field: "LWR_C7_2", sorter: "string", width: "180" },
+			//{ title: "LWR Case 8(교환전)", field: "LWR_C8", sorter: "string", width: "180" },
+			//{ title: "LWR Case 8(교환후)", field: "LWR_C8_2", sorter: "string", width: "180" },
+			//{ title: "LWR Case 9(교환전)", field: "LWR_C9", sorter: "string", width: "180" },
+			//{ title: "LWR Case 9(교환후)", field: "LWR_C9_2", sorter: "string", width: "180" },
+			//{ title: "LWR Case 10(교환전)", field: "LWR_C10", sorter: "string", width: "180" },
+			//{ title: "LWR Case 10(교환후)", field: "LWR_C10_2", sorter: "string", width: "180" },
 			{ title: "UPR Case 1(교환전)", field: "UPR_C1", sorter: "string", width: "180" },
 			{ title: "UPR Case 1(교환후)", field: "UPR_C1_2", sorter: "string", width: "180" },
 			{ title: "UPR Case 2(교환전)", field: "UPR_C2", sorter: "string", width: "180" },
 			{ title: "UPR Case 2(교환후)", field: "UPR_C2_2", sorter: "string", width: "180" },
-			{ title: "UPR Case 3(교환전)", field: "UPR_C3", sorter: "string", width: "180" },
-			{ title: "UPR Case 3(교환후)", field: "UPR_C3_2", sorter: "string", width: "180" },
-			{ title: "UPR Case 4(교환전)", field: "UPR_C4", sorter: "string", width: "180" },
-			{ title: "UPR Case 4(교환후)", field: "UPR_C4_2", sorter: "string", width: "180" },
-			{ title: "UPR Case 5(교환전)", field: "UPR_C5", sorter: "string", width: "180" },
-			{ title: "UPR Case 5(교환후)", field: "UPR_C5_2", sorter: "string", width: "180" },
-			{ title: "UPR Case 6(교환전)", field: "UPR_C6", sorter: "string", width: "180" },
-			{ title: "UPR Case 6(교환후)", field: "UPR_C6_2", sorter: "string", width: "180" },
-			{ title: "UPR Case 7(교환전)", field: "UPR_C7", sorter: "string", width: "180" },
-			{ title: "UPR Case 7(교환후)", field: "UPR_C7_2", sorter: "string", width: "180" },
-			{ title: "UPR Case 8(교환전)", field: "UPR_C8", sorter: "string", width: "180" },
-			{ title: "UPR Case 8(교환후)", field: "UPR_C8_2", sorter: "string", width: "180" },
-			{ title: "UPR Case 9(교환전)", field: "UPR_C9", sorter: "string", width: "180" },
-			{ title: "UPR Case 9(교환후)", field: "UPR_C9_2", sorter: "string", width: "180" },
-			{ title: "UPR Case 10(교환전)", field: "UPR_C10", sorter: "string", width: "180" },
-			{ title: "UPR Case 10(교환후)", field: "UPR_C10_2", sorter: "string", width: "180" },
+			//{ title: "UPR Case 3(교환전)", field: "UPR_C3", sorter: "string", width: "180" },
+			//{ title: "UPR Case 3(교환후)", field: "UPR_C3_2", sorter: "string", width: "180" },
+			//{ title: "UPR Case 4(교환전)", field: "UPR_C4", sorter: "string", width: "180" },
+			//{ title: "UPR Case 4(교환후)", field: "UPR_C4_2", sorter: "string", width: "180" },
+			//{ title: "UPR Case 5(교환전)", field: "UPR_C5", sorter: "string", width: "180" },
+			//{ title: "UPR Case 5(교환후)", field: "UPR_C5_2", sorter: "string", width: "180" },
+			//{ title: "UPR Case 6(교환전)", field: "UPR_C6", sorter: "string", width: "180" },
+			//{ title: "UPR Case 6(교환후)", field: "UPR_C6_2", sorter: "string", width: "180" },
+			//{ title: "UPR Case 7(교환전)", field: "UPR_C7", sorter: "string", width: "180" },
+			//{ title: "UPR Case 7(교환후)", field: "UPR_C7_2", sorter: "string", width: "180" },
+			//{ title: "UPR Case 8(교환전)", field: "UPR_C8", sorter: "string", width: "180" },
+			//{ title: "UPR Case 8(교환후)", field: "UPR_C8_2", sorter: "string", width: "180" },
+			//{ title: "UPR Case 9(교환전)", field: "UPR_C9", sorter: "string", width: "180" },
+			//{ title: "UPR Case 9(교환후)", field: "UPR_C9_2", sorter: "string", width: "180" },
+			//{ title: "UPR Case 10(교환전)", field: "UPR_C10", sorter: "string", width: "180" },
+			//{ title: "UPR Case 10(교환후)", field: "UPR_C10_2", sorter: "string", width: "180" },
 			{ title: "PBE(교환전)", field: "PBE", sorter: "string", width: "180" },
 			{ title: "PBE(교환후)", field: "PBE_2", sorter: "string", width: "180" },
 			{ title: "Gasket(교환전)", field: "Gasket", sorter: "string", width: "180" },
@@ -992,102 +997,102 @@ async function grid_분해조립(m_id = "") {
 			{ title: "Relay 1(교환후)", field: "Relay1_2", sorter: "string", width: "180" },
 			{ title: "Relay 2(교환전)", field: "Relay2", sorter: "string", width: "180" },
 			{ title: "Relay 2(교환후)", field: "Relay2_2", sorter: "string", width: "180" },
-			{ title: "Relay 3(교환전)", field: "Relay3", sorter: "string", width: "180" },
-			{ title: "Relay 3(교환후)", field: "Relay3_2", sorter: "string", width: "180" },
-			{ title: "Relay 4(교환전)", field: "Relay4", sorter: "string", width: "180" },
-			{ title: "Relay 4(교환후)", field: "Relay4_2", sorter: "string", width: "180" },
-			{ title: "Relay 5(교환전)", field: "Relay5", sorter: "string", width: "180" },
-			{ title: "Relay 5(교환후)", field: "Relay5_2", sorter: "string", width: "180" },
-			{ title: "Relay 6(교환전)", field: "Relay6", sorter: "string", width: "180" },
-			{ title: "Relay 6(교환후)", field: "Relay6_2", sorter: "string", width: "180" },
-			{ title: "Relay 7(교환전)", field: "Relay7", sorter: "string", width: "180" },
-			{ title: "Relay 7(교환후)", field: "Relay7_2", sorter: "string", width: "180" },
-			{ title: "Relay 8(교환전)", field: "Relay8", sorter: "string", width: "180" },
-			{ title: "Relay 8(교환후)", field: "Relay8_2", sorter: "string", width: "180" },
-			{ title: "Relay 9(교환전)", field: "Relay9", sorter: "string", width: "180" },
-			{ title: "Relay 9(교환후)", field: "Relay9_2", sorter: "string", width: "180" },
-			{ title: "Relay 10(교환전)", field: "Relay10", sorter: "string", width: "180" },
-			{ title: "Relay 10(교환후)", field: "Relay10_2", sorter: "string", width: "180" },
+			//{ title: "Relay 3(교환전)", field: "Relay3", sorter: "string", width: "180" },
+			//{ title: "Relay 3(교환후)", field: "Relay3_2", sorter: "string", width: "180" },
+			//{ title: "Relay 4(교환전)", field: "Relay4", sorter: "string", width: "180" },
+			//{ title: "Relay 4(교환후)", field: "Relay4_2", sorter: "string", width: "180" },
+			//{ title: "Relay 5(교환전)", field: "Relay5", sorter: "string", width: "180" },
+			//{ title: "Relay 5(교환후)", field: "Relay5_2", sorter: "string", width: "180" },
+			//{ title: "Relay 6(교환전)", field: "Relay6", sorter: "string", width: "180" },
+			//{ title: "Relay 6(교환후)", field: "Relay6_2", sorter: "string", width: "180" },
+			//{ title: "Relay 7(교환전)", field: "Relay7", sorter: "string", width: "180" },
+			//{ title: "Relay 7(교환후)", field: "Relay7_2", sorter: "string", width: "180" },
+			//{ title: "Relay 8(교환전)", field: "Relay8", sorter: "string", width: "180" },
+			//{ title: "Relay 8(교환후)", field: "Relay8_2", sorter: "string", width: "180" },
+			//{ title: "Relay 9(교환전)", field: "Relay9", sorter: "string", width: "180" },
+			//{ title: "Relay 9(교환후)", field: "Relay9_2", sorter: "string", width: "180" },
+			//{ title: "Relay 10(교환전)", field: "Relay10", sorter: "string", width: "180" },
+			//{ title: "Relay 10(교환후)", field: "Relay10_2", sorter: "string", width: "180" },
 			{ title: "HV CNTR 1(교환전)", field: "HV_CNTR1", sorter: "string", width: "180" },
 			{ title: "HV CNTR 1(교환후)", field: "HV_CNTR1_2", sorter: "string", width: "180" },
 			{ title: "HV CNTR 2(교환전)", field: "HV_CNTR2", sorter: "string", width: "180" },
 			{ title: "HV CNTR 2(교환후)", field: "HV_CNTR2_2", sorter: "string", width: "180" },
-			{ title: "HV CNTR 3(교환전)", field: "HV_CNTR3", sorter: "string", width: "180" },
-			{ title: "HV CNTR 3(교환후)", field: "HV_CNTR3_2", sorter: "string", width: "180" },
-			{ title: "HV CNTR 4(교환전)", field: "HV_CNTR4", sorter: "string", width: "180" },
-			{ title: "HV CNTR 4(교환후)", field: "HV_CNTR4_2", sorter: "string", width: "180" },
-			{ title: "HV CNTR 5(교환전)", field: "HV_CNTR5", sorter: "string", width: "180" },
-			{ title: "HV CNTR 5(교환후)", field: "HV_CNTR5_2", sorter: "string", width: "180" },
-			{ title: "HV CNTR 6(교환전)", field: "HV_CNTR6", sorter: "string", width: "180" },
-			{ title: "HV CNTR 6(교환후)", field: "HV_CNTR6_2", sorter: "string", width: "180" },
-			{ title: "HV CNTR 7(교환전)", field: "HV_CNTR7", sorter: "string", width: "180" },
-			{ title: "HV CNTR 7(교환후)", field: "HV_CNTR7_2", sorter: "string", width: "180" },
-			{ title: "HV CNTR 8(교환전)", field: "HV_CNTR8", sorter: "string", width: "180" },
-			{ title: "HV CNTR 8(교환후)", field: "HV_CNTR8_2", sorter: "string", width: "180" },
-			{ title: "HV CNTR 9(교환전)", field: "HV_CNTR9", sorter: "string", width: "180" },
-			{ title: "HV CNTR 9(교환후)", field: "HV_CNTR9_2", sorter: "string", width: "180" },
-			{ title: "HV CNTR 10(교환전)", field: "HV_CNTR10", sorter: "string", width: "180" },
-			{ title: "HV CNTR 10(교환후)", field: "HV_CNTR10_2", sorter: "string", width: "180" },
+			//{ title: "HV CNTR 3(교환전)", field: "HV_CNTR3", sorter: "string", width: "180" },
+			//{ title: "HV CNTR 3(교환후)", field: "HV_CNTR3_2", sorter: "string", width: "180" },
+			//{ title: "HV CNTR 4(교환전)", field: "HV_CNTR4", sorter: "string", width: "180" },
+			//{ title: "HV CNTR 4(교환후)", field: "HV_CNTR4_2", sorter: "string", width: "180" },
+			//{ title: "HV CNTR 5(교환전)", field: "HV_CNTR5", sorter: "string", width: "180" },
+			//{ title: "HV CNTR 5(교환후)", field: "HV_CNTR5_2", sorter: "string", width: "180" },
+			//{ title: "HV CNTR 6(교환전)", field: "HV_CNTR6", sorter: "string", width: "180" },
+			//{ title: "HV CNTR 6(교환후)", field: "HV_CNTR6_2", sorter: "string", width: "180" },
+			//{ title: "HV CNTR 7(교환전)", field: "HV_CNTR7", sorter: "string", width: "180" },
+			//{ title: "HV CNTR 7(교환후)", field: "HV_CNTR7_2", sorter: "string", width: "180" },
+			//{ title: "HV CNTR 8(교환전)", field: "HV_CNTR8", sorter: "string", width: "180" },
+			//{ title: "HV CNTR 8(교환후)", field: "HV_CNTR8_2", sorter: "string", width: "180" },
+			//{ title: "HV CNTR 9(교환전)", field: "HV_CNTR9", sorter: "string", width: "180" },
+			//{ title: "HV CNTR 9(교환후)", field: "HV_CNTR9_2", sorter: "string", width: "180" },
+			//{ title: "HV CNTR 10(교환전)", field: "HV_CNTR10", sorter: "string", width: "180" },
+			//{ title: "HV CNTR 10(교환후)", field: "HV_CNTR10_2", sorter: "string", width: "180" },
 			{ title: "Heating CNTR 1(교환전)", field: "Heating_CNTR1", sorter: "string", width: "180" },
 			{ title: "Heating CNTR 1(교환후)", field: "Heating_CNTR1_2", sorter: "string", width: "180" },
 			{ title: "Heating CNTR 2(교환전)", field: "Heating_CNTR2", sorter: "string", width: "180" },
 			{ title: "Heating CNTR 2(교환후)", field: "Heating_CNTR2_2", sorter: "string", width: "180" },
-			{ title: "Heating CNTR 3(교환전)", field: "Heating_CNTR3", sorter: "string", width: "180" },
-			{ title: "Heating CNTR 3(교환후)", field: "Heating_CNTR3_2", sorter: "string", width: "180" },
-			{ title: "Heating CNTR 4(교환전)", field: "Heating_CNTR4", sorter: "string", width: "180" },
-			{ title: "Heating CNTR 4(교환후)", field: "Heating_CNTR4_2", sorter: "string", width: "180" },
-			{ title: "Heating CNTR 5(교환전)", field: "Heating_CNTR5", sorter: "string", width: "180" },
-			{ title: "Heating CNTR 5(교환후)", field: "Heating_CNTR5_2", sorter: "string", width: "180" },
-			{ title: "Heating CNTR 6(교환전)", field: "Heating_CNTR6", sorter: "string", width: "180" },
-			{ title: "Heating CNTR 6(교환후)", field: "Heating_CNTR6_2", sorter: "string", width: "180" },
-			{ title: "Heating CNTR 7(교환전)", field: "Heating_CNTR7", sorter: "string", width: "180" },
-			{ title: "Heating CNTR 7(교환후)", field: "Heating_CNTR7_2", sorter: "string", width: "180" },
-			{ title: "Heating CNTR 8(교환전)", field: "Heating_CNTR8", sorter: "string", width: "180" },
-			{ title: "Heating CNTR 8(교환후)", field: "Heating_CNTR8_2", sorter: "string", width: "180" },
-			{ title: "Heating CNTR 9(교환전)", field: "Heating_CNTR9", sorter: "string", width: "180" },
-			{ title: "Heating CNTR 9(교환후)", field: "Heating_CNTR9_2", sorter: "string", width: "180" },
-			{ title: "Heating CNTR 10(교환전)", field: "Heating_CNTR10", sorter: "string", width: "180" },
-			{ title: "Heating CNTR 10(교환후)", field: "Heating_CNTR10_2", sorter: "string", width: "180" },
+			//{ title: "Heating CNTR 3(교환전)", field: "Heating_CNTR3", sorter: "string", width: "180" },
+			//{ title: "Heating CNTR 3(교환후)", field: "Heating_CNTR3_2", sorter: "string", width: "180" },
+			//{ title: "Heating CNTR 4(교환전)", field: "Heating_CNTR4", sorter: "string", width: "180" },
+			//{ title: "Heating CNTR 4(교환후)", field: "Heating_CNTR4_2", sorter: "string", width: "180" },
+			//{ title: "Heating CNTR 5(교환전)", field: "Heating_CNTR5", sorter: "string", width: "180" },
+			//{ title: "Heating CNTR 5(교환후)", field: "Heating_CNTR5_2", sorter: "string", width: "180" },
+			//{ title: "Heating CNTR 6(교환전)", field: "Heating_CNTR6", sorter: "string", width: "180" },
+			//{ title: "Heating CNTR 6(교환후)", field: "Heating_CNTR6_2", sorter: "string", width: "180" },
+			//{ title: "Heating CNTR 7(교환전)", field: "Heating_CNTR7", sorter: "string", width: "180" },
+			//{ title: "Heating CNTR 7(교환후)", field: "Heating_CNTR7_2", sorter: "string", width: "180" },
+			//{ title: "Heating CNTR 8(교환전)", field: "Heating_CNTR8", sorter: "string", width: "180" },
+			//{ title: "Heating CNTR 8(교환후)", field: "Heating_CNTR8_2", sorter: "string", width: "180" },
+			//{ title: "Heating CNTR 9(교환전)", field: "Heating_CNTR9", sorter: "string", width: "180" },
+			//{ title: "Heating CNTR 9(교환후)", field: "Heating_CNTR9_2", sorter: "string", width: "180" },
+			//{ title: "Heating CNTR 10(교환전)", field: "Heating_CNTR10", sorter: "string", width: "180" },
+			//{ title: "Heating CNTR 10(교환후)", field: "Heating_CNTR10_2", sorter: "string", width: "180" },
 			{ title: "FuseBox 1(교환전)", field: "FuseBox1", sorter: "string", width: "180" },
 			{ title: "FuseBox 1(교환후)", field: "FuseBox1_2", sorter: "string", width: "180" },
 			{ title: "FuseBox 2(교환전)", field: "FuseBox2", sorter: "string", width: "180" },
 			{ title: "FuseBox 2(교환후)", field: "FuseBox2_2", sorter: "string", width: "180" },
-			{ title: "FuseBox 3(교환전)", field: "FuseBox3", sorter: "string", width: "180" },
-			{ title: "FuseBox 3(교환후)", field: "FuseBox3_2", sorter: "string", width: "180" },
-			{ title: "FuseBox 4(교환전)", field: "FuseBox4", sorter: "string", width: "180" },
-			{ title: "FuseBox 4(교환후)", field: "FuseBox4_2", sorter: "string", width: "180" },
-			{ title: "FuseBox 5(교환전)", field: "FuseBox5", sorter: "string", width: "180" },
-			{ title: "FuseBox 5(교환후)", field: "FuseBox5_2", sorter: "string", width: "180" },
-			{ title: "FuseBox 6(교환전)", field: "FuseBox6", sorter: "string", width: "180" },
-			{ title: "FuseBox 6(교환후)", field: "FuseBox6_2", sorter: "string", width: "180" },
-			{ title: "FuseBox 7(교환전)", field: "FuseBox7", sorter: "string", width: "180" },
-			{ title: "FuseBox 7(교환후)", field: "FuseBox7_2", sorter: "string", width: "180" },
-			{ title: "FuseBox 8(교환전)", field: "FuseBox8", sorter: "string", width: "180" },
-			{ title: "FuseBox 8(교환후)", field: "FuseBox8_2", sorter: "string", width: "180" },
-			{ title: "FuseBox 9(교환전)", field: "FuseBox9", sorter: "string", width: "180" },
-			{ title: "FuseBox 9(교환후)", field: "FuseBox9_2", sorter: "string", width: "180" },
-			{ title: "FuseBox 10(교환전)", field: "FuseBox10", sorter: "string", width: "180" },
-			{ title: "FuseBox 10(교환후)", field: "FuseBox10_2", sorter: "string", width: "180" },
+			//{ title: "FuseBox 3(교환전)", field: "FuseBox3", sorter: "string", width: "180" },
+			//{ title: "FuseBox 3(교환후)", field: "FuseBox3_2", sorter: "string", width: "180" },
+			//{ title: "FuseBox 4(교환전)", field: "FuseBox4", sorter: "string", width: "180" },
+			//{ title: "FuseBox 4(교환후)", field: "FuseBox4_2", sorter: "string", width: "180" },
+			//{ title: "FuseBox 5(교환전)", field: "FuseBox5", sorter: "string", width: "180" },
+			//{ title: "FuseBox 5(교환후)", field: "FuseBox5_2", sorter: "string", width: "180" },
+			//{ title: "FuseBox 6(교환전)", field: "FuseBox6", sorter: "string", width: "180" },
+			//{ title: "FuseBox 6(교환후)", field: "FuseBox6_2", sorter: "string", width: "180" },
+			//{ title: "FuseBox 7(교환전)", field: "FuseBox7", sorter: "string", width: "180" },
+			//{ title: "FuseBox 7(교환후)", field: "FuseBox7_2", sorter: "string", width: "180" },
+			//{ title: "FuseBox 8(교환전)", field: "FuseBox8", sorter: "string", width: "180" },
+			//{ title: "FuseBox 8(교환후)", field: "FuseBox8_2", sorter: "string", width: "180" },
+			//{ title: "FuseBox 9(교환전)", field: "FuseBox9", sorter: "string", width: "180" },
+			//{ title: "FuseBox 9(교환후)", field: "FuseBox9_2", sorter: "string", width: "180" },
+			//{ title: "FuseBox 10(교환전)", field: "FuseBox10", sorter: "string", width: "180" },
+			//{ title: "FuseBox 10(교환후)", field: "FuseBox10_2", sorter: "string", width: "180" },
 			{ title: "LV W/H 1(교환전)", field: "LV_W_H1", sorter: "string", width: "180" },
 			{ title: "LV W/H 1(교환후)", field: "LV_W_H1_2", sorter: "string", width: "180" },
 			{ title: "LV W/H 2(교환전)", field: "LV_W_H2", sorter: "string", width: "180" },
 			{ title: "LV W/H 2(교환후)", field: "LV_W_H2_2", sorter: "string", width: "180" },
-			{ title: "LV W/H 3(교환전)", field: "LV_W_H3", sorter: "string", width: "180" },
-			{ title: "LV W/H 3(교환후)", field: "LV_W_H3_2", sorter: "string", width: "180" },
-			{ title: "LV W/H 4(교환전)", field: "LV_W_H4", sorter: "string", width: "180" },
-			{ title: "LV W/H 4(교환후)", field: "LV_W_H4_2", sorter: "string", width: "180" },
-			{ title: "LV W/H 5(교환전)", field: "LV_W_H5", sorter: "string", width: "180" },
-			{ title: "LV W/H 5(교환후)", field: "LV_W_H5_2", sorter: "string", width: "180" },
-			{ title: "LV W/H 6(교환전)", field: "LV_W_H6", sorter: "string", width: "180" },
-			{ title: "LV W/H 6(교환후)", field: "LV_W_H6_2", sorter: "string", width: "180" },
-			{ title: "LV W/H 7(교환전)", field: "LV_W_H7", sorter: "string", width: "180" },
-			{ title: "LV W/H 7(교환후)", field: "LV_W_H7_2", sorter: "string", width: "180" },
-			{ title: "LV W/H 8(교환전)", field: "LV_W_H8", sorter: "string", width: "180" },
-			{ title: "LV W/H 8(교환후)", field: "LV_W_H8_2", sorter: "string", width: "180" },
-			{ title: "LV W/H 9(교환전)", field: "LV_W_H9", sorter: "string", width: "180" },
-			{ title: "LV W/H 9(교환후)", field: "LV_W_H9_2", sorter: "string", width: "180" },
-			{ title: "LV W/H 10(교환전)", field: "LV_W_H10", sorter: "string", width: "180" },
-			{ title: "LV W/H 10(교환후)", field: "LV_W_H10_2", sorter: "string", width: "180" },
+			//{ title: "LV W/H 3(교환전)", field: "LV_W_H3", sorter: "string", width: "180" },
+			//{ title: "LV W/H 3(교환후)", field: "LV_W_H3_2", sorter: "string", width: "180" },
+			//{ title: "LV W/H 4(교환전)", field: "LV_W_H4", sorter: "string", width: "180" },
+			//{ title: "LV W/H 4(교환후)", field: "LV_W_H4_2", sorter: "string", width: "180" },
+			//{ title: "LV W/H 5(교환전)", field: "LV_W_H5", sorter: "string", width: "180" },
+			//{ title: "LV W/H 5(교환후)", field: "LV_W_H5_2", sorter: "string", width: "180" },
+			//{ title: "LV W/H 6(교환전)", field: "LV_W_H6", sorter: "string", width: "180" },
+			//{ title: "LV W/H 6(교환후)", field: "LV_W_H6_2", sorter: "string", width: "180" },
+			//{ title: "LV W/H 7(교환전)", field: "LV_W_H7", sorter: "string", width: "180" },
+			//{ title: "LV W/H 7(교환후)", field: "LV_W_H7_2", sorter: "string", width: "180" },
+			//{ title: "LV W/H 8(교환전)", field: "LV_W_H8", sorter: "string", width: "180" },
+			//{ title: "LV W/H 8(교환후)", field: "LV_W_H8_2", sorter: "string", width: "180" },
+			//{ title: "LV W/H 9(교환전)", field: "LV_W_H9", sorter: "string", width: "180" },
+			//{ title: "LV W/H 9(교환후)", field: "LV_W_H9_2", sorter: "string", width: "180" },
+			//{ title: "LV W/H 10(교환전)", field: "LV_W_H10", sorter: "string", width: "180" },
+			//{ title: "LV W/H 10(교환후)", field: "LV_W_H10_2", sorter: "string", width: "180" },
 			{ title: "HV W/H 1(교환전)", field: "HV_W_H1", sorter: "string", width: "180" },
 			{ title: "HV W/H 1(교환후)", field: "HV_W_H1_2", sorter: "string", width: "180" },
 			{ title: "HV W/H 2(교환전)", field: "HV_W_H2", sorter: "string", width: "180" },
@@ -1176,9 +1181,10 @@ async function grid_분해조립new(m_id = "") {
 		await delay();
 	}
 
+	if(tabledata_분해조립new == null) return;
 	for(var i = 0; i < tabledata_분해조립new.length; i++) {
 		for(var j = 0; j < table_data.length; j++) {
-			if(tabledata_분해조립new[i].관리번호 == table_data[j].관리번호) {
+			if(tabledata_분해조립new[i] != undefined  && tabledata_분해조립new[i].관리번호 == table_data[j].관리번호) {
 				tabledata_분해조립new[i].재제조번호 = table_data[j].재제조번호;
 				tabledata_분해조립new[i].구분 = table_data[j].구분;
 				tabledata_분해조립new[i].차종 = table_data[j].차종;
@@ -1230,9 +1236,10 @@ async function grid_성능검사(m_id = "") {
 		tabledata_성능검사.push(JSON.parse(JSON.stringify(성능검사_v)));
 	}
 
+	if(tabledata_성능검사 == null) return;
 	for(var i = 0; i < tabledata_성능검사.length; i++) {
 		for(var j = 0; j < table_data.length; j++) {
-			if(tabledata_성능검사[i].관리번호 == table_data[j].관리번호) {
+			if(tabledata_성능검사[i] != undefined  && tabledata_성능검사[i].관리번호 == table_data[j].관리번호) {
 				tabledata_성능검사[i].재제조번호 = table_data[j].재제조번호;
 				tabledata_성능검사[i].구분 = table_data[j].구분;
 				tabledata_성능검사[i].차종 = table_data[j].차종;
@@ -1288,9 +1295,10 @@ async function grid_EOL(m_id = "") {
 		tabledata_EOL.push(JSON.parse(JSON.stringify(EOL_v)));
 	}
 
+	if(tabledata_EOL == null) return;
 	for(var i = 0; i < tabledata_EOL.length; i++) {
 		for(var j = 0; j < table_data.length; j++) {
-			if(tabledata_EOL[i].관리번호 == table_data[j].관리번호) {
+			if(tabledata_EOL[i] != undefined  && tabledata_EOL[i].관리번호 == table_data[j].관리번호) {
 				tabledata_EOL[i].재제조번호 = table_data[j].재제조번호;
 				tabledata_EOL[i].구분 = table_data[j].구분;
 				tabledata_EOL[i].차종 = table_data[j].차종;
@@ -1330,12 +1338,12 @@ async function grid_EOL(m_id = "") {
 			{ title: "통신검사 DTC코드2", field: "통신검사_DTC코드2", sorter: "string", width: "180" },
 			{ title: "통신검사 DTC코드3", field: "통신검사_DTC코드3", sorter: "string", width: "180" },
 			{ title: "통신검사 DTC코드4", field: "통신검사_DTC코드4", sorter: "string", width: "180" },
-			{ title: "통신검사 DTC코드5", field: "통신검사_DTC코드5", sorter: "string", width: "180" },
-			{ title: "통신검사 DTC코드6", field: "통신검사_DTC코드6", sorter: "string", width: "180" },
-			{ title: "통신검사 DTC코드7", field: "통신검사_DTC코드7", sorter: "string", width: "180" },
-			{ title: "통신검사 DTC코드8", field: "통신검사_DTC코드8", sorter: "string", width: "180" },
-			{ title: "통신검사 DTC코드9", field: "통신검사_DTC코드9", sorter: "string", width: "180" },
-			{ title: "통신검사 DTC코드10", field: "통신검사_DTC코드10", sorter: "string", width: "180" },
+			//{ title: "통신검사 DTC코드5", field: "통신검사_DTC코드5", sorter: "string", width: "180" },
+			//{ title: "통신검사 DTC코드6", field: "통신검사_DTC코드6", sorter: "string", width: "180" },
+			//{ title: "통신검사 DTC코드7", field: "통신검사_DTC코드7", sorter: "string", width: "180" },
+			//{ title: "통신검사 DTC코드8", field: "통신검사_DTC코드8", sorter: "string", width: "180" },
+			//{ title: "통신검사 DTC코드9", field: "통신검사_DTC코드9", sorter: "string", width: "180" },
+			//{ title: "통신검사 DTC코드10", field: "통신검사_DTC코드10", sorter: "string", width: "180" },
 			{ title: "통신검사 팩전압", field: "통신검사_팩전압", sorter: "string", width: "180" },
 			{ title: "통신검사 셀전압편차", field: "통신검사_셀전압편차", sorter: "string", width: "180" },
 			{ title: "통신검사 셀전압편차", field: "통신검사_셀전압편차", sorter: "string", width: "180" },
@@ -1367,6 +1375,7 @@ async function grid_출하정보(m_id = "") {
 		tabledata_출하정보.push(JSON.parse(JSON.stringify(출하정보_v)));
 	}
 
+	if(tabledata_출하정보 == null) return;
 	table_출하정보 = new Tabulator("#grid_출하정보", {
 		initialSort:[
 			{column:"관리번호", dir:"asc"}, //sort by this first
@@ -1438,9 +1447,10 @@ async function grid_특이사항(m_id = "") {
 		tabledata_특이사항.push(JSON.parse(JSON.stringify(특이사항_v)));
 	}
 
+	if(tabledata_특이사항 == null) return;
 	for(var i = 0; i < tabledata_특이사항.length; i++) {
 		for(var j = 0; j < table_data.length; j++) {
-			if(tabledata_특이사항[i].관리번호 == table_data[j].관리번호) {
+			if(tabledata_특이사항[i] != undefined  && tabledata_특이사항[i].관리번호 == table_data[j].관리번호) {
 				tabledata_특이사항[i].재제조번호 = table_data[j].재제조번호;
 				tabledata_특이사항[i].구분 = table_data[j].구분;
 				tabledata_특이사항[i].차종 = table_data[j].차종;
@@ -1484,9 +1494,10 @@ async function grid_교체부품상세1(m_id = "") {
 		tabledata_교체부품상세1.push(JSON.parse(JSON.stringify(교체부품상세1_v)));
 	}
 
+	if(tabledata_교체부품상세1 == null) return;
 	for(var i = 0; i < tabledata_교체부품상세1.length; i++) {
 		for(var j = 0; j < table_data.length; j++) {
-			if(tabledata_교체부품상세1[i].관리번호 == table_data[j].관리번호) {
+			if(tabledata_교체부품상세1[i] != undefined  && tabledata_교체부품상세1[i].관리번호 == table_data[j].관리번호) {
 				tabledata_교체부품상세1[i].재제조번호 = table_data[j].재제조번호;
 				tabledata_교체부품상세1[i].구분 = table_data[j].구분;
 				tabledata_교체부품상세1[i].차종 = table_data[j].차종;
@@ -1578,9 +1589,10 @@ async function grid_교체부품상세2(m_id = "") {
 		tabledata_교체부품상세2.push(JSON.parse(JSON.stringify(교체부품상세2_v)));
 	}
 
+	if(tabledata_교체부품상세2 == null) return;
 	for(var i = 0; i < tabledata_교체부품상세2.length; i++) {
 		for(var j = 0; j < table_data.length; j++) {
-			if(tabledata_교체부품상세2[i].관리번호 == table_data[j].관리번호) {
+			if(tabledata_교체부품상세2[i] != undefined  && tabledata_교체부품상세2[i].관리번호 == table_data[j].관리번호) {
 				tabledata_교체부품상세2[i].재제조번호 = table_data[j].재제조번호;
 				tabledata_교체부품상세2[i].구분 = table_data[j].구분;
 				tabledata_교체부품상세2[i].차종 = table_data[j].차종;
@@ -1672,9 +1684,10 @@ async function grid_교체부품상세3(m_id = "") {
 		tabledata_교체부품상세3.push(JSON.parse(JSON.stringify(교체부품상세3_v)));
 	}
 
+	if(tabledata_교체부품상세3 == null) return;
 	for(var i = 0; i < tabledata_교체부품상세3.length; i++) {
 		for(var j = 0; j < table_data.length; j++) {
-			if(tabledata_교체부품상세3[i].관리번호 == table_data[j].관리번호) {
+			if(tabledata_교체부품상세3[i] != undefined  && tabledata_교체부품상세3[i].관리번호 == table_data[j].관리번호) {
 				tabledata_교체부품상세3[i].재제조번호 = table_data[j].재제조번호;
 				tabledata_교체부품상세3[i].구분 = table_data[j].구분;
 				tabledata_교체부품상세3[i].차종 = table_data[j].차종;
@@ -1766,9 +1779,10 @@ async function grid_교체부품상세4(m_id = "") {
 		tabledata_교체부품상세4.push(JSON.parse(JSON.stringify(교체부품상세4_v)));
 	}
 
+	if(tabledata_교체부품상세4 == null) return;
 	for(var i = 0; i < tabledata_교체부품상세4.length; i++) {
 		for(var j = 0; j < table_data.length; j++) {
-			if(tabledata_교체부품상세4[i].관리번호 == table_data[j].관리번호) {
+			if(tabledata_교체부품상세4[i] != undefined  && tabledata_교체부품상세4[i].관리번호 == table_data[j].관리번호) {
 				tabledata_교체부품상세4[i].재제조번호 = table_data[j].재제조번호;
 				tabledata_교체부품상세4[i].구분 = table_data[j].구분;
 				tabledata_교체부품상세4[i].차종 = table_data[j].차종;
@@ -1859,9 +1873,10 @@ async function grid_교체부품상세5(m_id = "") {
 		tabledata_교체부품상세5.push(JSON.parse(JSON.stringify(교체부품상세5_v)));
 	}
 
+	if(tabledata_교체부품상세5 == null) return;
 	for(var i = 0; i < tabledata_교체부품상세5.length; i++) {
 		for(var j = 0; j < table_data.length; j++) {
-			if(tabledata_교체부품상세5[i].관리번호 == table_data[j].관리번호) {
+			if(tabledata_교체부품상세5[i] != undefined  && tabledata_교체부품상세5[i].관리번호 == table_data[j].관리번호) {
 				tabledata_교체부품상세5[i].재제조번호 = table_data[j].재제조번호;
 				tabledata_교체부품상세5[i].구분 = table_data[j].구분;
 				tabledata_교체부품상세5[i].차종 = table_data[j].차종;
@@ -1953,9 +1968,10 @@ async function grid_교체부품상세6(m_id = "") {
 		tabledata_교체부품상세6.push(JSON.parse(JSON.stringify(교체부품상세6_v)));
 	}
 
+	if(tabledata_교체부품상세6 == null) return;
 	for(var i = 0; i < tabledata_교체부품상세6.length; i++) {
 		for(var j = 0; j < table_data.length; j++) {
-			if(tabledata_교체부품상세6[i].관리번호 == table_data[j].관리번호) {
+			if(tabledata_교체부품상세6[i] != undefined  && tabledata_교체부품상세6[i].관리번호 == table_data[j].관리번호) {
 				tabledata_교체부품상세6[i].재제조번호 = table_data[j].재제조번호;
 				tabledata_교체부품상세6[i].구분 = table_data[j].구분;
 				tabledata_교체부품상세6[i].차종 = table_data[j].차종;
@@ -2046,9 +2062,10 @@ async function grid_교체부품상세7(m_id = "") {
 		tabledata_교체부품상세7.push(JSON.parse(JSON.stringify(교체부품상세7_v)));
 	}
 
+	if(tabledata_교체부품상세7 == null) return;
 	for(var i = 0; i < tabledata_교체부품상세7.length; i++) {
 		for(var j = 0; j < table_data.length; j++) {
-			if(tabledata_교체부품상세7[i].관리번호 == table_data[j].관리번호) {
+			if(tabledata_교체부품상세7[i] != undefined  && tabledata_교체부품상세7[i].관리번호 == table_data[j].관리번호) {
 				tabledata_교체부품상세7[i].재제조번호 = table_data[j].재제조번호;
 				tabledata_교체부품상세7[i].구분 = table_data[j].구분;
 				tabledata_교체부품상세7[i].차종 = table_data[j].차종;
@@ -2139,9 +2156,10 @@ async function grid_교체부품상세8(m_id = "") {
 		tabledata_교체부품상세8.push(JSON.parse(JSON.stringify(교체부품상세8_v)));
 	}
 
+	if(tabledata_교체부품상세8 == null) return;
 	for(var i = 0; i < tabledata_교체부품상세8.length; i++) {
 		for(var j = 0; j < table_data.length; j++) {
-			if(tabledata_교체부품상세8[i].관리번호 == table_data[j].관리번호) {
+			if(tabledata_교체부품상세8[i] != undefined  && tabledata_교체부품상세8[i].관리번호 == table_data[j].관리번호) {
 				tabledata_교체부품상세8[i].재제조번호 = table_data[j].재제조번호;
 				tabledata_교체부품상세8[i].구분 = table_data[j].구분;
 				tabledata_교체부품상세8[i].차종 = table_data[j].차종;
@@ -2232,9 +2250,10 @@ async function grid_교체부품상세9(m_id = "") {
 		tabledata_교체부품상세9.push(JSON.parse(JSON.stringify(교체부품상세9_v)));
 	}
 
+	if(tabledata_교체부품상세9 == null) return;
 	for(var i = 0; i < tabledata_교체부품상세9.length; i++) {
 		for(var j = 0; j < table_data.length; j++) {
-			if(tabledata_교체부품상세9[i].관리번호 == table_data[j].관리번호) {
+			if(tabledata_교체부품상세9[i] != undefined  && tabledata_교체부품상세9[i].관리번호 == table_data[j].관리번호) {
 				tabledata_교체부품상세9[i].재제조번호 = table_data[j].재제조번호;
 				tabledata_교체부품상세9[i].구분 = table_data[j].구분;
 				tabledata_교체부품상세9[i].차종 = table_data[j].차종;
@@ -2327,9 +2346,10 @@ async function grid_교체부품상세10(m_id = "") {
 		tabledata_교체부품상세10.push(JSON.parse(JSON.stringify(교체부품상세10_v)));
 	}
 
+	if(tabledata_교체부품상세10 == null) return;
 	for(var i = 0; i < tabledata_교체부품상세10.length; i++) {
 		for(var j = 0; j < table_data.length; j++) {
-			if(tabledata_교체부품상세10[i].관리번호 == table_data[j].관리번호) {
+			if(tabledata_교체부품상세10[i] != undefined  && tabledata_교체부품상세10[i].관리번호 == table_data[j].관리번호) {
 				tabledata_교체부품상세10[i].재제조번호 = table_data[j].재제조번호;
 				tabledata_교체부품상세10[i].구분 = table_data[j].구분;
 				tabledata_교체부품상세10[i].차종 = table_data[j].차종;
