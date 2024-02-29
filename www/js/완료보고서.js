@@ -594,7 +594,7 @@ async function 완료보고서_조회(is재제조번호 = false) {
     console.log("dragover!");
   };
 
-  _DCIR검사_결과.value = Number(성능_data.DCIR).toFixed(2);
+  _DCIR검사_결과.innerHTML = Number(성능_data.DCIR).toFixed(2);
 
   //용량평가
   _img2.ondblclick = function (evt) {
@@ -612,7 +612,7 @@ async function 완료보고서_조회(is재제조번호 = false) {
   _img2.ondragover = function (evt) {
     evt.preventDefault();
   };
-  _용량평가_결과.value = Number(성능_data.용량평가).toFixed(2);
+  _용량평가_결과.innerHTML = Number(성능_data.용량평가).toFixed(2);
 }
 
 function showTable(tableId) {
@@ -652,45 +652,67 @@ async function 완료보고서_save() {
 async function 완료보고서_save_pdf(type = 0) {
   var _date = new Date();
   var file_name = "완료보고서" + _date + ".pdf";
-  var _width = 4200;
-  var _height = 2200;
+  var _width = 4000;
+  var _height = 2000;
 
   if (type == 0) type = document.getElementById("_완료보고서");
 
   if (type == "육외") {
-    type = document.getElementById("_육안검사외부1");
+    type = document.getElementById("_육안검사외부");
     file_name = "완료보고서_육안검사외부" + _date + ".pdf";
-    _width = 4200;
-    _height = 2100;
-  }
-
-  if (type == "육외상") {
-    type = document.getElementById("_육안검사외부2");
-    file_name = "완료보고서_육안검사외부_상세" + _date + ".pdf";
-    _width = 4200;
-    _height = 2100;
+    _width = 4000;
+    _height = 2000;
   }
 
   if (type == "육내") {
-    type = document.getElementById("_육안검사내부1");
+    type = document.getElementById("_육안검사내부");
     file_name = "완료보고서_육안검사내부" + _date + ".pdf";
     _width = 4200;
     _height = 2700;
-  }
-
-  if (type == "육내상") {
-    type = document.getElementById("_육안검사내부2");
-    file_name = "완료보고서_육안검사내부_상세" + _date + ".pdf";
-    _width = 4200;
-    _height = 2100;
   }
 
   if (type == "기밀") {
     type = document.getElementById("_기밀검사");
     file_name = "완료보고서_기밀검사" + _date + ".pdf";
     _width = 4200;
+    _height = 2700;
+  }
+
+  if (type == "절연") {
+    type = document.getElementById("_절연저항검사");
+    file_name = "완료보고서_절연저항검사" + _date + ".pdf";
+    _width = 4200;
+    _height = 2700;
+  }
+
+  if (type == "CAN1") {
+    type = document.getElementById("_CAN통신검사");
+    file_name = "완료보고서_CAN통신검사" + _date + ".pdf";
+    _width = 4200;
     _height = 2000;
   }
+
+  if (type == "CAN2") {
+    type = document.getElementById("_CAN통신검사2");
+    file_name = "완료보고서_CAN통신검사2" + _date + ".pdf";
+    _width = 4200;
+    _height = 2400;
+  }
+
+  if (type == "DCIR") {
+    type = document.getElementById("_DCIR검사");
+    file_name = "완료보고서_DCIR검사" + _date + ".pdf";
+    _width = 4200;
+    _height = 2000;
+  }
+
+  if (type == "용량") {
+    type = document.getElementById("_용량평가");
+    file_name = "완료보고서_용량평가" + _date + ".pdf";
+    _width = 4200;
+    _height = 2000;
+  }
+
 
   html2canvas(type, {
     width: (_width * window.innerWidth) / 1920,

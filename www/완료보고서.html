@@ -1524,7 +1524,7 @@
         <p>Positive</p>
       </div>
     </section>
-    <div id="_육안검사외부1" class="check-all">
+    <div id="_육안검사외부" class="check-all">
       <div class="report__tit">
         <h3>▣ 육안 검사 - 외부</h3>
         <input type="checkbox" id="_cb육안검사외부" checked />
@@ -1581,7 +1581,7 @@
       </div>
     </div>
 
-    <div id="_육안검사내부1" class="check-all">
+    <div id="_육안검사내부" class="check-all">
       <div class="report__tit">
         <h3>▣ 육안검사 - 내부</h3>
         <input type="checkbox" id="_cb육안검사내부" checked />
@@ -1996,7 +1996,7 @@
             <tr>
               <td style="text-align: left; font-weight: bold; border-right: 1px solid #000">
                 결과: <br />
-                DC-IR 평균값 : <input type="text" id="_DCIR검사_결과" class="dcir_용량_input" />
+                DC-IR 평균값 : <span id="_DCIR검사_결과" />
               </td>
               <td id="_file_exist1" class="process__file t1-d">
                 <div id="_inFile1" class="in-file" style="display: none">
@@ -2045,8 +2045,7 @@
           <tfoot>
             <tr>
               <td style="text-align: left; font-weight: bold; border-right: 1px solid #000">
-                결과: <br />
-                <input type="text" id="_용량평가_결과" class="dcir_용량_input" />
+                결과: <span id="_용량평가_결과"/>
               </td>
               <td id="_file_exist1" class="process__file t1-d">
                 <div id="_inFile2" class="in-file" style="display: none">
@@ -2109,8 +2108,12 @@
         <tr>
           <td>
             <button id="_btn_upload" onClick="완료보고서_file_upload();">파일 업로드</button>
-            <button onClick="완료보고서_save();" class="report__btn">저장</button>
-            <button onClick="back();" class="report__btn">되돌아 가기</button>
+	  </td>
+	  <td>
+            <button onClick="완료보고서_save();">저장</button>
+	  </td>
+	  <td>
+            <button onClick="back();">되돌아 가기</button>
           </td>
         </tr>
       </table>
@@ -2121,7 +2124,7 @@
       <button onClick="완료보고서_save_pdf('육내');">육안검사내부</button>
       <button onClick="완료보고서_save_pdf('기밀');">기밀검사</button>
       <button onClick="완료보고서_save_pdf('절연');">절연저항검사</button>
-      <button onClick="완료보고서_save_pdf('CAN');">CAN통신검사 G-SACN</button>
+      <button onClick="완료보고서_save_pdf('CAN1');">CAN통신검사 G-SACN</button>
       <button onClick="완료보고서_save_pdf('CAN2');">CAN통신검사</button>
       <button onClick="완료보고서_save_pdf('DCIR');">DCIR검사</button>
       <button onClick="완료보고서_save_pdf('용량');">용량평가</button>
@@ -2573,6 +2576,16 @@
       const _form = document.getElementById("_form");
       const _img1 = document.getElementById("_img1");
       const _img2 = document.getElementById("_img2");
+      
+      const _완료보고서 = documnet.getElementById("_완료보고서");
+      const _육안검사외부 = documnet.getElementById("_육안검사외부");
+      const _육안검사내부 = documnet.getElementById("_육안검사내부");
+      const _기밀검사 = documnet.getElementById("_기밀검사");
+      const _절연저항검사 = documnet.getElementById("_절연저항검사");
+      const _CAN통신검사 = documnet.getElementById("_CAN통신검사");
+      const _CAN통신검사2 = documnet.getElementById("_CAN통신검사2");
+      const _DCIR검사 = documnet.getElementById("_DCIR검사");
+      const _용량평가 = documnet.getElementById("_용량평가");
     </script>
   </body>
 </html>
