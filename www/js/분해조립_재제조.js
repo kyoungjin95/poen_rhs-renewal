@@ -180,7 +180,8 @@ async function 분해조립재제조_save() {
 
 		if(data[i].신품고품 != '고품') continue;
 
-		var doc = {
+		doc = {};
+		doc = {
 			QR : data[i].교체후QR,
 			사용여부 : '사용',
 			사용_관리번호 : 관리번호,
