@@ -34,6 +34,7 @@ async function 완료보고서_조회(is재제조번호 = false) {
 
 		if (BSA재제조_v != null) {
 			관리번호 = BSA재제조_v.관리번호;
+			_management_id.value = 관리번호;
 		}
 	}
 

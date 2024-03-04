@@ -108,6 +108,7 @@ async function EOL_시작(is재제조 = 0) {
     _육안검사_외부.value = EOL_v.육안검사_외부;
     _육안검사_내부.value = EOL_v.육안검사_내부;
     
+    if(_검사자.value == '') _검사자.value = worker;
     find(EOL_pic, _management_id.value);
     await delay();
     if (EOL_pic_v != null) {
