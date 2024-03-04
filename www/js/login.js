@@ -57,7 +57,7 @@ async function login() {
         }
       }, 1000);
       await sleep(1);
-      alert('#공지사항#\nVersion update sky 0.63\n1. 완료보고서 관리번호 및 재제조번호로 조회 가능\n');
+      alert('#공지사항#\nVersion update sky 0.64\n1. 완료보고서 DCIR검사와 용량평가 이미지란은 드래그 엔 드롭으로 이미지를 넣어야함 2.재제조 DATA 조회시 세부 공정에 기본정보 추가되던것 빠짐(PC성능을 고려하여 서버에서 작업후 PC로 송출작업중)\n');
     } else if (worker == _id.value) {
       worker = "";
       level = "";

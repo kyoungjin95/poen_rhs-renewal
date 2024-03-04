@@ -564,12 +564,14 @@ async function 완료보고서_조회(is재제조번호 = false) {
 		_bottom_pic.src = EOL_pic_data.pic4;
 		_rear_pic.src = EOL_pic_data.pic5;
 		_right_pic.src = EOL_pic_data.pic6;
+		_육안검사_결과.innerHTML = EOL_data.육안검사_외부;
 
 		//육안검사 내부
 		_allImg.src = EOL_pic_data.pic7;
 		_BMU.src = EOL_pic_data.pic8;
 		_CMU.src = EOL_pic_data.pic9;
 		_PRA.src = EOL_pic_data.pic10;
+		_육안검사_내부_결과.innerHTML = EOL_data.육안검사_내부;
 
 		//기밀검사
 		_측정사진1.src = EOL_pic_data.pic11;
@@ -789,8 +791,8 @@ async function 완료보고서_file1_upload() {
 	//console.log('submit event:', event);
 	//event.preventDefault();
 	//const form = event.currentTarget;
-	const url = new URL(_form1.action);
-	const formData = new FormData(_form1);
+	const url = new URL(_form.action);
+	const formData = new FormData(_form);
 	const searchParams = new URLSearchParams(formData);
 
 	$.ajax({
@@ -957,7 +959,7 @@ function handleSubmit(event) {
 }
 
 function init() {
-	_form1.addEventListener("submit", handleSubmit);
+	_form.addEventListener("submit", handleSubmit);
 }
 
 function 완료보고서_download1() {
