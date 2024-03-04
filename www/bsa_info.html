@@ -73,18 +73,13 @@
         <p id="m_id" class="id__name"></p>
         <div class="process__btn">
           <div class="process__btns">
-            <input
-              id="new_관리번호"
-              type="text"
-              placeholder="변경후 관리번호"
-            />
-            <button onClick="if(계정_stat.관리번호 == 'o') 관리번호_변경();">
-              변경
-	    </button>
             <input id="copy_관리번호" type="text" placeholder="To 관리번호" />
             <button onClick="if(계정_stat.관리번호 == 'o') copy();">
               복사
             </button>
+            <button onClick="if(계정_stat.관리번호 == 'o') 관리번호_변경();" disabled>
+              변경
+	    </button>
           </div>
           <div class="process__btns">
             <button
