@@ -57,7 +57,7 @@ async function login() {
         }
       }, 1000);
       await sleep(1);
-      alert('#공지사항#\nVersion update sky 0.62\n1. 재제조 DATA 단일 배터리팩 선택시 공정별 조회 중간에 안되던 버그 수정\n');
+      alert('#공지사항#\nVersion update sky 0.63\n1. 완료보고서 관리번호 및 재제조번호로 조회 가능\n');
     } else if (worker == _id.value) {
       worker = "";
       level = "";
