@@ -2454,9 +2454,269 @@ async function 관리번호_변경() {
 	await delete_bsa();
 }
 
+async function copy_기본정보(mid, new_mid) {
+	find(BSA재제조, m_id);
+	await delay();
+
+	var doc = BSA재제조_v;
+	if (doc != null) {
+		doc.관리번호 = new_mid;
+
+		update(BSA재제조, doc);
+		await delay();
+	}
+}
+
+async function copy_입고(mid, new_mid) {
+	find(입고, m_id);
+	await delay();
+
+	doc = 입고_v;
+	if (doc != null) {
+		doc.관리번호 = new_mid;
+
+		update(입고, doc);
+		await delay();
+	}
+}
+
+async function copy_세척(mid, new_mid) {
+	find(세척, m_id);
+	await delay();
+
+	doc = 세척_v;
+	if (doc != null) {
+		doc.관리번호 = new_mid;
+
+		update(세척, doc);
+		await delay();
+	}
+}
+
+async function copy_기초검사(mid, new_mid) {
+	find(기초검사, m_id);
+	await delay();
+
+	doc = 기초검사_v;
+	if (doc != null) {
+		doc.관리번호 = new_mid;
+
+		update(기초검사, doc);
+		await delay();
+	}
+}
+
+async function copy_분해조립(mid, new_mid) {
+	find(분해조립, m_id);
+	await delay();
+
+	doc = 분해조립_v;
+	if (doc != null) {
+		doc.관리번호 = new_mid;
+
+		update(분해조립, doc);
+		await delay();
+	}
+}
+
+async function copy_성능검사(mid, new_mid) {
+	find(성능검사, mid);
+	await delay();
+
+	doc = 성능검사_v;
+	if (doc != null) {
+		doc.관리번호 = new_mid;
+
+		update(성능검사, doc);
+		await delay();
+	}
+}
+
+async function copy_EOL(mid, new_mid) {
+	find(EOL, mid);
+	await delay();
+
+	doc = EOL_v;
+	if (doc != null) {
+		doc.관리번호 = new_mid;
+
+		update(EOL, doc);
+		await delay();
+	}
+}
+
+async function copy_EOL(mid, new_mid) {
+	find(EOL, mid);
+	await delay();
+
+	doc = EOL_v;
+	if (doc != null) {
+		doc.관리번호 = new_mid;
+
+		update(EOL, doc);
+		await delay();
+	}
+}
+
+async function copy_출하정보(mid, new_mid) {
+	find(출하정보, m_id);
+	await delay();
+
+	doc = 출하정보_v;
+	if (doc != null) {
+		doc.관리번호 = new_mid;
+
+		update(출하정보, doc);
+		await delay();
+	}
+}
+
+async function copy_특이사항(mid, new_mid) {
+	find(특이사항, m_id);
+	await delay();
+
+	doc = 특이사항_v;
+	if (doc != null) {
+		doc.관리번호 = new_mid;
+
+		update(특이사항, doc);
+		await delay();
+	}
+}
+
+async function copy_교체부품상세1(mid, new_mid) {
+	find(교체부품상세1, m_id);
+	await delay();
+
+	doc = 교체부품상세1_v;
+	if (doc != null) {
+		doc.관리번호 = new_mid;
+
+		update(교체부품상세1, doc);
+		await delay();
+	}
+}
+
+async function copy_교체부품상세2(mid, new_mid) {
+	find(교체부품상세2, m_id);
+	await delay();
+
+	doc = 교체부품상세2_v;
+	if (doc != null) {
+		doc.관리번호 = new_mid;
+
+		update(교체부품상세2, doc);
+		await delay();
+	}
+}
+
+async function copy_교체부품상세3(mid, new_mid) {
+	find(교체부품상세3, m_id);
+	await delay();
+
+	doc = 교체부품상세3_v;
+	if (doc != null) {
+		doc.관리번호 = new_mid;
+
+		update(교체부품상세3, doc);
+		await delay();
+	}
+}
+
+async function copy_교체부품상세4(mid, new_mid) {
+	find(교체부품상세4, m_id);
+	await delay();
+
+	doc = 교체부품상세4_v;
+	if (doc != null) {
+		doc.관리번호 = new_mid;
+
+		update(교체부품상세4, doc);
+		await delay();
+	}
+}
+
+async function copy_교체부품상세5(mid, new_mid) {
+	find(교체부품상세5, m_id);
+	await delay();
+
+	doc = 교체부품상세5_v;
+	if (doc != null) {
+		doc.관리번호 = new_mid;
+
+		update(교체부품상세5, doc);
+		await delay();
+	}
+}
+
+async function copy_교체부품상세6(mid, new_mid) {
+	find(교체부품상세6, m_id);
+	await delay();
+
+	doc = 교체부품상세6_v;
+	if (doc != null) {
+		doc.관리번호 = new_mid;
+
+		update(교체부품상세6, doc);
+		await delay();
+	}
+}
+
+async function copy_교체부품상세7(mid, new_mid) {
+	find(교체부품상세7, m_id);
+	await delay();
+
+	doc = 교체부품상세7_v;
+	if (doc != null) {
+		doc.관리번호 = new_mid;
+
+		update(교체부품상세7, doc);
+		await delay();
+	}
+}
+
+async function copy_교체부품상세8(mid, new_mid) {
+	find(교체부품상세8, m_id);
+	await delay();
+
+	doc = 교체부품상세8_v;
+	if (doc != null) {
+		doc.관리번호 = new_mid;
+
+		update(교체부품상세8, doc);
+		await delay();
+	}
+}
+
+async function copy_교체부품상세9(mid, new_mid) {
+	find(교체부품상세9, m_id);
+	await delay();
+
+	doc = 교체부품상세9_v;
+	if (doc != null) {
+		doc.관리번호 = new_mid;
+
+		update(교체부품상세9, doc);
+		await delay();
+	}
+}
+
+async function copy_교체부품상세10(mid, new_mid) {
+	find(교체부품상세10, m_id);
+	await delay();
+
+	doc = 교체부품상세10_v;
+	if (doc != null) {
+		doc.관리번호 = new_mid;
+
+		update(교체부품상세10, doc);
+		await delay();
+	}
+}
+
 async function copy() {
-	var new_관리번호 = document.getElementById("copy_관리번호").value;
-	if (new_관리번호 == "") {
+	var new_m_id = document.getElementById("copy_관리번호").value;
+	if (new_m_id == "") {
 		return;
 	}
 
@@ -2465,251 +2725,65 @@ async function copy() {
 		return;
 	}
 
-	find(BSA재제조, m_id);
-	await delay();
+	await copy_기본정보(m_id, new_m_id);
+	progress.value = (1 / 19) * 100;
 
-	var doc = BSA재제조_v;
-	if (doc != null) {
-		doc.관리번호 = new_관리번호;
+	await copy_입고(m_id, new_m_id);
+	progress.value = (2 / 19) * 100;
 
-		update(BSA재제조, doc);
-		await delay();
-	}
+	await copy_세척(m_id, new_m_id);
+	progress.value = (3 / 19) * 100;
 
-	progress.value = (1 / 18) * 100;
+	await copy_기초검사(m_id, new_m_id);
+	progress.value = (4 / 19) * 100;
 
-	find(입고, m_id);
-	await delay();
+	await copy_분해조립(m_id, new_m_id);
+	progress.value = (5 / 19) * 100;
 
-	doc = 입고_v;
-	if (doc != null) {
-		doc.관리번호 = new_관리번호;
+	await copy_성능검사(m_id, new_m_id);
+	progress.value = (6 / 19) * 100;
 
-		update(입고, doc);
-		await delay();
-	}
+	await copy_EOL(m_id, new_m_id);
+	progress.value = (7 / 19) * 100;
 
-	progress.value = (2 / 18) * 100;
+	await copy_출하정보(m_id, new_m_id);
+	progress.value = (8 / 19) * 100;
 
-	find(세척, m_id);
-	await delay();
+	await copy_특이사항(m_id, new_m_id);
+	progress.value = (9 / 19) * 100;
 
-	doc = 세척_v;
-	if (doc != null) {
-		doc.관리번호 = new_관리번호;
+	await copy_교체부품상세1(m_id, new_m_id);
+	progress.value = (10 / 19) * 100;
 
-		update(세척, doc);
-		await delay();
-	}
+	await copy_교체부품상세2(m_id, new_m_id);
+	progress.value = (11 / 19) * 100;
 
-	progress.value = (3 / 18) * 100;
+	await copy_교체부품상세3(m_id, new_m_id);
+	progress.value = (12 / 19) * 100;
 
-	find(기초검사, m_id);
-	await delay();
+	await copy_교체부품상세4(m_id, new_m_id);
+	progress.value = (13 / 19) * 100;
 
-	doc = 기초검사_v;
-	if (doc != null) {
-		doc.관리번호 = new_관리번호;
+	await copy_교체부품상세5(m_id, new_m_id);
+	progress.value = (14 / 19) * 100;
 
-		update(기초검사, doc);
-		await delay();
-	}
+	await copy_교체부품상세6(m_id, new_m_id);
+	progress.value = (15 / 19) * 100;
 
-	progress.value = (4 / 18) * 100;
+	await copy_교체부품상세7(m_id, new_m_id);
+	progress.value = (16 / 19) * 100;
 
-	find(분해조립, m_id);
-	await delay();
+	await copy_교체부품상세8(m_id, new_m_id);
+	progress.value = (17 / 19) * 100;
 
-	doc = 분해조립_v;
-	if (doc != null) {
-		doc.관리번호 = new_관리번호;
+	await copy_교체부품상세9(m_id, new_m_id);
+	progress.value = (18 / 19) * 100;
 
-		update(분해조립, doc);
-		await delay();
-	}
+	await copy_교체부품상세10(m_id, new_m_id);
+	progress.value = (19 / 19) * 100;
 
-	progress.value = (5 / 18) * 100;
-
-	find(성능검사, m_id);
-	await delay();
-
-	doc = 성능검사_v;
-	if (doc != null) {
-		doc.관리번호 = new_관리번호;
-
-		update(성능검사, doc);
-		await delay();
-	}
-
-	progress.value = (6 / 18) * 100;
-
-	find(EOL, m_id);
-	await delay();
-
-	doc = EOL_v;
-	if (doc != null) {
-		doc.관리번호 = new_관리번호;
-
-		update(EOL, doc);
-		await delay();
-	}
-
-	progress.value = (7 / 18) * 100;
-
-	find(출하정보, m_id);
-	await delay();
-
-	doc = 출하정보_v;
-	if (doc != null) {
-		doc.관리번호 = new_관리번호;
-
-		update(출하정보, doc);
-		await delay();
-	}
-
-	progress.value = (8 / 18) * 100;
-
-	find(특이사항, m_id);
-	await delay();
-
-	doc = 특이사항_v;
-	if (doc != null) {
-		doc.관리번호 = new_관리번호;
-
-		update(특이사항, doc);
-		await delay();
-	}
-
-	progress.value = (9 / 18) * 100;
-
-	find(교체부품상세1, m_id);
-	await delay();
-
-	doc = 교체부품상세1_v;
-	if (doc != null) {
-		doc.관리번호 = new_관리번호;
-
-		update(교체부품상세1, doc);
-		await delay();
-	}
-
-	progress.value = (10 / 18) * 100;
-
-	find(교체부품상세2, m_id);
-	await delay();
-
-	doc = 교체부품상세2_v;
-	if (doc != null) {
-		doc.관리번호 = new_관리번호;
-
-		update(교체부품상세2, doc);
-		await delay();
-	}
-
-	progress.value = (11 / 18) * 100;
-
-	find(교체부품상세3, m_id);
-	await delay();
-
-	doc = 교체부품상세3_v;
-	if (doc != null) {
-		doc.관리번호 = new_관리번호;
-
-		update(교체부품상세3, doc);
-		await delay();
-	}
-
-	progress.value = (12 / 18) * 100;
-
-	find(교체부품상세4, m_id);
-	await delay();
-
-	doc = 교체부품상세4_v;
-	if (doc != null) {
-		doc.관리번호 = new_관리번호;
-
-		update(교체부품상세4, doc);
-		await delay();
-	}
-
-	progress.value = (13 / 18) * 100;
-
-	find(교체부품상세5, m_id);
-	await delay();
-
-	doc = 교체부품상세5_v;
-	if (doc != null) {
-		doc.관리번호 = new_관리번호;
-
-		update(교체부품상세5, doc);
-		await delay();
-	}
-
-	progress.value = (14 / 18) * 100;
-
-	find(교체부품상세6, m_id);
-	await delay();
-
-	doc = 교체부품상세6_v;
-	if (doc != null) {
-		doc.관리번호 = new_관리번호;
-
-		update(교체부품상세6, doc);
-		await delay();
-	}
-
-	progress.value = (15 / 18) * 100;
-
-	find(교체부품상세7, m_id);
-	await delay();
-
-	doc = 교체부품상세7_v;
-	if (doc != null) {
-		doc.관리번호 = new_관리번호;
-
-		update(교체부품상세7, doc);
-		await delay();
-	}
-
-	progress.value = (16 / 18) * 100;
-
-	find(교체부품상세8, m_id);
-	await delay();
-
-	doc = 교체부품상세8_v;
-	if (doc != null) {
-		doc.관리번호 = new_관리번호;
-
-		update(교체부품상세8, doc);
-		await delay();
-	}
-
-	progress.value = (17 / 18) * 100;
-
-	find(교체부품상세9, m_id);
-	await delay();
-
-	doc = 교체부품상세9_v;
-	if (doc != null) {
-		doc.관리번호 = new_관리번호;
-
-		update(교체부품상세9, doc);
-		await delay();
-	}
-
-	progress.value = (18 / 18) * 100;
-
-	find(교체부품상세10, m_id);
-	await delay();
-
-	doc = 교체부품상세10_v;
-	if (doc != null) {
-		doc.관리번호 = new_관리번호;
-
-		update(교체부품상세10, doc);
-		await delay();
-	}
 	console.log("Copy 완료");
 	재제조현황_조회();
+
 	alert("복사가 완료되었습니다");
 }
