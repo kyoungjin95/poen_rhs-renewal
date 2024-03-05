@@ -5136,7 +5136,7 @@ async function delay() {
 		await sleep(1);
 	}
 
-	return true;
+	//return true;
 }
 
 function 업체(code) {
