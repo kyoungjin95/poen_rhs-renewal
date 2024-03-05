@@ -5,7 +5,9 @@ var 기초_data;
 var 기초_pic_data;
 var 성능_data;
 var EOL_data;
-var EOL_pic_data;
+var EOL_pic1_data;
+var EOL_pic2_data;
+var EOL_pic3_data;
 var 완료보고서_data;
 
 var flag_입고정보 = false;
@@ -100,11 +102,25 @@ async function 완료보고서_조회(is재제조번호 = false) {
 		EOL_data = JSON.parse(JSON.stringify(EOL_v));
 	}
 
-	find(EOL_pic, 관리번호);
+	find(EOL_pic1, 관리번호);
 	await delay();
 
-	if(EOL_pic_v != null) { 
-		EOL_pic_data = JSON.parse(JSON.stringify(EOL_pic_v));
+	if(EOL_pic1_v != null) { 
+		EOL_pic1_data = JSON.parse(JSON.stringify(EOL_pic1_v));
+	}
+
+	find(EOL_pic2, 관리번호);
+	await delay();
+
+	if(EOL_pic2_v != null) { 
+		EOL_pic2_data = JSON.parse(JSON.stringify(EOL_pic2_v));
+	}
+
+	find(EOL_pic3, 관리번호);
+	await delay();
+
+	if(EOL_pic3_v != null) { 
+		EOL_pic3_data = JSON.parse(JSON.stringify(EOL_pic3_v));
 	}
 
 	find(완료보고서, 관리번호);
@@ -557,48 +573,53 @@ async function 완료보고서_조회(is재제조번호 = false) {
 		}
 	}
 
-	if(EOL_pic_data != null) {
-		_top_pic.src = EOL_pic_data.pic1;
-		_front_pic.src = EOL_pic_data.pic2;
-		_left_pic.src = EOL_pic_data.pic3;
-		_bottom_pic.src = EOL_pic_data.pic4;
-		_rear_pic.src = EOL_pic_data.pic5;
-		_right_pic.src = EOL_pic_data.pic6;
+	if(EOL_pic1_data != null) {
+		_top_pic.src = EOL_pic1_data.pic1;
+		_front_pic.src = EOL_pic1_data.pic2;
+		_left_pic.src = EOL_pic1_data.pic3;
+		_bottom_pic.src = EOL_pic1_data.pic4;
+		_rear_pic.src = EOL_pic1_data.pic5;
+		_right_pic.src = EOL_pic1_data.pic6;
 		_육안검사_결과.innerHTML = EOL_data.육안검사_외부;
 
 		//육안검사 내부
-		_allImg.src = EOL_pic_data.pic7;
-		_BMU.src = EOL_pic_data.pic8;
-		_CMU.src = EOL_pic_data.pic9;
-		_PRA.src = EOL_pic_data.pic10;
+		_allImg.src = EOL_pic1_data.pic7;
+		_BMU.src = EOL_pic1_data.pic8;
+		_CMU.src = EOL_pic1_data.pic9;
+		_PRA.src = EOL_pic1_data.pic10;
 		_육안검사_내부_결과.innerHTML = EOL_data.육안검사_내부;
+	}
 
+	if(EOL_pic2_data != null) {
 		//기밀검사
-		_측정사진1.src = EOL_pic_data.pic11;
-		_측정값사진1.src = EOL_pic_data.pic12;
-		_측정사진2.src = EOL_pic_data.pic13;
-		_측정값사진2.src = EOL_pic_data.pic14;
+		_측정사진1.src = EOL_pic2_data.pic1;
+		_측정값사진1.src = EOL_pic2_data.pic2;
+		_측정사진2.src = EOL_pic2_data.pic3;
+		_측정값사진2.src = EOL_pic2_data.pic4;
 		_케이스.innerHTML = EOL_data.기밀검사_케이스;
 		_냉각유로.innerHTML = EOL_data.기밀검사_냉각유로;
 
 		//절연 저항 검사
-		_절연측정사진1.src = EOL_pic_data.pic15;
-		_절연측정값사진1.src = EOL_pic_data.pic16;
-		_절연측정사진2.src = EOL_pic_data.pic17;
-		_절연측정값사진2.src = EOL_pic_data.pic18;
+		_절연측정사진1.src = EOL_pic2_data.pic5;
+		_절연측정값사진1.src = EOL_pic2_data.pic6;
+		_절연측정사진2.src = EOL_pic2_data.pic7;
+		_절연측정값사진2.src = EOL_pic2_data.pic8;
 		_절연PRA_P.innerHTML = EOL_data.절연검사_Plus;
 		_절연PRA_N.innerHTML = EOL_data.절연검사_Minus;
-
-		//CAN 통신 검사 - G-SCAN 진단결과
-		_CAN현재.src = EOL_pic_data.pic21;
-		_CAN과거.src = EOL_pic_data.pic22;
-		_CAN진단.src = EOL_pic_data.pic23;
-
+    
 		//CAN 통신 검사
-		_PDS진단1.src = EOL_pic_data.pic24;
-		_PDS진단2.src = EOL_pic_data.pic25;
-		_EOL항목검사사진.src = EOL_pic_data.pic24;
-		_CELL전압검사사진.src = EOL_pic_data.pic25;
+		_PDS진단1.src = EOL_pic2_data.pic9;
+		_PDS진단2.src = EOL_pic2_data.pic10;
+	}
+
+	if(EOL_pic3_data != null) {
+		//CAN 통신 검사 - G-SCAN 진단결과
+		_CAN현재.src = EOL_pic3_data.pic1;
+		_CAN과거.src = EOL_pic3_data.pic2;
+		_CAN진단.src = EOL_pic3_data.pic3;
+
+		_EOL항목검사사진.src = EOL_pic3_data.pic4;
+		_CELL전압검사사진.src = EOL_pic3_data.pic5;
 	}
 
 	if(EOL_data != undefined) {

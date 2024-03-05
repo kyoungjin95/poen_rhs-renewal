@@ -324,3 +324,120 @@ function read_품번_func_csv() {
 		reader.readAsText(file);
 	});
 }
+
+async function eolpic() {
+	find('EOL_pic', { 관리번호 : { $exists : true}});
+	await delay();
+
+	if(EOL_pic_v != null) {
+		var doc_1 = {
+			관리번호 : EOL_pic_v.관리번호,
+			pic1 : EOL_pic_v.pic1,
+			pic2 : EOL_pic_v.pic2,
+			pic3 : EOL_pic_v.pic3,
+			pic4 : EOL_pic_v.pic4,
+			pic5 : EOL_pic_v.pic5,
+			pic6 : EOL_pic_v.pic6,
+			pic7 : EOL_pic_v.pic7,
+			pic8 : EOL_pic_v.pic8,
+			pic9 : EOL_pic_v.pic9,
+			pic10 : EOL_pic_v.pic10
+		}
+
+		update(EOL_pic1, doc_1);
+		await delay();
+
+		var doc_2 = {
+			관리번호 : EOL_pic_v.관리번호,
+			pic1 : EOL_pic_v.pic11,
+			pic2 : EOL_pic_v.pic12,
+			pic3 : EOL_pic_v.pic13,
+			pic4 : EOL_pic_v.pic14,
+			pic5 : EOL_pic_v.pic15,
+			pic6 : EOL_pic_v.pic16,
+			pic7 : EOL_pic_v.pic17,
+			pic8 : EOL_pic_v.pic18,
+			pic9 : EOL_pic_v.pic19,
+			pic10 : EOL_pic_v.pic20
+		}
+
+		update(EOL_pic2, doc_2);
+		await delay();
+
+		var doc_3 = {
+			관리번호 : EOL_pic_v.관리번호,
+			pic1 : EOL_pic_v.pic21,
+			pic2 : EOL_pic_v.pic22,
+			pic3 : EOL_pic_v.pic23,
+			pic4 : EOL_pic_v.pic24,
+			pic5 : EOL_pic_v.pic25,
+		}
+
+		update(EOL_pic3, doc_3);
+		await delay();
+	}
+}
+
+async function 기본정보자동입력() {
+	var cnt = 0;
+	find_입고(입고, { 관리번호 : { $exists : true}});
+	await delay();
+
+	console.log(입고_v);
+	for(var i = 0 ; i < 입고_v.length; i++) {
+		var doc = {};
+		doc.관리번호 = 입고_v[i].관리번호;
+		doc.구분 = 입고_v[i].구분;
+		doc.차종 = 입고_v[i].차종;
+		doc.품번 = 입고_v[i].품번;
+		doc.RO_no = 입고_v[i].RO_no;
+
+		update(세척, doc);
+		await delay();
+
+		update(기초검사, doc);
+		await delay();
+
+		update(분해조립, doc);
+		await delay();
+
+		update(성능검사, doc);
+		await delay();
+
+		update(EOL, doc);
+		await delay();
+
+		update(교체부품상세1, doc);
+		await delay();
+
+		update(교체부품상세2, doc);
+		await delay();
+
+		update(교체부품상세3, doc);
+		await delay();
+
+		update(교체부품상세4, doc);
+		await delay();
+
+		update(교체부품상세5, doc);
+		await delay();
+
+		update(교체부품상세6, doc);
+		await delay();
+
+		update(교체부품상세7, doc);
+		await delay();
+
+		update(교체부품상세8, doc);
+		await delay();
+
+		update(교체부품상세9, doc);
+		await delay();
+
+		update(교체부품상세10, doc);
+		await delay();
+
+		cnt++;
+		console.log(cnt);
+	}
+}

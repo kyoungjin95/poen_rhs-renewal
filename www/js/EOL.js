@@ -109,34 +109,45 @@ async function EOL_시작(is재제조 = 0) {
     _육안검사_내부.value = EOL_v.육안검사_내부;
     
     if(_검사자.value == '') _검사자.value = worker;
-    find(EOL_pic, _management_id.value);
+
+    find(EOL_pic1, _management_id.value);
     await delay();
-    if (EOL_pic_v != null) {
-      _img1.src = EOL_pic_v.pic1;
-      _img2.src = EOL_pic_v.pic2;
-      _img3.src = EOL_pic_v.pic3;
-      _img4.src = EOL_pic_v.pic4;
-      _img5.src = EOL_pic_v.pic5;
-      _img6.src = EOL_pic_v.pic6;
-      _img7.src = EOL_pic_v.pic7;
-      _img8.src = EOL_pic_v.pic8;
-      _img9.src = EOL_pic_v.pic9;
-      _img10.src = EOL_pic_v.pic10;
-      _img11.src = EOL_pic_v.pic11;
-      _img12.src = EOL_pic_v.pic12;
-      _img13.src = EOL_pic_v.pic13;
-      _img14.src = EOL_pic_v.pic14;
-      _img15.src = EOL_pic_v.pic15;
-      _img16.src = EOL_pic_v.pic16;
-      _img17.src = EOL_pic_v.pic17;
-      _img18.src = EOL_pic_v.pic18;
-      _img19.src = EOL_pic_v.pic19;
-      _img20.src = EOL_pic_v.pic20;
-      _img21.src = EOL_pic_v.pic21;
-      _img22.src = EOL_pic_v.pic22;
-      _img23.src = EOL_pic_v.pic23;
-      _img24.src = EOL_pic_v.pic24;
-      _img25.src = EOL_pic_v.pic25;
+    if (EOL_pic1_v != null) {
+      _img1.src = EOL_pic1_v.pic1;
+      _img2.src = EOL_pic1_v.pic2;
+      _img3.src = EOL_pic1_v.pic3;
+      _img4.src = EOL_pic1_v.pic4;
+      _img5.src = EOL_pic1_v.pic5;
+      _img6.src = EOL_pic1_v.pic6;
+      _img7.src = EOL_pic1_v.pic7;
+      _img8.src = EOL_pic1_v.pic8;
+      _img9.src = EOL_pic1_v.pic9;
+      _img10.src = EOL_pic1_v.pic10;
+    }
+
+    find(EOL_pic2, _management_id.value);
+    await delay();
+    if (EOL_pic2_v != null) {
+      _img11.src = EOL_pic2_v.pic1;
+      _img12.src = EOL_pic2_v.pic2;
+      _img13.src = EOL_pic2_v.pic3;
+      _img14.src = EOL_pic2_v.pic4;
+      _img15.src = EOL_pic2_v.pic5;
+      _img16.src = EOL_pic2_v.pic6;
+      _img17.src = EOL_pic2_v.pic7;
+      _img18.src = EOL_pic2_v.pic8;
+      _img19.src = EOL_pic2_v.pic9;
+      _img20.src = EOL_pic2_v.pic10;
+    }
+
+    find(EOL_pic3, _management_id.value);
+    await delay();
+    if (EOL_pic3_v != null) {
+      _img21.src = EOL_pic3_v.pic1;
+      _img22.src = EOL_pic3_v.pic2;
+      _img23.src = EOL_pic3_v.pic3;
+      _img24.src = EOL_pic3_v.pic4;
+      _img25.src = EOL_pic3_v.pic5;
     }
   } else {
     var DateTime = luxon.DateTime;
@@ -659,39 +670,57 @@ async function EOL_SAVE() {
   select_pos = "";
   await 공정단계자동입력(관리번호);
 
-  var _pic_doc = JSON.parse(JSON.stringify(EOL_pic_doc));
-  _pic_doc.관리번호 = _management_id.value.trim().toUpperCase();
-  _pic_doc.pic1 = _img1.src;
-  _pic_doc.pic2 = _img2.src;
-  _pic_doc.pic3 = _img3.src;
-  _pic_doc.pic4 = _img4.src;
-  _pic_doc.pic5 = _img5.src;
-  _pic_doc.pic6 = _img6.src;
-  _pic_doc.pic7 = _img7.src;
-  _pic_doc.pic8 = _img8.src;
-  _pic_doc.pic9 = _img9.src;
-  _pic_doc.pic10 = _img10.src;
-  _pic_doc.pic11 = _img11.src;
-  _pic_doc.pic12 = _img12.src;
-  _pic_doc.pic13 = _img13.src;
-  _pic_doc.pic14 = _img14.src;
-  _pic_doc.pic15 = _img15.src;
-  _pic_doc.pic16 = _img16.src;
-  _pic_doc.pic17 = _img17.src;
-  _pic_doc.pic18 = _img18.src;
-  _pic_doc.pic19 = _img19.src;
-  _pic_doc.pic20 = _img20.src;
-  _pic_doc.pic21 = _img21.src;
-  _pic_doc.pic22 = _img22.src;
-  _pic_doc.pic23 = _img23.src;
-  _pic_doc.pic24 = _img24.src;
-  _pic_doc.pic25 = _img25.src;
+  var _pic1_doc = JSON.parse(JSON.stringify(EOL_pic1_doc));
+  _pic1_doc.관리번호 = _management_id.value.trim().toUpperCase();
+  _pic1_doc.pic1 = _img1.src;
+  _pic1_doc.pic2 = _img2.src;
+  _pic1_doc.pic3 = _img3.src;
+  _pic1_doc.pic4 = _img4.src;
+  _pic1_doc.pic5 = _img5.src;
+  _pic1_doc.pic6 = _img6.src;
+  _pic1_doc.pic7 = _img7.src;
+  _pic1_doc.pic8 = _img8.src;
+  _pic1_doc.pic9 = _img9.src;
+  _pic1_doc.pic10 = _img10.src;
 
-  update(EOL_pic, _pic_doc);
+  update(EOL_pic1, _pic1_doc);
   await delay();
 
-  console.log("EOL_pic_update:", update_count);
-  console.log("EOL_pic_insert:", insert_count);
+  console.log("EOL_pic1_update:", update_count);
+  console.log("EOL_pic1_insert:", insert_count);
+
+  var _pic2_doc = JSON.parse(JSON.stringify(EOL_pic2_doc));
+  _pic2_doc.관리번호 = _management_id.value.trim().toUpperCase();
+  _pic2_doc.pic1 = _img11.src;
+  _pic2_doc.pic2 = _img12.src;
+  _pic2_doc.pic3 = _img13.src;
+  _pic2_doc.pic4 = _img14.src;
+  _pic2_doc.pic5 = _img15.src;
+  _pic2_doc.pic6 = _img16.src;
+  _pic2_doc.pic7 = _img17.src;
+  _pic2_doc.pic8 = _img18.src;
+  _pic2_doc.pic9 = _img19.src;
+  _pic2_doc.pic10 = _img20.src;
+
+  update(EOL_pic2, _pic2_doc);
+  await delay();
+
+  console.log("EOL_pic2_update:", update_count);
+  console.log("EOL_pic2_insert:", insert_count);
+
+  var _pic3_doc = JSON.parse(JSON.stringify(EOL_pic3_doc));
+  _pic3_doc.관리번호 = _management_id.value.trim().toUpperCase();
+  _pic3_doc.pic1 = _img21.src;
+  _pic3_doc.pic2 = _img22.src;
+  _pic3_doc.pic3 = _img23.src;
+  _pic3_doc.pic4 = _img24.src;
+  _pic3_doc.pic5 = _img25.src;
+
+  update(EOL_pic3, _pic3_doc);
+  await delay();
+
+  console.log("EOL_pic3_update:", update_count);
+  console.log("EOL_pic3_insert:", insert_count);
 
   find(출하정보, _management_id.value);
   await delay();

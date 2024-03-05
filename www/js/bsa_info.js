@@ -695,18 +695,6 @@ async function grid_세척(m_id = "") {
 	}
 
 	if(tabledata_세척 == null) return;
-	//for(var i = 0; i < tabledata_세척.length; i++) {
-	//	for(var j = 0; j < table_data.length; j++) {
-	//		if(tabledata_세척[i] != undefined && tabledata_세척[i].관리번호 == table_data[j].관리번호) {
-	//			tabledata_세척[i].재제조번호 = table_data[j].재제조번호;
-	//			tabledata_세척[i].구분 = table_data[j].구분;
-	//			tabledata_세척[i].차종 = table_data[j].차종;
-	//			tabledata_세척[i].품번 = table_data[j].품번;
-	//			tabledata_세척[i].RO_no = table_data[j].RO_no;
-	//			continue;
-	//		}
-	//	}
-	//}
 
 	table_세척 = new Tabulator("#grid_세척정보", {
 		initialSort:[
@@ -719,10 +707,10 @@ async function grid_세척(m_id = "") {
 		columns: [
 			{ title: "관리번호", field: "관리번호", sorter: "string", width: "180" },
 			{ title: "재제조번호", field: "재제조번호", sorter: "string", width: "180" },
-			//{ title: "구분", field: "구분", sorter: "string", width: "180" },
-			//{ title: "차종", field: "차종", sorter: "string", width: "180" },
-			//{ title: "품번", field: "품번", sorter: "string", width: "180" },
-			//{ title: "RO No.", field: "RO_no", sorter: "string", width: "180" },
+			{ title: "구분", field: "구분", sorter: "string", width: "180" },
+			{ title: "차종", field: "차종", sorter: "string", width: "180" },
+			{ title: "품번", field: "품번", sorter: "string", width: "180" },
+			{ title: "RO No.", field: "RO_no", sorter: "string", width: "180" },
 			{ title: "공정입고일", field: "공정입고일", sorter: "string", width: "180" },
 			{ title: "공정완료일", field: "공정완료일", sorter: "string", width: "180" },
 			{ title: "어퍼케이스재사용가능", field: "어퍼케이스재사용가능", sorter: "string", width: "180" },
@@ -753,18 +741,6 @@ async function grid_기초검사(m_id = "") {
 	}
 
 	if(tabledata_기초검사 == null) return;
-	//for(var i = 0; i < tabledata_기초검사.length; i++) {
-	//	for(var j = 0; j < table_data.length; j++) {
-	//		if(tabledata_기초검사[i] != undefined  && tabledata_기초검사[i].관리번호 == table_data[j].관리번호) {
-	//			tabledata_기초검사[i].재제조번호 = table_data[j].재제조번호;
-	//			tabledata_기초검사[i].구분 = table_data[j].구분;
-	//			tabledata_기초검사[i].차종 = table_data[j].차종;
-	//			tabledata_기초검사[i].품번 = table_data[j].품번;
-	//			tabledata_기초검사[i].RO_no = table_data[j].RO_no;
-	//			continue;
-	//		}
-	//	}
-	//}
 
 	table_기초검사 = new Tabulator("#grid_기초검사", {
 		initialSort:[
@@ -778,10 +754,10 @@ async function grid_기초검사(m_id = "") {
 		columns: [
 			{ title: "관리번호", field: "관리번호", sorter: "string", width: "180" },
 			{ title: "재제조번호", field: "재제조번호", sorter: "string", width: "180" },
-			//{ title: "구분", field: "구분", sorter: "string", width: "180" },
-			//{ title: "차종", field: "차종", sorter: "string", width: "180" },
-			//{ title: "품번", field: "품번", sorter: "string", width: "180" },
-			//{ title: "RO_no", field: "RO_no", sorter: "string", width: "180" },
+			{ title: "구분", field: "구분", sorter: "string", width: "180" },
+			{ title: "차종", field: "차종", sorter: "string", width: "180" },
+			{ title: "품번", field: "품번", sorter: "string", width: "180" },
+			{ title: "RO_no", field: "RO_no", sorter: "string", width: "180" },
 			{ title: "VIN", field: "VIN", sorter: "string", width: "180" },
 			{ title: "QR", field: "QRcode", sorter: "string", width: "180" },
 			{ title: "주행거리", field: "주행거리", sorter: "string", width: "180" },
@@ -839,18 +815,6 @@ async function grid_분해조립(m_id = "") {
 	}
 
 	if(tabledata_분해조립 == null) return;
-	//for(var i = 0; i < tabledata_분해조립.length; i++) {
-	//	for(var j = 0; j < table_data.length; j++) {
-	//		if(tabledata_분해조립[i] != undefined  && tabledata_분해조립[i].관리번호 == table_data[j].관리번호) {
-	//			tabledata_분해조립[i].재제조번호 = table_data[j].재제조번호;
-	//			tabledata_분해조립[i].구분 = table_data[j].구분;
-	//			tabledata_분해조립[i].차종 = table_data[j].차종;
-	//			tabledata_분해조립[i].품번 = table_data[j].품번;
-	//			tabledata_분해조립[i].RO_no = table_data[j].RO_no;
-	//			continue;
-	//		}
-	//	}
-	//}
 
 	table_분해조립 = new Tabulator("#grid_분해조립", {
 		initialSort:[
@@ -864,10 +828,10 @@ async function grid_분해조립(m_id = "") {
 		columns: [
 			{ title: "관리번호", field: "관리번호", sorter: "string", width: "180" },
 			{ title: "재제조번호", field: "재제조번호", sorter: "string", width: "180" },
-			//{ title: "구분", field: "구분", sorter: "string", width: "180" },
-			//{ title: "차종", field: "차종", sorter: "string", width: "180" },
-			//{ title: "품번", field: "품번", sorter: "string", width: "180" },
-			//{ title: "RO_no", field: "RO_no", sorter: "string", width: "180" },
+			{ title: "구분", field: "구분", sorter: "string", width: "180" },
+			{ title: "차종", field: "차종", sorter: "string", width: "180" },
+			{ title: "품번", field: "품번", sorter: "string", width: "180" },
+			{ title: "RO_no", field: "RO_no", sorter: "string", width: "180" },
 			{ title: "BMU 1(교환전)", field: "BMU1", sorter: "string", width: "180" },
 			{ title: "BMU 1(교환후)", field: "BMU1_2", sorter: "string", width: "180" },
 			{ title: "BMU 2(교환전)", field: "BMU2", sorter: "string", width: "180" },
@@ -1181,18 +1145,6 @@ async function grid_분해조립new(m_id = "") {
 	}
 
 	if(tabledata_분해조립new == null) return;
-	//for(var i = 0; i < tabledata_분해조립new.length; i++) {
-	//	for(var j = 0; j < table_data.length; j++) {
-	//		if(tabledata_분해조립new[i] != undefined  && tabledata_분해조립new[i].관리번호 == table_data[j].관리번호) {
-	//			tabledata_분해조립new[i].재제조번호 = table_data[j].재제조번호;
-	//			tabledata_분해조립new[i].구분 = table_data[j].구분;
-	//			tabledata_분해조립new[i].차종 = table_data[j].차종;
-	//			tabledata_분해조립new[i].품번 = table_data[j].품번;
-	//			tabledata_분해조립new[i].RO_no = table_data[j].RO_no;
-	//			continue;
-	//		}
-	//	}
-	//}
 
 	table_분해조립new = new Tabulator("#grid_분해조립new", {
 		initialSort:[
@@ -1236,18 +1188,6 @@ async function grid_성능검사(m_id = "") {
 	}
 
 	if(tabledata_성능검사 == null) return;
-	//for(var i = 0; i < tabledata_성능검사.length; i++) {
-	//	for(var j = 0; j < table_data.length; j++) {
-	//		if(tabledata_성능검사[i] != undefined  && tabledata_성능검사[i].관리번호 == table_data[j].관리번호) {
-	//			tabledata_성능검사[i].재제조번호 = table_data[j].재제조번호;
-	//			tabledata_성능검사[i].구분 = table_data[j].구분;
-	//			tabledata_성능검사[i].차종 = table_data[j].차종;
-	//			tabledata_성능검사[i].품번 = table_data[j].품번;
-	//			tabledata_성능검사[i].RO_no = table_data[j].RO_no;
-	//			continue;
-	//		}
-	//	}
-	//}
 
 	table_성능검사 = new Tabulator("#grid_성능검사", {
 		initialSort:[
@@ -1261,10 +1201,10 @@ async function grid_성능검사(m_id = "") {
 		columns: [
 			{ title: "관리번호", field: "관리번호", sorter: "string", width: "180" },
 			{ title: "재제조번호", field: "재제조번호", sorter: "string", width: "180" },
-			//{ title: "구분", field: "구분", sorter: "string", width: "180" },
-			//{ title: "차종", field: "차종", sorter: "string", width: "180" },
-			//{ title: "품번", field: "품번", sorter: "string", width: "180" },
-			//{ title: "RO_no", field: "RO_no", sorter: "string", width: "180" },
+			{ title: "구분", field: "구분", sorter: "string", width: "180" },
+			{ title: "차종", field: "차종", sorter: "string", width: "180" },
+			{ title: "품번", field: "품번", sorter: "string", width: "180" },
+			{ title: "RO_no", field: "RO_no", sorter: "string", width: "180" },
 			{ title: "용량평가", field: "용량평가", sorter: "string", width: "180" },
 			{ title: "SOC60Percent", field: "SOC60Percent", sorter: "string", width: "180" },
 			{ title: "DCIR", field: "DCIR", sorter: "string", width: "180" },
@@ -1295,18 +1235,6 @@ async function grid_EOL(m_id = "") {
 	}
 
 	if(tabledata_EOL == null) return;
-	//for(var i = 0; i < tabledata_EOL.length; i++) {
-	//	for(var j = 0; j < table_data.length; j++) {
-	//		if(tabledata_EOL[i] != undefined  && tabledata_EOL[i].관리번호 == table_data[j].관리번호) {
-	//			tabledata_EOL[i].재제조번호 = table_data[j].재제조번호;
-	//			tabledata_EOL[i].구분 = table_data[j].구분;
-	//			tabledata_EOL[i].차종 = table_data[j].차종;
-	//			tabledata_EOL[i].품번 = table_data[j].품번;
-	//			tabledata_EOL[i].RO_no = table_data[j].RO_no;
-	//			continue;
-	//		}
-	//	}
-	//}
 
 	table_EOL = new Tabulator("#grid_EOL", {
 		initialSort:[
@@ -1320,10 +1248,10 @@ async function grid_EOL(m_id = "") {
 		columns: [
 			{ title: "관리번호", field: "관리번호", sorter: "string", width: "180" },
 			{ title: "재제조번호", field: "재제조번호", sorter: "string", width: "180" },
-			//{ title: "구분", field: "구분", sorter: "string", width: "180" },
-			//{ title: "차종", field: "차종", sorter: "string", width: "180" },
-			//{ title: "품번", field: "품번", sorter: "string", width: "180" },
-			//{ title: "RO_no", field: "RO_no", sorter: "string", width: "180" },
+			{ title: "구분", field: "구분", sorter: "string", width: "180" },
+			{ title: "차종", field: "차종", sorter: "string", width: "180" },
+			{ title: "품번", field: "품번", sorter: "string", width: "180" },
+			{ title: "RO_no", field: "RO_no", sorter: "string", width: "180" },
 			{ title: "UPR/C 조립", field: "UPR_C조립", sorter: "string", width: "180" },
 			{ title: "기밀검사 케이스", field: "기밀검사_케이스", sorter: "string", width: "180" },
 			{ title: "기밀검사 케이스 특이사항", field: "기밀검사_케이스_특이사항", sorter: "string", width: "180" },
@@ -1447,18 +1375,6 @@ async function grid_특이사항(m_id = "") {
 	}
 
 	if(tabledata_특이사항 == null) return;
-	//for(var i = 0; i < tabledata_특이사항.length; i++) {
-	//	for(var j = 0; j < table_data.length; j++) {
-	//		if(tabledata_특이사항[i] != undefined  && tabledata_특이사항[i].관리번호 == table_data[j].관리번호) {
-	//			tabledata_특이사항[i].재제조번호 = table_data[j].재제조번호;
-	//			tabledata_특이사항[i].구분 = table_data[j].구분;
-	//			tabledata_특이사항[i].차종 = table_data[j].차종;
-	//			tabledata_특이사항[i].품번 = table_data[j].품번;
-	//			tabledata_특이사항[i].RO_no = table_data[j].RO_no;
-	//			continue;
-	//		}
-	//	}
-	//}
 
 	table_특이사항 = new Tabulator("#grid_특이사항", {
 		layout: "resizableColumnFit",
@@ -1468,10 +1384,10 @@ async function grid_특이사항(m_id = "") {
 		columns: [
 			{ title: "관리번호", field: "관리번호", sorter: "string", width: "180" },
 			{ title: "재제조번호", field: "재제조번호", sorter: "string", width: "180" },
-			//{ title: "구분", field: "구분", sorter: "string", width: "180" },
-			//{ title: "차종", field: "차종", sorter: "string", width: "180" },
-			//{ title: "품번", field: "품번", sorter: "string", width: "180" },
-			//{ title: "RO_no", field: "RO_no", sorter: "string", width: "180" },
+			{ title: "구분", field: "구분", sorter: "string", width: "180" },
+			{ title: "차종", field: "차종", sorter: "string", width: "180" },
+			{ title: "품번", field: "품번", sorter: "string", width: "180" },
+			{ title: "RO_no", field: "RO_no", sorter: "string", width: "180" },
 			{ title: "특이사항", field: "특이사항", sorter: "string", width: "180" },
 		],
 	});
@@ -1494,18 +1410,6 @@ async function grid_교체부품상세1(m_id = "") {
 	}
 
 	if(tabledata_교체부품상세1 == null) return;
-	//for(var i = 0; i < tabledata_교체부품상세1.length; i++) {
-	//	for(var j = 0; j < table_data.length; j++) {
-	//		if(tabledata_교체부품상세1[i] != undefined  && tabledata_교체부품상세1[i].관리번호 == table_data[j].관리번호) {
-	//			tabledata_교체부품상세1[i].재제조번호 = table_data[j].재제조번호;
-	//			tabledata_교체부품상세1[i].구분 = table_data[j].구분;
-	//			tabledata_교체부품상세1[i].차종 = table_data[j].차종;
-	//			tabledata_교체부품상세1[i].품번 = table_data[j].품번;
-	//			tabledata_교체부품상세1[i].RO_no = table_data[j].RO_no;
-	//			continue;
-	//		}
-	//	}
-	//}
 
 	table_교체부품상세1 = new Tabulator("#grid_교체부품상세1", {
 		layout: "resizableColumnFit",
@@ -1515,10 +1419,10 @@ async function grid_교체부품상세1(m_id = "") {
 		columns: [
 			{ title: "관리번호", field: "관리번호", sorter: "string", width: "180" },
 			{ title: "재제조번호", field: "재제조번호", sorter: "string", width: "180" },
-			//{ title: "구분", field: "구분", sorter: "string", width: "180" },
-			//{ title: "차종", field: "차종", sorter: "string", width: "180" },
-			//{ title: "품번", field: "품번", sorter: "string", width: "180" },
-			//{ title: "RO_no", field: "RO_no", sorter: "string", width: "180" },
+			{ title: "구분", field: "구분", sorter: "string", width: "180" },
+			{ title: "차종", field: "차종", sorter: "string", width: "180" },
+			{ title: "품번", field: "품번", sorter: "string", width: "180" },
+			{ title: "RO_no", field: "RO_no", sorter: "string", width: "180" },
 			{
 				title: "ORIGIN 관리번호",
 				field: "ORIGIN_관리번호",
@@ -1589,18 +1493,6 @@ async function grid_교체부품상세2(m_id = "") {
 	}
 
 	if(tabledata_교체부품상세2 == null) return;
-	//for(var i = 0; i < tabledata_교체부품상세2.length; i++) {
-	//	for(var j = 0; j < table_data.length; j++) {
-	//		if(tabledata_교체부품상세2[i] != undefined  && tabledata_교체부품상세2[i].관리번호 == table_data[j].관리번호) {
-	//			tabledata_교체부품상세2[i].재제조번호 = table_data[j].재제조번호;
-	//			tabledata_교체부품상세2[i].구분 = table_data[j].구분;
-	//			tabledata_교체부품상세2[i].차종 = table_data[j].차종;
-	//			tabledata_교체부품상세2[i].품번 = table_data[j].품번;
-	//			tabledata_교체부품상세2[i].RO_no = table_data[j].RO_no;
-	//			continue;
-	//		}
-	//	}
-	//}
 
 	table_교체부품상세2 = new Tabulator("#grid_교체부품상세2", {
 		layout: "resizableColumnFit",
@@ -1610,10 +1502,10 @@ async function grid_교체부품상세2(m_id = "") {
 		columns: [
 			{ title: "관리번호", field: "관리번호", sorter: "string", width: "180" },
 			{ title: "재제조번호", field: "재제조번호", sorter: "string", width: "180" },
-			//{ title: "구분", field: "구분", sorter: "string", width: "180" },
-			//{ title: "차종", field: "차종", sorter: "string", width: "180" },
-			//{ title: "품번", field: "품번", sorter: "string", width: "180" },
-			//{ title: "RO_no", field: "RO_no", sorter: "string", width: "180" },
+			{ title: "구분", field: "구분", sorter: "string", width: "180" },
+			{ title: "차종", field: "차종", sorter: "string", width: "180" },
+			{ title: "품번", field: "품번", sorter: "string", width: "180" },
+			{ title: "RO_no", field: "RO_no", sorter: "string", width: "180" },
 			{
 				title: "ORIGIN 관리번호",
 				field: "ORIGIN_관리번호",
@@ -1684,18 +1576,6 @@ async function grid_교체부품상세3(m_id = "") {
 	}
 
 	if(tabledata_교체부품상세3 == null) return;
-	//for(var i = 0; i < tabledata_교체부품상세3.length; i++) {
-	//	for(var j = 0; j < table_data.length; j++) {
-	//		if(tabledata_교체부품상세3[i] != undefined  && tabledata_교체부품상세3[i].관리번호 == table_data[j].관리번호) {
-	//			tabledata_교체부품상세3[i].재제조번호 = table_data[j].재제조번호;
-	//			tabledata_교체부품상세3[i].구분 = table_data[j].구분;
-	//			tabledata_교체부품상세3[i].차종 = table_data[j].차종;
-	//			tabledata_교체부품상세3[i].품번 = table_data[j].품번;
-	//			tabledata_교체부품상세3[i].RO_no = table_data[j].RO_no;
-	//			continue;
-	//		}
-	//	}
-	//}
 
 	table_교체부품상세3 = new Tabulator("#grid_교체부품상세3", {
 		layout: "resizableColumnFit",
@@ -1705,10 +1585,10 @@ async function grid_교체부품상세3(m_id = "") {
 		columns: [
 			{ title: "관리번호", field: "관리번호", sorter: "string", width: "180" },
 			{ title: "재제조번호", field: "재제조번호", sorter: "string", width: "180" },
-			//{ title: "구분", field: "구분", sorter: "string", width: "180" },
-			//{ title: "차종", field: "차종", sorter: "string", width: "180" },
-			//{ title: "품번", field: "품번", sorter: "string", width: "180" },
-			//{ title: "RO_no", field: "RO_no", sorter: "string", width: "180" },
+			{ title: "구분", field: "구분", sorter: "string", width: "180" },
+			{ title: "차종", field: "차종", sorter: "string", width: "180" },
+			{ title: "품번", field: "품번", sorter: "string", width: "180" },
+			{ title: "RO_no", field: "RO_no", sorter: "string", width: "180" },
 			{
 				title: "ORIGIN 관리번호",
 				field: "ORIGIN_관리번호",
@@ -1779,18 +1659,6 @@ async function grid_교체부품상세4(m_id = "") {
 	}
 
 	if(tabledata_교체부품상세4 == null) return;
-	//for(var i = 0; i < tabledata_교체부품상세4.length; i++) {
-	//	for(var j = 0; j < table_data.length; j++) {
-	//		if(tabledata_교체부품상세4[i] != undefined  && tabledata_교체부품상세4[i].관리번호 == table_data[j].관리번호) {
-	//			tabledata_교체부품상세4[i].재제조번호 = table_data[j].재제조번호;
-	//			tabledata_교체부품상세4[i].구분 = table_data[j].구분;
-	//			tabledata_교체부품상세4[i].차종 = table_data[j].차종;
-	//			tabledata_교체부품상세4[i].품번 = table_data[j].품번;
-	//			tabledata_교체부품상세4[i].RO_no = table_data[j].RO_no;
-	//			continue;
-	//		}
-	//	}
-	//}
 	table_교체부품상세4 = new Tabulator("#grid_교체부품상세4", {
 		layout: "resizableColumnFit",
 		height: 130,
@@ -1799,10 +1667,10 @@ async function grid_교체부품상세4(m_id = "") {
 		columns: [
 			{ title: "관리번호", field: "관리번호", sorter: "string", width: "180" },
 			{ title: "재제조번호", field: "재제조번호", sorter: "string", width: "180" },
-			//{ title: "구분", field: "구분", sorter: "string", width: "180" },
-			//{ title: "차종", field: "차종", sorter: "string", width: "180" },
-			//{ title: "품번", field: "품번", sorter: "string", width: "180" },
-			//{ title: "RO_no", field: "RO_no", sorter: "string", width: "180" },
+			{ title: "구분", field: "구분", sorter: "string", width: "180" },
+			{ title: "차종", field: "차종", sorter: "string", width: "180" },
+			{ title: "품번", field: "품번", sorter: "string", width: "180" },
+			{ title: "RO_no", field: "RO_no", sorter: "string", width: "180" },
 			{
 				title: "ORIGIN 관리번호",
 				field: "ORIGIN_관리번호",
@@ -1873,18 +1741,6 @@ async function grid_교체부품상세5(m_id = "") {
 	}
 
 	if(tabledata_교체부품상세5 == null) return;
-	//for(var i = 0; i < tabledata_교체부품상세5.length; i++) {
-	//	for(var j = 0; j < table_data.length; j++) {
-	//		if(tabledata_교체부품상세5[i] != undefined  && tabledata_교체부품상세5[i].관리번호 == table_data[j].관리번호) {
-	//			tabledata_교체부품상세5[i].재제조번호 = table_data[j].재제조번호;
-	//			tabledata_교체부품상세5[i].구분 = table_data[j].구분;
-	//			tabledata_교체부품상세5[i].차종 = table_data[j].차종;
-	//			tabledata_교체부품상세5[i].품번 = table_data[j].품번;
-	//			tabledata_교체부품상세5[i].RO_no = table_data[j].RO_no;
-	//			continue;
-	//		}
-	//	}
-	//}
 
 	table_교체부품상세5 = new Tabulator("#grid_교체부품상세5", {
 		layout: "resizableColumnFit",
@@ -1894,10 +1750,10 @@ async function grid_교체부품상세5(m_id = "") {
 		columns: [
 			{ title: "관리번호", field: "관리번호", sorter: "string", width: "180" },
 			{ title: "재제조번호", field: "재제조번호", sorter: "string", width: "180" },
-			//{ title: "구분", field: "구분", sorter: "string", width: "180" },
-			//{ title: "차종", field: "차종", sorter: "string", width: "180" },
-			//{ title: "품번", field: "품번", sorter: "string", width: "180" },
-			//{ title: "RO_no", field: "RO_no", sorter: "string", width: "180" },
+			{ title: "구분", field: "구분", sorter: "string", width: "180" },
+			{ title: "차종", field: "차종", sorter: "string", width: "180" },
+			{ title: "품번", field: "품번", sorter: "string", width: "180" },
+			{ title: "RO_no", field: "RO_no", sorter: "string", width: "180" },
 			{
 				title: "ORIGIN 관리번호",
 				field: "ORIGIN_관리번호",
@@ -1968,18 +1824,6 @@ async function grid_교체부품상세6(m_id = "") {
 	}
 
 	if(tabledata_교체부품상세6 == null) return;
-	//for(var i = 0; i < tabledata_교체부품상세6.length; i++) {
-	//	for(var j = 0; j < table_data.length; j++) {
-	//		if(tabledata_교체부품상세6[i] != undefined  && tabledata_교체부품상세6[i].관리번호 == table_data[j].관리번호) {
-	//			tabledata_교체부품상세6[i].재제조번호 = table_data[j].재제조번호;
-	//			tabledata_교체부품상세6[i].구분 = table_data[j].구분;
-	//			tabledata_교체부품상세6[i].차종 = table_data[j].차종;
-	//			tabledata_교체부품상세6[i].품번 = table_data[j].품번;
-	//			tabledata_교체부품상세6[i].RO_no = table_data[j].RO_no;
-	//			continue;
-	//		}
-	//	}
-	//}
 	table_교체부품상세6 = new Tabulator("#grid_교체부품상세6", {
 		layout: "resizableColumnFit",
 		height: 130,
@@ -1988,10 +1832,10 @@ async function grid_교체부품상세6(m_id = "") {
 		columns: [
 			{ title: "관리번호", field: "관리번호", sorter: "string", width: "180" },
 			{ title: "재제조번호", field: "재제조번호", sorter: "string", width: "180" },
-			//{ title: "구분", field: "구분", sorter: "string", width: "180" },
-			//{ title: "차종", field: "차종", sorter: "string", width: "180" },
-			//{ title: "품번", field: "품번", sorter: "string", width: "180" },
-			//{ title: "RO_no", field: "RO_no", sorter: "string", width: "180" },
+			{ title: "구분", field: "구분", sorter: "string", width: "180" },
+			{ title: "차종", field: "차종", sorter: "string", width: "180" },
+			{ title: "품번", field: "품번", sorter: "string", width: "180" },
+			{ title: "RO_no", field: "RO_no", sorter: "string", width: "180" },
 			{
 				title: "ORIGIN 관리번호",
 				field: "ORIGIN_관리번호",
@@ -2062,18 +1906,6 @@ async function grid_교체부품상세7(m_id = "") {
 	}
 
 	if(tabledata_교체부품상세7 == null) return;
-	//for(var i = 0; i < tabledata_교체부품상세7.length; i++) {
-	//	for(var j = 0; j < table_data.length; j++) {
-	//		if(tabledata_교체부품상세7[i] != undefined  && tabledata_교체부품상세7[i].관리번호 == table_data[j].관리번호) {
-	//			tabledata_교체부품상세7[i].재제조번호 = table_data[j].재제조번호;
-	//			tabledata_교체부품상세7[i].구분 = table_data[j].구분;
-	//			tabledata_교체부품상세7[i].차종 = table_data[j].차종;
-	//			tabledata_교체부품상세7[i].품번 = table_data[j].품번;
-	//			tabledata_교체부품상세7[i].RO_no = table_data[j].RO_no;
-	//			continue;
-	//		}
-	//	}
-	//}
 	table_교체부품상세7 = new Tabulator("#grid_교체부품상세7", {
 		layout: "resizableColumnFit",
 		height: 130,
@@ -2082,10 +1914,10 @@ async function grid_교체부품상세7(m_id = "") {
 		columns: [
 			{ title: "관리번호", field: "관리번호", sorter: "string", width: "180" },
 			{ title: "재제조번호", field: "재제조번호", sorter: "string", width: "180" },
-			//{ title: "구분", field: "구분", sorter: "string", width: "180" },
-			//{ title: "차종", field: "차종", sorter: "string", width: "180" },
-			//{ title: "품번", field: "품번", sorter: "string", width: "180" },
-			//{ title: "RO_no", field: "RO_no", sorter: "string", width: "180" },
+			{ title: "구분", field: "구분", sorter: "string", width: "180" },
+			{ title: "차종", field: "차종", sorter: "string", width: "180" },
+			{ title: "품번", field: "품번", sorter: "string", width: "180" },
+			{ title: "RO_no", field: "RO_no", sorter: "string", width: "180" },
 			{
 				title: "ORIGIN 관리번호",
 				field: "ORIGIN_관리번호",
@@ -2156,18 +1988,6 @@ async function grid_교체부품상세8(m_id = "") {
 	}
 
 	if(tabledata_교체부품상세8 == null) return;
-	//for(var i = 0; i < tabledata_교체부품상세8.length; i++) {
-	//	for(var j = 0; j < table_data.length; j++) {
-	//		if(tabledata_교체부품상세8[i] != undefined  && tabledata_교체부품상세8[i].관리번호 == table_data[j].관리번호) {
-	//			tabledata_교체부품상세8[i].재제조번호 = table_data[j].재제조번호;
-	//			tabledata_교체부품상세8[i].구분 = table_data[j].구분;
-	//			tabledata_교체부품상세8[i].차종 = table_data[j].차종;
-	//			tabledata_교체부품상세8[i].품번 = table_data[j].품번;
-	//			tabledata_교체부품상세8[i].RO_no = table_data[j].RO_no;
-	//			continue;
-	//		}
-	//	}
-	//}
 	table_교체부품상세8 = new Tabulator("#grid_교체부품상세8", {
 		layout: "resizableColumnFit",
 		height: 130,
@@ -2176,10 +1996,10 @@ async function grid_교체부품상세8(m_id = "") {
 		columns: [
 			{ title: "관리번호", field: "관리번호", sorter: "string", width: "180" },
 			{ title: "재제조번호", field: "재제조번호", sorter: "string", width: "180" },
-			//{ title: "구분", field: "구분", sorter: "string", width: "180" },
-			//{ title: "차종", field: "차종", sorter: "string", width: "180" },
-			//{ title: "품번", field: "품번", sorter: "string", width: "180" },
-			//{ title: "RO_no", field: "RO_no", sorter: "string", width: "180" },
+			{ title: "구분", field: "구분", sorter: "string", width: "180" },
+			{ title: "차종", field: "차종", sorter: "string", width: "180" },
+			{ title: "품번", field: "품번", sorter: "string", width: "180" },
+			{ title: "RO_no", field: "RO_no", sorter: "string", width: "180" },
 			{
 				title: "ORIGIN 관리번호",
 				field: "orogin_관리번호",
@@ -2250,18 +2070,6 @@ async function grid_교체부품상세9(m_id = "") {
 	}
 
 	if(tabledata_교체부품상세9 == null) return;
-	//for(var i = 0; i < tabledata_교체부품상세9.length; i++) {
-	//	for(var j = 0; j < table_data.length; j++) {
-	//		if(tabledata_교체부품상세9[i] != undefined  && tabledata_교체부품상세9[i].관리번호 == table_data[j].관리번호) {
-	//			tabledata_교체부품상세9[i].재제조번호 = table_data[j].재제조번호;
-	//			tabledata_교체부품상세9[i].구분 = table_data[j].구분;
-	//			tabledata_교체부품상세9[i].차종 = table_data[j].차종;
-	//			tabledata_교체부품상세9[i].품번 = table_data[j].품번;
-	//			tabledata_교체부품상세9[i].RO_no = table_data[j].RO_no;
-	//			continue;
-	//		}
-	//	}
-	//}
 
 	table_교체부품상세9 = new Tabulator("#grid_교체부품상세9", {
 		layout: "resizableColumnFit",
@@ -2272,10 +2080,10 @@ async function grid_교체부품상세9(m_id = "") {
 		columns: [
 			{ title: "관리번호", field: "관리번호", sorter: "string", width: "180" },
 			{ title: "재제조번호", field: "재제조번호", sorter: "string", width: "180" },
-			//{ title: "구분", field: "구분", sorter: "string", width: "180" },
-			//{ title: "차종", field: "차종", sorter: "string", width: "180" },
-			//{ title: "품번", field: "품번", sorter: "string", width: "180" },
-			//{ title: "RO_no", field: "RO_no", sorter: "string", width: "180" },
+			{ title: "구분", field: "구분", sorter: "string", width: "180" },
+			{ title: "차종", field: "차종", sorter: "string", width: "180" },
+			{ title: "품번", field: "품번", sorter: "string", width: "180" },
+			{ title: "RO_no", field: "RO_no", sorter: "string", width: "180" },
 			{
 				title: "OROGIN 관리번호",
 				field: "ORIGIN_관리번호",
@@ -2346,18 +2154,6 @@ async function grid_교체부품상세10(m_id = "") {
 	}
 
 	if(tabledata_교체부품상세10 == null) return;
-	//for(var i = 0; i < tabledata_교체부품상세10.length; i++) {
-	//	for(var j = 0; j < table_data.length; j++) {
-	//		if(tabledata_교체부품상세10[i] != undefined  && tabledata_교체부품상세10[i].관리번호 == table_data[j].관리번호) {
-	//			tabledata_교체부품상세10[i].재제조번호 = table_data[j].재제조번호;
-	//			tabledata_교체부품상세10[i].구분 = table_data[j].구분;
-	//			tabledata_교체부품상세10[i].차종 = table_data[j].차종;
-	//			tabledata_교체부품상세10[i].품번 = table_data[j].품번;
-	//			tabledata_교체부품상세10[i].RO_no = table_data[j].RO_no;
-	//			continue;
-	//		}
-	//	}
-	//}
 	table_교체부품상세10 = new Tabulator("#grid_교체부품상세10", {
 		layout: "resizableColumnFit",
 		height: 130,
@@ -2366,10 +2162,10 @@ async function grid_교체부품상세10(m_id = "") {
 		columns: [
 			{ title: "관리번호", field: "관리번호", sorter: "string", width: "180" },
 			{ title: "재제조번호", field: "재제조번호", sorter: "string", width: "180" },
-			//{ title: "구분", field: "구분", sorter: "string", width: "180" },
-			//{ title: "차종", field: "차종", sorter: "string", width: "180" },
-			//{ title: "품번", field: "품번", sorter: "string", width: "180" },
-			//{ title: "RO_no", field: "RO_no", sorter: "string", width: "180" },
+			{ title: "구분", field: "구분", sorter: "string", width: "180" },
+			{ title: "차종", field: "차종", sorter: "string", width: "180" },
+			{ title: "품번", field: "품번", sorter: "string", width: "180" },
+			{ title: "RO_no", field: "RO_no", sorter: "string", width: "180" },
 			{
 				title: "ORIGIN 관리번호",
 				field: "ORIGIN_관리번호",

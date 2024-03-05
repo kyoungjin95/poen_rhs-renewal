@@ -35,6 +35,9 @@ const 기초검사_pic4 = "기초검사_pic4";
 const 분해조립_pic = "분해조립_pic";
 const 성능검사_pic = "성능검사_pic";
 const EOL_pic = "EOL_pic";
+const EOL_pic1 = "EOL_pic1";
+const EOL_pic2 = "EOL_pic2";
+const EOL_pic3 = "EOL_pic3";
 const 특이사항_pic = "특이사항_pic";
 const 출하_pic = "출하_pic";
 const 반품입고_pic = "반품입고_pic";
@@ -87,6 +90,9 @@ var 기초검사_pic4_cnt = 0;
 var 분해조립_pic_cnt = 0;
 var 성능검사_pic_cnt = 0;
 var EOL_pic_cnt = 0;
+var EOL_pic1_cnt = 0;
+var EOL_pic2_cnt = 0;
+var EOL_pic3_cnt = 0;
 var 특이사항_pic_cnt = 0;
 var 출하_pic_cnt = 0;
 var 반품입고_pic_cnt = 0;
@@ -227,6 +233,10 @@ const 세척_doc = {
 	육안검사_외부: "",
 	육안검사_외부_특이사항: "",
 	특이사항: "",
+	구분: "",
+	차종: "",
+	품번: "",
+	RO_no: "",
 };
 
 const 기초검사_doc = {
@@ -290,6 +300,9 @@ const 기초검사_doc = {
 	검사자: "",
 	필드현상: "",
 	AS센터조치: "",
+	구분: "",
+	차종: "",
+	품번: "",
 };
 
 const 분해조립_doc = {
@@ -584,6 +597,10 @@ const 분해조립_doc = {
 	ETC: "",
 	공정완료일: "",
 	작업자: "",
+	구분: "",
+	차종: "",
+	품번: "",
+	RO_no: "",
 };
 
 const 분해조립재제조_doc = {
@@ -638,6 +655,10 @@ const 성능검사_doc = {
 	f4: "",
 	f5: "",
 	f6: "",
+	구분: "",
+	차종: "",
+	품번: "",
+	RO_no: "",
 };
 
 const EOL_doc = {
@@ -694,6 +715,10 @@ const EOL_doc = {
 	절연저항_Minus : "",
 	육안검사_외부 : "",
 	육안검사_내부 : "",
+	구분: "",
+	차종: "",
+	품번: "",
+	RO_no: "",
 };
 
 const 고품정보_doc = {
@@ -755,11 +780,19 @@ const 출하정보_doc = {
 	SOH: "",
 	릴레이_강제구동: "",
 	커넥터_체결검사: "",
+	구분: "",
+	차종: "",
+	품번: "",
+	RO_no: "",
 };
 
 const 특이사항_doc = {
 	관리번호: "",
 	특이사항: "",
+	구분: "",
+	차종: "",
+	품번: "",
+	RO_no: "",
 };
 
 const 교체부품상세_doc = {
@@ -774,6 +807,10 @@ const 교체부품상세_doc = {
 	교체후_품번: "",
 	교체후_QR: "",
 	교체사유: "",
+	구분: "",
+	차종: "",
+	품번: "",
+	RO_no: "",
 };
 
 const 구장재고_doc = {
@@ -1023,6 +1060,108 @@ const 성능검사_pic_doc = {
 };
 
 const EOL_pic_doc = {
+	관리번호: "",
+	pic1: "",
+	pic2: "",
+	pic3: "",
+	pic4: "",
+	pic5: "",
+	pic6: "",
+	pic7: "",
+	pic8: "",
+	pic9: "",
+	pic10: "",
+	pic11: "",
+	pic12: "",
+	pic13: "",
+	pic14: "",
+	pic15: "",
+	pic16: "",
+	pic17: "",
+	pic18: "",
+	pic19: "",
+	pic20: "",
+	pic21: "",
+	pic22: "",
+	pic23: "",
+	pic24: "",
+	pic25: "",
+	pic26: "",
+	pic27: "",
+	pic28: "",
+	pic29: "",
+	pic30: "",
+};
+
+const EOL_pic1_doc = {
+	관리번호: "",
+	pic1: "",
+	pic2: "",
+	pic3: "",
+	pic4: "",
+	pic5: "",
+	pic6: "",
+	pic7: "",
+	pic8: "",
+	pic9: "",
+	pic10: "",
+	pic11: "",
+	pic12: "",
+	pic13: "",
+	pic14: "",
+	pic15: "",
+	pic16: "",
+	pic17: "",
+	pic18: "",
+	pic19: "",
+	pic20: "",
+	pic21: "",
+	pic22: "",
+	pic23: "",
+	pic24: "",
+	pic25: "",
+	pic26: "",
+	pic27: "",
+	pic28: "",
+	pic29: "",
+	pic30: "",
+};
+
+const EOL_pic2_doc = {
+	관리번호: "",
+	pic1: "",
+	pic2: "",
+	pic3: "",
+	pic4: "",
+	pic5: "",
+	pic6: "",
+	pic7: "",
+	pic8: "",
+	pic9: "",
+	pic10: "",
+	pic11: "",
+	pic12: "",
+	pic13: "",
+	pic14: "",
+	pic15: "",
+	pic16: "",
+	pic17: "",
+	pic18: "",
+	pic19: "",
+	pic20: "",
+	pic21: "",
+	pic22: "",
+	pic23: "",
+	pic24: "",
+	pic25: "",
+	pic26: "",
+	pic27: "",
+	pic28: "",
+	pic29: "",
+	pic30: "",
+};
+
+const EOL_pic3_doc = {
 	관리번호: "",
 	pic1: "",
 	pic2: "",
@@ -1803,6 +1942,10 @@ const 세척_ = {
 	육안검사_외부: 1,
 	육안검사_외부_특이사항: 1,
 	특이사항: 1,
+	구분: 1,
+	차종: 1,
+	품번: 1,
+	RO_no: 1,
 };
 
 const 기초검사_ = {
@@ -1867,6 +2010,10 @@ const 기초검사_ = {
 	검사자: 1,
 	필드현상: 1,
 	AS센터조치: 1,
+	구분: 1,
+	차종: 1,
+	품번: 1,
+	RO_no: 1,
 };
 
 const 분해조립_ = {
@@ -2163,6 +2310,10 @@ const 분해조립_ = {
 	ETC: 1,
 	공정완료일: 1,
 	작업자: 1,
+	구분: 1,
+	차종: 1,
+	품번: 1,
+	RO_no: 1,
 };
 
 const 분해조립재제조_ = {
@@ -2258,6 +2409,10 @@ const EOL_ = {
 	육안검사_외부 : 1,
 	육안검사_내부 : 1,
 	용량평가값 : 1,
+	구분: 1,
+	차종: 1,
+	품번: 1,
+	RO_no: 1,
 };
 
 const 성능검사_ = {
@@ -2283,6 +2438,10 @@ const 성능검사_ = {
 	f4: 1,
 	f5: 1,
 	f6: 1,
+	구분: 1,
+	차종: 1,
+	품번: 1,
+	RO_no: 1,
 };
 
 const 고품정보_ = {
@@ -2346,12 +2505,20 @@ const 출하정보_ = {
 	SOH: 1,
 	릴레이_강제구동: 1,
 	커넥터_체결검사: 1,
+	구분: 1,
+	차종: 1,
+	품번: 1,
+	RO_no: 1,
 };
 
 const 특이사항_ = {
 	_id: 0,
 	관리번호: 1,
 	특이사항: 1,
+	구분: 1,
+	차종: 1,
+	품번: 1,
+	RO_no: 1,
 };
 
 const 교체부품상세_ = {
@@ -2368,6 +2535,10 @@ const 교체부품상세_ = {
 	교체후_QR: 1,
 	교체사유: 1,
 	공정완료일: 1,
+	구분: 1,
+	차종: 1,
+	품번: 1,
+	RO_no: 1,
 };
 
 const 구장재고_ = {
@@ -2629,6 +2800,111 @@ const 성능검사_pic_ = {
 };
 
 const EOL_pic_ = {
+	_id: 0,
+	관리번호: 1,
+	pic1: 1,
+	pic2: 1,
+	pic3: 1,
+	pic4: 1,
+	pic5: 1,
+	pic6: 1,
+	pic7: 1,
+	pic8: 1,
+	pic9: 1,
+	pic10: 1,
+	pic11: 1,
+	pic12: 1,
+	pic13: 1,
+	pic14: 1,
+	pic15: 1,
+	pic16: 1,
+	pic17: 1,
+	pic18: 1,
+	pic19: 1,
+	pic20: 1,
+	pic21: 1,
+	pic22: 1,
+	pic23: 1,
+	pic24: 1,
+	pic25: 1,
+	pic26: 1,
+	pic27: 1,
+	pic28: 1,
+	pic29: 1,
+	pic30: 1,
+};
+
+const EOL_pic1_ = {
+	_id: 0,
+	관리번호: 1,
+	pic1: 1,
+	pic2: 1,
+	pic3: 1,
+	pic4: 1,
+	pic5: 1,
+	pic6: 1,
+	pic7: 1,
+	pic8: 1,
+	pic9: 1,
+	pic10: 1,
+	pic11: 1,
+	pic12: 1,
+	pic13: 1,
+	pic14: 1,
+	pic15: 1,
+	pic16: 1,
+	pic17: 1,
+	pic18: 1,
+	pic19: 1,
+	pic20: 1,
+	pic21: 1,
+	pic22: 1,
+	pic23: 1,
+	pic24: 1,
+	pic25: 1,
+	pic26: 1,
+	pic27: 1,
+	pic28: 1,
+	pic29: 1,
+	pic30: 1,
+};
+
+const EOL_pic2_ = {
+	_id: 0,
+	관리번호: 1,
+	pic1: 1,
+	pic2: 1,
+	pic3: 1,
+	pic4: 1,
+	pic5: 1,
+	pic6: 1,
+	pic7: 1,
+	pic8: 1,
+	pic9: 1,
+	pic10: 1,
+	pic11: 1,
+	pic12: 1,
+	pic13: 1,
+	pic14: 1,
+	pic15: 1,
+	pic16: 1,
+	pic17: 1,
+	pic18: 1,
+	pic19: 1,
+	pic20: 1,
+	pic21: 1,
+	pic22: 1,
+	pic23: 1,
+	pic24: 1,
+	pic25: 1,
+	pic26: 1,
+	pic27: 1,
+	pic28: 1,
+	pic29: 1,
+	pic30: 1,
+};
+
+const EOL_pic3_ = {
 	_id: 0,
 	관리번호: 1,
 	pic1: 1,
@@ -3606,6 +3882,21 @@ socket.on("count_result", async function (col, count, rcv_check, option = "") {
 			EOL_pic_cnt = JSON.parse(JSON.stringify(count));
 			break;
 
+		case EOL_pic1:
+			EOL_pic_cnt = 0;
+			EOL_pic_cnt = JSON.parse(JSON.stringify(count));
+			break;
+
+		case EOL_pic2:
+			EOL_pic_cnt = 0;
+			EOL_pic_cnt = JSON.parse(JSON.stringify(count));
+			break;
+
+		case EOL_pic3:
+			EOL_pic_cnt = 0;
+			EOL_pic_cnt = JSON.parse(JSON.stringify(count));
+			break;
+
 		case 특이사항:
 			특이사항_pic_cnt = 0;
 			특이사항_pic_cnt = JSON.parse(JSON.stringify(count));
@@ -3947,6 +4238,21 @@ socket.on("find_result", async function (col, result, rcv_check) {
 			EOL_pic_v = JSON.parse(JSON.stringify(result));
 			break;
 
+		case EOL_pic1:
+			EOL_pic1_v = [];
+			EOL_pic1_v = JSON.parse(JSON.stringify(result));
+			break;
+
+		case EOL_pic2:
+			EOL_pic2_v = [];
+			EOL_pic2_v = JSON.parse(JSON.stringify(result));
+			break;
+
+		case EOL_pic3:
+			EOL_pic3_v = [];
+			EOL_pic3_v = JSON.parse(JSON.stringify(result));
+			break;
+
 		case 특이사항:
 			특이사항_pic_v = [];
 			특이사항_pic_v = JSON.parse(JSON.stringify(result));
@@ -4105,6 +4411,9 @@ function reset_result() {
 	분해조립_pic_v = [];
 	성능검사_pic_v = [];
 	EOL_pic_v = [];
+	EOL_pic1_v = [];
+	EOL_pic2_v = [];
+	EOL_pic3_v = [];
 	특이사항_pic_v = [];
 	출하_pic_v = [];
 	반품입고_pic_v = [];
@@ -4158,6 +4467,9 @@ function reset_count() {
 	분해조립_pic_cnt = 0;
 	성능검사_pic_cnt = 0;
 	EOL_pic_cnt = 0;
+	EOL_pic1_cnt = 0;
+	EOL_pic2_cnt = 0;
+	EOL_pic3_cnt = 0;
 	특이사항_pic_cnt = 0;
 	출하_pic_cnt = 0;
 	반품입고_pic_cnt = 0;
@@ -4532,6 +4844,18 @@ async function find(col, management_id) {
 			break;
 
 		case "EOL_pic":
+			socket.emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: EOL_pic_ }, check);
+			break;
+
+		case "EOL_pic1":
+			socket.emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: EOL_pic_ }, check);
+			break;
+
+		case "EOL_pic2":
+			socket.emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: EOL_pic_ }, check);
+			break;
+
+		case "EOL_pic3":
 			socket.emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: EOL_pic_ }, check);
 			break;
 
