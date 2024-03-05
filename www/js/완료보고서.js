@@ -231,10 +231,10 @@ async function 완료보고서_조회(is재제조번호 = false) {
 				//_CS_재제조이력사유.innerHTML;
 				_CS_출하QR.innerHTML = EOL_data.QR != "" && EOL_data.QR != undefined ? "OK" : "NG";
 				_CS_커버류.innerHTML = EOL_data.커버류;
-				if (EOL_data.커버류 == "OK") _CS_커버류확인.innerHTML = "커버 장착 확인";
+				if (EOL_data.커버류 == '장착확인') _CS_커버류확인.innerHTML = "커버 장착 확인";
 				else _CS_커버류확인.innerHTML = "커버 비장착";
 				_CS_브라켓정보.innerHTML = EOL_data.브라켓;
-				if (EOL_data.브라켓 == "OK") _CS_브라켓값.innerHTML = "재고 부족 시 영업팀과 협의 요망";
+				if (EOL_data.브라켓 == "장착확인") _CS_브라켓값.innerHTML = "재고 부족 시 영업팀과 협의 요망";
 				else _CS_브라켓값.innerHTML = "재고 부족 영업팀과 협의 요망";
 				break;
 
@@ -265,10 +265,10 @@ async function 완료보고서_조회(is재제조번호 = false) {
 				//_CV_재제조이력사유.innerHTML;
 				_CV_출하QR.innerHTML = EOL_data.QR != "" && EOL_data.QR != undefined ? "OK" : "NG";
 				_CV_커버류.innerHTML = EOL_data.커버류;
-				if (EOL_data.커버류 == "OK") _CV_커버류확인.innerHTML = "커버 장착 확인";
+				if (EOL_data.커버류 == '장착확인') _CV_커버류확인.innerHTML = "커버 장착 확인";
 				else _CV_커버류확인.innerHTML = "커버 비장착";
 				_CV_브라켓정보.innerHTML = EOL_data.브라켓;
-				if (EOL_data.브라켓 == "OK") _CV_브라켓값.innerHTML = "재고 부족 시 영업팀과 협의 요망";
+				if (EOL_data.브라켓 == "장착확인") _CV_브라켓값.innerHTML = "재고 부족 시 영업팀과 협의 요망";
 				else _CV_브라켓값.innerHTML = "재고 부족 영업팀과 협의 요망";
 				_CV_ICCU.innerHTML = EOL_data.ICCU;
 				//_CV_ICCU값.innerHTML;
@@ -301,10 +301,10 @@ async function 완료보고서_조회(is재제조번호 = false) {
 				//_DE_재제조이력사유.innerHTML;
 				_DE_출하QR.innerHTML = EOL_data.QR != "" && EOL_data.QR != undefined ? "OK" : "NG";
 				_DE_커버류.innerHTML = EOL_data.커버류;
-				if (EOL_data.커버류 == "OK") _DE_커버류확인.innerHTML = "커버 장착 확인";
+				if (EOL_data.커버류 == '장착확인') _DE_커버류확인.innerHTML = "커버 장착 확인";
 				else _DE_커버류확인.innerHTML = "커버 비장착";
 				_DE_브라켓정보.innerHTML = EOL_data.브라켓;
-				if (EOL_data.브라켓 == "OK") _DE_브라켓값.innerHTML = "재고 부족 시 영업팀과 협의 요망";
+				if (EOL_data.브라켓 == "장착확인") _DE_브라켓값.innerHTML = "재고 부족 시 영업팀과 협의 요망";
 				else _DE_브라켓값.innerHTML = "재고 부족 영업팀과 협의 요망";
 				break;
 
@@ -335,10 +335,10 @@ async function 완료보고서_조회(is재제조번호 = false) {
 				//_HR_재제조이력사유.innerHTML;
 				_HR_출하QR.innerHTML = EOL_data.QR != "" && EOL_data.QR != undefined ? "OK" : "NG";
 				_HR_커버류.innerHTML = EOL_data.커버류;
-				if (EOL_data.커버류 == "OK") _HR_커버류확인.innerHTML = "커버 장착 확인";
+				if (EOL_data.커버류 == '장착확인') _HR_커버류확인.innerHTML = "커버 장착 확인";
 				else _HR_커버류확인.innerHTML = "커버 비장착";
 				_HR_브라켓정보.innerHTML = EOL_data.브라켓;
-				if (EOL_data.브라켓 == "OK") _HR_브라켓값.innerHTML = "재고 부족 시 영업팀과 협의 요망";
+				if (EOL_data.브라켓 == "장착확인") _HR_브라켓값.innerHTML = "재고 부족 시 영업팀과 협의 요망";
 				else _HR_브라켓값.innerHTML = "재고 부족 영업팀과 협의 요망";
 				break;
 
@@ -369,10 +369,10 @@ async function 완료보고서_조회(is재제조번호 = false) {
 				//_PU_재제조이력사유.innerHTML;
 				_PU_출하QR.innerHTML = EOL_data.QR != "" && EOL_data.QR != undefined ? "OK" : "NG";
 				_PU_커버류.innerHTML = EOL_data.커버류;
-				if (EOL_data.커버류 == "OK") _PU_커버류확인.innerHTML = "커버 장착 확인";
+				if (EOL_data.커버류 == '장착확인') _PU_커버류확인.innerHTML = "커버 장착 확인";
 				else _PU_커버류확인.innerHTML = "커버 비장착";
 				_PU_브라켓정보.innerHTML = EOL_data.브라켓;
-				if (EOL_data.브라켓 == "OK") _PU_브라켓값.innerHTML = "재고 부족 시 영업팀과 협의 요망";
+				if (EOL_data.브라켓 == "장착확인") _PU_브라켓값.innerHTML = "재고 부족 시 영업팀과 협의 요망";
 				else _PU_브라켓값.innerHTML = "재고 부족 영업팀과 협의 요망";
 				break;
 
@@ -403,10 +403,10 @@ async function 완료보고서_조회(is재제조번호 = false) {
 				//_LK_FC_재제조이력사유.innerHTML;
 				_LK_FC_출하QR.innerHTML = EOL_data.QR != "" && EOL_data.QR != undefined ? "OK" : "NG";
 				_LK_FC_커버류.innerHTML = EOL_data.커버류;
-				if (EOL_data.커버류 == "OK") _LK_FC_커버류확인.innerHTML = "커버 장착 확인";
+				if (EOL_data.커버류 == '장착확인') _LK_FC_커버류확인.innerHTML = "커버 장착 확인";
 				else _LK_FC_커버류확인.innerHTML = "커버 비장착";
 				_LK_FC_브라켓정보.innerHTML = EOL_data.브라켓;
-				if (EOL_data.브라켓 == "OK") _LK_FC_브라켓값.innerHTML = "재고 부족 시 영업팀과 협의 요망";
+				if (EOL_data.브라켓 == "장착확인") _LK_FC_브라켓값.innerHTML = "재고 부족 시 영업팀과 협의 요망";
 				else _LK_FC_브라켓값.innerHTML = "재고 부족 영업팀과 협의 요망";
 				break;
 
@@ -437,10 +437,10 @@ async function 완료보고서_조회(is재제조번호 = false) {
 				//_LM_재제조이력사유.innerHTML;
 				_LM_출하QR.innerHTML = EOL_data.QR != "" && EOL_data.QR != undefined ? "OK" : "NG";
 				_LM_커버류.innerHTML = EOL_data.커버류;
-				if (EOL_data.커버류 == "OK") _LM_커버류확인.innerHTML = "커버 장착 확인";
+				if (EOL_data.커버류 == '장착확인') _LM_커버류확인.innerHTML = "커버 장착 확인";
 				else _LM_커버류확인.innerHTML = "커버 비장착";
 				_LM_브라켓정보.innerHTML = EOL_data.브라켓;
-				if (EOL_data.브라켓 == "OK") _LM_브라켓값.innerHTML = "재고 부족 시 영업팀과 협의 요망";
+				if (EOL_data.브라켓 == "장착확인") _LM_브라켓값.innerHTML = "재고 부족 시 영업팀과 협의 요망";
 				else _LM_브라켓값.innerHTML = "재고 부족 영업팀과 협의 요망";
 				break;
 
@@ -471,10 +471,10 @@ async function 완료보고서_조회(is재제조번호 = false) {
 				//_NE_재제조이력사유.innerHTML;
 				_NE_출하QR.innerHTML = EOL_data.QR != "" && EOL_data.QR != undefined ? "OK" : "NG";
 				_NE_커버류.innerHTML = EOL_data.커버류;
-				if (EOL_data.커버류 == "OK") _NE_커버류확인.innerHTML = "커버 장착 확인";
+				if (EOL_data.커버류 == '장착확인') _NE_커버류확인.innerHTML = "커버 장착 확인";
 				else _NE_커버류확인.innerHTML = "커버 비장착";
 				_NE_브라켓정보.innerHTML = EOL_data.브라켓;
-				if (EOL_data.브라켓 == "OK") _NE_브라켓값.innerHTML = "재고 부족 시 영업팀과 협의 요망";
+				if (EOL_data.브라켓 == "장착확인") _NE_브라켓값.innerHTML = "재고 부족 시 영업팀과 협의 요망";
 				else _NE_브라켓값.innerHTML = "재고 부족 영업팀과 협의 요망";
 				break;
 
@@ -506,10 +506,10 @@ async function 완료보고서_조회(is재제조번호 = false) {
 				//_OS_재제조이력사유.innerHTML;
 				_OS_출하QR.innerHTML = EOL_data.QR != "" && EOL_data.QR != undefined ? "OK" : "NG";
 				_OS_커버류.innerHTML = EOL_data.커버류;
-				if (EOL_data.커버류 == "OK") _OS_커버류확인.innerHTML = "커버 장착 확인";
+				if (EOL_data.커버류 == '장착확인') _OS_커버류확인.innerHTML = "커버 장착 확인";
 				else _OS_커버류확인.innerHTML = "커버 비장착";
 				_OS_브라켓정보.innerHTML = EOL_data.브라켓;
-				if (EOL_data.브라켓 == "OK") _OS_브라켓값.innerHTML = "재고 부족 시 영업팀과 협의 요망";
+				if (EOL_data.브라켓 == "장착확인") _OS_브라켓값.innerHTML = "재고 부족 시 영업팀과 협의 요망";
 				else _OS_브라켓값.innerHTML = "재고 부족 영업팀과 협의 요망";
 				break;
 
@@ -540,10 +540,10 @@ async function 완료보고서_조회(is재제조번호 = false) {
 				//_SK3_재제조이력사유.innerHTML;
 				_SK3_출하QR.innerHTML = EOL_data.QR != "" && EOL_data.QR != undefined ? "OK" : "NG";
 				_SK3_커버류.innerHTML = EOL_data.커버류;
-				if (EOL_data.커버류 == "OK") _SK3_커버류확인.innerHTML = "커버 장착 확인";
+				if (EOL_data.커버류 == '장착확인') _SK3_커버류확인.innerHTML = "커버 장착 확인";
 				else _SK3_커버류확인.innerHTML = "커버 비장착";
 				_SK3_브라켓정보.innerHTML = EOL_data.브라켓;
-				if (EOL_data.브라켓 == "OK") _SK3_브라켓값.innerHTML = "재고 부족 시 영업팀과 협의 요망";
+				if (EOL_data.브라켓 == "장착확인") _SK3_브라켓값.innerHTML = "재고 부족 시 영업팀과 협의 요망";
 				else _SK3_브라켓값.innerHTML = "재고 부족 영업팀과 협의 요망";
 				break;
 
