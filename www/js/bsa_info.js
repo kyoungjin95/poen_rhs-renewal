@@ -74,6 +74,10 @@ async function 재제조현황_시작() {
 	재제조현황_조회();
 }
 
+async function save() {
+	var data = table.getData();
+}
+
 async function 재제조현황_조회() {
 	if (worker == "") return;
 	BSA재제조_v = [];
@@ -167,11 +171,11 @@ async function 재제조현황_조회() {
 
 		columns: [
 			{ title: "ID", field: "_id", sorter: "string", width: "180" },
-			{ title: "관리번호", field: "관리번호", sorter: "string", width: "180" },
+			{ title: "관리번호", field: "관리번호", editor: "input", width: "180" },
 			{
 				title: "재제조번호",
 				field: "재제조번호",
-				sorter: "string",
+				editor: "input",
 				width: "180",
 			},
 			{ title: "구분", field: "구분", sorter: "string", width: "180" },
