@@ -162,6 +162,10 @@ async function 성능검사_save() {
 
 	var doc = {};
 	doc.관리번호 = _management_id.value.trim().toUpperCase();
+	doc.구분 = _구분.value;
+	doc.차종 = _차종.value;
+	doc.품번 = _품번.value;
+	doc.RO_no = _RO_no.value;
 	doc.공정입고일 = _공정입고일.value;
 	doc.용량평가 = _용량평가.value;
 	doc.SOC60Percent = _SOC60Percent.value;

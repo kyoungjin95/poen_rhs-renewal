@@ -825,6 +825,10 @@ async function 분해조립_save() {
 	console.log("분해조립 init SAVE:", doc);
 
 	doc.관리번호 = _management_id.value.trim().toUpperCase();
+	doc.구분 = _구분.value;
+	doc.차종 = _차종.value;
+	doc.품번 = _품번.value;
+	doc.RO_no = _RO_no.value;
 	doc.공정입고일 = _공정입고일.value;
 	if (level == '관리자') doc.공정입고일 = _공정입고일.value;
 	for (var i = 1; i <= BMU_count; i++)
