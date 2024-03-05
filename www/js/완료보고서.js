@@ -59,10 +59,10 @@ async function 완료보고서_조회(is재제조번호 = false) {
 		입고_data = JSON.parse(JSON.stringify(입고_v));
 	}
 
-	if(입고_pic_v != null) {
-		find(입고_pic, 관리번호);
-		await delay();
+	find(입고_pic, 관리번호);
+	await delay();
 
+	if(입고_pic_v != null) {
 		입고_pic_data = JSON.parse(JSON.stringify(입고_pic_v));
 	}
 
@@ -100,27 +100,6 @@ async function 완료보고서_조회(is재제조번호 = false) {
 
 	if(EOL_v != null) {
 		EOL_data = JSON.parse(JSON.stringify(EOL_v));
-	}
-
-	find(EOL_pic1, 관리번호);
-	await delay();
-
-	if(EOL_pic1_v != null) { 
-		EOL_pic1_data = JSON.parse(JSON.stringify(EOL_pic1_v));
-	}
-
-	find(EOL_pic2, 관리번호);
-	await delay();
-
-	if(EOL_pic2_v != null) { 
-		EOL_pic2_data = JSON.parse(JSON.stringify(EOL_pic2_v));
-	}
-
-	find(EOL_pic3, 관리번호);
-	await delay();
-
-	if(EOL_pic3_v != null) { 
-		EOL_pic3_data = JSON.parse(JSON.stringify(EOL_pic3_v));
 	}
 
 	find(완료보고서, 관리번호);
@@ -573,6 +552,13 @@ async function 완료보고서_조회(is재제조번호 = false) {
 		}
 	}
 
+	find(EOL_pic1, 관리번호);
+	await delay();
+
+	if(EOL_pic1_v != null) { 
+		EOL_pic1_data = JSON.parse(JSON.stringify(EOL_pic1_v));
+	}
+
 	if(EOL_pic1_data != null) {
 		_top_pic.src = EOL_pic1_data.pic1;
 		_front_pic.src = EOL_pic1_data.pic2;
@@ -588,6 +574,13 @@ async function 완료보고서_조회(is재제조번호 = false) {
 		_CMU.src = EOL_pic1_data.pic9;
 		_PRA.src = EOL_pic1_data.pic10;
 		_육안검사_내부_결과.innerHTML = EOL_data.육안검사_내부;
+	}
+
+	find(EOL_pic2, 관리번호);
+	await delay();
+
+	if(EOL_pic2_v != null) { 
+		EOL_pic2_data = JSON.parse(JSON.stringify(EOL_pic2_v));
 	}
 
 	if(EOL_pic2_data != null) {
@@ -610,6 +603,14 @@ async function 완료보고서_조회(is재제조번호 = false) {
 		//CAN 통신 검사
 		_PDS진단1.src = EOL_pic2_data.pic9;
 		_PDS진단2.src = EOL_pic2_data.pic10;
+	}
+
+
+	find(EOL_pic3, 관리번호);
+	await delay();
+
+	if(EOL_pic3_v != null) { 
+		EOL_pic3_data = JSON.parse(JSON.stringify(EOL_pic3_v));
 	}
 
 	if(EOL_pic3_data != null) {

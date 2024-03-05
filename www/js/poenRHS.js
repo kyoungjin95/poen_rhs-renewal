@@ -5375,6 +5375,15 @@ async function find_EOL(col, query) {
 	socket.emit("find", worker, col, query, { sort: { kind: 1 }, projection: EOL_ }, check);
 }
 
+async function find_EOL_pic(col, query) {
+	if (socket == undefined) return;
+	flag_arrivedMSG = false;
+	check++;
+	if (check > 10) check = 0;
+
+	socket.emit("find", worker, col, query, { sort: { kind: 1 }, projection: EOL_pic_ }, check);
+}
+
 async function find_출하정보(col, query) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;

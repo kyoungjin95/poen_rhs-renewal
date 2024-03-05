@@ -57,7 +57,7 @@ async function login() {
         }
       }, 1000);
       await sleep(1);
-      alert('#공지사항#\nVersion update sky 0.66\n1. 완료보고서 DCIR검사와 용량평가 이미지란은 드래그 엔 드롭으로 이미지를 넣어야함\n2. 재제조 배터리팩 현황에서 관리번호 복사 버그 수정, 변경버튼 삭제\n3. 완료보고서 벅수정\n4. ETC 메뉴에 메뉴얼 추가');
+      alert('#공지사항#\nVersion update sky 0.66\n1. 완료보고서 DCIR검사와 용량평가 이미지란은 드래그 엔 드롭으로 이미지를 넣어야함\n2. 재제조 배터리팩 현황에서 관리번호 복사 버그 수정, 변경버튼 삭제\n3. 완료보고서 버그수정\n4. ETC 메뉴에 메뉴얼 추가');
     } else if (worker == _id.value) {
       worker = "";
       level = "";

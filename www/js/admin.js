@@ -68,7 +68,7 @@ async function 관리자_시작() {
 			_EOL.value = row.getData().EOL;
 			_출하검사.value = row.getData().출하검사;
 			_부품재고.value = row.getData().부품재고;
-  			_완료일수정.value = row.getData().완료일수정;
+			_완료일수정.value = row.getData().완료일수정;
 			_관리번호.value = row.getData().관리번호;
 		}
 	});
@@ -100,7 +100,7 @@ async function add_user() {
 	doc.EOL = _EOL.value;
 	doc.출하검사 = _출하검사.value;
 	doc.부품재고 = _부품재고.value;
-  	doc.완료일수정 = _완료일수정.value;
+	doc.완료일수정 = _완료일수정.value;
 	doc.관리번호 = _관리번호.value;
 
 	update_계정(계정, doc);
@@ -326,55 +326,63 @@ function read_품번_func_csv() {
 }
 
 async function eolpic() {
-	find('EOL_pic', { 관리번호 : { $exists : true}});
+	find_EOL_pic(EOL_pic, { 관리번호 : { $exists : true}});
 	await delay();
+	console.log(EOL_pic_v);
 
 	if(EOL_pic_v != null) {
-		var doc_1 = {
-			관리번호 : EOL_pic_v.관리번호,
-			pic1 : EOL_pic_v.pic1,
-			pic2 : EOL_pic_v.pic2,
-			pic3 : EOL_pic_v.pic3,
-			pic4 : EOL_pic_v.pic4,
-			pic5 : EOL_pic_v.pic5,
-			pic6 : EOL_pic_v.pic6,
-			pic7 : EOL_pic_v.pic7,
-			pic8 : EOL_pic_v.pic8,
-			pic9 : EOL_pic_v.pic9,
-			pic10 : EOL_pic_v.pic10
+		for(var i = 0; i < EOL_pic_v.length; i++) {
+			console.log('start:', EOL_pic_v[i].관리번호);
+			var doc_1 = {
+				관리번호 : EOL_pic_v[i].관리번호,
+				pic1 : EOL_pic_v[i].pic1,
+				pic2 : EOL_pic_v[i].pic2,
+				pic3 : EOL_pic_v[i].pic3,
+				pic4 : EOL_pic_v[i].pic4,
+				pic5 : EOL_pic_v[i].pic5,
+				pic6 : EOL_pic_v[i].pic6,
+				pic7 : EOL_pic_v[i].pic7,
+				pic8 : EOL_pic_v[i].pic8,
+				pic9 : EOL_pic_v[i].pic9,
+				pic10 : EOL_pic_v[i].pic10
+			}
+
+			update(EOL_pic1, doc_1);
+			await delay();
+
+			var doc_2 = {
+				관리번호 : EOL_pic_v[i].관리번호,
+				pic1 : EOL_pic_v[i].pic11,
+				pic2 : EOL_pic_v[i].pic12,
+				pic3 : EOL_pic_v[i].pic13,
+				pic4 : EOL_pic_v[i].pic14,
+				pic5 : EOL_pic_v[i].pic15,
+				pic6 : EOL_pic_v[i].pic16,
+				pic7 : EOL_pic_v[i].pic17,
+				pic8 : EOL_pic_v[i].pic18,
+				pic9 : EOL_pic_v[i].pic19,
+				pic10 : EOL_pic_v[i].pic20
+			}
+
+			update(EOL_pic2, doc_2);
+			await delay();
+
+			var doc_3 = {
+				관리번호 : EOL_pic_v[i].관리번호,
+				pic1 : EOL_pic_v[i].pic21,
+				pic2 : EOL_pic_v[i].pic22,
+				pic3 : EOL_pic_v[i].pic23,
+				pic4 : EOL_pic_v[i].pic24,
+				pic5 : EOL_pic_v[i].pic25,
+			}
+
+			update(EOL_pic3, doc_3);
+			await delay();
+
+			console.log('end:', EOL_pic_v[i].관리번호);
+
+			await sleep(1);
 		}
-
-		update(EOL_pic1, doc_1);
-		await delay();
-
-		var doc_2 = {
-			관리번호 : EOL_pic_v.관리번호,
-			pic1 : EOL_pic_v.pic11,
-			pic2 : EOL_pic_v.pic12,
-			pic3 : EOL_pic_v.pic13,
-			pic4 : EOL_pic_v.pic14,
-			pic5 : EOL_pic_v.pic15,
-			pic6 : EOL_pic_v.pic16,
-			pic7 : EOL_pic_v.pic17,
-			pic8 : EOL_pic_v.pic18,
-			pic9 : EOL_pic_v.pic19,
-			pic10 : EOL_pic_v.pic20
-		}
-
-		update(EOL_pic2, doc_2);
-		await delay();
-
-		var doc_3 = {
-			관리번호 : EOL_pic_v.관리번호,
-			pic1 : EOL_pic_v.pic21,
-			pic2 : EOL_pic_v.pic22,
-			pic3 : EOL_pic_v.pic23,
-			pic4 : EOL_pic_v.pic24,
-			pic5 : EOL_pic_v.pic25,
-		}
-
-		update(EOL_pic3, doc_3);
-		await delay();
 	}
 }
 
