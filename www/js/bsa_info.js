@@ -1,4 +1,5 @@
 var row_one_id = "";
+var BSA_data = [];
 var 재제조번호;
 var tabledata_BSA = [];
 var _id;
@@ -74,91 +75,13 @@ async function 재제조현황_시작() {
 	재제조현황_조회();
 }
 
-async function save() {
-	var data = table.getData();
-}
-
 async function 재제조현황_조회() {
 	if (worker == "") return;
-	BSA재제조_v = [];
 
-	if (level == "kia_일반") {
-		count(BSA재제조, {
-			차종: {
-				$in: ["DE", "DE_EV", "DEPBV", "DEPBV-EV", "CV", "CV_EV", "MV", "MV_EV", "PU", "PU_EV", "SG2", "SG2-EV", "TAM", "TAM-EV", "PS", "PS_EV", "SK3"],
-			},
-			구분: "일반",
-		});
-		await delay();
-	} else if (level == "hyundai_일반") {
-		count(BSA재제조, {
-			차종: {
-				$in: ["OS", "OS_EV", "NE", "NE_EV", "HR", "HR_EV", "LK", "LK_EV", "LM", "LM_EV", "LKFC", "LKFC-EV", "CS", "CS-EV", "CS_EV", "SX2", "SX2-EV", "AE", "AE_EV", "CE", "CE_EV", "ME", "ME_EV", "FE", "FE_EV", "RG3", "RG3-EV", "JW", "JW_EV", "JK", "JK_EV", "JX", "JX_EV"],
-			},
-			구분: "일반",
-		});
-		await delay();
-	} else if (level == "kia_보증") {
-		count(BSA재제조, {
-			차종: {
-				$in: ["DE", "DE_EV", "DEPBV", "DEPBV-EV", "CV", "CV_EV", "MV", "MV_EV", "PU", "PU_EV", "SG2", "SG2-EV", "TAM", "TAM-EV", "PS", "PS_EV", "SK3"],
-			},
-			구분: "보증",
-		});
-		await delay();
-	} else if (level == "hyundai_보증") {
-		count(BSA재제조, {
-			차종: {
-				$in: ["OS", "OS_EV", "NE", "NE_EV", "HR", "HR_EV", "LK", "LK_EV", "LM", "LM_EV", "LKFC", "LKFC-EV", "CS", "CS-EV", "CS_EV", "SX2", "SX2-EV", "AE", "AE_EV", "CE", "CE_EV", "ME", "ME_EV", "FE", "FE_EV", "RG3", "RG3-EV", "JW", "JW_EV", "JK", "JK_EV", "JX", "JX_EV"],
-			},
-			구분: "보증",
-		});
-		await delay();
-	} else {
-		//count(BSA재제조, { 관리번호 : { $exists: true } });
-		//await delay();
+	find_BSA재제조(BSA재제조, { 관리번호: { $exists: true } });
+	await delay();
 
-		BSA재제조_cnt = 1;
-	}
-
-	if (BSA재제조_cnt > 0) {
-		if (level == "kia_일반") {
-			find_BSA재제조(BSA재제조, {
-				차종: {
-					$in: ["DE", "DE_EV", "DEPBV", "DEPBV-EV", "CV", "CV_EV", "MV", "MV_EV", "PU", "PU_EV", "SG2", "SG2-EV", "TAM", "TAM-EV", "PS", "PS_EV", "SK3"],
-				},
-				구분: "일반",
-			});
-			await delay();
-		} else if (level == "hyundai_일반") {
-			find_BSA재제조(BSA재제조, {
-				차종: {
-					$in: ["OS", "OS_EV", "NE", "NE_EV", "HR", "HR_EV", "LK", "LK_EV", "LM", "LM_EV", "LKFC", "LKFC-EV", "CS", "CS-EV", "CS_EV", "SX2", "SX2-EV", "AE", "AE_EV", "CE", "CE_EV", "ME", "ME_EV", "FE", "FE_EV", "RG3", "RG3-EV", "JW", "JW_EV", "JK", "JK_EV", "JX", "JX_EV"],
-				},
-				구분: "일반",
-			});
-			await delay();
-		} else if (level == "kia_보증") {
-			find_BSA재제조(BSA재제조, {
-				차종: {
-					$in: ["DE", "DE_EV", "DEPBV", "DEPBV-EV", "CV", "CV_EV", "MV", "MV_EV", "PU", "PU_EV", "SG2", "SG2-EV", "TAM", "TAM-EV", "PS", "PS_EV", "SK3"],
-				},
-				구분: "보증",
-			});
-			await delay();
-		} else if (level == "hyundai_보증") {
-			find_BSA재제조(BSA재제조, {
-				차종: {
-					$in: ["OS", "OS_EV", "NE", "NE_EV", "HR", "HR_EV", "LK", "LK_EV", "LM", "LM_EV", "LKFC", "LKFC-EV", "CS", "CS-EV", "CS_EV", "SX2", "SX2-EV", "AE", "AE_EV", "CE", "CE_EV", "ME", "ME_EV", "FE", "FE_EV", "RG3", "RG3-EV", "JW", "JW_EV", "JK", "JK_EV", "JX", "JX_EV"],
-				},
-				구분: "보증",
-			});
-			await delay();
-		} else {
-			find_BSA재제조(BSA재제조, { 관리번호: { $exists: true } });
-			await delay();
-		}
-	}
+	BSA_data = JSON.parse(JSON.stringify(BSA재제조_v));
 
 	table = new Tabulator("#grid_BSA", {
 		initialSort:[
@@ -166,16 +89,16 @@ async function 재제조현황_조회() {
 			{column:"입고", dir:"desc"}, //then sort by this second
 		],
 		layout: "resizableColumnFit",
-		data: BSA재제조_v,
-		height: "700px",
+		data: BSA_data,
+		height: "600px",
 
 		columns: [
 			{ title: "ID", field: "_id", sorter: "string", width: "180" },
-			{ title: "관리번호", field: "관리번호", editor: "input", width: "180" },
+			{ title: "관리번호", field: "관리번호", sorter: "string", width: "180" },
 			{
 				title: "재제조번호",
 				field: "재제조번호",
-				editor: "input",
+				sorter: "string",
 				width: "180",
 			},
 			{ title: "구분", field: "구분", sorter: "string", width: "180" },
@@ -303,31 +226,6 @@ async function 재제조현황_조회() {
 				},
 			},
 		],
-		//	rowFormatter: function(row){
-		//		console.log(row.getData());
-		//		if (row.getData().완전분해 != ''){
-		//			const children = row.getElement().childNodes;
-		//			children.forEach((child) => {
-		//				child.style.backgroundColor = 'pink';
-		//			})
-		//		} else if (row.getData().폐기 != ''){
-		//			const children = row.getElement().childNodes;
-		//			children.forEach((child) => {
-		//				child.style.backgroundColor = 'yellow';
-		//			})
-		//		} else if (row.getData().공정단계 === '제조완료'){
-		//			const children = row.getElement().childNodes;
-		//			children.forEach((child) => {
-		//				child.style.backgroundColor = '#CCCCFF';
-		//			})
-		//		} else if (row.getData().공정단계 != '출하'){
-		//			const children = row.getElement().childNodes;
-		//			children.forEach((child) => {
-		//				child.style.backgroundColor = '#E8F8F5';
-		//			})
-		//		}
-		//	}
-
 	});
 
 	table_data = JSON.parse(JSON.stringify(BSA재제조_v));

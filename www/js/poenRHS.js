@@ -4612,6 +4612,12 @@ async function update_분해조립폐기자재(col, doc) {
 	socket.emit("update", worker, col, { QR: doc.QR }, { $set: doc });
 }
 
+async function update_by_id(col, doc) {
+	if (socket == undefined) return;
+	flag_arrivedMSG = false;
+	socket.emit("update_by_id", worker, col, { _id: doc.id}, { $set: doc });
+}
+
 async function deleteOne(col, management_id) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
