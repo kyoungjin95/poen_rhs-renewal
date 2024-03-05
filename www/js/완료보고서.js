@@ -268,7 +268,7 @@ async function 완료보고서_조회(is재제조번호 = false) {
 				//_CV_입고정보사유.innerHTML;
 				_CV_재제조이력.innerHTML = "OK";
 				//_CV_재제조이력사유.innerHTML;
-				_CV_출하QR.innerHTML = EOL_data.QR != "" && EOL_data.QR != undefiend ? "OK" : "NG";
+				_CV_출하QR.innerHTML = EOL_data.QR != "" && EOL_data.QR != undefined ? "OK" : "NG";
 				_CV_커버류.innerHTML = EOL_data.커버류;
 				if (EOL_data.커버류 == "OK") _CV_커버류확인.innerHTML = "커버 장착 확인";
 				else _CV_커버류확인.innerHTML = "커버 비장착";
@@ -338,7 +338,7 @@ async function 완료보고서_조회(is재제조번호 = false) {
 				//_HR_입고정보사유.innerHTML;
 				_HR_재제조이력.innerHTML = "OK";
 				//_HR_재제조이력사유.innerHTML;
-				_HR_출하QR.innerHTML = EOL_data.QR != "" && EOL_data.QR != undefiend ? "OK" : "NG";
+				_HR_출하QR.innerHTML = EOL_data.QR != "" && EOL_data.QR != undefined ? "OK" : "NG";
 				_HR_커버류.innerHTML = EOL_data.커버류;
 				if (EOL_data.커버류 == "OK") _HR_커버류확인.innerHTML = "커버 장착 확인";
 				else _HR_커버류확인.innerHTML = "커버 비장착";
@@ -372,7 +372,7 @@ async function 완료보고서_조회(is재제조번호 = false) {
 				//_PU_입고정보사유.innerHTML;
 				_PU_재제조이력.innerHTML = "OK";
 				//_PU_재제조이력사유.innerHTML;
-				_PU_출하QR.innerHTML = EOL_data.QR != "" && EOL_data.QR != undefiend ? "OK" : "NG";
+				_PU_출하QR.innerHTML = EOL_data.QR != "" && EOL_data.QR != undefined ? "OK" : "NG";
 				_PU_커버류.innerHTML = EOL_data.커버류;
 				if (EOL_data.커버류 == "OK") _PU_커버류확인.innerHTML = "커버 장착 확인";
 				else _PU_커버류확인.innerHTML = "커버 비장착";
@@ -406,7 +406,7 @@ async function 완료보고서_조회(is재제조번호 = false) {
 				//_LK_FC_입고정보사유.innerHTML;
 				_LK_FC_재제조이력.innerHTML = "OK";
 				//_LK_FC_재제조이력사유.innerHTML;
-				_LK_FC_출하QR.innerHTML = EOL_data.QR != "" && EOL_data.QR != undefiend ? "OK" : "NG";
+				_LK_FC_출하QR.innerHTML = EOL_data.QR != "" && EOL_data.QR != undefined ? "OK" : "NG";
 				_LK_FC_커버류.innerHTML = EOL_data.커버류;
 				if (EOL_data.커버류 == "OK") _LK_FC_커버류확인.innerHTML = "커버 장착 확인";
 				else _LK_FC_커버류확인.innerHTML = "커버 비장착";
@@ -440,7 +440,7 @@ async function 완료보고서_조회(is재제조번호 = false) {
 				//_LM_입고정보사유.innerHTML;
 				_LM_재제조이력.innerHTML = "OK";
 				//_LM_재제조이력사유.innerHTML;
-				_LM_출하QR.innerHTML = EOL_data.QR != "" && EOL_data.QR != undefiend ? "OK" : "NG";
+				_LM_출하QR.innerHTML = EOL_data.QR != "" && EOL_data.QR != undefined ? "OK" : "NG";
 				_LM_커버류.innerHTML = EOL_data.커버류;
 				if (EOL_data.커버류 == "OK") _LM_커버류확인.innerHTML = "커버 장착 확인";
 				else _LM_커버류확인.innerHTML = "커버 비장착";
@@ -474,7 +474,7 @@ async function 완료보고서_조회(is재제조번호 = false) {
 				//_NE_입고정보사유.innerHTML;
 				_NE_재제조이력.innerHTML = "OK";
 				//_NE_재제조이력사유.innerHTML;
-				_NE_출하QR.innerHTML = EOL_data.QR != "" && EOL_data.QR != undefiend ? "OK" : "NG";
+				_NE_출하QR.innerHTML = EOL_data.QR != "" && EOL_data.QR != undefined ? "OK" : "NG";
 				_NE_커버류.innerHTML = EOL_data.커버류;
 				if (EOL_data.커버류 == "OK") _NE_커버류확인.innerHTML = "커버 장착 확인";
 				else _NE_커버류확인.innerHTML = "커버 비장착";
@@ -543,7 +543,7 @@ async function 완료보고서_조회(is재제조번호 = false) {
 				//_SK3_입고정보사유.innerHTML;
 				_SK3_재제조이력.innerHTML = "OK";
 				//_SK3_재제조이력사유.innerHTML;
-				_SK3_출하QR.innerHTML = EOL_data.QR != "" && EOL_data.QR != undefiend ? "OK" : "NG";
+				_SK3_출하QR.innerHTML = EOL_data.QR != "" && EOL_data.QR != undefined ? "OK" : "NG";
 				_SK3_커버류.innerHTML = EOL_data.커버류;
 				if (EOL_data.커버류 == "OK") _SK3_커버류확인.innerHTML = "커버 장착 확인";
 				else _SK3_커버류확인.innerHTML = "커버 비장착";
