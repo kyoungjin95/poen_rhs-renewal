@@ -2243,19 +2243,6 @@ async function copy_EOL(mid, new_mid) {
 	}
 }
 
-async function copy_EOL(mid, new_mid) {
-	find(EOL, mid);
-	await delay();
-
-	doc = EOL_v;
-	if (doc != null) {
-		doc.관리번호 = new_mid;
-
-		update(EOL, doc);
-		await delay();
-	}
-}
-
 async function copy_출하정보(mid, new_mid) {
 	find(출하정보, m_id);
 	await delay();
