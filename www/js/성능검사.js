@@ -563,6 +563,7 @@ async function _send_filelist() {
 }
 
 function download1() {
+	관리번호 = _management_id.value;
 	console.log('download file 1');
 	const a = document.createElement('a');
 	a.download = 'file1.csv'
@@ -573,6 +574,7 @@ function download1() {
 }
 
 function download2() {
+	관리번호 = _management_id.value;
 	const a = document.createElement('a');
 	a.download = 'file2.csv'
 	const tmp_name = 관리번호.replace('#', '');

@@ -178,6 +178,17 @@ async function 기초검사_시작(is재제조 = 0) {
 		_AS센터조치.value = 기초검사_v.AS센터조치;
 		_검사자.value = 기초검사_v.검사자;
 
+		_img1.src   = ''; 
+		_img2.src   = '';
+		_img3.src   = '';
+		_img4.src   = '';
+		_img5.src   = '';
+		_img6.src   = '';
+		_img7.src   = '';
+		_img8.src   = '';
+		_img9.src   = '';
+		_img10.src  = '';
+
 		find(기초검사_pic1, _management_id.value);
 		await delay();
 
@@ -193,6 +204,17 @@ async function 기초검사_시작(is재제조 = 0) {
 			_img9.src = 기초검사_pic1_v.pic9;
 			_img10.src = 기초검사_pic1_v.pic10;
 		}
+		_img11.src  = '';
+		//_img12.sr = '';
+		_img13.src  = ''; 
+		_img14.src  = ''; 
+		_img15.src  = ''; 
+		_img16.src  = ''; 
+		_img17.src  = ''; 
+		_img18.src  = ''; 
+		_img19.src  = ''; 
+		_img20.src  = ''; 
+		_img21.src  = ''; 
 
 		find(기초검사_pic2, _management_id.value);
 		await delay();

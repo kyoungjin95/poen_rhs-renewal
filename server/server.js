@@ -36,7 +36,7 @@ const upload = multer({ storage: storage});
 const rations = {
 	maxRequestsPerTimeFrame: 600,
 	timeFrameInSeconds: 30,
-	removeRecordsAfter: (1000 * 60 * 5),
+	removeRecordsAfter: (1000 * 60),
 	dropConnections: false
 };
 ration.setRations(rations);
