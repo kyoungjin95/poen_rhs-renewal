@@ -123,6 +123,9 @@ server.listen(80, () => {
 
 io.on('connection', async function(socket) {
 	var client_ip = socket.request.connection.remoteAddress; 
+	var idx = client_ip.lastIndexOf(':');
+	if (~idx && ~client_ip.indexOf('.'))
+  	client_ip = client_ip.slice(idx + 1);
 
 	console.log('connected ip', client_ip);
 
