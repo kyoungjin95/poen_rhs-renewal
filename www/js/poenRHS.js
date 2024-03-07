@@ -5691,12 +5691,12 @@ const toBase64 = (file) =>
 
 function resize_pic(file, img, 예외 = false) {
 	if (예외 == false) {
-		ImageResizer.resizeImage(file, { maxWidth: 500, maxHeight: 500 }, async function (resultFile) {
+		ImageResizer.resizeImage(file, { maxWidth: 250, maxHeight: 250 }, async function (resultFile) {
 			img.src = await toBase64(resultFile);
 			console.log(img.src);
 		});
 	} else {
-		ImageResizer.resizeImage(file, { maxWidth: 2000, maxHeight: 2000 }, async function (resultFile) {
+		ImageResizer.resizeImage(file, { maxWidth: 1000, maxHeight: 1000 }, async function (resultFile) {
 			img.src = await toBase64(resultFile);
 			console.log(img.src);
 		});
