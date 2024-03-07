@@ -181,6 +181,9 @@ async function 성능검사_save() {
 	if (level == "관리자") doc.공정완료일 = _공정완료일.value;
 	doc.검사자 = _검사자.value;
 
+	const canvas = document.getElementById('_chart');
+	doc.chart = canvas.toDataURL();
+
 	update(성능검사, doc);
 	await delay();
 
@@ -683,7 +686,7 @@ async function check_file() {
 
 async function chartDraw(data) {
 	const canvas = document.getElementById('_chart');
-
+	
 	if (_chart != undefined) {
 		_chart.destroy();
 	}

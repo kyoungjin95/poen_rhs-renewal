@@ -659,6 +659,7 @@ const 성능검사_doc = {
 	차종: "",
 	품번: "",
 	RO_no: "",
+	chart : "",
 };
 
 const EOL_doc = {
@@ -2442,6 +2443,7 @@ const 성능검사_ = {
 	차종: 1,
 	품번: 1,
 	RO_no: 1,
+	chart : 1,
 };
 
 const 고품정보_ = {

@@ -674,6 +674,7 @@ async function 완료보고서_조회(is재제조번호 = false) {
 	};
 
 	if(성능_data != undefined) {
+		if(_img2.src == '') _img2.src = 성능_data.chart;
 		_용량평가_결과.innerHTML = Number(성능_data.용량평가).toFixed(2);
 	}
 }
