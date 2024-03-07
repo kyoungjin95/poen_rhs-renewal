@@ -40,7 +40,6 @@ const rations = {
 	dropConnections: false
 };
 ration.setRations(rations);
-app.use(ration.startRations);
 
 var db;
 var 관리번호 = '';
@@ -69,6 +68,7 @@ app.use('/base', express.static(path.join(__dirname, '../www')));
 app.use('/excel', express.static(path.join(__dirname, './excel')));
 app.use(express.json());
 app.use(express.urlencoded());
+app.use(ration.startRations);
 
 app.get('/', (req, res) => {
 	res.sendFile(path.join(__dirname, '../www/index.html'));
