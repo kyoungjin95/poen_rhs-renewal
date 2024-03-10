@@ -57,7 +57,7 @@ async function login() {
         }
       }, 1000);
       await sleep(1);
-      alert('#공지사항#\nVersion update sky 0.66\n1. ETC 메뉴에 메뉴얼 추가\n2. 완료보고서 이미지를 나누어 전송');
+      alert('#공지사항#\nVersion update sky 0.68\n1. 분해조립 재제조에 고품식별 항목 추가');
     } else if (worker == _id.value) {
       worker = "";
       level = "";
