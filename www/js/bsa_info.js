@@ -1061,13 +1061,14 @@ async function grid_분해조립new(m_id = "") {
 			{ title: "품명", field: "품명", sorter: "string" },
 			{ title: "교체전 품번", field: "교체전품번", sorter: "string" },
 			{ title: "교체전 QR", field: "교체전QR", sorter: "string" },
-			{ title: "신품/고품", field: "신품고품", editor: "string"},
-			{ title: "교체후 품번", field: "교체후품번", editor: "string" },
-			{ title: "교체후 QR", field: "교체후QR", editor: "string" },
-			{ title: "교체사유", field: "교체사유", editor: "string" },
-			{ title: "공정입고일", field: "공정입고일", editor: "string" },
-			{ title: "공정완료일", field: "공정완료일", editor: "string" },
-			{ title: "작성자", field: "작성자", editor: "string" },
+			{ title: "신품/고품", field: "신품고품", sorter: "string"},
+			{ title: "고품식별", field: "고품식별", sorter: "string"},
+			{ title: "교체후 품번", field: "교체후품번", sorter: "string" },
+			{ title: "교체후 QR", field: "교체후QR", sorter: "string" },
+			{ title: "교체사유", field: "교체사유", sorter: "string" },
+			{ title: "공정입고일", field: "공정입고일", sorter: "string" },
+			{ title: "공정완료일", field: "공정완료일", sorter: "string" },
+			{ title: "작성자", field: "작성자", sorter: "string" },
 		]
 	});
 }
