@@ -5698,7 +5698,7 @@ function resize_pic(file, img, 예외 = false) {
 			console.log(img.src);
 		});
 	} else {
-		ImageResizer.resizeImage(file, { maxWidth: 1000, maxHeight: 1000 }, async function (resultFile) {
+		ImageResizer.resizeImage(file, { maxWidth: 2000, maxHeight: 2000 }, async function (resultFile) {
 			img.src = await toBase64(resultFile);
 			console.log(img.src);
 		});

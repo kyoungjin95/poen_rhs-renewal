@@ -57,7 +57,7 @@ async function login() {
         }
       }, 1000);
       await sleep(1);
-      alert('#공지사항#\nVersion update sky 0.68\n1. 분해조립 재제조에 고품식별 항목 추가');
+      alert('#공지사항#\nVersion update sky 0.69\n1. 분해조립 재제조 모듈 넘버 버그 수정\n2. 완료보고서 DCIR, 용량평가 이미지 해상도 개선');
     } else if (worker == _id.value) {
       worker = "";
       level = "";

@@ -642,7 +642,7 @@ async function 완료보고서_조회(is재제조번호 = false) {
 		var files = evt.dataTransfer?.files;
 		if (files.length > 0) {
 			console.log("drag & drop");
-			resize_pic(files[0], _img1);
+			resize_pic(files[0], _img1, true);
 		}
 		evt.preventDefault();
 	};
@@ -664,7 +664,7 @@ async function 완료보고서_조회(is재제조번호 = false) {
 		var files = evt.dataTransfer?.files;
 		if (files.length > 0) {
 			console.log("drag & drop");
-			resize_pic(files[0], _img2);
+			resize_pic(files[0], _img2, true);
 		}
 		evt.preventDefault();
 	};
