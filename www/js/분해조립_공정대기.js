@@ -46,7 +46,7 @@ async function 분해조립_공정대기_시작() {
 }
 
 var table_공정대기;
-function 분해조립공정대기_table(tabledata) {
+async function 분해조립공정대기_table(tabledata) {
 	table_공정대기 = new Tabulator("#grid_교체부품", {
 		layout: "resizableColumnFit",
 		height: 500,

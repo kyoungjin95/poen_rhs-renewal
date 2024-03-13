@@ -48,7 +48,7 @@ async function 분해조립_폐기자재_시작() {
 
 var table_폐기자재;
 var flag_all_폐기사유 = false;
-function 분해조립폐기자재_table(tabledata) {
+async function 분해조립폐기자재_table(tabledata) {
 	table_폐기자재 = new Tabulator("#grid_교체부품", {
 		initialSort:[
 			{column:"품명", dir:"asc"}, //sort by this first

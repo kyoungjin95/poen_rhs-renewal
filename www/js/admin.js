@@ -388,65 +388,69 @@ async function eolpic() {
 
 async function 기본정보자동입력() {
 	var cnt = 0;
-	find_입고(입고, { 관리번호 : { $exists : true}});
+	//find_입고(입고, { 관리번호 : { $exists : true}});
+	//await delay();
+
+	find_BSA재제조(BSA재제조, { 관리번호 : { $exists : true}});
 	await delay();
 
-	console.log(입고_v);
-	for(var i = 0 ; i < 입고_v.length; i++) {
+	console.log(BSA재제조_v);
+	for(var i = 0 ; i < BSA재제조_v.length; i++) {
 		var doc = {};
-		doc.관리번호 = 입고_v[i].관리번호;
-		doc.구분 = 입고_v[i].구분;
-		doc.차종 = 입고_v[i].차종;
-		doc.품번 = 입고_v[i].품번;
-		doc.RO_no = 입고_v[i].RO_no;
+		doc.관리번호 = BSA재제조_v[i].관리번호;
+		doc.재제조번호 = BSA재제조_v[i].재제조번호;
+		//doc.구분 = 입고_v[i].구분;
+		//doc.차종 = 입고_v[i].차종;
+		//doc.품번 = 입고_v[i].품번;
+		//doc.RO_no = 입고_v[i].RO_no;
 
-		//update(세척, doc);
-		//await delay();
+		update(세척, doc);
+		await delay();
 
-		//update(기초검사, doc);
-		//await delay();
+		update(기초검사, doc);
+		await delay();
 
-		//update(분해조립, doc);
-		//await delay();
+		update(분해조립, doc);
+		await delay();
 
-		//update(성능검사, doc);
-		//await delay();
+		update(성능검사, doc);
+		await delay();
 
-		//update(EOL, doc);
-		//await delay();
+		update(EOL, doc);
+		await delay();
 
 		update(특이사항, doc);
 		await delay();
 
-		//update(교체부품상세1, doc);
-		//await delay();
+		update(교체부품상세1, doc);
+		await delay();
 
-		//update(교체부품상세2, doc);
-		//await delay();
+		update(교체부품상세2, doc);
+		await delay();
 
-		//update(교체부품상세3, doc);
-		//await delay();
+		update(교체부품상세3, doc);
+		await delay();
 
-		//update(교체부품상세4, doc);
-		//await delay();
+		update(교체부품상세4, doc);
+		await delay();
 
-		//update(교체부품상세5, doc);
-		//await delay();
+		update(교체부품상세5, doc);
+		await delay();
 
-		//update(교체부품상세6, doc);
-		//await delay();
+		update(교체부품상세6, doc);
+		await delay();
 
-		//update(교체부품상세7, doc);
-		//await delay();
+		update(교체부품상세7, doc);
+		await delay();
 
-		//update(교체부품상세8, doc);
-		//await delay();
+		update(교체부품상세8, doc);
+		await delay();
 
-		//update(교체부품상세9, doc);
-		//await delay();
+		update(교체부품상세9, doc);
+		await delay();
 
-		//update(교체부품상세10, doc);
-		//await delay();
+		update(교체부품상세10, doc);
+		await delay();
 
 		cnt++;
 		console.log(cnt);

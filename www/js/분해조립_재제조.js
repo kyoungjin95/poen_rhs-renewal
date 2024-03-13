@@ -53,7 +53,7 @@ async function 분해조립_재제조_시작() {
 
 var table_부품교환;
 
-function 교체부품_table(tabledata) {
+async function 교체부품_table(tabledata) {
 	table_부품교환 = new Tabulator("#grid_교체부품", {
 		layout: "resizableColumnFit",
 		height: 500,
