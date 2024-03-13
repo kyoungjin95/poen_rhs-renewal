@@ -400,50 +400,53 @@ async function 기본정보자동입력() {
 		doc.품번 = 입고_v[i].품번;
 		doc.RO_no = 입고_v[i].RO_no;
 
-		update(세척, doc);
+		//update(세척, doc);
+		//await delay();
+
+		//update(기초검사, doc);
+		//await delay();
+
+		//update(분해조립, doc);
+		//await delay();
+
+		//update(성능검사, doc);
+		//await delay();
+
+		//update(EOL, doc);
+		//await delay();
+
+		update(특이사항, doc);
 		await delay();
 
-		update(기초검사, doc);
-		await delay();
+		//update(교체부품상세1, doc);
+		//await delay();
 
-		update(분해조립, doc);
-		await delay();
+		//update(교체부품상세2, doc);
+		//await delay();
 
-		update(성능검사, doc);
-		await delay();
+		//update(교체부품상세3, doc);
+		//await delay();
 
-		update(EOL, doc);
-		await delay();
+		//update(교체부품상세4, doc);
+		//await delay();
 
-		update(교체부품상세1, doc);
-		await delay();
+		//update(교체부품상세5, doc);
+		//await delay();
 
-		update(교체부품상세2, doc);
-		await delay();
+		//update(교체부품상세6, doc);
+		//await delay();
 
-		update(교체부품상세3, doc);
-		await delay();
+		//update(교체부품상세7, doc);
+		//await delay();
 
-		update(교체부품상세4, doc);
-		await delay();
+		//update(교체부품상세8, doc);
+		//await delay();
 
-		update(교체부품상세5, doc);
-		await delay();
+		//update(교체부품상세9, doc);
+		//await delay();
 
-		update(교체부품상세6, doc);
-		await delay();
-
-		update(교체부품상세7, doc);
-		await delay();
-
-		update(교체부품상세8, doc);
-		await delay();
-
-		update(교체부품상세9, doc);
-		await delay();
-
-		update(교체부품상세10, doc);
-		await delay();
+		//update(교체부품상세10, doc);
+		//await delay();
 
 		cnt++;
 		console.log(cnt);
