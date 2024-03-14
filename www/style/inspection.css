@@ -206,7 +206,9 @@ table td.bottom {
   margin: 20px 0;
 }
 #_육안검사내부1 .title,
-#_육안검사외부1 .title {
+#_육안검사외부1 .title,
+#_육안검사외부 .title,
+#_육안검사내부 .title {
   font-weight: bold;
   background: #c8e7a7;
 }
@@ -242,6 +244,10 @@ table td.bottom {
   object-fit: contain;
   object-position: center;
 }
+.heightPhoto #_CAN진단 {
+  width: 100%;
+  aspect-ratio: 3/4;
+}
 /* .
 .changeWidth img {
   width: 60%;
@@ -251,6 +257,10 @@ table td.bottom {
 .photo #_PDS진단2 {
   width: 80%;
 } */
+#_cbCAN통신검사 .heightPhoto {
+  width: 100%;
+  aspect-ratio: 3/4;
+}
 .photo #_PDS진단1 {
   margin-bottom: 20px;
 }
@@ -319,6 +329,9 @@ td.bg-gray {
   color: #fff;
   padding: 5px;
 }
+.dcir_검사 td {
+  padding: 1px;
+}
 ._완료보고서__img .images {
   width: 100%;
   height: 50vh;
@@ -334,10 +347,9 @@ td.bg-gray {
 #_용량평가 .t1-d {
   border: none;
   justify-content: flex-end;
-  padding: 20px 10px;
+  padding: 10px;
 }
-
-.dcir_용량_input {
+/* .dcir_용량_input {
   border: none;
   background-color: #fff;
   margin: 0;
@@ -348,6 +360,27 @@ td.bg-gray {
 }
 .dcir_용량_input input:-internal-autofill-selected {
   background-color: none;
+} */
+.dcir_검사 th {
+  background: #2d75bd;
+  color: #fff;
+  padding: 2px;
+}
+.dcir_검사 td {
+  font-weight: 600;
+  font-size: clamp(8px, 1vw, 20px);
+  word-break: break-all;
+}
+.dcir_검사 .charge-tit,
+.dcir_검사 .charge-status {
+  font-family: var(--en-font);
+  text-transform: capitalize;
+}
+.dcir_검사 .charge-status {
+  font-style: italic;
+}
+.dcir_검사 .before {
+  color: #bbb;
 }
 
 /* media query */

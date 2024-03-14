@@ -75,8 +75,8 @@
                       contenteditable="true"
                       style="outline: none"
                       placeholder="(교체 부품 명과 교체 사유 입력. 
-													     반드시 기초보고서와 매칭될 것
-													     성능검사에서 추가 부품교체 필요시 내용 적을것)"
+                    반드시 기초보고서와 매칭될 것
+                    성능검사에서 추가 부품교체 필요시 내용 적을것)"
                     ></p>
                     2. 공정흐름 이슈 입력 :
                     <p id="_이슈입력"></p>
@@ -1844,10 +1844,25 @@
             <td class="photo">
               <img id="_CAN현재" />
             </td>
-            <td rowspan="2" class="photo heightPhoto">
-              <img id="_CAN진단" width="100%" />
+            <td class="photo heightPhoto" rowspan="2">
+              <img id="_CAN진단" " />
+              <div id="_file_exist3" class="process__file t1-d" style="justify-content: flex-end">
+                <div id="_inFile3" class="in-file" style="display: none">
+                  <button class="download-file" onClick="완료보고서_download1();">
+                    <i class="fas fa-arrow-down"></i>
+                  </button>
+                </div>
+                <div class="files">
+                  <input type="file" class="file_upload" id="_file3" name="excel" />
+                  <label for="_file3" class="upload_label">
+                    <i class="fa-regular fa-file"></i>
+                    &nbsp;파일 선택</label
+                  >
+                  <span class="delete_icon" style="display: none">❌</span>
+                </div>
+              </div>
             </td>
-            <td rowspan="2" class="photo">
+            <td class="photo" rowspan="4">
               <img id="_PDS진단1" style="aspect-ratio: 1" />
               <img id="_PDS진단2" style="aspect-ratio: 1" />
             </td>
@@ -1978,27 +1993,107 @@
           <h3>▣ DCIR 검사</h3>
           <input type="checkbox" id="_cbDCIR검사" checked />
         </div>
-        <table border="2" class="all">
+        <div style="border: 1px solid #000; width: 80%; border-bottom: none">
+          <canvas id="_DCIR_canvas" width="800vw" height="300vw"></canvas>
+        </div>
+        <table border="2" class="all dcir_검사">
           <colgroup>
             <col />
-            <col width="30%" />
+            <col />
+            <col />
+            <col />
+            <col />
+            <col />
+            <col />
           </colgroup>
           <tbody>
             <tr>
-              <td class="_완료보고서__img" colspan="2">
-                <div class="images">
-                  <img id="_img1" />
-                </div>
-              </td>
+              <th>Step</th>
+              <th>C-rate</th>
+              <th>전류(A)</th>
+              <th>구분</th>
+              <th>상태</th>
+              <th>전압(V)</th>
+              <th>DC-IR<br />계산값(mΩ)</th>
+            </tr>
+            <tr>
+              <td rowspan="4">1</td>
+              <td rowspan="4">0.5C</td>
+              <td rowspan="4" id="_전류A1"></td>
+              <td rowspan="2" class="color-blue charge-tit">discharge</td>
+              <td class="charge-status before">before</td>
+              <td id="_전압V1"></td>
+              <td rowspan="2" id="_DCIR_Charge1"></td>
+            </tr>
+            <tr>
+              <td class="charge-status">after</td>
+              <td id="_전압V2"></td>
+            </tr>
+            <tr>
+              <td rowspan="2" class="color-red charge-tit">charge</td>
+              <td class="charge-status before">before</td>
+              <td id="_전압V3"></td>
+              <td rowspan="2" id="_DCIR_Charge2"></td>
+            </tr>
+            <tr>
+              <td class="charge-status">after</td>
+              <td id="_전압V4"></td>
+            </tr>
+            <tr>
+              <td rowspan="4">2</td>
+              <td rowspan="4">0.7C</td>
+              <td rowspan="4" id="_전류A2"></td>
+              <td rowspan="2" class="color-blue charge-tit">discharge</td>
+              <td class="charge-status before">before</td>
+              <td id="_전압V5"></td>
+              <td rowspan="2" id="_DCIR_Charge3"></td>
+            </tr>
+            <tr>
+              <td class="charge-status">after</td>
+              <td id="_전압V6"></td>
+            </tr>
+            <tr>
+              <td rowspan="2" class="color-red charge-tit">charge</td>
+              <td class="charge-status before">before</td>
+              <td id="_전압V7"></td>
+              <td rowspan="2" id="_DCIR_Charge4"></td>
+            </tr>
+            <tr>
+              <td class="charge-status">after</td>
+              <td id="_전압V8"></td>
+            </tr>
+            <tr>
+              <td rowspan="4">3</td>
+              <td rowspan="4">1.0C</td>
+              <td rowspan="4" id="_전류A3"></td>
+              <td rowspan="2" class="color-blue charge-tit">discharge</td>
+              <td class="charge-status before">before</td>
+              <td id="_전압V9"></td>
+              <td rowspan="2" id="_DCIR_Charge5"></td>
+            </tr>
+            <tr>
+              <td class="charge-status">after</td>
+              <td id="_전압V10"></td>
+            </tr>
+            <tr>
+              <td rowspan="2" class="color-red charge-tit">charge</td>
+              <td class="charge-status before">before</td>
+              <td id="_전압V11"></td>
+              <td rowspan="2" id="_DCIR_Charge6"></td>
+            </tr>
+            <tr>
+              <td class="charge-status">after</td>
+              <td id="_전압V12"></td>
             </tr>
           </tbody>
+
           <tfoot>
             <tr>
-              <td style="text-align: left; font-weight: bold; border-right: 1px solid #000">
+              <td style="text-align: left; font-weight: bold; padding-left: 10px; border-right: 1px solid #000" colspan="4">
                 결과: <br />
-                DC-IR 평균값 : <span id="_DCIR검사_결과" />
+                &nbsp;&nbsp;&nbsp;&nbsp;DC-IR 평균값 : <span id="_DCIR검사_결과" />mΩ
               </td>
-              <td id="_file_exist1" class="process__file t1-d">
+              <td id="_file_exist1" class="process__file t1-d" colspan="3" style="width: 300%" ;>
                 <div id="_inFile1" class="in-file" style="display: none">
                   <button class="download-file" onClick="완료보고서_download1();">
                     <i class="fas fa-arrow-down"></i>
@@ -2016,6 +2111,7 @@
             </tr>
           </tfoot>
         </table>
+
         <div class="bottom">
           <p>FQ850-05</p>
           <p>A4(297x210mm)</p>
@@ -2031,7 +2127,7 @@
         <table border="2" class="all">
           <colgroup>
             <col />
-            <col width="30%" />
+            <col width="40%" />
           </colgroup>
           <tbody>
             <tr>
@@ -2044,9 +2140,7 @@
           </tbody>
           <tfoot>
             <tr>
-              <td style="text-align: left; font-weight: bold; border-right: 1px solid #000">
-                결과: <span id="_용량평가_결과"/>
-              </td>
+              <td style="text-align: left; font-weight: bold; padding-left: 10px; border-right: 1px solid #000">결과: &nbsp;&nbsp;<span id="_용량평가_결과" /></td>
               <td id="_file_exist1" class="process__file t1-d">
                 <div id="_inFile2" class="in-file" style="display: none">
                   <button class="download-file" onClick="완료보고서_download2();">
@@ -2082,6 +2176,11 @@
 
     <div>
       <table>
+        <colgroup>
+          <col width="20%" />
+          <col width="60%" />
+          <col />
+        </colgroup>
         <tr>
           <td class="left-line-del">
             <label>관리번호</label>
@@ -2106,13 +2205,11 @@
         </tr>
 
         <tr>
-          <td>
+          <td colspan="2">
             <button id="_btn_upload" onClick="완료보고서_file_upload();">파일 업로드</button>
-	  </td>
-	  <td>
             <button onClick="완료보고서_save();">저장</button>
-	  </td>
-	  <td>
+          </td>
+          <td>
             <button onClick="back();">되돌아 가기</button>
           </td>
         </tr>
@@ -2310,7 +2407,6 @@
       const _LK_입고정보사유 = document.getElementById("_LK_입고정보사유");
       const _LK_재제조이력 = document.getElementById("_LK_재제조이력");
       const _LK_재제조이력사유 = document.getElementById("_LK_재제조이력사유");
-      const _LK_출하QR = document.getElementById("_LK_출하QR");
       const _LK_출하QR = document.getElementById("_LK_출하QR");
       const _LK_출하QR사유 = document.getElementById("_LK_출하QR사유");
       const _LK_커버류 = document.getElementById("_LK_커버류");
@@ -2534,7 +2630,7 @@
       const _절연측정사진1 = document.getElementById("_절연측정사진1");
       const _절연측정사진2 = document.getElementById("_절연측정사진1");
       const _절연측정값사진1 = document.getElementById("_절연측정값사진1");
-      const _절연측정값사진1 = document.getElementById("_절연측정값사진1");
+      const _절연측정값사진2 = document.getElementById("_절연측정값사진2");
       const _절연PRA_P = document.getElementById("_절연PRA_P");
       const _절연PRA_N = document.getElementById("_절연PRA_N");
 
@@ -2559,9 +2655,31 @@
       //DCIR검사, 용량평가
       const _file1 = document.getElementById("_file1");
       const _file2 = document.getElementById("_file2");
-
+      const _file3 = document.getElementById("_file3");
       const _inFile1 = document.getElementById("_inFile1");
       const _inFile2 = document.getElementById("_inFile2");
+      const _inFile3 = document.getElementById("_inFile3");
+      const _전류A1 = document.getElementById("_전류A1");
+      const _전류A2 = document.getElementById("_전류A2");
+      const _전류A3 = document.getElementById("_전류A3");
+      const _전압V1 = document.getElementById("_전압V1");
+      const _전압V2 = document.getElementById("_전압V2");
+      const _전압V3 = document.getElementById("_전압V3");
+      const _전압V4 = document.getElementById("_전압V4");
+      const _전압V5 = document.getElementById("_전압V5");
+      const _전압V6 = document.getElementById("_전압V6");
+      const _전압V7 = document.getElementById("_전압V7");
+      const _전압V8 = document.getElementById("_전압V8");
+      const _전압V9 = document.getElementById("_전압V9");
+      const _전압V10 = document.getElementById("_전압V10");
+      const _전압V11 = document.getElementById("_전압V11");
+      const _전압V12 = document.getElementById("_전압V12");
+      const _DCIR_Charge1 = document.getElementById("_DCIR_Charge1");
+      const _DCIR_Charge2 = document.getElementById("_DCIR_Charge2");
+      const _DCIR_Charge3 = document.getElementById("_DCIR_Charge3");
+      const _DCIR_Charge4 = document.getElementById("_DCIR_Charge4");
+      const _DCIR_Charge5 = document.getElementById("_DCIR_Charge5");
+      const _DCIR_Charge6 = document.getElementById("_DCIR_Charge6");
 
       //checkbox
       const _cb기초보고서 = document.getElementById("_cb기초보고서");
@@ -2576,16 +2694,6 @@
       const _form = document.getElementById("_form");
       const _img1 = document.getElementById("_img1");
       const _img2 = document.getElementById("_img2");
-      
-      const _완료보고서 = documnet.getElementById("_완료보고서");
-      const _육안검사외부 = documnet.getElementById("_육안검사외부");
-      const _육안검사내부 = documnet.getElementById("_육안검사내부");
-      const _기밀검사 = documnet.getElementById("_기밀검사");
-      const _절연저항검사 = documnet.getElementById("_절연저항검사");
-      const _CAN통신검사 = documnet.getElementById("_CAN통신검사");
-      const _CAN통신검사2 = documnet.getElementById("_CAN통신검사2");
-      const _DCIR검사 = documnet.getElementById("_DCIR검사");
-      const _용량평가 = documnet.getElementById("_용량평가");
     </script>
   </body>
 </html>
