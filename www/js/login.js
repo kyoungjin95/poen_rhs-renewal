@@ -57,7 +57,7 @@ async function login() {
         }
       }, 1000);
       await sleep(1);
-      //alert('#공지사항#\nVersion update sky 0.70\n1. 분해조립 재제조 데이터 표출 버그 수정');
+      alert('#공지사항#\nVersion update sky 0.71\n1. 성능검사 저장시 완료보고서 DCIR 검사 표와 차트,\n 용량평가 그래프 자동 처리 DATA 저장');
     } else if (worker == _id.value) {
       worker = "";
       level = "";
