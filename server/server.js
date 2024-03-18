@@ -185,6 +185,26 @@ io.on('connection', async function(socket) {
 		var DCIR5 = 0;
 		var DCIR6 = 0;
 
+		var vol1 = 0;
+		var vol2 = 0;
+		var vol3 = 0;
+		var vol4 = 0;
+		var vol5 = 0;
+		var vol6 = 0;
+		var vol7 = 0;
+		var vol8 = 0;
+		var vol9 = 0;
+		var vol10 = 0;
+		var vol11 = 0;
+		var vol12 = 0;
+		
+		var curr1 = 0;
+		var curr2 = 0;
+		var curr3 = 0;
+		var curr4 = 0;
+		var curr5 = 0;
+		var curr6 = 0;
+
 		for(var i = 0; i < data.length; i++) {
 			if(old_DCIR > 0 && data[i].DCIR == 0) {
 				if(DCIR2 == 0) DCIR2 = old_DCIR;
@@ -204,17 +224,60 @@ io.on('connection', async function(socket) {
 
 			old_DCIR = data[i].DCIR;
 			if(i == (data.length - 1)) console.log(data[i].DCIR);
+
+			if((i > 1) && (data[i - 1].StepType == 'REST') && ((data[i].StepType == 'DISCHARGE') || (data[i].StepType == 'CHARGE'))){
+				if(vol1 == 0) vol1 = data[i - 1].Volt;
+				else if(vol3 == 0) vol3 = data[i - 1].Volt;
+				else if(vol5 == 0) vol5 = data[i - 1].Volt;
+				else if(vol7 == 0) vol7 = data[i - 1].Volt;
+				else if(vol9 == 0) vol9 = data[i - 1].Volt;
+				else if(vol11 == 0) vol11 = data[i - 1].Volt;
+			}
+
+			if(((data[i].StepType == 'DISCHARGE') || (data[i].StepType == 'CHARGE')) && (data[i + 1].StepType == 'REST')) {
+				if(vol2 == 0) vol2 = data[i].Volt;
+				else if(vol4 == 0) vol4 = data[i].Volt;
+				else if(vol6 == 0) vol6 = data[i].Volt;
+				else if(vol8 == 0) vol8 = data[i].Volt;
+				else if(vol10 == 0) vol10 = data[i].Volt;
+				else if(vol12 == 0) vol12 = data[i].Volt;
+
+				if(curr1 == 0) curr1 = data[i].Curr;
+				else if(curr2 == 0) curr2 = data[i].Curr;
+				else if(curr3 == 0) curr3 = data[i].Curr;
+				else if(curr4 == 0) curr4 = data[i].Curr;
+				else if(curr5 == 0) curr5 = data[i].Curr;
+				else if(curr6 == 0) curr6 = data[i].Curr;
+			}
 		}
 
 		var DCIR_total = (Math.abs(Number(DCIR1)) + Number(DCIR2) + Math.abs(Number(DCIR3))  + Number(DCIR4) + Math.abs(Number(DCIR5)) + Math.abs(Number(DCIR6))) / 6;
 		var result = {
-			DCIR : DCIR_total,
-			DCIR1 : DCIR1,
-			DCIR2 : DCIR2,
-			DCIR3 : DCIR3,
-			DCIR4 : DCIR4,
-			DCIR5 : DCIR5,
-			DCIR6 : DCIR6,
+			DCIR : Math.abs(DCIR_total),
+			DCIR1 : Math.abs(DCIR1),
+			DCIR2 : Math.abs(DCIR2),
+			DCIR3 : Math.abs(DCIR3),
+			DCIR4 : Math.abs(DCIR4),
+			DCIR5 : Math.abs(DCIR5),
+			DCIR6 : Math.abs(DCIR6),
+			VOLT1 : Math.abs(vol1),
+			VOLT2 : Math.abs(vol2),
+			VOLT3 : Math.abs(vol3),
+			VOLT4 : Math.abs(vol4),
+			VOLT5 : Math.abs(vol5),
+			VOLT6 : Math.abs(vol6),
+			VOLT7 : Math.abs(vol7),
+			VOLT8 : Math.abs(vol8),
+			VOLT9 : Math.abs(vol9),
+			VOLT10 : Math.abs(vol10),
+			VOLT11 : Math.abs(vol11),
+			VOLT12 : Math.abs(vol12),
+			CURR1 : Math.round(Math.abs(curr1)),
+			CURR2 : Math.round(Math.abs(curr2)),
+			CURR3 : Math.round(Math.abs(curr3)),
+			CURR4 : Math.round(Math.abs(curr4)),
+			CURR5 : Math.round(Math.abs(curr5)),
+			CURR6 : Math.round(Math.abs(curr6)),
 		};
 		socket.emit('DCIR_result', result);
 		console.log(result);
@@ -814,8 +877,8 @@ function DCIRcsvToJSON(csv_string) {
 		const rows = csv_string.split("\r\n");
 		const jsonArray = [];
 		const header = [ "Time", "Channel", "EndReason", "LoopCount", "CycleNo",
-			"StepNo", "StepType", "StepTime", "TotTime", "Volt(V)",
-			"Curr(A)", "Cap(Ah)", "TotalCap(Ah)", "ChargeCap(Ah)",
+			"StepNo", "StepType", "StepTime", "TotTime", "Volt",
+			"Curr", "Cap(Ah)", "TotalCap(Ah)", "ChargeCap(Ah)",
 			"DischargeCap(Ah)", "Watt(W)", "WH(Wh)", "TotalWH(Wh)",
 			"ChargeWH(Wh)", "DischargeWH", "DCIR",
 			"AvgCur(A)"]

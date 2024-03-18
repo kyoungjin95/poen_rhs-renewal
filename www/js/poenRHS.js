@@ -141,6 +141,24 @@ var DCIR3_result = 0;
 var DCIR4_result = 0;
 var DCIR5_result = 0;
 var DCIR6_result = 0;
+var VOLT1_result = 0;
+var VOLT2_result = 0;
+var VOLT3_result = 0;
+var VOLT4_result = 0;
+var VOLT5_result = 0;
+var VOLT6_result = 0;
+var VOLT7_result = 0;
+var VOLT8_result = 0;
+var VOLT9_result = 0;
+var VOLT10_result = 0;
+var VOLT11_result = 0;
+var VOLT12_result = 0;
+var CURR1_result = 0;
+var CURR2_result = 0;
+var CURR3_result = 0;
+var CURR4_result = 0;
+var CURR5_result = 0;
+var CURR6_result = 0;
 var 성능검사_data_result = [];
 var delete_성능검사_data_result = false;;
 var flag_loaded = false;
@@ -649,6 +667,24 @@ const 성능검사_doc = {
 	DCIR_Charge4: "",
 	DCIR_Charge5: "",
 	DCIR_Charge6: "",
+	VOLT1: "",
+	VOLT2: "",
+	VOLT3: "",
+	VOLT4: "",
+	VOLT5: "",
+	VOLT6: "",
+	VOLT7: "",
+	VOLT8: "",
+	VOLT9: "",
+	VOLT10: "",
+	VOLT11: "",
+	VOLT12: "",
+	CURR1: "",
+	CURR2: "",
+	CURR3: "",
+	CURR4: "",
+	CURR5: "",
+	CURR6: "",
 	분해조립_재의뢰사유: "",
 	공정완료일: "",
 	비고: "",
@@ -2442,6 +2478,24 @@ const 성능검사_ = {
 	DCIR_Charge4: 1,
 	DCIR_Charge5: 1,
 	DCIR_Charge6: 1,
+	VOLT1: 1,
+	VOLT2: 1,
+	VOLT3: 1,
+	VOLT4: 1,
+	VOLT5: 1,
+	VOLT6: 1,
+	VOLT7: 1,
+	VOLT8: 1,
+	VOLT9: 1,
+	VOLT10: 1,
+	VOLT11: 1,
+	VOLT12: 1,
+	CURR1: 1,
+	CURR2: 1,
+	CURR3: 1,
+	CURR4: 1,
+	CURR5: 1,
+	CURR6: 1,
 	분해조립_재의뢰사유: 1,
 	공정완료일: 1,
 	비고: 1,
@@ -3699,6 +3753,24 @@ socket.on("DCIR_result", async function (data) {
 	DCIR4_result = data.DCIR4;
 	DCIR5_result = data.DCIR5;
 	DCIR6_result = data.DCIR6;
+	VOLT1_result = data.VOLT1;
+	VOLT2_result = data.VOLT2;
+	VOLT3_result = data.VOLT3;
+	VOLT4_result = data.VOLT4;
+	VOLT5_result = data.VOLT5;
+	VOLT6_result = data.VOLT6;
+	VOLT7_result = data.VOLT7;
+	VOLT8_result = data.VOLT8;
+	VOLT9_result = data.VOLT9;
+	VOLT10_result = data.VOLT10;
+	VOLT11_result = data.VOLT11;
+	VOLT12_result = data.VOLT12;
+	CURR1_result = data.CURR1;
+	CURR2_result = data.CURR2;
+	CURR3_result = data.CURR3;
+	CURR4_result = data.CURR4;
+	CURR5_result = data.CURR5;
+	CURR6_result = data.CURR6;
 	console.log(data);
 	flag_arrivedMSG = true;
 });

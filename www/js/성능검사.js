@@ -97,6 +97,27 @@ async function 성능검사_시작(is재제조 = 0) {
 		_DCIR_Charge4.value = 성능검사_v.DCIR_Charge4;
 		_DCIR_Charge5.value = 성능검사_v.DCIR_Charge5;
 		_DCIR_Charge6.value = 성능검사_v.DCIR_Charge6;
+
+		VOLT1_result = 성능검사_v.VOLT1;
+		VOLT2_result = 성능검사_v.VOLT2;
+		VOLT3_result = 성능검사_v.VOLT3;
+		VOLT4_result = 성능검사_v.VOLT4;
+		VOLT5_result = 성능검사_v.VOLT5;
+		VOLT6_result = 성능검사_v.VOLT6;
+		VOLT7_result = 성능검사_v.VOLT7;
+		VOLT8_result = 성능검사_v.VOLT8;
+		VOLT9_result = 성능검사_v.VOLT9;
+		VOLT10_result = 성능검사_v.VOLT10;
+		VOLT11_result = 성능검사_v.VOLT11;
+		VOLT12_result = 성능검사_v.VOLT12;
+
+		CURR1_result = 성능검사_v.CURR1;
+		CURR2_result = 성능검사_v.CURR2;
+		CURR3_result = 성능검사_v.CURR3;
+		CURR4_result = 성능검사_v.CURR4;
+		CURR5_result = 성능검사_v.CURR5;
+		CURR6_result = 성능검사_v.CURR6;
+
 		_분해조립_재의뢰사유.value = 성능검사_v.분해조립_재의뢰사유;
 		_공정완료일.value = 성능검사_v.공정완료일;
 		_검사자.value = 성능검사_v.검사자;
@@ -118,6 +139,27 @@ async function 성능검사_시작(is재제조 = 0) {
 		_DCIR_Charge1.value = "";
 		_DCIR_Charge2.value = "";
 		_DCIR_Charge3.value = "";
+
+		VOLT1_result = "";
+		VOLT2_result = ""; 
+		VOLT3_result = "";
+		VOLT4_result = ""; 
+		VOLT5_result = ""; 
+		VOLT6_result = ""; 
+		VOLT7_result = ""; 
+		VOLT8_result = ""; 
+		VOLT9_result = ""; 
+		VOLT10_result = "";
+		VOLT11_result = "";
+		VOLT12_result = "";
+
+		CURR1_result = ""; 
+		CURR2_result = ""; 
+		CURR3_result = ""; 
+		CURR4_result = ""; 
+		CURR5_result = ""; 
+		CURR6_result = ""; 
+
 		_분해조립_재의뢰사유.value = "";
 		_공정완료일.value = "0000-00-00T00:00";
 		_검사자.value = 계정_stat.이름;
@@ -176,6 +218,24 @@ async function 성능검사_save() {
 	doc.DCIR_Charge4 = _DCIR_Charge4.value;
 	doc.DCIR_Charge5 = _DCIR_Charge5.value;
 	doc.DCIR_Charge6 = _DCIR_Charge6.value;
+	doc.VOLT1 = VOLT1_result;
+	doc.VOLT2 = VOLT2_result;
+	doc.VOLT3 = VOLT3_result;
+	doc.VOLT4 = VOLT4_result;
+	doc.VOLT5 = VOLT5_result;
+	doc.VOLT6 = VOLT6_result;
+	doc.VOLT7 = VOLT7_result;
+	doc.VOLT8 = VOLT8_result;
+	doc.VOLT9 = VOLT9_result;
+	doc.VOLT10 = VOLT10_result;
+	doc.VOLT11 = VOLT11_result;
+	doc.VOLT12 = VOLT12_result;
+	doc.CURR1 = CURR1_result;
+	doc.CURR2 = CURR2_result;
+	doc.CURR3 = CURR3_result;
+	doc.CURR4 = CURR4_result;
+	doc.CURR5 = CURR5_result;
+	doc.CURR6 = CURR6_result;
 	doc.분해조립_재의뢰사유 = _분해조립_재의뢰사유.value;
 	doc.공정완료일 = _공정완료일.value;
 	if (level == "관리자") doc.공정완료일 = _공정완료일.value;
@@ -224,7 +284,7 @@ async function file_upload() {
 	//_form.submit();
 	_file_upload();
 
-	await sleep(1000 * 10);
+	await sleep(1000 * 20);
 
 	_send_filelist();
 	_btn_upload.disabled = false;
@@ -680,6 +740,7 @@ async function check_file() {
 	//성능검사_save();
 
 	if(flag_용량평가 == true) {
+		console.log('그래프 그리기');
 		read_data();
 	}
 }
@@ -761,13 +822,33 @@ async function read_DCIR() {
 	await delay();
 
 	_DCIR.value = Number(DCIR_result).toFixed(2);
-	_DCIR_Charge1.value = (Number(DCIR1_result) * (-1)).toFixed(2);
-	_DCIR_Charge2.value = Number(DCIR2_result).toFixed(2);
-	_DCIR_Charge3.value = (Number(DCIR3_result) * (-1)).toFixed(2);
-	_DCIR_Charge4.value = Number(DCIR4_result).toFixed(2);;
-	_DCIR_Charge5.value = (Number(DCIR5_result) * (-1)).toFixed(2);
-	_DCIR_Charge6.value = Number(DCIR6_result).toFixed(2);;
+	_DCIR_Charge1.value = (Number(DCIR1_result)).toFixed(2);
+	_DCIR_Charge2.value = (Number(DCIR2_result)).toFixed(2);
+	_DCIR_Charge3.value = (Number(DCIR3_result)).toFixed(2);
+	_DCIR_Charge4.value = (Number(DCIR4_result)).toFixed(2);
+	_DCIR_Charge5.value = (Number(DCIR5_result)).toFixed(2);
+	_DCIR_Charge6.value = (Number(DCIR6_result)).toFixed(2);
 
+	VOLT1_result = (Number(VOLT1_result)).toFixed(2);
+	VOLT2_result = (Number(VOLT2_result)).toFixed(2);
+	VOLT3_result = (Number(VOLT3_result)).toFixed(2);
+	VOLT4_result = (Number(VOLT4_result)).toFixed(2);
+	VOLT5_result = (Number(VOLT5_result)).toFixed(2);
+	VOLT6_result = (Number(VOLT6_result)).toFixed(2);
+	VOLT7_result = (Number(VOLT7_result)).toFixed(2);
+	VOLT8_result = (Number(VOLT8_result)).toFixed(2);
+	VOLT9_result = (Number(VOLT9_result)).toFixed(2);
+	VOLT10_result = (Number(VOLT10_result)).toFixed(2);
+	VOLT11_result = (Number(VOLT11_result)).toFixed(2);
+	VOLT12_result = (Number(VOLT12_result)).toFixed(2);
+	
+	CURR1_result = (Number(CURR1_result)).toFixed(2);
+	CURR2_result = (Number(CURR2_result)).toFixed(2);
+	CURR3_result = (Number(CURR3_result)).toFixed(2);
+	CURR4_result = (Number(CURR4_result)).toFixed(2);
+	CURR5_result = (Number(CURR5_result)).toFixed(2);
+	CURR6_result = (Number(CURR6_result)).toFixed(2);
+	
 	console.log('DCIR result:', DCIR_result, DCIR1_result, DCIR2_result, DCIR3_result, DCIR4_result, DCIR5_result, DCIR6_result);
 }
 
@@ -775,6 +856,7 @@ async function read_data() {
 	const tmp_name = 관리번호.replace('#', '');
 	const path = 'excel/' + tmp_name + '/excel1.csv';
 
+	console.log('path:', path);
 	get_성능검사_data(path);
 	await delay();
 

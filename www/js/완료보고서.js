@@ -634,24 +634,77 @@ async function 완료보고서_조회(is재제조번호 = false) {
   }
 
   //DCIR
-  _img1.ondblclick = function (evt) {
-    _img1.src = "";
-  };
-  _img1.ondrop = function (evt) {
-    var files = evt.dataTransfer?.files;
-    if (files.length > 0) {
-      console.log("drag & drop");
-      resize_pic(files[0], _img1, true);
-    }
-    evt.preventDefault();
-  };
+  //_img1.ondblclick = function (evt) {
+  //  _img1.src = "";
+  //};
+  //_img1.ondrop = function (evt) {
+  //  var files = evt.dataTransfer?.files;
+  //  if (files.length > 0) {
+  //    console.log("drag & drop");
+  //   resize_pic(files[0], _img1, true);
+  //  }
+  //  evt.preventDefault();
+  //};
 
-  _img1.ondragover = function (evt) {
-    evt.preventDefault();
-    console.log("dragover!");
-  };
+  //_img1.ondragover = function (evt) {
+  //  evt.preventDefault();
+  //  console.log("dragover!");
+  //};
 
   if (성능_data != undefined) {
+    var _chart = new Chart(_DCIR_canvas, {
+	    type: 'line',
+	    data: {
+		    labels: ['Discharge', 'Charge', 'Discharge', 'Charge', 'Discharge', 'Charge'],
+		    datasets: [
+			    {
+				    label: 'DC-IR 계산값',
+				    data: [ 성능_data.DCIR_Charge1,
+					    성능_data.DCIR_Charge2,
+					    성능_data.DCIR_Charge3,
+					    성능_data.DCIR_Charge4,
+					    성능_data.DCIR_Charge5,
+					    성능_data.DCIR_Charge6
+				    ],
+			    }
+		    ],		    
+	    },
+	    options: {
+		    pointRadius: 10,
+		    pointHoverRadius: 10,
+		    scales: {
+			    y: {
+				    min: Number(성능_data.DCIR_Charge1) - 30,
+				    max: Number(성능_data.DCIR_Charge1) + 30,
+			    },
+		    }
+	    }
+    });
+
+    _전류A1.innerHTML = 성능_data.CURR1;
+    _전류A2.innerHTML = 성능_data.CURR3;
+    _전류A3.innerHTML = 성능_data.CURR5;
+
+    _전압V1.innerHTML = 성능_data.VOLT1;
+    _전압V2.innerHTML = 성능_data.VOLT2;
+    _전압V3.innerHTML = 성능_data.VOLT3;
+    _전압V4.innerHTML = 성능_data.VOLT4;
+    _전압V5.innerHTML = 성능_data.VOLT5;
+    _전압V6.innerHTML = 성능_data.VOLT6;
+    _전압V7.innerHTML = 성능_data.VOLT7;
+    _전압V8.innerHTML = 성능_data.VOLT8;
+    _전압V9.innerHTML = 성능_data.VOLT9;
+    _전압V10.innerHTML = 성능_data.VOLT10;
+    _전압V11.innerHTML = 성능_data.VOLT11;
+    _전압V12.innerHTML = 성능_data.VOLT12;
+    
+    _DCIR_Charge1.innerHTML = 성능_data.DCIR_Charge1;
+    _DCIR_Charge2.innerHTML = 성능_data.DCIR_Charge2;
+    _DCIR_Charge3.innerHTML = 성능_data.DCIR_Charge3;
+    _DCIR_Charge4.innerHTML = 성능_data.DCIR_Charge4;
+    _DCIR_Charge5.innerHTML = 성능_data.DCIR_Charge5;
+    _DCIR_Charge6.innerHTML = 성능_data.DCIR_Charge6;
+
     _DCIR검사_결과.innerHTML = Number(성능_data.DCIR).toFixed(2);
   }
 
