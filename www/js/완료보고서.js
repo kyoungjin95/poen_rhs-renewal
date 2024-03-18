@@ -818,8 +818,8 @@ async function 완료보고서_save_pdf(type = 0) {
   if (type == "DCIR") {
     type = document.getElementById("_DCIR검사");
     file_name = "완료보고서_DCIR검사" + _date + ".pdf";
-    _width = 4200;
-    _height = 2000;
+    _width = 3700;
+    _height = 3000;
   }
 
   if (type == "용량") {
