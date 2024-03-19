@@ -468,7 +468,7 @@ async function EOL_시작(is재제조 = 0) {
 		var files = evt.dataTransfer?.files;
 		if (files.length > 0) {
 			console.log("drag & drop");
-			resize_pic(files[0], _img23);
+			resize_pic(files[0], _img23, true, true);
 		}
 		evt.preventDefault();
 	};

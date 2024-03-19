@@ -1812,7 +1812,6 @@
       </div>
     </div>
 
-    <form id="_form" action="/upload_excel" method="post" enctype="multipart/form-data">
     <div id="_CAN통신검사" class="check-all">
       <div class="report__tit">
         <h3>▣ CAN 통신 검사</h3>
@@ -1845,23 +1844,15 @@
             <td class="photo">
               <img id="_CAN현재" />
             </td>
-            <td class="photo heightPhoto" rowspan="2">
-              <img id="_CAN진단"/>
-              <div id="_file_exist3" class="process__file t1-d" style="justify-content: flex-end">
-                <div id="_inFile3" class="in-file" style="display: none">
-                  <button class="download-file" onClick="완료보고서_download3();">
-                    <i class="fas fa-arrow-down"></i>
-                  </button>
-                </div>
-                <div class="files">
-                  <input type="file" class="file_upload" id="_file3" name="excel" />
-                  <label for="_file3" class="upload_label">
-                    <i class="fa-regular fa-file"></i>
-                    &nbsp;파일 선택</label
-                  >
-                  <span class="delete_icon" style="display: none">❌</span>
-                </div>
-              </div>
+	    <td class="photo heightPhoto" rowspan="2">
+		    <div>
+			    <img id="_CAN진단"/>
+		    </div>
+		    <div>
+			    <button class="download-file" onClick="download();">
+				    <i class="fas fa-arrow-down"></i>
+			    </button>
+		    </div>
             </td>
             <td class="photo" rowspan="4">
               <img id="_PDS진단1" style="aspect-ratio: 1" />
@@ -2093,21 +2084,6 @@
                 결과: <br />
                 &nbsp;&nbsp;&nbsp;&nbsp;DC-IR 평균값 : <span id="_DCIR검사_결과" />mΩ
               </td>
-              <td id="_file_exist1" class="process__file t1-d" colspan="3" style="width: 300%" ;>
-                <div id="_inFile1" class="in-file" style="display: none">
-                  <button class="download-file" onClick="완료보고서_download1();">
-                    <i class="fas fa-arrow-down"></i>
-                  </button>
-                </div>
-                <div class="files">
-                  <input type="file" class="file_upload" id="_file1" name="excel" />
-                  <label for="_file1" class="upload_label">
-                    <i class="fa-regular fa-file"></i>
-                    &nbsp;파일 선택</label
-                  >
-                  <span class="delete_icon" style="display: none">❌</span>
-                </div>
-              </td>
             </tr>
           </tfoot>
         </table>
@@ -2141,21 +2117,6 @@
           <tfoot>
             <tr>
               <td style="text-align: left; font-weight: bold; padding-left: 10px; border-right: 1px solid #000">결과: &nbsp;&nbsp;<span id="_용량평가_결과" /></td>
-              <td id="_file_exist1" class="process__file t1-d">
-                <div id="_inFile2" class="in-file" style="display: none">
-                  <button class="download-file" onClick="완료보고서_download2();">
-                    <i class="fas fa-arrow-down"></i>
-                  </button>
-                </div>
-                <div class="files">
-                  <input type="file" class="file_upload" id="_file2" name="excel" />
-                  <label for="_file2" class="upload_label">
-                    <i class="fa-regular fa-file"></i>
-                    &nbsp;파일 선택</label
-                  >
-                  <span class="delete_icon" style="display: none">❌</span>
-                </div>
-              </td>
             </tr>
           </tfoot>
         </table>
@@ -2206,7 +2167,6 @@
 
         <tr>
           <td colspan="2">
-            <button id="_btn_upload" onClick="완료보고서_file_upload();">파일 업로드</button>
             <button onClick="완료보고서_save();">저장</button>
           </td>
           <td>
@@ -2653,12 +2613,6 @@
       const _CELL전압검사 = document.getElementById("_CELL전압검사");
 
       //DCIR검사, 용량평가
-      const _file1 = document.getElementById("_file1");
-      const _file2 = document.getElementById("_file2");
-      const _file3 = document.getElementById("_file3");
-      const _inFile1 = document.getElementById("_inFile1");
-      const _inFile2 = document.getElementById("_inFile2");
-      const _inFile3 = document.getElementById("_inFile3");
       const _전류A1 = document.getElementById("_전류A1");
       const _전류A2 = document.getElementById("_전류A2");
       const _전류A3 = document.getElementById("_전류A3");
@@ -2691,8 +2645,6 @@
       const _DCIR검사 = document.getElementById("_cbDCIR검사");
       const _용량평가 = document.getElementById("_cb용량평가");
 
-      const _form = document.getElementById("_form");
-      const _img1 = document.getElementById("_img1");
       const _img2 = document.getElementById("_img2");
     </script>
   </body>

@@ -123,9 +123,9 @@ server.listen(80, () => {
 
 io.on('connection', async function(socket) {
 	var client_ip = socket.request.connection.remoteAddress; 
-	var idx = client_ip.lastIndexOf(':');
+var idx = client_ip.lastIndexOf(':');
 	if (~idx && ~client_ip.indexOf('.'))
-  	client_ip = client_ip.slice(idx + 1);
+		client_ip = client_ip.slice(idx + 1);
 
 	console.log('connected ip', client_ip);
 
@@ -197,7 +197,7 @@ io.on('connection', async function(socket) {
 		var vol10 = 0;
 		var vol11 = 0;
 		var vol12 = 0;
-		
+
 		var curr1 = 0;
 		var curr2 = 0;
 		var curr3 = 0;
@@ -666,85 +666,97 @@ function file_list(list) {
 		var n = 1;
 		if(list.f1 != '') {
 			var old_path = 'excel/tmp/excel' + n + '.csv';
-			var new_path = 'excel/' + list.관리번호 + '/excel1.csv';
-			fs.rename(old_path, new_path, function(err) {
-				if(err) {
-					console.log(err);
-					console.log('fail rename');
-				} else {
-					console.log('successfully rename');
-				}
-			});
+			if(fs.existsSync(dir)) {
+				var new_path = 'excel/' + list.관리번호 + '/excel1.csv';
+				fs.rename(old_path, new_path, function(err) {
+					if(err) {
+						console.log(err);
+						console.log('fail rename');
+					} else {
+						console.log('successfully rename');
+					}
+				});
+			}
 			n++;
 		} 
 
 		if(list.f2 != '') {
 			var old_path = 'excel/tmp/excel' + n + '.csv';
-			var new_path = 'excel/' + list.관리번호 + '/excel2.csv';
-			fs.rename(old_path, new_path, function(err) {
-				if(err) {
-					console.log(err);
-					console.log('fail rename');
-				} else {
-					console.log('successfully rename');
-				}
-			});
+			if(fs.existsSync(dir)) {
+				var new_path = 'excel/' + list.관리번호 + '/excel2.csv';
+				fs.rename(old_path, new_path, function(err) {
+					if(err) {
+						console.log(err);
+						console.log('fail rename');
+					} else {
+						console.log('successfully rename');
+					}
+				});
+			}
 			n++;
 		}
 
 		if(list.f3 != '') {
 			var old_path = 'excel/tmp/excel' + n + '.csv';
-			var new_path = 'excel/' + list.관리번호 + '/excel3.csv';
-			fs.rename(old_path, new_path, function(err) {
-				if(err) {
-					console.log(err);
-					console.log('fail rename');
-				} else {
-					console.log('successfully rename');
-				}
-			});
+			if(fs.existsSync(dir)) {
+				var new_path = 'excel/' + list.관리번호 + '/excel3.csv';
+				fs.rename(old_path, new_path, function(err) {
+					if(err) {
+						console.log(err);
+						console.log('fail rename');
+					} else {
+						console.log('successfully rename');
+					}
+				});
+			}
 			n++;
 		}
 
 		if(list.f4 != '') {
 			var old_path = 'excel/tmp/excel' + n + '.csv';
-			var new_path = 'excel/' + list.관리번호 + '/excel4.csv';
-			fs.rename(old_path, new_path, function(err) {
-				if(err) {
-					console.log(err);
-					console.log('fail rename');
-				} else {
-					console.log('successfully rename');
-				}
-			});
+			if(fs.existsSync(dir)) {
+				var new_path = 'excel/' + list.관리번호 + '/excel4.csv';
+				fs.rename(old_path, new_path, function(err) {
+					if(err) {
+						console.log(err);
+						console.log('fail rename');
+					} else {
+						console.log('successfully rename');
+					}
+				});
+			}
 			n++
 		}
 
 		if(list.f5 != '') {
 			var old_path = 'excel/tmp/excel' + n + '.csv';
-			var new_path = 'excel/' + list.관리번호 + '/excel5.csv';
-			fs.rename(old_path, new_path, function(err) {
-				if(err) {
-					console.log(err);
-					console.log('fail rename');
-				} else {
-					console.log('successfully rename');
-				}
-			});
+			if(fs.existsSync(dir)) {
+				var new_path = 'excel/' + list.관리번호 + '/excel5.csv';
+				fs.rename(old_path, new_path, function(err) {
+					if(err) {
+						console.log(err);
+						console.log('fail rename');
+					} else {
+						console.log('successfully rename');
+					}
+				});
+			}
 			n++;
 		}
 
 		if(list.f6 != '') {
 			var old_path = 'excel/tmp/excel' + n + '.csv';
-			var new_path = 'excel/' + list.관리번호 + '/excel6.csv';
-			fs.rename(old_path, new_path, function(err) {
-				if(err) {
-					console.log(err);
-					console.log('fail rename');
-				} else {
-					console.log('successfully rename');
-				}
-			});
+			if(fs.existsSync(dir)) {
+				var new_path = 'excel/' + list.관리번호 + '/excel6.csv';
+				fs.rename(old_path, new_path, function(err) {
+					if(err) {
+						console.log(err);
+						console.log('fail rename');
+					} else {
+						console.log('successfully rename');
+					}
+				});
+			}
 		}
 
 		n = 1;
@@ -776,40 +788,46 @@ function file_list2(list) {
 		var n = 1;
 		if(list.f1 != '') {
 			var old_path = 'excel/tmp/excel' + n + '.csv';
-			var new_path = 'excel/' + list.관리번호 + '/DCIR.csv';
-			fs.rename(old_path, new_path, function(err) {
-				if(err) {
-					console.log(err);
-					console.log('fail rename');
-				}
-				console.log('successfully rename');
-			});
+			if(fs.existsSync(dir)) {
+				var new_path = 'excel/' + list.관리번호 + '/DCIR.csv';
+				fs.rename(old_path, new_path, function(err) {
+					if(err) {
+						console.log(err);
+						console.log('fail rename');
+					}
+					console.log('successfully rename');
+				});
+			}
 			n++;
 		} 
 
 		if(list.f2 != '') {
 			var old_path = 'excel/tmp/excel' + n + '.csv';
-			var new_path = 'excel/' + list.관리번호 + '/용량평가.csv';
-			fs.rename(old_path, new_path, function(err) {
-				if(err) {
-					console.log(err);
-					console.log('fail rename');
-				}
-				console.log('successfully rename');
-			});
+			if(fs.existsSync(dir)) {
+				var new_path = 'excel/' + list.관리번호 + '/용량평가.csv';
+				fs.rename(old_path, new_path, function(err) {
+					if(err) {
+						console.log(err);
+						console.log('fail rename');
+					}
+					console.log('successfully rename');
+				});
+			}
 			n++;
 		}
 
 		if(list.f3 != '') {
 			var old_path = 'excel/tmp/excel' + n + '.csv';
-			var new_path = 'excel/' + list.관리번호 + '/진단.png';
-			fs.rename(old_path, new_path, function(err) {
-				if(err) {
-					console.log(err);
-					console.log('fail rename');
-				}
-				console.log('successfully rename');
-			});
+			if(fs.existsSync(dir)) {
+				var new_path = 'excel/' + list.관리번호 + '/진단.png';
+				fs.rename(old_path, new_path, function(err) {
+					if(err) {
+						console.log(err);
+						console.log('fail rename');
+					}
+					console.log('successfully rename');
+				});
+			}
 			n++;
 		}
 

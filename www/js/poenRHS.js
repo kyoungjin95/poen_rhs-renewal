@@ -5781,17 +5781,19 @@ const toBase64 = (file) =>
 		reader.onerror = reject;
 	});
 
-function resize_pic(file, img, 예외 = false) {
-	if (예외 == false) {
+async function resize_pic(file, img, 예외 = false, no = false) {
+	if (예외 == false && no == false) {
 		ImageResizer.resizeImage(file, { maxWidth: 250, maxHeight: 250 }, async function (resultFile) {
 			img.src = await toBase64(resultFile);
 			console.log(img.src);
 		});
-	} else {
+	} else if(no == false){
 		ImageResizer.resizeImage(file, { maxWidth: 2000, maxHeight: 2000 }, async function (resultFile) {
 			img.src = await toBase64(resultFile);
 			console.log(img.src);
 		});
+	} else {
+		img.src = await toBase64(file);
 	}
 }
 
@@ -5802,4 +5804,14 @@ async function pic_to_img(_data, _img) {
 
 function socket_disconnec() {
 	socket.disconnect();
+}
+
+function downloadURI(uri, name) {
+  var link = document.createElement("a");
+  link.download = name;
+  link.href = uri;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  delete link;
 }
