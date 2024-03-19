@@ -57,7 +57,7 @@ async function login() {
         }
       }, 1000);
       await sleep(1);
-      alert('#공지사항#\nVersion update sky 0.72\n1. 차종 정리\n2. 센서 데이터 진단 이미지 사이즈 조절없이 업로드 및  다운로드 기능\n2. 완료보고서 누락된 항목들 EOL에 추가');
+      alert('#공지사항#\nVersion update sky 0.72\n1. 차종 정리\n2. 센서 데이터 진단 이미지 사이즈 조절없이 업로드 및  다운로드 기능\n2. 완료보고서 누락된 항목들 EOL에 추가3. 납품처 엑셀 문서로 추가 입력');
     } else if (worker == _id.value) {
       worker = "";
       level = "";
