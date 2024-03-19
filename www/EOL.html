@@ -126,6 +126,14 @@
             </tr>
             <tr>
               <td class="_항목">
+                <label for="_QR기본">QR</label>
+              </td>
+              <td>
+                <input type="text" id="_QR기본" size="40" required />
+              </td>
+            </tr>
+            <tr>
+              <td class="_항목">
                 <label for="_공정입고일">공정 입고일</label>
               </td>
               <td>
@@ -232,12 +240,17 @@
                 <label for="_기밀검사_케이스">기밀검사 케이스</label>
               </td>
               <td>
+		      <div>
                 <input type="text" id="_기밀검사_케이스" size="40" required />
                 <select name="language" onchange="_기밀검사_케이스_콤보박스(this);">
                   <option value="">---</option>
                   <option value="OK">OK</option>
                   <option value="미실시">미실시</option>
                 </select>
+		</div>
+		<div>
+                	<input type="text" id="_기밀검사_케이스_값" size="40" required />
+		</div>	
               </td>
             </tr>
             <tr id="_기밀검사_케이스_img">
@@ -258,12 +271,17 @@
                 <label for="_기밀검사_냉각유로">기밀검사 냉각유로</label>
               </td>
               <td>
+		      <div>
                 <input type="text" id="_기밀검사_냉각유로" size="40" required />
                 <select name="language" onchange="_기밀검사_냉각유로_콤보박스(this);">
                   <option value="">---</option>
                   <option value="OK">OK</option>
                   <option value="미실시">미실시</option>
                 </select>
+		</div>
+		<div>
+                	<input type="text" id="_기밀검사_냉각유로_값" size="40" required />
+		</div>	
               </td>
             </tr>
             <tr id="_기밀검사_냉각유로_img">
@@ -286,12 +304,17 @@
                 >
               </td>
               <td>
+		      <div>
                 <input type="text" id="_절연검사P" size="40" required />
                 <select name="language" onchange="_절연검사p_콤보박스(this);">
                   <option value="">---</option>
                   <option value="OK">OK</option>
                   <option value="미실시">미실시</option>
                 </select>
+		</div>
+		<div>
+                	<input type="text" id="_절연검사P_값" size="40" required />
+		</div>	
               </td>
             </tr>
             <tr id="_절연검사P_img">
@@ -314,12 +337,17 @@
                 </label>
               </td>
               <td>
+		      <div>
                 <input type="text" id="_절연검사M" size="40" required />
                 <select name="language" onchange="_절연검사M_콤보박스(this);">
                   <option value="">---</option>
                   <option value="OK">OK</option>
                   <option value="미실시">미실시</option>
                 </select>
+		</div>
+		<div>
+                	<input type="text" id="_절연검사M_값" size="40" required />
+		</div>	
               </td>
             </tr>
             <tr id="_절연검사M_img">
@@ -337,12 +365,17 @@
                 <label for="_절연저항HVP">절연저항 HV+</label>
               </td>
               <td>
+		      <div>
                 <input type="text" id="_절연저항HVP" size="40" required />
                 <select name="language" onchange="_절연저항HVP_콤보박스(this);">
                   <option value="">---</option>
                   <option value="OK">OK</option>
                   <option value="미실시">미실시</option>
                 </select>
+		</div>
+		<div>
+                	<input type="text" id="_절연저항HVP_값" size="40" required />
+		</div>	
               </td>
               <td class="process__img once">
                 <div class="images">
@@ -355,12 +388,17 @@
                 <label for="_절연저항HVN">절연저항 HV-</label>
               </td>
               <td>
+		      <div>
                 <input type="text" id="_절연저항HVN" size="40" required />
                 <select name="language" onchange="_절연저항HVN_콤보박스(this);">
                   <option value="">---</option>
                   <option value="OK">OK</option>
                   <option value="미실시">미실시</option>
                 </select>
+		</div>
+		<div>
+                	<input type="text" id="_절연저항HVN_값" size="40" required />
+		</div>	
               </td>
               <td class="process__img once">
                 <div class="images">
@@ -406,12 +444,17 @@
                 <label for="_통신검사_팩전압">통신검사 팩전압(V)</label>
               </td>
               <td>
+		      <div>
                 <input type="text" id="_통신검사_팩전압" size="40" required />
                 <select name="language" onchange="_통신검사_팩전압_콤보박스(this);">
                   <option value="">---</option>
                   <option value="OK">OK</option>
                   <option value="미실시">미실시</option>
                 </select>
+		</div>
+		<div>
+                	<input type="text" id="_통신검사_팩전압_값" size="40" required />
+		</div>	
               </td>
             </tr>
             <tr id="_통신검사_팩전압_img">
@@ -432,12 +475,17 @@
                 <label for="_통신검사_셀전압편차">통신검사 셀전압 편차(mV)</label>
               </td>
               <td>
+		      <div>
                 <input type="text" id="_통신검사_셀전압편차" size="40" required />
                 <select name="language" onchange="_통신검사_셀전압편차_콤보박스(this);">
                   <option value="">---</option>
                   <option value="OK">OK</option>
                   <option value="미실시">미실시</option>
                 </select>
+		</div>
+		<div>
+                	<input type="text" id="_통신검사_셀전압편차_값" size="40" required />
+		</div>	
               </td>
             </tr>
             <tr>
@@ -604,6 +652,7 @@
       const _구분 = document.getElementById("_구분");
       const _차종 = document.getElementById("_차종");
       const _품번 = document.getElementById("_품번");
+      const _QR기본 = document.getElementById("_QR기본");
       const _공정입고일 = document.getElementById("_공정입고일");
 
       const _육안검사_외부_box = document.getElementById("_육안검사_외부_box");
@@ -614,20 +663,28 @@
       const _육안검사_내부_img = document.getElementById("_육안검사_내부_img");//2
 
       const _기밀검사_케이스 = document.getElementById("_기밀검사_케이스");
+      const _기밀검사_케이스_값 = document.getElementById("_기밀검사_케이스_값");
       const _기밀검사_케이스_img = document.getElementById("_기밀검사_케이스_img");//3
       const _기밀검사_냉각유로 = document.getElementById("_기밀검사_냉각유로");
+      const _기밀검사_냉각유로_값 = document.getElementById("_기밀검사_냉각유로_값");
       const _기밀검사_냉각유로_img = document.getElementById("_기밀검사_냉각유로_img");//4
       const _절연검사P = document.getElementById("_절연검사P");
+      const _절연검사P_값 = document.getElementById("_절연검사P_값");
       const _절연검사M = document.getElementById("_절연검사M");
+      const _절연검사M_값 = document.getElementById("_절연검사M_값");
       const _절연저항HVP = document.getElementById("_절연저항HVP");
+      const _절연저항HVP_값 = document.getElementById("_절연저항HVP_값");
       const _절연저항HVN = document.getElementById("_절연저항HVN");
+      const _절연저항HVN_값 = document.getElementById("_절연저항HVN_값");
       const _UPR_C조립 = document.getElementById("_UPR_C조립");
       const _UPR_C조립_특이사항 = document.getElementById("_UPR_C조립_특이사항");
       const _고장코드유무 = document.getElementById("_고장코드유무");
 
       const _통신검사_팩전압 = document.getElementById("_통신검사_팩전압");
+      const _통신검사_팩전압_값 = document.getElementById("_통신검사_팩전압_값");
       const _통신검사_팩전압_img = document.getElementById("_통신검사_팩전압_img");//5
       const _통신검사_셀전압편차 = document.getElementById("_통신검사_셀전압편차");
+      const _통신검사_셀전압편차_값 = document.getElementById("_통신검사_셀전압편차_값");
       const _셀전압MAX = document.getElementById("_셀전압MAX");
       const _셀전압MIN = document.getElementById("_셀전압MIN");
       const _통신검사_릴레이구동 = document.getElementById("_통신검사_릴레이구동");

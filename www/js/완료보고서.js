@@ -178,10 +178,6 @@ async function 완료보고서_조회(is재제조번호 = false) {
     _입고일.innerHTML = "";
   }
 
-  if (입고_pic_data != null) {
-    _입고사진.src = 입고_pic_data.pic1;
-  }
-
   if (기초_data != null) {
     _VINNo.innerHTML = 기초_data.VIN;
     _RONo.innerHTML = 기초_data.RO_no;
@@ -206,9 +202,9 @@ async function 완료보고서_조회(is재제조번호 = false) {
     switch (입고_data.차종) {
       case "CS_EV":
         _CS_외부점검.innerHTML = EOL_data.육안검사_외부;
-        _CS_외부점검사유.innerHTML = "";
+        if(EOL_data.육안검사_외부 == 'OK') _CS_외부점검사유.innerHTML = "이상없음";
         _CS_내부점검.innerHTML = EOL_data.육안검사_내부;
-        _CS_내부점검사유.innerHTML = "";
+        if(EOL_data.육안검사_내부 == 'OK') _CS_내부점검사유.innerHTML = "이상없음";
         _CS_케이스.innerHTML = EOL_data.기밀검사_케이스;
         _CS_케이스감압량.innerHTML = EOL_data.기밀검사_케이스_특이사항;
         _CS_냉각유로.innerHTML = EOL_data.기밀검사_냉각유로;
@@ -229,7 +225,8 @@ async function 완료보고서_조회(is재제조번호 = false) {
         //_CS_입고정보사유.innerHTML;
         _CS_재제조이력.innerHTML = "OK";
         //_CS_재제조이력사유.innerHTML;
-        _CS_출하QR.innerHTML = EOL_data.QR != "" && EOL_data.QR != undefined ? "OK" : "NG";
+        _CS_출하QR.innerHTML = (EOL_data.QR != '') ? 'OK':'NG';
+        _CS_출하QR사유.innerHTML = EOL_data.QR;
         _CS_커버류.innerHTML = EOL_data.커버류;
         if (EOL_data.커버류 == "장착확인") _CS_커버류확인.innerHTML = "커버 장착 확인";
         else _CS_커버류확인.innerHTML = "커버 비장착";
@@ -240,9 +237,9 @@ async function 완료보고서_조회(is재제조번호 = false) {
 
       case "CV_EV":
         _CV_외부점검.innerHTML = EOL_data.육안검사_외부;
-        _CV_외부점검사유.innerHTML = "";
+        if(_CV_외부점검.innerHTML == 'OK') _CV_외부점검사유.innerHTML = "이상없음";
         _CV_내부점검.innerHTML = EOL_data.육안검사_내부;
-        _CV_내부점검사유.innerHTML = "";
+        if(_CV내부점검.innerHTML == 'OK') _CV_내부점검사유.innerHTML = "이상없음";
         _CV_케이스.innerHTML = EOL_data.기밀검사_케이스;
         _CV_케이스감압량.innerHTML = EOL_data.기밀검사_케이스_특이사항;
         _CV_냉각유로.innerHTML = EOL_data.기밀검사_냉각유로;
@@ -263,7 +260,8 @@ async function 완료보고서_조회(is재제조번호 = false) {
         //_CV_입고정보사유.innerHTML;
         _CV_재제조이력.innerHTML = "OK";
         //_CV_재제조이력사유.innerHTML;
-        _CV_출하QR.innerHTML = EOL_data.QR != "" && EOL_data.QR != undefined ? "OK" : "NG";
+        _CS_출하QR.innerHTML = (EOL_data.QR != '') ? 'OK':'NG';
+        _CV_출하QR사유.innerHTML = EOL_data.QR;
         _CV_커버류.innerHTML = EOL_data.커버류;
         if (EOL_data.커버류 == "장착확인") _CV_커버류확인.innerHTML = "커버 장착 확인";
         else _CV_커버류확인.innerHTML = "커버 비장착";
@@ -276,9 +274,9 @@ async function 완료보고서_조회(is재제조번호 = false) {
 
       case "DE_EV":
         _DE_외부점검.innerHTML = EOL_data.육안검사_외부;
-        _DE_외부점검사유.innerHTML = "";
+        if(_DE_외부점검.innerHTML == 'OK') _DE_외부점검사유.innerHTML = "이상없음";
         _DE_내부점검.innerHTML = EOL_data.육안검사_내부;
-        _DE_내부점검사유.innerHTML = "";
+        if(_DE_내부점검.innerHTML == 'OK') _DE_내부점검사유.innerHTML = "이상없음";
         _DE_케이스.innerHTML = EOL_data.기밀검사_케이스;
         _DE_케이스감압량.innerHTML = EOL_data.기밀검사_케이스_특이사항;
         _DE_냉각유로.innerHTML = EOL_data.기밀검사_냉각유로;
@@ -299,7 +297,8 @@ async function 완료보고서_조회(is재제조번호 = false) {
         //_DE_입고정보사유.innerHTML;
         _DE_재제조이력.innerHTML = "OK";
         //_DE_재제조이력사유.innerHTML;
-        _DE_출하QR.innerHTML = EOL_data.QR != "" && EOL_data.QR != undefined ? "OK" : "NG";
+        _DE_출하QR.innerHTML = (EOL_data.QR != '') ? 'OK':'NG';
+        _DE_출하QR사유.innerHTML = EOL_data.QR;
         _DE_커버류.innerHTML = EOL_data.커버류;
         if (EOL_data.커버류 == "장착확인") _DE_커버류확인.innerHTML = "커버 장착 확인";
         else _DE_커버류확인.innerHTML = "커버 비장착";
@@ -310,9 +309,9 @@ async function 완료보고서_조회(is재제조번호 = false) {
 
       case "HR_EV":
         _HR_외부점검.innerHTML = EOL_data.육안검사_외부;
-        _HR_외부점검사유.innerHTML = "";
+        if(_HR_외부점검.innerHTML == 'OK') _HR_외부점검사유.innerHTML = "이상없음";
         _HR_내부점검.innerHTML = EOL_data.육안검사_내부;
-        _HR_내부점검사유.innerHTML = "";
+        if(_HR_내부점검.innerHTMl == 'OK') _HR_내부점검사유.innerHTML = "이상없음";
         _HR_케이스.innerHTML = EOL_data.기밀검사_케이스;
         _HR_케이스감압량.innerHTML = EOL_data.기밀검사_케이스_특이사항;
         _HR_냉각유로.innerHTML = EOL_data.기밀검사_냉각유로;
@@ -333,7 +332,8 @@ async function 완료보고서_조회(is재제조번호 = false) {
         //_HR_입고정보사유.innerHTML;
         _HR_재제조이력.innerHTML = "OK";
         //_HR_재제조이력사유.innerHTML;
-        _HR_출하QR.innerHTML = EOL_data.QR != "" && EOL_data.QR != undefined ? "OK" : "NG";
+        _HR_출하QR.innerHTML = (EOL_data.QR != '') ? 'OK':'NG';
+        _HR_출하QR사유.innerHTML = EOL_data.QR;
         _HR_커버류.innerHTML = EOL_data.커버류;
         if (EOL_data.커버류 == "장착확인") _HR_커버류확인.innerHTML = "커버 장착 확인";
         else _HR_커버류확인.innerHTML = "커버 비장착";
@@ -344,9 +344,9 @@ async function 완료보고서_조회(is재제조번호 = false) {
 
       case "PU_EV":
         _PU_외부점검.innerHTML = EOL_data.육안검사_외부;
-        _PU_외부점검사유.innerHTML = "";
+        if(_PU_외부점검.innerHTML == 'OK') _PU_외부점검사유.innerHTML = "이상없음";
         _PU_내부점검.innerHTML = EOL_data.육안검사_내부;
-        _PU_내부점검사유.innerHTML = "";
+        if(_PU_내부점검.innerHTML == 'Ok') _PU_내부점검사유.innerHTML = "이상없음";
         _PU_케이스.innerHTML = EOL_data.기밀검사_케이스;
         _PU_케이스감압량.innerHTML = EOL_data.기밀검사_케이스_특이사항;
         _PU_냉각유로.innerHTML = EOL_data.기밀검사_냉각유로;
@@ -367,7 +367,8 @@ async function 완료보고서_조회(is재제조번호 = false) {
         //_PU_입고정보사유.innerHTML;
         _PU_재제조이력.innerHTML = "OK";
         //_PU_재제조이력사유.innerHTML;
-        _PU_출하QR.innerHTML = EOL_data.QR != "" && EOL_data.QR != undefined ? "OK" : "NG";
+        _PU_출하QR.innerHTML = (EOL_data.QR != '') ? 'OK':'NG';
+        _PU_출하QR사유.innerHTML = EOL_data.QR;
         _PU_커버류.innerHTML = EOL_data.커버류;
         if (EOL_data.커버류 == "장착확인") _PU_커버류확인.innerHTML = "커버 장착 확인";
         else _PU_커버류확인.innerHTML = "커버 비장착";
@@ -378,9 +379,9 @@ async function 완료보고서_조회(is재제조번호 = false) {
 
       case "LK_EV":
         _LK_FC_외부점검.innerHTML = EOL_data.육안검사_외부;
-        _LK_FC_외부점검사유.innerHTML = "";
+        if(_LK_FC_외부점검.innerHTML == 'OK')  _LK_FC_외부점검사유.innerHTML = "이상없음";
         _LK_FC_내부점검.innerHTML = EOL_data.육안검사_내부;
-        _LK_FC_내부점검사유.innerHTML = "";
+        if(_LK_FC_내부점검.innerHTML == 'OK') _LK_FC_내부점검사유.innerHTML = "이상없음";
         _LK_FC_케이스.innerHTML = EOL_data.기밀검사_케이스;
         _LK_FC_케이스감압량.innerHTML = EOL_data.기밀검사_케이스_특이사항;
         _LK_FC_냉각유로.innerHTML = EOL_data.기밀검사_냉각유로;
@@ -401,7 +402,8 @@ async function 완료보고서_조회(is재제조번호 = false) {
         //_LK_FC_입고정보사유.innerHTML;
         _LK_FC_재제조이력.innerHTML = "OK";
         //_LK_FC_재제조이력사유.innerHTML;
-        _LK_FC_출하QR.innerHTML = EOL_data.QR != "" && EOL_data.QR != undefined ? "OK" : "NG";
+        _LK_FC_출하QR.innerHTML = (EOL_data.QR != '') ? 'OK':'NG';
+        _LK_FC_출하QR사유.innerHTML = EOL_data.QR;
         _LK_FC_커버류.innerHTML = EOL_data.커버류;
         if (EOL_data.커버류 == "장착확인") _LK_FC_커버류확인.innerHTML = "커버 장착 확인";
         else _LK_FC_커버류확인.innerHTML = "커버 비장착";
@@ -412,9 +414,9 @@ async function 완료보고서_조회(is재제조번호 = false) {
 
       case "LM_EV":
         _LM_외부점검.innerHTML = EOL_data.육안검사_외부;
-        _LM_외부점검사유.innerHTML = "";
+        if(_LM_외부점검.innerHTML == 'OK') _LM_외부점검사유.innerHTML = "이상없음";
         _LM_내부점검.innerHTML = EOL_data.육안검사_내부;
-        _LM_내부점검사유.innerHTML = "";
+        if(_LM_내부점검.innerHTML == 'OK') _LM_내부점검사유.innerHTML = "이상없음";
         _LM_케이스.innerHTML = EOL_data.기밀검사_케이스;
         _LM_케이스감압량.innerHTML = EOL_data.기밀검사_케이스_특이사항;
         _LM_냉각유로.innerHTML = EOL_data.기밀검사_냉각유로;
@@ -435,7 +437,8 @@ async function 완료보고서_조회(is재제조번호 = false) {
         //_LM_입고정보사유.innerHTML;
         _LM_재제조이력.innerHTML = "OK";
         //_LM_재제조이력사유.innerHTML;
-        _LM_출하QR.innerHTML = EOL_data.QR != "" && EOL_data.QR != undefined ? "OK" : "NG";
+        _LM_출하QR.innerHTML = (EOL_data.QR != '') ? 'OK':'NG';
+        _LM_출하QR사유.innerHTML = EOL_data.QR;
         _LM_커버류.innerHTML = EOL_data.커버류;
         if (EOL_data.커버류 == "장착확인") _LM_커버류확인.innerHTML = "커버 장착 확인";
         else _LM_커버류확인.innerHTML = "커버 비장착";
@@ -446,9 +449,9 @@ async function 완료보고서_조회(is재제조번호 = false) {
 
       case "NE_EV":
         _NE_외부점검.innerHTML = EOL_data.육안검사_외부;
-        _NE_외부점검사유.innerHTML = "";
+        if(_NE_외부점검.innerHTML == 'OK') _NE_외부점검사유.innerHTML = "";
         _NE_내부점검.innerHTML = EOL_data.육안검사_내부;
-        _NE_내부점검사유.innerHTML = "";
+        if(_NE_내부점검.innerHTML == 'OK') _NE_내부점검사유.innerHTML = "";
         _NE_케이스.innerHTML = EOL_data.기밀검사_케이스;
         _NE_케이스감압량.innerHTML = EOL_data.기밀검사_케이스_특이사항;
         _NE_냉각유로.innerHTML = EOL_data.기밀검사_냉각유로;
@@ -469,7 +472,8 @@ async function 완료보고서_조회(is재제조번호 = false) {
         //_NE_입고정보사유.innerHTML;
         _NE_재제조이력.innerHTML = "OK";
         //_NE_재제조이력사유.innerHTML;
-        _NE_출하QR.innerHTML = EOL_data.QR != "" && EOL_data.QR != undefined ? "OK" : "NG";
+        _NE_출하QR.innerHTML = (EOL_data.QR != '') ? 'OK':'NG';
+        _NE_출하QR사유.innerHTML = EOL_data.QR;
         _NE_커버류.innerHTML = EOL_data.커버류;
         if (EOL_data.커버류 == "장착확인") _NE_커버류확인.innerHTML = "커버 장착 확인";
         else _NE_커버류확인.innerHTML = "커버 비장착";
@@ -481,9 +485,9 @@ async function 완료보고서_조회(is재제조번호 = false) {
       case "OS_EV":
         console.log(EOL_data);
         _OS_외부점검.innerHTML = EOL_data.육안검사_외부;
-        _OS_외부점검사유.innerHTML = "";
+        if(_OS_외부점검.innerHTML == 'OK') _OS_외부점검사유.innerHTML = "";
         _OS_내부점검.innerHTML = EOL_data.육안검사_내부;
-        _OS_내부점검사유.innerHTML = "";
+        if(_OS_내부점검.innerHTMl == 'Ok') _OS_내부점검사유.innerHTML = "";
         _OS_케이스.innerHTML = EOL_data.기밀검사_케이스;
         _OS_케이스감압량.innerHTML = EOL_data.기밀검사_케이스_특이사항;
         _OS_냉각유로.innerHTML = EOL_data.기밀검사_냉각유로;
@@ -504,7 +508,8 @@ async function 완료보고서_조회(is재제조번호 = false) {
         //_OS_입고정보사유.innerHTML;
         _OS_재제조이력.innerHTML = "OK";
         //_OS_재제조이력사유.innerHTML;
-        _OS_출하QR.innerHTML = EOL_data.QR != "" && EOL_data.QR != undefined ? "OK" : "NG";
+        _OS_출하QR.innerHTML = (EOL_data.QR != '') ? 'OK':'NG';
+        _OS_출하QR사유.innerHTML = EOL_data.QR;
         _OS_커버류.innerHTML = EOL_data.커버류;
         if (EOL_data.커버류 == "장착확인") _OS_커버류확인.innerHTML = "커버 장착 확인";
         else _OS_커버류확인.innerHTML = "커버 비장착";
@@ -515,9 +520,9 @@ async function 완료보고서_조회(is재제조번호 = false) {
 
       case "SK3_EV":
         _SK3_외부점검.innerHTML = EOL_data.육안검사_외부;
-        _SK3_외부점검사유.innerHTML = "";
+        if(_SK3_외부점검.innerHTML == 'OK') _SK3_외부점검사유.innerHTML = "";
         _SK3_내부점검.innerHTML = EOL_data.육안검사_내부;
-        _SK3_내부점검사유.innerHTML = "";
+        if(_SK3_내부점검.innerHTML == 'OK') _SK3_내부점검사유.innerHTML = "";
         _SK3_케이스.innerHTML = EOL_data.기밀검사_케이스;
         _SK3_케이스감압량.innerHTML = EOL_data.기밀검사_케이스_특이사항;
         _SK3_냉각유로.innerHTML = EOL_data.기밀검사_냉각유로;
@@ -538,7 +543,8 @@ async function 완료보고서_조회(is재제조번호 = false) {
         //_SK3_입고정보사유.innerHTML;
         _SK3_재제조이력.innerHTML = "OK";
         //_SK3_재제조이력사유.innerHTML;
-        _SK3_출하QR.innerHTML = EOL_data.QR != "" && EOL_data.QR != undefined ? "OK" : "NG";
+        _SK3_출하QR.innerHTML = (EOL_data.QR != '') ? 'OK':'NG';
+        _SK3_출하QR사유.innerHTML = EOL_data.QR;
         _SK3_커버류.innerHTML = EOL_data.커버류;
         if (EOL_data.커버류 == "장착확인") _SK3_커버류확인.innerHTML = "커버 장착 확인";
         else _SK3_커버류확인.innerHTML = "커버 비장착";
@@ -560,6 +566,8 @@ async function 완료보고서_조회(is재제조번호 = false) {
   }
 
   if (EOL_pic1_data != null) {
+    _입고사진.src = EOL_pic1_data.pic7;
+
     _top_pic.src = EOL_pic1_data.pic1;
     _front_pic.src = EOL_pic1_data.pic2;
     _left_pic.src = EOL_pic1_data.pic3;
@@ -599,10 +607,6 @@ async function 완료보고서_조회(is재제조번호 = false) {
     _절연측정값사진2.src = EOL_pic2_data.pic8;
     _절연PRA_P.innerHTML = EOL_data.절연검사_Plus;
     _절연PRA_N.innerHTML = EOL_data.절연검사_Minus;
-
-    //CAN 통신 검사
-    _PDS진단1.src = EOL_pic2_data.pic9;
-    _PDS진단2.src = EOL_pic2_data.pic10;
   }
 
   find(EOL_pic3, 관리번호);
@@ -618,6 +622,10 @@ async function 완료보고서_조회(is재제조번호 = false) {
     _CAN과거.src = EOL_pic3_data.pic2;
     _CAN진단.src = EOL_pic3_data.pic3;
 
+    //CAN 통신 검사
+    _PDS진단1.src = EOL_pic3_data.pic4;
+    _PDS진단2.src = EOL_pic3_data.pic5;
+
     _EOL항목검사사진.src = EOL_pic3_data.pic4;
     _CELL전압검사사진.src = EOL_pic3_data.pic5;
   }
@@ -629,7 +637,7 @@ async function 완료보고서_조회(is재제조번호 = false) {
 
     _CELL전압_MAX.innerHTML = EOL_data.통신검사_셀전압MAX;
     _CELL전압_MIN.innerHTML = EOL_data.통신검사_셀전압MIN;
-    _CELL전압_편차.innerHTML = EOL_data.통신검사_셀전압편차;
+    _CELL전압_편차.innerHTML = EOL_data.통신검사_셀전압편차_특이사항;
     _CELL전압검사.innerHTML = EOL_data.통신검사_셀전압MAX != "" && EOL_data.통신검사_셀전압MIN != "" && EOL_data.통신검사_CELL전압_편차 != "" ? "OK" : "NG";
   }
 
