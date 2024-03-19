@@ -491,10 +491,10 @@ function read_func_csv() {
 			const res = d3.csvParse(reader.result);
 
 			for (var i = 0; i < res.length; i++) {
-				if (res[i].소재지 != '') {
+				if (res[i].납품처 != '') {
 					var doc = {};
 					doc.관리번호 = res[i].관리번호;
-					doc.소재지 = res[i].소재지;
+					doc.납품처 = res[i].납품처;
 
 					update(BSA재제조, doc);
 					await delay();
