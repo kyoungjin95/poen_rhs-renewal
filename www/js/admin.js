@@ -22,7 +22,8 @@ async function 관리자_시작() {
 	_부품재고 = document.getElementById('_부품재고');
 	_완료일수정 = document.getElementById('_완료일수정');
 	_관리번호 = document.getElementById('_관리번호');
-	_품번_csv = document.getElementById('_품번_csv');
+	_csv = document.getElementById('_csv');
+	read_func_csv();
 
 	find_계정(계정, { id: { $exists: true } })
 	await delay();
