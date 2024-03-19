@@ -1812,6 +1812,7 @@
       </div>
     </div>
 
+    <form id="_form" action="/upload_excel" method="post" enctype="multipart/form-data">
     <div id="_CAN통신검사" class="check-all">
       <div class="report__tit">
         <h3>▣ CAN 통신 검사</h3>
@@ -1845,11 +1846,10 @@
               <img id="_CAN현재" />
             </td>
             <td class="photo heightPhoto" rowspan="2">
-              <img id="_CAN진단" " />
-	      <!--
+              <img id="_CAN진단"/>
               <div id="_file_exist3" class="process__file t1-d" style="justify-content: flex-end">
                 <div id="_inFile3" class="in-file" style="display: none">
-                  <button class="download-file" onClick="완료보고서_download1();">
+                  <button class="download-file" onClick="완료보고서_download3();">
                     <i class="fas fa-arrow-down"></i>
                   </button>
                 </div>
@@ -1862,7 +1862,6 @@
                   <span class="delete_icon" style="display: none">❌</span>
                 </div>
               </div>
-	      -->
             </td>
             <td class="photo" rowspan="4">
               <img id="_PDS진단1" style="aspect-ratio: 1" />
@@ -1989,7 +1988,6 @@
         <p>Positive Energy</p>
       </div>
     </div>
-    <form id="_form" action="/upload_excel" method="post" enctype="multipart/form-data">
       <div id="_DCIR검사" class="check-all">
         <div class="report__tit">
           <h3>▣ DCIR 검사</h3>

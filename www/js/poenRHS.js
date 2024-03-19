@@ -1894,6 +1894,7 @@ const 완료보고서_doc = {
 	pic2: "",
 	DCIR_file: "",
 	용량평가_file: "",
+	진단_file: "",
 }
 
 const 계정_ = {
@@ -3679,6 +3680,7 @@ const 완료보고서_ = {
 	pic2: 1,
 	DCIR_file: 1,
 	용량평가_file: 1,
+	진단_file: 1,
 }
 
 var doc_count = 0;

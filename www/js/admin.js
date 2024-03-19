@@ -386,6 +386,24 @@ async function eolpic() {
 	}
 }
 
+async function 차종통일() {
+	find_BSA재제조(BSA재제조, { 관리번호 : { $exists : true}});
+	await delay();
+
+	console.log(BSA재제조_v);
+	for(var i = 0 ; i < BSA재제조_v.length; i++) {
+		doc = {};
+		doc.관리번호 = BSA재제조_v[i].관리번호;
+		if((String(BSA재제조_v[i].차종).slice(-2)) != 'EV') {
+			doc.차종 = BSA재제조_v[i].차종 + '_EV'; 
+
+			update(BSA재제조, doc);
+			await delay();
+		}
+		console.log(i + '/' + BSA재제조_v.length);
+	}
+}
+
 async function 기본정보자동입력() {
 	var cnt = 0;
 	//find_입고(입고, { 관리번호 : { $exists : true}});
@@ -455,4 +473,38 @@ async function 기본정보자동입력() {
 		cnt++;
 		console.log(cnt);
 	}
+}
+
+var flag_excel = false;
+function read_func_csv() {
+	var _csv = document.getElementById('_csv');
+	_csv.addEventListener('input', function (event) {
+		if(flag_excel == true) return;
+		flag_excel = true;
+		console.log('file finded');
+		const target = event.target;
+		const files = target.files;
+		const file = files[0];
+
+		const reader = new FileReader();
+		reader.addEventListener('load', async function () {
+			const res = d3.csvParse(reader.result);
+
+			for (var i = 0; i < res.length; i++) {
+				if (res[i].소재지 != '') {
+					var doc = {};
+					doc.관리번호 = res[i].관리번호;
+					doc.소재지 = res[i].소재지;
+
+					update(BSA재제조, doc);
+					await delay();
+				}
+				console.log(i + '/' + res.length);
+			};
+			console.log('complete:', res.length);
+			alert('업로드가 완료되었습니다. 새로고침후 다시 로그인하세요');
+		});
+		console.log(file);
+		reader.readAsText(file);
+	});
 }

@@ -15,6 +15,7 @@ var flag_입고정보 = false;
 var 완료보고서_filelist = {
   f1: "",
   f2: "",
+  f3: "",
 };
 
 async function 완료보고서_시작() {
@@ -108,11 +109,12 @@ async function 완료보고서_조회(is재제조번호 = false) {
   if (완료보고서_v != null && 완료보고서_v[0] != undefined) {
     완료보고서_data = await JSON.parse(JSON.stringify(완료보고서_v[0]));
 
-    pic_to_img(완료보고서_data.pic1, _img1);
+    //pic_to_img(완료보고서_data.pic1, _img1);
     pic_to_img(완료보고서_data.pic2, _img2);
 
     완료보고서_filelist.f1 = 완료보고서_data.DCIR_file;
     완료보고서_filelist.f2 = 완료보고서_data.용량평가_file;
+    완료보고서_filelist.f3 = 완료보고서_data.진단_file;
   }
 
   find(부품정보_list, 관리번호);
@@ -752,10 +754,11 @@ function showTable(tableId) {
 async function 완료보고서_save() {
   var doc = {
     관리번호: 관리번호,
-    pic1: _img1.src,
+    //pic1: _img1.src,
     pic2: _img2.src,
     DCIR_file: 완료보고서_filelist.f1,
     용량평가_file: 완료보고서_filelist.f2,
+    진단_file: 완료보고서_filelist.f3,
   };
 
   update(완료보고서, doc);
@@ -1005,7 +1008,7 @@ async function 완료보고서_file_upload() {
   완료보고서_file1_upload();
   //완료보고서_file2_upload();
 
-  await sleep(1000 * 10);
+  await sleep(1000 * 20);
 
   완료보고서_send_filelist();
   _btn_upload.disabled = false;
@@ -1017,12 +1020,18 @@ async function 완료보고서_send_filelist() {
   var filelist = {
     관리번호: 관리번호,
   };
+
   if (_file1.files[0] == undefined || _file1.files[0] == null) filelist.f1 = "";
   else filelist.f1 = _file1.files[0].name;
+
   if (_file2.files[0] == undefined || _file2.files[0] == null) filelist.f2 = "";
   else filelist.f2 = _file2.files[0].name;
 
+  if (_file3.files[0] == undefined || _file3.files[0] == null) filelist.f3 = "";
+  else filelist.f3 = _file3.files[0].name;
+
   console.log(filelist);
+
   send_list2(filelist);
   await delay();
 
@@ -1030,6 +1039,7 @@ async function 완료보고서_send_filelist() {
   doc.관리번호 = 관리번호;
   if (완료보고서_filelist.f1 == "" || 완료보고서_filelist.f1 == undefined) doc.DCIR_file = filelist.f1;
   if (완료보고서_filelist.f2 == "" || 완료보고서_filelist.f2 == undefined) doc.용량평가_file = filelist.f2;
+  if (완료보고서_filelist.f3 == "" || 완료보고서_filelist.f3 == undefined) doc.진단_file = filelist.f3;
 
   console.log("update 완료보고서 doc:", doc);
   update(완료보고서, doc);
@@ -1055,9 +1065,19 @@ function 완료보고서_download1() {
 }
 
 function 완료보고서_download2() {
+  console.log("download file 2");
   const a = document.createElement("a");
   a.download = "용량평가.csv";
   const tmp_name = 관리번호.replace("#", "");
   a.href = "excel/" + tmp_name + "/용량평가.csv";
+  a.click();
+}
+
+function 완료보고서_download3() {
+  console.log("download file 3");
+  const a = document.createElement("a");
+  a.download = "진단.png";
+  const tmp_name = 관리번호.replace("#", "");
+  a.href = "excel/" + tmp_name + "/진단.png";
   a.click();
 }

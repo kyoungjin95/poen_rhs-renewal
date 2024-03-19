@@ -758,6 +758,7 @@ function file_list(list) {
 }
 
 function file_list2(list) {
+	console.log('test:', list);
 	no = 1;
 	try {
 		list.관리번호 = list.관리번호.replace('#', '');
@@ -789,6 +790,19 @@ function file_list2(list) {
 		if(list.f2 != '') {
 			var old_path = 'excel/tmp/excel' + n + '.csv';
 			var new_path = 'excel/' + list.관리번호 + '/용량평가.csv';
+			fs.rename(old_path, new_path, function(err) {
+				if(err) {
+					console.log(err);
+					console.log('fail rename');
+				}
+				console.log('successfully rename');
+			});
+			n++;
+		}
+
+		if(list.f3 != '') {
+			var old_path = 'excel/tmp/excel' + n + '.csv';
+			var new_path = 'excel/' + list.관리번호 + '/진단.png';
 			fs.rename(old_path, new_path, function(err) {
 				if(err) {
 					console.log(err);
