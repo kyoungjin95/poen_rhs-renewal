@@ -149,6 +149,7 @@ async function 신품재고() {
 			{ title: "품번", field: "품번", sorter: "string", width: '180' },
 			{ title: "단가", field: "단가", sorter: "string", width: '180' },
 			{ title: "수량", field: "수량", sorter: "string", width: '180' },
+			{ title: "위치", field: "위치", sorter: "string", width: '180' },
 			{ title: "LotNo", field: "LotNo", sorter: "string", width: '180' },
 			{ title: "비고", field: "비고", sorter: "string", width: '180' },
 			{ title: "사용관리번호", field: "사용관리번호", sorter: "string", width: '180' },

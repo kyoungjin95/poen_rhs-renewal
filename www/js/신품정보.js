@@ -28,6 +28,7 @@ async function 신품정보등록_조회() {
 		_품번.value = 자재입출고_v.품번;
 		_단가.value = 자재입출고_v.단가;
 		_수량.value = 자재입출고_v.수량;
+		_위치.value = 자재입출고_v.위치;
 		_LotNo.value = 자재입출고_v.LotNo;
 		_비고.value = 자재입출고_v.비고;
 	} else {
@@ -39,6 +40,7 @@ async function 신품정보등록_조회() {
 		_품번.value = '';
 		_단가.value = '';
 		_수량.value = '';
+		_위치.value = '';
 		_LotNo.value = '';
 		_비고.value = '';
 	}
@@ -58,6 +60,7 @@ async function 신품정보_save() {
 	doc.품번 = _품번.value;
 	doc.단가 = _단가.value;
 	doc.수량 = _수량.value;
+	doc.위치 = _위치.value;
 	doc.LotNo = _LotNo.value;
 	doc.비고 = _비고.value;
 
@@ -144,6 +147,7 @@ async function 신품정보_insert(val) {
 	doc.품명 = val.품명;
 	doc.품번 = val.품번;
 	doc.수량 = val.수량;
+	doc.위치 = val.위치;
 	doc.LotNo = val.LotNo;
 	doc.비고 = val.비고;
 	doc.사용관리번호 = '';
