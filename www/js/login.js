@@ -57,7 +57,7 @@ async function login() {
         }
       }, 1000);
       await sleep(1);
-      //alert('#공지사항#\nVersion update sky 0.73\n1. 부품재고에 위치 항목 추가');
+      alert('#공지사항#\nVersion update sky 0.74\n1. 서버와 전송을 주고 받을때 2초 타임아웃 설정 추가');
     } else if (worker == _id.value) {
       worker = "";
       level = "";

@@ -150,7 +150,7 @@ var idx = client_ip.lastIndexOf(':');
 		};
 
 		console.log('용량평가:', old_dischargecap);
-		socket.emit('용량평가_result', Number(old_dischargecap));
+		socket.timeout(2000).emit('용량평가_result', Number(old_dischargecap));
 	});
 
 	socket.on('SOC60Percent', async function(path) {
@@ -166,7 +166,7 @@ var idx = client_ip.lastIndexOf(':');
 
 		console.log(last);
 		console.log(last_volt);
-		socket.emit('SOC60Percent_result', last_volt);
+		socket.timeout(2000).emit('SOC60Percent_result', last_volt);
 	});
 
 	socket.on('DCIR', async function(path) {
@@ -279,7 +279,7 @@ var idx = client_ip.lastIndexOf(':');
 			CURR5 : Math.round(Math.abs(curr5)),
 			CURR6 : Math.round(Math.abs(curr6)),
 		};
-		socket.emit('DCIR_result', result);
+		socket.timeout(2000).emit('DCIR_result', result);
 		console.log(result);
 	});
 
@@ -308,7 +308,7 @@ var idx = client_ip.lastIndexOf(':');
 			}
 		}
 
-		socket.emit('성능검사_data_result', data_point);
+		socket.timeout(2000).emit('성능검사_data_result', data_point);
 		//console.log(data_point);
 
 	});
@@ -319,7 +319,7 @@ var idx = client_ip.lastIndexOf(':');
 
 		const result = file_list(list);
 
-		socket.emit('file_list_result', result);
+		socket.timeout(2000).emit('file_list_result', result);
 		logger.info('file list:'+ JSON.stringify(list));
 	});
 
@@ -329,7 +329,7 @@ var idx = client_ip.lastIndexOf(':');
 
 		const result = file_list2(list);
 
-		socket.emit('file_list_result', result);
+		socket.timeout(2000).emit('file_list_result', result);
 		logger.info('file list:'+ JSON.stringify(list));
 	});
 
@@ -337,7 +337,7 @@ var idx = client_ip.lastIndexOf(':');
 		console.log('request insert');
 
 		const result = await insert(col, doc);
-		socket.emit('insert_result', result);
+		socket.timeout(2000).emit('insert_result', result);
 		logger.info('worker:'+ worker + ' insert col:' + col +'doc:'+ JSON.stringify(doc));
 	});
 
@@ -345,7 +345,7 @@ var idx = client_ip.lastIndexOf(':');
 		console.log('request insertMany');
 
 		const result = await insertMany(col, doc);
-		socket.emit('insert_result', result);
+		socket.timeout(2000).emit('insert_result', result);
 		logger.info('worker:'+ worker + ' insert col:' + col +'doc:'+ JSON.stringify(doc));
 	});
 
@@ -353,7 +353,7 @@ var idx = client_ip.lastIndexOf(':');
 		console.log('request count');
 		console.log(col, query, client_ip);
 		const cnt = await count(col, query);
-		socket.emit('count_result', col, cnt, check, option);
+		socket.timeout(2000).emit('count_result', col, cnt, check, option);
 		//logger.info('worker:'+ worker + ' count col:' + col +'query:'+ JSON.stringify(query));
 		//
 	});
@@ -361,14 +361,14 @@ var idx = client_ip.lastIndexOf(':');
 	socket.on('find', async function(worker, col, query, options, check) {
 		console.log('request find');
 		const result_array = await find(col, query, options);
-		socket.emit('find_result', col, result_array, check);
+		socket.timeout(2000).emit('find_result', col, result_array, check);
 		////logger.info('worker:'+ worker + ' find col:' + col +'query:'+ JSON.stringify(query));
 	});
 
 	socket.on('findOne', async function(worker, col, query, options, check) {
 		console.log('request findOne');
 		const result_array = await findOne(col, query, options);
-		socket.emit('find_result', col, result_array, check);
+		socket.timeout(2000).emit('find_result', col, result_array, check);
 
 		////logger.info('worker:'+ worker + ' find col:' + col +'query:'+ JSON.stringify(query));
 	});
@@ -378,21 +378,21 @@ var idx = client_ip.lastIndexOf(':');
 		logger.info('client ip:' + client_ip + ' worker:'+ worker + ' update col:' + col + 'doc:' + JSON.stringify(doc));
 
 		const result = await update(col, filter, doc);
-		socket.emit('update_result', result);
+		socket.timeout(2000).emit('update_result', result);
 	});
 
 	socket.on('delete', async function(worker, col, query) {
 		console.log('request delete');
 		logger.info('worker:'+ worker + ' delete col:' + col + 'query:'+ JSON.stringify(query));
 		const result_count = await deleteOne(col, query);
-		socket.emit('delete_result', result_count);
+		socket.timeout(2000).emit('delete_result', result_count);
 	});
 
 	socket.on('count_agree', async function(level, col, query, check, option = '') {
 		console.log('request count agree');
 		if(col != '제공동의서' && col != '거래확인서') return;
 		const cnt = await count(col, query);
-		socket.emit('count_result', col, cnt, check, option);
+		socket.timeout(2000).emit('count_result', col, cnt, check, option);
 		//logger.info('worker:'+ worker + ' count col:' + col +'query:'+ JSON.stringify(query));
 		//
 	});
@@ -401,7 +401,7 @@ var idx = client_ip.lastIndexOf(':');
 		console.log('request find agree');
 		if(col != '제공동의서' && col != '거래확인서') return;
 		const result_array = await find(col, query, options);
-		socket.emit('find_result', col, result_array, check);
+		socket.timeout(2000).emit('find_result', col, result_array, check);
 		////logger.info('worker:'+ worker + ' find col:' + col +'query:'+ JSON.stringify(query));
 	});
 
@@ -409,7 +409,7 @@ var idx = client_ip.lastIndexOf(':');
 		console.log('request findone agree');
 		if(col != '제공동의서' && col != '거래확인서') return;
 		const result_array = await findOne(col, query, options);
-		socket.emit('find_result', col, result_array, check);
+		socket.timeout(2000).emit('find_result', col, result_array, check);
 		////logger.info('worker:'+ worker + ' find col:' + col +'query:'+ JSON.stringify(query));
 	});
 
@@ -419,7 +419,7 @@ var idx = client_ip.lastIndexOf(':');
 		logger.info('worker:'+ worker + ' update col:' + col + 'doc:' + JSON.stringify(doc));
 
 		const result = await update(col, filter, doc);
-		socket.emit('update_result', result);
+		socket.timeout(2000).emit('update_result', result);
 	});
 
 	socket.on('delete_agree', async function(worker, col, query) {
@@ -427,7 +427,7 @@ var idx = client_ip.lastIndexOf(':');
 		if(col != '제공동의서' && col != '거래확인서') return;
 		logger.info('worker:'+ worker + ' delete col:' + col + 'query:'+ JSON.stringify(query));
 		const result_count = await deleteOne(col, query);
-		socket.emit('delete_result', result_count);
+		socket.timeout(2000).emit('delete_result', result_count);
 	});
 
 	socket.on('delete_by_id', async function(worker, col, id) {
@@ -435,20 +435,20 @@ var idx = client_ip.lastIndexOf(':');
 		logger.info('worker:'+ worker + ' delete col:' + col);
 		console.log('delete:', id);
 		const result_count = await deleteOneById(col, id);
-		socket.emit('delete_result', result_count);
+		socket.timeout(2000).emit('delete_result', result_count);
 	});
 
 	socket.on('drop', async function(worker, col) {
 		console.log('request drop:', col);
 		logger.info('worker:'+ worker + ' drop col:' + col);
 		const result = await drop(col);
-		socket.emit('drop_result', result);
+		socket.timeout(2000).emit('drop_result', result);
 	});
 
 	socket.on('부품정보', async function(start, end) {
 		console.log('request 부품정보:', start, end);
 		const result = await 부품_info(start, end);
-		socket.emit('부품정보_result', result);
+		socket.timeout(2000).emit('부품정보_result', result);
 	});
 
 	process.on('exit', function(code) {
@@ -473,9 +473,9 @@ setInterval(function() {
 			});
 
 			if(flag_autobackup_db == true) {
-				io.sockets.emit('auto_backup_db_status', true);
+				io.sockets.timeout(2000).emit('auto_backup_db_status', true);
 			} else if(flag_autobackup_db == false) {
-				io.sockets.emit('auto_backup_db_status', false);
+				io.sockets.timeout(2000).emit('auto_backup_db_status', false);
 			}
 		}
 	});

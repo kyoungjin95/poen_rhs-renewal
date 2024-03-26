@@ -4587,26 +4587,26 @@ async function send_list(file_list) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	file_upload_result = false;
-	socket.emit("file_list", file_list);
+	socket.timeout(2000).emit("file_list", file_list);
 }
 
 async function send_list2(file_list) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	file_upload_result = false;
-	socket.emit("file_list2", file_list);
+	socket.timeout(2000).emit("file_list2", file_list);
 }
 
 async function make_qr_label(html_string) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
-	socket.emit("qr_label", html_string);
+	socket.timeout(2000).emit("qr_label", html_string);
 }
 
 async function aggregate() {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
-	socket.emit("aggregate", level);
+	socket.timeout(2000).emit("aggregate", level);
 }
 
 async function count(col, query, option = "") {
@@ -4614,206 +4614,206 @@ async function count(col, query, option = "") {
 	flag_arrivedMSG = false;
 	check++;
 	if (check > 10) check = 0;
-	socket.emit("count", level, col, query, check, option);
+	socket.timeout(2000).emit("count", level, col, query, check, option);
 }
 
 async function insert(col, doc) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
-	socket.emit("insert", worker, col, doc);
+	socket.timeout(2000).emit("insert", worker, col, doc);
 }
 
 async function insertMany(col, doc) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
-	socket.emit("insertMany", worker, col, doc);
+	socket.timeout(2000).emit("insertMany", worker, col, doc);
 }
 
 async function update(col, doc) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
-	socket.emit("update", worker, col, { 관리번호: doc.관리번호 }, { $set: doc });
+	socket.timeout(2000).emit("update", worker, col, { 관리번호: doc.관리번호 }, { $set: doc });
 }
 
 async function update_자재입출고(col, doc) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
-	socket.emit("update", worker, col, { QR: doc.QR }, { $set: doc });
+	socket.timeout(2000).emit("update", worker, col, { QR: doc.QR }, { $set: doc });
 }
 
 async function update_보고서(col, doc) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
-	socket.emit("update", worker, col, { level: doc.level }, { $set: doc });
+	socket.timeout(2000).emit("update", worker, col, { level: doc.level }, { $set: doc });
 }
 
 async function update_재제조번호(col, doc) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
-	socket.emit("update", worker, col, { 재제조번호: doc.재제조번호 }, { $set: doc });
+	socket.timeout(2000).emit("update", worker, col, { 재제조번호: doc.재제조번호 }, { $set: doc });
 }
 
 async function update_구자료(col, doc) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
-	socket.emit("update", worker, col, { 품번: doc.품번 }, { $set: doc });
+	socket.timeout(2000).emit("update", worker, col, { 품번: doc.품번 }, { $set: doc });
 }
 
 async function update_계정(col, doc) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
-	socket.emit("update", worker, col, { id: doc.id }, { $set: doc });
+	socket.timeout(2000).emit("update", worker, col, { id: doc.id }, { $set: doc });
 }
 
 async function update_품번(col, doc) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
-	socket.emit("update", worker, col, { 번호: doc.번호 }, { $set: doc });
+	socket.timeout(2000).emit("update", worker, col, { 번호: doc.번호 }, { $set: doc });
 }
 
 async function update_변수(col, doc) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
-	socket.emit("update", worker, col, { 구분: doc.구분 }, { $set: doc });
+	socket.timeout(2000).emit("update", worker, col, { 구분: doc.구분 }, { $set: doc });
 }
 
 async function update_신품정보(col, doc) {
 	if (socket == undefined) return;
 	if (doc.QR == "") return;
 	flag_arrivedMSG = false;
-	socket.emit("update", worker, col, { QR: doc.QR }, { $set: doc });
+	socket.timeout(2000).emit("update", worker, col, { QR: doc.QR }, { $set: doc });
 }
 
 async function update_고품정보(col, doc) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
-	socket.emit("update", worker, col, { QR: doc.QR }, { $set: doc });
+	socket.timeout(2000).emit("update", worker, col, { QR: doc.QR }, { $set: doc });
 }
 
 async function update_분해조립재제조(col, doc) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
-	socket.emit("update", worker, col, { 교체전QR: doc.교체전QR }, { $set: doc });
+	socket.timeout(2000).emit("update", worker, col, { 교체전QR: doc.교체전QR }, { $set: doc });
 }
 
 async function update_분해조립공정대기(col, doc) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
-	socket.emit("update", worker, col, { QR: doc.QR }, { $set: doc });
+	socket.timeout(2000).emit("update", worker, col, { QR: doc.QR }, { $set: doc });
 }
 
 async function update_분해조립폐기자재(col, doc) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
-	socket.emit("update", worker, col, { QR: doc.QR }, { $set: doc });
+	socket.timeout(2000).emit("update", worker, col, { QR: doc.QR }, { $set: doc });
 }
 
 async function update_by_id(col, doc) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
-	socket.emit("update_by_id", worker, col, { _id: doc.id}, { $set: doc });
+	socket.timeout(2000).emit("update_by_id", worker, col, { _id: doc.id}, { $set: doc });
 }
 
 async function deleteOne(col, management_id) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
-	socket.emit("delete", worker, col, { 관리번호: management_id });
+	socket.timeout(2000).emit("delete", worker, col, { 관리번호: management_id });
 }
 
 async function deleteOneBSA(col, id) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
-	socket.emit("delete_by_id", worker, col, id);
+	socket.timeout(2000).emit("delete_by_id", worker, col, id);
 }
 
 async function deleteOne재제조번호(col, 재제조번호) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
-	socket.emit("delete", worker, col, { 재제조번호: 재제조번호 });
+	socket.timeout(2000).emit("delete", worker, col, { 재제조번호: 재제조번호 });
 }
 
 async function deleteOne_신품정보(col, QR) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
-	socket.emit("delete", worker, col, { QR: QR });
+	socket.timeout(2000).emit("delete", worker, col, { QR: QR });
 }
 
 async function deleteOne_고품정보(col, QR) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
-	socket.emit("delete", worker, col, { QR: QR });
+	socket.timeout(2000).emit("delete", worker, col, { QR: QR });
 }
 
 async function deleteOne_구장재고(col, 관리번호) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
-	socket.emit("delete", worker, col, { 관리번호: 관리번호 });
+	socket.timeout(2000).emit("delete", worker, col, { 관리번호: 관리번호 });
 }
 
 async function deleteOne_군포재고(col, 관리번호) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
-	socket.emit("delete", worker, col, { 관리번호: 관리번호 });
+	socket.timeout(2000).emit("delete", worker, col, { 관리번호: 관리번호 });
 }
 
 async function deleteOne_제주재고(col, 관리번호) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
-	socket.emit("delete", worker, col, { 관리번호: 관리번호 });
+	socket.timeout(2000).emit("delete", worker, col, { 관리번호: 관리번호 });
 }
 
 async function deleteOne_분해조립재제조(col, 관리번호) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
-	socket.emit("delete", worker, col, { 관리번호: { $eq: 관리번호 } });
+	socket.timeout(2000).emit("delete", worker, col, { 관리번호: { $eq: 관리번호 } });
 }
 
 async function delete_분해조립재제조(col, 교체전QR) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
-	socket.emit("delete", worker, col, { 교체전QR: 교체전QR });
+	socket.timeout(2000).emit("delete", worker, col, { 교체전QR: 교체전QR });
 }
 
 async function deleteOne_분해조립공정대기(col, 관리번호) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
-	socket.emit("delete", worker, col, { 관리번호: 관리번호 });
+	socket.timeout(2000).emit("delete", worker, col, { 관리번호: 관리번호 });
 }
 
 async function delete_분해조립공정대기(col, QR) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
-	socket.emit("delete", worker, col, { QR: QR });
+	socket.timeout(2000).emit("delete", worker, col, { QR: QR });
 }
 
 async function deleteOne_분해조립폐기자재(col, 관리번호) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
-	socket.emit("delete", worker, col, { 관리번호: 관리번호 });
+	socket.timeout(2000).emit("delete", worker, col, { 관리번호: 관리번호 });
 }
 
 async function delete_분해조립폐기자재(col, QR) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
-	socket.emit("delete", worker, col, { QR: QR });
+	socket.timeout(2000).emit("delete", worker, col, { QR: QR });
 }
 
 async function delete_계정(_id) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
-	socket.emit("delete", worker, 계정, { id: _id });
+	socket.timeout(2000).emit("delete", worker, 계정, { id: _id });
 }
 
 async function drop(_col) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
-	socket.emit("drop", worker, _col);
+	socket.timeout(2000).emit("drop", worker, _col);
 }
 
 async function 부품정보처리(start, end) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
-	socket.emit("부품정보", start, end);
+	socket.timeout(2000).emit("부품정보", start, end);
 }
 
 async function find(col, management_id) {
@@ -4826,215 +4826,215 @@ async function find(col, management_id) {
 
 	switch (col) {
 		case "BSA재제조":
-			socket.emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: BSA재제조_ }, check);
+			socket.timeout(2000).emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: BSA재제조_ }, check);
 			break;
 
 		case "입고":
-			socket.emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 입고_ }, check);
+			socket.timeout(2000).emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 입고_ }, check);
 			break;
 
 		case "세척":
-			socket.emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 세척_ }, check);
+			socket.timeout(2000).emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 세척_ }, check);
 			break;
 
 		case "기초검사":
-			socket.emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 기초검사_ }, check);
+			socket.timeout(2000).emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 기초검사_ }, check);
 			break;
 
 		case "성능검사":
-			socket.emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 성능검사_ }, check);
+			socket.timeout(2000).emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 성능검사_ }, check);
 			break;
 
 		case "EOL":
-			socket.emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: EOL_ }, check);
+			socket.timeout(2000).emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: EOL_ }, check);
 			break;
 
 		case "출하정보":
-			socket.emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 출하정보_ }, check);
+			socket.timeout(2000).emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 출하정보_ }, check);
 			break;
 
 		case "분해조립":
-			socket.emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 분해조립_ }, check);
+			socket.timeout(2000).emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 분해조립_ }, check);
 			break;
 
 		case "분해조립_부품정보":
-			socket.emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 분해조립_부품정보_ }, check);
+			socket.timeout(2000).emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 분해조립_부품정보_ }, check);
 			break;
 
 		case "고품정보":
-			socket.emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 고품정보_ }, check);
+			socket.timeout(2000).emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 고품정보_ }, check);
 			break;
 
 		case "신품정보":
-			socket.emit("findOne", worker, col, { QR: management_id }, { sort: { kind: 1 }, projection: 신품정보_ }, check);
+			socket.timeout(2000).emit("findOne", worker, col, { QR: management_id }, { sort: { kind: 1 }, projection: 신품정보_ }, check);
 			break;
 
 		case "특이사항":
-			socket.emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 특이사항_ }, check);
+			socket.timeout(2000).emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 특이사항_ }, check);
 			break;
 
 		case "교체부품상세1":
-			socket.emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 교체부품상세_ }, check);
+			socket.timeout(2000).emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 교체부품상세_ }, check);
 			break;
 
 		case "교체부품상세2":
-			socket.emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 교체부품상세_ }, check);
+			socket.timeout(2000).emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 교체부품상세_ }, check);
 			break;
 
 		case "교체부품상세3":
-			socket.emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 교체부품상세_ }, check);
+			socket.timeout(2000).emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 교체부품상세_ }, check);
 			break;
 
 		case "교체부품상세4":
-			socket.emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 교체부품상세_ }, check);
+			socket.timeout(2000).emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 교체부품상세_ }, check);
 			break;
 
 		case "교체부품상세5":
-			socket.emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 교체부품상세_ }, check);
+			socket.timeout(2000).emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 교체부품상세_ }, check);
 			break;
 
 		case "교체부품상세6":
-			socket.emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 교체부품상세_ }, check);
+			socket.timeout(2000).emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 교체부품상세_ }, check);
 			break;
 
 		case "교체부품상세7":
-			socket.emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 교체부품상세_ }, check);
+			socket.timeout(2000).emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 교체부품상세_ }, check);
 			break;
 
 		case "교체부품상세8":
-			socket.emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 교체부품상세_ }, check);
+			socket.timeout(2000).emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 교체부품상세_ }, check);
 			break;
 
 		case "교체부품상세9":
-			socket.emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 교체부품상세_ }, check);
+			socket.timeout(2000).emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 교체부품상세_ }, check);
 			break;
 
 		case "교체부품상세10":
-			socket.emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 교체부품상세_ }, check);
+			socket.timeout(2000).emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 교체부품상세_ }, check);
 			break;
 
 		case "입고_pic":
-			socket.emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 입고_pic_ }, check);
+			socket.timeout(2000).emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 입고_pic_ }, check);
 			break;
 
 		case "세척_pic":
-			socket.emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 세척_pic_ }, check);
+			socket.timeout(2000).emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 세척_pic_ }, check);
 			break;
 
 		case "기초검사_pic1":
-			socket.emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 기초검사_pic1_ }, check);
+			socket.timeout(2000).emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 기초검사_pic1_ }, check);
 			break;
 
 		case "기초검사_pic2":
-			socket.emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 기초검사_pic2_ }, check);
+			socket.timeout(2000).emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 기초검사_pic2_ }, check);
 			break;
 
 		case "기초검사_pic3":
-			socket.emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 기초검사_pic3_ }, check);
+			socket.timeout(2000).emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 기초검사_pic3_ }, check);
 			break;
 
 		case "기초검사_pic4":
-			socket.emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 기초검사_pic4_ }, check);
+			socket.timeout(2000).emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 기초검사_pic4_ }, check);
 			break;
 
 		case "분해조립_pic":
-			socket.emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 분해조립_pic_ }, check);
+			socket.timeout(2000).emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 분해조립_pic_ }, check);
 			break;
 
 		case "성능검사_pic":
-			socket.emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 성능검사_pic_ }, check);
+			socket.timeout(2000).emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 성능검사_pic_ }, check);
 			break;
 
 		case "EOL_pic":
-			socket.emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: EOL_pic_ }, check);
+			socket.timeout(2000).emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: EOL_pic_ }, check);
 			break;
 
 		case "EOL_pic1":
-			socket.emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: EOL_pic_ }, check);
+			socket.timeout(2000).emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: EOL_pic_ }, check);
 			break;
 
 		case "EOL_pic2":
-			socket.emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: EOL_pic_ }, check);
+			socket.timeout(2000).emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: EOL_pic_ }, check);
 			break;
 
 		case "EOL_pic3":
-			socket.emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: EOL_pic_ }, check);
+			socket.timeout(2000).emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: EOL_pic_ }, check);
 			break;
 
 		case "특이사항_pic":
-			socket.emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 특이사항_pic_ }, check);
+			socket.timeout(2000).emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 특이사항_pic_ }, check);
 			break;
 
 		case "출하_pic":
-			socket.emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 출하_pic_ }, check);
+			socket.timeout(2000).emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 출하_pic_ }, check);
 			break;
 
 		case "반품입고_pic":
-			socket.emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 반품입고_pic_ }, check);
+			socket.timeout(2000).emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 반품입고_pic_ }, check);
 			break;
 
 		case "재출하_pic":
-			socket.emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 재출하_pic_ }, check);
+			socket.timeout(2000).emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 재출하_pic_ }, check);
 			break;
 
 		case "완전분해_pic":
-			socket.emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 완전분해_pic_ }, check);
+			socket.timeout(2000).emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 완전분해_pic_ }, check);
 			break;
 
 		case "폐기_pic":
-			socket.emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 폐기_pic_ }, check);
+			socket.timeout(2000).emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 폐기_pic_ }, check);
 			break;
 
 		case "구장재고":
-			socket.emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 구장재고_ }, check);
+			socket.timeout(2000).emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 구장재고_ }, check);
 			break;
 
 		case "군포재고":
-			socket.emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 군포재고_ }, check);
+			socket.timeout(2000).emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 군포재고_ }, check);
 			break;
 
 		case "제주재고":
-			socket.emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 제주재고_ }, check);
+			socket.timeout(2000).emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 제주재고_ }, check);
 			break;
 
 		case "창고이동":
-			socket.emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 창고이동_ }, check);
+			socket.timeout(2000).emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 창고이동_ }, check);
 			break;
 
 		case "부품정보_list":
-			socket.emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 부품정보_list_ }, check);
+			socket.timeout(2000).emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 부품정보_list_ }, check);
 			break;
 
 		case "품번":
-			socket.emit("findOne", worker, col, { 번호: management_id }, { sort: { kind: 1 }, projection: 품번_ }, check);
+			socket.timeout(2000).emit("findOne", worker, col, { 번호: management_id }, { sort: { kind: 1 }, projection: 품번_ }, check);
 			break;
 
 		case "변수":
-			socket.emit("findOne", worker, col, { 구분: management_id }, { sort: { kind: 1 }, projection: 변수_ }, check);
+			socket.timeout(2000).emit("findOne", worker, col, { 구분: management_id }, { sort: { kind: 1 }, projection: 변수_ }, check);
 			break;
 
 		case "불량의심부품":
-			socket.emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 불량의심부품_ }, check);
+			socket.timeout(2000).emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 불량의심부품_ }, check);
 			break;
 
 		case "불량의심부품":
-			socket.emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 불량의심부품_ }, check);
+			socket.timeout(2000).emit("findOne", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 불량의심부품_ }, check);
 			break;
 
 		case "분해조립재제조":
-			socket.emit("find", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 분해조립재제조_ }, check);
+			socket.timeout(2000).emit("find", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 분해조립재제조_ }, check);
 			break;
 
 		case "분해조립공정대기":
-			socket.emit("find", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 분해조립공정대기_ }, check);
+			socket.timeout(2000).emit("find", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 분해조립공정대기_ }, check);
 			break;
 
 		case "분해조립폐기자재":
-			socket.emit("find", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 분해조립폐기자재_ }, check);
+			socket.timeout(2000).emit("find", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 분해조립폐기자재_ }, check);
 			break;
 
 		case "완료보고서":
-			socket.emit("find", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 완료보고서_ }, check);
+			socket.timeout(2000).emit("find", worker, col, { 관리번호: management_id }, { sort: { kind: 1 }, projection: 완료보고서_ }, check);
 			break;
 
 		default:
@@ -5047,7 +5047,7 @@ async function findOne_변수(col, query) {
 	flag_arrivedMSG = false;
 	check++;
 	if (check > 10) check = 0;
-	socket.emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 변수_ }, check);
+	socket.timeout(2000).emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 변수_ }, check);
 }
 
 async function findOne_불량의심부품(col, query) {
@@ -5055,7 +5055,7 @@ async function findOne_불량의심부품(col, query) {
 	flag_arrivedMSG = false;
 	check++;
 	if (check > 10) check = 0;
-	socket.emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 불량의심부품_ }, check);
+	socket.timeout(2000).emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 불량의심부품_ }, check);
 }
 
 async function find_분해조립재제조(col, query) {
@@ -5063,7 +5063,7 @@ async function find_분해조립재제조(col, query) {
 	flag_arrivedMSG = false;
 	check++;
 	if (check > 10) check = 0;
-	socket.emit("find", worker, col, query, { sort: { kind: 1 }, projection: 분해조립재제조_ }, check);
+	socket.timeout(2000).emit("find", worker, col, query, { sort: { kind: 1 }, projection: 분해조립재제조_ }, check);
 }
 
 async function findOne_분해조립공정대기(col, query) {
@@ -5071,7 +5071,7 @@ async function findOne_분해조립공정대기(col, query) {
 	flag_arrivedMSG = false;
 	check++;
 	if (check > 10) check = 0;
-	socket.emit("find", worker, col, query, { sort: { kind: 1 }, projection: 분해조립공정대기_ }, check);
+	socket.timeout(2000).emit("find", worker, col, query, { sort: { kind: 1 }, projection: 분해조립공정대기_ }, check);
 }
 
 async function findOne_분해조립폐기자재(col, query) {
@@ -5079,7 +5079,7 @@ async function findOne_분해조립폐기자재(col, query) {
 	flag_arrivedMSG = false;
 	check++;
 	if (check > 10) check = 0;
-	socket.emit("find", worker, col, query, { sort: { kind: 1 }, projection: 분해조립폐기자재_ }, check);
+	socket.timeout(2000).emit("find", worker, col, query, { sort: { kind: 1 }, projection: 분해조립폐기자재_ }, check);
 }
 
 async function findOne_품번(col, query) {
@@ -5087,7 +5087,7 @@ async function findOne_품번(col, query) {
 	flag_arrivedMSG = false;
 	check++;
 	if (check > 10) check = 0;
-	socket.emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 품번_ }, check);
+	socket.timeout(2000).emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 품번_ }, check);
 }
 
 async function findOne_구자료(col, query) {
@@ -5095,7 +5095,7 @@ async function findOne_구자료(col, query) {
 	flag_arrivedMSG = false;
 	check++;
 	if (check > 10) check = 0;
-	socket.emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 구자료_ }, check);
+	socket.timeout(2000).emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 구자료_ }, check);
 }
 
 async function findOne_기초보고서(col, query) {
@@ -5103,7 +5103,7 @@ async function findOne_기초보고서(col, query) {
 	flag_arrivedMSG = false;
 	check++;
 	if (check > 10) check = 0;
-	socket.emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 기초보고서_ }, check);
+	socket.timeout(2000).emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 기초보고서_ }, check);
 }
 
 async function findOne_완료보고서(col, query) {
@@ -5112,7 +5112,7 @@ async function findOne_완료보고서(col, query) {
 	check++;
 	if (check > 10) check = 0;
 
-	socket.emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 완료보고서_ }, check);
+	socket.timeout(2000).emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 완료보고서_ }, check);
 }
 
 async function findOne_계정(col, query) {
@@ -5121,7 +5121,7 @@ async function findOne_계정(col, query) {
 	check++;
 	if (check > 10) check = 0;
 
-	socket.emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 계정_ }, check);
+	socket.timeout(2000).emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 계정_ }, check);
 }
 
 async function findOne_구장재고(col, query) {
@@ -5130,7 +5130,7 @@ async function findOne_구장재고(col, query) {
 	check++;
 	if (check > 10) check = 0;
 
-	socket.emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 구장재고_ }, check);
+	socket.timeout(2000).emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 구장재고_ }, check);
 }
 
 async function findOne_군포재고(col, query) {
@@ -5139,7 +5139,7 @@ async function findOne_군포재고(col, query) {
 	check++;
 	if (check > 10) check = 0;
 
-	socket.emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 군포재고_ }, check);
+	socket.timeout(2000).emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 군포재고_ }, check);
 }
 
 async function findOne_제주재고(col, query) {
@@ -5148,7 +5148,7 @@ async function findOne_제주재고(col, query) {
 	check++;
 	if (check > 10) check = 0;
 
-	socket.emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 제주재고_ }, check);
+	socket.timeout(2000).emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 제주재고_ }, check);
 }
 
 async function findOne_창고이동(col, query) {
@@ -5157,7 +5157,7 @@ async function findOne_창고이동(col, query) {
 	check++;
 	if (check > 10) check = 0;
 
-	socket.emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 창고이동_ }, check);
+	socket.timeout(2000).emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 창고이동_ }, check);
 }
 
 async function findOne_신품정보(col, query) {
@@ -5166,7 +5166,7 @@ async function findOne_신품정보(col, query) {
 	check++;
 	if (check > 10) check = 0;
 
-	socket.emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 자재입출고_ }, check);
+	socket.timeout(2000).emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 자재입출고_ }, check);
 }
 
 async function findOne_고품정보(col, query) {
@@ -5175,7 +5175,7 @@ async function findOne_고품정보(col, query) {
 	check++;
 	if (check > 10) check = 0;
 
-	socket.emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 고품정보_ }, check);
+	socket.timeout(2000).emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 고품정보_ }, check);
 }
 
 async function findOne_BSA재제조(col, query) {
@@ -5184,7 +5184,7 @@ async function findOne_BSA재제조(col, query) {
 	check++;
 	if (check > 10) check = 0;
 
-	socket.emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: BSA재제조_ }, check);
+	socket.timeout(2000).emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: BSA재제조_ }, check);
 }
 
 async function findOne_입고(col, query) {
@@ -5193,7 +5193,7 @@ async function findOne_입고(col, query) {
 	check++;
 	if (check > 10) check = 0;
 
-	socket.emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 입고_ }, check);
+	socket.timeout(2000).emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 입고_ }, check);
 }
 
 async function findOne_세척(col, query) {
@@ -5202,7 +5202,7 @@ async function findOne_세척(col, query) {
 	check++;
 	if (check > 10) check = 0;
 
-	socket.emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 세척_ }, check);
+	socket.timeout(2000).emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 세척_ }, check);
 }
 
 async function findOne_기초검사(col, query) {
@@ -5211,7 +5211,7 @@ async function findOne_기초검사(col, query) {
 	check++;
 	if (check > 10) check = 0;
 
-	socket.emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 기초검사_ }, check);
+	socket.timeout(2000).emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 기초검사_ }, check);
 }
 
 async function findOne_분해조립(col, query) {
@@ -5220,7 +5220,7 @@ async function findOne_분해조립(col, query) {
 	check++;
 	if (check > 10) check = 0;
 
-	socket.emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 분해조립_ }, check);
+	socket.timeout(2000).emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 분해조립_ }, check);
 }
 
 async function findOne_성능검사(col, query) {
@@ -5229,7 +5229,7 @@ async function findOne_성능검사(col, query) {
 	check++;
 	if (check > 10) check = 0;
 
-	socket.emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 성능검사_ }, check);
+	socket.timeout(2000).emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 성능검사_ }, check);
 }
 
 async function findOne_EOL(col, query) {
@@ -5238,7 +5238,7 @@ async function findOne_EOL(col, query) {
 	check++;
 	if (check > 10) check = 0;
 
-	socket.emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: EOL_ }, check);
+	socket.timeout(2000).emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: EOL_ }, check);
 }
 
 async function findOne_출하정보(col, query) {
@@ -5247,7 +5247,7 @@ async function findOne_출하정보(col, query) {
 	check++;
 	if (check > 10) check = 0;
 
-	socket.emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 출하정보_ }, check);
+	socket.timeout(2000).emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 출하정보_ }, check);
 }
 
 async function findOne_특이사항(col, query) {
@@ -5256,7 +5256,7 @@ async function findOne_특이사항(col, query) {
 	check++;
 	if (check > 10) check = 0;
 
-	socket.emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 특이사항_ }, check);
+	socket.timeout(2000).emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 특이사항_ }, check);
 }
 
 async function findOne_교체부품상세(col, query) {
@@ -5265,7 +5265,7 @@ async function findOne_교체부품상세(col, query) {
 	check++;
 	if (check > 10) check = 0;
 
-	socket.emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 교체부품상세_ }, check);
+	socket.timeout(2000).emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 교체부품상세_ }, check);
 }
 
 async function findOne_자재입출고(col, query) {
@@ -5274,7 +5274,7 @@ async function findOne_자재입출고(col, query) {
 	check++;
 	if (check > 10) check = 0;
 
-	socket.emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 자재입출고_ }, check);
+	socket.timeout(2000).emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 자재입출고_ }, check);
 }
 
 async function findOne_부품정보_list(col, query) {
@@ -5283,7 +5283,7 @@ async function findOne_부품정보_list(col, query) {
 	check++;
 	if (check > 10) check = 0;
 
-	socket.emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 부품정보_list_ }, check);
+	socket.timeout(2000).emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 부품정보_list_ }, check);
 }
 
 async function find_기초보고서(col, query) {
@@ -5291,7 +5291,7 @@ async function find_기초보고서(col, query) {
 	flag_arrivedMSG = false;
 	check++;
 	if (check > 10) check = 0;
-	socket.emit("find", worker, col, query, { sort: { kind: 1 }, projection: 기초보고서_ }, check);
+	socket.timeout(2000).emit("find", worker, col, query, { sort: { kind: 1 }, projection: 기초보고서_ }, check);
 }
 
 async function find_완료보고서(col, query) {
@@ -5300,7 +5300,7 @@ async function find_완료보고서(col, query) {
 	check++;
 	if (check > 10) check = 0;
 
-	socket.emit("find", worker, col, query, { sort: { kind: 1 }, projection: 완료보고서_ }, check);
+	socket.timeout(2000).emit("find", worker, col, query, { sort: { kind: 1 }, projection: 완료보고서_ }, check);
 }
 
 async function find_구자료(col, query) {
@@ -5309,7 +5309,7 @@ async function find_구자료(col, query) {
 	check++;
 	if (check > 10) check = 0;
 
-	socket.emit("find", worker, col, query, { sort: { kind: 1 }, projection: 구자료_ }, check);
+	socket.timeout(2000).emit("find", worker, col, query, { sort: { kind: 1 }, projection: 구자료_ }, check);
 }
 
 async function find_계정(col, query) {
@@ -5318,7 +5318,7 @@ async function find_계정(col, query) {
 	check++;
 	if (check > 10) check = 0;
 
-	socket.emit("find", worker, col, query, { sort: { kind: 1 }, projection: 계정_ }, check);
+	socket.timeout(2000).emit("find", worker, col, query, { sort: { kind: 1 }, projection: 계정_ }, check);
 }
 
 async function find_분해조립재제조(col, query) {
@@ -5326,7 +5326,7 @@ async function find_분해조립재제조(col, query) {
 	flag_arrivedMSG = false;
 	check++;
 	if (check > 10) check = 0;
-	socket.emit("find", worker, col, query, { sort: { kind: 1 }, projection: 분해조립재제조_ }, check);
+	socket.timeout(2000).emit("find", worker, col, query, { sort: { kind: 1 }, projection: 분해조립재제조_ }, check);
 }
 
 async function find_분해조립공정대기(col, query) {
@@ -5334,7 +5334,7 @@ async function find_분해조립공정대기(col, query) {
 	flag_arrivedMSG = false;
 	check++;
 	if (check > 10) check = 0;
-	socket.emit("find", worker, col, query, { sort: { kind: 1 }, projection: 분해조립공정대기_ }, check);
+	socket.timeout(2000).emit("find", worker, col, query, { sort: { kind: 1 }, projection: 분해조립공정대기_ }, check);
 }
 
 async function find_분해조립폐기자재(col, query) {
@@ -5342,7 +5342,7 @@ async function find_분해조립폐기자재(col, query) {
 	flag_arrivedMSG = false;
 	check++;
 	if (check > 10) check = 0;
-	socket.emit("find", worker, col, query, { sort: { kind: 1 }, projection: 분해조립폐기자재_ }, check);
+	socket.timeout(2000).emit("find", worker, col, query, { sort: { kind: 1 }, projection: 분해조립폐기자재_ }, check);
 }
 
 async function find_불량의심부품(col, query) {
@@ -5350,7 +5350,7 @@ async function find_불량의심부품(col, query) {
 	flag_arrivedMSG = false;
 	check++;
 	if (check > 10) check = 0;
-	socket.emit("find", worker, col, query, { sort: { kind: 1 }, projection: 불량의심부품_ }, check);
+	socket.timeout(2000).emit("find", worker, col, query, { sort: { kind: 1 }, projection: 불량의심부품_ }, check);
 }
 
 async function find_품번(col, query) {
@@ -5358,7 +5358,7 @@ async function find_품번(col, query) {
 	flag_arrivedMSG = false;
 	check++;
 	if (check > 10) check = 0;
-	socket.emit("find", worker, col, query, { sort: { kind: 1 }, projection: 품번_ }, check);
+	socket.timeout(2000).emit("find", worker, col, query, { sort: { kind: 1 }, projection: 품번_ }, check);
 }
 
 async function find_구장재고(col, query) {
@@ -5367,7 +5367,7 @@ async function find_구장재고(col, query) {
 	check++;
 	if (check > 10) check = 0;
 
-	socket.emit("find", worker, col, query, { sort: { kind: 1 }, projection: 구장재고_ }, check);
+	socket.timeout(2000).emit("find", worker, col, query, { sort: { kind: 1 }, projection: 구장재고_ }, check);
 }
 
 async function find_군포재고(col, query) {
@@ -5376,7 +5376,7 @@ async function find_군포재고(col, query) {
 	check++;
 	if (check > 10) check = 0;
 
-	socket.emit("find", worker, col, query, { sort: { kind: 1 }, projection: 군포재고_ }, check);
+	socket.timeout(2000).emit("find", worker, col, query, { sort: { kind: 1 }, projection: 군포재고_ }, check);
 }
 
 async function find_제주재고(col, query) {
@@ -5385,7 +5385,7 @@ async function find_제주재고(col, query) {
 	check++;
 	if (check > 10) check = 0;
 
-	socket.emit("find", worker, col, query, { sort: { kind: 1 }, projection: 제주재고_ }, check);
+	socket.timeout(2000).emit("find", worker, col, query, { sort: { kind: 1 }, projection: 제주재고_ }, check);
 }
 
 async function find_창고이동(col, query) {
@@ -5394,7 +5394,7 @@ async function find_창고이동(col, query) {
 	check++;
 	if (check > 10) check = 0;
 
-	socket.emit("find", worker, col, query, { sort: { kind: 1 }, projection: 창고이동_ }, check);
+	socket.timeout(2000).emit("find", worker, col, query, { sort: { kind: 1 }, projection: 창고이동_ }, check);
 }
 async function find_신품정보(col, query) {
 	if (socket == undefined) return;
@@ -5402,7 +5402,7 @@ async function find_신품정보(col, query) {
 	check++;
 	if (check > 10) check = 0;
 
-	socket.emit("find", worker, col, query, { sort: { kind: 1 }, projection: 자재입출고_ }, check);
+	socket.timeout(2000).emit("find", worker, col, query, { sort: { kind: 1 }, projection: 자재입출고_ }, check);
 }
 
 async function find_고품정보(col, query) {
@@ -5411,7 +5411,7 @@ async function find_고품정보(col, query) {
 	check++;
 	if (check > 10) check = 0;
 
-	socket.emit("find", worker, col, query, { sort: { kind: 1 }, projection: 고품정보_ }, check);
+	socket.timeout(2000).emit("find", worker, col, query, { sort: { kind: 1 }, projection: 고품정보_ }, check);
 }
 
 async function find_BSA재제조(col, query) {
@@ -5420,7 +5420,7 @@ async function find_BSA재제조(col, query) {
 	check++;
 	if (check > 10) check = 0;
 
-	socket.emit("find", worker, col, query, { sort: { kind: 1 }, projection: BSA재제조_ }, check);
+	socket.timeout(2000).emit("find", worker, col, query, { sort: { kind: 1 }, projection: BSA재제조_ }, check);
 }
 
 async function find_입고(col, query) {
@@ -5429,7 +5429,7 @@ async function find_입고(col, query) {
 	check++;
 	if (check > 10) check = 0;
 
-	socket.emit("find", worker, col, query, { sort: { kind: 1 }, projection: 입고_ }, check);
+	socket.timeout(2000).emit("find", worker, col, query, { sort: { kind: 1 }, projection: 입고_ }, check);
 }
 
 async function find_세척(col, query) {
@@ -5438,7 +5438,7 @@ async function find_세척(col, query) {
 	check++;
 	if (check > 10) check = 0;
 
-	socket.emit("find", worker, col, query, { sort: { kind: 1 }, projection: 세척_ }, check);
+	socket.timeout(2000).emit("find", worker, col, query, { sort: { kind: 1 }, projection: 세척_ }, check);
 }
 
 async function find_기초검사(col, query) {
@@ -5447,7 +5447,7 @@ async function find_기초검사(col, query) {
 	check++;
 	if (check > 10) check = 0;
 
-	socket.emit("find", worker, col, query, { sort: { kind: 1 }, projection: 기초검사_ }, check);
+	socket.timeout(2000).emit("find", worker, col, query, { sort: { kind: 1 }, projection: 기초검사_ }, check);
 }
 
 async function find_분해조립(col, query) {
@@ -5456,7 +5456,7 @@ async function find_분해조립(col, query) {
 	check++;
 	if (check > 10) check = 0;
 
-	socket.emit("find", worker, col, query, { sort: { kind: 1 }, projection: 분해조립_ }, check);
+	socket.timeout(2000).emit("find", worker, col, query, { sort: { kind: 1 }, projection: 분해조립_ }, check);
 }
 
 async function find_성능검사(col, query) {
@@ -5465,7 +5465,7 @@ async function find_성능검사(col, query) {
 	check++;
 	if (check > 10) check = 0;
 
-	socket.emit("find", worker, col, query, { sort: { kind: 1 }, projection: 성능검사_ }, check);
+	socket.timeout(2000).emit("find", worker, col, query, { sort: { kind: 1 }, projection: 성능검사_ }, check);
 }
 
 async function find_EOL(col, query) {
@@ -5474,7 +5474,7 @@ async function find_EOL(col, query) {
 	check++;
 	if (check > 10) check = 0;
 
-	socket.emit("find", worker, col, query, { sort: { kind: 1 }, projection: EOL_ }, check);
+	socket.timeout(2000).emit("find", worker, col, query, { sort: { kind: 1 }, projection: EOL_ }, check);
 }
 
 async function find_EOL_pic(col, query) {
@@ -5483,7 +5483,7 @@ async function find_EOL_pic(col, query) {
 	check++;
 	if (check > 10) check = 0;
 
-	socket.emit("find", worker, col, query, { sort: { kind: 1 }, projection: EOL_pic_ }, check);
+	socket.timeout(2000).emit("find", worker, col, query, { sort: { kind: 1 }, projection: EOL_pic_ }, check);
 }
 
 async function find_출하정보(col, query) {
@@ -5492,7 +5492,7 @@ async function find_출하정보(col, query) {
 	check++;
 	if (check > 10) check = 0;
 
-	socket.emit("find", worker, col, query, { sort: { kind: 1 }, projection: 출하정보_ }, check);
+	socket.timeout(2000).emit("find", worker, col, query, { sort: { kind: 1 }, projection: 출하정보_ }, check);
 }
 
 async function find_특이사항(col, query) {
@@ -5501,13 +5501,13 @@ async function find_특이사항(col, query) {
 	check++;
 	if (check > 10) check = 0;
 
-	socket.emit("find", worker, col, query, { sort: { kind: 1 }, projection: 특이사항_ }, check);
+	socket.timeout(2000).emit("find", worker, col, query, { sort: { kind: 1 }, projection: 특이사항_ }, check);
 }
 
 function init_변수() {
 	if (socket == undefined) return;
 
-	socket.emit("init_변수");
+	socket.timeout(2000).emit("init_변수");
 }
 
 async function find_교체부품상세(col, query) {
@@ -5516,7 +5516,7 @@ async function find_교체부품상세(col, query) {
 	check++;
 	if (check > 10) check = 0;
 
-	socket.emit("find", worker, col, query, { sort: { kind: 1 }, projection: 교체부품상세_ }, check);
+	socket.timeout(2000).emit("find", worker, col, query, { sort: { kind: 1 }, projection: 교체부품상세_ }, check);
 }
 
 async function find_자재입출고(col, query) {
@@ -5525,31 +5525,31 @@ async function find_자재입출고(col, query) {
 	check++;
 	if (check > 10) check = 0;
 
-	socket.emit("find", worker, col, query, { sort: { kind: 1 }, projection: 자재입출고_ }, check);
+	socket.timeout(2000).emit("find", worker, col, query, { sort: { kind: 1 }, projection: 자재입출고_ }, check);
 }
 
 async function 용량평가(path) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
-	socket.emit("용량평가", path);
+	socket.timeout(2000).emit("용량평가", path);
 }
 
 async function SOC60Percent(path) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
-	socket.emit("SOC60Percent", path);
+	socket.timeout(2000).emit("SOC60Percent", path);
 }
 
 async function DCIR(path) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
-	socket.emit("DCIR", path);
+	socket.timeout(2000).emit("DCIR", path);
 }
 
 async function get_성능검사_data(path) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
-	socket.emit("성능검사_data", path);
+	socket.timeout(2000).emit("성능검사_data", path);
 }
 
 async function delete_성능검사_data(관리번호) {
@@ -5559,7 +5559,7 @@ async function delete_성능검사_data(관리번호) {
 	const tmp_name = 관리번호.replace('#', '');
 	const path = 'excel/' + tmp_name + '/excel1.csv';
 
-	socket.emit("delete_성능검사_data", path);
+	socket.timeout(2000).emit("delete_성능검사_data", path);
 }
 
 function sleep(ms) {
