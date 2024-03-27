@@ -1,5 +1,7 @@
+//계정이 가지는 권한정보
 var 계정_stat = "";
 
+//로그인 버튼을 눌렀을때
 async function login() {
   console.log("try login");
   const _id = document.getElementById("_id");
@@ -8,43 +10,45 @@ async function login() {
 
   if (_id.value == "" || _passwd.value == "") return;
 
+  //암호화
   const hash = CryptoJS.MD5(_passwd.value);
 
+  //해당 계정 정보 가져옴
   findOne_계정(계정, { id: _id.value, passwd: hash.toString() });
   await delay();
 
   if (계정_v != null) {
-    if (worker == "") {
-      worker = _id.value;
+    if (worker == "") { //로그인 상황
+      worker = _id.value; //worker 
       console.log('작업자:', worker);
-      findOne_계정(계정, { id: _id.value });
-      await delay();
-      계정_stat = 계정_v;
-      //console.log(계정_stat);
+
+      계정_stat = 계정_v; //계정 정보 권한
 
       //sessionStorage.setItem('worker',  worker);
       sessionStorage.setItem("level", 계정_stat.level);
 
       alert("로그인 성공");
 
-      const _login_btn = document.getElementById("login_btn");
-
-      setTimeout(async function () {
-        loadPage("base/dashboard.html");
+      setTimeout(async function () { //1초 후
+        //대시보드 시작
+	loadPage("base/dashboard.html");
         start_repeat_대시보드();
         대시보드_시작();
-        if (level == "관리자") admin_btn.style.display = "block";
-        부품재고_btn.style.display = "block";
-        //if(level == '부품관리자') 부품재고_btn.style.display = 'block';
 
+	//관리자 메뉴 관리자일때만 표출
+        if (level == "관리자") admin_btn.style.display = "block";
+        부품재고_btn.style.display = "block"; //부품재고 메뉴는 로그인하면 보이도록 함
+
+	//한국의 시간대에 맞도록 하여 날짜와 시간을 구함
         var DateTime = luxon.DateTime;
         var seoul = DateTime.local().setZone("Asia/Seoul");
         var now = seoul.toString();
         var year = now.substr(0, 4);
-        var month = String(Number(now.substr(5, 2)) - 3).padStart(2, "0");
+        var month = String(Number(now.substr(5, 2)) - 3).padStart(2, "0"); // 3달전
         var day = now.substr(8, 2);
         var 기준일 = year + "-" + month + "-" + day + "T00:00:00Z";
 
+	//3달보다 더 오래된 배터리팩은 알람을 띄움
         count(BSA재제조, {
           마지막충전일: { $lte: 기준일, $ne: "" },
           공정단계: { $ne: "출하" },
@@ -56,9 +60,12 @@ async function login() {
           alert("재충전이 필요한 BSA가 있습니다.");
         }
       }, 1000);
+
       await sleep(1);
-      alert('#공지사항#\nVersion update sky 0.74\n1. 서버와 전송을 주고 받을때 2초 타임아웃 설정 추가');
-    } else if (worker == _id.value) {
+
+      //공지사항
+      //alert('#공지사항#\nVersion update sky 0.74\n1. 서버와 전송을 주고 받을때 2초 타임아웃 설정 추가');
+    } else if (worker == _id.value) { //로그아웃 상황
       worker = "";
       level = "";
       sessionStorage.clear();
@@ -94,8 +101,10 @@ async function change_label() {
 
   var _worker = sessionStorage.getItem("worker");
   level = sessionStorage.getItem("level");
+  
   if (_worker != "" && _worker != null) worker = _worker;
   console.log("worker in change label :", worker);
+  
   if (worker == "" || worker == "null" || worker == null) {
     worker = "";
     level = "";
@@ -107,6 +116,7 @@ async function change_label() {
     _login_info.innerHTML = worker;
   }
 
+  //관리자 계정이 없거나 관리자 계정으로 로그인 했으면 관리자 메뉴를 표출함
   find_계정(계정, { id: "admin" });
   await delay();
 

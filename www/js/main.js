@@ -39,12 +39,12 @@ const _부품재고_btn = document.getElementById('부품재고_btn');
 
 console.log('worker:', worker);
 
-//login button click
+//login 화면 표출
 async function check_login() {
 	if (worker == '' || worker == null) {
 		loadPage('base/login.html');
-		await sleep(1);
-		change_label();
+		await sleep(300);
+		change_label(); //in login.js (메뉴의 로그인/로그아웃 글자 변경)
 
 		_login_info.innerHTML = '';
 		_admin_btn.style.display = 'none';  //관리자 버튼 숨김
@@ -61,7 +61,7 @@ async function check_login() {
 
 		check_passwd.onkeydown = function (event) {
 			if(event.keyCode == 13) {
-				login();
+				login(); //login.js
 			}
 		}
 	}
