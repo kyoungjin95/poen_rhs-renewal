@@ -122,6 +122,7 @@ server.listen(80, () => {
 });
 
 io.on('connection', async function(socket) {
+	var worker_origin = ''
 	var client_ip = socket.request.connection.remoteAddress; 
 var idx = client_ip.lastIndexOf(':');
 	if (~idx && ~client_ip.indexOf('.'))
@@ -374,6 +375,11 @@ var idx = client_ip.lastIndexOf(':');
 	});
 
 	socket.on('update', async function(worker, col, filter, doc) {
+		if(worker == 'admin' || worker == 'test') {
+			const result = null;
+			socket.timeout(2000).emit('update_result', result);
+			return;
+		}
 		console.log('request update');
 		logger.info('client ip:' + client_ip + ' worker:'+ worker + ' update col:' + col + 'doc:' + JSON.stringify(doc));
 

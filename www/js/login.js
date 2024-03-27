@@ -64,7 +64,7 @@ async function login() {
       await sleep(1);
 
       //공지사항
-      //alert('#공지사항#\nVersion update sky 0.74\n1. 서버와 전송을 주고 받을때 2초 타임아웃 설정 추가');
+      alert('#공지사항#\nVersion update sky 0.75\n1. admin, test 계정은 업데이트가 안되도록 처리');
     } else if (worker == _id.value) { //로그아웃 상황
       worker = "";
       level = "";
