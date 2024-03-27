@@ -4,14 +4,19 @@ window.onpopstate = function (event) {
 };
 // F12키 금지
 
-//$(document).ready(function(){
-//    $(document).on('keydown',function(e){
-//        if ( e.keyCode == 123) {  /* F12키 */
-//            e.preventDefault();
-//            e.returnValue = false;
-//        }
-//    });
-//});
+$(document).ready(function(){
+	$(document).on('keydown',function(e){
+		if ( e.keyCode == 123) {  /* F12키 */
+			e.preventDefault();
+			e.returnValue = false;
+		}
+
+		if(e.ctrlKey && e.shiftKey && (e.keycode == 73)) {
+			e.preventDefault();
+			e.returnValue = false;
+		}
+	});
+});
 
 // 마우스 우측키 막음
 function blockRightClick() {
