@@ -1,5 +1,7 @@
 const DELAY = 1;
 const DELAY_SYS = 5000;
+
+//collection name define
 const 계정 = "계정";
 const BSA재제조 = "BSA재제조";
 const 입고 = "입고";
@@ -56,6 +58,7 @@ const 분해조립재제조 = "분해조립재제조";
 const 분해조립공정대기 = "분해조립공정대기";
 const 분해조립폐기자재 = "분해조립폐기자재";
 
+//count result
 var BSA재제조_cnt = 0;
 var 입고_cnt = 0;
 var 세척_cnt = 0;
@@ -112,6 +115,7 @@ var 분해조립재제조_cnt = 0;
 var 분해조립공정대기_cnt = 0;
 var 분해조립폐기자재_cnt = 0;
 
+//count result(dashboard)
 var option_입고_cnt = 0;
 var option_세척_cnt = 0;
 var option_기초검사_cnt = 0;
@@ -127,6 +131,7 @@ var option_EOL당일_cnt = 0;
 var option_출하정보당일_cnt = 0;
 var option_출하당일_cnt = 0;
 
+//find result
 var BSA재제조_v = [];
 var 입고_v = [];
 var 세척_v = [];
@@ -180,11 +185,19 @@ var 분해조립재제조_v = [];
 var 분해조립공정대기_v = [];
 var 분해조립폐기자재_v = [];
 var find_array = [];
+
+//공정에 쓰이는 변수
 var 관리번호 = "";
 var 차종 = "";
+
+//조회에 쓰이는 변수
 var 교체부품상세No = "교체부품상세1";
+
+//계정정보
 var worker = "";
 var level = "";
+
+//성능검사 서버에 올린 파일에서 서버가 자료츨 추출해서 보내주는 결과
 var 용량평가_result = 0;
 var SOC60Persent_result = 0;
 var DCIR_result = 0;
@@ -213,9 +226,12 @@ var CURR4_result = 0;
 var CURR5_result = 0;
 var CURR6_result = 0;
 var 성능검사_data_result = [];
-var delete_성능검사_data_result = false;;
+var delete_성능검사_data_result = false;
+
+//엑셀 파일 업로드시 파일을 여러번 로딩하는 현상 막기위한 플레그
 var flag_loaded = false;
 
+//document define
 const 계정_doc = {
 	id: "",
 	passwd: "",
@@ -1804,6 +1820,7 @@ const 품번_doc = {
 	BMA: "",
 };
 
+//세척공정에서 최근 만든 재제조번호를 저장하기 위한 document define
 const 변수_doc = {
 	구분: "",
 	값: "",
@@ -1951,6 +1968,7 @@ const 완료보고서_doc = {
 	진단_file: "",
 }
 
+//projection define
 const 계정_ = {
 	_id: 0,
 	id: 1,
@@ -3743,15 +3761,17 @@ var update_count = 0;
 var insert_count = 0;
 var delete_count = 0;
 var insert_id = "";
-var find_array = [];
 var arregation_array = [];
 var flag_arrivedMSG = false;
 var check = 0;
 var str = "";
 var file_upload_result = false;
+
+//socket.io
 var socket = io();
 var io_status = false;
 
+//서버와 연결
 socket.on("connect", function () {
 	io_status = true;
 	document.getElementById("connection_status").innerHTML = "(연결)";
@@ -3760,6 +3780,7 @@ socket.on("connect", function () {
 	//loadPage("base/login.html");
 });
 
+//자동 백업 시스템 가동중인지 아닌지
 socket.on("auto_backup_db_status", function (running) {
 	//console.log('auto backup status:', running);
 	if (running == true) str = "백업(O)";
@@ -3767,10 +3788,12 @@ socket.on("auto_backup_db_status", function (running) {
 	document.getElementById("auto_backup_db_status").innerHTML = str;
 });
 
+//재제조번호 초기화
 socket.on("init_product_no", function () {
 	init_product_no();
 });
 
+//EOL공정 QR label 다운로드 
 socket.on("qr_lebel_result", function (result) {
 	//alert(result);
 	if (result == "complete") {
@@ -3782,6 +3805,7 @@ socket.on("qr_lebel_result", function (result) {
 	}
 });
 
+//성능검사 파일 리스트 전송 결과
 socket.on("file_list_result", async function (result) {
 	flag_arrivedMSG = true;
 	file_upload_result = result;
@@ -3791,18 +3815,21 @@ socket.on("file_list_result", async function (result) {
 	console.log(result);
 });
 
+//성능검사 용량평가 결과
 socket.on("용량평가_result", async function (data) {
 	용량평가_result = data;
 	console.log(data);
 	flag_arrivedMSG = true;
 });
 
+//성능검사 SOC 60 Percent 결과
 socket.on("SOC60Percent_result", async function (data) {
 	SOC60Percent_result = data;
 	console.log(data);
 	flag_arrivedMSG = true;
 });
 
+//성능검사 DCIR 결과
 socket.on("DCIR_result", async function (data) {
 	DCIR_result = data.DCIR;
 	DCIR1_result = data.DCIR1;
@@ -3833,29 +3860,34 @@ socket.on("DCIR_result", async function (data) {
 	flag_arrivedMSG = true;
 });
 
+//성능검사 capacity .csv file read result
 socket.on("성능검사_data_result", async function (data) {
 	성능검사_data_result = data;
 	flag_arrivedMSG = true;
 });
 
+//성능검사 업로드된 파일 삭제 결과
 socket.on("delete_성능검사_data_result", async function (data) {
 	delete_성능검사_data_result = data;
 	console.log(data);
 	flag_arrivedMSG = true;
 });
 
+//부품정보 서버에서 처리 결과
 socket.on("부품정보_result", async function (data) {
 	부품정보_result = data;
 	console.log(data);
 	flag_arrivedMSG = true;
 });
 
+//insert 결과
 socket.on("insert_result", async function (id) {
 	//console.log('insert id: ', id);
 	insert_id = id;
 	flag_arrivedMSG = true;
 });
 
+//count 결과
 socket.on("count_result", async function (col, count, rcv_check, option = "") {
 	reset_count();
 
@@ -4212,6 +4244,7 @@ socket.on("count_result", async function (col, count, rcv_check, option = "") {
 	flag_arrivedMSG = true;
 });
 
+//find 결과
 socket.on("find_result", async function (col, result, rcv_check) {
 	reset_result();
 	if (rcv_check != check) return;
@@ -4495,6 +4528,7 @@ socket.on("find_result", async function (col, result, rcv_check) {
 	flag_arrivedMSG = true;
 });
 
+//document udate result
 socket.on("update_result", async function (result) {
 	update_count = 0;
 	insert_count = 0;
@@ -4506,17 +4540,20 @@ socket.on("update_result", async function (result) {
 	flag_arrivedMSG = true;
 });
 
+//document delete result
 socket.on("delete_result", async function (count) {
 	console.log("delete result count: ", count);
 	delete_count = count;
 	flag_arrivedMSG = true;
 });
 
+//collection drop result
 socket.on("drop_result", async function (result) {
 	console.log("drop result: ", result);
 	flag_arrivedMSG = true;
 });
 
+//socket.io 연결끊김 
 socket.on("disconnect", function (reason) {
 	io_status = false;
 	document.getElementById("connection_status").innerHTML = "(연결끊김)";
@@ -4525,6 +4562,7 @@ socket.on("disconnect", function (reason) {
 	//socket = io();
 });
 
+//find result 결과 변수 초기화
 function reset_result() {
 	BSA재제조_v = [];
 	입고_v = [];
@@ -4581,6 +4619,7 @@ function reset_result() {
 	find_array = [];
 }
 
+//count 초기화
 function reset_count() {
 	BSA재제조_cnt = 0;
 	입고_cnt = 0;
@@ -4636,6 +4675,7 @@ function reset_count() {
 	doc_count = 0;
 }
 
+//성능검사 업로드 파일 리스트 전송
 async function send_list(file_list) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
@@ -4643,6 +4683,7 @@ async function send_list(file_list) {
 	socket.timeout(2000).emit("file_list", file_list);
 }
 
+//완료보고서 파일 업로드 파일 리스트 전송
 async function send_list2(file_list) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
@@ -4650,18 +4691,21 @@ async function send_list2(file_list) {
 	socket.timeout(2000).emit("file_list2", file_list);
 }
 
+//QR label 만들기
 async function make_qr_label(html_string) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	socket.timeout(2000).emit("qr_label", html_string);
 }
 
+//mongoDB 결합 조회
 async function aggregate() {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	socket.timeout(2000).emit("aggregate", level);
 }
 
+//count
 async function count(col, query, option = "") {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
@@ -4670,66 +4714,77 @@ async function count(col, query, option = "") {
 	socket.timeout(2000).emit("count", level, col, query, check, option);
 }
 
+//insert
 async function insert(col, doc) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	socket.timeout(2000).emit("insert", worker, col, doc);
 }
 
+//insertMany
 async function insertMany(col, doc) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	socket.timeout(2000).emit("insertMany", worker, col, doc);
 }
 
+//update
 async function update(col, doc) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	socket.timeout(2000).emit("update", worker, col, { 관리번호: doc.관리번호 }, { $set: doc });
 }
 
+//자재입출고 update(by QR)
 async function update_자재입출고(col, doc) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	socket.timeout(2000).emit("update", worker, col, { QR: doc.QR }, { $set: doc });
 }
 
+//보고서 update(by level)
 async function update_보고서(col, doc) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	socket.timeout(2000).emit("update", worker, col, { level: doc.level }, { $set: doc });
 }
 
+//update by 재제조번호
 async function update_재제조번호(col, doc) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	socket.timeout(2000).emit("update", worker, col, { 재제조번호: doc.재제조번호 }, { $set: doc });
 }
 
+//부품 구자료 엑셀 문서를 DB에 update하기위한것
 async function update_구자료(col, doc) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	socket.timeout(2000).emit("update", worker, col, { 품번: doc.품번 }, { $set: doc });
 }
 
+//계정정보 업데이트(by id)
 async function update_계정(col, doc) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	socket.timeout(2000).emit("update", worker, col, { id: doc.id }, { $set: doc });
 }
 
+//품번 업데이트(by 번호)
 async function update_품번(col, doc) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	socket.timeout(2000).emit("update", worker, col, { 번호: doc.번호 }, { $set: doc });
 }
 
+//재제조번호 자동으로 만들때 최근 번호를 저장하기 위한용도(범용적으로 쓸수 있겠끔 만들었음)
 async function update_변수(col, doc) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	socket.timeout(2000).emit("update", worker, col, { 구분: doc.구분 }, { $set: doc });
 }
 
+//신품정보를 업데이트
 async function update_신품정보(col, doc) {
 	if (socket == undefined) return;
 	if (doc.QR == "") return;
@@ -4737,138 +4792,160 @@ async function update_신품정보(col, doc) {
 	socket.timeout(2000).emit("update", worker, col, { QR: doc.QR }, { $set: doc });
 }
 
+//고품 정보를 업데이트
 async function update_고품정보(col, doc) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	socket.timeout(2000).emit("update", worker, col, { QR: doc.QR }, { $set: doc });
 }
 
+//분해조립재제조
 async function update_분해조립재제조(col, doc) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	socket.timeout(2000).emit("update", worker, col, { 교체전QR: doc.교체전QR }, { $set: doc });
 }
 
+//분해조립공정대기 업데이트
 async function update_분해조립공정대기(col, doc) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	socket.timeout(2000).emit("update", worker, col, { QR: doc.QR }, { $set: doc });
 }
 
+//분해조립폐기자재 업데이트
 async function update_분해조립폐기자재(col, doc) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	socket.timeout(2000).emit("update", worker, col, { QR: doc.QR }, { $set: doc });
 }
 
+//document update by id
 async function update_by_id(col, doc) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	socket.timeout(2000).emit("update_by_id", worker, col, { _id: doc.id}, { $set: doc });
 }
 
+//delete document by 관리번호
 async function deleteOne(col, management_id) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	socket.timeout(2000).emit("delete", worker, col, { 관리번호: management_id });
 }
 
+//document delete by id
 async function deleteOneBSA(col, id) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	socket.timeout(2000).emit("delete_by_id", worker, col, id);
 }
 
+//document delete by 재제조번호
 async function deleteOne재제조번호(col, 재제조번호) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	socket.timeout(2000).emit("delete", worker, col, { 재제조번호: 재제조번호 });
 }
 
+//document delete by 신품정보
 async function deleteOne_신품정보(col, QR) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	socket.timeout(2000).emit("delete", worker, col, { QR: QR });
 }
 
+//document delete by 고품정보
 async function deleteOne_고품정보(col, QR) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	socket.timeout(2000).emit("delete", worker, col, { QR: QR });
 }
 
+//document delete 구장정보
 async function deleteOne_구장재고(col, 관리번호) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	socket.timeout(2000).emit("delete", worker, col, { 관리번호: 관리번호 });
 }
 
+//document delete 군포재고
 async function deleteOne_군포재고(col, 관리번호) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	socket.timeout(2000).emit("delete", worker, col, { 관리번호: 관리번호 });
 }
 
+//document delete 제주재고
 async function deleteOne_제주재고(col, 관리번호) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	socket.timeout(2000).emit("delete", worker, col, { 관리번호: 관리번호 });
 }
 
+//document delete 분해조립재제조 by 관리번호
 async function deleteOne_분해조립재제조(col, 관리번호) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	socket.timeout(2000).emit("delete", worker, col, { 관리번호: { $eq: 관리번호 } });
 }
 
+//document delete 분해조립재제조 by 교체전QR
 async function delete_분해조립재제조(col, 교체전QR) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	socket.timeout(2000).emit("delete", worker, col, { 교체전QR: 교체전QR });
 }
 
+//document delete 분해조립공정대기 by 관리번호
 async function deleteOne_분해조립공정대기(col, 관리번호) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	socket.timeout(2000).emit("delete", worker, col, { 관리번호: 관리번호 });
 }
 
+//document delete 분해조립공정대기 by QR
 async function delete_분해조립공정대기(col, QR) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	socket.timeout(2000).emit("delete", worker, col, { QR: QR });
 }
-
+//document delete 분해조립폐기자재 by 관리번호
 async function deleteOne_분해조립폐기자재(col, 관리번호) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	socket.timeout(2000).emit("delete", worker, col, { 관리번호: 관리번호 });
 }
 
+//분해조립폐기자재 delete
 async function delete_분해조립폐기자재(col, QR) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	socket.timeout(2000).emit("delete", worker, col, { QR: QR });
 }
 
+//계정 delete
 async function delete_계정(_id) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	socket.timeout(2000).emit("delete", worker, 계정, { id: _id });
 }
 
+//drop collection
 async function drop(_col) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	socket.timeout(2000).emit("drop", worker, _col);
 }
 
+//부품정보처리를 서버에 의탁함
 async function 부품정보처리(start, end) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	socket.timeout(2000).emit("부품정보", start, end);
 }
 
+//find(조회)
 async function find(col, management_id) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
@@ -5095,6 +5172,7 @@ async function find(col, management_id) {
 	}
 }
 
+//변수(최근 만든 재제조번호) 조회
 async function findOne_변수(col, query) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
@@ -5103,6 +5181,7 @@ async function findOne_변수(col, query) {
 	socket.timeout(2000).emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 변수_ }, check);
 }
 
+//불량의심부품 조회
 async function findOne_불량의심부품(col, query) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
@@ -5111,14 +5190,16 @@ async function findOne_불량의심부품(col, query) {
 	socket.timeout(2000).emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 불량의심부품_ }, check);
 }
 
+//분해조립재제조 조회
 async function find_분해조립재제조(col, query) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
-	check++;
+	check++; // 조회 명령을 한번에 여러개 날렸을때 섞이는것 방지 목적
 	if (check > 10) check = 0;
 	socket.timeout(2000).emit("find", worker, col, query, { sort: { kind: 1 }, projection: 분해조립재제조_ }, check);
 }
 
+//분해조립공정대기 조회
 async function findOne_분해조립공정대기(col, query) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
@@ -5127,6 +5208,7 @@ async function findOne_분해조립공정대기(col, query) {
 	socket.timeout(2000).emit("find", worker, col, query, { sort: { kind: 1 }, projection: 분해조립공정대기_ }, check);
 }
 
+//분해조립폐기자재 조회
 async function findOne_분해조립폐기자재(col, query) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
@@ -5135,6 +5217,7 @@ async function findOne_분해조립폐기자재(col, query) {
 	socket.timeout(2000).emit("find", worker, col, query, { sort: { kind: 1 }, projection: 분해조립폐기자재_ }, check);
 }
 
+//품번 조회
 async function findOne_품번(col, query) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
@@ -5143,6 +5226,7 @@ async function findOne_품번(col, query) {
 	socket.timeout(2000).emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 품번_ }, check);
 }
 
+//구자료 조회
 async function findOne_구자료(col, query) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
@@ -5151,6 +5235,7 @@ async function findOne_구자료(col, query) {
 	socket.timeout(2000).emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 구자료_ }, check);
 }
 
+//기초보고서 조회
 async function findOne_기초보고서(col, query) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
@@ -5159,6 +5244,7 @@ async function findOne_기초보고서(col, query) {
 	socket.timeout(2000).emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 기초보고서_ }, check);
 }
 
+//완료보고서 조회
 async function findOne_완료보고서(col, query) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
@@ -5168,6 +5254,7 @@ async function findOne_완료보고서(col, query) {
 	socket.timeout(2000).emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 완료보고서_ }, check);
 }
 
+//계정 조회
 async function findOne_계정(col, query) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
@@ -5177,6 +5264,7 @@ async function findOne_계정(col, query) {
 	socket.timeout(2000).emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 계정_ }, check);
 }
 
+//구장재고 조회
 async function findOne_구장재고(col, query) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
@@ -5186,6 +5274,7 @@ async function findOne_구장재고(col, query) {
 	socket.timeout(2000).emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 구장재고_ }, check);
 }
 
+//군포재고 조회
 async function findOne_군포재고(col, query) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
@@ -5195,6 +5284,7 @@ async function findOne_군포재고(col, query) {
 	socket.timeout(2000).emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 군포재고_ }, check);
 }
 
+//제주재고 조회
 async function findOne_제주재고(col, query) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
@@ -5204,6 +5294,7 @@ async function findOne_제주재고(col, query) {
 	socket.timeout(2000).emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 제주재고_ }, check);
 }
 
+//창고이동 조회
 async function findOne_창고이동(col, query) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
@@ -5213,6 +5304,7 @@ async function findOne_창고이동(col, query) {
 	socket.timeout(2000).emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 창고이동_ }, check);
 }
 
+//신품정보 조회
 async function findOne_신품정보(col, query) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
@@ -5222,6 +5314,7 @@ async function findOne_신품정보(col, query) {
 	socket.timeout(2000).emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 자재입출고_ }, check);
 }
 
+//고품정보 조회
 async function findOne_고품정보(col, query) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
@@ -5231,6 +5324,7 @@ async function findOne_고품정보(col, query) {
 	socket.timeout(2000).emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 고품정보_ }, check);
 }
 
+//기본정보 조회
 async function findOne_BSA재제조(col, query) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
@@ -5240,6 +5334,7 @@ async function findOne_BSA재제조(col, query) {
 	socket.timeout(2000).emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: BSA재제조_ }, check);
 }
 
+//입고 조회
 async function findOne_입고(col, query) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
@@ -5249,6 +5344,7 @@ async function findOne_입고(col, query) {
 	socket.timeout(2000).emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 입고_ }, check);
 }
 
+//세척 조회
 async function findOne_세척(col, query) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
@@ -5258,6 +5354,7 @@ async function findOne_세척(col, query) {
 	socket.timeout(2000).emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 세척_ }, check);
 }
 
+//기초검사 조회
 async function findOne_기초검사(col, query) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
@@ -5267,6 +5364,7 @@ async function findOne_기초검사(col, query) {
 	socket.timeout(2000).emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 기초검사_ }, check);
 }
 
+//분해조립 조회
 async function findOne_분해조립(col, query) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
@@ -5276,6 +5374,7 @@ async function findOne_분해조립(col, query) {
 	socket.timeout(2000).emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 분해조립_ }, check);
 }
 
+//성능검사 조회
 async function findOne_성능검사(col, query) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
@@ -5285,6 +5384,7 @@ async function findOne_성능검사(col, query) {
 	socket.timeout(2000).emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 성능검사_ }, check);
 }
 
+//EOL 조회
 async function findOne_EOL(col, query) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
@@ -5294,6 +5394,7 @@ async function findOne_EOL(col, query) {
 	socket.timeout(2000).emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: EOL_ }, check);
 }
 
+//출하정보 조회
 async function findOne_출하정보(col, query) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
@@ -5303,6 +5404,7 @@ async function findOne_출하정보(col, query) {
 	socket.timeout(2000).emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 출하정보_ }, check);
 }
 
+//특이사항 조회
 async function findOne_특이사항(col, query) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
@@ -5312,6 +5414,7 @@ async function findOne_특이사항(col, query) {
 	socket.timeout(2000).emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 특이사항_ }, check);
 }
 
+//교체부품상세 조회
 async function findOne_교체부품상세(col, query) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
@@ -5321,6 +5424,7 @@ async function findOne_교체부품상세(col, query) {
 	socket.timeout(2000).emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 교체부품상세_ }, check);
 }
 
+//자재입출고 조회
 async function findOne_자재입출고(col, query) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
@@ -5330,6 +5434,7 @@ async function findOne_자재입출고(col, query) {
 	socket.timeout(2000).emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 자재입출고_ }, check);
 }
 
+//부품정보 list 조회
 async function findOne_부품정보_list(col, query) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
@@ -5339,6 +5444,7 @@ async function findOne_부품정보_list(col, query) {
 	socket.timeout(2000).emit("findOne", worker, col, query, { sort: { kind: 1 }, projection: 부품정보_list_ }, check);
 }
 
+//기초보고서 조회
 async function find_기초보고서(col, query) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
@@ -5347,6 +5453,7 @@ async function find_기초보고서(col, query) {
 	socket.timeout(2000).emit("find", worker, col, query, { sort: { kind: 1 }, projection: 기초보고서_ }, check);
 }
 
+//완료보고서 조회
 async function find_완료보고서(col, query) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
@@ -5356,6 +5463,7 @@ async function find_완료보고서(col, query) {
 	socket.timeout(2000).emit("find", worker, col, query, { sort: { kind: 1 }, projection: 완료보고서_ }, check);
 }
 
+//구자료 조회
 async function find_구자료(col, query) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
@@ -5365,6 +5473,7 @@ async function find_구자료(col, query) {
 	socket.timeout(2000).emit("find", worker, col, query, { sort: { kind: 1 }, projection: 구자료_ }, check);
 }
 
+//계정 조회
 async function find_계정(col, query) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
@@ -5374,6 +5483,7 @@ async function find_계정(col, query) {
 	socket.timeout(2000).emit("find", worker, col, query, { sort: { kind: 1 }, projection: 계정_ }, check);
 }
 
+//분해조립재제조 조회
 async function find_분해조립재제조(col, query) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
@@ -5382,6 +5492,7 @@ async function find_분해조립재제조(col, query) {
 	socket.timeout(2000).emit("find", worker, col, query, { sort: { kind: 1 }, projection: 분해조립재제조_ }, check);
 }
 
+//분해조립공정대기 조회
 async function find_분해조립공정대기(col, query) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
@@ -5390,6 +5501,7 @@ async function find_분해조립공정대기(col, query) {
 	socket.timeout(2000).emit("find", worker, col, query, { sort: { kind: 1 }, projection: 분해조립공정대기_ }, check);
 }
 
+//분해조립폐기자재 조회
 async function find_분해조립폐기자재(col, query) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
@@ -5398,6 +5510,7 @@ async function find_분해조립폐기자재(col, query) {
 	socket.timeout(2000).emit("find", worker, col, query, { sort: { kind: 1 }, projection: 분해조립폐기자재_ }, check);
 }
 
+//불량의심부품 조회
 async function find_불량의심부품(col, query) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
@@ -5406,6 +5519,7 @@ async function find_불량의심부품(col, query) {
 	socket.timeout(2000).emit("find", worker, col, query, { sort: { kind: 1 }, projection: 불량의심부품_ }, check);
 }
 
+//품번 조회
 async function find_품번(col, query) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
@@ -5414,6 +5528,7 @@ async function find_품번(col, query) {
 	socket.timeout(2000).emit("find", worker, col, query, { sort: { kind: 1 }, projection: 품번_ }, check);
 }
 
+//구장재고 조회
 async function find_구장재고(col, query) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
@@ -5423,6 +5538,7 @@ async function find_구장재고(col, query) {
 	socket.timeout(2000).emit("find", worker, col, query, { sort: { kind: 1 }, projection: 구장재고_ }, check);
 }
 
+//군포재고 조회
 async function find_군포재고(col, query) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
@@ -5432,6 +5548,7 @@ async function find_군포재고(col, query) {
 	socket.timeout(2000).emit("find", worker, col, query, { sort: { kind: 1 }, projection: 군포재고_ }, check);
 }
 
+//제주 재고 조회
 async function find_제주재고(col, query) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
@@ -5441,6 +5558,7 @@ async function find_제주재고(col, query) {
 	socket.timeout(2000).emit("find", worker, col, query, { sort: { kind: 1 }, projection: 제주재고_ }, check);
 }
 
+//창고이동 조회
 async function find_창고이동(col, query) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
@@ -5449,6 +5567,8 @@ async function find_창고이동(col, query) {
 
 	socket.timeout(2000).emit("find", worker, col, query, { sort: { kind: 1 }, projection: 창고이동_ }, check);
 }
+
+//신품정보 조회
 async function find_신품정보(col, query) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
@@ -5458,6 +5578,7 @@ async function find_신품정보(col, query) {
 	socket.timeout(2000).emit("find", worker, col, query, { sort: { kind: 1 }, projection: 자재입출고_ }, check);
 }
 
+//고품정보 조회
 async function find_고품정보(col, query) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
@@ -5467,6 +5588,7 @@ async function find_고품정보(col, query) {
 	socket.timeout(2000).emit("find", worker, col, query, { sort: { kind: 1 }, projection: 고품정보_ }, check);
 }
 
+//기본정보 조회
 async function find_BSA재제조(col, query) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
@@ -5476,6 +5598,7 @@ async function find_BSA재제조(col, query) {
 	socket.timeout(2000).emit("find", worker, col, query, { sort: { kind: 1 }, projection: BSA재제조_ }, check);
 }
 
+//입고 조회
 async function find_입고(col, query) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
@@ -5485,6 +5608,7 @@ async function find_입고(col, query) {
 	socket.timeout(2000).emit("find", worker, col, query, { sort: { kind: 1 }, projection: 입고_ }, check);
 }
 
+//세척 조회
 async function find_세척(col, query) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
@@ -5494,6 +5618,7 @@ async function find_세척(col, query) {
 	socket.timeout(2000).emit("find", worker, col, query, { sort: { kind: 1 }, projection: 세척_ }, check);
 }
 
+//기초검사 조회
 async function find_기초검사(col, query) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
@@ -5503,6 +5628,7 @@ async function find_기초검사(col, query) {
 	socket.timeout(2000).emit("find", worker, col, query, { sort: { kind: 1 }, projection: 기초검사_ }, check);
 }
 
+//분해조립 조회
 async function find_분해조립(col, query) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
@@ -5512,6 +5638,7 @@ async function find_분해조립(col, query) {
 	socket.timeout(2000).emit("find", worker, col, query, { sort: { kind: 1 }, projection: 분해조립_ }, check);
 }
 
+//성능검사 조회
 async function find_성능검사(col, query) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
@@ -5521,6 +5648,7 @@ async function find_성능검사(col, query) {
 	socket.timeout(2000).emit("find", worker, col, query, { sort: { kind: 1 }, projection: 성능검사_ }, check);
 }
 
+//EOL 조회
 async function find_EOL(col, query) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
@@ -5530,6 +5658,7 @@ async function find_EOL(col, query) {
 	socket.timeout(2000).emit("find", worker, col, query, { sort: { kind: 1 }, projection: EOL_ }, check);
 }
 
+//EOL 사진 조회
 async function find_EOL_pic(col, query) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
@@ -5539,6 +5668,7 @@ async function find_EOL_pic(col, query) {
 	socket.timeout(2000).emit("find", worker, col, query, { sort: { kind: 1 }, projection: EOL_pic_ }, check);
 }
 
+//출하정보 조회
 async function find_출하정보(col, query) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
@@ -5548,6 +5678,7 @@ async function find_출하정보(col, query) {
 	socket.timeout(2000).emit("find", worker, col, query, { sort: { kind: 1 }, projection: 출하정보_ }, check);
 }
 
+//특이사항 조회
 async function find_특이사항(col, query) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
@@ -5557,12 +5688,14 @@ async function find_특이사항(col, query) {
 	socket.timeout(2000).emit("find", worker, col, query, { sort: { kind: 1 }, projection: 특이사항_ }, check);
 }
 
+//세적에서 재제조번호 자동 생성에서 번호 초기화
 function init_변수() {
 	if (socket == undefined) return;
 
 	socket.timeout(2000).emit("init_변수");
 }
 
+//교체부품상세 조회
 async function find_교체부품상세(col, query) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
@@ -5572,6 +5705,7 @@ async function find_교체부품상세(col, query) {
 	socket.timeout(2000).emit("find", worker, col, query, { sort: { kind: 1 }, projection: 교체부품상세_ }, check);
 }
 
+//자재입출고 조회
 async function find_자재입출고(col, query) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
@@ -5581,30 +5715,35 @@ async function find_자재입출고(col, query) {
 	socket.timeout(2000).emit("find", worker, col, query, { sort: { kind: 1 }, projection: 자재입출고_ }, check);
 }
 
+//성능검사 용량평가 파일 PATH 전송
 async function 용량평가(path) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	socket.timeout(2000).emit("용량평가", path);
 }
 
+//성능검사 SOC60Percent 파일 PATH 전송
 async function SOC60Percent(path) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	socket.timeout(2000).emit("SOC60Percent", path);
 }
 
+//성능검사 DCIR PATH 전송
 async function DCIR(path) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	socket.timeout(2000).emit("DCIR", path);
 }
 
+//성능검사 data PATH
 async function get_성능검사_data(path) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
 	socket.timeout(2000).emit("성능검사_data", path);
 }
 
+//성능검사 data  delete
 async function delete_성능검사_data(관리번호) {
 	if (socket == undefined) return;
 	flag_arrivedMSG = false;
@@ -5615,10 +5754,12 @@ async function delete_성능검사_data(관리번호) {
 	socket.timeout(2000).emit("delete_성능검사_data", path);
 }
 
+//sleep 구현
 function sleep(ms) {
 	return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
+//서버에 요청을 보낸후 응답을 기다리는 함수
 async function delay() {
 	while (flag_arrivedMSG == false) {
 		await sleep(1);
@@ -5627,19 +5768,11 @@ async function delay() {
 	//return true;
 }
 
+//업체 구함
 function 업체(code) {
 	let result = "kia";
 
 	switch (code) {
-		case "DE":
-		case "DEPBV":
-		case "CV":
-		case "MV":
-		case "PU":
-		case "SG2":
-		case "TAM":
-		case "PS":
-		case "SK3":
 		case "DE_EV":
 		case "DEPBV_EV":
 		case "CV_EV":
@@ -5652,21 +5785,6 @@ function 업체(code) {
 			result = "kia";
 			break;
 
-		case "OS":
-		case "NE":
-		case "HR":
-		case "LK":
-		case "LM":
-		case "LKFC":
-		case "CS":
-		case "SX2":
-		case "AE":
-		case "CE":
-		case "ME":
-		case "FE":
-		case "RG3":
-		case "JW":
-		case "JK":
 		case "OS_EV":
 		case "NE_EV":
 		case "HR_EV":
@@ -5693,6 +5811,7 @@ function 업체(code) {
 	return result;
 }
 
+//공정단계 정리(구 엑셀 문서로 올린 정보 정리)
 async function 공정단계자동입력(_관리번호, 단계 = "") {
 	findOne_BSA재제조(BSA재제조, { 관리번호: _관리번호, 공정단계: { $ne: "출하" } });
 	await delay();
@@ -5721,14 +5840,16 @@ async function 공정단계자동입력(_관리번호, 단계 = "") {
 	await delay();
 }
 
+//각 공정 처리후 공정 선택 화면으로 되돌아가기
 function back() {
 	loadPage("base/item-details.html");
 }
 
+//init 변수 (세척에서 재제조 번호 자동생성시 사용하는 값 저장위해)
 async function init_변수() {
 	var doc = 변수_doc;
 	doc.구분 = "mado_product_no";
-	doc.값 = "855";
+	doc.값 = "855"; //임의의 재제조번호 시작값
 
 	update_변수(변수, doc);
 	await delay();
@@ -5758,6 +5879,7 @@ async function init_변수() {
 	console.log("mado_product_no_complete");
 }
 
+//재제조번호 자동 생겅(세척 공정)
 async function make_md_product_no(today_count) {
 	var DateTime = luxon.DateTime;
 	var seoul = DateTime.local().setZone("Asia/Seoul");
@@ -5768,6 +5890,7 @@ async function make_md_product_no(today_count) {
 	return no;
 }
 
+//재제조번호 자동 생성 시작값 초기화
 async function init_product_no() {
 	var doc = JSON.parse(JSON.stringify(변수_doc));
 	doc.구분 = "mado_product_no";
@@ -5802,6 +5925,7 @@ async function init_product_no() {
 	console.log("mado_product_no_complete");
 }
 
+//기본정보의 쓰레기값 제거
 async function undefined_check(BSA재제조_v) {
 	if(BSA재제조_v == null) return;
 	if(BSA재제조_v.입고 == undefined) BSA재제조_v.입고 = '';
@@ -5828,39 +5952,45 @@ async function undefined_check(BSA재제조_v) {
 	if (BSA재제조_v.렉번호 == undefined) BSA재제조_v.렉번호 = '';
 }
 
+//이미지 to Base64 text
 const toBase64 = (file) =>
 	new Promise((resolve, reject) => {
 		const reader = new FileReader();
 		reader.readAsDataURL(file);
 		reader.onload = () => resolve(reader.result);
 		reader.onerror = reject;
-	});
+	}
+);
 
+//드래그 앤 드롭으로 넣은 사진을 일정한 레졸루션으로 축소
 async function resize_pic(file, img, 예외 = false, no = false) {
-	if (예외 == false && no == false) {
+	if (예외 == false && no == false) { //선명도가 떨어져도 괜찮은 이미지
 		ImageResizer.resizeImage(file, { maxWidth: 250, maxHeight: 250 }, async function (resultFile) {
 			img.src = await toBase64(resultFile);
 			console.log(img.src);
 		});
-	} else if(no == false){
+	} else if(no == false){ //선명도가 높아야하는 이미지
 		ImageResizer.resizeImage(file, { maxWidth: 2000, maxHeight: 2000 }, async function (resultFile) {
 			img.src = await toBase64(resultFile);
 			console.log(img.src);
 		});
-	} else {
+	} else { //사진 축소를 하지 않을 이미지
 		img.src = await toBase64(file);
 	}
 }
 
+//BASE64 string를 이미지 태그어 넣어 이미지로 보여줌
 async function pic_to_img(_data, _img) {
 	_img.src = _data;
 	console.log(_img.src);
 }
 
+//socket.io 연결 강제로 끊음
 function socket_disconnec() {
 	socket.disconnect();
 }
 
+//파일 다운로드 
 function downloadURI(uri, name) {
   var link = document.createElement("a");
   link.download = name;
