@@ -1,4 +1,4 @@
-history.pushState(null, null, location.href);
+history.pushState(null, null, location.href); //브라우저 이전으로 이동 버튼 작동 막음
 window.onpopstate = function (event) {
 	history.go(1);
 };
@@ -13,12 +13,16 @@ window.onpopstate = function (event) {
 //    });
 //});
 
+// 마우스 우측키 막음
 function blockRightClick() {
 	return false;
 }
 
+//메뉴에서  관리자 버튼과 부품재고 버튼을 숨김
 admin_btn.style.display = 'none';
 부품재고_btn.style.display = 'none';
+
+// 작업자와 계정 레벨
 //var _worker = sessionStorage.getItem('worker');
 var _level = sessionStorage.getItem('level');
 if (worker == null) {
@@ -28,27 +32,29 @@ if (worker == null) {
 
 var flag_show = false;
 
+
 const _login_info = document.getElementById('login_info');
 const _admin_btn = document.getElementById('admin_btn');
 const _부품재고_btn = document.getElementById('부품재고_btn');
 
 console.log('worker:', worker);
 
+//login button click
 async function check_login() {
 	if (worker == '' || worker == null) {
 		loadPage('base/login.html');
-		await sleep(200);
+		await sleep(1);
 		change_label();
 
-
 		_login_info.innerHTML = '';
-		_admin_btn.style.display = 'none';
-		_부품재고_btn.style.display = 'none';
+		_admin_btn.style.display = 'none';  //관리자 버튼 숨김
+		_부품재고_btn.style.display = 'none'; //부품재고 버튼 숨김
 
+		//엔터키를 누르면 포커스 이동 및 로그인이 되도록함
   		const check_id = document.getElementById("_id");
 		const check_passwd = document.getElementById('_passwd');
 		check_id.onkeydown = function (event) {
-			if(event.keyCode == 13) {
+			if(event.keyCode == 13) { //enter key
 				check_passwd.focus();
 			}
 		}
@@ -63,6 +69,7 @@ async function check_login() {
 
 check_login();
 
+//각 화면당 시작 함수를 실행하게끔 하기위한 플래그
 var flag_재제조현황 = false;
 var flag_상세입력 = false;
 var flag_년간현황 = false;
@@ -105,6 +112,7 @@ var flag_분해조립_공정대기 = false;
 var flag_분해조립_폐기자재 = false;
 var flag_완료보고서 = false;
 
+//각 화면에 해당하는 시작함수를 실행
 var interval = setInterval(function () {
 	if (flag_재제조현황 == true) { console.log('재제조현황'); stop_repeat(); 재제조현황_시작(); }
 	if (flag_상세입력 == true) { console.log('상세입력'); stop_repeat(); 상세입력_시작(); }
@@ -147,12 +155,7 @@ var interval = setInterval(function () {
 	if (flag_완료보고서 == true) { console.log('완료보고서'); stop_repeat(); 완료보고서_시작(); }
 }, 1000);
 
-//var intervalRepeat = setInterval(function() {
-//if(flag_repeat_생산현황 == true) 생산현황_시작();
-//	if(flag_repeat_대시보드 == true) 대시보드_시작();
-//	if(flag_repeat_대기수량_현황 == true) 대기수량_현황_조회();
-//}, 1000 * 30);
-
+//반복 실행 플래그 모두 끔
 function stop_repeat() {
 	console.log('stop repeat');
 	flag_repeat_생산현황 = false;
@@ -160,18 +163,21 @@ function stop_repeat() {
 	flag_repeat_대기수량_현황 = false;
 }
 
+//생산현황 반복 플래그만 켬
 function start_repeat_생산현황() {
 	console.log('start 생산현황 repeat');
 	flag_repeat_대시보드 = false;
 	flag_repeat_생산현황 = true;
 }
 
+//대시보드 반복 플래그만 켬
 function start_repeat_대시보드() {
 	console.log('start dashboard repeat');
 	flag_repeat_대기수량_현황 = false;
 	flag_repeat_대시보드 = true;
 }
 
+//대기수량 현황만 반복 플래그를 켬
 function start_repeat_대기수량_현황() {
 	console.log('start BSA 수량 현황 repeat');
 	flag_repeat_생산현황 = false;
@@ -179,10 +185,12 @@ function start_repeat_대기수량_현황() {
 	flag_repeat_대기수량_현황 = true;
 }
 
+//공정 선택 화면으로 이동
 function 이전페이지() {
 	loadPage('base/item-details.html');
 }
 
+//기초검사 공정으로 이동
 function 기초검사_이전페이지() {
 	flag_기초검사 = true;
 	loadPage('base/기초검사.html');

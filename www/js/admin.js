@@ -1,11 +1,12 @@
+//계정
 var _id;
 var _passwd;
 var _passwd2;
 var _set_level;
-var _csv;
 
 async function 관리자_시작() {
-	flag_관리자 = false;
+	flag_관리자 = false; //main.js 시작 루프에서 쓰임
+	
 	_id = document.getElementById('_id');
 	_passwd = document.getElementById('_passwd');
 	_passwd2 = document.getElementById('_passwd2');
@@ -22,9 +23,8 @@ async function 관리자_시작() {
 	_부품재고 = document.getElementById('_부품재고');
 	_완료일수정 = document.getElementById('_완료일수정');
 	_관리번호 = document.getElementById('_관리번호');
-	_csv = document.getElementById('_csv');
-	read_func_csv();
 
+	//계정 리스트 조회
 	find_계정(계정, { id: { $exists: true } })
 	await delay();
 
@@ -54,6 +54,7 @@ async function 관리자_시작() {
 		});
 	}
 
+	//계정 클릭시 해당 계정 정보 수정가능하도록 가져옴
 	table.on("rowClick", async function (e, row) {
 		console.log("selected 관리번호: ", row.getData().id);
 		if (row.getData().id != '') {
@@ -75,6 +76,7 @@ async function 관리자_시작() {
 	});
 }
 
+//사용자 추가
 async function add_user() {
 	_passwd = document.getElementById('_passwd');
 	_passwd2 = document.getElementById('_passwd2');
@@ -83,12 +85,13 @@ async function add_user() {
 		alert('패스워드가 서로 다름니다.');
 		return;
 	}
-
+	
+	//패스워드 암호화
 	const hash = CryptoJS.MD5(_passwd.value.trim());
 
 	var hash_str = hash.toString();
-	var doc = JSON.parse(JSON.stringify(계정_doc));
-	doc.id = _id.value.trim();
+	var doc = JSON.parse(JSON.stringify(계정_doc)); //deep copy
+	doc.id = _id.value.trim(); 
 	doc.passwd = hash_str;
 	doc.level = _level.value;
 	doc.이름 = _이름.value;
@@ -118,9 +121,10 @@ async function add_user() {
 		alert('저장 되었습니다');
 	}
 
-	관리자_시작();
+	관리자_시작(); //계정정보 재로드를 위해
 }
 
+//사용자 삭제
 async function delete_user() {
 	if (_id.value == '') return;
 
@@ -132,380 +136,4 @@ async function delete_user() {
 	}
 
 	관리자_시작();
-}
-
-function getType(target) {
-	return Object.prototype.toString.call(target).slice(8, -1);
-}
-
-var check_count = 0;
-var total_insert_count = 0;
-var total_update_count = 0;
-var fail_count = 0;
-
-async function test() {
-	find_BSA재제조(BSA재제조, { 관리번호: { $exists: true }, 공정단계: { $eq: '제조완료' }, 출하: { $ne : ''} });
-	await delay();
-
-	BSA재제조_v.forEach(async function(v) {
-		var doc = {
-			관리번호 : v.관리번호,
-			공정단계 : '출하'
-		}
-
-		update(BSA재제조, doc);
-		await delay();
-	});
-}
-
-async function doo() {
-	find_BSA재제조(BSA재제조, { 관리번호: { $exists: true }, 공정단계: { $ne: '출하' } });
-	await delay();
-
-	BSA재제조_v.forEach(async function (item) {
-		var _공정단계 = '입고';
-		if (item.입고 != '') _공정단계 = '세척';
-		E
-		if (item.세척 != '') _공정단계 = '기초검사';
-		if (item.기초검사 != '') _공정단계 = '분해조립';
-		if (item.분해조립 != '') _공정단계 = '성능검사';
-		if (item.성능검사 != '') _공정단계 = 'EOL';
-		if (item.EOL != '') _공정단계 = '제조완료';
-		if (item.출하검사 != '') _공정단계 = '제조완료';
-		if (item.출하 != '') _공정단계 = '출하';
-
-		var doc = {
-			관리번호: item.관리번호,
-			공정단계: _공정단계
-		}
-
-		update(BSA재제조, doc);
-		await delay();
-	});
-
-	console.log('complete');
-}
-
-async function doo() {
-	var doc = {
-		관리번호 : '#S240126-MD001',
-		기초검사투입일 : '',
-		기초검사 : ''
-	}
-
-	update(BSA재제조, doc);
-	await delay();
-
-	console.log('complete');
-}
-
-async function 대기공정처리_완전분해() {
-	find_BSA재제조(BSA재제조, { 완전분해: { $nin: ['', 'undefined'] } });
-	await delay();
-
-	BSA재제조_v.forEach(async function (bsa_info) {
-		doc = {
-			관리번호: bsa_info.관리번호,
-			공정단계: '완전분해'
-		}
-
-		update(BSA재제조, doc);
-		await delay();
-	});
-
-	console.log('complete 완전분해');
-}
-
-async function 대기공정처리_폐기() {
-	find_BSA재제조(BSA재제조, { 폐기: { $nin : ['', 'undefined'] } });
-	await delay();
-
-	BSA재제조_v.forEach(async function (bsa_info) {
-		doc = {
-			관리번호: bsa_info.관리번호,
-			공정단계: '폐기'
-		}
-
-		update(BSA재제조, doc);
-		await delay();
-	});
-
-	console.log('complete 폐기');
-}
-
-async function doo_2() {
-	find_BSA재제조(BSA재제조, { EOL: { $ne: '' }, 출하검사: { $eq: '' } });
-	await delay();
-
-	var test_BSA = BSA재제조_v;
-	var table = new Tabulator("#grid_bsa", {
-		layout: "resizableColumnFit",
-		data: test_BSA,
-		height: '700px',
-
-		columns: [
-			{ title: "ID", field: "_id", sorter: "string", width: '180' },
-			{ title: "관리번호", field: "관리번호", sorter: "string", width: '180' },
-			{ title: "재제조번호", field: "재제조번호", sorter: "string", width: '180' },
-			{ title: "구분", field: "구분", sorter: "string", width: '180' },
-			{ title: "차종", field: "차종", sorter: "string", width: '180' },
-			{ title: "품번", field: "품번", sorter: "string", width: '180' },
-			{ title: "RO_no", field: "RO_no", sorter: "string", width: '180' },
-			{ title: "공정단계", field: "공정단계", sorter: "string", width: '180' },
-			{ title: "소재지", field: "소재지", sorter: "string", width: '180' },
-			{ title: "적재No", field: "적재No", sorter: "string", visible: true, width: '180' }, //
-			{ title: "입고", field: "입고", sorter: "string", visible: true, width: '180' },//
-			{ title: "제조투입", field: "제조투입", sorter: "string", visible: true, width: '180' },//
-			{ title: "세척투입일", field: "세척투입일", sorter: "string", width: '180' },
-			{ title: "세척", field: "세척", sorter: "string", visible: true, width: '180' },//
-			{ title: "기초검사투입일", field: "기초검사투입일", sorter: "string", width: '180' },
-			{ title: "기초검사", field: "기초검사", sorter: "string", visible: true, width: '180' },//
-			{ title: "분해조립투입일", field: "분해조립투입일", sorter: "string", width: '180' },
-			{ title: "분해조립", field: "분해조립", sorter: "string", visible: true, width: '180' },//
-			{ title: "성능검사투입일", field: "성능검사투입일", sorter: "string", width: '180' },
-			{ title: "성능검사", field: "성능검사", sorter: "string", visible: true, width: '180' },//
-			{ title: "EOL투입일", field: "EOL투입일", sorter: "string", width: '180' },
-			{ title: "EOL", field: "EOL", sorter: "string", visible: true, width: '180' },//
-			{ title: "출하검사", field: "출하검사", sorter: "string", width: '180' },
-			{ title: "납품처", field: "납품처", sorter: "string", width: '180' },
-			{ title: "출하", field: "출하", sorter: "string", width: '180' },
-			{ title: "반품입고", field: "반품입고", sorter: "string", width: '180' },
-			{ title: "재출하", field: "재출하", sorter: "string", width: '180' },
-			{ title: "완전분해", field: "완전분해", sorter: "string", width: '180' },
-			{ title: "폐기", field: "폐기", sorter: "string", width: '180' },
-			{ title: "마지막충전일", field: "마지막충전일", sorter: "string", width: '180' },
-			{ title: "출하예약", field: "출하예약", sorter: "string", width: '180' },
-			{ title: "렉번호", field: "렉번호", sorter: "string", width: '180' },
-		],
-	});
-
-	await sleep(1);
-	var sheets = {
-		'EOLvs출하검사': true,
-	};
-	table.download("xlsx", "EOLvs출하검사_bsa.xlsx", { sheets: sheets });
-}
-
-var flag_품번_excel = false;
-function read_품번_func_csv() {
-	var _품번_csv = document.getElementById('_csv');
-	_품번_csv.addEventListener('input', function (event) {
-		if(flag_품번_excel == true) return;
-		flag_품번_excel = true;
-		console.log('file finded');
-		const target = event.target;
-		const files = target.files;
-		const file = files[0];
-
-		const reader = new FileReader();
-		reader.addEventListener('load', async function () {
-			const res = d3.csvParse(reader.result);
-			var docs = [];
-
-			drop(품번);
-			await delay();
-
-			for (var i = 0; i < res.length; i++) {
-				if (res[i].차종 != '') docs.push(res[i]);
-				if ((i > 0 && (i % 2000) == 0) || i == (res.length - 1)) {
-					insertMany(품번, docs);
-					await delay();
-
-					console.log('processing:', i, docs.length);
-
-					docs = [];
-
-					await sleep(1);
-				}
-			};
-			console.log('complete:', res.length);
-			alert('업로드가 완료되었습니다. 새로고침후 다시 로그인하세요');
-		});
-		console.log(file);
-		reader.readAsText(file);
-	});
-}
-
-async function eolpic() {
-	find_EOL_pic(EOL_pic, { 관리번호 : { $exists : true}});
-	await delay();
-	console.log(EOL_pic_v);
-
-	if(EOL_pic_v != null) {
-		for(var i = 0; i < EOL_pic_v.length; i++) {
-			console.log('start:', EOL_pic_v[i].관리번호);
-			var doc_1 = {
-				관리번호 : EOL_pic_v[i].관리번호,
-				pic1 : EOL_pic_v[i].pic1,
-				pic2 : EOL_pic_v[i].pic2,
-				pic3 : EOL_pic_v[i].pic3,
-				pic4 : EOL_pic_v[i].pic4,
-				pic5 : EOL_pic_v[i].pic5,
-				pic6 : EOL_pic_v[i].pic6,
-				pic7 : EOL_pic_v[i].pic7,
-				pic8 : EOL_pic_v[i].pic8,
-				pic9 : EOL_pic_v[i].pic9,
-				pic10 : EOL_pic_v[i].pic10
-			}
-
-			update(EOL_pic1, doc_1);
-			await delay();
-
-			var doc_2 = {
-				관리번호 : EOL_pic_v[i].관리번호,
-				pic1 : EOL_pic_v[i].pic11,
-				pic2 : EOL_pic_v[i].pic12,
-				pic3 : EOL_pic_v[i].pic13,
-				pic4 : EOL_pic_v[i].pic14,
-				pic5 : EOL_pic_v[i].pic15,
-				pic6 : EOL_pic_v[i].pic16,
-				pic7 : EOL_pic_v[i].pic17,
-				pic8 : EOL_pic_v[i].pic18,
-				pic9 : EOL_pic_v[i].pic19,
-				pic10 : EOL_pic_v[i].pic20
-			}
-
-			update(EOL_pic2, doc_2);
-			await delay();
-
-			var doc_3 = {
-				관리번호 : EOL_pic_v[i].관리번호,
-				pic1 : EOL_pic_v[i].pic21,
-				pic2 : EOL_pic_v[i].pic22,
-				pic3 : EOL_pic_v[i].pic23,
-				pic4 : EOL_pic_v[i].pic24,
-				pic5 : EOL_pic_v[i].pic25,
-			}
-
-			update(EOL_pic3, doc_3);
-			await delay();
-
-			console.log('end:', EOL_pic_v[i].관리번호);
-
-			await sleep(1);
-		}
-	}
-}
-
-async function 차종통일() {
-	find_BSA재제조(BSA재제조, { 관리번호 : { $exists : true}});
-	await delay();
-
-	console.log(BSA재제조_v);
-	for(var i = 0 ; i < BSA재제조_v.length; i++) {
-		doc = {};
-		doc.관리번호 = BSA재제조_v[i].관리번호;
-		if((String(BSA재제조_v[i].차종).slice(-2)) != 'EV') {
-			doc.차종 = BSA재제조_v[i].차종 + '_EV'; 
-
-			update(BSA재제조, doc);
-			await delay();
-		}
-		console.log(i + '/' + BSA재제조_v.length);
-	}
-}
-
-async function 기본정보자동입력() {
-	var cnt = 0;
-	//find_입고(입고, { 관리번호 : { $exists : true}});
-	//await delay();
-
-	find_BSA재제조(BSA재제조, { 관리번호 : { $exists : true}});
-	await delay();
-
-	console.log(BSA재제조_v);
-	for(var i = 0 ; i < BSA재제조_v.length; i++) {
-		var doc = {};
-		doc.관리번호 = BSA재제조_v[i].관리번호;
-		doc.재제조번호 = BSA재제조_v[i].재제조번호;
-		//doc.구분 = 입고_v[i].구분;
-		//doc.차종 = 입고_v[i].차종;
-		//doc.품번 = 입고_v[i].품번;
-		//doc.RO_no = 입고_v[i].RO_no;
-
-		update(세척, doc);
-		await delay();
-
-		update(기초검사, doc);
-		await delay();
-
-		update(분해조립, doc);
-		await delay();
-
-		update(성능검사, doc);
-		await delay();
-
-		update(EOL, doc);
-		await delay();
-
-		update(특이사항, doc);
-		await delay();
-
-		update(교체부품상세1, doc);
-		await delay();
-
-		update(교체부품상세2, doc);
-		await delay();
-
-		update(교체부품상세3, doc);
-		await delay();
-
-		update(교체부품상세4, doc);
-		await delay();
-
-		update(교체부품상세5, doc);
-		await delay();
-
-		update(교체부품상세6, doc);
-		await delay();
-
-		update(교체부품상세7, doc);
-		await delay();
-
-		update(교체부품상세8, doc);
-		await delay();
-
-		update(교체부품상세9, doc);
-		await delay();
-
-		update(교체부품상세10, doc);
-		await delay();
-
-		cnt++;
-		console.log(cnt);
-	}
-}
-
-var flag_excel = false;
-function read_func_csv() {
-	var _csv = document.getElementById('_csv');
-	_csv.addEventListener('input', function (event) {
-		if(flag_excel == true) return;
-		flag_excel = true;
-		console.log('file finded');
-		const target = event.target;
-		const files = target.files;
-		const file = files[0];
-
-		const reader = new FileReader();
-		reader.addEventListener('load', async function () {
-			const res = d3.csvParse(reader.result);
-
-			for (var i = 0; i < res.length; i++) {
-				if (res[i].납품처 != '') {
-					var doc = {};
-					doc.관리번호 = res[i].관리번호;
-					doc.납품처 = res[i].납품처;
-
-					update(BSA재제조, doc);
-					await delay();
-				}
-				console.log(i + '/' + res.length);
-			};
-			console.log('complete:', res.length);
-			alert('업로드가 완료되었습니다. 새로고침후 다시 로그인하세요');
-		});
-		console.log(file);
-		reader.readAsText(file);
-	});
 }
