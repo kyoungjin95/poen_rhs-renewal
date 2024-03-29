@@ -123,6 +123,7 @@ server.listen(80, () => {
 
 io.on('connection', async function(socket) {
 	var worker_origin = ''
+	var level = '';
 	var client_ip = socket.request.connection.remoteAddress; 
 var idx = client_ip.lastIndexOf(':');
 	if (~idx && ~client_ip.indexOf('.'))
@@ -350,7 +351,8 @@ var idx = client_ip.lastIndexOf(':');
 		logger.info('worker:'+ worker + ' insert col:' + col +'doc:'+ JSON.stringify(doc));
 	});
 
-	socket.on('count', async function(level, col, query, check, option = '') {
+	socket.on('count', async function(_level, col, query, check, option = '') {
+		level = _level;
 		console.log('request count');
 		console.log(col, query, client_ip);
 		const cnt = await count(col, query);
@@ -361,6 +363,8 @@ var idx = client_ip.lastIndexOf(':');
 
 	socket.on('find', async function(worker, col, query, options, check) {
 		if(worker == '') return;
+		if(level == '') return;
+		if(level != '작업자' && level != '관리자' && level != 'watcher') return;
 		console.log('request find');
 		const result_array = await find(col, query, options);
 		socket.timeout(2000).emit('find_result', col, result_array, check);
@@ -376,7 +380,7 @@ var idx = client_ip.lastIndexOf(':');
 	});
 
 	socket.on('update', async function(worker, col, filter, doc) {
-		if(worker == 'admin' || worker == 'test') {
+		if(worker == 'admin' || worker == 'test' || level == '') {
 			const result = null;
 			socket.timeout(2000).emit('update_result', result);
 			return;
