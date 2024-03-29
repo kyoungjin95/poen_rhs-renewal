@@ -360,6 +360,7 @@ var idx = client_ip.lastIndexOf(':');
 	});
 
 	socket.on('find', async function(worker, col, query, options, check) {
+		if(worker == '') return;
 		console.log('request find');
 		const result_array = await find(col, query, options);
 		socket.timeout(2000).emit('find_result', col, result_array, check);
