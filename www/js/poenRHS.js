@@ -3776,6 +3776,8 @@ socket.on("connect", function () {
 	io_status = true;
 	document.getElementById("connection_status").innerHTML = "(연결)";
 	console.log("connected");
+
+	socket.emit('level', level);
 	//alert('서버와 연결됨');
 	//loadPage("base/login.html");
 });

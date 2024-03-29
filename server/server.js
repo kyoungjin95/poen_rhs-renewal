@@ -352,7 +352,7 @@ var idx = client_ip.lastIndexOf(':');
 	});
 
 	socket.on('count', async function(_level, col, query, check, option = '') {
-		level = _level;
+		if(level == '') level = _level;
 		console.log('request count');
 		console.log(col, query, client_ip);
 		const cnt = await count(col, query);
@@ -362,9 +362,9 @@ var idx = client_ip.lastIndexOf(':');
 	});
 
 	socket.on('find', async function(worker, col, query, options, check) {
-		if(worker == '') return;
-		if(level == '') return;
-		if(level != '작업자' && level != '관리자' && level != 'watcher') return;
+		if(col != '계정' && worker == '') return;
+		if(col != '계정' && level == '') return;
+		if(col != '계정' && (level != '작업자' && level != 'watcher')) return;
 		console.log('request find');
 		const result_array = await find(col, query, options);
 		socket.timeout(2000).emit('find_result', col, result_array, check);
@@ -460,6 +460,13 @@ var idx = client_ip.lastIndexOf(':');
 		console.log('request 부품정보:', start, end);
 		const result = await 부품_info(start, end);
 		socket.timeout(2000).emit('부품정보_result', result);
+	});
+
+	socket.on('level', async function(_level) {
+		console.log('set level:', _level);
+		if(level == '' && (_level != '' || _level != null)) {
+			level = _level;
+		}
 	});
 
 	process.on('exit', function(code) {

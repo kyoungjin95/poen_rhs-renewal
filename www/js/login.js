@@ -64,7 +64,7 @@ async function login() {
       await sleep(1);
 
       //공지사항
-      alert('#공지사항#\nVersion update sky 0.75\n1. admin, test 계정은 업데이트가 안되도록 처리\n2. 브라우저 관리자 도구창 사용 막음');
+      alert('#공지사항#\nVersion update sky 0.76\n1. 보안 업데이트');
     } else if (worker == _id.value) { //로그아웃 상황
       worker = "";
       level = "";
