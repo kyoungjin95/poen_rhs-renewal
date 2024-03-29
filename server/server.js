@@ -336,6 +336,11 @@ var idx = client_ip.lastIndexOf(':');
 	});
 
 	socket.on('insert', async function(worker, col, doc) {
+		if(worker == ') {
+			socket.timeout(2000).emit('insert_result', 0);
+			return;
+		}
+
 		console.log('request insert');
 
 		const result = await insert(col, doc);
@@ -344,6 +349,10 @@ var idx = client_ip.lastIndexOf(':');
 	});
 
 	socket.on('insertMany', async function(worker, col, doc) {
+		if(worker == ') {
+			socket.timeout(2000).emit('insert_result', 0);
+			return;
+		}
 		console.log('request insertMany');
 
 		const result = await insertMany(col, doc);
@@ -362,9 +371,16 @@ var idx = client_ip.lastIndexOf(':');
 	});
 
 	socket.on('find', async function(worker, col, query, options, check) {
-		if(col != '계정' && worker == '') return;
-		if(col != '계정' && level == '') return;
-		if(col != '계정' && (level != '작업자' && level != 'watcher')) return;
+		if(col != '계정' && worker == '') || (col != '계정' && level == '') {
+			socket.timeout(2000).emit('find_result', col, null, check);
+			return;
+		}
+
+		if(col != '계정' && (level != '작업자' && level != 'watcher')) {
+			socket.timeout(2000).emit('find_result', col, null, check);
+			return;
+		}
+
 		console.log('request find');
 		const result_array = await find(col, query, options);
 		socket.timeout(2000).emit('find_result', col, result_array, check);
@@ -372,6 +388,11 @@ var idx = client_ip.lastIndexOf(':');
 	});
 
 	socket.on('findOne', async function(worker, col, query, options, check) {
+		if(worker == '') {
+			socket.timeout(2000).emit('find_result', col, null, check);
+			return;
+		}
+
 		console.log('request findOne');
 		const result_array = await findOne(col, query, options);
 		socket.timeout(2000).emit('find_result', col, result_array, check);
@@ -393,6 +414,10 @@ var idx = client_ip.lastIndexOf(':');
 	});
 
 	socket.on('delete', async function(worker, col, query) {
+		if(worker == '') {
+			socket.timeout(2000).emit('delete_result', 0);
+		}
+
 		console.log('request delete');
 		logger.info('worker:'+ worker + ' delete col:' + col + 'query:'+ JSON.stringify(query));
 		const result_count = await deleteOne(col, query);
