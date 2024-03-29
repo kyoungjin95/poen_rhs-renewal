@@ -336,7 +336,7 @@ var idx = client_ip.lastIndexOf(':');
 	});
 
 	socket.on('insert', async function(worker, col, doc) {
-		if(worker == ') {
+		if(worker == '') {
 			socket.timeout(2000).emit('insert_result', 0);
 			return;
 		}
@@ -349,7 +349,7 @@ var idx = client_ip.lastIndexOf(':');
 	});
 
 	socket.on('insertMany', async function(worker, col, doc) {
-		if(worker == ') {
+		if(worker == '') {
 			socket.timeout(2000).emit('insert_result', 0);
 			return;
 		}
@@ -371,7 +371,7 @@ var idx = client_ip.lastIndexOf(':');
 	});
 
 	socket.on('find', async function(worker, col, query, options, check) {
-		if(col != '계정' && worker == '') || (col != '계정' && level == '') {
+		if((col != '계정' && worker == '') || (col != '계정' && level == '')) {
 			socket.timeout(2000).emit('find_result', col, null, check);
 			return;
 		}
