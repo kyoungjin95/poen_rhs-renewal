@@ -371,11 +371,6 @@ var idx = client_ip.lastIndexOf(':');
 	});
 
 	socket.on('find', async function(worker, col, query, options, check) {
-		if((col != '계정' && worker == '') || (col != '계정' && level == '')) {
-			socket.timeout(2000).emit('find_result', col, null, check);
-			return;
-		}
-
 		if(col != '계정' && (level != '작업자' && level != 'watcher')) {
 			socket.timeout(2000).emit('find_result', col, null, check);
 			return;
@@ -388,7 +383,7 @@ var idx = client_ip.lastIndexOf(':');
 	});
 
 	socket.on('findOne', async function(worker, col, query, options, check) {
-		if(worker == '') {
+		if(col != '계정' && worker == '') {
 			socket.timeout(2000).emit('find_result', col, null, check);
 			return;
 		}
@@ -401,7 +396,7 @@ var idx = client_ip.lastIndexOf(':');
 	});
 
 	socket.on('update', async function(worker, col, filter, doc) {
-		if(worker == 'admin' || worker == 'test' || level == '') {
+		if(col != '계정' && (worker == 'admin' || worker == 'test' || level == '')) {
 			const result = null;
 			socket.timeout(2000).emit('update_result', result);
 			return;
