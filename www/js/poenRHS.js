@@ -3777,7 +3777,7 @@ socket.on("connect", function () {
 	document.getElementById("connection_status").innerHTML = "(연결)";
 	console.log("connected");
 
-	socket.emit('level', level);
+	socket.emit('계정정보', id, passwd);
 	//alert('서버와 연결됨');
 	//loadPage("base/login.html");
 });

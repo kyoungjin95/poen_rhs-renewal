@@ -19,6 +19,13 @@ const uri = 'mongodb://poen:poen4upoen4u@localhost:27017/poenDB';
 const db_name = 'poenDB';
 var no = 1;
 
+const 계정_ = {
+	_id: 0,
+	id: 1,
+	passwd: 1,
+	level: 1,
+};
+
 const storage = multer.diskStorage({
 	destination: function (req, file, cb) {
 		cb(null, 'excel/tmp');
@@ -122,8 +129,9 @@ server.listen(80, () => {
 });
 
 io.on('connection', async function(socket) {
-	var worker_origin = ''
-	var level = '';
+	var id = '';
+	var passwd = '';
+	var login = false;
 	var client_ip = socket.request.connection.remoteAddress; 
 var idx = client_ip.lastIndexOf(':');
 	if (~idx && ~client_ip.indexOf('.'))
@@ -336,7 +344,7 @@ var idx = client_ip.lastIndexOf(':');
 	});
 
 	socket.on('insert', async function(worker, col, doc) {
-		if(worker == '') {
+		if(login == false) {
 			socket.timeout(2000).emit('insert_result', 0);
 			return;
 		}
@@ -349,7 +357,7 @@ var idx = client_ip.lastIndexOf(':');
 	});
 
 	socket.on('insertMany', async function(worker, col, doc) {
-		if(worker == '') {
+		if(login == false) {
 			socket.timeout(2000).emit('insert_result', 0);
 			return;
 		}
@@ -361,7 +369,10 @@ var idx = client_ip.lastIndexOf(':');
 	});
 
 	socket.on('count', async function(_level, col, query, check, option = '') {
-		if(level == '') level = _level;
+		if(login == false) {
+			socket.timeout(2000).emit('count_result', col, 0, check, option);
+			return;
+		}
 		console.log('request count');
 		console.log(col, query, client_ip);
 		const cnt = await count(col, query);
@@ -371,7 +382,7 @@ var idx = client_ip.lastIndexOf(':');
 	});
 
 	socket.on('find', async function(worker, col, query, options, check) {
-		if(col != '계정' && (level != '작업자' && level != 'watcher')) {
+		if(login == false) {
 			socket.timeout(2000).emit('find_result', col, null, check);
 			return;
 		}
@@ -383,7 +394,7 @@ var idx = client_ip.lastIndexOf(':');
 	});
 
 	socket.on('findOne', async function(worker, col, query, options, check) {
-		if(col != '계정' && worker == '') {
+		if(col != '계정' && login == false) {
 			socket.timeout(2000).emit('find_result', col, null, check);
 			return;
 		}
@@ -396,7 +407,7 @@ var idx = client_ip.lastIndexOf(':');
 	});
 
 	socket.on('update', async function(worker, col, filter, doc) {
-		if(col != '계정' && (worker == 'admin' || worker == 'test' || level == '')) {
+		if(col != '계정' && (id == 'admin' || id == 'test')) {
 			const result = null;
 			socket.timeout(2000).emit('update_result', result);
 			return;
@@ -409,7 +420,7 @@ var idx = client_ip.lastIndexOf(':');
 	});
 
 	socket.on('delete', async function(worker, col, query) {
-		if(worker == '') {
+		if(login == false) {
 			socket.timeout(2000).emit('delete_result', 0);
 		}
 
@@ -470,6 +481,10 @@ var idx = client_ip.lastIndexOf(':');
 	});
 
 	socket.on('drop', async function(worker, col) {
+		if(login == false) {
+			socket.timeout(2000).emit('drop_result', 'null');
+			return;
+		}
 		console.log('request drop:', col);
 		logger.info('worker:'+ worker + ' drop col:' + col);
 		const result = await drop(col);
@@ -482,10 +497,11 @@ var idx = client_ip.lastIndexOf(':');
 		socket.timeout(2000).emit('부품정보_result', result);
 	});
 
-	socket.on('level', async function(_level) {
-		console.log('set level:', _level);
-		if(level == '' && (_level != '' || _level != null)) {
-			level = _level;
+	socket.on('계정정보', async function(_id, _passwd) {
+		const result_array = await findOne('계정', {id : _id, passwd : _passwd}, { sort: { kind: 1 }, projection: 계정_ });
+		if(result_array != null) {
+			id = _id;
+			login = true;
 		}
 	});
 
