@@ -3767,6 +3767,11 @@ var check = 0;
 var str = "";
 var file_upload_result = false;
 
+//계정이 가지는 권한정보
+var 계정_stat = "";
+var id = '';
+var passwd = '';
+
 //socket.io
 var socket = io();
 var io_status = false;

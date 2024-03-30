@@ -1,8 +1,3 @@
-//계정이 가지는 권한정보
-var 계정_stat = "";
-var id = '';
-var passwd = '';
-
 //로그인 버튼을 눌렀을때
 async function login() {
   console.log("try login");
