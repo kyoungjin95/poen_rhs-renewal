@@ -344,7 +344,7 @@ var idx = client_ip.lastIndexOf(':');
 	});
 
 	socket.on('insert', async function(worker, col, doc) {
-		if(login == false) {
+		if(login == false || worker != id) {
 			socket.timeout(2000).emit('insert_result', 0);
 			return;
 		}
@@ -357,7 +357,7 @@ var idx = client_ip.lastIndexOf(':');
 	});
 
 	socket.on('insertMany', async function(worker, col, doc) {
-		if(login == false) {
+		if(login == false || worker != id) {
 			socket.timeout(2000).emit('insert_result', 0);
 			return;
 		}
@@ -382,7 +382,7 @@ var idx = client_ip.lastIndexOf(':');
 	});
 
 	socket.on('find', async function(worker, col, query, options, check) {
-		if(login == false) {
+		if(login == false || worker != id) {
 			socket.timeout(2000).emit('find_result', col, null, check);
 			return;
 		}
@@ -394,7 +394,7 @@ var idx = client_ip.lastIndexOf(':');
 	});
 
 	socket.on('findOne', async function(worker, col, query, options, check) {
-		if(col != '계정' && login == false) {
+		if(col != '계정' && (login == false || worker != id)) {
 			socket.timeout(2000).emit('find_result', col, null, check);
 			return;
 		}
@@ -407,7 +407,7 @@ var idx = client_ip.lastIndexOf(':');
 	});
 
 	socket.on('update', async function(worker, col, filter, doc) {
-		if(col != '계정' && ((id == 'admin' || id == 'test') || worker != id)) {
+		if(col != '계정' && (id == 'admin' || id == 'test' || worker != id)) {
 			const result = null;
 			socket.timeout(2000).emit('update_result', result);
 			return;
