@@ -407,7 +407,7 @@ var idx = client_ip.lastIndexOf(':');
 	});
 
 	socket.on('update', async function(worker, col, filter, doc) {
-		if(col != '계정' && (id == 'admin' || id == 'test')) {
+		if(col != '계정' && ((id == 'admin' || id == 'test') || worker != id)) {
 			const result = null;
 			socket.timeout(2000).emit('update_result', result);
 			return;
@@ -420,7 +420,7 @@ var idx = client_ip.lastIndexOf(':');
 	});
 
 	socket.on('delete', async function(worker, col, query) {
-		if(login == false) {
+		if(login == false || worker != id) {
 			socket.timeout(2000).emit('delete_result', 0);
 		}
 
