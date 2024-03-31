@@ -407,7 +407,7 @@ var idx = client_ip.lastIndexOf(':');
 	});
 
 	socket.on('update', async function(worker, col, filter, doc) {
-		if(id == 'admin' || id == 'test' || worker != id) {
+		if(col != '계정' && (id == 'admin' || id == 'test') || worker != id) {
 			const result = null;
 			socket.timeout(2000).emit('update_result', result);
 			return;
