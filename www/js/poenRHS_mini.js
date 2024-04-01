@@ -1,8 +1,8 @@
 const DELAY = 1;
 const 거래확인서 = '거래확인서';
 const 제공동의서 = '제공동의서';
-const worker = '고객';
-const level = '영업팀';
+const worker = '영업팀_고객';
+const level = '작업자';
 
 const 거래확인서_doc = {
 	날짜ID: '',

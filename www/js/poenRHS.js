@@ -3767,6 +3767,11 @@ var check = 0;
 var str = "";
 var file_upload_result = false;
 
+//계정이 가지는 권한정보
+var 계정_stat = "";
+var id = '';
+var passwd = '';
+
 //socket.io
 var socket = io();
 var io_status = false;
@@ -3776,6 +3781,8 @@ socket.on("connect", function () {
 	io_status = true;
 	document.getElementById("connection_status").innerHTML = "(연결)";
 	console.log("connected");
+
+	socket.emit('계정정보', id, passwd);
 	//alert('서버와 연결됨');
 	//loadPage("base/login.html");
 });

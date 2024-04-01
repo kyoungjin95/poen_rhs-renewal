@@ -1,6 +1,3 @@
-//계정이 가지는 권한정보
-var 계정_stat = "";
-
 //로그인 버튼을 눌렀을때
 async function login() {
   console.log("try login");
@@ -18,6 +15,11 @@ async function login() {
   await delay();
 
   if (계정_v != null) {
+    id = _id.value;
+    passwd = hash.toString();
+
+    socket.emit('계정정보', id, passwd);
+
     if (worker == "") { //로그인 상황
       worker = _id.value; //worker 
       console.log('작업자:', worker);
@@ -64,10 +66,12 @@ async function login() {
       await sleep(1);
 
       //공지사항
-      //alert('#공지사항#\nVersion update sky 0.74\n1. 서버와 전송을 주고 받을때 2초 타임아웃 설정 추가');
+      alert('#공지사항#\nVersion update sky 0.77\n1. 보안 업데이트');
     } else if (worker == _id.value) { //로그아웃 상황
       worker = "";
       level = "";
+      id = '';
+      passwd = '';
       sessionStorage.clear();
       admin_btn.style.display = "none";
       부품재고_btn.style.display = "none";

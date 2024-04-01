@@ -19,6 +19,13 @@ const uri = 'mongodb://poen:poen4upoen4u@localhost:27017/poenDB';
 const db_name = 'poenDB';
 var no = 1;
 
+const 계정_ = {
+	_id: 0,
+	id: 1,
+	passwd: 1,
+	level: 1,
+};
+
 const storage = multer.diskStorage({
 	destination: function (req, file, cb) {
 		cb(null, 'excel/tmp');
@@ -122,6 +129,9 @@ server.listen(80, () => {
 });
 
 io.on('connection', async function(socket) {
+	var id = '';
+	var passwd = '';
+	var login = false;
 	var client_ip = socket.request.connection.remoteAddress; 
 var idx = client_ip.lastIndexOf(':');
 	if (~idx && ~client_ip.indexOf('.'))
@@ -334,6 +344,11 @@ var idx = client_ip.lastIndexOf(':');
 	});
 
 	socket.on('insert', async function(worker, col, doc) {
+		if(login == false || worker != id) {
+			socket.timeout(2000).emit('insert_result', 0);
+			return;
+		}
+
 		console.log('request insert');
 
 		const result = await insert(col, doc);
@@ -342,6 +357,10 @@ var idx = client_ip.lastIndexOf(':');
 	});
 
 	socket.on('insertMany', async function(worker, col, doc) {
+		if(login == false || worker != id) {
+			socket.timeout(2000).emit('insert_result', 0);
+			return;
+		}
 		console.log('request insertMany');
 
 		const result = await insertMany(col, doc);
@@ -349,7 +368,11 @@ var idx = client_ip.lastIndexOf(':');
 		logger.info('worker:'+ worker + ' insert col:' + col +'doc:'+ JSON.stringify(doc));
 	});
 
-	socket.on('count', async function(level, col, query, check, option = '') {
+	socket.on('count', async function(_level, col, query, check, option = '') {
+		if(login == false) {
+			socket.timeout(2000).emit('count_result', col, 0, check, option);
+			return;
+		}
 		console.log('request count');
 		console.log(col, query, client_ip);
 		const cnt = await count(col, query);
@@ -359,6 +382,11 @@ var idx = client_ip.lastIndexOf(':');
 	});
 
 	socket.on('find', async function(worker, col, query, options, check) {
+		if(login == false || worker != id) {
+			socket.timeout(2000).emit('find_result', col, null, check);
+			return;
+		}
+
 		console.log('request find');
 		const result_array = await find(col, query, options);
 		socket.timeout(2000).emit('find_result', col, result_array, check);
@@ -366,6 +394,11 @@ var idx = client_ip.lastIndexOf(':');
 	});
 
 	socket.on('findOne', async function(worker, col, query, options, check) {
+		if(col != '계정' && (login == false || worker != id)) {
+			socket.timeout(2000).emit('find_result', col, null, check);
+			return;
+		}
+
 		console.log('request findOne');
 		const result_array = await findOne(col, query, options);
 		socket.timeout(2000).emit('find_result', col, result_array, check);
@@ -374,6 +407,11 @@ var idx = client_ip.lastIndexOf(':');
 	});
 
 	socket.on('update', async function(worker, col, filter, doc) {
+		if(login == false || worker != id) {
+			const result = null;
+			socket.timeout(2000).emit('update_result', result);
+			return;
+		}
 		console.log('request update');
 		logger.info('client ip:' + client_ip + ' worker:'+ worker + ' update col:' + col + 'doc:' + JSON.stringify(doc));
 
@@ -382,6 +420,10 @@ var idx = client_ip.lastIndexOf(':');
 	});
 
 	socket.on('delete', async function(worker, col, query) {
+		if(login == false || worker != id) {
+			socket.timeout(2000).emit('delete_result', 0);
+		}
+
 		console.log('request delete');
 		logger.info('worker:'+ worker + ' delete col:' + col + 'query:'+ JSON.stringify(query));
 		const result_count = await deleteOne(col, query);
@@ -439,6 +481,10 @@ var idx = client_ip.lastIndexOf(':');
 	});
 
 	socket.on('drop', async function(worker, col) {
+		if(login == false) {
+			socket.timeout(2000).emit('drop_result', 'null');
+			return;
+		}
 		console.log('request drop:', col);
 		logger.info('worker:'+ worker + ' drop col:' + col);
 		const result = await drop(col);
@@ -449,6 +495,14 @@ var idx = client_ip.lastIndexOf(':');
 		console.log('request 부품정보:', start, end);
 		const result = await 부품_info(start, end);
 		socket.timeout(2000).emit('부품정보_result', result);
+	});
+
+	socket.on('계정정보', async function(_id, _passwd) {
+		const result_array = await findOne('계정', {id : _id, passwd : _passwd}, { sort: { kind: 1 }, projection: 계정_ });
+		if(result_array != null) {
+			id = _id;
+			login = true;
+		}
 	});
 
 	process.on('exit', function(code) {

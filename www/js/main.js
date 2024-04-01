@@ -2,21 +2,72 @@ history.pushState(null, null, location.href); //브라우저 이전으로 이동
 window.onpopstate = function (event) {
 	history.go(1);
 };
-// F12키 금지
 
-//$(document).ready(function(){
-//    $(document).on('keydown',function(e){
-//        if ( e.keyCode == 123) {  /* F12키 */
-//            e.preventDefault();
-//            e.returnValue = false;
-//        }
-//    });
-//});
+$(document).ready(function(){
+	//마우스 우측 버튼 사용 막기.
+	if (window.addEventListener) {
+		window.addEventListener('contextmenu', function(e) { try { if (typeof e != 'undefined') { e.preventDefault(); return false; } else { return false; }} catch(e) {} } , false);
+	} else {
+		window.attachEvent('oncontextmenu', function(e) { try { if (typeof e != 'undefined') { e.preventDefault(); return false; } else { return false; }} catch(e) {} } );
+	}
+	var handlemouseEvent = function(e) {
+		try {
+			if (typeof e == 'undefined') {
+				if (window.event.button && window.event.button == "2") {
+					return false;
+				}
+			} else if ((e.which && e.which == 3) || (e.button && e.button == 2)) {
+				e.preventDefault();
+				return false;
+			}
 
-// 마우스 우측키 막음
-function blockRightClick() {
-	return false;
+		} catch (e) {}
+	};
+	window.onkeydown = handlemouseEvent;
+	window.onkeyup = handlemouseEvent;
+
+	//개발자도구 실행 감지.
+	console.log(Object.defineProperties(new Error, {
+		toString: {value() {(new Error).stack.includes('toString@') && alert('Safari devtools')}},
+		message: {
+			get() {
+				 if(navigator.appVersion.indexOf("MSIE 6.0")>=0) { 	        
+parent.window.close(); 	    
+} else { 	        
+parent.window.open('about:blank','_self').close(); 	    	    } 
 }
+},
+}));
+
+});
+
+// Detect Key Shortcuts f12 및 특수키 조합 막기
+window.addEventListener('keydown', function(e) {
+	if (
+		// CMD + Alt + I (Chrome, Firefox, Safari)
+		e.metaKey == true && e.altKey == true && e.keyCode == 73 ||
+		// CMD + Alt + J (Chrome)
+		e.metaKey == true && e.altKey == true && e.keyCode == 74 ||
+		// CMD + Alt + C (Chrome)
+		e.metaKey == true && e.altKey == true && e.keyCode == 67 ||
+		// CMD + Shift + C (Chrome)
+		e.metaKey == true && e.shiftKey == true && e.keyCode == 67 ||
+		// Ctrl + Shift + I (Chrome, Firefox, Safari, Edge)
+		e.ctrlKey == true && e.shiftKey == true && e.keyCode == 73 ||
+		// Ctrl + Shift + J (Chrome, Edge)
+		e.ctrlKey == true && e.shiftKey == true && e.keyCode == 74 ||
+		// Ctrl + Shift + C (Chrome, Edge)
+		e.ctrlKey == true && e.shiftKey == true && e.keyCode == 67 ||
+		// F12 (Chome, Firefox, Edge)
+		e.keyCode == 123 ||
+		// CMD + Alt + U, Ctrl + U (View source: Chrome, Firefox, Safari, Edge)
+		e.metaKey == true && e.altKey == true && e.keyCode == 85 ||
+		e.ctrlKey == true && e.keyCode == 85
+	) {
+		e.preventDefault();
+		return false;
+	}
+});
 
 //메뉴에서  관리자 버튼과 부품재고 버튼을 숨김
 admin_btn.style.display = 'none';
@@ -51,7 +102,7 @@ async function check_login() {
 		_부품재고_btn.style.display = 'none'; //부품재고 버튼 숨김
 
 		//엔터키를 누르면 포커스 이동 및 로그인이 되도록함
-  		const check_id = document.getElementById("_id");
+		const check_id = document.getElementById("_id");
 		const check_passwd = document.getElementById('_passwd');
 		check_id.onkeydown = function (event) {
 			if(event.keyCode == 13) { //enter key
