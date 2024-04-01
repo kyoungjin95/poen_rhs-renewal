@@ -121,10 +121,10 @@ async function change_label() {
   }
 
   //관리자 계정이 없거나 관리자 계정으로 로그인 했으면 관리자 메뉴를 표출함
-  find_계정(계정, { id: "admin" });
-  await delay();
-
-  if (계정_v == null || level == "admin") {
-    admin_btn.style.display = "block";
-  }
+//  find_계정(계정, { id: "admin" });
+//  await delay();
+//
+//  if (계정_v == null || level == "admin") {
+//    admin_btn.style.display = "block";
+//  }
 }
