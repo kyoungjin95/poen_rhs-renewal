@@ -28,6 +28,7 @@ async function 월간현황_시작() {
 	var addYear;
 	var addMonth;
 
+	//년도를 2021 부터 지금 까지 목록을 만든다.
 	if (parseInt(year, 10) > 2020) {
 		for (var i = parseInt(year, 10); i > 2020; i--) {
 			console.log("YEAR:", year);
@@ -39,9 +40,12 @@ async function 월간현황_시작() {
 			document.getElementById('_검색일_year').appendChild(addYear);
 			console.log(i);
 		}
+
+		//디폴트 선택 년도 설정
 		document.getElementById('_검색일_year').options.selected = true;
 	}
 
+	//월 선탁 목록을 1 ~ 12 까지 만든다.
 	for (var i = 1; i <= 12; i++) {
 		var str = i.toString().padStart(2, '0')
 		addMonth = document.createElement('option');
@@ -54,11 +58,13 @@ async function 월간현황_시작() {
 
 	var cnt = parseInt(month, 10) - 1;
 	console.log('=>', month, cnt);
+	//현재달을 디폴트로 선택
 	document.getElementById('_검색일_month').options[cnt].selected = true;
 
 	월간_조회();
 }
 
+//월간조회 인자 flag_id_search 가 true면 선택한 년월로 조검검색한다.
 async function 월간_조회(flag_id_search = false) {
 	if (worker == '') return;
 	if (flag_id_search == false) {
@@ -208,6 +214,7 @@ async function 월간제조완료_table(s_day, e_day, flag_id_search = false, se
 	var tabledata_BSA_제조완료 = [];
 	var result_count = 0;
 
+	//외부에 주는 계정 처리
 	if (level == 'kia_일반') {
 		find_BSA재제조(BSA재제조, { 차종: { $in: ['DE', 'DE_EV', 'DEPBV', 'DEPBV-EV', 'CV', 'CV_EV', 'MV', 'MV_EV', 'PU', 'PU_EV', 'SG2', 'SG2-EV', 'TAM', 'TAM-EV', 'PS', 'PS_EV', 'SK3'] }, EOL: { $gte: s_day, $lte: e_day }, 구분: '일반' });
 		await delay();
@@ -227,6 +234,7 @@ async function 월간제조완료_table(s_day, e_day, flag_id_search = false, se
 
 	if (BSA재제조_v == null) return;
 
+	//표시하지 않을 항목 제거
 	for (var i = 0; i < BSA재제조_v.length; i++) {
 		delete BSA재제조_v[i].적재No;
 		//delete BSA재제조_v[i].입고;
@@ -293,6 +301,7 @@ async function 월간출하_table(s_day, e_day, flag_id_search = false, search_m
 
 	if (BSA재제조_v == null) return;
 
+	//불필요한 항목 제거
 	for (var i = 0; i < BSA재제조_v.length; i++) {
 		delete BSA재제조_v[i].적재No;
 		delete BSA재제조_v[i].입고;

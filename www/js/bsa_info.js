@@ -1,11 +1,13 @@
-var row_one_id = "";
-var BSA_data = [];
+//tabulator.js 로 표를 만들기 위한 변수들
+var row_one_id = ""; //선택한 관리번호
 var 재제조번호;
-var tabledata_BSA = [];
-var _id;
-var m_id;
+var BSA_data = []; //표 data
+var tabledata_BSA = []; //표 data
+var _id; //기본정보 중복시 분별을위한 mongoDB 기본 프라이머리키
+var m_id; //기본정보 표에서 클릭해 선택한 관리자번호
 var m_ids = [];
 var flag_id_search = 0;
+
 var table;
 var table_입고;
 var table_세척;
@@ -27,6 +29,8 @@ var table_교체부품상세8;
 var table_교체부품상세9;
 var table_교체부품상세10;
 var table_data;
+
+//tabulator.js 에서 기본 제공해주는 검색 필터 함수
 function updateFilter() {
 	var fieldEl = document.getElementById("filter-field");
 	var typeEl = document.getElementById("filter-type");
@@ -55,6 +59,7 @@ async function 재제조현황_시작() {
 
 	if (worker == "") return;
 
+	//검색 필터 
 	//Update filters on value change
 	document.getElementById("filter-field").addEventListener("change", updateFilter);
 	document.getElementById("filter-type").addEventListener("change", updateFilter);
@@ -78,7 +83,7 @@ async function 재제조현황_시작() {
 async function 재제조현황_조회() {
 	if (worker == "") return;
 
-	find_BSA재제조(BSA재제조, { 관리번호: { $exists: true } });
+	find_BSA재제조(BSA재제조, { 관리번호: { $exists: true } }); //BSA재제조 collection 전체 조회
 	await delay();
 
 	BSA_data = JSON.parse(JSON.stringify(BSA재제조_v));
@@ -228,10 +233,10 @@ async function 재제조현황_조회() {
 		],
 	});
 
-	table_data = JSON.parse(JSON.stringify(BSA재제조_v));
+	table_data = JSON.parse(JSON.stringify(BSA재제조_v)); //후에 기본정보들이 필요할때 쓰기위해
 
 	var progress = document.getElementById("progress");
-	table.on("rowClick", async function (e, row) {
+	table.on("rowClick", async function (e, row) { //click 한 배터리팩관련 공정정보 보여줌
 		console.log("selected 관리번호: ", row.getData().관리번호);
 		m_id = row.getData().관리번호;
 		_id = row.getData()._id;
@@ -239,7 +244,7 @@ async function 재제조현황_조회() {
 
 		document.getElementById("m_id").innerHTML = "관리번호: " + m_id;
 
-		await sleep(1);
+		await sleep(1); 
 		await grid_입고(m_id);
 		progress.value = (1 / 19) * 100;
 
@@ -302,6 +307,7 @@ async function 재제조현황_조회() {
 
 	await sleep(1);
 
+	//전체 공정 data를 보여줌
 	await grid_입고();
 	progress.value = (1 / 19) * 100;
 
@@ -362,7 +368,8 @@ async function 재제조현황_조회() {
 	alert("로딩이 완료되었습니다");
 }
 
-async function delete_bsa_중복정보() {
+//기본정보 오른쪽 끝의 'X'표를 눌렀을때 해당 배터리팩의 기본정보만 지움
+async function delete_bsa_중복정보() {//초기 과거데이터를 넣었을때 관리번호가 중복되는 data가 있어 만듬
 	if (계정_stat.관리번호 != "o") return;
 	console.log("delete : ", _id);
 	var ok = window.confirm("BSA기본정보에서만 지워집니다. 계속하겠습니까?");
@@ -385,6 +392,7 @@ async function delete_bsa_중복정보() {
 	}
 }
 
+//선택학 배터리팩을 모든 공정과 기본정보에서 지움
 async function delete_bsa() {
 	var ok = window.confirm("동일한(대소문자 동일 취급) 관리번호는 모두 지워집니다. 계속하겠습니까?");
 	if (ok == false) return;
@@ -540,16 +548,16 @@ async function delete_bsa() {
 }
 
 async function grid_입고(m_id = "") {
-	if (worker == "") return;
+	if (worker == "") return; //로그인하지 않았다면 조회 거부
 
 	var tabledata_입고 = [];
 
-	if (m_id == "") {
+	if (m_id == "") { //입고 전체 data
 		find_입고(입고, { 관리번호: { $exists: true } });
 		await delay();
 
 		tabledata_입고 = JSON.parse(JSON.stringify(입고_v));
-	} else {
+	} else { //선택한 배터리팩의 입고 data
 		find(입고, m_id);
 		await delay();
 

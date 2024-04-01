@@ -12,6 +12,7 @@ var 출하검사cnt = 0;
 var 출하cnt = 0;
 var wait_start = false;
 var dashboardTimer;
+
 async function 대시보드_시작() {
 	await sleep(100);
 	if(document.getElementById('입고') == undefined) {
@@ -22,6 +23,7 @@ async function 대시보드_시작() {
 	if (worker == '') return;
 	flag_대시보드 = false;
 
+	//각 공정 클릭시 당일 작업된 배터리팩 기본정보를 표로 출력
 	document.getElementById('입고').addEventListener("click", function () {
 		dash_입고_당일_get(today_begin, today_end);
 	});
@@ -47,6 +49,7 @@ async function 대시보드_시작() {
 		dash_출하_당일_get(today_begin, today_end);
 	});
 
+	//30초 마다 총합계 조회
 	if (dashboardTimer != undefined) clearInterval(dashboardTimer);
 	dashboardTimer = setInterval(function () {
 		총합계_조회();
@@ -58,7 +61,7 @@ async function 대시보드_시작() {
 function dashboard_조회() {
 	today_begin = document.getElementById('_검색일_from').value + 'T00:00:000Z';;
 	today_end = document.getElementById('_검색일_to').value + 'T24:00:000Z';;
-	if (wait_start == true) return;
+	if (wait_start == true) return; //조회 버튼을 빠르게 여러번 누르는것 방지
 	wait_start = true;
 
 	setTimeout(function () {
@@ -70,6 +73,7 @@ function dashboard_조회() {
 }
 
 function 총합계_조회() {
+	//한국 시간을 기준으로 시작 날짜와 끝 날짜를 구함
 	var DateTime = luxon.DateTime;
 	var seoul = DateTime.local().setZone("Asia/Seoul");
 	var now = seoul.toString();
@@ -86,6 +90,7 @@ function 총합계_조회() {
 async function 조회_list(today_begin, today_end) {
 	console.log(today_begin, today_end);
 
+	//각 공정별 전체 완료 누적 및 당일 완료 누적
 	await dash_입고(today_begin, today_end, '입고');
 	await dash_입고_당일(today_begin, today_end, '입고당일');
 	await dash_세척(today_begin, today_end, '세척');
@@ -105,6 +110,7 @@ async function 조회_list(today_begin, today_end) {
 }
 
 async function dash_입고(today_begin, today_end) {
+	//외부 제공용 계정 처리
 	if (level == 'kia_일반') {
 		count(BSA재제조, { 차종: { $in: ['DE', 'DE_EV', 'DEPBV', 'DEPBV-EV', 'CV', 'CV_EV', 'MV', 'MV_EV', 'PU', 'PU_EV', 'SG2', 'SG2-EV', 'TAM', 'TAM-EV', 'PS', 'PS_EV', 'SK3'] }, 입고: { $exists: true, $ne: 'none', $ne: '' }, 구분: '일반', 완전분해: '', 폐기: '' }, '입고');
 		await delay();
@@ -130,6 +136,7 @@ async function dash_입고(today_begin, today_end) {
 }
 
 async function dash_입고_당일(today_begin, today_end) {
+	//외부 제공용 계정 처리
 	if (level == 'kia_일반') {
 		count(BSA재제조, { 차종: { $in: ['DE', 'DE_EV', 'DEPBV', 'DEPBV-EV', 'CV', 'CV_EV', 'MV', 'MV_EV', 'PU', 'PU_EV', 'SG2', 'SG2-EV', 'TAM', 'TAM-EV', 'PS', 'PS_EV', 'SK3'] }, 입고: { $exists: true, $ne: 'none', $ne: '', $gte: today_begin, $lt: today_end }, 구분: '일반', 완전분해: '', 폐기: '' }, '입고당일');
 		await delay();
@@ -750,6 +757,7 @@ async function dash_출하_당일_get(today_begin, today_end) {
 	당일목록('출하', BSA재제조_v);
 }
 
+//공정 클릭시 해당 공정의 당일 완료 배터리팩 기본 정보 출력
 async function 당일목록(공정, data) {
 	var 공정_tabledata_BSA = data;
 	선택공정 = 공정;
@@ -791,6 +799,7 @@ async function 당일목록(공정, data) {
 		],
 	});
 
+	//대기수량의 경우 더블 클릭시 기본정보입력 페이지로 이동하여 정보 수정 가능
 	BSA대기수량_table.on("rowDblClick", async function (e, row) {
 		console.log('selected 관리번호: ', row.getData().관리번호);
 		관리번호 = row.getData().관리번호;

@@ -1,3 +1,4 @@
+//분해조립에 쓰이는 전역변수
 var 신품_docs = [];
 var 고품_docs = [];
 var BMU_count = 1;
@@ -17,7 +18,7 @@ var HV_W_H_count = 1;
 var 온도센서_count = 1;
 var Busbars_count = 1;
 var BMA_count = 1;
-var first_분해조립 = true;
+var first_분해조립 = true; //분해조립 공정 대기 배터리팩 기분정보를 한번만 읽어 오기 위한것
 
 async function 분해조립_재제조번호_시작() {
 	분해조립_시작(true);
@@ -38,9 +39,9 @@ async function 분해조립_시작(is재제조 = 0) {
 	flag_분해조립 = false;
 	flag_loaded = true;
 
-	분해조립_loading();
+	분해조립_loading(); //분해조립 항목을 만듬 ( + ) 버튼이 있어 데이터 마다 상이한 항목 리스트가 만들어짐
 
-	if (is재제조 == 0) {
+	if (is재제조 == 0) { //관리번호로 조회
 		if (_management_id.value.length == 0) return;
 
 		find(BSA재제조, _management_id.value);
@@ -59,7 +60,7 @@ async function 분해조립_시작(is재제조 = 0) {
 			_차종.value = "";
 			_품번.value = "";
 		}
-	} else if (is재제조 == 1) {
+	} else if (is재제조 == 1) { //재제조번호로 관리번호를 찾음
 		if (_재제조번호.value.length == 0) return;
 
 		findOne_BSA재제조(BSA재제조, { 재제조번호: _재제조번호.value });
@@ -78,7 +79,7 @@ async function 분해조립_시작(is재제조 = 0) {
 			_차종.value = "";
 			_품번.value = "";
 		}
-	} else if (is재제조 == 2) {
+	} else if (is재제조 == 2) { //RO 번호로 관리번호를 찾음
 		if (_RO_no.value.length == 0) return;
 
 		findOne_BSA재제조(BSA재제조, { RO_no: _RO_no.value });
@@ -99,17 +100,18 @@ async function 분해조립_시작(is재제조 = 0) {
 		}
 	}
 
+	//분해조립 조회
 	find(분해조립, _management_id.value);
 	await delay();
 
 	if (분해조립_v != null) {
 		var no_count = 7;
 		_공정입고일.value = 분해조립_v.공정입고일;
-		_BMU1.value = 분해조립_v.BMU1;
+		_BMU1.value = 분해조립_v.BMU1;    //각 항목마다 2개의 값을 저장하고 로딩함
 		_BMU1_2.value = 분해조립_v.BMU1_2;
 		if (분해조립_v.BMU2 != "") {
-			BMU_count += 1;
-			type_add("BMU", "BMU", no_count, BMU_count);
+			BMU_count += 1; 분해조립 항목 BMU  번호
+			type_add("BMU", "BMU", no_count, BMU_count); //분해조립 항목을 늘임
 			document.getElementById("_BMU2").value = 분해조립_v.BMU2;
 			document.getElementById("_BMU2_2").value = 분해조립_v.BMU2_2;
 		}
@@ -166,7 +168,7 @@ async function 분해조립_시작(is재제조 = 0) {
 		_CMU1_2.value = 분해조립_v.CMU1_2;
 		no_count += BMU_count + 1;
 		for (var i = 2; i <= 10; i++)
-			eval(
+			eval( //실행중 코드 만드는  eval을 사용하여 BMU 처럼 반복하는 작업을 단순화
 				"if(분해조립_v.CMU" +
 				i +
 				" != '' || (분해조립_v.CMU" +
@@ -513,6 +515,7 @@ async function 분해조립_시작(is재제조 = 0) {
 			if(EOL_v.분해조립_재의뢰사유 != '') _분해조립_재의뢰사유.value = 성능검사_v.분해조립_재의뢰사유;
 		}
 	} else {
+		//없는 관리번호이면 항목을 초기화
 		_공정입고일.value = "0000-00-00T00:00";
 		for (var i = 1; i <= 10; i++)
 			eval("if(typeof _BMU" + i + " != 'undefined') _BMU" + i + ".value = '';");
@@ -690,27 +693,31 @@ async function 분해조립_시작(is재제조 = 0) {
 		_공정입고일.value = now;
 	}
 
+	// '+' 버튼을 눌렀을때를 처리
 	const tbody = document.querySelector("#_tb tbody");
-	if (first_분해조립 == true) {
+	if (first_분해조립 == true) { //이벤트가 한번만 등록되게하기 위한것
 		first_분해조립 = false;
 
 		tbody.addEventListener("click", function (e) {
-			const cell = e.target.closest("td");
+			const cell = e.target.closest("td"); //테이블에서 클릭한 셀
 			if (!cell) return;
-			const row = cell.parentElement;
-			const row_index = row.rowIndex;
-			const cell_index = cell.cellIndex;
+			const row = cell.parentElement; //클릭한 줄
+			const row_index = row.rowIndex; //줄의 번호
+			const cell_index = cell.cellIndex; //셀의 번호
 			console.log("row:", row_index);
 			console.log("col:", cell_index);
-			if (row_index < 2 || cell_index != 2) return;
-			var str = row.children[0].innerText;
-			var type = str.slice(0, -2);
-			var no = str.slice(-2);
+			if (row_index < 2 || cell_index != 2) return; // '+' 가 아닌 위치는 처리안함
+			var str = row.children[0].innerText; //선택한 부품의 라벨
+			var type = str.slice(0, -2); //라벨에서 번호를 떼고 부품명만 가져옴
+			var no = str.slice(-2); //라벨에서 번호만 가져옴
 			console.log("type:", type, "no:", no);
+
+			//'-' 버튼이면 한줄 삭제 (첫번째 줄은 고정으로 '+' 버튼을 가지고 '+' 버튼으로 새로이 생성된 버튼은 '-'만 가짐
 			if (no != 1) {
 				_delete_row(row_index, no, type);
 			}
 
+			//각 부품의 '+' 버튼은 각 항목을 한줄씩 더함
 			if (str == "BMU 1") {
 				if (BMU_count != 10) {
 					BMU_count++;
@@ -809,17 +816,16 @@ async function 분해조립_save() {
 	if (_management_id.value.length == 0) return;
 	console.log("save: ", _management_id.value);
 
-	find(분해조립, _management_id.value);
-	await delay();
-
 	var DateTime = luxon.DateTime;
 	var seoul = DateTime.local().setZone("Asia/Seoul");
 	var now = seoul.toString().slice(0, 19);
 
+	//일자입력란이 비었으면 자동으로 현재 날짜입력
 	if(_공정입고일.value == '') _공정입고일.value = now;
-        if(_공정완료일.value == "") _공정완료일.value = now;
+        if(_공정완료일.value == '') _공정완료일.value = now;
         //if(계정_stat.완료일수정 != 'o' || _공정완료일.value == "") _공정완료일.value = now;
 
+	//분해조립 document 변수를 deep copy함
 	var doc = JSON.parse(JSON.stringify(분해조립_doc));
 
 	console.log("분해조립 init SAVE:", doc);
@@ -830,7 +836,9 @@ async function 분해조립_save() {
 	doc.품번 = _품번.value;
 	doc.RO_no = _RO_no.value;
 	doc.공정입고일 = _공정입고일.value;
-	if (level == '관리자') doc.공정입고일 = _공정입고일.value;
+	if (level == '관리자') doc.공정입고일 = _공정입고일.value; //분해조립 공정입고일은 관리자만 수정 가능
+
+	//doc에 부품들의 값을 입력하는것 eval로 실행중 코딩으로 구현
 	for (var i = 1; i <= BMU_count; i++)
 		eval(
 			"var item = document.getElementById('_BMU" +
@@ -882,7 +890,7 @@ async function 분해조립_save() {
 	for (var i = 1; i <= SPA_count; i++)
 		eval(
 			"var item = document.getElementById('_SPA" +
-			i +
+			i +제
 			"'); if(typeof item != 'undefined') doc.SPA" +
 			i +
 			" = item.value;"
@@ -1066,6 +1074,7 @@ async function 분해조립_save() {
 	if (level == '관리자') doc.공정완료일 = _공정완료일.value;
 	doc.작업자 = _작업자.value;
 
+	//신품 작업시
 	console.log(신품_docs);
 	신품_docs.forEach(async function (new_doc) {
 		update_신품정보(자재입출고, new_doc);
@@ -1125,6 +1134,7 @@ async function 분해조립_save() {
 	//이전페이지();
 }
 
+//사용안함
 async function request_신품QR() {
 	var 교체후_QR = prompt("교체후 QR을 입력하세요");
 	var 교체후_품번 = prompt("교체후 품번을 입력하세요");
@@ -1137,6 +1147,7 @@ async function request_신품QR() {
 	return str;
 }
 
+//고품정보에 사용한 BSA 정보를 기입함
 async function request_고품QR() {
 	var DateTime = luxon.DateTime;
 	var seoul = DateTime.local().setZone("Asia/Seoul");

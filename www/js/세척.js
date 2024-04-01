@@ -1,35 +1,37 @@
+//재제조번호 자동생성
 var 입력재제조번호 = "";
 var today_count = 0;
 
-async function 세척_시작(is재제조 = 0) {
+async function 세척_시작(is재제조 = 0) { //is재제조가 1이면 재제조번호로 조회
+	//ui가 다 로딩될때까지 기다림
 	while (_management_id == undefined) {
 		await sleep(DELAY);
 	}
-	if (flag_세척 == true) {
+	if (flag_세척 == true) { //flag_세척은 main.js에서 다룸, 화면에 해당하는 함수 실행
 		flag_세척 = false;
-		await 세척_list();
+		await 세척_list(); //입고된 리스트를 보여줌
 	}
 
-	if (is재제조 == 0) {
+	if (is재제조 == 0) { //관리자 번호로 조회
 		if (_management_id.value.length == 0) return;
 
-		find(BSA재제조, _management_id.value);
-		await delay();
+		find(BSA재제조, _management_id.value); //조회
+		await delay(); //응답을 기다림
 
-		if (BSA재제조_v != null) {
+		if (BSA재제조_v != null) { //DB에서 값을 읽어와 화면에 뿌려줌
 			_재제조번호.value = BSA재제조_v.재제조번호;
 			_구분.value = BSA재제조_v.구분;
 			_차종.value = BSA재제조_v.차종;
 			_품번.value = BSA재제조_v.품번;
 			_RO_no.value = BSA재제조_v.RO_no;
-		} else {
+		} else { //새로운 관리번호이면 화면 항목들의 값을 지워줌
 			_재제조번호.value = "";
 			_구분.value = "";
 			_차종.value = "";
 			_품번.value = "";
 			_RO_no.value = "";
 		}
-	} else if (is재제조 == 1) {
+	} else if (is재제조 == 1) { //재제조번호로 조회할때
 		if (_재제조번호.value.length == 0) return;
 
 		findOne_BSA재제조(BSA재제조, { 재제조번호: _재제조번호.value });
