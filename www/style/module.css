@@ -4,7 +4,7 @@
   width: 100%;
   /* height: 100%; */
   background-color: #d4d4d4;
-  padding: 20px;
+  padding: 10px;
   box-sizing: border-box;
   position: relative;
   font-family: "Poppins", sans-serif;
@@ -55,7 +55,7 @@ button {
   font-size: 1.4vw;
   color: #686868;
   text-transform: uppercase;
-  margin: 0 0 5px;
+  margin: 0 0 10px;
 }
 .layout {
   width: 100%;
@@ -75,7 +75,7 @@ button.product {
   background: #b4c7e7;
   border: 1px solid #2f528f;
   margin: 0 0 5px;
-  font-size: 1vw;
+  font-size: 0.9vw;
 }
 /* product name */
 .product__info {
@@ -113,8 +113,8 @@ button.product {
 /* ---------------- con first ---------------- */
 .con__first .layout {
   display: grid;
-  grid-template-columns: 10% 8% 40% 8% 20% 10%;
-  gap: 5px;
+  grid-template-columns: 8% 8% 40% 8% 20% 8%;
+  justify-content: space-between;
   text-align: center;
 }
 
@@ -235,10 +235,15 @@ button.product {
   margin-bottom: 10px;
   gap: 20px;
 }
+.con__second .middle_section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: stretch;
+}
 .con__second .middle_section .product {
   padding: 45px 0;
 }
-
 .con__second .upper_con .btn-box button,
 .con__second .middle_con .btn-box button {
   padding: 15px 0;
@@ -272,24 +277,41 @@ button.product {
 .con__second .bottom_con .btn-box button {
   padding: 10px 0;
 }
+.분해조립 .부품정보 .con__second .left_section .up-btn {
+  padding: 5px;
+  font-size: 0.4vw;
+}
 /* ---------------- .con third  ----------------*/
 .con__third .upper_con,
 .con__third .middle_con,
 .con__third .bottom_con {
   width: 100%;
   display: grid;
-  grid-template-columns: 10% 1fr 10%;
-  margin-bottom: 20px;
-  gap: 10px;
+  grid-template-columns: 7% 80% 7%;
+  margin-bottom: 13px;
+  justify-content: space-between;
+}
+.con__third .upper_con .btn {
+  padding: 0;
 }
 .con__third .middle_section {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
+  grid-template-columns: repeat(4, 22%);
+  justify-content: space-between;
+}
+.con__third .middle_section div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.con__third .middle_section button {
+  line-height: 1;
+  padding: 15px 0 !important;
+  font-size: 0.8vw;
 }
 .con__third .smiddle_section {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(20px, 1fr));
+  grid-template-columns: repeat(8, 1fr);
   gap: 5px;
 }
 .con__third p.product:nth-child(4n) {
@@ -316,7 +338,7 @@ button.product {
   margin-bottom: 0;
 }
 .con__third .upper_con .btn__green {
-  height: 50%;
+  height: 47%;
 }
 .con__third .upper_con .btn__orange:nth-child(1),
 .con__third .upper_con .btn__green:nth-child(1) {
@@ -346,7 +368,7 @@ button.product {
   padding: 5px 35px;
 }
 .bottom_con .btn__navy {
-  padding: 45px 0;
+  padding: 35px 0;
 }
 /* ---------------- con__fourth ---------------- */
 .fourth {
@@ -358,7 +380,7 @@ button.product {
 }
 .fourth .module_con {
   width: 70%;
-  margin: 0 auto 40px;
+  margin: 0 auto 20px;
 }
 .con__fourth h4 {
   margin: 5px 0 15px;
@@ -372,7 +394,7 @@ button.product {
 }
 .con__fourth .upper_con .product {
   width: 100%;
-  padding: 40px 0;
+  padding: 40px 0 !important;
 }
 .con__fourth .upper_con .up-btn {
   right: 1%;
@@ -402,7 +424,7 @@ button.product {
 }
 /* con__fourth 2번째 - slave1 */
 .con__fourth:nth-child(2) .upper_con .product {
-  padding: 104px 0;
+  padding: 104px 0 !important;
 }
 /* 미디어쿼리 */
 @media (min-width: 768px) and (max-width: 992px) {

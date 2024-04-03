@@ -20,23 +20,9 @@
             <button onClick="군포_수량집계_month();">Month</button>
           </div>
           <div class="data-check">
-            <input
-              type="date"
-              id="_검색일_from"
-              size="40"
-              value="0000-00-00"
-              max="240-12-4"
-              required
-            />
+            <input type="date" id="_검색일_from" size="40" value="0000-00-00" max="240-12-4" required />
             <span class="tilde">&#126;</span>
-            <input
-              type="date"
-              id="_검색일_to"
-              size="40"
-              value="0000-00-00"
-              max="240-12-4"
-              required
-            />&nbsp;
+            <input type="date" id="_검색일_to" size="40" value="0000-00-00" max="240-12-4" required />&nbsp;
             <button onClick="군포_수량집계_기간조회();">조회</button>
           </div>
         </div>
@@ -60,9 +46,9 @@
 
         <select id="filter-type">
           <option value="=">=</option>
-          <option value="<"><< /option></option>
+          <option value="<"><</option>
 
-          <option value="<="><=< /option></option>
+          <option value="<="><=</option>
 
           <option value=">">></option>
           <option value=">=">>=</option>
@@ -85,12 +71,8 @@
             <label class="id__name" id="select_bsa"></label>
           </div>
           <div class="process__btns">
-            <button onClick="delete_군포재고_bsa();" class="delete__bsa">
-              삭제
-            </button>
-            <button onClick="창고_export_excel();" class="down__excel">
-              Export to Excel
-            </button>
+            <button onClick="delete_군포재고_bsa();" class="delete__bsa">삭제</button>
+            <button onClick="창고_export_excel();" class="down__excel">Export to Excel</button>
           </div>
         </div>
       </div>

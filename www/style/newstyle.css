@@ -229,11 +229,7 @@
   .item span {
     font-size: 1.3rem;
   }
-  .bsa-process label {
-    font-size: 1.375rem;
-    font-weight: 700;
-    position: relative;
-  }
+
   /* etc */
   .etc__content {
     width: 17vw;
@@ -292,11 +288,7 @@
   .BSA정보입력 .item h3 {
     font-size: 2.5vw;
   }
-  .bsa-process label {
-    font-size: 1.475rem;
-    font-weight: 700;
-    position: relative;
-  }
+
   /* etc */
   .input-group .etc__content {
     width: 20vw;
