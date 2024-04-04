@@ -21,6 +21,7 @@ async function BSA_제외분류_시작() {
 	});
 }
 
+//대시보드 집계에 제외된 배터리팩 조회
 async function BSA_제외분류_조회() {
 	await 일반기타();
 	await 보증기타();
@@ -31,14 +32,14 @@ async function BSA_제외분류_조회() {
 }
 
 async function 일반기타() {
-	count(BSA재제조, { 구분: '일반기타' });
+	count(BSA재제조, { 구분: '일반기타' }); //입고  구분란이 일반기타인 것들(관리자 모드에서만 선택가능)
 	await delay();
 
 	document.getElementById('check_num1').innerHTML = BSA재제조_cnt;
 }
 
 async function 보증기타() {
-	count(BSA재제조, { 구분: '보증기타' });
+	count(BSA재제조, { 구분: '보증기타' }); //입고 구분란이 보증기타인것들(관리자 모드에서만 선택 가능)
 	await delay();
 
 	document.getElementById('check_num2').innerHTML = BSA재제조_cnt;
@@ -58,7 +59,8 @@ async function 폐기() {
 	document.getElementById('check_num4').innerHTML = BSA재제조_cnt;
 }
 
-async function 제외목록(제외) {
+//박스 클릭시 해당 제외 배터리팩 기본정보 리스트를 표출
+async function 제외목록(제외) { 
 	var 제외_tabledata_BSA = [];
 	선택제외분류 = 제외;
 

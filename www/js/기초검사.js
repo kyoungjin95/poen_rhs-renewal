@@ -1,20 +1,22 @@
-var 기초검사_DTC_count = 0;
+var 기초검사_DTC_count = 0; //MAX 10
 
 async function 기초검사_시작(is재제조 = 0) {
 	while (typeof _management_id == "undefined") {
 		await sleep(DELAY);
 	}
 
+	//기초검사 공정 대기 list
 	if (flag_기초검사 == true) await 기초검사_list();
 	flag_기초검사 = false;
 
 	console.log("DTC count:", 기초검사_DTC_count);
 
+	//DTC 입력란 갯수를 초기화하여 화면 구성
 	_기초검사_delete_all();
 	기초검사_DTC_count = 0;
 
 	if (_management_id.value.length == 0) _management_id.value = 관리번호;
-	if (is재제조 == 0) {
+	if (is재제조 == 0) { //관리자 번호로 조회
 		if (_management_id.value.length == 0) return;
 
 		관리번호 = _management_id.value;
@@ -38,7 +40,7 @@ async function 기초검사_시작(is재제조 = 0) {
 
 			차종 = "";
 		}
-	} else if (is재제조 == 1) {
+	} else if (is재제조 == 1) { //재제조번호로 조회
 		if (_재제조번호.value.length == 0) return;
 
 		findOne_BSA재제조(BSA재제조, { 재제조번호: _재제조번호.value });
@@ -62,7 +64,7 @@ async function 기초검사_시작(is재제조 = 0) {
 
 			차종 = "";
 		}
-	} else if (is재제조 == 2) {
+	} else if (is재제조 == 2) { //RO번호로 조회
 		if (_RO_no.value.length == 0) return;
 
 		findOne_BSA재제조(BSA재제조, { RO_no: _RO_no.value });
@@ -90,9 +92,11 @@ async function 기초검사_시작(is재제조 = 0) {
 
 	console.log("load: ", _management_id.value);
 
+	//관리자 번호로 기초검사 항목 조회
 	find(기초검사, _management_id.value);
 	await delay();
-	if (기초검사_v != null) {
+	if (기초검사_v != null) { 
+		//데이터 로딩
 		_공정입고일.value = 기초검사_v.공정입고일;
 		_RO_no.value = 기초검사_v.RO_no;
 		_VIN.value = 기초검사_v.VIN;
@@ -189,6 +193,7 @@ async function 기초검사_시작(is재제조 = 0) {
 		_img9.src   = '';
 		_img10.src  = '';
 
+		//이미지 로딩
 		find(기초검사_pic1, _management_id.value);
 		await delay();
 
@@ -205,7 +210,7 @@ async function 기초검사_시작(is재제조 = 0) {
 			_img10.src = 기초검사_pic1_v.pic10;
 		}
 		_img11.src  = '';
-		//_img12.sr = '';
+		//_img12.sr = ''; //안쓰임
 		_img13.src  = ''; 
 		_img14.src  = ''; 
 		_img15.src  = ''; 
@@ -233,6 +238,7 @@ async function 기초검사_시작(is재제조 = 0) {
 			_img21.src = 기초검사_pic2_v.pic10;
 		}
 	} else {
+		//기존에 없던 관리번호이면 항목들 데이터 초기화
 		_공정입고일.value = "0000-00-00T00:00";
 		_VIN.value = "";
 		_QRCode.value = "";
@@ -300,9 +306,12 @@ async function 기초검사_시작(is재제조 = 0) {
 		_img21.src = "";
 	}
 
+	//더블 클릭시 이미지 지움
 	_img1.ondblclick = function (evt) {
 		_img1.src = "";
 	};
+
+	//드래그 앤 드롭으로 넣기
 	_img1.ondrop = function (evt) {
 		var files = evt.dataTransfer?.files;
 		if (files.length > 0) {

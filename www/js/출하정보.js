@@ -12,7 +12,7 @@ async function 출하정보_시작(is재제조 = 0) {
 	if (flag_출하 == true) await 출하정보_list();
 	flag_출하 = false;
 
-	if (is재제조 == 0) {
+	if (is재제조 == 0) { //관리번호로 조회
 		if (_management_id.value.length == 0) return;
 
 		find(BSA재제조, _management_id.value);
@@ -28,7 +28,7 @@ async function 출하정보_시작(is재제조 = 0) {
 			_차종.value = '';
 			_품번.value = '';
 		}
-	} else if (is재제조 == 1) {
+	} else if (is재제조 == 1) { //재제조번호로 조회
 		if (_재제조번호.value.length == 0) return;
 
 		findOne_BSA재제조(BSA재제조, { 재제조번호: _재제조번호.value });
@@ -45,7 +45,7 @@ async function 출하정보_시작(is재제조 = 0) {
 			_차종.value = '';
 			_품번.value = '';
 		}
-	} else if (is재제조 == 2) {
+	} else if (is재제조 == 2) { //RO 번호로 조회
 		if (_RO_no.value.length == 0) return;
 
 		findOne_BSA재제조(BSA재제조, { RO_no: _RO_no.value });
@@ -68,8 +68,8 @@ async function 출하정보_시작(is재제조 = 0) {
 	let 브라켓_text = document.getElementById('_브라켓');
 	let s_plug_show = document.getElementById('_S_PLUG');
 	let s_plug_show_비고 = document.getElementById('_S_PLUG_비고');
-	s_plug_show.disabled = false;
-	s_plug_show_비고.disabled = false;
+	s_plug_show.disabled = false; //차종별 항목의 차이가 있는 부품
+	s_plug_show_비고.disabled = false; //차종별 항목의 차이가 있는 부품
 
 	switch (_차종.value) {
 		case 'DE':
@@ -123,6 +123,7 @@ async function 출하정보_시작(is재제조 = 0) {
 			break;
 	}
 
+	//셀렉트 박스들의 첫번째 옵션을 기본으로 셋팅
 	_bracket.options[0].selected = true;
 	_S_PLUG.options[0].selected = true;
 	_접지.options[0].selected = true;
@@ -148,17 +149,16 @@ async function 출하정보_시작(is재제조 = 0) {
 	s20.options[0].selected = true;
 	s21.options[0].selected = true;
 
+	//출하정보 로딩
 	find(출하정보, _management_id.value);
 	await delay();
 	if (출하정보_v != null) {
 		console.log('관리번호:', 관리번호);
 		
-		find(출하정보, _management_id.value);
-		await delay();
-
 		_출하코드.value = 출하정보_v.출하코드;
 
 		if (_출하코드.value == '') {
+			//EOL에서 QR을 가져옴
 			find(EOL, _management_id.value);
 			await delay();
 
@@ -305,7 +305,7 @@ async function 출하정보_save() {
 	//} else {
 		var _doc = {
 			관리번호: _management_id.value.toUpperCase(),
-			출하검사: _검사일.value.substr(0, 16),
+			출하검사: _검사일.value.substr(0, 16), //기본정보에 검사일 기입
 		}
 		update(BSA재제조, _doc);
 		await delay();
@@ -316,6 +316,7 @@ async function 출하정보_save() {
 	console.log(update_count);
 	console.log(insert_count);
 
+	//출하정보 저장
 	var doc = JSON.parse(JSON.stringify(출하정보_doc));
 
 	doc.관리번호 = _management_id.value.trim().toUpperCase();

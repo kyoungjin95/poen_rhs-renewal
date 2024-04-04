@@ -1,4 +1,6 @@
 var 재제조번호 = '';
+
+//신버전의 분해조립 메인 화면(이하 분해조립 재제조, 공정대기, 완전분해 3가지 버튼으로 상세 작업이 나뉜다)
 async function new_분해조립_시작() {
 	//if(flag_loaded == true) return;
 	if (worker == "") return;
@@ -19,6 +21,8 @@ async function new_분해조립_시작() {
 		분해조립_조회();
 	}
 }
+
+//기초보고서, 불량의심부품 화면을 화면에 표출한다. 작업자는 이를 보고 어떤 상세 작업을 할지 선택한다
 async function 분해조립_조회() {
 	if(_management_id.value != '') {
 		관리번호 = _management_id.value;
@@ -55,6 +59,7 @@ async function 분해조립_조회() {
 	}
 }
 
+//분해조립 공정대기 리스트를 표출한다.
 async function new_분해조립_list() {
 	findOne_BSA재제조(BSA재제조, {
 		공정단계: { $ne: "출하" },
@@ -135,6 +140,7 @@ async function new_분해조립_list() {
 		console.log("selected 관리번호: ", row.getData().관리번호);
 		console.log("selected 차종: ", row.getData().차종);
 
+		//선택한 배터리팩 정보의 정보에서 상세 작업에 필요한 부분들을 가져온다
 		관리번호 = row.getData().관리번호;
 		차종 = row.getData().차종;
 		_management_id.value = 관리번호;
@@ -177,10 +183,12 @@ async function new_분해조립_list() {
 		});
 }
 
+//이전 화면으로 돌아가기(공정 선택화면)
 function new_분해조립_exit() {
 	back();
 }
 
+//기초보고서 정보를 화면에 표시한다.(기초검사.js 코드 내용과 동일하다)
 async function 분해조립_기초보고서_조회() {
 	find(입고, 관리번호);
 	await delay();

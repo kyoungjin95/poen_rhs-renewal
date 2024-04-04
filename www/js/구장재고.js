@@ -1,3 +1,5 @@
+//구장 재고 및 다른 창고의 재고 기능 역시 초벌 코딩이 완료되었을뿐 사용을 안했기에 피드백 사항이 없다
+//필요시 처음 부터 다시 만들어야 할수도 있음
 async function 구장재고_시작() {
 	if(typeof _비고 == "undefined") {
 		await sleep(DELAY);

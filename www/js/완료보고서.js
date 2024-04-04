@@ -1,6 +1,7 @@
+//필요한 데이터 
 var 입고_data;
 var 입고_pic_data;
-var 세척_date;
+var 세척_data;
 var 기초_data;
 var 기초_pic_data;
 var 성능_data;
@@ -22,7 +23,7 @@ async function 완료보고서_시작() {
 }
 
 async function 완료보고서_조회(is재제조번호 = false) {
-  if (is재제조번호 == true) {
+  if (is재제조번호 == true) { //재제조번호로 관리번호를 구함
     findOne_BSA재제조(BSA재제조, { 재제조번호: _재제조번호.value });
     await delay();
 
@@ -35,7 +36,7 @@ async function 완료보고서_조회(is재제조번호 = false) {
   if (_management_id.value == "") _management_id.value = 관리번호;
   else 관리번호 = _management_id.value;
 
-  if (is재제조번호 == false) {
+  if (is재제조번호 == false) { //관리번호로 재제조 번호를 구함
     find(BSA재제조, 관리번호);
     await delay();
 
@@ -44,6 +45,7 @@ async function 완료보고서_조회(is재제조번호 = false) {
     }
   }
 
+  //필요한 데이터를 DB에 조회해서 얻는 부분
   find(입고, 관리번호);
   await delay();
 
@@ -94,6 +96,7 @@ async function 완료보고서_조회(is재제조번호 = false) {
     EOL_data = JSON.parse(JSON.stringify(EOL_v));
   }
 
+  //용량평가 그래프를 로딩하는 부분
   find(완료보고서, 관리번호);
   await delay();
 
@@ -103,7 +106,8 @@ async function 완료보고서_조회(is재제조번호 = false) {
     //pic_to_img(완료보고서_data.pic1, _img1);
     pic_to_img(완료보고서_data.pic2, _img2);
   }
-
+  
+  //부품정보 유무 파악
   find(부품정보_list, 관리번호);
   await delay();
 
@@ -111,12 +115,14 @@ async function 완료보고서_조회(is재제조번호 = false) {
     flag_입고정보 = true;
   }
 
+  //입고 데이터가 쓰이는 부분
   if (입고_data != null) {
     _RONo.innerHTML = 입고_data.RONo;
     _입고일.innerHTML = 입고_data.입고일;
     _차종.innerHTML = 입고_data.차종;
     console.log("차종:", 입고_data.차종);
 
+    //차종별 표 표출
     switch (입고_data.차종) {
       case "CS_EV":
         showTable("_CS_EV");
@@ -162,11 +168,12 @@ async function 완료보고서_조회(is재제조번호 = false) {
         showTable("_CS_EV");
         alert("차종을 확인해 주세요");
     }
-  } else {
+  } else { 
     _RONo.innerHTML = "";
     _입고일.innerHTML = "";
   }
 
+  //기초검사 데이터가 쓰이는 부분
   if (기초_data != null) {
     _VINNo.innerHTML = 기초_data.VIN;
     _RONo.innerHTML = 기초_data.RO_no;
@@ -178,10 +185,12 @@ async function 완료보고서_조회(is재제조번호 = false) {
     _작성자.innerHTML = worker;
   }
 
+  //기초검사 사진이 쓰이는 부분
   if (기초_pic_data != null) {
     _BSA_QR.src = 기초_pic_data.pic1;
   }
 
+  //EOL 데이터가 쓰이는 부분
   if (EOL_data != null) {
     _부품현황.innerHTML = EOL_data.교체부품명;
     _이슈입력.innerHTML = EOL_data.공정흐름_이슈;
@@ -547,6 +556,7 @@ async function 완료보고서_조회(is재제조번호 = false) {
     }
   }
 
+  //EOL 사진 및 데이터가 쓰이는 부분
   find(EOL_pic1, 관리번호);
   await delay();
 
@@ -648,6 +658,7 @@ async function 완료보고서_조회(is재제조번호 = false) {
   //  console.log("dragover!");
   //};
 
+  //DCIR 표와 그래프를 성능검사 데이터에서 가져와 만드는 부분(성능검사에서 파일 업로드후 값 추출후 저장하면 해당 값들이 저장됨)
   if (성능_data != undefined) {
     var _chart = new Chart(_DCIR_canvas, {
 	    type: 'line',
@@ -709,6 +720,8 @@ async function 완료보고서_조회(is재제조번호 = false) {
   _img2.ondblclick = function (evt) {
     _img2.src = "";
   };
+
+  //드래그앤드롭으로도 넣을 수 있게만든부분
   _img2.ondrop = function (evt) {
     var files = evt.dataTransfer?.files;
     if (files.length > 0) {
@@ -722,6 +735,7 @@ async function 완료보고서_조회(is재제조번호 = false) {
     evt.preventDefault();
   };
 
+  //성능검사 데이터중 그래프 이미지를 사용하는 부분
   if (성능_data != undefined) {
     if (_img2.src == "") _img2.src = 성능_data.chart;
     _용량평가_결과.innerHTML = Number(성능_data.용량평가).toFixed(2);
@@ -738,11 +752,12 @@ function showTable(tableId) {
   document.getElementById(tableId).style.display = "table";
 }
 
+//저장 버튼을 누르면 용량평가 그래프 이미지를 저장
 async function 완료보고서_save() {
   var doc = {
     관리번호: 관리번호,
     //pic1: _img1.src,
-    pic2: _img2.src,
+    pic2: _img2.src, 
   };
 
   update(완료보고서, doc);
@@ -760,6 +775,7 @@ async function 완료보고서_save() {
   }
 }
 
+//완료보고서를 PDF로 출력하는 부분
 async function 완료보고서_save_pdf(type = 0) {
   var _date = new Date();
   var file_name = "완료보고서" + _date + ".pdf";

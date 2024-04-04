@@ -8,6 +8,7 @@ async function 상세입력_시작(is재제조번호 = false) {
     return;
   }
   
+  //기존에 기본정보 페이지에서 각 공정입력으로 들어갔기에 이곳에 값 리셋 이 있게 되었다. 
   flag_상세입력 = false;
   first_분해조립 = true;
 
@@ -33,7 +34,7 @@ async function 상세입력_시작(is재제조번호 = false) {
 
   if(_management_id.value == '') _management_id.value = 관리번호;
 
-  if (is재제조번호 == false) {
+  if (is재제조번호 == false) {//관리번호로 로딩
     _management_id.value = _management_id.value.trim().toUpperCase();
     if (_management_id.value == "조회를 누르세요") _management_id.value = 관리번호;
 
@@ -75,6 +76,7 @@ async function 상세입력_시작(is재제조번호 = false) {
     _폐기사유.value = "";
     _렉번호.value = "";
 
+    //고객사별 대응 코드
     if (level == "kia_일반") {
       findOne_BSA재제조(BSA재제조, {
         차종: {
@@ -115,7 +117,7 @@ async function 상세입력_시작(is재제조번호 = false) {
       find(BSA재제조, _management_id.value);
       await delay();
     }
-  } else {
+  } else { //재제조번호로 조회
     console.log("재제조번호:", _재제조번호.value);
     if (level == "kia_일반") {
       findOne_BSA재제조(BSA재제조, {
@@ -320,7 +322,7 @@ async function 상세입력_시작(is재제조번호 = false) {
     if (BSA재제조_v.출하예약 != undefined) _출하예약.value = BSA재제조_v.출하예약.substr(0, 16);
     if (BSA재제조_v.렉번호 != undefined) _렉번호.value = BSA재제조_v.렉번호.substr(0, 16);
     if (select_pos != '') _렉번호.value = select_pos;
-  } else {
+  } else { //저장된 데이터가 없으면 리셋
     if (is재제조번호 == false) {
       _재제조번호.value = "";
     } else {
@@ -433,6 +435,7 @@ async function item_detail_save(flag_result = false) {
   }
 }
 
+//구버전에서 공정단계에 들어가기위해 만들었던 코드... 지금은 안쓰님
 async function processStep() {
   if (worker == "") return;
   if (_management_id.value.length == 0) return;
@@ -498,6 +501,7 @@ async function processStep() {
   }
 }
 
+//고품정보등록은 이제 안쓰인다.
 async function func_고품정보등록() {
   if (worker == "") return;
   if (_management_id.value.length == 0) return;
@@ -506,7 +510,7 @@ async function func_고품정보등록() {
 
   loadPage("base/고품정보.html");
 }
-
+//교체부품상세는 과거 엑셀 로 관리하던 문서와 호환시키려고 만들었다.
 function func_교체부품상세() {
   if (worker == "") return;
   if (_management_id.value.length == 0) return;
@@ -514,6 +518,7 @@ function func_교체부품상세() {
   loadPage("base/교체부품상세.html");
 }
 
+//특이 사항 입력 화면으로
 function func_특이사항() {
   if (worker == "") return;
   if (_management_id.value.length == 0) return;
@@ -544,6 +549,7 @@ function 교체부품상세_콤보박스(e) {
   교체부품상세No = value;
 }
 
+//안쓰이는 코드이다... 코드가 개선되어온 발자취이기에 그냥 나두었다....
 function showOptionMenu() {
   const options = document.querySelectorAll(".option");
   const optionContainer = document.querySelector(".options");

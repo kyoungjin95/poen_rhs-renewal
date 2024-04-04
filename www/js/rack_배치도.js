@@ -1,4 +1,4 @@
-var select_pos ='';
+var select_pos =''; //rack 그림에서 선택한 rack
 var 창고 = '';
 var 보관렉_table;
 
@@ -11,11 +11,13 @@ async function racks_시작() {
 		await sleep(1);
 	}
 
+	//모든 버튼에 click 이벤트를 등록함
 	var buttons = document.querySelectorAll('.rack');
 	buttons.forEach((button) => {
 		button.addEventListener('click', getButtonValue);
 	});
 
+	//일단 모든 창고를 안보이게함
 	document.getElementById('_마도').style.display = 'none';
 	document.getElementById('_마도출고').style.display = 'none';
 	document.getElementById('_구장').style.display = 'none';
@@ -40,6 +42,7 @@ async function racks_시작() {
 	}
 }
 
+//해당 창고만 보이도록 함
 function 창고선택() {
 	if(창고 == '마도') {
 		document.getElementById('_마도').style.display = 'block';
@@ -56,6 +59,7 @@ function 창고선택() {
 	}
 }
 
+//모든 rack에 버튼 click 시 실행할 함수를 등록함
 async function getButtonValue(event) {
 	const button = event.target;
 	const value = button.value;
@@ -65,15 +69,16 @@ async function getButtonValue(event) {
 	if(창고 != '마도출고') {
 		yes = confirm("선택 Rack 번호: " + value + "\n정보를 입력하시겠습니까?");
 	} else {
+		//출고시 문구
 		yes = confirm("선택 Rack 번호: " + value + "\n" + button.innerHTML + "을 출하 하시겠습니까?");
 	}
 	if (yes == true) {
-		select_pos = value;
+		select_pos = value; //선택 rack 위치
 
-		if(창고 == '마도') {
+		if(창고 == '마도') { //마도 창고 입고시
 			flag_입고 = true;
 			loadPage('base/입고.html');
-		} else if(창고 == '마도출고') {
+		} else if(창고 == '마도출고') { //마도 출고시 실행
 			//flag_상세입력 = true;
 
 			var DateTime = luxon.DateTime;
@@ -94,7 +99,7 @@ async function getButtonValue(event) {
 			}
 
 			이전페이지();
-		} else if(창고 == '마도보관') {
+		} else if(창고 == '마도보관') { //마도 보관시
 			var doc = {
 				관리번호 : 관리번호,
 				렉번호 : button.value

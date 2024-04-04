@@ -11,7 +11,7 @@ async function 기초보고서_시작() {
 async function 기초보고서_조회(is재제조번호 = false) {
   _management_id.value = 관리번호;
 
-  if (is재제조번호 == true) {
+  if (is재제조번호 == true) { //재제조 번호로 조회
     findOne_BSA재제조(BSA재제조, { 재제조번호: _재제조번호.value });
     await delay();
 
@@ -19,7 +19,7 @@ async function 기초보고서_조회(is재제조번호 = false) {
       _management_id.value = BSA재제조_v.관리번호;
       _재제조번호.value = BSA재제조_v.재제조번호;
     }
-  } else {
+  } else { //관리번호로 조회
     findOne_BSA재제조(BSA재제조, { 관리번호: _management_id.value });
     await delay();
 
@@ -29,6 +29,7 @@ async function 기초보고서_조회(is재제조번호 = false) {
     }
   }
 
+  //입고 데이터 조회
   findOne_입고(입고, { 관리번호: _management_id.value });
   await delay();
 
@@ -36,6 +37,7 @@ async function 기초보고서_조회(is재제조번호 = false) {
     _차종.innerHTML = 입고_v.차종;
     _입고일.innerHTML = 입고_v.입고일;
 
+    //차종별 표시할 부분만 표시
     switch (입고_v.차종) {
       case "CS_EV":
         showTable("_CS_EV");
@@ -80,6 +82,7 @@ async function 기초보고서_조회(is재제조번호 = false) {
     }
   }
 
+  //입고 사진 로딩
   find(입고_pic, _management_id.value);
   await delay();
 
@@ -87,6 +90,7 @@ async function 기초보고서_조회(is재제조번호 = false) {
     _입고사진.src = 입고_pic_v.pic1;
   }
 
+  //사용 변수 선언 및 초기화
   var 외부검사 = "";
   var 외부검사사유 = "";
   var 내부검사 = "";
@@ -101,6 +105,7 @@ async function 기초보고서_조회(is재제조번호 = false) {
   var 절연검사_B_P판정 = "";
   var 절연검사_B_N판정 = "";
 
+  //부푸정보 유무 체크
   find(부품정보_list, _management_id.value);
   await delay();
 
@@ -108,6 +113,7 @@ async function 기초보고서_조회(is재제조번호 = false) {
     부품정보유무 = "OK";
   }
 
+  //세척 데이터 로드
   find(세척, _management_id.value);
   await delay();
 
@@ -118,6 +124,7 @@ async function 기초보고서_조회(is재제조번호 = false) {
     케이스감압량 = 세척_v.기밀검사_케이스_특이사항;
   }
 
+  //불량 의심 부품 코멘트 로딩
   find(불량의심부품, _management_id.value);
   await delay();
 
@@ -125,6 +132,7 @@ async function 기초보고서_조회(is재제조번호 = false) {
     _재제조comment.innerHTML = 불량의심부품_v.재제조comment;
   }
 
+  //기초검사 데이터 로딩
   findOne_기초검사(기초검사, { 관리번호: _management_id.value });
   await delay();
 
@@ -143,6 +151,7 @@ async function 기초보고서_조회(is재제조번호 = false) {
         ? "OK"
         : "NG";
 
+    //고장사유 멘트 만들기
     var 고장사유 =
       기초검사_v.통신검사_DTC코드1 +
       " " +
@@ -166,7 +175,7 @@ async function 기초보고서_조회(is재제조번호 = false) {
 
     console.log("고장코드 사유:", 고장사유);
 
-    //common
+    //common (차종에 상관없이 모두 쓰이는 부분)
     _VIN.innerHTML = 기초검사_v.VIN;
     _RO.innerHTML = 기초검사_v.RO_no;
     _주행거리.innerHTML = 기초검사_v.주행거리;
@@ -193,6 +202,7 @@ async function 기초보고서_조회(is재제조번호 = false) {
     절연검사_B_N = 기초검사_v.절연검사_Minus;
     절연검사_B_N판정 = 기초검사_v.절연검사_Minus판정;
 
+    //차종별 세부항목 처리
     switch (차종) {
       case "CS":
       case "CS_EV":
@@ -485,6 +495,7 @@ async function 기초보고서_조회(is재제조번호 = false) {
   _육안검사_내부_결과.innerHTML = 내부검사;
   _육안검사_내부_결과2.innerHTML = 내부검사사유;
 
+  //사진 로딩
   find(기초검사_pic1, _management_id.value);
   await delay();
 
@@ -556,10 +567,11 @@ async function 기초보고서_save(type = 0) {
   var file_name = "기초보고서_" + _date + ".pdf";
   var _width = 4200;
   var _height = 2200;
-
+  
+  //기초보고서 저장항목들 저장
   var doc = JSON.parse(JSON.stringify(기초보고서_doc));
   doc.level = "작업자";
-  doc.기초보고서 = _cb기초보고서.checked;
+  doc.기초보고서 = _cb기초보고서.checked; //각 항목 숨기고 보여주는 기능이 필요했으나 후에 요구사항이 사라져 완성된 기능은 아님
   doc.육안검사외부 = _cb육안검사외부.checked;
   doc.육안검사외부상세 = _cb육안검사외부상세.checked;
   doc.육안검사내부 = _cb육안검사내부.checked;
@@ -571,6 +583,7 @@ async function 기초보고서_save(type = 0) {
   update_보고서(기초보고서, doc);
   await delay();
 
+  //이후는 PDF 파일로 만드는 부분임
   if (type == 0) {
     type = document.getElementById("_기초보고서");
     file_name = "기초보고서" + _date + ".pdf";

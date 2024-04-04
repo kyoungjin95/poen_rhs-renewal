@@ -2,6 +2,7 @@ function EOL_재제조번호_시작() {
 	EOL_시작(true);
 }
 
+//DTC 입력항목은 10개까지 틀리수 있다. '+'버튼을 불러서..
 var EOL_DTC_count = 0;
 
 async function EOL_시작(is재제조 = 0) {
@@ -10,11 +11,12 @@ async function EOL_시작(is재제조 = 0) {
 		return;
 	}
 
+	//EOL공정 대기 리스트
 	if (flag_EOL == true) await EOL_list();
 	flag_EOL = false;
 	if (worker == "") return;
 
-	if (is재제조 == 0) {
+	if (is재제조 == 0) { //관리자 번호로 기본정보 조회
 		if (_management_id.value.length == 0) return;
 
 		find(BSA재제조, _management_id.value);
@@ -32,7 +34,7 @@ async function EOL_시작(is재제조 = 0) {
 			_차종.value = "";
 			_품번.value = "";
 		}
-	} else if (is재제조 == 1) {
+	} else if (is재제조 == 1) { //재제조 번호로 관리자 번호로 기본정보 조회
 		if (_재제조번호.value.length == 0) return;
 
 		findOne_BSA재제조(BSA재제조, { 재제조번호: _재제조번호.value });
@@ -51,7 +53,7 @@ async function EOL_시작(is재제조 = 0) {
 			_차종.value = "";
 			_품번.value = "";
 		}
-	} else if (is재제조 == 2) {
+	} else if (is재제조 == 2) { //RO 번호로 기본정보 조회
 		if (_RO_no.value.length == 0) return;
 
 		findOne_BSA재제조(BSA재제조, { RO_no: _RO_no.value });
@@ -75,6 +77,7 @@ async function EOL_시작(is재제조 = 0) {
 	관리번호 = _management_id.value;
 	console.log("load: ", _management_id.value);
 
+	//EOL data를 관리자 번호로 조회
 	find(EOL, _management_id.value);
 	await delay();
 
@@ -119,6 +122,7 @@ async function EOL_시작(is재제조 = 0) {
 
 		if(_검사자.value == '') _검사자.value = worker;
 
+		//이미지 조회 
 		find(EOL_pic1, _management_id.value);
 		await delay();
 		if (EOL_pic1_v != null) {
@@ -222,14 +226,17 @@ async function EOL_시작(is재제조 = 0) {
 		_img25.src = "";
 	}
 
+	//이미지 더블 클릭시 이미지 지움
 	_img1.ondblclick = function (evt) {
 		_img1.src = "";
 	};
+
+	//이미지 드래그 앤 드롭 처리
 	_img1.ondrop = function (evt) {
 		var files = evt.dataTransfer?.files;
 		if (files.length > 0) {
 			console.log("drag & drop");
-			resize_pic(files[0], _img1);
+			resize_pic(files[0], _img1); //이미지를 일정한 레졸루션으로 축소
 		}
 		evt.preventDefault();
 	};
@@ -495,6 +502,7 @@ async function EOL_시작(is재제조 = 0) {
 		evt.preventDefault();
 	};
 
+	//드래그 오버를 처리 안해주면 드래그 앤 드롭이 안됨
 	_img1.ondragover = function (evt) {
 		evt.preventDefault();
 		console.log("dragover!");
@@ -596,23 +604,20 @@ async function EOL_시작(is재제조 = 0) {
 		evt.preventDefault();
 	};
 
+	//기본정보 조회
 	find(BSA재제조, _management_id.value);
 	await delay();
+
 	if (BSA재제조_v != null) {
 		_구분.value = BSA재제조_v.구분;
 		_차종.value = BSA재제조_v.차종;
 		_품번.value = BSA재제조_v.품번;
 		_RO_no.value = BSA재제조_v.RO_no;
-	}
-
-	find(BSA재제조, _management_id.value);
-	await delay();
-
-	if (BSA재제조_v != null) {
 		if (BSA재제조_v.재제조번호 != undefined) _재제조번호.value = BSA재제조_v.재제조번호;
 	}
 }
 
+//저장
 async function EOL_SAVE() {
 	if (worker == "") return;
 	if (_management_id.value.length == 0) return;
@@ -622,10 +627,11 @@ async function EOL_SAVE() {
 	var seoul = DateTime.local().setZone("Asia/Seoul");
 	var now = seoul.toString().slice(0, 19);
 
+	//공정완료일이 비었을때 현재 시간으로 자동 기입
 	if (_공정완료일.value == "") _공정완료일.value = now;
 	//if (계정_stat.완료일수정 != 'o' || _공정완료일.value == "") _공정완료일.value = now;
 
-	var doc = JSON.parse(JSON.stringify(EOL_doc));
+	var doc = JSON.parse(JSON.stringify(EOL_doc)); //EOL 다큐먼트 deep copy
 	console.log("new doc:", doc);
 	doc.관리번호 = _management_id.value.trim().toUpperCase();
 	doc.구분 = _구분.value;
@@ -685,6 +691,7 @@ async function EOL_SAVE() {
 		alert("저장 되었습니다");
 	}
 
+	//기본정보 수정
 	var _doc = {};
 	_doc.관리번호 = _management_id.value;
 	_doc.EOL투입일 = _공정입고일.value;
@@ -697,11 +704,12 @@ async function EOL_SAVE() {
 	find(BSA재제조, _management_id.value);
 	await delay();
 
-	undefined_check(BSA재제조_v);
+	undefined_check(BSA재제조_v); //기본정보에서 'undefine' 항목을 클리어함
 
 	select_pos = "";
-	await 공정단계자동입력(관리번호);
+	await 공정단계자동입력(관리번호); //공정 단계를 자동으로 체크해서 수정해줌
 
+	//드래그 앤 드롭을 넣은 이미지 저장
 	var _pic1_doc = JSON.parse(JSON.stringify(EOL_pic1_doc));
 	_pic1_doc.관리번호 = _management_id.value.trim().toUpperCase();
 	_pic1_doc.pic1 = _img1.src;
@@ -754,6 +762,7 @@ async function EOL_SAVE() {
 	console.log("EOL_pic3_update:", update_count);
 	console.log("EOL_pic3_insert:", insert_count);
 
+	//출하정보 update
 	find(출하정보, _management_id.value);
 	await delay();
 
@@ -894,6 +903,7 @@ function _ICUU_콤보박스(e) {
 	document.getElementById("_ICUU").value = value;
 }
 
+//QR 라벨 PDF 자동 생성
 async function EOL_QR_Label() {
 	let hyundai_logo;
 	convertImageToBase64("base/img/hyundai.jpg", async function (logo) {
@@ -912,11 +922,14 @@ async function EOL_QR_Label() {
 	QR1.style.display = "block";
 	QR2.style.display = "block";
 
+	//기본정보 조회
 	find(BSA재제조, 관리번호);
 	await delay();
 
+	//시리얼 넘버 구함
 	sn = BSA재제조_v.재제조번호;
 
+	//QR코드 이미지 생성
 	qrcode = new QRCode(document.getElementById("_QR"), {
 		width: 100,
 		height: 100,
@@ -927,6 +940,7 @@ async function EOL_QR_Label() {
 	let qrcode_base64 = qrcode._oDrawing._elCanvas.toDataURL("image/png");
 	console.log(qrcode_base64);
 
+	//pdf 문서 내용 구성
 	document.getElementById("_QR_Label").innerHTML =
 		"<div class='HHB' align='left' width='264'><h5>배터리 시스템 어셈블리</h5></div><div class='HHB'><h6>(Battery System Assembly)</h6></div><div><br/></div><div class='HHB' align='left'><h5>R" +
 		BSA재제조_v.품번 +
@@ -938,9 +952,11 @@ async function EOL_QR_Label() {
 		hyundai_logo +
 		"'></div>";
 
-	pdf();
+	pdf(); //pdf 생성
 }
 
+
+//file 다운로드
 function saveAs(uri, filename) {
 	var link = document.createElement("a");
 	if (typeof link.download === "string") {
@@ -954,6 +970,7 @@ function saveAs(uri, filename) {
 	}
 }
 
+//이미지를 문자로 변환 (base64)
 function convertImageToBase64(imgUrl, callback) {
 	const image = new Image();
 	image.crossOrigin = "anonymous";
@@ -1006,6 +1023,7 @@ function pdf() {
 			pageMargins: [0, 0, 0, 0],
 		};
 
+		//pdf file name
 		var DateTime = luxon.DateTime;
 		var seoul = DateTime.local().setZone("Asia/Seoul");
 		var now = seoul.toString().slice(0, 19);
@@ -1015,6 +1033,7 @@ function pdf() {
 	console.log("file name:", "QR.pdf");
 }
 
+//EOL 공정대기 리스트 검색용 필터 설정
 function EOL_updateFilter() {
 	var fieldEl = document.getElementById("filter-field");
 	var typeEl = document.getElementById("filter-type");
@@ -1038,7 +1057,7 @@ function EOL_updateFilter() {
 	}
 }
 
-var EOL_list_table;
+var EOL_list_table; //EOL 공정 대기 리스트
 async function EOL_list() {
 	findOne_BSA재제조(BSA재제조, { 공정단계: { $ne: "출하" }, 성능검사: { $ne: "" }, EOL: { $eq: "" }, 소재지: { $nin: ["공정대기", "품질대기", "구장"] }, 완전분해: { $eq: "" }, 폐기: { $eq: "" }, 출하: { $eq: "" }, 구분: { $nin: ["일반기타", "보증기타"] } });
 	await delay();

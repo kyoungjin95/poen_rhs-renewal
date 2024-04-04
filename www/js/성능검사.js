@@ -1,3 +1,4 @@
+//업로드한 파일 리스트
 var 성능검사_filelist = {
 	f1 : '',
 	f2 : '',
@@ -12,19 +13,19 @@ async function 성능검사_시작(is재제조 = 0) {
 		return;
 	}
 
-	if (flag_성능검사 == true) await 성능검사_list();
+	if (flag_성능검사 == true) await 성능검사_list(); //성능검사 공정 대기 리스트
 	flag_성능검사 = false;
 	if (worker == "") return;
 
-	fileUploading();
-	_btn_upload.disabled = false;
+	fileUploading(); //파일 업로드관련 버튼들 속성 셋팅
+	_btn_upload.disabled = false; //파일 업로드시 완료전까지 업로드 버튼 클릭 막음
 
-	const form = document.querySelector("form");
+	const form = document.querySelector("form"); //post 방식의 업로드
 	//form.addEventListener('submit', handleSubmit);
 	console.log("작업자:", 계정_stat.이름);
 	_검사자.value = 계정_stat.이름;
 
-	if (is재제조 == 0) {
+	if (is재제조 == 0) { //관리번호로 조회
 		if (_management_id.value.length == 0) return;
 
 		find(BSA재제조, _management_id.value);
@@ -42,7 +43,7 @@ async function 성능검사_시작(is재제조 = 0) {
 			_품번.value = "";
 			_RO_no.value = "";
 		}
-	} else if (is재제조 == 1) {
+	} else if (is재제조 == 1) { //재제조 번호로 조회
 		if (_재제조번호.value.length == 0) return;
 
 		findOne_BSA재제조(BSA재제조, { 재제조번호: _재제조번호.value });
@@ -61,7 +62,7 @@ async function 성능검사_시작(is재제조 = 0) {
 			_품번.value = "";
 			_RO_no.value = "";
 		}
-	} else if (is재제조 == 2) {
+	} else if (is재제조 == 2) { //재제조번호로 조회
 		if (_RO_no.value.length == 0) return;
 
 		findOne_BSA재제조(BSA재제조, { RO_no: _RO_no.value });
@@ -82,11 +83,12 @@ async function 성능검사_시작(is재제조 = 0) {
 		}
 	}
 
+	//성능 검사 데이터 조회
 	관리번호 = _management_id.value;
 	find(성능검사, _management_id.value);
 	await delay();
 
-	if (성능검사_v != null) {
+	if (성능검사_v != null) { 
 		_공정입고일.value = 성능검사_v.공정입고일;
 		_용량평가.value = 성능검사_v.용량평가;
 		_SOC60Percent.value = 성능검사_v.SOC60Percent;
@@ -241,6 +243,7 @@ async function 성능검사_save() {
 	if (level == "관리자") doc.공정완료일 = _공정완료일.value;
 	doc.검사자 = _검사자.value;
 
+	//차트 이미지를 저장(완료보고서에 쓰임)
 	const canvas = document.getElementById('_chart');
 	doc.chart = canvas.toDataURL();
 
@@ -259,6 +262,7 @@ async function 성능검사_save() {
 	var update_cnt = update_count;
 	var insert_cnt = insert_count;
 
+	//기본정보에 성능검사 작업 일자 등록
   	var doc = {};
 	doc.관리번호 = _management_id.value;
 	doc.성능검사투입일 = _공정입고일.value;
@@ -272,6 +276,7 @@ async function 성능검사_save() {
 
   	undefined_check(BSA재제조_v);
 
+	//공정단계를 EOL로 넘김
   	await 공정단계자동입력(_management_id.value);
 	//이전페이지();
 }
@@ -487,6 +492,7 @@ async function 성능검사_list() {
 	});
 }
 
+//POST방식으로 파일 업로드(form 태그 영역 내에 input 태그가 영향을 받음)
 async function _file_upload() {
 	//console.log('submit event:', event);
 	//event.preventDefault();
@@ -512,6 +518,7 @@ async function _file_upload() {
 	});
 }
 
+//파일 업로드 input 태그 및 다운로드 버튼 UI 셋팅
 function fileUploading() {
 	var fileUploadSets = document.querySelectorAll(".process__file");
 
@@ -606,9 +613,11 @@ async function _send_filelist() {
 	else filelist.f6 = _file6.files[0].name;
 
 	console.log(filelist);
-	send_list(filelist);
+
+	send_list(filelist); //파일 리스트를 서버로 보냄
 	await delay();
 
+	//성능검사 file1~6 별 업로드 유무를 저장
 	var doc = {};
 	doc.관리번호 = 관리번호;
 	if(성능검사_filelist.f1 == '' || 성능검사_filelist.f1 == undefined) doc.f1 = filelist.f1;
@@ -625,6 +634,7 @@ async function _send_filelist() {
 	check_file();
 }
 
+//다운로드 버튼 처리
 function download1() {
 	관리번호 = _management_id.value;
 	console.log('download file 1');
@@ -690,6 +700,7 @@ async function 성능검사_분해조립재의뢰() {
 	이전페이지();
 }
 
+//업로드된 파일이 있는 부분은 노란색으로 처리, 파일에서 data 추출하고 그래프 처리
 async function check_file() {
 	find(성능검사, 관리번호);
 	await delay();
@@ -818,7 +829,7 @@ async function read_DCIR() {
 	const tmp_name = 관리번호.replace('#', '');
 	const path = 'excel/' + tmp_name + '/excel5.csv';
 
-	DCIR(path);
+	DCIR(path); //서버에 저장된 파일에서 DCIR 데이터 추출 요청
 	await delay();
 
 	_DCIR.value = Number(DCIR_result).toFixed(2);
@@ -852,14 +863,15 @@ async function read_DCIR() {
 	console.log('DCIR result:', DCIR_result, DCIR1_result, DCIR2_result, DCIR3_result, DCIR4_result, DCIR5_result, DCIR6_result);
 }
 
+//그래프 그리는 부분
 async function read_data() {
 	const tmp_name = 관리번호.replace('#', '');
 	const path = 'excel/' + tmp_name + '/excel1.csv';
 
 	console.log('path:', path);
-	get_성능검사_data(path);
+	get_성능검사_data(path); //서버에 성능검사 data 요청
 	await delay();
 
-	chartDraw(성능검사_data_result);
+	chartDraw(성능검사_data_result); //그래프 그림
 	//console.log('get 성능검사 data result:', 성능검사_data_result);
 }
