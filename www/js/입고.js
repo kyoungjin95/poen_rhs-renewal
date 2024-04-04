@@ -10,7 +10,8 @@ async function 입고_시작() {
   const _입고기타 = document.getElementById("_입고_기타");
   const _입고일반 = document.getElementById("_입고_일반");
 
-  if (level != "관리자") { //기타 제외 및 일반 제외는 관리자 계정으로만 설정이 가능함
+  if (level != "관리자") {
+    //기타 제외 및 일반 제외는 관리자 계정으로만 설정이 가능함
     _입고일반.style.display = "inline-block";
     _입고기타.style.display = "none";
   } else {
@@ -136,7 +137,7 @@ async function 입고_save() {
   if (_RO_no.value.length == 0) {
     alert("RO 번호가 입력되지 않았습니다.");
   }
-  
+
   //DB에 입고 데이터 저장
   update(입고, doc);
   await delay();
@@ -155,7 +156,7 @@ async function 입고_save() {
     alert("저장 되었습니다");
   }
 
-  /사진 저장
+  //사진 저장
   var pic_doc = JSON.parse(JSON.stringify(입고_pic_doc));
   pic_doc.관리번호 = _management_id.value;
   pic_doc.pic1 = _img1.src;
@@ -164,7 +165,8 @@ async function 입고_save() {
   await delay();
 
   console.log("save 입고 pic1");
-  if (out == false) { //업데이트 메세지 한번만 출력위해
+  if (out == false) {
+    //업데이트 메세지 한번만 출력위해
     if (update_count > 0) {
       alert("업데이트 되었습니다");
     }
@@ -180,7 +182,8 @@ async function 입고_save() {
 
   console.log("기본정보 유무 : ", BSA재제조_v);
 
-  if (BSA재제조_v == null) { //기본정보가 없을시 새로 만듬
+  if (BSA재제조_v == null) {
+    //기본정보가 없을시 새로 만듬
     var _doc = JSON.parse(JSON.stringify(BSA재제조_doc));
     _doc.관리번호 = _management_id.value.trim().toUpperCase();
     _doc.입고 = _입고일.value;
@@ -194,7 +197,8 @@ async function 입고_save() {
     await delay();
 
     select_pos = "";
-  } else { //있다면 관련 정보만 수정
+  } else {
+    //있다면 관련 정보만 수정
     var _doc = {
       관리번호: _management_id.value.toUpperCase(),
       입고: _입고일.value,
