@@ -257,7 +257,7 @@ table input {
 #_분석결과,
 #_재제조comment {
   border: 1px solid #000;
-  font-size: 1vw;
+  font-size: 0.9vw;
   white-space: pre-line;
   resize: none;
   position: relative;
@@ -573,6 +573,7 @@ td.process__btn {
   display: flex;
   justify-content: space-between;
   height: 100%;
+  margin-bottom: 40px;
 }
 .parts__information .module__group {
   width: 51%;
@@ -764,16 +765,18 @@ td.process__btn {
 .분해조립 #_기초보고서 table.base,
 .분해조립 #_기초보고서 base.tableAll {
   height: 100%;
-  display: inline-block;
   border: none;
 }
-.분해조립 #_기초보고서 table td.base {
-  padding: 3px;
-}
+
 .분해조립 #_기초보고서 table td.base,
 .분해조립 #_기초보고서 table td.base2,
 .분해조립 #_기초보고서 table td.base3 {
   font-size: 0.5vw;
+  height: 1vw;
+}
+
+.분해조립 #_기초보고서 table #_VIN {
+  word-break: break-all;
 }
 .분해조립 #_기초보고서 table td.base_left,
 .분해조립 #_기초보고서 #_분석결과값,
@@ -815,16 +818,15 @@ td.process__btn {
   width: 100%;
 }
 .분해조립 .부품정보 .module__group button {
-  padding: 5px 0;
+  padding: 20px 0;
   font-size: 0.5vw;
-  line-height: 35px 0;
 }
 .분해조립 .부품정보 .con__second .upper_con,
 .분해조립 .부품정보 .con__second .upper_con .left_section .product,
 .분해조립 .부품정보 .con__second .upper_con .right_section .product,
 .분해조립 .부품정보 .con__second .left_section .product,
 .분해조립 .부품정보 .con__second .middle_con .right_section .product {
-  margin-bottom: 0;
+  margin-bottom: 5px;
 }
 .분해조립 .부품정보 .module__group .con__first .fifth_con .product span {
   font-size: 0.4vw;
