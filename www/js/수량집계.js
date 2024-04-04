@@ -1,3 +1,4 @@
+//표에서 데이터 조회 필터 처리
 function 신품_updateFilter() {
 	var fieldEl = document.getElementById("new_filter-field");
 	var typeEl = document.getElementById("new_filter-type");
@@ -52,7 +53,7 @@ async function 수량집계_시작() {
 	수량집계_조회();
 }
 
-function 수량집계_year() {
+function 수량집계_year() { //year 누르면 해당 년의 기간 설정
 	var DateTime = luxon.DateTime;
 	var seoul = DateTime.local().setZone("Asia/Seoul");
 	var now = seoul.toString();
@@ -63,7 +64,7 @@ function 수량집계_year() {
 	document.getElementById('_검색일_to').value = e_day;
 }
 
-function 수량집계_month() {
+function 수량집계_month() { //month를 누르면 해달 월 기간 설정
 	var DateTime = luxon.DateTime;
 	var seoul = DateTime.local().setZone("Asia/Seoul");
 	var now = seoul.toString();
@@ -106,7 +107,7 @@ async function BSA_info(begin = '', end = '', 구분 = 'all') {
 	var counts = [];
 	var types_list = [];
 
-	if (begin == '' || end == '') {
+	if (begin == '' || end == '') { //전체 조회
 		if(구분 == 'all') {
 			find_BSA재제조(BSA재제조, { 품번: { $exists: true } });
 			await delay();
@@ -114,7 +115,7 @@ async function BSA_info(begin = '', end = '', 구분 = 'all') {
 			find_BSA재제조(BSA재제조, { 품번: { $exists: true }, 구분 : { $eq : 구분} });
 			await delay();
 		}
-	} else {
+	} else { //부분 조회
 		if(구분 == 'all') {
 			find_BSA재제조(BSA재제조, { 품번: { $exists: true }, 입고: { $gte: begin, $lte: end }});
 			await delay();
@@ -127,17 +128,17 @@ async function BSA_info(begin = '', end = '', 구분 = 'all') {
 	if (BSA재제조_v == null) return;
 
 	BSA재제조_v.forEach(function (info) {
-		if (types_list.indexOf(info.품번) < 0) {
-			types_list.push(info.품번);
+		if (types_list.indexOf(info.품번) < 0) { //리스트에 없는 품번일 경우
+			types_list.push(info.품번); //리스트에 품번 저장
 
-			var count = {
+			var count = { //카운트 초기화
 				입고: 0,
 				작업: 0,
 				완료: 0,
 				출고: 0
 			}
 
-			switch (info.공정단계) {
+			switch (info.공정단계) { //공정 단계 카운트
 				case '입고':
 					count.입고++;
 					break;
@@ -165,7 +166,7 @@ async function BSA_info(begin = '', end = '', 구분 = 'all') {
 			}
 
 			counts.push(count);
-		} else {
+		} else { //리스트에 있는 품번일 경우
 			var no = types_list.indexOf(info.품번);
 
 			switch (info.공정단계) {
@@ -197,6 +198,7 @@ async function BSA_info(begin = '', end = '', 구분 = 'all') {
 		}
 	});
 
+	//배터리팩 재고 표 만들기
 	BSA재고(types_list, counts);
 }
 
@@ -204,7 +206,7 @@ async function BMA_info(begin = '', end = '', 구분 = 'all') {
 	var counts = [];
 	var types_list = [];
 
-	if (begin == '' || end == '') {
+	if (begin == '' || end == '') { //전체 조회
 		if(구분 == 'all') {
 			find_고품정보(고품정보, { 품명: 'BMA', 폐기여부: '폐기' });
 			await delay();
@@ -212,7 +214,7 @@ async function BMA_info(begin = '', end = '', 구분 = 'all') {
 			find_고품정보(고품정보, { 품명: 'BMA', 폐기여부: '폐기', 구분 : {$eq : 구분} });
 			await delay();
 		}
-	} else {
+	} else { //기간 조회
 		if(구분 == 'all') {
 			find_고품정보(고품정보, { 품명: 'BMA', 폐기여부: '폐기', 등록일: { $gte: begin, $lte: end }});
 			await delay();
@@ -225,7 +227,7 @@ async function BMA_info(begin = '', end = '', 구분 = 'all') {
 	if (고품정보_v == null) return;
 
 	고품정보_v.forEach(function (info) {
-		if (types_list.indexOf(info.품번) < 0) {
+		if (types_list.indexOf(info.품번) < 0) { //리스트에 없는 품번일때
 			types_list.push(info.품번);
 
 			var count = {
@@ -242,7 +244,7 @@ async function BMA_info(begin = '', end = '', 구분 = 'all') {
 			}
 
 			counts.push(count);
-		} else {
+		} else { //리스트에 있는 품번일때
 			var no = types_list.indexOf(info.품번);
 
 			if (info.등록일 != '' && info.등록일 != undefined) {
@@ -255,6 +257,7 @@ async function BMA_info(begin = '', end = '', 구분 = 'all') {
 		}
 	});
 
+	//BMA재고팩 만들기
 	BMA재고(types_list, counts);
 }
 
@@ -283,7 +286,7 @@ async function 자재재료_info(begin = '', end = '', 구분 = 'all') {
 
 	if (고품정보_v == null) return;
 	고품정보_v.forEach(function (info) {
-		if (types_list.indexOf(info.품번) < 0) {
+		if (types_list.indexOf(info.품번) < 0) { //리스트에 없는 품번일때
 			types_list.push(info.품번);
 			품명_list.push(info.품명);
 
@@ -301,7 +304,7 @@ async function 자재재료_info(begin = '', end = '', 구분 = 'all') {
 			}
 
 			counts.push(count);
-		} else {
+		} else { //리스트에 있는 품번일때
 			var no = types_list.indexOf(info.품번);
 
 			if (info.등록일 != '' && info.등록일 != undefined) {
@@ -318,9 +321,10 @@ async function 자재재료_info(begin = '', end = '', 구분 = 'all') {
 }
 
 async function 부품_info(begin = '', end = '', 구분 = 'all') {
-	부품정보처리(begin, end);
+	부품정보처리(begin, end); //클라이언트에서 과부하 가능성이 있어 서버에 처리하는 부분을 두고 결과를 요청한다.
 	await delay();
 
+	//표 그리는 부분
 	부품재고(부품정보_result);
 }
 
@@ -329,7 +333,7 @@ function BSA재고(품번_list, datas) {
 	var BSA집계_datas = [];
 
 	for (var i = 0; i < 품번_list.length; i++) {
-		var _datas = {
+		var _datas = { //표에 나타낼 정보 가공 부분
 			품번: 품번_list[i],
 			입고수: datas[i].입고,
 			작업수: datas[i].작업,
@@ -339,6 +343,7 @@ function BSA재고(품번_list, datas) {
 		BSA집계_datas.push(_datas);
 	}
 
+	//표 그리는 부분
 	table_BSA = new Tabulator("#grid_BSA집계", {
 		layout: "resizableColumnFit",
 		data: BSA집계_datas,
@@ -359,7 +364,7 @@ function BMA재고(품번_list, datas) {
 	var BMA집계_datas = [];
 
 	for (var i = 0; i < 품번_list.length; i++) {
-		var _datas = {
+		var _datas = { //표에 나타낼 정보 가공
 			품번: 품번_list[i],
 			입고수: datas[i].입고,
 			출고수: datas[i].출고,
@@ -373,6 +378,7 @@ function BMA재고(품번_list, datas) {
 		return;
 	}
 
+	//표 그리는 부분
 	table_BMA = new Tabulator("#grid_BMA집계", {
 		layout: "resizableColumnFit",
 		data: BMA집계_datas,
@@ -392,7 +398,7 @@ function 자재재고(품명_list, 품번_list, datas) {
 	var 자재집계_datas = [];
 
 	for (var i = 0; i < 품번_list.length; i++) {
-		var _datas = {
+		var _datas = {// 정보 가공 부분
 			품명: 품명_list[i],
 			품번: 품번_list[i],
 			입고수: datas[i].입고,
@@ -407,6 +413,7 @@ function 자재재고(품명_list, 품번_list, datas) {
 		return;
 	}
 
+	//표 그리는 부분
 	table_자재재고 = new Tabulator("#grid_자재집계", {
 		layout: "resizableColumnFit",
 		data: 자재집계_datas,
@@ -428,12 +435,12 @@ function 부품재고(부품정보) {
 	var 부품집계_datas = [];
 
 	for (var j = 0; j < 부품정보.품번.length; j++) {
-		var _datas = {
+		var _datas = {//정보 가공 부분
 			품번: 부품정보.품번[j],
 			차종: 부품정보.차종[j],
 			품명: 부품정보.품명[j],
 			입고수: 부품정보.counts[j].입고,
-			출고수: (-1) * 부품정보.counts[j].출고,
+			출고수: (-1) * 부품정보.counts[j].출고, // -1 * : -부호 제거
 			합계: 부품정보.counts[j].입고 + 부품정보.counts[j].출고
 		}
 
@@ -461,6 +468,7 @@ function 부품재고(부품정보) {
 	});
 }
 
+//엑셀로 출력 부분
 function 수량집계_export_to_excel() {
 	var sheets = {
 		'BSA집계': true,
@@ -472,6 +480,7 @@ function 수량집계_export_to_excel() {
 
 }
 
+//엑셀로 출력 부분
 function 부품집계_export_to_excel() {
 	var sheets = {
 		'부품집계': true,

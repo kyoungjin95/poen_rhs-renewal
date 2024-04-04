@@ -11,31 +11,37 @@ async function 분해조립_폐기자재_시작() {
 
 	pushed = [];
 
+	//부품정보 표시
 	flag_부품정보_list = true;
 	await 부품정보_list_시작();
 
+	//불량의심부품 표시
 	var 내부 = false;
 	flag_불량의심부품 = false;
 	await 불량의심부품_시작(내부);
 
+	//폐기자제 정보를 불러와 표에 표시
 	find(분해조립폐기자재, 관리번호);
 	await delay();
 
 	분해조립폐기자재_tabledata = JSON.parse(JSON.stringify(분해조립폐기자재_v));
 	await 분해조립폐기자재_table(분해조립폐기자재_tabledata);
 
+	//불량의심부품 이미지의 모든 머튼들에 킬릭 이벤트 등록
 	폐기자재_choisenButton();
 
+	//해당 부품들의 색을 붉게 표시
 	draw_color(분해조립폐기자재_tabledata);
 
-	flag_폐기자재_all = false;
-	flag_all_폐기사유 = false;
+	flag_폐기자재_all = false; //모든 부품 폐기 여부
+	flag_all_폐기사유 = false;  //모든 부품 폐기시 첫번째 폐기 사유 기입유무
 	check_items = [];
 
+	//기본정보를 불러와 투입일을 등록함
 	find(BSA재제조, 관리번호);
 	await delay();
 
-	분해조립투입일 = BSA재제조_v.분해조립투립일;
+	분해조립투입일 = BSA재제조_v.분해조립투입일;
 	if(BSA재제조_v.분해조립투입일 == null || BSA재제조_v.분해조립투입일 == undefined) {
 		var DateTime = luxon.DateTime;
 		var seoul = DateTime.local().setZone("Asia/Seoul");
@@ -65,6 +71,7 @@ async function 분해조립폐기자재_table(tabledata) {
 		]
 	});
 
+	//하나의 폐기 사유를 기입했다면 모든 부품의 폐기사유로 자동 등록
 	table_폐기자재.on("cellEdited", function(cell) {
 		if(flag_all_폐기사유 == false) {
 			flag_all_폐기사유 == true;
@@ -77,6 +84,7 @@ async function 분해조립폐기자재_table(tabledata) {
 	});
 }
 
+//불량의심 부품의 모든 버튼에 클릭 이벤트 등록
 var 고품 = [];
 var check_items;
 var 분해조립폐기자재_tabledata = [];
@@ -91,6 +99,7 @@ function 폐기자재_choisenButton() {
 		var seoul = DateTime.local().setZone("Asia/Seoul");
 		var now = seoul.toString().slice(0, 19);
 
+		//모든 부품의 고품정보를 기본 자재로 고품 배열에 저장
 		var _tmp = JSON.parse(JSON.stringify(고품정보_doc));
 		_tmp.관리번호  = 관리번호;
 		_tmp.품명 = value.replace('_A_', '').replace('_B_', '').replace('_C_', '').replace('_D_', '').replace('_D2_', '').replace('_QR', '');
@@ -101,6 +110,7 @@ function 폐기자재_choisenButton() {
 		_tmp.등록작업자 = worker;
 		고품.push(_tmp);
 
+		//클릭된 부품은 폐기 사유를 편집할수 있더록 표에 표시
 		button.addEventListener("click", async () => {
 			const value = button.getAttribute("value");
 			if (value == null) return;
@@ -117,8 +127,9 @@ function 폐기자재_choisenButton() {
 			};
 
 			if(add_item.QR.trim() == '') return;
-			button.style.backgroundColor = 'red';
+			button.style.backgroundColor = 'red'; //선택된 부품은 붉게 표시
 
+			//
 			for(var i = 0; i < 분해조립폐기자재_tabledata.length; i++) {
 				if(분해조립폐기자재_tabledata[i].QR == add_item.QR || pushed.indexOf(add_item.QR) != -1) {
 					document.getElementById(value.replace('_QR', '')).style.backgroundColor = 'salmon';
@@ -161,6 +172,7 @@ async function 분해조립폐기자재_save() {
 		inserte_cnt = insert_count;
 	};
 
+	//폐기 및 자재 고품정보 처리
 	console.log(고품);
 	for(var i = 0 ; i < 고품.length; i++) {
 		var DateTime = luxon.DateTime;
@@ -266,6 +278,8 @@ async function 분해조립폐기자재_all() {
 			return;
 			break;
 	}
+
+	//모든 부품 버튼에 적용
 	buttons.forEach((button) => {
 		const value = button.getAttribute("value");
 		if (value == null) return;
@@ -274,6 +288,7 @@ async function 분해조립폐기자재_all() {
 
 		button.style.backgroundColor = 'red';
 
+		//버튼으로 부터 부품정보 가져옴
 		var add_item = {
 			관리번호 : 관리번호,
 			품명 : value.replace('_A_', '').replace('_B_', '').replace('_C_', '').replace('_D_', '').replace('_D2_', '').replace('_QR', ''),

@@ -18,27 +18,31 @@ async function 분해조립_재제조_시작() {
 	await delay();
 
 	if(BSA재제조_v != null) {
-		if(BSA재제조_v.분해조립투입일 != '') 분해조립투입일 = BSA재제조_v.분해조립투입일;
-		else 분해조립투입일 = now;
+		if(BSA재제조_v.분해조립투입일 != '') 분해조립투입일 = BSA재제조_v.분해조립투입일; //수정도 가능하도록 함
+		else 분해조립투입일 = now; //분해조립투입일 자동 처리
 	} else {
 		분해조립투입일 = now;
 	}
 
 	flag_부품정보_list = true;
-	await 부품정보_list_시작();
+	await 부품정보_list_시작(); //부품정보 리스트 표출
 
 	var 내부 = false;
 	flag_불량의심부품 = false;
-	await 불량의심부품_시작(내부);
+	await 불량의심부품_시작(내부); //불량의심부품 그림 표출
 
+	//분래조립 재제조 데이터 로딩
 	find(분해조립재제조, 관리번호);
 	await delay();
 
+	//교체부품 리스트 편집 테이블에 저장된 정보 표시
 	교체부품_tabledata = JSON.parse(JSON.stringify(분해조립재제조_v));
 	await 교체부품_table(교체부품_tabledata);
 
+	//불량의심 부품의 모든 버튼에 크릭 이벤트 등록
 	재제조_choisenButton();
 
+	//부품 버튼의 색을 붉게 봐꿔줌
 	draw_color(교체부품_tabledata);
 
 	var DateTime = luxon.DateTime;
@@ -97,7 +101,7 @@ function 재제조_choisenButton() {
 			if (value == null) return;
 			console.log("value:", value);
 
-
+			//부품 버튼 클릭시 버튼에서 부품의 정보를 추출하고 입고일과 완료일을 셋팅한다.
 			var add_item = {
 				관리번호 : 관리번호,
 				품명 : value.replace('_A_', '').replace('_B_', '').replace('_C_', '').replace('_D_', '').replace('_D2_', '').replace('_QR', ''),
@@ -114,8 +118,9 @@ function 재제조_choisenButton() {
 			};
 
 			if(add_item.교체전QR.trim() == '') return;
-			button.style.backgroundColor = 'red';
+			button.style.backgroundColor = 'red'; //클릭하 부품의 색을 붉게 변화시킨다.
 
+			//부품 선택 토글
 			for(var i = 0; i < 교체부품_tabledata.length; i++) {
 				if(교체부품_tabledata[i].교체전QR == add_item.교체전QR || pushed.indexOf(add_item.교체전QR) != -1) {
 					document.getElementById(value.replace('_QR', '')).style.backgroundColor = 'salmon';
@@ -131,12 +136,14 @@ function 재제조_choisenButton() {
 				}
 			}
 
+			//선택된 부품의 정보를 편집할수 있도록 표에 등록시킨다.
 			교체부품_tabledata.push(add_item);
 			교체부품_table(교체부품_tabledata);
 		});
 	});
 }
 
+//SAVE
 async function 분해조립재제조_save() {
 	var data = table_부품교환.getData();
 	console.log(data.length);
@@ -144,6 +151,7 @@ async function 분해조립재제조_save() {
 	var seoul = DateTime.local().setZone("Asia/Seoul");
 	var now = seoul.toString().slice(0, 19);
 
+	//기존 정보를 모두 삭제한다.
 	for(var i = 0; i < data.length; i++) {
 		delete_분해조립재제조(분해조립재제조, data[i].교체전QR);
 		await delay();
@@ -152,6 +160,7 @@ async function 분해조립재제조_save() {
 	var flag_update = false;
 	var flag_insert = false;
 
+	//새로이 모든 정보를 업데이트한다.
 	for(var i = 0; i < data.length; i++) {
 		update_분해조립재제조(분해조립재제조, data[i]);
 		await delay();
@@ -180,6 +189,7 @@ async function 분해조립재제조_save() {
 		if(update_count > 0) flag_update = true;
 		if(insert_count > 0) flag_insert = true;
 
+		//고품 부품 사용시 사용여부 정보를 고품정보에 기입한다.
 		if(data[i].신품고품 != '고품') continue;
 
 		doc = {};
@@ -204,6 +214,7 @@ async function 분해조립재제조_save() {
 	if(flag_update) alert('업데이트 되었습니다');
 	else if(flag_insert) alert('저장 되었습니다');
 
+	//기본정보에 분해조립 투입일고 완료일 기입
 	var doc = {};
 	doc.관리번호 = 관리번호;
 	doc.분해조립투입일 = 분해조립투입일;
@@ -212,13 +223,17 @@ async function 분해조립재제조_save() {
 	update(BSA재제조, doc);
 	await delay();
 
+	//기본정보를 불러와 쓰레기값 삭제 처리
   	find(BSA재제조, _management_id.value);
   	await delay();
 
   	undefined_check(BSA재제조_v);
+
+	//공정단계 자동 처리
         await 공정단계자동입력(_management_id.value);
 }
 
+//버튼의 색을 바꿔줌
 var pushed = [];
 function draw_color(data) {
 	data.forEach((v) => {

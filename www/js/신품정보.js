@@ -2,7 +2,7 @@ var m_id = '';
 var tabledata = [];
 
 async function 신품정보_시작() {
-	read_신품정보_func_csv();
+	read_신품정보_func_csv(); //.csv 파일 입력 처리부분 선언
 }
 
 async function 신품정보등록_조회() {
@@ -16,6 +16,7 @@ async function 신품정보등록_조회() {
 	console.log('load: ', _QR.value);
 	if (_QR.value == '' | _QR.value == 'none') return;
 
+	//신품정보는 자재입출고 다큐먼트를 사용하고 프라이머리 키는 QR임
 	findOne_자재입출고(자재입출고, { QR: _QR.value });
 	await delay();
 
@@ -97,6 +98,7 @@ function _사용여부_콤보박스(e) {
 	document.getElementById('_사용여부').value = value;
 }
 
+//엑셀 파일을 읽어와 기존 데이터를 지우고 다시 넣음 (마도 친사원이 매일 업데이트)
 var flag_신품정보_엑셀 = false;
 function read_신품정보_func_csv() {
 	_재고관리_csv.addEventListener('input', function (event) {
@@ -112,14 +114,14 @@ function read_신품정보_func_csv() {
 			const res = d3.csvParse(reader.result);
 			var docs = [];
 
-			drop(자재입출고);
+			drop(자재입출고); //기존 자재입출고 컬렉션 제거
 			await delay();
 
 			for (var i = 0; i < res.length; i++) {
 				//if (res[i].QR != '') docs.push(res[i]);
 				docs.push(res[i]);
 				if ((i > 0 && (i % 2000) == 0) || i == (res.length - 1)) {
-					insertMany(자재입출고, docs);
+					insertMany(자재입출고, docs); //엑셀에서 읽어들인 새로운 다큐먼트들로 자재입출고 컬렉션을 다시만듬
 					await delay();
 
 					console.log('processing:', i, docs.length);
@@ -137,6 +139,8 @@ function read_신품정보_func_csv() {
 	});
 }
 
+
+//사용하지 않는 함수(필요할지 몰라 남겨둠)
 async function 신품정보_insert(val) {
 	var doc = 자재입출고_doc;
 

@@ -8,6 +8,7 @@ async function 분해조립_공정대기_시작() {
 
 	console.log('분해조립 공정대기 시작');
 
+	//기본정보의 소재지를 공정 대기로 바꾸어 저장한다.
 	var doc = {
 		관리번호 : 관리번호,
 		소재지 : '공정대기'
@@ -16,23 +17,29 @@ async function 분해조립_공정대기_시작() {
 	update(BSA재제조, doc);
 	await delay();
 
+	//부품정보 리스트를 화면에 표출한다.
 	flag_부품정보_list = true;
 	await 부품정보_list_시작();
 
-	var 내부 = false;
+	//불량의심 부품을 화면에 표시한다
+	var 내부 = false; 
 	flag_불량의심부품 = false;
 	await 불량의심부품_시작(내부);
 
+	//저장된 분해조립 공정대기 리스트를 표시한다
 	find(분해조립공정대기, 관리번호);
 	await delay();
 
 	분해조립공정대기_tabledata = JSON.parse(JSON.stringify(분해조립공정대기_v));
 	await 분해조립공정대기_table(분해조립공정대기_tabledata);
 
+	//불량의심 부품 그림에서 모든 버튼에 click 이벤트를 등록한다.
 	공정대기_choisenButton();
 
+	//저장된 부품 정보로 화면에 붉게 표시해 준다.
 	draw_color(분해조립공정대기_tabledata);
 
+	//기본 정보를 로딩한다.
 	find(BSA재제조, 관리번호);
 	await delay();
 
@@ -45,6 +52,7 @@ async function 분해조립_공정대기_시작() {
 	}
 }
 
+//공정대기 사유 부품즐의 정보를 표시한다.
 var table_공정대기;
 async function 분해조립공정대기_table(tabledata) {
 	table_공정대기 = new Tabulator("#grid_교체부품", {
@@ -61,6 +69,7 @@ async function 분해조립공정대기_table(tabledata) {
 	});
 }
 
+//불량의심부품 그림의 각 버튼에 클릭 이벤트 등록
 var 분해조립공정대기_tabledata = [];
 function 공정대기_choisenButton() {
 	var buttons = document.querySelectorAll("button");
@@ -70,6 +79,7 @@ function 공정대기_choisenButton() {
 			if (value == null) return;
 			console.log("value:", value);
 
+			//선택한 버튼의 정보를 바탕으로 해당 부품의 정보를 추출한다.
 			var add_item = {
 				관리번호 : 관리번호,
 				품명 : value.replace('_A_', '').replace('_B_', '').replace('_C_', '').replace('_D_', '').replace('_D2_', '').replace('_QR', ''),
@@ -79,8 +89,9 @@ function 공정대기_choisenButton() {
 			};
 
 			if(add_item.QR.trim() == '') return;
-			button.style.backgroundColor = 'red';
+			button.style.backgroundColor = 'red'; //붉게 표시해 준다
 
+			//이미 붉은 버튼은 연분홍으로 되돌린다.(토글 기능)
 			for(var i = 0; i < 분해조립공정대기_tabledata.length; i++) {
 				if((분해조립공정대기_tabledata[i].QR == add_item.QR) || pushed.indexOf(add_item.QR) != -1) {
 					document.getElementById(value.replace('_QR', '')).style.backgroundColor = 'salmon';
@@ -94,21 +105,24 @@ function 공정대기_choisenButton() {
 				}
 			}
 
+			//공정대기 사유 부분들의 정보를 표출하고 나머지 필요 정보를 입력 가능한 상태로 바꾼다.
 			분해조립공정대기_tabledata.push(add_item);
 			분해조립공정대기_table(분해조립공정대기_tabledata);
 		});
 	});
 }
 
+//SAVE
 async function 분해조립공정대기_save() {
 	var data = table_공정대기.getData();
 
+	//기존 정부를 모두 삭제
 	for(var i = 0; i < data.length; i++) {
 		delete_분해조립공정대기(공정대기, data[i].QR);
 		await delay();
 	}
 
-
+	//모든 데이터 다시 업데이트
 	for(var i = 0; i < data.length; i++) {
 		console.log(data[i]);
 		update_분해조립공정대기(분해조립공정대기, data[i]);
@@ -128,6 +142,7 @@ async function 분해조립공정대기_save() {
 	}
 }
 
+//선택된 버튼을 붉게 표시
 var pushed = [];
 function draw_color(data) {
 	data.forEach((v) => {

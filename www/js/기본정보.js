@@ -7,7 +7,8 @@ async function 상세입력_시작(is재제조번호 = false) {
     await sleep(DELAY);
     return;
   }
-  
+
+//원래 모든 공정 정보 입력 버튼이  기본정보 창에 있었기에 여기에 초기화 변수들이 있게 되었음
   flag_상세입력 = false;
   first_분해조립 = true;
 
@@ -75,6 +76,7 @@ async function 상세입력_시작(is재제조번호 = false) {
     _폐기사유.value = "";
     _렉번호.value = "";
 
+    //고객 계정에 맞춰 고객관 관련있는 데이터만 조회
     if (level == "kia_일반") {
       findOne_BSA재제조(BSA재제조, {
         차종: {
@@ -376,7 +378,7 @@ async function 상세입력_시작(is재제조번호 = false) {
 async function item_detail_save(flag_result = false) {
   if (worker == "") return;
   if (_management_id.value.length == 0) return;
-  if (_management_id.value.slice(0, 2) == "조회") return;
+  if (_management_id.value.slice(0, 2) == "조회") return; 
   console.log("save: ", _management_id.value);
 
   관리번호 = _management_id.value.trim().toUpperCase();
@@ -433,6 +435,7 @@ async function item_detail_save(flag_result = false) {
   }
 }
 
+//초기 공정 입력 을 위해 만든 함수이나 이제는 쓰이지 않음
 async function processStep() {
   if (worker == "") return;
   if (_management_id.value.length == 0) return;
@@ -544,6 +547,7 @@ function 교체부품상세_콤보박스(e) {
   교체부품상세No = value;
 }
 
+//UI가 변경되었기에 안쓰이는 부분
 function showOptionMenu() {
   const options = document.querySelectorAll(".option");
   const optionContainer = document.querySelector(".options");

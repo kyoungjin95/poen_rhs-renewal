@@ -66,7 +66,7 @@ async function login() {
       await sleep(1);
 
       //공지사항
-      alert('#공지사항#\nVersion update sky 0.77\n1. 보안 업데이트');
+      //alert('#공지사항#\nVersion update sky 0.77\n1. 보안 업데이트');
     } else if (worker == _id.value) { //로그아웃 상황
       worker = "";
       level = "";

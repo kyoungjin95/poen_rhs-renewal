@@ -333,9 +333,9 @@ async function 불량의심부품_시작(내부 = true) {
 			break;
 	}
 
-	if(내부 == true) {
+	if(내부 == true) { //분해조립 화면에 포함되어 적용될때
 		var buttons = document.querySelectorAll("button");
-		buttons.forEach((button) => {
+		buttons.forEach((button) => { //모든 부품 버튼에 click 이벤트 등록
 			button.addEventListener("click", () => {
 				const value = button.getAttribute("value");
 				if (value == null) return;
@@ -357,6 +357,7 @@ async function 불량의심부품_시작(내부 = true) {
 async function 불량의심부품_load(내부 = true) {
 	if (_management_id.value == "") return;
 
+	//불량 의심 부품 로딩
 	find(불량의심부품, _management_id.value);
 	await delay();
 
@@ -494,7 +495,7 @@ async function 불량의심부품_load(내부 = true) {
 	D2_LV_W_H = 불량의심부품_v.D2_LV_W_H;
 	D2_MODULE_1 = 불량의심부품_v.D2_MODULE_1;
 
-	const keys = Object.keys(불량의심부품_v);
+	const keys = Object.keys(불량의심부품_v); //조회 결과에서 키 리스트를 만듬({ key : value})
 
 	for (var i = 0; i < keys.length; i++) {
 		var key = keys[i];
@@ -503,11 +504,11 @@ async function 불량의심부품_load(내부 = true) {
 		if (value == true) {
 			var str = "_" + key + "_COLOR = _" + key + ".style.backgroundColor;";
 			console.log(str);
-			eval(str);
+			eval(str); //실행중 코딩 방식으로 부품 버튼의 색을 저장(토글 기능을 위해)
 
 			str = "_" + key + ".style.backgroundColor = 'red';";
 			console.log(str);
-			eval(str);
+			eval(str); //모드 부품버튼의 색을 붉게 변경
 		}
 	}
 }

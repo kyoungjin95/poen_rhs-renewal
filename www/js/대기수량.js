@@ -27,7 +27,7 @@ async function 대기수량_현황_시작() {
 	});
 
 	document.getElementById('세척').addEventListener("click", function () {
-		대기목록('세척');
+		대기목록('세척');//각 박스 클릭시 수량에 해당하는 배터리팩의 기본정보 표시
 	});
 
 	document.getElementById('기초').addEventListener("click", function () {
@@ -73,12 +73,13 @@ async function 대기수량_현황_조회() {
 	console.log('update');
 }
 
+//각 항목의 대기 수량 표시
 async function 세척대기() {
 	count(BSA재제조, { 입고: { $ne: '' }, 세척: { $eq: '' }, 기초검사: { $eq: '' }, 분해조립: { $eq: '' }, 성능검사: { $eq: '' }, EOL: { $eq: '' }, 출하검사: { $eq: '' }, 소재지: { $nin: ['공정대기', '품질대기', '구장'] }, 완전분해: { $eq: '' }, 폐기: { $eq: '' }, 출하: { $eq: '' }, 구분: { $nin: ['일반기타', '보증기타'] } }, 세척);
 	await delay();
 
 	document.getElementById('check_num2').innerHTML = option_세척_cnt;
-}
+}ㅁ
 
 async function 기초검사대기() {
 	count(BSA재제조, { 세척: { $ne: '' }, 기초검사: { $eq: '' }, 분해조립: { $eq: '' }, 성능검사: { $eq: '' }, EOL: { $eq: '' }, 출하검사: { $eq: '' }, 소재지: { $nin: ['공정대기', '품질대기', '구장'] }, 완전분해: { $eq: '' }, 폐기: { $eq: '' }, 출하: { $eq: '' }, 구분: { $nin: ['일반기타', '보증기타'] } }, 기초검사);
@@ -132,6 +133,7 @@ async function 품질대기() {
 	await 대기목록(선택대기공정);
 }
 
+//공정에 해당하는 대기 배터리팩 기본정보 리스트 표출
 async function 대기목록(공정) {
 	var 대기_tabledata_BSA = [];
 	선택대기공정 = 공정;

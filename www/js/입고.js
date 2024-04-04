@@ -10,7 +10,7 @@ async function 입고_시작() {
   const _입고기타 = document.getElementById("_입고_기타");
   const _입고일반 = document.getElementById("_입고_일반");
 
-  if (level != "관리자") {
+  if (level != "관리자") { //기타 제외 및 일반 제외는 관리자 계정으로만 설정이 가능함
     _입고일반.style.display = "inline-block";
     _입고기타.style.display = "none";
   } else {
@@ -18,14 +18,15 @@ async function 입고_시작() {
     _입고기타.style.display = "inline-block";
   }
 
-  var 보관위치 = select_pos;
+  var 보관위치 = select_pos; //보관 rack 화면에서 지정한 위치 정보
 
   select_pos = "";
 
   if (보관위치 != "") {
-    _management_id.value = 관리번호.toUpperCase();
+    _management_id.value = 관리번호.toUpperCase(); //rack 선택화면에서 사용한 관리번호 자동 기입
   }
 
+  //드래그앤드롭 이미지 넣기 및 삭제 기능
   _img1.ondblclick = function (evt) {
     _img1.src = "";
   };
@@ -53,10 +54,11 @@ async function 입고_시작() {
   if (_management_id.value.length == 0) return;
   if ((_management_id.value == "") | (_management_id.value == "none")) return;
 
-  관리번호 = _management_id.value;
+  관리번호 = _management_id.value; //전역 변수인 관리번호에 지금 입력한 관리번호 넣어줌
 
-  _management_id.value = _management_id.value.toUpperCase();
+  _management_id.value = _management_id.value.toUpperCase(); //대문자화
 
+  //데이터 조회
   find(입고, _management_id.value);
   await delay();
 
@@ -89,6 +91,7 @@ async function 입고_시작() {
     _입고일.value = now;
   }
 
+  //사진 조회
   find(입고_pic, _management_id.value);
   await delay();
 
@@ -102,14 +105,15 @@ async function 입고_시작() {
 async function 입고_save() {
   if (_management_id.value.length == 0) return;
   console.log("save: ", _management_id.value);
-  _차종.value = _차종.value.replace("-", "_");
+
+  _차종.value = _차종.value.replace("-", "_"); //수동 입력시 형식을 맞춰줌(지금은 리스트에서 고르기 때문에 불필요함)
   var doc = JSON.parse(JSON.stringify(입고_doc));
 
   var DateTime = luxon.DateTime;
   var seoul = DateTime.local().setZone("Asia/Seoul");
   var now = seoul.toString().slice(0, 19);
 
-  if (_입고일.value == "") _입고일.value = now;
+  if (_입고일.value == "") _입고일.value = now; //입고일 현재 시간으로 자동 셋팅
 
   doc.관리번호 = _management_id.value.trim().toUpperCase();
   doc.입고일 = _입고일.value;
@@ -120,6 +124,7 @@ async function 입고_save() {
   doc.RO_no = _RO_no.value;
   doc.보관위치 = _Rack_번호.value;
 
+  //RO번호 자릿수 체크
   if (_RO_no.value.length != 17 && _RO_no.value.length != 0) {
     var cnt = (_RO_no.value.match(/-/g) || []).length;
     if (_RO_no.value.length - cnt != 17) {
@@ -131,13 +136,15 @@ async function 입고_save() {
   if (_RO_no.value.length == 0) {
     alert("RO 번호가 입력되지 않았습니다.");
   }
+  
+  //DB에 입고 데이터 저장
   update(입고, doc);
   await delay();
 
   console.log(update_count);
   console.log(insert_count);
 
-  var out = false;
+  var out = false; //업데이트 및 인설트 되었다면 true
   if (update_count > 0) {
     out = true;
     alert("업데이트 되었습니다");
@@ -148,6 +155,7 @@ async function 입고_save() {
     alert("저장 되었습니다");
   }
 
+  /사진 저장
   var pic_doc = JSON.parse(JSON.stringify(입고_pic_doc));
   pic_doc.관리번호 = _management_id.value;
   pic_doc.pic1 = _img1.src;
@@ -156,7 +164,7 @@ async function 입고_save() {
   await delay();
 
   console.log("save 입고 pic1");
-  if (out == false) {
+  if (out == false) { //업데이트 메세지 한번만 출력위해
     if (update_count > 0) {
       alert("업데이트 되었습니다");
     }
@@ -166,12 +174,13 @@ async function 입고_save() {
     }
   }
 
+  //기본정보에 관련 정보 기입
   find(BSA재제조, _management_id.value);
   await delay();
 
   console.log("기본정보 유무 : ", BSA재제조_v);
 
-  if (BSA재제조_v == null) {
+  if (BSA재제조_v == null) { //기본정보가 없을시 새로 만듬
     var _doc = JSON.parse(JSON.stringify(BSA재제조_doc));
     _doc.관리번호 = _management_id.value.trim().toUpperCase();
     _doc.입고 = _입고일.value;
@@ -180,11 +189,12 @@ async function 입고_save() {
     _doc.품번 = _품번.value;
     _doc.RO_no = _RO_no.value;
     _doc.보관위치 = _Rack_번호.value;
+
     update(BSA재제조, _doc);
     await delay();
 
     select_pos = "";
-  } else {
+  } else { //있다면 관련 정보만 수정
     var _doc = {
       관리번호: _management_id.value.toUpperCase(),
       입고: _입고일.value,
@@ -199,6 +209,7 @@ async function 입고_save() {
     await delay();
   }
 
+  //공정단계를 자동 처리
   await 공정단계자동입력(_management_id.value);
   //이전페이지();
 }

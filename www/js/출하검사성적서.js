@@ -7,7 +7,7 @@ async function 출하검사성적서_시작() {
 }
 
 async function 출하검사성적서_조회(is재제조번호 = false) {
-  if (is재제조번호 == true) {
+  if (is재제조번호 == true) { //재제조번호로 관리자 번호를 구함
     findOne_BSA재제조(BSA재제조, { 재제조번호: _재제조번호.value });
     await delay();
 
@@ -17,12 +17,13 @@ async function 출하검사성적서_조회(is재제조번호 = false) {
   }
 
   if (_management_id.value.trim() == "조회 버튼을 누르세요")
-    _management_id.value = 관리번호;
+    _management_id.value = 관리번호; //빈값이면 전역변수 관리번호로 기입
 
   console.log("load: ", _management_id.value);
 
   if (_management_id.value.length == 0) return;
 
+  //기본정보 조회하여 재제조번호를 구함
   find(BSA재제조, _management_id.value);
   await delay();
 
@@ -30,6 +31,7 @@ async function 출하검사성적서_조회(is재제조번호 = false) {
     _재제조번호.innerHTML = BSA재제조_v.재제조번호;
   }
 
+  //입고 데이터 쓰이는곳
   find(입고, _management_id.value);
   await delay();
 
@@ -38,6 +40,7 @@ async function 출하검사성적서_조회(is재제조번호 = false) {
     _품번.innerHTML = 입고_v.품번;
   }
 
+  //기초검사에서 RO번호를 가져옴
   find(기초검사, _management_id.value);
   await delay();
 
@@ -45,6 +48,7 @@ async function 출하검사성적서_조회(is재제조번호 = false) {
     _RO.innerHTML = 기초검사_v.RO_no;
   }
 
+  //출하정보를 로딩
   find(출하정보, _management_id.value);
   await delay();
 
@@ -120,6 +124,7 @@ async function 출하검사성적서_조회(is재제조번호 = false) {
   }
 }
 
+//출하검사 성적서 pdfㄹ 출력
 async function 출하검사성적서_save() {
   var _date = new Date();
   var file_name = "출하검사성적서" + _date + ".pdf";

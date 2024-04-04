@@ -1,3 +1,4 @@
+//해외향 작업이후 안쓰게된 기능임
 var tabledata = [];
 async function 고품정보등록_시작() {
 	if (worker == '') return;

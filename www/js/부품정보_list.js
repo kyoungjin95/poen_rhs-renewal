@@ -1,3 +1,4 @@
+//각 부품들의 차종별 리스트 배열 선언
 var DE_SK3_LWR_CASE = [];
 var OS_LWR_CASE = [];
 var HR_PU_LWR_CASE = [];
@@ -183,6 +184,7 @@ async function 부품정보_list_시작() {
 
 	auto_focus();
 
+	//차종별 표시항목들을 일단 모두 숨김
 	_A.style.display = "none";
 	_B.style.display = "none";
 	_C.style.display = "none";
@@ -195,10 +197,13 @@ async function 부품정보_list_시작() {
 	_img_4.style.display = "none";
 	_img_5.style.display = "none";
 
+	//기존의 입력된 데이터값을 불러옴
 	await 부품정보_list_load();
 
+	//부품별 저장된 품번들을 불러옴
 	await 품번_list();
 
+	//차종별 화면 부품 그림 표시
 	switch (차종) {
 		case "DE":
 		case "DE_EV":
@@ -220,9 +225,9 @@ async function 부품정보_list_시작() {
 			_img_4.style.display = "none";
 			_img_5.style.display = "none";
 
-			_A_UPR_CASE_QR.focus();
-			select_box_set_A();
-			break;
+			_A_UPR_CASE_QR.focus(); //첫번째 항목에 포커스 이동
+			select_box_set_A(); //차종에 맞추어 품번의 셀렉트  리스트 입력
+			break; 
 
 		case "PU":
 		case "PU_EV":
@@ -293,6 +298,7 @@ async function 부품정보_list_시작() {
 }
 
 async function 품번_list() {
+	//차종별 각 부품들의 품번을 저장할 배열을 선언
 	DE_SK3_LWR_CASE = [];
 	OS_LWR_CASE = [];
 	HR_PU_LWR_CASE = [];
@@ -458,6 +464,7 @@ async function 품번_list() {
 	LKFC_BMA = [];
 	LM_BMA = [];
 
+	//저장된 품번을 각 차종 및 부품별로 불러옴
 	find_품번(품번, { 번호 : { $exists : true }});
 	await delay();
 
