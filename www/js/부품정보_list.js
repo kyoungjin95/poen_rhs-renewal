@@ -670,7 +670,7 @@ function select_box_set_A() {
   var option_4;
   var option_5;
 
-  //os/ed/sk3/lk
+  //os/de/sk3/lk
   switch (차종) {
     case "DE":
     case "DE_EV":
@@ -1043,7 +1043,12 @@ function select_box_set_A() {
         option_4.value = v;
         option_5.value = v;
 
-        option.text = v;
+        option_1.text = option_1.value;
+        option_2.text = option_2.value;
+        option_3.text = option_3.value;
+        option_4.text = option_4.value;
+        option_5.text = option_5.value;
+
         _A_HV_W_H_1_SEL.appendChild(option_1);
         _A_HV_W_H_2_SEL.appendChild(option_2);
         _A_HV_W_H_3_SEL.appendChild(option_3);
