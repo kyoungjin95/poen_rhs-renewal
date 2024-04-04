@@ -110,7 +110,7 @@ async function 분해조립_시작(is재제조 = 0) {
 		_BMU1.value = 분해조립_v.BMU1;    //각 항목마다 2개의 값을 저장하고 로딩함
 		_BMU1_2.value = 분해조립_v.BMU1_2;
 		if (분해조립_v.BMU2 != "") {
-			BMU_count += 1; 분해조립 항목 BMU  번호
+			BMU_count += 1; // 분해조립 항목 BMU  번호
 			type_add("BMU", "BMU", no_count, BMU_count); //분해조립 항목을 늘임
 			document.getElementById("_BMU2").value = 분해조립_v.BMU2;
 			document.getElementById("_BMU2_2").value = 분해조립_v.BMU2_2;
@@ -890,7 +890,7 @@ async function 분해조립_save() {
 	for (var i = 1; i <= SPA_count; i++)
 		eval(
 			"var item = document.getElementById('_SPA" +
-			i +제
+			i +
 			"'); if(typeof item != 'undefined') doc.SPA" +
 			i +
 			" = item.value;"
