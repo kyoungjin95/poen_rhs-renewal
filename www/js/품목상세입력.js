@@ -3,12 +3,12 @@ var 차종 = "";
 var flag_입고_complete = false;
 
 async function 상세입력_시작(is재제조번호 = false) {
-  if(typeof _폐기 == "undefined") {
+  if (typeof _폐기 == "undefined") {
     await sleep(DELAY);
     return;
   }
-  
-  //기존에 기본정보 페이지에서 각 공정입력으로 들어갔기에 이곳에 값 리셋 이 있게 되었다. 
+
+  //기존에 기본정보 페이지에서 각 공정입력으로 들어갔기에 이곳에 값 리셋 이 있게 되었다.
   flag_상세입력 = false;
   first_분해조립 = true;
 
@@ -32,9 +32,10 @@ async function 상세입력_시작(is재제조번호 = false) {
   Busbars_count = 1;
   BMA_count = 1;
 
-  if(_management_id.value == '') _management_id.value = 관리번호;
+  if (_management_id.value == "") _management_id.value = 관리번호;
 
-  if (is재제조번호 == false) {//관리번호로 로딩
+  if (is재제조번호 == false) {
+    //관리번호로 로딩
     _management_id.value = _management_id.value.trim().toUpperCase();
     if (_management_id.value == "조회를 누르세요") _management_id.value = 관리번호;
 
@@ -117,7 +118,8 @@ async function 상세입력_시작(is재제조번호 = false) {
       find(BSA재제조, _management_id.value);
       await delay();
     }
-  } else { //재제조번호로 조회
+  } else {
+    //재제조번호로 조회
     console.log("재제조번호:", _재제조번호.value);
     if (level == "kia_일반") {
       findOne_BSA재제조(BSA재제조, {
@@ -294,35 +296,36 @@ async function 상세입력_시작(is재제조번호 = false) {
     _RO_no.value = BSA재제조_v.RO_no;
     _공정단계.value = BSA재제조_v.공정단계;
     _적재No.value = BSA재제조_v.적재No;
-    if(BSA재제조_v.입고 != undefined) _입고.value = BSA재제조_v.입고.substr(0, 16);
+    if (BSA재제조_v.입고 != undefined) _입고.value = BSA재제조_v.입고.substr(0, 16);
     if (BSA재제조_v.제조투입 != undefined) _제조투입.value = BSA재제조_v.제조투입.substr(0, 16);
-    if(BSA재제조_v.세척투입일 != undefined) _세척투입일.value = BSA재제조_v.세척투입일.substr(0, 16);
-    if(BSA재제조_v.세척 != undefined) _세척.value = BSA재제조_v.세척.substr(0, 16);
-    if(BSA재제조_v.기초검사투입일 != undefined) _기초검사투입일.value = BSA재제조_v.기초검사투입일.substr(0, 16);
-    if(BSA재제조_v.기초검사 != undefined) _기초검사.value = BSA재제조_v.기초검사.substr(0, 16);
-    if(BSA재제조_v.분해조립투입일 != undefined) _분해조립투입일.value = BSA재제조_v.분해조립투입일.substr(0, 16);
-    if(BSA재제조_v.분해조립 != undefined) _분해조립.value = BSA재제조_v.분해조립.substr(0, 16);
-    if(BSA재제조_v.성능검사투입일 != undefined) _성능검사투입일.value = BSA재제조_v.성능검사투입일.substr(0, 16);
-    if( BSA재제조_v.성능검사 != undefined) _성능검사.value = BSA재제조_v.성능검사.substr(0, 16);
-    if( BSA재제조_v.EOL투입일 != undefined) _EOL투입일.value = BSA재제조_v.EOL투입일.substr(0, 16);
-    if( BSA재제조_v.EOL != undefined) _EOL.value = BSA재제조_v.EOL.substr(0, 16);
+    if (BSA재제조_v.세척투입일 != undefined) _세척투입일.value = BSA재제조_v.세척투입일.substr(0, 16);
+    if (BSA재제조_v.세척 != undefined) _세척.value = BSA재제조_v.세척.substr(0, 16);
+    if (BSA재제조_v.기초검사투입일 != undefined) _기초검사투입일.value = BSA재제조_v.기초검사투입일.substr(0, 16);
+    if (BSA재제조_v.기초검사 != undefined) _기초검사.value = BSA재제조_v.기초검사.substr(0, 16);
+    if (BSA재제조_v.분해조립투입일 != undefined) _분해조립투입일.value = BSA재제조_v.분해조립투입일.substr(0, 16);
+    if (BSA재제조_v.분해조립 != undefined) _분해조립.value = BSA재제조_v.분해조립.substr(0, 16);
+    if (BSA재제조_v.성능검사투입일 != undefined) _성능검사투입일.value = BSA재제조_v.성능검사투입일.substr(0, 16);
+    if (BSA재제조_v.성능검사 != undefined) _성능검사.value = BSA재제조_v.성능검사.substr(0, 16);
+    if (BSA재제조_v.EOL투입일 != undefined) _EOL투입일.value = BSA재제조_v.EOL투입일.substr(0, 16);
+    if (BSA재제조_v.EOL != undefined) _EOL.value = BSA재제조_v.EOL.substr(0, 16);
     if (BSA재제조_v.출하검사 != undefined) _출하검사.value = BSA재제조_v.출하검사.substr(0, 16);
     _납품처.value = BSA재제조_v.납품처;
-    if(BSA재제조_v.출하 != undefined) _출하.value = BSA재제조_v.출하.substr(0, 16);
+    if (BSA재제조_v.출하 != undefined) _출하.value = BSA재제조_v.출하.substr(0, 16);
     //if (BSA재제조_v.출하.length > 5) _공정단계.value = "출하";
-    if(BSA재제조_v.소재지 != undefined) _소재지.value = BSA재제조_v.소재지.substr(0, 16);
+    if (BSA재제조_v.소재지 != undefined) _소재지.value = BSA재제조_v.소재지.substr(0, 16);
     _소재지사유.value = BSA재제조_v.소재지사유;
-    if(BSA재제조_v.마지막충전일 != undefined)_마지막충전일.value = BSA재제조_v.마지막충전일.substr(0, 16);
-    if(BSA재제조_v.반품입고 != undefined) _반품입고.value = BSA재제조_v.반품입고.substr(0, 16);
-    if(BSA재제조_v.재출하 != undefined) _재출하.value = BSA재제조_v.재출하.substr(0, 16);
-    if(BSA재제조_v.완전분해 != undefined) _완전분해.value = BSA재제조_v.완전분해.substr(0, 16);
-    if(BSA재제조_v.폐기 != undefined) _폐기.value = BSA재제조_v.폐기.substr(0, 16);
+    if (BSA재제조_v.마지막충전일 != undefined) _마지막충전일.value = BSA재제조_v.마지막충전일.substr(0, 16);
+    if (BSA재제조_v.반품입고 != undefined) _반품입고.value = BSA재제조_v.반품입고.substr(0, 16);
+    if (BSA재제조_v.재출하 != undefined) _재출하.value = BSA재제조_v.재출하.substr(0, 16);
+    if (BSA재제조_v.완전분해 != undefined) _완전분해.value = BSA재제조_v.완전분해.substr(0, 16);
+    if (BSA재제조_v.폐기 != undefined) _폐기.value = BSA재제조_v.폐기.substr(0, 16);
     _완전분해사유.value = BSA재제조_v.완전분해사유;
     _폐기사유.value = BSA재제조_v.폐기사유;
     if (BSA재제조_v.출하예약 != undefined) _출하예약.value = BSA재제조_v.출하예약.substr(0, 16);
     if (BSA재제조_v.렉번호 != undefined) _렉번호.value = BSA재제조_v.렉번호.substr(0, 16);
-    if (select_pos != '') _렉번호.value = select_pos;
-  } else { //저장된 데이터가 없으면 리셋
+    if (select_pos != "") _렉번호.value = select_pos;
+  } else {
+    //저장된 데이터가 없으면 리셋
     if (is재제조번호 == false) {
       _재제조번호.value = "";
     } else {
@@ -366,13 +369,13 @@ async function 상세입력_시작(is재제조번호 = false) {
     //item_detail_save(true);
   }
 
-  _완전분해.onchange = function(e) {
-	  _공정단계.value = '완전분해';
-  }
+  _완전분해.onchange = function (e) {
+    _공정단계.value = "완전분해";
+  };
 
-  _폐기.onchange = function(e) {
-	  _공정단계.value = '폐기';
-  }
+  _폐기.onchange = function (e) {
+    _공정단계.value = "폐기";
+  };
 }
 
 async function item_detail_save(flag_result = false) {
@@ -547,18 +550,4 @@ function 교체부품상세_콤보박스(e) {
   const value = e.value;
 
   교체부품상세No = value;
-}
-
-//안쓰이는 코드이다... 코드가 개선되어온 발자취이기에 그냥 나두었다....
-function showOptionMenu() {
-  const options = document.querySelectorAll(".option");
-  const optionContainer = document.querySelector(".options");
-  // item-detalis - select option
-  optionContainer.classList.toggle("active");
-
-  options.forEach((option) => {
-    option.addEventListener("click", () => {
-      optionContainer.classList.remove("active");
-    });
-  });
 }
