@@ -1,9 +1,9 @@
-var pre_관리번호 = "";
-var 차종 = "";
+var pre_관리번호 = '';
+var 차종 = '';
 var flag_입고_complete = false;
 
 async function 상세입력_시작(is재제조번호 = false) {
-  if (typeof _폐기 == "undefined") {
+  if (typeof _폐기 == 'undefined') {
     await sleep(DELAY);
     return;
   }
@@ -32,85 +32,85 @@ async function 상세입력_시작(is재제조번호 = false) {
   Busbars_count = 1;
   BMA_count = 1;
 
-  if (_management_id.value == "") _management_id.value = 관리번호;
+  if (_management_id.value == '') _management_id.value = 관리번호;
 
   if (is재제조번호 == false) {
     _management_id.value = _management_id.value.trim().toUpperCase();
-    if (_management_id.value == "조회를 누르세요") _management_id.value = 관리번호;
+    if (_management_id.value == '조회를 누르세요') _management_id.value = 관리번호;
 
-    console.log("load: ", _management_id.value);
+    console.log('load: ', _management_id.value);
     if (_management_id.value.length == 0 && _재제조번호.value.length == 0) return;
 
     관리번호 = _management_id.value.trim().toUpperCase();
-    console.log("관리번호:", 관리번호);
+    console.log('관리번호:', 관리번호);
 
-    _재제조번호.value = "";
-    _구분.value = "";
-    _차종.value = "";
-    _품번.value = "";
-    _RO_no.value = "";
-    _공정단계.value = "";
-    _적재No.value = "";
-    _입고.value = "";
-    _제조투입.value = "";
-    _세척투입일.value = "";
-    _세척.value = "";
-    _기초검사투입일.value = "";
-    _기초검사.value = "";
-    _분해조립투입일.value = "";
-    _분해조립.value = "";
-    _성능검사투입일.value = "";
-    _성능검사.value = "";
-    _EOL투입일.value = "";
-    _EOL.value = "";
-    _출하검사.value = "";
-    _출하.value = "";
-    _납품처.value = "";
-    _소재지.value = "";
-    _소재지사유.value = "";
-    _반품입고.value = "";
-    _재출하.value = "";
-    _완전분해.value = "";
-    _폐기.value = "";
-    _완전분해사유.value = "";
-    _폐기사유.value = "";
-    _렉번호.value = "";
+    _재제조번호.value = '';
+    _구분.value = '';
+    _차종.value = '';
+    _품번.value = '';
+    _RO_no.value = '';
+    _공정단계.value = '';
+    _적재No.value = '';
+    _입고.value = '';
+    _제조투입.value = '';
+    _세척투입일.value = '';
+    _세척.value = '';
+    _기초검사투입일.value = '';
+    _기초검사.value = '';
+    _분해조립투입일.value = '';
+    _분해조립.value = '';
+    _성능검사투입일.value = '';
+    _성능검사.value = '';
+    _EOL투입일.value = '';
+    _EOL.value = '';
+    _출하검사.value = '';
+    _출하.value = '';
+    _납품처.value = '';
+    _소재지.value = '';
+    _소재지사유.value = '';
+    _반품입고.value = '';
+    _재출하.value = '';
+    _완전분해.value = '';
+    _폐기.value = '';
+    _완전분해사유.value = '';
+    _폐기사유.value = '';
+    _렉번호.value = '';
 
     //고객 계정에 맞춰 고객관 관련있는 데이터만 조회
-    if (level == "kia_일반") {
+    if (level == 'kia_일반') {
       findOne_BSA재제조(BSA재제조, {
         차종: {
-          $in: ["DE", "DE_EV", "DEPBV", "DEPBV-EV", "CV", "CV_EV", "MV", "MV_EV", "PU", "PU_EV", "SG2", "SG2-EV", "TAM", "TAM-EV", "PS", "PS_EV", "SK3"],
+          $in: ['DE', 'DE_EV', 'DEPBV', 'DEPBV-EV', 'CV', 'CV_EV', 'MV', 'MV_EV', 'PU', 'PU_EV', 'SG2', 'SG2-EV', 'TAM', 'TAM-EV', 'PS', 'PS_EV', 'SK3'],
         },
         관리번호: _management_id.value,
-        구분: "일반",
+        구분: '일반',
       });
       await delay();
-    } else if (level == "hyundai_일반") {
+    } else if (level == 'hyundai_일반') {
       findOne_BSA재제조(BSA재제조, {
         차종: {
-          $in: ["OS", "OS_EV", "NE", "NE_EV", "HR", "HR_EV", "LK", "LK_EV", "LM", "LM_EV", "LKFC", "LKFC-EV", "CS", "CS-EV", "CS_EV", "SX2", "SX2-EV", "AE", "AE_EV", "CE", "CE_EV", "ME", "ME_EV", "FE", "FE_EV", "RG3", "RG3-EV", "JW", "JW_EV", "JK", "JK_EV", "JX", "JX_EV"],
+          $in: ['OS', 'OS_EV', 'NE', 'NE_EV', 'HR', 'HR_EV', 'LK', 'LK_EV', 'LM', 'LM_EV', 'LKFC', 'LKFC-EV', 'CS', 'CS-EV', 'CS_EV', 'SX2', 'SX2-EV', 'AE', 'AE_EV', 'CE', 'CE_EV', 'ME', 'ME_EV', 'FE', 'FE_EV', 'RG3', 'RG3-EV', 'JW', 'JW_EV', 'JK', 'JK_EV', 'JX', 'JX_EV'],
         },
         관리번호: _management_id.value,
-        구분: "일반",
+        구분: '일반',
       });
       await delay();
-    } else if (level == "kia_보증") {
+    } else if (level == 'kia_보증') {
       findOne_BSA재제조(BSA재제조, {
         차종: {
-          $in: ["DE", "DE_EV", "DEPBV", "DEPBV-EV", "CV", "CV_EV", "MV", "MV_EV", "PU", "PU_EV", "SG2", "SG2-EV", "TAM", "TAM-EV", "PS", "PS_EV", "SK3"],
+          $in: ['DE', 'DE_EV', 'DEPBV', 'DEPBV-EV', 'CV', 'CV_EV', 'MV', 'MV_EV', 'PU', 'PU_EV', 'SG2', 'SG2-EV', 'TAM', 'TAM-EV', 'PS', 'PS_EV', 'SK3'],
         },
         관리번호: _management_id.value,
-        구분: "보증",
+        구분: '보증',
       });
       await delay();
-    } else if (level == "hyundai_보증") {
+    } else if (level == 'hyundai_보증') {
       findOne_BSA재제조(BSA재제조, {
         차종: {
-          $in: ["OS", "OS_EV", "NE", "NE_EV", "HR", "HR_EV", "LK", "LK_EV", "LM", "LM_EV", "LKFC", "LKFC-EV", "CS", "CS-EV", "CS_EV", "SX2", "SX2-EV", "AE", "AE_EV", "CE", "CE_EV", "ME", "ME_EV", "FE", "FE_EV", "RG3", "RG3-EV", "JW", "JW_EV", "JK", "JK_EV", "JX", "JX_EV"],
+          $in: ['OS', 'OS_EV', 'NE', 'NE_EV', 'HR', 'HR_EV', 'LK', 'LK_EV', 'LM', 'LM_EV', 'LKFC', 'LKFC-EV', 'CS', 'CS-EV', 'CS_EV', 'SX2', 'SX2-EV', 'AE', 'AE_EV', 'CE', 'CE_EV', 'ME', 'ME_EV', 'FE', 'FE_EV', 'RG3', 'RG3-EV', 'JW', 'JW_EV', 'JK', 'JK_EV', 'JX', 'JX_EV'],
         },
         관리번호: _management_id.value,
-        구분: "보증",
+        구분: '보증',
       });
       await delay();
     } else {
@@ -118,41 +118,41 @@ async function 상세입력_시작(is재제조번호 = false) {
       await delay();
     }
   } else {
-    console.log("재제조번호:", _재제조번호.value);
-    if (level == "kia_일반") {
+    console.log('재제조번호:', _재제조번호.value);
+    if (level == 'kia_일반') {
       findOne_BSA재제조(BSA재제조, {
         차종: {
-          $in: ["DE", "DE_EV", "DEPBV", "DEPBV-EV", "CV", "CV_EV", "MV", "MV_EV", "PU", "PU_EV", "SG2", "SG2-EV", "TAM", "TAM-EV", "PS", "PS_EV", "SK3"],
+          $in: ['DE', 'DE_EV', 'DEPBV', 'DEPBV-EV', 'CV', 'CV_EV', 'MV', 'MV_EV', 'PU', 'PU_EV', 'SG2', 'SG2-EV', 'TAM', 'TAM-EV', 'PS', 'PS_EV', 'SK3'],
         },
         재제조번호: _재제조번호.value,
-        구분: "일반",
+        구분: '일반',
       });
       await delay();
-    } else if (level == "hyundai_일반") {
+    } else if (level == 'hyundai_일반') {
       findOne_BSA재제조(BSA재제조, {
         차종: {
-          $in: ["OS", "OS_EV", "NE", "NE_EV", "HR", "HR_EV", "LK", "LK_EV", "LM", "LM_EV", "LKFC", "LKFC-EV", "CS", "CS-EV", "CS_EV", "SX2", "SX2-EV", "AE", "AE_EV", "CE", "CE_EV", "ME", "ME_EV", "FE", "FE_EV", "RG3", "RG3-EV", "JW", "JW_EV", "JK", "JK_EV", "JX", "JX_EV"],
+          $in: ['OS', 'OS_EV', 'NE', 'NE_EV', 'HR', 'HR_EV', 'LK', 'LK_EV', 'LM', 'LM_EV', 'LKFC', 'LKFC-EV', 'CS', 'CS-EV', 'CS_EV', 'SX2', 'SX2-EV', 'AE', 'AE_EV', 'CE', 'CE_EV', 'ME', 'ME_EV', 'FE', 'FE_EV', 'RG3', 'RG3-EV', 'JW', 'JW_EV', 'JK', 'JK_EV', 'JX', 'JX_EV'],
         },
         재제조번호: _재제조번호.value,
-        구분: "일반",
+        구분: '일반',
       });
       await delay();
-    } else if (level == "kia_보증") {
+    } else if (level == 'kia_보증') {
       findOne_BSA재제조(BSA재제조, {
         차종: {
-          $in: ["DE", "DE_EV", "DEPBV", "DEPBV-EV", "CV", "CV_EV", "MV", "MV_EV", "PU", "PU_EV", "SG2", "SG2-EV", "TAM", "TAM-EV", "PS", "PS_EV", "SK3"],
+          $in: ['DE', 'DE_EV', 'DEPBV', 'DEPBV-EV', 'CV', 'CV_EV', 'MV', 'MV_EV', 'PU', 'PU_EV', 'SG2', 'SG2-EV', 'TAM', 'TAM-EV', 'PS', 'PS_EV', 'SK3'],
         },
         재제조번호: _재제조번호.value,
-        구분: "보증",
+        구분: '보증',
       });
       await delay();
-    } else if (level == "hyundai_보증") {
+    } else if (level == 'hyundai_보증') {
       findOne_BSA재제조(BSA재제조, {
         차종: {
-          $in: ["OS", "OS_EV", "NE", "NE_EV", "HR", "HR_EV", "LK", "LK_EV", "LM", "LM_EV", "LKFC", "LKFC-EV", "CS", "CS-EV", "CS_EV", "SX2", "SX2-EV", "AE", "AE_EV", "CE", "CE_EV", "ME", "ME_EV", "FE", "FE_EV", "RG3", "RG3-EV", "JW", "JW_EV", "JK", "JK_EV", "JX", "JX_EV"],
+          $in: ['OS', 'OS_EV', 'NE', 'NE_EV', 'HR', 'HR_EV', 'LK', 'LK_EV', 'LM', 'LM_EV', 'LKFC', 'LKFC-EV', 'CS', 'CS-EV', 'CS_EV', 'SX2', 'SX2-EV', 'AE', 'AE_EV', 'CE', 'CE_EV', 'ME', 'ME_EV', 'FE', 'FE_EV', 'RG3', 'RG3-EV', 'JW', 'JW_EV', 'JK', 'JK_EV', 'JX', 'JX_EV'],
         },
         재제조번호: _재제조번호.value,
-        구분: "보증",
+        구분: '보증',
       });
       await delay();
     } else {
@@ -164,42 +164,42 @@ async function 상세입력_시작(is재제조번호 = false) {
     if (is재제조번호 == false) {
       관리번호 = _management_id.value.trim().toUpperCase();
       pre_관리번호 = 관리번호;
-      sessionStorage.setItem("manage_id", 관리번호);
+      sessionStorage.setItem('manage_id', 관리번호);
 
-      if (level == "kia_일반") {
+      if (level == 'kia_일반') {
         findOne_BSA재제조(BSA재제조, {
           차종: {
-            $in: ["DE", "DE_EV", "DEPBV", "DEPBV-EV", "CV", "CV_EV", "MV", "MV_EV", "PU", "PU_EV", "SG2", "SG2-EV", "TAM", "TAM-EV", "PS", "PS_EV", "SK3"],
+            $in: ['DE', 'DE_EV', 'DEPBV', 'DEPBV-EV', 'CV', 'CV_EV', 'MV', 'MV_EV', 'PU', 'PU_EV', 'SG2', 'SG2-EV', 'TAM', 'TAM-EV', 'PS', 'PS_EV', 'SK3'],
           },
           관리번호: _management_id.value,
-          구분: "일반",
+          구분: '일반',
         });
         await delay();
-      } else if (level == "hyundai_일반") {
+      } else if (level == 'hyundai_일반') {
         findOne_BSA재제조(BSA재제조, {
           차종: {
-            $in: ["OS", "OS_EV", "NE", "NE_EV", "HR", "HR_EV", "LK", "LK_EV", "LM", "LM_EV", "LKFC", "LKFC-EV", "CS", "CS-EV", "CS_EV", "SX2", "SX2-EV", "AE", "AE_EV", "CE", "CE_EV", "ME", "ME_EV", "FE", "FE_EV", "RG3", "RG3-EV", "JW", "JW_EV", "JK", "JK_EV", "JX", "JX_EV"],
+            $in: ['OS', 'OS_EV', 'NE', 'NE_EV', 'HR', 'HR_EV', 'LK', 'LK_EV', 'LM', 'LM_EV', 'LKFC', 'LKFC-EV', 'CS', 'CS-EV', 'CS_EV', 'SX2', 'SX2-EV', 'AE', 'AE_EV', 'CE', 'CE_EV', 'ME', 'ME_EV', 'FE', 'FE_EV', 'RG3', 'RG3-EV', 'JW', 'JW_EV', 'JK', 'JK_EV', 'JX', 'JX_EV'],
           },
           관리번호: _management_id.value,
-          구분: "일반",
+          구분: '일반',
         });
         await delay();
-      } else if (level == "kia_보증") {
+      } else if (level == 'kia_보증') {
         findOne_BSA재제조(BSA재제조, {
           차종: {
-            $in: ["DE", "DE_EV", "DEPBV", "DEPBV-EV", "CV", "CV_EV", "MV", "MV_EV", "PU", "PU_EV", "SG2", "SG2-EV", "TAM", "TAM-EV", "PS", "PS_EV", "SK3"],
+            $in: ['DE', 'DE_EV', 'DEPBV', 'DEPBV-EV', 'CV', 'CV_EV', 'MV', 'MV_EV', 'PU', 'PU_EV', 'SG2', 'SG2-EV', 'TAM', 'TAM-EV', 'PS', 'PS_EV', 'SK3'],
           },
           관리번호: _management_id.value,
-          구분: "보증",
+          구분: '보증',
         });
         await delay();
-      } else if (level == "hyundai_보증") {
+      } else if (level == 'hyundai_보증') {
         findOne_BSA재제조(BSA재제조, {
           차종: {
-            $in: ["OS", "OS_EV", "NE", "NE_EV", "HR", "HR_EV", "LK", "LK_EV", "LM", "LM_EV", "LKFC", "LKFC-EV", "CS", "CS-EV", "CS_EV", "SX2", "SX2-EV", "AE", "AE_EV", "CE", "CE_EV", "ME", "ME_EV", "FE", "FE_EV", "RG3", "RG3-EV", "JW", "JW_EV", "JK", "JK_EV", "JX", "JX_EV"],
+            $in: ['OS', 'OS_EV', 'NE', 'NE_EV', 'HR', 'HR_EV', 'LK', 'LK_EV', 'LM', 'LM_EV', 'LKFC', 'LKFC-EV', 'CS', 'CS-EV', 'CS_EV', 'SX2', 'SX2-EV', 'AE', 'AE_EV', 'CE', 'CE_EV', 'ME', 'ME_EV', 'FE', 'FE_EV', 'RG3', 'RG3-EV', 'JW', 'JW_EV', 'JK', 'JK_EV', 'JX', 'JX_EV'],
           },
           관리번호: _management_id.value,
-          구분: "보증",
+          구분: '보증',
         });
         await delay();
       } else {
@@ -208,76 +208,76 @@ async function 상세입력_시작(is재제조번호 = false) {
       }
     } else {
       _재제조번호.value = _재제조번호.value.trim();
-      console.log("load: ", _재제조번호.value);
+      console.log('load: ', _재제조번호.value);
 
       if (_management_id.value.length == 0 && _재제조번호.value.length == 0) return;
 
-      _management_id.value = "";
-      _구분.value = "";
-      _차종.value = "";
-      _품번.value = "";
-      _RO_no.value = "";
-      _공정단계.value = "";
-      _적재No.value = "";
-      _입고.value = "";
-      _제조투입.value = "";
-      _세척투입일.value = "";
-      _세척.value = "";
-      _기초검사투입일.value = "";
-      _기초검사.value = "";
-      _분해조립투입일.value = "";
-      _분해조립.value = "";
-      _성능검사투입일.value = "";
-      _성능검사.value = "";
-      _EOL투입일.value = "";
-      _EOL.value = "";
-      _출하검사.value = "";
-      _출하.value = "";
-      _납품처.value = "";
-      _소재지.value = "";
-      _소재지사유.value = "";
-      _반품입고.value = "";
-      _재출하.value = "";
-      _완전분해.value = "";
-      _폐기.value = "";
-      _완전분해사유.value = "";
-      _폐기사유.value = "";
-      _렉번호.value = "";
+      _management_id.value = '';
+      _구분.value = '';
+      _차종.value = '';
+      _품번.value = '';
+      _RO_no.value = '';
+      _공정단계.value = '';
+      _적재No.value = '';
+      _입고.value = '';
+      _제조투입.value = '';
+      _세척투입일.value = '';
+      _세척.value = '';
+      _기초검사투입일.value = '';
+      _기초검사.value = '';
+      _분해조립투입일.value = '';
+      _분해조립.value = '';
+      _성능검사투입일.value = '';
+      _성능검사.value = '';
+      _EOL투입일.value = '';
+      _EOL.value = '';
+      _출하검사.value = '';
+      _출하.value = '';
+      _납품처.value = '';
+      _소재지.value = '';
+      _소재지사유.value = '';
+      _반품입고.value = '';
+      _재출하.value = '';
+      _완전분해.value = '';
+      _폐기.value = '';
+      _완전분해사유.value = '';
+      _폐기사유.value = '';
+      _렉번호.value = '';
 
-      if (level == "kia_일반") {
+      if (level == 'kia_일반') {
         findOne_BSA재제조(BSA재제조, {
           차종: {
-            $in: ["DE", "DE_EV", "DEPBV", "DEPBV-EV", "CV", "CV_EV", "MV", "MV_EV", "PU", "PU_EV", "SG2", "SG2-EV", "TAM", "TAM-EV", "PS", "PS_EV", "SK3"],
+            $in: ['DE', 'DE_EV', 'DEPBV', 'DEPBV-EV', 'CV', 'CV_EV', 'MV', 'MV_EV', 'PU', 'PU_EV', 'SG2', 'SG2-EV', 'TAM', 'TAM-EV', 'PS', 'PS_EV', 'SK3'],
           },
           재제조번호: _재제조번호.value,
-          구분: "일반",
+          구분: '일반',
         });
         await delay();
-      } else if (level == "hyundai_일반") {
+      } else if (level == 'hyundai_일반') {
         findOne_BSA재제조(BSA재제조, {
           차종: {
-            $in: ["OS", "OS_EV", "NE", "NE_EV", "HR", "HR_EV", "LK", "LK_EV", "LM", "LM_EV", "LKFC", "LKFC-EV", "CS", "CS-EV", "CS_EV", "SX2", "SX2-EV", "AE", "AE_EV", "CE", "CE_EV", "ME", "ME_EV", "FE", "FE_EV", "RG3", "RG3-EV", "JW", "JW_EV", "JK", "JK_EV", "JX", "JX_EV"],
+            $in: ['OS', 'OS_EV', 'NE', 'NE_EV', 'HR', 'HR_EV', 'LK', 'LK_EV', 'LM', 'LM_EV', 'LKFC', 'LKFC-EV', 'CS', 'CS-EV', 'CS_EV', 'SX2', 'SX2-EV', 'AE', 'AE_EV', 'CE', 'CE_EV', 'ME', 'ME_EV', 'FE', 'FE_EV', 'RG3', 'RG3-EV', 'JW', 'JW_EV', 'JK', 'JK_EV', 'JX', 'JX_EV'],
           },
           재제조번호: _재제조번호.value,
-          구분: "일반",
+          구분: '일반',
         });
         await delay();
-      } else if (level == "kia_보증") {
+      } else if (level == 'kia_보증') {
         findOne_BSA재제조(BSA재제조, {
           차종: {
-            $in: ["DE", "DE_EV", "DEPBV", "DEPBV-EV", "CV", "CV_EV", "MV", "MV_EV", "PU", "PU_EV", "SG2", "SG2-EV", "TAM", "TAM-EV", "PS", "PS_EV", "SK3"],
+            $in: ['DE', 'DE_EV', 'DEPBV', 'DEPBV-EV', 'CV', 'CV_EV', 'MV', 'MV_EV', 'PU', 'PU_EV', 'SG2', 'SG2-EV', 'TAM', 'TAM-EV', 'PS', 'PS_EV', 'SK3'],
           },
           재제조번호: _재제조번호.value,
-          구분: "보증",
+          구분: '보증',
         });
         await delay();
-      } else if (level == "hyundai_보증") {
+      } else if (level == 'hyundai_보증') {
         findOne_BSA재제조(BSA재제조, {
           차종: {
-            $in: ["OS", "OS_EV", "NE", "NE_EV", "HR", "HR_EV", "LK", "LK_EV", "LM", "LM_EV", "LKFC", "LKFC-EV", "CS", "CS-EV", "CS_EV", "SX2", "SX2-EV", "AE", "AE_EV", "CE", "CE_EV", "ME", "ME_EV", "FE", "FE_EV", "RG3", "RG3-EV", "JW", "JW_EV", "JK", "JK_EV", "JX", "JX_EV"],
+            $in: ['OS', 'OS_EV', 'NE', 'NE_EV', 'HR', 'HR_EV', 'LK', 'LK_EV', 'LM', 'LM_EV', 'LKFC', 'LKFC-EV', 'CS', 'CS-EV', 'CS_EV', 'SX2', 'SX2-EV', 'AE', 'AE_EV', 'CE', 'CE_EV', 'ME', 'ME_EV', 'FE', 'FE_EV', 'RG3', 'RG3-EV', 'JW', 'JW_EV', 'JK', 'JK_EV', 'JX', 'JX_EV'],
           },
           재제조번호: _재제조번호.value,
-          구분: "보증",
+          구분: '보증',
         });
         await delay();
       } else {
@@ -321,65 +321,65 @@ async function 상세입력_시작(is재제조번호 = false) {
     _폐기사유.value = BSA재제조_v.폐기사유;
     if (BSA재제조_v.출하예약 != undefined) _출하예약.value = BSA재제조_v.출하예약.substr(0, 16);
     if (BSA재제조_v.렉번호 != undefined) _렉번호.value = BSA재제조_v.렉번호.substr(0, 16);
-    if (select_pos != "") _렉번호.value = select_pos;
+    if (select_pos != '') _렉번호.value = select_pos;
   } else {
     if (is재제조번호 == false) {
-      _재제조번호.value = "";
+      _재제조번호.value = '';
     } else {
-      _management_id.value = "";
+      _management_id.value = '';
     }
 
-    _재제조번호.value = "";
-    _구분.value = "";
-    _차종.value = "";
-    _품번.value = "";
-    _RO_no.value = "";
-    _공정단계.value = "";
-    _적재No.value = "";
-    _입고.value = "0000-00-00T00:00";
-    _제조투입.value = "0000-00-00T00:00";
-    _세척투입일.value = "0000-00-00T00:00";
-    _세척.value = "0000-00-00T00:00";
-    _기초검사투입일.value = "0000-00-00T00:00";
-    _기초검사.value = "0000-00-00T00:00";
-    _분해조립투입일.value = "0000-00-00T00:00";
-    _분해조립.value = "0000-00-00T00:00";
-    _성능검사투입일.value = "0000-00-00T00:00";
-    _성능검사.value = "0000-00-00T00:00";
-    _EOL투입일.value = "0000-00-00T00:00";
-    _EOL.value = "0000-00-00T00:00";
-    _출하검사.value = "0000-00-00T00:00";
-    _출하.value = "0000-00-00T00:00";
-    _납품처.value = "";
-    _소재지.value = "";
-    _소재지사유.value = "";
-    _마지막충전일.value = "0000-00-00T00:00";
-    _반품입고.value = "0000-00-00T00:00";
-    _재출하.value = "0000-00-00T00:00";
-    _완전분해.value = "0000-00-00T00:00";
-    _완전분해사유.value = "";
-    _폐기.value = "0000-00-00T00:00";
-    _폐기사유.value = "";
-    _출하예약.value = "";
-    _렉번호.value = "";
+    _재제조번호.value = '';
+    _구분.value = '';
+    _차종.value = '';
+    _품번.value = '';
+    _RO_no.value = '';
+    _공정단계.value = '';
+    _적재No.value = '';
+    _입고.value = '0000-00-00T00:00';
+    _제조투입.value = '0000-00-00T00:00';
+    _세척투입일.value = '0000-00-00T00:00';
+    _세척.value = '0000-00-00T00:00';
+    _기초검사투입일.value = '0000-00-00T00:00';
+    _기초검사.value = '0000-00-00T00:00';
+    _분해조립투입일.value = '0000-00-00T00:00';
+    _분해조립.value = '0000-00-00T00:00';
+    _성능검사투입일.value = '0000-00-00T00:00';
+    _성능검사.value = '0000-00-00T00:00';
+    _EOL투입일.value = '0000-00-00T00:00';
+    _EOL.value = '0000-00-00T00:00';
+    _출하검사.value = '0000-00-00T00:00';
+    _출하.value = '0000-00-00T00:00';
+    _납품처.value = '';
+    _소재지.value = '';
+    _소재지사유.value = '';
+    _마지막충전일.value = '0000-00-00T00:00';
+    _반품입고.value = '0000-00-00T00:00';
+    _재출하.value = '0000-00-00T00:00';
+    _완전분해.value = '0000-00-00T00:00';
+    _완전분해사유.value = '';
+    _폐기.value = '0000-00-00T00:00';
+    _폐기사유.value = '';
+    _출하예약.value = '';
+    _렉번호.value = '';
 
     //item_detail_save(true);
   }
 
   _완전분해.onchange = function (e) {
-    _공정단계.value = "완전분해";
+    _공정단계.value = '완전분해';
   };
 
   _폐기.onchange = function (e) {
-    _공정단계.value = "폐기";
+    _공정단계.value = '폐기';
   };
 }
 
 async function item_detail_save(flag_result = false) {
-  if (worker == "") return;
+  if (worker == '') return;
   if (_management_id.value.length == 0) return;
-  if (_management_id.value.slice(0, 2) == "조회") return;
-  console.log("save: ", _management_id.value);
+  if (_management_id.value.slice(0, 2) == '조회') return;
+  console.log('save: ', _management_id.value);
 
   관리번호 = _management_id.value.trim().toUpperCase();
 
@@ -405,7 +405,7 @@ async function item_detail_save(flag_result = false) {
   doc.EOL = _EOL.value;
   doc.출하검사 = _출하검사.value;
   doc.출하 = _출하.value;
-  if (_출하.value != "") _공정단계.value = "출하";
+  if (_출하.value != '') _공정단계.value = '출하';
   doc.공정단계 = _공정단계.value;
   doc.납품처 = _납품처.value;
   doc.소재지 = _소재지.value;
@@ -427,118 +427,118 @@ async function item_detail_save(flag_result = false) {
   console.log(insert_count);
 
   if (update_count > 0) {
-    alert("업데이트 되었습니다");
+    alert('업데이트 되었습니다');
   }
 
   if (insert_count > 0) {
-    alert("신규 항목이 저장 되었습니다");
+    alert('신규 항목이 저장 되었습니다');
   }
 }
 
 //초기 공정 입력 을 위해 만든 함수이나 이제는 쓰이지 않음
 async function processStep() {
-  if (worker == "") return;
+  if (worker == '') return;
   if (_management_id.value.length == 0) return;
-  pre_관리번호 = "";
+  pre_관리번호 = '';
   관리번호 = _management_id.value.trim().toUpperCase();
 
   var step = _공정단계.value;
 
-  if (flag_입고_complete == false && step != "입고") {
-    alert("입고 정보를 입력해 주세요!");
-    step = "입고";
+  if (flag_입고_complete == false && step != '입고') {
+    alert('입고 정보를 입력해 주세요!');
+    step = '입고';
   }
 
   switch (step) {
-    case "입고":
+    case '입고':
       flag_입고 = true;
-      loadPage("base/입고.html");
+      loadPage('base/입고.html');
       break;
 
-    case "제조투입":
+    case '제조투입':
       break;
 
-    case "세척":
+    case '세척':
       flag_세척 = true;
-      loadPage("base/세척.html");
+      loadPage('base/세척.html');
       break;
 
-    case "기초검사":
+    case '기초검사':
       flag_기초검사 = true;
-      loadPage("base/기초검사.html");
+      loadPage('base/기초검사.html');
       break;
 
-    case "분해조립":
+    case '분해조립':
       flag_분해조립 = true;
       flag_loaded = false;
-      loadPage("base/분해조립.html");
+      loadPage('base/분해조립.html');
       break;
 
-    case "성능검사":
+    case '성능검사':
       flag_성능검사 = true;
-      loadPage("base/성능검사.html");
+      loadPage('base/성능검사.html');
       break;
 
-    case "EOL":
+    case 'EOL':
       flag_EOL = true;
-      loadPage("base/EOL.html");
+      loadPage('base/EOL.html');
       break;
 
-    case "제조완료":
+    case '제조완료':
       break;
 
-    case "출하검사":
+    case '출하검사':
       flag_출하 = true;
-      loadPage("base/출하정보.html");
+      loadPage('base/출하정보.html');
       break;
 
-    case "출하":
+    case '출하':
       break;
 
     default:
-      alert("잘못된 공정명입니다");
+      alert('잘못된 공정명입니다');
       break;
   }
 }
 
 async function func_고품정보등록() {
-  if (worker == "") return;
+  if (worker == '') return;
   if (_management_id.value.length == 0) return;
   관리번호 = _management_id.value;
   await sleep(1);
 
-  loadPage("base/고품정보.html");
+  loadPage('base/고품정보.html');
 }
 
 function func_교체부품상세() {
-  if (worker == "") return;
+  if (worker == '') return;
   if (_management_id.value.length == 0) return;
 
-  loadPage("base/교체부품상세.html");
+  loadPage('base/교체부품상세.html');
 }
 
 function func_특이사항() {
-  if (worker == "") return;
+  if (worker == '') return;
   if (_management_id.value.length == 0) return;
-  loadPage("base/특이사항.html");
+  loadPage('base/특이사항.html');
 }
 
 function 공정입력_콤보박스(e) {
   const value = e.value;
 
-  document.getElementById("_공정단계").value = value;
+  document.getElementById('_공정단계').value = value;
 }
 
 function 소재지_콤보박스(e) {
   const value = e.value;
 
-  document.getElementById("_소재지").value = value;
+  document.getElementById('_소재지').value = value;
 }
 
 function 출하예약_콤보박스(e) {
   const value = e.value;
 
-  document.getElementById("_출하예약").value = value;
+  document.getElementById('_출하예약').value = value;
 }
 
 function 교체부품상세_콤보박스(e) {
@@ -549,14 +549,14 @@ function 교체부품상세_콤보박스(e) {
 
 //UI가 변경되었기에 안쓰이는 부분
 function showOptionMenu() {
-  const options = document.querySelectorAll(".option");
-  const optionContainer = document.querySelector(".options");
+  const options = document.querySelectorAll('.option');
+  const optionContainer = document.querySelector('.options');
   // item-detalis - select option
-  optionContainer.classList.toggle("active");
+  optionContainer.classList.toggle('active');
 
   options.forEach((option) => {
-    option.addEventListener("click", () => {
-      optionContainer.classList.remove("active");
+    option.addEventListener('click', () => {
+      optionContainer.classList.remove('active');
     });
   });
 }

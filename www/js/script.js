@@ -3,7 +3,7 @@ function loadPage(url) {
   기초검사_DTC_count = 0;
   EOL_DTC_count = 0;
 
-  const content = document.getElementById("content");
+  const content = document.getElementById('content');
 
   //화면전환시 타이머 끔
   if (대기수량Timer != undefined) clearInterval(대기수량Timer);

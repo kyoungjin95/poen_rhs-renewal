@@ -127,227 +127,226 @@ var D2_UPR_CASE = false;
 var D2_LV_W_H = false;
 var D2_MODULE_1 = false;
 
-var _A_UPR_CASE_COLOR = "";
-var _A_LWR_CASE_COLOR = "";
-var _A_S_PLUG_COLOR = "";
-var _A_SPA_COLOR = "";
-var _A_HT_CNTR_COLOR = "";
-var _A_HV_CNTR_COLOR = "";
-var _A_PRA_COLOR = "";
-var _A_LV_W_H_COLOR = "";
-var _A_HV_W_H_1_COLOR = "";
-var _A_HV_W_H_2_COLOR = "";
-var _A_HV_W_H_3_COLOR = "";
-var _A_HV_W_H_4_COLOR = "";
-var _A_HV_W_H_5_COLOR = "";
-var _A_BMU_COLOR = "";
-var _A_CMU_1_COLOR = "";
-var _A_CMU_2_COLOR = "";
-var _A_CMU_3_COLOR = "";
-var _A_CMU_4_COLOR = "";
-var _A_CMU_5_COLOR = "";
-var _A_MODULE_1_COLOR = "";
-var _A_MODULE_2_COLOR = "";
-var _A_MODULE_3_COLOR = "";
-var _A_MODULE_4_COLOR = "";
-var _A_MODULE_5_COLOR = "";
-var _B_UPR_CASE_COLOR = "";
-var _B_LWR_CASE_COLOR = "";
-var _B_HV_CNTR_COLOR = "";
-var _B_HT_CNTR_COLOR = "";
-var _B_PRA_COLOR = "";
-var _B_FUSE_COLOR = "";
-var _B_HV_W_H_1_COLOR = "";
-var _B_HV_W_H_2_COLOR = "";
-var _B_LV_W_H_COLOR = "";
-var _B_BMU_COLOR = "";
-var _B_CMU_1_COLOR = "";
-var _B_CMU_2_COLOR = "";
-var _B_CMU_3_COLOR = "";
-var _B_CMU_4_COLOR = "";
-var _B_CMU_5_COLOR = "";
-var _B_MODULE_1_COLOR = "";
-var _B_MODULE_2_COLOR = "";
-var _B_MODULE_3_COLOR = "";
-var _B_MODULE_4_COLOR = "";
-var _B_MODULE_5_COLOR = "";
-var _B_MODULE_6_COLOR = "";
-var _B_MODULE_7_COLOR = "";
-var _B_MODULE_8_COLOR = "";
-var _B_MODULE_9_COLOR = "";
-var _B_MODULE_10_COLOR = "";
-var _C_UPR_CASE_COLOR = "";
-var _C_LWR_CASE_COLOR = "";
-var _C_HV_CNTR_1_COLOR = "";
-var _C_HV_CNTR_2_COLOR = "";
-var _C_HT_CNTR_COLOR = "";
-var _C_PRA_COLOR = "";
-var _C_FUSE_COLOR = "";
-var _C_LV_W_H_COLOR = "";
-var _C_HV_W_H_1_COLOR = "";
-var _C_HV_W_H_2_COLOR = "";
-var _C_HV_W_H_3_COLOR = "";
-var _C_HV_W_H_4_COLOR = "";
-var _C_HV_W_H_5_COLOR = "";
-var _C_HV_W_H_6_COLOR = "";
-var _C_HV_W_H_7_COLOR = "";
-var _C_HV_W_H_8_COLOR = "";
-var _C_BMU_COLOR = "";
-var _C_CMU_1_COLOR = "";
-var _C_CMU_2_COLOR = "";
-var _C_CMU_3_COLOR = "";
-var _C_CMU_4_COLOR = "";
-var _C_CMU_5_COLOR = "";
-var _C_CMU_6_COLOR = "";
-var _C_CMU_7_COLOR = "";
-var _C_CMU_8_COLOR = "";
-var _C_MODULE_1_COLOR = "";
-var _C_MODULE_2_COLOR = "";
-var _C_MODULE_3_COLOR = "";
-var _C_MODULE_4_COLOR = "";
-var _C_MODULE_5_COLOR = "";
-var _C_MODULE_6_COLOR = "";
-var _C_MODULE_7_COLOR = "";
-var _C_MODULE_8_COLOR = "";
-var _C_MODULE_9_COLOR = "";
-var _C_MODULE_10_COLOR = "";
-var _C_MODULE_11_COLOR = "";
-var _C_MODULE_12_COLOR = "";
-var _C_MODULE_13_COLOR = "";
-var _C_MODULE_14_COLOR = "";
-var _C_MODULE_15_COLOR = "";
-var _C_MODULE_16_COLOR = "";
-var _C_MODULE_17_COLOR = "";
-var _C_MODULE_18_COLOR = "";
-var _C_MODULE_19_COLOR = "";
-var _C_MODULE_20_COLOR = "";
-var _C_MODULE_21_COLOR = "";
-var _C_MODULE_22_COLOR = "";
-var _C_MODULE_23_COLOR = "";
-var _C_MODULE_24_COLOR = "";
-var _C_MODULE_25_COLOR = "";
-var _C_MODULE_26_COLOR = "";
-var _C_MODULE_27_COLOR = "";
-var _C_MODULE_28_COLOR = "";
-var _C_MODULE_29_COLOR = "";
-var _C_MODULE_30_COLOR = "";
-var _C_MODULE_31_COLOR = "";
-var _C_MODULE_32_COLOR = "";
-var _D_UPR_CASE_COLOR = "";
-var _D_LWR_CASE_COLOR = "";
-var _D_HV_CNTR_1_COLOR = "";
-var _D_HV_CNTR_2_COLOR = "";
-var _D_RELAY_COLOR = "";
-var _D_LV_W_H_COLOR = "";
-var _D_HV_W_H_1_COLOR = "";
-var _D_HV_W_H_2_COLOR = "";
-var _D_BMU_COLOR = "";
-var _D_CMU_1_COLOR = "";
-var _D_MODULE_1_COLOR = "";
-var _D_MODULE_2_COLOR = "";
-var _D2_HV_W_H_1_COLOR = "";
-var _D2_CMU_1_COLOR = "";
-var _D2_RELAY_COLOR = "";
-var _D2_BMU_COLOR = "";
-var _D2_HV_CNTR_1_COLOR = "";
-var _D2_HV_CNTR_2_COLOR = "";
-var _D2_LWR_CASE_COLOR = "";
-var _D2_UPR_CASE_COLOR = "";
-var _D2_LV_W_H_COLOR = "";
-var _D2_MODULE_1_COLOR = "";
+var _A_UPR_CASE_COLOR = '';
+var _A_LWR_CASE_COLOR = '';
+var _A_S_PLUG_COLOR = '';
+var _A_SPA_COLOR = '';
+var _A_HT_CNTR_COLOR = '';
+var _A_HV_CNTR_COLOR = '';
+var _A_PRA_COLOR = '';
+var _A_LV_W_H_COLOR = '';
+var _A_HV_W_H_1_COLOR = '';
+var _A_HV_W_H_2_COLOR = '';
+var _A_HV_W_H_3_COLOR = '';
+var _A_HV_W_H_4_COLOR = '';
+var _A_HV_W_H_5_COLOR = '';
+var _A_BMU_COLOR = '';
+var _A_CMU_1_COLOR = '';
+var _A_CMU_2_COLOR = '';
+var _A_CMU_3_COLOR = '';
+var _A_CMU_4_COLOR = '';
+var _A_CMU_5_COLOR = '';
+var _A_MODULE_1_COLOR = '';
+var _A_MODULE_2_COLOR = '';
+var _A_MODULE_3_COLOR = '';
+var _A_MODULE_4_COLOR = '';
+var _A_MODULE_5_COLOR = '';
+var _B_UPR_CASE_COLOR = '';
+var _B_LWR_CASE_COLOR = '';
+var _B_HV_CNTR_COLOR = '';
+var _B_HT_CNTR_COLOR = '';
+var _B_PRA_COLOR = '';
+var _B_FUSE_COLOR = '';
+var _B_HV_W_H_1_COLOR = '';
+var _B_HV_W_H_2_COLOR = '';
+var _B_LV_W_H_COLOR = '';
+var _B_BMU_COLOR = '';
+var _B_CMU_1_COLOR = '';
+var _B_CMU_2_COLOR = '';
+var _B_CMU_3_COLOR = '';
+var _B_CMU_4_COLOR = '';
+var _B_CMU_5_COLOR = '';
+var _B_MODULE_1_COLOR = '';
+var _B_MODULE_2_COLOR = '';
+var _B_MODULE_3_COLOR = '';
+var _B_MODULE_4_COLOR = '';
+var _B_MODULE_5_COLOR = '';
+var _B_MODULE_6_COLOR = '';
+var _B_MODULE_7_COLOR = '';
+var _B_MODULE_8_COLOR = '';
+var _B_MODULE_9_COLOR = '';
+var _B_MODULE_10_COLOR = '';
+var _C_UPR_CASE_COLOR = '';
+var _C_LWR_CASE_COLOR = '';
+var _C_HV_CNTR_1_COLOR = '';
+var _C_HV_CNTR_2_COLOR = '';
+var _C_HT_CNTR_COLOR = '';
+var _C_PRA_COLOR = '';
+var _C_FUSE_COLOR = '';
+var _C_LV_W_H_COLOR = '';
+var _C_HV_W_H_1_COLOR = '';
+var _C_HV_W_H_2_COLOR = '';
+var _C_HV_W_H_3_COLOR = '';
+var _C_HV_W_H_4_COLOR = '';
+var _C_HV_W_H_5_COLOR = '';
+var _C_HV_W_H_6_COLOR = '';
+var _C_HV_W_H_7_COLOR = '';
+var _C_HV_W_H_8_COLOR = '';
+var _C_BMU_COLOR = '';
+var _C_CMU_1_COLOR = '';
+var _C_CMU_2_COLOR = '';
+var _C_CMU_3_COLOR = '';
+var _C_CMU_4_COLOR = '';
+var _C_CMU_5_COLOR = '';
+var _C_CMU_6_COLOR = '';
+var _C_CMU_7_COLOR = '';
+var _C_CMU_8_COLOR = '';
+var _C_MODULE_1_COLOR = '';
+var _C_MODULE_2_COLOR = '';
+var _C_MODULE_3_COLOR = '';
+var _C_MODULE_4_COLOR = '';
+var _C_MODULE_5_COLOR = '';
+var _C_MODULE_6_COLOR = '';
+var _C_MODULE_7_COLOR = '';
+var _C_MODULE_8_COLOR = '';
+var _C_MODULE_9_COLOR = '';
+var _C_MODULE_10_COLOR = '';
+var _C_MODULE_11_COLOR = '';
+var _C_MODULE_12_COLOR = '';
+var _C_MODULE_13_COLOR = '';
+var _C_MODULE_14_COLOR = '';
+var _C_MODULE_15_COLOR = '';
+var _C_MODULE_16_COLOR = '';
+var _C_MODULE_17_COLOR = '';
+var _C_MODULE_18_COLOR = '';
+var _C_MODULE_19_COLOR = '';
+var _C_MODULE_20_COLOR = '';
+var _C_MODULE_21_COLOR = '';
+var _C_MODULE_22_COLOR = '';
+var _C_MODULE_23_COLOR = '';
+var _C_MODULE_24_COLOR = '';
+var _C_MODULE_25_COLOR = '';
+var _C_MODULE_26_COLOR = '';
+var _C_MODULE_27_COLOR = '';
+var _C_MODULE_28_COLOR = '';
+var _C_MODULE_29_COLOR = '';
+var _C_MODULE_30_COLOR = '';
+var _C_MODULE_31_COLOR = '';
+var _C_MODULE_32_COLOR = '';
+var _D_UPR_CASE_COLOR = '';
+var _D_LWR_CASE_COLOR = '';
+var _D_HV_CNTR_1_COLOR = '';
+var _D_HV_CNTR_2_COLOR = '';
+var _D_RELAY_COLOR = '';
+var _D_LV_W_H_COLOR = '';
+var _D_HV_W_H_1_COLOR = '';
+var _D_HV_W_H_2_COLOR = '';
+var _D_BMU_COLOR = '';
+var _D_CMU_1_COLOR = '';
+var _D_MODULE_1_COLOR = '';
+var _D_MODULE_2_COLOR = '';
+var _D2_HV_W_H_1_COLOR = '';
+var _D2_CMU_1_COLOR = '';
+var _D2_RELAY_COLOR = '';
+var _D2_BMU_COLOR = '';
+var _D2_HV_CNTR_1_COLOR = '';
+var _D2_HV_CNTR_2_COLOR = '';
+var _D2_LWR_CASE_COLOR = '';
+var _D2_UPR_CASE_COLOR = '';
+var _D2_LV_W_H_COLOR = '';
+var _D2_MODULE_1_COLOR = '';
 
 async function 불량의심부품_시작(내부 = true) {
-  if (typeof _D2_MODULE_1 == "undefined") {
+  if (typeof _D2_MODULE_1 == 'undefined') {
     await sleep(1);
     return;
   }
 
   flag_불량의심부품 = false;
-  console.log("불량의심부품 start");
+  console.log('불량의심부품 start');
   _management_id.value = 관리번호;
   _차종.value = 차종;
 
-  _img_1.style.display = "none";
-  _img_2.style.display = "none";
-  _img_3.style.display = "none";
-  _img_4.style.display = "none";
-  _img_5.style.display = "none";
+  _img_1.style.display = 'none';
+  _img_2.style.display = 'none';
+  _img_3.style.display = 'none';
+  _img_4.style.display = 'none';
+  _img_5.style.display = 'none';
 
   switch (차종) {
-    case "DE":
-    case "DE_EV":
-    case "OS":
-    case "OS_EV":
-    case "SK3":
-    case "SK3_EV":
-    case "LK":
-    case "LK_EV":
-      _img_1.style.display = "block";
-      _img_2.style.display = "none";
-      _img_3.style.display = "none";
-      _img_4.style.display = "none";
-      _img_5.style.display = "none";
+    case 'DE':
+    case 'DE_EV':
+    case 'OS':
+    case 'OS_EV':
+    case 'SK3':
+    case 'SK3_EV':
+    case 'LK':
+    case 'LK_EV':
+      _img_1.style.display = 'block';
+      _img_2.style.display = 'none';
+      _img_3.style.display = 'none';
+      _img_4.style.display = 'none';
+      _img_5.style.display = 'none';
 
       break;
 
-    case "PU":
-    case "PU_EV":
-    case "HR":
-    case "HR_EV":
-      _img_1.style.display = "none";
-      _img_2.style.display = "block";
-      _img_3.style.display = "none";
-      _img_4.style.display = "none";
-      _img_5.style.display = "none";
+    case 'PU':
+    case 'PU_EV':
+    case 'HR':
+    case 'HR_EV':
+      _img_1.style.display = 'none';
+      _img_2.style.display = 'block';
+      _img_3.style.display = 'none';
+      _img_4.style.display = 'none';
+      _img_5.style.display = 'none';
 
       break;
 
-    case "CV":
-    case "CV_EV":
-    case "NE":
-    case "NE_EV":
-    case "LM":
-    case "LM_EV":
-      _img_1.style.display = "none";
-      _img_2.style.display = "none";
-      _img_3.style.display = "block";
-      _img_4.style.display = "none";
-      _img_5.style.display = "none";
+    case 'CV':
+    case 'CV_EV':
+    case 'NE':
+    case 'NE_EV':
+    case 'LM':
+    case 'LM_EV':
+      _img_1.style.display = 'none';
+      _img_2.style.display = 'none';
+      _img_3.style.display = 'block';
+      _img_4.style.display = 'none';
+      _img_5.style.display = 'none';
 
       break;
 
-    case "CS":
-    case "CS_EV":
-      _img_1.style.display = "none";
-      _img_2.style.display = "none";
-      _img_3.style.display = "none";
-      _img_4.style.display = "block";
-      _img_5.style.display = "block";
+    case 'CS':
+    case 'CS_EV':
+      _img_1.style.display = 'none';
+      _img_2.style.display = 'none';
+      _img_3.style.display = 'none';
+      _img_4.style.display = 'block';
+      _img_5.style.display = 'block';
 
       break;
 
     default:
-      alert("차종 정보를 확인해주세요");
+      alert('차종 정보를 확인해주세요');
 
       return;
-      break;
   }
 
   if (내부 == true) {
     //분해조립 화면에 포함되어 적용될때
-    var buttons = document.querySelectorAll("button");
+    var buttons = document.querySelectorAll('button');
     buttons.forEach((button) => {
       //모든 부품 버튼에 click 이벤트 등록
-      button.addEventListener("click", () => {
-        const value = button.getAttribute("value");
+      button.addEventListener('click', () => {
+        const value = button.getAttribute('value');
         if (value == null) return;
-        console.log("value:", value);
+        console.log('value:', value);
 
-        str = "if(" + value + " == true) { " + value + " = false; } else { " + value + " = true; }";
+        str = 'if(' + value + ' == true) { ' + value + ' = false; } else { ' + value + ' = true; }';
         console.log(str);
         eval(str);
 
-        str = "if(" + value + " == true) {" + value + "_COLOR = button.style.backgroundColor; button.style.backgroundColor = 'salmon'; } else { button.style.backgroundColor = _" + value + "_COLOR; }";
+        str = 'if(' + value + ' == true) {' + value + "_COLOR = button.style.backgroundColor; button.style.backgroundColor = 'salmon'; } else { button.style.backgroundColor = _" + value + '_COLOR; }';
         console.log(str);
         eval(str);
       });
@@ -357,7 +356,7 @@ async function 불량의심부품_시작(내부 = true) {
 }
 
 async function 불량의심부품_load(내부 = true) {
-  if (_management_id.value == "") return;
+  if (_management_id.value == '') return;
 
   //불량 의심 부품 로딩
   find(불량의심부품, _management_id.value);
@@ -504,11 +503,11 @@ async function 불량의심부품_load(내부 = true) {
     var value = 불량의심부품_v[key];
 
     if (value == true) {
-      var str = "_" + key + "_COLOR = _" + key + ".style.backgroundColor;";
+      var str = '_' + key + '_COLOR = _' + key + '.style.backgroundColor;';
       console.log(str);
       eval(str); //실행중 코딩 방식으로 부품 버튼의 색을 저장(토글 기능을 위해)
 
-      str = "_" + key + ".style.backgroundColor = 'red';";
+      str = '_' + key + ".style.backgroundColor = 'red';";
       console.log(str);
       eval(str); //모드 부품버튼의 색을 붉게 변경
     }
@@ -656,10 +655,10 @@ async function 불량의심부품_save() {
   console.log(insert_count);
 
   if (update_count > 0) {
-    alert("업데이트 되었습니다");
+    alert('업데이트 되었습니다');
   }
 
   if (insert_count > 0) {
-    alert("저장 되었습니다");
+    alert('저장 되었습니다');
   }
 }

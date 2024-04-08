@@ -5,7 +5,7 @@ async function 기초보고서_시작() {
   flag_기초보고서 = false;
 
   기초보고서_조회(false);
-  console.log("->", 관리번호);
+  console.log('->', 관리번호);
 }
 
 async function 기초보고서_조회(is재제조번호 = false) {
@@ -41,46 +41,46 @@ async function 기초보고서_조회(is재제조번호 = false) {
 
     //차종별 표시할 부분만 표시
     switch (입고_v.차종) {
-      case "CS_EV":
-        showTable("_CS_EV");
+      case 'CS_EV':
+        showTable('_CS_EV');
         break;
 
-      case "CV_EV":
-        showTable("_CV_EV");
+      case 'CV_EV':
+        showTable('_CV_EV');
         break;
 
-      case "DE_EV":
-        showTable("_DE_EV");
+      case 'DE_EV':
+        showTable('_DE_EV');
         break;
 
-      case "HR_EV":
-        showTable("_HR_EV");
+      case 'HR_EV':
+        showTable('_HR_EV');
         break;
 
-      case "LK_EV":
-        showTable("_LK_EV");
+      case 'LK_EV':
+        showTable('_LK_EV');
         break;
 
-      case "LM_EV":
-        showTable("_LM_EV");
+      case 'LM_EV':
+        showTable('_LM_EV');
         break;
 
-      case "NE_EV":
-        showTable("_NE_EV");
+      case 'NE_EV':
+        showTable('_NE_EV');
         break;
 
-      case "OS_EV":
-      case "SK3_EV":
-        showTable("_OS_SK3_EV");
+      case 'OS_EV':
+      case 'SK3_EV':
+        showTable('_OS_SK3_EV');
         break;
 
-      case "PU_EV":
-        showTable("_PU_EV");
+      case 'PU_EV':
+        showTable('_PU_EV');
         break;
 
       default:
-        showTable("_CS_EV");
-        alert("차종을 확인해 주세요");
+        showTable('_CS_EV');
+        alert('차종을 확인해 주세요');
     }
   }
 
@@ -93,26 +93,26 @@ async function 기초보고서_조회(is재제조번호 = false) {
   }
 
   //사용 변수 선언 및 초기화
-  var 외부검사 = "";
-  var 외부검사사유 = "";
-  var 내부검사 = "";
-  var 내부검사사유 = "";
-  var 케이스 = "";
-  var 케이스감압량 = "";
-  var 냉각유로 = "";
-  var 냉각유로감압량 = "";
-  var 부품정보유무 = "NG";
-  var 절연검사_B_P = "";
-  var 절연검사_B_N = "";
-  var 절연검사_B_P판정 = "";
-  var 절연검사_B_N판정 = "";
+  var 외부검사 = '';
+  var 외부검사사유 = '';
+  var 내부검사 = '';
+  var 내부검사사유 = '';
+  var 케이스 = '';
+  var 케이스감압량 = '';
+  var 냉각유로 = '';
+  var 냉각유로감압량 = '';
+  var 부품정보유무 = 'NG';
+  var 절연검사_B_P = '';
+  var 절연검사_B_N = '';
+  var 절연검사_B_P판정 = '';
+  var 절연검사_B_N판정 = '';
 
   //부푸정보 유무 체크
   find(부품정보_list, _management_id.value);
   await delay();
 
   if (부품정보_list_v != null) {
-    부품정보유무 = "OK";
+    부품정보유무 = 'OK';
   }
 
   //세척 데이터 로드
@@ -140,42 +140,42 @@ async function 기초보고서_조회(is재제조번호 = false) {
 
   if (기초검사_v != null) {
     var 고장코드 =
-      기초검사_v.통신검사_DTC코드1 == "" &&
-      기초검사_v.통신검사_DTC코드2 == "" &&
-      기초검사_v.통신검사_DTC코드3 == "" &&
-      기초검사_v.통신검사_DTC코드4 == "" &&
-      기초검사_v.통신검사_DTC코드5 == "" &&
-      기초검사_v.통신검사_DTC코드6 == "" &&
-      기초검사_v.통신검사_DTC코드7 == "" &&
-      기초검사_v.통신검사_DTC코드8 == "" &&
-      기초검사_v.통신검사_DTC코드9 == "" &&
-      기초검사_v.통신검사_DTC코드10 == ""
-        ? "OK"
-        : "NG";
+      기초검사_v.통신검사_DTC코드1 == '' &&
+      기초검사_v.통신검사_DTC코드2 == '' &&
+      기초검사_v.통신검사_DTC코드3 == '' &&
+      기초검사_v.통신검사_DTC코드4 == '' &&
+      기초검사_v.통신검사_DTC코드5 == '' &&
+      기초검사_v.통신검사_DTC코드6 == '' &&
+      기초검사_v.통신검사_DTC코드7 == '' &&
+      기초검사_v.통신검사_DTC코드8 == '' &&
+      기초검사_v.통신검사_DTC코드9 == '' &&
+      기초검사_v.통신검사_DTC코드10 == ''
+        ? 'OK'
+        : 'NG';
 
     //고장사유 멘트 만들기
     var 고장사유 =
       기초검사_v.통신검사_DTC코드1 +
-      " " +
+      ' ' +
       기초검사_v.통신검사_DTC코드2 +
-      " " +
+      ' ' +
       기초검사_v.통신검사_DTC코드3 +
-      " " +
+      ' ' +
       기초검사_v.통신검사_DTC코드4 +
-      " " +
+      ' ' +
       기초검사_v.통신검사_DTC코드5 +
-      " " +
+      ' ' +
       기초검사_v.통신검사_DTC코드6 +
-      " " +
+      ' ' +
       기초검사_v.통신검사_DTC코드7 +
-      " " +
+      ' ' +
       기초검사_v.통신검사_DTC코드8 +
-      " " +
+      ' ' +
       기초검사_v.통신검사_DTC코드9 +
-      " " +
+      ' ' +
       기초검사_v.통신검사_DTC코드10;
 
-    console.log("고장코드 사유:", 고장사유);
+    console.log('고장코드 사유:', 고장사유);
 
     //common (차종에 상관없이 모두 쓰이는 부분)
     _VIN.innerHTML = 기초검사_v.VIN;
@@ -206,8 +206,8 @@ async function 기초보고서_조회(is재제조번호 = false) {
 
     //차종별 세부항목 처리
     switch (차종) {
-      case "CS":
-      case "CS_EV":
+      case 'CS':
+      case 'CS_EV':
         _CS_외부점검.innerHTML = 외부검사;
         _CS_외부점검사유.innerHTML = 외부검사사유;
         _CS_내부점검.innerHTML = 기초검사_v.육안검사_내부;
@@ -229,13 +229,13 @@ async function 기초보고서_조회(is재제조번호 = false) {
         _CS_고장코드.innerHTML = 고장코드;
         _CS_고장코드사유.innerHTML = 고장사유;
         _CS_입고정보.innerHTML = 부품정보유무;
-        _CS_입고정보사유.innerHTML = 부품정보유무 == "OK" ? "" : "부품정보 누락";
-        _CS_재제조이력.innerHTML = "OK";
-        _CS_재제조이력사유.innerHTML = "";
+        _CS_입고정보사유.innerHTML = 부품정보유무 == 'OK' ? '' : '부품정보 누락';
+        _CS_재제조이력.innerHTML = 'OK';
+        _CS_재제조이력사유.innerHTML = '';
         break;
 
-      case "CV":
-      case "CV_EV":
+      case 'CV':
+      case 'CV_EV':
         _CV_외부점검.innerHTML = 외부검사;
         _CV_외부점검사유.innerHTML = 외부검사사유;
         _CV_내부점검.innerHTML = 기초검사_v.육안검사_내부;
@@ -257,13 +257,13 @@ async function 기초보고서_조회(is재제조번호 = false) {
         _CV_고장코드.innerHTML = 고장코드;
         _CV_고장코드사유.innerHTML = 고장사유;
         _CV_입고정보.innerHTML = 부품정보유무;
-        _CV_입고정보사유.innerHTML = "";
-        _CV_재제조이력.innerHTML = "OK";
-        _CV_재제조이력사유.innerHTML = "";
+        _CV_입고정보사유.innerHTML = '';
+        _CV_재제조이력.innerHTML = 'OK';
+        _CV_재제조이력사유.innerHTML = '';
         break;
 
-      case "DE":
-      case "DE_EV":
+      case 'DE':
+      case 'DE_EV':
         _DE_외부점검.innerHTML = 외부검사;
         _DE_외부점검사유.innerHTML = 외부검사사유;
         _DE_내부점검.innerHTML = 기초검사_v.육안검사_내부;
@@ -285,13 +285,13 @@ async function 기초보고서_조회(is재제조번호 = false) {
         _DE_고장코드.innerHTML = 고장코드;
         _DE_고장코드사유.innerHTML = 고장사유;
         _DE_입고정보.innerHTML = 부품정보유무;
-        _DE_입고정보사유.innerHTML = "";
-        _DE_재제조이력.innerHTML = "OK";
-        _DE_재제조이력사유.innerHTML = "";
+        _DE_입고정보사유.innerHTML = '';
+        _DE_재제조이력.innerHTML = 'OK';
+        _DE_재제조이력사유.innerHTML = '';
         break;
 
-      case "HR":
-      case "HR_EV":
+      case 'HR':
+      case 'HR_EV':
         _HR_외부점검.innerHTML = 외부검사;
         _HR_외부점검사유.innerHTML = 외부검사사유;
         _HR_내부점검.innerHTML = 기초검사_v.육안검사_내부;
@@ -314,13 +314,13 @@ async function 기초보고서_조회(is재제조번호 = false) {
         _HR_고장코드.innerHTML = 고장코드;
         _HR_고장코드사유.innerHTML = 고장사유;
         _HR_입고정보.innerHTML = 부품정보유무;
-        _HR_입고정보사유.innerHTML = "";
-        _HR_재제조이력.innerHTML = "OK";
-        _HR_재제조이력사유.innerHTML = "";
+        _HR_입고정보사유.innerHTML = '';
+        _HR_재제조이력.innerHTML = 'OK';
+        _HR_재제조이력사유.innerHTML = '';
         break;
 
-      case "LK":
-      case "LK_EV":
+      case 'LK':
+      case 'LK_EV':
         _LK_외부점검.innerHTML = 외부검사;
         _LK_외부점검사유.innerHTML = 외부검사사유;
         _LK_내부점검.innerHTML = 기초검사_v.육안검사_내부;
@@ -342,13 +342,13 @@ async function 기초보고서_조회(is재제조번호 = false) {
         _LK_고장코드.innerHTML = 고장코드;
         _LK_고장코드사유.innerHTML = 고장사유;
         _LK_입고정보.innerHTML = 부품정보유무;
-        _LK_입고정보사유.innerHTML = "";
-        _LK_재제조이력.innerHTML = "OK";
-        _LK_재제조이력사유.innerHTML = "";
+        _LK_입고정보사유.innerHTML = '';
+        _LK_재제조이력.innerHTML = 'OK';
+        _LK_재제조이력사유.innerHTML = '';
         break;
 
-      case "LM":
-      case "LM_EV":
+      case 'LM':
+      case 'LM_EV':
         _LM_외부점검.innerHTML = 외부검사;
         _LM_외부점검사유.innerHTML = 외부검사사유;
         _LM_내부점검.innerHTML = 기초검사_v.육안검사_내부;
@@ -370,13 +370,13 @@ async function 기초보고서_조회(is재제조번호 = false) {
         _LM_고장코드.innerHTML = 고장코드;
         _LM_고장코드사유.innerHTML = 고장사유;
         _LM_입고정보.innerHTML = 부품정보유무;
-        _LM_입고정보사유.innerHTML = "";
-        _LM_재제조이력.innerHTML = "OK";
-        _LM_재제조이력사유.innerHTML = "";
+        _LM_입고정보사유.innerHTML = '';
+        _LM_재제조이력.innerHTML = 'OK';
+        _LM_재제조이력사유.innerHTML = '';
         break;
 
-      case "NE":
-      case "NE_EV":
+      case 'NE':
+      case 'NE_EV':
         _NE_외부점검.innerHTML = 외부검사;
         _NE_외부점검사유.innerHTML = 외부검사사유;
         _NE_내부점검.innerHTML = 기초검사_v.육안검사_내부;
@@ -398,15 +398,15 @@ async function 기초보고서_조회(is재제조번호 = false) {
         _NE_고장코드.innerHTML = 고장코드;
         _NE_고장코드사유.innerHTML = 고장사유;
         _NE_입고정보.innerHTML = 부품정보유무;
-        _NE_입고정보사유.innerHTML = "";
-        _NE_재제조이력.innerHTML = "OK";
-        _NE_재제조이력사유.innerHTML = "";
+        _NE_입고정보사유.innerHTML = '';
+        _NE_재제조이력.innerHTML = 'OK';
+        _NE_재제조이력사유.innerHTML = '';
         break;
 
-      case "OS":
-      case "OS_EV":
-      case "SK3":
-      case "SK3_EV":
+      case 'OS':
+      case 'OS_EV':
+      case 'SK3':
+      case 'SK3_EV':
         _OS_SK3_외부점검.innerHTML = 외부검사;
         _OS_SK3_외부점검사유.innerHTML = 외부검사사유;
         _OS_SK3_내부점검.innerHTML = 기초검사_v.육안검사_내부;
@@ -428,13 +428,13 @@ async function 기초보고서_조회(is재제조번호 = false) {
         _OS_SK3_고장코드.innerHTML = 고장코드;
         _OS_SK3_고장코드사유.innerHTML = 고장사유;
         _OS_SK3_입고정보.innerHTML = 부품정보유무;
-        _OS_SK3_입고정보사유.innerHTML = "";
-        _OS_SK3_재제조이력.innerHTML = "OK";
-        _OS_SK3_재제조이력사유.innerHTML = "";
+        _OS_SK3_입고정보사유.innerHTML = '';
+        _OS_SK3_재제조이력.innerHTML = 'OK';
+        _OS_SK3_재제조이력사유.innerHTML = '';
         break;
 
-      case "PU_EV":
-      case "PU":
+      case 'PU_EV':
+      case 'PU':
         _PU_외부점검.innerHTML = 외부검사;
         _PU_외부점검사유.innerHTML = 외부검사사유;
         _PU_내부점검.innerHTML = 기초검사_v.육안검사_내부;
@@ -456,13 +456,13 @@ async function 기초보고서_조회(is재제조번호 = false) {
         _PU_고장코드.innerHTML = 고장코드;
         _PU_고장코드사유.innerHTML = 고장사유;
         _PU_입고정보.innerHTML = 부품정보유무;
-        _PU_입고정보사유.innerHTML = "";
-        _PU_재제조이력.innerHTML = "OK";
-        _PU_재제조이력사유.innerHTML = "";
+        _PU_입고정보사유.innerHTML = '';
+        _PU_재제조이력.innerHTML = 'OK';
+        _PU_재제조이력사유.innerHTML = '';
         break;
 
       default:
-        alert("차종을 확인해 주세요");
+        alert('차종을 확인해 주세요');
     }
   }
 
@@ -545,34 +545,34 @@ async function 기초보고서_조회(is재제조번호 = false) {
   }
 
   //기밀검사 - 케이스
-  _케이스.innerHTML = 케이스 + " : " + 케이스감압량;
-  _냉각유로.innerHTML = 냉각유로 + " : " + 냉각유로감압량;
+  _케이스.innerHTML = 케이스 + ' : ' + 케이스감압량;
+  _냉각유로.innerHTML = 냉각유로 + ' : ' + 냉각유로감압량;
 
   //절연저항검사
-  _절연PRA_P.innerHTML = 절연검사_B_P + " : " + 절연검사_B_P판정;
-  _절연PRA_N.innerHTML = 절연검사_B_N + " : " + 절연검사_B_N판정;
+  _절연PRA_P.innerHTML = 절연검사_B_P + ' : ' + 절연검사_B_P판정;
+  _절연PRA_N.innerHTML = 절연검사_B_N + ' : ' + 절연검사_B_N판정;
 }
 
 function showTable(tableId) {
   // 모든 테이블을 숨김
-  const tables = document.querySelectorAll(".tableAll");
+  const tables = document.querySelectorAll('.tableAll');
   for (let i = 0; i < tables.length; i++) {
-    tables[i].style.display = "none";
+    tables[i].style.display = 'none';
   }
   // 선택된 테이블만 표시
   const table = document.getElementById(tableId);
-  table.style.display = "block";
+  table.style.display = 'block';
 }
 
 async function 기초보고서_save(type = 0) {
   var _date = new Date();
-  var file_name = "기초보고서_" + _date + ".pdf";
+  var file_name = '기초보고서_' + _date + '.pdf';
   var _width = 4200;
   var _height = 2200;
 
   //기초보고서 저장항목들 저장
   var doc = JSON.parse(JSON.stringify(기초보고서_doc));
-  doc.level = "작업자";
+  doc.level = '작업자';
   doc.기초보고서 = _cb기초보고서.checked; //각 항목 숨기고 보여주는 기능이 필요했으나 후에 요구사항이 사라져 완성된 기능은 아님
   doc.육안검사외부 = _cb육안검사외부.checked;
   doc.육안검사외부상세 = _cb육안검사외부상세.checked;
@@ -587,64 +587,64 @@ async function 기초보고서_save(type = 0) {
 
   //이후는 PDF 파일로 만드는 부분임
   if (type == 0) {
-    type = document.getElementById("_기초보고서");
-    file_name = "기초보고서" + _date + ".pdf";
+    type = document.getElementById('_기초보고서');
+    file_name = '기초보고서' + _date + '.pdf';
     _width = 3900;
     _height = 1800;
   }
 
-  if (type == "육외") {
-    type = document.getElementById("_육안검사외부1");
-    file_name = "기초보고서_육안검사외부" + _date + ".pdf";
+  if (type == '육외') {
+    type = document.getElementById('_육안검사외부1');
+    file_name = '기초보고서_육안검사외부' + _date + '.pdf';
     _width = 3600;
     _height = 2000;
   }
 
-  if (type == "육외상") {
-    type = document.getElementById("_육안검사외부2");
-    file_name = "기초보고서_육안검사외부_상세" + _date + ".pdf";
+  if (type == '육외상') {
+    type = document.getElementById('_육안검사외부2');
+    file_name = '기초보고서_육안검사외부_상세' + _date + '.pdf';
     _width = 3700;
     _height = 2400;
   }
 
-  if (type == "육내") {
-    type = document.getElementById("_육안검사내부1");
-    file_name = "기초보고서_육안검사내부" + _date + ".pdf";
+  if (type == '육내') {
+    type = document.getElementById('_육안검사내부1');
+    file_name = '기초보고서_육안검사내부' + _date + '.pdf';
     _width = 3650;
     _height = 2700;
   }
 
-  if (type == "육내상") {
-    type = document.getElementById("_육안검사내부2");
-    file_name = "기초보고서_육안검사내부_상세" + _date + ".pdf";
+  if (type == '육내상') {
+    type = document.getElementById('_육안검사내부2');
+    file_name = '기초보고서_육안검사내부_상세' + _date + '.pdf';
     _width = 3800;
     _height = 2300;
   }
 
-  if (type == "기밀") {
-    type = document.getElementById("_기밀검사");
-    file_name = "기초보고서_기밀검사" + _date + ".pdf";
+  if (type == '기밀') {
+    type = document.getElementById('_기밀검사');
+    file_name = '기초보고서_기밀검사' + _date + '.pdf';
     _width = 3400;
     _height = 2600;
   }
 
-  if (type == "기밀특이") {
-    type = document.getElementById("_기밀검사2");
-    file_name = "기초보고서_기밀검사_특이사항" + _date + ".pdf";
+  if (type == '기밀특이') {
+    type = document.getElementById('_기밀검사2');
+    file_name = '기초보고서_기밀검사_특이사항' + _date + '.pdf';
     _width = 3600;
     _height = 2300;
   }
 
-  if (type == "절연") {
-    type = document.getElementById("_절연저항검사");
-    file_name = "기초보고서_절연검사" + _date + ".pdf";
+  if (type == '절연') {
+    type = document.getElementById('_절연저항검사');
+    file_name = '기초보고서_절연검사' + _date + '.pdf';
     _width = 3600;
     _height = 2600;
   }
 
-  if (type == "CAN") {
-    type = document.getElementById("_CAN통신검사");
-    file_name = "기초보고서_CAN통신검사" + _date + ".pdf";
+  if (type == 'CAN') {
+    type = document.getElementById('_CAN통신검사');
+    file_name = '기초보고서_CAN통신검사' + _date + '.pdf';
     _width = 3600;
     _height = 2000;
   }
@@ -654,8 +654,8 @@ async function 기초보고서_save(type = 0) {
     height: (_height * window.innerHeight) / 1080,
   }).then((canvas) => {
     var data = canvas.toDataURL();
-    var canvas = document.getElementById("_canvas");
-    var ctx = canvas.getContext("2d");
+    var canvas = document.getElementById('_canvas');
+    var ctx = canvas.getContext('2d');
     var img = new Image();
     img.src = data;
     img.onload = function () {
@@ -673,10 +673,10 @@ async function 기초보고서_save(type = 0) {
           height: 1080,
         },
       ],
-      pageSize: "A4",
-      pageOrientation: "landscape",
+      pageSize: 'A4',
+      pageOrientation: 'landscape',
     };
     pdfMake.createPdf(docDefinition).download(file_name);
   });
-  console.log("file name:", file_name);
+  console.log('file name:', file_name);
 }

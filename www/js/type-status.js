@@ -8,8 +8,8 @@ function rand(min, max) {
 }
 
 async function 생산현황_시작() {
-  if (worker == "") return;
-  if (document.getElementById("_chart") == undefined) {
+  if (worker == '') return;
+  if (document.getElementById('_chart') == undefined) {
     await sleep(DELAY);
     return;
   }
@@ -21,32 +21,32 @@ async function 생산현황_시작() {
 
 //품번별 카운트 조회
 async function 품번_조회() {
-  if (worker == "") return;
+  if (worker == '') return;
   var labels = [];
   var counts = [];
   var background_color = [];
   var border_color = [];
 
-  if (level == "kia_일반") {
-    count(BSA재제조, { 차종: { $in: ["DE", "DE_EV", "DEPBV", "DEPBV-EV", "CV", "CV_EV", "MV", "MV_EV", "PU", "PU_EV", "SG2", "SG2-EV", "TAM", "TAM-EV", "PS", "PS_EV", "SK3"] }, 출하: { $exists: true }, 품번: { $exists: true }, 구분: "일반" });
+  if (level == 'kia_일반') {
+    count(BSA재제조, { 차종: { $in: ['DE', 'DE_EV', 'DEPBV', 'DEPBV-EV', 'CV', 'CV_EV', 'MV', 'MV_EV', 'PU', 'PU_EV', 'SG2', 'SG2-EV', 'TAM', 'TAM-EV', 'PS', 'PS_EV', 'SK3'] }, 출하: { $exists: true }, 품번: { $exists: true }, 구분: '일반' });
     await delay();
-  } else if (level == "hyundai_일반") {
+  } else if (level == 'hyundai_일반') {
     count(BSA재제조, {
-      차종: { $in: ["OS", "OS_EV", "NE", "NE_EV", "HR", "HR_EV", "LK", "LK_EV", "LM", "LM_EV", "LKFC", "LKFC-EV", "CS", "CS-EV", "CS_EV", "SX2", "SX2-EV", "AE", "AE_EV", "CE", "CE_EV", "ME", "ME_EV", "FE", "FE_EV", "RG3", "RG3-EV", "JW", "JW_EV", "JK", "JK_EV", "JX", "JX_EV"] },
+      차종: { $in: ['OS', 'OS_EV', 'NE', 'NE_EV', 'HR', 'HR_EV', 'LK', 'LK_EV', 'LM', 'LM_EV', 'LKFC', 'LKFC-EV', 'CS', 'CS-EV', 'CS_EV', 'SX2', 'SX2-EV', 'AE', 'AE_EV', 'CE', 'CE_EV', 'ME', 'ME_EV', 'FE', 'FE_EV', 'RG3', 'RG3-EV', 'JW', 'JW_EV', 'JK', 'JK_EV', 'JX', 'JX_EV'] },
       출하: { $exists: true },
       품번: { $exists: true },
-      구분: "일반",
+      구분: '일반',
     });
     await delay();
-  } else if (level == "kia_보증") {
-    count(BSA재제조, { 차종: { $in: ["DE", "DE_EV", "DEPBV", "DEPBV-EV", "CV", "CV_EV", "MV", "MV_EV", "PU", "PU_EV", "SG2", "SG2-EV", "TAM", "TAM-EV", "PS", "PS_EV", "SK3"] }, 출하: { $exists: true }, 품번: { $exists: true }, 구분: "보증" });
+  } else if (level == 'kia_보증') {
+    count(BSA재제조, { 차종: { $in: ['DE', 'DE_EV', 'DEPBV', 'DEPBV-EV', 'CV', 'CV_EV', 'MV', 'MV_EV', 'PU', 'PU_EV', 'SG2', 'SG2-EV', 'TAM', 'TAM-EV', 'PS', 'PS_EV', 'SK3'] }, 출하: { $exists: true }, 품번: { $exists: true }, 구분: '보증' });
     await delay();
-  } else if (level == "hyundai_보증") {
+  } else if (level == 'hyundai_보증') {
     count(BSA재제조, {
-      차종: { $in: ["OS", "OS_EV", "NE", "NE_EV", "HR", "HR_EV", "LK", "LK_EV", "LM", "LM_EV", "LKFC", "LKFC-EV", "CS", "CS-EV", "CS_EV", "SX2", "SX2-EV", "AE", "AE_EV", "CE", "CE_EV", "ME", "ME_EV", "FE", "FE_EV", "RG3", "RG3-EV", "JW", "JW_EV", "JK", "JK_EV", "JX", "JX_EV"] },
+      차종: { $in: ['OS', 'OS_EV', 'NE', 'NE_EV', 'HR', 'HR_EV', 'LK', 'LK_EV', 'LM', 'LM_EV', 'LKFC', 'LKFC-EV', 'CS', 'CS-EV', 'CS_EV', 'SX2', 'SX2-EV', 'AE', 'AE_EV', 'CE', 'CE_EV', 'ME', 'ME_EV', 'FE', 'FE_EV', 'RG3', 'RG3-EV', 'JW', 'JW_EV', 'JK', 'JK_EV', 'JX', 'JX_EV'] },
       출하: { $exists: true },
       품번: { $exists: true },
-      구분: "보증",
+      구분: '보증',
     });
     await delay();
   } else {
@@ -56,26 +56,26 @@ async function 품번_조회() {
   }
   if (BSA재제조_cnt < 1) return;
 
-  if (level == "kia_일반") {
-    find_BSA재제조(BSA재제조, { 차종: { $in: ["DE", "DE_EV", "DEPBV", "DEPBV-EV", "CV", "CV_EV", "MV", "MV_EV", "PU", "PU_EV", "SG2", "SG2-EV", "TAM", "TAM-EV", "PS", "PS_EV", "SK3"] }, 출하: { $exists: true }, 품번: { $exists: true }, 구분: "일반" });
+  if (level == 'kia_일반') {
+    find_BSA재제조(BSA재제조, { 차종: { $in: ['DE', 'DE_EV', 'DEPBV', 'DEPBV-EV', 'CV', 'CV_EV', 'MV', 'MV_EV', 'PU', 'PU_EV', 'SG2', 'SG2-EV', 'TAM', 'TAM-EV', 'PS', 'PS_EV', 'SK3'] }, 출하: { $exists: true }, 품번: { $exists: true }, 구분: '일반' });
     await delay();
-  } else if (level == "hyundai_일반") {
+  } else if (level == 'hyundai_일반') {
     find_BSA재제조(BSA재제조, {
-      차종: { $in: ["OS", "OS_EV", "NE", "NE_EV", "HR", "HR_EV", "LK", "LK_EV", "LM", "LM_EV", "LKFC", "LKFC-EV", "CS", "CS-EV", "CS_EV", "SX2", "SX2-EV", "AE", "AE_EV", "CE", "CE_EV", "ME", "ME_EV", "FE", "FE_EV", "RG3", "RG3-EV", "JW", "JW_EV", "JK", "JK_EV", "JX", "JX_EV"] },
+      차종: { $in: ['OS', 'OS_EV', 'NE', 'NE_EV', 'HR', 'HR_EV', 'LK', 'LK_EV', 'LM', 'LM_EV', 'LKFC', 'LKFC-EV', 'CS', 'CS-EV', 'CS_EV', 'SX2', 'SX2-EV', 'AE', 'AE_EV', 'CE', 'CE_EV', 'ME', 'ME_EV', 'FE', 'FE_EV', 'RG3', 'RG3-EV', 'JW', 'JW_EV', 'JK', 'JK_EV', 'JX', 'JX_EV'] },
       출하: { $exists: true },
       품번: { $exists: true },
-      구분: "일반",
+      구분: '일반',
     });
     await delay();
-  } else if (level == "kia_보증") {
-    find_BSA재제조(BSA재제조, { 차종: { $in: ["DE", "DE_EV", "DEPBV", "DEPBV-EV", "CV", "CV_EV", "MV", "MV_EV", "PU", "PU_EV", "SG2", "SG2-EV", "TAM", "TAM-EV", "PS", "PS_EV", "SK3"] }, 출하: { $exists: true }, 품번: { $exists: true }, 구분: "보증" });
+  } else if (level == 'kia_보증') {
+    find_BSA재제조(BSA재제조, { 차종: { $in: ['DE', 'DE_EV', 'DEPBV', 'DEPBV-EV', 'CV', 'CV_EV', 'MV', 'MV_EV', 'PU', 'PU_EV', 'SG2', 'SG2-EV', 'TAM', 'TAM-EV', 'PS', 'PS_EV', 'SK3'] }, 출하: { $exists: true }, 품번: { $exists: true }, 구분: '보증' });
     await delay();
-  } else if (level == "hyundai_보증") {
+  } else if (level == 'hyundai_보증') {
     find_BSA재제조(BSA재제조, {
-      차종: { $in: ["OS", "OS_EV", "NE", "NE_EV", "HR", "HR_EV", "LK", "LK_EV", "LM", "LM_EV", "LKFC", "LKFC-EV", "CS", "CS-EV", "CS_EV", "SX2", "SX2-EV", "AE", "AE_EV", "CE", "CE_EV", "ME", "ME_EV", "FE", "FE_EV", "RG3", "RG3-EV", "JW", "JW_EV", "JK", "JK_EV", "JX", "JX_EV"] },
+      차종: { $in: ['OS', 'OS_EV', 'NE', 'NE_EV', 'HR', 'HR_EV', 'LK', 'LK_EV', 'LM', 'LM_EV', 'LKFC', 'LKFC-EV', 'CS', 'CS-EV', 'CS_EV', 'SX2', 'SX2-EV', 'AE', 'AE_EV', 'CE', 'CE_EV', 'ME', 'ME_EV', 'FE', 'FE_EV', 'RG3', 'RG3-EV', 'JW', 'JW_EV', 'JK', 'JK_EV', 'JX', 'JX_EV'] },
       출하: { $exists: true },
       품번: { $exists: true },
-      구분: "보증",
+      구분: '보증',
     });
     await delay();
   } else {
@@ -99,8 +99,8 @@ async function 품번_조회() {
       var border2 = back_rand2;
       var border3 = back_rand3;
 
-      background_color.push("rgba(" + back_rand1 + ", " + back_rand2 + ", " + back_rand3 + ", 0.2)");
-      border_color.push("rgb(" + border1 + ", " + border2 + ", " + border3 + ")");
+      background_color.push('rgba(' + back_rand1 + ', ' + back_rand2 + ', ' + back_rand3 + ', 0.2)');
+      border_color.push('rgb(' + border1 + ', ' + border2 + ', ' + border3 + ')');
     } else {
       //조회 데이터에서 이미 라벨 배열에 같은것이 있는 품번일 경우
       var no = labels.indexOf(doc.품번);
@@ -118,20 +118,20 @@ async function 품번_조회() {
 
 //차트생성 함수
 async function 품번차트(labels, counts, background_color, border_color) {
-  if (worker == "") return;
-  const canvas = document.getElementById("_chart");
+  if (worker == '') return;
+  const canvas = document.getElementById('_chart');
 
   if (_chart != undefined) {
     _chart.destroy();
   }
 
   _chart = new Chart(canvas, {
-    type: "bar",
+    type: 'bar',
     data: {
       labels: labels, //품번 목록을 넣은 라벨 배열(X축)
       datasets: [
         {
-          label: "출하 품번(누적)", //title
+          label: '출하 품번(누적)', //title
           data: counts,
           backgroundColor: background_color,
           borderColor: border_color,
@@ -145,7 +145,7 @@ async function 품번차트(labels, counts, background_color, border_color) {
           //Y축
           title: {
             display: true,
-            text: "갯수",
+            text: '갯수',
           },
           min: 0,
           ticks: {

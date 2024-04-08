@@ -34,7 +34,7 @@ async function 완료보고서_조회(is재제조번호 = false) {
     }
   }
 
-  if (_management_id.value == "") _management_id.value = 관리번호;
+  if (_management_id.value == '') _management_id.value = 관리번호;
   else 관리번호 = _management_id.value;
 
   if (is재제조번호 == false) {
@@ -122,57 +122,57 @@ async function 완료보고서_조회(is재제조번호 = false) {
     _RONo.innerHTML = 입고_data.RONo;
     _입고일.innerHTML = 입고_data.입고일;
     _차종.innerHTML = 입고_data.차종;
-    console.log("차종:", 입고_data.차종);
+    console.log('차종:', 입고_data.차종);
 
     //차종별 표 표출
     switch (입고_data.차종) {
-      case "CS_EV":
-        showTable("_CS_EV");
+      case 'CS_EV':
+        showTable('_CS_EV');
         break;
 
-      case "CV_EV":
-        showTable("_CV_EV");
+      case 'CV_EV':
+        showTable('_CV_EV');
         break;
 
-      case "DE_EV":
-        showTable("_DE_EV");
+      case 'DE_EV':
+        showTable('_DE_EV');
         break;
 
-      case "HR_EV":
-        showTable("_HR_EV");
+      case 'HR_EV':
+        showTable('_HR_EV');
         break;
 
-      case "PU_EV":
-        showTable("_PU_EV");
+      case 'PU_EV':
+        showTable('_PU_EV');
         break;
 
-      case "LK_EV":
-        showTable("_LK_EV");
+      case 'LK_EV':
+        showTable('_LK_EV');
         break;
 
-      case "LM_EV":
-        showTable("_LM_EV");
+      case 'LM_EV':
+        showTable('_LM_EV');
         break;
 
-      case "NE_EV":
-        showTable("_NE_EV");
+      case 'NE_EV':
+        showTable('_NE_EV');
         break;
 
-      case "OS_EV":
-        showTable("_OS_EV");
+      case 'OS_EV':
+        showTable('_OS_EV');
         break;
 
-      case "SK3_EV":
-        showTable("_SK3_EV");
+      case 'SK3_EV':
+        showTable('_SK3_EV');
         break;
 
       default:
-        showTable("_CS_EV");
-        alert("차종을 확인해 주세요");
+        showTable('_CS_EV');
+        alert('차종을 확인해 주세요');
     }
   } else {
-    _RONo.innerHTML = "";
-    _입고일.innerHTML = "";
+    _RONo.innerHTML = '';
+    _입고일.innerHTML = '';
   }
 
   //기초검사 데이터가 쓰이는 부분
@@ -200,11 +200,11 @@ async function 완료보고서_조회(is재제조번호 = false) {
     _결과.innerHTML = EOL_data.용량평가값;
 
     switch (입고_data.차종) {
-      case "CS_EV":
+      case 'CS_EV':
         _CS_외부점검.innerHTML = EOL_data.육안검사_외부;
-        if (EOL_data.육안검사_외부 == "OK") _CS_외부점검사유.innerHTML = "이상없음";
+        if (EOL_data.육안검사_외부 == 'OK') _CS_외부점검사유.innerHTML = '이상없음';
         _CS_내부점검.innerHTML = EOL_data.육안검사_내부;
-        if (EOL_data.육안검사_내부 == "OK") _CS_내부점검사유.innerHTML = "이상없음";
+        if (EOL_data.육안검사_내부 == 'OK') _CS_내부점검사유.innerHTML = '이상없음';
         _CS_케이스.innerHTML = EOL_data.기밀검사_케이스;
         _CS_케이스감압량.innerHTML = EOL_data.기밀검사_케이스_특이사항;
         _CS_냉각유로.innerHTML = EOL_data.기밀검사_냉각유로;
@@ -221,25 +221,25 @@ async function 완료보고서_조회(is재제조번호 = false) {
         _CS_릴레이제어사유.innerHTML = EOL_data.통신검사_릴레이구동사유;
         _CS_고장코드.innerHTML = EOL_data.고장코드유무;
         //_CS_고장코드사유.innerHTML;
-        _CS_입고정보.innerHTML = flag_입고정보 ? "OK" : "NG";
+        _CS_입고정보.innerHTML = flag_입고정보 ? 'OK' : 'NG';
         //_CS_입고정보사유.innerHTML;
-        _CS_재제조이력.innerHTML = "OK";
+        _CS_재제조이력.innerHTML = 'OK';
         //_CS_재제조이력사유.innerHTML;
-        _CS_출하QR.innerHTML = EOL_data.QR != "" ? "OK" : "NG";
+        _CS_출하QR.innerHTML = EOL_data.QR != '' ? 'OK' : 'NG';
         _CS_출하QR사유.innerHTML = EOL_data.QR;
         _CS_커버류.innerHTML = EOL_data.커버류;
-        if (EOL_data.커버류 == "장착확인") _CS_커버류확인.innerHTML = "커버 장착 확인";
-        else _CS_커버류확인.innerHTML = "커버 비장착";
+        if (EOL_data.커버류 == '장착확인') _CS_커버류확인.innerHTML = '커버 장착 확인';
+        else _CS_커버류확인.innerHTML = '커버 비장착';
         _CS_브라켓정보.innerHTML = EOL_data.브라켓;
-        if (EOL_data.브라켓 == "장착확인") _CS_브라켓값.innerHTML = "재고 부족 시 영업팀과 협의 요망";
-        else _CS_브라켓값.innerHTML = "재고 부족 영업팀과 협의 요망";
+        if (EOL_data.브라켓 == '장착확인') _CS_브라켓값.innerHTML = '재고 부족 시 영업팀과 협의 요망';
+        else _CS_브라켓값.innerHTML = '재고 부족 영업팀과 협의 요망';
         break;
 
-      case "CV_EV":
+      case 'CV_EV':
         _CV_외부점검.innerHTML = EOL_data.육안검사_외부;
-        if (_CV_외부점검.innerHTML == "OK") _CV_외부점검사유.innerHTML = "이상없음";
+        if (_CV_외부점검.innerHTML == 'OK') _CV_외부점검사유.innerHTML = '이상없음';
         _CV_내부점검.innerHTML = EOL_data.육안검사_내부;
-        if (_CV_내부점검.innerHTML == "OK") _CV_내부점검사유.innerHTML = "이상없음";
+        if (_CV_내부점검.innerHTML == 'OK') _CV_내부점검사유.innerHTML = '이상없음';
         _CV_케이스.innerHTML = EOL_data.기밀검사_케이스;
         _CV_케이스감압량.innerHTML = EOL_data.기밀검사_케이스_특이사항;
         _CV_냉각유로.innerHTML = EOL_data.기밀검사_냉각유로;
@@ -256,27 +256,27 @@ async function 완료보고서_조회(is재제조번호 = false) {
         _CV_릴레이제어사유.innerHTML = EOL_data.통신검사_릴레이구동사유;
         _CV_고장코드.innerHTML = EOL_data.고장코드유무;
         //_CV_고장코드사유.innerHTML;
-        _CV_입고정보.innerHTML = flag_입고정보 ? "OK" : "NG";
+        _CV_입고정보.innerHTML = flag_입고정보 ? 'OK' : 'NG';
         //_CV_입고정보사유.innerHTML;
-        _CV_재제조이력.innerHTML = "OK";
+        _CV_재제조이력.innerHTML = 'OK';
         //_CV_재제조이력사유.innerHTML;
-        _CS_출하QR.innerHTML = EOL_data.QR != "" ? "OK" : "NG";
+        _CS_출하QR.innerHTML = EOL_data.QR != '' ? 'OK' : 'NG';
         _CV_출하QR사유.innerHTML = EOL_data.QR;
         _CV_커버류.innerHTML = EOL_data.커버류;
-        if (EOL_data.커버류 == "장착확인") _CV_커버류확인.innerHTML = "커버 장착 확인";
-        else _CV_커버류확인.innerHTML = "커버 비장착";
+        if (EOL_data.커버류 == '장착확인') _CV_커버류확인.innerHTML = '커버 장착 확인';
+        else _CV_커버류확인.innerHTML = '커버 비장착';
         _CV_브라켓정보.innerHTML = EOL_data.브라켓;
-        if (EOL_data.브라켓 == "장착확인") _CV_브라켓값.innerHTML = "재고 부족 시 영업팀과 협의 요망";
-        else _CV_브라켓값.innerHTML = "재고 부족 영업팀과 협의 요망";
+        if (EOL_data.브라켓 == '장착확인') _CV_브라켓값.innerHTML = '재고 부족 시 영업팀과 협의 요망';
+        else _CV_브라켓값.innerHTML = '재고 부족 영업팀과 협의 요망';
         _CV_ICCU.innerHTML = EOL_data.ICCU;
         //_CV_ICCU값.innerHTML;
         break;
 
-      case "DE_EV":
+      case 'DE_EV':
         _DE_외부점검.innerHTML = EOL_data.육안검사_외부;
-        if (_DE_외부점검.innerHTML == "OK") _DE_외부점검사유.innerHTML = "이상없음";
+        if (_DE_외부점검.innerHTML == 'OK') _DE_외부점검사유.innerHTML = '이상없음';
         _DE_내부점검.innerHTML = EOL_data.육안검사_내부;
-        if (_DE_내부점검.innerHTML == "OK") _DE_내부점검사유.innerHTML = "이상없음";
+        if (_DE_내부점검.innerHTML == 'OK') _DE_내부점검사유.innerHTML = '이상없음';
         _DE_케이스.innerHTML = EOL_data.기밀검사_케이스;
         _DE_케이스감압량.innerHTML = EOL_data.기밀검사_케이스_특이사항;
         _DE_냉각유로.innerHTML = EOL_data.기밀검사_냉각유로;
@@ -293,25 +293,25 @@ async function 완료보고서_조회(is재제조번호 = false) {
         _DE_릴레이제어사유.innerHTML = EOL_data.통신검사_릴레이구동사유;
         _DE_고장코드.innerHTML = EOL_data.고장코드유무;
         //_DE_고장코드사유.innerHTML;
-        _DE_입고정보.innerHTML = flag_입고정보 ? "OK" : "NG";
+        _DE_입고정보.innerHTML = flag_입고정보 ? 'OK' : 'NG';
         //_DE_입고정보사유.innerHTML;
-        _DE_재제조이력.innerHTML = "OK";
+        _DE_재제조이력.innerHTML = 'OK';
         //_DE_재제조이력사유.innerHTML;
-        _DE_출하QR.innerHTML = EOL_data.QR != "" ? "OK" : "NG";
+        _DE_출하QR.innerHTML = EOL_data.QR != '' ? 'OK' : 'NG';
         _DE_출하QR사유.innerHTML = EOL_data.QR;
         _DE_커버류.innerHTML = EOL_data.커버류;
-        if (EOL_data.커버류 == "장착확인") _DE_커버류확인.innerHTML = "커버 장착 확인";
-        else _DE_커버류확인.innerHTML = "커버 비장착";
+        if (EOL_data.커버류 == '장착확인') _DE_커버류확인.innerHTML = '커버 장착 확인';
+        else _DE_커버류확인.innerHTML = '커버 비장착';
         _DE_브라켓정보.innerHTML = EOL_data.브라켓;
-        if (EOL_data.브라켓 == "장착확인") _DE_브라켓값.innerHTML = "재고 부족 시 영업팀과 협의 요망";
-        else _DE_브라켓값.innerHTML = "재고 부족 영업팀과 협의 요망";
+        if (EOL_data.브라켓 == '장착확인') _DE_브라켓값.innerHTML = '재고 부족 시 영업팀과 협의 요망';
+        else _DE_브라켓값.innerHTML = '재고 부족 영업팀과 협의 요망';
         break;
 
-      case "HR_EV":
+      case 'HR_EV':
         _HR_외부점검.innerHTML = EOL_data.육안검사_외부;
-        if (_HR_외부점검.innerHTML == "OK") _HR_외부점검사유.innerHTML = "이상없음";
+        if (_HR_외부점검.innerHTML == 'OK') _HR_외부점검사유.innerHTML = '이상없음';
         _HR_내부점검.innerHTML = EOL_data.육안검사_내부;
-        if (_HR_내부점검.innerHTMl == "OK") _HR_내부점검사유.innerHTML = "이상없음";
+        if (_HR_내부점검.innerHTMl == 'OK') _HR_내부점검사유.innerHTML = '이상없음';
         _HR_케이스.innerHTML = EOL_data.기밀검사_케이스;
         _HR_케이스감압량.innerHTML = EOL_data.기밀검사_케이스_특이사항;
         _HR_냉각유로.innerHTML = EOL_data.기밀검사_냉각유로;
@@ -328,25 +328,25 @@ async function 완료보고서_조회(is재제조번호 = false) {
         _HR_릴레이제어사유.innerHTML = EOL_data.통신검사_릴레이구동사유;
         _HR_고장코드.innerHTML = EOL_data.고장코드유무;
         //_HR_고장코드사유.innerHTML;
-        _HR_입고정보.innerHTML = flag_입고정보 ? "OK" : "NG";
+        _HR_입고정보.innerHTML = flag_입고정보 ? 'OK' : 'NG';
         //_HR_입고정보사유.innerHTML;
-        _HR_재제조이력.innerHTML = "OK";
+        _HR_재제조이력.innerHTML = 'OK';
         //_HR_재제조이력사유.innerHTML;
-        _HR_출하QR.innerHTML = EOL_data.QR != "" ? "OK" : "NG";
+        _HR_출하QR.innerHTML = EOL_data.QR != '' ? 'OK' : 'NG';
         _HR_출하QR사유.innerHTML = EOL_data.QR;
         _HR_커버류.innerHTML = EOL_data.커버류;
-        if (EOL_data.커버류 == "장착확인") _HR_커버류확인.innerHTML = "커버 장착 확인";
-        else _HR_커버류확인.innerHTML = "커버 비장착";
+        if (EOL_data.커버류 == '장착확인') _HR_커버류확인.innerHTML = '커버 장착 확인';
+        else _HR_커버류확인.innerHTML = '커버 비장착';
         _HR_브라켓정보.innerHTML = EOL_data.브라켓;
-        if (EOL_data.브라켓 == "장착확인") _HR_브라켓값.innerHTML = "재고 부족 시 영업팀과 협의 요망";
-        else _HR_브라켓값.innerHTML = "재고 부족 영업팀과 협의 요망";
+        if (EOL_data.브라켓 == '장착확인') _HR_브라켓값.innerHTML = '재고 부족 시 영업팀과 협의 요망';
+        else _HR_브라켓값.innerHTML = '재고 부족 영업팀과 협의 요망';
         break;
 
-      case "PU_EV":
+      case 'PU_EV':
         _PU_외부점검.innerHTML = EOL_data.육안검사_외부;
-        if (_PU_외부점검.innerHTML == "OK") _PU_외부점검사유.innerHTML = "이상없음";
+        if (_PU_외부점검.innerHTML == 'OK') _PU_외부점검사유.innerHTML = '이상없음';
         _PU_내부점검.innerHTML = EOL_data.육안검사_내부;
-        if (_PU_내부점검.innerHTML == "Ok") _PU_내부점검사유.innerHTML = "이상없음";
+        if (_PU_내부점검.innerHTML == 'Ok') _PU_내부점검사유.innerHTML = '이상없음';
         _PU_케이스.innerHTML = EOL_data.기밀검사_케이스;
         _PU_케이스감압량.innerHTML = EOL_data.기밀검사_케이스_특이사항;
         _PU_냉각유로.innerHTML = EOL_data.기밀검사_냉각유로;
@@ -363,25 +363,25 @@ async function 완료보고서_조회(is재제조번호 = false) {
         _PU_릴레이제어사유.innerHTML = EOL_data.통신검사_릴레이구동사유;
         _PU_고장코드.innerHTML = EOL_data.고장코드유무;
         //_PU_고장코드사유.innerHTML;
-        _PU_입고정보.innerHTML = flag_입고정보 ? "OK" : "NG";
+        _PU_입고정보.innerHTML = flag_입고정보 ? 'OK' : 'NG';
         //_PU_입고정보사유.innerHTML;
-        _PU_재제조이력.innerHTML = "OK";
+        _PU_재제조이력.innerHTML = 'OK';
         //_PU_재제조이력사유.innerHTML;
-        _PU_출하QR.innerHTML = EOL_data.QR != "" ? "OK" : "NG";
+        _PU_출하QR.innerHTML = EOL_data.QR != '' ? 'OK' : 'NG';
         _PU_출하QR사유.innerHTML = EOL_data.QR;
         _PU_커버류.innerHTML = EOL_data.커버류;
-        if (EOL_data.커버류 == "장착확인") _PU_커버류확인.innerHTML = "커버 장착 확인";
-        else _PU_커버류확인.innerHTML = "커버 비장착";
+        if (EOL_data.커버류 == '장착확인') _PU_커버류확인.innerHTML = '커버 장착 확인';
+        else _PU_커버류확인.innerHTML = '커버 비장착';
         _PU_브라켓정보.innerHTML = EOL_data.브라켓;
-        if (EOL_data.브라켓 == "장착확인") _PU_브라켓값.innerHTML = "재고 부족 시 영업팀과 협의 요망";
-        else _PU_브라켓값.innerHTML = "재고 부족 영업팀과 협의 요망";
+        if (EOL_data.브라켓 == '장착확인') _PU_브라켓값.innerHTML = '재고 부족 시 영업팀과 협의 요망';
+        else _PU_브라켓값.innerHTML = '재고 부족 영업팀과 협의 요망';
         break;
 
-      case "LK_EV":
+      case 'LK_EV':
         _LK_FC_외부점검.innerHTML = EOL_data.육안검사_외부;
-        if (_LK_FC_외부점검.innerHTML == "OK") _LK_FC_외부점검사유.innerHTML = "이상없음";
+        if (_LK_FC_외부점검.innerHTML == 'OK') _LK_FC_외부점검사유.innerHTML = '이상없음';
         _LK_FC_내부점검.innerHTML = EOL_data.육안검사_내부;
-        if (_LK_FC_내부점검.innerHTML == "OK") _LK_FC_내부점검사유.innerHTML = "이상없음";
+        if (_LK_FC_내부점검.innerHTML == 'OK') _LK_FC_내부점검사유.innerHTML = '이상없음';
         _LK_FC_케이스.innerHTML = EOL_data.기밀검사_케이스;
         _LK_FC_케이스감압량.innerHTML = EOL_data.기밀검사_케이스_특이사항;
         _LK_FC_냉각유로.innerHTML = EOL_data.기밀검사_냉각유로;
@@ -398,25 +398,25 @@ async function 완료보고서_조회(is재제조번호 = false) {
         _LK_FC_릴레이제어사유.innerHTML = EOL_data.통신검사_릴레이구동사유;
         _LK_FC_고장코드.innerHTML = EOL_data.고장코드유무;
         //_LK_FC_고장코드사유.innerHTML;
-        _LK_FC_입고정보.innerHTML = flag_입고정보 ? "OK" : "NG";
+        _LK_FC_입고정보.innerHTML = flag_입고정보 ? 'OK' : 'NG';
         //_LK_FC_입고정보사유.innerHTML;
-        _LK_FC_재제조이력.innerHTML = "OK";
+        _LK_FC_재제조이력.innerHTML = 'OK';
         //_LK_FC_재제조이력사유.innerHTML;
-        _LK_FC_출하QR.innerHTML = EOL_data.QR != "" ? "OK" : "NG";
+        _LK_FC_출하QR.innerHTML = EOL_data.QR != '' ? 'OK' : 'NG';
         _LK_FC_출하QR사유.innerHTML = EOL_data.QR;
         _LK_FC_커버류.innerHTML = EOL_data.커버류;
-        if (EOL_data.커버류 == "장착확인") _LK_FC_커버류확인.innerHTML = "커버 장착 확인";
-        else _LK_FC_커버류확인.innerHTML = "커버 비장착";
+        if (EOL_data.커버류 == '장착확인') _LK_FC_커버류확인.innerHTML = '커버 장착 확인';
+        else _LK_FC_커버류확인.innerHTML = '커버 비장착';
         _LK_FC_브라켓정보.innerHTML = EOL_data.브라켓;
-        if (EOL_data.브라켓 == "장착확인") _LK_FC_브라켓값.innerHTML = "재고 부족 시 영업팀과 협의 요망";
-        else _LK_FC_브라켓값.innerHTML = "재고 부족 영업팀과 협의 요망";
+        if (EOL_data.브라켓 == '장착확인') _LK_FC_브라켓값.innerHTML = '재고 부족 시 영업팀과 협의 요망';
+        else _LK_FC_브라켓값.innerHTML = '재고 부족 영업팀과 협의 요망';
         break;
 
-      case "LM_EV":
+      case 'LM_EV':
         _LM_외부점검.innerHTML = EOL_data.육안검사_외부;
-        if (_LM_외부점검.innerHTML == "OK") _LM_외부점검사유.innerHTML = "이상없음";
+        if (_LM_외부점검.innerHTML == 'OK') _LM_외부점검사유.innerHTML = '이상없음';
         _LM_내부점검.innerHTML = EOL_data.육안검사_내부;
-        if (_LM_내부점검.innerHTML == "OK") _LM_내부점검사유.innerHTML = "이상없음";
+        if (_LM_내부점검.innerHTML == 'OK') _LM_내부점검사유.innerHTML = '이상없음';
         _LM_케이스.innerHTML = EOL_data.기밀검사_케이스;
         _LM_케이스감압량.innerHTML = EOL_data.기밀검사_케이스_특이사항;
         _LM_냉각유로.innerHTML = EOL_data.기밀검사_냉각유로;
@@ -433,25 +433,25 @@ async function 완료보고서_조회(is재제조번호 = false) {
         _LM_릴레이제어사유.innerHTML = EOL_data.통신검사_릴레이구동사유;
         _LM_고장코드.innerHTML = EOL_data.고장코드유무;
         //_LM_고장코드사유.innerHTML;
-        _LM_입고정보.innerHTML = flag_입고정보 ? "OK" : "NG";
+        _LM_입고정보.innerHTML = flag_입고정보 ? 'OK' : 'NG';
         //_LM_입고정보사유.innerHTML;
-        _LM_재제조이력.innerHTML = "OK";
+        _LM_재제조이력.innerHTML = 'OK';
         //_LM_재제조이력사유.innerHTML;
-        _LM_출하QR.innerHTML = EOL_data.QR != "" ? "OK" : "NG";
+        _LM_출하QR.innerHTML = EOL_data.QR != '' ? 'OK' : 'NG';
         _LM_출하QR사유.innerHTML = EOL_data.QR;
         _LM_커버류.innerHTML = EOL_data.커버류;
-        if (EOL_data.커버류 == "장착확인") _LM_커버류확인.innerHTML = "커버 장착 확인";
-        else _LM_커버류확인.innerHTML = "커버 비장착";
+        if (EOL_data.커버류 == '장착확인') _LM_커버류확인.innerHTML = '커버 장착 확인';
+        else _LM_커버류확인.innerHTML = '커버 비장착';
         _LM_브라켓정보.innerHTML = EOL_data.브라켓;
-        if (EOL_data.브라켓 == "장착확인") _LM_브라켓값.innerHTML = "재고 부족 시 영업팀과 협의 요망";
-        else _LM_브라켓값.innerHTML = "재고 부족 영업팀과 협의 요망";
+        if (EOL_data.브라켓 == '장착확인') _LM_브라켓값.innerHTML = '재고 부족 시 영업팀과 협의 요망';
+        else _LM_브라켓값.innerHTML = '재고 부족 영업팀과 협의 요망';
         break;
 
-      case "NE_EV":
+      case 'NE_EV':
         _NE_외부점검.innerHTML = EOL_data.육안검사_외부;
-        if (_NE_외부점검.innerHTML == "OK") _NE_외부점검사유.innerHTML = "";
+        if (_NE_외부점검.innerHTML == 'OK') _NE_외부점검사유.innerHTML = '';
         _NE_내부점검.innerHTML = EOL_data.육안검사_내부;
-        if (_NE_내부점검.innerHTML == "OK") _NE_내부점검사유.innerHTML = "";
+        if (_NE_내부점검.innerHTML == 'OK') _NE_내부점검사유.innerHTML = '';
         _NE_케이스.innerHTML = EOL_data.기밀검사_케이스;
         _NE_케이스감압량.innerHTML = EOL_data.기밀검사_케이스_특이사항;
         _NE_냉각유로.innerHTML = EOL_data.기밀검사_냉각유로;
@@ -468,26 +468,26 @@ async function 완료보고서_조회(is재제조번호 = false) {
         _NE_릴레이제어사유.innerHTML = EOL_data.통신검사_릴레이구동사유;
         _NE_고장코드.innerHTML = EOL_data.고장코드유무;
         //_NE_고장코드사유.innerHTML;
-        _NE_입고정보.innerHTML = flag_입고정보 ? "OK" : "NG";
+        _NE_입고정보.innerHTML = flag_입고정보 ? 'OK' : 'NG';
         //_NE_입고정보사유.innerHTML;
-        _NE_재제조이력.innerHTML = "OK";
+        _NE_재제조이력.innerHTML = 'OK';
         //_NE_재제조이력사유.innerHTML;
-        _NE_출하QR.innerHTML = EOL_data.QR != "" ? "OK" : "NG";
+        _NE_출하QR.innerHTML = EOL_data.QR != '' ? 'OK' : 'NG';
         _NE_출하QR사유.innerHTML = EOL_data.QR;
         _NE_커버류.innerHTML = EOL_data.커버류;
-        if (EOL_data.커버류 == "장착확인") _NE_커버류확인.innerHTML = "커버 장착 확인";
-        else _NE_커버류확인.innerHTML = "커버 비장착";
+        if (EOL_data.커버류 == '장착확인') _NE_커버류확인.innerHTML = '커버 장착 확인';
+        else _NE_커버류확인.innerHTML = '커버 비장착';
         _NE_브라켓정보.innerHTML = EOL_data.브라켓;
-        if (EOL_data.브라켓 == "장착확인") _NE_브라켓값.innerHTML = "재고 부족 시 영업팀과 협의 요망";
-        else _NE_브라켓값.innerHTML = "재고 부족 영업팀과 협의 요망";
+        if (EOL_data.브라켓 == '장착확인') _NE_브라켓값.innerHTML = '재고 부족 시 영업팀과 협의 요망';
+        else _NE_브라켓값.innerHTML = '재고 부족 영업팀과 협의 요망';
         break;
 
-      case "OS_EV":
+      case 'OS_EV':
         console.log(EOL_data);
         _OS_외부점검.innerHTML = EOL_data.육안검사_외부;
-        if (_OS_외부점검.innerHTML == "OK") _OS_외부점검사유.innerHTML = "";
+        if (_OS_외부점검.innerHTML == 'OK') _OS_외부점검사유.innerHTML = '';
         _OS_내부점검.innerHTML = EOL_data.육안검사_내부;
-        if (_OS_내부점검.innerHTMl == "Ok") _OS_내부점검사유.innerHTML = "";
+        if (_OS_내부점검.innerHTMl == 'Ok') _OS_내부점검사유.innerHTML = '';
         _OS_케이스.innerHTML = EOL_data.기밀검사_케이스;
         _OS_케이스감압량.innerHTML = EOL_data.기밀검사_케이스_특이사항;
         _OS_냉각유로.innerHTML = EOL_data.기밀검사_냉각유로;
@@ -504,25 +504,25 @@ async function 완료보고서_조회(is재제조번호 = false) {
         _OS_릴레이제어사유.innerHTML = EOL_data.통신검사_릴레이구동사유;
         _OS_고장코드.innerHTML = EOL_data.고장코드유무;
         //_OS_고장코드사유.innerHTML;
-        _OS_입고정보.innerHTML = flag_입고정보 ? "OK" : "NG";
+        _OS_입고정보.innerHTML = flag_입고정보 ? 'OK' : 'NG';
         //_OS_입고정보사유.innerHTML;
-        _OS_재제조이력.innerHTML = "OK";
+        _OS_재제조이력.innerHTML = 'OK';
         //_OS_재제조이력사유.innerHTML;
-        _OS_출하QR.innerHTML = EOL_data.QR != "" ? "OK" : "NG";
+        _OS_출하QR.innerHTML = EOL_data.QR != '' ? 'OK' : 'NG';
         _OS_출하QR사유.innerHTML = EOL_data.QR;
         _OS_커버류.innerHTML = EOL_data.커버류;
-        if (EOL_data.커버류 == "장착확인") _OS_커버류확인.innerHTML = "커버 장착 확인";
-        else _OS_커버류확인.innerHTML = "커버 비장착";
+        if (EOL_data.커버류 == '장착확인') _OS_커버류확인.innerHTML = '커버 장착 확인';
+        else _OS_커버류확인.innerHTML = '커버 비장착';
         _OS_브라켓정보.innerHTML = EOL_data.브라켓;
-        if (EOL_data.브라켓 == "장착확인") _OS_브라켓값.innerHTML = "재고 부족 시 영업팀과 협의 요망";
-        else _OS_브라켓값.innerHTML = "재고 부족 영업팀과 협의 요망";
+        if (EOL_data.브라켓 == '장착확인') _OS_브라켓값.innerHTML = '재고 부족 시 영업팀과 협의 요망';
+        else _OS_브라켓값.innerHTML = '재고 부족 영업팀과 협의 요망';
         break;
 
-      case "SK3_EV":
+      case 'SK3_EV':
         _SK3_외부점검.innerHTML = EOL_data.육안검사_외부;
-        if (_SK3_외부점검.innerHTML == "OK") _SK3_외부점검사유.innerHTML = "";
+        if (_SK3_외부점검.innerHTML == 'OK') _SK3_외부점검사유.innerHTML = '';
         _SK3_내부점검.innerHTML = EOL_data.육안검사_내부;
-        if (_SK3_내부점검.innerHTML == "OK") _SK3_내부점검사유.innerHTML = "";
+        if (_SK3_내부점검.innerHTML == 'OK') _SK3_내부점검사유.innerHTML = '';
         _SK3_케이스.innerHTML = EOL_data.기밀검사_케이스;
         _SK3_케이스감압량.innerHTML = EOL_data.기밀검사_케이스_특이사항;
         _SK3_냉각유로.innerHTML = EOL_data.기밀검사_냉각유로;
@@ -539,22 +539,22 @@ async function 완료보고서_조회(is재제조번호 = false) {
         _SK3_릴레이제어사유.innerHTML = EOL_data.통신검사_릴레이구동사유;
         _SK3_고장코드.innerHTML = EOL_data.고장코드유무;
         //_SK3_고장코드사유.innerHTML;
-        _SK3_입고정보.innerHTML = flag_입고정보 ? "OK" : "NG";
+        _SK3_입고정보.innerHTML = flag_입고정보 ? 'OK' : 'NG';
         //_SK3_입고정보사유.innerHTML;
-        _SK3_재제조이력.innerHTML = "OK";
+        _SK3_재제조이력.innerHTML = 'OK';
         //_SK3_재제조이력사유.innerHTML;
-        _SK3_출하QR.innerHTML = EOL_data.QR != "" ? "OK" : "NG";
+        _SK3_출하QR.innerHTML = EOL_data.QR != '' ? 'OK' : 'NG';
         _SK3_출하QR사유.innerHTML = EOL_data.QR;
         _SK3_커버류.innerHTML = EOL_data.커버류;
-        if (EOL_data.커버류 == "장착확인") _SK3_커버류확인.innerHTML = "커버 장착 확인";
-        else _SK3_커버류확인.innerHTML = "커버 비장착";
+        if (EOL_data.커버류 == '장착확인') _SK3_커버류확인.innerHTML = '커버 장착 확인';
+        else _SK3_커버류확인.innerHTML = '커버 비장착';
         _SK3_브라켓정보.innerHTML = EOL_data.브라켓;
-        if (EOL_data.브라켓 == "장착확인") _SK3_브라켓값.innerHTML = "재고 부족 시 영업팀과 협의 요망";
-        else _SK3_브라켓값.innerHTML = "재고 부족 영업팀과 협의 요망";
+        if (EOL_data.브라켓 == '장착확인') _SK3_브라켓값.innerHTML = '재고 부족 시 영업팀과 협의 요망';
+        else _SK3_브라켓값.innerHTML = '재고 부족 영업팀과 협의 요망';
         break;
 
       default:
-        alert("차종을 확인해 주세요");
+        alert('차종을 확인해 주세요');
     }
   }
 
@@ -634,12 +634,12 @@ async function 완료보고서_조회(is재제조번호 = false) {
   if (EOL_data != undefined) {
     _EOL항목_릴레이제어.innerHTML = EOL_data.통신검사_릴레이구동;
     _EOL항목_팩전압.innerHTML = EOL_data.통신검사_팩전압_특이사항;
-    _EOL항목검사.innerHTML = EOL_data.통신검사_릴레이구동 == "OK" && EOL_data.통신검사_팩전압 == "OK" ? "OK" : "NG";
+    _EOL항목검사.innerHTML = EOL_data.통신검사_릴레이구동 == 'OK' && EOL_data.통신검사_팩전압 == 'OK' ? 'OK' : 'NG';
 
     _CELL전압_MAX.innerHTML = EOL_data.통신검사_셀전압MAX;
     _CELL전압_MIN.innerHTML = EOL_data.통신검사_셀전압MIN;
     _CELL전압_편차.innerHTML = EOL_data.통신검사_셀전압편차_특이사항;
-    _CELL전압검사.innerHTML = EOL_data.통신검사_셀전압MAX != "" && EOL_data.통신검사_셀전압MIN != "" && EOL_data.통신검사_CELL전압_편차 != "" ? "OK" : "NG";
+    _CELL전압검사.innerHTML = EOL_data.통신검사_셀전압MAX != '' && EOL_data.통신검사_셀전압MIN != '' && EOL_data.통신검사_CELL전압_편차 != '' ? 'OK' : 'NG';
   }
 
   //DCIR
@@ -663,12 +663,12 @@ async function 완료보고서_조회(is재제조번호 = false) {
   //DCIR 표와 그래프를 성능검사 데이터에서 가져와 만드는 부분(성능검사에서 파일 업로드후 값 추출후 저장하면 해당 값들이 저장됨)
   if (성능_data != undefined) {
     var _chart = new Chart(_DCIR_canvas, {
-      type: "line",
+      type: 'line',
       data: {
-        labels: ["Discharge", "Charge", "Discharge", "Charge", "Discharge", "Charge"],
+        labels: ['Discharge', 'Charge', 'Discharge', 'Charge', 'Discharge', 'Charge'],
         datasets: [
           {
-            label: "DC-IR 계산값",
+            label: 'DC-IR 계산값',
             data: [성능_data.DCIR_Charge1, 성능_data.DCIR_Charge2, 성능_data.DCIR_Charge3, 성능_data.DCIR_Charge4, 성능_data.DCIR_Charge5, 성능_data.DCIR_Charge6],
           },
         ],
@@ -714,14 +714,14 @@ async function 완료보고서_조회(is재제조번호 = false) {
 
   //용량평가
   _img2.ondblclick = function (evt) {
-    _img2.src = "";
+    _img2.src = '';
   };
 
   //드래그앤드롭으로도 넣을 수 있게만든부분
   _img2.ondrop = function (evt) {
     var files = evt.dataTransfer?.files;
     if (files.length > 0) {
-      console.log("drag & drop");
+      console.log('drag & drop');
       resize_pic(files[0], _img2, true);
     }
     evt.preventDefault();
@@ -733,19 +733,19 @@ async function 완료보고서_조회(is재제조번호 = false) {
 
   //성능검사 데이터중 그래프 이미지를 사용하는 부분
   if (성능_data != undefined) {
-    if (_img2.src == "") _img2.src = 성능_data.chart;
+    if (_img2.src == '') _img2.src = 성능_data.chart;
     _용량평가_결과.innerHTML = Number(성능_data.용량평가).toFixed(2);
   }
 }
 
 function showTable(tableId) {
   // 모든 테이블을 숨김
-  const tables = document.querySelectorAll(".tableAll");
+  const tables = document.querySelectorAll('.tableAll');
   for (let i = 0; i < tables.length; i++) {
-    tables[i].style.display = "none";
+    tables[i].style.display = 'none';
   }
   // 선택된 테이블만 표시
-  document.getElementById(tableId).style.display = "table";
+  document.getElementById(tableId).style.display = 'table';
 }
 
 //저장 버튼을 누르면 용량평가 그래프 이미지를 저장
@@ -763,75 +763,75 @@ async function 완료보고서_save() {
   console.log(insert_count);
 
   if (update_count > 0) {
-    alert("업데이트 되었습니다");
+    alert('업데이트 되었습니다');
   }
 
   if (insert_count > 0) {
-    alert("저장 되었습니다");
+    alert('저장 되었습니다');
   }
 }
 
 //완료보고서를 PDF로 출력하는 부분
 async function 완료보고서_save_pdf(type = 0) {
   var _date = new Date();
-  var file_name = "완료보고서" + _date + ".pdf";
+  var file_name = '완료보고서' + _date + '.pdf';
   var _width = 4000;
   var _height = 2000;
 
-  if (type == 0) type = document.getElementById("_완료보고서");
+  if (type == 0) type = document.getElementById('_완료보고서');
 
-  if (type == "육외") {
-    type = document.getElementById("_육안검사외부");
-    file_name = "완료보고서_육안검사외부" + _date + ".pdf";
+  if (type == '육외') {
+    type = document.getElementById('_육안검사외부');
+    file_name = '완료보고서_육안검사외부' + _date + '.pdf';
     _width = 4000;
     _height = 2000;
   }
 
-  if (type == "육내") {
-    type = document.getElementById("_육안검사내부");
-    file_name = "완료보고서_육안검사내부" + _date + ".pdf";
+  if (type == '육내') {
+    type = document.getElementById('_육안검사내부');
+    file_name = '완료보고서_육안검사내부' + _date + '.pdf';
     _width = 4200;
     _height = 2700;
   }
 
-  if (type == "기밀") {
-    type = document.getElementById("_기밀검사");
-    file_name = "완료보고서_기밀검사" + _date + ".pdf";
+  if (type == '기밀') {
+    type = document.getElementById('_기밀검사');
+    file_name = '완료보고서_기밀검사' + _date + '.pdf';
     _width = 4200;
     _height = 2700;
   }
 
-  if (type == "절연") {
-    type = document.getElementById("_절연저항검사");
-    file_name = "완료보고서_절연저항검사" + _date + ".pdf";
+  if (type == '절연') {
+    type = document.getElementById('_절연저항검사');
+    file_name = '완료보고서_절연저항검사' + _date + '.pdf';
     _width = 4200;
     _height = 2700;
   }
 
-  if (type == "CAN1") {
-    type = document.getElementById("_CAN통신검사");
-    file_name = "완료보고서_CAN통신검사" + _date + ".pdf";
+  if (type == 'CAN1') {
+    type = document.getElementById('_CAN통신검사');
+    file_name = '완료보고서_CAN통신검사' + _date + '.pdf';
     _width = 4200;
     _height = 2000;
   }
 
-  if (type == "CAN2") {
-    type = document.getElementById("_CAN통신검사2");
-    file_name = "완료보고서_CAN통신검사2" + _date + ".pdf";
+  if (type == 'CAN2') {
+    type = document.getElementById('_CAN통신검사2');
+    file_name = '완료보고서_CAN통신검사2' + _date + '.pdf';
     _width = 4200;
     _height = 2400;
   }
 
-  if (type == "DCIR") {
-    type = document.getElementById("_DCIR검사");
-    file_name = "완료보고서_DCIR검사" + _date + ".pdf";
+  if (type == 'DCIR') {
+    type = document.getElementById('_DCIR검사');
+    file_name = '완료보고서_DCIR검사' + _date + '.pdf';
     _width = 3700;
     _height = 3000;
   }
 
-  if (type == "용량") {
-    type = document.getElementById("_용량평가");
-    file_name = "완료보고서_용량평가" + _date + ".pdf";
+  if (type == '용량') {
+    type = document.getElementById('_용량평가');
+    file_name = '완료보고서_용량평가' + _date + '.pdf';
     _width = 4200;
     _height = 2000;
   }
@@ -841,8 +841,8 @@ async function 완료보고서_save_pdf(type = 0) {
     height: (_height * window.innerHeight) / 1080,
   }).then((canvas) => {
     var data = canvas.toDataURL();
-    var canvas = document.getElementById("_canvas");
-    var ctx = canvas.getContext("2d");
+    var canvas = document.getElementById('_canvas');
+    var ctx = canvas.getContext('2d');
     var img = new Image();
     img.src = data;
     img.onload = function () {
@@ -860,14 +860,14 @@ async function 완료보고서_save_pdf(type = 0) {
           height: 1080,
         },
       ],
-      pageSize: "A4",
-      pageOrientation: "landscape",
+      pageSize: 'A4',
+      pageOrientation: 'landscape',
     };
     pdfMake.createPdf(docDefinition).download(file_name);
   });
-  console.log("file name:", file_name);
+  console.log('file name:', file_name);
 }
 
 function download() {
-  downloadURI(_CAN진단.src, 관리번호 + "_" + "센서진단.png");
+  downloadURI(_CAN진단.src, 관리번호 + '_' + '센서진단.png');
 }
