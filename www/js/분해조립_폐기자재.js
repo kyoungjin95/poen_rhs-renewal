@@ -71,16 +71,16 @@ async function 분해조립폐기자재_table(tabledata) {
   });
 
   //하나의 폐기 사유를 기입했다면 모든 부품의 폐기사유로 자동 등록
-  // table_폐기자재.on("cellEdited", function (cell) {
-  //   if (flag_all_폐기사유 == false) {
-  //     flag_all_폐기사유 == true;
-  //     var data = cell.getRow().getData();
-  //     for (var i = 0; i < 분해조립폐기자재_tabledata.length; i++) {
-  //       분해조립폐기자재_tabledata[i].폐기사유 = data.폐기사유;
+  //   table_폐기자재.on("cellEdited", function (cell) {
+  //     if (flag_all_폐기사유 == false) {
+  //       flag_all_폐기사유 == true;
+  //       var data = cell.getRow().getData();
+  //       for (var i = 0; i < 분해조립폐기자재_tabledata.length; i++) {
+  //         분해조립폐기자재_tabledata[i].폐기사유 = data.폐기사유;
+  //       }
+  //       분해조립폐기자재_table(분해조립폐기자재_tabledata);
   //     }
-  //     분해조립폐기자재_table(분해조립폐기자재_tabledata);
-  //   }
-  // });
+  //   });
 }
 
 //불량의심 부품의 모든 버튼에 클릭 이벤트 등록

@@ -4,15 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- fontawsome -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
     <!-- tabulator -->
-    <link
-      rel="stylesheet"
-      href="base/style/tabulator_css/tabulator_modern.min.css"
-    />
+    <link rel="stylesheet" href="base/style/tabulator_css/tabulator_modern.min.css" />
     <!-- my css -->
     <link rel="stylesheet" href="base/style/style.css" />
     <title>Poen RHMS</title>
@@ -27,220 +21,95 @@
         <h1>RHMS</h1>
         <p class="version" style="font: italic bold 0.3em/1em Georgia, serif">
           (Remanufacturing History Management System) Ver.
-          <span>Code sky 0.77</span>
-	  <span id='connection_status'>(연결끊김)</span>
+          <span>Code sky 0.78</span>
+          <span id="connection_status">(연결끊김)</span>
         </p>
       </div>
       <br />
       <div id="menu">
         <ul>
           <li>
-            <button
-              class="menu-btn"
-              id="login_btn"
-              onclick="pre_관리번호 = ''; loadPage('base/login.html'); change_label();"
-            >
-              로그인
-            </button>
+            <button class="menu-btn" id="login_btn" onclick="pre_관리번호 = ''; loadPage('base/login.html'); change_label();">로그인</button>
           </li>
           <li>
-            <a href="javascript:void(0)"
-              ><span
-                onclick="pre_관리번호 = ''; loadPage('base/bsa_info.html'); flag_재제조현황 = true;"
-                >조회</span
-              ></a
-            >
+            <a href="javascript:void(0)"><span onclick="pre_관리번호 = ''; loadPage('base/bsa_info.html'); flag_재제조현황 = true;">조회</span></a>
             <ul>
               <li>
-                <button
-                  class="menu-btn"
-                  onclick="pre_관리번호 = ''; loadPage('base/bsa_info.html'); flag_재제조현황 = true;"
-                >
-                  재제조 DATA
-                </button>
+                <button class="menu-btn" onclick="pre_관리번호 = ''; loadPage('base/bsa_info.html'); flag_재제조현황 = true;">재제조 DATA</button>
               </li>
               <li>
-                <button
-                  class="menu-btn"
-                  onclick="pre_관리번호 = '';  loadPage('base/품목상세입력.html'); flag_정보 = true;"
-                >
-                  배터리팩 기본정보
-                </button>
+                <button class="menu-btn" onclick="pre_관리번호 = '';  loadPage('base/품목상세입력.html'); flag_정보 = true;">배터리팩 기본정보</button>
               </li>
               <li>
-                <button
-                  class="menu-btn"
-                  onclick="pre_관리번호 = ''; loadPage('base/dashboard.html'); flag_대시보드 = true;"
-                >
-                  대시보드
-                </button>
+                <button class="menu-btn" onclick="pre_관리번호 = ''; loadPage('base/dashboard.html'); flag_대시보드 = true;">대시보드</button>
               </li>
               <li>
-                <button
-                  class="menu-btn"
-                  onclick="pre_관리번호 = ''; loadPage('base/대기수량.html'); flag_대기수량_현황 = true;"
-                >
-                  배터리팩 대기수량
-                </button>
+                <button class="menu-btn" onclick="pre_관리번호 = ''; loadPage('base/대기수량.html'); flag_대기수량_현황 = true;">배터리팩 대기수량</button>
               </li>
               <li>
-                <button
-                  class="menu-btn"
-                  onclick="pre_관리번호 = ''; loadPage('base/공정제외.html'); flag_BSA_제외분류 = true;"
-                >
-                  배터리팩 제외분류
-                </button>
+                <button class="menu-btn" onclick="pre_관리번호 = ''; loadPage('base/공정제외.html'); flag_BSA_제외분류 = true;">배터리팩 제외분류</button>
               </li>
               <li>
-                <button
-                  class="menu-btn"
-                  onclick="pre_관리번호 = ''; loadPage('base/재충전정보.html'); flag_재충전정보 = true;"
-                >
-                  재충전정보
-                </button>
+                <button class="menu-btn" onclick="pre_관리번호 = ''; loadPage('base/재충전정보.html'); flag_재충전정보 = true;">재충전정보</button>
               </li>
               <li>
-                <button
-                  class="menu-btn"
-                  onclick="pre_관리번호 = ''; loadPage('base/구장재고조회.html'); flag_구장재고조회 = true;"
-                >
-                  창고재고 조회(구장)
-                </button>
+                <button class="menu-btn" onclick="pre_관리번호 = ''; loadPage('base/구장재고조회.html'); flag_구장재고조회 = true;">창고재고 조회(구장)</button>
               </li>
               <li>
-                <button
-                  class="menu-btn"
-                  onclick="pre_관리번호 = ''; loadPage('base/군포재고조회.html'); flag_군포재고조회 = true;"
-                >
-                  창고재고 조회(군포)
-                </button>
+                <button class="menu-btn" onclick="pre_관리번호 = ''; loadPage('base/군포재고조회.html'); flag_군포재고조회 = true;">창고재고 조회(군포)</button>
               </li>
               <li>
-                <button
-                  class="menu-btn"
-                  onclick="pre_관리번호 = ''; loadPage('base/제주재고조회.html'); flag_제주재고조회 = true;"
-                >
-                  창고재고 조회(제주)
-                </button>
+                <button class="menu-btn" onclick="pre_관리번호 = ''; loadPage('base/제주재고조회.html'); flag_제주재고조회 = true;">창고재고 조회(제주)</button>
               </li>
               <li>
-                <button
-                  class="menu-btn"
-                  onclick="pre_관리번호 = ''; loadPage('base/창고재고조회.html'); flag_창고재고조회 = true;"
-                >
-                  창고재고 조회
-                </button>
+                <button class="menu-btn" onclick="pre_관리번호 = ''; loadPage('base/창고재고조회.html'); flag_창고재고조회 = true;">창고재고 조회</button>
               </li>
             </ul>
           </li>
           <li>
-            <a href="javascript:void(0)"
-              ><span
-                onclick="pre_관리번호 = ''; loadPage('base/item-details.html');"
-                >DATA 입력</span
-              ></a
-            >
+            <a href="javascript:void(0)"><span onclick="pre_관리번호 = ''; loadPage('base/item-details.html');">DATA 입력</span></a>
             <ul>
               <li>
-                <button
-                  class="menu-btn"
-                  id="item_detail_btn"
-                  onclick="pre_관리번호 = ''; loadPage('base/item-details.html');"
-                >
-                  배터리팩 정보 입력(마도)
-                </button>
+                <button class="menu-btn" id="item_detail_btn" onclick="pre_관리번호 = ''; loadPage('base/item-details.html');">배터리팩 정보 입력(마도)</button>
               </li>
               <li>
-                <button
-                  class="menu-btn"
-                  onclick="pre_관리번호 = ''; 창고 = '구장'; flag_racks = true;"
-                >
-                  창고재고 입력(구장)
-                </button>
+                <button class="menu-btn" onclick="pre_관리번호 = ''; 창고 = '구장'; flag_racks = true;">창고재고 입력(구장)</button>
               </li>
               <li>
-                <button
-                  class="menu-btn"
-                  onclick="pre_관리번호 = ''; 창고 = '군포'; flag_racks = true;"
-                >
-                  창고재고 입력(군포)
-                </button>
+                <button class="menu-btn" onclick="pre_관리번호 = ''; 창고 = '군포'; flag_racks = true;">창고재고 입력(군포)</button>
               </li>
               <li>
-                <button
-                  class="menu-btn"
-                  onclick="pre_관리번호 = ''; 창고 = '제주'; flag_racks = true;"
-                >
-                  창고재고 입력(제주)
-                </button>
+                <button class="menu-btn" onclick="pre_관리번호 = ''; 창고 = '제주'; flag_racks = true;">창고재고 입력(제주)</button>
               </li>
             </ul>
           </li>
           <li id="부품재고_btn">
-            <button
-              class="menu-btn"
-              onclick="pre_관리번호 = ''; if(계정_stat.부품재고 == 'o') loadPage('base/부품재고.html'); flag_부품재고 = true;"
-            >
-              부품재고
-            </button>
+            <button class="menu-btn" onclick="pre_관리번호 = ''; if(계정_stat.부품재고 == 'o') loadPage('base/부품재고.html'); flag_부품재고 = true;">부품재고</button>
           </li>
           <li>
-            <button
-              class="menu-btn"
-              onclick="pre_관리번호 = ''; loadPage('base/수량집계.html'); flag_수량집계 = true;"
-            >
-              수량집계
-            </button>
+            <button class="menu-btn" onclick="pre_관리번호 = ''; loadPage('base/수량집계.html'); flag_수량집계 = true;">수량집계</button>
           </li>
           <li>
             <a href="javascript:void(0)">
-              <span
-                onclick="loadPage('base/year-status.html' ); flag_년간현황 = true;"
-                >현황 조회</span
-              >
+              <span onclick="loadPage('base/year-status.html' ); flag_년간현황 = true;">현황 조회</span>
             </a>
             <ul>
               <li>
-                <button
-                  class="menu-btn"
-                  onclick="loadPage('base/year-status.html' ); flag_년간현황 = true;"
-                >
-                  년간 현황
-                </button>
+                <button class="menu-btn" onclick="loadPage('base/year-status.html' ); flag_년간현황 = true;">년간 현황</button>
               </li>
               <li>
-                <button
-                  class="menu-btn"
-                  onclick="loadPage('base/month-status.html'); flag_월간현황 = true;"
-                >
-                  월간 현황
-                </button>
+                <button class="menu-btn" onclick="loadPage('base/month-status.html'); flag_월간현황 = true;">월간 현황</button>
               </li>
               <li>
-                <button
-                  class="menu-btn"
-                  onclick="loadPage('base/week-status.html'  ); flag_주간현황 = true;"
-                >
-                  주간 현황
-                </button>
+                <button class="menu-btn" onclick="loadPage('base/week-status.html'  ); flag_주간현황 = true;">주간 현황</button>
               </li>
             </ul>
           </li>
           <li>
-            <button
-              class="menu-btn"
-              onclick="pre_관리번호 = ''; loadPage('base/ETC.html');"
-            >
-              ETC
-            </button>
+            <button class="menu-btn" onclick="pre_관리번호 = ''; loadPage('base/ETC.html');">ETC</button>
           </li>
           <li id="admin_btn">
-            <button
-              class="menu-btn"
-              onclick="pre_관리번호 = ''; loadPage('base/admin.html'); flag_관리자 = true; "
-            >
-              관리자
-            </button>
+            <button class="menu-btn" onclick="pre_관리번호 = ''; loadPage('base/admin.html'); flag_관리자 = true; ">관리자</button>
           </li>
           <li>
             <button class="menu-btn" onClick="loadPage('base/passwd.html');">

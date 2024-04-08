@@ -3,7 +3,7 @@ function loadPage(url) {
   기초검사_DTC_count = 0;
   EOL_DTC_count = 0;
 
-  const content = document.getElementById('content');
+  const content = document.getElementById("content");
 
   //화면전환시 타이머 끔
   if (대기수량Timer != undefined) clearInterval(대기수량Timer);
@@ -26,4 +26,3 @@ function loadPage(url) {
       content.innerHTML = `<p>오류가 발생했습니다. 페이지를 로드할 수 없습니다.</p>`;
     });
 }
-

@@ -3,12 +3,12 @@ var 차종 = "";
 var flag_입고_complete = false;
 
 async function 상세입력_시작(is재제조번호 = false) {
-  if(typeof _폐기 == "undefined") {
+  if (typeof _폐기 == "undefined") {
     await sleep(DELAY);
     return;
   }
 
-//원래 모든 공정 정보 입력 버튼이  기본정보 창에 있었기에 여기에 초기화 변수들이 있게 되었음
+  //원래 모든 공정 정보 입력 버튼이  기본정보 창에 있었기에 여기에 초기화 변수들이 있게 되었음
   flag_상세입력 = false;
   first_분해조립 = true;
 
@@ -32,7 +32,7 @@ async function 상세입력_시작(is재제조번호 = false) {
   Busbars_count = 1;
   BMA_count = 1;
 
-  if(_management_id.value == '') _management_id.value = 관리번호;
+  if (_management_id.value == "") _management_id.value = 관리번호;
 
   if (is재제조번호 == false) {
     _management_id.value = _management_id.value.trim().toUpperCase();
@@ -321,7 +321,7 @@ async function 상세입력_시작(is재제조번호 = false) {
     _폐기사유.value = BSA재제조_v.폐기사유;
     if (BSA재제조_v.출하예약 != undefined) _출하예약.value = BSA재제조_v.출하예약.substr(0, 16);
     if (BSA재제조_v.렉번호 != undefined) _렉번호.value = BSA재제조_v.렉번호.substr(0, 16);
-    if (select_pos != '') _렉번호.value = select_pos;
+    if (select_pos != "") _렉번호.value = select_pos;
   } else {
     if (is재제조번호 == false) {
       _재제조번호.value = "";
@@ -366,19 +366,19 @@ async function 상세입력_시작(is재제조번호 = false) {
     //item_detail_save(true);
   }
 
-  _완전분해.onchange = function(e) {
-	  _공정단계.value = '완전분해';
-  }
+  _완전분해.onchange = function (e) {
+    _공정단계.value = "완전분해";
+  };
 
-  _폐기.onchange = function(e) {
-	  _공정단계.value = '폐기';
-  }
+  _폐기.onchange = function (e) {
+    _공정단계.value = "폐기";
+  };
 }
 
 async function item_detail_save(flag_result = false) {
   if (worker == "") return;
   if (_management_id.value.length == 0) return;
-  if (_management_id.value.slice(0, 2) == "조회") return; 
+  if (_management_id.value.slice(0, 2) == "조회") return;
   console.log("save: ", _management_id.value);
 
   관리번호 = _management_id.value.trim().toUpperCase();

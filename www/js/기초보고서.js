@@ -11,7 +11,8 @@ async function 기초보고서_시작() {
 async function 기초보고서_조회(is재제조번호 = false) {
   _management_id.value = 관리번호;
 
-  if (is재제조번호 == true) { //재제조 번호로 조회
+  if (is재제조번호 == true) {
+    //재제조 번호로 조회
     findOne_BSA재제조(BSA재제조, { 재제조번호: _재제조번호.value });
     await delay();
 
@@ -19,7 +20,8 @@ async function 기초보고서_조회(is재제조번호 = false) {
       _management_id.value = BSA재제조_v.관리번호;
       _재제조번호.value = BSA재제조_v.재제조번호;
     }
-  } else { //관리번호로 조회
+  } else {
+    //관리번호로 조회
     findOne_BSA재제조(BSA재제조, { 관리번호: _management_id.value });
     await delay();
 
@@ -567,7 +569,7 @@ async function 기초보고서_save(type = 0) {
   var file_name = "기초보고서_" + _date + ".pdf";
   var _width = 4200;
   var _height = 2200;
-  
+
   //기초보고서 저장항목들 저장
   var doc = JSON.parse(JSON.stringify(기초보고서_doc));
   doc.level = "작업자";

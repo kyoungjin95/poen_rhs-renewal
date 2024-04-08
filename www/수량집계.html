@@ -19,23 +19,9 @@
             <button onClick="수량집계_month();">Month</button>
           </div>
           <div class="data-check">
-            <input
-              type="date"
-              id="_검색일_from"
-              size="40"
-              value="0000-00-00"
-              max="240-12-4"
-              required
-            />
+            <input type="date" id="_검색일_from" size="40" value="0000-00-00" max="240-12-4" required />
             <span class="tilde">&#126;</span>
-            <input
-              type="date"
-              id="_검색일_to"
-              size="40"
-              value="0000-00-00"
-              max="240-12-4"
-              required
-            />&nbsp;
+            <input type="date" id="_검색일_to" size="40" value="0000-00-00" max="240-12-4" required />&nbsp;
             <button onClick="수량집계_기간조회();">조회</button>
           </div>
           <div class="data__radio">
@@ -49,9 +35,7 @@
         </div>
       </div>
       <div class="data__btn">
-        <button onClick="수량집계_export_to_excel();" class="down__excel">
-          Export To Excel
-        </button>
+        <button onClick="수량집계_export_to_excel();" class="down__excel">Export To Excel</button>
       </div>
       <div class="process">
         <div class="process__tit">
@@ -84,21 +68,15 @@
 
         <select id="new_filter-type">
           <option value="=">=</option>
-          <option value="<"><< /option></option>
-
-          <option value="<="><=< /option></option>
-
+          <option value="<"><</option>
+          <option value="<="><=</option>
           <option value=">">></option>
           <option value=">=">>=</option>
           <option value="!=">!=</option>
           <option value="like">like</option>
         </select>
 
-        <input
-          id="new_filter-value"
-          type="text"
-          placeholder="value to filter"
-        />
+        <input id="new_filter-value" type="text" placeholder="value to filter" />
 
         <button id="new_filter-clear">Clear Filter</button>
       </div>
@@ -109,9 +87,7 @@
         <div id="grid_부품집계"></div>
       </div>
       <div class="data__btn">
-        <button onClick="부품집계_export_to_excel();" class="down__excel">
-          Export To Excel
-        </button>
+        <button onClick="부품집계_export_to_excel();" class="down__excel">Export To Excel</button>
       </div>
     </section>
   </body>

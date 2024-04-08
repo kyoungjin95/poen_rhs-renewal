@@ -109,13 +109,15 @@ table td.bottom {
   table-layout: fixed;
   font-family: Arial, Helvetica, sans-serif;
 }
-/* .check-all table caption {
-  text-indent: -9999px;
+.check-all table caption {
   overflow: hidden;
-  height: 2px;
-  margin-top: -2px;
-  margin-bottom: 20px;
-} */
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+  clip-path: polygon(0 0, 0 0, 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+}
 
 .check-all thead {
   font-weight: bold;

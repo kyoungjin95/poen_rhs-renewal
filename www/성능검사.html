@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>성능검사</title>
+    <title>배터리팩정보입력 - 성능검사</title>
     <link rel="stylesheet" href="base/style/공정.css" />
   </head>
 
@@ -72,7 +72,7 @@
         </div>
         <div class="input-group process-step">
           <form id="_form" action="/upload_excel" method="post" enctype="multipart/form-data">
-            <table class="tb" style="margin:0 auto;">
+            <table class="tb" style="margin: 0 auto">
               <colgroup>
                 <col width="20%" />
                 <col width="5%" />
@@ -351,20 +351,20 @@
             </table>
           </form>
         </div>
-		<center>
-			<label id='_process'>파일 업로드 STATUS</label>
-		</center>
-	</div>
-        <div class="input-group">
-          <div class="input-btn-group">
-            <button onClick="성능검사_save();">저장</button>
-            <button id="_btn_upload" onClick="file_upload();">파일 업로드</button>
-            <!--<button onClick="read_용량평가();">용량평가</button>-->
-            <!--<button onClick="read_SOC60Percent();">SOC60Percent</button>-->
-            <!--<button onClick="read_DCIR();">DCIR</button>-->
-            <button onClick="성능검사_분해조립재의뢰();">분해조립재의뢰</button>
-            <button onClick="이전페이지();">이전페이지</button>
-          </div>
+
+        <div style="text-align: center">
+          <label id="_process">파일 업로드 STATUS</label>
+        </div>
+      </div>
+      <div class="input-group">
+        <div class="input-btn-group">
+          <button onClick="성능검사_save();">저장</button>
+          <button id="_btn_upload" onClick="file_upload();">파일 업로드</button>
+          <!--<button onClick="read_용량평가();">용량평가</button>-->
+          <!--<button onClick="read_SOC60Percent();">SOC60Percent</button>-->
+          <!--<button onClick="read_DCIR();">DCIR</button>-->
+          <button onClick="성능검사_분해조립재의뢰();">분해조립재의뢰</button>
+          <button onClick="이전페이지();">이전페이지</button>
         </div>
       </div>
     </section>
@@ -386,12 +386,12 @@
       const _완료일 = document.getElementById("_완료일");
       const _검사자 = document.getElementById("_검사자");
 
-      const _file1 = document.get.getElementById("_file1");
-      const _file2 = document.get.getElementById("_file2");
-      const _file3 = document.get.getElementById("_file3");
-      const _file4 = document.get.getElementById("_file4");
-      const _file5 = document.get.getElementById("_file5");
-      const _file6 = document.get.getElementById("_file6");
+      const _file1 = document.getElementById("_file1");
+      const _file2 = document.getElementById("_file2");
+      const _file3 = document.getElementById("_file3");
+      const _file4 = document.getElementById("_file4");
+      const _file5 = document.getElementById("_file5");
+      const _file6 = document.getElementById("_file6");
 
       const _inFile1 = document.getElementById("_inFile1");
       const _inFile2 = document.getElementById("_inFile2");
