@@ -3,7 +3,6 @@ var 창고 = '';
 var 보관렉_table;
 
 async function racks_시작() {
-  console.log('racks start');
   if (flag_racks == true) await rack_list();
   flag_racks = false;
 
@@ -70,7 +69,12 @@ async function getButtonValue(event) {
     yes = confirm('선택 Rack 번호: ' + value + '\n정보를 입력하시겠습니까?');
   } else {
     //출고시 문구
-    yes = confirm('선택 Rack 번호: ' + value + '\n' + button.innerHTML + '을 출하 하시겠습니까?');
+    // yes = confirm('선택 Rack 번호: ' + value + '\n' + button.innerHTML + '을 출하 하시겠습니까?');
+    if (button.innerHTML.trim() === '') {
+      yes = alert('배터리팩 정보가 없습니다.');
+    } else {
+      yes = confirm('선택 Rack 번호: ' + value + '\n' + button.innerHTML + '을 출하 하시겠습니까?');
+    }
   }
   if (yes == true) {
     select_pos = value; //선택 rack 위치

@@ -86,7 +86,8 @@ async function 제주재고_save() {
   doc.생산연도 = _생산연도.value;
   doc.ROM_ID = _ROM_ID.value;
   doc.보관위치 = _보관위치.value;
-  doc.재제완료 = _재조완료.value;
+  doc.제조완료 = _제조완료.value;
+  // 20240502 - 제조완료로 수정함 기능리스트 정리 중 오탈자 발견하여 수정했음!
   doc.출고일 = _출고일.value;
   doc.출고처 = _출고처.value;
   doc.비고 = _비고.value;

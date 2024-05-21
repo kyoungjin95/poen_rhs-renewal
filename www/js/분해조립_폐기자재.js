@@ -106,7 +106,7 @@ function 폐기자재_choisenButton() {
     _tmp.QR = document.getElementById(value).value;
     _tmp.폐기여부 = '자재';
     _tmp.등록일 = now;
-    _tmp.등록작업자 = worker;
+    _tmp.등록작업자 = 계정_stat.이름;
     고품.push(_tmp);
 
     //클릭된 부품은 폐기 사유를 편집할수 있더록 표에 표시
@@ -185,7 +185,7 @@ async function 분해조립폐기자재_save() {
     _doc.QR = 고품[i].QR;
     _doc.폐기여부 = '자재';
     _doc.등록일 = now;
-    _doc.등록_작업자 = worker;
+    _doc.등록_작업자 = 계정_stat.이름;
 
     for (var j = 0; j < data.length; j++) {
       if (data[j].QR == _doc.QR) {
