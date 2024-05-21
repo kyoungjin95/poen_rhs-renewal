@@ -147,7 +147,6 @@ form {
   flex-direction: column;
 }
 .loding-bar span {
-  font-family: var(--en-font);
   font-size: 0.8vw;
   color: #1e1e1e;
 }
@@ -232,9 +231,9 @@ table input {
   height: 100%;
 }
 .process-step table .process__img .images::after {
-  content: "\f302";
+  content: '\f302';
   display: block;
-  font-family: "Font Awesome 5 Free";
+  font-family: 'Font Awesome 5 Free';
   font-size: 1.3vw;
   color: #afafaf;
   position: absolute;
@@ -256,8 +255,9 @@ table input {
 /* 기초보고서  분석결과 및 comment */
 #_분석결과,
 #_재제조comment {
+  width: 100%;
   border: 1px solid #000;
-  font-size: 0.9vw;
+  font-size: 0.8vw;
   white-space: pre-line;
   resize: none;
   position: relative;
@@ -305,7 +305,6 @@ textarea:focus:-ms-input-placeholder {
   padding-bottom: 5px;
   text-transform: uppercase;
   font-weight: normal;
-  font-family: var(--en-font);
 }
 .process-step table .img-box .images::after {
   top: 60%;
@@ -579,7 +578,7 @@ td.process__btn {
   width: 51%;
   height: 100%;
   position: sticky;
-  top: 8%;
+  top: 0;
 }
 .parts__information .input-group {
   width: 48%;
@@ -626,23 +625,23 @@ td.process__btn {
   text-align: right;
 }
 /* input 숨겨준다 */
-.data__radio input[type="radio"] {
+.data__radio input[type='radio'] {
   opacity: 0;
   position: absolute;
 }
-.data__radio input[type="radio"] + label {
+.data__radio input[type='radio'] + label {
   cursor: pointer;
   position: relative;
 }
-.data__radio input[type="radio"] + label > span {
+.data__radio input[type='radio'] + label > span {
   vertical-align: middle;
   padding-left: 6px;
   padding-right: 12px;
   font-size: 1.4vw;
 }
 /* label:before에 체크하기 전 상태 CSS */
-.data__radio input[type="radio"] + label::before {
-  content: "";
+.data__radio input[type='radio'] + label::before {
+  content: '';
   display: inline-block;
   width: 0.9vw;
   height: 0.9vw;
@@ -650,8 +649,8 @@ td.process__btn {
   border-radius: 4px;
 }
 /* label:before에 체크 된 상태 CSS */
-.data__radio input[type="radio"]:checked + label::before {
-  content: "";
+.data__radio input[type='radio']:checked + label::before {
+  content: '';
   background-color: #fecd64;
   border-color: #fecd64;
 }
