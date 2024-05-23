@@ -1097,7 +1097,7 @@ async function grid_성능검사(m_id = '') {
     tabledata_성능검사 = JSON.parse(JSON.stringify(성능검사_v));
   } else {
     find(성능검사, m_id);
-    await sleep(1);
+    await delay();
 
     tabledata_성능검사.push(JSON.parse(JSON.stringify(성능검사_v)));
   }
