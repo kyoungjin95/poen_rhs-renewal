@@ -83,10 +83,12 @@ async function 재제조현황_시작() {
 async function 재제조현황_조회() {
   if (worker == '') return;
 
+  reset_result();
+
   find_BSA재제조(BSA재제조, { 관리번호: { $exists: true } }); //BSA재제조 collection 전체 조회
   await delay();
 
-  BSA_data = JSON.parse(JSON.stringify(BSA재제조_v));
+  BSA_data = BSA재제조_v;
 
   table = new Tabulator('#grid_BSA', {
     initialSort: [
@@ -233,7 +235,7 @@ async function 재제조현황_조회() {
     ],
   });
 
-  table_data = JSON.parse(JSON.stringify(BSA재제조_v)); //후에 기본정보들이 필요할때 쓰기위해
+  table_data = BSA재제조_v; //후에 기본정보들이 필요할때 쓰기위해
 
   var progress = document.getElementById('progress');
   table.on('rowClick', async function (e, row) {
@@ -306,8 +308,6 @@ async function 재제조현황_조회() {
     return;
   });
 
-  await sleep(1);
-
   //전체 공정 data를 보여줌
   await grid_입고();
   progress.value = (1 / 19) * 100;
@@ -318,52 +318,52 @@ async function 재제조현황_조회() {
   await grid_기초검사();
   progress.value = (3 / 19) * 100;
 
-  await grid_분해조립();
+  await grid_분해조립new();
   progress.value = (4 / 19) * 100;
 
-  await grid_분해조립new();
+  await grid_성능검사();
   progress.value = (5 / 19) * 100;
 
-  await grid_성능검사();
+  await grid_EOL();
   progress.value = (6 / 19) * 100;
 
-  await grid_EOL();
+  await grid_출하정보();
   progress.value = (7 / 19) * 100;
 
-  await grid_출하정보();
+  await grid_특이사항();
   progress.value = (8 / 19) * 100;
 
-  await grid_특이사항();
+  await grid_교체부품상세1();
   progress.value = (9 / 19) * 100;
 
-  await grid_교체부품상세1();
+  await grid_교체부품상세2();
   progress.value = (10 / 19) * 100;
 
-  await grid_교체부품상세2();
+  await grid_교체부품상세3();
   progress.value = (11 / 19) * 100;
 
-  await grid_교체부품상세3();
-  progress.value = (12 / 19) * 100;
-
   await grid_교체부품상세4();
-  progress.value = (13 / 18) * 100;
+  progress.value = (12 / 18) * 100;
 
   await grid_교체부품상세5();
-  progress.value = (14 / 19) * 100;
+  progress.value = (13 / 19) * 100;
 
   await grid_교체부품상세6();
-  progress.value = (15 / 19) * 100;
+  progress.value = (14 / 19) * 100;
 
   await grid_교체부품상세7();
-  progress.value = (16 / 19) * 100;
+  progress.value = (15 / 19) * 100;
 
   await grid_교체부품상세8();
-  progress.value = (17 / 19) * 100;
+  progress.value = (16 / 19) * 100;
 
   await grid_교체부품상세9();
-  progress.value = (18 / 19) * 100;
+  progress.value = (17 / 19) * 100;
 
   await grid_교체부품상세10();
+  progress.value = (18 / 19) * 100;
+
+  await grid_분해조립();
   progress.value = (19 / 19) * 100;
 
   alert('로딩이 완료되었습니다');
@@ -559,13 +559,13 @@ async function grid_입고(m_id = '') {
     find_입고(입고, { 관리번호: { $exists: true } });
     await delay();
 
-    tabledata_입고 = JSON.parse(JSON.stringify(입고_v));
+    tabledata_입고 = 입고_v;
   } else {
     //선택한 배터리팩의 입고 data
     find(입고, m_id);
     await delay();
 
-    tabledata_입고.push(JSON.parse(JSON.stringify(입고_v)));
+    tabledata_입고.push(입고_v);
   }
 
   if (tabledata_입고 == null) return;
@@ -600,12 +600,12 @@ async function grid_세척(m_id = '') {
     find_세척(세척, { 관리번호: { $exists: true } });
     await delay();
 
-    tabledata_세척 = JSON.parse(JSON.stringify(세척_v));
+    tabledata_세척 = 세척_v;
   } else {
     find(세척, m_id);
     await delay();
 
-    tabledata_세척.push(JSON.parse(JSON.stringify(세척_v)));
+    tabledata_세척.push(세척_v);
   }
 
   if (tabledata_세척 == null) return;
@@ -646,12 +646,12 @@ async function grid_기초검사(m_id = '') {
     find_기초검사(기초검사, { 관리번호: { $exists: true } });
     await delay();
 
-    tabledata_기초검사 = JSON.parse(JSON.stringify(기초검사_v));
+    tabledata_기초검사 = 기초검사_v;
   } else {
     find(기초검사, m_id);
     await delay();
 
-    tabledata_기초검사.push(JSON.parse(JSON.stringify(기초검사_v)));
+    tabledata_기초검사.push(기초검사_v);
   }
 
   if (tabledata_기초검사 == null) return;
@@ -719,13 +719,12 @@ async function grid_분해조립(m_id = '') {
     find_분해조립(분해조립, { 관리번호: { $exists: true } });
     await delay();
 
-    tabledata_분해조립 = JSON.parse(JSON.stringify(분해조립_v));
+    tabledata_분해조립 = 분해조립_v;
   } else {
     find(분해조립, m_id);
     await delay();
 
-    tabledata_분해조립.push(JSON.parse(JSON.stringify(분해조립_v)));
-    await sleep(1);
+    tabledata_분해조립.push(분해조립_v);
   }
 
   if (tabledata_분해조립 == null) return;
@@ -1041,7 +1040,7 @@ async function grid_분해조립(m_id = '') {
 }
 
 async function grid_분해조립new(m_id = '') {
-  if (worker == '') return;
+  //if (worker == '') return;
 
   var tabledata_분해조립new = [];
 
@@ -1049,13 +1048,12 @@ async function grid_분해조립new(m_id = '') {
     find_분해조립재제조(분해조립재제조, { 관리번호: { $exists: true } });
     await delay();
 
-    tabledata_분해조립new = JSON.parse(JSON.stringify(분해조립재제조_v));
+    tabledata_분해조립new = 분해조립재제조_v;
   } else {
     find(분해조립재제조, m_id);
     await delay();
 
-    tabledata_분해조립new.push(JSON.parse(JSON.stringify(분해조립재제조_v)));
-    await sleep(1);
+    tabledata_분해조립new.push(분해조립재제조_v);
   }
 
   if (tabledata_분해조립new == null) return;
@@ -1094,12 +1092,12 @@ async function grid_성능검사(m_id = '') {
     find_성능검사(성능검사, { 관리번호: { $exists: true } });
     await delay();
 
-    tabledata_성능검사 = JSON.parse(JSON.stringify(성능검사_v));
+    tabledata_성능검사 = 성능검사_v;
   } else {
     find(성능검사, m_id);
     await delay();
 
-    tabledata_성능검사.push(JSON.parse(JSON.stringify(성능검사_v)));
+    tabledata_성능검사.push(성능검사_v);
   }
 
   if (tabledata_성능검사 == null) return;
@@ -1141,12 +1139,12 @@ async function grid_EOL(m_id = '') {
     find_EOL(EOL, { 관리번호: { $exists: true } });
     await delay();
 
-    tabledata_EOL = JSON.parse(JSON.stringify(EOL_v));
+    tabledata_EOL = EOL_v;
   } else {
     find(EOL, m_id);
     await delay();
 
-    tabledata_EOL.push(JSON.parse(JSON.stringify(EOL_v)));
+    tabledata_EOL.push(EOL_v);
   }
 
   if (tabledata_EOL == null) return;
@@ -1214,12 +1212,12 @@ async function grid_출하정보(m_id = '') {
     find_출하정보(출하정보, { 관리번호: { $exists: true } });
     await delay();
 
-    tabledata_출하정보 = JSON.parse(JSON.stringify(출하정보_v));
+    tabledata_출하정보 = 출하정보_v;
   } else {
     find(출하정보, m_id);
     await delay();
 
-    tabledata_출하정보.push(JSON.parse(JSON.stringify(출하정보_v)));
+    tabledata_출하정보.push(출하정보_v);
   }
 
   if (tabledata_출하정보 == null) return;
@@ -1286,12 +1284,12 @@ async function grid_특이사항(m_id = '') {
     find_특이사항(특이사항, { 관리번호: { $exists: true } });
     await delay();
 
-    tabledata_특이사항 = JSON.parse(JSON.stringify(특이사항_v));
+    tabledata_특이사항 = 특이사항_v;
   } else {
     find(특이사항, m_id);
     await delay();
 
-    tabledata_특이사항.push(JSON.parse(JSON.stringify(특이사항_v)));
+    tabledata_특이사항.push(특이사항_v);
   }
 
   if (tabledata_특이사항 == null) return;
@@ -1321,12 +1319,12 @@ async function grid_교체부품상세1(m_id = '') {
     find_교체부품상세(교체부품상세1, { 관리번호: { $exists: true } });
     await delay();
 
-    tabledata_교체부품상세1 = JSON.parse(JSON.stringify(교체부품상세1_v));
+    tabledata_교체부품상세1 = 교체부품상세1_v;
   } else {
     find(교체부품상세1, m_id);
     await delay();
 
-    tabledata_교체부품상세1.push(JSON.parse(JSON.stringify(교체부품상세1_v)));
+    tabledata_교체부품상세1.push(교체부품상세1_v);
   }
 
   if (tabledata_교체부품상세1 == null) return;
@@ -1404,12 +1402,12 @@ async function grid_교체부품상세2(m_id = '') {
     find_교체부품상세(교체부품상세2, { 관리번호: { $exists: true } });
     await delay();
 
-    tabledata_교체부품상세2 = JSON.parse(JSON.stringify(교체부품상세2_v));
+    tabledata_교체부품상세2 = 교체부품상세2_v;
   } else {
     find(교체부품상세2, m_id);
     await delay();
 
-    tabledata_교체부품상세2.push(JSON.parse(JSON.stringify(교체부품상세2_v)));
+    tabledata_교체부품상세2.push(교체부품상세2_v);
   }
 
   if (tabledata_교체부품상세2 == null) return;
@@ -1487,12 +1485,12 @@ async function grid_교체부품상세3(m_id = '') {
     find_교체부품상세(교체부품상세3, { 관리번호: { $exists: true } });
     await delay();
 
-    tabledata_교체부품상세3 = JSON.parse(JSON.stringify(교체부품상세3_v));
+    tabledata_교체부품상세3 = 교체부품상세3_v;
   } else {
     find(교체부품상세3, m_id);
     await delay();
 
-    tabledata_교체부품상세3.push(JSON.parse(JSON.stringify(교체부품상세3_v)));
+    tabledata_교체부품상세3.push(교체부품상세3_v);
   }
 
   if (tabledata_교체부품상세3 == null) return;
@@ -1570,12 +1568,12 @@ async function grid_교체부품상세4(m_id = '') {
     find_교체부품상세(교체부품상세4, { 관리번호: { $exists: true } });
     await delay();
 
-    tabledata_교체부품상세4 = JSON.parse(JSON.stringify(교체부품상세4_v));
+    tabledata_교체부품상세4 = 교체부품상세4_v;
   } else {
     find(교체부품상세4, m_id);
     await delay();
 
-    tabledata_교체부품상세4.push(JSON.parse(JSON.stringify(교체부품상세4_v)));
+    tabledata_교체부품상세4.push(교체부품상세4_v);
   }
 
   if (tabledata_교체부품상세4 == null) return;
@@ -1652,12 +1650,12 @@ async function grid_교체부품상세5(m_id = '') {
     find_교체부품상세(교체부품상세5, { 관리번호: { $exists: true } });
     await delay();
 
-    tabledata_교체부품상세5 = JSON.parse(JSON.stringify(교체부품상세5_v));
+    tabledata_교체부품상세5 = 교체부품상세5_v;
   } else {
     find(교체부품상세5, m_id);
     await delay();
 
-    tabledata_교체부품상세5.push(JSON.parse(JSON.stringify(교체부품상세5_v)));
+    tabledata_교체부품상세5.push(교체부품상세5_v);
   }
 
   if (tabledata_교체부품상세5 == null) return;
@@ -1735,12 +1733,12 @@ async function grid_교체부품상세6(m_id = '') {
     find_교체부품상세(교체부품상세6, { 관리번호: { $exists: true } });
     await delay();
 
-    tabledata_교체부품상세6 = JSON.parse(JSON.stringify(교체부품상세6_v));
+    tabledata_교체부품상세6 = 교체부품상세6_v;
   } else {
     find(교체부품상세6, m_id);
     await delay();
 
-    tabledata_교체부품상세6.push(JSON.parse(JSON.stringify(교체부품상세6_v)));
+    tabledata_교체부품상세6.push(교체부품상세6_v);
   }
 
   if (tabledata_교체부품상세6 == null) return;
@@ -1817,12 +1815,12 @@ async function grid_교체부품상세7(m_id = '') {
     find_교체부품상세(교체부품상세7, { 관리번호: { $exists: true } });
     await delay();
 
-    tabledata_교체부품상세7 = JSON.parse(JSON.stringify(교체부품상세7_v));
+    tabledata_교체부품상세7 = 교체부품상세7_v;
   } else {
     find(교체부품상세7, m_id);
     await delay();
 
-    tabledata_교체부품상세7.push(JSON.parse(JSON.stringify(교체부품상세7_v)));
+    tabledata_교체부품상세7.push(교체부품상세7_v);
   }
 
   if (tabledata_교체부품상세7 == null) return;
@@ -1899,12 +1897,12 @@ async function grid_교체부품상세8(m_id = '') {
     find_교체부품상세(교체부품상세8, { 관리번호: { $exists: true } });
     await delay();
 
-    tabledata_교체부품상세8 = JSON.parse(JSON.stringify(교체부품상세8_v));
+    tabledata_교체부품상세8 = 교체부품상세8_v;
   } else {
     find(교체부품상세8, m_id);
     await delay();
 
-    tabledata_교체부품상세8.push(JSON.parse(JSON.stringify(교체부품상세8_v)));
+    tabledata_교체부품상세8.push(교체부품상세8_v);
   }
 
   if (tabledata_교체부품상세8 == null) return;
@@ -1981,12 +1979,12 @@ async function grid_교체부품상세9(m_id = '') {
     find_교체부품상세(교체부품상세9, { 관리번호: { $exists: true } });
     await delay();
 
-    tabledata_교체부품상세9 = JSON.parse(JSON.stringify(교체부품상세9_v));
+    tabledata_교체부품상세9 = 교체부품상세9_v;
   } else {
     find(교체부품상세9, m_id);
     await delay();
 
-    tabledata_교체부품상세9.push(JSON.parse(JSON.stringify(교체부품상세9_v)));
+    tabledata_교체부품상세9.push(교체부품상세9_v);
   }
 
   if (tabledata_교체부품상세9 == null) return;
@@ -2065,12 +2063,12 @@ async function grid_교체부품상세10(m_id = '') {
     find_교체부품상세(교체부품상세10, { 관리번호: { $exists: true } });
     await delay();
 
-    tabledata_교체부품상세10 = JSON.parse(JSON.stringify(교체부품상세10_v));
+    tabledata_교체부품상세10 = 교체부품상세10_v;
   } else {
     find(교체부품상세10, m_id);
     await delay();
 
-    tabledata_교체부품상세10.push(JSON.parse(JSON.stringify(교체부품상세10_v)));
+    tabledata_교체부품상세10.push(교체부품상세10_v);
   }
 
   if (tabledata_교체부품상세10 == null) return;
