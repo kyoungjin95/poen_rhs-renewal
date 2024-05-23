@@ -725,7 +725,7 @@ async function grid_분해조립(m_id = '') {
     await delay();
 
     tabledata_분해조립.push(JSON.parse(JSON.stringify(분해조립_v)));
-    await sleep(1)();
+    await sleep(1);
   }
 
   if (tabledata_분해조립 == null) return;
