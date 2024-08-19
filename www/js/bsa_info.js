@@ -80,6 +80,68 @@ async function 재제조현황_시작() {
   재제조현황_조회();
 }
 
+async function loadGroup1() {
+  await grid_입고();
+  progress.value = (1 / 19) * 100;
+
+  await grid_세척();
+  progress.value = (2 / 19) * 100;
+
+  await grid_기초검사();
+  progress.value = (3 / 19) * 100;
+}
+async function loadGroup2() {
+  await grid_분해조립new();
+  progress.value = (4 / 19) * 100;
+
+  await grid_성능검사();
+  progress.value = (5 / 19) * 100;
+
+  await grid_EOL();
+  progress.value = (6 / 19) * 100;
+
+  await grid_출하정보();
+  progress.value = (7 / 19) * 100;
+
+  await grid_특이사항();
+  progress.value = (8 / 19) * 100;
+}
+async function loadGroup3() {
+  await grid_교체부품상세1();
+  progress.value = (9 / 19) * 100;
+
+  await grid_교체부품상세2();
+  progress.value = (10 / 19) * 100;
+
+  await grid_교체부품상세3();
+  progress.value = (11 / 19) * 100;
+
+  await grid_교체부품상세4();
+  progress.value = (12 / 19) * 100;
+
+  await grid_교체부품상세5();
+  progress.value = (13 / 19) * 100;
+}
+async function loadGroup4() {
+  await grid_교체부품상세6();
+  progress.value = (14 / 19) * 100;
+
+  await grid_교체부품상세7();
+  progress.value = (15 / 19) * 100;
+
+  await grid_교체부품상세8();
+  progress.value = (16 / 19) * 100;
+
+  await grid_교체부품상세9();
+  progress.value = (17 / 19) * 100;
+
+  await grid_교체부품상세10();
+  progress.value = (18 / 19) * 100;
+
+  await grid_분해조립();
+  progress.value = (19 / 19) * 100;
+}
+
 async function 재제조현황_조회() {
   if (worker == '') return;
 
@@ -248,126 +310,114 @@ async function 재제조현황_조회() {
     document.getElementById('m_id').innerHTML = '관리번호: ' + m_id;
 
     //await sleep(1);
-    await grid_입고(m_id);
-    progress.value = (1 / 19) * 100;
+    async function loadAllGrids() {
+      const totalSteps = 19;
+      let completedSteps = 0;
 
-    await grid_세척(m_id);
-    progress.value = (2 / 19) * 100;
+      function updateProgress() {
+        progress.value = (completedSteps / totalSteps) * 100;
+      }
 
-    await grid_기초검사(m_id);
-    progress.value = (3 / 19) * 100;
+      async function executeStep(gridFunction) {
+        await gridFunction();
+        completedSteps += 1;
+        updateProgress();
+      }
 
-    await grid_분해조립(m_id);
-    progress.value = (4 / 19) * 100;
+      const gridFunctions = [
+        grid_입고,
+        grid_세척,
+        grid_기초검사,
+        grid_분해조립new,
+        grid_성능검사,
+        grid_EOL,
+        grid_출하정보,
+        grid_특이사항,
+        grid_교체부품상세1,
+        grid_교체부품상세2,
+        grid_교체부품상세3,
+        grid_교체부품상세4,
+        grid_교체부품상세5,
+        grid_교체부품상세6,
+        grid_교체부품상세7,
+        grid_교체부품상세8,
+        grid_교체부품상세9,
+        grid_교체부품상세10,
+        grid_분해조립,
+      ];
 
-    await grid_분해조립new(m_id);
-    progress.value = (5 / 19) * 100;
+      await Promise.all(gridFunctions.map((gridFunction) => executeStep(gridFunction)));
 
-    await grid_성능검사(m_id);
-    progress.value = (6 / 19) * 100;
+      alert('로딩이 완료되었습니다');
+    }
 
-    await grid_EOL(m_id);
-    progress.value = (7 / 19) * 100;
-
-    await grid_출하정보(m_id);
-    progress.value = (8 / 19) * 100;
-
-    await grid_특이사항(m_id);
-    progress.value = (9 / 19) * 100;
-
-    await grid_교체부품상세1(m_id);
-    progress.value = (10 / 19) * 100;
-
-    await grid_교체부품상세2(m_id);
-    progress.value = (11 / 19) * 100;
-
-    await grid_교체부품상세3(m_id);
-    progress.value = (12 / 19) * 100;
-
-    await grid_교체부품상세4(m_id);
-    progress.value = (13 / 19) * 100;
-
-    await grid_교체부품상세5(m_id);
-    progress.value = (14 / 19) * 100;
-
-    await grid_교체부품상세6(m_id);
-    progress.value = (15 / 19) * 100;
-
-    await grid_교체부품상세7(m_id);
-    progress.value = (16 / 19) * 100;
-
-    await grid_교체부품상세8(m_id);
-    progress.value = (17 / 19) * 100;
-
-    await grid_교체부품상세9(m_id);
-    progress.value = (18 / 19) * 100;
-
-    await grid_교체부품상세10(m_id);
-    progress.value = (19 / 19) * 100;
-
-    return;
+    loadAllGrids();
   });
 
   //전체 공정 data를 보여줌
-  
-  //await sleep(1);
 
-  await grid_입고();
-  progress.value = (1 / 19) * 100;
+  // await sleep(1);
 
-  await grid_세척();
-  progress.value = (2 / 19) * 100;
+  // await grid_입고();
+  // progress.value = (1 / 19) * 100;
 
-  await grid_기초검사();
-  progress.value = (3 / 19) * 100;
+  // await grid_세척();
+  // progress.value = (2 / 19) * 100;
 
-  await grid_분해조립new();
-  progress.value = (4 / 19) * 100;
+  // await grid_기초검사();
+  // progress.value = (3 / 19) * 100;
 
-  await grid_성능검사();
-  progress.value = (5 / 19) * 100;
+  // await grid_분해조립();
+  // progress.value = (4 / 19) * 100;
 
-  await grid_EOL();
-  progress.value = (6 / 19) * 100;
+  // await grid_성능검사();
+  // progress.value = (5 / 19) * 100;
 
-  await grid_출하정보();
-  progress.value = (7 / 19) * 100;
+  // await grid_EOL();
+  // progress.value = (6 / 19) * 100;
 
-  await grid_특이사항();
-  progress.value = (8 / 19) * 100;
+  // await grid_출하정보();
+  // progress.value = (7 / 19) * 100;
 
-  await grid_교체부품상세1();
-  progress.value = (9 / 19) * 100;
+  // await grid_특이사항();
+  // progress.value = (8 / 19) * 100;
 
-  await grid_교체부품상세2();
-  progress.value = (10 / 19) * 100;
+  // await grid_교체부품상세1();
+  // progress.value = (9 / 19) * 100;
 
-  await grid_교체부품상세3();
-  progress.value = (11 / 19) * 100;
+  // await grid_교체부품상세2();
+  // progress.value = (10 / 19) * 100;
 
-  await grid_교체부품상세4();
-  progress.value = (12 / 18) * 100;
+  // await grid_교체부품상세3();
+  // progress.value = (11 / 19) * 100;
 
-  await grid_교체부품상세5();
-  progress.value = (13 / 19) * 100;
+  // await grid_교체부품상세4();
+  // progress.value = (12 / 18) * 100;
 
-  await grid_교체부품상세6();
-  progress.value = (14 / 19) * 100;
+  // await grid_교체부품상세5();
+  // progress.value = (13 / 19) * 100;
 
-  await grid_교체부품상세7();
-  progress.value = (15 / 19) * 100;
+  // await grid_교체부품상세6();
+  // progress.value = (14 / 19) * 100;
 
-  await grid_교체부품상세8();
-  progress.value = (16 / 19) * 100;
+  // await grid_교체부품상세7();
+  // progress.value = (15 / 19) * 100;
 
-  await grid_교체부품상세9();
-  progress.value = (17 / 19) * 100;
+  // await grid_교체부품상세8();
+  // progress.value = (16 / 19) * 100;
 
-  await grid_교체부품상세10();
-  progress.value = (18 / 19) * 100;
+  // await grid_교체부품상세9();
+  // progress.value = (17 / 19) * 100;
 
-  await grid_분해조립();
-  progress.value = (19 / 19) * 100;
+  // await grid_교체부품상세10();
+  // progress.value = (18 / 19) * 100;
+
+  // await grid_분해조립new();
+  // progress.value = (19 / 19) * 100;
+  await loadGroup1();
+  await loadGroup2();
+  await loadGroup3();
+  await loadGroup4();
 
   alert('로딩이 완료되었습니다');
 }
@@ -560,13 +610,13 @@ async function grid_입고(m_id = '') {
   if (m_id == '') {
     //입고 전체 data
     find_입고(입고, { 관리번호: { $exists: true } });
-    await delay();
+    await delay(500);
 
     tabledata_입고 = 입고_v;
   } else {
     //선택한 배터리팩의 입고 data
     find(입고, m_id);
-    await delay();
+    await delay(500);
 
     tabledata_입고.push(입고_v);
   }
@@ -601,7 +651,7 @@ async function grid_세척(m_id = '') {
 
   if (m_id == '') {
     find_세척(세척, { 관리번호: { $exists: true } });
-    await delay();
+    await delay(500);
 
     tabledata_세척 = 세척_v;
   } else {
@@ -647,7 +697,7 @@ async function grid_기초검사(m_id = '') {
 
   if (m_id == '') {
     find_기초검사(기초검사, { 관리번호: { $exists: true } });
-    await delay();
+    await delay(500);
 
     tabledata_기초검사 = 기초검사_v;
   } else {
@@ -720,7 +770,7 @@ async function grid_분해조립(m_id = '') {
 
   if (m_id == '') {
     find_분해조립(분해조립, { 관리번호: { $exists: true } });
-    await delay();
+    await delay(500);
 
     tabledata_분해조립 = 분해조립_v;
   } else {
@@ -1049,7 +1099,7 @@ async function grid_분해조립new(m_id = '') {
 
   if (m_id == '') {
     find_분해조립재제조(분해조립재제조, { 관리번호: { $exists: true } });
-    await delay();
+    await delay(500);
 
     tabledata_분해조립new = 분해조립재제조_v;
   } else {
@@ -1093,7 +1143,7 @@ async function grid_성능검사(m_id = '') {
 
   if (m_id == '') {
     find_성능검사(성능검사, { 관리번호: { $exists: true } });
-    await delay();
+    await delay(500);
 
     tabledata_성능검사 = 성능검사_v;
   } else {
@@ -1140,7 +1190,7 @@ async function grid_EOL(m_id = '') {
   var tabledata_EOL = [];
   if (m_id == '') {
     find_EOL(EOL, { 관리번호: { $exists: true } });
-    await delay();
+    await delay(500);
 
     tabledata_EOL = EOL_v;
   } else {
@@ -1213,7 +1263,7 @@ async function grid_출하정보(m_id = '') {
 
   if (m_id == '') {
     find_출하정보(출하정보, { 관리번호: { $exists: true } });
-    await delay();
+    await delay(500);
 
     tabledata_출하정보 = 출하정보_v;
   } else {
@@ -1734,7 +1784,7 @@ async function grid_교체부품상세6(m_id = '') {
 
   if (m_id == '') {
     find_교체부품상세(교체부품상세6, { 관리번호: { $exists: true } });
-    await delay();
+    await delay(500);
 
     tabledata_교체부품상세6 = 교체부품상세6_v;
   } else {
@@ -1816,7 +1866,7 @@ async function grid_교체부품상세7(m_id = '') {
 
   if (m_id == '') {
     find_교체부품상세(교체부품상세7, { 관리번호: { $exists: true } });
-    await delay();
+    await delay(500);
 
     tabledata_교체부품상세7 = 교체부품상세7_v;
   } else {
@@ -1898,7 +1948,7 @@ async function grid_교체부품상세8(m_id = '') {
 
   if (m_id == '') {
     find_교체부품상세(교체부품상세8, { 관리번호: { $exists: true } });
-    await delay();
+    await delay(500);
 
     tabledata_교체부품상세8 = 교체부품상세8_v;
   } else {
@@ -1980,7 +2030,7 @@ async function grid_교체부품상세9(m_id = '') {
 
   if (m_id == '') {
     find_교체부품상세(교체부품상세9, { 관리번호: { $exists: true } });
-    await delay();
+    await delay(500);
 
     tabledata_교체부품상세9 = 교체부품상세9_v;
   } else {
@@ -2064,7 +2114,7 @@ async function grid_교체부품상세10(m_id = '') {
 
   if (m_id == '') {
     find_교체부품상세(교체부품상세10, { 관리번호: { $exists: true } });
-    await delay();
+    await delay(500);
 
     tabledata_교체부품상세10 = 교체부품상세10_v;
   } else {

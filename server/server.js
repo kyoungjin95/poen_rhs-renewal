@@ -388,9 +388,43 @@ io.on('connection', async function (socket) {
     console.log('request find');
     const result_array = await find(col, query, options);
     socket.timeout(2000).emit('find_result', col, result_array, check);
-    ////logger.info('worker:'+ worker + ' find col:' + col +'query:'+ JSON.stringify(query));
+    logger.info('worker:' + worker + ' find col:' + col + 'query:' + JSON.stringify(query));
   });
 
+  // socket.on('find', async function (worker, col, query, options, check) {
+  //   const startTotal = Date.now();
+  //   if (login == false || worker != id) {
+  //     socket.timeout(2000).emit('find_result', col, null, check);
+  //     return;
+  //   }
+
+  //   console.log('request find');
+  //   const startFind = Date.now(); // find 작업 시작 시간 기록
+
+  //   let result_array = null;
+  //   try {
+  //     result_array = await find(col, query, options);
+  //   } catch (err) {
+  //     // 에러 처리는 find 함수 내에서 이미 처리됨
+  //   }
+
+  //   const endFind = Date.now(); // find 작업 종료 시간 기록
+
+  //   const startEmit = Date.now(); // 응답 전송 시작 시간 기록
+  //   socket.timeout(2000).emit('find_result', col, result_array, check);
+  //   const endEmit = Date.now(); // 응답 전송 종료 시간 기록
+
+  //   const endTotal = Date.now(); // 전체 작업 종료 시간 기록
+  //   const totalTime = endTotal - startTotal;
+
+  //   const logMessage = 'worker:' + worker + ' 항목:' + col + ' query:' + JSON.stringify(query) + ' 작업시간:' + (endFind - startFind) + 'ms' + ' 응답시간:' + (endEmit - startEmit) + 'ms' + ' totalTime:' + totalTime + 'ms';
+
+  //   if (totalTime > 2000) {
+  //     logger.error(logMessage); // 에러 폴더에 로그 기록
+  //   } else {
+  //     logger.info(logMessage); // 일반 로그 기록
+  //   }
+  // });
   socket.on('findOne', async function (worker, col, query, options, check) {
     if (col != '계정' && (login == false || worker != id)) {
       socket.timeout(2000).emit('find_result', col, null, check);
@@ -612,7 +646,7 @@ async function find(col, query, options) {
     const collection = database.collection(col);
     const cursor = await collection.find(query, options);
     const result_array = await cursor.toArray();
-    //console.log('finded (', col, ':', query, ') :', result_array);
+    console.log('finded (', col, ':', query, ') :', result_array);
     return result_array;
   } catch (err) {
     console.error(err);
