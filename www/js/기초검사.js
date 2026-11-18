@@ -28,6 +28,8 @@ async function 기초검사_시작(is재제조 = 0) {
       _구분.value = BSA재제조_v.구분;
       _차종.value = BSA재제조_v.차종;
       _품번.value = BSA재제조_v.품번;
+      if (typeof _VIN !== 'undefined' && _VIN) _VIN.value = BSA재제조_v.VIN || '';
+      if (typeof _sn !== 'undefined' && _sn) _sn.value = BSA재제조_v.SERIALNO || '';
       _RO_no.value = BSA재제조_v.RO_no;
       관리번호 = _management_id.value;
 
@@ -53,6 +55,8 @@ async function 기초검사_시작(is재제조 = 0) {
       _구분.value = BSA재제조_v.구분;
       _차종.value = BSA재제조_v.차종;
       _품번.value = BSA재제조_v.품번;
+      if (typeof _VIN !== 'undefined' && _VIN) _VIN.value = BSA재제조_v.VIN || '';
+      if (typeof _sn !== 'undefined' && _sn) _sn.value = BSA재제조_v.SERIALNO || '';
       _RO_no.value = BSA재제조_v.RO_no;
       관리번호 = _management_id.value;
 
@@ -79,6 +83,8 @@ async function 기초검사_시작(is재제조 = 0) {
       _구분.value = BSA재제조_v.구분;
       _차종.value = BSA재제조_v.차종;
       _품번.value = BSA재제조_v.품번;
+      if (typeof _VIN !== 'undefined' && _VIN) _VIN.value = BSA재제조_v.VIN || '';
+      if (typeof _sn !== 'undefined' && _sn) _sn.value = BSA재제조_v.SERIALNO || '';
       관리번호 = _management_id.value;
 
       차종 = BSA재제조_v.차종;
@@ -95,18 +101,29 @@ async function 기초검사_시작(is재제조 = 0) {
 
   console.log('load: ', _management_id.value);
 
+  //입고 데이터에서 VIN 가져오기 (BSA재제조엔 VIN 필드가 없음 → 입고 우선)
+  find(입고, _management_id.value);
+  await delay();
+  if (입고_v != null && 입고_v.VIN) {
+    if (typeof _VIN !== 'undefined' && _VIN) _VIN.value = 입고_v.VIN;
+  }
+
   //관리자 번호로 기초검사 항목 조회
   find(기초검사, _management_id.value);
   await delay();
   if (기초검사_v != null) {
     //데이터 로딩
     _공정입고일.value = 기초검사_v.공정입고일;
-    _RO_no.value = 기초검사_v.RO_no;
-    _VIN.value = 기초검사_v.VIN;
+    if (!_RO_no.value) _RO_no.value = 기초검사_v.RO_no;
+    // VIN — 입고에서 채워진 값이 있으면 유지 (입고 우선). 빈 채면 기초검사 값 fallback
+    if (!_VIN.value) _VIN.value = 기초검사_v.VIN || '';
     _QRCode.value = 기초검사_v.QRcode;
     _주행거리.value = 기초검사_v.주행거리;
     _차량번호.value = 기초검사_v.차량번호;
     _육안검사_내부.value = 기초검사_v.육안검사_내부;
+    if (typeof 기초검사_불량의심_복원 === 'function') {
+      기초검사_불량의심_복원(기초검사_v.의심부품);
+    }
     _육안검사_내부_특이사항.value = 기초검사_v.육안검사_내부_특이사항;
     _기밀검사_냉각유로.value = 기초검사_v.기밀검사_냉각유로;
     _기밀검사_냉각유로_특이사항.value = 기초검사_v.기밀검사_냉각유로_특이사항;
@@ -171,6 +188,9 @@ async function 기초검사_시작(is재제조 = 0) {
     _통신검사_팩전압판정.value = 기초검사_v.통신검사_팩전압판정;
     _통신검사_셀전압편차.value = 기초검사_v.통신검사_셀전압편차;
     _통신검사_셀전압편차판정.value = 기초검사_v.통신검사_셀전압편차판정;
+    _통신검사_최대내부저항.value = 기초검사_v.통신검사_최대내부저항 || '';
+    _통신검사_최대내부저항판정.value = 기초검사_v.통신검사_최대내부저항판정 || '';
+    _통신검사_최대내부저항_셀번호.value = 기초검사_v.통신검사_최대내부저항_셀번호 || '';
     _통신검사_릴레이구동.value = 기초검사_v.통신검사_릴레이구동;
     _통신검사_릴레이구동사유.value = 기초검사_v.통신검사_릴레이구동사유;
     _BSA생산일자.value = 기초검사_v.BSA생산일자;
@@ -263,6 +283,9 @@ async function 기초검사_시작(is재제조 = 0) {
     _통신검사_셀전압편차판정.value = '';
     _통신검사_릴레이구동.value = '';
     _통신검사_릴레이구동사유.value = '';
+    _통신검사_최대내부저항.value = '';
+    _통신검사_최대내부저항판정.value = '';
+    _통신검사_최대내부저항_셀번호.value = '';
     _BSA생산일자.value = '';
     _BSA판매일자.value = '';
     _BSA수리일자.value = '';
@@ -713,10 +736,12 @@ async function 기초검사_SAVE() {
   doc.절연검사_Minus = _절연검사N.value;
   doc.센서데이터진단 = _센서데이터진단.value;
   doc.센서데이터진단_판정 = _센서데이터진단_판정.value;
-  var oCurrentRow;
-  var tb = document.getElementById('tb');
-  var rowIcnt = tb.rows.length - 17;
-  var code_no = rowIcnt - 22;
+  // DTC 코드 입력칸 갯수 카운트 (DOM 에 존재하는 _통신검사_DTC코드N 중 가장 큰 N)
+  var code_no = 0;
+  for (var _i = 1; _i <= 10; _i++) {
+    if (document.getElementById('_통신검사_DTC코드' + _i)) code_no = _i;
+  }
+  var rowIcnt = 0;
   console.log('save rowIcnt:', rowIcnt);
   console.log('save code_no:', code_no);
 
@@ -840,6 +865,9 @@ async function 기초검사_SAVE() {
   doc.통신검사_셀전압편차 = _통신검사_셀전압편차.value;
   doc.통신검사_릴레이구동 = _통신검사_릴레이구동.value;
   doc.통신검사_릴레이구동사유 = _통신검사_릴레이구동사유.value;
+  doc.통신검사_최대내부저항 = _통신검사_최대내부저항.value;
+  doc.통신검사_최대내부저항판정 = _통신검사_최대내부저항판정.value;
+  doc.통신검사_최대내부저항_셀번호 = _통신검사_최대내부저항_셀번호.value;
   doc.BSA생산일자 = _BSA생산일자.value;
   doc.BSA판매일자 = _BSA판매일자.value;
   doc.BSA수리일자 = _BSA수리일자.value;
@@ -851,6 +879,11 @@ async function 기초검사_SAVE() {
   doc.필드현상 = _필드현상.value;
   doc.AS센터조치 = _AS센터조치.value;
   doc.검사자 = _검사자.value;
+
+  // 불량의심부품 (분해조립 가이드) 수집
+  if (typeof 기초검사_불량의심_수집 === 'function') {
+    doc.의심부품 = 기초검사_불량의심_수집();
+  }
 
   console.log('save data:', doc);
   update(기초검사, doc);
@@ -929,10 +962,10 @@ async function 기초검사_SAVE() {
   console.log('세척_pic2_update:', update_count);
   console.log('세척_pic2_insert:', insert_count);
 
-  flag_불량의심부품 = true;
-  progress.value = 100;
+  // flag_불량의심부품 = true;
+  // progress.value = 100;
 
-  loadPage('base/불량의심부품.html');
+  // loadPage('base/불량의심부품.html');
 }
 
 function _육안검사내부_콤보박스(e) {
@@ -976,6 +1009,12 @@ function _통신검사_셀전압_콤보박스(e) {
   document.getElementById('_통신검사_셀전압편차판정').value = value;
 }
 
+function _통신검사_최대내부저항_콤보박스(e) {
+  const value = e.value;
+
+  document.getElementById('_통신검사_최대내부저항판정').value = value;
+}
+
 function _육안검사내부_콤보박스(e) {
   const value = e.value;
 
@@ -990,19 +1029,44 @@ function _통신검사_릴레이구동_콤보박스(e) {
 
 function _기초검사_add_DTC_Code() {
   기초검사_DTC_count++;
-
-  var oCurrentRow;
-  var tb = document.getElementById('tb');
-  var rowIcnt = tb.rows.length - 15;
   var code_no = 기초검사_DTC_count;
-  console.log('row count:', rowIcnt);
-  console.log('code No:', code_no);
-  if (code_no > 10) return false;
+  if (code_no > 10) {
+    기초검사_DTC_count = 10;
+    alert('DTC 코드는 최대 10개까지 입력 가능합니다.');
+    return false;
+  }
 
-  oCurrentRow = tb.insertRow(rowIcnt);
-  var insert_string = '<td><label for="_통신검사_DTC코드"' + code_no + '><b>통신검사 DTC코드 ' + code_no + '</b></label></td><td><input type="text" id="_통신검사_DTC코드' + code_no + '" size="40" required></td><td><button onClick="_기초검사_delete_row(' + rowIcnt + ');">삭제</button></td>';
-  console.log(insert_string);
-  oCurrentRow.innerHTML = insert_string;
+  var list = document.getElementById('_DTC_list');
+  if (!list) {
+    console.warn('_DTC_list 컨테이너 없음');
+    return false;
+  }
+
+  var field = document.createElement('div');
+  field.className = 'field';
+  field.id = '_DTC_field_' + code_no;
+  field.innerHTML =
+    '<label for="_통신검사_DTC코드' +
+    code_no +
+    '">통신검사 DTC코드 ' +
+    code_no +
+    '</label>' +
+    '<div class="field-input">' +
+    '<input type="text" id="_통신검사_DTC코드' +
+    code_no +
+    '" placeholder="DTC 코드" />' +
+    '<button type="button" onclick="_기초검사_delete_DTC_Code(' +
+    code_no +
+    ');" class="btn-secondary">삭제</button>' +
+    '</div>';
+  list.appendChild(field);
+}
+
+function _기초검사_delete_DTC_Code(no) {
+  var field = document.getElementById('_DTC_field_' + no);
+  if (field) field.remove();
+  // 마지막 번호 갱신
+  if (no === 기초검사_DTC_count) 기초검사_DTC_count--;
 }
 
 function _기초검사_delete_row(index) {
@@ -1017,10 +1081,13 @@ function _기초검사_delete_row(index) {
 }
 
 function _기초검사_delete_all() {
+  var tb = document.getElementById('tb');
+  if (!tb) {
+    기초검사_DTC_count = 0;
+    return;
+  }
   while (기초검사_DTC_count > 0) {
-    var tb = document.getElementById('tb');
     var rowIcnt = tb.rows.length - 16;
-
     tb.deleteRow(rowIcnt);
     기초검사_DTC_count--;
   }
@@ -1091,6 +1158,8 @@ async function 기초검사_list() {
     await delay();
   }
 
+  // element 없으면 skip (다른 페이지에서 trigger 된 경우)
+  if (!document.getElementById('grid_list')) return;
   기초검사_list_table = new Tabulator('#grid_list', {
     layout: 'resizableColumnFit',
     data: BSA재제조_v,
@@ -1256,4 +1325,111 @@ async function 기초검사_list() {
 async function 기초보고서_load() {
   flag_기초보고서 = true;
   loadPage('base/기초보고서.html');
+}
+
+// ====================================================
+// 불량의심부품 (분해조립 가이드) — 차종 따라 부품 select 동적
+// ====================================================
+
+// 분해조립_v2.js 의 EV_부품_정의 / HEV_부품_정의 재사용
+function 기초검사_불량의심_부품옵션(차종) {
+  if (typeof EV_부품_정의 === 'undefined') return [];
+  const isHEV = /HEV/i.test(차종 || '');
+  const 정의 = isHEV ? HEV_부품_정의 : EV_부품_정의;
+  const 옵션 = [];
+  정의.forEach(function (부품) {
+    if (부품.group) {
+      for (let n = 부품.group.from; n <= 부품.group.to; n++) {
+        옵션.push(부품.name + ' ' + n);
+      }
+    } else {
+      옵션.push(부품.name);
+    }
+  });
+  return 옵션;
+}
+
+// 항목 row HTML 생성
+function 기초검사_불량의심_make_row(idx, selectedPart, 사유) {
+  const 차종el = document.getElementById('_차종');
+  const 차종 = 차종el ? 차종el.value : '';
+  const 옵션 = 기초검사_불량의심_부품옵션(차종);
+  let optHtml = '<option value="">---</option>';
+  옵션.forEach(function (name) {
+    const sel = name === selectedPart ? ' selected' : '';
+    optHtml += '<option value="' + name + '"' + sel + '>' + name + '</option>';
+  });
+  const row = document.createElement('div');
+  row.className = 'suspicious-row';
+  row.dataset.idx = idx;
+  row.innerHTML =
+    '<select class="suspicious-row__part">' +
+    optHtml +
+    '</select>' +
+    '<input type="text" class="suspicious-row__reason" placeholder="사유 (예: 교체요망, 폐기, 자재대기)" value="' +
+    (사유 || '') +
+    '" />' +
+    '<button type="button" class="suspicious-row__del" onclick="기초검사_불량의심_삭제(' +
+    idx +
+    ');">✖</button>';
+  return row;
+}
+
+// + 항목 추가
+function 기초검사_불량의심_추가(selectedPart, 사유) {
+  const list = document.getElementById('_불량의심_list');
+  if (!list) return;
+  const idx = list.children.length;
+  list.appendChild(기초검사_불량의심_make_row(idx, selectedPart, 사유));
+}
+
+// 삭제
+function 기초검사_불량의심_삭제(idx) {
+  const list = document.getElementById('_불량의심_list');
+  if (!list) return;
+  const row = list.querySelector('.suspicious-row[data-idx="' + idx + '"]');
+  if (row) row.remove();
+}
+
+// 차종 변경 시 기존 항목들의 select options 갱신
+function 기초검사_불량의심_차종변경() {
+  const list = document.getElementById('_불량의심_list');
+  if (!list) return;
+  const 차종el = document.getElementById('_차종');
+  const 차종 = 차종el ? 차종el.value : '';
+  const 옵션 = 기초검사_불량의심_부품옵션(차종);
+  list.querySelectorAll('.suspicious-row').forEach(function (row) {
+    const sel = row.querySelector('.suspicious-row__part');
+    const 현재값 = sel.value;
+    let optHtml = '<option value="">---</option>';
+    옵션.forEach(function (name) {
+      const selAttr = name === 현재값 ? ' selected' : '';
+      optHtml += '<option value="' + name + '"' + selAttr + '>' + name + '</option>';
+    });
+    sel.innerHTML = optHtml;
+  });
+}
+
+// 저장 시 doc 에 담을 데이터 수집
+function 기초검사_불량의심_수집() {
+  const list = document.getElementById('_불량의심_list');
+  if (!list) return [];
+  const items = [];
+  list.querySelectorAll('.suspicious-row').forEach(function (row) {
+    const part = row.querySelector('.suspicious-row__part').value;
+    const reason = row.querySelector('.suspicious-row__reason').value;
+    if (part) items.push({ 부품: part, 사유: reason });
+  });
+  return items;
+}
+
+// 조회 시 데이터 복원
+function 기초검사_불량의심_복원(items) {
+  const list = document.getElementById('_불량의심_list');
+  if (!list) return;
+  list.innerHTML = '';
+  if (!Array.isArray(items)) return;
+  items.forEach(function (it) {
+    기초검사_불량의심_추가(it.부품, it.사유);
+  });
 }

@@ -27,6 +27,8 @@ async function 세척_시작(is재제조 = 0) {
       _구분.value = BSA재제조_v.구분;
       _차종.value = BSA재제조_v.차종;
       _품번.value = BSA재제조_v.품번;
+      if (typeof _VIN !== "undefined" && _VIN) _VIN.value = BSA재제조_v.VIN || "";
+      if (typeof _sn !== "undefined" && _sn) _sn.value = BSA재제조_v.SERIALNO || "";
       _RO_no.value = BSA재제조_v.RO_no;
     } else {
       //새로운 관리번호이면 화면 항목들의 값을 지워줌
@@ -48,6 +50,8 @@ async function 세척_시작(is재제조 = 0) {
       _구분.value = BSA재제조_v.구분;
       _차종.value = BSA재제조_v.차종;
       _품번.value = BSA재제조_v.품번;
+      if (typeof _VIN !== "undefined" && _VIN) _VIN.value = BSA재제조_v.VIN || "";
+      if (typeof _sn !== "undefined" && _sn) _sn.value = BSA재제조_v.SERIALNO || "";
       _RO_no.value = BSA재제조_v.RO_no;
     } else {
       _management_id.value = '';
@@ -68,6 +72,8 @@ async function 세척_시작(is재제조 = 0) {
       _구분.value = BSA재제조_v.구분;
       _차종.value = BSA재제조_v.차종;
       _품번.value = BSA재제조_v.품번;
+      if (typeof _VIN !== "undefined" && _VIN) _VIN.value = BSA재제조_v.VIN || "";
+      if (typeof _sn !== "undefined" && _sn) _sn.value = BSA재제조_v.SERIALNO || "";
     } else {
       _management_id.value = '';
       _재제조번호.value = '';
@@ -177,6 +183,24 @@ async function 세척_시작(is재제조 = 0) {
 
     _공정입고일.value = now;
   }
+
+  //클릭 → 파일 선택 다이얼로그. 더블클릭/드롭은 아래에서 개별 등록
+  [_img1, _img2, _img3, _img4, _img5, _img6, _img7, _img8, _img9, _img10, _img11, _img12, _img13, _img14, _img15].forEach(function (img) {
+    img.onclick = function () {
+      const input = document.createElement('input');
+      input.type = 'file';
+      input.accept = 'image/*';
+      input.onchange = function (e) {
+        if (e.target.files && e.target.files.length > 0) {
+          resize_pic(e.target.files[0], img);
+        }
+      };
+      input.click();
+    };
+    img.ondragover = function (evt) {
+      evt.preventDefault();
+    };
+  });
 
   _img1.ondblclick = function (evt) {
     _img1.src = '';

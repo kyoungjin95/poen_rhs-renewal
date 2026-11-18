@@ -1,650 +1,482 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>EOL</title>
-    <link rel="stylesheet" href="base/style/공정.css" />
+    <title>배터리팩 정보입력 - EOL</title>
   </head>
 
   <body>
-    <section>
-      <div class="gather-filter">
-        <select id="filter-field">
-          <option></option>
-          <option value="관리번호">관리번호</option>
-          <option value="재제조번호">재제조번호</option>
-          <option value="구분">구분</option>
-          <option value="차종">차종</option>
-          <option value="품번">품번</option>
-          <option value="RO_no">RO_no</option>
-          <option value="공정단계">공정단계</option>
-          <option value="적재No">적재No</option>
-          <option value="입고">입고</option>
-          <option value="제조투입">제조투입</option>
-          <option value="세척투입일">세척투입일</option>
-          <option value="세척">세척</option>
-          <option value="기초검사투입">기초검사투입</option>
-          <option value="기초검사">기초검사</option>
-          <option value="분해조립투입">분해조립투입</option>
-          <option value="분해조립">분해조립</option>
-          <option value="성능검사투입">성능검사투입</option>
-          <option value="성능검사">성능검사</option>
-          <option value="EOL투입일">EOL투입일</option>
-          <option value="EOL">EOL</option>
-          <option value="출하검사">출하검사</option>
-          <option value="납품처">납품처</option>
-          <option value="출하">출하</option>
-          <option value="소재지">소재지</option>
-          <option value="반품입고">반품입고</option>
-          <option value="재출하">재출하</option>
-          <option value="완전분해">완전분해</option>
-          <option value="폐기">폐기</option>
-          <option value="마지막충전일">마지막충전일</option>
-        </select>
+    <section class="page page-EOL">
+      <header class="page-header">
+        <h2 class="page-title">EOL</h2>
+      </header>
 
-        <select id="filter-type">
-          <option value="=">=</option>
-          <option value="<"><</option>
-          <option value="<="><=</option>
-          <option value=">">></option>
-          <option value=">=">>=</option>
-          <option value="!=">!=</option>
-          <option value="like">like</option>
-        </select>
-
-        <input id="filter-value" type="text" placeholder="value to filter" />
-
-        <button id="filter-clear">Clear Filter</button>
-      </div>
-      <button onClick="EOL_list();">LIST</button>
-      <div id="grid_list"></div>
-    </section>
-
-    <section class="EOL">
-      <div class="input-group">
-        <div class="process__tit">
-          <h2>EOL</h2>
+      <!-- 검색 & 리스트 -->
+      <div class="card">
+        <h2 class="card-title">목록 조회</h2>
+        <div class="gather-filter">
+          <select id="filter-field">
+            <option></option>
+            <option value="관리번호">관리번호</option>
+            <option value="재제조번호">재제조번호</option>
+            <option value="구분">구분</option>
+            <option value="차종">차종</option>
+            <option value="품번">품번</option>
+            <option value="RO_no">RO_no</option>
+            <option value="공정단계">공정단계</option>
+            <option value="적재No">적재No</option>
+            <option value="입고">입고</option>
+            <option value="제조투입">제조투입</option>
+            <option value="세척투입일">세척투입일</option>
+            <option value="세척">세척</option>
+            <option value="기초검사투입">기초검사투입</option>
+            <option value="기초검사">기초검사</option>
+            <option value="분해조립투입">분해조립투입</option>
+            <option value="분해조립">분해조립</option>
+            <option value="성능검사투입">성능검사투입</option>
+            <option value="성능검사">성능검사</option>
+            <option value="EOL투입일">EOL투입일</option>
+            <option value="EOL">EOL</option>
+            <option value="출하검사">출하검사</option>
+            <option value="납품처">납품처</option>
+            <option value="출하">출하</option>
+          </select>
+          <select id="filter-type">
+            <option value="=">=</option>
+            <option value="<"><</option>
+            <option value="<="><=</option>
+            <option value=">">></option>
+            <option value=">=">>=</option>
+            <option value="!=">!=</option>
+            <option value="like">like</option>
+          </select>
+          <input id="filter-value" type="text" placeholder="검색어" />
+          <button id="filter-clear">필터 초기화</button>
+          <button onClick="EOL_list();" class="btn-primary">LIST</button>
         </div>
-        <div class="input-group process-step">
-          <table class="tb" id="tb">
-            <colgroup>
-              <col width="30%" />
-              <col width="55%" />
-              <col width="5%" />
-            </colgroup>
-            <tr>
-              <td class="_항목">
-                <label for="management_id">관리번호</label>
-              </td>
-              <td>
-                <input type="text" id="_management_id" value="" size="40" style="text-transform: uppercase" required />
-                <button onClick="EOL_시작(0);">조 회</button>
-              </td>
-            </tr>
-            <tr>
-              <td class="_항목">
-                <label for="_재제조번호">재제조번호</label>
-              </td>
-              <td>
-                <input type="text" id="_재제조번호" value="" size="40" required />
-                <button onClick="EOL_시작(1);">조 회</button>
-              </td>
-            </tr>
-            <tr>
-              <td class="_항목">
-                <label for="_RO_no">RO no.</label>
-              </td>
-              <td>
-                <input type="text" id="_RO_no" value="" size="40" required />
-                <button onClick="EOL_시작(2);">조 회</button>
-              </td>
-            </tr>
-            <tr>
-              <td class="_항목">
-                <label for="_구분">구분</label>
-              </td>
-              <td>
-                <input type="text" id="_구분" size="40" readonly required />
-              </td>
-            </tr>
-            <tr>
-              <td class="_항목">
-                <label for="_차종">차종</label>
-              </td>
-              <td>
-                <input type="text" id="_차종" size="40" readonly required />
-              </td>
-            </tr>
-            <tr>
-              <td class="_항목">
-                <label for="_품번">품번</label>
-              </td>
-              <td>
-                <input type="text" id="_품번" size="40" readonly required />
-              </td>
-            </tr>
-            <tr>
-              <td class="_항목">
-                <label for="_QR기본">QR</label>
-              </td>
-              <td>
-                <input type="text" id="_QR기본" size="40" required />
-              </td>
-            </tr>
-            <tr>
-              <td class="_항목">
-                <label for="_공정입고일">공정 입고일</label>
-              </td>
-              <td>
-                <input type="datetime-local" id="_공정입고일" value="0000-00-00T00:00" required />
-              </td>
-            </tr>
-            <tr>
-              <td class="_항목">
-                <label for="_UPR_C조립">UPR/C 조립</label>
-              </td>
-              <td>
-                <input type="text" id="_UPR_C조립" size="40" required />
-                <select name="language" onchange="_UPR_C조립_콤보박스(this);">
+        <div id="grid_list"></div>
+      </div>
+
+      <!-- 기본 정보 -->
+      <div class="card">
+        <h2 class="card-title">기본 정보</h2>
+        <div class="form-grid">
+          <div class="field">
+            <label for="_management_id">관리번호</label>
+            <div class="field-input">
+              <input type="text" id="_management_id" value="" style="text-transform: uppercase" required />
+              <button onClick="EOL_시작(0);">조회</button>
+            </div>
+          </div>
+          <div class="field">
+            <label for="_재제조번호">재제조번호</label>
+            <div class="field-input">
+              <input type="text" id="_재제조번호" required />
+              <button onClick="EOL_시작(1);">조회</button>
+            </div>
+          </div>
+          <div class="field">
+            <label for="_RO_no">RO no.</label>
+            <div class="field-input">
+              <input type="text" id="_RO_no" required />
+              <button onClick="EOL_시작(2);">조회</button>
+            </div>
+          </div>
+          <div class="field">
+            <label for="_구분">구분</label>
+            <input type="text" id="_구분" readonly required />
+          </div>
+          <div class="field">
+            <label for="_차종">차종</label>
+            <input type="text" id="_차종" readonly required />
+          </div>
+          <div class="field">
+            <label for="_품번">품번</label>
+            <input type="text" id="_품번" readonly required />
+          </div>
+          <div class="field">
+            <label for="_QR기본">QR</label>
+            <input type="text" id="_QR기본" required />
+          </div>
+          <div class="field">
+            <label for="_공정입고일">공정 입고일</label>
+            <input type="datetime-local" id="_공정입고일" value="0000-00-00T00:00" required />
+          </div>
+        </div>
+      </div>
+
+      <!-- 검사 항목 -->
+      <div class="card">
+        <h2 class="card-title">검사 항목</h2>
+
+        <div class="inspection-section">
+          <div class="form-grid">
+            <div class="field full">
+              <label for="_UPR_C조립">UPR/C 조립</label>
+              <div class="field-input">
+                <input type="text" id="_UPR_C조립" required />
+                <select onchange="_UPR_C조립_콤보박스(this);">
                   <option value="">---</option>
                   <option value="OK">OK</option>
                   <option value="미실시">미실시</option>
                 </select>
-              </td>
-            </tr>
-            <tr>
-              <td class="_항목">
-                <label id="_UPR_C조립_label" for="_UPR_C조립_특이사항">기밀검사 케이스 특이사항</label>
-              </td>
-              <td>
-                <input type="text" id="_UPR_C조립_특이사항" size="100" required />
-              </td>
-            </tr>
-            <tr id="_육안검사_외부_box">
-              <td rowspan="2" class="_항목">
-                <label for="_육안검사_외부">육안검사 외부</label>
-              </td>
-              <td colspan="2">
-                <input type="text" id="_육안검사_외부" size="40" required />
-                <select name="language" onchange="_육안검사외부_콤보박스(this);">
-                  <option value="">---</option>
-                  <option value="OK">OK</option>
-                  <option value="NG">NG</option>
-                </select>
-              </td>
-            </tr>
-            <tr id="_육안검사_외부_img">
-              <td class="process__img img-box">
-                <div class="images">
-                  <h3>top</h3>
-                  <img id="_img1" />
-                </div>
-                <div class="images">
-                  <h3>front</h3>
-                  <img id="_img2" />
-                </div>
-                <div class="images">
-                  <h3>left</h3>
-                  <img id="_img3" />
-                </div>
-                <div class="images">
-                  <h3>bottom</h3>
-                  <img id="_img4" />
-                </div>
-                <div class="images">
-                  <h3>rear</h3>
-                  <img id="_img5" />
-                </div>
-                <div class="images">
-                  <h3>right</h3>
-                  <img id="_img6" />
-                </div>
-              </td>
-            </tr>
-            <tr id="_육안검사_내부_box">
-              <td rowspan="2" class="_항목">
-                <label for="_육안검사_내부">육안검사 내부</label>
-              </td>
-              <td>
-                <input type="text" id="_육안검사_내부" size="40" required />
-                <select name="language" onchange="_육안검사내부_콤보박스(this);">
-                  <option value="">---</option>
-                  <option value="OK">OK</option>
-                  <option value="NG">NG</option>
-                </select>
-              </td>
-            </tr>
-            <tr id="_육안검사_내부_img">
-              <td colspan="2" class="process__img img-box">
-                <div class="images">
-                  <h3>전체사진</h3>
-                  <img id="_img7" />
-                </div>
-                <div class="images">
-                  <h3>BMU</h3>
-                  <img id="_img8" />
-                </div>
-                <div class="images">
-                  <h3>CMU</h3>
-                  <img id="_img9" />
-                </div>
-                <div class="images">
-                  <h3>PRA</h3>
-                  <img id="_img10" />
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td class="_항목" rowspan="2">
-                <label for="_기밀검사_케이스">기밀검사 케이스</label>
-              </td>
-              <td>
-                <div>
-                  <input type="text" id="_기밀검사_케이스" size="40" required />
-                  <select name="language" onchange="_기밀검사_케이스_콤보박스(this);">
-                    <option value="">---</option>
-                    <option value="OK">OK</option>
-                    <option value="미실시">미실시</option>
-                  </select>
-                </div>
-                <div>
-                  <input type="text" id="_기밀검사_케이스_값" size="40" required />
-                </div>
-              </td>
-            </tr>
-            <tr id="_기밀검사_케이스_img">
-              <td class="process__img img-box">
-                <div class="images">
-                  <h3>전체</h3>
-                  <img id="_img11" />
-                </div>
-                <div class="images">
-                  <h3>확대</h3>
-                  <img id="_img12" />
-                </div>
-              </td>
-            </tr>
+              </div>
+            </div>
+            <div class="field full">
+              <label id="_UPR_C조립_label" for="_UPR_C조립_특이사항">UPR/C 조립 특이사항</label>
+              <input type="text" id="_UPR_C조립_특이사항" />
+            </div>
+          </div>
+        </div>
 
-            <tr>
-              <td rowspan="2" class="_항목">
-                <label for="_기밀검사_냉각유로">기밀검사 냉각유로</label>
-              </td>
-              <td>
-                <div>
-                  <input type="text" id="_기밀검사_냉각유로" size="40" required />
-                  <select name="language" onchange="_기밀검사_냉각유로_콤보박스(this);">
-                    <option value="">---</option>
-                    <option value="OK">OK</option>
-                    <option value="미실시">미실시</option>
-                  </select>
-                </div>
-                <div>
-                  <input type="text" id="_기밀검사_냉각유로_값" size="40" required />
-                </div>
-              </td>
-            </tr>
-            <tr id="_기밀검사_냉각유로_img">
-              <td class="process__img img-box">
-                <div class="images">
-                  <h3>전체</h3>
-                  <img id="_img13" />
-                </div>
-                <div class="images">
-                  <h3>확대</h3>
-                  <img id="_img14" />
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td rowspan="2" class="_항목">
-                <label for="_절연검사P"
-                  >절연 검사 +(MΩ)<br />
-                  <span class="side__tit">(40MΩ 이상)</span></label
-                >
-              </td>
-              <td>
-                <div>
-                  <input type="text" id="_절연검사P" size="40" required />
-                  <select name="language" onchange="_절연검사p_콤보박스(this);">
-                    <option value="">---</option>
-                    <option value="OK">OK</option>
-                    <option value="미실시">미실시</option>
-                  </select>
-                </div>
-                <div>
-                  <input type="text" id="_절연검사P_값" size="40" required />
-                </div>
-              </td>
-            </tr>
-            <tr id="_절연검사P_img">
-              <td class="process__img img-box">
-                <div class="images">
-                  <h3>전체</h3>
-                  <img id="_img15" />
-                </div>
-                <div class="images">
-                  <h3>확대</h3>
-                  <img id="_img16" />
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td rowspan="2" class="_항목">
-                <label for="_절연검사M"
-                  >절연 검사 -(MΩ)<br />
-                  <span class="side__tit">(15MΩ 이상)</span>
-                </label>
-              </td>
-              <td>
-                <div>
-                  <input type="text" id="_절연검사M" size="40" required />
-                  <select name="language" onchange="_절연검사M_콤보박스(this);">
-                    <option value="">---</option>
-                    <option value="OK">OK</option>
-                    <option value="미실시">미실시</option>
-                  </select>
-                </div>
-                <div>
-                  <input type="text" id="_절연검사M_값" size="40" required />
-                </div>
-              </td>
-            </tr>
-            <tr id="_절연검사M_img">
-              <td class="process__img img-box">
-                <div class="images top">
-                  <img id="_img17" />
-                </div>
-                <div class="images top">
-                  <img id="_img18" />
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td class="_항목">
-                <label for="_절연저항HVP">절연저항 HV+</label>
-              </td>
-              <td>
-                <div>
-                  <input type="text" id="_절연저항HVP" size="40" required />
-                  <select name="language" onchange="_절연저항HVP_콤보박스(this);">
-                    <option value="">---</option>
-                    <option value="OK">OK</option>
-                    <option value="미실시">미실시</option>
-                  </select>
-                </div>
-                <div>
-                  <input type="text" id="_절연저항HVP_값" size="40" required />
-                </div>
-              </td>
-              <td class="process__img once">
-                <div class="images">
-                  <img id="_img19" width="100vw" height="100vh" />
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td class="_항목">
-                <label for="_절연저항HVN">절연저항 HV-</label>
-              </td>
-              <td>
-                <div>
-                  <input type="text" id="_절연저항HVN" size="40" required />
-                  <select name="language" onchange="_절연저항HVN_콤보박스(this);">
-                    <option value="">---</option>
-                    <option value="OK">OK</option>
-                    <option value="미실시">미실시</option>
-                  </select>
-                </div>
-                <div>
-                  <input type="text" id="_절연저항HVN_값" size="40" required />
-                </div>
-              </td>
-              <td class="process__img once">
-                <div class="images">
-                  <img id="_img20" width="100vw" height="100vh" />
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td class="_항목">
-                <label for="_고장코드진단">고장코드 진단</label>
-              </td>
-              <td class="process__img img-box">
-                <div class="images">
-                  <h3>고장코드 진단(현재)</h3>
-                  <img id="_img21" />
-                </div>
-                <div class="images">
-                  <h3>고장코드 진단(과거)</h3>
-                  <img id="_img22" />
-                </div>
-                <div class="images">
-                  <h3>센서데이터</h3>
-                  <img id="_img23" />
-                </div>
-              </td>
-            </tr>
-
-            <tr>
-              <td class="_항목">
-                <label for="_고장코드유무">고장코드 유무</label>
-              </td>
-              <td>
-                <input type="text" id="_고장코드유무" size="40" value required />
-                <select name="language" onchange="_고장코드유무_콤보박스(this);">
+        <div id="_육안검사_외부_box" class="inspection-section">
+          <div class="form-grid">
+            <div class="field full">
+              <label for="_육안검사_외부">육안검사 외부</label>
+              <div class="field-input">
+                <input type="text" id="_육안검사_외부" required />
+                <select onchange="_육안검사외부_콤보박스(this);">
                   <option value="">---</option>
                   <option value="OK">OK</option>
                   <option value="미실시">미실시</option>
                 </select>
-              </td>
-            </tr>
-            <tr>
-              <td class="_항목" rowspan="2">
-                <label for="_통신검사_팩전압">통신검사 팩전압(V)</label>
-              </td>
-              <td>
-                <div>
-                  <input type="text" id="_통신검사_팩전압" size="40" required />
-                  <select name="language" onchange="_통신검사_팩전압_콤보박스(this);">
-                    <option value="">---</option>
-                    <option value="OK">OK</option>
-                    <option value="미실시">미실시</option>
-                  </select>
-                </div>
-                <div>
-                  <input type="text" id="_통신검사_팩전압_값" size="40" required />
-                </div>
-              </td>
-            </tr>
-            <tr id="_통신검사_팩전압_img">
-              <td class="process__img img-box">
-                <div class="images">
-                  <h3>EOL 항목</h3>
-                  <img id="_img24" />
-                </div>
-                <div class="images">
-                  <h3>CELL 전압</h3>
-                  <img id="_img25" />
-                </div>
-              </td>
-            </tr>
+              </div>
+            </div>
+          </div>
+          <div id="_육안검사_외부_img" class="image-grid image-grid-labeled">
+            <div class="image-slot"><span class="image-label">top</span><img id="_img1" /></div>
+            <div class="image-slot"><span class="image-label">front</span><img id="_img2" /></div>
+            <div class="image-slot"><span class="image-label">left</span><img id="_img3" /></div>
+            <div class="image-slot"><span class="image-label">bottom</span><img id="_img4" /></div>
+            <div class="image-slot"><span class="image-label">rear</span><img id="_img5" /></div>
+            <div class="image-slot"><span class="image-label">right</span><img id="_img6" /></div>
+          </div>
+        </div>
 
-            <tr>
-              <td class="_항목">
-                <label for="_통신검사_셀전압편차">통신검사 셀전압 편차(mV)</label>
-              </td>
-              <td>
-                <div>
-                  <input type="text" id="_통신검사_셀전압편차" size="40" required />
-                  <select name="language" onchange="_통신검사_셀전압편차_콤보박스(this);">
-                    <option value="">---</option>
-                    <option value="OK">OK</option>
-                    <option value="미실시">미실시</option>
-                  </select>
-                </div>
-                <div>
-                  <input type="text" id="_통신검사_셀전압편차_값" size="40" required />
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td class="_항목">
-                <label for="_셀전압MAX">셀전압 MAX</label>
-              </td>
-              <td>
-                <input type="text" id="_셀전압MAX" size="40" required />
-              </td>
-            </tr>
+        <div id="_육안검사_내부_box" class="inspection-section">
+          <div class="form-grid">
+            <div class="field full">
+              <label for="_육안검사_내부">육안검사 내부</label>
+              <div class="field-input">
+                <input type="text" id="_육안검사_내부" required />
+                <select onchange="_육안검사내부_콤보박스(this);">
+                  <option value="">---</option>
+                  <option value="OK">OK</option>
+                  <option value="미실시">미실시</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div id="_육안검사_내부_img" class="image-grid image-grid-labeled">
+            <div class="image-slot"><span class="image-label">전체사진</span><img id="_img7" /></div>
+            <div class="image-slot"><span class="image-label">BMU</span><img id="_img8" /></div>
+            <div class="image-slot"><span class="image-label">CMU</span><img id="_img9" /></div>
+            <div class="image-slot"><span class="image-label">PRA</span><img id="_img10" /></div>
+          </div>
+        </div>
 
-            <tr>
-              <td class="_항목">
-                <label for="_셀전압MIN">셀전압 MIN</label>
-              </td>
-              <td>
-                <input type="text" id="_셀전압MIN" size="40" required />
-              </td>
-            </tr>
-            <tr>
-              <td class="_항목">
-                <label for="_통신검사_릴레이구동">통신검사 릴레이 구동</label>
-              </td>
-              <td>
-                <input type="text" id="_통신검사_릴레이구동" size="40" required />
-                <select name="language" onchange="_통신검사_릴레이구동_콤보박스(this);">
+        <div class="inspection-section">
+          <div class="form-grid">
+            <div class="field full">
+              <label for="_기밀검사_케이스">기밀검사 케이스</label>
+              <div class="field-input">
+                <input type="text" id="_기밀검사_케이스" required />
+                <select onchange="_기밀검사_케이스_콤보박스(this);">
+                  <option value="">---</option>
+                  <option value="OK">OK</option>
+                  <option value="미실시">미실시</option>
+                </select>
+                <input type="text" id="_기밀검사_케이스_값" required placeholder="값" />
+              </div>
+            </div>
+          </div>
+          <div id="_기밀검사_케이스_img" class="image-grid image-grid-labeled">
+            <div class="image-slot"><span class="image-label">전체</span><img id="_img11" /></div>
+            <div class="image-slot"><span class="image-label">확대</span><img id="_img12" /></div>
+          </div>
+        </div>
+
+        <div class="inspection-section">
+          <div class="form-grid">
+            <div class="field full">
+              <label for="_기밀검사_냉각유로">기밀검사 냉각유로</label>
+              <div class="field-input">
+                <input type="text" id="_기밀검사_냉각유로" required />
+                <select onchange="_기밀검사_냉각유로_콤보박스(this);">
+                  <option value="">---</option>
+                  <option value="OK">OK</option>
+                  <option value="미실시">미실시</option>
+                </select>
+                <input type="text" id="_기밀검사_냉각유로_값" required placeholder="값" />
+              </div>
+            </div>
+          </div>
+          <div id="_기밀검사_냉각유로_img" class="image-grid image-grid-labeled">
+            <div class="image-slot"><span class="image-label">전체</span><img id="_img13" /></div>
+            <div class="image-slot"><span class="image-label">확대</span><img id="_img14" /></div>
+          </div>
+        </div>
+
+        <div class="inspection-section">
+          <div class="form-grid">
+            <div class="field full">
+              <label for="_절연검사P">절연 검사 +(MΩ) <span style="color: var(--text-muted); font-size: 11px">(40MΩ 이상)</span></label>
+              <div class="field-input">
+                <input type="text" id="_절연검사P" required />
+                <select onchange="_절연검사p_콤보박스(this);">
+                  <option value="">---</option>
+                  <option value="OK">OK</option>
+                  <option value="미실시">미실시</option>
+                </select>
+                <input type="text" id="_절연검사P_값" required placeholder="값" />
+              </div>
+            </div>
+          </div>
+          <div id="_절연검사P_img" class="image-grid image-grid-labeled">
+            <div class="image-slot"><span class="image-label">전체</span><img id="_img15" /></div>
+            <div class="image-slot"><span class="image-label">확대</span><img id="_img16" /></div>
+          </div>
+        </div>
+
+        <div class="inspection-section">
+          <div class="form-grid">
+            <div class="field full">
+              <label for="_절연검사M">절연 검사 -(MΩ) <span style="color: var(--text-muted); font-size: 11px">(15MΩ 이상)</span></label>
+              <div class="field-input">
+                <input type="text" id="_절연검사M" required />
+                <select onchange="_절연검사M_콤보박스(this);">
+                  <option value="">---</option>
+                  <option value="OK">OK</option>
+                  <option value="미실시">미실시</option>
+                </select>
+                <input type="text" id="_절연검사M_값" required placeholder="값" />
+              </div>
+            </div>
+          </div>
+          <div id="_절연검사M_img" class="image-grid">
+            <div class="image-slot"><img id="_img17" /></div>
+            <div class="image-slot"><img id="_img18" /></div>
+          </div>
+        </div>
+
+        <div class="inspection-section">
+          <div class="form-grid">
+            <div class="field full">
+              <label for="_절연저항HVP">절연저항 HV+</label>
+              <div class="field-input">
+                <input type="text" id="_절연저항HVP" required />
+                <select onchange="_절연저항HVP_콤보박스(this);">
+                  <option value="">---</option>
+                  <option value="OK">OK</option>
+                  <option value="미실시">미실시</option>
+                </select>
+                <input type="text" id="_절연저항HVP_값" required placeholder="값" />
+              </div>
+            </div>
+          </div>
+          <div class="image-grid">
+            <div class="image-slot"><img id="_img19" /></div>
+          </div>
+        </div>
+
+        <div class="inspection-section">
+          <div class="form-grid">
+            <div class="field full">
+              <label for="_절연저항HVN">절연저항 HV-</label>
+              <div class="field-input">
+                <input type="text" id="_절연저항HVN" required />
+                <select onchange="_절연저항HVN_콤보박스(this);">
+                  <option value="">---</option>
+                  <option value="OK">OK</option>
+                  <option value="미실시">미실시</option>
+                </select>
+                <input type="text" id="_절연저항HVN_값" required placeholder="값" />
+              </div>
+            </div>
+          </div>
+          <div class="image-grid">
+            <div class="image-slot"><img id="_img20" /></div>
+          </div>
+        </div>
+
+        <div class="inspection-section">
+          <div class="form-grid">
+            <div class="field full">
+              <label for="_고장코드진단">고장코드 진단</label>
+            </div>
+          </div>
+          <div class="image-grid image-grid-labeled">
+            <div class="image-slot"><span class="image-label">고장코드(현재)</span><img id="_img21" /></div>
+            <div class="image-slot"><span class="image-label">고장코드(과거)</span><img id="_img22" /></div>
+            <div class="image-slot"><span class="image-label">센서데이터</span><img id="_img23" /></div>
+          </div>
+        </div>
+
+        <div class="inspection-section">
+          <div class="form-grid">
+            <div class="field full">
+              <label for="_고장코드유무">고장코드 유무</label>
+              <div class="field-input">
+                <input type="text" id="_고장코드유무" required />
+                <select onchange="_고장코드유무_콤보박스(this);">
+                  <option value="">---</option>
+                  <option value="OK">OK</option>
+                  <option value="미실시">미실시</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="inspection-section">
+          <div class="form-grid">
+            <div class="field full">
+              <label for="_통신검사_팩전압">통신검사 팩전압(V)</label>
+              <div class="field-input">
+                <input type="text" id="_통신검사_팩전압" required />
+                <select onchange="_통신검사_팩전압_콤보박스(this);">
+                  <option value="">---</option>
+                  <option value="OK">OK</option>
+                  <option value="미실시">미실시</option>
+                </select>
+                <input type="text" id="_통신검사_팩전압_값" required placeholder="값" />
+              </div>
+            </div>
+          </div>
+          <div id="_통신검사_팩전압_img" class="image-grid image-grid-labeled">
+            <div class="image-slot"><span class="image-label">EOL 항목</span><img id="_img24" /></div>
+            <div class="image-slot"><span class="image-label">CELL 전압</span><img id="_img25" /></div>
+          </div>
+        </div>
+
+        <div class="inspection-section">
+          <div class="form-grid">
+            <div class="field full">
+              <label for="_통신검사_셀전압편차">통신검사 셀전압 편차(mV)</label>
+              <div class="field-input">
+                <input type="text" id="_통신검사_셀전압편차" required />
+                <select onchange="_통신검사_셀전압편차_콤보박스(this);">
+                  <option value="">---</option>
+                  <option value="OK">OK</option>
+                  <option value="미실시">미실시</option>
+                </select>
+                <input type="text" id="_통신검사_셀전압편차_값" required placeholder="값" />
+              </div>
+            </div>
+            <div class="field">
+              <label for="_셀전압MAX">셀전압 MAX</label>
+              <input type="text" id="_셀전압MAX" required />
+            </div>
+            <div class="field">
+              <label for="_셀전압MIN">셀전압 MIN</label>
+              <input type="text" id="_셀전압MIN" required />
+            </div>
+            <div class="field full">
+              <label for="_통신검사_릴레이구동">통신검사 릴레이 구동</label>
+              <div class="field-input">
+                <input type="text" id="_통신검사_릴레이구동" required />
+                <select onchange="_통신검사_릴레이구동_콤보박스(this);">
                   <option value="">---</option>
                   <option value="통신불가">통신불가</option>
                   <option value="OK">OK</option>
                   <option value="미실시">미실시</option>
                 </select>
-              </td>
-            </tr>
-            <tr>
-              <td class="_항목">
-                <label for="_EOL항목검사"
-                  >EOL 항목 검사
-                  <br />
-                  <span class="side__tit">(팩 전압, 릴레이 구동 여부 통합)</span>
-                </label>
-              </td>
-              <td>
-                <input type="text" id="_EOL항목검사" size="40" required />
-                <select name="language" onchange="_EOL항목검사_콤보박스(this);">
+              </div>
+            </div>
+            <div class="field full">
+              <label for="_EOL항목검사">EOL 항목 검사 <span style="color: var(--text-muted); font-size: 11px">(팩 전압, 릴레이 구동 여부 통합)</span></label>
+              <div class="field-input">
+                <input type="text" id="_EOL항목검사" required />
+                <select onchange="_EOL항목검사_콤보박스(this);">
                   <option value="">---</option>
                   <option value="OK">OK</option>
                   <option value="미실시">미실시</option>
                 </select>
-              </td>
-            </tr>
-            <tr>
-              <td class="_항목">
-                <label for="_공정완료일">완료일</label>
-              </td>
-              <td>
-                <input type="datetime-local" id="_공정완료일" value="0000-00-00T00:00" required />
-              </td>
-            </tr>
-            <tr>
-              <td class="_항목">
-                <label for="_비고">비고</label>
-              </td>
-              <td>
-                <input type="text" id="_비고" size="40" required />
-              </td>
-            </tr>
-            <tr>
-              <td class="_항목">
-                <label for="_QR">출하코드(QR)</label>
-              </td>
-              <td>
-                <input type="text" id="_QR" size="40" required />
-              </td>
-            </tr>
-            <tr>
-              <td class="_항목">
-                <label for="_커버류">커버류</label>
-              </td>
-              <td style="display: flex; align-items: center">
-                <input type="text" id="_커버류" size="40" required />
-                <select name="language" onchange="_커버류_콤보박스(this);">
-                  <option value="">---</option>
-                  <option value="장착확인">장착확인</option>
-                  <option value="미확인">미확인</option>
-                </select>
-              </td>
-            </tr>
-            <tr>
-              <td class="_항목">
-                <label for="_브라켓">브라켓</label>
-              </td>
-              <td style="display: flex; align-items: center">
-                <input type="text" id="_브라켓" size="40" required />
-                <select name="language" onchange="_브라켓_콤보박스(this);">
-                  <option value="">---</option>
-                  <option value="장착확인">장착확인</option>
-                  <option value="미확인">미확인</option>
-                </select>
-              </td>
-            </tr>
-            <tr>
-              <td class="_항목">
-                <label for="_ICUU">ICUU</label>
-              </td>
-              <td style="display: flex; align-items: center">
-                <input type="text" id="_ICUU" size="40" required />
-                <select name="language" onchange="_ICUU_콤보박스(this);">
-                  <option value="">---</option>
-                  <option value="장착확인">장착확인</option>
-                  <option value="미확인">미확인</option>
-                </select>
-              </td>
-            </tr>
-            <tr>
-              <td class="_항목">
-                <label for="_교체부품명">교체 부품명</label>
-              </td>
-              <td>
-                <input type="text" id="_교체부품명" size="40" required />
-              </td>
-            </tr>
-            <tr>
-              <td class="_항목">
-                <label for="_공정흐름_이슈">공정 흐름간 이슈</label>
-              </td>
-              <td>
-                <input type="text" id="_공정흐름_이슈" size="40" required />
-              </td>
-            </tr>
-            <tr>
-              <td class="_항목">
-                <label for="_용량평가값">용량평가 값</label>
-              </td>
-              <td>
-                <input type="text" id="_용량평가값" size="40" required />
-              </td>
-            </tr>
-            <tr>
-              <td class="_항목">
-                <label for="_검사자">검사자</label>
-              </td>
-              <td>
-                <input type="text" id="_검사자" size="40" required />
-              </td>
-            </tr>
-          </table>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </section>
-    <div class="input-group">
-      <div class="input-btn-group">
-        <button onClick="EOL_save();">저장</button>
-        <button onClick="">분해조립재의뢰</button>
-        <button onClick="flag_완료보고서 = true; loadPage('base/완료보고서.html');">완료보고서</button>
-        <button onClick="EOL_save(); 창고='마도보관'; flag_racks=true;">보관렉 선택</button>
-        <button onClick="EOL_DTC_count = 0; 이전페이지();">이전페이지</button>
-        <!-- <button onClick="EOL_QR_Label();">QR Label</button> -->
+
+      <!-- 완료 정보 -->
+      <div class="card">
+        <h2 class="card-title">완료 정보</h2>
+        <div class="form-grid">
+          <div class="field">
+            <label for="_공정완료일">완료일</label>
+            <input type="datetime-local" id="_공정완료일" value="0000-00-00T00:00" required />
+          </div>
+          <div class="field">
+            <label for="_검사자">검사자</label>
+            <input type="text" id="_검사자" required />
+          </div>
+          <div class="field">
+            <label for="_QR">출하코드(QR)</label>
+            <input type="text" id="_QR" required />
+          </div>
+          <div class="field">
+            <label for="_용량평가값">용량평가 값</label>
+            <input type="text" id="_용량평가값" required />
+          </div>
+          <div class="field">
+            <label for="_커버류">커버류</label>
+            <div class="field-input">
+              <input type="text" id="_커버류" required />
+              <select onchange="_커버류_콤보박스(this);">
+                <option value="">---</option>
+                <option value="장착확인">장착확인</option>
+                <option value="미확인">미확인</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="_브라켓">브라켓</label>
+            <div class="field-input">
+              <input type="text" id="_브라켓" required />
+              <select onchange="_브라켓_콤보박스(this);">
+                <option value="">---</option>
+                <option value="장착확인">장착확인</option>
+                <option value="미확인">미확인</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="_ICUU">ICUU</label>
+            <div class="field-input">
+              <input type="text" id="_ICUU" required />
+              <select onchange="_ICUU_콤보박스(this);">
+                <option value="">---</option>
+                <option value="장착확인">장착확인</option>
+                <option value="미확인">미확인</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="_교체부품명">교체 부품명</label>
+            <input type="text" id="_교체부품명" required />
+          </div>
+          <div class="field full">
+            <label for="_공정흐름_이슈">공정 흐름간 이슈</label>
+            <input type="text" id="_공정흐름_이슈" required />
+          </div>
+          <div class="field full">
+            <label for="_비고">비고</label>
+            <input type="text" id="_비고" required />
+          </div>
+        </div>
       </div>
-    </div>
+
+      <!-- 액션 -->
+      <div class="form-actions">
+        <button onClick="EOL_DTC_count = 0; 이전페이지();" class="btn-secondary">이전 페이지</button>
+        <button onClick="" class="btn-secondary">분해조립 재의뢰</button>
+        <button onClick="flag_완료보고서 = true; loadPage('base/완료보고서.html');" class="btn-secondary">완료보고서</button>
+        <button onClick="EOL_save(); 창고='마도보관'; flag_racks=true;" class="btn-secondary">보관렉 선택</button>
+        <button onClick="EOL_save();" class="btn-primary">저장</button>
+      </div>
+    </section>
+
     <script>
       const _management_id = document.getElementById('_management_id');
       const _재제조번호 = document.getElementById('_재제조번호');
@@ -657,17 +489,17 @@
 
       const _육안검사_외부_box = document.getElementById('_육안검사_외부_box');
       const _육안검사_외부 = document.getElementById('_육안검사_외부');
-      const _육안검사_외부_img = document.getElementById('_육안검사_외부_img'); //1
+      const _육안검사_외부_img = document.getElementById('_육안검사_외부_img');
       const _육안검사_내부_box = document.getElementById('_육안검사_내부_box');
       const _육안검사_내부 = document.getElementById('_육안검사_내부');
-      const _육안검사_내부_img = document.getElementById('_육안검사_내부_img'); //2
+      const _육안검사_내부_img = document.getElementById('_육안검사_내부_img');
 
       const _기밀검사_케이스 = document.getElementById('_기밀검사_케이스');
       const _기밀검사_케이스_값 = document.getElementById('_기밀검사_케이스_값');
-      const _기밀검사_케이스_img = document.getElementById('_기밀검사_케이스_img'); //3
+      const _기밀검사_케이스_img = document.getElementById('_기밀검사_케이스_img');
       const _기밀검사_냉각유로 = document.getElementById('_기밀검사_냉각유로');
       const _기밀검사_냉각유로_값 = document.getElementById('_기밀검사_냉각유로_값');
-      const _기밀검사_냉각유로_img = document.getElementById('_기밀검사_냉각유로_img'); //4
+      const _기밀검사_냉각유로_img = document.getElementById('_기밀검사_냉각유로_img');
       const _절연검사P = document.getElementById('_절연검사P');
       const _절연검사P_값 = document.getElementById('_절연검사P_값');
       const _절연검사M = document.getElementById('_절연검사M');
@@ -682,7 +514,7 @@
 
       const _통신검사_팩전압 = document.getElementById('_통신검사_팩전압');
       const _통신검사_팩전압_값 = document.getElementById('_통신검사_팩전압_값');
-      const _통신검사_팩전압_img = document.getElementById('_통신검사_팩전압_img'); //5
+      const _통신검사_팩전압_img = document.getElementById('_통신검사_팩전압_img');
       const _통신검사_셀전압편차 = document.getElementById('_통신검사_셀전압편차');
       const _통신검사_셀전압편차_값 = document.getElementById('_통신검사_셀전압편차_값');
       const _셀전압MAX = document.getElementById('_셀전압MAX');
@@ -701,7 +533,6 @@
       const _공정흐름_이슈 = document.getElementById('_공정흐름_이슈');
       const _용량평가값 = document.getElementById('_용량평가값');
       const _검사자 = document.getElementById('_검사자');
-      const _canvas = document.getElementById('_canvas');
 
       const _img1 = document.getElementById('_img1');
       const _img2 = document.getElementById('_img2');
@@ -728,6 +559,35 @@
       const _img23 = document.getElementById('_img23');
       const _img24 = document.getElementById('_img24');
       const _img25 = document.getElementById('_img25');
+
+      // 이미지 핸들러 — 클릭/더블클릭/드래그&드롭
+      [_img1, _img2, _img3, _img4, _img5, _img6, _img7, _img8, _img9, _img10, _img11, _img12, _img13, _img14, _img15, _img16, _img17, _img18, _img19, _img20, _img21, _img22, _img23, _img24, _img25].forEach(function (img) {
+        if (!img) return;
+        img.onclick = function () {
+          const input = document.createElement('input');
+          input.type = 'file';
+          input.accept = 'image/*';
+          input.onchange = function (e) {
+            if (e.target.files && e.target.files.length > 0) {
+              resize_pic(e.target.files[0], img);
+            }
+          };
+          input.click();
+        };
+        img.ondblclick = function () {
+          img.src = '';
+        };
+        img.ondragover = function (evt) {
+          evt.preventDefault();
+        };
+        img.ondrop = function (evt) {
+          evt.preventDefault();
+          var files = evt.dataTransfer && evt.dataTransfer.files;
+          if (files && files.length > 0) {
+            resize_pic(files[0], img);
+          }
+        };
+      });
     </script>
   </body>
 </html>

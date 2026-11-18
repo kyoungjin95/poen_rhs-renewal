@@ -27,7 +27,22 @@ async function 입고_시작() {
     _management_id.value = 관리번호.toUpperCase(); //rack 선택화면에서 사용한 관리번호 자동 기입
   }
 
-  //드래그앤드롭 이미지 넣기 및 삭제 기능
+  //이미지: 클릭=파일선택, 더블클릭=삭제, 드롭=추가
+  _img1.onclick = function () {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'image/*';
+    input.onchange = function (e) {
+      if (e.target.files && e.target.files.length > 0) {
+        resize_pic(e.target.files[0], _img1);
+      }
+    };
+    input.click();
+  };
+  _img1.ondragover = function (evt) {
+    evt.preventDefault();
+  };
+
   _img1.ondblclick = function (evt) {
     _img1.src = '';
   };
@@ -73,6 +88,8 @@ async function 입고_시작() {
     _품번.value = 입고_v.품번;
     _RO_no.value = 입고_v.RO_no;
     _Rack_번호.value = 입고_v.보관위치;
+    if (typeof _VIN !== 'undefined' && _VIN) _VIN.value = 입고_v.VIN || '';
+    if (typeof _sn !== 'undefined' && _sn) _sn.value = 입고_v.SERIALNO || '';
     if (보관위치 != '') {
       _Rack_번호.value = 보관위치;
     }
@@ -124,6 +141,8 @@ async function 입고_save() {
   doc.품번 = _품번.value;
   doc.RO_no = _RO_no.value;
   doc.보관위치 = _Rack_번호.value;
+  if (typeof _VIN !== 'undefined' && _VIN) doc.VIN = _VIN.value || '';
+  if (typeof _sn !== 'undefined' && _sn) doc.SERIALNO = _sn.value || '';
 
   //RO번호 자릿수 체크
   if (_RO_no.value.length != 17 && _RO_no.value.length != 0) {
@@ -192,6 +211,8 @@ async function 입고_save() {
     _doc.품번 = _품번.value;
     _doc.RO_no = _RO_no.value;
     _doc.보관위치 = _Rack_번호.value;
+    if (typeof _VIN !== 'undefined' && _VIN) _doc.VIN = _VIN.value || '';
+    if (typeof _sn !== 'undefined' && _sn) _doc.SERIALNO = _sn.value || '';
 
     update(BSA재제조, _doc);
     await delay();
@@ -207,6 +228,8 @@ async function 입고_save() {
       품번: _품번.value,
       RO_no: _RO_no.value,
       보관위치: _Rack_번호.value,
+      VIN: (typeof _VIN !== 'undefined' && _VIN) ? (_VIN.value || '') : '',
+      SERIALNO: (typeof _sn !== 'undefined' && _sn) ? (_sn.value || '') : '',
     };
 
     update(BSA재제조, _doc);

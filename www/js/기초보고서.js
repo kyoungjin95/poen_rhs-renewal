@@ -6,10 +6,189 @@ async function 기초보고서_시작() {
 
   기초보고서_조회(false);
   console.log('->', 관리번호);
+
+  _기초보고서_사이드바_init();
+}
+
+// 기초보고서 페이지 — 좌측 사이드바 + 섹션 토글 + 다운로드 아이콘
+function _기초보고서_사이드바_init() {
+  // 이 페이지의 핵심 요소가 없으면 (다른 페이지면) skip
+  if (!document.getElementById('_기초보고서')) return;
+
+  if (document.querySelector('#content .report-layout')) return;
+
+  document.querySelectorAll('.report-layout').forEach(function (el) {
+    el.remove();
+  });
+
+  // 섹션 + PDF 키
+  const sections = [
+    { id: '_기초보고서', label: '기초보고서', pdfKey: '' },
+    { id: '_육안검사외부1', label: '육안검사 외부', pdfKey: '육외' },
+    { id: '_육안검사외부2', label: '육안검사 외부 (상세)', pdfKey: '육외상' },
+    { id: '_육안검사내부1', label: '육안검사 내부', pdfKey: '육내' },
+    { id: '_육안검사내부2', label: '육안검사 내부 (상세)', pdfKey: '육내상' },
+    { id: '_기밀검사', label: '기밀검사', pdfKey: '기밀' },
+    { id: '_기밀검사2', label: '기밀검사 (특이사항)', pdfKey: '기밀특이' },
+    { id: '_절연저항검사', label: '절연저항 검사', pdfKey: '절연' },
+    { id: '_CAN통신검사', label: 'CAN 통신 검사', pdfKey: 'CAN' },
+    // HEV 전용 상세 페이지
+    { id: '_육안검사외부_HEV', label: '육안검사 외부', pdfKey: 'HEV육외' },
+    { id: '_절연저항검사_HEV', label: '절연저항 검사', pdfKey: 'HEV절연' },
+    { id: '_CAN통신검사_HEV2', label: '통신 검사', pdfKey: 'HEVCAN2' },
+    { id: '_CAN통신검사_HEV', label: '교차 검사', pdfKey: 'HEVCAN' },
+    { id: '_BMS_PCB', label: 'PCB 검사', pdfKey: 'HEVPCB' },
+    { id: '_개별모듈실측전압', label: '실측 검사', pdfKey: 'HEV실측' },
+  ];
+
+  const content = document.getElementById('content');
+
+  // 불필요 영역 숨김: 기존 노란 PDF 버튼 + 단독 이전페이지/저장 버튼
+  document.querySelectorAll('.report__btns').forEach(function (el) {
+    el.style.display = 'none';
+  });
+  // body 직속에 떠있는 단독 button (이전페이지/저장 등) 숨김
+  Array.from(document.querySelectorAll('body > button, #content > button')).forEach(function (btn) {
+    btn.style.display = 'none';
+  });
+
+  sections.forEach(function (s, idx) {
+    const el = document.getElementById(s.id);
+    if (el) {
+      el.classList.add('report-section');
+      if (idx === 0) el.classList.add('active');
+    }
+  });
+
+  const layout = document.createElement('section');
+  layout.className = 'report-layout';
+
+  const sidebar = document.createElement('aside');
+  sidebar.className = 'report-sidebar';
+
+  // 검색 영역은 메인 콘텐츠 위쪽에 배치 (관리번호만, 재제조번호 행 숨김)
+  const searchBox = document.createElement('div');
+  searchBox.className = 'report-main-search';
+  const tbTable = document.getElementById('tb');
+  if (tbTable && tbTable.parentNode) {
+    const trs = tbTable.querySelectorAll('tr');
+    if (trs[1]) trs[1].style.display = 'none';
+    searchBox.appendChild(tbTable);
+  }
+
+  // canvas (PDF 생성용 보조 element) 숨김
+  const canvas = document.getElementById('_canvas');
+  if (canvas) {
+    canvas.style.display = 'none';
+    if (canvas.parentNode) canvas.parentNode.style.display = 'none';
+  }
+
+  const navWrap = document.createElement('div');
+  navWrap.innerHTML =
+    '<div class="report-sidebar-title">목차</div><ul>' +
+    sections
+      .map(function (s, i) {
+        return (
+          '<li class="report-nav-item">' +
+          '<button class="report-nav-link" data-target="' +
+          s.id +
+          '"' +
+          (i === 0 ? ' data-active="1"' : '') +
+          '>' +
+          s.label +
+          '</button>' +
+          '<button class="report-nav-pdf" data-pdf="' +
+          s.pdfKey +
+          '" title="PDF 다운로드"><i class="fa-solid fa-download"></i></button>' +
+          '</li>'
+        );
+      })
+      .join('') +
+    '</ul>';
+  sidebar.appendChild(navWrap);
+
+  const main = document.createElement('div');
+  main.className = 'report-main';
+
+  // 메인 영역 최상단에 관리번호 검색 영역 배치
+  main.appendChild(searchBox);
+
+  sections.forEach(function (s) {
+    const el = document.getElementById(s.id);
+    if (el && el.parentNode) {
+      main.appendChild(el);
+    }
+  });
+
+  // 사이드바 하단: 되돌아가기 버튼
+  const backBtn = document.createElement('button');
+  backBtn.className = 'report-back-btn';
+  backBtn.innerHTML = '<i class="fa-solid fa-arrow-left"></i> 되돌아가기';
+  backBtn.onclick = function () {
+    // 다른 페이지에서 setReturn URL 저장한 경우 그쪽으로 복귀
+    if (window._report_return_url) {
+      const url = window._report_return_url;
+      const flagName = window._report_return_flag;
+      window._report_return_url = '';
+      window._report_return_flag = '';
+      if (flagName && typeof window[flagName] !== 'undefined') window[flagName] = true;
+      loadPage(url);
+      return;
+    }
+    if (typeof 기초검사_이전페이지 === 'function') 기초검사_이전페이지();
+    else if (typeof 이전페이지 === 'function') 이전페이지();
+  };
+  sidebar.appendChild(backBtn);
+
+  layout.appendChild(sidebar);
+  layout.appendChild(main);
+  content.appendChild(layout);
+
+  const firstLink = sidebar.querySelector('.report-nav-link[data-active="1"]');
+  if (firstLink) firstLink.classList.add('active');
+
+  sidebar.querySelectorAll('.report-nav-link').forEach(function (btn) {
+    btn.onclick = function () {
+      sidebar.querySelectorAll('.report-nav-link').forEach(function (b) {
+        b.classList.remove('active');
+      });
+      btn.classList.add('active');
+      document.querySelectorAll('.report-section').forEach(function (s) {
+        s.classList.remove('active');
+      });
+      const target = document.getElementById(btn.dataset.target);
+      if (target) target.classList.add('active');
+    };
+  });
+
+  sidebar.querySelectorAll('.report-nav-pdf').forEach(function (btn) {
+    btn.onclick = function (e) {
+      e.stopPropagation();
+      const key = btn.dataset.pdf;
+      // PDF 캡처 동안 모든 섹션 일시적으로 보이게 (display:none 이면 html2canvas 가 빈 캡처)
+      layout.classList.add('capturing');
+      try {
+        if (typeof 기초보고서_save === 'function') {
+          key ? 기초보고서_save(key) : 기초보고서_save();
+        }
+      } catch (err) {
+        console.error('기초보고서_save 호출 실패:', err);
+      }
+      // html2canvas + pdfMake 가 비동기라 약간 여유 두고 원복
+      setTimeout(function () {
+        layout.classList.remove('capturing');
+      }, 4000);
+    };
+  });
 }
 
 async function 기초보고서_조회(is재제조번호 = false) {
-  _management_id.value = 관리번호;
+  // 사용자가 입력한 값 우선 — 없을 때만 전역 관리번호 사용
+  if (_management_id.value && _management_id.value.trim() !== '') {
+    관리번호 = _management_id.value.trim();
+  } else {
+    _management_id.value = 관리번호;
+  }
 
   if (is재제조번호 == true) {
     //재제조 번호로 조회
@@ -38,6 +217,8 @@ async function 기초보고서_조회(is재제조번호 = false) {
   if (입고_v != null) {
     _차종.innerHTML = 입고_v.차종;
     _입고일.innerHTML = 입고_v.입고일;
+    // 전역 차종 변수 (poenRHS.js) 할당 — line 401 의 switch (차종) 가 이걸 사용
+    차종 = 입고_v.차종 || '';
 
     //차종별 표시할 부분만 표시
     switch (입고_v.차종) {
@@ -58,6 +239,8 @@ async function 기초보고서_조회(is재제조번호 = false) {
         break;
 
       case 'LK_EV':
+      case 'LK_FCEV':
+      case 'LK_FC':
         showTable('_LK_EV');
         break;
 
@@ -77,11 +260,59 @@ async function 기초보고서_조회(is재제조번호 = false) {
       case 'PU_EV':
         showTable('_PU_EV');
         break;
+      case 'DE_HEV':
+        showTable('_HEV');
+        break;
+      case 'GL3_HEV':
+        showTable('_HEV');
+        break;
+      case 'DL3_HEV':
+        showTable('_HEV');
+        break;
+      case 'YG_HEV':
+        showTable('_HEV');
+        break;
+      case 'JF_HEV':
+        showTable('_HEV');
+        break;
+      case 'SG2_HEV':
+        showTable('_HEV');
+        break;
+      case 'NQ5_HEV':
+        showTable('_HEV');
+        break;
 
       default:
         showTable('_CS_EV');
         alert('차종을 확인해 주세요');
     }
+
+    //HEV/EV 목차·섹션 분기: HEV는 HEV 전용만, EV는 HEV 전용 제외
+    var isHEV = String(입고_v.차종 || '')
+      .trim()
+      .toUpperCase()
+      .endsWith('HEV');
+    var HEV_전용 = ['_육안검사외부_HEV', '_절연저항검사_HEV', '_CAN통신검사_HEV2', '_CAN통신검사_HEV', '_BMS_PCB', '_개별모듈실측전압'];
+    var HEV_표시 = ['_기초보고서'].concat(HEV_전용);
+    var 보일섹션 = isHEV ? HEV_표시 : null; // EV는 HEV_전용만 제외
+    document.querySelectorAll('.report-nav-item').forEach(function (li) {
+      var link = li.querySelector('.report-nav-link');
+      if (!link) return;
+      var tid = link.dataset.target;
+      var show = isHEV ? 보일섹션.indexOf(tid) !== -1 : HEV_전용.indexOf(tid) === -1;
+      li.style.display = show ? '' : 'none';
+    });
+    //안 보일 섹션이 active 면 메인(기초보고서)으로 되돌림
+    document.querySelectorAll('.report-section').forEach(function (sec) {
+      var keep = isHEV ? HEV_표시.indexOf(sec.id) !== -1 : HEV_전용.indexOf(sec.id) === -1;
+      if (!keep) sec.classList.remove('active');
+    });
+    var main섹션 = document.getElementById('_기초보고서');
+    if (main섹션) main섹션.classList.toggle('hev-main', isHEV); // HEV 1페이지 컴팩트 모드
+    //HEV 는 재제조 Com-ment 행 숨김 (EV 는 표시)
+    var _재제조행 = document.getElementById('_재제조comment_row');
+    if (_재제조행) _재제조행.style.display = isHEV ? 'none' : '';
+    if (main섹션 && !document.querySelector('.report-section.active')) main섹션.classList.add('active');
   }
 
   //입고 사진 로딩
@@ -204,7 +435,83 @@ async function 기초보고서_조회(is재제조번호 = false) {
     절연검사_B_N = 기초검사_v.절연검사_Minus;
     절연검사_B_N판정 = 기초검사_v.절연검사_Minus판정;
 
-    //차종별 세부항목 처리
+    // === 차종별 prefix 매핑 (EV/HEV/FCEV 통합) ===
+    var PREFIX_MAP = {
+      CS: '_CS_',
+      CS_EV: '_CS_',
+      CV: '_CV_',
+      CV_EV: '_CV_',
+      DE: '_DE_',
+      DE_EV: '_DE_',
+      HR: '_HR_',
+      HR_EV: '_HR_',
+      LK: '_LK_',
+      LK_EV: '_LK_',
+      LK_FCEV: '_LK_',
+      LK_FC: '_LK_',
+      LM: '_LM_',
+      LM_EV: '_LM_',
+      NE: '_NE_',
+      NE_EV: '_NE_',
+      OS: '_OS_SK3_',
+      OS_EV: '_OS_SK3_',
+      SK3: '_OS_SK3_',
+      SK3_EV: '_OS_SK3_',
+      PU: '_PU_',
+      PU_EV: '_PU_',
+      // HEV — 모두 통합 _HEV_ 표 사용
+      DE_HEV: '_HEV_',
+      GL3_HEV: '_HEV_',
+      DL3_HEV: '_HEV_',
+      YG_HEV: '_HEV_',
+      NQ5_HEV: '_HEV_',
+      SG2_HEV: '_HEV_',
+      JF_HEV: '_HEV_',
+    };
+    var prefix = PREFIX_MAP[차종];
+    if (!prefix) {
+      alert('차종을 확인해 주세요');
+    } else {
+      // 공통 채우기 — element 없으면 skip (null-safe)
+      var _set = function (id, val) {
+        var el = document.getElementById(prefix + id);
+        if (el) el.innerHTML = val == null ? '' : val;
+      };
+      _set('외부점검', 외부검사);
+      _set('외부점검사유', 외부검사사유);
+      _set('내부점검', 기초검사_v.육안검사_내부);
+      _set('내부점검사유', 기초검사_v.육안검사_내부_특이사항);
+      _set('케이스', 케이스);
+      _set('케이스감압량', 케이스감압량);
+      _set('냉각유로', 기초검사_v.기밀검사_냉각유로);
+      _set('냉각유로감압량', 기초검사_v.기밀검사_냉각유로_특이사항);
+      _set('PRA_P', 기초검사_v.절연검사_Plus판정);
+      _set('PRA_P값', 기초검사_v.절연검사_Plus);
+      _set('PRA_N', 기초검사_v.절연검사_Minus판정);
+      _set('PRA_N값', 기초검사_v.절연검사_Minus);
+      // HV커넥터 — 있는 차종 (HR/LK 등) 만 표시
+      _set('HV커넥터_P', 기초검사_v.절연검사_HV_Plus판정 || '');
+      _set('HV커넥터_P값', 기초검사_v.절연검사_HV_Plus || '');
+      _set('HV커넥터_N', 기초검사_v.절연검사_HV_Minus판정 || '');
+      _set('HV커넥터_N값', 기초검사_v.절연검사_HV_Minus || '');
+      // 통신 검사
+      _set('팩전압', 기초검사_v.통신검사_팩전압판정);
+      _set('팩전압값', 기초검사_v.통신검사_팩전압);
+      _set('셀전압편차', 기초검사_v.통신검사_셀전압편차판정);
+      _set('셀전압편차값', 기초검사_v.통신검사_셀전압편차);
+      //HEV — 최대 내부 저항 (판정 OK/NG + 값) / 셀번호. 없으면 '-'
+      _set('최대내부저항', 기초검사_v.통신검사_최대내부저항판정 || '-');
+      _set('최대내부저항값', 기초검사_v.통신검사_최대내부저항 || '-');
+      _set('최대내부저항셀번호값', 기초검사_v.통신검사_최대내부저항_셀번호 || '-');
+      _set('릴레이제어', 기초검사_v.통신검사_릴레이구동);
+      _set('릴레이제어사유', 기초검사_v.통신검사_릴레이구동사유);
+      _set('고장코드', 고장코드);
+      _set('고장코드사유', 고장사유);
+    }
+
+    // === 아래 옛 switch 는 신규 prefix 방식으로 대체됨. 안전을 위해 잠시 보존(주석) ===
+    /* eslint-disable */
+    /*
     switch (차종) {
       case 'CS':
       case 'CS_EV':
@@ -228,10 +535,6 @@ async function 기초보고서_조회(is재제조번호 = false) {
         _CS_릴레이제어사유.innerHTML = 기초검사_v.통신검사_릴레이구동사유;
         _CS_고장코드.innerHTML = 고장코드;
         _CS_고장코드사유.innerHTML = 고장사유;
-        _CS_입고정보.innerHTML = 부품정보유무;
-        _CS_입고정보사유.innerHTML = 부품정보유무 == 'OK' ? '' : '부품정보 누락';
-        _CS_재제조이력.innerHTML = 'OK';
-        _CS_재제조이력사유.innerHTML = '';
         break;
 
       case 'CV':
@@ -256,10 +559,6 @@ async function 기초보고서_조회(is재제조번호 = false) {
         _CV_릴레이제어사유.innerHTML = 기초검사_v.통신검사_릴레이구동사유;
         _CV_고장코드.innerHTML = 고장코드;
         _CV_고장코드사유.innerHTML = 고장사유;
-        _CV_입고정보.innerHTML = 부품정보유무;
-        _CV_입고정보사유.innerHTML = '';
-        _CV_재제조이력.innerHTML = 'OK';
-        _CV_재제조이력사유.innerHTML = '';
         break;
 
       case 'DE':
@@ -284,10 +583,6 @@ async function 기초보고서_조회(is재제조번호 = false) {
         _DE_릴레이제어사유.innerHTML = 기초검사_v.통신검사_릴레이구동사유;
         _DE_고장코드.innerHTML = 고장코드;
         _DE_고장코드사유.innerHTML = 고장사유;
-        _DE_입고정보.innerHTML = 부품정보유무;
-        _DE_입고정보사유.innerHTML = '';
-        _DE_재제조이력.innerHTML = 'OK';
-        _DE_재제조이력사유.innerHTML = '';
         break;
 
       case 'HR':
@@ -313,10 +608,6 @@ async function 기초보고서_조회(is재제조번호 = false) {
         _HR_릴레이제어사유.innerHTML = 기초검사_v.통신검사_릴레이구동사유;
         _HR_고장코드.innerHTML = 고장코드;
         _HR_고장코드사유.innerHTML = 고장사유;
-        _HR_입고정보.innerHTML = 부품정보유무;
-        _HR_입고정보사유.innerHTML = '';
-        _HR_재제조이력.innerHTML = 'OK';
-        _HR_재제조이력사유.innerHTML = '';
         break;
 
       case 'LK':
@@ -341,10 +632,6 @@ async function 기초보고서_조회(is재제조번호 = false) {
         _LK_릴레이제어사유.innerHTML = 기초검사_v.통신검사_릴레이구동사유;
         _LK_고장코드.innerHTML = 고장코드;
         _LK_고장코드사유.innerHTML = 고장사유;
-        _LK_입고정보.innerHTML = 부품정보유무;
-        _LK_입고정보사유.innerHTML = '';
-        _LK_재제조이력.innerHTML = 'OK';
-        _LK_재제조이력사유.innerHTML = '';
         break;
 
       case 'LM':
@@ -369,10 +656,6 @@ async function 기초보고서_조회(is재제조번호 = false) {
         _LM_릴레이제어사유.innerHTML = 기초검사_v.통신검사_릴레이구동사유;
         _LM_고장코드.innerHTML = 고장코드;
         _LM_고장코드사유.innerHTML = 고장사유;
-        _LM_입고정보.innerHTML = 부품정보유무;
-        _LM_입고정보사유.innerHTML = '';
-        _LM_재제조이력.innerHTML = 'OK';
-        _LM_재제조이력사유.innerHTML = '';
         break;
 
       case 'NE':
@@ -397,10 +680,6 @@ async function 기초보고서_조회(is재제조번호 = false) {
         _NE_릴레이제어사유.innerHTML = 기초검사_v.통신검사_릴레이구동사유;
         _NE_고장코드.innerHTML = 고장코드;
         _NE_고장코드사유.innerHTML = 고장사유;
-        _NE_입고정보.innerHTML = 부품정보유무;
-        _NE_입고정보사유.innerHTML = '';
-        _NE_재제조이력.innerHTML = 'OK';
-        _NE_재제조이력사유.innerHTML = '';
         break;
 
       case 'OS':
@@ -427,10 +706,6 @@ async function 기초보고서_조회(is재제조번호 = false) {
         _OS_SK3_릴레이제어사유.innerHTML = 기초검사_v.통신검사_릴레이구동사유;
         _OS_SK3_고장코드.innerHTML = 고장코드;
         _OS_SK3_고장코드사유.innerHTML = 고장사유;
-        _OS_SK3_입고정보.innerHTML = 부품정보유무;
-        _OS_SK3_입고정보사유.innerHTML = '';
-        _OS_SK3_재제조이력.innerHTML = 'OK';
-        _OS_SK3_재제조이력사유.innerHTML = '';
         break;
 
       case 'PU_EV':
@@ -455,15 +730,42 @@ async function 기초보고서_조회(is재제조번호 = false) {
         _PU_릴레이제어사유.innerHTML = 기초검사_v.통신검사_릴레이구동사유;
         _PU_고장코드.innerHTML = 고장코드;
         _PU_고장코드사유.innerHTML = 고장사유;
-        _PU_입고정보.innerHTML = 부품정보유무;
-        _PU_입고정보사유.innerHTML = '';
-        _PU_재제조이력.innerHTML = 'OK';
-        _PU_재제조이력사유.innerHTML = '';
+        break;
+
+      case 'DE_HEV':
+      case 'GL3_HEV':
+      case 'DL3_HEV':
+      case 'YG_HEV':
+      case 'NQ5_HEV':
+      case 'SG2_HEV':
+      case 'JF_HEV':
+        _HEV_외부점검.innerHTML = 외부검사;
+        _HEV_외부점검사유.innerHTML = 외부검사사유;
+        _HEV_내부점검.innerHTML = 기초검사_v.육안검사_내부;
+        _HEV_내부점검사유.innerHTML = 기초검사_v.육안검사_내부_특이사항;
+        _HEV_케이스.innerHTML = 케이스;
+        _HEV_케이스감압량.innerHTML = 케이스감압량;
+        _HEV_냉각유로.innerHTML = 기초검사_v.기밀검사_냉각유로;
+        _HEV_냉각유로감압량.innerHTML = 기초검사_v.기밀검사_냉각유로_특이사항;
+        _HEV_PRA_P.innerHTML = 기초검사_v.절연검사_Plus판정;
+        _HEV_PRA_P값.innerHTML = 기초검사_v.절연검사_Plus;
+        _HEV_PRA_N.innerHTML = 기초검사_v.절연검사_Minus판정;
+        _HEV_PRA_N값.innerHTML = 기초검사_v.절연검사_Minus;
+        _HEV_팩전압.innerHTML = 기초검사_v.통신검사_팩전압판정;
+        _HEV_팩전압값.innerHTML = 기초검사_v.통신검사_팩전압;
+        _HEV_셀전압편차.innerHTML = 기초검사_v.통신검사_셀전압편차판정;
+        _HEV_셀전압편차값.innerHTML = 기초검사_v.통신검사_셀전압편차;
+        _HEV_릴레이제어.innerHTML = 기초검사_v.통신검사_릴레이구동;
+        _HEV_릴레이제어사유.innerHTML = 기초검사_v.통신검사_릴레이구동사유;
+        _HEV_고장코드.innerHTML = 고장코드;
+        _HEV_고장코드사유.innerHTML = 고장사유;
         break;
 
       default:
         alert('차종을 확인해 주세요');
     }
+    */
+    /* eslint-enable */
   }
 
   find(세척_pic, _management_id.value);
@@ -483,6 +785,10 @@ async function 기초보고서_조회(is재제조번호 = false) {
     _bottom_pic.src = 세척_pic_v.pic8;
     _rear_pic.src = 세척_pic_v.pic9;
     _right_pic.src = 세척_pic_v.pic10;
+
+    //HEV 육안검사 외부 — 세척 front 사진(pic6) 사용
+    var _hev육안 = document.getElementById('_HEV_육안외부사진');
+    if (_hev육안) _hev육안.src = 세척_pic_v.pic6;
 
     //육안검사 외부 2
     _이상부위_외부1.src = 세척_pic_v.pic11;
@@ -542,15 +848,45 @@ async function 기초보고서_조회(is재제조번호 = false) {
     _CAN과거.src = 기초검사_pic2_v.pic8;
     _PDS진단1.src = 기초검사_pic2_v.pic9;
     _PDS진단2.src = 기초검사_pic2_v.pic10;
+
+    //HEV 절연저항 검사 — 기초검사 절연 사진(pic2~5) 사용
+    var _set이미지 = function (id, src) {
+      var el = document.getElementById(id);
+      if (el) el.src = src || '';
+    };
+    _set이미지('_HEV_절연측정사진1', 기초검사_pic2_v.pic2);
+    _set이미지('_HEV_절연측정값사진1', 기초검사_pic2_v.pic3);
+    _set이미지('_HEV_절연측정사진2', 기초검사_pic2_v.pic4);
+    _set이미지('_HEV_절연측정값사진2', 기초검사_pic2_v.pic5);
+
+    //HEV 통신검사 (G-SCAN) — 고장코드 현재/과거, 센서데이터
+    _set이미지('_HEV2_CAN현재', 기초검사_pic2_v.pic6);
+    _set이미지('_HEV2_현재센서데이터', 기초검사_pic2_v.pic7);
+    _set이미지('_HEV2_CAN과거', 기초검사_pic2_v.pic8);
+    //HEV 통신검사 (BMS 교차) 페이지도 동일 소스로 연결
+    _set이미지('_HEV_CAN현재', 기초검사_pic2_v.pic6);
+    _set이미지('_HEV_현재센서데이터', 기초검사_pic2_v.pic7);
+    _set이미지('_HEV_CAN과거', 기초검사_pic2_v.pic8);
   }
 
   //기밀검사 - 케이스
   _케이스.innerHTML = 케이스 + ' : ' + 케이스감압량;
   _냉각유로.innerHTML = 냉각유로 + ' : ' + 냉각유로감압량;
 
-  //절연저항검사
-  _절연PRA_P.innerHTML = 절연검사_B_P + ' : ' + 절연검사_B_P판정;
-  _절연PRA_N.innerHTML = 절연검사_B_N + ' : ' + 절연검사_B_N판정;
+  //절연저항검사 — 합부판정: OK(파랑)/NG(빨강)/미실시(이유)
+  function _절연합부HTML(판정, 값) {
+    var p = (판정 == null ? '' : String(판정)).trim();
+    if (p === 'OK') return '<span class="result-vlaue r1">OK</span>';
+    if (p === 'NG') return '<span class="result-vlaue r2">NG</span>';
+    if (p.indexOf('미실시') !== -1) {
+      // 판정에 이유가 없으면 값(측정값)을 이유로 표시
+      var 이유 = p.length > 3 ? p : '미실시(이유: ' + (값 || '') + ')';
+      return '<span class="result-vlaue r3">' + 이유 + '</span>';
+    }
+    return p ? '<span class="result-vlaue r1">' + p + '</span>' : '';
+  }
+  _절연PRA_P.innerHTML = _절연합부HTML(절연검사_B_P판정, 절연검사_B_P);
+  _절연PRA_N.innerHTML = _절연합부HTML(절연검사_B_N판정, 절연검사_B_N);
 }
 
 function showTable(tableId) {
@@ -561,6 +897,10 @@ function showTable(tableId) {
   }
   // 선택된 테이블만 표시
   const table = document.getElementById(tableId);
+  if (!table) {
+    console.warn('[showTable] 테이블 없음:', tableId);
+    return;
+  }
   table.style.display = 'block';
 }
 
@@ -654,7 +994,14 @@ async function 기초보고서_save(type = 0) {
     height: (_height * window.innerHeight) / 1080,
   }).then((canvas) => {
     var data = canvas.toDataURL();
+    // _canvas element 가 사이드바 init 중 사라졌을 수 있으니 없으면 동적 생성
     var canvas = document.getElementById('_canvas');
+    if (!canvas) {
+      canvas = document.createElement('canvas');
+      canvas.id = '_canvas';
+      canvas.style.display = 'none';
+      document.body.appendChild(canvas);
+    }
     var ctx = canvas.getContext('2d');
     var img = new Image();
     img.src = data;

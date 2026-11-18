@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <title>완료보고서 list</title>
+    <meta charset="UTF-8" />
+  </head>
+
+  <body>
+    <section class="page report-list-page">
+      <!-- ===== 1) 리스트 화면 ===== -->
+      <div id="_완료_리스트_화면">
+        <header class="page-header">
+          <h2 class="page-title">완료보고서</h2>
+          <p class="page-subtitle">EOL 완료된 배터리팩 — 관리번호 또는 차종으로 검색</p>
+        </header>
+
+        <div class="card">
+          <div class="report-list-search">
+            <input id="filter-value-완료" type="text" placeholder="관리번호 / 차종으로 검색하세요" autocomplete="off" />
+            <button id="filter-clear-완료" type="button">초기화</button>
+            <span class="report-list-count">총 <span id="report-list-total-완료">0</span>건</span>
+          </div>
+          <div id="grid_완료"></div>
+        </div>
+      </div>
+
+      <!-- ===== 2) 보고서 상세 화면 (row 클릭 후 표시) — 처음엔 숨김 ===== -->
+      <div id="_완료_상세_화면" style="display: none">
+        <button class="btn btn-back" type="button" onclick="완료보고서_list_리스트로()"><i class="fa-solid fa-arrow-left"></i> 리스트로</button>
+        <header class="page-header report-detail-header">
+          <h2 class="page-title">완료보고서 — <span id="_완료_상세_관리번호"></span></h2>
+        </header>
+        <div id="_완료_상세_영역"></div>
+      </div>
+    </section>
+
+    <script>
+      // 페이지 진입 시 flag 설정 → main.js 폴링이 완료보고서_list_시작() 호출
+      flag_완료보고서_list = true;
+    </script>
+  </body>
+</html>

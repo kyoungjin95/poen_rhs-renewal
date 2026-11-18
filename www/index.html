@@ -5,25 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- fontawsome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <!-- Pretendard 웹폰트 -->
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
     <!-- tabulator -->
     <link rel="stylesheet" href="base/style/tabulator_css/tabulator_modern.min.css" />
     <!-- my css -->
     <link rel="stylesheet" href="base/style/style.css" />
-    <title>Poen RHMS</title>
+    <link rel="stylesheet" href="base/style/modern.css" />
+    <title>BERI-HI</title>
   </head>
 
-  <body oncontextmenu="return blockRightClick()">
+  <body>
     <div id="main">
       <div class="logo__img">
         <img src="base/img/poen.png" />
       </div>
       <div>
-        <h1>RHMS</h1>
-        <p class="version" style="font: italic bold 0.3em/1em Georgia, serif">
-          (Remanufacturing History Management System) Ver.
-          <span>Code sky 0.79</span>
-          <span id="connection_status">(연결끊김)</span>
-        </p>
+        <h1>BERI-HI</h1>
+        <p class="version">Battery Evaluation &amp; Remanufacturing Innovation — History</p>
+        <div class="version-info">
+          <span class="version-badge">v0.79 · Code sky</span>
+          <span id="connection_status" class="connection-badge">연결끊김</span>
+        </div>
       </div>
       <br />
       <div id="menu">
@@ -49,9 +52,9 @@
               <li>
                 <button class="menu-btn" onclick="pre_관리번호 = ''; loadPage('base/공정제외.html'); flag_BSA_제외분류 = true;">배터리팩 제외분류</button>
               </li>
-              <li>
+              <!-- <li>
                 <button class="menu-btn" onclick="pre_관리번호 = ''; loadPage('base/재충전정보.html'); flag_재충전정보 = true;">재충전정보</button>
-              </li>
+              </li> -->
               <li>
                 <button class="menu-btn" onclick="pre_관리번호 = ''; loadPage('base/구장재고조회.html'); flag_구장재고조회 = true;">창고재고 조회(구장)</button>
               </li>
@@ -61,9 +64,9 @@
               <li>
                 <button class="menu-btn" onclick="pre_관리번호 = ''; loadPage('base/제주재고조회.html'); flag_제주재고조회 = true;">창고재고 조회(제주)</button>
               </li>
-              <li>
+              <!-- <li>
                 <button class="menu-btn" onclick="pre_관리번호 = ''; loadPage('base/창고재고조회.html'); flag_창고재고조회 = true;">창고재고 조회</button>
-              </li>
+              </li> -->
             </ul>
           </li>
           <li>
@@ -80,6 +83,17 @@
               </li>
               <li>
                 <button class="menu-btn" onclick="pre_관리번호 = ''; 창고 = '제주'; flag_racks = true;">창고재고 입력(제주)</button>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="javascript:void(0)"><span onclick="pre_관리번호 = ''; loadPage('base/기초보고서_list.html');">보고서</span></a>
+            <ul>
+              <li>
+                <button class="menu-btn" onclick="loadPage('base/기초보고서_list.html');">기초보고서</button>
+              </li>
+              <li>
+                <button class="menu-btn" onclick="loadPage('base/완료보고서_list.html');">완료보고서</button>
               </li>
             </ul>
           </li>
@@ -144,6 +158,7 @@
     <script src="base/js/기초검사.js"></script>
     <script src="base/js/성능검사.js"></script>
     <script src="base/js/분해조립.js"></script>
+    <script src="base/js/분해조립_v2.js"></script>
     <script src="base/js/old_분해조립.js"></script>
     <script src="base/js/분해조립_재제조.js"></script>
     <script src="base/js/분해조립_공정대기.js"></script>
@@ -164,7 +179,9 @@
     <script src="base/js/admin.js"></script>
     <script src="base/js/대기수량.js"></script>
     <script src="base/js/기초보고서.js"></script>
+    <script src="base/js/기초보고서_list.js"></script>
     <script src="base/js/완료보고서.js"></script>
+    <script src="base/js/완료보고서_list.js"></script>
     <script src="base/js/출하검사성적서.js"></script>
     <script src="base/js/공정제외.js"></script>
     <script src="base/js/수량집계.js"></script>

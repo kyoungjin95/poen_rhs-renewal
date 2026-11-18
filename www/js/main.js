@@ -2,7 +2,7 @@ history.pushState(null, null, location.href); //브라우저 이전으로 이동
 window.onpopstate = function (event) {
   history.go(1);
 };
-
+/*
 $(document).ready(function () {
   //마우스 우측 버튼 사용 막기.
   if (window.addEventListener) {
@@ -95,7 +95,7 @@ window.addEventListener('keydown', function (e) {
     return false;
   }
 });
-
+*/
 //메뉴에서  관리자 버튼과 부품재고 버튼을 숨김
 admin_btn.style.display = 'none';
 부품재고_btn.style.display = 'none';
@@ -293,7 +293,6 @@ var interval = setInterval(function () {
   if (flag_BSA_제외분류 == true) {
     console.log('BSA 제외분류');
     stop_repeat();
-    stop_repeat();
     BSA_제외분류_시작();
   }
   if (flag_관리자 == true) {
@@ -320,6 +319,16 @@ var interval = setInterval(function () {
     console.log('기초보고서');
     stop_repeat();
     기초보고서_시작();
+  }
+  if (flag_기초보고서_list == true) {
+    console.log('기초보고서_list');
+    stop_repeat();
+    기초보고서_list_시작();
+  }
+  if (flag_완료보고서_list == true) {
+    console.log('완료보고서_list');
+    stop_repeat();
+    완료보고서_list_시작();
   }
   if (flag_분해조립 == true) {
     console.log('분해조립');
@@ -362,11 +371,6 @@ var interval = setInterval(function () {
     stop_repeat();
     부품정보_list_시작();
   }
-  if (flag_기초보고서 == true) {
-    console.log('기초보고서');
-    stop_repeat();
-    기초보고서_시작();
-  }
   if (flag_분해조립_재제조 == true) {
     console.log('분해조립 재제조');
     stop_repeat();
@@ -387,7 +391,12 @@ var interval = setInterval(function () {
     stop_repeat();
     완료보고서_시작();
   }
-}, 1000);
+  if (typeof flag_분해조립_v2 !== 'undefined' && flag_분해조립_v2 == true) {
+    console.log('분해조립_v2');
+    stop_repeat();
+    분해조립_v2_시작();
+  }
+}, 200);
 
 //반복 실행 플래그 모두 끔
 function stop_repeat() {
@@ -429,3 +438,13 @@ function 기초검사_이전페이지() {
   flag_기초검사 = true;
   loadPage('base/기초검사.html');
 }
+
+//메뉴 클릭 시 active 표시
+document.addEventListener('click', function (e) {
+  var target = e.target.closest('#menu .menu-btn, #menu > ul > li > a > span');
+  if (!target) return;
+  document.querySelectorAll('#menu .menu-btn.active, #menu > ul > li > a > span.active').forEach(function (el) {
+    el.classList.remove('active');
+  });
+  target.classList.add('active');
+});

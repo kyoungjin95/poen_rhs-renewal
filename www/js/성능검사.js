@@ -36,6 +36,8 @@ async function 성능검사_시작(is재제조 = 0) {
       _구분.value = BSA재제조_v.구분;
       _차종.value = BSA재제조_v.차종;
       _품번.value = BSA재제조_v.품번;
+      if (typeof _VIN !== "undefined" && _VIN) _VIN.value = BSA재제조_v.VIN || "";
+      if (typeof _sn !== "undefined" && _sn) _sn.value = BSA재제조_v.SERIALNO || "";
       _RO_no.value = BSA재제조_v.RO_no;
     } else {
       _재제조번호.value = '';
@@ -56,6 +58,8 @@ async function 성능검사_시작(is재제조 = 0) {
       _구분.value = BSA재제조_v.구분;
       _차종.value = BSA재제조_v.차종;
       _품번.value = BSA재제조_v.품번;
+      if (typeof _VIN !== "undefined" && _VIN) _VIN.value = BSA재제조_v.VIN || "";
+      if (typeof _sn !== "undefined" && _sn) _sn.value = BSA재제조_v.SERIALNO || "";
       _RO_no.value = BSA재제조_v.RO_no;
     } else {
       _management_id.value = '';
@@ -77,6 +81,8 @@ async function 성능검사_시작(is재제조 = 0) {
       _구분.value = BSA재제조_v.구분;
       _차종.value = BSA재제조_v.차종;
       _품번.value = BSA재제조_v.품번;
+      if (typeof _VIN !== "undefined" && _VIN) _VIN.value = BSA재제조_v.VIN || "";
+      if (typeof _sn !== "undefined" && _sn) _sn.value = BSA재제조_v.SERIALNO || "";
     } else {
       _management_id.value = '';
       _재제조번호.value = '';
@@ -85,6 +91,9 @@ async function 성능검사_시작(is재제조 = 0) {
       _품번.value = '';
     }
   }
+
+  //차종에 따라 SOC 라벨 변경 (EV: 60%, HEV: 55%)
+  update_SOC_label();
 
   //성능 검사 데이터 조회
   관리번호 = _management_id.value;
@@ -538,6 +547,7 @@ function fileUploading() {
           fileNames += fileInput.files[i].name + ', ';
         }
         uploadLabel.textContent = fileNames.slice(0, -6);
+        uploadLabel.title = fileNames.slice(0, -6);
         uploadLabel.style.backgroundColor = '#11a85f';
         uploadLabel.style.color = 'white';
         deleteButton.style.display = 'inline';
@@ -814,6 +824,20 @@ async function read_용량평가() {
   _용량평가.value = Number(용량평가_result).toFixed(2);
 
   console.log('용량평가 result:', 용량평가_result);
+}
+
+function update_SOC_label() {
+  const isHEV = (_차종.value || '').toUpperCase().includes('_HEV');
+
+  const label = document.getElementById('_SOC60Percent_label');
+  if (label) label.textContent = isHEV ? 'SOC55Percent (V)' : 'SOC60Percent (V)';
+
+  // DCIR 종합 섹션 파일 라벨 (HEV: 충전/방전 출력 인가)
+  const fileLabel1 = document.getElementById('_DCIR_file_label1');
+  if (fileLabel1) fileLabel1.textContent = isHEV ? '충전 출력 인가 DATA' : '충방전기 DATA';
+
+  const fileLabel2 = document.getElementById('_DCIR_file_label2');
+  if (fileLabel2) fileLabel2.textContent = isHEV ? '방전 출력 인가 DATA' : 'MES DATA';
 }
 
 async function read_SOC60Percent() {

@@ -95,9 +95,6 @@ table td.bottom {
 }
 /* ========================================
   검사 */
-.check-all {
-  padding-top: 50px;
-}
 .check-all table {
   border: 1px solid #000;
   font-size: 0.9em;
@@ -171,7 +168,7 @@ table td.bottom {
   white-space: pre;
 }
 
-[contenteditable="true"]:empty:before {
+[contenteditable='true']:empty:before {
   content: attr(placeholder);
   color: gray;
 

@@ -269,6 +269,8 @@ const BSA재제조_doc = {
 	차종: '',
 	품번: '',
 	RO_no: '',
+	VIN: '',
+	SERIALNO: '',
 	공정단계: '',
 	적재No: '',
 	입고: '',
@@ -309,6 +311,8 @@ const 입고_doc = {
 	품번: '',
 	RO_no: '',
 	보관위치: '',
+	VIN: '',
+	SERIALNO: '',
 };
 
 const 세척_doc = {
@@ -2008,6 +2012,8 @@ const BSA재제조_ = {
 	차종: 1,
 	품번: 1,
 	RO_no: 1,
+	VIN: 1,
+	SERIALNO: 1,
 	공정단계: 1,
 	적재No: 1,
 	입고: 1,
@@ -2049,6 +2055,8 @@ const 입고_ = {
 	품번: 1,
 	RO_no: 1,
 	보관위치: 1,
+	VIN: 1,
+	SERIALNO: 1,
 };
 
 const 세척_ = {
@@ -2113,6 +2121,9 @@ const 기초검사_ = {
 	통신검사_팩전압판정: 1,
 	통신검사_셀전압편차: 1,
 	통신검사_셀전압편차판정: 1,
+	통신검사_최대내부저항: 1,
+	통신검사_최대내부저항판정: 1,
+	통신검사_최대내부저항_셀번호: 1,
 	통신검사_릴레이구동: 1,
 	통신검사_릴레이구동사유: 1,
 	BSA생산일자: 1,
@@ -2593,12 +2604,21 @@ const 성능검사_ = {
 const 고품정보_ = {
 	_id: 0,
 	관리번호: 1,
+	재제조번호: 1,
+	partId: 1,
 	품명: 1,
 	구분: 1,
 	품번: 1,
 	번호: 1,
 	QR: 1,
 	폐기여부: 1,
+	교체후품명: 1,
+	교체후품번: 1,
+	교체후QR: 1,
+	교체후구분: 1,
+	교체후고품관리번호: 1,
+	교체후재제조번호: 1,
+	교체후RO: 1,
 	사용여부: 1,
 	사용_관리번호: 1,
 	등록일: 1,
@@ -2606,6 +2626,7 @@ const 고품정보_ = {
 	등록_작업자: 1,
 	사용_작업자: 1,
 	폐기품출고: 1,
+	비고: 1,
 };
 
 const 출하정보_ = {
@@ -3784,9 +3805,22 @@ socket.on('connect', function () {
 	document.getElementById('connection_status').innerHTML = '(연결)';
 	console.log('connected');
 
-	socket.emit('계정정보', id, passwd);
-	//alert('서버와 연결됨');
-	//loadPage("base/login.html");
+	// 자동 재로그인 — server 가 socket 끊겼다 reconnect 시 login=false 로 reset 되어
+	// 이후 모든 emit 이 거부됨. ack 받은 후 현재 화면 데이터 다시 채움.
+	if (id && passwd) {
+		socket.emit('계정정보', id, passwd, function (ack) {
+			if (ack && ack.success) {
+				console.log('[reconnect] 자동 재로그인 성공');
+				// 현재 활성 페이지가 있으면 polling flag 다시 켜서 데이터 reload
+				if (typeof flag_재제조현황 !== 'undefined' && document.getElementById('grid_BSA')) flag_재제조현황 = true;
+				if (typeof flag_기초보고서_list !== 'undefined' && document.getElementById('grid_기초검사')) flag_기초보고서_list = true;
+				if (typeof flag_부품재고 !== 'undefined' && document.getElementById('grid_고품재고')) flag_부품재고 = true;
+				if (typeof flag_제주재고조회 !== 'undefined' && document.getElementById('grid_제주재고')) flag_제주재고조회 = true;
+			} else {
+				console.warn('[reconnect] 자동 재로그인 실패 — 수동 로그인 필요');
+			}
+		});
+	}
 });
 
 //자동 백업 시스템 가동중인지 아닌지
@@ -6024,3 +6058,33 @@ function downloadURI(uri, name) {
 	document.body.removeChild(link);
 	delete link;
 }
+
+// 모든 .image-slot 에 다운로드 버튼 자동 부착 (idempotent)
+function setup_image_downloads() {
+	document.querySelectorAll('.image-slot').forEach(function (slot) {
+		if (slot.querySelector('.image-download-btn')) return;
+		var img = slot.querySelector('img');
+		if (!img) return;
+		var btn = document.createElement('button');
+		btn.type = 'button';
+		btn.className = 'image-download-btn';
+		btn.innerHTML = '<i class="fa-solid fa-download"></i> 다운로드';
+		btn.addEventListener('click', function (e) {
+			e.stopPropagation();
+			if (!img.src || !img.src.startsWith('data:')) {
+				alert('등록된 이미지가 없습니다.');
+				return;
+			}
+			var label = slot.querySelector('.image-label');
+			var base = label && label.textContent ? label.textContent.trim() : (img.id || 'image').replace(/^_/, '');
+			var mime = img.src.match(/^data:image\/(\w+);/);
+			var ext = mime ? (mime[1] === 'jpeg' ? 'jpg' : mime[1]) : 'png';
+			downloadURI(img.src, base + '.' + ext);
+		});
+		slot.appendChild(btn);
+	});
+}
+
+// 폴링으로 자동 부착 (페이지 전환 후에도 동작)
+setInterval(setup_image_downloads, 1000);
+

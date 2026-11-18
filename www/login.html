@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>login</title>
+    <title>BERI-HI · login</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
   </head>
 
@@ -11,24 +11,33 @@
     <section class="Login">
       <div class="container">
         <div class="login-form">
-          <div class="title__box">
-            <h2>login</h2>
+          <div class="login-brand">
+            <h1>로그인</h1>
           </div>
+
           <div class="input-group">
             <ul>
               <li>
                 <label for="_id">ID</label>
-                <input type="text" id="_id" require />
+                <div class="input-wrap">
+                  <i class="fa-regular fa-user"></i>
+                  <input type="text" id="_id" placeholder="아이디 입력" autocomplete="off" require />
+                </div>
               </li>
               <li>
                 <label for="_passwd">Password</label>
-                <input type="password" id="_passwd" require />
+                <div class="input-wrap">
+                  <i class="fa-solid fa-lock"></i>
+                  <input type="password" id="_passwd" placeholder="비밀번호 입력" autocomplete="off" require />
+                </div>
               </li>
             </ul>
             <button onClick="login();">
               <p id="login_label">로그인</p>
             </button>
           </div>
+
+          <p class="login-footer">© POEN · BERI-HI</p>
         </div>
       </div>
     </section>

@@ -12,7 +12,7 @@
         <h3>▣ 기초보고서 [<span id="_차종">CS_EV</span>]</h3>
         <span id="_재제조번호_HEAD"></span><input type="checkbox" id="_cb기초보고서" checked />
       </div>
-      <div id="line"></div>
+
       <div>
         <table class="all">
           <colgroup>
@@ -1156,6 +1156,103 @@
                   <td class="base"></td>
                 </tr>
               </table>
+              <table class="base tableAll" id="_HEV" style="display: none">
+                <colgroup>
+                  <col width="7%" />
+                  <col width="13%" />
+                  <col width="25%" />
+                  <col width="14%" />
+                  <col width="41%" />
+                </colgroup>
+                <tr>
+                  <td class="base_header2">센서 No</td>
+                  <td class="base_header2" colspan="2">점검 항목</td>
+                  <td class="base_header2">판정</td>
+                  <td class="base_header2">결과 값 / 특이사항 / 미실시 사유</td>
+                </tr>
+                <tr>
+                  <td class="base" rowspan="2">1</td>
+                  <td class="base weight-bold" rowspan="2">육안 검사</td>
+                  <td class="base">외부 점검</td>
+                  <td class="base" id="_HEV_외부점검">OK/NG</td>
+                  <td class="base" id="_HEV_외부점검사유">NG 사유 및 특이사항 입력</td>
+                </tr>
+                <tr>
+                  <td class="base">내부 점검</td>
+                  <td class="base" id="_HEV_내부점검">OK/NG</td>
+                  <td class="base" id="_HEV_내부점검사유"></td>
+                </tr>
+                <tr>
+                  <td class="base" rowspan="2">2</td>
+                  <td class="base weight-bold" rowspan="2">절연 검사</td>
+                  <td class="base">PRA(+) ~ 샤시</td>
+                  <td class="base" id="_HEV_PRA_P">OK/NG</td>
+                  <td class="base" id="_HEV_PRA_P값"></td>
+                </tr>
+                <tr>
+                  <td class="base">PRA(-) ~ 샤시</td>
+                  <td class="base" id="_HEV_PRA_N">OK/NG</td>
+                  <td class="base" id="_HEV_PRA_N값"></td>
+                </tr>
+                <tr>
+                  <td class="base" rowspan="5">3</td>
+                  <td class="base weight-bold" rowspan="5">통신 검사</td>
+                  <td class="base">센서데이터 팩 전압</td>
+                  <td class="base" id="_HEV_팩전압">-</td>
+                  <td class="base" id="_HEV_팩전압값"></td>
+                </tr>
+                <tr>
+                  <td class="base">셀 전압 편차</td>
+                  <td class="base" id="_HEV_셀전압편차">40mV 이내</td>
+                  <td class="base" id="_HEV_셀전압편차값"></td>
+                </tr>
+                <tr>
+                  <td class="base">고장코드</td>
+                  <td class="base" id="_HEV_고장코드">OK/NG</td>
+                  <td class="base" id="_HEV_고장코드사유"></td>
+                </tr>
+                <tr>
+                  <td class="base">최대 내부 저항</td>
+                  <td class="base" id="_HEV_최대내부저항">-</td>
+                  <td class="base" id="_HEV_최대내부저항값">-</td>
+                </tr>
+                <tr>
+                  <td class="base">최대 내부 저항 셀 번호</td>
+                  <td class="base" id="_HEV_최대내부저항셀번호">-</td>
+                  <td class="base" id="_HEV_최대내부저항셀번호값">-</td>
+                </tr>
+                <tr>
+                  <td class="base" rowspan="3">4</td>
+                  <td class="base weight-bold" rowspan="3">실측 검사</td>
+                  <td class="base">실측 팩 전압</td>
+                  <td class="base" id="_HEV_실측팩전압">-</td>
+                  <td class="base" id="_HEV_실측팩전압값">-</td>
+                </tr>
+                <tr>
+                  <td class="base">최소 모듈 전압</td>
+                  <td class="base" id="_HEV_최소모듈전압">-</td>
+                  <td class="base" id="_HEV_최소모듈전압값">-</td>
+                </tr>
+                <tr>
+                  <td class="base">셀 전압 편차</td>
+                  <td class="base" id="_HEV_실측셀전압편차">40mV 이내</td>
+                  <td class="base" id="_HEV_실측셀전압편차값">-</td>
+                </tr>
+                <tr>
+                  <td class="base">5</td>
+                  <td class="base weight-bold">교차 검사</td>
+                  <td class="base">BMS</td>
+                  <td class="base" id="_HEV_교차BMS">-</td>
+                  <td class="base" id="_HEV_교차BMS사유">불명확 시 교체 점검</td>
+                </tr>
+                <tr>
+                  <td class="base">6</td>
+                  <td class="base weight-bold">PCB 검사</td>
+                  <td class="base">BMS 내부 PCB</td>
+                  <td class="base" id="_HEV_PCB">-</td>
+                  <td class="base" id="_HEV_PCB값"></td>
+                </tr>
+              </table>
             </td>
           </tr>
           <tr>
@@ -1168,7 +1265,7 @@
                 <td class="result_header">분석결과</td>
                 <td id="_분석결과값"></td>
               </tr>
-              <tr>
+              <tr id="_재제조comment_row">
                 <td class="result_header">
                   재제조<br />
                   Com-ment
@@ -1256,8 +1353,8 @@
           <col width="50%" />
         </colgroup>
         <tbody>
-          <tr class="imgName">
-            <td>
+          <tr>
+            <td class="imgName">
               <img id="_이상부위_외부1" />
             </td>
             <td class="imgName">
@@ -1661,6 +1758,288 @@
       </div>
     </div>
 
+    <!-- ===== HEV 전용 상세 페이지 ===== -->
+    <div id="_육안검사외부_HEV" class="check-all">
+      <div class="report__tit">
+        <h3>▣ 육안 검사 - 외부</h3>
+        <input type="checkbox" id="_cb육안검사외부_HEV" checked />
+      </div>
+      <table border="2" class="all">
+        <thead>
+          <tr class="title">
+            <th>외부</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="photo heightPhoto"><img id="_HEV_육안외부사진" width="100%" /></td>
+          </tr>
+          <tr>
+            <td class="result" id="_HEV_육안외부결과" style="text-align: left">- 결과 :</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="bottom">
+        <p>FQ850-05</p>
+        <p>A4(297x210mm)</p>
+        <p>Positive Energy</p>
+      </div>
+    </div>
+
+    <div id="_절연저항검사_HEV" class="check-all">
+      <div class="report__tit">
+        <h3>▣ 절연 저항 검사 - BSA</h3>
+        <input type="checkbox" id="_cb절연저항검사_HEV" checked />
+      </div>
+      <table border="2" class="all">
+        <colgroup>
+          <col width="8%" />
+          <col width="8%" />
+          <col />
+          <col width="8%" />
+        </colgroup>
+        <thead>
+          <tr class="title">
+            <th>항목</th>
+            <th colspan="4">절연 저항 검사</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">장비</th>
+            <td colspan="4">HIOKI ST5520</td>
+          </tr>
+          <tr>
+            <th scope="row">평가방법</th>
+            <td colspan="4" class="td1">
+              하부케이스 어스볼트부에(-) 연결, PRA측 배터리(+), (-) 절연저항 측정<br />
+              DC 500V인가, 30초 후 결과값 확인<br />
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">판정기준</th>
+            <td colspan="4" style="color: blue">측정 결과 (+)5MΩ, (-)5MΩ 이상 합격</td>
+          </tr>
+          <tr>
+            <th rowspan="3" scope="row">측정결과</th>
+            <td colspan="2">PRA (+) ~ 샤시</td>
+            <td colspan="2">PRA (-) ~ 샤시</td>
+          </tr>
+          <tr>
+            <td class="photoName">장비셋팅 <br />전체 사진</td>
+            <td class="photo"><img id="_HEV_절연측정사진1" /></td>
+            <td class="photoName">장비셋팅 <br />전체 사진</td>
+            <td class="photo"><img id="_HEV_절연측정사진2" /></td>
+          </tr>
+          <tr>
+            <td class="photoName">측정값 <br />확대 사진</td>
+            <td class="photo"><img id="_HEV_절연측정값사진1" /></td>
+            <td class="photoName">측정값 <br />확대 사진</td>
+            <td class="photo"><img id="_HEV_절연측정값사진2" /></td>
+          </tr>
+          <tr>
+            <th scope="row">합부판정</th>
+            <td colspan="2" class="result" id="_HEV_절연PRA_P">
+              <span class="result-vlaue r1">OK</span>
+              <strong> &sol;</strong>
+              <span class="result-vlaue r2">NG</span>
+              <strong> &sol;</strong>
+              <span class="result-vlaue r3">미실시(이유:)</span>
+            </td>
+            <td colspan="2" class="result" id="_HEV_절연PRA_N">
+              <span class="result-vlaue r1">OK</span>
+              <strong> &sol;</strong>
+              <span class="result-vlaue r2">NG</span>
+              <strong> &sol;</strong>
+              <span class="result-vlaue r3">미실시(이유:)</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="bottom">
+        <p>FQ850-05</p>
+        <p>A4(297x210mm)</p>
+        <p>Positive Energy</p>
+      </div>
+    </div>
+
+    <div id="_CAN통신검사_HEV" class="check-all">
+      <div class="report__tit">
+        <h3>▣ CAN 통신 검사 - BMS 교차 후 G-SCAN 진단결과</h3>
+        <input type="checkbox" id="_cbCAN통신검사_HEV" checked />
+      </div>
+      <table border="2" class="all">
+        <colgroup>
+          <col width="8%" />
+          <col />
+          <col />
+        </colgroup>
+        <thead>
+          <tr class="title">
+            <th>항목</th>
+            <th colspan="2">G-SCAN 진단</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th rowspan="5" scope="row">진 단<br />결 과</th>
+            <td style="background: #f0f0f0">고장코드 진단(현재)</td>
+            <td style="background: #f0f0f0">센서데이터 진단</td>
+          </tr>
+          <tr>
+            <td rowspan="2" class="photo heightPhoto"><img id="_HEV_CAN현재" width="100%" /></td>
+            <td class="photo">
+              <div class="photoName">고장상황데이터 (첨부)</div>
+              <img id="_HEV_고장상황데이터" />
+            </td>
+          </tr>
+          <tr>
+            <td class="photo">
+              <div class="photoName">현재 센서데이터 (첨부)</div>
+              <img id="_HEV_현재센서데이터" />
+            </td>
+          </tr>
+          <tr>
+            <td style="background: #f0f0f0">고장코드 진단(과거)</td>
+            <td style="background: #f0f0f0">ROM ID (사양정보)</td>
+          </tr>
+          <tr>
+            <td class="photo heightPhoto"><img id="_HEV_CAN과거" width="100%" /></td>
+            <td class="photo"><img id="_HEV_ROMID" /></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="bottom">
+        <p>FQ850-05</p>
+        <p>A4(297x210mm)</p>
+        <p>Positive Energy</p>
+      </div>
+    </div>
+
+    <div id="_CAN통신검사_HEV2" class="check-all">
+      <div class="report__tit">
+        <h3>▣ CAN 통신 검사 - G-SCAN 진단결과</h3>
+        <input type="checkbox" id="_cbCAN통신검사_HEV2" checked />
+      </div>
+      <table border="2" class="all">
+        <colgroup>
+          <col width="8%" />
+          <col />
+          <col width="14%" />
+          <col />
+        </colgroup>
+        <thead>
+          <tr class="title">
+            <th>항 목</th>
+            <th colspan="3">G-SCAN 진단</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th rowspan="6" scope="row">진 단<br />결 과</th>
+            <td style="background: #f0f0f0">고장코드 진단(현재)</td>
+            <td colspan="2" style="background: #f0f0f0">센서데이터 진단</td>
+          </tr>
+          <tr>
+            <td rowspan="3" class="photo heightPhoto"><img id="_HEV2_CAN현재" width="100%" /></td>
+            <td class="photoName">고장상황데이터<br />(첨부)</td>
+            <td class="photo"><img id="_HEV2_고장상황데이터" /></td>
+          </tr>
+          <tr>
+            <td class="photoName">현재 센서데이터<br />(첨부)</td>
+            <td class="photo"><img id="_HEV2_현재센서데이터" /></td>
+          </tr>
+          <tr>
+            <td class="photoName">ROM ID<br />(사양정보)</td>
+            <td class="photo"><img id="_HEV2_ROMID" /></td>
+          </tr>
+          <tr>
+            <td style="background: #f0f0f0">고장코드 진단(과거)</td>
+            <td colspan="2" style="background: #f0f0f0">강제구동(PRA 릴레이 제어, 블로어 제어) 시 작동 사진</td>
+          </tr>
+          <tr>
+            <td class="photo heightPhoto"><img id="_HEV2_CAN과거" width="100%" /></td>
+            <td colspan="2" class="photo heightPhoto"><img id="_HEV2_강제구동" width="100%" /></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="bottom">
+        <p>FQ850-05</p>
+        <p>A4(297x210mm)</p>
+        <p>Positive Energy</p>
+      </div>
+    </div>
+
+    <div id="_BMS_PCB" class="check-all">
+      <div class="report__tit">
+        <h3>▣ BMS 내부 PCB 사진</h3>
+        <input type="checkbox" id="_cbBMS_PCB" checked />
+      </div>
+      <table border="2" class="all">
+        <thead>
+          <tr class="title">
+            <th>FRONT</th>
+            <th>REAR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="photo heightPhoto"><img id="_HEV_PCB_FRONT" width="100%" /></td>
+            <td class="photo heightPhoto"><img id="_HEV_PCB_REAR" width="100%" /></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="bottom">
+        <p>FQ850-05</p>
+        <p>A4(297x210mm)</p>
+        <p>Positive Energy</p>
+      </div>
+    </div>
+
+    <div id="_개별모듈실측전압" class="check-all">
+      <div class="report__tit">
+        <h3>▣ 개별 모듈 실측 전압 사진</h3>
+        <input type="checkbox" id="_cb개별모듈실측전압" checked />
+      </div>
+      <table border="2" class="all">
+        <tbody>
+          <tr class="title">
+            <td>1번</td>
+            <td>2번</td>
+            <td>3번</td>
+            <td>4번</td>
+            <td>5번</td>
+          </tr>
+          <tr>
+            <td class="photo"><img id="_HEV_모듈1" /></td>
+            <td class="photo"><img id="_HEV_모듈2" /></td>
+            <td class="photo"><img id="_HEV_모듈3" /></td>
+            <td class="photo"><img id="_HEV_모듈4" /></td>
+            <td class="photo"><img id="_HEV_모듈5" /></td>
+          </tr>
+          <tr class="title">
+            <td>6번</td>
+            <td>7번</td>
+            <td>8번</td>
+            <td>9번</td>
+            <td>10번</td>
+          </tr>
+          <tr>
+            <td class="photo"><img id="_HEV_모듈6" /></td>
+            <td class="photo"><img id="_HEV_모듈7" /></td>
+            <td class="photo"><img id="_HEV_모듈8" /></td>
+            <td class="photo"><img id="_HEV_모듈9" /></td>
+            <td class="photo"><img id="_HEV_모듈10" /></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="bottom">
+        <p>FQ850-05</p>
+        <p>A4(297x210mm)</p>
+        <p>Positive Energy</p>
+      </div>
+    </div>
+
     <div>
       <canvas id="_canvas"></canvas>
     </div>
@@ -1701,318 +2080,318 @@
     <div></div>
 
     <script>
-      var _차종 = document.getElementById("_차종");
-      var _재제조번호_HEAD = document.getElementById("_재제조번호_HEAD");
+      var _차종 = document.getElementById('_차종');
+      var _재제조번호_HEAD = document.getElementById('_재제조번호_HEAD');
 
-      var _management_id = document.getElementById("_management_id");
-      var _재제조번호 = document.getElementById("_재제조번호");
+      var _management_id = document.getElementById('_management_id');
+      var _재제조번호 = document.getElementById('_재제조번호');
 
-      var _VIN = document.getElementById("_VIN");
-      var _RO = document.getElementById("_RO");
-      var _주행거리 = document.getElementById("_주행거리");
-      var _차량번호 = document.getElementById("_차량번호");
-      var _생산일 = document.getElementById("_생산일");
-      var _판매일 = document.getElementById("_판매일");
-      var _수리일 = document.getElementById("_수리일");
-      var _입고일 = document.getElementById("_입고일");
-      var _입고사진 = document.getElementById("_입고사진");
-      var _BSA_QR = document.getElementById("_BSA_QR");
-      var _관리번호 = document.getElementById("_관리번호");
-      var _필드현상 = document.getElementById("_필드현상");
-      var _센터진단 = document.getElementById("_센터진단");
-      var _센터조치 = document.getElementById("_센터조치");
-      var _작성자 = document.getElementById("_작성자");
-      var _작성일 = document.getElementById("_작성일");
-      var _분석결과값 = document.getElementById("_분석결과값");
-      var _재제조comment = document.getElementById("_재제조comment");
+      var _VIN = document.getElementById('_VIN');
+      var _RO = document.getElementById('_RO');
+      var _주행거리 = document.getElementById('_주행거리');
+      var _차량번호 = document.getElementById('_차량번호');
+      var _생산일 = document.getElementById('_생산일');
+      var _판매일 = document.getElementById('_판매일');
+      var _수리일 = document.getElementById('_수리일');
+      var _입고일 = document.getElementById('_입고일');
+      var _입고사진 = document.getElementById('_입고사진');
+      var _BSA_QR = document.getElementById('_BSA_QR');
+      var _관리번호 = document.getElementById('_관리번호');
+      var _필드현상 = document.getElementById('_필드현상');
+      var _센터진단 = document.getElementById('_센터진단');
+      var _센터조치 = document.getElementById('_센터조치');
+      var _작성자 = document.getElementById('_작성자');
+      var _작성일 = document.getElementById('_작성일');
+      var _분석결과값 = document.getElementById('_분석결과값');
+      var _재제조comment = document.getElementById('_재제조comment');
 
-      var _CS_외부점검 = document.getElementById("_CS_외부점검");
-      var _CS_외부점검사유 = document.getElementById("_CS_외부점검사유");
-      var _CS_내부점검 = document.getElementById("_CS_내부점검");
-      var _CS_내부점검사유 = document.getElementById("_CS_내부점검사유");
-      var _CS_케이스 = document.getElementById("_CS_케이스");
-      var _CS_케이스감압량 = document.getElementById("_CS_케이스감압량");
-      var _CS_냉각유로 = document.getElementById("_CS_냉각유로");
-      var _CS_냉각유로감압량 = document.getElementById("_CS_냉각유로감압량");
-      var _CS_PRA_P = document.getElementById("_CS_PRA_P");
-      var _CS_PRA_P값 = document.getElementById("_CS_PRA_P값");
-      var _CS_PRA_N = document.getElementById("_CS_PRA_N");
-      var _CS_PRA_N값 = document.getElementById("_CS_PRA_N값");
-      var _CS_팩전압 = document.getElementById("_CS_팩전압");
-      var _CS_팩전압값 = document.getElementById("_CS_팩전압값");
-      var _CS_셀전압편차 = document.getElementById("_CS_셀전압편차");
-      var _CS_셀전압편차값 = document.getElementById("_CS_셀전압편차값");
-      var _CS_릴레이제어 = document.getElementById("_CS_릴레이제어");
-      var _CS_릴레이제어사유 = document.getElementById("_CS_릴레이제어사유");
-      var _CS_고장코드 = document.getElementById("_CS_고장코드");
-      var _CS_고장코드사유 = document.getElementById("_CS_고장코드사유");
-      var _CS_입고정보 = document.getElementById("_CS_입고정보");
-      var _CS_입고정보사유 = document.getElementById("_CS_입고정보사유");
-      var _CS_재제조이력 = document.getElementById("_CS_재제조이력");
-      var _CS_재제조이력사유 = document.getElementById("_CS_재제조이력사유");
+      var _CS_외부점검 = document.getElementById('_CS_외부점검');
+      var _CS_외부점검사유 = document.getElementById('_CS_외부점검사유');
+      var _CS_내부점검 = document.getElementById('_CS_내부점검');
+      var _CS_내부점검사유 = document.getElementById('_CS_내부점검사유');
+      var _CS_케이스 = document.getElementById('_CS_케이스');
+      var _CS_케이스감압량 = document.getElementById('_CS_케이스감압량');
+      var _CS_냉각유로 = document.getElementById('_CS_냉각유로');
+      var _CS_냉각유로감압량 = document.getElementById('_CS_냉각유로감압량');
+      var _CS_PRA_P = document.getElementById('_CS_PRA_P');
+      var _CS_PRA_P값 = document.getElementById('_CS_PRA_P값');
+      var _CS_PRA_N = document.getElementById('_CS_PRA_N');
+      var _CS_PRA_N값 = document.getElementById('_CS_PRA_N값');
+      var _CS_팩전압 = document.getElementById('_CS_팩전압');
+      var _CS_팩전압값 = document.getElementById('_CS_팩전압값');
+      var _CS_셀전압편차 = document.getElementById('_CS_셀전압편차');
+      var _CS_셀전압편차값 = document.getElementById('_CS_셀전압편차값');
+      var _CS_릴레이제어 = document.getElementById('_CS_릴레이제어');
+      var _CS_릴레이제어사유 = document.getElementById('_CS_릴레이제어사유');
+      var _CS_고장코드 = document.getElementById('_CS_고장코드');
+      var _CS_고장코드사유 = document.getElementById('_CS_고장코드사유');
+      var _CS_입고정보 = document.getElementById('_CS_입고정보');
+      var _CS_입고정보사유 = document.getElementById('_CS_입고정보사유');
+      var _CS_재제조이력 = document.getElementById('_CS_재제조이력');
+      var _CS_재제조이력사유 = document.getElementById('_CS_재제조이력사유');
 
-      var _CV_외부점검 = document.getElementById("_CV_외부점검");
-      var _CV_외부점검사유 = document.getElementById("_CV_외부점검사유");
-      var _CV_외부점검2 = document.getElementById("_CV_외부점검2");
-      var _CV_외부점검사유2 = document.getElementById("_CV_외부점검사유2");
-      var _CV_내부점검 = document.getElementById("_CV_내부점검");
-      var _CV_내부점검사유 = document.getElementById("_CV_내부점검사유");
-      var _CV_케이스 = document.getElementById("_CV_케이스");
-      var _CV_케이스감압량 = document.getElementById("_CV_케이스감압량");
-      var _CV_냉각유로 = document.getElementById("_CV_냉각유로");
-      var _CV_냉각유로감압량 = document.getElementById("_CV_냉각유로감압량");
-      var _CV_PRA_P = document.getElementById("_CV_PRA_P");
-      var _CV_PRA_P값 = document.getElementById("_CV_PRA_P값");
-      var _CV_PRA_N = document.getElementById("_CV_PRA_N");
-      var _CV_PRA_N값 = document.getElementById("_CV_PRA_N값");
-      var _CV_팩전압 = document.getElementById("_CV_팩전압");
-      var _CV_팩전압값 = document.getElementById("_CV_팩전압값");
-      var _CV_셀전압편차 = document.getElementById("_CV_셀전압편차");
-      var _CV_셀전압편차값 = document.getElementById("_CV_셀전압편차값");
-      var _CV_릴레이제어 = document.getElementById("_CV_릴레이제어");
-      var _CV_릴레이제어사유 = document.getElementById("_CV_릴레이제어사유");
-      var _CV_고장코드 = document.getElementById("_CV_고장코드");
-      var _CV_고장코드사유 = document.getElementById("_CV_고장코드사유");
-      var _CV_입고정보 = document.getElementById("_CV_입고정보");
-      var _CV_입고정보사유 = document.getElementById("_CV_입고정보사유");
-      var _CV_재제조이력 = document.getElementById("_CV_재제조이력");
-      var _CV_재제조이력사유 = document.getElementById("_CV_재제조이력사유");
+      var _CV_외부점검 = document.getElementById('_CV_외부점검');
+      var _CV_외부점검사유 = document.getElementById('_CV_외부점검사유');
+      var _CV_외부점검2 = document.getElementById('_CV_외부점검2');
+      var _CV_외부점검사유2 = document.getElementById('_CV_외부점검사유2');
+      var _CV_내부점검 = document.getElementById('_CV_내부점검');
+      var _CV_내부점검사유 = document.getElementById('_CV_내부점검사유');
+      var _CV_케이스 = document.getElementById('_CV_케이스');
+      var _CV_케이스감압량 = document.getElementById('_CV_케이스감압량');
+      var _CV_냉각유로 = document.getElementById('_CV_냉각유로');
+      var _CV_냉각유로감압량 = document.getElementById('_CV_냉각유로감압량');
+      var _CV_PRA_P = document.getElementById('_CV_PRA_P');
+      var _CV_PRA_P값 = document.getElementById('_CV_PRA_P값');
+      var _CV_PRA_N = document.getElementById('_CV_PRA_N');
+      var _CV_PRA_N값 = document.getElementById('_CV_PRA_N값');
+      var _CV_팩전압 = document.getElementById('_CV_팩전압');
+      var _CV_팩전압값 = document.getElementById('_CV_팩전압값');
+      var _CV_셀전압편차 = document.getElementById('_CV_셀전압편차');
+      var _CV_셀전압편차값 = document.getElementById('_CV_셀전압편차값');
+      var _CV_릴레이제어 = document.getElementById('_CV_릴레이제어');
+      var _CV_릴레이제어사유 = document.getElementById('_CV_릴레이제어사유');
+      var _CV_고장코드 = document.getElementById('_CV_고장코드');
+      var _CV_고장코드사유 = document.getElementById('_CV_고장코드사유');
+      var _CV_입고정보 = document.getElementById('_CV_입고정보');
+      var _CV_입고정보사유 = document.getElementById('_CV_입고정보사유');
+      var _CV_재제조이력 = document.getElementById('_CV_재제조이력');
+      var _CV_재제조이력사유 = document.getElementById('_CV_재제조이력사유');
 
-      var _DE_외부점검 = document.getElementById("_DE_외부점검");
-      var _DE_외부점검사유 = document.getElementById("_DE_외부점검사유");
-      var _DE_내부점검 = document.getElementById("_DE_내부점검");
-      var _DE_내부점검사유 = document.getElementById("_DE_내부점검사유");
-      var _DE_케이스 = document.getElementById("_DE_케이스");
-      var _DE_케이스감압량 = document.getElementById("_DE_케이스감압량");
-      var _DE_냉각유로 = document.getElementById("_DE_냉각유로");
-      var _DE_냉각유로감압량 = document.getElementById("_DE_냉각유로감압량");
-      var _DE_PRA_P = document.getElementById("_DE_PRA_P");
-      var _DE_PRA_P값 = document.getElementById("_DE_PRA_P값");
-      var _DE_PRA_N = document.getElementById("_DE_PRA_N");
-      var _DE_PRA_N값 = document.getElementById("_DE_PRA_N값");
-      var _DE_팩전압 = document.getElementById("_DE_팩전압");
-      var _DE_팩전압값 = document.getElementById("_DE_팩전압값");
-      var _DE_셀전압편차 = document.getElementById("_DE_셀전압편차");
-      var _DE_셀전압편차값 = document.getElementById("_DE_셀전압편차값");
-      var _DE_릴레이제어 = document.getElementById("_DE_릴레이제어");
-      var _DE_릴레이제어사유 = document.getElementById("_DE_릴레이제어사유");
-      var _DE_고장코드 = document.getElementById("_DE_고장코드");
-      var _DE_고장코드사유 = document.getElementById("_DE_고장코드사유");
-      var _DE_입고정보 = document.getElementById("_DE_입고정보");
-      var _DE_입고정보사유 = document.getElementById("_DE_입고정보사유");
-      var _DE_재제조이력 = document.getElementById("_DE_재제조이력");
-      var _DE_재제조이력사유 = document.getElementById("_DE_재제조이력사유");
+      var _DE_외부점검 = document.getElementById('_DE_외부점검');
+      var _DE_외부점검사유 = document.getElementById('_DE_외부점검사유');
+      var _DE_내부점검 = document.getElementById('_DE_내부점검');
+      var _DE_내부점검사유 = document.getElementById('_DE_내부점검사유');
+      var _DE_케이스 = document.getElementById('_DE_케이스');
+      var _DE_케이스감압량 = document.getElementById('_DE_케이스감압량');
+      var _DE_냉각유로 = document.getElementById('_DE_냉각유로');
+      var _DE_냉각유로감압량 = document.getElementById('_DE_냉각유로감압량');
+      var _DE_PRA_P = document.getElementById('_DE_PRA_P');
+      var _DE_PRA_P값 = document.getElementById('_DE_PRA_P값');
+      var _DE_PRA_N = document.getElementById('_DE_PRA_N');
+      var _DE_PRA_N값 = document.getElementById('_DE_PRA_N값');
+      var _DE_팩전압 = document.getElementById('_DE_팩전압');
+      var _DE_팩전압값 = document.getElementById('_DE_팩전압값');
+      var _DE_셀전압편차 = document.getElementById('_DE_셀전압편차');
+      var _DE_셀전압편차값 = document.getElementById('_DE_셀전압편차값');
+      var _DE_릴레이제어 = document.getElementById('_DE_릴레이제어');
+      var _DE_릴레이제어사유 = document.getElementById('_DE_릴레이제어사유');
+      var _DE_고장코드 = document.getElementById('_DE_고장코드');
+      var _DE_고장코드사유 = document.getElementById('_DE_고장코드사유');
+      var _DE_입고정보 = document.getElementById('_DE_입고정보');
+      var _DE_입고정보사유 = document.getElementById('_DE_입고정보사유');
+      var _DE_재제조이력 = document.getElementById('_DE_재제조이력');
+      var _DE_재제조이력사유 = document.getElementById('_DE_재제조이력사유');
 
-      var _HR_외부점검 = document.getElementById("_HR_외부점검");
-      var _HR_외부점검사유 = document.getElementById("_HR_외부점검사유");
-      var _HR_내부점검 = document.getElementById("_HR_내부점검");
-      var _HR_내부점검사유 = document.getElementById("_HR_내부점검사유");
-      var _HR_실제조사사유 = document.getElementById("_HR_실제조사사유");
-      var _HR_케이스 = document.getElementById("_HR_케이스");
-      var _HR_케이스감압량 = document.getElementById("_HR_케이스감압량");
-      var _HR_냉각유로 = document.getElementById("_HR_냉각유로");
-      var _HR_냉각유로감압량 = document.getElementById("_HR_냉각유로감압량");
-      var _HR_PRA_P = document.getElementById("_HR_PRA_P");
-      var _HR_PRA_P값 = document.getElementById("_HR_PRA_P값");
-      var _HR_PRA_N = document.getElementById("_HR_PRA_N");
-      var _HR_PRA_N값 = document.getElementById("_HR_PRA_N값");
-      var _HR_HV커넥터_P = document.getElementById("_HR_HV커넥터_P");
-      var _HR_HV커넥터_P값 = document.getElementById("_HR_HV커넥터_P값");
-      var _HR_HV커넥터_N = document.getElementById("_HR_HV커넥터_N");
-      var _HR_HV커넥터_N값 = document.getElementById("_HR_HV커넥터_N값");
-      var _HR_팩전압 = document.getElementById("_HR_팩전압");
-      var _HR_팩전압값 = document.getElementById("_HR_팩전압값");
-      var _HR_셀전압편차 = document.getElementById("_HR_셀전압편차");
-      var _HR_셀전압편차값 = document.getElementById("_HR_셀전압편차값");
-      var _HR_릴레이제어 = document.getElementById("_HR_릴레이제어");
-      var _HR_릴레이제어사유 = document.getElementById("_HR_릴레이제어사유");
-      var _HR_고장코드 = document.getElementById("_HR_고장코드");
-      var _HR_고장코드사유 = document.getElementById("_HR_고장코드사유");
-      var _HR_입고정보 = document.getElementById("_HR_입고정보");
-      var _HR_입고정보사유 = document.getElementById("_HR_입고정보사유");
-      var _HR_재제조이력 = document.getElementById("_HR_재제조이력");
-      var _HR_재제조이력사유 = document.getElementById("_HR_재제조이력사유");
+      var _HR_외부점검 = document.getElementById('_HR_외부점검');
+      var _HR_외부점검사유 = document.getElementById('_HR_외부점검사유');
+      var _HR_내부점검 = document.getElementById('_HR_내부점검');
+      var _HR_내부점검사유 = document.getElementById('_HR_내부점검사유');
+      var _HR_실제조사사유 = document.getElementById('_HR_실제조사사유');
+      var _HR_케이스 = document.getElementById('_HR_케이스');
+      var _HR_케이스감압량 = document.getElementById('_HR_케이스감압량');
+      var _HR_냉각유로 = document.getElementById('_HR_냉각유로');
+      var _HR_냉각유로감압량 = document.getElementById('_HR_냉각유로감압량');
+      var _HR_PRA_P = document.getElementById('_HR_PRA_P');
+      var _HR_PRA_P값 = document.getElementById('_HR_PRA_P값');
+      var _HR_PRA_N = document.getElementById('_HR_PRA_N');
+      var _HR_PRA_N값 = document.getElementById('_HR_PRA_N값');
+      var _HR_HV커넥터_P = document.getElementById('_HR_HV커넥터_P');
+      var _HR_HV커넥터_P값 = document.getElementById('_HR_HV커넥터_P값');
+      var _HR_HV커넥터_N = document.getElementById('_HR_HV커넥터_N');
+      var _HR_HV커넥터_N값 = document.getElementById('_HR_HV커넥터_N값');
+      var _HR_팩전압 = document.getElementById('_HR_팩전압');
+      var _HR_팩전압값 = document.getElementById('_HR_팩전압값');
+      var _HR_셀전압편차 = document.getElementById('_HR_셀전압편차');
+      var _HR_셀전압편차값 = document.getElementById('_HR_셀전압편차값');
+      var _HR_릴레이제어 = document.getElementById('_HR_릴레이제어');
+      var _HR_릴레이제어사유 = document.getElementById('_HR_릴레이제어사유');
+      var _HR_고장코드 = document.getElementById('_HR_고장코드');
+      var _HR_고장코드사유 = document.getElementById('_HR_고장코드사유');
+      var _HR_입고정보 = document.getElementById('_HR_입고정보');
+      var _HR_입고정보사유 = document.getElementById('_HR_입고정보사유');
+      var _HR_재제조이력 = document.getElementById('_HR_재제조이력');
+      var _HR_재제조이력사유 = document.getElementById('_HR_재제조이력사유');
 
-      var _LK_외부점검 = document.getElementById("_LK_외부점검");
-      var _LK_외부점검사유 = document.getElementById("_LK_외부점검사유");
-      var _LK_내부점검 = document.getElementById("_LK_내부점검");
-      var _LK_내부점검사유 = document.getElementById("_LK_내부점검사유");
-      var _LK_실제조사사유 = document.getElementById("_LK_실제조사사유");
-      var _LK_케이스 = document.getElementById("_LK_케이스");
-      var _LK_케이스감압량 = document.getElementById("_LK_케이스감압량");
-      var _LK_냉각유로 = document.getElementById("_LK_냉각유로");
-      var _LK_냉각유로감압량 = document.getElementById("_LK_냉각유로감압량");
-      var _LK_토크검사 = document.getElementById("_LK_토크검사");
-      var _LK_토크검사사유 = document.getElementById("_LK_토크검사사유");
-      var _LK_PRA_P = document.getElementById("_LK_PRA_P");
-      var _LK_PRA_P값 = document.getElementById("_LK_PRA_P값");
-      var _LK_PRA_N = document.getElementById("_LK_PRA_N");
-      var _LK_PRA_N값 = document.getElementById("_LK_PRA_N값");
-      var _LK_HV커넥터_P = document.getElementById("_LK_HV커넥터_P");
-      var _LK_HV커넥터_P값 = document.getElementById("_LK_HV커넥터_P값");
-      var _LK_HV커넥터_N = document.getElementById("_LK_HV커넥터_N");
-      var _LK_HV커넥터_N값 = document.getElementById("_LK_HV커넥터_N값");
-      var _LK_팩전압 = document.getElementById("_LK_팩전압");
-      var _LK_팩전압값 = document.getElementById("_LK_팩전압값");
-      var _LK_셀전압편차 = document.getElementById("_LK_셀전압편차");
-      var _LK_셀전압편차값 = document.getElementById("_LK_셀전압편차값");
-      var _LK_릴레이제어 = document.getElementById("_LK_릴레이제어");
-      var _LK_릴레이제어사유 = document.getElementById("_LK_릴레이제어사유");
-      var _LK_고장코드 = document.getElementById("_LK_고장코드");
-      var _LK_고장코드사유 = document.getElementById("_LK_고장코드사유");
-      var _LK_입고정보 = document.getElementById("_LK_입고정보");
-      var _LK_입고정보사유 = document.getElementById("_LK_입고정보사유");
-      var _LK_재제조이력 = document.getElementById("_LK_재제조이력");
-      var _LK_재제조이력사유 = document.getElementById("_LK_재제조이력사유");
+      var _LK_외부점검 = document.getElementById('_LK_외부점검');
+      var _LK_외부점검사유 = document.getElementById('_LK_외부점검사유');
+      var _LK_내부점검 = document.getElementById('_LK_내부점검');
+      var _LK_내부점검사유 = document.getElementById('_LK_내부점검사유');
+      var _LK_실제조사사유 = document.getElementById('_LK_실제조사사유');
+      var _LK_케이스 = document.getElementById('_LK_케이스');
+      var _LK_케이스감압량 = document.getElementById('_LK_케이스감압량');
+      var _LK_냉각유로 = document.getElementById('_LK_냉각유로');
+      var _LK_냉각유로감압량 = document.getElementById('_LK_냉각유로감압량');
+      var _LK_토크검사 = document.getElementById('_LK_토크검사');
+      var _LK_토크검사사유 = document.getElementById('_LK_토크검사사유');
+      var _LK_PRA_P = document.getElementById('_LK_PRA_P');
+      var _LK_PRA_P값 = document.getElementById('_LK_PRA_P값');
+      var _LK_PRA_N = document.getElementById('_LK_PRA_N');
+      var _LK_PRA_N값 = document.getElementById('_LK_PRA_N값');
+      var _LK_HV커넥터_P = document.getElementById('_LK_HV커넥터_P');
+      var _LK_HV커넥터_P값 = document.getElementById('_LK_HV커넥터_P값');
+      var _LK_HV커넥터_N = document.getElementById('_LK_HV커넥터_N');
+      var _LK_HV커넥터_N값 = document.getElementById('_LK_HV커넥터_N값');
+      var _LK_팩전압 = document.getElementById('_LK_팩전압');
+      var _LK_팩전압값 = document.getElementById('_LK_팩전압값');
+      var _LK_셀전압편차 = document.getElementById('_LK_셀전압편차');
+      var _LK_셀전압편차값 = document.getElementById('_LK_셀전압편차값');
+      var _LK_릴레이제어 = document.getElementById('_LK_릴레이제어');
+      var _LK_릴레이제어사유 = document.getElementById('_LK_릴레이제어사유');
+      var _LK_고장코드 = document.getElementById('_LK_고장코드');
+      var _LK_고장코드사유 = document.getElementById('_LK_고장코드사유');
+      var _LK_입고정보 = document.getElementById('_LK_입고정보');
+      var _LK_입고정보사유 = document.getElementById('_LK_입고정보사유');
+      var _LK_재제조이력 = document.getElementById('_LK_재제조이력');
+      var _LK_재제조이력사유 = document.getElementById('_LK_재제조이력사유');
 
-      var _NE_외부점검 = document.getElementById("_NE_외부점검");
-      var _NE_외부점검사유 = document.getElementById("_NE_외부점검사유");
-      var _NE_내부점검 = document.getElementById("_NE_내부점검");
-      var _NE_내부점검사유 = document.getElementById("_NE_내부점검사유");
-      var _NE_실제조사사유 = document.getElementById("_NE_실제조사사유");
-      var _NE_케이스 = document.getElementById("_NE_케이스");
-      var _NE_케이스감압량 = document.getElementById("_NE_케이스감압량");
-      var _NE_냉각유로 = document.getElementById("_NE_냉각유로");
-      var _NE_냉각유로감압량 = document.getElementById("_NE_냉각유로감압량");
-      var _NE_PRA_P = document.getElementById("_NE_PRA_P");
-      var _NE_PRA_P값 = document.getElementById("_NE_PRA_P값");
-      var _NE_PRA_N = document.getElementById("_NE_PRA_N");
-      var _NE_PRA_N값 = document.getElementById("_NE_PRA_N값");
-      var _NE_팩전압 = document.getElementById("_NE_팩전압");
-      var _NE_팩전압값 = document.getElementById("_NE_팩전압값");
-      var _NE_셀전압편차 = document.getElementById("_NE_셀전압편차");
-      var _NE_셀전압편차값 = document.getElementById("_NE_셀전압편차값");
-      var _NE_릴레이제어 = document.getElementById("_NE_릴레이제어");
-      var _NE_릴레이제어사유 = document.getElementById("_NE_릴레이제어사유");
-      var _NE_고장코드 = document.getElementById("_NE_고장코드");
-      var _NE_고장코드사유 = document.getElementById("_NE_고장코드사유");
-      var _NE_입고정보 = document.getElementById("_NE_입고정보");
-      var _NE_입고정보사유 = document.getElementById("_NE_입고정보사유");
-      var _NE_재제조이력 = document.getElementById("_NE_재제조이력");
-      var _NE_재제조이력사유 = document.getElementById("_NE_재제조이력사유");
+      var _NE_외부점검 = document.getElementById('_NE_외부점검');
+      var _NE_외부점검사유 = document.getElementById('_NE_외부점검사유');
+      var _NE_내부점검 = document.getElementById('_NE_내부점검');
+      var _NE_내부점검사유 = document.getElementById('_NE_내부점검사유');
+      var _NE_실제조사사유 = document.getElementById('_NE_실제조사사유');
+      var _NE_케이스 = document.getElementById('_NE_케이스');
+      var _NE_케이스감압량 = document.getElementById('_NE_케이스감압량');
+      var _NE_냉각유로 = document.getElementById('_NE_냉각유로');
+      var _NE_냉각유로감압량 = document.getElementById('_NE_냉각유로감압량');
+      var _NE_PRA_P = document.getElementById('_NE_PRA_P');
+      var _NE_PRA_P값 = document.getElementById('_NE_PRA_P값');
+      var _NE_PRA_N = document.getElementById('_NE_PRA_N');
+      var _NE_PRA_N값 = document.getElementById('_NE_PRA_N값');
+      var _NE_팩전압 = document.getElementById('_NE_팩전압');
+      var _NE_팩전압값 = document.getElementById('_NE_팩전압값');
+      var _NE_셀전압편차 = document.getElementById('_NE_셀전압편차');
+      var _NE_셀전압편차값 = document.getElementById('_NE_셀전압편차값');
+      var _NE_릴레이제어 = document.getElementById('_NE_릴레이제어');
+      var _NE_릴레이제어사유 = document.getElementById('_NE_릴레이제어사유');
+      var _NE_고장코드 = document.getElementById('_NE_고장코드');
+      var _NE_고장코드사유 = document.getElementById('_NE_고장코드사유');
+      var _NE_입고정보 = document.getElementById('_NE_입고정보');
+      var _NE_입고정보사유 = document.getElementById('_NE_입고정보사유');
+      var _NE_재제조이력 = document.getElementById('_NE_재제조이력');
+      var _NE_재제조이력사유 = document.getElementById('_NE_재제조이력사유');
 
-      var _OS_SK3_외부점검 = document.getElementById("_OS_SK3_외부점검");
-      var _OS_SK3_외부점검사유 = document.getElementById("_OS_SK3_외부점검사유");
-      var _OS_SK3_내부점검 = document.getElementById("_OS_SK3_내부점검");
-      var _OS_SK3_내부점검사유 = document.getElementById("_OS_SK3_내부점검사유");
-      var _OS_SK3_실제조사사유 = document.getElementById("_OS_SK3_실제조사사유");
-      var _OS_SK3_케이스 = document.getElementById("_OS_SK3_케이스");
-      var _OS_SK3_케이스감압량 = document.getElementById("_OS_SK3_케이스감압량");
-      var _OS_SK3_냉각유로 = document.getElementById("_OS_SK3_냉각유로");
-      var _OS_SK3_냉각유로감압량 = document.getElementById("_OS_SK3_냉각유로감압량");
-      var _OS_SK3_PRA_P = document.getElementById("_OS_SK3_PRA_P");
-      var _OS_SK3_PRA_P값 = document.getElementById("_OS_SK3_PRA_P값");
-      var _OS_SK3_PRA_N = document.getElementById("_OS_SK3_PRA_N");
-      var _OS_SK3_PRA_N값 = document.getElementById("_OS_SK3_PRA_N값");
-      var _OS_SK3_팩전압 = document.getElementById("_OS_SK3_팩전압");
-      var _OS_SK3_팩전압값 = document.getElementById("_OS_SK3_팩전압값");
-      var _OS_SK3_셀전압편차 = document.getElementById("_OS_SK3_셀전압편차");
-      var _OS_SK3_셀전압편차값 = document.getElementById("_OS_SK3_셀전압편차값");
-      var _OS_SK3_릴레이제어 = document.getElementById("_OS_SK3_릴레이제어");
-      var _OS_SK3_릴레이제어사유 = document.getElementById("_OS_SK3_릴레이제어사유");
-      var _OS_SK3_고장코드 = document.getElementById("_OS_SK3_고장코드");
-      var _OS_SK3_고장코드사유 = document.getElementById("_OS_SK3_고장코드사유");
-      var _OS_SK3_입고정보 = document.getElementById("_OS_SK3_입고정보");
-      var _OS_SK3_입고정보사유 = document.getElementById("_OS_SK3_입고정보사유");
-      var _OS_SK3_재제조이력 = document.getElementById("_OS_SK3_재제조이력");
-      var _OS_SK3_재제조이력사유 = document.getElementById("_OS_SK3_재제조이력사유");
+      var _OS_SK3_외부점검 = document.getElementById('_OS_SK3_외부점검');
+      var _OS_SK3_외부점검사유 = document.getElementById('_OS_SK3_외부점검사유');
+      var _OS_SK3_내부점검 = document.getElementById('_OS_SK3_내부점검');
+      var _OS_SK3_내부점검사유 = document.getElementById('_OS_SK3_내부점검사유');
+      var _OS_SK3_실제조사사유 = document.getElementById('_OS_SK3_실제조사사유');
+      var _OS_SK3_케이스 = document.getElementById('_OS_SK3_케이스');
+      var _OS_SK3_케이스감압량 = document.getElementById('_OS_SK3_케이스감압량');
+      var _OS_SK3_냉각유로 = document.getElementById('_OS_SK3_냉각유로');
+      var _OS_SK3_냉각유로감압량 = document.getElementById('_OS_SK3_냉각유로감압량');
+      var _OS_SK3_PRA_P = document.getElementById('_OS_SK3_PRA_P');
+      var _OS_SK3_PRA_P값 = document.getElementById('_OS_SK3_PRA_P값');
+      var _OS_SK3_PRA_N = document.getElementById('_OS_SK3_PRA_N');
+      var _OS_SK3_PRA_N값 = document.getElementById('_OS_SK3_PRA_N값');
+      var _OS_SK3_팩전압 = document.getElementById('_OS_SK3_팩전압');
+      var _OS_SK3_팩전압값 = document.getElementById('_OS_SK3_팩전압값');
+      var _OS_SK3_셀전압편차 = document.getElementById('_OS_SK3_셀전압편차');
+      var _OS_SK3_셀전압편차값 = document.getElementById('_OS_SK3_셀전압편차값');
+      var _OS_SK3_릴레이제어 = document.getElementById('_OS_SK3_릴레이제어');
+      var _OS_SK3_릴레이제어사유 = document.getElementById('_OS_SK3_릴레이제어사유');
+      var _OS_SK3_고장코드 = document.getElementById('_OS_SK3_고장코드');
+      var _OS_SK3_고장코드사유 = document.getElementById('_OS_SK3_고장코드사유');
+      var _OS_SK3_입고정보 = document.getElementById('_OS_SK3_입고정보');
+      var _OS_SK3_입고정보사유 = document.getElementById('_OS_SK3_입고정보사유');
+      var _OS_SK3_재제조이력 = document.getElementById('_OS_SK3_재제조이력');
+      var _OS_SK3_재제조이력사유 = document.getElementById('_OS_SK3_재제조이력사유');
 
-      var _PU_외부점검 = document.getElementById("_PU_외부점검");
-      var _PU_외부점검사유 = document.getElementById("_PU_외부점검사유");
-      var _PU_내부점검 = document.getElementById("_PU_내부점검");
-      var _PU_내부점검사유 = document.getElementById("_PU_내부점검사유");
-      var _PU_케이스 = document.getElementById("_PU_케이스");
-      var _PU_케이스감압량 = document.getElementById("_PU_케이스감압량");
-      var _PU_냉각유로 = document.getElementById("_PU_냉각유로");
-      var _PU_냉각유로감압량 = document.getElementById("_PU_냉각유로감압량");
-      var _PU_PRA_P = document.getElementById("_PU_PRA_P");
-      var _PU_PRA_P값 = document.getElementById("_PU_PRA_P값");
-      var _PU_PRA_N = document.getElementById("_PU_PRA_N");
-      var _PU_PRA_N값 = document.getElementById("_PU_PRA_N값");
-      var _PU_팩전압 = document.getElementById("_PU_팩전압");
-      var _PU_팩전압값 = document.getElementById("_PU_팩전압값");
-      var _PU_셀전압편차 = document.getElementById("_PU_셀전압편차");
-      var _PU_셀전압편차값 = document.getElementById("_PU_셀전압편차값");
-      var _PU_릴레이제어 = document.getElementById("_PU_릴레이제어");
-      var _PU_릴레이제어사유 = document.getElementById("_PU_릴레이제어사유");
-      var _PU_고장코드 = document.getElementById("_PU_고장코드");
-      var _PU_고장코드사유 = document.getElementById("_PU_고장코드사유");
-      var _PU_입고정보 = document.getElementById("_PU_입고정보");
-      var _PU_입고정보사유 = document.getElementById("_PU_입고정보사유");
-      var _PU_재제조이력 = document.getElementById("_PU_재제조이력");
-      var _PU_재제조이력사유 = document.getElementById("_PU_재제조이력사유");
+      var _PU_외부점검 = document.getElementById('_PU_외부점검');
+      var _PU_외부점검사유 = document.getElementById('_PU_외부점검사유');
+      var _PU_내부점검 = document.getElementById('_PU_내부점검');
+      var _PU_내부점검사유 = document.getElementById('_PU_내부점검사유');
+      var _PU_케이스 = document.getElementById('_PU_케이스');
+      var _PU_케이스감압량 = document.getElementById('_PU_케이스감압량');
+      var _PU_냉각유로 = document.getElementById('_PU_냉각유로');
+      var _PU_냉각유로감압량 = document.getElementById('_PU_냉각유로감압량');
+      var _PU_PRA_P = document.getElementById('_PU_PRA_P');
+      var _PU_PRA_P값 = document.getElementById('_PU_PRA_P값');
+      var _PU_PRA_N = document.getElementById('_PU_PRA_N');
+      var _PU_PRA_N값 = document.getElementById('_PU_PRA_N값');
+      var _PU_팩전압 = document.getElementById('_PU_팩전압');
+      var _PU_팩전압값 = document.getElementById('_PU_팩전압값');
+      var _PU_셀전압편차 = document.getElementById('_PU_셀전압편차');
+      var _PU_셀전압편차값 = document.getElementById('_PU_셀전압편차값');
+      var _PU_릴레이제어 = document.getElementById('_PU_릴레이제어');
+      var _PU_릴레이제어사유 = document.getElementById('_PU_릴레이제어사유');
+      var _PU_고장코드 = document.getElementById('_PU_고장코드');
+      var _PU_고장코드사유 = document.getElementById('_PU_고장코드사유');
+      var _PU_입고정보 = document.getElementById('_PU_입고정보');
+      var _PU_입고정보사유 = document.getElementById('_PU_입고정보사유');
+      var _PU_재제조이력 = document.getElementById('_PU_재제조이력');
+      var _PU_재제조이력사유 = document.getElementById('_PU_재제조이력사유');
 
-      var _결과 = document.getElementById("_결과");
+      var _결과 = document.getElementById('_결과');
 
       //육안검사외부1
-      var _top_pic = document.getElementById("_top_pic");
-      var _front_pic = document.getElementById("_front_pic");
-      var _left_pic = document.getElementById("_left_pic");
-      var _bottom_pic = document.getElementById("_bottom_pic");
-      var _rear_pic = document.getElementById("_rear_pic");
-      var _right_pic = document.getElementById("_right_pic");
-      var _육안검사_결과 = document.getElementById("_육안검사_결과");
+      var _top_pic = document.getElementById('_top_pic');
+      var _front_pic = document.getElementById('_front_pic');
+      var _left_pic = document.getElementById('_left_pic');
+      var _bottom_pic = document.getElementById('_bottom_pic');
+      var _rear_pic = document.getElementById('_rear_pic');
+      var _right_pic = document.getElementById('_right_pic');
+      var _육안검사_결과 = document.getElementById('_육안검사_결과');
 
       //육안검사외부2
-      var _이상부위_외부1 = document.getElementById("_이상부위_외부1");
-      var _이상부위_위부2 = document.getElementById("_이상부위_외부2");
-      var _이상부위_위부3 = document.getElementById("_이상부위_외부3");
-      var _이상부위_위부4 = document.getElementById("_이상부위_외부4");
-      var _육안검사_결과2 = document.getElementById("_육안검사_결과2");
+      var _이상부위_외부1 = document.getElementById('_이상부위_외부1');
+      var _이상부위_위부2 = document.getElementById('_이상부위_외부2');
+      var _이상부위_위부3 = document.getElementById('_이상부위_외부3');
+      var _이상부위_위부4 = document.getElementById('_이상부위_외부4');
+      var _육안검사_결과2 = document.getElementById('_육안검사_결과2');
 
       //육안검사내부1
-      var _allImg = document.getElementById("_allImg");
-      var _BMU = document.getElementById("_BMU");
-      var _CMU = document.getElementById("_CMU");
-      var _PRA = document.getElementById("_PRA");
-      var _육안검사_내부_결과 = document.getElementById("_육안검사_내부_결과");
+      var _allImg = document.getElementById('_allImg');
+      var _BMU = document.getElementById('_BMU');
+      var _CMU = document.getElementById('_CMU');
+      var _PRA = document.getElementById('_PRA');
+      var _육안검사_내부_결과 = document.getElementById('_육안검사_내부_결과');
 
       //육안검사내부2
-      var _이상부위_내부1 = document.getElementById("_이상부위_내부1");
-      var _이상부위_내부2 = document.getElementById("_이상부위_내부2");
-      var _이상부위_내부3 = document.getElementById("_이상부위_내부3");
-      var _이상부위_내부4 = document.getElementById("_이상부위_내부4");
-      var _육안검사_내부_결과2 = document.getElementById("_육안검사_내부_결과2");
+      var _이상부위_내부1 = document.getElementById('_이상부위_내부1');
+      var _이상부위_내부2 = document.getElementById('_이상부위_내부2');
+      var _이상부위_내부3 = document.getElementById('_이상부위_내부3');
+      var _이상부위_내부4 = document.getElementById('_이상부위_내부4');
+      var _육안검사_내부_결과2 = document.getElementById('_육안검사_내부_결과2');
 
       //기밀검사
-      var _측정사진1 = document.getElementById("_측정사진1");
-      var _측정사진2 = document.getElementById("_측정사진2");
-      var _측정값사진1 = document.getElementById("_측정값사진1");
-      var _측정값사진2 = document.getElementById("_측정값사진2");
-      var _케이스 = document.getElementById("_케이스");
-      var _냉각유로 = document.getElementById("_냉각유로");
+      var _측정사진1 = document.getElementById('_측정사진1');
+      var _측정사진2 = document.getElementById('_측정사진2');
+      var _측정값사진1 = document.getElementById('_측정값사진1');
+      var _측정값사진2 = document.getElementById('_측정값사진2');
+      var _케이스 = document.getElementById('_케이스');
+      var _냉각유로 = document.getElementById('_냉각유로');
 
-      var _기밀검사_특이사항1 = document.getElementById("_기밀검사_특이사항1");
-      var _기밀검사_특이사항2 = document.getElementById("_기밀검사_특이사항2");
-      var _기밀검사_특이사항3 = document.getElementById("_기밀검사_특이사항3");
-      var _기밀검사_특이사항4 = document.getElementById("_기밀검사_특이사항4");
-      var _기밀검사_특이사항_결과 = document.getElementById("_기밀검사_특이사항_결과");
+      var _기밀검사_특이사항1 = document.getElementById('_기밀검사_특이사항1');
+      var _기밀검사_특이사항2 = document.getElementById('_기밀검사_특이사항2');
+      var _기밀검사_특이사항3 = document.getElementById('_기밀검사_특이사항3');
+      var _기밀검사_특이사항4 = document.getElementById('_기밀검사_특이사항4');
+      var _기밀검사_특이사항_결과 = document.getElementById('_기밀검사_특이사항_결과');
 
       //절연저항검사
-      var _절연측정사진1 = document.getElementById("_절연측정사진1");
-      var _절연측정사진2 = document.getElementById("_절연측정사진1");
-      var _절연측정값사진1 = document.getElementById("_절연측정값사진1");
-      var _절연측정값사진1 = document.getElementById("_절연측정값사진1");
-      var _절연PRA_P = document.getElementById("_절연PRA_P");
-      var _절연PRA_N = document.getElementById("_절연PRA_N");
+      var _절연측정사진1 = document.getElementById('_절연측정사진1');
+      var _절연측정사진2 = document.getElementById('_절연측정사진1');
+      var _절연측정값사진1 = document.getElementById('_절연측정값사진1');
+      var _절연측정값사진1 = document.getElementById('_절연측정값사진1');
+      var _절연PRA_P = document.getElementById('_절연PRA_P');
+      var _절연PRA_N = document.getElementById('_절연PRA_N');
 
       //CAN통신검사
-      var _CAN현재 = document.getElementById("_CAN현재");
-      var _CAN진단 = document.getElementById("_CAN진단");
-      var _CAN과거 = document.getElementById("_CAN과거");
-      var _PDS진단1 = document.getElementById("_PDS진단1");
-      var _PDS진단2 = document.getElementById("_PDS진단2");
+      var _CAN현재 = document.getElementById('_CAN현재');
+      var _CAN진단 = document.getElementById('_CAN진단');
+      var _CAN과거 = document.getElementById('_CAN과거');
+      var _PDS진단1 = document.getElementById('_PDS진단1');
+      var _PDS진단2 = document.getElementById('_PDS진단2');
 
       //checkbox
-      var _cb기초보고서 = document.getElementById("_cb기초보고서");
-      var _육안검사외부 = document.getElementById("_cb육안검사외부");
-      var _육안검사외부상세 = document.getElementById("_cb육안검사외부상세");
-      var _육안검사내부 = document.getElementById("_cb육안검사내부");
-      var _육안검사내부상세 = document.getElementById("_cb육안검사내부상세");
-      var _기밀검사 = document.getElementById("_cb기밀검사");
-      var _기밀검사_특이사항 = document.getElementById("_cb기밀검사특이사항");
-      var _절연저항검사 = document.getElementById("_cb절연저항검사");
-      var _CAN통신검사 = document.getElementById("_cbCAN통신검사");
+      var _cb기초보고서 = document.getElementById('_cb기초보고서');
+      var _육안검사외부 = document.getElementById('_cb육안검사외부');
+      var _육안검사외부상세 = document.getElementById('_cb육안검사외부상세');
+      var _육안검사내부 = document.getElementById('_cb육안검사내부');
+      var _육안검사내부상세 = document.getElementById('_cb육안검사내부상세');
+      var _기밀검사 = document.getElementById('_cb기밀검사');
+      var _기밀검사_특이사항 = document.getElementById('_cb기밀검사특이사항');
+      var _절연저항검사 = document.getElementById('_cb절연저항검사');
+      var _CAN통신검사 = document.getElementById('_cbCAN통신검사');
     </script>
   </body>
 </html>

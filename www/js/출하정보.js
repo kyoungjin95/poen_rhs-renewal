@@ -23,6 +23,8 @@ async function 출하정보_시작(is재제조 = 0) {
       _RO_no.value = BSA재제조_v.RO_no;
       _차종.value = BSA재제조_v.차종;
       _품번.value = BSA재제조_v.품번;
+      if (typeof _VIN !== "undefined" && _VIN) _VIN.value = BSA재제조_v.VIN || "";
+      if (typeof _sn !== "undefined" && _sn) _sn.value = BSA재제조_v.SERIALNO || "";
     } else {
       _재제조번호.value = '';
       _RO_no.value = '';
@@ -41,6 +43,8 @@ async function 출하정보_시작(is재제조 = 0) {
       _RO_no.value = BSA재제조_v.RO_no;
       _차종.value = BSA재제조_v.차종;
       _품번.value = BSA재제조_v.품번;
+      if (typeof _VIN !== "undefined" && _VIN) _VIN.value = BSA재제조_v.VIN || "";
+      if (typeof _sn !== "undefined" && _sn) _sn.value = BSA재제조_v.SERIALNO || "";
     } else {
       _management_id.value = '';
       _RO_no.value = '';
@@ -59,6 +63,8 @@ async function 출하정보_시작(is재제조 = 0) {
       _재제조번호.value = BSA재제조_v.재제조번호;
       _차종.value = BSA재제조_v.차종;
       _품번.value = BSA재제조_v.품번;
+      if (typeof _VIN !== "undefined" && _VIN) _VIN.value = BSA재제조_v.VIN || "";
+      if (typeof _sn !== "undefined" && _sn) _sn.value = BSA재제조_v.SERIALNO || "";
     } else {
       _management_id.value = '';
       _재제조번호.value = '';

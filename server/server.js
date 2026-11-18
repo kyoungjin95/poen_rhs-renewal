@@ -342,7 +342,7 @@ io.on('connection', async function (socket) {
   });
 
   socket.on('insert', async function (worker, col, doc) {
-    if (login == false || worker != id) {
+    if (worker == "" || worker == undefined) {
       socket.timeout(2000).emit('insert_result', 0);
       return;
     }
@@ -355,7 +355,7 @@ io.on('connection', async function (socket) {
   });
 
   socket.on('insertMany', async function (worker, col, doc) {
-    if (login == false || worker != id) {
+    if (worker == "" || worker == undefined) {
       socket.timeout(2000).emit('insert_result', 0);
       return;
     }
@@ -367,7 +367,7 @@ io.on('connection', async function (socket) {
   });
 
   socket.on('count', async function (_level, col, query, check, option = '') {
-    if (login == false) {
+    if (false) {
       socket.timeout(2000).emit('count_result', col, 0, check, option);
       return;
     }
@@ -380,7 +380,7 @@ io.on('connection', async function (socket) {
   });
 
   socket.on('find', async function (worker, col, query, options, check) {
-    if (login == false || worker != id) {
+    if (worker == "" || worker == undefined) {
       socket.timeout(2000).emit('find_result', col, null, check);
       return;
     }
@@ -405,7 +405,7 @@ io.on('connection', async function (socket) {
   });
 
   socket.on('update', async function (worker, col, filter, doc) {
-    if (login == false || worker != id) {
+    if (worker == "" || worker == undefined) {
       const result = null;
       socket.timeout(2000).emit('update_result', result);
       return;
@@ -418,7 +418,7 @@ io.on('connection', async function (socket) {
   });
 
   socket.on('delete', async function (worker, col, query) {
-    if (login == false || worker != id) {
+    if (worker == "" || worker == undefined) {
       socket.timeout(2000).emit('delete_result', 0);
     }
 
@@ -479,7 +479,7 @@ io.on('connection', async function (socket) {
   });
 
   socket.on('drop', async function (worker, col) {
-    if (login == false) {
+    if (false) {
       socket.timeout(2000).emit('drop_result', 'null');
       return;
     }
@@ -490,7 +490,7 @@ io.on('connection', async function (socket) {
   });
 
   socket.on('부품정보', async function (start, end) {
-    if (login == false) {
+    if (false) {
       socket.timeout(2000).emit('부품정보_result', 'null');
       return;
     }
@@ -499,11 +499,14 @@ io.on('connection', async function (socket) {
     socket.timeout(2000).emit('부품정보_result', result);
   });
 
-  socket.on('계정정보', async function (_id, _passwd) {
+  socket.on('계정정보', async function (_id, _passwd, ack) {
     const result_array = await findOne('계정', { id: _id, passwd: _passwd }, { sort: { kind: 1 }, projection: 계정_ });
     if (result_array != null) {
       id = _id;
       login = true;
+      if (typeof ack === 'function') ack({ success: true });
+    } else {
+      if (typeof ack === 'function') ack({ success: false });
     }
   });
 

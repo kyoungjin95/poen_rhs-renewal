@@ -1,49 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>년간 현황</title>
-    <link rel="stylesheet" href="base/style/공정.css" />
   </head>
 
   <body>
-    <section class="년간현황">
-      <div class="process__tit change-tit">
-        <h2>년간 현황</h2>
-      </div>
-      <div class="data">
-        <!--<input type="date" id="_검색일" size="40" value="0000-00-00" required>-->
-        <select name="year" id="_검색일" onchange="yearOnChange(this)"></select>
-        <button onClick="년간_조회(true);">조회</button>
-      </div>
-      <div class="process">
-        <div class="process__tit">
-          <label for="chart">Chart</label>
+    <section class="page page-년간현황">
+      <header class="page-header">
+        <h2 class="page-title">년간 현황</h2>
+      </header>
+
+      <!-- 조회 -->
+      <div class="card">
+        <h2 class="card-title">조회 조건</h2>
+        <div class="data-check">
+          <select name="year" id="_검색일" onchange="yearOnChange(this)"></select>
+          <button onClick="년간_조회(true);" class="btn-primary">조회</button>
         </div>
-        <canvas id="chart"> </canvas>
       </div>
-      <div class="process">
-        <div class="process__tit">
-          <label for="chart-detail">Chart detail</label>
+
+      <!-- 차트 -->
+      <div class="card">
+        <h2 class="card-title">Chart</h2>
+        <div style="overflow-x: auto">
+          <canvas id="chart"></canvas>
         </div>
-        <canvas id="chart-detail"> </canvas>
       </div>
-      <div class="process">
-        <div class="process__tit">
-          <label for="grid_입고">입고</label>
+
+      <div class="card">
+        <h2 class="card-title">Chart Detail</h2>
+        <div style="overflow-x: auto">
+          <canvas id="chart-detail"></canvas>
         </div>
+      </div>
+
+      <!-- 입고/출하 표 -->
+      <div class="card">
+        <h2 class="card-title">입고</h2>
         <div id="grid_입고"></div>
       </div>
-      <div class="process">
-        <div class="process__tit">
-          <label for="grid_출하">출하</label>
-        </div>
+
+      <div class="card">
+        <h2 class="card-title">출하</h2>
         <div id="grid_출하"></div>
       </div>
     </section>
     <script>
-      const _검색일 = document.getElementById("_검색일");
+      const _검색일 = document.getElementById('_검색일');
     </script>
   </body>
 </html>

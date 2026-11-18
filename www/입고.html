@@ -1,83 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="base/style/공정.css" />
     <title>배터리팩정보입력 - 입고</title>
   </head>
 
   <body>
-    <section>
-      <div class="gather-filter">
-        <select id="filter-field">
-          <option></option>
-          <option value="관리번호">관리번호</option>
-          <option value="입고일">입고일</option>
-          <option value="입고처">입고처</option>
-          <option value="차종">차종</option>
-          <option value="품번">품번</option>
-          <option value="RO_no">RO_no</option>
-        </select>
+    <section class="page page-입고">
+      <header class="page-header">
+        <h2 class="page-title">입고</h2>
+      </header>
 
-        <select id="filter-type">
-          <option value="=">=</option>
-          <option value="<"><</option>
-          <option value="<="><=</option>
-          <option value=">">></option>
-          <option value=">=">>=</option>
-          <option value="!=">!=</option>
-          <option value="like">like</option>
-        </select>
+      <!-- 검색 & 리스트 -->
+      <div class="card">
+        <h2 class="card-title">목록 조회</h2>
+        <div class="gather-filter">
+          <select id="filter-field">
+            <option></option>
+            <option value="관리번호">관리번호</option>
+            <option value="입고일">입고일</option>
+            <option value="입고처">입고처</option>
+            <option value="차종">차종</option>
+            <option value="품번">품번</option>
+            <option value="RO_no">RO_no</option>
+          </select>
 
-        <input id="filter-value" type="text" placeholder="value to filter" />
+          <select id="filter-type">
+            <option value="=">=</option>
+            <option value="<"><</option>
+            <option value="<="><=</option>
+            <option value=">">></option>
+            <option value=">=">>=</option>
+            <option value="!=">!=</option>
+            <option value="like">like</option>
+          </select>
 
-        <button id="filter-clear">Clear Filter</button>
+          <input id="filter-value" type="text" placeholder="검색어" />
+
+          <button id="filter-clear">필터 초기화</button>
+          <button onClick="입고_list();" class="btn-primary">LIST</button>
+        </div>
+        <div id="grid_list"></div>
       </div>
-      <button onClick="입고_list();">LIST</button>
-      <div id="grid_list"></div>
-    </section>
-    <section class="입고">
-      <div class="process__tit">
-        <h2>배터리팩 등록(입고)</h2>
-      </div>
-      <div class="input-group process-step">
-        <table class="tb">
-          <colgroup>
-            <col class="col_1" width="30%" />
-            <col class="col_2" width="70%" />
-          </colgroup>
-          <tr>
-            <td>
-              <label for="management_id">관리번호</label>
-            </td>
-            <td>
-              <input type="text" id="_management_id" value="" size="40" required />
-              <button onClick="입고_시작();">조 회</button>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <label for="_입고일">입고일</label>
-            </td>
-            <td>
-              <input type="datetime-local" id="_입고일" size="40" value="0000-00-00T00:00" required />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <label for="_입고처">입고처</label>
-            </td>
-            <td>
-              <input type="text" id="_입고처" size="40" required />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <label for="_구분">구분</label>
-            </td>
-            <td>
-              <input type="text" id="_구분" size="40" required />
+
+      <!-- 기본 정보 -->
+      <div class="card">
+        <h2 class="card-title">배터리팩 등록</h2>
+        <div class="form-grid">
+          <div class="field">
+            <label for="_management_id">관리번호</label>
+            <div class="field-input">
+              <input type="text" id="_management_id" value="" required />
+              <button onClick="입고_시작();">조회</button>
+            </div>
+          </div>
+          <div class="field">
+            <label for="_입고일">입고일</label>
+            <input type="datetime-local" id="_입고일" value="0000-00-00T00:00" required />
+          </div>
+          <div class="field">
+            <label for="_입고처">입고처</label>
+            <input type="text" id="_입고처" required />
+          </div>
+          <div class="field">
+            <label for="_구분">구분</label>
+            <div class="field-input">
+              <input type="text" id="_구분" required />
               <div id="_입고_기타">
                 <select name="language" onchange="_구분_콤보박스(this);">
                   <option value="">---</option>
@@ -94,83 +83,85 @@
                   <option value="보증">보증</option>
                 </select>
               </div>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <label for="_차종">차종</label>
-            </td>
-            <td>
-              <input type="text" id="_차종" size="40" required />
+            </div>
+          </div>
+          <div class="field">
+            <label for="_차종">차종</label>
+            <div class="field-input">
+              <input type="text" id="_차종" required />
               <select name="language" onchange="_차종_리스트_콤보박스(this);">
                 <option value="">---</option>
                 <option value="DE_EV">DE_EV</option>
                 <option value="OS_EV">OS_EV</option>
                 <option value="SK3_EV">SK3_EV</option>
                 <option value="LK_EV">LK_EV</option>
+                <option value="LKFC_EV">LKFC_EV</option>
                 <option value="PU_EV">PU_EV</option>
                 <option value="HR_EV">HR_EV</option>
                 <option value="CV_EV">CV_EV</option>
                 <option value="NE_EV">NE_EV</option>
                 <option value="LM_EV">LM_EV</option>
-                <option value="CS_EV">CS_EV</option>
+                <option value="DE_HEV">DE_HEV</option>
+                <option value="GL3_HEV">GL3_HEV</option>
+                <option value="DL3_HEV">DL3_HEV</option>
+                <option value="YG_HEV">YG_HEV</option>
+                <option value="JF_HEV">JF_HEV</option>
+                <option value="SG2_HEV">SG2_HEV</option>
+                <option value="NQ5_HEV">NQ5_HEV</option>
               </select>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <label for="_품번">품번</label>
-            </td>
-            <td>
-              <input type="text" id="_품번" size="40" required />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <label for="_RO_no">RO no.</label>
-            </td>
-            <td>
-              <input type="text" id="_RO_no" size="40" required />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <label for="_Rack_번호">Rack 번호</label>
-            </td>
-            <td>
-              <input type="text" id="_Rack_번호" size="40" required />
+            </div>
+          </div>
+          <div class="field">
+            <label for="_품번">품번</label>
+            <input type="text" id="_품번" required />
+          </div>
+          <div class="field">
+            <label for="_RO_no">RO no.</label>
+            <input type="text" id="_RO_no" required />
+          </div>
+          <div class="field">
+            <label for="_VIN">VIN</label>
+            <input type="text" id="_VIN" required />
+          </div>
+          <div class="field">
+            <label for="_">Serial No.</label>
+            <input type="text" id="_sn" required />
+          </div>
+          <div class="field">
+            <label for="_Rack_번호">Rack 번호</label>
+            <div class="field-input">
+              <input type="text" id="_Rack_번호" required />
               <button onClick="입고_save(); 창고 = '마도'; flag_racks = true;">Rack 배치도</button>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <label for="_입고사진">입고 사진</label>
-            </td>
-            <td class="process__img once">
-              <div class="images">
-                <img id="_img1" width="100vw" height="100vh" />
-              </div>
-            </td>
-          </tr>
-        </table>
-      </div>
-      <div class="input-group">
-        <div class="input-btn-group">
-          <button onClick="입고_save();">저장</button>
-          <button onClick="이전페이지();">이전페이지</button>
+            </div>
+          </div>
+          <div class="field full">
+            <label>입고 사진</label>
+            <div class="image-grid">
+              <div class="image-slot"><img id="_img1" /></div>
+            </div>
+          </div>
         </div>
       </div>
+
+      <!-- 액션 -->
+      <div class="form-actions">
+        <button onClick="이전페이지();" class="btn-secondary">이전 페이지</button>
+        <button onClick="입고_save();" class="btn-primary">저장</button>
+      </div>
     </section>
+
     <script>
-      const _management_id = document.getElementById("_management_id");
-      const _입고일 = document.getElementById("_입고일");
-      const _입고처 = document.getElementById("_입고처");
-      const _구분 = document.getElementById("_구분");
-      const _차종 = document.getElementById("_차종");
-      const _품번 = document.getElementById("_품번");
-      const _RO_no = document.getElementById("_RO_no");
-      const _Rack_번호 = document.getElementById("_Rack_번호");
-      const _img1 = document.getElementById("_img1");
+      const _management_id = document.getElementById('_management_id');
+      const _입고일 = document.getElementById('_입고일');
+      const _입고처 = document.getElementById('_입고처');
+      const _구분 = document.getElementById('_구분');
+      const _차종 = document.getElementById('_차종');
+      const _품번 = document.getElementById('_품번');
+      const _VIN = document.getElementById('_VIN');
+      const _sn = document.getElementById('_sn');
+      const _RO_no = document.getElementById('_RO_no');
+      const _Rack_번호 = document.getElementById('_Rack_번호');
+      const _img1 = document.getElementById('_img1');
     </script>
   </body>
 </html>

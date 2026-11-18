@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>분해조립 v2</title>
+  </head>
+
+  <body>
+    <section class="page page-분해조립_v2">
+      <header class="page-header">
+        <h2 class="page-title">분해조립</h2>
+      </header>
+
+      <!-- 검색 & 목록 -->
+      <div class="card">
+        <h2 class="card-title">목록 조회</h2>
+        <div class="gather-filter">
+          <select id="filter-field">
+            <option></option>
+            <option value="관리번호">관리번호</option>
+            <option value="재제조번호">재제조번호</option>
+            <option value="구분">구분</option>
+            <option value="차종">차종</option>
+            <option value="품번">품번</option>
+            <option value="RO_no">RO_no</option>
+          </select>
+          <select id="filter-type">
+            <option value="=">=</option>
+            <option value="<"><</option>
+            <option value="<="><=</option>
+            <option value=">">></option>
+            <option value=">=">>=</option>
+            <option value="!=">!=</option>
+            <option value="like">like</option>
+          </select>
+          <input id="filter-value" type="text" placeholder="검색어" />
+          <button id="filter-clear">필터 초기화</button>
+          <button onClick="분해조립_v2_list();" class="btn-primary">LIST</button>
+        </div>
+        <div id="grid_list"></div>
+      </div>
+
+      <!-- BSA 기본 정보 (상단) -->
+      <div class="card">
+        <h2 class="card-title">기본 정보</h2>
+        <div class="form-grid">
+          <div class="field">
+            <label for="_management_id">관리번호</label>
+            <div class="field-input">
+              <input type="text" id="_management_id" required />
+              <button onClick="분해조립_v2_조회(0);">조회</button>
+            </div>
+          </div>
+          <div class="field">
+            <label for="_재제조번호">재제조번호</label>
+            <div class="field-input">
+              <input type="text" id="_재제조번호" required />
+              <button onClick="분해조립_v2_조회(1);">조회</button>
+            </div>
+          </div>
+          <div class="field">
+            <label for="_RO_no">RO No.</label>
+            <div class="field-input">
+              <input type="text" id="_RO_no" required />
+              <button onClick="분해조립_v2_조회(2);">조회</button>
+            </div>
+          </div>
+          <div class="field">
+            <label for="_구분">구분</label>
+            <input type="text" id="_구분" readonly />
+          </div>
+          <div class="field">
+            <label for="_차종">차종</label>
+            <input type="text" id="_차종" readonly />
+          </div>
+          <div class="field">
+            <label for="_품번">품번</label>
+            <input type="text" id="_품번" readonly />
+          </div>
+          <div class="field">
+            <label for="_공정입고일">공정 입고일</label>
+            <input type="datetime-local" id="_공정입고일" />
+          </div>
+          <!-- <div class="field">
+            <label>기초보고서</label>
+            <div class="field-input">
+              <button onClick="분해조립_v2_기초보고서_팝업();" class="btn-secondary">📋 기초보고서 확인</button>
+            </div>
+          </div> -->
+        </div>
+      </div>
+
+      <!-- 부품 입력 영역 -->
+      <div class="card">
+        <h2 class="card-title">부품 입력 — 재제조 진행</h2>
+        <p class="card-desc">교체전(고품) 모듈은 교체 후 자재대기 또는 폐기로 분류. 교체후는 새로 들어가는 신품/고품 정보 입력.</p>
+
+        <div id="_부품영역">
+          <!-- JS 가 차종에 따라 동적 생성 -->
+          <p class="part-v2__placeholder">위에서 BSA 를 선택하거나 관리번호를 조회하면 차종에 맞는 부품 입력칸이 나타납니다.</p>
+        </div>
+      </div>
+
+      <!-- 액션 -->
+      <div class="form-actions">
+        <button onClick="분해조립_v2_save();" class="btn-primary">저장</button>
+        <button onClick="back();" class="btn-secondary">이전</button>
+      </div>
+    </section>
+
+    <!-- 기초보고서 팝업 modal
+    <div id="_기초보고서_modal" class="v2-modal" style="display: none">
+      <div class="v2-modal__backdrop" onClick="분해조립_v2_기초보고서_닫기();"></div>
+      <div class="v2-modal__panel">
+        <header class="v2-modal__header">
+          <h3>기초보고서</h3>
+          <button onClick="분해조립_v2_기초보고서_닫기();">✕</button>
+        </header>
+        <div id="_기초보고서_modal_body" style="padding: 20px; overflow-y: auto"></div>
+      </div>
+    </div> -->
+
+    <script>
+      const _management_id = document.getElementById('_management_id');
+      const _재제조번호 = document.getElementById('_재제조번호');
+      const _RO_no = document.getElementById('_RO_no');
+      const _구분 = document.getElementById('_구분');
+      const _차종 = document.getElementById('_차종');
+      const _품번 = document.getElementById('_품번');
+      const _공정입고일 = document.getElementById('_공정입고일');
+    </script>
+  </body>
+</html>

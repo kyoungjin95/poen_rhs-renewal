@@ -1,57 +1,44 @@
-<html>
+<!DOCTYPE html>
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Poen Admin System</title>
-    <link rel="stylesheet" href="base/style/style.css" />
-    <link rel="stylesheet" href="base/style/공정.css" />
+    <title>비밀번호 변경</title>
   </head>
 
   <body>
-    <section class="adminSystem">
-      <div class="process__tit change-tit">
-        <h2>PASSWORD CHANGE</h2>
+    <section class="page page-passwd">
+      <header class="page-header">
+        <h2 class="page-title">비밀번호 변경</h2>
+      </header>
+
+      <div class="card">
+        <h2 class="card-title">비밀번호</h2>
+        <div class="form-grid">
+          <div class="field full">
+            <label for="_old_passwd">현재 비밀번호</label>
+            <input type="password" id="_old_passwd" required />
+          </div>
+          <div class="field full">
+            <label for="_passwd1">새 비밀번호</label>
+            <input type="password" id="_passwd1" required />
+          </div>
+          <div class="field full">
+            <label for="_passwd2">새 비밀번호 확인</label>
+            <input type="password" id="_passwd2" required />
+          </div>
+        </div>
       </div>
-      <br />
-      <div class="input-group">
-        <tr>
-          <td>
-            <label for="_old_pawsswd">Current Password</label>
-          </td>
-          <td class="answer">
-            <input type="password" id="_old_passwd" require />
-          </td>
-        </tr>
-        <br />
-        <tr>
-          <td>
-            <label for="_pawsswd1">New Password</label>
-          </td>
-          <td class="answer">
-            <input type="password" id="_passwd1" require />
-          </td>
-        </tr>
-        <br />
-        <tr>
-          <td>
-            <label for="_pawsswd2">New Password Confirm</label>
-          </td>
-          <td class="answer">
-            <input type="password" id="_passwd2" require />
-          </td>
-        </tr>
-        <br />
-        <tr>
-          <td colspan="2" class="btn-group">
-            <button onClick="passwd_change();">비밀번호 변경</button>
-          </td>
-        </tr>
+
+      <div class="form-actions">
+        <button onClick="passwd_change();" class="btn-primary">비밀번호 변경</button>
       </div>
     </section>
+
     <script>
-      var _old_passwd = document.getElementById("_old_passwd");
-      var _passwd1 = document.getElementById("_passwd1");
-      var _passwd2 = document.getElementById("_passwd2");
+      var _old_passwd = document.getElementById('_old_passwd');
+      var _passwd1 = document.getElementById('_passwd1');
+      var _passwd2 = document.getElementById('_passwd2');
     </script>
   </body>
 </html>

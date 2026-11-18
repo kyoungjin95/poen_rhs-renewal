@@ -247,129 +247,32 @@ async function 재제조현황_조회() {
 
     document.getElementById('m_id').innerHTML = '관리번호: ' + m_id;
 
-    //await sleep(1);
     await grid_입고(m_id);
-    progress.value = (1 / 19) * 100;
+    progress.value = (1 / 7) * 100;
 
     await grid_세척(m_id);
-    progress.value = (2 / 19) * 100;
+    progress.value = (2 / 7) * 100;
 
     await grid_기초검사(m_id);
-    progress.value = (3 / 19) * 100;
+    progress.value = (3 / 7) * 100;
 
     await grid_분해조립(m_id);
-    progress.value = (4 / 19) * 100;
-
-    await grid_분해조립new(m_id);
-    progress.value = (5 / 19) * 100;
+    progress.value = (4 / 7) * 100;
 
     await grid_성능검사(m_id);
-    progress.value = (6 / 19) * 100;
+    progress.value = (5 / 7) * 100;
 
     await grid_EOL(m_id);
-    progress.value = (7 / 19) * 100;
+    progress.value = (6 / 7) * 100;
 
     await grid_출하정보(m_id);
-    progress.value = (8 / 19) * 100;
-
-    await grid_특이사항(m_id);
-    progress.value = (9 / 19) * 100;
-
-    await grid_교체부품상세1(m_id);
-    progress.value = (10 / 19) * 100;
-
-    await grid_교체부품상세2(m_id);
-    progress.value = (11 / 19) * 100;
-
-    await grid_교체부품상세3(m_id);
-    progress.value = (12 / 19) * 100;
-
-    await grid_교체부품상세4(m_id);
-    progress.value = (13 / 19) * 100;
-
-    await grid_교체부품상세5(m_id);
-    progress.value = (14 / 19) * 100;
-
-    await grid_교체부품상세6(m_id);
-    progress.value = (15 / 19) * 100;
-
-    await grid_교체부품상세7(m_id);
-    progress.value = (16 / 19) * 100;
-
-    await grid_교체부품상세8(m_id);
-    progress.value = (17 / 19) * 100;
-
-    await grid_교체부품상세9(m_id);
-    progress.value = (18 / 19) * 100;
-
-    await grid_교체부품상세10(m_id);
-    progress.value = (19 / 19) * 100;
+    progress.value = (7 / 7) * 100;
 
     return;
   });
 
-  //전체 공정 data를 보여줌
-  
-  //await sleep(1);
-
-  await grid_입고();
-  progress.value = (1 / 19) * 100;
-
-  await grid_세척();
-  progress.value = (2 / 19) * 100;
-
-  await grid_기초검사();
-  progress.value = (3 / 19) * 100;
-
-  await grid_분해조립new();
-  progress.value = (4 / 19) * 100;
-
-  await grid_성능검사();
-  progress.value = (5 / 19) * 100;
-
-  await grid_EOL();
-  progress.value = (6 / 19) * 100;
-
-  await grid_출하정보();
-  progress.value = (7 / 19) * 100;
-
-  await grid_특이사항();
-  progress.value = (8 / 19) * 100;
-
-  await grid_교체부품상세1();
-  progress.value = (9 / 19) * 100;
-
-  await grid_교체부품상세2();
-  progress.value = (10 / 19) * 100;
-
-  await grid_교체부품상세3();
-  progress.value = (11 / 19) * 100;
-
-  await grid_교체부품상세4();
-  progress.value = (12 / 18) * 100;
-
-  await grid_교체부품상세5();
-  progress.value = (13 / 19) * 100;
-
-  await grid_교체부품상세6();
-  progress.value = (14 / 19) * 100;
-
-  await grid_교체부품상세7();
-  progress.value = (15 / 19) * 100;
-
-  await grid_교체부품상세8();
-  progress.value = (16 / 19) * 100;
-
-  await grid_교체부품상세9();
-  progress.value = (17 / 19) * 100;
-
-  await grid_교체부품상세10();
-  progress.value = (18 / 19) * 100;
-
-  await grid_분해조립();
-  progress.value = (19 / 19) * 100;
-
-  alert('로딩이 완료되었습니다');
+  //재제조현황 목록만 표시. 디테일은 행 클릭 시에만 채워짐 (rowClick 핸들러에서 처리).
+  progress.value = 100;
 }
 
 //기본정보 오른쪽 끝의 'X'표를 눌렀을때 해당 배터리팩의 기본정보만 지움
@@ -583,6 +486,7 @@ async function grid_입고(m_id = '') {
     data: tabledata_입고,
     columns: [
       { title: '관리번호', field: '관리번호', sorter: 'string', width: '180' },
+      { title: '재제조번호', field: '재제조번호', sorter: 'string', width: '180' },
       { title: '입고일', field: '입고일', sorter: 'string', width: '180' },
       { title: '입고처', field: '입고처', sorter: 'string', width: '180' },
       { title: '구분', field: '구분', sorter: 'string', width: '180' },
@@ -731,6 +635,41 @@ async function grid_분해조립(m_id = '') {
   }
 
   if (tabledata_분해조립 == null) return;
+
+  // 콤보값(신품 교체/고품 교체) 셀에 저장된 QR 정보 합쳐서 표시
+  // 옛 형식 "고품 교체(xxx)" 와 새 형식 "고품 교체" + 별도 QR 필드 둘 다 처리
+  var _part_re = /^(BMU|CMU|PRA|SPA|LWR_C|UPR_C|PBE|Gasket|Relay|HV_CNTR|Heating_CNTR|FuseBox|LV_W_H|HV_W_H|온도센서|Busbars|BMA)\d*(_2)?$/;
+  var _diag_logged = false;
+  tabledata_분해조립.forEach(function (row) {
+    if (!row) return;
+    if (!_diag_logged) {
+      var _qr_keys = Object.keys(row).filter(function (k) { return /_QR_|_비고$/.test(k); });
+      console.log('[diag 분해조립] doc QR/비고 keys:', _qr_keys.length, _qr_keys.slice(0, 20));
+      _diag_logged = true;
+    }
+    Object.keys(row).forEach(function (key) {
+      if (!_part_re.test(key)) return;
+      var val = row[key];
+      if (typeof val !== 'string' || !val) return;
+
+      // 관대하게: "고품 교체", "고품교체", "고품 교체 11111" 등 다 인식
+      var is고품 = /고품\s*교체/.test(val);
+      var is신품 = /신품\s*교체/.test(val);
+      if (!is고품 && !is신품) return;
+
+      // 옛 형식 "고품 교체(xxx)" 안의 관련번호 추출
+      var 옛관련 = val.match(/\((.+)\)/);
+      var arr = [is고품 ? '고품' : '신품'];
+      if (옛관련 && 옛관련[1]) arr.push('관련:' + 옛관련[1]);
+      if (row[key + '_QR_관리번호']) arr.push('관리:' + row[key + '_QR_관리번호']);
+      if (row[key + '_QR_고품관리번호']) arr.push('고품관리:' + row[key + '_QR_고품관리번호']);
+      if (row[key + '_QR_바코드']) arr.push('QR:' + row[key + '_QR_바코드']);
+      if (row[key + '_QR_재제조번호']) arr.push('재제조:' + row[key + '_QR_재제조번호']);
+      if (row[key + '_QR_RO']) arr.push('RO:' + row[key + '_QR_RO']);
+      if (row[key + '_비고']) arr.push('비고:' + row[key + '_비고']);
+      row[key] = arr.join(' / ');
+    });
+  });
 
   table_분해조립 = new Tabulator('#grid_분해조립', {
     initialSort: [
@@ -1235,6 +1174,7 @@ async function grid_출하정보(m_id = '') {
 
     columns: [
       { title: '관리번호', field: '관리번호', sorter: 'string', width: '180' },
+      { title: '재제조번호', field: '재제조번호', sorter: 'string', width: '180' },
       { title: '출하코드', field: '출하코드', sorter: 'string', width: '180' },
       { title: '검사일', field: '검사일', sorter: 'string', width: '180' },
       { title: '검사자', field: '검사자', sorter: 'string', width: '180' },

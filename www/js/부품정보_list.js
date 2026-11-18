@@ -3308,7 +3308,12 @@ async function 부품정보_list_load() {
       break;
   }
 
-  check_complete();
+  // 색칠 단계가 실패해도 차종별 화면 분기/저장 흐름은 막지 않음
+  try {
+    check_complete();
+  } catch (err) {
+    console.warn('check_complete skipped:', err && err.message);
+  }
 }
 
 async function 부품정보_list_save() {

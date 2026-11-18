@@ -257,12 +257,11 @@ var _D2_LV_W_H_COLOR = '';
 var _D2_MODULE_1_COLOR = '';
 
 async function 불량의심부품_시작(내부 = true) {
+  flag_불량의심부품 = false; // 일찍 false 처리 — 무한 루프 방지
   if (typeof _D2_MODULE_1 == 'undefined') {
     await sleep(1);
     return;
   }
-
-  flag_불량의심부품 = false;
   console.log('불량의심부품 start');
   _management_id.value = 관리번호;
   _차종.value = 차종;

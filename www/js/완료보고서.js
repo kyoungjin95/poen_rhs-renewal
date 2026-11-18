@@ -20,6 +20,169 @@ async function 완료보고서_시작() {
   flag_완료보고서 = false;
 
   await 완료보고서_조회();
+
+  _완료보고서_사이드바_init();
+}
+
+// 완료보고서 페이지 — 좌측 사이드바 + 섹션 토글 + 다운로드 아이콘
+function _완료보고서_사이드바_init() {
+  // 이 페이지의 핵심 요소가 없으면 (다른 페이지면) skip
+  if (!document.getElementById('_완료보고서')) return;
+
+  if (document.querySelector('#content .report-layout')) return;
+
+  document.querySelectorAll('.report-layout').forEach(function (el) {
+    el.remove();
+  });
+
+  // 섹션 정의 + 각 섹션의 PDF 다운로드 키
+  const allSections = [
+    { id: '_완료보고서', label: '완료보고서', pdfKey: '' },
+    { id: '_육안검사외부', label: '육안검사 외부', pdfKey: '육외' },
+    { id: '_육안검사내부', label: '육안검사 내부', pdfKey: '육내' },
+    { id: '_기밀검사', label: '기밀검사', pdfKey: '기밀' },
+    { id: '_절연저항검사', label: '절연저항 검사', pdfKey: '절연' },
+    { id: '_CAN통신검사', label: 'CAN 통신 검사 (G-SACN)', pdfKey: 'CAN1' },
+    { id: '_CAN통신검사2', label: 'CAN 통신 검사', pdfKey: 'CAN2' },
+    { id: '_DCIR검사', label: 'DCIR 검사', pdfKey: 'DCIR' },
+    { id: '_용량평가', label: '용량평가', pdfKey: '용량' },
+  ];
+
+  // 차종별로 숨겨진 섹션(예: HEV는 육안검사 내부/기밀검사/CAN(PDS) 없음)은 목차에서 제외
+  // — 완료보고서_조회()에서 display:none 처리한 섹션을 그대로 따라감
+  const sections = allSections.filter(function (s) {
+    const el = document.getElementById(s.id);
+    return el && el.style.display !== 'none';
+  });
+
+  const content = document.getElementById('content');
+
+  // 불필요 영역 숨김: 파일 업로드 STATUS, 기존 노란 PDF 버튼들
+  const processLabel = document.getElementById('_process');
+  if (processLabel) {
+    const parent = processLabel.closest('div');
+    if (parent) parent.style.display = 'none';
+  }
+  document.querySelectorAll('.report__btns').forEach(function (el) {
+    el.style.display = 'none';
+  });
+  document.querySelectorAll('.input-group .input-btn-group').forEach(function (el) {
+    el.style.display = 'none';
+  });
+  // body 직속에 떠있는 단독 button (이전페이지/저장 등) 숨김
+  Array.from(document.querySelectorAll('body > button, #content > button')).forEach(function (btn) {
+    btn.style.display = 'none';
+  });
+
+  sections.forEach(function (s, idx) {
+    const el = document.getElementById(s.id);
+    if (el) {
+      el.classList.add('report-section');
+      if (idx === 0) el.classList.add('active');
+    }
+  });
+
+  const layout = document.createElement('section');
+  layout.className = 'report-layout';
+
+  const sidebar = document.createElement('aside');
+  sidebar.className = 'report-sidebar';
+
+  // 검색 영역은 메인 콘텐츠 위쪽에 배치 (관리번호만, 나머지 행 숨김)
+  const searchBox = document.createElement('div');
+  searchBox.className = 'report-main-search';
+  const tbTable = document.getElementById('tb');
+  if (tbTable && tbTable.parentNode) {
+    const trs = tbTable.querySelectorAll('tr');
+    // 첫 행(관리번호) 외 모두 숨김 — 재제조번호, 저장/되돌아가기 등
+    for (let i = 1; i < trs.length; i++) {
+      trs[i].style.display = 'none';
+    }
+    searchBox.appendChild(tbTable);
+  }
+
+  // canvas (PDF 생성용 보조 element) 숨김
+  const canvas = document.getElementById('_canvas');
+  if (canvas) {
+    canvas.style.display = 'none';
+    if (canvas.parentNode) canvas.parentNode.style.display = 'none';
+  }
+
+  // "파일 업로드 STATUS" 라벨 영역 숨김
+  const proc = document.getElementById('_process');
+  if (proc && proc.parentNode) proc.parentNode.style.display = 'none';
+
+  const navWrap = document.createElement('div');
+  navWrap.innerHTML =
+    '<div class="report-sidebar-title">목차</div><ul>' +
+    sections
+      .map(function (s, i) {
+        return (
+          '<li class="report-nav-item">' +
+          '<button class="report-nav-link" data-target="' + s.id + '"' + (i === 0 ? ' data-active="1"' : '') + '>' + s.label + '</button>' +
+          '<button class="report-nav-pdf" data-pdf="' + s.pdfKey + '" title="PDF 다운로드"><i class="fa-solid fa-download"></i></button>' +
+          '</li>'
+        );
+      })
+      .join('') +
+    '</ul>';
+  sidebar.appendChild(navWrap);
+
+  const main = document.createElement('div');
+  main.className = 'report-main';
+
+  // 메인 영역 최상단에 관리번호 검색 영역 배치
+  main.appendChild(searchBox);
+
+  sections.forEach(function (s) {
+    const el = document.getElementById(s.id);
+    if (el && el.parentNode) {
+      main.appendChild(el);
+    }
+  });
+
+  // 사이드바 하단: 되돌아가기 버튼
+  const backBtn = document.createElement('button');
+  backBtn.className = 'report-back-btn';
+  backBtn.innerHTML = '<i class="fa-solid fa-arrow-left"></i> 되돌아가기';
+  backBtn.onclick = function () {
+    if (typeof 이전페이지 === 'function') 이전페이지();
+  };
+  sidebar.appendChild(backBtn);
+
+  layout.appendChild(sidebar);
+  layout.appendChild(main);
+  content.appendChild(layout);
+
+  // 첫 항목 active
+  const firstLink = sidebar.querySelector('.report-nav-link[data-active="1"]');
+  if (firstLink) firstLink.classList.add('active');
+
+  // 메뉴 클릭: 섹션 토글
+  sidebar.querySelectorAll('.report-nav-link').forEach(function (btn) {
+    btn.onclick = function () {
+      sidebar.querySelectorAll('.report-nav-link').forEach(function (b) {
+        b.classList.remove('active');
+      });
+      btn.classList.add('active');
+      document.querySelectorAll('.report-section').forEach(function (s) {
+        s.classList.remove('active');
+      });
+      const target = document.getElementById(btn.dataset.target);
+      if (target) target.classList.add('active');
+    };
+  });
+
+  // 다운로드 버튼 클릭: PDF 저장
+  sidebar.querySelectorAll('.report-nav-pdf').forEach(function (btn) {
+    btn.onclick = function (e) {
+      e.stopPropagation();
+      const key = btn.dataset.pdf;
+      if (typeof 완료보고서_save_pdf === 'function') {
+        key ? 완료보고서_save_pdf(key) : 완료보고서_save_pdf();
+      }
+    };
+  });
 }
 
 async function 완료보고서_조회(is재제조번호 = false) {
@@ -119,13 +282,21 @@ async function 완료보고서_조회(is재제조번호 = false) {
 
   //입고 데이터가 쓰이는 부분
   if (입고_data != null) {
-    _RONo.innerHTML = 입고_data.RONo;
+    _RONo.innerHTML = 입고_data.RO_no || 입고_data.RONo || '';
     _입고일.innerHTML = 입고_data.입고일;
     _차종.innerHTML = 입고_data.차종;
+    if (typeof _VINNo !== 'undefined' && _VINNo) _VINNo.innerHTML = 입고_data.VIN || '';
     console.log('차종:', 입고_data.차종);
 
+    //차종 코드 정규화 (공백/대소문자 차이 흡수)
+    var 차종코드 = String(입고_data.차종 || '').trim().toUpperCase();
+    console.log('차종코드(정규화):', 차종코드);
+
     //차종별 표 표출
-    switch (입고_data.차종) {
+    if (차종코드.endsWith('HEV')) {
+      showTable('_HEV');
+    } else
+    switch (차종코드) {
       case 'CS_EV':
         showTable('_CS_EV');
         break;
@@ -170,6 +341,13 @@ async function 완료보고서_조회(is재제조번호 = false) {
         showTable('_CS_EV');
         alert('차종을 확인해 주세요');
     }
+
+    //HEV 전용 페이지 구성: 육안검사 내부 / 기밀검사 / CAN 통신(PDS) 제외
+    var isHEV = 차종코드.endsWith('HEV');
+    ['_육안검사내부', '_기밀검사', '_CAN통신검사2'].forEach(function (id) {
+      var sec = document.getElementById(id);
+      if (sec) sec.style.display = isHEV ? 'none' : '';
+    });
   } else {
     _RONo.innerHTML = '';
     _입고일.innerHTML = '';
@@ -177,8 +355,9 @@ async function 완료보고서_조회(is재제조번호 = false) {
 
   //기초검사 데이터가 쓰이는 부분
   if (기초_data != null) {
-    _VINNo.innerHTML = 기초_data.VIN;
-    _RONo.innerHTML = 기초_data.RO_no;
+    // 입고 시 입력값 우선 — 없을 때만 기초검사 값 사용
+    if (!_VINNo.innerHTML) _VINNo.innerHTML = 기초_data.VIN || '';
+    if (!_RONo.innerHTML) _RONo.innerHTML = 기초_data.RO_no || '';
     _주행거리.innerHTML = 기초_data.주행거리;
     _차량번호.innerHTML = 기초_data.차량번호;
     _생산일.innerHTML = 기초_data.BSA생산일자;
@@ -199,6 +378,36 @@ async function 완료보고서_조회(is재제조번호 = false) {
     _작성일.innerHTML = EOL_data.공정완료일;
     _결과.innerHTML = EOL_data.용량평가값;
 
+    if (String(입고_data.차종 || '').trim().toUpperCase().endsWith('HEV')) {
+      // 1. 육안 검사
+      _HEV_외부점검.innerHTML = EOL_data.육안검사_외부;
+      if (EOL_data.육안검사_외부 == 'OK') _HEV_외부점검사유.innerHTML = '이상 없음';
+      _HEV_내부점검.innerHTML = EOL_data.육안검사_내부;
+      if (EOL_data.육안검사_내부 == 'OK') _HEV_내부점검사유.innerHTML = '이상 없음';
+      // 셀 제조사 확인: 입력 데이터 없음 → '-' 유지
+
+      // 2. 절연 검사
+      _HEV_PRA_P.innerHTML = EOL_data.절연검사_Plus;
+      _HEV_PRA_P값.innerHTML = EOL_data.절연검사_Plus_특이사항;
+      _HEV_PRA_N.innerHTML = EOL_data.절연검사_Minus;
+      _HEV_PRA_N값.innerHTML = EOL_data.절연검사_Minus_특이사항;
+
+      // 3. 통신 검사
+      _HEV_팩전압값.innerHTML = EOL_data.통신검사_팩전압_특이사항;
+      _HEV_셀전압편차.innerHTML = EOL_data.통신검사_셀전압편차;
+      _HEV_셀전압편차값.innerHTML = EOL_data.통신검사_셀전압편차_특이사항;
+      if (성능_data != undefined) _HEV_최대내부저항값.innerHTML = '최대 내부 저항 (mΩ) : ' + Number(성능_data.DCIR).toFixed(2);
+      // 최대 내부 저항 셀번호: 입력 데이터 없음 → '-' 유지
+      _HEV_고장코드.innerHTML = EOL_data.고장코드유무;
+
+      // 4. 성능 검사 (BSA)
+      _HEV_성능BSA.innerHTML = 성능_data != undefined ? 'OK' : '-';
+
+      // 5. 이력 검사
+      _HEV_이력관리.innerHTML = flag_입고정보 ? 'OK' : 'NG';
+      _HEV_출하QR.innerHTML = EOL_data.QR != '' ? 'OK' : 'NG';
+      _HEV_출하QR사유.innerHTML = EOL_data.QR;
+    } else
     switch (입고_data.차종) {
       case 'CS_EV':
         _CS_외부점검.innerHTML = EOL_data.육안검사_외부;
@@ -662,6 +871,13 @@ async function 완료보고서_조회(is재제조번호 = false) {
 
   //DCIR 표와 그래프를 성능검사 데이터에서 가져와 만드는 부분(성능검사에서 파일 업로드후 값 추출후 저장하면 해당 값들이 저장됨)
   if (성능_data != undefined) {
+    //DCIR 값이 유효한 숫자일 때만 y축 min/max 지정 (NaN 이면 Chart.js 가 깨짐)
+    var _dcir1 = Number(성능_data.DCIR_Charge1);
+    var _yScale = {};
+    if (isFinite(_dcir1)) {
+      _yScale.min = _dcir1 - 30;
+      _yScale.max = _dcir1 + 30;
+    }
     var _chart = new Chart(_DCIR_canvas, {
       type: 'line',
       data: {
@@ -677,10 +893,7 @@ async function 완료보고서_조회(is재제조번호 = false) {
         pointRadius: 10,
         pointHoverRadius: 10,
         scales: {
-          y: {
-            min: Number(성능_data.DCIR_Charge1) - 30,
-            max: Number(성능_data.DCIR_Charge1) + 30,
-          },
+          y: _yScale,
         },
       },
     });
@@ -709,7 +922,7 @@ async function 완료보고서_조회(is재제조번호 = false) {
     _DCIR_Charge5.innerHTML = 성능_data.DCIR_Charge5;
     _DCIR_Charge6.innerHTML = 성능_data.DCIR_Charge6;
 
-    _DCIR검사_결과.innerHTML = Number(성능_data.DCIR).toFixed(2);
+    _DCIR검사_결과.innerHTML = isFinite(Number(성능_data.DCIR)) ? Number(성능_data.DCIR).toFixed(2) : '-';
   }
 
   //용량평가
@@ -734,7 +947,7 @@ async function 완료보고서_조회(is재제조번호 = false) {
   //성능검사 데이터중 그래프 이미지를 사용하는 부분
   if (성능_data != undefined) {
     if (_img2.src == '') _img2.src = 성능_data.chart;
-    _용량평가_결과.innerHTML = Number(성능_data.용량평가).toFixed(2);
+    _용량평가_결과.innerHTML = isFinite(Number(성능_data.용량평가)) ? Number(성능_data.용량평가).toFixed(2) : '-';
   }
 }
 
@@ -745,7 +958,12 @@ function showTable(tableId) {
     tables[i].style.display = 'none';
   }
   // 선택된 테이블만 표시
-  document.getElementById(tableId).style.display = 'table';
+  const table = document.getElementById(tableId);
+  if (!table) {
+    console.warn('[showTable] 테이블 없음:', tableId);
+    return;
+  }
+  table.style.display = 'table';
 }
 
 //저장 버튼을 누르면 용량평가 그래프 이미지를 저장
@@ -842,6 +1060,12 @@ async function 완료보고서_save_pdf(type = 0) {
   }).then((canvas) => {
     var data = canvas.toDataURL();
     var canvas = document.getElementById('_canvas');
+    if (!canvas) {
+      canvas = document.createElement('canvas');
+      canvas.id = '_canvas';
+      canvas.style.display = 'none';
+      document.body.appendChild(canvas);
+    }
     var ctx = canvas.getContext('2d');
     var img = new Image();
     img.src = data;

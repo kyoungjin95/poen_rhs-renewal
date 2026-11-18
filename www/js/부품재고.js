@@ -301,9 +301,15 @@ async function 고품재고() {
       { title: 'QR', field: 'QR', sorter: 'string', width: '180' },
       { title: '관리번호', field: '관리번호', sorter: 'string', width: '180' },
       { title: '품명', field: '품명', sorter: 'string', width: '180' },
-      //{ title: "구분", field: "구", sorter: "string", width: '180' },
-      //{ title: "번호", field: "번호", sorter: "string", width: '180' },
-      { title: '폐기여부', field: '폐기여부', sorter: 'string', width: '180' },
+      { title: '번호', field: '번호', sorter: 'string', width: '80', hozAlign: 'center' },
+      { title: '구분', field: '폐기여부', sorter: 'string', width: '140',
+        formatter: function (cell) {
+          var v = (cell.getValue() || '').toString();
+          if (v === '자재' || v === '자재대기') return '자재대기';
+          if (v === '폐기' || v === 'o') return '폐기';
+          return v;
+        }
+      },
       { title: '사용여부', field: '사용여부', sorter: 'string', width: '180' },
       { title: '사용 관리번호', field: '사용_관리번호', sorter: 'string', width: '180' },
       { title: '등록 작업자', field: '등록_작업자', sorter: 'string', width: '180' },
